@@ -1,0 +1,4 @@
+:- module (make.find_local_modules).
+:- interface.
+:- type cached_transitive_dependencies.
+:- type_representation(cached_transitive_dependencies, is_eqv_to(map(transitive_dependencies_root, deps_result(module_index)))).

@@ -1,0 +1,8303 @@
+/*
+** Automatically generated from `compile_target_code.m'
+** by the Mercury compiler,
+** version rotd-2023-10-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module backend_libs.compile_target_code.
+// :- implementation.
+
+/*
+INIT mercury__backend_libs__compile_target_code__init
+ENDINIT
+*/
+
+#include "backend_libs.compile_target_code.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "backend_libs.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "dir.mih"
+#include "edit_seq.mih"
+#include "enum.mih"
+#include "getopt.mih"
+#include "hlds.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "one_or_more.mih"
+#include "one_or_more_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "require.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "sparse_bitset.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "term_context.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "io.file.mih"
+#include "libs.compute_grade.mih"
+#include "libs.file_util.mih"
+#include "libs.globals.mih"
+#include "libs.maybe_util.mih"
+#include "libs.op_mode.mih"
+#include "libs.optimization_options.mih"
+#include "libs.options.mih"
+#include "libs.shell_util.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.sym_name.mih"
+#include "parse_tree.error_spec.mih"
+#include "parse_tree.file_names.mih"
+#include "parse_tree.find_module.mih"
+#include "parse_tree.module_baggage.mih"
+#include "parse_tree.module_cmds.mih"
+#include "parse_tree.module_dep_info.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.set_of_var.mih"
+#include "parse_tree.write_error_spec.mih"
+#include "string.format.mih"
+#include "string.parse_util.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__compile_target_code__list__pti_list_1__plain_builtin__type_ctor_info_string_0;
+
+static const MR_VA_TypeInfo_Struct4 backend_libs__compile_target_code____vti_pred_4builtin__type_ctor_info_string_0libs__maybe_util__type_ctor_info_maybe_succeeded_0io__type_ctor_info_state_0io__type_ctor_info_state_0;
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_is_as_new_as_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_is_as_new_as_0_1;
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_is_as_new_as_0_2;
+
+static const MR_EnumFunctorDescPtr backend_libs__compile_target_code__backend_libs__compile_target_code__enum_ordinal_ordered_is_as_new_as_0[3];
+
+static const MR_EnumFunctorDescPtr backend_libs__compile_target_code__backend_libs__compile_target_code__enum_name_ordered_is_as_new_as_0[3];
+
+static const MR_Integer backend_libs__compile_target_code__backend_libs__compile_target_code__functor_number_map_is_as_new_as_0[3];
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_1;
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_2;
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_3;
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_4;
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_5;
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_6;
+
+static const MR_EnumFunctorDescPtr backend_libs__compile_target_code__backend_libs__compile_target_code__enum_ordinal_ordered_linked_target_type_0[7];
+
+static const MR_EnumFunctorDescPtr backend_libs__compile_target_code__backend_libs__compile_target_code__enum_name_ordered_linked_target_type_0[7];
+
+static const MR_Integer backend_libs__compile_target_code__backend_libs__compile_target_code__functor_number_map_linked_target_type_0[7];
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_pic_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_pic_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__compile_target_code__backend_libs__compile_target_code__enum_ordinal_ordered_pic_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__compile_target_code__backend_libs__compile_target_code__enum_name_ordered_pic_0[2];
+
+static const MR_Integer backend_libs__compile_target_code__backend_libs__compile_target_code__functor_number_map_pic_0[2];
+
+static MR_String MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__func__get_link_libraries__2218__1_2_f_0(
+  MR_String GradeDir_9,
+  MR_String LambdaHeadVar__1_19);
+
+static MR_Word MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__func__referenced_dlls__1125__1_1_f_0(
+  MR_Word LambdaHeadVar__1_17);
+
+static MR_Word MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__func__gather_c_include_dir_flags__862__1_1_f_0(
+  MR_String LambdaHeadVar__1_11);
+
+static void MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__pred__link_module_list__1553__1_2_p_0(
+  MR_String LambdaHeadVar__1_45,
+  MR_Word * LambdaHeadVar__2_46);
+
+static void MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__pred__compile_csharp_file__1089__1_4_p_0(
+  MR_Word Globals_10,
+  MR_String Prefix_29,
+  MR_Word LambdaHeadVar__1_82,
+  MR_Word * LambdaHeadVar__2_83);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__pred__compile_csharp_file__1079__1_3_p_0(
+  MR_Word ModuleName_28,
+  MR_Word LambdaHeadVar__1_77,
+  MR_Word * LambdaHeadVar__2_78);
+
+static MR_Word MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__func__compile_csharp_file__1069__1_1_f_0(
+  MR_String LambdaHeadVar__1_68);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__pred__compile_java_files__981__1_2_p_0(
+  MR_Word DestDirPath_37,
+  MR_Word HeadVar__2_96);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__pred__compile_java_files__977__1_2_p_0(
+  MR_Word DestDirPath_37,
+  MR_Word HeadVar__2_92);
+
+static void MR_CALL 
+backend_libs__compile_target_code____Compare____is_as_new_as_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____is_as_new_as_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+backend_libs__compile_target_code____Compare____compile_init_file_pred_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____compile_init_file_pred_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+backend_libs__compile_target_code__write_jar_class_argument_5_p_0(
+  MR_Word Stream_6,
+  MR_String ClassSubDir_7,
+  MR_String ClassFileName_8);
+
+static void MR_CALL 
+backend_libs__compile_target_code__write_cli_shell_script_5_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__write_cli_shell_script_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__write_cli_shell_script_5_p_0(
+  MR_Word Globals_6,
+  MR_String ExeFileName_7,
+  MR_Word Stream_8);
+
+static void MR_CALL 
+backend_libs__compile_target_code__process_link_library_8_p_0(
+  MR_Word Globals_9,
+  MR_Word MercuryLibDirs_10,
+  MR_String LibName_11,
+  MR_String * LinkerOpt_12,
+  MR_Word STATE_VARIABLE_Succeeded_0_36,
+  MR_Word * STATE_VARIABLE_Succeeded_37);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__has_object_file_extension_3_p_0(
+  MR_String ObjExt_4,
+  MR_String PicObjExt_5,
+  MR_String FileName_6);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__is_minus_j_flag_1_p_0(
+  MR_String FlagStr_2);
+
+static void MR_CALL 
+backend_libs__compile_target_code__output_library_link_flags_4_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4,
+  MR_Box wrapper_arg_5,
+  MR_Box * wrapper_arg_6);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__output_library_link_flags_4_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__output_library_link_flags_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__output_library_link_flags_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__output_c_include_directory_flags_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__make_standalone_int_body_6_p_0(
+  MR_Word Globals_7,
+  MR_Word ProgressStream_8,
+  MR_Word ErrorStream_9,
+  MR_String BaseName_10);
+
+static void MR_CALL 
+backend_libs__compile_target_code__link_module_list_8_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__compile_target_code__join_module_list_6_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3,
+  MR_Word * HeadVar__4_4);
+
+static void MR_CALL 
+backend_libs__compile_target_code__link_9_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_6(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_5(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4,
+  MR_Box wrapper_arg_5,
+  MR_Box * wrapper_arg_6);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0(
+  MR_Word Globals_11,
+  MR_Word ProgressStream_12,
+  MR_Word ErrorStream_13,
+  MR_Word LinkTargetType_14,
+  MR_Word MainModuleName_15,
+  MR_String FullOutputFileName0_16,
+  MR_Word SourceList0_17,
+  MR_Word * Succeeded_18);
+
+static void MR_CALL 
+backend_libs__compile_target_code__invoke_long_system_command_10_p_0(
+  MR_Word Globals_11,
+  MR_Word ProgressStream_12,
+  MR_Word ErrorStream_13,
+  MR_Word CmdOutputStream_14,
+  MR_Word Verbosity_15,
+  MR_String Cmd_16,
+  MR_String Args_17,
+  MR_Word * Succeeded_18);
+
+static MR_String MR_CALL 
+backend_libs__compile_target_code__csharp_file_name_3_f_0(
+  MR_Word EnvType_5,
+  MR_Word CSharpCompiler_6,
+  MR_String FileName0_7);
+
+static void MR_CALL 
+backend_libs__compile_target_code__link_exe_or_shared_lib_10_p_0(
+  MR_Word Globals_11,
+  MR_Word ProgressStream_12,
+  MR_Word ErrorStream_13,
+  MR_Word LinkTargetType_14,
+  MR_Word ModuleName_15,
+  MR_String FullOutputFileName_16,
+  MR_Word ObjectsList_17,
+  MR_Word * Succeeded_18);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__create_archive_9_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__create_archive_9_p_0(
+  MR_Word Globals_10,
+  MR_Word ProgressStream_11,
+  MR_Word ErrorStream_12,
+  MR_String FullLibFileName_13,
+  MR_Word Quote_14,
+  MR_Word ObjectList_15,
+  MR_Word * Succeeded_16);
+
+static MR_String MR_CALL 
+backend_libs__compile_target_code__reserve_stack_size_flags_1_f_0(
+  MR_Word Globals_3);
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_linker_output_option_3_p_0(
+  MR_Word Globals_4,
+  MR_Word LinkTargetType_5,
+  MR_String * OutputOpt_6);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__get_frameworks_2_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_frameworks_2_p_0(
+  MR_Word Globals_3,
+  MR_String * FrameworkOpts_4);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__filter_object_files_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__filter_object_files_4_p_0(
+  MR_Word Globals_5,
+  MR_Word Files_6,
+  MR_Word * ObjectFiles_7,
+  MR_Word * NonObjectFiles_8);
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_restricted_command_line_link_opts_3_p_0(
+  MR_Word Globals_4,
+  MR_Word LinkTargetType_5,
+  MR_String * ResCmdLinkOpts_6);
+
+static void MR_CALL 
+backend_libs__compile_target_code__use_thread_libs_2_p_0(
+  MR_Word Globals_3,
+  MR_Word * UseThreadLibs_4);
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_system_libs_3_p_0(
+  MR_Word Globals_4,
+  MR_Word TargetType_5,
+  MR_String * SystemLibs_6);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__get_runtime_library_path_opts_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_runtime_library_path_opts_5_p_0(
+  MR_Word Globals_6,
+  MR_Word LinkTargetType_7,
+  MR_Word RpathFlagOpt_8,
+  MR_Word RpathSepOpt_9,
+  MR_String * RpathOpts_10);
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_link_libraries_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4,
+  MR_Box wrapper_arg_5,
+  MR_Box * wrapper_arg_6);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__get_link_libraries_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_link_libraries_4_p_0(
+  MR_Word Globals_5,
+  MR_Word * MaybeLinkLibraries_6);
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_mercury_std_libs_3_p_0(
+  MR_Word Globals_4,
+  MR_Word TargetType_5,
+  MR_String * StdLibs_6);
+
+static void MR_CALL 
+backend_libs__compile_target_code__link_lib_args_8_p_0(
+  MR_Word Globals_9,
+  MR_Word TargetType_10,
+  MR_String StdLibDir_11,
+  MR_String GradeDir_12,
+  MR_Word Ext_13,
+  MR_String Name_14,
+  MR_String * StaticArg_15,
+  MR_String * SharedArg_16);
+
+static void MR_CALL 
+backend_libs__compile_target_code__do_make_init_obj_file_9_p_0(
+  MR_Word Globals_10,
+  MR_Word ProgressStream_11,
+  MR_Word ErrorStream_12,
+  MR_Word MustCompile_13,
+  MR_Word ModuleName_14,
+  MR_Word ModuleNames_15,
+  MR_Word * Result_16);
+
+static void MR_CALL 
+backend_libs__compile_target_code__make_init_target_file_14_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__compile_target_code__make_init_target_file_14_p_0(
+  MR_Word Globals_15,
+  MR_Word ProgressStream_16,
+  MR_Word ErrorStream_17,
+  MR_String MkInit_18,
+  MR_Word ModuleName_19,
+  MR_Word ModuleNames_20,
+  MR_Word TargetOtherExt_21,
+  MR_Word InitTargetOtherExt_22,
+  MR_Word StdInitFileNames_23,
+  MR_Word StdTraceInitFileNames_24,
+  MR_Word SourceDebugInitFileNames_25,
+  MR_Word * MaybeInitTargetFile_26);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__join_quoted_string_list_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__join_quoted_string_list_5_p_0(
+  MR_Word Strings_6,
+  MR_String Prefix_7,
+  MR_String Suffix_8,
+  MR_String Separator_9,
+  MR_String * Result_10);
+
+static void MR_CALL 
+backend_libs__compile_target_code__make_library_init_file_8_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__compile_target_code__invoke_mkinit_11_p_0(
+  MR_Word Globals_12,
+  MR_Word ProgressStream_13,
+  MR_Word ErrorStream_14,
+  MR_Word InitFileStream_15,
+  MR_Word Verbosity_16,
+  MR_String MkInit_17,
+  MR_String Args_18,
+  MR_Word FileNames_19,
+  MR_Word * MkInitSucceeded_20);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__make_all_module_command_6_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__make_all_module_command_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4);
+
+static void MR_CALL 
+backend_libs__compile_target_code__compile_csharp_file_9_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__compile_csharp_file_9_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__compile_csharp_file_9_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__compile_csharp_file_9_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__compile_java_files_8_p_0_3(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__compile_java_files_8_p_0_2(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__compile_java_files_8_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__invoke_long_system_command_maybe_filter_output_12_p_0(
+  MR_Word Globals_13,
+  MR_Word ProgressStream_14,
+  MR_Word ErrorStream_15,
+  MR_Word CmdOutputStream_16,
+  MR_Word Verbosity_17,
+  MR_String Cmd_18,
+  MR_String NonAtArgs_19,
+  MR_String Args_20,
+  MR_Word MaybeProcessOutput_21,
+  MR_Word * Succeeded_22);
+
+static MR_String MR_CALL 
+backend_libs__compile_target_code__java_classpath_separator_0_f_0(void);
+
+static void MR_CALL 
+backend_libs__compile_target_code__gather_c_compiler_flags_3_p_0(
+  MR_Word Globals_4,
+  MR_Word PIC_5,
+  MR_String * AllCFlags_6);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__arch_is_apple_darwin_1_p_0(
+  MR_String FullArch_2);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__get_framework_directories_2_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_framework_directories_2_p_0(
+  MR_Word Globals_3,
+  MR_String * FrameworkDirs_4);
+
+static void MR_CALL 
+backend_libs__compile_target_code__gather_compiler_specific_flags_2_p_0(
+  MR_Word Globals_3,
+  MR_String * Flags_4);
+
+static void MR_CALL 
+backend_libs__compile_target_code__join_string_list_5_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String HeadVar__2_2,
+  MR_String HeadVar__3_3,
+  MR_String HeadVar__4_4,
+  MR_String * HeadVar__5_5);
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__gather_c_include_dir_flags_2_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__compile_target_code__gather_c_include_dir_flags_2_p_0(
+  MR_Word Globals_3,
+  MR_String * InclOpt_4);
+
+static void MR_CALL 
+backend_libs__compile_target_code__gather_c_grade_defines_2_p_0(
+  MR_Word Globals_3,
+  MR_String * GradeDefines_4);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____compile_init_file_pred_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__compile_target_code____Compare____compile_init_file_pred_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____is_as_new_as_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__compile_target_code____Compare____is_as_new_as_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____linked_target_type_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__compile_target_code____Compare____linked_target_type_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____pic_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__compile_target_code____Compare____pic_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_1[22][2];
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_2[3][6];
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_3[14][1];
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_4[5][5];
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_5[18][3];
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_6[1][4];
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_7[4][7];
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_8[3][8];
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_11[1][11];
+
+
+struct backend_libs__compile_target_code__vector_common_type_9_0_s {
+  const MR_Word backend_libs__compile_target_code__vector_common_type_9_0__vct_9_f_0;
+};
+
+static /* final */ const struct backend_libs__compile_target_code__vector_common_type_9_0_s backend_libs__compile_target_code_vector_common_9[5];
+
+struct backend_libs__compile_target_code__vector_common_type_10_0_s {
+  const MR_String backend_libs__compile_target_code__vector_common_type_10_0__vct_10_f_0;
+};
+
+static /* final */ const struct backend_libs__compile_target_code__vector_common_type_10_0_s backend_libs__compile_target_code_vector_common_10[5];
+
+
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_1[22][2] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row   1 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    (MR_Box) ((MR_Unsigned) 2U)
+  },
+  /* row   2 */
+  {
+    ((MR_Box) ((MR_String) " ")),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row   3 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_3[9])),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row   4 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_3[10])),
+    ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[3])))
+  },
+  /* row   5 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    (MR_Box) ((MR_Unsigned) 7U)
+  },
+  /* row   6 */
+  {
+    ((MR_Box) ((MR_String) "-defaultlib:libcmt")),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row   7 */
+  {
+    ((MR_Box) ((MR_String) "-entry:wmainCRTStartup")),
+    ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[6])))
+  },
+  /* row   8 */
+  {
+    ((MR_Box) ((MR_String) "-machine:x64")),
+    ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[7])))
+  },
+  /* row   9 */
+  {
+    ((MR_Box) ((MR_String) "-subsystem:console")),
+    ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[8])))
+  },
+  /* row  10 */
+  {
+    ((MR_Box) ((MR_String) "-nologo")),
+    ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[9])))
+  },
+  /* row  11 */
+  {
+    ((MR_Box) ((MR_String) "-machine:x86")),
+    ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[7])))
+  },
+  /* row  12 */
+  {
+    ((MR_Box) ((MR_String) "-subsystem:console")),
+    ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[11])))
+  },
+  /* row  13 */
+  {
+    ((MR_Box) ((MR_String) "-nologo")),
+    ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[12])))
+  },
+  /* row  14 */
+  {
+    ((MR_Box) ((MR_Unsigned) 8U)),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  15 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row  16 */
+  {
+    ((MR_Box) (MR_mkword(3, &backend_libs__compile_target_code_scalar_common_1[15]))),
+    ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[14])))
+  },
+  /* row  17 */
+  {
+    ((MR_Box) ((MR_String) "\" \"\044\100\"\n")),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  18 */
+  {
+    ((MR_Box) ((MR_String) "_H */\n")),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  19 */
+  {
+    ((MR_Box) ((MR_String) " -s ")),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  20 */
+  {
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    (MR_Box) ((MR_Unsigned) 17U)
+  },
+  /* row  21 */
+  {
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    (MR_Box) ((MR_Unsigned) 12U)
+  },
+};
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_2[3][6] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_pred_0)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&libs__maybe_util__libs__maybe_util__type_ctor_info_maybe_succeeded_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0))
+  },
+  /* row   2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_3[14][1] = {
+  /* row   0 */
+  { (MR_Box) ((MR_Unsigned) 7U) },
+  /* row   1 */
+  { (MR_Box) ((MR_Unsigned) 8U) },
+  /* row   2 */
+  { ((MR_Box) ((MR_String) "")) },
+  /* row   3 */
+  { (MR_Box) ((MR_Unsigned) 1U) },
+  /* row   4 */
+  { (MR_Box) ((MR_Unsigned) 3U) },
+  /* row   5 */
+  { (MR_Box) ((MR_Unsigned) 9U) },
+  /* row   6 */
+  { (MR_Box) ((MR_Unsigned) 11U) },
+  /* row   7 */
+  { (MR_Box) ((MR_Unsigned) 10U) },
+  /* row   8 */
+  { (MR_Box) (((((MR_Unsigned) 0U << 4)) | (((((MR_Unsigned) 0U << 3)) | (((((MR_Unsigned) 0U << 2)) | (((MR_Unsigned) 0U << 1)))))))) },
+  /* row   9 */
+  { ((MR_Box) ((MR_String) "mercury_il")) },
+  /* row  10 */
+  { ((MR_Box) ((MR_String) "mercury_dotnet")) },
+  /* row  11 */
+  { ((MR_Box) ((MR_String) "mercury")) },
+  /* row  12 */
+  { (MR_Box) ((MR_Unsigned) 0U) },
+  /* row  13 */
+  { (MR_Box) ((MR_Unsigned) 2U) },
+};
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_4[5][5] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&backend_libs__compile_target_code__list__pti_list_1__plain_builtin__type_ctor_info_string_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row   2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&backend_libs__compile_target_code__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&backend_libs__compile_target_code__list__pti_list_1__plain_builtin__type_ctor_info_string_0))
+  },
+  /* row   3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0))
+  },
+  /* row   4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_5[18][3] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[0])),
+    ((MR_Box) (backend_libs__compile_target_code__gather_c_include_dir_flags_2_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   1 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[1])),
+    ((MR_Box) (backend_libs__compile_target_code__get_framework_directories_2_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   2 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_6[0])),
+    ((MR_Box) (backend_libs__compile_target_code__compile_java_files_8_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   3 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[0])),
+    ((MR_Box) (backend_libs__compile_target_code__compile_csharp_file_9_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   4 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[3])),
+    ((MR_Box) (backend_libs__compile_target_code__compile_csharp_file_9_p_0_3)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   5 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_7[1])),
+    ((MR_Box) (backend_libs__compile_target_code__make_all_module_command_6_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   6 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[1])),
+    ((MR_Box) (backend_libs__compile_target_code__make_all_module_command_6_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   7 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[1])),
+    ((MR_Box) (backend_libs__compile_target_code__join_quoted_string_list_5_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   8 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[1])),
+    ((MR_Box) (backend_libs__compile_target_code__get_runtime_library_path_opts_5_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   9 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[1])),
+    ((MR_Box) (backend_libs__compile_target_code__get_frameworks_2_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row  10 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[1])),
+    ((MR_Box) (backend_libs__compile_target_code__create_archive_9_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row  11 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[1])),
+    ((MR_Box) (backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row  12 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[1])),
+    ((MR_Box) (backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_5)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row  13 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[4])),
+    ((MR_Box) (backend_libs__compile_target_code__link_module_list_8_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row  14 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[0])),
+    ((MR_Box) (backend_libs__compile_target_code__output_c_include_directory_flags_4_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row  15 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[1])),
+    ((MR_Box) (backend_libs__compile_target_code__output_library_link_flags_4_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row  16 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[1])),
+    ((MR_Box) (backend_libs__compile_target_code__output_library_link_flags_4_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row  17 */
+  {
+    ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[1])),
+    ((MR_Box) (backend_libs__compile_target_code__write_cli_shell_script_5_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_6[1][4] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_7[4][7] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&backend_libs__compile_target_code__list__pti_list_1__plain_builtin__type_ctor_info_string_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row   2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_env_type_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_csharp_compiler_type_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row   3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_text_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_8[3][8] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_text_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row   2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_text_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__compile_target_code_scalar_common_11[1][11] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 8)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&backend_libs__compile_target_code__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&libs__maybe_util__libs__maybe_util__type_ctor_info_maybe_succeeded_0)),
+    ((MR_Box) (&libs__maybe_util__libs__maybe_util__type_ctor_info_maybe_succeeded_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+
+static /* final */ const struct backend_libs__compile_target_code__vector_common_type_9_0_s backend_libs__compile_target_code_vector_common_9[5] = {
+  /* row   0 */   { (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[12])) },
+  /* row   1 */   { (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[12])) },
+  /* row   2 */   { (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[12])) },
+  /* row   3 */   { (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[13])) },
+  /* row   4 */   { (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[13])) },
+};
+
+static /* final */ const struct backend_libs__compile_target_code__vector_common_type_10_0_s backend_libs__compile_target_code_vector_common_10[5] = {
+  /* row   0 */   { (MR_String) "lib" },
+  /* row   1 */   { (MR_String) ((MR_Integer) 0) },
+  /* row   2 */   { (MR_String) "lib" },
+  /* row   3 */   { (MR_String) "" },
+  /* row   4 */   { (MR_String) "" },
+};
+
+
+#include "array.mh"
+#include "bitmap.mh"
+#include "dir.mh"
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "io.stream_ops.mh"
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__compile_target_code__list__pti_list_1__plain_builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0) }
+};
+
+static const MR_VA_TypeInfo_Struct4 backend_libs__compile_target_code____vti_pred_4builtin__type_ctor_info_string_0libs__maybe_util__type_ctor_info_maybe_succeeded_0io__type_ctor_info_state_0io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 4,
+  {
+    (MR_TypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0),
+    (MR_TypeInfo) (&libs__maybe_util__libs__maybe_util__type_ctor_info_maybe_succeeded_0),
+    (MR_TypeInfo) (&mercury__io__io__type_ctor_info_state_0),
+    (MR_TypeInfo) (&mercury__io__io__type_ctor_info_state_0)
+  }
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__compile_target_code__backend_libs__compile_target_code__type_ctor_info_compile_init_file_pred_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (backend_libs__compile_target_code____Unify____compile_init_file_pred_0_0_10001)),
+  ((MR_Box) (backend_libs__compile_target_code____Compare____compile_init_file_pred_0_0_10001)),
+  (MR_String) "backend_libs.compile_target_code",
+  (MR_String) "compile_init_file_pred",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&backend_libs__compile_target_code____vti_pred_4builtin__type_ctor_info_string_0libs__maybe_util__type_ctor_info_maybe_succeeded_0io__type_ctor_info_state_0io__type_ctor_info_state_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_is_as_new_as_0_0 = {
+  (MR_String) "is_as_new_as",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_is_as_new_as_0_1 = {
+  (MR_String) "is_not_as_new_as",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_is_as_new_as_0_2 = {
+  (MR_String) "missing_timestamp",
+  INT32_C(2)
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__compile_target_code__backend_libs__compile_target_code__enum_ordinal_ordered_is_as_new_as_0[3] = {
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_is_as_new_as_0_0,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_is_as_new_as_0_1,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_is_as_new_as_0_2
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__compile_target_code__backend_libs__compile_target_code__enum_name_ordered_is_as_new_as_0[3] = {
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_is_as_new_as_0_0,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_is_as_new_as_0_1,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_is_as_new_as_0_2
+};
+
+static const MR_Integer backend_libs__compile_target_code__backend_libs__compile_target_code__functor_number_map_is_as_new_as_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__compile_target_code__backend_libs__compile_target_code__type_ctor_info_is_as_new_as_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__compile_target_code____Unify____is_as_new_as_0_0_10001)),
+  ((MR_Box) (backend_libs__compile_target_code____Compare____is_as_new_as_0_0_10001)),
+  (MR_String) "backend_libs.compile_target_code",
+  (MR_String) "is_as_new_as",
+  { backend_libs__compile_target_code__backend_libs__compile_target_code__enum_name_ordered_is_as_new_as_0 },
+  { backend_libs__compile_target_code__backend_libs__compile_target_code__enum_ordinal_ordered_is_as_new_as_0 },
+  (MR_Integer) 3,
+  UINT16_C(12),
+  backend_libs__compile_target_code__backend_libs__compile_target_code__functor_number_map_is_as_new_as_0,
+
+};
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_0 = {
+  (MR_String) "executable",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_1 = {
+  (MR_String) "static_library",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_2 = {
+  (MR_String) "shared_library",
+  INT32_C(2)
+};
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_3 = {
+  (MR_String) "csharp_executable",
+  INT32_C(3)
+};
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_4 = {
+  (MR_String) "csharp_library",
+  INT32_C(4)
+};
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_5 = {
+  (MR_String) "java_executable",
+  INT32_C(5)
+};
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_6 = {
+  (MR_String) "java_archive",
+  INT32_C(6)
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__compile_target_code__backend_libs__compile_target_code__enum_ordinal_ordered_linked_target_type_0[7] = {
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_0,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_1,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_2,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_3,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_4,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_5,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_6
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__compile_target_code__backend_libs__compile_target_code__enum_name_ordered_linked_target_type_0[7] = {
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_3,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_4,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_0,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_6,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_5,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_2,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_linked_target_type_0_1
+};
+
+static const MR_Integer backend_libs__compile_target_code__backend_libs__compile_target_code__functor_number_map_linked_target_type_0[7] = {
+  (MR_Integer) 2,
+  (MR_Integer) 6,
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  (MR_Integer) 3
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__compile_target_code__backend_libs__compile_target_code__type_ctor_info_linked_target_type_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__compile_target_code____Unify____linked_target_type_0_0_10001)),
+  ((MR_Box) (backend_libs__compile_target_code____Compare____linked_target_type_0_0_10001)),
+  (MR_String) "backend_libs.compile_target_code",
+  (MR_String) "linked_target_type",
+  { backend_libs__compile_target_code__backend_libs__compile_target_code__enum_name_ordered_linked_target_type_0 },
+  { backend_libs__compile_target_code__backend_libs__compile_target_code__enum_ordinal_ordered_linked_target_type_0 },
+  (MR_Integer) 7,
+  UINT16_C(12),
+  backend_libs__compile_target_code__backend_libs__compile_target_code__functor_number_map_linked_target_type_0,
+
+};
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_pic_0_0 = {
+  (MR_String) "pic",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_pic_0_1 = {
+  (MR_String) "non_pic",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__compile_target_code__backend_libs__compile_target_code__enum_ordinal_ordered_pic_0[2] = {
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_pic_0_0,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_pic_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__compile_target_code__backend_libs__compile_target_code__enum_name_ordered_pic_0[2] = {
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_pic_0_1,
+  &backend_libs__compile_target_code__backend_libs__compile_target_code__enum_functor_desc_pic_0_0
+};
+
+static const MR_Integer backend_libs__compile_target_code__backend_libs__compile_target_code__functor_number_map_pic_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__compile_target_code__backend_libs__compile_target_code__type_ctor_info_pic_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__compile_target_code____Unify____pic_0_0_10001)),
+  ((MR_Box) (backend_libs__compile_target_code____Compare____pic_0_0_10001)),
+  (MR_String) "backend_libs.compile_target_code",
+  (MR_String) "pic",
+  { backend_libs__compile_target_code__backend_libs__compile_target_code__enum_name_ordered_pic_0 },
+  { backend_libs__compile_target_code__backend_libs__compile_target_code__enum_ordinal_ordered_pic_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  backend_libs__compile_target_code__backend_libs__compile_target_code__functor_number_map_pic_0,
+
+};
+
+static MR_String MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__func__get_link_libraries__2218__1_2_f_0(
+  MR_String GradeDir_9,
+  MR_String LambdaHeadVar__1_19)
+{
+  MR_String LambdaHeadVar__2_20;
+  MR_String Var_21;
+
+  Var_21 = mercury__dir__f_slash_2_f_0(LambdaHeadVar__1_19, (MR_String) "lib");
+  LambdaHeadVar__2_20 = mercury__dir__f_slash_2_f_0(Var_21, GradeDir_9);
+  return LambdaHeadVar__2_20;
+}
+
+static MR_Word MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__func__referenced_dlls__1125__1_1_f_0(
+  MR_Word LambdaHeadVar__1_17)
+{
+  MR_bool succeeded;
+  MR_Word LambdaHeadVar__2_18;
+
+  succeeded = parse_tree__file_names__mercury_std_library_module_name_1_p_0(LambdaHeadVar__1_17);
+  if (succeeded)
+    LambdaHeadVar__2_18 = (MR_Word) (&backend_libs__compile_target_code_scalar_common_3[11]);
+  else
+  {
+    MR_String Var_20;
+
+    Var_20 = mdbcomp__sym_name__outermost_qualifier_1_f_0(LambdaHeadVar__1_17);
+    {
+      LambdaHeadVar__2_18 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, LambdaHeadVar__2_18, 0) = ((MR_Box) (Var_20));
+    }
+  }
+  return LambdaHeadVar__2_18;
+}
+
+static MR_Word MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__func__gather_c_include_dir_flags__862__1_1_f_0(
+  MR_String LambdaHeadVar__1_11)
+{
+  MR_Word LambdaHeadVar__2_12;
+  MR_Word Var_14;
+  MR_String Var_15;
+
+  Var_15 = libs__shell_util__quote_shell_cmd_arg_1_f_0(LambdaHeadVar__1_11);
+  {
+    Var_14 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_14, 0) = ((MR_Box) (Var_15));
+    MR_hl_field(1, Var_14, 1) = ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[2])));
+  }
+  {
+    LambdaHeadVar__2_12 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, LambdaHeadVar__2_12, 0) = ((MR_Box) ((MR_String) "-I"));
+    MR_hl_field(1, LambdaHeadVar__2_12, 1) = ((MR_Box) (Var_14));
+  }
+  return LambdaHeadVar__2_12;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__pred__link_module_list__1553__1_2_p_0(
+  MR_String LambdaHeadVar__1_45,
+  MR_Word * LambdaHeadVar__2_46)
+{
+  MR_String Var_47;
+
+  Var_47 = mercury__dir__det_basename_1_f_0(LambdaHeadVar__1_45);
+  parse_tree__file_names__file_name_to_module_name_2_p_0(Var_47, LambdaHeadVar__2_46);
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__pred__compile_csharp_file__1089__1_4_p_0(
+  MR_Word Globals_10,
+  MR_String Prefix_29,
+  MR_Word LambdaHeadVar__1_82,
+  MR_Word * LambdaHeadVar__2_83)
+{
+  MR_String FileName_42;
+  MR_Word Var_87;
+
+  parse_tree__file_names__module_name_to_file_name_5_p_0(Globals_10, (MR_String) "predicate \140backend_libs.compile_target_code.compile_csharp_file\'/9", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[0])), LambdaHeadVar__1_82, &FileName_42);
+  {
+    Var_87 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_87, 0) = ((MR_Box) (FileName_42));
+    MR_hl_field(1, Var_87, 1) = ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[2])));
+  }
+  {
+    MR_Word base;
+    base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    *LambdaHeadVar__2_83 = base;
+    MR_hl_field(1, base, 0) = ((MR_Box) (Prefix_29));
+    MR_hl_field(1, base, 1) = ((MR_Box) (Var_87));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__pred__compile_csharp_file__1079__1_3_p_0(
+  MR_Word ModuleName_28,
+  MR_Word LambdaHeadVar__1_77,
+  MR_Word * LambdaHeadVar__2_78)
+{
+  MR_bool succeeded;
+  MR_Word Var_79 = ((MR_Unsigned) ((MR_hl_field(0, LambdaHeadVar__1_77, (MR_Integer) 0))) & (MR_Integer) 3);
+
+  succeeded = (Var_79 == (MR_Integer) 1);
+  if (succeeded)
+  {
+    *LambdaHeadVar__2_78 = parse_tree__prog_foreign__fim_spec_module_name_from_module_2_f_0(LambdaHeadVar__1_77, ModuleName_28);
+    succeeded = MR_TRUE;
+  }
+  return succeeded;
+}
+
+static MR_Word MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__func__compile_csharp_file__1069__1_1_f_0(
+  MR_String LambdaHeadVar__1_68)
+{
+  MR_Word LambdaHeadVar__2_69;
+  MR_Word Var_71;
+
+  {
+    Var_71 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_71, 0) = ((MR_Box) (LambdaHeadVar__1_68));
+    MR_hl_field(1, Var_71, 1) = ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[2])));
+  }
+  {
+    LambdaHeadVar__2_69 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, LambdaHeadVar__2_69, 0) = ((MR_Box) ((MR_String) "-lib:"));
+    MR_hl_field(1, LambdaHeadVar__2_69, 1) = ((MR_Box) (Var_71));
+  }
+  return LambdaHeadVar__2_69;
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__pred__compile_java_files__981__1_2_p_0(
+  MR_Word DestDirPath_37,
+  MR_Word HeadVar__2_96)
+{
+  MR_bool succeeded;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&backend_libs__compile_target_code_scalar_common_1[0]), ((MR_Box) (DestDirPath_37)), ((MR_Box) (HeadVar__2_96)));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__IntroducedFrom__pred__compile_java_files__977__1_2_p_0(
+  MR_Word DestDirPath_37,
+  MR_Word HeadVar__2_92)
+{
+  MR_bool succeeded;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&backend_libs__compile_target_code_scalar_common_1[0]), ((MR_Box) (DestDirPath_37)), ((MR_Box) (HeadVar__2_92)));
+  return succeeded;
+}
+
+void MR_CALL 
+backend_libs__compile_target_code____Compare____pic_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____pic_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+backend_libs__compile_target_code____Compare____linked_target_type_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____linked_target_type_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code____Compare____is_as_new_as_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____is_as_new_as_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code____Compare____compile_init_file_pred_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  mercury__builtin__compare_3_p_0((MR_Word) (&backend_libs__compile_target_code_scalar_common_2[0]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____compile_init_file_pred_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = mercury__private_builtin__builtin_unify_pred_2_p_0((MR_Word) (Cast_HeadVar1_3), (MR_Word) (Cast_HeadVar2_4));
+  return succeeded;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__write_jar_class_argument_5_p_0(
+  MR_Word Stream_6,
+  MR_String ClassSubDir_7,
+  MR_String ClassFileName_8)
+{
+  MR_bool succeeded;
+
+  succeeded = mercury__dir__path_name_is_absolute_1_p_0(ClassFileName_8);
+  if (succeeded)
+  {
+    mercury__io__write_string_4_p_0(Stream_6, ClassFileName_8);
+    mercury__io__write_string_4_p_0(Stream_6, (MR_String) "\n");
+  }
+  else
+  {
+    mercury__io__write_string_4_p_0(Stream_6, (MR_String) "-C ");
+    mercury__io__write_string_4_p_0(Stream_6, ClassSubDir_7);
+    mercury__io__write_string_4_p_0(Stream_6, (MR_String) " ");
+    mercury__io__write_string_4_p_0(Stream_6, ClassFileName_8);
+    mercury__io__write_string_4_p_0(Stream_6, (MR_String) "\n");
+  }
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__write_cli_shell_script_5_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+
+  mercury__io__write_string_4_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_String) (wrapper_arg_1)));
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__write_cli_shell_script_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv0_HeadVar__2_2;
+
+  conv0_HeadVar__2_2 = libs__shell_util__quote_shell_cmd_arg_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__write_cli_shell_script_5_p_0(
+  MR_Word Globals_6,
+  MR_String ExeFileName_7,
+  MR_Word Stream_8)
+{
+  MR_String CLI_10;
+  MR_Word LinkLibraryDirectoriesList_11;
+  MR_String LinkLibraryDirectories_12;
+  MR_Word Var_20;
+  MR_Word Var_21;
+  MR_Word Var_24;
+  MR_Word Var_26;
+  MR_Word Var_28;
+  MR_Word Var_29;
+  MR_Word Var_31;
+  MR_Word Var_33;
+  MR_Word Var_35;
+  MR_Word Var_36;
+  MR_Word Var_38;
+  MR_Word Var_40;
+  MR_Word Var_49;
+  MR_Box conv1_STATE_VARIABLE_IO_14;
+
+  libs__globals__lookup_string_option_3_p_0(Globals_6, (MR_Integer) 575, &CLI_10);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_6, (MR_Integer) 581, &LinkLibraryDirectoriesList_11);
+  Var_49 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[17]), LinkLibraryDirectoriesList_11);
+  backend_libs__compile_target_code__join_string_list_5_p_0(Var_49, (MR_String) "", (MR_String) "", (MR_String) ":", &LinkLibraryDirectories_12);
+  {
+    Var_20 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_20, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_7[3]));
+    MR_hl_field(0, Var_20, 1) = ((MR_Box) (backend_libs__compile_target_code__write_cli_shell_script_5_p_0_2));
+    MR_hl_field(0, Var_20, 2) = ((MR_Box) ((MR_Integer) 1));
+    MR_hl_field(0, Var_20, 3) = ((MR_Box) (Stream_8));
+  }
+  {
+    Var_40 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_40, 0) = ((MR_Box) (ExeFileName_7));
+    MR_hl_field(1, Var_40, 1) = ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[17])));
+  }
+  {
+    Var_38 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_38, 0) = ((MR_Box) ((MR_String) "exec \"\044CLI_INTERPRETER\" \"\044DIR/"));
+    MR_hl_field(1, Var_38, 1) = ((MR_Box) (Var_40));
+  }
+  {
+    Var_36 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_36, 0) = ((MR_Box) ((MR_String) "}\n"));
+    MR_hl_field(1, Var_36, 1) = ((MR_Box) (Var_38));
+  }
+  {
+    Var_35 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_35, 0) = ((MR_Box) (CLI_10));
+    MR_hl_field(1, Var_35, 1) = ((MR_Box) (Var_36));
+  }
+  {
+    Var_33 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_33, 0) = ((MR_Box) ((MR_String) "CLI_INTERPRETER=\044{CLI_INTERPRETER:-"));
+    MR_hl_field(1, Var_33, 1) = ((MR_Box) (Var_35));
+  }
+  {
+    Var_31 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_31, 0) = ((MR_Box) ((MR_String) "export MONO_PATH\n"));
+    MR_hl_field(1, Var_31, 1) = ((MR_Box) (Var_33));
+  }
+  {
+    Var_29 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_29, 0) = ((MR_Box) ((MR_String) "\n"));
+    MR_hl_field(1, Var_29, 1) = ((MR_Box) (Var_31));
+  }
+  {
+    Var_28 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_28, 0) = ((MR_Box) (LinkLibraryDirectories_12));
+    MR_hl_field(1, Var_28, 1) = ((MR_Box) (Var_29));
+  }
+  {
+    Var_26 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_26, 0) = ((MR_Box) ((MR_String) "MONO_PATH=\044MONO_PATH:"));
+    MR_hl_field(1, Var_26, 1) = ((MR_Box) (Var_28));
+  }
+  {
+    Var_24 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_24, 0) = ((MR_Box) ((MR_String) "DIR=\044{0%/*}\n"));
+    MR_hl_field(1, Var_24, 1) = ((MR_Box) (Var_26));
+  }
+  {
+    Var_21 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_21, 0) = ((MR_Box) ((MR_String) "#!/bin/sh\n"));
+    MR_hl_field(1, Var_21, 1) = ((MR_Box) (Var_24));
+  }
+  mercury__list__foldl_4_p_2((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__io__io__type_ctor_info_state_0), Var_20, Var_21, ((MR_Box) ((MR_Integer) 0)), &conv1_STATE_VARIABLE_IO_14);
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__process_link_library_8_p_0(
+  MR_Word Globals_9,
+  MR_Word MercuryLibDirs_10,
+  MR_String LibName_11,
+  MR_String * LinkerOpt_12,
+  MR_Word STATE_VARIABLE_Succeeded_0_36,
+  MR_Word * STATE_VARIABLE_Succeeded_37)
+{
+  MR_bool succeeded;
+  MR_Word Target_15;
+  MR_String MercuryLinkage_16;
+  MR_String LinkOpt_22;
+  MR_String LibSuffix_23;
+  MR_Word MercuryLibs_26;
+  MR_Word TypeCtorInfo_63_63;
+
+  libs__globals__get_target_2_p_0(Globals_9, &Target_15);
+  switch (Target_15) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word CCompilerType_17;
+
+        libs__globals__lookup_string_option_3_p_0(Globals_9, (MR_Integer) 599, &MercuryLinkage_16);
+        libs__globals__get_c_compiler_type_2_p_0(Globals_9, &CCompilerType_17);
+        switch (MR_tag((MR_Word) CCompilerType_17)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              LinkOpt_22 = (MR_String) "-l";
+              LibSuffix_23 = (MR_String) "";
+            }
+            break;
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+            {
+              LinkOpt_22 = (MR_String) "-l";
+              LibSuffix_23 = (MR_String) "";
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              LinkOpt_22 = (MR_String) "";
+              LibSuffix_23 = (MR_String) ".lib";
+            }
+            break;
+        }
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MercuryLinkage_16 = (MR_String) "shared";
+        LinkOpt_22 = (MR_String) "-r:";
+        LibSuffix_23 = (MR_String) ".dll";
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140backend_libs.compile_target_code.process_link_library\'/8", (MR_String) "target_java");
+        return;
+      }
+      break;
+  }
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_9, (MR_Integer) 590, &MercuryLibs_26);
+  succeeded = (strcmp(MercuryLinkage_16, (MR_String) "static") == 0);
+  if (succeeded)
+  {
+    TypeCtorInfo_63_63 = (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0);
+    succeeded = mercury__list__member_2_p_0(TypeCtorInfo_63_63, ((MR_Box) (LibName_11)), MercuryLibs_26);
+  }
+  if (succeeded)
+  {
+    MR_Word LibModuleName_27;
+    MR_String LibFileName_29;
+    MR_Word MaybeDirName_30;
+    MR_String _FullLibFileName_28;
+
+    parse_tree__file_names__file_name_to_module_name_2_p_0(LibName_11, &LibModuleName_27);
+    parse_tree__file_names__module_name_to_lib_file_name_full_curdir_7_p_0(Globals_9, (MR_String) "predicate \140backend_libs.compile_target_code.process_link_library\'/8", (MR_String) "lib", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[7])), LibModuleName_27, &_FullLibFileName_28, &LibFileName_29);
+    parse_tree__find_module__search_for_file_returning_dir_5_p_0(MercuryLibDirs_10, LibFileName_29, &MaybeDirName_30);
+    if (((MR_tag((MR_Word) MaybeDirName_30)) == (MR_Integer) 1))
+    {
+      MR_String Error_32 = ((MR_String) ((MR_hl_field(1, MaybeDirName_30, (MR_Integer) 0))));
+      MR_Word Pieces_33;
+      MR_Word Spec_34;
+      MR_Word StdErr_35;
+      MR_Word Var_49;
+
+      *LinkerOpt_12 = (MR_String) "";
+      {
+        Var_49 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(3, Var_49, 0) = ((MR_Box) ((MR_Unsigned) 6U));
+        MR_hl_field(3, Var_49, 1) = ((MR_Box) (Error_32));
+      }
+      {
+        Pieces_33 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Pieces_33, 0) = ((MR_Box) (Var_49));
+        MR_hl_field(1, Pieces_33, 1) = ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[16])));
+      }
+      {
+        Spec_34 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(2, Spec_34, 0) = ((MR_Box) ((MR_String) "predicate \140backend_libs.compile_target_code.process_link_library\'/8"));
+        MR_hl_field(2, Spec_34, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(2, Spec_34, 2) = ((MR_Box) ((MR_Unsigned) 12U));
+        MR_hl_field(2, Spec_34, 3) = ((MR_Box) (Pieces_33));
+      }
+      mercury__io__stderr_stream_3_p_0(&StdErr_35);
+      parse_tree__write_error_spec__write_error_spec_5_p_0(StdErr_35, Globals_9, Spec_34);
+      *STATE_VARIABLE_Succeeded_37 = (MR_Integer) 0;
+    }
+    else
+    {
+      MR_String DirName_31 = ((MR_String) ((MR_hl_field(0, MaybeDirName_30, (MR_Integer) 0))));
+
+      *LinkerOpt_12 = mercury__dir__f_slash_2_f_0(DirName_31, LibFileName_29);
+      *STATE_VARIABLE_Succeeded_37 = STATE_VARIABLE_Succeeded_0_36;
+    }
+  }
+  else
+  {
+    MR_String Var_62;
+
+    Var_62 = mercury__string__f_43_43_2_f_0(LibName_11, LibSuffix_23);
+    *LinkerOpt_12 = mercury__string__f_43_43_2_f_0(LinkOpt_22, Var_62);
+    *STATE_VARIABLE_Succeeded_37 = STATE_VARIABLE_Succeeded_0_36;
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__has_object_file_extension_3_p_0(
+  MR_String ObjExt_4,
+  MR_String PicObjExt_5,
+  MR_String FileName_6)
+{
+  MR_bool succeeded;
+
+  succeeded = mercury__string__suffix_2_p_0(FileName_6, ObjExt_4);
+  if (!(succeeded))
+    succeeded = mercury__string__suffix_2_p_0(FileName_6, PicObjExt_5);
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__is_minus_j_flag_1_p_0(
+  MR_String FlagStr_2)
+{
+  MR_bool succeeded;
+
+  succeeded = mercury__string__prefix_2_p_0(FlagStr_2, (MR_String) "-J");
+  return succeeded;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__output_library_link_flags_4_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4,
+  MR_Box wrapper_arg_5,
+  MR_Box * wrapper_arg_6)
+{
+  MR_Box closure = closure_arg;
+  MR_String conv4_LinkerOpt_12;
+  MR_Word conv3_STATE_VARIABLE_Succeeded_37;
+
+  backend_libs__compile_target_code__process_link_library_8_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_String) (wrapper_arg_1)), &conv4_LinkerOpt_12, ((MR_Word) (wrapper_arg_3)), &conv3_STATE_VARIABLE_Succeeded_37);
+  *wrapper_arg_2 = ((MR_Box) (conv4_LinkerOpt_12));
+  *wrapper_arg_4 = ((MR_Box) (conv3_STATE_VARIABLE_Succeeded_37));
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__output_library_link_flags_4_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv2_LambdaHeadVar__2_20;
+
+  conv2_LambdaHeadVar__2_20 = backend_libs__compile_target_code__IntroducedFrom__func__get_link_libraries__2218__1_2_f_0(((MR_String) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv2_LambdaHeadVar__2_20));
+  return wrapper_arg_2;
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__output_library_link_flags_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv1_HeadVar__2_2;
+
+  conv1_HeadVar__2_2 = libs__shell_util__quote_shell_cmd_arg_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv1_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__output_library_link_flags_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv0_HeadVar__2_2;
+
+  conv0_HeadVar__2_2 = libs__shell_util__quote_shell_cmd_arg_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__output_library_link_flags_4_p_0(
+  MR_Word Globals_5,
+  MR_Word Stream_6)
+{
+  MR_bool succeeded;
+  MR_Word LinkLibraryDirectoriesList_11;
+  MR_String LinkerPathFlag_12;
+  MR_String LinkLibraryDirectories_13;
+  MR_String RpathOpts_14;
+  MR_String LinkLibraries_17;
+  MR_String MercuryStdLibs_18;
+  MR_String SystemLibs_19;
+  MR_Word Var_57;
+  MR_Word UseInstallName_60;
+  MR_Word SharedLibsSupported_61;
+  MR_String Linkage_62;
+  MR_Word MercuryLibDirs0_73;
+  MR_String GradeDir_74;
+  MR_Word MercuryLibDirs_75;
+  MR_Word LinkLibrariesList0_76;
+  MR_Word LinkLibrariesList_77;
+  MR_Word LibrariesSucceeded_78;
+  MR_Word Var_80;
+  MR_Word Var_82;
+  MR_Box conv6_LibrariesSucceeded_78;
+  MR_Box conv5_STATE_VARIABLE_IO_26_26;
+
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_5, (MR_Integer) 581, &LinkLibraryDirectoriesList_11);
+  libs__globals__lookup_string_option_3_p_0(Globals_5, (MR_Integer) 649, &LinkerPathFlag_12);
+  Var_57 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[15]), LinkLibraryDirectoriesList_11);
+  backend_libs__compile_target_code__join_string_list_5_p_0(Var_57, LinkerPathFlag_12, (MR_String) "", (MR_String) " ", &LinkLibraryDirectories_13);
+  libs__globals__lookup_bool_option_3_p_0(Globals_5, (MR_Integer) 656, &UseInstallName_60);
+  backend_libs__compile_target_code__shared_libraries_supported_2_p_0(Globals_5, &SharedLibsSupported_61);
+  libs__globals__lookup_string_option_3_p_0(Globals_5, (MR_Integer) 597, &Linkage_62);
+  succeeded = (UseInstallName_60 == (MR_Integer) 0);
+  if (succeeded)
+  {
+    succeeded = (SharedLibsSupported_61 == (MR_Integer) 1);
+    if (succeeded)
+      succeeded = (strcmp(Linkage_62, (MR_String) "shared") == 0);
+  }
+  if (succeeded)
+  {
+    MR_Word RpathDirs0_63;
+    MR_Word RpathDirs_64;
+
+    libs__globals__lookup_accumulating_option_3_p_0(Globals_5, (MR_Integer) 582, &RpathDirs0_63);
+    RpathDirs_64 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[16]), RpathDirs0_63);
+    if ((RpathDirs_64 == (MR_Word) ((MR_Unsigned) 0U)))
+      RpathOpts_14 = (MR_String) "";
+    else
+    {
+      MR_String RpathSep_65;
+      MR_String RpathFlag_66;
+      MR_String RpathOpts0_67;
+
+      libs__globals__lookup_string_option_3_p_0(Globals_5, (MR_Integer) 651, &RpathSep_65);
+      libs__globals__lookup_string_option_3_p_0(Globals_5, (MR_Integer) 650, &RpathFlag_66);
+      RpathOpts0_67 = mercury__string__join_list_2_f_0(RpathSep_65, RpathDirs_64);
+      RpathOpts_14 = mercury__string__f_43_43_2_f_0(RpathFlag_66, RpathOpts0_67);
+    }
+  }
+  else
+    RpathOpts_14 = (MR_String) "";
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_5, (MR_Integer) 586, &MercuryLibDirs0_73);
+  libs__compute_grade__grade_directory_component_2_p_0(Globals_5, &GradeDir_74);
+  {
+    Var_80 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_80, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_2[2]));
+    MR_hl_field(0, Var_80, 1) = ((MR_Box) (backend_libs__compile_target_code__output_library_link_flags_4_p_0_3));
+    MR_hl_field(0, Var_80, 2) = ((MR_Box) ((MR_Integer) 1));
+    MR_hl_field(0, Var_80, 3) = ((MR_Box) (GradeDir_74));
+  }
+  MercuryLibDirs_75 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_80, MercuryLibDirs0_73);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_5, (MR_Integer) 584, &LinkLibrariesList0_76);
+  {
+    Var_82 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_82, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_11[0]));
+    MR_hl_field(0, Var_82, 1) = ((MR_Box) (backend_libs__compile_target_code__output_library_link_flags_4_p_0_4));
+    MR_hl_field(0, Var_82, 2) = ((MR_Box) ((MR_Integer) 2));
+    MR_hl_field(0, Var_82, 3) = ((MR_Box) (Globals_5));
+    MR_hl_field(0, Var_82, 4) = ((MR_Box) (MercuryLibDirs_75));
+  }
+  mercury__list__map_foldl2_7_p_2((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&libs__maybe_util__libs__maybe_util__type_ctor_info_maybe_succeeded_0), (MR_Word) (&mercury__io__io__type_ctor_info_state_0), Var_82, LinkLibrariesList0_76, &LinkLibrariesList_77, ((MR_Box) ((MR_Integer) 1)), &conv6_LibrariesSucceeded_78, ((MR_Box) ((MR_Integer) 0)), &conv5_STATE_VARIABLE_IO_26_26);
+  LibrariesSucceeded_78 = ((MR_Word) (conv6_LibrariesSucceeded_78));
+  switch (LibrariesSucceeded_78) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      LinkLibraries_17 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      backend_libs__compile_target_code__join_string_list_5_p_0(LinkLibrariesList_77, (MR_String) "", (MR_String) "", (MR_String) " ", &LinkLibraries_17);
+      break;
+  }
+  backend_libs__compile_target_code__get_mercury_std_libs_3_p_0(Globals_5, (MR_Integer) 0, &MercuryStdLibs_18);
+  backend_libs__compile_target_code__get_system_libs_3_p_0(Globals_5, (MR_Integer) 0, &SystemLibs_19);
+  mercury__io__write_string_4_p_0(Stream_6, LinkLibraryDirectories_13);
+  mercury__io__write_string_4_p_0(Stream_6, (MR_String) " ");
+  mercury__io__write_string_4_p_0(Stream_6, RpathOpts_14);
+  mercury__io__write_string_4_p_0(Stream_6, (MR_String) " ");
+  mercury__io__write_string_4_p_0(Stream_6, LinkLibraries_17);
+  mercury__io__write_string_4_p_0(Stream_6, (MR_String) " ");
+  mercury__io__write_string_4_p_0(Stream_6, MercuryStdLibs_18);
+  mercury__io__write_string_4_p_0(Stream_6, (MR_String) " ");
+  mercury__io__write_string_4_p_0(Stream_6, SystemLibs_19);
+  mercury__io__write_string_4_p_0(Stream_6, (MR_String) "\n");
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__output_c_include_directory_flags_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_Word conv0_LambdaHeadVar__2_12;
+
+  conv0_LambdaHeadVar__2_12 = backend_libs__compile_target_code__IntroducedFrom__func__gather_c_include_dir_flags__862__1_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_LambdaHeadVar__2_12));
+  return wrapper_arg_2;
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__output_c_include_directory_flags_4_p_0(
+  MR_Word Globals_5,
+  MR_Word Stream_6)
+{
+  MR_String InclOpts_8;
+  MR_Word C_Incl_Dirs_12;
+  MR_Word Var_14;
+  MR_Word Var_15;
+
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_5, (MR_Integer) 542, &C_Incl_Dirs_12);
+  Var_15 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_1[0]), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[14]), C_Incl_Dirs_12);
+  Var_14 = mercury__list__condense_1_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_15);
+  InclOpts_8 = mercury__string__append_list_1_f_0(Var_14);
+  mercury__io__write_string_4_p_0(Stream_6, InclOpts_8);
+  mercury__io__nl_3_p_0(Stream_6);
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__output_c_grade_defines_4_p_0(
+  MR_Word Globals_5,
+  MR_Word Stream_6)
+{
+  MR_String GradeDefines_9;
+
+  backend_libs__compile_target_code__gather_c_grade_defines_2_p_0(Globals_5, &GradeDefines_9);
+  mercury__io__write_string_4_p_0(Stream_6, GradeDefines_9);
+  mercury__io__nl_3_p_0(Stream_6);
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__output_c_compiler_flags_4_p_0(
+  MR_Word Globals_5,
+  MR_Word Stream_6)
+{
+  MR_String CFlags_9;
+
+  backend_libs__compile_target_code__gather_c_compiler_flags_3_p_0(Globals_5, (MR_Integer) 1, &CFlags_9);
+  mercury__io__write_string_4_p_0(Stream_6, CFlags_9);
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__make_standalone_interface_6_p_0(
+  MR_Word Globals_7,
+  MR_Word ProgressStream_8,
+  MR_Word ErrorStream_9,
+  MR_String BaseName_10)
+{
+  MR_String HdrFileName_16;
+  MR_Word OpenResult_17;
+
+  HdrFileName_16 = mercury__string__f_43_43_2_f_0(BaseName_10, (MR_String) ".h");
+  mercury__io__open_output_4_p_0(HdrFileName_16, &OpenResult_17);
+  if (((MR_tag((MR_Word) OpenResult_17)) == (MR_Integer) 1))
+  {
+    MR_Word Error_19 = ((MR_Word) ((MR_hl_field(1, OpenResult_17, (MR_Integer) 0))));
+
+    libs__file_util__unable_to_open_file_5_p_0(ErrorStream_9, HdrFileName_16, Error_19);
+  }
+  else
+  {
+    MR_Word HdrFileStream_18 = ((MR_Word) ((MR_hl_field(0, OpenResult_17, (MR_Integer) 0))));
+    MR_Word Var_22;
+    MR_Word Var_25;
+    MR_String Var_26;
+    MR_Word Var_27;
+    MR_Word Var_29;
+    MR_Word Var_31;
+    MR_String Var_32;
+    MR_Word Var_33;
+    MR_Word Var_35;
+    MR_Word Var_37;
+    MR_Word Var_39;
+    MR_Word Var_41;
+    MR_Word Var_43;
+    MR_Word Var_45;
+    MR_Word Var_47;
+    MR_Word Var_49;
+    MR_Word Var_51;
+    MR_Word Var_53;
+    MR_Word Var_55;
+    MR_Word Var_57;
+    MR_Word Var_59;
+    MR_Word Var_61;
+    MR_Word Var_63;
+    MR_Word Var_65;
+    MR_Word Var_67;
+    MR_String Var_68;
+
+    Var_26 = mercury__string__to_upper_1_f_0(BaseName_10);
+    Var_32 = mercury__string__to_upper_1_f_0(BaseName_10);
+    Var_68 = mercury__string__to_upper_1_f_0(BaseName_10);
+    {
+      Var_67 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_67, 0) = ((MR_Box) (Var_68));
+      MR_hl_field(1, Var_67, 1) = ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[18])));
+    }
+    {
+      Var_65 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_65, 0) = ((MR_Box) ((MR_String) "#endif /* "));
+      MR_hl_field(1, Var_65, 1) = ((MR_Box) (Var_67));
+    }
+    {
+      Var_63 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_63, 0) = ((MR_Box) ((MR_String) "\n"));
+      MR_hl_field(1, Var_63, 1) = ((MR_Box) (Var_65));
+    }
+    {
+      Var_61 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_61, 0) = ((MR_Box) ((MR_String) "#endif\n"));
+      MR_hl_field(1, Var_61, 1) = ((MR_Box) (Var_63));
+    }
+    {
+      Var_59 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_59, 0) = ((MR_Box) ((MR_String) "}\n"));
+      MR_hl_field(1, Var_59, 1) = ((MR_Box) (Var_61));
+    }
+    {
+      Var_57 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_57, 0) = ((MR_Box) ((MR_String) "#ifdef __cplusplus\n"));
+      MR_hl_field(1, Var_57, 1) = ((MR_Box) (Var_59));
+    }
+    {
+      Var_55 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_55, 0) = ((MR_Box) ((MR_String) "\n"));
+      MR_hl_field(1, Var_55, 1) = ((MR_Box) (Var_57));
+    }
+    {
+      Var_53 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_53, 0) = ((MR_Box) ((MR_String) "mercury_terminate(void);\n"));
+      MR_hl_field(1, Var_53, 1) = ((MR_Box) (Var_55));
+    }
+    {
+      Var_51 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_51, 0) = ((MR_Box) ((MR_String) "extern int\n"));
+      MR_hl_field(1, Var_51, 1) = ((MR_Box) (Var_53));
+    }
+    {
+      Var_49 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_49, 0) = ((MR_Box) ((MR_String) "\n"));
+      MR_hl_field(1, Var_49, 1) = ((MR_Box) (Var_51));
+    }
+    {
+      Var_47 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_47, 0) = ((MR_Box) ((MR_String) "mercury_init(int argc, char **argv, void *stackbottom);\n"));
+      MR_hl_field(1, Var_47, 1) = ((MR_Box) (Var_49));
+    }
+    {
+      Var_45 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_45, 0) = ((MR_Box) ((MR_String) "extern void\n"));
+      MR_hl_field(1, Var_45, 1) = ((MR_Box) (Var_47));
+    }
+    {
+      Var_43 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_43, 0) = ((MR_Box) ((MR_String) "\n"));
+      MR_hl_field(1, Var_43, 1) = ((MR_Box) (Var_45));
+    }
+    {
+      Var_41 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_41, 0) = ((MR_Box) ((MR_String) "#endif\n"));
+      MR_hl_field(1, Var_41, 1) = ((MR_Box) (Var_43));
+    }
+    {
+      Var_39 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_39, 0) = ((MR_Box) ((MR_String) "extern \"C\" {\n"));
+      MR_hl_field(1, Var_39, 1) = ((MR_Box) (Var_41));
+    }
+    {
+      Var_37 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_37, 0) = ((MR_Box) ((MR_String) "#ifdef __cplusplus\n"));
+      MR_hl_field(1, Var_37, 1) = ((MR_Box) (Var_39));
+    }
+    {
+      Var_35 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_35, 0) = ((MR_Box) ((MR_String) "\n"));
+      MR_hl_field(1, Var_35, 1) = ((MR_Box) (Var_37));
+    }
+    {
+      Var_33 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_33, 0) = ((MR_Box) ((MR_String) "_H\n"));
+      MR_hl_field(1, Var_33, 1) = ((MR_Box) (Var_35));
+    }
+    {
+      Var_31 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_31, 0) = ((MR_Box) (Var_32));
+      MR_hl_field(1, Var_31, 1) = ((MR_Box) (Var_33));
+    }
+    {
+      Var_29 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_29, 0) = ((MR_Box) ((MR_String) "#define "));
+      MR_hl_field(1, Var_29, 1) = ((MR_Box) (Var_31));
+    }
+    {
+      Var_27 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_27, 0) = ((MR_Box) ((MR_String) "_H\n"));
+      MR_hl_field(1, Var_27, 1) = ((MR_Box) (Var_29));
+    }
+    {
+      Var_25 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_25, 0) = ((MR_Box) (Var_26));
+      MR_hl_field(1, Var_25, 1) = ((MR_Box) (Var_27));
+    }
+    {
+      Var_22 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_22, 0) = ((MR_Box) ((MR_String) "#ifndef "));
+      MR_hl_field(1, Var_22, 1) = ((MR_Box) (Var_25));
+    }
+    mercury__io__write_strings_4_p_0(HdrFileStream_18, Var_22);
+    mercury__io__close_output_3_p_0(HdrFileStream_18);
+    backend_libs__compile_target_code__make_standalone_int_body_6_p_0(Globals_7, ProgressStream_8, ErrorStream_9, BaseName_10);
+  }
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__make_standalone_int_body_6_p_0(
+  MR_Word Globals_7,
+  MR_Word ProgressStream_8,
+  MR_Word ErrorStream_9,
+  MR_String BaseName_10)
+{
+  MR_bool succeeded;
+  MR_Word InitFiles0_12;
+  MR_Word InitFiles1_13;
+  MR_Word TraceInitFiles0_14;
+  MR_Word MaybeStdLibDir_15;
+  MR_String GradeDir_16;
+  MR_Word InitFiles2_18;
+  MR_Word TraceInitFiles_19;
+  MR_Word SourceDebugInitFiles_20;
+  MR_Word TraceLevel_21;
+  MR_Word TraceEnabled_22;
+  MR_String TraceOpt_23;
+  MR_Word InitFiles3_24;
+  MR_Word SourceDebug_25;
+  MR_Word InitFiles_26;
+  MR_Word RuntimeFlagsList_27;
+  MR_String RuntimeFlags_28;
+  MR_Word InitFileDirsList_29;
+  MR_String InitFileDirs_30;
+  MR_String ExperimentalComplexity_31;
+  MR_String ExperimentalComplexityOpt_32;
+  MR_String Grade_33;
+  MR_String MkInit_34;
+  MR_String CFileName_35;
+  MR_String MkInitArgs_36;
+  MR_Word MkInitCmdSucceeded_38;
+  MR_Word Var_91;
+  MR_Word Var_93;
+  MR_Word Var_94;
+  MR_Word Var_96;
+  MR_Word Var_97;
+  MR_Word Var_99;
+  MR_Word Var_100;
+  MR_Word Var_102;
+  MR_Word Var_103;
+  MR_Word Var_105;
+  MR_String Var_106;
+  MR_Word Var_107;
+  MR_Word Var_109;
+
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_7, (MR_Integer) 595, &InitFiles0_12);
+  mercury__list__remove_dups_2_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), InitFiles0_12, &InitFiles1_13);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_7, (MR_Integer) 596, &TraceInitFiles0_14);
+  libs__globals__lookup_maybe_string_option_3_p_0(Globals_7, (MR_Integer) 592, &MaybeStdLibDir_15);
+  libs__compute_grade__grade_directory_component_2_p_0(Globals_7, &GradeDir_16);
+  if ((MaybeStdLibDir_15 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    InitFiles2_18 = InitFiles1_13;
+    TraceInitFiles_19 = TraceInitFiles0_14;
+    SourceDebugInitFiles_20 = (MR_Word) ((MR_Unsigned) 0U);
+  }
+  else
+  {
+    MR_String StdLibDir_17 = ((MR_String) ((MR_hl_field(1, MaybeStdLibDir_15, (MR_Integer) 0))));
+    MR_String Var_50;
+    MR_String Var_51;
+    MR_String Var_52;
+    MR_Word Var_55;
+    MR_String Var_56;
+    MR_String Var_57;
+    MR_String Var_58;
+    MR_String Var_61;
+    MR_String Var_62;
+    MR_String Var_63;
+    MR_Word Var_66;
+    MR_String Var_67;
+    MR_String Var_68;
+    MR_String Var_69;
+    MR_String Var_72;
+    MR_String Var_73;
+    MR_String Var_74;
+
+    Var_52 = mercury__dir__f_slash_2_f_0(StdLibDir_17, (MR_String) "modules");
+    Var_51 = mercury__dir__f_slash_2_f_0(Var_52, GradeDir_16);
+    Var_50 = mercury__dir__f_slash_2_f_0(Var_51, (MR_String) "mer_rt.init");
+    Var_58 = mercury__dir__f_slash_2_f_0(StdLibDir_17, (MR_String) "modules");
+    Var_57 = mercury__dir__f_slash_2_f_0(Var_58, GradeDir_16);
+    Var_56 = mercury__dir__f_slash_2_f_0(Var_57, (MR_String) "mer_std.init");
+    {
+      Var_55 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_55, 0) = ((MR_Box) (Var_56));
+      MR_hl_field(1, Var_55, 1) = ((MR_Box) (InitFiles1_13));
+    }
+    {
+      InitFiles2_18 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, InitFiles2_18, 0) = ((MR_Box) (Var_50));
+      MR_hl_field(1, InitFiles2_18, 1) = ((MR_Box) (Var_55));
+    }
+    Var_63 = mercury__dir__f_slash_2_f_0(StdLibDir_17, (MR_String) "modules");
+    Var_62 = mercury__dir__f_slash_2_f_0(Var_63, GradeDir_16);
+    Var_61 = mercury__dir__f_slash_2_f_0(Var_62, (MR_String) "mer_browser.init");
+    Var_69 = mercury__dir__f_slash_2_f_0(StdLibDir_17, (MR_String) "modules");
+    Var_68 = mercury__dir__f_slash_2_f_0(Var_69, GradeDir_16);
+    Var_67 = mercury__dir__f_slash_2_f_0(Var_68, (MR_String) "mer_mdbcomp.init");
+    {
+      Var_66 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_66, 0) = ((MR_Box) (Var_67));
+      MR_hl_field(1, Var_66, 1) = ((MR_Box) (TraceInitFiles0_14));
+    }
+    {
+      TraceInitFiles_19 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, TraceInitFiles_19, 0) = ((MR_Box) (Var_61));
+      MR_hl_field(1, TraceInitFiles_19, 1) = ((MR_Box) (Var_66));
+    }
+    Var_74 = mercury__dir__f_slash_2_f_0(StdLibDir_17, (MR_String) "modules");
+    Var_73 = mercury__dir__f_slash_2_f_0(Var_74, GradeDir_16);
+    Var_72 = mercury__dir__f_slash_2_f_0(Var_73, (MR_String) "mer_ssdb.init");
+    {
+      SourceDebugInitFiles_20 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, SourceDebugInitFiles_20, 0) = ((MR_Box) (Var_72));
+      MR_hl_field(1, SourceDebugInitFiles_20, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+  }
+  libs__globals__get_trace_level_2_p_0(Globals_7, &TraceLevel_21);
+  TraceEnabled_22 = libs__trace_params__is_exec_trace_enabled_at_given_trace_level_1_f_0(TraceLevel_21);
+  switch (TraceEnabled_22) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      {
+        TraceOpt_23 = (MR_String) "-t";
+        InitFiles3_24 = mercury__list__f_43_43_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), InitFiles2_18, TraceInitFiles_19);
+      }
+      break;
+    case (MR_Integer) 0:
+      {
+        TraceOpt_23 = (MR_String) "";
+        InitFiles3_24 = InitFiles2_18;
+      }
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_7, (MR_Integer) 286, &SourceDebug_25);
+  switch (SourceDebug_25) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      InitFiles_26 = InitFiles3_24;
+      break;
+    case (MR_Integer) 1:
+      InitFiles_26 = mercury__list__f_43_43_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), InitFiles3_24, SourceDebugInitFiles_20);
+      break;
+  }
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_7, (MR_Integer) 606, &RuntimeFlagsList_27);
+  backend_libs__compile_target_code__join_quoted_string_list_5_p_0(RuntimeFlagsList_27, (MR_String) "-r ", (MR_String) "", (MR_String) " ", &RuntimeFlags_28);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_7, (MR_Integer) 594, &InitFileDirsList_29);
+  backend_libs__compile_target_code__join_quoted_string_list_5_p_0(InitFileDirsList_29, (MR_String) "-I ", (MR_String) "", (MR_String) " ", &InitFileDirs_30);
+  libs__globals__lookup_string_option_3_p_0(Globals_7, (MR_Integer) 266, &ExperimentalComplexity_31);
+  succeeded = (strcmp(ExperimentalComplexity_31, (MR_String) "") == 0);
+  if (succeeded)
+    ExperimentalComplexityOpt_32 = (MR_String) "";
+  else
+    ExperimentalComplexityOpt_32 = mercury__string__f_43_43_2_f_0((MR_String) "-X ", ExperimentalComplexity_31);
+  libs__compute_grade__compute_grade_2_p_0(Globals_7, &Grade_33);
+  libs__globals__lookup_string_option_3_p_0(Globals_7, (MR_Integer) 622, &MkInit_34);
+  CFileName_35 = mercury__string__f_43_43_2_f_0(BaseName_10, (MR_String) ".c");
+  Var_106 = libs__shell_util__quote_shell_cmd_arg_1_f_0(CFileName_35);
+  {
+    Var_109 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_109, 0) = ((MR_Box) (InitFileDirs_30));
+    MR_hl_field(1, Var_109, 1) = ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[19])));
+  }
+  {
+    Var_107 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_107, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_107, 1) = ((MR_Box) (Var_109));
+  }
+  {
+    Var_105 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_105, 0) = ((MR_Box) (Var_106));
+    MR_hl_field(1, Var_105, 1) = ((MR_Box) (Var_107));
+  }
+  {
+    Var_103 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_103, 0) = ((MR_Box) ((MR_String) " -o "));
+    MR_hl_field(1, Var_103, 1) = ((MR_Box) (Var_105));
+  }
+  {
+    Var_102 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_102, 0) = ((MR_Box) (RuntimeFlags_28));
+    MR_hl_field(1, Var_102, 1) = ((MR_Box) (Var_103));
+  }
+  {
+    Var_100 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_100, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_100, 1) = ((MR_Box) (Var_102));
+  }
+  {
+    Var_99 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_99, 0) = ((MR_Box) (ExperimentalComplexityOpt_32));
+    MR_hl_field(1, Var_99, 1) = ((MR_Box) (Var_100));
+  }
+  {
+    Var_97 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_97, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_97, 1) = ((MR_Box) (Var_99));
+  }
+  {
+    Var_96 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_96, 0) = ((MR_Box) (TraceOpt_23));
+    MR_hl_field(1, Var_96, 1) = ((MR_Box) (Var_97));
+  }
+  {
+    Var_94 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_94, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_94, 1) = ((MR_Box) (Var_96));
+  }
+  {
+    Var_93 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_93, 0) = ((MR_Box) (Grade_33));
+    MR_hl_field(1, Var_93, 1) = ((MR_Box) (Var_94));
+  }
+  {
+    Var_91 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_91, 0) = ((MR_Box) ((MR_String) " -g "));
+    MR_hl_field(1, Var_91, 1) = ((MR_Box) (Var_93));
+  }
+  MkInitArgs_36 = mercury__string__append_list_1_f_0(Var_91);
+  backend_libs__compile_target_code__invoke_mkinit_11_p_0(Globals_7, ProgressStream_8, ErrorStream_9, ErrorStream_9, (MR_Integer) 1, MkInit_34, MkInitArgs_36, InitFiles_26, &MkInitCmdSucceeded_38);
+  switch (MkInitCmdSucceeded_38) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+        mercury__io__write_string_4_p_0(ErrorStream_9, (MR_String) "mercury_compile: error while creating ");
+        mercury__io__write_string_4_p_0(ErrorStream_9, (MR_String) "standalone interface in \140");
+        mercury__io__write_string_4_p_0(ErrorStream_9, CFileName_35);
+        mercury__io__write_string_4_p_0(ErrorStream_9, (MR_String) "\'\n");
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_String ObjFileName_43;
+        MR_Word CompileSucceeded_44;
+        MR_String Var_116;
+
+        Var_116 = parse_tree__file_names__extension_to_string_2_f_0(Globals_7, (MR_Word) (MR_mkword(3, &backend_libs__compile_target_code_scalar_common_1[21])));
+        ObjFileName_43 = mercury__string__f_43_43_2_f_0(BaseName_10, Var_116);
+        backend_libs__compile_target_code__do_compile_c_file_9_p_0(Globals_7, ProgressStream_8, ErrorStream_9, (MR_Integer) 1, CFileName_35, ObjFileName_43, &CompileSucceeded_44);
+        switch (CompileSucceeded_44) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+              mercury__io__write_string_4_p_0(ErrorStream_9, (MR_String) "mercury_compile: error while compiling");
+              mercury__io__write_string_4_p_0(ErrorStream_9, (MR_String) "standalone interface in \140");
+              mercury__io__write_string_4_p_0(ErrorStream_9, CFileName_35);
+              mercury__io__write_string_4_p_0(ErrorStream_9, (MR_String) "\'\n");
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+            }
+            break;
+        }
+      }
+      break;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__compile_target_code__is_maybe_pic_object_file_extension_3_p_0(
+  MR_Word Globals_4,
+  MR_String ExtStr_5,
+  MR_Word * PIC_6)
+{
+  MR_bool succeeded;
+  MR_String Var_9;
+
+  libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 561, &Var_9);
+  succeeded = (strcmp(ExtStr_5, Var_9) == 0);
+  if (succeeded)
+  {
+    *PIC_6 = (MR_Integer) 1;
+    succeeded = MR_TRUE;
+  }
+  else
+  {
+    MR_String Var_10;
+
+    libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 562, &Var_10);
+    succeeded = (strcmp(ExtStr_5, Var_10) == 0);
+    if (succeeded)
+    {
+      *PIC_6 = (MR_Integer) 0;
+      succeeded = MR_TRUE;
+    }
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__maybe_pic_object_file_extension_3_p_0(
+  MR_Word PIC_4,
+  MR_Word * ExtObj_5,
+  MR_Word * ExtInitObj_6)
+{
+  switch (PIC_4) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      {
+        *ExtObj_5 = (MR_Integer) 12;
+        *ExtInitObj_6 = (MR_Integer) 17;
+      }
+      break;
+    case (MR_Integer) 0:
+      {
+        *ExtObj_5 = (MR_Integer) 13;
+        *ExtInitObj_6 = (MR_Integer) 18;
+      }
+      break;
+  }
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__get_linked_target_type_2_p_0(
+  MR_Word Globals_3,
+  MR_Word * LinkedTargetType_4)
+{
+  MR_Word MakeSharedLib_5;
+
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 131, &MakeSharedLib_5);
+  switch (MakeSharedLib_5) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      *LinkedTargetType_4 = (MR_Integer) 0;
+      break;
+    case (MR_Integer) 1:
+      *LinkedTargetType_4 = (MR_Integer) 2;
+      break;
+  }
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__get_object_code_type_3_p_0(
+  MR_Word Globals_4,
+  MR_Word FileType_5,
+  MR_Word * ObjectCodeType_6)
+{
+  MR_bool succeeded;
+
+  switch (FileType_5) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 3:
+    case (MR_Integer) 4:
+    case (MR_Integer) 0:
+    case (MR_Integer) 6:
+    case (MR_Integer) 5:
+    case (MR_Integer) 1:
+      *ObjectCodeType_6 = (MR_Integer) 1;
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_String PicObjExt_7;
+        MR_String ObjExt_8;
+
+        libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 562, &PicObjExt_7);
+        libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 561, &ObjExt_8);
+        succeeded = (strcmp(PicObjExt_7, ObjExt_8) == 0);
+        if (succeeded)
+          *ObjectCodeType_6 = (MR_Integer) 1;
+        else
+          *ObjectCodeType_6 = (MR_Integer) 0;
+      }
+      break;
+  }
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__linked_target_file_name_6_p_0(
+  MR_Word Globals_7,
+  MR_Word ModuleName_8,
+  MR_Word TargetType_9,
+  MR_String * FileName_10)
+{
+  switch (TargetType_9) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 3:
+      parse_tree__file_names__module_name_to_file_name_create_dirs_7_p_0(Globals_7, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name\'/6", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[3])), ModuleName_8, FileName_10);
+      break;
+    case (MR_Integer) 4:
+      parse_tree__file_names__module_name_to_file_name_create_dirs_7_p_0(Globals_7, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name\'/6", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[0])), ModuleName_8, FileName_10);
+      break;
+    case (MR_Integer) 0:
+      parse_tree__file_names__module_name_to_file_name_create_dirs_7_p_0(Globals_7, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name\'/6", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[4])), ModuleName_8, FileName_10);
+      break;
+    case (MR_Integer) 6:
+      parse_tree__file_names__module_name_to_file_name_create_dirs_7_p_0(Globals_7, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name\'/6", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[5])), ModuleName_8, FileName_10);
+      break;
+    case (MR_Integer) 5:
+      parse_tree__file_names__module_name_to_file_name_create_dirs_7_p_0(Globals_7, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name\'/6", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[5])), ModuleName_8, FileName_10);
+      break;
+    case (MR_Integer) 2:
+      parse_tree__file_names__module_name_to_lib_file_name_create_dirs_8_p_0(Globals_7, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name\'/6", (MR_String) "lib", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[6])), ModuleName_8, FileName_10);
+      break;
+    case (MR_Integer) 1:
+      parse_tree__file_names__module_name_to_lib_file_name_create_dirs_8_p_0(Globals_7, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name\'/6", (MR_String) "lib", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[7])), ModuleName_8, FileName_10);
+      break;
+  }
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__link_module_list_8_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_LambdaHeadVar__2_46;
+
+  backend_libs__compile_target_code__IntroducedFrom__pred__link_module_list__1553__1_2_p_0(((MR_String) (wrapper_arg_1)), &conv0_LambdaHeadVar__2_46);
+  *wrapper_arg_2 = ((MR_Box) (conv0_LambdaHeadVar__2_46));
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__link_module_list_8_p_0(
+  MR_Word ProgressStream_9,
+  MR_Word ErrorStream_10,
+  MR_Word Modules_11,
+  MR_Word ExtraObjFiles_12,
+  MR_Word Globals_13,
+  MR_Word * Succeeded_14)
+{
+  MR_bool succeeded;
+  MR_String OutputFileName0_16;
+  MR_String OutputFileName_19;
+  MR_Word MainModuleName_20;
+  MR_Word CompileToSharedLib_21;
+  MR_Word TargetType_22;
+  MR_Word ObjExt_24;
+  MR_Word ObjectsList_26;
+  MR_Word InitObjResult_31;
+  MR_Word Var_42;
+
+  libs__globals__lookup_string_option_3_p_0(Globals_13, (MR_Integer) 576, &OutputFileName0_16);
+  libs__globals__lookup_bool_option_3_p_0(Globals_13, (MR_Integer) 131, &CompileToSharedLib_21);
+  switch (CompileToSharedLib_21) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        TargetType_22 = (MR_Integer) 0;
+        ObjExt_24 = (MR_Integer) 12;
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_String PicObjExt_79;
+        MR_String ObjExt_80;
+
+        TargetType_22 = (MR_Integer) 2;
+        libs__globals__lookup_string_option_3_p_0(Globals_13, (MR_Integer) 562, &PicObjExt_79);
+        libs__globals__lookup_string_option_3_p_0(Globals_13, (MR_Integer) 561, &ObjExt_80);
+        succeeded = (strcmp(PicObjExt_79, ObjExt_80) == 0);
+        if (succeeded)
+          ObjExt_24 = (MR_Integer) 12;
+        else
+          ObjExt_24 = (MR_Integer) 13;
+      }
+      break;
+  }
+  {
+    Var_42 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(3, Var_42, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+    MR_hl_field(3, Var_42, 1) = (MR_Box) ((MR_Unsigned) (ObjExt_24));
+  }
+  succeeded = (strcmp(OutputFileName0_16, (MR_String) "") == 0);
+  if (succeeded)
+  {
+    MR_String Module_66;
+    MR_Word Modules_67;
+    MR_String FileName_68;
+    MR_Word FileNames_69;
+    MR_Word ModuleName_70;
+    MR_String Var_73;
+
+    if ((Modules_11 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140backend_libs.compile_target_code.link_module_list\'/8", (MR_String) "no modules");
+        return;
+      }
+    else
+      OutputFileName_19 = ((MR_String) ((MR_hl_field(1, Modules_11, (MR_Integer) 0))));
+    Module_66 = ((MR_String) ((MR_hl_field(1, Modules_11, (MR_Integer) 0))));
+    Modules_67 = ((MR_Word) ((MR_hl_field(1, Modules_11, (MR_Integer) 1))));
+    Var_73 = mercury__dir__det_basename_1_f_0(Module_66);
+    parse_tree__file_names__file_name_to_module_name_2_p_0(Var_73, &ModuleName_70);
+    parse_tree__file_names__module_name_to_file_name_5_p_0(Globals_13, (MR_String) "predicate \140backend_libs.compile_target_code.join_module_list\'/6", Var_42, ModuleName_70, &FileName_68);
+    backend_libs__compile_target_code__join_module_list_6_p_0(Globals_13, Var_42, Modules_67, &FileNames_69);
+    {
+      ObjectsList_26 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, ObjectsList_26, 0) = ((MR_Box) (FileName_68));
+      MR_hl_field(1, ObjectsList_26, 1) = ((MR_Box) (FileNames_69));
+    }
+  }
+  else
+  {
+    OutputFileName_19 = OutputFileName0_16;
+    backend_libs__compile_target_code__join_module_list_6_p_0(Globals_13, Var_42, Modules_11, &ObjectsList_26);
+  }
+  parse_tree__file_names__file_name_to_module_name_2_p_0(OutputFileName_19, &MainModuleName_20);
+  switch (TargetType_22) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word ModuleNames_29;
+
+        mercury__list__map_3_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[13]), Modules_11, &ModuleNames_29);
+        backend_libs__compile_target_code__do_make_init_obj_file_9_p_0(Globals_13, ProgressStream_9, ErrorStream_10, (MR_Integer) 1, MainModuleName_20, ModuleNames_29, &InitObjResult_31);
+      }
+      break;
+    case (MR_Integer) 2:
+      InitObjResult_31 = (MR_Word) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_3[2]));
+      break;
+  }
+  if ((InitObjResult_31 == (MR_Word) ((MR_Unsigned) 0U)))
+    *Succeeded_14 = (MR_Integer) 0;
+  else
+  {
+    MR_String InitObjFileName_32 = ((MR_String) ((MR_hl_field(1, InitObjResult_31, (MR_Integer) 0))));
+    MR_Word ExtraLinkObjectsList_33;
+    MR_Word AllObjects0_34;
+    MR_Word AllObjects_35;
+    MR_Word Var_51;
+
+    libs__globals__lookup_accumulating_option_3_p_0(Globals_13, (MR_Integer) 585, &ExtraLinkObjectsList_33);
+    Var_51 = mercury__list__f_43_43_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), ExtraLinkObjectsList_33, ExtraObjFiles_12);
+    AllObjects0_34 = mercury__list__f_43_43_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), ObjectsList_26, Var_51);
+    succeeded = (strcmp(InitObjFileName_32, (MR_String) "") == 0);
+    if (succeeded)
+      AllObjects_35 = AllObjects0_34;
+    else
+      {
+        AllObjects_35 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, AllObjects_35, 0) = ((MR_Box) (InitObjFileName_32));
+        MR_hl_field(1, AllObjects_35, 1) = ((MR_Box) (AllObjects0_34));
+      }
+    backend_libs__compile_target_code__link_9_p_0(Globals_13, ProgressStream_9, ErrorStream_10, TargetType_22, MainModuleName_20, AllObjects_35, Succeeded_14);
+  }
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__join_module_list_6_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3,
+  MR_Word * HeadVar__4_4)
+{
+  if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+    *HeadVar__4_4 = (MR_Word) ((MR_Unsigned) 0U);
+  else
+  {
+    MR_String Module_14 = ((MR_String) ((MR_hl_field(1, HeadVar__3_3, (MR_Integer) 0))));
+    MR_Word Modules_15 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, (MR_Integer) 1))));
+    MR_String FileName_16;
+    MR_Word FileNames_17;
+    MR_Word ModuleName_19;
+    MR_String Var_22;
+
+    Var_22 = mercury__dir__det_basename_1_f_0(Module_14);
+    parse_tree__file_names__file_name_to_module_name_2_p_0(Var_22, &ModuleName_19);
+    parse_tree__file_names__module_name_to_file_name_5_p_0(HeadVar__1_1, (MR_String) "predicate \140backend_libs.compile_target_code.join_module_list\'/6", HeadVar__2_2, ModuleName_19, &FileName_16);
+    backend_libs__compile_target_code__join_module_list_6_p_0(HeadVar__1_1, HeadVar__2_2, Modules_15, &FileNames_17);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *HeadVar__4_4 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (FileName_16));
+      MR_hl_field(1, base, 1) = ((MR_Box) (FileNames_17));
+    }
+  }
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__link_9_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+
+  backend_libs__compile_target_code__write_jar_class_argument_5_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_String) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_String) (wrapper_arg_1)));
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__link_9_p_0(
+  MR_Word Globals_10,
+  MR_Word ProgressStream_11,
+  MR_Word ErrorStream_12,
+  MR_Word LinkTargetType_13,
+  MR_Word ModuleName_14,
+  MR_Word ObjectsList_15,
+  MR_Word * Succeeded_16)
+{
+  MR_bool succeeded;
+  MR_Word Verbose_18;
+  MR_Word Stats_19;
+  MR_String FullOutputFileName_20;
+  MR_String CurDirOutputFileName_21;
+  MR_Word LinkSucceeded_22;
+
+  libs__globals__lookup_bool_option_3_p_0(Globals_10, (MR_Integer) 72, &Verbose_18);
+  libs__globals__lookup_bool_option_3_p_0(Globals_10, (MR_Integer) 82, &Stats_19);
+  libs__file_util__maybe_write_string_5_p_0(ProgressStream_11, Verbose_18, (MR_String) "% Linking...\n");
+  backend_libs__compile_target_code__linked_target_file_name_full_curdir_7_p_0(Globals_10, ModuleName_14, LinkTargetType_13, &FullOutputFileName_20, &CurDirOutputFileName_21);
+  switch (LinkTargetType_13) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 3:
+    case (MR_Integer) 4:
+      backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0(Globals_10, ProgressStream_11, ErrorStream_12, LinkTargetType_13, ModuleName_14, FullOutputFileName_20, ObjectsList_15, &LinkSucceeded_22);
+      break;
+    case (MR_Integer) 0:
+      backend_libs__compile_target_code__link_exe_or_shared_lib_10_p_0(Globals_10, ProgressStream_11, ErrorStream_12, LinkTargetType_13, ModuleName_14, FullOutputFileName_20, ObjectsList_15, &LinkSucceeded_22);
+      break;
+    case (MR_Integer) 6:
+    case (MR_Integer) 5:
+      {
+        MR_String Jar_38;
+        MR_String ClassSubDir_39;
+        MR_Word ListClassFiles_40;
+        MR_Word TempFileResult_41;
+        MR_Word Succeeded0_45;
+
+        libs__globals__lookup_string_option_3_p_0(Globals_10, (MR_Integer) 662, &Jar_38);
+        parse_tree__module_cmds__list_class_files_for_jar_6_p_0(Globals_10, ObjectsList_15, &ClassSubDir_39, &ListClassFiles_40);
+        if ((ListClassFiles_40 == (MR_Word) ((MR_Unsigned) 0U)))
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140backend_libs.compile_target_code.create_java_exe_or_lib\'/10", (MR_String) "empty list of .class files");
+            return;
+          }
+        libs__file_util__open_temp_output_with_naming_scheme_6_p_0((MR_String) ".", (MR_String) "mtmp", (MR_String) "", &TempFileResult_41);
+        if (((MR_tag((MR_Word) TempFileResult_41)) == (MR_Integer) 1))
+        {
+          MR_String ErrorMessage_48 = ((MR_String) ((MR_hl_field(1, TempFileResult_41, (MR_Integer) 0))));
+
+          mercury__io__write_string_4_p_0(ErrorStream_12, ErrorMessage_48);
+          mercury__io__write_string_4_p_0(ErrorStream_12, (MR_String) "\n");
+          Succeeded0_45 = (MR_Integer) 0;
+        }
+        else
+        {
+          MR_String TempFileName_42;
+          MR_Word Stream_43;
+          MR_String Cmd_44;
+          MR_Tuple Var_57 = ((MR_Tuple) ((MR_hl_field(0, TempFileResult_41, (MR_Integer) 0))));
+          MR_Word Var_58;
+          MR_Word Var_61;
+          MR_Word Var_62;
+          MR_Word Var_64;
+          MR_Word Var_65;
+          MR_Word Var_67;
+          MR_Box conv0_STATE_VARIABLE_IO_45_59;
+          MR_Word Var_46;
+
+          TempFileName_42 = ((MR_String) ((MR_hl_field(0, Var_57, (MR_Integer) 0))));
+          Stream_43 = ((MR_Word) ((MR_hl_field(0, Var_57, (MR_Integer) 1))));
+          {
+            Var_58 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, Var_58, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_8[2]));
+            MR_hl_field(0, Var_58, 1) = ((MR_Box) (backend_libs__compile_target_code__link_9_p_0_1));
+            MR_hl_field(0, Var_58, 2) = ((MR_Box) ((MR_Integer) 2));
+            MR_hl_field(0, Var_58, 3) = ((MR_Box) (Stream_43));
+            MR_hl_field(0, Var_58, 4) = ((MR_Box) (ClassSubDir_39));
+          }
+          mercury__list__foldl_4_p_2((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__io__io__type_ctor_info_state_0), Var_58, ListClassFiles_40, ((MR_Box) ((MR_Integer) 0)), &conv0_STATE_VARIABLE_IO_45_59);
+          mercury__io__close_output_3_p_0(Stream_43);
+          {
+            Var_67 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_67, 0) = ((MR_Box) (TempFileName_42));
+            MR_hl_field(1, Var_67, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Var_65 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_65, 0) = ((MR_Box) ((MR_String) " \100"));
+            MR_hl_field(1, Var_65, 1) = ((MR_Box) (Var_67));
+          }
+          {
+            Var_64 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_64, 0) = ((MR_Box) (FullOutputFileName_20));
+            MR_hl_field(1, Var_64, 1) = ((MR_Box) (Var_65));
+          }
+          {
+            Var_62 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_62, 0) = ((MR_Box) ((MR_String) " cf "));
+            MR_hl_field(1, Var_62, 1) = ((MR_Box) (Var_64));
+          }
+          {
+            Var_61 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_61, 0) = ((MR_Box) (Jar_38));
+            MR_hl_field(1, Var_61, 1) = ((MR_Box) (Var_62));
+          }
+          Cmd_44 = mercury__string__append_list_1_f_0(Var_61);
+          parse_tree__module_cmds__invoke_system_command_9_p_0(Globals_10, ProgressStream_11, ErrorStream_12, ErrorStream_12, (MR_Integer) 1, Cmd_44, &Succeeded0_45);
+          mercury__io__file__remove_file_4_p_0(TempFileName_42, &Var_46);
+          switch (Succeeded0_45) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word Var_47;
+
+                mercury__io__file__remove_file_4_p_0(FullOutputFileName_20, &Var_47);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+              }
+              break;
+          }
+        }
+        succeeded = (Succeeded0_45 == (MR_Integer) 1);
+        if (succeeded)
+          succeeded = (LinkTargetType_13 == (MR_Integer) 5);
+        if (succeeded)
+          parse_tree__module_cmds__create_java_shell_script_5_p_0(Globals_10, ModuleName_14, &LinkSucceeded_22);
+        else
+          LinkSucceeded_22 = Succeeded0_45;
+      }
+      break;
+    case (MR_Integer) 2:
+      backend_libs__compile_target_code__link_exe_or_shared_lib_10_p_0(Globals_10, ProgressStream_11, ErrorStream_12, LinkTargetType_13, ModuleName_14, FullOutputFileName_20, ObjectsList_15, &LinkSucceeded_22);
+      break;
+    case (MR_Integer) 1:
+      backend_libs__compile_target_code__create_archive_9_p_0(Globals_10, ProgressStream_11, ErrorStream_12, FullOutputFileName_20, (MR_Integer) 1, ObjectsList_15, &LinkSucceeded_22);
+      break;
+  }
+  libs__file_util__maybe_report_stats_4_p_0(ProgressStream_11, Stats_19);
+  switch (LinkSucceeded_22) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      *Succeeded_16 = (MR_Integer) 0;
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word _MadeSymlinkOrCopy_23;
+
+        backend_libs__compile_target_code__post_link_maybe_make_symlink_or_copy_11_p_0(Globals_10, ProgressStream_11, ErrorStream_12, FullOutputFileName_20, CurDirOutputFileName_21, ModuleName_14, LinkTargetType_13, Succeeded_16, &_MadeSymlinkOrCopy_23);
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_6(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+
+  backend_libs__compile_target_code__write_cli_shell_script_5_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_String) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)));
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_5(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv7_HeadVar__2_2;
+
+  conv7_HeadVar__2_2 = libs__shell_util__quote_shell_cmd_arg_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv7_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4,
+  MR_Box wrapper_arg_5,
+  MR_Box * wrapper_arg_6)
+{
+  MR_Box closure = closure_arg;
+  MR_String conv4_LinkerOpt_12;
+  MR_Word conv3_STATE_VARIABLE_Succeeded_37;
+
+  backend_libs__compile_target_code__process_link_library_8_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_String) (wrapper_arg_1)), &conv4_LinkerOpt_12, ((MR_Word) (wrapper_arg_3)), &conv3_STATE_VARIABLE_Succeeded_37);
+  *wrapper_arg_2 = ((MR_Box) (conv4_LinkerOpt_12));
+  *wrapper_arg_4 = ((MR_Box) (conv3_STATE_VARIABLE_Succeeded_37));
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv2_LambdaHeadVar__2_20;
+
+  conv2_LambdaHeadVar__2_20 = backend_libs__compile_target_code__IntroducedFrom__func__get_link_libraries__2218__1_2_f_0(((MR_String) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv2_LambdaHeadVar__2_20));
+  return wrapper_arg_2;
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv1_HeadVar__2_2;
+
+  conv1_HeadVar__2_2 = libs__shell_util__quote_shell_cmd_arg_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv1_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv0_FileName_8;
+
+  conv0_FileName_8 = backend_libs__compile_target_code__csharp_file_name_3_f_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_FileName_8));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0(
+  MR_Word Globals_11,
+  MR_Word ProgressStream_12,
+  MR_Word ErrorStream_13,
+  MR_Word LinkTargetType_14,
+  MR_Word MainModuleName_15,
+  MR_String FullOutputFileName0_16,
+  MR_Word SourceList0_17,
+  MR_Word * Succeeded_18)
+{
+  MR_bool succeeded;
+  MR_Word EnvType_20;
+  MR_Word CSharpCompilerType_21;
+  MR_String FullOutputFileName_22;
+  MR_Word SourceList_23;
+  MR_String NoLogoOpt_24;
+  MR_Word LineNumbers_25;
+  MR_String NoWarnLineNumberOpt_26;
+  MR_Word Debug_27;
+  MR_String DebugOpt_28;
+  MR_String TargetOption_29;
+  MR_String SignAssemblyOpt_30;
+  MR_Word LinkLibraryDirectoriesList0_32;
+  MR_Word LinkLibraryDirectoriesList_33;
+  MR_String LinkLibraryDirectories_35;
+  MR_String LinkLibraries_39;
+  MR_String CSharpCompilerCmd_40;
+  MR_String MercuryStdLibs_41;
+  MR_Word CSCFlagsList_42;
+  MR_String CmdArgs_43;
+  MR_Word Succeeded0_44;
+  MR_Word TargetEnvType_45;
+  MR_String CLI_46;
+  MR_Word Var_49;
+  MR_Word Var_68;
+  MR_Word Var_69;
+  MR_Word Var_70;
+  MR_Word Var_71;
+  MR_Word Var_72;
+  MR_Word Var_73;
+  MR_String Var_74;
+  MR_Word Var_76;
+  MR_Word Var_77;
+  MR_Word Var_78;
+  MR_Word Var_79;
+  MR_Word Var_81;
+  MR_Word Var_88;
+  MR_Word MercuryLibDirs0_91;
+  MR_String GradeDir_92;
+  MR_Word MercuryLibDirs_93;
+  MR_Word LinkLibrariesList0_94;
+  MR_Word LinkLibrariesList_95;
+  MR_Word LibrariesSucceeded_96;
+  MR_Word Var_98;
+  MR_Word Var_100;
+  MR_Box conv6_LibrariesSucceeded_96;
+  MR_Box conv5_STATE_VARIABLE_IO_60_60;
+
+  libs__globals__get_system_env_type_2_p_0(Globals_11, &EnvType_20);
+  libs__globals__get_csharp_compiler_type_2_p_0(Globals_11, &CSharpCompilerType_21);
+  FullOutputFileName_22 = backend_libs__compile_target_code__csharp_file_name_3_f_0(EnvType_20, CSharpCompilerType_21, FullOutputFileName0_16);
+  {
+    Var_49 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_49, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_7[2]));
+    MR_hl_field(0, Var_49, 1) = ((MR_Box) (backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_1));
+    MR_hl_field(0, Var_49, 2) = ((MR_Box) ((MR_Integer) 2));
+    MR_hl_field(0, Var_49, 3) = ((MR_Box) (EnvType_20));
+    MR_hl_field(0, Var_49, 4) = ((MR_Box) (CSharpCompilerType_21));
+  }
+  SourceList_23 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_49, SourceList0_17);
+  switch (CSharpCompilerType_21) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      NoLogoOpt_24 = (MR_String) "-nologo ";
+      break;
+    case (MR_Integer) 1:
+    case (MR_Integer) 2:
+      NoLogoOpt_24 = (MR_String) "";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_11, (MR_Integer) 174, &LineNumbers_25);
+  switch (LineNumbers_25) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      NoWarnLineNumberOpt_26 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      NoWarnLineNumberOpt_26 = (MR_String) "-nowarn:162,219 ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_11, (MR_Integer) 538, &Debug_27);
+  switch (Debug_27) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      DebugOpt_28 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      DebugOpt_28 = (MR_String) "-debug ";
+      break;
+  }
+  switch (LinkTargetType_14) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 3:
+      {
+        TargetOption_29 = (MR_String) "-target:exe";
+        SignAssemblyOpt_30 = (MR_String) "";
+      }
+      break;
+    case (MR_Integer) 4:
+      {
+        MR_String KeyFile_31;
+
+        TargetOption_29 = (MR_String) "-target:library";
+        libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 610, &KeyFile_31);
+        succeeded = (strcmp(KeyFile_31, (MR_String) "") == 0);
+        if (succeeded)
+          SignAssemblyOpt_30 = (MR_String) "";
+        else
+        {
+          MR_String Var_54;
+
+          Var_54 = mercury__string__f_43_43_2_f_0(KeyFile_31, (MR_String) " ");
+          SignAssemblyOpt_30 = mercury__string__f_43_43_2_f_0((MR_String) "-keyfile:", Var_54);
+        }
+      }
+      break;
+  }
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_11, (MR_Integer) 581, &LinkLibraryDirectoriesList0_32);
+  LinkLibraryDirectoriesList_33 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_49, LinkLibraryDirectoriesList0_32);
+  Var_88 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[11]), LinkLibraryDirectoriesList_33);
+  backend_libs__compile_target_code__join_string_list_5_p_0(Var_88, (MR_String) "-lib:", (MR_String) "", (MR_String) " ", &LinkLibraryDirectories_35);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_11, (MR_Integer) 586, &MercuryLibDirs0_91);
+  libs__compute_grade__grade_directory_component_2_p_0(Globals_11, &GradeDir_92);
+  {
+    Var_98 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_98, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_2[2]));
+    MR_hl_field(0, Var_98, 1) = ((MR_Box) (backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_3));
+    MR_hl_field(0, Var_98, 2) = ((MR_Box) ((MR_Integer) 1));
+    MR_hl_field(0, Var_98, 3) = ((MR_Box) (GradeDir_92));
+  }
+  MercuryLibDirs_93 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_98, MercuryLibDirs0_91);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_11, (MR_Integer) 584, &LinkLibrariesList0_94);
+  {
+    Var_100 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_100, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_11[0]));
+    MR_hl_field(0, Var_100, 1) = ((MR_Box) (backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_4));
+    MR_hl_field(0, Var_100, 2) = ((MR_Box) ((MR_Integer) 2));
+    MR_hl_field(0, Var_100, 3) = ((MR_Box) (Globals_11));
+    MR_hl_field(0, Var_100, 4) = ((MR_Box) (MercuryLibDirs_93));
+  }
+  mercury__list__map_foldl2_7_p_2((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&libs__maybe_util__libs__maybe_util__type_ctor_info_maybe_succeeded_0), (MR_Word) (&mercury__io__io__type_ctor_info_state_0), Var_100, LinkLibrariesList0_94, &LinkLibrariesList_95, ((MR_Box) ((MR_Integer) 1)), &conv6_LibrariesSucceeded_96, ((MR_Box) ((MR_Integer) 0)), &conv5_STATE_VARIABLE_IO_60_60);
+  LibrariesSucceeded_96 = ((MR_Word) (conv6_LibrariesSucceeded_96));
+  switch (LibrariesSucceeded_96) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      LinkLibraries_39 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word LinkLibrariesList_38;
+        MR_Word Var_105;
+
+        LinkLibrariesList_38 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_49, LinkLibrariesList_95);
+        Var_105 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[12]), LinkLibrariesList_38);
+        backend_libs__compile_target_code__join_string_list_5_p_0(Var_105, (MR_String) "", (MR_String) "", (MR_String) " ", &LinkLibraries_39);
+      }
+      break;
+  }
+  libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 572, &CSharpCompilerCmd_40);
+  backend_libs__compile_target_code__get_mercury_std_libs_3_p_0(Globals_11, LinkTargetType_14, &MercuryStdLibs_41);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_11, (MR_Integer) 573, &CSCFlagsList_42);
+  Var_74 = mercury__string__f_43_43_2_f_0((MR_String) "-out:", FullOutputFileName_22);
+  {
+    Var_79 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_79, 0) = ((MR_Box) (MercuryStdLibs_41));
+    MR_hl_field(1, Var_79, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  {
+    Var_78 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_78, 0) = ((MR_Box) (LinkLibraries_39));
+    MR_hl_field(1, Var_78, 1) = ((MR_Box) (Var_79));
+  }
+  {
+    Var_77 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_77, 0) = ((MR_Box) (LinkLibraryDirectories_35));
+    MR_hl_field(1, Var_77, 1) = ((MR_Box) (Var_78));
+  }
+  {
+    Var_76 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_76, 0) = ((MR_Box) (SignAssemblyOpt_30));
+    MR_hl_field(1, Var_76, 1) = ((MR_Box) (Var_77));
+  }
+  {
+    Var_73 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_73, 0) = ((MR_Box) (Var_74));
+    MR_hl_field(1, Var_73, 1) = ((MR_Box) (Var_76));
+  }
+  {
+    Var_72 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_72, 0) = ((MR_Box) (TargetOption_29));
+    MR_hl_field(1, Var_72, 1) = ((MR_Box) (Var_73));
+  }
+  {
+    Var_71 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_71, 0) = ((MR_Box) (DebugOpt_28));
+    MR_hl_field(1, Var_71, 1) = ((MR_Box) (Var_72));
+  }
+  {
+    Var_70 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_70, 0) = ((MR_Box) (NoWarnLineNumberOpt_26));
+    MR_hl_field(1, Var_70, 1) = ((MR_Box) (Var_71));
+  }
+  {
+    Var_69 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_69, 0) = ((MR_Box) (NoLogoOpt_24));
+    MR_hl_field(1, Var_69, 1) = ((MR_Box) (Var_70));
+  }
+  Var_81 = mercury__list__f_43_43_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), CSCFlagsList_42, SourceList_23);
+  Var_68 = mercury__list__f_43_43_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_69, Var_81);
+  CmdArgs_43 = mercury__string__join_list_2_f_0((MR_String) " ", Var_68);
+  backend_libs__compile_target_code__invoke_long_system_command_10_p_0(Globals_11, ProgressStream_12, ErrorStream_13, ErrorStream_13, (MR_Integer) 1, CSharpCompilerCmd_40, CmdArgs_43, &Succeeded0_44);
+  libs__globals__get_target_env_type_2_p_0(Globals_11, &TargetEnvType_45);
+  libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 575, &CLI_46);
+  succeeded = (Succeeded0_44 == (MR_Integer) 1);
+  if (succeeded)
+  {
+    succeeded = (LinkTargetType_14 == (MR_Integer) 3);
+    if (succeeded)
+    {
+      succeeded = (strcmp(CLI_46, (MR_String) "") == 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        succeeded = (TargetEnvType_45 == (MR_Integer) 0);
+    }
+  }
+  if (succeeded)
+  {
+    MR_Word Var_86;
+
+    {
+      Var_86 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_86, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_8[1]));
+      MR_hl_field(0, Var_86, 1) = ((MR_Box) (backend_libs__compile_target_code__create_csharp_exe_or_lib_10_p_0_6));
+      MR_hl_field(0, Var_86, 2) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(0, Var_86, 3) = ((MR_Box) (Globals_11));
+      MR_hl_field(0, Var_86, 4) = ((MR_Box) (FullOutputFileName_22));
+    }
+    parse_tree__module_cmds__create_launcher_shell_script_6_p_0(Globals_11, MainModuleName_15, Var_86, Succeeded_18);
+  }
+  else
+    *Succeeded_18 = Succeeded0_44;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__invoke_long_system_command_10_p_0(
+  MR_Word Globals_11,
+  MR_Word ProgressStream_12,
+  MR_Word ErrorStream_13,
+  MR_Word CmdOutputStream_14,
+  MR_Word Verbosity_15,
+  MR_String Cmd_16,
+  MR_String Args_17,
+  MR_Word * Succeeded_18)
+{
+  backend_libs__compile_target_code__invoke_long_system_command_maybe_filter_output_12_p_0(Globals_11, ProgressStream_12, ErrorStream_13, CmdOutputStream_14, Verbosity_15, Cmd_16, (MR_String) "", Args_17, (MR_Word) ((MR_Unsigned) 0U), Succeeded_18);
+}
+
+static MR_String MR_CALL 
+backend_libs__compile_target_code__csharp_file_name_3_f_0(
+  MR_Word EnvType_5,
+  MR_Word CSharpCompiler_6,
+  MR_String FileName0_7)
+{
+  MR_String FileName_8;
+
+  switch (EnvType_5) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+    case (MR_Integer) 4:
+    case (MR_Integer) 3:
+      switch (CSharpCompiler_6) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+        case (MR_Integer) 2:
+          FileName_8 = mercury__string__replace_all_3_f_0(FileName0_7, (MR_String) "/", (MR_String) "\\\\");
+          break;
+        case (MR_Integer) 1:
+          FileName_8 = FileName0_7;
+          break;
+      }
+      break;
+    case (MR_Integer) 2:
+      switch (CSharpCompiler_6) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          FileName_8 = mercury__string__replace_all_3_f_0(FileName0_7, (MR_String) "/", (MR_String) "\\\\");
+          break;
+        case (MR_Integer) 1:
+        case (MR_Integer) 2:
+          FileName_8 = FileName0_7;
+          break;
+      }
+      break;
+    case (MR_Integer) 0:
+      FileName_8 = FileName0_7;
+      break;
+  }
+  return FileName_8;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__link_exe_or_shared_lib_10_p_0(
+  MR_Word Globals_11,
+  MR_Word ProgressStream_12,
+  MR_Word ErrorStream_13,
+  MR_Word LinkTargetType_14,
+  MR_Word ModuleName_15,
+  MR_String FullOutputFileName_16,
+  MR_Word ObjectsList_17,
+  MR_Word * Succeeded_18)
+{
+  MR_bool succeeded;
+  MR_Word CommandOpt_20;
+  MR_Word RpathFlagOpt_21;
+  MR_Word RpathSepOpt_22;
+  MR_Word LDFlagsOpt_23;
+  MR_Word ThreadFlagsOpt_24;
+  MR_Word DebugFlagsOpt_25;
+  MR_Word TraceFlagsOpt_26;
+  MR_String UndefOpt_28;
+  MR_String ReserveStackSizeOpt_29;
+  MR_String LTOOpts_30;
+  MR_Word Strip_31;
+  MR_String LinkerStripOpt_32;
+  MR_String StripExeCommand_33;
+  MR_String StripExeFlags_36;
+  MR_Word TargetDebug_37;
+  MR_String DebugOpts_38;
+  MR_String SanitizerOpts_39;
+  MR_String Linkage_40;
+  MR_String StaticOpts_41;
+  MR_Word UseThreadLibs_42;
+  MR_String ThreadOpts_43;
+  MR_String HwlocOpts_45;
+  MR_String MercuryStdLibs_46;
+  MR_String SystemLibs_47;
+  MR_String ResCmdLinkOpts_48;
+  MR_Word LDFlagsList_49;
+  MR_String LDFlags_50;
+  MR_Word LinkLibraryDirectoriesList_51;
+  MR_String LinkerPathFlag_52;
+  MR_String LinkLibraryDirectories_53;
+  MR_String RpathOpts_54;
+  MR_String FrameworkDirectories_55;
+  MR_Word UseInstallName_56;
+  MR_String InstallNameOpt_60;
+  MR_Word TraceLevel_61;
+  MR_Word TraceEnabled_62;
+  MR_String TraceOpts_63;
+  MR_String Frameworks_64;
+  MR_Word MaybeLinkLibraries_65;
+  MR_String LinkOptSep_66;
+
+  switch (LinkTargetType_14) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        CommandOpt_20 = (MR_Integer) 615;
+        RpathFlagOpt_21 = (MR_Integer) 650;
+        RpathSepOpt_22 = (MR_Integer) 651;
+        LDFlagsOpt_23 = (MR_Integer) 577;
+        ThreadFlagsOpt_24 = (MR_Integer) 635;
+        DebugFlagsOpt_25 = (MR_Integer) 644;
+        TraceFlagsOpt_26 = (MR_Integer) 647;
+        UndefOpt_28 = (MR_String) "";
+        ReserveStackSizeOpt_29 = backend_libs__compile_target_code__reserve_stack_size_flags_1_f_0(Globals_11);
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Word AllowUndef_27;
+
+        CommandOpt_20 = (MR_Integer) 616;
+        RpathFlagOpt_21 = (MR_Integer) 652;
+        RpathSepOpt_22 = (MR_Integer) 653;
+        LDFlagsOpt_23 = (MR_Integer) 579;
+        ThreadFlagsOpt_24 = (MR_Integer) 636;
+        DebugFlagsOpt_25 = (MR_Integer) 645;
+        TraceFlagsOpt_26 = (MR_Integer) 648;
+        libs__globals__lookup_bool_option_3_p_0(Globals_11, (MR_Integer) 604, &AllowUndef_27);
+        switch (AllowUndef_27) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 655, &UndefOpt_28);
+            break;
+          case (MR_Integer) 1:
+            libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 654, &UndefOpt_28);
+            break;
+        }
+        ReserveStackSizeOpt_29 = (MR_String) "";
+      }
+      break;
+  }
+  libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 637, &LTOOpts_30);
+  libs__globals__lookup_bool_option_3_p_0(Globals_11, (MR_Integer) 601, &Strip_31);
+  succeeded = (LinkTargetType_14 == (MR_Integer) 0);
+  if (succeeded)
+    succeeded = (Strip_31 == (MR_Integer) 1);
+  if (succeeded)
+  {
+    MR_String MercuryLinkage_34;
+    MR_Word StripExeFlagsOpt_35;
+
+    libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 639, &LinkerStripOpt_32);
+    libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 659, &StripExeCommand_33);
+    libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 599, &MercuryLinkage_34);
+    succeeded = (strcmp(MercuryLinkage_34, (MR_String) "shared") == 0);
+    if (succeeded)
+      StripExeFlagsOpt_35 = (MR_Integer) 660;
+    else
+      StripExeFlagsOpt_35 = (MR_Integer) 661;
+    libs__globals__lookup_string_option_3_p_0(Globals_11, StripExeFlagsOpt_35, &StripExeFlags_36);
+  }
+  else
+  {
+    LinkerStripOpt_32 = (MR_String) "";
+    StripExeCommand_33 = (MR_String) "";
+    StripExeFlags_36 = (MR_String) "";
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_11, (MR_Integer) 538, &TargetDebug_37);
+  switch (TargetDebug_37) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      DebugOpts_38 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      libs__globals__lookup_string_option_3_p_0(Globals_11, DebugFlagsOpt_25, &DebugOpts_38);
+      break;
+  }
+  libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 646, &SanitizerOpts_39);
+  libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 597, &Linkage_40);
+  succeeded = (LinkTargetType_14 == (MR_Integer) 0);
+  if (succeeded)
+    succeeded = (strcmp(Linkage_40, (MR_String) "static") == 0);
+  if (succeeded)
+    libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 638, &StaticOpts_41);
+  else
+    StaticOpts_41 = (MR_String) "";
+  backend_libs__compile_target_code__use_thread_libs_2_p_0(Globals_11, &UseThreadLibs_42);
+  switch (UseThreadLibs_42) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        ThreadOpts_43 = (MR_String) "";
+        HwlocOpts_45 = (MR_String) "";
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word HwlocFlagsOpt_44;
+
+        libs__globals__lookup_string_option_3_p_0(Globals_11, ThreadFlagsOpt_24, &ThreadOpts_43);
+        succeeded = (strcmp(Linkage_40, (MR_String) "shared") == 0);
+        if (succeeded)
+          HwlocFlagsOpt_44 = (MR_Integer) 629;
+        else
+        {
+          succeeded = (strcmp(Linkage_40, (MR_String) "static") == 0);
+          if (succeeded)
+            HwlocFlagsOpt_44 = (MR_Integer) 630;
+          else
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140backend_libs.compile_target_code.link_exe_or_shared_lib\'/10", (MR_String) "Invalid linkage");
+              return;
+            }
+        }
+        libs__globals__lookup_string_option_3_p_0(Globals_11, HwlocFlagsOpt_44, &HwlocOpts_45);
+      }
+      break;
+  }
+  backend_libs__compile_target_code__get_mercury_std_libs_3_p_0(Globals_11, LinkTargetType_14, &MercuryStdLibs_46);
+  backend_libs__compile_target_code__get_system_libs_3_p_0(Globals_11, LinkTargetType_14, &SystemLibs_47);
+  backend_libs__compile_target_code__get_restricted_command_line_link_opts_3_p_0(Globals_11, LinkTargetType_14, &ResCmdLinkOpts_48);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_11, LDFlagsOpt_23, &LDFlagsList_49);
+  backend_libs__compile_target_code__join_string_list_5_p_0(LDFlagsList_49, (MR_String) "", (MR_String) "", (MR_String) " ", &LDFlags_50);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_11, (MR_Integer) 581, &LinkLibraryDirectoriesList_51);
+  libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 649, &LinkerPathFlag_52);
+  backend_libs__compile_target_code__join_quoted_string_list_5_p_0(LinkLibraryDirectoriesList_51, LinkerPathFlag_52, (MR_String) "", (MR_String) " ", &LinkLibraryDirectories_53);
+  backend_libs__compile_target_code__get_runtime_library_path_opts_5_p_0(Globals_11, LinkTargetType_14, RpathFlagOpt_21, RpathSepOpt_22, &RpathOpts_54);
+  backend_libs__compile_target_code__get_framework_directories_2_p_0(Globals_11, &FrameworkDirectories_55);
+  libs__globals__lookup_bool_option_3_p_0(Globals_11, (MR_Integer) 656, &UseInstallName_56);
+  succeeded = (UseInstallName_56 == (MR_Integer) 1);
+  if (succeeded)
+    succeeded = (LinkTargetType_14 == (MR_Integer) 2);
+  if (succeeded)
+  {
+    MR_String BaseFileName_57;
+    MR_String SharedLibExt_58;
+    MR_String ShLibFileName_59;
+    MR_String Var_117;
+
+    BaseFileName_57 = mdbcomp__sym_name__sym_name_to_string_1_f_0(ModuleName_15);
+    libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 612, &SharedLibExt_58);
+    Var_117 = mercury__string__f_43_43_2_f_0(BaseFileName_57, SharedLibExt_58);
+    ShLibFileName_59 = mercury__string__f_43_43_2_f_0((MR_String) "lib", Var_117);
+    libs__file_util__get_install_name_option_3_p_0(Globals_11, ShLibFileName_59, &InstallNameOpt_60);
+  }
+  else
+    InstallNameOpt_60 = (MR_String) "";
+  libs__globals__get_trace_level_2_p_0(Globals_11, &TraceLevel_61);
+  TraceEnabled_62 = libs__trace_params__is_exec_trace_enabled_at_given_trace_level_1_f_0(TraceLevel_61);
+  switch (TraceEnabled_62) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      libs__globals__lookup_string_option_3_p_0(Globals_11, TraceFlagsOpt_26, &TraceOpts_63);
+      break;
+    case (MR_Integer) 0:
+      TraceOpts_63 = (MR_String) "";
+      break;
+  }
+  backend_libs__compile_target_code__get_frameworks_2_p_0(Globals_11, &Frameworks_64);
+  backend_libs__compile_target_code__get_link_libraries_4_p_0(Globals_11, &MaybeLinkLibraries_65);
+  libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 634, &LinkOptSep_66);
+  if ((MaybeLinkLibraries_65 == (MR_Word) ((MR_Unsigned) 0U)))
+    *Succeeded_18 = (MR_Integer) 0;
+  else
+  {
+    MR_Word LinkLibrariesList_67 = ((MR_Word) ((MR_hl_field(1, MaybeLinkLibraries_65, (MR_Integer) 0))));
+    MR_String LinkLibraries_68;
+    MR_Word RestrictedCommandLine_69;
+    MR_Word ArchiveSucceeded_77;
+    MR_Word MaybeDeleteTmpArchive_78;
+    MR_String Objects_79;
+
+    backend_libs__compile_target_code__join_quoted_string_list_5_p_0(LinkLibrariesList_67, (MR_String) "", (MR_String) "", (MR_String) " ", &LinkLibraries_68);
+    libs__globals__lookup_bool_option_3_p_0(Globals_11, (MR_Integer) 695, &RestrictedCommandLine_69);
+    switch (RestrictedCommandLine_69) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          ArchiveSucceeded_77 = (MR_Integer) 1;
+          MaybeDeleteTmpArchive_78 = (MR_Word) ((MR_Unsigned) 0U);
+          backend_libs__compile_target_code__join_quoted_string_list_5_p_0(ObjectsList_17, (MR_String) "", (MR_String) "", (MR_String) " ", &Objects_79);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_String LibExt_70;
+          MR_String TempDir_71;
+          MR_Word TmpArchiveResult_72;
+
+          libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 613, &LibExt_70);
+          mercury__io__file__get_temp_directory_3_p_0(&TempDir_71);
+          mercury__io__file__make_temp_file_6_p_0(TempDir_71, (MR_String) "mtmp", LibExt_70, &TmpArchiveResult_72);
+          if (((MR_tag((MR_Word) TmpArchiveResult_72)) == (MR_Integer) 1))
+          {
+            MR_Word Error_80 = ((MR_Word) ((MR_hl_field(1, TmpArchiveResult_72, (MR_Integer) 0))));
+            MR_String Var_139;
+
+            Var_139 = mercury__io__error_message_1_f_0(Error_80);
+            mercury__io__write_string_4_p_0(ErrorStream_13, (MR_String) "Could not create temporary file: ");
+            mercury__io__write_string_4_p_0(ErrorStream_13, Var_139);
+            mercury__io__write_string_4_p_0(ErrorStream_13, (MR_String) "\n");
+            ArchiveSucceeded_77 = (MR_Integer) 0;
+            MaybeDeleteTmpArchive_78 = (MR_Word) ((MR_Unsigned) 0U);
+            backend_libs__compile_target_code__join_quoted_string_list_5_p_0(ObjectsList_17, (MR_String) "", (MR_String) "", (MR_String) " ", &Objects_79);
+          }
+          else
+          {
+            MR_String TmpArchive_73 = ((MR_String) ((MR_hl_field(0, TmpArchiveResult_72, (MR_Integer) 0))));
+            MR_Word ProperObjectFiles_74;
+            MR_Word NonObjectFiles_75;
+            MR_Word Var_131;
+            MR_Word Var_76;
+
+            backend_libs__compile_target_code__filter_object_files_4_p_0(Globals_11, ObjectsList_17, &ProperObjectFiles_74, &NonObjectFiles_75);
+            mercury__io__file__remove_file_4_p_0(TmpArchive_73, &Var_76);
+            backend_libs__compile_target_code__create_archive_9_p_0(Globals_11, ProgressStream_12, ErrorStream_13, TmpArchive_73, (MR_Integer) 1, ProperObjectFiles_74, &ArchiveSucceeded_77);
+            {
+              MaybeDeleteTmpArchive_78 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, MaybeDeleteTmpArchive_78, 0) = ((MR_Box) (TmpArchive_73));
+            }
+            {
+              Var_131 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, Var_131, 0) = ((MR_Box) (TmpArchive_73));
+              MR_hl_field(1, Var_131, 1) = ((MR_Box) (NonObjectFiles_75));
+            }
+            backend_libs__compile_target_code__join_quoted_string_list_5_p_0(Var_131, (MR_String) "", (MR_String) "", (MR_String) " ", &Objects_79);
+          }
+        }
+        break;
+    }
+    switch (ArchiveSucceeded_77) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        *Succeeded_18 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_String Command_81;
+          MR_String OutputOpt_82;
+          MR_String LinkCmd_83;
+          MR_Word Demangle_84;
+          MR_Word MaybeDemangleCmd_86;
+          MR_Word LinkSucceeded_87;
+          MR_Word Var_147;
+          MR_Word Var_148;
+          MR_Word Var_150;
+          MR_Word Var_151;
+          MR_Word Var_153;
+          MR_Word Var_154;
+          MR_Word Var_156;
+          MR_Word Var_157;
+          MR_Word Var_159;
+          MR_Word Var_160;
+          MR_Word Var_162;
+          MR_Word Var_163;
+          MR_Word Var_165;
+          MR_Word Var_166;
+          MR_Word Var_168;
+          MR_Word Var_169;
+          MR_Word Var_171;
+          MR_Word Var_172;
+          MR_String Var_173;
+          MR_Word Var_174;
+          MR_Word Var_176;
+          MR_Word Var_177;
+          MR_Word Var_179;
+          MR_Word Var_180;
+          MR_Word Var_182;
+          MR_Word Var_183;
+          MR_Word Var_185;
+          MR_Word Var_186;
+          MR_Word Var_188;
+          MR_Word Var_189;
+          MR_Word Var_191;
+          MR_Word Var_192;
+          MR_Word Var_194;
+          MR_Word Var_195;
+          MR_Word Var_197;
+          MR_Word Var_198;
+          MR_Word Var_200;
+          MR_Word Var_201;
+          MR_Word Var_203;
+          MR_Word Var_204;
+          MR_Word Var_206;
+          MR_Word Var_207;
+          MR_Word Var_209;
+          MR_Word Var_210;
+          MR_Word Var_212;
+          MR_Word Var_213;
+          MR_Word Var_215;
+          MR_Word Var_216;
+          MR_Word Var_218;
+
+          libs__globals__lookup_string_option_3_p_0(Globals_11, CommandOpt_20, &Command_81);
+          backend_libs__compile_target_code__get_linker_output_option_3_p_0(Globals_11, LinkTargetType_14, &OutputOpt_82);
+          Var_173 = libs__shell_util__quote_shell_cmd_arg_1_f_0(FullOutputFileName_16);
+          {
+            Var_218 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_218, 0) = ((MR_Box) (SystemLibs_47));
+            MR_hl_field(1, Var_218, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Var_216 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_216, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_216, 1) = ((MR_Box) (Var_218));
+          }
+          {
+            Var_215 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_215, 0) = ((MR_Box) (HwlocOpts_45));
+            MR_hl_field(1, Var_215, 1) = ((MR_Box) (Var_216));
+          }
+          {
+            Var_213 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_213, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_213, 1) = ((MR_Box) (Var_215));
+          }
+          {
+            Var_212 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_212, 0) = ((MR_Box) (MercuryStdLibs_46));
+            MR_hl_field(1, Var_212, 1) = ((MR_Box) (Var_213));
+          }
+          {
+            Var_210 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_210, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_210, 1) = ((MR_Box) (Var_212));
+          }
+          {
+            Var_209 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_209, 0) = ((MR_Box) (LinkLibraries_68));
+            MR_hl_field(1, Var_209, 1) = ((MR_Box) (Var_210));
+          }
+          {
+            Var_207 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_207, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_207, 1) = ((MR_Box) (Var_209));
+          }
+          {
+            Var_206 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_206, 0) = ((MR_Box) (LDFlags_50));
+            MR_hl_field(1, Var_206, 1) = ((MR_Box) (Var_207));
+          }
+          {
+            Var_204 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_204, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_204, 1) = ((MR_Box) (Var_206));
+          }
+          {
+            Var_203 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_203, 0) = ((MR_Box) (ResCmdLinkOpts_48));
+            MR_hl_field(1, Var_203, 1) = ((MR_Box) (Var_204));
+          }
+          {
+            Var_201 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_201, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_201, 1) = ((MR_Box) (Var_203));
+          }
+          {
+            Var_200 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_200, 0) = ((MR_Box) (Frameworks_64));
+            MR_hl_field(1, Var_200, 1) = ((MR_Box) (Var_201));
+          }
+          {
+            Var_198 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_198, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_198, 1) = ((MR_Box) (Var_200));
+          }
+          {
+            Var_197 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_197, 0) = ((MR_Box) (SanitizerOpts_39));
+            MR_hl_field(1, Var_197, 1) = ((MR_Box) (Var_198));
+          }
+          {
+            Var_195 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_195, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_195, 1) = ((MR_Box) (Var_197));
+          }
+          {
+            Var_194 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_194, 0) = ((MR_Box) (DebugOpts_38));
+            MR_hl_field(1, Var_194, 1) = ((MR_Box) (Var_195));
+          }
+          {
+            Var_192 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_192, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_192, 1) = ((MR_Box) (Var_194));
+          }
+          {
+            Var_191 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_191, 0) = ((MR_Box) (InstallNameOpt_60));
+            MR_hl_field(1, Var_191, 1) = ((MR_Box) (Var_192));
+          }
+          {
+            Var_189 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_189, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_189, 1) = ((MR_Box) (Var_191));
+          }
+          {
+            Var_188 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_188, 0) = ((MR_Box) (FrameworkDirectories_55));
+            MR_hl_field(1, Var_188, 1) = ((MR_Box) (Var_189));
+          }
+          {
+            Var_186 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_186, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_186, 1) = ((MR_Box) (Var_188));
+          }
+          {
+            Var_185 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_185, 0) = ((MR_Box) (RpathOpts_54));
+            MR_hl_field(1, Var_185, 1) = ((MR_Box) (Var_186));
+          }
+          {
+            Var_183 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_183, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_183, 1) = ((MR_Box) (Var_185));
+          }
+          {
+            Var_182 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_182, 0) = ((MR_Box) (LinkLibraryDirectories_53));
+            MR_hl_field(1, Var_182, 1) = ((MR_Box) (Var_183));
+          }
+          {
+            Var_180 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_180, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_180, 1) = ((MR_Box) (Var_182));
+          }
+          {
+            Var_179 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_179, 0) = ((MR_Box) (LinkOptSep_66));
+            MR_hl_field(1, Var_179, 1) = ((MR_Box) (Var_180));
+          }
+          {
+            Var_177 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_177, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_177, 1) = ((MR_Box) (Var_179));
+          }
+          {
+            Var_176 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_176, 0) = ((MR_Box) (Objects_79));
+            MR_hl_field(1, Var_176, 1) = ((MR_Box) (Var_177));
+          }
+          {
+            Var_174 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_174, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_174, 1) = ((MR_Box) (Var_176));
+          }
+          {
+            Var_172 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_172, 0) = ((MR_Box) (Var_173));
+            MR_hl_field(1, Var_172, 1) = ((MR_Box) (Var_174));
+          }
+          {
+            Var_171 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_171, 0) = ((MR_Box) (OutputOpt_82));
+            MR_hl_field(1, Var_171, 1) = ((MR_Box) (Var_172));
+          }
+          {
+            Var_169 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_169, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_169, 1) = ((MR_Box) (Var_171));
+          }
+          {
+            Var_168 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_168, 0) = ((MR_Box) (ReserveStackSizeOpt_29));
+            MR_hl_field(1, Var_168, 1) = ((MR_Box) (Var_169));
+          }
+          {
+            Var_166 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_166, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_166, 1) = ((MR_Box) (Var_168));
+          }
+          {
+            Var_165 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_165, 0) = ((MR_Box) (TraceOpts_63));
+            MR_hl_field(1, Var_165, 1) = ((MR_Box) (Var_166));
+          }
+          {
+            Var_163 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_163, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_163, 1) = ((MR_Box) (Var_165));
+          }
+          {
+            Var_162 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_162, 0) = ((MR_Box) (LTOOpts_30));
+            MR_hl_field(1, Var_162, 1) = ((MR_Box) (Var_163));
+          }
+          {
+            Var_160 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_160, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_160, 1) = ((MR_Box) (Var_162));
+          }
+          {
+            Var_159 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_159, 0) = ((MR_Box) (ThreadOpts_43));
+            MR_hl_field(1, Var_159, 1) = ((MR_Box) (Var_160));
+          }
+          {
+            Var_157 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_157, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_157, 1) = ((MR_Box) (Var_159));
+          }
+          {
+            Var_156 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_156, 0) = ((MR_Box) (UndefOpt_28));
+            MR_hl_field(1, Var_156, 1) = ((MR_Box) (Var_157));
+          }
+          {
+            Var_154 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_154, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_154, 1) = ((MR_Box) (Var_156));
+          }
+          {
+            Var_153 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_153, 0) = ((MR_Box) (LinkerStripOpt_32));
+            MR_hl_field(1, Var_153, 1) = ((MR_Box) (Var_154));
+          }
+          {
+            Var_151 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_151, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_151, 1) = ((MR_Box) (Var_153));
+          }
+          {
+            Var_150 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_150, 0) = ((MR_Box) (StaticOpts_41));
+            MR_hl_field(1, Var_150, 1) = ((MR_Box) (Var_151));
+          }
+          {
+            Var_148 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_148, 0) = ((MR_Box) ((MR_String) " "));
+            MR_hl_field(1, Var_148, 1) = ((MR_Box) (Var_150));
+          }
+          {
+            Var_147 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_147, 0) = ((MR_Box) (Command_81));
+            MR_hl_field(1, Var_147, 1) = ((MR_Box) (Var_148));
+          }
+          mercury__string__append_list_2_p_0(Var_147, &LinkCmd_83);
+          libs__globals__lookup_bool_option_3_p_0(Globals_11, (MR_Integer) 602, &Demangle_84);
+          switch (Demangle_84) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              MaybeDemangleCmd_86 = (MR_Word) ((MR_Unsigned) 0U);
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_String DemangleCmd_85;
+
+                libs__globals__lookup_string_option_3_p_0(Globals_11, (MR_Integer) 624, &DemangleCmd_85);
+                {
+                  MaybeDemangleCmd_86 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(1, MaybeDemangleCmd_86, 0) = ((MR_Box) (DemangleCmd_85));
+                }
+              }
+              break;
+          }
+          parse_tree__module_cmds__invoke_system_command_maybe_filter_output_10_p_0(Globals_11, ProgressStream_12, ErrorStream_13, ErrorStream_13, (MR_Integer) 1, LinkCmd_83, MaybeDemangleCmd_86, &LinkSucceeded_87);
+          succeeded = (LinkSucceeded_87 == (MR_Integer) 1);
+          if (succeeded)
+          {
+            succeeded = (strcmp(LinkerStripOpt_32, (MR_String) "") == 0);
+            if (succeeded)
+            {
+              succeeded = (strcmp(StripExeCommand_33, (MR_String) "") == 0);
+              succeeded = !(succeeded);
+            }
+          }
+          if (succeeded)
+          {
+            MR_String StripCmd_88;
+            MR_String Var_232;
+            MR_String Var_243;
+            MR_String Var_244;
+            MR_String Var_246;
+
+            Var_232 = libs__shell_util__quote_shell_cmd_arg_1_f_0(FullOutputFileName_16);
+            Var_243 = mercury__string__f_43_43_2_f_0((MR_String) " ", Var_232);
+            Var_244 = mercury__string__f_43_43_2_f_0(StripExeFlags_36, Var_243);
+            Var_246 = mercury__string__f_43_43_2_f_0((MR_String) " ", Var_244);
+            StripCmd_88 = mercury__string__f_43_43_2_f_0(StripExeCommand_33, Var_246);
+            parse_tree__module_cmds__invoke_system_command_maybe_filter_output_10_p_0(Globals_11, ProgressStream_12, ErrorStream_13, ErrorStream_13, (MR_Integer) 1, StripCmd_88, (MR_Word) ((MR_Unsigned) 0U), Succeeded_18);
+          }
+          else
+            *Succeeded_18 = LinkSucceeded_87;
+        }
+        break;
+    }
+    if (!((MaybeDeleteTmpArchive_78 == (MR_Word) ((MR_Unsigned) 0U))))
+    {
+      MR_String FileToDelete_89 = ((MR_String) ((MR_hl_field(1, MaybeDeleteTmpArchive_78, (MR_Integer) 0))));
+      MR_Word Var_90;
+
+      mercury__io__file__remove_file_4_p_0(FileToDelete_89, &Var_90);
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__create_archive_9_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv0_HeadVar__2_2;
+
+  conv0_HeadVar__2_2 = libs__shell_util__quote_shell_cmd_arg_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__create_archive_9_p_0(
+  MR_Word Globals_10,
+  MR_Word ProgressStream_11,
+  MR_Word ErrorStream_12,
+  MR_String FullLibFileName_13,
+  MR_Word Quote_14,
+  MR_Word ObjectList_15,
+  MR_Word * Succeeded_16)
+{
+  MR_bool succeeded;
+  MR_String ArCmd_18;
+  MR_Word ArFlagsList_19;
+  MR_String ArFlags_20;
+  MR_String ArOutputFlag_21;
+  MR_String RanLib_22;
+  MR_String Objects_23;
+  MR_Word C_CompilerType_24;
+  MR_String ArOutputSpace_27;
+  MR_String MakeLibCmdArgs_32;
+  MR_Word MakeLibCmdSucceeded_33;
+  MR_Word Var_50;
+  MR_Word Var_51;
+  MR_Word Var_53;
+  MR_Word Var_54;
+  MR_Word Var_55;
+  MR_Word Var_56;
+  MR_Word Var_58;
+
+  libs__globals__lookup_string_option_3_p_0(Globals_10, (MR_Integer) 617, &ArCmd_18);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_10, (MR_Integer) 619, &ArFlagsList_19);
+  backend_libs__compile_target_code__join_string_list_5_p_0(ArFlagsList_19, (MR_String) "", (MR_String) "", (MR_String) " ", &ArFlags_20);
+  libs__globals__lookup_string_option_3_p_0(Globals_10, (MR_Integer) 618, &ArOutputFlag_21);
+  libs__globals__lookup_string_option_3_p_0(Globals_10, (MR_Integer) 620, &RanLib_22);
+  switch (Quote_14) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      backend_libs__compile_target_code__join_string_list_5_p_0(ObjectList_15, (MR_String) "", (MR_String) "", (MR_String) " ", &Objects_23);
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word Var_70;
+
+        Var_70 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[10]), ObjectList_15);
+        backend_libs__compile_target_code__join_string_list_5_p_0(Var_70, (MR_String) "", (MR_String) "", (MR_String) " ", &Objects_23);
+      }
+      break;
+  }
+  libs__globals__get_c_compiler_type_2_p_0(Globals_10, &C_CompilerType_24);
+  switch (MR_tag((MR_Word) C_CompilerType_24)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      ArOutputSpace_27 = (MR_String) " ";
+      break;
+    case (MR_Integer) 1:
+    case (MR_Integer) 2:
+      ArOutputSpace_27 = (MR_String) " ";
+      break;
+    case (MR_Integer) 3:
+      ArOutputSpace_27 = (MR_String) "";
+      break;
+  }
+  {
+    Var_58 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_58, 0) = ((MR_Box) (Objects_23));
+    MR_hl_field(1, Var_58, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  {
+    Var_56 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_56, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_56, 1) = ((MR_Box) (Var_58));
+  }
+  {
+    Var_55 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_55, 0) = ((MR_Box) (FullLibFileName_13));
+    MR_hl_field(1, Var_55, 1) = ((MR_Box) (Var_56));
+  }
+  {
+    Var_54 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_54, 0) = ((MR_Box) (ArOutputSpace_27));
+    MR_hl_field(1, Var_54, 1) = ((MR_Box) (Var_55));
+  }
+  {
+    Var_53 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_53, 0) = ((MR_Box) (ArOutputFlag_21));
+    MR_hl_field(1, Var_53, 1) = ((MR_Box) (Var_54));
+  }
+  {
+    Var_51 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_51, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_51, 1) = ((MR_Box) (Var_53));
+  }
+  {
+    Var_50 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_50, 0) = ((MR_Box) (ArFlags_20));
+    MR_hl_field(1, Var_50, 1) = ((MR_Box) (Var_51));
+  }
+  MakeLibCmdArgs_32 = mercury__string__append_list_1_f_0(Var_50);
+  backend_libs__compile_target_code__invoke_long_system_command_maybe_filter_output_12_p_0(Globals_10, ProgressStream_11, ErrorStream_12, ErrorStream_12, (MR_Integer) 1, ArCmd_18, (MR_String) "", MakeLibCmdArgs_32, (MR_Word) ((MR_Unsigned) 0U), &MakeLibCmdSucceeded_33);
+  succeeded = (strcmp(RanLib_22, (MR_String) "") == 0);
+  if (!(succeeded))
+    succeeded = (MakeLibCmdSucceeded_33 == (MR_Integer) 0);
+  if (succeeded)
+    *Succeeded_16 = MakeLibCmdSucceeded_33;
+  else
+  {
+    MR_String RanLibCmd_34;
+    MR_Word Var_63;
+    MR_Word Var_64;
+    MR_Word Var_66;
+
+    {
+      Var_66 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_66, 0) = ((MR_Box) (FullLibFileName_13));
+      MR_hl_field(1, Var_66, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_64 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_64, 0) = ((MR_Box) ((MR_String) " "));
+      MR_hl_field(1, Var_64, 1) = ((MR_Box) (Var_66));
+    }
+    {
+      Var_63 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_63, 0) = ((MR_Box) (RanLib_22));
+      MR_hl_field(1, Var_63, 1) = ((MR_Box) (Var_64));
+    }
+    RanLibCmd_34 = mercury__string__append_list_1_f_0(Var_63);
+    parse_tree__module_cmds__invoke_system_command_9_p_0(Globals_10, ProgressStream_11, ErrorStream_12, ErrorStream_12, (MR_Integer) 1, RanLibCmd_34, Succeeded_16);
+  }
+}
+
+static MR_String MR_CALL 
+backend_libs__compile_target_code__reserve_stack_size_flags_1_f_0(
+  MR_Word Globals_3)
+{
+  MR_bool succeeded;
+  MR_String Flags_4;
+  MR_Integer ReserveStackSize_5;
+
+  libs__globals__lookup_int_option_3_p_0(Globals_3, (MR_Integer) 611, &ReserveStackSize_5);
+  succeeded = (ReserveStackSize_5 == (MR_Integer) -1);
+  if (succeeded)
+    Flags_4 = (MR_String) "";
+  else
+  {
+    MR_Word C_CompilerType_6;
+
+    libs__globals__get_c_compiler_type_2_p_0(Globals_3, &C_CompilerType_6);
+    switch (MR_tag((MR_Word) C_CompilerType_6)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_String Var_22;
+
+          mercury__string__format__format_signed_int_component_nowidth_noprec_3_p_0((MR_Word) (&backend_libs__compile_target_code_scalar_common_3[8]), ReserveStackSize_5, &Var_22);
+          Flags_4 = mercury__string__f_43_43_2_f_0((MR_String) "-Wl,--stack=", Var_22);
+        }
+        break;
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+        {
+          MR_String Var_22;
+
+          mercury__string__format__format_signed_int_component_nowidth_noprec_3_p_0((MR_Word) (&backend_libs__compile_target_code_scalar_common_3[8]), ReserveStackSize_5, &Var_22);
+          Flags_4 = mercury__string__f_43_43_2_f_0((MR_String) "-Wl,--stack=", Var_22);
+        }
+        break;
+      case (MR_Integer) 3:
+        {
+          MR_String Var_30;
+
+          mercury__string__format__format_signed_int_component_nowidth_noprec_3_p_0((MR_Word) (&backend_libs__compile_target_code_scalar_common_3[8]), ReserveStackSize_5, &Var_30);
+          Flags_4 = mercury__string__f_43_43_2_f_0((MR_String) "-stack:", Var_30);
+        }
+        break;
+    }
+  }
+  return Flags_4;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_linker_output_option_3_p_0(
+  MR_Word Globals_4,
+  MR_Word LinkTargetType_5,
+  MR_String * OutputOpt_6)
+{
+  MR_bool succeeded;
+  MR_Word C_CompilerType_7;
+
+  libs__globals__get_c_compiler_type_2_p_0(Globals_4, &C_CompilerType_7);
+  switch (MR_tag((MR_Word) C_CompilerType_7)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      *OutputOpt_6 = (MR_String) " -o ";
+      break;
+    case (MR_Integer) 1:
+    case (MR_Integer) 2:
+      *OutputOpt_6 = (MR_String) " -o ";
+      break;
+    case (MR_Integer) 3:
+      {
+        succeeded = (LinkTargetType_5 == (MR_Integer) 0);
+        if (succeeded)
+          *OutputOpt_6 = (MR_String) " -Fe";
+        else
+          *OutputOpt_6 = (MR_String) " -o ";
+      }
+      break;
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__get_frameworks_2_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv0_HeadVar__2_2;
+
+  conv0_HeadVar__2_2 = libs__shell_util__quote_shell_cmd_arg_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_frameworks_2_p_0(
+  MR_Word Globals_3,
+  MR_String * FrameworkOpts_4)
+{
+  MR_Word Frameworks_5;
+  MR_Word Var_10;
+
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_3, (MR_Integer) 608, &Frameworks_5);
+  Var_10 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[9]), Frameworks_5);
+  backend_libs__compile_target_code__join_string_list_5_p_0(Var_10, (MR_String) "-framework ", (MR_String) "", (MR_String) " ", FrameworkOpts_4);
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__filter_object_files_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = backend_libs__compile_target_code__has_object_file_extension_3_p_0(((MR_String) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_String) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_String) (wrapper_arg_1)));
+  return succeeded;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__filter_object_files_4_p_0(
+  MR_Word Globals_5,
+  MR_Word Files_6,
+  MR_Word * ObjectFiles_7,
+  MR_Word * NonObjectFiles_8)
+{
+  MR_bool succeeded;
+  MR_String ObjExt_9;
+  MR_String PicObjExt_10;
+  MR_Word Var_13;
+
+  libs__globals__lookup_string_option_3_p_0(Globals_5, (MR_Integer) 561, &ObjExt_9);
+  libs__globals__lookup_string_option_3_p_0(Globals_5, (MR_Integer) 562, &PicObjExt_10);
+  {
+    Var_13 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_13, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_2[2]));
+    MR_hl_field(0, Var_13, 1) = ((MR_Box) (backend_libs__compile_target_code__filter_object_files_4_p_0_1));
+    MR_hl_field(0, Var_13, 2) = ((MR_Box) ((MR_Integer) 2));
+    MR_hl_field(0, Var_13, 3) = ((MR_Box) (ObjExt_9));
+    MR_hl_field(0, Var_13, 4) = ((MR_Box) (PicObjExt_10));
+  }
+  mercury__list__filter_4_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_13, Files_6, ObjectFiles_7, NonObjectFiles_8);
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_restricted_command_line_link_opts_3_p_0(
+  MR_Word Globals_4,
+  MR_Word LinkTargetType_5,
+  MR_String * ResCmdLinkOpts_6)
+{
+  MR_Word RestrictedCommandLine_7;
+
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 695, &RestrictedCommandLine_7);
+  switch (RestrictedCommandLine_7) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      *ResCmdLinkOpts_6 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      switch (LinkTargetType_5) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word C_CompilerType_8;
+
+            libs__globals__get_c_compiler_type_2_p_0(Globals_4, &C_CompilerType_8);
+            switch (MR_tag((MR_Word) C_CompilerType_8)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *ResCmdLinkOpts_6 = (MR_String) "";
+                break;
+              case (MR_Integer) 1:
+              case (MR_Integer) 2:
+                *ResCmdLinkOpts_6 = (MR_String) "";
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) ((MR_hl_field(3, C_CompilerType_8, (MR_Integer) 0))))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    backend_libs__compile_target_code__join_string_list_5_p_0((MR_Word) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[13])), (MR_String) "", (MR_String) "", (MR_String) " ", ResCmdLinkOpts_6);
+                    break;
+                  case (MR_Integer) 1:
+                    backend_libs__compile_target_code__join_string_list_5_p_0((MR_Word) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[10])), (MR_String) "", (MR_String) "", (MR_String) " ", ResCmdLinkOpts_6);
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          *ResCmdLinkOpts_6 = (MR_String) "";
+          break;
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__use_thread_libs_2_p_0(
+  MR_Word Globals_3,
+  MR_Word * UseThreadLibs_4)
+{
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 268, UseThreadLibs_4);
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_system_libs_3_p_0(
+  MR_Word Globals_4,
+  MR_Word TargetType_5,
+  MR_String * SystemLibs_6)
+{
+  MR_Word TraceLevel_7;
+  MR_Word TraceEnabled_8;
+  MR_String SystemTraceLibs_9;
+  MR_Word UseThreadLibs_13;
+  MR_String ThreadLibs_14;
+  MR_String OtherSystemLibs_15;
+  MR_Word Var_25;
+  MR_Word Var_26;
+  MR_Word Var_27;
+
+  libs__globals__get_trace_level_2_p_0(Globals_4, &TraceLevel_7);
+  TraceEnabled_8 = libs__trace_params__is_exec_trace_enabled_at_given_trace_level_1_f_0(TraceLevel_7);
+  switch (TraceEnabled_8) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      {
+        MR_String SystemTraceLibs0_10;
+        MR_Word UseReadline_11;
+
+        libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 627, &SystemTraceLibs0_10);
+        libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 605, &UseReadline_11);
+        switch (UseReadline_11) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            SystemTraceLibs_9 = SystemTraceLibs0_10;
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_String ReadlineLibs_12;
+              MR_String Var_19;
+
+              libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 633, &ReadlineLibs_12);
+              Var_19 = mercury__string__f_43_43_2_f_0((MR_String) " ", ReadlineLibs_12);
+              SystemTraceLibs_9 = mercury__string__f_43_43_2_f_0(SystemTraceLibs0_10, Var_19);
+            }
+            break;
+        }
+      }
+      break;
+    case (MR_Integer) 0:
+      SystemTraceLibs_9 = (MR_String) "";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 268, &UseThreadLibs_13);
+  switch (UseThreadLibs_13) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      ThreadLibs_14 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 628, &ThreadLibs_14);
+      break;
+  }
+  switch (TargetType_5) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 632, &OtherSystemLibs_15);
+      break;
+    case (MR_Integer) 2:
+      libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 631, &OtherSystemLibs_15);
+      break;
+  }
+  {
+    Var_27 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_27, 0) = ((MR_Box) (ThreadLibs_14));
+    MR_hl_field(1, Var_27, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  {
+    Var_26 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_26, 0) = ((MR_Box) (OtherSystemLibs_15));
+    MR_hl_field(1, Var_26, 1) = ((MR_Box) (Var_27));
+  }
+  {
+    Var_25 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_25, 0) = ((MR_Box) (SystemTraceLibs_9));
+    MR_hl_field(1, Var_25, 1) = ((MR_Box) (Var_26));
+  }
+  *SystemLibs_6 = mercury__string__join_list_2_f_0((MR_String) " ", Var_25);
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__get_runtime_library_path_opts_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv0_HeadVar__2_2;
+
+  conv0_HeadVar__2_2 = libs__shell_util__quote_shell_cmd_arg_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_runtime_library_path_opts_5_p_0(
+  MR_Word Globals_6,
+  MR_Word LinkTargetType_7,
+  MR_Word RpathFlagOpt_8,
+  MR_Word RpathSepOpt_9,
+  MR_String * RpathOpts_10)
+{
+  MR_bool succeeded;
+  MR_Word UseInstallName_11;
+  MR_Word SharedLibsSupported_12;
+  MR_String Linkage_13;
+
+  libs__globals__lookup_bool_option_3_p_0(Globals_6, (MR_Integer) 656, &UseInstallName_11);
+  backend_libs__compile_target_code__shared_libraries_supported_2_p_0(Globals_6, &SharedLibsSupported_12);
+  libs__globals__lookup_string_option_3_p_0(Globals_6, (MR_Integer) 597, &Linkage_13);
+  succeeded = (UseInstallName_11 == (MR_Integer) 0);
+  if (succeeded)
+  {
+    succeeded = (SharedLibsSupported_12 == (MR_Integer) 1);
+    if (succeeded)
+    {
+      succeeded = (strcmp(Linkage_13, (MR_String) "shared") == 0);
+      if (!(succeeded))
+        succeeded = (LinkTargetType_7 == (MR_Integer) 2);
+    }
+  }
+  if (succeeded)
+  {
+    MR_Word RpathDirs0_14;
+    MR_Word RpathDirs_15;
+
+    libs__globals__lookup_accumulating_option_3_p_0(Globals_6, (MR_Integer) 582, &RpathDirs0_14);
+    RpathDirs_15 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[8]), RpathDirs0_14);
+    if ((RpathDirs_15 == (MR_Word) ((MR_Unsigned) 0U)))
+      *RpathOpts_10 = (MR_String) "";
+    else
+    {
+      MR_String RpathSep_18;
+      MR_String RpathFlag_19;
+      MR_String RpathOpts0_20;
+
+      libs__globals__lookup_string_option_3_p_0(Globals_6, RpathSepOpt_9, &RpathSep_18);
+      libs__globals__lookup_string_option_3_p_0(Globals_6, RpathFlagOpt_8, &RpathFlag_19);
+      RpathOpts0_20 = mercury__string__join_list_2_f_0(RpathSep_18, RpathDirs_15);
+      *RpathOpts_10 = mercury__string__f_43_43_2_f_0(RpathFlag_19, RpathOpts0_20);
+    }
+  }
+  else
+    *RpathOpts_10 = (MR_String) "";
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__shared_libraries_supported_2_p_0(
+  MR_Word Globals_3,
+  MR_Word * Supported_4)
+{
+  MR_bool succeeded;
+  MR_String LibExt_5;
+  MR_String SharedLibExt_6;
+
+  libs__globals__lookup_string_option_3_p_0(Globals_3, (MR_Integer) 613, &LibExt_5);
+  libs__globals__lookup_string_option_3_p_0(Globals_3, (MR_Integer) 612, &SharedLibExt_6);
+  succeeded = (strcmp(LibExt_5, SharedLibExt_6) == 0);
+  succeeded = !(succeeded);
+  if (succeeded)
+    *Supported_4 = (MR_Integer) 1;
+  else
+    *Supported_4 = (MR_Integer) 0;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_link_libraries_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4,
+  MR_Box wrapper_arg_5,
+  MR_Box * wrapper_arg_6)
+{
+  MR_Box closure = closure_arg;
+  MR_String conv2_LinkerOpt_12;
+  MR_Word conv1_STATE_VARIABLE_Succeeded_37;
+
+  backend_libs__compile_target_code__process_link_library_8_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_String) (wrapper_arg_1)), &conv2_LinkerOpt_12, ((MR_Word) (wrapper_arg_3)), &conv1_STATE_VARIABLE_Succeeded_37);
+  *wrapper_arg_2 = ((MR_Box) (conv2_LinkerOpt_12));
+  *wrapper_arg_4 = ((MR_Box) (conv1_STATE_VARIABLE_Succeeded_37));
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__get_link_libraries_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv0_LambdaHeadVar__2_20;
+
+  conv0_LambdaHeadVar__2_20 = backend_libs__compile_target_code__IntroducedFrom__func__get_link_libraries__2218__1_2_f_0(((MR_String) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_LambdaHeadVar__2_20));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_link_libraries_4_p_0(
+  MR_Word Globals_5,
+  MR_Word * MaybeLinkLibraries_6)
+{
+  MR_Word MercuryLibDirs0_8;
+  MR_String GradeDir_9;
+  MR_Word MercuryLibDirs_10;
+  MR_Word LinkLibrariesList0_12;
+  MR_Word LinkLibrariesList_13;
+  MR_Word LibrariesSucceeded_14;
+  MR_Word Var_18;
+  MR_Word Var_24;
+  MR_Box conv4_LibrariesSucceeded_14;
+  MR_Box conv3_STATE_VARIABLE_IO_16;
+
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_5, (MR_Integer) 586, &MercuryLibDirs0_8);
+  libs__compute_grade__grade_directory_component_2_p_0(Globals_5, &GradeDir_9);
+  {
+    Var_18 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_18, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_2[2]));
+    MR_hl_field(0, Var_18, 1) = ((MR_Box) (backend_libs__compile_target_code__get_link_libraries_4_p_0_1));
+    MR_hl_field(0, Var_18, 2) = ((MR_Box) ((MR_Integer) 1));
+    MR_hl_field(0, Var_18, 3) = ((MR_Box) (GradeDir_9));
+  }
+  MercuryLibDirs_10 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_18, MercuryLibDirs0_8);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_5, (MR_Integer) 584, &LinkLibrariesList0_12);
+  {
+    Var_24 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_24, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_11[0]));
+    MR_hl_field(0, Var_24, 1) = ((MR_Box) (backend_libs__compile_target_code__get_link_libraries_4_p_0_2));
+    MR_hl_field(0, Var_24, 2) = ((MR_Box) ((MR_Integer) 2));
+    MR_hl_field(0, Var_24, 3) = ((MR_Box) (Globals_5));
+    MR_hl_field(0, Var_24, 4) = ((MR_Box) (MercuryLibDirs_10));
+  }
+  mercury__list__map_foldl2_7_p_2((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&libs__maybe_util__libs__maybe_util__type_ctor_info_maybe_succeeded_0), (MR_Word) (&mercury__io__io__type_ctor_info_state_0), Var_24, LinkLibrariesList0_12, &LinkLibrariesList_13, ((MR_Box) ((MR_Integer) 1)), &conv4_LibrariesSucceeded_14, ((MR_Box) ((MR_Integer) 0)), &conv3_STATE_VARIABLE_IO_16);
+  LibrariesSucceeded_14 = ((MR_Word) (conv4_LibrariesSucceeded_14));
+  switch (LibrariesSucceeded_14) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      *MaybeLinkLibraries_6 = (MR_Word) ((MR_Unsigned) 0U);
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *MaybeLinkLibraries_6 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (LinkLibrariesList_13));
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_mercury_std_libs_3_p_0(
+  MR_Word Globals_4,
+  MR_Word TargetType_5,
+  MR_String * StdLibs_6)
+{
+  MR_bool succeeded;
+  MR_Word MaybeStdlibDir_7;
+
+  libs__globals__lookup_maybe_string_option_3_p_0(Globals_4, (MR_Integer) 592, &MaybeStdlibDir_7);
+  if ((MaybeStdlibDir_7 == (MR_Word) ((MR_Unsigned) 0U)))
+    *StdLibs_6 = (MR_String) "";
+  else
+  {
+    MR_String StdLibDir_8 = ((MR_String) ((MR_hl_field(1, MaybeStdlibDir_7, (MR_Integer) 0))));
+    MR_Word GCMethod_9;
+    MR_Word LibExt_10;
+    MR_String MercuryOrCsharpLinkage_11;
+    MR_String GradeDir_12;
+    MR_String StaticGCLibs_13;
+    MR_String SharedGCLibs_14;
+    MR_Word TraceLevel_23;
+    MR_Word TraceEnabled_24;
+    MR_String StaticTraceLibs_25;
+    MR_String SharedTraceLibs_26;
+    MR_Word SourceDebug_35;
+    MR_String StaticSourceDebugLibs_42;
+    MR_String SharedSourceDebugLibs_43;
+    MR_String StaticStdLib_44;
+    MR_String StdLib_45;
+    MR_String StaticRuntimeLib_46;
+    MR_String RuntimeLib_47;
+
+    libs__globals__get_gc_method_2_p_0(Globals_4, &GCMethod_9);
+    switch (TargetType_5) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 3:
+      case (MR_Integer) 4:
+        {
+          LibExt_10 = (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[0]));
+          MercuryOrCsharpLinkage_11 = (MR_String) "csharp";
+        }
+        break;
+      case (MR_Integer) 0:
+      case (MR_Integer) 2:
+        {
+          LibExt_10 = (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[7]));
+          libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 599, &MercuryOrCsharpLinkage_11);
+        }
+        break;
+    }
+    libs__compute_grade__grade_directory_component_2_p_0(Globals_4, &GradeDir_12);
+    switch (GCMethod_9) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 5:
+        {
+          StaticGCLibs_13 = (MR_String) "";
+          SharedGCLibs_14 = (MR_String) "";
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          StaticGCLibs_13 = (MR_String) "";
+          SharedGCLibs_14 = (MR_String) "";
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word CDebugGrade_16;
+          MR_String GCGrade1_17;
+          MR_Word ProfTime_18;
+          MR_Word ProfDeep_19;
+          MR_String GCGrade2_20;
+          MR_Word Parallel_21;
+          MR_String GCGrade_22;
+
+          libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 312, &CDebugGrade_16);
+          switch (CDebugGrade_16) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              GCGrade1_17 = (MR_String) "gc";
+              break;
+            case (MR_Integer) 1:
+              GCGrade1_17 = (MR_String) "gc_c_debug";
+              break;
+          }
+          libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 245, &ProfTime_18);
+          libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 247, &ProfDeep_19);
+          succeeded = (ProfTime_18 == (MR_Integer) 1);
+          if (!(succeeded))
+            succeeded = (ProfDeep_19 == (MR_Integer) 1);
+          if (succeeded)
+            GCGrade2_20 = mercury__string__f_43_43_2_f_0(GCGrade1_17, (MR_String) "_prof");
+          else
+            GCGrade2_20 = GCGrade1_17;
+          libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 268, &Parallel_21);
+          switch (Parallel_21) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              GCGrade_22 = GCGrade2_20;
+              break;
+            case (MR_Integer) 1:
+              GCGrade_22 = mercury__string__f_43_43_2_f_0((MR_String) "par_", GCGrade2_20);
+              break;
+          }
+          backend_libs__compile_target_code__link_lib_args_8_p_0(Globals_4, TargetType_5, StdLibDir_8, (MR_String) "", LibExt_10, GCGrade_22, &StaticGCLibs_13, &SharedGCLibs_14);
+        }
+        break;
+      case (MR_Integer) 3:
+        {
+          MR_Word CDebugGrade_121;
+          MR_String GCGrade1_122;
+          MR_Word ProfTime_123;
+          MR_Word ProfDeep_124;
+          MR_String GCGrade2_125;
+          MR_Word Parallel_126;
+          MR_String GCGrade_127;
+
+          libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 312, &CDebugGrade_121);
+          switch (CDebugGrade_121) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              GCGrade1_122 = (MR_String) "gc_debug";
+              break;
+            case (MR_Integer) 1:
+              GCGrade1_122 = (MR_String) "gc_debug_c_debug";
+              break;
+          }
+          libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 245, &ProfTime_123);
+          libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 247, &ProfDeep_124);
+          succeeded = (ProfTime_123 == (MR_Integer) 1);
+          if (!(succeeded))
+            succeeded = (ProfDeep_124 == (MR_Integer) 1);
+          if (succeeded)
+            GCGrade2_125 = mercury__string__f_43_43_2_f_0(GCGrade1_122, (MR_String) "_prof");
+          else
+            GCGrade2_125 = GCGrade1_122;
+          libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 268, &Parallel_126);
+          switch (Parallel_126) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              GCGrade_127 = GCGrade2_125;
+              break;
+            case (MR_Integer) 1:
+              GCGrade_127 = mercury__string__f_43_43_2_f_0((MR_String) "par_", GCGrade2_125);
+              break;
+          }
+          backend_libs__compile_target_code__link_lib_args_8_p_0(Globals_4, TargetType_5, StdLibDir_8, (MR_String) "", LibExt_10, GCGrade_127, &StaticGCLibs_13, &SharedGCLibs_14);
+        }
+        break;
+      case (MR_Integer) 4:
+        {
+          StaticGCLibs_13 = (MR_String) "";
+          SharedGCLibs_14 = (MR_String) "";
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          StaticGCLibs_13 = (MR_String) "";
+          SharedGCLibs_14 = (MR_String) "";
+        }
+        break;
+    }
+    libs__globals__get_trace_level_2_p_0(Globals_4, &TraceLevel_23);
+    TraceEnabled_24 = libs__trace_params__is_exec_trace_enabled_at_given_trace_level_1_f_0(TraceLevel_23);
+    switch (TraceEnabled_24) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_String StaticTraceLib_27;
+          MR_String TraceLib_28;
+          MR_String StaticEventSpecLib_29;
+          MR_String EventSpecLib_30;
+          MR_String StaticBrowserLib_31;
+          MR_String BrowserLib_32;
+          MR_String StaticMdbCompLib_33;
+          MR_String MdbCompLib_34;
+          MR_Word Var_65;
+          MR_Word Var_66;
+          MR_Word Var_67;
+          MR_Word Var_68;
+          MR_Word Var_71;
+          MR_Word Var_72;
+          MR_Word Var_73;
+          MR_Word Var_74;
+
+          backend_libs__compile_target_code__link_lib_args_8_p_0(Globals_4, TargetType_5, StdLibDir_8, GradeDir_12, LibExt_10, (MR_String) "mer_trace", &StaticTraceLib_27, &TraceLib_28);
+          backend_libs__compile_target_code__link_lib_args_8_p_0(Globals_4, TargetType_5, StdLibDir_8, GradeDir_12, LibExt_10, (MR_String) "mer_eventspec", &StaticEventSpecLib_29, &EventSpecLib_30);
+          backend_libs__compile_target_code__link_lib_args_8_p_0(Globals_4, TargetType_5, StdLibDir_8, GradeDir_12, LibExt_10, (MR_String) "mer_browser", &StaticBrowserLib_31, &BrowserLib_32);
+          backend_libs__compile_target_code__link_lib_args_8_p_0(Globals_4, TargetType_5, StdLibDir_8, GradeDir_12, LibExt_10, (MR_String) "mer_mdbcomp", &StaticMdbCompLib_33, &MdbCompLib_34);
+          {
+            Var_68 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_68, 0) = ((MR_Box) (StaticMdbCompLib_33));
+            MR_hl_field(1, Var_68, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Var_67 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_67, 0) = ((MR_Box) (StaticBrowserLib_31));
+            MR_hl_field(1, Var_67, 1) = ((MR_Box) (Var_68));
+          }
+          {
+            Var_66 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_66, 0) = ((MR_Box) (StaticEventSpecLib_29));
+            MR_hl_field(1, Var_66, 1) = ((MR_Box) (Var_67));
+          }
+          {
+            Var_65 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_65, 0) = ((MR_Box) (StaticTraceLib_27));
+            MR_hl_field(1, Var_65, 1) = ((MR_Box) (Var_66));
+          }
+          StaticTraceLibs_25 = mercury__string__join_list_2_f_0((MR_String) " ", Var_65);
+          {
+            Var_74 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_74, 0) = ((MR_Box) (MdbCompLib_34));
+            MR_hl_field(1, Var_74, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Var_73 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_73, 0) = ((MR_Box) (BrowserLib_32));
+            MR_hl_field(1, Var_73, 1) = ((MR_Box) (Var_74));
+          }
+          {
+            Var_72 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_72, 0) = ((MR_Box) (EventSpecLib_30));
+            MR_hl_field(1, Var_72, 1) = ((MR_Box) (Var_73));
+          }
+          {
+            Var_71 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_71, 0) = ((MR_Box) (TraceLib_28));
+            MR_hl_field(1, Var_71, 1) = ((MR_Box) (Var_72));
+          }
+          SharedTraceLibs_26 = mercury__string__join_list_2_f_0((MR_String) " ", Var_71);
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          StaticTraceLibs_25 = (MR_String) "";
+          SharedTraceLibs_26 = (MR_String) "";
+        }
+        break;
+    }
+    libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 286, &SourceDebug_35);
+    switch (SourceDebug_35) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          StaticSourceDebugLibs_42 = (MR_String) "";
+          SharedSourceDebugLibs_43 = (MR_String) "";
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_String StaticSsdbLib_36;
+          MR_String SsdbLib_37;
+          MR_String StaticBrowserLib2_38;
+          MR_String BrowserLib2_39;
+          MR_String StaticMdbCompLib2_40;
+          MR_String MdbCompLib2_41;
+          MR_Word Var_81;
+          MR_Word Var_82;
+          MR_Word Var_83;
+          MR_Word Var_86;
+          MR_Word Var_87;
+          MR_Word Var_88;
+
+          backend_libs__compile_target_code__link_lib_args_8_p_0(Globals_4, TargetType_5, StdLibDir_8, GradeDir_12, LibExt_10, (MR_String) "mer_ssdb", &StaticSsdbLib_36, &SsdbLib_37);
+          backend_libs__compile_target_code__link_lib_args_8_p_0(Globals_4, TargetType_5, StdLibDir_8, GradeDir_12, LibExt_10, (MR_String) "mer_browser", &StaticBrowserLib2_38, &BrowserLib2_39);
+          backend_libs__compile_target_code__link_lib_args_8_p_0(Globals_4, TargetType_5, StdLibDir_8, GradeDir_12, LibExt_10, (MR_String) "mer_mdbcomp", &StaticMdbCompLib2_40, &MdbCompLib2_41);
+          {
+            Var_83 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_83, 0) = ((MR_Box) (StaticMdbCompLib2_40));
+            MR_hl_field(1, Var_83, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Var_82 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_82, 0) = ((MR_Box) (StaticBrowserLib2_38));
+            MR_hl_field(1, Var_82, 1) = ((MR_Box) (Var_83));
+          }
+          {
+            Var_81 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_81, 0) = ((MR_Box) (StaticSsdbLib_36));
+            MR_hl_field(1, Var_81, 1) = ((MR_Box) (Var_82));
+          }
+          StaticSourceDebugLibs_42 = mercury__string__join_list_2_f_0((MR_String) " ", Var_81);
+          {
+            Var_88 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_88, 0) = ((MR_Box) (MdbCompLib2_41));
+            MR_hl_field(1, Var_88, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Var_87 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_87, 0) = ((MR_Box) (BrowserLib2_39));
+            MR_hl_field(1, Var_87, 1) = ((MR_Box) (Var_88));
+          }
+          {
+            Var_86 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_86, 0) = ((MR_Box) (SsdbLib_37));
+            MR_hl_field(1, Var_86, 1) = ((MR_Box) (Var_87));
+          }
+          SharedSourceDebugLibs_43 = mercury__string__join_list_2_f_0((MR_String) " ", Var_86);
+        }
+        break;
+    }
+    backend_libs__compile_target_code__link_lib_args_8_p_0(Globals_4, TargetType_5, StdLibDir_8, GradeDir_12, LibExt_10, (MR_String) "mer_std", &StaticStdLib_44, &StdLib_45);
+    backend_libs__compile_target_code__link_lib_args_8_p_0(Globals_4, TargetType_5, StdLibDir_8, GradeDir_12, LibExt_10, (MR_String) "mer_rt", &StaticRuntimeLib_46, &RuntimeLib_47);
+    succeeded = (strcmp(MercuryOrCsharpLinkage_11, (MR_String) "static") == 0);
+    if (succeeded)
+    {
+      MR_Word Var_93;
+      MR_Word Var_94;
+      MR_Word Var_95;
+      MR_Word Var_96;
+      MR_Word Var_97;
+
+      {
+        Var_97 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_97, 0) = ((MR_Box) (StaticGCLibs_13));
+        MR_hl_field(1, Var_97, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        Var_96 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_96, 0) = ((MR_Box) (StaticRuntimeLib_46));
+        MR_hl_field(1, Var_96, 1) = ((MR_Box) (Var_97));
+      }
+      {
+        Var_95 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_95, 0) = ((MR_Box) (StaticStdLib_44));
+        MR_hl_field(1, Var_95, 1) = ((MR_Box) (Var_96));
+      }
+      {
+        Var_94 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_94, 0) = ((MR_Box) (StaticSourceDebugLibs_42));
+        MR_hl_field(1, Var_94, 1) = ((MR_Box) (Var_95));
+      }
+      {
+        Var_93 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_93, 0) = ((MR_Box) (StaticTraceLibs_25));
+        MR_hl_field(1, Var_93, 1) = ((MR_Box) (Var_94));
+      }
+      *StdLibs_6 = mercury__string__join_list_2_f_0((MR_String) " ", Var_93);
+    }
+    else
+    {
+      succeeded = (strcmp(MercuryOrCsharpLinkage_11, (MR_String) "shared") == 0);
+      if (succeeded)
+      {
+        MR_Word Var_100;
+        MR_Word Var_101;
+        MR_Word Var_102;
+        MR_Word Var_103;
+        MR_Word Var_104;
+
+        {
+          Var_104 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_104, 0) = ((MR_Box) (SharedGCLibs_14));
+          MR_hl_field(1, Var_104, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          Var_103 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_103, 0) = ((MR_Box) (RuntimeLib_47));
+          MR_hl_field(1, Var_103, 1) = ((MR_Box) (Var_104));
+        }
+        {
+          Var_102 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_102, 0) = ((MR_Box) (StdLib_45));
+          MR_hl_field(1, Var_102, 1) = ((MR_Box) (Var_103));
+        }
+        {
+          Var_101 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_101, 0) = ((MR_Box) (SharedSourceDebugLibs_43));
+          MR_hl_field(1, Var_101, 1) = ((MR_Box) (Var_102));
+        }
+        {
+          Var_100 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_100, 0) = ((MR_Box) (SharedTraceLibs_26));
+          MR_hl_field(1, Var_100, 1) = ((MR_Box) (Var_101));
+        }
+        *StdLibs_6 = mercury__string__join_list_2_f_0((MR_String) " ", Var_100);
+      }
+      else
+      {
+        succeeded = (strcmp(MercuryOrCsharpLinkage_11, (MR_String) "csharp") == 0);
+        if (succeeded)
+        {
+          MR_Word Var_107;
+          MR_Word Var_108;
+          MR_Word Var_109;
+
+          {
+            Var_109 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_109, 0) = ((MR_Box) (StdLib_45));
+            MR_hl_field(1, Var_109, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Var_108 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_108, 0) = ((MR_Box) (SharedSourceDebugLibs_43));
+            MR_hl_field(1, Var_108, 1) = ((MR_Box) (Var_109));
+          }
+          {
+            Var_107 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_107, 0) = ((MR_Box) (SharedTraceLibs_26));
+            MR_hl_field(1, Var_107, 1) = ((MR_Box) (Var_108));
+          }
+          *StdLibs_6 = mercury__string__join_list_2_f_0((MR_String) " ", Var_107);
+        }
+        else
+        {
+          MR_String Var_112;
+
+          Var_112 = mercury__string__f_43_43_2_f_0((MR_String) "unknown linkage ", MercuryOrCsharpLinkage_11);
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140backend_libs.compile_target_code.get_mercury_std_libs\'/3", Var_112);
+            return;
+          }
+        }
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__link_lib_args_8_p_0(
+  MR_Word Globals_9,
+  MR_Word TargetType_10,
+  MR_String StdLibDir_11,
+  MR_String GradeDir_12,
+  MR_Word Ext_13,
+  MR_String Name_14,
+  MR_String * StaticArg_15,
+  MR_String * SharedArg_16)
+{
+  MR_String LibPrefix_17 = ((&backend_libs__compile_target_code_vector_common_10[0 + TargetType_10]))->backend_libs__compile_target_code__vector_common_type_10_0__vct_10_f_0;
+  MR_String StaticLibName_18;
+  MR_String Var_19;
+  MR_String Var_20;
+  MR_String Var_21;
+  MR_String Var_22;
+  MR_String Var_23;
+
+  Var_20 = parse_tree__file_names__extension_to_string_2_f_0(Globals_9, Ext_13);
+  Var_19 = mercury__string__f_43_43_2_f_0(Name_14, Var_20);
+  StaticLibName_18 = mercury__string__f_43_43_2_f_0(LibPrefix_17, Var_19);
+  Var_23 = mercury__dir__f_slash_2_f_0(StdLibDir_11, (MR_String) "lib");
+  Var_22 = mercury__dir__f_slash_2_f_0(Var_23, GradeDir_12);
+  Var_21 = mercury__dir__f_slash_2_f_0(Var_22, StaticLibName_18);
+  *StaticArg_15 = libs__shell_util__quote_shell_cmd_arg_1_f_0(Var_21);
+  switch (TargetType_10) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 3:
+    case (MR_Integer) 4:
+      {
+        MR_String Var_31;
+        MR_String Var_32;
+
+        Var_32 = mercury__string__f_43_43_2_f_0(Name_14, (MR_String) ".dll");
+        Var_31 = mercury__string__f_43_43_2_f_0((MR_String) "-r:", Var_32);
+        *SharedArg_16 = libs__shell_util__quote_shell_cmd_arg_1_f_0(Var_31);
+      }
+      break;
+    case (MR_Integer) 0:
+      {
+        MR_String LinkLibOpt_27;
+        MR_String Suffix_28;
+        MR_String Var_29;
+        MR_String Var_30;
+
+        libs__globals__lookup_string_option_3_p_0(Globals_9, (MR_Integer) 640, &LinkLibOpt_27);
+        libs__globals__lookup_string_option_3_p_0(Globals_9, (MR_Integer) 641, &Suffix_28);
+        Var_30 = mercury__string__f_43_43_2_f_0(Name_14, Suffix_28);
+        Var_29 = mercury__string__f_43_43_2_f_0(LinkLibOpt_27, Var_30);
+        *SharedArg_16 = libs__shell_util__quote_shell_cmd_arg_1_f_0(Var_29);
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_String LinkLibOpt_37;
+        MR_String Suffix_38;
+        MR_String Var_39;
+        MR_String Var_40;
+
+        libs__globals__lookup_string_option_3_p_0(Globals_9, (MR_Integer) 642, &LinkLibOpt_37);
+        libs__globals__lookup_string_option_3_p_0(Globals_9, (MR_Integer) 643, &Suffix_38);
+        Var_40 = mercury__string__f_43_43_2_f_0(Name_14, Suffix_38);
+        Var_39 = mercury__string__f_43_43_2_f_0(LinkLibOpt_37, Var_40);
+        *SharedArg_16 = libs__shell_util__quote_shell_cmd_arg_1_f_0(Var_39);
+      }
+      break;
+  }
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__post_link_maybe_make_symlink_or_copy_11_p_0(
+  MR_Word Globals_12,
+  MR_Word ProgressStream_13,
+  MR_Word ErrorStream_14,
+  MR_String FullFileName_15,
+  MR_String CurDirFileName_16,
+  MR_Word ModuleName_17,
+  MR_Word LinkTargetType_18,
+  MR_Word * Succeeded_19,
+  MR_Word * MadeSymlinkOrCopy_20)
+{
+  MR_bool succeeded = (strcmp(FullFileName_15, CurDirFileName_16) == 0);
+
+  if (succeeded)
+  {
+    *Succeeded_19 = (MR_Integer) 1;
+    *MadeSymlinkOrCopy_20 = (MR_Integer) 0;
+  }
+  else
+  {
+    MR_Word Succeeded0_23;
+    MR_Word MaybeCompare_39;
+    MR_Word TimeResultA_41;
+    MR_Word TimeResultB_42;
+    MR_Word TimeA_43;
+    MR_Word TimeB_44;
+    MR_Word Var_40;
+
+    mercury__io__file__file_modification_time_4_p_0(FullFileName_15, &TimeResultA_41);
+    mercury__io__file__file_modification_time_4_p_0(CurDirFileName_16, &TimeResultB_42);
+    succeeded = ((MR_tag((MR_Word) TimeResultA_41)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      TimeA_43 = ((MR_Word) ((MR_hl_field(0, TimeResultA_41, (MR_Integer) 0))));
+      succeeded = ((MR_tag((MR_Word) TimeResultB_42)) == (MR_Integer) 0);
+      if (succeeded)
+        TimeB_44 = ((MR_Word) ((MR_hl_field(0, TimeResultB_42, (MR_Integer) 0))));
+    }
+    if (succeeded)
+    {
+      MR_Word Compare_45;
+
+      mercury__time____Compare____time_t_0_0(&Compare_45, TimeA_43, TimeB_44);
+      {
+        MaybeCompare_39 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, MaybeCompare_39, 0) = ((MR_Box) (Compare_45));
+      }
+    }
+    else
+      MaybeCompare_39 = (MR_Word) ((MR_Unsigned) 0U);
+    succeeded = (MaybeCompare_39 != (MR_Word) ((MR_Unsigned) 0U));
+    if (succeeded)
+    {
+      Var_40 = ((MR_Word) ((MR_hl_field(1, MaybeCompare_39, (MR_Integer) 0))));
+      succeeded = (Var_40 == (MR_Integer) 0);
+    }
+    if (succeeded)
+    {
+      Succeeded0_23 = (MR_Integer) 1;
+      *MadeSymlinkOrCopy_20 = (MR_Integer) 0;
+    }
+    else
+    {
+      MR_Word Var_24;
+
+      mercury__io__file__remove_file_recursively_4_p_0(CurDirFileName_16, &Var_24);
+      parse_tree__module_cmds__make_symlink_or_copy_file_8_p_0(Globals_12, ProgressStream_13, ErrorStream_14, FullFileName_15, CurDirFileName_16, &Succeeded0_23);
+      *MadeSymlinkOrCopy_20 = (MR_Integer) 1;
+    }
+    succeeded = (Succeeded0_23 == (MR_Integer) 1);
+    if (succeeded)
+      switch (LinkTargetType_18) {
+        default:
+          succeeded = MR_FALSE;
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word TargetEnvType_25;
+
+            libs__globals__get_target_env_type_2_p_0(Globals_12, &TargetEnvType_25);
+            succeeded = (TargetEnvType_25 == (MR_Integer) 0);
+          }
+          break;
+        case (MR_Integer) 5:
+          succeeded = MR_TRUE;
+          break;
+      }
+    if (succeeded)
+    {
+      MR_Word ScriptExt_26;
+      MR_String FullLauncherName_27;
+      MR_String CurDirLauncherName_28;
+      MR_Word TargetEnvType_48;
+      MR_Word MaybeCompare_51;
+      MR_Word TimeResultA_53;
+      MR_Word TimeResultB_54;
+      MR_Word TimeA_55;
+      MR_Word TimeB_56;
+      MR_Word Var_52;
+
+      libs__globals__get_target_env_type_2_p_0(Globals_12, &TargetEnvType_48);
+      ScriptExt_26 = ((&backend_libs__compile_target_code_vector_common_9[0 + TargetEnvType_48]))->backend_libs__compile_target_code__vector_common_type_9_0__vct_9_f_0;
+      parse_tree__file_names__module_name_to_file_name_full_curdir_6_p_0(Globals_12, (MR_String) "predicate \140backend_libs.compile_target_code.post_link_maybe_make_symlink_or_copy\'/11", ScriptExt_26, ModuleName_17, &FullLauncherName_27, &CurDirLauncherName_28);
+      mercury__io__file__file_modification_time_4_p_0(FullLauncherName_27, &TimeResultA_53);
+      mercury__io__file__file_modification_time_4_p_0(CurDirLauncherName_28, &TimeResultB_54);
+      succeeded = ((MR_tag((MR_Word) TimeResultA_53)) == (MR_Integer) 0);
+      if (succeeded)
+      {
+        TimeA_55 = ((MR_Word) ((MR_hl_field(0, TimeResultA_53, (MR_Integer) 0))));
+        succeeded = ((MR_tag((MR_Word) TimeResultB_54)) == (MR_Integer) 0);
+        if (succeeded)
+          TimeB_56 = ((MR_Word) ((MR_hl_field(0, TimeResultB_54, (MR_Integer) 0))));
+      }
+      if (succeeded)
+      {
+        MR_Word Compare_57;
+
+        mercury__time____Compare____time_t_0_0(&Compare_57, TimeA_55, TimeB_56);
+        {
+          MaybeCompare_51 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, MaybeCompare_51, 0) = ((MR_Box) (Compare_57));
+        }
+      }
+      else
+        MaybeCompare_51 = (MR_Word) ((MR_Unsigned) 0U);
+      succeeded = (MaybeCompare_51 != (MR_Word) ((MR_Unsigned) 0U));
+      if (succeeded)
+      {
+        Var_52 = ((MR_Word) ((MR_hl_field(1, MaybeCompare_51, (MR_Integer) 0))));
+        succeeded = (Var_52 == (MR_Integer) 0);
+      }
+      if (succeeded)
+        *Succeeded_19 = (MR_Integer) 1;
+      else
+      {
+        MR_Word Var_30;
+
+        mercury__io__file__remove_file_recursively_4_p_0(CurDirLauncherName_28, &Var_30);
+        parse_tree__module_cmds__make_symlink_or_copy_file_8_p_0(Globals_12, ProgressStream_13, ErrorStream_14, FullLauncherName_27, CurDirLauncherName_28, Succeeded_19);
+      }
+    }
+    else
+      *Succeeded_19 = Succeeded0_23;
+  }
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__linked_target_file_name_full_curdir_7_p_0(
+  MR_Word Globals_8,
+  MR_Word ModuleName_9,
+  MR_Word TargetType_10,
+  MR_String * FullFileName_11,
+  MR_String * CurDirFileName_12)
+{
+  switch (TargetType_10) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 3:
+      parse_tree__file_names__module_name_to_file_name_full_curdir_create_dirs_8_p_0(Globals_8, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name_full_curdir\'/7", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[3])), ModuleName_9, FullFileName_11, CurDirFileName_12);
+      break;
+    case (MR_Integer) 4:
+      parse_tree__file_names__module_name_to_file_name_full_curdir_create_dirs_8_p_0(Globals_8, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name_full_curdir\'/7", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[0])), ModuleName_9, FullFileName_11, CurDirFileName_12);
+      break;
+    case (MR_Integer) 0:
+      parse_tree__file_names__module_name_to_file_name_full_curdir_create_dirs_8_p_0(Globals_8, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name_full_curdir\'/7", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[4])), ModuleName_9, FullFileName_11, CurDirFileName_12);
+      break;
+    case (MR_Integer) 6:
+      parse_tree__file_names__module_name_to_file_name_full_curdir_create_dirs_8_p_0(Globals_8, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name_full_curdir\'/7", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[5])), ModuleName_9, FullFileName_11, CurDirFileName_12);
+      break;
+    case (MR_Integer) 5:
+      parse_tree__file_names__module_name_to_file_name_full_curdir_create_dirs_8_p_0(Globals_8, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name_full_curdir\'/7", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[5])), ModuleName_9, FullFileName_11, CurDirFileName_12);
+      break;
+    case (MR_Integer) 2:
+      parse_tree__file_names__module_name_to_lib_file_name_full_curdir_create_dirs_9_p_0(Globals_8, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name_full_curdir\'/7", (MR_String) "lib", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[6])), ModuleName_9, FullFileName_11, CurDirFileName_12);
+      break;
+    case (MR_Integer) 1:
+      parse_tree__file_names__module_name_to_lib_file_name_full_curdir_create_dirs_9_p_0(Globals_8, (MR_String) "predicate \140backend_libs.compile_target_code.linked_target_file_name_full_curdir\'/7", (MR_String) "lib", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[7])), ModuleName_9, FullFileName_11, CurDirFileName_12);
+      break;
+  }
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__make_init_obj_file_8_p_0(
+  MR_Word Globals_9,
+  MR_Word ProgressStream_10,
+  MR_Word ErrorStream_11,
+  MR_Word ModuleName_12,
+  MR_Word ModuleNames_13,
+  MR_Word * Result_14)
+{
+  MR_Word MustCompile_16;
+
+  libs__globals__lookup_bool_option_3_p_0(Globals_9, (MR_Integer) 665, &MustCompile_16);
+  backend_libs__compile_target_code__do_make_init_obj_file_9_p_0(Globals_9, ProgressStream_10, ErrorStream_11, MustCompile_16, ModuleName_12, ModuleNames_13, Result_14);
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__do_make_init_obj_file_9_p_0(
+  MR_Word Globals_10,
+  MR_Word ProgressStream_11,
+  MR_Word ErrorStream_12,
+  MR_Word MustCompile_13,
+  MR_Word ModuleName_14,
+  MR_Word ModuleNames_15,
+  MR_Word * Result_16)
+{
+  MR_bool succeeded;
+  MR_Word MaybeStdLibDir_18;
+  MR_String GradeDir_19;
+  MR_Word StdInitFileNames_23;
+  MR_Word StdTraceInitFileNames_24;
+  MR_Word SourceDebugInitFileNames_25;
+  MR_String MkInit_26;
+  MR_Word MaybeInitTargetFile_27;
+  MR_String InitObjFileName_31;
+  MR_Word Verbose_84;
+  MR_Word Stats_85;
+
+  libs__globals__lookup_maybe_string_option_3_p_0(Globals_10, (MR_Integer) 592, &MaybeStdLibDir_18);
+  libs__compute_grade__grade_directory_component_2_p_0(Globals_10, &GradeDir_19);
+  if ((MaybeStdLibDir_18 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    StdInitFileNames_23 = (MR_Word) ((MR_Unsigned) 0U);
+    StdTraceInitFileNames_24 = (MR_Word) ((MR_Unsigned) 0U);
+    SourceDebugInitFileNames_25 = (MR_Word) ((MR_Unsigned) 0U);
+  }
+  else
+  {
+    MR_String StdLibDir_20 = ((MR_String) ((MR_hl_field(1, MaybeStdLibDir_18, (MR_Integer) 0))));
+    MR_String Var_44;
+    MR_Word Var_46;
+    MR_String Var_47;
+    MR_String Var_50;
+    MR_Word Var_52;
+    MR_String Var_53;
+    MR_String Var_56;
+    MR_String Var_69;
+    MR_String Var_70;
+    MR_String Var_72;
+    MR_String Var_73;
+    MR_String Var_75;
+    MR_String Var_76;
+    MR_String Var_78;
+    MR_String Var_79;
+    MR_String Var_81;
+    MR_String Var_82;
+
+    Var_70 = mercury__dir__f_slash_2_f_0(StdLibDir_20, (MR_String) "modules");
+    Var_69 = mercury__dir__f_slash_2_f_0(Var_70, GradeDir_19);
+    Var_44 = mercury__dir__f_slash_2_f_0(Var_69, (MR_String) "mer_rt.init");
+    Var_73 = mercury__dir__f_slash_2_f_0(StdLibDir_20, (MR_String) "modules");
+    Var_72 = mercury__dir__f_slash_2_f_0(Var_73, GradeDir_19);
+    Var_47 = mercury__dir__f_slash_2_f_0(Var_72, (MR_String) "mer_std.init");
+    {
+      Var_46 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_46, 0) = ((MR_Box) (Var_47));
+      MR_hl_field(1, Var_46, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      StdInitFileNames_23 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, StdInitFileNames_23, 0) = ((MR_Box) (Var_44));
+      MR_hl_field(1, StdInitFileNames_23, 1) = ((MR_Box) (Var_46));
+    }
+    Var_76 = mercury__dir__f_slash_2_f_0(StdLibDir_20, (MR_String) "modules");
+    Var_75 = mercury__dir__f_slash_2_f_0(Var_76, GradeDir_19);
+    Var_50 = mercury__dir__f_slash_2_f_0(Var_75, (MR_String) "mer_browser.init");
+    Var_79 = mercury__dir__f_slash_2_f_0(StdLibDir_20, (MR_String) "modules");
+    Var_78 = mercury__dir__f_slash_2_f_0(Var_79, GradeDir_19);
+    Var_53 = mercury__dir__f_slash_2_f_0(Var_78, (MR_String) "mer_mdbcomp.init");
+    {
+      Var_52 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_52, 0) = ((MR_Box) (Var_53));
+      MR_hl_field(1, Var_52, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      StdTraceInitFileNames_24 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, StdTraceInitFileNames_24, 0) = ((MR_Box) (Var_50));
+      MR_hl_field(1, StdTraceInitFileNames_24, 1) = ((MR_Box) (Var_52));
+    }
+    Var_82 = mercury__dir__f_slash_2_f_0(StdLibDir_20, (MR_String) "modules");
+    Var_81 = mercury__dir__f_slash_2_f_0(Var_82, GradeDir_19);
+    Var_56 = mercury__dir__f_slash_2_f_0(Var_81, (MR_String) "mer_ssdb.init");
+    {
+      SourceDebugInitFileNames_25 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, SourceDebugInitFileNames_25, 0) = ((MR_Box) (Var_56));
+      MR_hl_field(1, SourceDebugInitFileNames_25, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+  }
+  libs__globals__lookup_string_option_3_p_0(Globals_10, (MR_Integer) 622, &MkInit_26);
+  backend_libs__compile_target_code__make_init_target_file_14_p_0(Globals_10, ProgressStream_11, ErrorStream_12, MkInit_26, ModuleName_14, ModuleNames_15, (MR_Word) (MR_mkword(3, &backend_libs__compile_target_code_scalar_common_1[1])), (MR_Word) (MR_mkword(3, &backend_libs__compile_target_code_scalar_common_1[5])), StdInitFileNames_23, StdTraceInitFileNames_24, SourceDebugInitFileNames_25, &MaybeInitTargetFile_27);
+  parse_tree__file_names__module_name_to_file_name_create_dirs_7_p_0(Globals_10, (MR_String) "predicate \140backend_libs.compile_target_code.do_make_init_obj_file\'/9", (MR_Word) (MR_mkword(3, &backend_libs__compile_target_code_scalar_common_1[20])), ModuleName_14, &InitObjFileName_31);
+  libs__globals__lookup_bool_option_3_p_0(Globals_10, (MR_Integer) 72, &Verbose_84);
+  libs__globals__lookup_bool_option_3_p_0(Globals_10, (MR_Integer) 82, &Stats_85);
+  if ((MaybeInitTargetFile_27 == (MR_Word) ((MR_Unsigned) 0U)))
+    *Result_16 = (MR_Word) ((MR_Unsigned) 0U);
+  else
+  {
+    MR_String InitTargetFileName_86 = ((MR_String) ((MR_hl_field(1, MaybeInitTargetFile_27, (MR_Integer) 0))));
+    MR_Word Rel_87;
+    MR_Word TimeResultA_100;
+    MR_Word TimeResultB_101;
+    MR_Word TimeA_102;
+    MR_Word TimeB_103;
+
+    mercury__io__file__file_modification_time_4_p_0(InitObjFileName_31, &TimeResultA_100);
+    mercury__io__file__file_modification_time_4_p_0(InitTargetFileName_86, &TimeResultB_101);
+    succeeded = ((MR_tag((MR_Word) TimeResultA_100)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      TimeA_102 = ((MR_Word) ((MR_hl_field(0, TimeResultA_100, (MR_Integer) 0))));
+      succeeded = ((MR_tag((MR_Word) TimeResultB_101)) == (MR_Integer) 0);
+      if (succeeded)
+        TimeB_103 = ((MR_Word) ((MR_hl_field(0, TimeResultB_101, (MR_Integer) 0))));
+    }
+    if (succeeded)
+    {
+      MR_Word Compare_104;
+
+      mercury__time____Compare____time_t_0_0(&Compare_104, TimeA_102, TimeB_103);
+      switch (Compare_104) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 1:
+          Rel_87 = (MR_Integer) 1;
+          break;
+        case (MR_Integer) 0:
+          Rel_87 = (MR_Integer) 0;
+          break;
+        case (MR_Integer) 2:
+          Rel_87 = (MR_Integer) 0;
+          break;
+      }
+    }
+    else
+      Rel_87 = (MR_Integer) 2;
+    switch (Rel_87) {
+      default:
+        succeeded = MR_FALSE;
+        break;
+      case (MR_Integer) 1:
+        succeeded = MR_TRUE;
+        break;
+      case (MR_Integer) 2:
+        succeeded = MR_TRUE;
+        break;
+    }
+    if (!(succeeded))
+      succeeded = (MustCompile_13 == (MR_Integer) 1);
+    if (succeeded)
+    {
+      MR_Word CompileSucceeded_88;
+
+      libs__file_util__maybe_write_string_5_p_0(ProgressStream_11, Verbose_84, (MR_String) "% Compiling initialization file...\n");
+      backend_libs__compile_target_code__do_compile_c_file_9_p_0(Globals_10, ProgressStream_11, ErrorStream_12, (MR_Integer) 1, InitTargetFileName_86, InitObjFileName_31, &CompileSucceeded_88);
+      libs__file_util__maybe_report_stats_4_p_0(ProgressStream_11, Stats_85);
+      switch (CompileSucceeded_88) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          *Result_16 = (MR_Word) ((MR_Unsigned) 0U);
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+            *Result_16 = base;
+            MR_hl_field(1, base, 0) = ((MR_Box) (InitObjFileName_31));
+          }
+          break;
+      }
+    }
+    else
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *Result_16 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (InitObjFileName_31));
+      }
+  }
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__make_init_target_file_14_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_String conv0_HeadVar__5_5;
+
+  parse_tree__file_names__module_name_to_file_name_5_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_String) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 5)))), ((MR_Word) (wrapper_arg_1)), &conv0_HeadVar__5_5);
+  *wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__5_5));
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__make_init_target_file_14_p_0(
+  MR_Word Globals_15,
+  MR_Word ProgressStream_16,
+  MR_Word ErrorStream_17,
+  MR_String MkInit_18,
+  MR_Word ModuleName_19,
+  MR_Word ModuleNames_20,
+  MR_Word TargetOtherExt_21,
+  MR_Word InitTargetOtherExt_22,
+  MR_Word StdInitFileNames_23,
+  MR_Word StdTraceInitFileNames_24,
+  MR_Word SourceDebugInitFileNames_25,
+  MR_Word * MaybeInitTargetFile_26)
+{
+  MR_bool succeeded;
+  MR_Word Verbose_28;
+  MR_Word Stats_29;
+  MR_String Grade_30;
+  MR_String InitTargetFileName_31;
+  MR_Word TargetFileNameList_32;
+  MR_Word InitFileDirsList_33;
+  MR_String InitFileDirs_34;
+  MR_Word InitFileNamesList0_35;
+  MR_Word InitFileNamesList1_36;
+  MR_Word TraceInitFileNamesList0_37;
+  MR_Word InitFileNamesList2_38;
+  MR_Word TraceInitFileNamesList_39;
+  MR_Word TraceLevel_40;
+  MR_Word TraceEnabled_41;
+  MR_String TraceOpt_42;
+  MR_Word InitFileNamesList3_43;
+  MR_Word SourceDebug_44;
+  MR_Word InitFileNamesList_45;
+  MR_Word RuntimeFlagsList_46;
+  MR_String RuntimeFlags_47;
+  MR_Word ExtraInits_48;
+  MR_String ExtraInitsOpt_49;
+  MR_Word Main_50;
+  MR_String NoMainOpt_51;
+  MR_String ExperimentalComplexity_52;
+  MR_String ExperimentalComplexityOpt_53;
+  MR_String TmpInitTargetFileName_54;
+  MR_String MkInitArgs_55;
+  MR_Word MkInitSucceeded_57;
+  MR_Word Var_67;
+  MR_Word Var_85;
+  MR_Word Var_87;
+  MR_Word Var_88;
+  MR_Word Var_90;
+  MR_Word Var_91;
+  MR_Word Var_93;
+  MR_Word Var_94;
+  MR_Word Var_96;
+  MR_Word Var_97;
+  MR_Word Var_99;
+  MR_Word Var_100;
+  MR_Word Var_102;
+  MR_Word Var_103;
+  MR_Word Var_105;
+  MR_String Var_106;
+  MR_Word Var_107;
+  MR_Word Var_109;
+  MR_Word Var_112;
+
+  libs__globals__lookup_bool_option_3_p_0(Globals_15, (MR_Integer) 72, &Verbose_28);
+  libs__globals__lookup_bool_option_3_p_0(Globals_15, (MR_Integer) 82, &Stats_29);
+  libs__file_util__maybe_write_string_5_p_0(ProgressStream_16, Verbose_28, (MR_String) "% Creating initialization file...\n");
+  libs__compute_grade__compute_grade_2_p_0(Globals_15, &Grade_30);
+  parse_tree__file_names__module_name_to_file_name_create_dirs_7_p_0(Globals_15, (MR_String) "predicate \140backend_libs.compile_target_code.make_init_target_file\'/14", InitTargetOtherExt_22, ModuleName_19, &InitTargetFileName_31);
+  {
+    Var_67 = (MR_Word) MR_new_object(MR_Word, (6 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_67, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_8[0]));
+    MR_hl_field(0, Var_67, 1) = ((MR_Box) (backend_libs__compile_target_code__make_init_target_file_14_p_0_1));
+    MR_hl_field(0, Var_67, 2) = ((MR_Box) ((MR_Integer) 3));
+    MR_hl_field(0, Var_67, 3) = ((MR_Box) (Globals_15));
+    MR_hl_field(0, Var_67, 4) = ((MR_Box) ((MR_String) "predicate \140backend_libs.compile_target_code.make_init_target_file\'/14"));
+    MR_hl_field(0, Var_67, 5) = ((MR_Box) (TargetOtherExt_21));
+  }
+  mercury__list__map_3_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_67, ModuleNames_20, &TargetFileNameList_32);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_15, (MR_Integer) 594, &InitFileDirsList_33);
+  backend_libs__compile_target_code__join_quoted_string_list_5_p_0(InitFileDirsList_33, (MR_String) "-I ", (MR_String) "", (MR_String) " ", &InitFileDirs_34);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_15, (MR_Integer) 595, &InitFileNamesList0_35);
+  mercury__list__remove_dups_2_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), InitFileNamesList0_35, &InitFileNamesList1_36);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_15, (MR_Integer) 596, &TraceInitFileNamesList0_37);
+  InitFileNamesList2_38 = mercury__list__f_43_43_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), StdInitFileNames_23, InitFileNamesList1_36);
+  TraceInitFileNamesList_39 = mercury__list__f_43_43_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), StdTraceInitFileNames_24, TraceInitFileNamesList0_37);
+  libs__globals__get_trace_level_2_p_0(Globals_15, &TraceLevel_40);
+  TraceEnabled_41 = libs__trace_params__is_exec_trace_enabled_at_given_trace_level_1_f_0(TraceLevel_40);
+  switch (TraceEnabled_41) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      {
+        TraceOpt_42 = (MR_String) "-t";
+        InitFileNamesList3_43 = mercury__list__f_43_43_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), InitFileNamesList2_38, TraceInitFileNamesList_39);
+      }
+      break;
+    case (MR_Integer) 0:
+      {
+        TraceOpt_42 = (MR_String) "";
+        InitFileNamesList3_43 = InitFileNamesList2_38;
+      }
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_15, (MR_Integer) 286, &SourceDebug_44);
+  switch (SourceDebug_44) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      InitFileNamesList_45 = InitFileNamesList3_43;
+      break;
+    case (MR_Integer) 1:
+      InitFileNamesList_45 = mercury__list__f_43_43_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), InitFileNamesList3_43, SourceDebugInitFileNames_25);
+      break;
+  }
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_15, (MR_Integer) 606, &RuntimeFlagsList_46);
+  backend_libs__compile_target_code__join_quoted_string_list_5_p_0(RuntimeFlagsList_46, (MR_String) "-r ", (MR_String) "", (MR_String) " ", &RuntimeFlags_47);
+  libs__globals__lookup_bool_option_3_p_0(Globals_15, (MR_Integer) 607, &ExtraInits_48);
+  switch (ExtraInits_48) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      ExtraInitsOpt_49 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      ExtraInitsOpt_49 = (MR_String) "-x";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_15, (MR_Integer) 603, &Main_50);
+  switch (Main_50) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      NoMainOpt_51 = (MR_String) "-l";
+      break;
+    case (MR_Integer) 1:
+      NoMainOpt_51 = (MR_String) "";
+      break;
+  }
+  libs__globals__lookup_string_option_3_p_0(Globals_15, (MR_Integer) 266, &ExperimentalComplexity_52);
+  succeeded = (strcmp(ExperimentalComplexity_52, (MR_String) "") == 0);
+  if (succeeded)
+    ExperimentalComplexityOpt_53 = (MR_String) "";
+  else
+    ExperimentalComplexityOpt_53 = mercury__string__f_43_43_2_f_0((MR_String) "-X ", ExperimentalComplexity_52);
+  TmpInitTargetFileName_54 = mercury__string__f_43_43_2_f_0(InitTargetFileName_31, (MR_String) ".tmp");
+  Var_106 = libs__shell_util__quote_shell_cmd_arg_1_f_0(TmpInitTargetFileName_54);
+  {
+    Var_109 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_109, 0) = ((MR_Box) (InitFileDirs_34));
+    MR_hl_field(1, Var_109, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  {
+    Var_107 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_107, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_107, 1) = ((MR_Box) (Var_109));
+  }
+  {
+    Var_105 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_105, 0) = ((MR_Box) (Var_106));
+    MR_hl_field(1, Var_105, 1) = ((MR_Box) (Var_107));
+  }
+  {
+    Var_103 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_103, 0) = ((MR_Box) ((MR_String) " -o "));
+    MR_hl_field(1, Var_103, 1) = ((MR_Box) (Var_105));
+  }
+  {
+    Var_102 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_102, 0) = ((MR_Box) (RuntimeFlags_47));
+    MR_hl_field(1, Var_102, 1) = ((MR_Box) (Var_103));
+  }
+  {
+    Var_100 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_100, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_100, 1) = ((MR_Box) (Var_102));
+  }
+  {
+    Var_99 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_99, 0) = ((MR_Box) (ExperimentalComplexityOpt_53));
+    MR_hl_field(1, Var_99, 1) = ((MR_Box) (Var_100));
+  }
+  {
+    Var_97 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_97, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_97, 1) = ((MR_Box) (Var_99));
+  }
+  {
+    Var_96 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_96, 0) = ((MR_Box) (NoMainOpt_51));
+    MR_hl_field(1, Var_96, 1) = ((MR_Box) (Var_97));
+  }
+  {
+    Var_94 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_94, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_94, 1) = ((MR_Box) (Var_96));
+  }
+  {
+    Var_93 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_93, 0) = ((MR_Box) (ExtraInitsOpt_49));
+    MR_hl_field(1, Var_93, 1) = ((MR_Box) (Var_94));
+  }
+  {
+    Var_91 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_91, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_91, 1) = ((MR_Box) (Var_93));
+  }
+  {
+    Var_90 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_90, 0) = ((MR_Box) (TraceOpt_42));
+    MR_hl_field(1, Var_90, 1) = ((MR_Box) (Var_91));
+  }
+  {
+    Var_88 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_88, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_88, 1) = ((MR_Box) (Var_90));
+  }
+  {
+    Var_87 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_87, 0) = ((MR_Box) (Grade_30));
+    MR_hl_field(1, Var_87, 1) = ((MR_Box) (Var_88));
+  }
+  {
+    Var_85 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_85, 0) = ((MR_Box) ((MR_String) " -g "));
+    MR_hl_field(1, Var_85, 1) = ((MR_Box) (Var_87));
+  }
+  MkInitArgs_55 = mercury__string__append_list_1_f_0(Var_85);
+  Var_112 = mercury__list__f_43_43_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), TargetFileNameList_32, InitFileNamesList_45);
+  backend_libs__compile_target_code__invoke_mkinit_11_p_0(Globals_15, ProgressStream_16, ErrorStream_17, ErrorStream_17, (MR_Integer) 1, MkInit_18, MkInitArgs_55, Var_112, &MkInitSucceeded_57);
+  libs__file_util__maybe_report_stats_4_p_0(ProgressStream_16, Stats_29);
+  switch (MkInitSucceeded_57) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      *MaybeInitTargetFile_26 = (MR_Word) ((MR_Unsigned) 0U);
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word UpdateResult_58;
+
+        parse_tree__module_cmds__copy_dot_tmp_to_base_file_return_succeeded_6_p_0(Globals_15, ModuleName_19, InitTargetFileName_31, &UpdateResult_58);
+        switch (UpdateResult_58) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *MaybeInitTargetFile_26 = (MR_Word) ((MR_Unsigned) 0U);
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+              *MaybeInitTargetFile_26 = base;
+              MR_hl_field(1, base, 0) = ((MR_Box) (InitTargetFileName_31));
+            }
+            break;
+        }
+      }
+      break;
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__join_quoted_string_list_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv0_HeadVar__2_2;
+
+  conv0_HeadVar__2_2 = libs__shell_util__quote_shell_cmd_arg_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__join_quoted_string_list_5_p_0(
+  MR_Word Strings_6,
+  MR_String Prefix_7,
+  MR_String Suffix_8,
+  MR_String Separator_9,
+  MR_String * Result_10)
+{
+  MR_Word Var_11;
+
+  Var_11 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[7]), Strings_6);
+  backend_libs__compile_target_code__join_string_list_5_p_0(Var_11, Prefix_7, Suffix_8, Separator_9, Result_10);
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__make_library_init_file_8_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_String conv0_HeadVar__5_5;
+
+  parse_tree__file_names__module_name_to_file_name_5_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_String) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 5)))), ((MR_Word) (wrapper_arg_1)), &conv0_HeadVar__5_5);
+  *wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__5_5));
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__make_library_init_file_8_p_0(
+  MR_Word Globals_9,
+  MR_Word ProgressStream_10,
+  MR_Word ErrorStream_11,
+  MR_Word MainModuleName_12,
+  MR_Word AllModules_13,
+  MR_Word * Succeeded_14)
+{
+  MR_bool succeeded;
+  MR_String MkInit_16;
+  MR_String FullInitFileName_17;
+  MR_String CurDirInitFileName_18;
+  MR_String TmpFullInitFileName_19;
+  MR_Word InitFileRes_20;
+
+  libs__globals__lookup_string_option_3_p_0(Globals_9, (MR_Integer) 622, &MkInit_16);
+  parse_tree__file_names__module_name_to_file_name_full_curdir_create_dirs_8_p_0(Globals_9, (MR_String) "predicate \140backend_libs.compile_target_code.make_library_init_file\'/8", (MR_Word) (MR_mkword(2, &backend_libs__compile_target_code_scalar_common_3[1])), MainModuleName_12, &FullInitFileName_17, &CurDirInitFileName_18);
+  TmpFullInitFileName_19 = mercury__string__f_43_43_2_f_0(FullInitFileName_17, (MR_String) ".tmp");
+  mercury__io__open_output_4_p_0(TmpFullInitFileName_19, &InitFileRes_20);
+  if (((MR_tag((MR_Word) InitFileRes_20)) == (MR_Integer) 1))
+  {
+    MR_Word Error_31 = ((MR_Word) ((MR_hl_field(1, InitFileRes_20, (MR_Integer) 0))));
+    MR_String ProgName_32;
+    MR_String Var_67;
+
+    mercury__io__progname_base_4_p_0((MR_String) "mercury_compile", &ProgName_32);
+    Var_67 = mercury__io__error_message_1_f_0(Error_31);
+    mercury__io__write_string_4_p_0(ErrorStream_11, ProgName_32);
+    mercury__io__write_string_4_p_0(ErrorStream_11, (MR_String) ": can\'t open \140");
+    mercury__io__write_string_4_p_0(ErrorStream_11, TmpFullInitFileName_19);
+    mercury__io__write_string_4_p_0(ErrorStream_11, (MR_String) "\' for output: ");
+    mercury__io__write_string_4_p_0(ErrorStream_11, Var_67);
+    mercury__io__write_string_4_p_0(ErrorStream_11, (MR_String) "\n");
+    *Succeeded_14 = (MR_Integer) 0;
+  }
+  else
+  {
+    MR_Word InitFileStream_21 = ((MR_Word) ((MR_hl_field(0, InitFileRes_20, (MR_Integer) 0))));
+    MR_Word AllTargetFilesList_22;
+    MR_Word MkInitSucceeded_23;
+    MR_Word Succeeded0_27;
+    MR_Word Succeeded1_28;
+    MR_Word Succeeded2_29;
+    MR_Word Var_42;
+
+    {
+      Var_42 = (MR_Word) MR_new_object(MR_Word, (6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_42, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_8[0]));
+      MR_hl_field(0, Var_42, 1) = ((MR_Box) (backend_libs__compile_target_code__make_library_init_file_8_p_0_1));
+      MR_hl_field(0, Var_42, 2) = ((MR_Box) ((MR_Integer) 3));
+      MR_hl_field(0, Var_42, 3) = ((MR_Box) (Globals_9));
+      MR_hl_field(0, Var_42, 4) = ((MR_Box) ((MR_String) "predicate \140backend_libs.compile_target_code.make_library_init_file\'/8"));
+      MR_hl_field(0, Var_42, 5) = ((MR_Box) (MR_mkword(3, &backend_libs__compile_target_code_scalar_common_1[1])));
+    }
+    mercury__list__map_3_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_42, AllModules_13, &AllTargetFilesList_22);
+    backend_libs__compile_target_code__invoke_mkinit_11_p_0(Globals_9, ProgressStream_10, ErrorStream_11, InitFileStream_21, (MR_Integer) 1, MkInit_16, (MR_String) " -k ", AllTargetFilesList_22, &MkInitSucceeded_23);
+    switch (MkInitSucceeded_23) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        Succeeded0_27 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word MaybeInitFileCommand_24;
+
+          libs__globals__lookup_maybe_string_option_3_p_0(Globals_9, (MR_Integer) 669, &MaybeInitFileCommand_24);
+          if ((MaybeInitFileCommand_24 == (MR_Word) ((MR_Unsigned) 0U)))
+            Succeeded0_27 = (MR_Integer) 1;
+          else
+          {
+            MR_String InitFileCommand_25 = ((MR_String) ((MR_hl_field(1, MaybeInitFileCommand_24, (MR_Integer) 0))));
+            MR_String CommandString_26;
+
+            backend_libs__compile_target_code__make_all_module_command_6_p_0(InitFileCommand_25, MainModuleName_12, AllModules_13, &CommandString_26);
+            parse_tree__module_cmds__invoke_system_command_9_p_0(Globals_9, ProgressStream_10, ErrorStream_11, InitFileStream_21, (MR_Integer) 1, CommandString_26, &Succeeded0_27);
+          }
+        }
+        break;
+    }
+    mercury__io__close_output_3_p_0(InitFileStream_21);
+    parse_tree__module_cmds__copy_dot_tmp_to_base_file_return_succeeded_6_p_0(Globals_9, MainModuleName_12, FullInitFileName_17, &Succeeded1_28);
+    Succeeded2_29 = libs__maybe_util__and_2_f_0(Succeeded0_27, Succeeded1_28);
+    switch (Succeeded2_29) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        *Succeeded_14 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 1:
+        {
+          succeeded = (strcmp(FullInitFileName_17, CurDirInitFileName_18) == 0);
+          if (succeeded)
+            *Succeeded_14 = (MR_Integer) 1;
+          else
+          {
+            MR_Word Var_30;
+
+            mercury__io__file__remove_file_4_p_0(CurDirInitFileName_18, &Var_30);
+            parse_tree__module_cmds__make_symlink_or_copy_file_8_p_0(Globals_9, ProgressStream_10, ErrorStream_11, FullInitFileName_17, CurDirInitFileName_18, Succeeded_14);
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__invoke_mkinit_11_p_0(
+  MR_Word Globals_12,
+  MR_Word ProgressStream_13,
+  MR_Word ErrorStream_14,
+  MR_Word InitFileStream_15,
+  MR_Word Verbosity_16,
+  MR_String MkInit_17,
+  MR_String Args_18,
+  MR_Word FileNames_19,
+  MR_Word * MkInitSucceeded_20)
+{
+  MR_String TargetFileNames_22;
+  MR_Word TmpFileResult_23;
+
+  backend_libs__compile_target_code__join_string_list_5_p_0(FileNames_19, (MR_String) "", (MR_String) "\n", (MR_String) "", &TargetFileNames_22);
+  libs__file_util__open_temp_output_3_p_0(&TmpFileResult_23);
+  if (((MR_tag((MR_Word) TmpFileResult_23)) == (MR_Integer) 1))
+  {
+    MR_String ErrorMessage_30 = ((MR_String) ((MR_hl_field(1, TmpFileResult_23, (MR_Integer) 0))));
+
+    mercury__io__write_string_4_p_0(ErrorStream_14, ErrorMessage_30);
+    mercury__io__write_string_4_p_0(ErrorStream_14, (MR_String) "\n");
+    *MkInitSucceeded_20 = (MR_Integer) 0;
+  }
+  else
+  {
+    MR_String TmpFile_24;
+    MR_Word TmpStream_25;
+    MR_String MkInitCmd_26;
+    MR_Word MkInitSucceeded0_27;
+    MR_Word RemoveResult_28;
+    MR_Tuple Var_37 = ((MR_Tuple) ((MR_hl_field(0, TmpFileResult_23, (MR_Integer) 0))));
+    MR_String Var_56;
+    MR_String Var_57;
+    MR_String Var_59;
+
+    TmpFile_24 = ((MR_String) ((MR_hl_field(0, Var_37, (MR_Integer) 0))));
+    TmpStream_25 = ((MR_Word) ((MR_hl_field(0, Var_37, (MR_Integer) 1))));
+    mercury__io__write_string_4_p_0(TmpStream_25, TargetFileNames_22);
+    mercury__io__close_output_3_p_0(TmpStream_25);
+    Var_56 = mercury__string__f_43_43_2_f_0((MR_String) " -f ", TmpFile_24);
+    Var_57 = mercury__string__f_43_43_2_f_0(Args_18, Var_56);
+    Var_59 = mercury__string__f_43_43_2_f_0((MR_String) " ", Var_57);
+    MkInitCmd_26 = mercury__string__f_43_43_2_f_0(MkInit_17, Var_59);
+    parse_tree__module_cmds__invoke_system_command_9_p_0(Globals_12, ProgressStream_13, ErrorStream_14, InitFileStream_15, Verbosity_16, MkInitCmd_26, &MkInitSucceeded0_27);
+    mercury__io__file__remove_file_4_p_0(TmpFile_24, &RemoveResult_28);
+    if ((RemoveResult_28 == (MR_Word) ((MR_Unsigned) 0U)))
+      *MkInitSucceeded_20 = MkInitSucceeded0_27;
+    else
+      *MkInitSucceeded_20 = (MR_Integer) 0;
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__make_all_module_command_6_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv2_HeadVar__2_2;
+
+  conv2_HeadVar__2_2 = libs__shell_util__quote_shell_cmd_arg_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv2_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__make_all_module_command_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4)
+{
+  MR_Box closure = closure_arg;
+  MR_String conv0_HeadVar__2_2;
+
+  parse_tree__file_names__module_name_to_source_file_name_4_p_0(((MR_Word) (wrapper_arg_1)), &conv0_HeadVar__2_2);
+  *wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__make_all_module_command_6_p_0(
+  MR_String Command0_7,
+  MR_Word MainModule_8,
+  MR_Word AllModules_9,
+  MR_String * Command_10)
+{
+  MR_Word ModuleNameStrings_12;
+  MR_Word Var_16;
+  MR_Word Var_18;
+  MR_Word Var_20;
+  MR_Word Var_22;
+  MR_Box conv1_STATE_VARIABLE_IO_14;
+
+  Var_18 = mercury__list__delete_all_2_f_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), AllModules_9, ((MR_Box) (MainModule_8)));
+  {
+    Var_16 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_16, 0) = ((MR_Box) (MainModule_8));
+    MR_hl_field(1, Var_16, 1) = ((MR_Box) (Var_18));
+  }
+  mercury__list__map_foldl_5_p_2((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__io__io__type_ctor_info_state_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[5]), Var_16, &ModuleNameStrings_12, ((MR_Box) ((MR_Integer) 0)), &conv1_STATE_VARIABLE_IO_14);
+  {
+    Var_22 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_22, 0) = ((MR_Box) (Command0_7));
+    MR_hl_field(1, Var_22, 1) = ((MR_Box) (ModuleNameStrings_12));
+  }
+  Var_20 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[6]), Var_22);
+  *Command_10 = mercury__string__join_list_2_f_0((MR_String) " ", Var_20);
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__compile_csharp_file_9_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv3_LambdaHeadVar__2_83;
+
+  backend_libs__compile_target_code__IntroducedFrom__pred__compile_csharp_file__1089__1_4_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_String) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), &conv3_LambdaHeadVar__2_83);
+  *wrapper_arg_2 = ((MR_Box) (conv3_LambdaHeadVar__2_83));
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__compile_csharp_file_9_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_Word conv2_LambdaHeadVar__2_18;
+
+  conv2_LambdaHeadVar__2_18 = backend_libs__compile_target_code__IntroducedFrom__func__referenced_dlls__1125__1_1_f_0(((MR_Word) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv2_LambdaHeadVar__2_18));
+  return wrapper_arg_2;
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__compile_csharp_file_9_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+  MR_Word conv1_LambdaHeadVar__2_78;
+
+  succeeded = backend_libs__compile_target_code__IntroducedFrom__pred__compile_csharp_file__1079__1_3_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) (wrapper_arg_1)), &conv1_LambdaHeadVar__2_78);
+  if (succeeded)
+  {
+    *wrapper_arg_2 = ((MR_Box) (conv1_LambdaHeadVar__2_78));
+    succeeded = MR_TRUE;
+  }
+  return succeeded;
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__compile_csharp_file_9_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_Word conv0_LambdaHeadVar__2_69;
+
+  conv0_LambdaHeadVar__2_69 = backend_libs__compile_target_code__IntroducedFrom__func__compile_csharp_file__1069__1_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_LambdaHeadVar__2_69));
+  return wrapper_arg_2;
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__compile_csharp_file_9_p_0(
+  MR_Word Globals_10,
+  MR_Word ProgressStream_11,
+  MR_Word ErrorStream_12,
+  MR_Word ModuleAndImports_13,
+  MR_String CSharpFileName0_14,
+  MR_String DLLFileName_15,
+  MR_Word * Succeeded_16)
+{
+  MR_bool succeeded;
+  MR_Word Verbose_18;
+  MR_String CSharpFileName_19;
+  MR_String CSC_20;
+  MR_Word CSCFlagsList_21;
+  MR_String CSCFlags_22;
+  MR_Word Debug_23;
+  MR_String DebugOpt_24;
+  MR_Word DLLDirs_25;
+  MR_String DLLDirOpts_26;
+  MR_Word ModuleName_28;
+  MR_String Prefix_29;
+  MR_Word FIMSpes_30;
+  MR_Word ForeignDeps_34;
+  MR_Word IntDeps_35;
+  MR_Word ImpDeps_36;
+  MR_Word IntImpDeps_37;
+  MR_Word IntImpForeignDeps_38;
+  MR_Word ReferencedDlls_39;
+  MR_Word ReferencedDllsList_43;
+  MR_String ReferencedDllsStr_44;
+  MR_String Command_45;
+  MR_String Var_64;
+  MR_Word Var_65;
+  MR_Word Var_66;
+  MR_Word Var_75;
+  MR_Word Var_76;
+  MR_Word Var_80;
+  MR_Word Var_81;
+  MR_Word Var_91;
+  MR_Word Var_92;
+  MR_Word Var_93;
+  MR_Word Var_94;
+  MR_Word Var_96;
+  MR_Word Var_97;
+  MR_Word Var_98;
+  MR_Word Var_99;
+  MR_Word Var_101;
+  MR_Word Var_102;
+  MR_Word Var_104;
+  MR_Word DepModules_122;
+
+  libs__globals__lookup_bool_option_3_p_0(Globals_10, (MR_Integer) 72, &Verbose_18);
+  libs__globals__lookup_string_option_3_p_0(Globals_10, (MR_Integer) 572, &CSC_20);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_10, (MR_Integer) 573, &CSCFlagsList_21);
+  backend_libs__compile_target_code__join_string_list_5_p_0(CSCFlagsList_21, (MR_String) "", (MR_String) "", (MR_String) " ", &CSCFlags_22);
+  CSharpFileName_19 = mercury__string__replace_all_3_f_0(CSharpFileName0_14, (MR_String) "/", (MR_String) "\\\\");
+  switch (Verbose_18) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        mercury__io__write_string_4_p_0(ProgressStream_11, (MR_String) "% Compiling \140");
+        mercury__io__write_string_4_p_0(ProgressStream_11, CSharpFileName_19);
+        mercury__io__write_string_4_p_0(ProgressStream_11, (MR_String) "\':\n");
+      }
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_10, (MR_Integer) 538, &Debug_23);
+  switch (Debug_23) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      DebugOpt_24 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      DebugOpt_24 = (MR_String) "";
+      break;
+  }
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_10, (MR_Integer) 581, &DLLDirs_25);
+  Var_66 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_1[0]), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[3]), DLLDirs_25);
+  Var_65 = mercury__list__condense_1_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_66);
+  Var_64 = mercury__string__append_list_1_f_0(Var_65);
+  DLLDirOpts_26 = mercury__string__f_43_43_2_f_0((MR_String) "-lib:Mercury/dlls ", Var_64);
+  parse_tree__module_dep_info__module_dep_info_get_module_name_2_p_0(ModuleAndImports_13, &ModuleName_28);
+  succeeded = parse_tree__file_names__mercury_std_library_module_name_1_p_0(ModuleName_28);
+  if (succeeded)
+    Prefix_29 = (MR_String) "-addmodule:";
+  else
+    Prefix_29 = (MR_String) "-r:";
+  parse_tree__module_dep_info__module_dep_info_get_fims_2_p_0(ModuleAndImports_13, &FIMSpes_30);
+  {
+    Var_75 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_75, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_2[1]));
+    MR_hl_field(0, Var_75, 1) = ((MR_Box) (backend_libs__compile_target_code__compile_csharp_file_9_p_0_2));
+    MR_hl_field(0, Var_75, 2) = ((MR_Box) ((MR_Integer) 1));
+    MR_hl_field(0, Var_75, 3) = ((MR_Box) (ModuleName_28));
+  }
+  Var_76 = mercury__set__to_sorted_list_1_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), FIMSpes_30);
+  mercury__list__filter_map_3_p_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), (MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), Var_75, Var_76, &ForeignDeps_34);
+  parse_tree__module_dep_info__module_dep_info_get_int_deps_2_p_0(ModuleAndImports_13, &IntDeps_35);
+  parse_tree__module_dep_info__module_dep_info_get_imp_deps_2_p_0(ModuleAndImports_13, &ImpDeps_36);
+  mercury__set__union_3_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), IntDeps_35, ImpDeps_36, &IntImpDeps_37);
+  mercury__set__insert_list_3_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), ForeignDeps_34, IntImpDeps_37, &IntImpForeignDeps_38);
+  mercury__set__insert_3_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), ((MR_Box) (ModuleName_28)), IntImpForeignDeps_38, &DepModules_122);
+  succeeded = parse_tree__file_names__mercury_std_library_module_name_1_p_0(ModuleName_28);
+  if (succeeded)
+    mercury__set__insert_list_3_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[4])), DepModules_122, &ReferencedDlls_39);
+  else
+    ReferencedDlls_39 = mercury__set__map_2_f_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[4]), DepModules_122);
+  {
+    Var_80 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_80, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_7[0]));
+    MR_hl_field(0, Var_80, 1) = ((MR_Box) (backend_libs__compile_target_code__compile_csharp_file_9_p_0_4));
+    MR_hl_field(0, Var_80, 2) = ((MR_Box) ((MR_Integer) 2));
+    MR_hl_field(0, Var_80, 3) = ((MR_Box) (Globals_10));
+    MR_hl_field(0, Var_80, 4) = ((MR_Box) (Prefix_29));
+  }
+  Var_81 = mercury__set__to_sorted_list_1_f_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), ReferencedDlls_39);
+  mercury__list__map_3_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_1[0]), Var_80, Var_81, &ReferencedDllsList_43);
+  Var_91 = mercury__list__condense_1_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), ReferencedDllsList_43);
+  ReferencedDllsStr_44 = mercury__string__append_list_1_f_0(Var_91);
+  {
+    Var_104 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_104, 0) = ((MR_Box) (CSharpFileName_19));
+    MR_hl_field(1, Var_104, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  {
+    Var_102 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_102, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_102, 1) = ((MR_Box) (Var_104));
+  }
+  {
+    Var_101 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_101, 0) = ((MR_Box) (DLLFileName_15));
+    MR_hl_field(1, Var_101, 1) = ((MR_Box) (Var_102));
+  }
+  {
+    Var_99 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_99, 0) = ((MR_Box) ((MR_String) " -out:"));
+    MR_hl_field(1, Var_99, 1) = ((MR_Box) (Var_101));
+  }
+  {
+    Var_98 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_98, 0) = ((MR_Box) (ReferencedDllsStr_44));
+    MR_hl_field(1, Var_98, 1) = ((MR_Box) (Var_99));
+  }
+  {
+    Var_97 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_97, 0) = ((MR_Box) (CSCFlags_22));
+    MR_hl_field(1, Var_97, 1) = ((MR_Box) (Var_98));
+  }
+  {
+    Var_96 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_96, 0) = ((MR_Box) (DLLDirOpts_26));
+    MR_hl_field(1, Var_96, 1) = ((MR_Box) (Var_97));
+  }
+  {
+    Var_94 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_94, 0) = ((MR_Box) ((MR_String) " -t:library "));
+    MR_hl_field(1, Var_94, 1) = ((MR_Box) (Var_96));
+  }
+  {
+    Var_93 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_93, 0) = ((MR_Box) (DebugOpt_24));
+    MR_hl_field(1, Var_93, 1) = ((MR_Box) (Var_94));
+  }
+  {
+    Var_92 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_92, 0) = ((MR_Box) (CSC_20));
+    MR_hl_field(1, Var_92, 1) = ((MR_Box) (Var_93));
+  }
+  mercury__string__append_list_2_p_0(Var_92, &Command_45);
+  parse_tree__module_cmds__invoke_system_command_9_p_0(Globals_10, ProgressStream_11, ErrorStream_12, ErrorStream_12, (MR_Integer) 1, Command_45, Succeeded_16);
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__compile_java_files_8_p_0_3(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = backend_libs__compile_target_code__IntroducedFrom__pred__compile_java_files__981__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__compile_java_files_8_p_0_2(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = backend_libs__compile_target_code__IntroducedFrom__pred__compile_java_files__977__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__compile_java_files_8_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = backend_libs__compile_target_code__is_minus_j_flag_1_p_0(((MR_String) (wrapper_arg_1)));
+  return succeeded;
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__compile_java_files_8_p_0(
+  MR_Word Globals_9,
+  MR_Word ProgressStream_10,
+  MR_Word ErrorStream_11,
+  MR_String HeadJavaFile_12,
+  MR_Word TailJavaFiles_13,
+  MR_Word * Succeeded_14)
+{
+  MR_bool succeeded;
+  MR_Word Verbose_16;
+  MR_String JavaCompiler_19;
+  MR_Word JavaFlagsList_20;
+  MR_Word RestrictedCommandLine_21;
+  MR_String JAVAFLAGS_25;
+  MR_Word MercuryStdLibs_26;
+  MR_Word UserClasspath_27;
+  MR_Word Java_Incl_Dirs_28;
+  MR_String EnvClasspath_29;
+  MR_Word ClassPathList_30;
+  MR_String ClassPath_31;
+  MR_String InclOpt_32;
+  MR_Word TargetDebug_33;
+  MR_Word CDebugGrade_34;
+  MR_String TargetDebugOpt_35;
+  MR_Word SourceDirPath_36;
+  MR_Word DestDirPath_37;
+  MR_String DirOpts_38;
+  MR_String MFilterJavac_44;
+  MR_Word MaybeMFilterJavac_45;
+  MR_String NonAtFileCommandArgs_46;
+  MR_String JoinedJavaFiles_47;
+  MR_String CommandArgs_48;
+  MR_String Var_77;
+  MR_Word Var_111;
+  MR_Word Var_112;
+  MR_Word Var_113;
+  MR_Word Var_114;
+  MR_Word Var_115;
+  MR_Word Var_116;
+  MR_Word Var_118;
+
+  libs__globals__lookup_bool_option_3_p_0(Globals_9, (MR_Integer) 72, &Verbose_16);
+  switch (Verbose_16) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+      }
+      break;
+    case (MR_Integer) 1:
+      if ((TailJavaFiles_13 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        mercury__io__write_string_4_p_0(ProgressStream_10, (MR_String) "% Compiling \140");
+        mercury__io__write_string_4_p_0(ProgressStream_10, HeadJavaFile_12);
+        mercury__io__write_string_4_p_0(ProgressStream_10, (MR_String) "\':\n");
+      }
+      else
+      {
+        mercury__io__write_string_4_p_0(ProgressStream_10, (MR_String) "% Compiling \140");
+        mercury__io__write_string_4_p_0(ProgressStream_10, HeadJavaFile_12);
+        mercury__io__write_string_4_p_0(ProgressStream_10, (MR_String) "\', etc.:\n");
+      }
+      break;
+  }
+  libs__globals__lookup_string_option_3_p_0(Globals_9, (MR_Integer) 565, &JavaCompiler_19);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_9, (MR_Integer) 567, &JavaFlagsList_20);
+  libs__globals__lookup_bool_option_3_p_0(Globals_9, (MR_Integer) 695, &RestrictedCommandLine_21);
+  switch (RestrictedCommandLine_21) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        backend_libs__compile_target_code__join_string_list_5_p_0(JavaFlagsList_20, (MR_String) "", (MR_String) "", (MR_String) " ", &JAVAFLAGS_25);
+        NonAtFileCommandArgs_46 = (MR_String) "";
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word JRT_JavaFlagsList_22;
+        MR_Word NonJRT_JavaFlagsList_23;
+
+        mercury__list__filter_4_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[2]), JavaFlagsList_20, &JRT_JavaFlagsList_22, &NonJRT_JavaFlagsList_23);
+        backend_libs__compile_target_code__join_string_list_5_p_0(JRT_JavaFlagsList_22, (MR_String) "", (MR_String) "", (MR_String) " ", &NonAtFileCommandArgs_46);
+        backend_libs__compile_target_code__join_string_list_5_p_0(NonJRT_JavaFlagsList_23, (MR_String) "", (MR_String) "", (MR_String) " ", &JAVAFLAGS_25);
+      }
+      break;
+  }
+  parse_tree__module_cmds__get_mercury_std_libs_for_java_2_p_0(Globals_9, &MercuryStdLibs_26);
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_9, (MR_Integer) 569, &UserClasspath_27);
+  Java_Incl_Dirs_28 = mercury__list__f_43_43_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), MercuryStdLibs_26, UserClasspath_27);
+  parse_tree__module_cmds__get_env_classpath_3_p_0(&EnvClasspath_29);
+  succeeded = (strcmp(EnvClasspath_29, (MR_String) "") == 0);
+  if (succeeded)
+    ClassPathList_30 = Java_Incl_Dirs_28;
+  else
+    {
+      ClassPathList_30 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, ClassPathList_30, 0) = ((MR_Box) (EnvClasspath_29));
+      MR_hl_field(1, ClassPathList_30, 1) = ((MR_Box) (Java_Incl_Dirs_28));
+    }
+  Var_77 = backend_libs__compile_target_code__java_classpath_separator_0_f_0();
+  ClassPath_31 = mercury__string__join_list_2_f_0(Var_77, ClassPathList_30);
+  succeeded = (strcmp(ClassPath_31, (MR_String) "") == 0);
+  if (succeeded)
+    InclOpt_32 = (MR_String) "";
+  else
+  {
+    MR_Word Var_78;
+    MR_Word Var_80;
+    MR_String Var_81;
+
+    Var_81 = libs__shell_util__quote_shell_cmd_arg_1_f_0(ClassPath_31);
+    {
+      Var_80 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_80, 0) = ((MR_Box) (Var_81));
+      MR_hl_field(1, Var_80, 1) = ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[2])));
+    }
+    {
+      Var_78 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_78, 0) = ((MR_Box) ((MR_String) "-classpath "));
+      MR_hl_field(1, Var_78, 1) = ((MR_Box) (Var_80));
+    }
+    InclOpt_32 = mercury__string__append_list_1_f_0(Var_78);
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_9, (MR_Integer) 538, &TargetDebug_33);
+  libs__globals__lookup_bool_option_3_p_0(Globals_9, (MR_Integer) 312, &CDebugGrade_34);
+  succeeded = (TargetDebug_33 == (MR_Integer) 1);
+  if (!(succeeded))
+    succeeded = (CDebugGrade_34 == (MR_Integer) 1);
+  if (succeeded)
+    TargetDebugOpt_35 = (MR_String) "-g ";
+  else
+    TargetDebugOpt_35 = (MR_String) "";
+  parse_tree__file_names__get_java_dir_path_3_p_0(Globals_9, (MR_Integer) 0, &SourceDirPath_36);
+  parse_tree__file_names__get_java_dir_path_3_p_0(Globals_9, (MR_Integer) 1, &DestDirPath_37);
+  if ((SourceDirPath_36 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    MR_Word Var_89;
+
+    {
+      Var_89 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_89, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[2]));
+      MR_hl_field(0, Var_89, 1) = ((MR_Box) (backend_libs__compile_target_code__compile_java_files_8_p_0_2));
+      MR_hl_field(0, Var_89, 2) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(0, Var_89, 3) = ((MR_Box) (DestDirPath_37));
+      MR_hl_field(0, Var_89, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    mercury__require__expect_3_p_0(Var_89, (MR_String) "predicate \140backend_libs.compile_target_code.compile_java_files\'/8", (MR_String) "DestDirPath != []");
+    DirOpts_38 = (MR_String) "";
+  }
+  else
+  {
+    MR_String SourceDirName_41;
+    MR_String DestDirName_42;
+    MR_Word Var_93;
+    MR_Word Var_98;
+    MR_Word Var_100;
+    MR_Word Var_101;
+    MR_Word Var_103;
+    MR_Word Var_105;
+    MR_Word Var_43;
+
+    {
+      Var_93 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_93, 0) = ((MR_Box) (&backend_libs__compile_target_code_scalar_common_4[2]));
+      MR_hl_field(0, Var_93, 1) = ((MR_Box) (backend_libs__compile_target_code__compile_java_files_8_p_0_3));
+      MR_hl_field(0, Var_93, 2) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(0, Var_93, 3) = ((MR_Box) (DestDirPath_37));
+      MR_hl_field(0, Var_93, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    mercury__require__expect_not_3_p_0(Var_93, (MR_String) "predicate \140backend_libs.compile_target_code.compile_java_files\'/8", (MR_String) "DestDirPath == []");
+    SourceDirName_41 = mercury__dir__relative_path_name_from_components_1_f_0(SourceDirPath_36);
+    DestDirName_42 = mercury__dir__relative_path_name_from_components_1_f_0(DestDirPath_37);
+    mercury__dir__make_directory_4_p_0(DestDirName_42, &Var_43);
+    {
+      Var_105 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_105, 0) = ((MR_Box) (DestDirName_42));
+      MR_hl_field(1, Var_105, 1) = ((MR_Box) (MR_mkword(1, &backend_libs__compile_target_code_scalar_common_1[2])));
+    }
+    {
+      Var_103 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_103, 0) = ((MR_Box) ((MR_String) "-d "));
+      MR_hl_field(1, Var_103, 1) = ((MR_Box) (Var_105));
+    }
+    {
+      Var_101 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_101, 0) = ((MR_Box) ((MR_String) " "));
+      MR_hl_field(1, Var_101, 1) = ((MR_Box) (Var_103));
+    }
+    {
+      Var_100 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_100, 0) = ((MR_Box) (SourceDirName_41));
+      MR_hl_field(1, Var_100, 1) = ((MR_Box) (Var_101));
+    }
+    {
+      Var_98 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_98, 0) = ((MR_Box) ((MR_String) "-sourcepath "));
+      MR_hl_field(1, Var_98, 1) = ((MR_Box) (Var_100));
+    }
+    DirOpts_38 = mercury__string__append_list_1_f_0(Var_98);
+  }
+  libs__globals__lookup_string_option_3_p_0(Globals_9, (MR_Integer) 626, &MFilterJavac_44);
+  succeeded = (strcmp(MFilterJavac_44, (MR_String) "") == 0);
+  if (succeeded)
+    MaybeMFilterJavac_45 = (MR_Word) ((MR_Unsigned) 0U);
+  else
+    {
+      MaybeMFilterJavac_45 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, MaybeMFilterJavac_45, 0) = ((MR_Box) (MFilterJavac_44));
+    }
+  {
+    Var_111 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_111, 0) = ((MR_Box) (HeadJavaFile_12));
+    MR_hl_field(1, Var_111, 1) = ((MR_Box) (TailJavaFiles_13));
+  }
+  JoinedJavaFiles_47 = mercury__string__join_list_2_f_0((MR_String) " ", Var_111);
+  {
+    Var_118 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_118, 0) = ((MR_Box) (JoinedJavaFiles_47));
+    MR_hl_field(1, Var_118, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  {
+    Var_116 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_116, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_116, 1) = ((MR_Box) (Var_118));
+  }
+  {
+    Var_115 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_115, 0) = ((MR_Box) (JAVAFLAGS_25));
+    MR_hl_field(1, Var_115, 1) = ((MR_Box) (Var_116));
+  }
+  {
+    Var_114 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_114, 0) = ((MR_Box) (TargetDebugOpt_35));
+    MR_hl_field(1, Var_114, 1) = ((MR_Box) (Var_115));
+  }
+  {
+    Var_113 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_113, 0) = ((MR_Box) (DirOpts_38));
+    MR_hl_field(1, Var_113, 1) = ((MR_Box) (Var_114));
+  }
+  {
+    Var_112 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_112, 0) = ((MR_Box) (InclOpt_32));
+    MR_hl_field(1, Var_112, 1) = ((MR_Box) (Var_113));
+  }
+  mercury__string__append_list_2_p_0(Var_112, &CommandArgs_48);
+  backend_libs__compile_target_code__invoke_long_system_command_maybe_filter_output_12_p_0(Globals_9, ProgressStream_10, ErrorStream_11, ErrorStream_11, (MR_Integer) 1, JavaCompiler_19, NonAtFileCommandArgs_46, CommandArgs_48, MaybeMFilterJavac_45, Succeeded_14);
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__invoke_long_system_command_maybe_filter_output_12_p_0(
+  MR_Word Globals_13,
+  MR_Word ProgressStream_14,
+  MR_Word ErrorStream_15,
+  MR_Word CmdOutputStream_16,
+  MR_Word Verbosity_17,
+  MR_String Cmd_18,
+  MR_String NonAtArgs_19,
+  MR_String Args_20,
+  MR_Word MaybeProcessOutput_21,
+  MR_Word * Succeeded_22)
+{
+  MR_bool succeeded;
+  MR_Word RestrictedCommandLine_24;
+
+  libs__globals__lookup_bool_option_3_p_0(Globals_13, (MR_Integer) 695, &RestrictedCommandLine_24);
+  switch (RestrictedCommandLine_24) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_String FullCmd_87;
+
+        succeeded = (strcmp(NonAtArgs_19, (MR_String) "") == 0);
+        if (succeeded)
+        {
+          MR_String Var_103;
+
+          Var_103 = mercury__string__f_43_43_2_f_0((MR_String) " ", Args_20);
+          FullCmd_87 = mercury__string__f_43_43_2_f_0(Cmd_18, Var_103);
+        }
+        else
+        {
+          MR_String Var_105;
+          MR_String Var_106;
+          MR_String Var_108;
+
+          Var_105 = mercury__string__f_43_43_2_f_0((MR_String) " ", Args_20);
+          Var_106 = mercury__string__f_43_43_2_f_0(NonAtArgs_19, Var_105);
+          Var_108 = mercury__string__f_43_43_2_f_0((MR_String) " ", Var_106);
+          FullCmd_87 = mercury__string__f_43_43_2_f_0(Cmd_18, Var_108);
+        }
+        parse_tree__module_cmds__invoke_system_command_maybe_filter_output_10_p_0(Globals_13, ProgressStream_14, ErrorStream_15, CmdOutputStream_16, Verbosity_17, FullCmd_87, MaybeProcessOutput_21, Succeeded_22);
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word TmpFileResult_25;
+
+        libs__file_util__open_temp_output_3_p_0(&TmpFileResult_25);
+        if (((MR_tag((MR_Word) TmpFileResult_25)) == (MR_Integer) 1))
+        {
+          MR_String ErrorMessage_35 = ((MR_String) ((MR_hl_field(1, TmpFileResult_25, (MR_Integer) 0))));
+
+          mercury__io__write_string_4_p_0(ErrorStream_15, ErrorMessage_35);
+          mercury__io__nl_3_p_0(ErrorStream_15);
+          *Succeeded_22 = (MR_Integer) 0;
+        }
+        else
+        {
+          MR_String TmpFile_26;
+          MR_Word TmpStream_27;
+          MR_String TmpFileArgs_28;
+          MR_Word VeryVerbose_29;
+          MR_String AtFileName_30;
+          MR_String FullCmd_31;
+          MR_Word Succeeded0_32;
+          MR_Word RemoveResult_33;
+          MR_Tuple Var_40 = ((MR_Tuple) ((MR_hl_field(0, TmpFileResult_25, (MR_Integer) 0))));
+          MR_Word EnvType_109;
+
+          TmpFile_26 = ((MR_String) ((MR_hl_field(0, Var_40, (MR_Integer) 0))));
+          TmpStream_27 = ((MR_Word) ((MR_hl_field(0, Var_40, (MR_Integer) 1))));
+          TmpFileArgs_28 = mercury__string__replace_all_3_f_0(Args_20, (MR_String) "\\", (MR_String) "\\\\");
+          mercury__io__write_string_4_p_0(TmpStream_27, TmpFileArgs_28);
+          mercury__io__close_output_3_p_0(TmpStream_27);
+          libs__globals__lookup_bool_option_3_p_0(Globals_13, (MR_Integer) 73, &VeryVerbose_29);
+          libs__globals__get_system_env_type_2_p_0(Globals_13, &EnvType_109);
+          switch (EnvType_109) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 1:
+            case (MR_Integer) 2:
+            case (MR_Integer) 0:
+            case (MR_Integer) 3:
+              AtFileName_30 = mercury__string__f_43_43_2_f_0((MR_String) "\100", TmpFile_26);
+              break;
+            case (MR_Integer) 4:
+              AtFileName_30 = mercury__string__f_43_43_2_f_0((MR_String) "\140\100", TmpFile_26);
+              break;
+          }
+          switch (VeryVerbose_29) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                mercury__io__write_string_4_p_0(ProgressStream_14, (MR_String) "% Args placed in ");
+                mercury__io__write_string_4_p_0(ProgressStream_14, AtFileName_30);
+                mercury__io__write_string_4_p_0(ProgressStream_14, (MR_String) ": \140");
+                mercury__io__write_string_4_p_0(ProgressStream_14, TmpFileArgs_28);
+                mercury__io__write_string_4_p_0(ProgressStream_14, (MR_String) "\'\n");
+                mercury__io__flush_output_3_p_0(ProgressStream_14);
+              }
+              break;
+          }
+          succeeded = (strcmp(NonAtArgs_19, (MR_String) "") == 0);
+          if (succeeded)
+          {
+            MR_String Var_96;
+
+            Var_96 = mercury__string__f_43_43_2_f_0((MR_String) " ", AtFileName_30);
+            FullCmd_31 = mercury__string__f_43_43_2_f_0(Cmd_18, Var_96);
+          }
+          else
+          {
+            MR_String Var_98;
+            MR_String Var_99;
+            MR_String Var_101;
+
+            Var_98 = mercury__string__f_43_43_2_f_0((MR_String) " ", AtFileName_30);
+            Var_99 = mercury__string__f_43_43_2_f_0(NonAtArgs_19, Var_98);
+            Var_101 = mercury__string__f_43_43_2_f_0((MR_String) " ", Var_99);
+            FullCmd_31 = mercury__string__f_43_43_2_f_0(Cmd_18, Var_101);
+          }
+          parse_tree__module_cmds__invoke_system_command_maybe_filter_output_10_p_0(Globals_13, ProgressStream_14, ErrorStream_15, CmdOutputStream_16, Verbosity_17, FullCmd_31, MaybeProcessOutput_21, &Succeeded0_32);
+          mercury__io__file__remove_file_4_p_0(TmpFile_26, &RemoveResult_33);
+          if ((RemoveResult_33 == (MR_Word) ((MR_Unsigned) 0U)))
+            *Succeeded_22 = Succeeded0_32;
+          else
+            *Succeeded_22 = (MR_Integer) 0;
+        }
+      }
+      break;
+  }
+}
+
+static MR_String MR_CALL 
+backend_libs__compile_target_code__java_classpath_separator_0_f_0(void)
+{
+  MR_bool succeeded;
+  MR_String PathSeparator_2;
+
+  succeeded = mercury__dir__use_windows_paths_0_p_0();
+  if (!(succeeded))
+    succeeded = mercury__io__have_cygwin_0_p_0();
+  if (succeeded)
+    PathSeparator_2 = (MR_String) ";";
+  else
+    PathSeparator_2 = (MR_String) ":";
+  return PathSeparator_2;
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__compile_c_file_8_p_0(
+  MR_Word Globals_9,
+  MR_Word ProgressStream_10,
+  MR_Word ErrorStream_11,
+  MR_Word PIC_12,
+  MR_Word ModuleName_13,
+  MR_Word * Succeeded_14)
+{
+  MR_String C_File_16;
+  MR_Word ExtObj_17;
+  MR_String O_File_19;
+  MR_Word Var_27;
+
+  parse_tree__file_names__module_name_to_file_name_create_dirs_7_p_0(Globals_9, (MR_String) "predicate \140backend_libs.compile_target_code.compile_c_file\'/8", (MR_Word) (MR_mkword(3, &backend_libs__compile_target_code_scalar_common_1[1])), ModuleName_13, &C_File_16);
+  switch (PIC_12) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      ExtObj_17 = (MR_Integer) 12;
+      break;
+    case (MR_Integer) 0:
+      ExtObj_17 = (MR_Integer) 13;
+      break;
+  }
+  {
+    Var_27 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(3, Var_27, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+    MR_hl_field(3, Var_27, 1) = (MR_Box) ((MR_Unsigned) (ExtObj_17));
+  }
+  parse_tree__file_names__module_name_to_file_name_create_dirs_7_p_0(Globals_9, (MR_String) "predicate \140backend_libs.compile_target_code.compile_c_file\'/8", Var_27, ModuleName_13, &O_File_19);
+  backend_libs__compile_target_code__do_compile_c_file_9_p_0(Globals_9, ProgressStream_10, ErrorStream_11, PIC_12, C_File_16, O_File_19, Succeeded_14);
+}
+
+void MR_CALL 
+backend_libs__compile_target_code__do_compile_c_file_9_p_0(
+  MR_Word Globals_10,
+  MR_Word ProgressStream_11,
+  MR_Word ErrorStream_12,
+  MR_Word PIC_13,
+  MR_String C_File_14,
+  MR_String O_File_15,
+  MR_Word * Succeeded_16)
+{
+  MR_bool succeeded;
+  MR_Word Verbose_18;
+  MR_String NameObjectFile_19;
+  MR_String CC_20;
+  MR_String AllCFlags_21;
+  MR_String Command_22;
+  MR_Word MaybeFilterCmd_23;
+  MR_Word Stats_24;
+  MR_Word Var_35;
+  MR_Word Var_36;
+  MR_Word Var_38;
+  MR_Word Var_39;
+  MR_Word Var_41;
+  MR_String Var_42;
+  MR_Word Var_43;
+  MR_Word Var_45;
+  MR_Word Var_46;
+  MR_String Var_47;
+  MR_String FilterCmd_57;
+  MR_Word Var_60;
+
+  libs__globals__lookup_bool_option_3_p_0(Globals_10, (MR_Integer) 72, &Verbose_18);
+  libs__globals__lookup_string_option_3_p_0(Globals_10, (MR_Integer) 560, &NameObjectFile_19);
+  switch (Verbose_18) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        mercury__io__write_string_4_p_0(ProgressStream_11, (MR_String) "% Compiling \140");
+        mercury__io__write_string_4_p_0(ProgressStream_11, C_File_14);
+        mercury__io__write_string_4_p_0(ProgressStream_11, (MR_String) "\':\n");
+      }
+      break;
+  }
+  libs__globals__lookup_string_option_3_p_0(Globals_10, (MR_Integer) 539, &CC_20);
+  backend_libs__compile_target_code__gather_c_compiler_flags_3_p_0(Globals_10, PIC_13, &AllCFlags_21);
+  Var_42 = libs__shell_util__quote_shell_cmd_arg_1_f_0(C_File_14);
+  Var_47 = libs__shell_util__quote_shell_cmd_arg_1_f_0(O_File_15);
+  {
+    Var_46 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_46, 0) = ((MR_Box) (Var_47));
+    MR_hl_field(1, Var_46, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  {
+    Var_45 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_45, 0) = ((MR_Box) (NameObjectFile_19));
+    MR_hl_field(1, Var_45, 1) = ((MR_Box) (Var_46));
+  }
+  {
+    Var_43 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_43, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_43, 1) = ((MR_Box) (Var_45));
+  }
+  {
+    Var_41 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_41, 0) = ((MR_Box) (Var_42));
+    MR_hl_field(1, Var_41, 1) = ((MR_Box) (Var_43));
+  }
+  {
+    Var_39 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_39, 0) = ((MR_Box) ((MR_String) " -c "));
+    MR_hl_field(1, Var_39, 1) = ((MR_Box) (Var_41));
+  }
+  {
+    Var_38 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_38, 0) = ((MR_Box) (AllCFlags_21));
+    MR_hl_field(1, Var_38, 1) = ((MR_Box) (Var_39));
+  }
+  {
+    Var_36 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_36, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_36, 1) = ((MR_Box) (Var_38));
+  }
+  {
+    Var_35 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_35, 0) = ((MR_Box) (CC_20));
+    MR_hl_field(1, Var_35, 1) = ((MR_Box) (Var_36));
+  }
+  mercury__string__append_list_2_p_0(Var_35, &Command_22);
+  succeeded = libs__globals__lookup_bool_option_3_p_1(Globals_10, (MR_Integer) 309, (MR_Integer) 1);
+  if (succeeded)
+  {
+    Var_60 = (MR_Integer) 625;
+    libs__globals__lookup_string_option_3_p_0(Globals_10, Var_60, &FilterCmd_57);
+    succeeded = (strcmp(FilterCmd_57, (MR_String) "") == 0);
+    succeeded = !(succeeded);
+  }
+  if (succeeded)
+    {
+      MaybeFilterCmd_23 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, MaybeFilterCmd_23, 0) = ((MR_Box) (FilterCmd_57));
+    }
+  else
+    MaybeFilterCmd_23 = (MR_Word) ((MR_Unsigned) 0U);
+  parse_tree__module_cmds__invoke_system_command_maybe_filter_output_10_p_0(Globals_10, ProgressStream_11, ErrorStream_12, ErrorStream_12, (MR_Integer) 1, Command_22, MaybeFilterCmd_23, Succeeded_16);
+  libs__globals__lookup_bool_option_3_p_0(Globals_10, (MR_Integer) 82, &Stats_24);
+  libs__file_util__maybe_report_stats_4_p_0(ProgressStream_11, Stats_24);
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__gather_c_compiler_flags_3_p_0(
+  MR_Word Globals_4,
+  MR_Word PIC_5,
+  MR_String * AllCFlags_6)
+{
+  MR_bool succeeded;
+  MR_Word C_Flags_List_7;
+  MR_String CFLAGS_8;
+  MR_String CC_Specific_CFLAGS_9;
+  MR_Word SubdirSetting_10;
+  MR_String SubDirInclOpt_11;
+  MR_String InclOpt_12;
+  MR_String FrameworkInclOpt_13;
+  MR_String GradeDefinesOpts_14;
+  MR_Word GCC_Regs_15;
+  MR_String CFLAGS_FOR_REGS_16;
+  MR_Word GCC_Gotos_17;
+  MR_String CFLAGS_FOR_GOTOS_18;
+  MR_Word Parallel_19;
+  MR_String CFLAGS_FOR_THREADS_20;
+  MR_String CFLAGS_FOR_PIC_21;
+  MR_String CFLAGS_FOR_LTO_22;
+  MR_Word Target_Debug_23;
+  MR_String Target_DebugOpt_25;
+  MR_String SanitizerOpts_26;
+  MR_Word C_CompilerType_27;
+  MR_Word UseTrail_28;
+  MR_String C_FnAlignOpt_33;
+  MR_Word TypeLayoutOption_37;
+  MR_String TypeLayoutOpt_38;
+  MR_Word OptTuple_39;
+  MR_Word OptimizeC_40;
+  MR_String OptimizeOpt_41;
+  MR_Word InlineAlloc_42;
+  MR_String InlineAllocOpt_43;
+  MR_Word Warn_44;
+  MR_String WarningOpt_45;
+  MR_Word ExecTrace_46;
+  MR_String TargetArch_47;
+  MR_String OverrideOpts_50;
+  MR_Word Var_82;
+  MR_Word Var_83;
+  MR_Word Var_84;
+  MR_Word Var_86;
+  MR_Word Var_87;
+  MR_Word Var_89;
+  MR_Word Var_90;
+  MR_Word Var_92;
+  MR_Word Var_93;
+  MR_Word Var_94;
+  MR_Word Var_96;
+  MR_Word Var_97;
+  MR_Word Var_99;
+  MR_Word Var_100;
+  MR_Word Var_102;
+  MR_Word Var_103;
+  MR_Word Var_105;
+  MR_Word Var_106;
+  MR_Word Var_108;
+  MR_Word Var_109;
+  MR_Word Var_110;
+  MR_Word Var_112;
+  MR_Word Var_113;
+  MR_Word Var_114;
+  MR_Word Var_115;
+  MR_Word Var_116;
+  MR_Word Var_118;
+  MR_Word Var_119;
+  MR_Word Var_121;
+  MR_Word Var_122;
+  MR_Word Var_124;
+
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_4, (MR_Integer) 540, &C_Flags_List_7);
+  backend_libs__compile_target_code__join_string_list_5_p_0(C_Flags_List_7, (MR_String) "", (MR_String) "", (MR_String) " ", &CFLAGS_8);
+  backend_libs__compile_target_code__gather_compiler_specific_flags_2_p_0(Globals_4, &CC_Specific_CFLAGS_9);
+  libs__globals__get_subdir_setting_2_p_0(Globals_4, &SubdirSetting_10);
+  switch (SubdirSetting_10) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      SubDirInclOpt_11 = (MR_String) "";
+      break;
+    case (MR_Integer) 2:
+    case (MR_Integer) 1:
+      SubDirInclOpt_11 = (MR_String) "-I. ";
+      break;
+  }
+  backend_libs__compile_target_code__gather_c_include_dir_flags_2_p_0(Globals_4, &InclOpt_12);
+  backend_libs__compile_target_code__get_framework_directories_2_p_0(Globals_4, &FrameworkInclOpt_13);
+  backend_libs__compile_target_code__gather_c_grade_defines_2_p_0(Globals_4, &GradeDefinesOpts_14);
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 308, &GCC_Regs_15);
+  switch (GCC_Regs_15) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      CFLAGS_FOR_REGS_16 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 553, &CFLAGS_FOR_REGS_16);
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 307, &GCC_Gotos_17);
+  switch (GCC_Gotos_17) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      CFLAGS_FOR_GOTOS_18 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 554, &CFLAGS_FOR_GOTOS_18);
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 268, &Parallel_19);
+  switch (Parallel_19) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      CFLAGS_FOR_THREADS_20 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 555, &CFLAGS_FOR_THREADS_20);
+      break;
+  }
+  switch (PIC_5) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      CFLAGS_FOR_PIC_21 = (MR_String) "";
+      break;
+    case (MR_Integer) 0:
+      libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 558, &CFLAGS_FOR_PIC_21);
+      break;
+  }
+  libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 559, &CFLAGS_FOR_LTO_22);
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 538, &Target_Debug_23);
+  switch (Target_Debug_23) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      Target_DebugOpt_25 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_String Target_DebugOpt0_24;
+
+        libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 556, &Target_DebugOpt0_24);
+        Target_DebugOpt_25 = mercury__string__f_43_43_2_f_0(Target_DebugOpt0_24, (MR_String) " ");
+      }
+      break;
+  }
+  libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 557, &SanitizerOpts_26);
+  libs__globals__get_c_compiler_type_2_p_0(Globals_4, &C_CompilerType_27);
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 270, &UseTrail_28);
+  switch (UseTrail_28) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      C_FnAlignOpt_33 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      switch (MR_tag((MR_Word) C_CompilerType_27)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          C_FnAlignOpt_33 = (MR_String) "";
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer BytesPerWord_32;
+            MR_String Var_375;
+            MR_String Var_382;
+
+            libs__globals__lookup_int_option_3_p_0(Globals_4, (MR_Integer) 289, &BytesPerWord_32);
+            mercury__string__format__format_signed_int_component_nowidth_noprec_3_p_0((MR_Word) (&backend_libs__compile_target_code_scalar_common_3[8]), BytesPerWord_32, &Var_375);
+            Var_382 = mercury__string__f_43_43_2_f_0(Var_375, (MR_String) " ");
+            C_FnAlignOpt_33 = mercury__string__f_43_43_2_f_0((MR_String) "-falign-functions=", Var_382);
+          }
+          break;
+        case (MR_Integer) 2:
+          C_FnAlignOpt_33 = (MR_String) "";
+          break;
+        case (MR_Integer) 3:
+          C_FnAlignOpt_33 = (MR_String) "";
+          break;
+      }
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 276, &TypeLayoutOption_37);
+  switch (TypeLayoutOption_37) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      TypeLayoutOpt_38 = (MR_String) "-DMR_NO_TYPE_LAYOUT ";
+      break;
+    case (MR_Integer) 1:
+      TypeLayoutOpt_38 = (MR_String) "";
+      break;
+  }
+  libs__globals__get_opt_tuple_2_p_0(Globals_4, &OptTuple_39);
+  InlineAlloc_42 = ((((MR_Unsigned) ((MR_hl_field(0, OptTuple_39, (MR_Integer) 2))) >> 1)) & (MR_Integer) 1);
+  OptimizeC_40 = ((MR_Unsigned) ((MR_hl_field(0, OptTuple_39, (MR_Integer) 2))) & (MR_Integer) 1);
+  switch (OptimizeC_40) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      OptimizeOpt_41 = (MR_String) "";
+      break;
+    case (MR_Integer) 0:
+      libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 551, &OptimizeOpt_41);
+      break;
+  }
+  switch (InlineAlloc_42) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      InlineAllocOpt_43 = (MR_String) "";
+      break;
+    case (MR_Integer) 0:
+      InlineAllocOpt_43 = (MR_String) "";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 39, &Warn_44);
+  switch (Warn_44) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      WarningOpt_45 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 550, &WarningOpt_45);
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 238, &ExecTrace_46);
+  libs__globals__lookup_string_option_3_p_0(Globals_4, (MR_Integer) 705, &TargetArch_47);
+  succeeded = (ExecTrace_46 == (MR_Integer) 1);
+  if (succeeded)
+  {
+    succeeded = backend_libs__compile_target_code__arch_is_apple_darwin_1_p_0(TargetArch_47);
+    if (!(succeeded))
+    {
+      MR_Word Var_79;
+      MR_Integer Var_80;
+      MR_String Var_81;
+
+      succeeded = (GCC_Regs_15 == (MR_Integer) 1);
+      if (succeeded)
+      {
+        succeeded = ((MR_tag((MR_Word) C_CompilerType_27)) == (MR_Integer) 1);
+        if (succeeded)
+        {
+          Var_79 = ((MR_Word) ((MR_hl_field(1, C_CompilerType_27, (MR_Integer) 0))));
+          succeeded = (Var_79 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            Var_80 = ((MR_Integer) ((MR_hl_field(1, Var_79, (MR_Integer) 0))));
+            succeeded = (Var_80 == (MR_Integer) 9);
+            if (succeeded)
+            {
+              Var_81 = (MR_String) "x86_64";
+              succeeded = mercury__string__prefix_2_p_0(TargetArch_47, Var_81);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (succeeded)
+    OverrideOpts_50 = (MR_String) "-O0";
+  else
+    OverrideOpts_50 = (MR_String) "";
+  {
+    Var_124 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_124, 0) = ((MR_Box) (OverrideOpts_50));
+    MR_hl_field(1, Var_124, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  {
+    Var_122 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_122, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_122, 1) = ((MR_Box) (Var_124));
+  }
+  {
+    Var_121 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_121, 0) = ((MR_Box) (CC_Specific_CFLAGS_9));
+    MR_hl_field(1, Var_121, 1) = ((MR_Box) (Var_122));
+  }
+  {
+    Var_119 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_119, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_119, 1) = ((MR_Box) (Var_121));
+  }
+  {
+    Var_118 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_118, 0) = ((MR_Box) (CFLAGS_8));
+    MR_hl_field(1, Var_118, 1) = ((MR_Box) (Var_119));
+  }
+  {
+    Var_116 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_116, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_116, 1) = ((MR_Box) (Var_118));
+  }
+  {
+    Var_115 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_115, 0) = ((MR_Box) (WarningOpt_45));
+    MR_hl_field(1, Var_115, 1) = ((MR_Box) (Var_116));
+  }
+  {
+    Var_114 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_114, 0) = ((MR_Box) (C_FnAlignOpt_33));
+    MR_hl_field(1, Var_114, 1) = ((MR_Box) (Var_115));
+  }
+  {
+    Var_113 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_113, 0) = ((MR_Box) (InlineAllocOpt_43));
+    MR_hl_field(1, Var_113, 1) = ((MR_Box) (Var_114));
+  }
+  {
+    Var_112 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_112, 0) = ((MR_Box) (TypeLayoutOpt_38));
+    MR_hl_field(1, Var_112, 1) = ((MR_Box) (Var_113));
+  }
+  {
+    Var_110 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_110, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_110, 1) = ((MR_Box) (Var_112));
+  }
+  {
+    Var_109 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_109, 0) = ((MR_Box) (SanitizerOpts_26));
+    MR_hl_field(1, Var_109, 1) = ((MR_Box) (Var_110));
+  }
+  {
+    Var_108 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_108, 0) = ((MR_Box) (Target_DebugOpt_25));
+    MR_hl_field(1, Var_108, 1) = ((MR_Box) (Var_109));
+  }
+  {
+    Var_106 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_106, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_106, 1) = ((MR_Box) (Var_108));
+  }
+  {
+    Var_105 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_105, 0) = ((MR_Box) (CFLAGS_FOR_LTO_22));
+    MR_hl_field(1, Var_105, 1) = ((MR_Box) (Var_106));
+  }
+  {
+    Var_103 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_103, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_103, 1) = ((MR_Box) (Var_105));
+  }
+  {
+    Var_102 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_102, 0) = ((MR_Box) (CFLAGS_FOR_PIC_21));
+    MR_hl_field(1, Var_102, 1) = ((MR_Box) (Var_103));
+  }
+  {
+    Var_100 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_100, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_100, 1) = ((MR_Box) (Var_102));
+  }
+  {
+    Var_99 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_99, 0) = ((MR_Box) (CFLAGS_FOR_THREADS_20));
+    MR_hl_field(1, Var_99, 1) = ((MR_Box) (Var_100));
+  }
+  {
+    Var_97 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_97, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_97, 1) = ((MR_Box) (Var_99));
+  }
+  {
+    Var_96 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_96, 0) = ((MR_Box) (CFLAGS_FOR_GOTOS_18));
+    MR_hl_field(1, Var_96, 1) = ((MR_Box) (Var_97));
+  }
+  {
+    Var_94 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_94, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_94, 1) = ((MR_Box) (Var_96));
+  }
+  {
+    Var_93 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_93, 0) = ((MR_Box) (CFLAGS_FOR_REGS_16));
+    MR_hl_field(1, Var_93, 1) = ((MR_Box) (Var_94));
+  }
+  {
+    Var_92 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_92, 0) = ((MR_Box) (GradeDefinesOpts_14));
+    MR_hl_field(1, Var_92, 1) = ((MR_Box) (Var_93));
+  }
+  {
+    Var_90 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_90, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_90, 1) = ((MR_Box) (Var_92));
+  }
+  {
+    Var_89 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_89, 0) = ((MR_Box) (OptimizeOpt_41));
+    MR_hl_field(1, Var_89, 1) = ((MR_Box) (Var_90));
+  }
+  {
+    Var_87 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_87, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_87, 1) = ((MR_Box) (Var_89));
+  }
+  {
+    Var_86 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_86, 0) = ((MR_Box) (FrameworkInclOpt_13));
+    MR_hl_field(1, Var_86, 1) = ((MR_Box) (Var_87));
+  }
+  {
+    Var_84 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_84, 0) = ((MR_Box) ((MR_String) " "));
+    MR_hl_field(1, Var_84, 1) = ((MR_Box) (Var_86));
+  }
+  {
+    Var_83 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_83, 0) = ((MR_Box) (InclOpt_12));
+    MR_hl_field(1, Var_83, 1) = ((MR_Box) (Var_84));
+  }
+  {
+    Var_82 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_82, 0) = ((MR_Box) (SubDirInclOpt_11));
+    MR_hl_field(1, Var_82, 1) = ((MR_Box) (Var_83));
+  }
+  mercury__string__append_list_2_p_0(Var_82, AllCFlags_6);
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code__arch_is_apple_darwin_1_p_0(
+  MR_String FullArch_2)
+{
+  MR_bool succeeded;
+  MR_Word ArchComponents_3;
+  MR_String Mfr_5;
+  MR_String OS_6;
+  MR_Word Var_8;
+  MR_Word Var_9;
+  MR_Word Var_10;
+  MR_String Var_11;
+
+  ArchComponents_3 = mercury__string__split_at_char_2_f_0((MR_Char) 45, FullArch_2);
+  succeeded = (ArchComponents_3 != (MR_Word) ((MR_Unsigned) 0U));
+  if (succeeded)
+  {
+    Var_8 = ((MR_Word) ((MR_hl_field(1, ArchComponents_3, (MR_Integer) 1))));
+    succeeded = (Var_8 != (MR_Word) ((MR_Unsigned) 0U));
+    if (succeeded)
+    {
+      Mfr_5 = ((MR_String) ((MR_hl_field(1, Var_8, (MR_Integer) 0))));
+      Var_9 = ((MR_Word) ((MR_hl_field(1, Var_8, (MR_Integer) 1))));
+      succeeded = (strcmp(Mfr_5, (MR_String) "apple") == 0);
+      if (succeeded)
+      {
+        succeeded = (Var_9 != (MR_Word) ((MR_Unsigned) 0U));
+        if (succeeded)
+        {
+          OS_6 = ((MR_String) ((MR_hl_field(1, Var_9, (MR_Integer) 0))));
+          Var_10 = ((MR_Word) ((MR_hl_field(1, Var_9, (MR_Integer) 1))));
+          succeeded = (Var_10 == (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            Var_11 = (MR_String) "darwin";
+            succeeded = mercury__string__prefix_2_p_0(OS_6, Var_11);
+          }
+        }
+      }
+    }
+  }
+  return succeeded;
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__get_framework_directories_2_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv0_HeadVar__2_2;
+
+  conv0_HeadVar__2_2 = libs__shell_util__quote_shell_cmd_arg_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__get_framework_directories_2_p_0(
+  MR_Word Globals_3,
+  MR_String * FrameworkDirs_4)
+{
+  MR_Word FrameworkDirs0_5;
+  MR_Word Var_10;
+
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_3, (MR_Integer) 609, &FrameworkDirs0_5);
+  Var_10 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[1]), FrameworkDirs0_5);
+  backend_libs__compile_target_code__join_string_list_5_p_0(Var_10, (MR_String) "-F", (MR_String) "", (MR_String) " ", FrameworkDirs_4);
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__gather_compiler_specific_flags_2_p_0(
+  MR_Word Globals_3,
+  MR_String * Flags_4)
+{
+  MR_Word C_CompilerType_5;
+  MR_Word FlagsList_9;
+
+  libs__globals__get_c_compiler_type_2_p_0(Globals_3, &C_CompilerType_5);
+  switch (MR_tag((MR_Word) C_CompilerType_5)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      FlagsList_9 = (MR_Word) ((MR_Unsigned) 0U);
+      break;
+    case (MR_Integer) 1:
+      libs__globals__lookup_accumulating_option_3_p_0(Globals_3, (MR_Integer) 544, &FlagsList_9);
+      break;
+    case (MR_Integer) 2:
+      libs__globals__lookup_accumulating_option_3_p_0(Globals_3, (MR_Integer) 546, &FlagsList_9);
+      break;
+    case (MR_Integer) 3:
+      libs__globals__lookup_accumulating_option_3_p_0(Globals_3, (MR_Integer) 548, &FlagsList_9);
+      break;
+  }
+  backend_libs__compile_target_code__join_string_list_5_p_0(FlagsList_9, (MR_String) "", (MR_String) "", (MR_String) " ", Flags_4);
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__join_string_list_5_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String HeadVar__2_2,
+  MR_String HeadVar__3_3,
+  MR_String HeadVar__4_4,
+  MR_String * HeadVar__5_5)
+{
+  if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+    *HeadVar__5_5 = (MR_String) "";
+  else
+  {
+    MR_String String_9 = ((MR_String) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word Strings_10 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 1))));
+
+    if ((Strings_10 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MR_Word Var_18;
+      MR_Word Var_19;
+      MR_Word Var_20;
+
+      {
+        Var_20 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_20, 0) = ((MR_Box) (HeadVar__3_3));
+        MR_hl_field(1, Var_20, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        Var_19 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_19, 0) = ((MR_Box) (String_9));
+        MR_hl_field(1, Var_19, 1) = ((MR_Box) (Var_20));
+      }
+      {
+        Var_18 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_18, 0) = ((MR_Box) (HeadVar__2_2));
+        MR_hl_field(1, Var_18, 1) = ((MR_Box) (Var_19));
+      }
+      mercury__string__append_list_2_p_0(Var_18, HeadVar__5_5);
+    }
+    else
+    {
+      MR_String Result0_17;
+      MR_Word Var_22;
+      MR_Word Var_23;
+      MR_Word Var_24;
+      MR_Word Var_25;
+      MR_Word Var_26;
+
+      backend_libs__compile_target_code__join_string_list_5_p_0(Strings_10, HeadVar__2_2, HeadVar__3_3, HeadVar__4_4, &Result0_17);
+      {
+        Var_26 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_26, 0) = ((MR_Box) (Result0_17));
+        MR_hl_field(1, Var_26, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        Var_25 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_25, 0) = ((MR_Box) (HeadVar__4_4));
+        MR_hl_field(1, Var_25, 1) = ((MR_Box) (Var_26));
+      }
+      {
+        Var_24 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_24, 0) = ((MR_Box) (HeadVar__3_3));
+        MR_hl_field(1, Var_24, 1) = ((MR_Box) (Var_25));
+      }
+      {
+        Var_23 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_23, 0) = ((MR_Box) (String_9));
+        MR_hl_field(1, Var_23, 1) = ((MR_Box) (Var_24));
+      }
+      {
+        Var_22 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_22, 0) = ((MR_Box) (HeadVar__2_2));
+        MR_hl_field(1, Var_22, 1) = ((MR_Box) (Var_23));
+      }
+      mercury__string__append_list_2_p_0(Var_22, HeadVar__5_5);
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__compile_target_code__gather_c_include_dir_flags_2_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_Word conv0_LambdaHeadVar__2_12;
+
+  conv0_LambdaHeadVar__2_12 = backend_libs__compile_target_code__IntroducedFrom__func__gather_c_include_dir_flags__862__1_1_f_0(((MR_String) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_LambdaHeadVar__2_12));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__gather_c_include_dir_flags_2_p_0(
+  MR_Word Globals_3,
+  MR_String * InclOpt_4)
+{
+  MR_Word C_Incl_Dirs_5;
+  MR_Word Var_8;
+  MR_Word Var_9;
+
+  libs__globals__lookup_accumulating_option_3_p_0(Globals_3, (MR_Integer) 542, &C_Incl_Dirs_5);
+  Var_9 = mercury__list__map_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&backend_libs__compile_target_code_scalar_common_1[0]), (MR_Word) (&backend_libs__compile_target_code_scalar_common_5[0]), C_Incl_Dirs_5);
+  Var_8 = mercury__list__condense_1_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_9);
+  *InclOpt_4 = mercury__string__append_list_1_f_0(Var_8);
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code__gather_c_grade_defines_2_p_0(
+  MR_Word Globals_3,
+  MR_String * GradeDefines_4)
+{
+  MR_bool succeeded;
+  MR_Word HighLevelCode_5;
+  MR_String HighLevelCodeOpt_6;
+  MR_Word GCC_Regs_7;
+  MR_String RegOpt_8;
+  MR_Word GCC_Gotos_9;
+  MR_String GotoOpt_10;
+  MR_Word ASM_Labels_11;
+  MR_String AsmOpt_12;
+  MR_Word Parallel_13;
+  MR_String ParallelOpt_14;
+  MR_Word Threadscope_15;
+  MR_String ThreadscopeOpt_16;
+  MR_Word GC_Method_17;
+  MR_String GC_Opt_19;
+  MR_Word ProfileCalls_20;
+  MR_String ProfileCallsOpt_21;
+  MR_Word ProfileTime_22;
+  MR_String ProfileTimeOpt_23;
+  MR_Word ProfileMemory_24;
+  MR_String ProfileMemoryOpt_25;
+  MR_Word ProfileDeep_26;
+  MR_String ProfileDeepOpt_27;
+  MR_Word RecordTermSizesAsWords_28;
+  MR_Word RecordTermSizesAsCells_29;
+  MR_String RecordTermSizesOpt_30;
+  MR_Integer NumPtagBits_31;
+  MR_String NumPtagBitsString_32;
+  MR_String NumPtagBitsOpt_33;
+  MR_Word DeclDebug_34;
+  MR_String DeclDebugOpt_35;
+  MR_Word SourceDebug_36;
+  MR_String SourceDebugOpt_37;
+  MR_Word ExecTrace_38;
+  MR_String ExecTraceOpt_39;
+  MR_Word Extend_40;
+  MR_Word StackSegments_41;
+  MR_String ExtendOpt_42;
+  MR_Word CDebugGrade_43;
+  MR_String CDebugGradeOpt_44;
+  MR_Word UseTrail_45;
+  MR_String UseTrailOpt_46;
+  MR_Word MinimalModelStackCopy_47;
+  MR_Word MinimalModelOwnStacks_48;
+  MR_String MinimalModelBaseOpt_49;
+  MR_Word MinimalModelDebug_50;
+  MR_String MinimalModelOpt_51;
+  MR_Word PregeneratedDist_52;
+  MR_String PregeneratedDistOpt_53;
+  MR_Word SinglePrecFloat_54;
+  MR_String SinglePrecFloatOpt_55;
+  MR_Word UseRegions_56;
+  MR_String UseRegionsOpt_61;
+  MR_String Var_81;
+  MR_Word Var_105;
+  MR_Word Var_106;
+  MR_Word Var_107;
+  MR_Word Var_108;
+  MR_Word Var_109;
+  MR_Word Var_110;
+  MR_Word Var_111;
+  MR_Word Var_112;
+  MR_Word Var_113;
+  MR_Word Var_114;
+  MR_Word Var_115;
+  MR_Word Var_116;
+  MR_Word Var_117;
+  MR_Word Var_118;
+  MR_Word Var_119;
+  MR_Word Var_120;
+  MR_Word Var_121;
+  MR_Word Var_122;
+  MR_Word Var_123;
+  MR_Word Var_124;
+  MR_Word Var_125;
+  MR_Word Var_126;
+  MR_Word Var_127;
+
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 311, &HighLevelCode_5);
+  switch (HighLevelCode_5) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      HighLevelCodeOpt_6 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      HighLevelCodeOpt_6 = (MR_String) "-DMR_HIGHLEVEL_CODE ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 308, &GCC_Regs_7);
+  switch (GCC_Regs_7) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      RegOpt_8 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      RegOpt_8 = (MR_String) "-DMR_USE_GCC_GLOBAL_REGISTERS ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 307, &GCC_Gotos_9);
+  switch (GCC_Gotos_9) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      GotoOpt_10 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      GotoOpt_10 = (MR_String) "-DMR_USE_GCC_NONLOCAL_GOTOS ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 309, &ASM_Labels_11);
+  switch (ASM_Labels_11) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      AsmOpt_12 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      AsmOpt_12 = (MR_String) "-DMR_USE_ASM_LABELS ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 268, &Parallel_13);
+  switch (Parallel_13) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      ParallelOpt_14 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      ParallelOpt_14 = (MR_String) "-DMR_THREAD_SAFE ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 269, &Threadscope_15);
+  switch (Threadscope_15) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      ThreadscopeOpt_16 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      ThreadscopeOpt_16 = (MR_String) "-DMR_THREADSCOPE ";
+      break;
+  }
+  libs__globals__get_gc_method_2_p_0(Globals_3, &GC_Method_17);
+  switch (GC_Method_17) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 5:
+      GC_Opt_19 = (MR_String) "-DMR_NATIVE_GC ";
+      break;
+    case (MR_Integer) 0:
+      GC_Opt_19 = (MR_String) "";
+      break;
+    case (MR_Integer) 2:
+      GC_Opt_19 = (MR_String) "-DMR_CONSERVATIVE_GC -DMR_BOEHM_GC ";
+      break;
+    case (MR_Integer) 3:
+      GC_Opt_19 = (MR_String) "-DMR_CONSERVATIVE_GC -DMR_BOEHM_GC -DMR_BOEHM_GC_DEBUG -DGC_DEBUG -DKEEP_BACKPTRS ";
+      break;
+    case (MR_Integer) 4:
+      GC_Opt_19 = (MR_String) "-DMR_CONSERVATIVE_GC -DMR_HGC ";
+      break;
+    case (MR_Integer) 1:
+      GC_Opt_19 = (MR_String) "";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 244, &ProfileCalls_20);
+  switch (ProfileCalls_20) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      ProfileCallsOpt_21 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      ProfileCallsOpt_21 = (MR_String) "-DMR_MPROF_PROFILE_CALLS ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 245, &ProfileTime_22);
+  switch (ProfileTime_22) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      ProfileTimeOpt_23 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      ProfileTimeOpt_23 = (MR_String) "-DMR_MPROF_PROFILE_TIME ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 246, &ProfileMemory_24);
+  switch (ProfileMemory_24) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      ProfileMemoryOpt_25 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      ProfileMemoryOpt_25 = (MR_String) "-DMR_MPROF_PROFILE_MEMORY ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 247, &ProfileDeep_26);
+  switch (ProfileDeep_26) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      ProfileDeepOpt_27 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      ProfileDeepOpt_27 = (MR_String) "-DMR_DEEP_PROFILING ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 264, &RecordTermSizesAsWords_28);
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 265, &RecordTermSizesAsCells_29);
+  switch (RecordTermSizesAsWords_28) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      switch (RecordTermSizesAsCells_29) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          RecordTermSizesOpt_30 = (MR_String) "";
+          break;
+        case (MR_Integer) 1:
+          RecordTermSizesOpt_30 = (MR_String) "-DMR_RECORD_TERM_SIZES -DMR_RECORD_TERM_SIZES_AS_CELLS ";
+          break;
+      }
+      break;
+    case (MR_Integer) 1:
+      switch (RecordTermSizesAsCells_29) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          RecordTermSizesOpt_30 = (MR_String) "-DMR_RECORD_TERM_SIZES ";
+          break;
+        case (MR_Integer) 1:
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140backend_libs.compile_target_code.gather_c_grade_defines\'/2", (MR_String) "inconsistent record term size options");
+            return;
+          }
+          break;
+      }
+      break;
+  }
+  libs__globals__lookup_int_option_3_p_0(Globals_3, (MR_Integer) 287, &NumPtagBits_31);
+  mercury__string__int_to_string_2_p_0(NumPtagBits_31, &NumPtagBitsString_32);
+  Var_81 = mercury__string__f_43_43_2_f_0(NumPtagBitsString_32, (MR_String) " ");
+  NumPtagBitsOpt_33 = mercury__string__f_43_43_2_f_0((MR_String) "-DMR_TAGBITS=", Var_81);
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 239, &DeclDebug_34);
+  switch (DeclDebug_34) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      DeclDebugOpt_35 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      DeclDebugOpt_35 = (MR_String) "-DMR_DECL_DEBUG ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 284, &SourceDebug_36);
+  switch (SourceDebug_36) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      SourceDebugOpt_37 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      SourceDebugOpt_37 = (MR_String) "-DMR_SS_DEBUG ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 238, &ExecTrace_38);
+  switch (ExecTrace_38) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      ExecTraceOpt_39 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      ExecTraceOpt_39 = (MR_String) "-DMR_EXEC_TRACE ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 278, &Extend_40);
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 279, &StackSegments_41);
+  switch (Extend_40) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      switch (StackSegments_41) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          ExtendOpt_42 = (MR_String) "";
+          break;
+        case (MR_Integer) 1:
+          ExtendOpt_42 = (MR_String) "-DMR_STACK_SEGMENTS ";
+          break;
+      }
+      break;
+    case (MR_Integer) 1:
+      switch (StackSegments_41) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          ExtendOpt_42 = (MR_String) "-DMR_EXTEND_STACKS_WHEN_NEEDED ";
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Box conv0_ExtendOpt_42;
+
+            {
+              conv0_ExtendOpt_42 = mercury__require__unexpected_2_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_String) "predicate \140backend_libs.compile_target_code.gather_c_grade_defines\'/2", (MR_String) "--extend-stacks-when-needed and --stack-segments");
+              return;
+            }
+            ExtendOpt_42 = ((MR_String) (conv0_ExtendOpt_42));
+          }
+          break;
+      }
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 312, &CDebugGrade_43);
+  switch (CDebugGrade_43) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      CDebugGradeOpt_44 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      CDebugGradeOpt_44 = (MR_String) "-DMR_C_DEBUG_GRADE ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 270, &UseTrail_45);
+  switch (UseTrail_45) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      UseTrailOpt_46 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      UseTrailOpt_46 = (MR_String) "-DMR_USE_TRAIL ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 271, &MinimalModelStackCopy_47);
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 272, &MinimalModelOwnStacks_48);
+  switch (MinimalModelStackCopy_47) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      switch (MinimalModelOwnStacks_48) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          MinimalModelBaseOpt_49 = (MR_String) "";
+          break;
+        case (MR_Integer) 1:
+          MinimalModelBaseOpt_49 = (MR_String) "-DMR_USE_MINIMAL_MODEL_OWN_STACKS ";
+          break;
+      }
+      break;
+    case (MR_Integer) 1:
+      switch (MinimalModelOwnStacks_48) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          MinimalModelBaseOpt_49 = (MR_String) "-DMR_USE_MINIMAL_MODEL_STACK_COPY ";
+          break;
+        case (MR_Integer) 1:
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140backend_libs.compile_target_code.gather_c_grade_defines\'/2", (MR_String) "inconsistent minimal model options");
+            return;
+          }
+          break;
+      }
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 273, &MinimalModelDebug_50);
+  switch (MinimalModelDebug_50) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      MinimalModelOpt_51 = MinimalModelBaseOpt_49;
+      break;
+    case (MR_Integer) 1:
+      {
+        succeeded = (strcmp(MinimalModelBaseOpt_49, (MR_String) "") == 0);
+        if (succeeded)
+          MinimalModelOpt_51 = MinimalModelBaseOpt_49;
+        else
+          MinimalModelOpt_51 = mercury__string__f_43_43_2_f_0(MinimalModelBaseOpt_49, (MR_String) "-DMR_MINIMAL_MODEL_DEBUG ");
+      }
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 274, &PregeneratedDist_52);
+  switch (PregeneratedDist_52) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      PregeneratedDistOpt_53 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      PregeneratedDistOpt_53 = (MR_String) "-DMR_PREGENERATED_DIST ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 275, &SinglePrecFloat_54);
+  switch (SinglePrecFloat_54) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      SinglePrecFloatOpt_55 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      SinglePrecFloatOpt_55 = (MR_String) "-DMR_USE_SINGLE_PREC_FLOAT ";
+      break;
+  }
+  libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 280, &UseRegions_56);
+  switch (UseRegions_56) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      UseRegionsOpt_61 = (MR_String) "";
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word UseRegionsDebug_58;
+        MR_String UseRegionsOpt1_59;
+        MR_Word UseRegionsProfiling_60;
+
+        libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 282, &UseRegionsDebug_58);
+        switch (UseRegionsDebug_58) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            UseRegionsOpt1_59 = (MR_String) "-DMR_USE_REGIONS ";
+            break;
+          case (MR_Integer) 1:
+            UseRegionsOpt1_59 = (MR_String) "-DMR_USE_REGIONS -DMR_RBMM_DEBUG ";
+            break;
+        }
+        libs__globals__lookup_bool_option_3_p_0(Globals_3, (MR_Integer) 283, &UseRegionsProfiling_60);
+        switch (UseRegionsProfiling_60) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            UseRegionsOpt_61 = UseRegionsOpt1_59;
+            break;
+          case (MR_Integer) 1:
+            UseRegionsOpt_61 = mercury__string__f_43_43_2_f_0(UseRegionsOpt1_59, (MR_String) "-DMR_RBMM_PROFILING ");
+            break;
+        }
+      }
+      break;
+  }
+  {
+    Var_127 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_127, 0) = ((MR_Box) (UseRegionsOpt_61));
+    MR_hl_field(1, Var_127, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  {
+    Var_126 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_126, 0) = ((MR_Box) (SinglePrecFloatOpt_55));
+    MR_hl_field(1, Var_126, 1) = ((MR_Box) (Var_127));
+  }
+  {
+    Var_125 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_125, 0) = ((MR_Box) (PregeneratedDistOpt_53));
+    MR_hl_field(1, Var_125, 1) = ((MR_Box) (Var_126));
+  }
+  {
+    Var_124 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_124, 0) = ((MR_Box) (MinimalModelOpt_51));
+    MR_hl_field(1, Var_124, 1) = ((MR_Box) (Var_125));
+  }
+  {
+    Var_123 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_123, 0) = ((MR_Box) (UseTrailOpt_46));
+    MR_hl_field(1, Var_123, 1) = ((MR_Box) (Var_124));
+  }
+  {
+    Var_122 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_122, 0) = ((MR_Box) (ExecTraceOpt_39));
+    MR_hl_field(1, Var_122, 1) = ((MR_Box) (Var_123));
+  }
+  {
+    Var_121 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_121, 0) = ((MR_Box) (SourceDebugOpt_37));
+    MR_hl_field(1, Var_121, 1) = ((MR_Box) (Var_122));
+  }
+  {
+    Var_120 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_120, 0) = ((MR_Box) (DeclDebugOpt_35));
+    MR_hl_field(1, Var_120, 1) = ((MR_Box) (Var_121));
+  }
+  {
+    Var_119 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_119, 0) = ((MR_Box) (CDebugGradeOpt_44));
+    MR_hl_field(1, Var_119, 1) = ((MR_Box) (Var_120));
+  }
+  {
+    Var_118 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_118, 0) = ((MR_Box) (ExtendOpt_42));
+    MR_hl_field(1, Var_118, 1) = ((MR_Box) (Var_119));
+  }
+  {
+    Var_117 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_117, 0) = ((MR_Box) (NumPtagBitsOpt_33));
+    MR_hl_field(1, Var_117, 1) = ((MR_Box) (Var_118));
+  }
+  {
+    Var_116 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_116, 0) = ((MR_Box) (RecordTermSizesOpt_30));
+    MR_hl_field(1, Var_116, 1) = ((MR_Box) (Var_117));
+  }
+  {
+    Var_115 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_115, 0) = ((MR_Box) (ProfileDeepOpt_27));
+    MR_hl_field(1, Var_115, 1) = ((MR_Box) (Var_116));
+  }
+  {
+    Var_114 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_114, 0) = ((MR_Box) (ProfileMemoryOpt_25));
+    MR_hl_field(1, Var_114, 1) = ((MR_Box) (Var_115));
+  }
+  {
+    Var_113 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_113, 0) = ((MR_Box) (ProfileTimeOpt_23));
+    MR_hl_field(1, Var_113, 1) = ((MR_Box) (Var_114));
+  }
+  {
+    Var_112 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_112, 0) = ((MR_Box) (ProfileCallsOpt_21));
+    MR_hl_field(1, Var_112, 1) = ((MR_Box) (Var_113));
+  }
+  {
+    Var_111 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_111, 0) = ((MR_Box) (GC_Opt_19));
+    MR_hl_field(1, Var_111, 1) = ((MR_Box) (Var_112));
+  }
+  {
+    Var_110 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_110, 0) = ((MR_Box) (ThreadscopeOpt_16));
+    MR_hl_field(1, Var_110, 1) = ((MR_Box) (Var_111));
+  }
+  {
+    Var_109 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_109, 0) = ((MR_Box) (ParallelOpt_14));
+    MR_hl_field(1, Var_109, 1) = ((MR_Box) (Var_110));
+  }
+  {
+    Var_108 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_108, 0) = ((MR_Box) (AsmOpt_12));
+    MR_hl_field(1, Var_108, 1) = ((MR_Box) (Var_109));
+  }
+  {
+    Var_107 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_107, 0) = ((MR_Box) (GotoOpt_10));
+    MR_hl_field(1, Var_107, 1) = ((MR_Box) (Var_108));
+  }
+  {
+    Var_106 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_106, 0) = ((MR_Box) (RegOpt_8));
+    MR_hl_field(1, Var_106, 1) = ((MR_Box) (Var_107));
+  }
+  {
+    Var_105 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_105, 0) = ((MR_Box) (HighLevelCodeOpt_6));
+    MR_hl_field(1, Var_105, 1) = ((MR_Box) (Var_106));
+  }
+  mercury__string__append_list_2_p_0(Var_105, GradeDefines_4);
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____compile_init_file_pred_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = backend_libs__compile_target_code____Unify____compile_init_file_pred_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code____Compare____compile_init_file_pred_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  backend_libs__compile_target_code____Compare____compile_init_file_pred_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____is_as_new_as_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = backend_libs__compile_target_code____Unify____is_as_new_as_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code____Compare____is_as_new_as_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  backend_libs__compile_target_code____Compare____is_as_new_as_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____linked_target_type_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = backend_libs__compile_target_code____Unify____linked_target_type_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code____Compare____linked_target_type_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  backend_libs__compile_target_code____Compare____linked_target_type_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+backend_libs__compile_target_code____Unify____pic_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = backend_libs__compile_target_code____Unify____pic_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+backend_libs__compile_target_code____Compare____pic_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  backend_libs__compile_target_code____Compare____pic_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+void mercury__backend_libs__compile_target_code__init(void)
+{
+}
+
+void mercury__backend_libs__compile_target_code__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&backend_libs__compile_target_code__backend_libs__compile_target_code__type_ctor_info_compile_init_file_pred_0);
+	MR_register_type_ctor_info(&backend_libs__compile_target_code__backend_libs__compile_target_code__type_ctor_info_is_as_new_as_0);
+	MR_register_type_ctor_info(&backend_libs__compile_target_code__backend_libs__compile_target_code__type_ctor_info_linked_target_type_0);
+	MR_register_type_ctor_info(&backend_libs__compile_target_code__backend_libs__compile_target_code__type_ctor_info_pic_0);
+}
+
+void mercury__backend_libs__compile_target_code__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__backend_libs__compile_target_code__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module backend_libs.compile_target_code.
