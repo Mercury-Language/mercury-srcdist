@@ -1,0 +1,19 @@
+:- module (recompilation.version).
+:- interface.
+:- use_module libs.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module term.
+:- use_module (libs.timestamp).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.prog_item).
+:- pred compute_version_numbers_int0(maybe.maybe(parse_tree.prog_item.parse_tree_int0), libs.timestamp.timestamp, parse_tree.prog_item.parse_tree_int0, recompilation.module_item_version_numbers).
+:- mode compute_version_numbers_int0((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred compute_version_numbers_int1(maybe.maybe(parse_tree.prog_item.parse_tree_int1), libs.timestamp.timestamp, parse_tree.prog_item.parse_tree_int1, recompilation.module_item_version_numbers).
+:- mode compute_version_numbers_int1((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred compute_version_numbers_int2(maybe.maybe(parse_tree.prog_item.parse_tree_int2), libs.timestamp.timestamp, parse_tree.prog_item.parse_tree_int2, recompilation.module_item_version_numbers).
+:- mode compute_version_numbers_int2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func module_item_version_numbers_to_string(recompilation.module_item_version_numbers) = string.
+:- func module_item_version_numbers_version_number = int.
+:- pred parse_module_item_version_numbers(term.term, parse_tree.maybe_error.maybe1(recompilation.module_item_version_numbers)).
+:- mode parse_module_item_version_numbers((builtin.in), (builtin.out)) is det.

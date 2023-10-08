@@ -1,0 +1,8 @@
+:- module (make.find_local_modules).
+:- interface.
+:- use_module (make.deps_cache).
+:- use_module (make.deps_set).
+:- type cached_transitive_dependencies.
+:- implementation.
+:- use_module map.
+:- type cached_transitive_dependencies == map.map(make.deps_cache.transitive_dependencies_root, make.deps_cache.deps_result(make.deps_set.module_index)).
