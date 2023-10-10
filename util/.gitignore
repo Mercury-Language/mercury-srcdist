@@ -1,0 +1,9 @@
+mkinit
+mdemangle
+mfiltercc
+info_to_mdb
+pad_backslash
+*.o
+*.obj
+*.exe
+tags
