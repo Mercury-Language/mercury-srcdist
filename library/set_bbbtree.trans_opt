@@ -1,0 +1,241 @@
+:- module set_bbbtree.
+
+:- pragma termination_info(set_bbbtree.all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.contains((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.count((builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.count((builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.def_ratio((builtin.uo)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.delete((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.delete((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.delete((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.delete_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.delete_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.det_remove((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.det_remove_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.difference((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.difference((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.difference_r((builtin.in), (builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(set_bbbtree.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.filter_map(builtin.in((func((builtin.in)) = (builtin.out) is semidet)), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold4(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold4(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold4(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold4(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold4(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold4(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold5(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold5(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold5(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold5(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold5(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold5(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold6(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold6(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold6(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold6(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold6(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.fold6(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.from_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.from_sorted_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((set_bbbtree.init) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.init((builtin.uo)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.insert((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.insert((builtin.di), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.insert((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.insert_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.insert_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.insert_list_r((builtin.in), (builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.insert_new((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.insert_new_r((builtin.in), (builtin.in), (builtin.out), (builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.insert_r((builtin.in), (builtin.in), (builtin.out), (builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.intersect((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.intersect((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.intersect_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.intersect_list_r((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.intersect_r((builtin.in), (builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.is_member((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.is_non_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.is_singleton((builtin.in), (builtin.out)), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.largest((builtin.in), (builtin.out)), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.largest((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.least((builtin.in), (builtin.out)), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.least((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.list_to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.list_to_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.list_to_set_r((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.make_singleton_set((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.map((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.member((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.member((builtin.out), (builtin.in)), finite(-4, [no, no, yes]), cannot_loop).
+:- pragma termination_info(set_bbbtree.power_intersect((builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(set_bbbtree.power_intersect((builtin.in), (builtin.out)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(set_bbbtree.power_intersect_r((builtin.in), (builtin.out), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(set_bbbtree.power_union((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.power_union((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.power_union_r((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.remove((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.remove_largest((builtin.out), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.remove_least((builtin.out), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.remove_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.rev_sorted_list_to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.rev_sorted_list_to_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.rev_sorted_list_to_set_len((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.singleton_set((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(set_bbbtree.singleton_set((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.singleton_set((builtin.out), (builtin.in)), finite(-4, [no, no, yes]), cannot_loop).
+:- pragma termination_info(set_bbbtree.sorted_list_to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.sorted_list_to_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.sorted_list_to_set_len((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.subset((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(set_bbbtree.superset((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(set_bbbtree.to_sorted_list((builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.to_sorted_list((builtin.di), (builtin.uo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.to_sorted_list((builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.to_sorted_list2((builtin.di), (builtin.di), (builtin.uo)), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.to_sorted_list2((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(set_bbbtree.union((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.union((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.union_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(set_bbbtree.union_r((builtin.in), (builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+
+:- pragma exceptions(predicate, (set_bbbtree.all_true), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.contains), 2, 0, conditional).
+:- pragma exceptions(function, (set_bbbtree.count), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.count), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.def_ratio), 1, 0, will_not_throw).
+:- pragma exceptions(function, (set_bbbtree.delete), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.delete), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.delete_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.det_remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.det_remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.difference), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.difference), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.difference_r), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.equal), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.filter), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.filter_map), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.fold), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold3), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold4), 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold4), 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold4), 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold4), 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold4), 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold4), 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold5), 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold5), 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold5), 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold5), 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold5), 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold5), 12, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold6), 14, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold6), 14, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold6), 14, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold6), 14, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold6), 14, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.fold6), 14, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.from_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.from_sorted_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.init), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.init), 1, 0, will_not_throw).
+:- pragma exceptions(function, (set_bbbtree.insert), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.insert), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.insert_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.insert_list_r), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.insert_new), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.insert_new_r), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.insert_r), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.intersect), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.intersect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.intersect_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.intersect_list_r), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.intersect_r), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.is_member), 3, 0, conditional).
+:- pragma exceptions(predicate, (set_bbbtree.is_non_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.is_singleton), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.largest), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.largest), 2, 1, conditional).
+:- pragma exceptions(predicate, (set_bbbtree.least), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.least), 2, 1, conditional).
+:- pragma exceptions(function, (set_bbbtree.list_to_set), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.list_to_set_r), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.make_singleton_set), 1, 0, will_not_throw).
+:- pragma exceptions(function, (set_bbbtree.map), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.member), 2, 0, conditional).
+:- pragma exceptions(predicate, (set_bbbtree.member), 2, 1, conditional).
+:- pragma exceptions(function, (set_bbbtree.power_intersect), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.power_intersect), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.power_intersect_r), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.power_union), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.power_union), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.power_union_r), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.remove_largest), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.remove_least), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.rev_sorted_list_to_set), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.rev_sorted_list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.rev_sorted_list_to_set_len), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.singleton_set), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.singleton_set), 2, 1, conditional).
+:- pragma exceptions(predicate, (set_bbbtree.singleton_set), 2, 2, will_not_throw).
+:- pragma exceptions(function, (set_bbbtree.sorted_list_to_set), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.sorted_list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.sorted_list_to_set_len), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.subset), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.superset), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.to_sorted_list), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.to_sorted_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.to_sorted_list), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.to_sorted_list2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (set_bbbtree.to_sorted_list2), 3, 1, will_not_throw).
+:- pragma exceptions(function, (set_bbbtree.union), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.union), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (set_bbbtree.union_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (set_bbbtree.union_r), 4, 0, may_throw(user_exception)).

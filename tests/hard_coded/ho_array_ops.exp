@@ -1,0 +1,153 @@
+TESTING: foldl (empty)
+
+RESULT: OK
+FINISHED TESTING: foldl (empty)
+
+TESTING: foldl (singleton)
+1 
+RESULT: OK
+FINISHED TESTING: foldl (singleton)
+
+TESTING: foldl (> 1)
+1 2 3 
+RESULT: OK
+FINISHED TESTING: foldl (> 1)
+
+TESTING: foldl2 (empty)
+
+The sum is 0
+RESULT: OK
+FINISHED TESTING: foldl2 (empty)
+
+TESTING: foldl2 (singleton)
+1 
+The sum is 1
+RESULT: OK
+FINISHED TESTING: foldl2 (singleton)
+
+TESTING: foldl2 (> 1)
+1 2 3 
+The sum is 6
+RESULT: OK
+FINISHED TESTING: foldl2 (> 1)
+
+TESTING: foldr (empty)
+
+RESULT: OK
+FINISHED TESTING: foldr (empty)
+
+TESTING: foldr (singleton)
+1 
+RESULT: OK
+FINISHED TESTING: foldr (singleton)
+
+TESTING: foldr (> 1)
+3 2 1 
+RESULT: OK
+FINISHED TESTING: foldr (> 1)
+
+TESTING: foldr2 (empty)
+
+The sum is 0
+RESULT: OK
+FINISHED TESTING: foldr2 (empty)
+
+TESTING: foldr2 (singleton)
+1 
+The sum is 1
+RESULT: OK
+FINISHED TESTING: foldr2 (singleton)
+
+TESTING: foldr2 (> 1)
+3 2 1 
+The sum is 6
+RESULT: OK
+FINISHED TESTING: foldr2 (> 1)
+
+TESTING: foldl_corresponding (ok)
+1 - 2
+2 - 4
+3 - 6
+4 - 8
+5 - 10
+RESULT: OK
+FINISHED TESTING: foldl_corresponding (ok)
+
+TESTING: foldl_corresponding (empty)
+RESULT: OK
+FINISHED TESTING: foldl_corresponding (empty)
+
+TESTING: foldl_corresponding (mismatch)
+RESULT: EXCEPTION: software_error("predicate `array.foldl_corresponding\'/5: Unexpected: mismatched array sizes")
+FINISHED TESTING: foldl_corresponding (mismatch)
+
+TESTING: foldl2_corresponding (ok)
+1 - 2
+2 - 4
+3 - 6
+4 - 8
+5 - 10
+Sum is 45.
+RESULT: OK
+FINISHED TESTING: foldl2_corresponding (ok)
+
+TESTING: foldl2_corresponding (empty)
+Sum is 0.
+RESULT: OK
+FINISHED TESTING: foldl2_corresponding (empty)
+
+TESTING: foldl2_corresponding (mismatch)
+RESULT: EXCEPTION: software_error("predicate `array.foldl2_corresponding\'/7: Unexpected: mismatched array sizes")
+FINISHED TESTING: foldl2_corresponding (mismatch)
+
+TESTING: map (pred) (empty)
+array([])
+RESULT: OK
+FINISHED TESTING: map (pred) (empty)
+
+TESTING: map (pred) (singleton)
+array(["1"])
+RESULT: OK
+FINISHED TESTING: map (pred) (singleton)
+
+TESTING: map (pred) (> 1)
+array(["1", "2", "3"])
+RESULT: OK
+FINISHED TESTING: map (pred) (> 1)
+
+TESTING: map (func) (empty)
+array([])
+RESULT: OK
+FINISHED TESTING: map (func) (empty)
+
+TESTING: map (func) (singleton)
+array(["1"])
+RESULT: OK
+FINISHED TESTING: map (func) (singleton)
+
+TESTING: map (func) (> 1)
+array(["1", "2", "3"])
+RESULT: OK
+FINISHED TESTING: map (func) (> 1)
+
+TESTING: map_corresponding_foldl (ok)
+1 + 2 = 3
+2 + 4 = 6
+3 + 6 = 9
+4 + 8 = 12
+5 + 10 = 15
+array([3, 6, 9, 12, 15])
+
+RESULT: OK
+FINISHED TESTING: map_corresponding_foldl (ok)
+
+TESTING: map_corresponding_foldl (empty)
+array([])
+
+RESULT: OK
+FINISHED TESTING: map_corresponding_foldl (empty)
+
+TESTING: map_corresponding_foldl (mismatch)
+RESULT: EXCEPTION: software_error("predicate `array.map_corresponding_foldl\'/6: Unexpected: mismatched array sizes")
+FINISHED TESTING: map_corresponding_foldl (mismatch)
+

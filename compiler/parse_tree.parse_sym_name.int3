@@ -1,0 +1,7 @@
+:- module (parse_tree.parse_sym_name).
+:- interface.
+:- type maybe_functor.
+:- type maybe_functor(T).
+:- type sym_name_specifier.
+:- type_representation(maybe_functor, is_eqv_to(parse_tree.parse_sym_name.maybe_functor(generic))).
+:- type_representation(maybe_functor(V_1), is_eqv_to(maybe2(sym_name, list(term(V_1))))).

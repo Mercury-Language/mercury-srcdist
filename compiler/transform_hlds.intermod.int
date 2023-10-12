@@ -1,0 +1,10 @@
+:- module (transform_hlds.intermod).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.prog_item).
+:- use_module (transform_hlds.intermod_info).
+:- pred write_initial_opt_file(io.text_output_stream, hlds.hlds_module.module_info, transform_hlds.intermod_info.intermod_info, parse_tree.prog_item.parse_tree_plain_opt, io.io, io.io).
+:- mode write_initial_opt_file((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
