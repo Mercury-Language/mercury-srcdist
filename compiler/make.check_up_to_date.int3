@@ -1,0 +1,7 @@
+:- module (make.check_up_to_date).
+:- interface.
+:- type dependencies_result
+	where	type_is_abstract_enum(2).
+:- type dependency_status_result.
+:- type_representation(dependencies_result, du_repn(enum("deps_up_to_date", "deps_out_of_date", ["deps_error"],  no_c_j_cs))).
+:- type_representation(dependency_status_result, is_word_aligned_ptr).

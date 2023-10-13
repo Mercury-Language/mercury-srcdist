@@ -1,0 +1,26 @@
+:- module (make.deps_cache).
+:- interface.
+:- use_module map.
+:- use_module (make.deps_set).
+:- type cached_computed_module_deps == map.map(make.deps_cache.computed_module_deps_key, make.deps_cache.dependency_file_deps_result).
+:- type cached_direct_imports == map.map(make.deps_set.module_index, make.deps_cache.module_deps_result).
+:- type cached_indirect_imports == map.map(make.deps_set.module_index, make.deps_cache.module_deps_result).
+:- type cached_transitive_dependencies == map.map(make.deps_cache.trans_deps_key, make.deps_cache.module_deps_result).
+:- type cached_transitive_foreign_imports == map.map(make.deps_set.module_index, make.deps_cache.module_deps_result).
+:- type computed_module_deps_key
+    --->    computed_module_deps_key(make.deps_set.module_index, make.deps_cache.computed_module_deps_label).
+:- type computed_module_deps_label
+    --->    computed_module_deps_import_012 .
+:- type dependency_file_deps_result == make.deps_cache.deps_result(make.deps_set.dependency_file_index).
+:- type deps_result(T)
+    --->    deps_result(((make.deps_cache).dr_success) :: libs.maybe_util.maybe_succeeded, ((make.deps_cache).dr_set) :: make.deps_set.deps_set(T)).
+:- type module_deps_result == make.deps_cache.deps_result(make.deps_set.module_index).
+:- type process_modules_where
+    --->    process_only_modules_in_cur_dir 
+    ;       process_modules_anywhere .
+:- type trans_deps_key
+    --->    trans_deps_key(make.deps_set.module_index, make.deps_cache.transitive_dependencies_type, make.deps_cache.process_modules_where).
+:- type transitive_dependencies_type
+    --->    interface_imports 
+    ;       all_imports 
+    ;       all_dependencies .
