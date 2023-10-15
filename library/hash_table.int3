@@ -1,0 +1,12 @@
+:- module hash_table.
+:- interface.
+:- type hash_bucket(K, V).
+:- type hash_pred(K).
+:- type hash_table(K, V).
+:- abstract_inst((hash_pred)).
+:- abstract_inst((hash_table)).
+:- abstract_mode((hash_table_di)).
+:- abstract_mode((hash_table_ui)).
+:- abstract_mode((hash_table_uo)).
+:- type_representation(hash_bucket_array(V_1, V_2), is_eqv_to(array(hash_table.hash_bucket(V_1, V_2)))).
+:- type_representation(hash_pred(V_1), is_eqv_to(pred(V_1, int))).

@@ -1,0 +1,29 @@
+:- module (transform_hlds.intermod_analysis).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.prog_item).
+:- type maybe_should_write
+    --->    should_not_write 
+    ;       should_write .
+:- type should_write_for
+    --->    for_analysis_framework 
+    ;       for_pragma .
+:- pred append_analysis_pragmas_to_opt_file(io.text_output_stream, hlds.hlds_module.module_info, set.set(parse_tree.prog_item.gen_pragma_unused_args_info), parse_tree.prog_item.parse_tree_plain_opt, parse_tree.prog_item.parse_tree_plain_opt, io.io, io.io).
+:- mode append_analysis_pragmas_to_opt_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred should_write_exception_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, transform_hlds.intermod_analysis.should_write_for, transform_hlds.intermod_analysis.maybe_should_write).
+:- mode should_write_exception_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred should_write_mm_tabling_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, transform_hlds.intermod_analysis.should_write_for, transform_hlds.intermod_analysis.maybe_should_write).
+:- mode should_write_mm_tabling_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred should_write_reuse_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, transform_hlds.intermod_analysis.should_write_for, transform_hlds.intermod_analysis.maybe_should_write).
+:- mode should_write_reuse_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred should_write_sharing_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, transform_hlds.intermod_analysis.should_write_for, transform_hlds.intermod_analysis.maybe_should_write).
+:- mode should_write_sharing_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred should_write_trailing_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, transform_hlds.intermod_analysis.should_write_for, transform_hlds.intermod_analysis.maybe_should_write).
+:- mode should_write_trailing_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred write_trans_opt_file(io.text_output_stream, hlds.hlds_module.module_info, parse_tree.prog_item.parse_tree_trans_opt, io.io, io.io).
+:- mode write_trans_opt_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
