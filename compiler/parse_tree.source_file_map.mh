@@ -1,0 +1,43 @@
+// Automatically generated from `source_file_map.m'
+// by the Mercury compiler,
+// version rotd-2023-10-16
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef PARSE_TREE__SOURCE_FILE_MAP_MH
+#define PARSE_TREE__SOURCE_FILE_MAP_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PARSE_TREE__SOURCE_FILE_MAP_DECL_GUARD
+#define PARSE_TREE__SOURCE_FILE_MAP_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word parse_tree__source_file_map__mutable_variable_maybe_source_file_map;
+#else
+    extern MR_Word parse_tree__source_file_map__mutable_variable_maybe_source_file_map;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock parse_tree__source_file_map__mutable_variable_maybe_source_file_map_lock;
+#endif
+
+
+#endif
+void parse_tree__source_file_map__user_init_pred_32_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PARSE_TREE__SOURCE_FILE_MAP_MH */

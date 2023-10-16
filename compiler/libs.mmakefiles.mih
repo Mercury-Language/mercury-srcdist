@@ -1,0 +1,222 @@
+/*
+** Automatically generated from `mmakefiles.m'
+** by the Mercury compiler,
+** version rotd-2023-10-16
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.mmakefiles.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__mmakefiles
+#define MR_HEADER_GUARD_libs__mmakefiles
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__MMAKEFILES_DECL_GUARD
+#define LIBS__MMAKEFILES_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__mmakefiles__libs__mmakefiles__type_ctor_info_is_mmake_rule_phony_0;
+
+extern const MR_TypeCtorInfo_Struct libs__mmakefiles__libs__mmakefiles__type_ctor_info_maybe_write_mmake_comments_0;
+
+extern const MR_TypeCtorInfo_Struct libs__mmakefiles__libs__mmakefiles__type_ctor_info_mmake_action_0;
+
+extern const MR_TypeCtorInfo_Struct libs__mmakefiles__libs__mmakefiles__type_ctor_info_mmake_condition_0;
+
+extern const MR_TypeCtorInfo_Struct libs__mmakefiles__libs__mmakefiles__type_ctor_info_mmake_entry_0;
+
+extern const MR_TypeCtorInfo_Struct libs__mmakefiles__libs__mmakefiles__type_ctor_info_mmake_file_name_0;
+
+extern const MR_TypeCtorInfo_Struct libs__mmakefiles__libs__mmakefiles__type_ctor_info_mmake_file_name_group_0;
+
+extern const MR_TypeCtorInfo_Struct libs__mmakefiles__libs__mmakefiles__type_ctor_info_mmake_fragment_0;
+
+extern const MR_TypeCtorInfo_Struct libs__mmakefiles__libs__mmakefiles__type_ctor_info_mmake_grade_component_0;
+
+extern const MR_TypeCtorInfo_Struct libs__mmakefiles__libs__mmakefiles__type_ctor_info_mmakefile_0;
+
+void MR_CALL 
+libs__mmakefiles__add_mmake_entries_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__mmakefiles__add_mmake_entry_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__mmakefiles__add_mmake_fragment_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__mmakefiles__add_mmake_fragments_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__mmakefiles__start_mmakefile_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+libs__mmakefiles__write_mmakefile_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__mmakefiles__make_file_name_group_2_f_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__mmakefiles__make_singleton_file_name_group_2_f_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+libs__mmakefiles__mmake_entry_to_fragment_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+libs__mmakefiles__silent_noop_action_0_f_0(void);
+
+void MR_CALL 
+libs__mmakefiles____Compare____is_mmake_rule_phony_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__mmakefiles____Compare____mmake_action_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+libs__mmakefiles____Compare____mmake_condition_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__mmakefiles____Compare____mmake_entry_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__mmakefiles____Compare____mmake_file_name_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+libs__mmakefiles____Compare____mmake_file_name_group_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__mmakefiles____Compare____mmake_fragment_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__mmakefiles____Compare____mmake_grade_component_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+libs__mmakefiles____Compare____mmakefile_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__mmakefiles____Unify____is_mmake_rule_phony_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__mmakefiles____Unify____mmake_action_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+libs__mmakefiles____Unify____mmake_condition_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__mmakefiles____Unify____mmake_entry_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__mmakefiles____Unify____mmake_file_name_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+libs__mmakefiles____Unify____mmake_file_name_group_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__mmakefiles____Unify____mmake_fragment_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__mmakefiles____Unify____mmake_grade_component_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+libs__mmakefiles____Unify____mmakefile_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__mmakefiles__init(void);
+void mercury__libs__mmakefiles__init_type_tables(void);
+void mercury__libs__mmakefiles__init_debugger(void);
+const char *mercury__libs__mmakefiles__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.mmakefiles
+
+// :- end_interface libs.mmakefiles.

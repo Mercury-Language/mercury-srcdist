@@ -1,0 +1,86 @@
+/*
+** Automatically generated from `ml_elim_nested.m'
+** by the Mercury compiler,
+** version rotd-2023-10-16
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.ml_elim_nested.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_elim_nested
+#define MR_HEADER_GUARD_ml_backend__ml_elim_nested
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_ELIM_NESTED_DECL_GUARD
+#define ML_BACKEND__ML_ELIM_NESTED_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_elim_nested__ml_backend__ml_elim_nested__type_ctor_info_action_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_elim_nested__ml_backend__ml_elim_nested__type_ctor_info_elim_info_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_elim_nested__ml_backend__ml_elim_nested__type_ctor_info_inserted_env_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_elim_nested__ml_backend__ml_elim_nested__type_ctor_info_outervars_0;
+
+void MR_CALL 
+ml_backend__ml_elim_nested__ml_elim_nested_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ml_backend__ml_elim_nested__ml_elim_nested_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ml_backend__ml_elim_nested____Compare____action_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ml_backend__ml_elim_nested____Unify____action_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ml_backend__ml_elim_nested__init(void);
+void mercury__ml_backend__ml_elim_nested__init_type_tables(void);
+void mercury__ml_backend__ml_elim_nested__init_debugger(void);
+const char *mercury__ml_backend__ml_elim_nested__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.ml_elim_nested
+
+// :- end_interface ml_backend.ml_elim_nested.
