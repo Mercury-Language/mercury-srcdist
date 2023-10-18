@@ -1,0 +1,23 @@
+:- module (make.check_up_to_date).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.maybe_util).
+:- use_module (libs.timestamp).
+:- use_module (make.make_info).
+:- type dependencies_result
+    --->    deps_up_to_date 
+    ;       deps_out_of_date 
+    ;       deps_error .
+:- type dependency_status_result
+    --->    dependency_status_result(make.make_info.dependency_file, maybe.maybe(libs.file_util.file_name), make.make_info.dependency_status).
+:- pred check_dependencies(io.text_output_stream, libs.globals.globals, libs.file_util.file_name, maybe.maybe_error(libs.timestamp.timestamp), libs.maybe_util.maybe_succeeded, list.list(make.make_info.dependency_file), make.check_up_to_date.dependencies_result, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode check_dependencies((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred check_dependency_timestamps(io.text_output_stream, libs.globals.globals, libs.file_util.file_name, maybe.maybe_error(libs.timestamp.timestamp), libs.maybe_util.maybe_succeeded, list.list(make.check_up_to_date.dependency_status_result), list.list(maybe.maybe_error(libs.timestamp.timestamp)), make.check_up_to_date.dependencies_result, io.io, io.io).
+:- mode check_dependency_timestamps((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_dependency_status(io.text_output_stream, libs.globals.globals, make.make_info.dependency_file, make.check_up_to_date.dependency_status_result, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode get_dependency_status((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

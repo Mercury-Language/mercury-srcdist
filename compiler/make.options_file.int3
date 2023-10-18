@@ -1,0 +1,5 @@
+:- module (make.options_file).
+:- interface.
+:- type options_variables.
+:- type_representation(options_variable, is_eqv_to(string)).
+:- type_representation(options_variables, is_word_aligned_ptr).

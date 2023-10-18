@@ -1,0 +1,549 @@
+/*
+** Automatically generated from `deconstruct.m'
+** by the Mercury compiler,
+** version rotd-2023-10-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module deconstruct.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_deconstruct
+#define MR_HEADER_GUARD_deconstruct
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef DECONSTRUCT_DECL_GUARD
+#define DECONSTRUCT_DECL_GUARD
+
+
+#include "mercury_deconstruct.h"
+#include "mercury_deconstruct_macros.h"
+
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__deconstruct__deconstruct__type_ctor_info_maybe_arg_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__deconstruct__deconstruct__type_ctor_info_noncanon_handling_0;
+
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_114_103_95_95_91_52_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Integer param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_114_103_95_95_91_52_93_95_49_4_p_1(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Integer param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String * param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_49_5_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String * param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_50_5_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String * param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_100_117_95_95_91_51_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_100_117_95_95_91_51_93_95_49_5_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_97_114_103_95_95_91_52_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Integer param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_97_114_103_95_95_91_52_93_95_49_4_p_1(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Integer param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_97_114_103_95_95_91_52_93_95_50_4_p_2(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Integer param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_110_97_109_101_100_95_97_114_103_95_95_91_52_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_String param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_110_97_109_101_100_95_97_114_103_95_95_91_52_93_95_49_4_p_1(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_String param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_110_97_109_101_100_95_97_114_103_95_95_91_52_93_95_50_4_p_2(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_String param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_117_110_99_116_111_114_95_95_91_51_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String * param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_117_110_99_116_111_114_95_95_91_51_93_95_49_4_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String * param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_117_110_99_116_111_114_95_95_91_51_93_95_50_4_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String * param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_105_109_105_116_101_100_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_48_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_String * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_105_109_105_116_101_100_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_49_6_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_String * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_110_97_109_101_100_95_97_114_103_95_95_91_52_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_String param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_110_97_109_101_100_95_97_114_103_95_95_91_52_93_95_49_4_p_1(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_String param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__deconstruct__arg_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__deconstruct__arg_4_p_1(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__deconstruct__arg_4_p_2(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__deconstruct__arg_cc_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__deconstruct__deconstruct_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__deconstruct__deconstruct_5_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__deconstruct__deconstruct_5_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__deconstruct__deconstruct_5_p_3(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__deconstruct__deconstruct_du_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__deconstruct__deconstruct_du_5_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__deconstruct__deconstruct_du_5_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__deconstruct__det_arg_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__deconstruct__det_arg_4_p_1(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__deconstruct__det_arg_4_p_2(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__deconstruct__det_arg_4_p_3(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__deconstruct__det_named_arg_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__deconstruct__det_named_arg_4_p_1(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__deconstruct__det_named_arg_4_p_2(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__deconstruct__det_named_arg_4_p_3(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__deconstruct__functor_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer * param_5);
+
+void MR_CALL 
+mercury__deconstruct__functor_4_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer * param_5);
+
+void MR_CALL 
+mercury__deconstruct__functor_4_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer * param_5);
+
+void MR_CALL 
+mercury__deconstruct__functor_4_p_3(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer * param_5);
+
+MR_bool MR_CALL 
+mercury__deconstruct__functor_number_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__deconstruct__functor_number_cc_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__deconstruct__limited_deconstruct_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_String * param_5,
+  MR_Integer * param_6,
+  MR_Word * param_7);
+
+MR_bool MR_CALL 
+mercury__deconstruct__limited_deconstruct_6_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_String * param_5,
+  MR_Integer * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__deconstruct__limited_deconstruct_cc_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__deconstruct__limited_deconstruct_idcc_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_String * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__deconstruct__named_arg_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__deconstruct__named_arg_4_p_1(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__deconstruct__named_arg_4_p_2(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__deconstruct__named_arg_cc_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__deconstruct__univ_arg_idcc_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Integer * param_6);
+
+void MR_CALL 
+mercury__deconstruct__univ_named_arg_idcc_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Integer * param_6);
+
+MR_Word MR_CALL 
+mercury__deconstruct__dummy_univ_0_f_0(void);
+
+void MR_CALL 
+mercury__deconstruct____Compare____maybe_arg_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__deconstruct____Compare____noncanon_handling_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__deconstruct____Unify____maybe_arg_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__deconstruct____Unify____noncanon_handling_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__deconstruct__init(void);
+void mercury__deconstruct__init_type_tables(void);
+void mercury__deconstruct__init_debugger(void);
+const char *mercury__deconstruct__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_deconstruct
+
+// :- end_interface deconstruct.

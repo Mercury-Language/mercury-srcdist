@@ -1,0 +1,90 @@
+/*
+** Automatically generated from `code_model.m'
+** by the Mercury compiler,
+** version rotd-2023-10-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.code_model.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__code_model
+#define MR_HEADER_GUARD_hlds__code_model
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__CODE_MODEL_DECL_GUARD
+#define HLDS__CODE_MODEL_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__code_model__hlds__code_model__type_ctor_info_code_model_0;
+
+void MR_CALL 
+hlds__code_model__determinism_to_code_model_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__code_model__determinism_to_code_model_2_p_1(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+MR_Word MR_CALL 
+hlds__code_model__goal_info_get_code_model_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__code_model__proc_info_interface_code_model_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+hlds__code_model__represent_determinism_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__code_model____Compare____code_model_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__code_model____Unify____code_model_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__code_model__init(void);
+void mercury__hlds__code_model__init_type_tables(void);
+void mercury__hlds__code_model__init_debugger(void);
+const char *mercury__hlds__code_model__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.code_model
+
+// :- end_interface hlds.code_model.
