@@ -1,0 +1,14 @@
+module(2, "listing.m",
+	(mdb.listing),
+	{mdb},
+	{builtin, io, list, private_builtin},
+	{bool, dir, int, maybe, stream, string, type_desc, (io.call_system), (io.file), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.listing), "C#" - (mdb.listing), "Java" - (mdb.listing)},
+	contains_foreign_export,
+	no_main,
+	{}
+).
