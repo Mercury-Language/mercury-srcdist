@@ -1,0 +1,21 @@
+:- module (parse_tree.parse_tree_out_info).
+:- interface.
+:- use_module io.
+:- use_module stream.
+:- use_module (string.builder).
+:- type maybe_output_line_numbers
+    --->    dont_output_line_numbers 
+    ;       do_output_line_numbers .
+:- type maybe_qualified_item_names
+    --->    unqualified_item_names 
+    ;       qualified_item_names .
+:- type merc_out_info.
+:- type output_lang
+    --->    output_mercury 
+    ;       output_debug .
+:- type type_repn_for
+    --->    type_repn_for_machines 
+    ;       type_repn_for_humans .
+:- typeclass pt_output(S, U) <= ((U -> S), stream.writer(S, string, U)).
+:- instance ((parse_tree.parse_tree_out_info).pt_output(io.text_output_stream, io.state)).
+:- instance ((parse_tree.parse_tree_out_info).pt_output(string.builder.handle, string.builder.state)).

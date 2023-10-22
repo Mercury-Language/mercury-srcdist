@@ -1,0 +1,8 @@
+:- module (make.check_up_to_date).
+:- interface.
+:- type dependencies_result
+    --->    deps_up_to_date 
+    ;       deps_out_of_date 
+    ;       deps_error .
+:- type dependency_status_result
+    --->    dependency_status_result(make.make_info.dependency_file, maybe.maybe(libs.file_util.file_name), make.make_info.dependency_status).

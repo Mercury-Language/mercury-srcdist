@@ -1,0 +1,4 @@
+instance_var_bug.m:018: In instance declaration for `tc(V)':
+instance_var_bug.m:018:   the first instance type `V' is a type variable; it
+instance_var_bug.m:018:   should be a type constructor applied to zero or more
+instance_var_bug.m:018:   type variables.

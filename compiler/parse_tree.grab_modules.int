@@ -1,0 +1,25 @@
+:- module (parse_tree.grab_modules).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.timestamp).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.module_baggage).
+:- use_module (parse_tree.prog_item).
+:- use_module (parse_tree.read_modules).
+:- type maybe_opt_file_error
+    --->    no_opt_file_error 
+    ;       opt_file_error .
+:- pred grab_plain_opt_and_int_for_opt_files(io.text_output_stream, io.text_output_stream, libs.globals.globals, parse_tree.grab_modules.maybe_opt_file_error, parse_tree.module_baggage.module_baggage, parse_tree.module_baggage.module_baggage, parse_tree.prog_item.aug_compilation_unit, parse_tree.prog_item.aug_compilation_unit, parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, io.io, io.io).
+:- mode grab_plain_opt_and_int_for_opt_files((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred grab_qual_imported_modules_augment(io.text_output_stream, libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, maybe.maybe(libs.timestamp.timestamp), parse_tree.module_baggage.maybe_top_module, parse_tree.prog_item.parse_tree_module_src, parse_tree.module_baggage.module_baggage, parse_tree.prog_item.aug_compilation_unit, parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, io.io, io.io).
+:- mode grab_qual_imported_modules_augment((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred grab_trans_opt_files(io.text_output_stream, libs.globals.globals, list.list(mdbcomp.sym_name.module_name), parse_tree.grab_modules.maybe_opt_file_error, parse_tree.module_baggage.module_baggage, parse_tree.module_baggage.module_baggage, parse_tree.prog_item.aug_compilation_unit, parse_tree.prog_item.aug_compilation_unit, parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, io.io, io.io).
+:- mode grab_trans_opt_files((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred grab_unqual_imported_modules_make_int(io.text_output_stream, libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, parse_tree.prog_item.parse_tree_module_src, parse_tree.module_baggage.module_baggage, parse_tree.prog_item.aug_make_int_unit, parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, io.io, io.io).
+:- mode grab_unqual_imported_modules_make_int((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

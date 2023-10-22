@@ -1,0 +1,187 @@
+:- module rbtree.
+
+:- pragma termination_info(rbtree.assoc_list_to_rbtree((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rbtree.assoc_list_to_rbtree((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.count((builtin.in)) = (builtin.out), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(rbtree.count((builtin.in), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(rbtree.delete((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(rbtree.delete((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, yes, no]), cannot_loop).
+:- pragma termination_info(rbtree.delete_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(0, [no, no, yes, no, no, no, no]), cannot_loop).
+:- pragma termination_info(rbtree.delete_2((builtin.in), (builtin.in), builtin.in(bound(no)), (builtin.out), (builtin.out)), finite(0, [no, no, yes, no, no, no, no]), cannot_loop).
+:- pragma termination_info(rbtree.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl3(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl_values(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl_values(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl_values(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldl_values(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr2(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr_values(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr_values(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr_values(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(rbtree.foldr_values(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rbtree.from_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((rbtree.init) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rbtree.init((builtin.uo)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rbtree.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.insert_duplicate((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rbtree.insert_duplicate((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.is_empty((builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rbtree.keys((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(rbtree.keys((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(rbtree.lookup((builtin.in), (builtin.in)) = (builtin.out), finite(-4, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(rbtree.lookup((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(rbtree.lower_bound_lookup((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no, no]), can_loop).
+:- pragma termination_info(rbtree.lower_bound_search((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no, no]), cannot_loop).
+:- pragma termination_info(rbtree.map_values((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rbtree.map_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.map_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.member((builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(rbtree.rbtree_to_assoc_list((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(rbtree.rbtree_to_assoc_list((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(rbtree.remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), finite(-1, [no, no, no, no, yes, no]), cannot_loop).
+:- pragma termination_info(rbtree.remove_largest((builtin.out), (builtin.out), (builtin.in), (builtin.out)), finite(-4, [no, no, no, no, yes, no]), cannot_loop).
+:- pragma termination_info(rbtree.remove_smallest((builtin.out), (builtin.out), (builtin.in), (builtin.out)), finite(-4, [no, no, no, no, yes, no]), cannot_loop).
+:- pragma termination_info(rbtree.search((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(rbtree.set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rbtree.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.singleton((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(rbtree.to_assoc_list((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(rbtree.transform_value(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rbtree.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, yes, no]), cannot_loop).
+:- pragma termination_info(rbtree.upper_bound_lookup((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no, no]), can_loop).
+:- pragma termination_info(rbtree.upper_bound_search((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no, no]), cannot_loop).
+:- pragma termination_info(rbtree.values((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(rbtree.values((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+
+:- pragma exceptions(function, (rbtree.assoc_list_to_rbtree), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.assoc_list_to_rbtree), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rbtree.count), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (rbtree.count), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rbtree.delete), 2, 0, conditional).
+:- pragma exceptions(predicate, (rbtree.delete), 3, 0, conditional).
+:- pragma exceptions(predicate, (rbtree.delete_2), 5, 0, conditional).
+:- pragma exceptions(predicate, (rbtree.delete_2), 5, 1, conditional).
+:- pragma exceptions(function, (rbtree.foldl), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2_values), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2_values), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2_values), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2_values), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2_values), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl2_values), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl_values), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl_values), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl_values), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl_values), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl_values), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldl_values), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (rbtree.foldr), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr2), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr_values), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr_values), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr_values), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr_values), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr_values), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.foldr_values), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (rbtree.from_assoc_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rbtree.init), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (rbtree.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (rbtree.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rbtree.insert_duplicate), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.insert_duplicate), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(function, (rbtree.keys), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (rbtree.keys), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rbtree.lookup), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.lower_bound_lookup), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.lower_bound_search), 4, 0, conditional).
+:- pragma exceptions(function, (rbtree.map_values), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.map_values), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.member), 3, 0, will_not_throw).
+:- pragma exceptions(function, (rbtree.rbtree_to_assoc_list), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (rbtree.rbtree_to_assoc_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (rbtree.remove), 4, 0, conditional).
+:- pragma exceptions(predicate, (rbtree.remove_largest), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (rbtree.remove_smallest), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (rbtree.search), 3, 0, conditional).
+:- pragma exceptions(function, (rbtree.set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rbtree.singleton), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rbtree.to_assoc_list), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (rbtree.transform_value), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.update), 4, 0, conditional).
+:- pragma exceptions(predicate, (rbtree.upper_bound_lookup), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rbtree.upper_bound_search), 4, 0, conditional).
+:- pragma exceptions(function, (rbtree.values), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (rbtree.values), 2, 0, will_not_throw).
