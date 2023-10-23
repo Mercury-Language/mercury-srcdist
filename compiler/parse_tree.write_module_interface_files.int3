@@ -1,0 +1,5 @@
+:- module (parse_tree.write_module_interface_files).
+:- interface.
+:- type maybe_add_to_hptm
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_add_to_hptm, du_repn(enum("do_not_add_new_to_hptm", "do_add_new_to_hptm", [],  no_c_j_cs))).

@@ -1,0 +1,15 @@
+:- module (libs.va_map).
+:- interface.
+:- type va_map(K, V).
+:- typeclass va_map_key(K) where [
+	func from_key(K) = uint,
+	func to_key(uint) = K
+].
+:- typeclass va_map_value(V) where [
+	func default_value = V
+].
+:- func init = libs.va_map.va_map(K, V).
+:- pred lookup(libs.va_map.va_map(K, V), K, V) <= ((libs.va_map).va_map_key(K), (libs.va_map).va_map_value(V)).
+:- mode lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set(K, V, libs.va_map.va_map(K, V), libs.va_map.va_map(K, V)) <= ((libs.va_map).va_map_key(K), (libs.va_map).va_map_value(V)).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

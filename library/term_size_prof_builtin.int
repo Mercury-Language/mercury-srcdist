@@ -1,0 +1,23 @@
+:- module term_size_prof_builtin.
+:- interface.
+:- type complexity_is_active
+    --->    is_inactive 
+    ;       is_active .
+:- type complexity_slot == int.
+:- impure pred complexity_call_proc(term_size_prof_builtin.complexity_slot).
+:- mode complexity_call_proc((builtin.out)) is det.
+:- impure pred complexity_exit_proc(term_size_prof_builtin.complexity_slot).
+:- mode complexity_exit_proc((builtin.in)) is det.
+:- impure pred complexity_fail_proc(term_size_prof_builtin.complexity_slot).
+:- mode complexity_fail_proc((builtin.in)) is failure.
+:- impure pred complexity_is_active(term_size_prof_builtin.complexity_is_active).
+:- mode complexity_is_active((builtin.out)) is det.
+:- impure pred complexity_redo_proc(term_size_prof_builtin.complexity_slot).
+:- mode complexity_redo_proc((builtin.in)) is failure.
+:- impure pred increment_size(T, int).
+:- mode increment_size((builtin.in), (builtin.in)) is det.
+:- pred measure_size(T, int).
+:- mode measure_size((builtin.in), (builtin.out)) is det.
+:- pred measure_size_acc(T, int, int).
+:- mode measure_size_acc((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func term_size_plus(int, int) = int.
