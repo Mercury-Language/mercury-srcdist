@@ -1,0 +1,5 @@
+:- module (parse_tree.write_module_interface_files).
+:- interface.
+:- type maybe_add_to_hptm
+    --->    do_not_add_new_to_hptm 
+    ;       do_add_new_to_hptm .
