@@ -1,0 +1,2 @@
+:- module (hlds.var_table_hlds).
+:- interface.
