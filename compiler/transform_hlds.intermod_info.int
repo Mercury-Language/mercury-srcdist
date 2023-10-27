@@ -1,0 +1,45 @@
+:- module (transform_hlds.intermod_info).
+:- interface.
+:- use_module assoc_list.
+:- use_module hlds.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (hlds.hlds_class).
+:- use_module (hlds.hlds_data).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- type intermod_info.
+:- type maybe_need_foreign_import_modules
+    --->    do_not_need_foreign_import_modules 
+    ;       do_need_foreign_import_modules .
+:- pred deconstruct_intermod_info(transform_hlds.intermod_info.intermod_info, hlds.hlds_module.module_info, set.set(mdbcomp.sym_name.module_name), set.set(hlds.hlds_pred.pred_id), set.set(hlds.hlds_pred.pred_id), assoc_list.assoc_list(parse_tree.prog_data.class_id, hlds.hlds_class.hlds_instance_defn), assoc_list.assoc_list(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn), transform_hlds.intermod_info.maybe_need_foreign_import_modules).
+:- mode deconstruct_intermod_info((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred init_intermod_info(hlds.hlds_module.module_info, transform_hlds.intermod_info.intermod_info).
+:- mode init_intermod_info((builtin.in), (builtin.out)) is det.
+:- pred intermod_info_get_instances(transform_hlds.intermod_info.intermod_info, assoc_list.assoc_list(parse_tree.prog_data.class_id, hlds.hlds_class.hlds_instance_defn)).
+:- mode intermod_info_get_instances((builtin.in), (builtin.out)) is det.
+:- pred intermod_info_get_module_info(transform_hlds.intermod_info.intermod_info, hlds.hlds_module.module_info).
+:- mode intermod_info_get_module_info((builtin.in), (builtin.out)) is det.
+:- pred intermod_info_get_pred_decls(transform_hlds.intermod_info.intermod_info, set.set(hlds.hlds_pred.pred_id)).
+:- mode intermod_info_get_pred_decls((builtin.in), (builtin.out)) is det.
+:- pred intermod_info_get_pred_defns(transform_hlds.intermod_info.intermod_info, set.set(hlds.hlds_pred.pred_id)).
+:- mode intermod_info_get_pred_defns((builtin.in), (builtin.out)) is det.
+:- pred intermod_info_get_types(transform_hlds.intermod_info.intermod_info, assoc_list.assoc_list(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn)).
+:- mode intermod_info_get_types((builtin.in), (builtin.out)) is det.
+:- pred intermod_info_get_use_modules(transform_hlds.intermod_info.intermod_info, set.set(mdbcomp.sym_name.module_name)).
+:- mode intermod_info_get_use_modules((builtin.in), (builtin.out)) is det.
+:- pred intermod_info_set_instances(assoc_list.assoc_list(parse_tree.prog_data.class_id, hlds.hlds_class.hlds_instance_defn), transform_hlds.intermod_info.intermod_info, transform_hlds.intermod_info.intermod_info).
+:- mode intermod_info_set_instances((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred intermod_info_set_need_foreign_import_modules(transform_hlds.intermod_info.intermod_info, transform_hlds.intermod_info.intermod_info).
+:- mode intermod_info_set_need_foreign_import_modules((builtin.in), (builtin.out)) is det.
+:- pred intermod_info_set_pred_decls(set.set(hlds.hlds_pred.pred_id), transform_hlds.intermod_info.intermod_info, transform_hlds.intermod_info.intermod_info).
+:- mode intermod_info_set_pred_decls((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred intermod_info_set_pred_defns(set.set(hlds.hlds_pred.pred_id), transform_hlds.intermod_info.intermod_info, transform_hlds.intermod_info.intermod_info).
+:- mode intermod_info_set_pred_defns((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred intermod_info_set_types(assoc_list.assoc_list(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn), transform_hlds.intermod_info.intermod_info, transform_hlds.intermod_info.intermod_info).
+:- mode intermod_info_set_types((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred intermod_info_set_use_modules(set.set(mdbcomp.sym_name.module_name), transform_hlds.intermod_info.intermod_info, transform_hlds.intermod_info.intermod_info).
+:- mode intermod_info_set_use_modules((builtin.in), (builtin.in), (builtin.out)) is det.

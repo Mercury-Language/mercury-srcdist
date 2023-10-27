@@ -1,0 +1,21 @@
+:- module (ml_backend.mlds_to_target_util).
+:- interface.
+:- type break_context
+	where	type_is_abstract_enum(2).
+:- type code_addrs_in_consts.
+:- type exit_method
+	where	type_is_abstract_enum(3).
+:- type exit_methods.
+:- type func_info_csj.
+:- type initializer_starts
+	where	type_is_abstract_enum(1).
+:- type output_aux.
+:- type output_generics
+	where	type_is_abstract_enum(1).
+:- type_representation(break_context, du_repn(enum("bc_none", "bc_switch", ["bc_loop"],  no_c_j_cs))).
+:- type_representation(code_addrs_in_consts, is_word_aligned_ptr).
+:- type_representation(exit_method, du_repn(enum("can_break", "can_continue", ["can_return", "can_throw", "can_fall_through"],  no_c_j_cs))).
+:- type_representation(exit_methods, is_eqv_to(set.set(ml_backend.mlds_to_target_util.exit_method))).
+:- type_representation(func_info_csj, du_repn(notag("func_info_csj", mlds_func_params,  no_c_j_cs))).
+:- type_representation(initializer_starts, du_repn(enum("not_at_start_of_line", "at_start_of_line", [],  no_c_j_cs))).
+:- type_representation(output_generics, du_repn(enum("do_output_generics", "do_not_output_generics", [],  no_c_j_cs))).

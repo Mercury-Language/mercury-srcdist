@@ -1,0 +1,3 @@
+:- module version_array2d.
+:- interface.
+:- type version_array2d(T).
