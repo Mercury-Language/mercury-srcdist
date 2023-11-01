@@ -1,0 +1,8 @@
+:- module (check_hlds.typecheck_error_type_assign).
+:- interface.
+:- type actual_expected_types.
+:- type arg_type_stuff.
+:- type type_stuff.
+:- type_representation(actual_expected_types, is_word_aligned_ptr).
+:- type_representation(arg_type_stuff, is_word_aligned_ptr).
+:- type_representation(type_stuff, is_word_aligned_ptr).
