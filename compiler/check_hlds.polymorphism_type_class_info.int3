@@ -1,0 +1,5 @@
+:- module (check_hlds.polymorphism_type_class_info).
+:- interface.
+:- type record_type_info_locns
+	where	type_is_abstract_enum(1).
+:- type_representation(record_type_info_locns, du_repn(enum("do_record_type_info_locns", "do_not_record_type_info_locns", [],  no_c_j_cs))).

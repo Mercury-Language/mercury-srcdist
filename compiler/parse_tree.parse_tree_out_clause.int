@@ -1,0 +1,22 @@
+:- module (parse_tree.parse_tree_out_clause).
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_item).
+:- pred mercury_format_goal(S, parse_tree.prog_data.prog_varset, int, parse_tree.prog_item.goal, U, U) <= ((parse_tree.parse_tree_out_info).pt_output(S, U)).
+:- mode mercury_format_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_goal_warnings(S, parse_tree.prog_data.goal_warning, list.list(parse_tree.prog_data.goal_warning), U, U) <= ((parse_tree.parse_tree_out_info).pt_output(S, U)).
+:- mode mercury_format_goal_warnings((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_instance_method_clause(mdbcomp.sym_name.sym_name, parse_tree.prog_item.item_clause_info, S, U, U) <= ((parse_tree.parse_tree_out_info).pt_output(S, U)).
+:- mode mercury_format_instance_method_clause((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_item_clause(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_clause_info, U, U) <= ((parse_tree.parse_tree_out_info).pt_output(S, U)).
+:- mode mercury_format_item_clause((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_trace_compiletime(parse_tree.prog_data.trace_compiletime, S, U, U) <= ((parse_tree.parse_tree_out_info).pt_output(S, U)).
+:- mode mercury_format_trace_compiletime((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_trace_expr(S, pred(T, S, U, U), parse_tree.prog_data.trace_expr(T), U, U) <= ((parse_tree.parse_tree_out_info).pt_output(S, U)).
+:- mode mercury_format_trace_expr((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_trace_runtime(parse_tree.prog_data.trace_runtime, S, U, U) <= ((parse_tree.parse_tree_out_info).pt_output(S, U)).
+:- mode mercury_format_trace_runtime((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

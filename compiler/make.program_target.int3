@@ -1,0 +1,4 @@
+:- module (make.program_target).
+:- interface.
+:- type_representation(build2(V_1), is_eqv_to(pred(io.text_output_stream, maybe_succeeded, V_1, V_1, io, io))).
+:- type_representation(build3(V_1), is_eqv_to(pred(io.text_output_stream, maybe_succeeded, V_1, V_1, list(error_spec), list(error_spec), io, io))).
