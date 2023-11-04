@@ -1,0 +1,2 @@
+:- module (io.primitives_write).
+:- interface.

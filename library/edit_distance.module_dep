@@ -1,0 +1,14 @@
+module(2, "edit_distance.m",
+	edit_distance,
+	{},
+	{builtin, char, list, private_builtin},
+	{assoc_list, cord, io, map, pair, require, string, uint, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

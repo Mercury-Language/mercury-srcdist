@@ -1,0 +1,55 @@
+:- module ssdb.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- type debugging_paused.
+:- type list_var_value == list.list(ssdb.var_value).
+:- type pos == int.
+:- type ssdb_event_type
+    --->    ssdb_call 
+    ;       ssdb_exit 
+    ;       ssdb_fail 
+    ;       ssdb_call_nondet 
+    ;       ssdb_exit_nondet 
+    ;       ssdb_redo_nondet 
+    ;       ssdb_fail_nondet 
+    ;       ssdb_excp .
+:- type ssdb_proc_id
+    --->    ssdb_proc_id((ssdb.module_name) :: string, (ssdb.proc_name) :: string).
+:- type ssdb_retry
+    --->    do_retry 
+    ;       do_not_retry .
+:- type ssdb_tracing_level
+    --->    deep 
+    ;       shallow .
+:- type var_name == string.
+:- type var_value
+    --->    unbound_head_var(ssdb.var_name, ssdb.pos)
+    ;       some [T] (bound_head_var(ssdb.var_name, ssdb.pos, T))
+    ;       some [T] (bound_other_var(ssdb.var_name, T)).
+:- pred enable_debugging(io.io, io.io).
+:- mode enable_debugging((builtin.di), (builtin.uo)) is det.
+:- impure pred handle_event_call(ssdb.ssdb_proc_id, ssdb.list_var_value, ssdb.ssdb_tracing_level).
+:- mode handle_event_call((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred handle_event_call_nondet(ssdb.ssdb_proc_id, ssdb.list_var_value, ssdb.ssdb_tracing_level).
+:- mode handle_event_call_nondet((builtin.in), (builtin.in), (builtin.in)) is det.
+:- impure pred handle_event_exit(ssdb.ssdb_proc_id, ssdb.list_var_value, ssdb.ssdb_retry).
+:- mode handle_event_exit((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred handle_event_exit_nondet(ssdb.ssdb_proc_id, ssdb.list_var_value).
+:- mode handle_event_exit_nondet((builtin.in), (builtin.in)) is det.
+:- impure pred handle_event_fail(ssdb.ssdb_proc_id, ssdb.list_var_value, ssdb.ssdb_retry).
+:- mode handle_event_fail((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred handle_event_fail_nondet(ssdb.ssdb_proc_id, ssdb.list_var_value, ssdb.ssdb_retry).
+:- mode handle_event_fail_nondet((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred handle_event_redo_nondet(ssdb.ssdb_proc_id, ssdb.list_var_value).
+:- mode handle_event_redo_nondet((builtin.in), (builtin.in)) is det.
+:- pred pause_debugging(ssdb.debugging_paused, io.io, io.io).
+:- mode pause_debugging((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred resume_debugging(ssdb.debugging_paused, io.io, io.io).
+:- mode resume_debugging((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- impure pred set_context(string, int).
+:- mode set_context((builtin.in), (builtin.in)) is det.
+:- implementation.
+:- type debugger_state
+	where	type_is_abstract_enum(1).
+:- type debugging_paused == ssdb.debugger_state.
