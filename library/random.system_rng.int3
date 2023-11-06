@@ -1,0 +1,5 @@
+:- module (random.system_rng).
+:- interface.
+:- import_module maybe.
+:- type system_rng.
+:- instance urandom(random.system_rng.system_rng, io).
