@@ -1,0 +1,5 @@
+:- module library.
+:- interface.
+:- type doc_or_undoc
+    --->    doc 
+    ;       undoc .

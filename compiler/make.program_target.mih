@@ -1,0 +1,95 @@
+/*
+** Automatically generated from `make.program_target.m'
+** by the Mercury compiler,
+** version rotd-2023-11-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.program_target.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__program_target
+#define MR_HEADER_GUARD_make__program_target
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__PROGRAM_TARGET_DECL_GUARD
+#define MAKE__PROGRAM_TARGET_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct make__program_target__make__program_target__type_ctor_info_build2_1;
+
+extern const MR_TypeCtorInfo_Struct make__program_target__make__program_target__type_ctor_info_build3_1;
+
+extern const MR_TypeCtorInfo_Struct make__program_target__make__program_target__type_ctor_info_maybe_use_analysis_cache_dir_0;
+
+extern const MR_TypeCtorInfo_Struct make__program_target__make__program_target__type_ctor_info_stop_when_0;
+
+void MR_CALL 
+make__program_target__install_library_grade_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_String param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+make__program_target__make_linked_target_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+make__program_target__make_misc_target_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void mercury__make__program_target__init(void);
+void mercury__make__program_target__init_type_tables(void);
+void mercury__make__program_target__init_debugger(void);
+const char *mercury__make__program_target__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.program_target
+
+// :- end_interface make.program_target.
