@@ -1,0 +1,9 @@
+:- module (parse_tree.split_parse_tree_src).
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module (libs.globals).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.prog_item).
+:- pred split_into_component_modules_perform_checks(libs.globals.globals, parse_tree.prog_item.parse_tree_src, list.list(parse_tree.prog_item.parse_tree_module_src), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode split_into_component_modules_perform_checks((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
