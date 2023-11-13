@@ -1,0 +1,33 @@
+:- module (hlds.hlds_inst_mode).
+:- interface.
+:- type any_inst_table.
+:- type ground_inst_table.
+:- type hlds_inst_defn.
+:- type hlds_mode_body.
+:- type hlds_mode_defn.
+:- type inst_for_type_ctor.
+:- type inst_pair.
+:- type inst_table.
+:- type maybe_inst.
+:- type maybe_inst_det.
+:- type merge_inst_table.
+:- type mode_defns.
+:- type mode_table.
+:- type mostly_uniq_inst_table.
+:- type shared_inst_table.
+:- type unify_inst_table.
+:- type user_inst_table.
+:- type_representation(any_inst_table, is_eqv_to(map(any_inst_info, hlds.hlds_inst_mode.maybe_inst_det))).
+:- type_representation(ground_inst_table, is_eqv_to(map(ground_inst_info, hlds.hlds_inst_mode.maybe_inst_det))).
+:- type_representation(hlds_inst_defn, is_word_aligned_ptr).
+:- type_representation(hlds_mode_body, du_repn(notag("hlds_mode_body", mer_mode,  no_c_j_cs))).
+:- type_representation(hlds_mode_defn, is_word_aligned_ptr).
+:- type_representation(inst_pair, is_word_aligned_ptr).
+:- type_representation(inst_table, is_word_aligned_ptr).
+:- type_representation(merge_inst_table, is_eqv_to(map(merge_inst_info, hlds.hlds_inst_mode.maybe_inst))).
+:- type_representation(mode_defns, is_eqv_to(map(mode_ctor, hlds.hlds_inst_mode.hlds_mode_defn))).
+:- type_representation(mode_table, is_eqv_to(hlds.hlds_inst_mode.mode_defns)).
+:- type_representation(mostly_uniq_inst_table, is_eqv_to(map(inst_name, hlds.hlds_inst_mode.maybe_inst))).
+:- type_representation(shared_inst_table, is_eqv_to(map(inst_name, hlds.hlds_inst_mode.maybe_inst))).
+:- type_representation(unify_inst_table, is_word_aligned_ptr).
+:- type_representation(user_inst_table, is_eqv_to(map(inst_ctor, hlds.hlds_inst_mode.hlds_inst_defn))).

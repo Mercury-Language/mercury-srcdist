@@ -1,0 +1,14 @@
+module(2, "thread.channel.m",
+	(thread.channel),
+	{thread},
+	{builtin, io, maybe, private_builtin},
+	{(thread.mvar)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
