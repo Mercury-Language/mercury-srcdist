@@ -1,0 +1,3 @@
+:- module (ml_backend.ml_string_switch).
+:- interface.
+:- type_representation(hash_slot_rev_map, is_eqv_to(map(case_id, hash_slots))).

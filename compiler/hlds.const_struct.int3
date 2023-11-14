@@ -1,0 +1,14 @@
+:- module (hlds.const_struct).
+:- interface.
+:- type const_instance_id.
+:- type const_instance_map.
+:- type const_struct.
+:- type const_struct_arg.
+:- type const_struct_db.
+:- type defined_where
+	where	type_is_abstract_enum(1).
+:- type_representation(const_instance_id, is_word_aligned_ptr).
+:- type_representation(const_instance_map, is_eqv_to(map(hlds.const_struct.const_instance_id, int))).
+:- type_representation(const_struct, is_word_aligned_ptr).
+:- type_representation(const_struct_db, is_word_aligned_ptr).
+:- type_representation(defined_where, du_repn(enum("defined_in_this_module", "defined_in_other_module", [],  no_c_j_cs))).
