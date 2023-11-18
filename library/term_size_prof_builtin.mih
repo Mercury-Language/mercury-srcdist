@@ -1,0 +1,131 @@
+/*
+** Automatically generated from `term_size_prof_builtin.m'
+** by the Mercury compiler,
+** version rotd-2023-11-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module term_size_prof_builtin.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_term_size_prof_builtin
+#define MR_HEADER_GUARD_term_size_prof_builtin
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TERM_SIZE_PROF_BUILTIN_DECL_GUARD
+#define TERM_SIZE_PROF_BUILTIN_DECL_GUARD
+
+#ifndef MR_TERM_SIZE_PROFILING_GUARD
+#define MR_TERM_SIZE_PROFILING_GUARD
+
+  #ifdef MR_RECORD_TERM_SIZES
+    #include "mercury_term_size.h"
+  #endif // MR_RECORD_TERM_SIZES
+
+#endif // MR_TERM_SIZE_PROFILING_GUARD
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__term_size_prof_builtin__term_size_prof_builtin__type_ctor_info_complexity_is_active_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term_size_prof_builtin__term_size_prof_builtin__type_ctor_info_complexity_slot_0;
+
+void MR_CALL 
+mercury__term_size_prof_builtin__complexity_call_proc_1_p_0(
+  MR_Integer * param_1);
+
+void MR_CALL 
+mercury__term_size_prof_builtin__complexity_exit_proc_1_p_0(
+  MR_Integer param_1);
+
+MR_bool MR_CALL 
+mercury__term_size_prof_builtin__complexity_fail_proc_1_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__term_size_prof_builtin__complexity_is_active_1_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+mercury__term_size_prof_builtin__complexity_redo_proc_1_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__term_size_prof_builtin__increment_size_2_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__term_size_prof_builtin__measure_size_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__term_size_prof_builtin__measure_size_acc_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_Integer MR_CALL 
+mercury__term_size_prof_builtin__term_size_plus_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__term_size_prof_builtin____Compare____complexity_is_active_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term_size_prof_builtin____Compare____complexity_slot_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mercury__term_size_prof_builtin____Unify____complexity_is_active_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term_size_prof_builtin____Unify____complexity_slot_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void mercury__term_size_prof_builtin__init(void);
+void mercury__term_size_prof_builtin__init_type_tables(void);
+void mercury__term_size_prof_builtin__init_debugger(void);
+const char *mercury__term_size_prof_builtin__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_term_size_prof_builtin
+
+// :- end_interface term_size_prof_builtin.

@@ -1,0 +1,78 @@
+:- module (parse_tree.prog_data_foreign).
+:- interface.
+:- type box_policy
+	where	type_is_abstract_enum(1).
+:- type c_j_cs_fims.
+:- type export_enum_attributes.
+:- type fim_spec.
+:- type foreign_arg_name_mode.
+:- type foreign_arg_name_mode_box.
+:- type foreign_decl_is_local
+	where	type_is_abstract_enum(1).
+:- type foreign_include_file_info.
+:- type foreign_literal_or_include.
+:- type foreign_proc_attributes.
+:- type foreign_proc_shared_code_treatment
+	where	type_is_abstract_enum(2).
+:- type maybe_call_std_out_regs
+	where	type_is_abstract_enum(1).
+:- type maybe_ordinary_despite_detism
+	where	type_is_abstract_enum(1).
+:- type maybe_refers_to_llds_stack
+	where	type_is_abstract_enum(1).
+:- type pragma_foreign_proc_impl.
+:- type pragma_var.
+:- type proc_affects_liveness
+	where	type_is_abstract_enum(2).
+:- type proc_allocates_memory
+	where	type_is_abstract_enum(2).
+:- type proc_may_call_mercury
+	where	type_is_abstract_enum(1).
+:- type proc_may_call_mm_tabled
+	where	type_is_abstract_enum(2).
+:- type proc_may_duplicate
+	where	type_is_abstract_enum(1).
+:- type proc_may_export_body
+	where	type_is_abstract_enum(1).
+:- type proc_may_modify_trail
+	where	type_is_abstract_enum(1).
+:- type proc_may_throw_exception
+	where	type_is_abstract_enum(1).
+:- type proc_registers_roots
+	where	type_is_abstract_enum(2).
+:- type proc_tabled_for_io
+	where	type_is_abstract_enum(2).
+:- type proc_terminates
+	where	type_is_abstract_enum(2).
+:- type proc_thread_safe
+	where	type_is_abstract_enum(2).
+:- type uppercase_export_enum
+	where	type_is_abstract_enum(1).
+:- type_representation(box_policy, du_repn(enum("bp_native_if_possible", "bp_always_boxed", [],  no_c_j_cs))).
+:- type_representation(c_j_cs_fims, is_word_aligned_ptr).
+:- type_representation(export_enum_attributes, is_word_aligned_ptr).
+:- type_representation(fim_spec, is_word_aligned_ptr).
+:- type_representation(foreign_arg_name_mode, is_word_aligned_ptr).
+:- type_representation(foreign_arg_name_mode_box, is_word_aligned_ptr).
+:- type_representation(foreign_decl_is_local, du_repn(enum("foreign_decl_is_local", "foreign_decl_is_exported", [],  no_c_j_cs))).
+:- type_representation(foreign_include_file_info, is_word_aligned_ptr).
+:- type_representation(foreign_proc_attributes, is_word_aligned_ptr).
+:- type_representation(foreign_proc_shared_code_treatment, du_repn(enum("shared_code_duplicate", "shared_code_share", ["shared_code_automatic"],  no_c_j_cs))).
+:- type_representation(maybe_call_std_out_regs, du_repn(enum("no_request_for_call_std_out_regs", "needs_call_std_out_regs", [],  no_c_j_cs))).
+:- type_representation(maybe_ordinary_despite_detism, du_repn(enum("not_ordinary_despite_detism", "ordinary_despite_detism", [],  no_c_j_cs))).
+:- type_representation(maybe_refers_to_llds_stack, du_repn(enum("does_not_refer_to_llds_stack", "refers_to_llds_stack", [],  no_c_j_cs))).
+:- type_representation(pragma_foreign_proc_impl, is_word_aligned_ptr).
+:- type_representation(pragma_var, is_word_aligned_ptr).
+:- type_representation(proc_affects_liveness, du_repn(enum("proc_affects_liveness", "proc_does_not_affect_liveness", ["proc_default_affects_liveness"],  no_c_j_cs))).
+:- type_representation(proc_allocates_memory, du_repn(enum("proc_does_not_allocate_memory", "proc_allocates_bounded_memory", ["proc_allocates_unbounded_memory", "proc_default_allocates_memory"],  no_c_j_cs))).
+:- type_representation(proc_may_call_mercury, du_repn(enum("proc_may_call_mercury", "proc_will_not_call_mercury", [],  no_c_j_cs))).
+:- type_representation(proc_may_call_mm_tabled, du_repn(enum("proc_may_call_mm_tabled", "proc_will_not_call_mm_tabled", ["proc_default_calls_mm_tabled"],  no_c_j_cs))).
+:- type_representation(proc_may_duplicate, du_repn(enum("proc_may_duplicate", "proc_may_not_duplicate", [],  no_c_j_cs))).
+:- type_representation(proc_may_export_body, du_repn(enum("proc_may_export_body", "proc_may_not_export_body", [],  no_c_j_cs))).
+:- type_representation(proc_may_modify_trail, du_repn(enum("proc_may_modify_trail", "proc_will_not_modify_trail", [],  no_c_j_cs))).
+:- type_representation(proc_may_throw_exception, du_repn(enum("proc_will_not_throw_exception", "default_exception_behaviour", [],  no_c_j_cs))).
+:- type_representation(proc_registers_roots, du_repn(enum("proc_registers_roots", "proc_does_not_register_roots", ["proc_does_not_have_roots", "proc_default_registers_roots"],  no_c_j_cs))).
+:- type_representation(proc_tabled_for_io, du_repn(enum("proc_not_tabled_for_io", "proc_tabled_for_io", ["proc_tabled_for_io_unitize", "proc_tabled_for_descendant_io"],  no_c_j_cs))).
+:- type_representation(proc_terminates, du_repn(enum("proc_terminates", "proc_does_not_terminate", ["depends_on_mercury_calls"],  no_c_j_cs))).
+:- type_representation(proc_thread_safe, du_repn(enum("proc_not_thread_safe", "proc_thread_safe", ["proc_maybe_thread_safe"],  no_c_j_cs))).
+:- type_representation(uppercase_export_enum, du_repn(enum("uppercase_export_enum", "do_not_uppercase_export_enum", [],  no_c_j_cs))).
