@@ -1,0 +1,90 @@
+:- module integer.
+:- interface.
+:- type integer.
+:- func '*'(integer.integer, integer.integer) = integer.integer.
+:- func '+'(integer.integer) = integer.integer.
+:- func '+'(integer.integer, integer.integer) = integer.integer.
+:- func '-'(integer.integer) = integer.integer.
+:- func '-'(integer.integer, integer.integer) = integer.integer.
+:- func '//'(integer.integer, integer.integer) = integer.integer.
+:- func '/\\'(integer.integer, integer.integer) = integer.integer.
+:- pred '<'(integer.integer, integer.integer).
+:- mode '<'((builtin.in), (builtin.in)) is semidet.
+:- func '<<'(integer.integer, int) = integer.integer.
+:- pred '=<'(integer.integer, integer.integer).
+:- mode '=<'((builtin.in), (builtin.in)) is semidet.
+:- pred '>'(integer.integer, integer.integer).
+:- mode '>'((builtin.in), (builtin.in)) is semidet.
+:- pred '>='(integer.integer, integer.integer).
+:- mode '>='((builtin.in), (builtin.in)) is semidet.
+:- func '>>'(integer.integer, int) = integer.integer.
+:- func '\\'(integer.integer) = integer.integer.
+:- func '\\/'(integer.integer, integer.integer) = integer.integer.
+:- func abs(integer.integer) = integer.integer.
+:- func det_from_base_string(int, string) = integer.integer.
+:- func det_from_string(string) = integer.integer.
+:- func det_to_int(integer.integer) = int.
+:- func det_to_int16(integer.integer) = int16.
+:- func det_to_int32(integer.integer) = int32.
+:- func det_to_int64(integer.integer) = int64.
+:- func det_to_int8(integer.integer) = int8.
+:- func det_to_uint(integer.integer) = uint.
+:- func det_to_uint16(integer.integer) = uint16.
+:- func det_to_uint32(integer.integer) = uint32.
+:- func det_to_uint64(integer.integer) = uint64.
+:- func det_to_uint8(integer.integer) = uint8.
+:- func div(integer.integer, integer.integer) = integer.integer.
+:- pred divide_with_rem(integer.integer, integer.integer, integer.integer, integer.integer).
+:- mode divide_with_rem((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func eight = integer.integer.
+:- func float(integer.integer) = float.
+:- pred from_base_string(int, string, integer.integer).
+:- mode from_base_string((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred from_base_string_underscore(int, string, integer.integer).
+:- mode from_base_string_underscore((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func from_int16(int16) = integer.integer.
+:- func from_int32(int32) = integer.integer.
+:- func from_int64(int64) = integer.integer.
+:- func from_int8(int8) = integer.integer.
+:- pred from_string(string, integer.integer).
+:- mode from_string((builtin.in), (builtin.out)) is semidet.
+:- func from_uint(uint) = integer.integer.
+:- func from_uint16(uint16) = integer.integer.
+:- func from_uint32(uint32) = integer.integer.
+:- func from_uint64(uint64) = integer.integer.
+:- func from_uint8(uint8) = integer.integer.
+:- func integer(int) = integer.integer.
+:- pred is_zero(integer.integer).
+:- mode is_zero((builtin.in)) is semidet.
+:- func mod(integer.integer, integer.integer) = integer.integer.
+:- func negative_one = integer.integer.
+:- func one = integer.integer.
+:- func pow(integer.integer, integer.integer) = integer.integer.
+:- func rem(integer.integer, integer.integer) = integer.integer.
+:- func sixteen = integer.integer.
+:- func ten = integer.integer.
+:- func to_base_string(integer.integer, int) = string.
+:- pred to_int(integer.integer, int).
+:- mode to_int((builtin.in), (builtin.out)) is semidet.
+:- pred to_int16(integer.integer, int16).
+:- mode to_int16((builtin.in), (builtin.out)) is semidet.
+:- pred to_int32(integer.integer, int32).
+:- mode to_int32((builtin.in), (builtin.out)) is semidet.
+:- pred to_int64(integer.integer, int64).
+:- mode to_int64((builtin.in), (builtin.out)) is semidet.
+:- pred to_int8(integer.integer, int8).
+:- mode to_int8((builtin.in), (builtin.out)) is semidet.
+:- func to_string(integer.integer) = string.
+:- pred to_uint(integer.integer, uint).
+:- mode to_uint((builtin.in), (builtin.out)) is semidet.
+:- pred to_uint16(integer.integer, uint16).
+:- mode to_uint16((builtin.in), (builtin.out)) is semidet.
+:- pred to_uint32(integer.integer, uint32).
+:- mode to_uint32((builtin.in), (builtin.out)) is semidet.
+:- pred to_uint64(integer.integer, uint64).
+:- mode to_uint64((builtin.in), (builtin.out)) is semidet.
+:- pred to_uint8(integer.integer, uint8).
+:- mode to_uint8((builtin.in), (builtin.out)) is semidet.
+:- func two = integer.integer.
+:- func xor(integer.integer, integer.integer) = integer.integer.
+:- func zero = integer.integer.

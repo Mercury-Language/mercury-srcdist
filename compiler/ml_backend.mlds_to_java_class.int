@@ -1,0 +1,22 @@
+:- module (ml_backend.mlds_to_java_class).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module map.
+:- use_module (libs.indent).
+:- use_module (ml_backend.mlds).
+:- use_module (ml_backend.mlds_to_java_util).
+:- pred interface_is_special_for_java(string).
+:- mode interface_is_special_for_java((builtin.in)) is semidet.
+:- pred maybe_shorten_long_class_name(ml_backend.mlds.mlds_class_defn, ml_backend.mlds.mlds_class_defn, map.map(ml_backend.mlds.mlds_class_name, ml_backend.mlds.mlds_class_name), map.map(ml_backend.mlds.mlds_class_name, ml_backend.mlds.mlds_class_name)).
+:- mode maybe_shorten_long_class_name((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_shorten_long_env_name(ml_backend.mlds.mlds_env_defn, ml_backend.mlds.mlds_env_defn, map.map(ml_backend.mlds.mlds_class_name, ml_backend.mlds.mlds_class_name), map.map(ml_backend.mlds.mlds_class_name, ml_backend.mlds.mlds_class_name)).
+:- mode maybe_shorten_long_env_name((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred output_class_defn_for_java(ml_backend.mlds_to_java_util.java_out_info, io.text_output_stream, libs.indent.indent, ml_backend.mlds.mlds_class_defn, io.io, io.io).
+:- mode output_class_defn_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_enum_class_defn_for_java(ml_backend.mlds_to_java_util.java_out_info, io.text_output_stream, libs.indent.indent, ml_backend.mlds.mlds_enum_class_defn, io.io, io.io).
+:- mode output_enum_class_defn_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_env_defn_for_java(ml_backend.mlds_to_java_util.java_out_info, io.text_output_stream, libs.indent.indent, ml_backend.mlds.mlds_env_defn, io.io, io.io).
+:- mode output_env_defn_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_struct_defn_for_java(ml_backend.mlds_to_java_util.java_out_info, io.text_output_stream, libs.indent.indent, ml_backend.mlds.mlds_struct_defn, io.io, io.io).
+:- mode output_struct_defn_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
