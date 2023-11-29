@@ -1,0 +1,42 @@
+:- module options.
+:- interface.
+:- use_module bool.
+:- use_module getopt.
+:- use_module io.
+:- type option
+    --->    verbose 
+    ;       very_verbose 
+    ;       dynamic_cg 
+    ;       call_graph 
+    ;       profile 
+    ;       profile_time 
+    ;       profile_memory_words 
+    ;       profile_memory_cells 
+    ;       demangle 
+    ;       countfile 
+    ;       pairfile 
+    ;       declfile 
+    ;       libraryfile 
+    ;       snapshots 
+    ;       snapshots_file 
+    ;       snapshots_by_type 
+    ;       snapshots_brief 
+    ;       snapshots_include_runtime 
+    ;       snapshots_recalc_size 
+    ;       help 
+    ;       version .
+:- type option_table == getopt.option_table(options.option).
+:- pred long_option(string, options.option).
+:- mode long_option((builtin.in), (builtin.out)) is semidet.
+:- pred maybe_flush_output(io.text_output_stream, bool.bool, io.io, io.io).
+:- mode maybe_flush_output((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_write_string(io.text_output_stream, bool.bool, string, io.io, io.io).
+:- mode maybe_write_string((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred option_default(options.option, getopt.option_data).
+:- mode option_default((builtin.out), (builtin.out)) is multi.
+:- pred options_help(io.text_output_stream, io.io, io.io).
+:- mode options_help((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred short_option(character, options.option).
+:- mode short_option((builtin.in), (builtin.out)) is semidet.
+:- pred special_handler(options.option, getopt.special_data, options.option_table, getopt.maybe_option_table(options.option)).
+:- mode special_handler((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.

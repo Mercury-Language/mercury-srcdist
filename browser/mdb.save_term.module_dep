@@ -1,0 +1,14 @@
+module(2, "save_term.m",
+	(mdb.save_term),
+	{mdb},
+	{builtin, io, private_builtin, (mdb.browser_info), (mdb.browser_term)},
+	{deconstruct, dir, int, list, maybe, pretty_printer, stream, string, term_to_xml, type_desc, univ, (io.call_system), (io.environment), (io.file), (mdb.term_to_html), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.save_term)},
+	contains_foreign_export,
+	no_main,
+	{}
+).

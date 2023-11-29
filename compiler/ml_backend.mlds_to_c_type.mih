@@ -1,0 +1,93 @@
+/*
+** Automatically generated from `mlds_to_c_type.m'
+** by the Mercury compiler,
+** version rotd-2023-11-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.mlds_to_c_type.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_c_type
+#define MR_HEADER_GUARD_ml_backend__mlds_to_c_type
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_C_TYPE_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_C_TYPE_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+void MR_CALL 
+ml_backend__mlds_to_c_type__mlds_output_return_list_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_c_type__type_to_prefix_suffix_for_c_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+ml_backend__mlds_to_c_type__type_to_prefix_suffix_for_c_no_size_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3,
+  MR_String * param_4);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_type__cast_to_prefix_string_for_c_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_type__return_list_to_string_for_c_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__mlds_to_c_type__semicanonicalize_types_in_initializer_for_c_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_type__type_to_string_for_c_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ml_backend__mlds_to_c_type__init(void);
+void mercury__ml_backend__mlds_to_c_type__init_type_tables(void);
+void mercury__ml_backend__mlds_to_c_type__init_debugger(void);
+const char *mercury__ml_backend__mlds_to_c_type__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.mlds_to_c_type
+
+// :- end_interface ml_backend.mlds_to_c_type.
