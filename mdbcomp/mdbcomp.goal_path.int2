@@ -1,0 +1,48 @@
+:- module (mdbcomp.goal_path).
+:- interface.
+:- use_module array.
+:- use_module bimap.
+:- use_module char.
+:- use_module map.
+:- use_module maybe.
+:- type containing_goal
+    --->    whole_body_goal 
+    ;       containing_goal(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.goal_path_step).
+:- type containing_goal_map == map.map(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.containing_goal).
+:- type forward_goal_path
+    --->    fgp_nil 
+    ;       fgp_cons(mdbcomp.goal_path.goal_path_step, mdbcomp.goal_path.forward_goal_path).
+:- type goal_attr_array(T)
+    --->    goal_attr_array(array.array(maybe.maybe(T))).
+:- type goal_forward_path_map == map.map(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.forward_goal_path).
+:- type goal_id
+    --->    goal_id(uint).
+:- type goal_path_step
+    --->    step_conj(int)
+    ;       step_disj(int)
+    ;       step_switch(int, mdbcomp.goal_path.maybe_switch_num_functors)
+    ;       step_ite_cond 
+    ;       step_ite_then 
+    ;       step_ite_else 
+    ;       step_neg 
+    ;       step_scope(mdbcomp.goal_path.maybe_cut)
+    ;       step_lambda 
+    ;       step_try 
+    ;       step_atomic_main 
+    ;       step_atomic_orelse(int).
+:- type goal_path_string == string.
+:- type goal_reverse_path_bimap == bimap.bimap(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.reverse_goal_path).
+:- type goal_reverse_path_map == map.map(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.reverse_goal_path).
+:- type maybe_cut
+    --->    scope_is_cut 
+    ;       scope_is_no_cut .
+:- type maybe_switch_num_functors
+    --->    unknown_num_functors_in_type 
+    ;       known_num_functors_in_type(int).
+:- type reverse_goal_path
+    --->    rgp_nil 
+    ;       rgp_cons(mdbcomp.goal_path.reverse_goal_path, mdbcomp.goal_path.goal_path_step).
+:- inst uniq_goal_attr_array for (mdbcomp.goal_path).goal_attr_array/1
+    --->    goal_attr_array((array.uniq_array)).
+:- mode (gaa_di) == builtin.di(((mdbcomp.goal_path).uniq_goal_attr_array)).
+:- mode (gaa_uo) == builtin.out(((mdbcomp.goal_path).uniq_goal_attr_array)).

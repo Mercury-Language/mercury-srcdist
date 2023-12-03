@@ -1,0 +1,14 @@
+module(2, "profiling_builtin.m",
+	profiling_builtin,
+	{},
+	{builtin, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - profiling_builtin},
+	no_foreign_export,
+	no_main,
+	{}
+).

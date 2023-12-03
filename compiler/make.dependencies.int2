@@ -1,0 +1,2 @@
+:- module (make.dependencies).
+:- interface.
