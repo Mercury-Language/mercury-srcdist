@@ -1,0 +1,4 @@
+:- module (mdb.print_term).
+:- interface.
+:- type unbound.
+:- type_representation(unbound, du_repn(direct_dummy("_",  no_c_j_cs))).

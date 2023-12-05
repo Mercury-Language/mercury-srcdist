@@ -1,0 +1,19 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = analysis
+MAYBE_J1 =
+
+# Delete options which are incompatible with --intermodule-analysis.
+# These are currently set for nightly tests.
+override EXTRA_MCFLAGS := $(patsubst --intermodule-opt%,,$(EXTRA_MCFLAGS))
+override EXTRA_MCFLAGS := $(patsubst --transitive-%,,$(EXTRA_MCFLAGS))
+
+#-----------------------------------------------------------------------------#
+
+TESTS =
+include ../Mmake.common
+
+#-----------------------------------------------------------------------------#
