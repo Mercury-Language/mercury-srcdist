@@ -1,0 +1,183 @@
+/*
+** Automatically generated from `grade_state.m'
+** by the Mercury compiler,
+** version rotd-2023-12-07
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module grade_lib.grade_state.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_grade_lib__grade_state
+#define MR_HEADER_GUARD_grade_lib__grade_state
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef GRADE_LIB__GRADE_STATE_DECL_GUARD
+#define GRADE_LIB__GRADE_STATE_DECL_GUARD
+#include "grade_lib.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_state__grade_lib__grade_state__type_ctor_info_not_possible_why_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_state__grade_lib__grade_state__type_ctor_info_req_dir_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_state__grade_lib__grade_state__type_ctor_info_requirement_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_state__grade_lib__grade_state__type_ctor_info_requirement_application_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_state__grade_lib__grade_state__type_ctor_info_requirement_id_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_state__grade_lib__grade_state__type_ctor_info_solver_info_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_state__grade_lib__grade_state__type_ctor_info_solver_var_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_state__grade_lib__grade_state__type_ctor_info_solver_var_map_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_state__grade_lib__grade_state__type_ctor_info_solver_var_value_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_state__grade_lib__grade_state__type_ctor_info_solver_var_value_possible_0;
+
+void MR_CALL 
+grade_lib__grade_state____Compare____not_possible_why_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_state____Compare____req_dir_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_state____Compare____requirement_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_state____Compare____requirement_application_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_state____Compare____requirement_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_state____Compare____solver_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_state____Compare____solver_var_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_state____Compare____solver_var_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_state____Compare____solver_var_value_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_state____Compare____solver_var_value_possible_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+grade_lib__grade_state____Unify____not_possible_why_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_state____Unify____req_dir_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_state____Unify____requirement_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_state____Unify____requirement_application_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_state____Unify____requirement_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_state____Unify____solver_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_state____Unify____solver_var_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_state____Unify____solver_var_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_state____Unify____solver_var_value_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_state____Unify____solver_var_value_possible_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__grade_lib__grade_state__init(void);
+void mercury__grade_lib__grade_state__init_type_tables(void);
+void mercury__grade_lib__grade_state__init_debugger(void);
+const char *mercury__grade_lib__grade_state__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_grade_lib.grade_state
+
+// :- end_interface grade_lib.grade_state.
