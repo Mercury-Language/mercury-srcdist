@@ -1,0 +1,92 @@
+/*
+** Automatically generated from `thread.barrier.m'
+** by the Mercury compiler,
+** version rotd-2023-12-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module thread.barrier.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_thread__barrier
+#define MR_HEADER_GUARD_thread__barrier
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef THREAD__BARRIER_DECL_GUARD
+#define THREAD__BARRIER_DECL_GUARD
+#include "thread.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__barrier__thread__barrier__type_ctor_info_barrier_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__barrier__thread__barrier__type_ctor_info_why_can_we_go_0;
+
+void MR_CALL 
+mercury__thread__barrier__init_4_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__thread__barrier__release_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__thread__barrier__wait_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__thread__barrier____Compare____barrier_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__thread__barrier____Compare____why_can_we_go_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__thread__barrier____Unify____barrier_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__thread__barrier____Unify____why_can_we_go_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__thread__barrier__init(void);
+void mercury__thread__barrier__init_type_tables(void);
+void mercury__thread__barrier__init_debugger(void);
+const char *mercury__thread__barrier__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_thread.barrier
+
+// :- end_interface thread.barrier.

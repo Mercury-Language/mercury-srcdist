@@ -1,0 +1,45 @@
+:- module (parse_tree.prog_type_test).
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- type non_kinded_type =< parse_tree.prog_data.mer_type
+    --->    type_variable(parse_tree.prog_data.tvar, parse_tree.prog_data.kind)
+    ;       defined_type(mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.kind)
+    ;       builtin_type(parse_tree.prog_data.builtin_type)
+    ;       tuple_type(list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.kind)
+    ;       higher_order_type(mdbcomp.prim_data.pred_or_func, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.ho_inst_info, parse_tree.prog_data.purity, parse_tree.prog_data.lambda_eval_method)
+    ;       apply_n_type(parse_tree.prog_data.tvar, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.kind).
+:- func strip_kind_annotation(parse_tree.prog_data.mer_type) = parse_tree.prog_type_test.non_kinded_type.
+:- pred type_ctor_is_array(parse_tree.prog_data.type_ctor).
+:- mode type_ctor_is_array((builtin.in)) is semidet.
+:- pred type_ctor_is_bitmap(parse_tree.prog_data.type_ctor).
+:- mode type_ctor_is_bitmap((builtin.in)) is semidet.
+:- pred type_ctor_is_higher_order(parse_tree.prog_data.type_ctor, parse_tree.prog_data.purity, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.lambda_eval_method).
+:- mode type_ctor_is_higher_order((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred type_ctor_is_tuple(parse_tree.prog_data.type_ctor).
+:- mode type_ctor_is_tuple((builtin.in)) is semidet.
+:- pred type_has_variable_arity_ctor(parse_tree.prog_data.mer_type, parse_tree.prog_data.type_ctor, list.list(parse_tree.prog_data.mer_type)).
+:- mode type_has_variable_arity_ctor((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred type_is_ground(parse_tree.prog_data.mer_type).
+:- mode type_is_ground((builtin.in)) is semidet.
+:- pred type_is_ground_except_vars(parse_tree.prog_data.mer_type, list.list(parse_tree.prog_data.tvar)).
+:- mode type_is_ground_except_vars((builtin.in), (builtin.in)) is semidet.
+:- pred type_is_higher_order(parse_tree.prog_data.mer_type).
+:- mode type_is_higher_order((builtin.in)) is semidet.
+:- pred type_is_higher_order_details(parse_tree.prog_data.mer_type, parse_tree.prog_data.purity, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.lambda_eval_method, list.list(parse_tree.prog_data.mer_type)).
+:- mode type_is_higher_order_details((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred type_is_higher_order_details_det(parse_tree.prog_data.mer_type, parse_tree.prog_data.purity, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.lambda_eval_method, list.list(parse_tree.prog_data.mer_type)).
+:- mode type_is_higher_order_details_det((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred type_is_io_state(parse_tree.prog_data.mer_type).
+:- mode type_is_io_state((builtin.in)) is semidet.
+:- pred type_is_nonground(parse_tree.prog_data.mer_type).
+:- mode type_is_nonground((builtin.in)) is semidet.
+:- pred type_is_nonvar(parse_tree.prog_data.mer_type).
+:- mode type_is_nonvar((builtin.in)) is semidet.
+:- pred type_is_tuple(parse_tree.prog_data.mer_type, list.list(parse_tree.prog_data.mer_type)).
+:- mode type_is_tuple((builtin.in), (builtin.out)) is semidet.
+:- pred type_is_var(parse_tree.prog_data.mer_type).
+:- mode type_is_var((builtin.in)) is semidet.

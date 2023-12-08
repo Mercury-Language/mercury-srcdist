@@ -1,0 +1,5 @@
+:- module (parse_tree.item_util).
+:- interface.
+:- type maybe_include_implicit
+    --->    do_include_implicit 
+    ;       do_not_include_implicit .

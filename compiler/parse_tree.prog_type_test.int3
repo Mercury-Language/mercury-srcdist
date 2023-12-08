@@ -1,0 +1,5 @@
+:- module (parse_tree.prog_type_test).
+:- interface.
+:- type non_kinded_type
+	where	type_is_abstract_subtype(mer_type/0).
+:- type_representation(non_kinded_type, is_subtype_of(mer_type/0)).

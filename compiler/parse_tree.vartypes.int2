@@ -1,0 +1,9 @@
+:- module (parse_tree.vartypes).
+:- interface.
+:- use_module (parse_tree.prog_data).
+:- type prog_var_set_types
+    --->    prog_var_set_types(parse_tree.prog_data.prog_varset, parse_tree.vartypes.vartypes).
+:- type vartypes.
+:- implementation.
+:- use_module map.
+:- type vartypes == map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type).
