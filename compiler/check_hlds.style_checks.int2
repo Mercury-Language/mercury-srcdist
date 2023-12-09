@@ -1,0 +1,8 @@
+:- module (check_hlds.style_checks).
+:- interface.
+:- type maybe_warn_non_contiguous_pred_decls
+    --->    do_not_warn_non_contiguous_pred_decls 
+    ;       warn_non_contiguous_pred_decls .
+:- type maybe_warn_pred_decl_vs_defn_order
+    --->    do_not_warn_pred_decl_vs_defn_order 
+    ;       warn_pred_decl_vs_defn_order(hlds.hlds_clauses.clause_item_number_types).

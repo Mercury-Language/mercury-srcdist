@@ -1,0 +1,8 @@
+:- module (make.check_up_to_date).
+:- interface.
+:- type dependency_status_result.
+:- type lhs_result
+	where	type_is_abstract_enum(2).
+:- type maybe_oldest_lhs_file.
+:- type_representation(dependency_status_result, is_word_aligned_ptr).
+:- type_representation(lhs_result, du_repn(enum("all_lhs_files_up_to_date", "some_lhs_file_needs_rebuilding", ["rhs_error"],  no_c_j_cs))).
