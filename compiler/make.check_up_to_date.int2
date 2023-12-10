@@ -1,0 +1,13 @@
+:- module (make.check_up_to_date).
+:- interface.
+:- type dependency_status_result
+    --->    dependency_status_result(make.make_info.dependency_file, maybe.maybe(libs.file_util.file_name), make.make_info.dependency_status).
+:- type lhs_result
+    --->    can_rebuild_lhs(make.check_up_to_date.should_rebuild_lhs)
+    ;       rhs_error .
+:- type maybe_oldest_lhs_file
+    --->    some_lhs_file_is_missing 
+    ;       all_lhs_files_exist_oldest_timestamp(libs.timestamp.timestamp).
+:- type should_rebuild_lhs
+    --->    all_lhs_files_up_to_date 
+    ;       some_lhs_file_needs_rebuilding .

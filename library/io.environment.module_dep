@@ -1,0 +1,14 @@
+module(2, "io.environment.m",
+	(io.environment),
+	{io},
+	{builtin, maybe, private_builtin},
+	{assoc_list, list, map, pair, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (io.environment), "C#" - (io.environment), "Java" - (io.environment)},
+	contains_foreign_export,
+	no_main,
+	{}
+).
