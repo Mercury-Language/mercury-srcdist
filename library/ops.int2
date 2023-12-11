@@ -1,0 +1,28 @@
+:- module ops.
+:- interface.
+:- type arg_prio_gt_or_ge
+    --->    arg_gt 
+    ;       arg_ge .
+:- type maybe_op_info_binary_prefix
+    --->    no_bin_pre 
+    ;       bin_pre(ops.priority, ops.arg_prio_gt_or_ge, ops.arg_prio_gt_or_ge).
+:- type maybe_op_info_infix
+    --->    no_in 
+    ;       in(ops.priority, ops.arg_prio_gt_or_ge, ops.arg_prio_gt_or_ge).
+:- type maybe_op_info_postfix
+    --->    no_post 
+    ;       post(ops.priority, ops.arg_prio_gt_or_ge).
+:- type maybe_op_info_prefix
+    --->    no_pre 
+    ;       pre(ops.priority, ops.arg_prio_gt_or_ge).
+:- type mercury_op_table.
+:- type op_infos
+    --->    op_infos((ops.oi_infix) :: ops.maybe_op_info_infix, (ops.oi_binary_prefix) :: ops.maybe_op_info_binary_prefix, (ops.oi_prefix) :: ops.maybe_op_info_prefix, (ops.oi_postfix) :: ops.maybe_op_info_postfix).
+:- type priority
+    --->    prio(uint).
+:- type table == ops.mercury_op_table.
+:- typeclass op_table(Table).
+:- instance (ops.op_table(ops.mercury_op_table)).
+:- implementation.
+:- type mercury_op_table
+    --->    mercury_op_table .

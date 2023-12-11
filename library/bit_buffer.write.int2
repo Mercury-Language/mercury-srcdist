@@ -1,0 +1,10 @@
+:- module (bit_buffer.write).
+:- interface.
+:- use_module io.
+:- type io_write_buffer == bit_buffer.write.write_buffer(io.binary_output_stream, io.state).
+:- type write_buffer == bit_buffer.write.write_buffer(bit_buffer.error_stream, bit_buffer.error_state).
+:- type write_buffer(Stream, State).
+:- inst uniq_write_buffer == ground.
+:- mode (write_buffer_di) == builtin.in(((bit_buffer.write).uniq_write_buffer)).
+:- mode (write_buffer_ui) == builtin.in(((bit_buffer.write).uniq_write_buffer)).
+:- mode (write_buffer_uo) == builtin.out(((bit_buffer.write).uniq_write_buffer)).

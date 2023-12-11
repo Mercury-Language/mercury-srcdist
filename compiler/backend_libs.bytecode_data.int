@@ -1,0 +1,15 @@
+:- module (backend_libs.bytecode_data).
+:- interface.
+:- use_module io.
+:- pred output_byte(io.binary_output_stream, int, io.io, io.io).
+:- mode output_byte((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_float(io.binary_output_stream, float, io.io, io.io).
+:- mode output_float((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_int(io.binary_output_stream, int, io.io, io.io).
+:- mode output_int((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_int32(io.binary_output_stream, int, io.io, io.io).
+:- mode output_int32((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_short(io.binary_output_stream, int, io.io, io.io).
+:- mode output_short((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_string(io.binary_output_stream, string, io.io, io.io).
+:- mode output_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
