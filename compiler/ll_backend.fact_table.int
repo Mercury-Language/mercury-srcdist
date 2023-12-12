@@ -1,0 +1,23 @@
+:- module (ll_backend.fact_table).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_foreign).
+:- type fact_table_arg_check_result
+    --->    fact_table_args_ok(ll_backend.fact_table.fact_table_gen_info)
+    ;       fact_table_args_not_ok(list.list(parse_tree.error_spec.error_spec)).
+:- type fact_table_gen_info.
+:- pred fact_table_check_args(hlds.hlds_module.module_info, parse_tree.prog_data.prog_context, hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_info, ll_backend.fact_table.fact_table_arg_check_result).
+:- mode fact_table_check_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred fact_table_compile_facts(io.text_output_stream, hlds.hlds_module.module_info, string, parse_tree.prog_data.prog_context, ll_backend.fact_table.fact_table_gen_info, string, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode fact_table_compile_facts((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred fact_table_generate_c_code_for_proc(hlds.hlds_module.module_info, mdbcomp.sym_name.sym_name, hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_info, ll_backend.fact_table.fact_table_gen_info, parse_tree.prog_data.prog_varset, list.list(parse_tree.prog_data_foreign.pragma_var), string, string).
+:- mode fact_table_generate_c_code_for_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.

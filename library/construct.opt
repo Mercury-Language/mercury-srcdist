@@ -1,0 +1,169 @@
+:- module construct.
+:- use_module builtin.
+:- use_module int.
+:- use_module list.
+:- use_module maybe.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module rtti_implementation.
+:- use_module type_desc.
+:- use_module univ.
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", construct).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", construct).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", construct).
+:- pragma foreign_import_module("Java", rtti_implementation).
+
+:- func construct.construct_tuple_2(list.list(univ.univ), list.list(type_desc.type_desc), int) = univ.univ.
+:- mode construct_tuple_2((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred construct.find_functor_2(type_desc.type_desc, string, int, int, int, list.list(type_desc.type_desc)).
+:- mode find_functor_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred construct.get_functor_internal(type_desc.type_desc, int, string, int, list.list(type_desc.pseudo_type_desc)).
+:- mode get_functor_internal((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred construct.get_functor_with_names_internal(type_desc.type_desc, int, string, int, list.list(type_desc.pseudo_type_desc), list.list(string)).
+:- mode get_functor_with_names_internal((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred construct.null(string).
+:- mode null((builtin.in)) is semidet.
+:- func construct.null_to_no(string) = maybe.maybe(string).
+:- mode null_to_no((builtin.in)) = (builtin.out) is det.
+
+construct.construct_tuple(V_3) = V_2 :-
+    V_2 = construct.construct_tuple_2(V_3, V_4, V_6),
+    V_4 = list.map(V_5, V_3),
+    V_5 = univ.univ_type : ((func univ.univ) = type_desc.type_desc),
+    V_6 = list.length(V_3).
+
+construct.find_functor(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = construct.num_functors(V_6),
+    construct.find_functor_2(V_6, V_7, V_8, V_11, V_9, V_10).
+
+construct.get_functor(V_6, V_7, V_8, V_9, V_10) :-
+    construct.get_functor_internal(V_6, V_7, V_8, V_9, V_10).
+
+:- pragma foreign_proc("C",
+    construct.get_functor_lex(TypeDesc :: (builtin.in), Ordinal :: (builtin.in)) = (FunctorNumber :: (builtin.out)),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail],
+"{
+    MR_TypeInfo         type_info;
+    MR_TypeCtorInfo     type_ctor_info;
+    MR_Construct_Info   construct_info;
+    int                 num_functors;
+
+    type_info = (MR_TypeInfo) TypeDesc;
+
+    // Get information for this functor number and store in construct_info.
+    // If this is a discriminated union type and if the functor number is
+    // in range, we succeed.
+    MR_save_transient_registers();
+    type_info = MR_collapse_equivalences(type_info);
+    num_functors = MR_get_num_functors(type_info);
+    MR_restore_transient_registers();
+    type_ctor_info = MR_TYPEINFO_GET_TYPE_CTOR_INFO(type_info);
+    if (Ordinal < 0 || Ordinal >= num_functors
+            || !type_ctor_info->MR_type_ctor_functor_number_map)
+    {
+        SUCCESS_INDICATOR = MR_FALSE;
+    } else {
+        FunctorNumber =
+            type_ctor_info->MR_type_ctor_functor_number_map[Ordinal];
+        SUCCESS_INDICATOR = MR_TRUE;
+    }
+}").
+
+construct.get_functor_ordinal(V_4, V_5) = V_6 :-
+    construct.get_functor_ordinal(V_4, V_5, V_6).
+
+:- pragma foreign_proc("C",
+    construct.get_functor_ordinal(TypeDesc :: (builtin.in), FunctorNumber :: (builtin.in), Ordinal :: (builtin.out)),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail],
+"{
+    MR_TypeInfo         type_info;
+    MR_Construct_Info   construct_info;
+    MR_bool             success;
+
+    type_info = (MR_TypeInfo) TypeDesc;
+
+    // Get information for this functor number and store in construct_info.
+    // If this is a discriminated union type and if the functor number is
+    // in range, we succeed.
+    MR_save_transient_registers();
+    success = MR_get_functors_check_range(FunctorNumber, type_info, MR_TRUE,
+        &construct_info);
+    MR_restore_transient_registers();
+
+    if (success) {
+        Ordinal = construct_info.functor_ordinal;
+    } else {
+        Ordinal = 0;
+    }
+    SUCCESS_INDICATOR = success;
+}").
+
+construct.get_functor_with_names(V_7, V_8, V_9, V_10, V_11, V_12) :-
+    construct.get_functor_with_names_internal(V_7, V_8, V_9, V_10, V_11, V_13),
+    V_12 = list.map(V_14, V_13),
+    V_14 = construct.null_to_no : ((func string) = maybe.maybe(string)).
+
+:- pragma foreign_proc("C",
+    construct.null(S :: (builtin.in)),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail],
+"
+    SUCCESS_INDICATOR = (S == NULL);
+").
+
+construct.null_to_no(V_3) = V_2 :-
+    ( if
+      construct.null(V_3)
+    then
+      V_2 = maybe.no : maybe.maybe(string)
+    else
+      V_2 = maybe.yes(V_3) : maybe.maybe(string)
+    ).
+
+:- pragma foreign_proc("C",
+    construct.num_functors(TypeInfo :: (builtin.in)) = (Functors :: (builtin.out)),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail],
+"{
+    MR_save_transient_registers();
+    Functors = MR_get_num_functors((MR_TypeInfo) TypeInfo);
+    MR_restore_transient_registers();
+    SUCCESS_INDICATOR = (Functors >= 0);
+}").
+
+:- pragma termination_info(construct.construct((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(construct.construct_tuple((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(construct.construct_tuple_2((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(construct.det_num_functors((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(construct.find_functor((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(construct.find_functor_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(construct.get_functor((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(construct.get_functor_internal((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(construct.get_functor_lex((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(construct.get_functor_ordinal((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(construct.get_functor_ordinal((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(construct.get_functor_with_names((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(construct.get_functor_with_names_internal((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(construct.null((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(construct.null_to_no((builtin.in)) = (builtin.out), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(construct.num_functors((builtin.in)) = (builtin.out), infinite, cannot_loop).
+
+:- pragma exceptions(function, (construct.construct), 3, 0, will_not_throw).
+:- pragma exceptions(function, (construct.construct_tuple), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (construct.construct_tuple_2), 3, 0, will_not_throw).
+:- pragma exceptions(function, (construct.det_num_functors), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (construct.find_functor), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (construct.find_functor_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (construct.get_functor), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (construct.get_functor_internal), 5, 0, will_not_throw).
+:- pragma exceptions(function, (construct.get_functor_lex), 2, 0, will_not_throw).
+:- pragma exceptions(function, (construct.get_functor_ordinal), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (construct.get_functor_ordinal), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (construct.get_functor_with_names), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (construct.get_functor_with_names_internal), 6, 0, will_not_throw).
+:- pragma exceptions(predicate, (construct.null), 1, 0, will_not_throw).
+:- pragma exceptions(function, (construct.null_to_no), 1, 0, will_not_throw).
+:- pragma exceptions(function, (construct.num_functors), 1, 0, will_not_throw).
