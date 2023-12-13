@@ -1,0 +1,22 @@
+:- module (hlds.hlds_desc).
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (libs.indent).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.var_table).
+:- type include_module_name
+    --->    do_not_include_module_name 
+    ;       include_module_name .
+:- func describe_args(parse_tree.var_table.var_table, list.list(parse_tree.prog_data.prog_var)) = string.
+:- func describe_goal(hlds.hlds_module.module_info, parse_tree.var_table.var_table, hlds.hlds_goal.hlds_goal) = string.
+:- func describe_pred(hlds.hlds_desc.include_module_name, hlds.hlds_pred.pred_info) = string.
+:- func describe_pred_from_id(hlds.hlds_desc.include_module_name, hlds.hlds_module.module_info, hlds.hlds_pred.pred_id) = string.
+:- func describe_proc(hlds.hlds_desc.include_module_name, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_id) = string.
+:- func describe_proc_from_id(hlds.hlds_desc.include_module_name, hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id) = string.
+:- func describe_structured_goal(hlds.hlds_module.module_info, parse_tree.var_table.var_table, libs.indent.indent, hlds.hlds_goal.hlds_goal) = string.
+:- func describe_var(parse_tree.var_table.var_table, parse_tree.prog_data.prog_var) = string.

@@ -1,0 +1,16 @@
+:- module (libs.trace_params).
+:- interface.
+:- type eff_trace_level.
+:- type maybe_exec_trace_enabled
+    --->    exec_trace_is_not_enabled 
+    ;       exec_trace_is_enabled .
+:- type trace_level.
+:- type trace_suppress_items.
+:- implementation.
+:- use_module set.
+:- type eff_trace_level
+	where	type_is_abstract_enum(3).
+:- type trace_level
+	where	type_is_abstract_enum(2).
+:- type trace_suppress_item.
+:- type trace_suppress_items == set.set(libs.trace_params.trace_suppress_item).

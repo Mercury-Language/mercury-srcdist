@@ -1,0 +1,18 @@
+:- module (parse_tree.prog_type_construct).
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module (mdbcomp.prim_data).
+:- use_module (parse_tree.prog_data).
+:- pred construct_higher_order_func_type(parse_tree.prog_data.purity, parse_tree.prog_data.lambda_eval_method, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type).
+:- mode construct_higher_order_func_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred construct_higher_order_func_type(parse_tree.prog_data.purity, parse_tree.prog_data.lambda_eval_method, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.mer_type, list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.mer_mode, parse_tree.prog_data.determinism, parse_tree.prog_data.mer_type).
+:- mode construct_higher_order_func_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred construct_higher_order_pred_type(parse_tree.prog_data.purity, parse_tree.prog_data.lambda_eval_method, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.mer_type).
+:- mode construct_higher_order_pred_type((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred construct_higher_order_pred_type(parse_tree.prog_data.purity, parse_tree.prog_data.lambda_eval_method, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.determinism, parse_tree.prog_data.mer_type).
+:- mode construct_higher_order_pred_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred construct_higher_order_type(parse_tree.prog_data.purity, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.lambda_eval_method, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.mer_type).
+:- mode construct_higher_order_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred construct_type(parse_tree.prog_data.type_ctor, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.mer_type).
+:- mode construct_type((builtin.in), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,28 @@
+:- module rational.
+:- interface.
+:- use_module integer.
+:- type rational.
+:- func '*'(rational.rational, rational.rational) = rational.rational.
+:- func '+'(rational.rational) = rational.rational.
+:- func '+'(rational.rational, rational.rational) = rational.rational.
+:- func '-'(rational.rational) = rational.rational.
+:- func '-'(rational.rational, rational.rational) = rational.rational.
+:- func '/'(rational.rational, rational.rational) = rational.rational.
+:- pred '<'(rational.rational, rational.rational).
+:- mode '<'((builtin.in), (builtin.in)) is semidet.
+:- pred '=<'(rational.rational, rational.rational).
+:- mode '=<'((builtin.in), (builtin.in)) is semidet.
+:- pred '>'(rational.rational, rational.rational).
+:- mode '>'((builtin.in), (builtin.in)) is semidet.
+:- pred '>='(rational.rational, rational.rational).
+:- mode '>='((builtin.in), (builtin.in)) is semidet.
+:- func abs(rational.rational) = rational.rational.
+:- func denom(rational.rational) = integer.integer.
+:- func from_integer(integer.integer) = rational.rational.
+:- func from_integers(integer.integer, integer.integer) = rational.rational.
+:- func numer(rational.rational) = integer.integer.
+:- func one = rational.rational.
+:- func rational(int) = rational.rational.
+:- func rational(int, int) = rational.rational.
+:- func reciprocal(rational.rational) = rational.rational.
+:- func zero = rational.rational.
