@@ -1,0 +1,115 @@
+:- module io.
+:- interface.
+:- include_module (io.call_system).
+:- include_module (io.environment).
+:- include_module (io.error_util).
+:- include_module (io.file).
+:- include_module (io.primitives_read).
+:- include_module (io.primitives_write).
+:- include_module (io.stream_db).
+:- include_module (io.stream_ops).
+:- include_module (io.text_read).
+:- import_module array.
+:- import_module bitmap.
+:- import_module bool.
+:- import_module char.
+:- import_module deconstruct.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module stream.
+:- import_module string.
+:- import_module time.
+:- import_module univ.
+:- type access_type
+	where	type_is_abstract_enum(2).
+:- type binary_input_stream.
+:- type binary_output_stream.
+:- type environment_var_map.
+:- type error.
+:- type file_id.
+:- type file_type
+	where	type_is_abstract_enum(4).
+:- type input_stream.
+:- type io.
+:- type maybe_incomplete_result(T).
+:- type maybe_partial_res(T).
+:- type maybe_partial_res_2(T1, T2).
+:- type output_stream.
+:- type posn.
+:- type read_result(T).
+:- type res.
+:- type res(T).
+:- type result.
+:- type result(T).
+:- type state.
+:- type stream.
+:- type stream_id.
+:- type system_error.
+:- pragma foreign_type(c, system_error, "MR_Integer", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, system_error, "java.lang.Exception").
+:- pragma foreign_type(csharp, system_error, "System.Exception").
+:- type system_result.
+:- type text_input_stream.
+:- type text_output_stream.
+:- type whence
+	where	type_is_abstract_enum(2).
+:- abstract_inst((maybe_partial_res(T))).
+:- instance (stream.error(io.error)).
+:- instance (stream.input(io.binary_input_stream, io.io)).
+:- instance (stream.input(io.text_input_stream, io.io)).
+:- instance (stream.line_oriented(io.text_input_stream, io.io)).
+:- instance (stream.line_oriented(io.text_output_stream, io.io)).
+:- instance (stream.output(io.binary_output_stream, io.io)).
+:- instance (stream.output(io.text_output_stream, io.io)).
+:- instance (stream.putback(io.binary_input_stream, int, io.io, io.error)).
+:- instance (stream.putback(io.binary_input_stream, int8, io.io, io.error)).
+:- instance (stream.putback(io.binary_input_stream, uint8, io.io, io.error)).
+:- instance (stream.putback(io.text_input_stream, char, io.io, io.error)).
+:- instance (stream.reader(io.binary_input_stream, int, io.io, io.error)).
+:- instance (stream.reader(io.binary_input_stream, int8, io.io, io.error)).
+:- instance (stream.reader(io.binary_input_stream, uint8, io.io, io.error)).
+:- instance (stream.reader(io.text_input_stream, char, io.io, io.error)).
+:- instance (stream.reader(io.text_input_stream, line, io.io, io.error)).
+:- instance (stream.reader(io.text_input_stream, text_file, io.io, io.error)).
+:- instance (stream.seekable(io.binary_input_stream, io.io)).
+:- instance (stream.seekable(io.binary_output_stream, io.io)).
+:- instance (stream.stream(io.binary_input_stream, io.io)).
+:- instance (stream.stream(io.binary_output_stream, io.io)).
+:- instance (stream.stream(io.text_input_stream, io.io)).
+:- instance (stream.stream(io.text_output_stream, io.io)).
+:- instance (stream.unboxed_reader(io.binary_input_stream, int8, io.io, io.error)).
+:- instance (stream.unboxed_reader(io.binary_input_stream, uint8, io.io, io.error)).
+:- instance (stream.unboxed_reader(io.text_input_stream, char, io.io, io.error)).
+:- instance (stream.writer(io.binary_output_stream, byte, io.io)).
+:- instance (stream.writer(io.binary_output_stream, int8, io.io)).
+:- instance (stream.writer(io.binary_output_stream, uint8, io.io)).
+:- instance (stream.writer(io.text_output_stream, char, io.io)).
+:- instance (stream.writer(io.text_output_stream, univ, io.io)).
+:- instance (stream.writer(io.text_output_stream, int, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint, io.io)).
+:- instance (stream.writer(io.text_output_stream, int8, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint8, io.io)).
+:- instance (stream.writer(io.text_output_stream, int16, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint16, io.io)).
+:- instance (stream.writer(io.text_output_stream, int32, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint32, io.io)).
+:- instance (stream.writer(io.text_output_stream, int64, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint64, io.io)).
+:- instance (stream.writer(io.text_output_stream, float, io.io)).
+:- instance (stream.writer(io.text_output_stream, string, io.io)).
+:- type_representation(access_type, du_repn(enum("read", "write", ["execute"],  no_c_j_cs))).
+:- type_representation(binary_input_stream, du_repn(notag("binary_input_stream", stream,  no_c_j_cs))).
+:- type_representation(binary_output_stream, du_repn(notag("binary_output_stream", stream,  no_c_j_cs))).
+:- type_representation(environment_var_map, is_eqv_to(map(string, string))).
+:- type_representation(file_id, du_repn(direct_dummy("file_id",  c_j_cs(foreign_type("ML_File_Id", []), no_foreign, no_foreign)))).
+:- type_representation(file_type, du_repn(enum("regular_file", "directory", ["symbolic_link", "named_pipe", "socket", "character_device", "block_device", "message_queue", "semaphore", "shared_memory", "unknown"],  no_c_j_cs))).
+:- type_representation(input_stream, is_eqv_to(io.text_input_stream)).
+:- type_representation(io, is_eqv_to(io.state)).
+:- type_representation(output_stream, is_eqv_to(io.text_output_stream)).
+:- type_representation(posn, is_word_aligned_ptr).
+:- type_representation(stream, du_repn(notag("stream", c_pointer,  c_j_cs(foreign_type("MercuryFilePtr", [can_pass_as_mercury_type]), foreign_type("jmercury.io__stream_ops.MR_MercuryFileStruct", []), foreign_type("mercury.io__stream_ops.MR_MercuryFileStruct", []))))).
+:- type_representation(stream_id, is_eqv_to(int)).
+:- type_representation(text_input_stream, du_repn(notag("text_input_stream", stream,  no_c_j_cs))).
+:- type_representation(text_output_stream, du_repn(notag("text_output_stream", stream,  no_c_j_cs))).
+:- type_representation(whence, du_repn(enum("set", "cur", ["end"],  no_c_j_cs))).

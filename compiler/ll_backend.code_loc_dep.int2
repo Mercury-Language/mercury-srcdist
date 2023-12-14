@@ -1,0 +1,33 @@
+:- module (ll_backend.code_loc_dep).
+:- interface.
+:- use_module map.
+:- use_module maybe.
+:- use_module set.
+:- use_module (ll_backend.llds).
+:- use_module (parse_tree.prog_data).
+:- type branch_end == maybe.maybe(ll_backend.code_loc_dep.branch_end_info).
+:- type branch_end_info.
+:- type call_direction
+    --->    caller 
+    ;       callee .
+:- type code_info_component
+    --->    cic_forward_live_vars 
+    ;       cic_zombies 
+    ;       cic_temps_in_use 
+    ;       cic_par_conj_depth .
+:- type code_loc_dep.
+:- type det_commit_info.
+:- type disj_hijack_info.
+:- type ite_hijack_info.
+:- type position_info.
+:- type resume_map.
+:- type resume_point_info.
+:- type semi_commit_info.
+:- type simple_neg_info.
+:- type temp_slot_persistence
+    --->    persistent_temp_slot 
+    ;       non_persistent_temp_slot .
+:- implementation.
+:- type fail_info.
+:- type resume_map == map.map(parse_tree.prog_data.prog_var, set.set(ll_backend.llds.lval)).
+:- type simple_neg_info == ll_backend.code_loc_dep.fail_info.

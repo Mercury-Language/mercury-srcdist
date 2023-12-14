@@ -1,0 +1,89 @@
+:- module term_to_xml.
+
+:- pragma termination_info(term_to_xml.attr_from_source_to_maybe_attr((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_to_xml.can_format_siblings((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(term_to_xml.can_generate_dtd(builtin.in((term_to_xml.element_mapping)), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_to_xml.contains_noformat_xml((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(term_to_xml.get_element_pred(builtin.in((term_to_xml.element_mapping)), builtin.out((term_to_xml.element_pred))), infinite, cannot_loop).
+:- pragma termination_info(term_to_xml.get_field_names((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_to_xml.indent((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.is_discriminated_union((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term_to_xml.is_maybe_yes((builtin.in), (builtin.out)), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_to_xml.make_attrs_from_sources((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_to_xml.primitive_value((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term_to_xml.to_xml((builtin.in)) = builtin.out((term_to_xml.xml_doc)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_attribute((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_child_xml_elements((builtin.in), builtin.in((deconstruct.do_not_allow)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_child_xml_elements((builtin.in), builtin.in((deconstruct.canonicalize)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_child_xml_elements((builtin.in), builtin.in((deconstruct.include_details_cc)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_child_xml_elements((builtin.in), (builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_dtd((builtin.in), (builtin.unused), builtin.in((term_to_xml.element_mapping)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_dtd_from_type((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_element_end((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_element_start((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_element_start_with_attr_from_source((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_empty_element((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_empty_element_with_attr_from_source((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_primitive_element_with_attr_from_source((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_general((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_general_cc((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_style_dtd((builtin.in), (builtin.in), (builtin.in), builtin.in((term_to_xml.non_embedded_dtd)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_format((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), builtin.in((deconstruct.do_not_allow)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), builtin.in((deconstruct.canonicalize)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), builtin.in((deconstruct.include_details_cc)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ((builtin.in), builtin.in((deconstruct.do_not_allow)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ((builtin.in), builtin.in((deconstruct.canonicalize)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ((builtin.in), builtin.in((deconstruct.include_details_cc)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ((builtin.in), (builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ_canonicalize((builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ_do_not_allow((builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ_include_details_cc((builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_header((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(function, (term_to_xml.attr_from_source_to_maybe_attr), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_to_xml.can_format_siblings), 1, 0, will_not_throw).
+:- pragma exceptions(function, (term_to_xml.can_generate_dtd), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.contains_noformat_xml), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (term_to_xml.get_element_pred), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term_to_xml.get_field_names), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.indent), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.is_discriminated_union), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term_to_xml.is_maybe_yes), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term_to_xml.make_attrs_from_sources), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.primitive_value), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_to_xml.to_xml), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_attribute), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_child_xml_elements), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_child_xml_elements), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_child_xml_elements), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_child_xml_elements), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_dtd), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_dtd_from_type), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_element_end), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_element_start), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_element_start_with_attr_from_source), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_empty_element), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_empty_element_with_attr_from_source), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_primitive_element_with_attr_from_source), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_general), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_general_cc), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_style_dtd), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_format), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ_canonicalize), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ_do_not_allow), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ_include_details_cc), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_header), 4, 0, may_throw(user_exception)).
