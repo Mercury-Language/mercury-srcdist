@@ -1,0 +1,3 @@
+:- module fatter_sparse_bitset.
+:- interface.
+:- type fatter_sparse_bitset(T).

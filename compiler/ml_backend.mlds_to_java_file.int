@@ -1,0 +1,10 @@
+:- module (ml_backend.mlds_to_java_file).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module (hlds.hlds_module).
+:- use_module (libs.maybe_util).
+:- use_module (ml_backend.mlds).
+:- pred output_java_mlds(io.text_output_stream, hlds.hlds_module.module_info, ml_backend.mlds.mlds, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode output_java_mlds((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
