@@ -1,0 +1,104 @@
+/*
+** Automatically generated from `check_import_accessibility.m'
+** by the Mercury compiler,
+** version rotd-2023-12-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.check_import_accessibility.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__check_import_accessibility
+#define MR_HEADER_GUARD_parse_tree__check_import_accessibility
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__CHECK_IMPORT_ACCESSIBILITY_DECL_GUARD
+#define PARSE_TREE__CHECK_IMPORT_ACCESSIBILITY_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_import_accessibility__parse_tree__check_import_accessibility__type_ctor_info_import_accessibility_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_import_accessibility__parse_tree__check_import_accessibility__type_ctor_info_import_and_or_use_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_import_accessibility__parse_tree__check_import_accessibility__type_ctor_info_import_or_use_context_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_import_accessibility__parse_tree__check_import_accessibility__type_ctor_info_include_context_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_import_accessibility__parse_tree__check_import_accessibility__type_ctor_info_maybe_abstract_section_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_import_accessibility__parse_tree__check_import_accessibility__type_ctor_info_missing_ancestor_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_import_accessibility__parse_tree__check_import_accessibility__type_ctor_info_missing_ancestor_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_import_accessibility__parse_tree__check_import_accessibility__type_ctor_info_missing_where_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_import_accessibility__parse_tree__check_import_accessibility__type_ctor_info_module_import_or_use_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_import_accessibility__parse_tree__check_import_accessibility__type_ctor_info_module_inclusion_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_import_accessibility__parse_tree__check_import_accessibility__type_ctor_info_parent_or_ancestor_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__check_import_accessibility__parse_tree__check_import_accessibility__type_ctor_info_seen_includes_0;
+
+void MR_CALL 
+parse_tree__check_import_accessibility__aug_comp_unit_get_import_accessibility_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__check_import_accessibility__aug_make_int_unit_get_import_accessibility_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__check_import_accessibility__check_import_accessibility_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__check_import_accessibility____Compare____import_accessibility_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__check_import_accessibility____Unify____import_accessibility_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__check_import_accessibility__init(void);
+void mercury__parse_tree__check_import_accessibility__init_type_tables(void);
+void mercury__parse_tree__check_import_accessibility__init_debugger(void);
+const char *mercury__parse_tree__check_import_accessibility__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.check_import_accessibility
+
+// :- end_interface parse_tree.check_import_accessibility.

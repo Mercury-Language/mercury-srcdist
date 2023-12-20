@@ -1,0 +1,32 @@
+:- module (make.check_up_to_date).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.maybe_util).
+:- use_module (libs.timestamp).
+:- use_module (make.make_info).
+:- type dependency_status_result
+    --->    dependency_status_result(make.make_info.dependency_file, maybe.maybe(libs.file_util.file_name), make.make_info.dependency_status).
+:- type lhs_result
+    --->    can_rebuild_lhs(make.check_up_to_date.should_rebuild_lhs)
+    ;       rhs_error .
+:- type make_lhs_files
+    --->    make_lhs_files(((make.check_up_to_date).mlf_dateless_target_files) :: list.list(make.make_info.target_file), ((make.check_up_to_date).mlf_dated_target_files) :: list.list(make.make_info.target_file), ((make.check_up_to_date).mlf_date_files) :: list.list(libs.file_util.file_name), ((make.check_up_to_date).mlf_foreign_code_files) :: list.list(libs.file_util.file_name)).
+:- type maybe_oldest_lhs_file
+    --->    some_lhs_file_is_missing 
+    ;       all_lhs_files_exist_oldest_timestamp(libs.timestamp.timestamp).
+:- type should_rebuild_lhs
+    --->    all_lhs_files_up_to_date 
+    ;       some_lhs_file_needs_rebuilding .
+:- pred get_dependency_file_status(io.text_output_stream, libs.globals.globals, make.make_info.dependency_file, make.check_up_to_date.dependency_status_result, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode get_dependency_file_status((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred must_or_should_we_rebuild_lhs(io.text_output_stream, libs.globals.globals, make.make_info.target_file, libs.file_util.file_name, make.check_up_to_date.make_lhs_files, list.list(make.make_info.dependency_file), make.check_up_to_date.lhs_result, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode must_or_should_we_rebuild_lhs((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred should_we_rebuild_lhs(io.text_output_stream, libs.globals.globals, libs.file_util.file_name, make.check_up_to_date.maybe_oldest_lhs_file, libs.maybe_util.maybe_succeeded, list.list(make.make_info.dependency_file), make.check_up_to_date.lhs_result, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode should_we_rebuild_lhs((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred should_we_rebuild_lhs_given_timestamps(io.text_output_stream, libs.globals.globals, libs.file_util.file_name, make.check_up_to_date.maybe_oldest_lhs_file, libs.maybe_util.maybe_succeeded, list.list(make.check_up_to_date.dependency_status_result), list.list(maybe.maybe_error(libs.timestamp.timestamp)), make.check_up_to_date.lhs_result, io.io, io.io).
+:- mode should_we_rebuild_lhs_given_timestamps((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
