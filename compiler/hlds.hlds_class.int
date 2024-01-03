@@ -1,0 +1,83 @@
+:- module (hlds.hlds_class).
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.status).
+:- use_module (mdbcomp.goal_path).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- type ancestor_constraints == map.map(parse_tree.prog_data.prog_constraint, list.list(parse_tree.prog_data.prog_constraint)).
+:- type class_table == map.map(parse_tree.prog_data.class_id, hlds.hlds_class.hlds_class_defn).
+:- type constraint_id
+    --->    constraint_id(hlds.hlds_class.constraint_type, mdbcomp.goal_path.goal_id, int).
+:- type constraint_map == map.map(hlds.hlds_class.constraint_id, parse_tree.prog_data.prog_constraint).
+:- type constraint_proof
+    --->    apply_instance(hlds.hlds_class.instance_id)
+    ;       superclass(parse_tree.prog_data.prog_constraint).
+:- type constraint_proof_map == map.map(parse_tree.prog_data.prog_constraint, hlds.hlds_class.constraint_proof).
+:- type constraint_type
+    --->    unproven 
+    ;       assumed .
+:- type hlds_class_argpos == int.
+:- type hlds_class_defn
+    --->    hlds_class_defn(((hlds.hlds_class).classdefn_status) :: hlds.status.typeclass_status, ((hlds.hlds_class).classdefn_tvarset) :: parse_tree.prog_data.tvarset, ((hlds.hlds_class).classdefn_kinds) :: parse_tree.prog_data.tvar_kind_map, ((hlds.hlds_class).classdefn_vars) :: list.list(parse_tree.prog_data.tvar), ((hlds.hlds_class).classdefn_supers) :: list.list(parse_tree.prog_data.prog_constraint), ((hlds.hlds_class).classdefn_fundeps) :: hlds.hlds_class.hlds_class_fundeps, ((hlds.hlds_class).classdefn_fundep_ancestors) :: list.list(parse_tree.prog_data.prog_constraint), ((hlds.hlds_class).classdefn_interface) :: parse_tree.prog_data.class_interface, ((hlds.hlds_class).classdefn_method_infos) :: list.list(hlds.hlds_class.method_info), ((hlds.hlds_class).classdefn_context) :: parse_tree.prog_data.prog_context, ((hlds.hlds_class).classdefn_maybe_bad) :: hlds.hlds_class.maybe_bad_class_defn).
+:- type hlds_class_fundep
+    --->    fundep(((hlds.hlds_class).domain) :: set.set(hlds.hlds_class.hlds_class_argpos), ((hlds.hlds_class).range) :: set.set(hlds.hlds_class.hlds_class_argpos)).
+:- type hlds_class_fundeps == list.list(hlds.hlds_class.hlds_class_fundep).
+:- type hlds_constraint
+    --->    hlds_constraint(list.list(hlds.hlds_class.constraint_id), parse_tree.prog_data.class_name, list.list(parse_tree.prog_data.mer_type)).
+:- type hlds_constraints
+    --->    hlds_constraints(((hlds.hlds_class).hcs_unproven) :: list.list(hlds.hlds_class.hlds_constraint), ((hlds.hlds_class).hcs_assumed) :: list.list(hlds.hlds_class.hlds_constraint), ((hlds.hlds_class).hcs_redundant) :: hlds.hlds_class.redundant_constraints, ((hlds.hlds_class).hcs_ancestors) :: hlds.hlds_class.ancestor_constraints).
+:- type hlds_instance_defn
+    --->    hlds_instance_defn(((hlds.hlds_class).instdefn_module) :: mdbcomp.sym_name.module_name, ((hlds.hlds_class).instdefn_status) :: hlds.status.instance_status, ((hlds.hlds_class).instdefn_tvarset) :: parse_tree.prog_data.tvarset, ((hlds.hlds_class).instdefn_orig_types) :: list.list(parse_tree.prog_data.mer_type), ((hlds.hlds_class).instdefn_types) :: list.list(parse_tree.prog_data.mer_type), ((hlds.hlds_class).instdefn_constraints) :: list.list(parse_tree.prog_data.prog_constraint), ((hlds.hlds_class).instdefn_subsumed_ctxt) :: maybe.maybe(parse_tree.prog_data.prog_context), ((hlds.hlds_class).instdefn_proofs) :: hlds.hlds_class.constraint_proof_map, ((hlds.hlds_class).instdefn_body) :: parse_tree.prog_data.instance_body, ((hlds.hlds_class).instdefn_maybe_method_infos) :: maybe.maybe(list.list(hlds.hlds_class.method_info)), ((hlds.hlds_class).instdefn_context) :: parse_tree.prog_data.prog_context).
+:- type instance_id
+    --->    instance_id(int).
+:- type instance_table == map.map(parse_tree.prog_data.class_id, list.list(hlds.hlds_class.hlds_instance_defn)).
+:- type maybe_bad_class_defn
+    --->    has_no_bad_class_defn 
+    ;       has_bad_class_defn .
+:- type method_info
+    --->    method_info(((hlds.hlds_class).method_proc_number) :: hlds.hlds_class.method_proc_num, ((hlds.hlds_class).method_pred_name) :: parse_tree.prog_data.pred_pf_name_arity, ((hlds.hlds_class).method_orig_proc) :: hlds.hlds_pred.pred_proc_id, ((hlds.hlds_class).method_cur_proc) :: hlds.hlds_pred.pred_proc_id).
+:- type method_proc_num
+    --->    method_proc_num(int).
+:- type redundant_constraints == map.map(parse_tree.prog_data.class_id, set.set(hlds.hlds_class.hlds_constraint)).
+:- pred compare_hlds_constraints(hlds.hlds_class.hlds_constraint, hlds.hlds_class.hlds_constraint, builtin.comparison_result).
+:- mode compare_hlds_constraints((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred init_hlds_constraint_list(list.list(parse_tree.prog_data.prog_constraint), list.list(hlds.hlds_class.hlds_constraint)).
+:- mode init_hlds_constraint_list((builtin.in), (builtin.out)) is det.
+:- pred lookup_hlds_constraint_list(hlds.hlds_class.constraint_map, hlds.hlds_class.constraint_type, mdbcomp.goal_path.goal_id, int, list.list(parse_tree.prog_data.prog_constraint)).
+:- mode lookup_hlds_constraint_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_method_proc(list.list(hlds.hlds_class.method_info), hlds.hlds_class.method_proc_num) = hlds.hlds_class.method_info.
+:- pred make_body_hlds_constraints(hlds.hlds_class.class_table, parse_tree.prog_data.tvarset, mdbcomp.goal_path.goal_id, parse_tree.prog_data.univ_exist_constraints, hlds.hlds_class.hlds_constraints).
+:- mode make_body_hlds_constraints((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_head_hlds_constraints(hlds.hlds_class.class_table, parse_tree.prog_data.tvarset, parse_tree.prog_data.univ_exist_constraints, hlds.hlds_class.hlds_constraints).
+:- mode make_head_hlds_constraints((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_hlds_constraint_list(list.list(parse_tree.prog_data.prog_constraint), hlds.hlds_class.constraint_type, mdbcomp.goal_path.goal_id, list.list(hlds.hlds_class.hlds_constraint)).
+:- mode make_hlds_constraint_list((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_hlds_constraints(hlds.hlds_class.class_table, parse_tree.prog_data.tvarset, list.list(hlds.hlds_class.hlds_constraint), list.list(hlds.hlds_class.hlds_constraint), hlds.hlds_class.hlds_constraints).
+:- mode make_hlds_constraints((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred matching_constraints(hlds.hlds_class.hlds_constraint, hlds.hlds_class.hlds_constraint).
+:- mode matching_constraints((builtin.in), (builtin.in)) is semidet.
+:- pred merge_hlds_constraints(hlds.hlds_class.hlds_constraints, hlds.hlds_class.hlds_constraints, hlds.hlds_class.hlds_constraints).
+:- mode merge_hlds_constraints((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func method_infos_to_pred_proc_ids(list.list(hlds.hlds_class.method_info)) = list.list(hlds.hlds_pred.pred_proc_id).
+:- pred num_extra_instance_args(hlds.hlds_class.hlds_instance_defn, int).
+:- mode num_extra_instance_args((builtin.in), (builtin.out)) is det.
+:- func restrict_list_elements(set.set(hlds.hlds_class.hlds_class_argpos), list.list(T)) = list.list(T).
+:- pred retrieve_prog_constraint(hlds.hlds_class.hlds_constraint, parse_tree.prog_data.prog_constraint).
+:- mode retrieve_prog_constraint((builtin.in), (builtin.out)) is det.
+:- pred retrieve_prog_constraint_list(list.list(hlds.hlds_class.hlds_constraint), list.list(parse_tree.prog_data.prog_constraint)).
+:- mode retrieve_prog_constraint_list((builtin.in), (builtin.out)) is det.
+:- pred retrieve_univ_exist_constraints(hlds.hlds_class.hlds_constraints, parse_tree.prog_data.univ_exist_constraints).
+:- mode retrieve_univ_exist_constraints((builtin.in), (builtin.out)) is det.
+:- pred search_hlds_constraint_list(hlds.hlds_class.constraint_map, hlds.hlds_class.constraint_type, mdbcomp.goal_path.goal_id, int, list.list(parse_tree.prog_data.prog_constraint)).
+:- mode search_hlds_constraint_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred update_constraint_map(hlds.hlds_class.hlds_constraint, hlds.hlds_class.constraint_map, hlds.hlds_class.constraint_map).
+:- mode update_constraint_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred update_redundant_constraints(hlds.hlds_class.class_table, parse_tree.prog_data.tvarset, list.list(hlds.hlds_class.hlds_constraint), hlds.hlds_class.redundant_constraints, hlds.hlds_class.redundant_constraints).
+:- mode update_redundant_constraints((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

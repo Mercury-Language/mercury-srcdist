@@ -1,0 +1,2 @@
+:- module (make.file_names).
+:- interface.

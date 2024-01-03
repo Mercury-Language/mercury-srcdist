@@ -1,0 +1,4 @@
+:- module (mdb.print_term).
+:- interface.
+:- type unbound
+    --->    '_' .
