@@ -1,0 +1,27 @@
+:- module (mode_robdd.implications).
+:- interface.
+:- use_module bool.
+:- use_module robdd.
+:- use_module term.
+:- func '*'(robdd.imp_vars(T), robdd.imp_vars(T)) = robdd.imp_vars(T).
+:- func '+'(robdd.imp_vars(T), robdd.imp_vars(T)) = robdd.imp_vars(T).
+:- func add_equalities_to_imp_vars(robdd.equiv_vars(T), robdd.imp_vars(T)) = robdd.imp_vars(T).
+:- func at_most_one_of(robdd.vars(T), robdd.imp_vars(T)) = robdd.imp_vars(T).
+:- func delete(robdd.imp_vars(T), term.var(T)) = robdd.imp_vars(T).
+:- func difference(robdd.imp_vars(T), robdd.imp_vars(T)) = robdd.imp_vars(T).
+:- func either(term.var(T), term.var(T), robdd.imp_vars(T)) = robdd.imp_vars(T).
+:- pred extract_implication_vars_from_robdd(bool.bool, robdd.robdd(T), robdd.robdd(T), robdd.imp_vars(T), robdd.imp_vars(T)).
+:- mode extract_implication_vars_from_robdd((builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func filter((pred term.var(T)), robdd.imp_vars(T)) = robdd.imp_vars(T).
+:- mode filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out) is det.
+:- func imp_vars(term.var(T), term.var(T), robdd.imp_vars(T)) = robdd.imp_vars(T).
+:- func init_imp_vars = robdd.imp_vars(T).
+:- func neq_vars(term.var(T), term.var(T), robdd.imp_vars(T)) = robdd.imp_vars(T).
+:- pred normalise_true_false_implication_vars(bool.bool, robdd.vars(T), robdd.vars(T), robdd.vars(T), robdd.vars(T), robdd.imp_vars(T), robdd.imp_vars(T)).
+:- mode normalise_true_false_implication_vars((builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func not_both(term.var(T), term.var(T), robdd.imp_vars(T)) = robdd.imp_vars(T).
+:- pred propagate_equivalences_into_implications(robdd.equiv_vars(T), bool.bool, robdd.imp_vars(T), robdd.imp_vars(T)).
+:- mode propagate_equivalences_into_implications((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred propagate_implications_into_equivalences(bool.bool, robdd.equiv_vars(T), robdd.equiv_vars(T), robdd.imp_vars(T), robdd.imp_vars(T)).
+:- mode propagate_implications_into_equivalences((builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func restrict_threshold(term.var(T), robdd.imp_vars(T)) = robdd.imp_vars(T).

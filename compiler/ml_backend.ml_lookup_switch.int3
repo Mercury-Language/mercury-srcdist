@@ -1,0 +1,6 @@
+:- module (ml_backend.ml_lookup_switch).
+:- interface.
+:- type ml_lookup_switch_info.
+:- type ml_several_soln_lookup_vars.
+:- type_representation(ml_lookup_switch_info, is_word_aligned_ptr).
+:- type_representation(ml_several_soln_lookup_vars, is_word_aligned_ptr).

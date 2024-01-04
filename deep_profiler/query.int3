@@ -1,0 +1,67 @@
+:- module query.
+:- interface.
+:- type alloc_fields
+	where	type_is_abstract_enum(2).
+:- type box_tables
+	where	type_is_abstract_enum(1).
+:- type caller_groups
+	where	type_is_abstract_enum(2).
+:- type callseqs_fields
+	where	type_is_abstract_enum(2).
+:- type cmd.
+:- type colour_column_groups
+	where	type_is_abstract_enum(1).
+:- type contour_exclusion
+	where	type_is_abstract_enum(1).
+:- type cost_kind
+	where	type_is_abstract_enum(3).
+:- type deep_query.
+:- type descendants_meaningful
+	where	type_is_abstract_enum(1).
+:- type developer_mode
+	where	type_is_abstract_enum(1).
+:- type display_limit.
+:- type fields.
+:- type inactive_items.
+:- type inactive_status
+	where	type_is_abstract_enum(1).
+:- type include_descendants
+	where	type_is_abstract_enum(1).
+:- type measurement_scope
+	where	type_is_abstract_enum(1).
+:- type memory_fields.
+:- type module_qual
+	where	type_is_abstract_enum(2).
+:- type order_criteria.
+:- type port_fields
+	where	type_is_abstract_enum(1).
+:- type preferences.
+:- type preferences_indication.
+:- type summarize_ho_call_sites
+	where	type_is_abstract_enum(1).
+:- type time_fields
+	where	type_is_abstract_enum(3).
+:- type time_format
+	where	type_is_abstract_enum(2).
+:- abstract_inst((deep_query_with_cmd)).
+:- type_representation(alloc_fields, du_repn(enum("no_alloc", "alloc", ["alloc_and_percall"],  no_c_j_cs))).
+:- type_representation(box_tables, du_repn(enum("box_tables", "do_not_box_tables", [],  no_c_j_cs))).
+:- type_representation(caller_groups, du_repn(enum("group_by_call_site", "group_by_proc", ["group_by_module", "group_by_clique"],  no_c_j_cs))).
+:- type_representation(callseqs_fields, du_repn(enum("no_callseqs", "callseqs", ["callseqs_and_percall"],  no_c_j_cs))).
+:- type_representation(colour_column_groups, du_repn(enum("colour_column_groups", "do_not_colour_column_groups", [],  no_c_j_cs))).
+:- type_representation(contour_exclusion, du_repn(enum("apply_contour_exclusion", "do_not_apply_contour_exclusion", [],  no_c_j_cs))).
+:- type_representation(cost_kind, du_repn(enum("cost_calls", "cost_redos", ["cost_time", "cost_callseqs", "cost_allocs", "cost_words"],  no_c_j_cs))).
+:- type_representation(deep_query, is_word_aligned_ptr).
+:- type_representation(descendants_meaningful, du_repn(enum("descendants_meaningful", "descendants_not_meaningful", [],  no_c_j_cs))).
+:- type_representation(developer_mode, du_repn(enum("developer_options_visible", "developer_options_invisible", [],  no_c_j_cs))).
+:- type_representation(fields, is_word_aligned_ptr).
+:- type_representation(inactive_items, is_word_aligned_ptr).
+:- type_representation(inactive_status, du_repn(enum("inactive_hide", "inactive_show", [],  no_c_j_cs))).
+:- type_representation(include_descendants, du_repn(enum("self", "self_and_desc", [],  no_c_j_cs))).
+:- type_representation(measurement_scope, du_repn(enum("per_call", "overall", [],  no_c_j_cs))).
+:- type_representation(module_qual, du_repn(enum("module_qual_always", "module_qual_when_diff", ["module_qual_never"],  no_c_j_cs))).
+:- type_representation(port_fields, du_repn(enum("no_port", "port", [],  no_c_j_cs))).
+:- type_representation(preferences, is_word_aligned_ptr).
+:- type_representation(summarize_ho_call_sites, du_repn(enum("summarize_ho_call_sites", "do_not_summarize_ho_call_sites", [],  no_c_j_cs))).
+:- type_representation(time_fields, du_repn(enum("no_time", "ticks", ["time", "ticks_and_time", "time_and_percall", "ticks_and_time_and_percall"],  no_c_j_cs))).
+:- type_representation(time_format, du_repn(enum("no_scale", "scale_by_millions", ["scale_by_thousands"],  no_c_j_cs))).

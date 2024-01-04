@@ -1,0 +1,14 @@
+:- module (make.dependencies).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (libs.globals).
+:- use_module (make.make_info).
+:- use_module (parse_tree.module_dep_info).
+:- type find_prereqs_result
+    --->    could_not_find_some_prereqs(set.set(make.make_info.dependency_file))
+    ;       found_all_prereqs(set.set(make.make_info.dependency_file)).
+:- pred find_direct_prereqs_of_target_file(io.text_output_stream, libs.globals.globals, make.make_info.compilation_task_type, parse_tree.module_dep_info.module_dep_info, make.make_info.target_file, make.dependencies.find_prereqs_result, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode find_direct_prereqs_of_target_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
