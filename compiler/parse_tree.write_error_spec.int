@@ -1,0 +1,38 @@
+:- module (parse_tree.write_error_spec).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module (libs.globals).
+:- use_module (libs.indent).
+:- use_module (libs.options).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.prog_data).
+:- type error_line.
+:- pred do_lines_fit_in_n_code_points(int, list.list(parse_tree.write_error_spec.error_line)).
+:- mode do_lines_fit_in_n_code_points((builtin.in), (builtin.in)) is semidet.
+:- func error_lines_to_multi_line_string(string, list.list(parse_tree.write_error_spec.error_line)) = string.
+:- func error_lines_to_one_line_string(list.list(parse_tree.write_error_spec.error_line)) = string.
+:- func error_pieces_to_multi_line_string(string, list.list(parse_tree.error_spec.format_piece)) = string.
+:- func error_pieces_to_one_line_string(list.list(parse_tree.error_spec.format_piece)) = string.
+:- func error_pieces_to_std_lines(list.list(parse_tree.error_spec.format_piece)) = list.list(parse_tree.write_error_spec.error_line).
+:- pred maybe_print_delayed_error_messages(io.text_output_stream, libs.globals.globals, io.io, io.io).
+:- mode maybe_print_delayed_error_messages((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred pre_hlds_maybe_write_out_errors(io.text_output_stream, bool.bool, libs.globals.globals, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode pre_hlds_maybe_write_out_errors((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred report_warning(io.text_output_stream, libs.globals.globals, parse_tree.prog_data.prog_context, libs.indent.indent, list.list(parse_tree.error_spec.format_piece), io.io, io.io).
+:- mode report_warning((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_error_pieces(io.text_output_stream, libs.globals.globals, parse_tree.prog_data.prog_context, libs.indent.indent, list.list(parse_tree.error_spec.format_piece), io.io, io.io).
+:- mode write_error_pieces((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_error_pieces_maybe_with_context(io.text_output_stream, libs.globals.globals, maybe.maybe(parse_tree.prog_data.prog_context), libs.indent.indent, list.list(parse_tree.error_spec.format_piece), io.io, io.io).
+:- mode write_error_pieces_maybe_with_context((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_error_pieces_plain(io.text_output_stream, libs.globals.globals, list.list(parse_tree.error_spec.format_piece), io.io, io.io).
+:- mode write_error_pieces_plain((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_error_spec(io.text_output_stream, libs.globals.globals, parse_tree.error_spec.error_spec, io.io, io.io).
+:- mode write_error_spec((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_error_specs(io.text_output_stream, libs.globals.globals, list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode write_error_specs((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_error_specs_opt_table(io.text_output_stream, libs.options.option_table, list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode write_error_specs_opt_table((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

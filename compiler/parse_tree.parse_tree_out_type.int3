@@ -1,0 +1,3 @@
+:- module (parse_tree.parse_tree_out_type).
+:- interface.
+:- type maybe_exist_constraints.

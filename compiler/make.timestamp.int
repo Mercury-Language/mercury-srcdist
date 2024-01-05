@@ -1,0 +1,19 @@
+:- module (make.timestamp).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.timestamp).
+:- use_module (make.make_info).
+:- use_module (parse_tree.file_names).
+:- pred get_dependency_timestamp(io.text_output_stream, libs.globals.globals, make.make_info.dependency_file, maybe.maybe_error(libs.timestamp.timestamp), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode get_dependency_timestamp((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_file_timestamp(list.list(libs.file_util.dir_name), libs.file_util.file_name, maybe.maybe_error(libs.timestamp.timestamp), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode get_file_timestamp((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_target_timestamp(io.text_output_stream, libs.globals.globals, parse_tree.file_names.maybe_search, make.make_info.target_file, maybe.maybe_error(libs.timestamp.timestamp), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode get_target_timestamp((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func init_target_file_timestamps = make.make_info.target_file_timestamps.
