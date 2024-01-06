@@ -1,0 +1,7 @@
+:- module (check_hlds.typecheck_clauses).
+:- interface.
+:- type stuff_to_check
+	where	type_is_abstract_enum(1).
+:- type_representation(cons_type_assign_set, is_eqv_to(list(cons_type_assign))).
+:- type_representation(invariant_set, is_eqv_to(set(tvar))).
+:- type_representation(stuff_to_check, du_repn(enum("clause_only", "whole_pred", [],  no_c_j_cs))).

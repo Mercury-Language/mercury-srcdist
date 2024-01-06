@@ -1,0 +1,78 @@
+/*
+** Automatically generated from `io.call_system.m'
+** by the Mercury compiler,
+** version rotd-2024-01-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module io.call_system.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_io__call_system
+#define MR_HEADER_GUARD_io__call_system
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef IO__CALL_SYSTEM_DECL_GUARD
+#define IO__CALL_SYSTEM_DECL_GUARD
+#include "io.mih"
+
+#if defined(MR_WIN32)
+   #include "mercury_string.h" // For MR_utf8_to_wide.
+#endif
+
+
+#endif
+
+
+
+void MR_CALL 
+mercury__io__call_system__call_system_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__io__call_system__call_system_code_5_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__call_system__call_system_return_signal_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_Word MR_CALL 
+mercury__io__call_system__decode_system_command_exit_code_1_f_0(
+  MR_Integer param_1);
+
+void mercury__io__call_system__init(void);
+void mercury__io__call_system__init_type_tables(void);
+void mercury__io__call_system__init_debugger(void);
+const char *mercury__io__call_system__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_io.call_system
+
+// :- end_interface io.call_system.

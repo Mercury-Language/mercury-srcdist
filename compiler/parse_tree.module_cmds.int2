@@ -1,0 +1,6 @@
+:- module (parse_tree.module_cmds).
+:- interface.
+:- type dot_tmp_copy_result
+    --->    base_file_new_or_changed 
+    ;       base_file_unchanged 
+    ;       dot_tmp_copy_error .

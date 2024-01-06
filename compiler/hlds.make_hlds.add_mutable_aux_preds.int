@@ -1,0 +1,14 @@
+:- module ((hlds.make_hlds).add_mutable_aux_preds).
+:- interface.
+:- use_module cord.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module set_tree234.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_foreign).
+:- use_module (parse_tree.prog_item).
+:- use_module ((hlds.make_hlds).make_hlds_types).
+:- pred implement_mutables_if_local(hlds.hlds_module.module_info, set_tree234.set_tree234(parse_tree.prog_data.inst_ctor), hlds.make_hlds.make_hlds_types.sec_list(parse_tree.prog_item.item_mutable_info), hlds.make_hlds.make_hlds_types.sec_list(parse_tree.prog_item.item_pred_decl_info), hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.item_clause_info), hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.item_foreign_proc_info), list.list(parse_tree.prog_foreign.foreign_decl_code), list.list(parse_tree.prog_foreign.foreign_body_code), cord.cord(parse_tree.prog_item.impl_pragma_fproc_export_info), parse_tree.prog_foreign.pred_target_names, parse_tree.prog_foreign.pred_target_names, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode implement_mutables_if_local((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
