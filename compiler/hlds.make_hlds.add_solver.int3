@@ -1,0 +1,4 @@
+:- module ((hlds.make_hlds).add_solver).
+:- interface.
+:- type solver_aux_pred_info.
+:- type_representation(solver_aux_pred_info, is_word_aligned_ptr).

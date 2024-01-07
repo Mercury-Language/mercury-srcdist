@@ -1,0 +1,28 @@
+:- module (ll_backend.live_vars).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_llds).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.set_of_var).
+:- use_module (parse_tree.var_table).
+:- type alloc_data
+    --->    alloc_data(((ll_backend.live_vars).ad_module_info) :: hlds.hlds_module.module_info, ((ll_backend.live_vars).ad_proc_info) :: hlds.hlds_pred.proc_info, ((ll_backend.live_vars).ad_pred_proc_id) :: hlds.hlds_pred.pred_proc_id, ((ll_backend.live_vars).ad_dummy_var_info) :: ll_backend.live_vars.dummy_var_info, ((ll_backend.live_vars).ad_typeinfo_liveness) :: bool.bool, ((ll_backend.live_vars).ad_opt_no_return_calls) :: bool.bool).
+:- type dummy_var_info
+    --->    no_var_is_dummy 
+    ;       some_var_may_be_dummy(parse_tree.var_table.var_table).
+:- typeclass stack_alloc_info(T) where [
+	pred at_call_site(hlds.hlds_llds.need_across_call, ll_backend.live_vars.alloc_data, T, T),
+	mode at_call_site((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det,
+	pred at_resume_site(hlds.hlds_llds.need_in_resume, ll_backend.live_vars.alloc_data, T, T),
+	mode at_resume_site((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det,
+	pred at_par_conj(hlds.hlds_llds.need_in_par_conj, ll_backend.live_vars.alloc_data, T, T),
+	mode at_par_conj((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det,
+	pred at_recursive_call_for_loop_control(hlds.hlds_llds.need_for_loop_control, ll_backend.live_vars.alloc_data, T, T),
+	mode at_recursive_call_for_loop_control((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det
+].
+:- pred build_live_sets_in_goal_no_par_stack(ll_backend.live_vars.alloc_data, parse_tree.set_of_var.set_of_progvar, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, T, T, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar) <= ((ll_backend.live_vars).stack_alloc_info(T)).
+:- mode build_live_sets_in_goal_no_par_stack((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

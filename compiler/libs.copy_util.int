@@ -1,0 +1,10 @@
+:- module (libs.copy_util).
+:- interface.
+:- use_module io.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.maybe_util).
+:- pred copy_file_to_directory(libs.globals.globals, io.text_output_stream, libs.file_util.file_name, libs.file_util.dir_name, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode copy_file_to_directory((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred copy_file_to_file_name(libs.globals.globals, io.text_output_stream, libs.file_util.file_name, libs.file_util.file_name, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode copy_file_to_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
