@@ -1,0 +1,8 @@
+missing_concrete_instance.m:014: Error: this abstract instance declaration for
+missing_concrete_instance.m:014:   `missing_concrete_instance.foo(int)' has no
+missing_concrete_instance.m:014:   corresponding concrete instance declaration
+missing_concrete_instance.m:014:   in the implementation section.
+missing_concrete_instance.m:018: Error: this abstract instance declaration for
+missing_concrete_instance.m:018:   `missing_concrete_instance.foo(float)' has
+missing_concrete_instance.m:018:   no corresponding concrete instance
+missing_concrete_instance.m:018:   declaration in the implementation section.

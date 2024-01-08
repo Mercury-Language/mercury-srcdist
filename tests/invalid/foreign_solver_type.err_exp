@@ -1,0 +1,11 @@
+foreign_solver_type.m:009: Error: a solver type such as `foo'/0 may be defined
+foreign_solver_type.m:009:   (as opposed to declared) only in the
+foreign_solver_type.m:009:   implementation section.
+foreign_solver_type.m:015: Error: this solver type declaration of `bar'/0 is
+foreign_solver_type.m:015:   incompatible with the foreign type definition in
+foreign_solver_type.m:015:   the interface section.
+foreign_solver_type.m:018:   That definition is here.
+foreign_solver_type.m:017: Error: this definition of `foo'/0 is incompatible
+foreign_solver_type.m:017:   with the solver type definition in the
+foreign_solver_type.m:017:   implementation section.
+foreign_solver_type.m:009:   That definition is here.

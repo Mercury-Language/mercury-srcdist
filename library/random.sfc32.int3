@@ -1,0 +1,8 @@
+:- module (random.sfc32).
+:- interface.
+:- type params.
+:- type ustate.
+:- instance urandom(random.sfc32.params, random.sfc32.ustate).
+:- instance urandom_dup(random.sfc32.ustate).
+:- type_representation(params, du_repn(direct_dummy("params",  no_c_j_cs))).
+:- type_representation(ustate, du_repn(notag("ustate", array(uint32),  no_c_j_cs))).
