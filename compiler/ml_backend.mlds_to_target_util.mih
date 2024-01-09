@@ -1,0 +1,299 @@
+/*
+** Automatically generated from `mlds_to_target_util.m'
+** by the Mercury compiler,
+** version rotd-2024-01-09
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.mlds_to_target_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_target_util
+#define MR_HEADER_GUARD_ml_backend__mlds_to_target_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_TARGET_UTIL_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_TARGET_UTIL_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_target_util__ml_backend__mlds_to_target_util__type_ctor_info_break_context_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_target_util__ml_backend__mlds_to_target_util__type_ctor_info_code_addrs_in_consts_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_target_util__ml_backend__mlds_to_target_util__type_ctor_info_exit_method_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_target_util__ml_backend__mlds_to_target_util__type_ctor_info_exit_methods_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_target_util__ml_backend__mlds_to_target_util__type_ctor_info_func_info_csj_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_target_util__ml_backend__mlds_to_target_util__type_ctor_info_initializer_starts_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_target_util__ml_backend__mlds_to_target_util__type_ctor_info_output_aux_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_target_util__ml_backend__mlds_to_target_util__type_ctor_info_output_generics_0;
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__accumulate_env_var_names_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__add_scalar_inits_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer * param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util__class_defn_is_private_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util__function_defn_is_private_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util__global_var_defn_is_private_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util__global_var_defn_is_type_ctor_info_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__init_arg_wrappers_cs_java_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_String * param_3);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util__local_var_defn_is_commit_type_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__make_last_dimension_known_size_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__maybe_output_pred_proc_id_comment_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__method_ptrs_in_class_defns_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__method_ptrs_in_function_defns_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__method_ptrs_in_global_var_defns_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__method_ptrs_in_scalars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__output_auto_gen_comment_4_p_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__output_generic_tvars_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__remove_sym_name_prefix_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__scope_indent_3_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned * param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util__write_indentstr_line_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_target_util__add_array_dimensions_2_f_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_target_util__array_dimension_to_string_1_f_0(
+  MR_Integer param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_target_util__array_dimensions_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__mlds_to_target_util__convert_qual_kind_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_target_util__generic_tvar_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_target_util__generic_tvars_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__mlds_to_target_util__init_code_addrs_in_consts_0_f_0(void);
+
+MR_Word MR_CALL 
+ml_backend__mlds_to_target_util__type_category_is_array_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util____Compare____break_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util____Compare____code_addrs_in_consts_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util____Compare____exit_method_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util____Compare____exit_methods_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util____Compare____func_info_csj_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util____Compare____initializer_starts_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util____Compare____output_aux_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_target_util____Compare____output_generics_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util____Unify____break_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util____Unify____code_addrs_in_consts_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util____Unify____exit_method_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util____Unify____exit_methods_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util____Unify____func_info_csj_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util____Unify____initializer_starts_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util____Unify____output_aux_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_target_util____Unify____output_generics_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ml_backend__mlds_to_target_util__init(void);
+void mercury__ml_backend__mlds_to_target_util__init_type_tables(void);
+void mercury__ml_backend__mlds_to_target_util__init_debugger(void);
+const char *mercury__ml_backend__mlds_to_target_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.mlds_to_target_util
+
+// :- end_interface ml_backend.mlds_to_target_util.

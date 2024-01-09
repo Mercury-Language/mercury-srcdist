@@ -1,0 +1,23 @@
+:- module (backend_libs.export).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_foreign).
+:- pred c_type_is_word_sized_int_or_ptr(string).
+:- mode c_type_is_word_sized_int_or_ptr((builtin.in)) is semidet.
+:- pred convert_type_from_mercury(hlds.hlds_pred.arg_loc, string, parse_tree.prog_data.mer_type, string).
+:- mode convert_type_from_mercury((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred convert_type_to_mercury(string, parse_tree.prog_data.mer_type, hlds.hlds_pred.arg_loc, string).
+:- mode convert_type_to_mercury((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_foreign_export_decls(hlds.hlds_module.module_info, parse_tree.prog_foreign.foreign_export_decls).
+:- mode get_foreign_export_decls((builtin.in), (builtin.out)) is det.
+:- pred get_foreign_export_defns(hlds.hlds_module.module_info, parse_tree.prog_foreign.foreign_export_defns).
+:- mode get_foreign_export_defns((builtin.in), (builtin.out)) is det.
+:- pred produce_header_file(io.text_output_stream, hlds.hlds_module.module_info, parse_tree.prog_foreign.foreign_export_decls, mdbcomp.sym_name.module_name, io.io, io.io).
+:- mode produce_header_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

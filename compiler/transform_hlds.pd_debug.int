@@ -1,0 +1,29 @@
+:- module (transform_hlds.pd_debug).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module string.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.prog_data).
+:- use_module (transform_hlds.pd_info).
+:- pred pd_debug_message(transform_hlds.pd_info.pd_info, string, string, list.list(string.poly_type), io.io, io.io).
+:- mode pd_debug_message((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred pd_debug_message_context(transform_hlds.pd_info.pd_info, string, parse_tree.prog_data.prog_context, string, list.list(string.poly_type), io.io, io.io).
+:- mode pd_debug_message_context((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred pd_debug_output_goal(transform_hlds.pd_info.pd_info, string, string, hlds.hlds_goal.hlds_goal, io.io, io.io).
+:- mode pd_debug_output_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred pd_debug_output_goals(transform_hlds.pd_info.pd_info, string, string, list.list(hlds.hlds_goal.hlds_goal), io.io, io.io).
+:- mode pd_debug_output_goals((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred pd_debug_register_version(transform_hlds.pd_info.pd_info, string, hlds.hlds_pred.pred_proc_id, transform_hlds.pd_info.version_info, io.io, io.io).
+:- mode pd_debug_register_version((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred pd_debug_search_version_result(transform_hlds.pd_info.pd_info, string, transform_hlds.pd_info.maybe_version, io.io, io.io).
+:- mode pd_debug_search_version_result((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred pd_debug_write_instmap(transform_hlds.pd_info.pd_info, string, io.io, io.io).
+:- mode pd_debug_write_instmap((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred pd_debug_write_pred_proc_id_list(transform_hlds.pd_info.pd_info, string, list.list(hlds.hlds_pred.pred_proc_id), io.io, io.io).
+:- mode pd_debug_write_pred_proc_id_list((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pragma format_call(pred(((transform_hlds.pd_debug).pd_debug_message)/6), [format_string_values(3, 4)]).
+:- pragma format_call(pred(((transform_hlds.pd_debug).pd_debug_message_context)/7), [format_string_values(4, 5)]).
