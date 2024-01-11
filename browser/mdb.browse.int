@@ -1,0 +1,23 @@
+:- module (mdb.browse).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module (mdb.browser_info).
+:- use_module (mdb.browser_term).
+:- pred browse_browser_term(io.text_input_stream, io.text_output_stream, maybe.maybe(mdb.browser_info.browser_mode_func), mdb.browser_term.browser_term, mdb.browser_info.maybe_track_subterm(list.list(mdb.browser_info.down_dir)), mdb.browser_info.browser_persistent_state, mdb.browser_info.browser_persistent_state, io.io, io.io).
+:- mode browse_browser_term((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred browse_browser_term_format(io.text_input_stream, io.text_output_stream, mdb.browser_info.portray_format, maybe.maybe(mdb.browser_info.browser_mode_func), mdb.browser_term.browser_term, mdb.browser_info.browser_persistent_state, mdb.browser_info.browser_persistent_state, io.io, io.io).
+:- mode browse_browser_term_format((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred browse_browser_term_format_no_modes(io.text_input_stream, io.text_output_stream, mdb.browser_info.portray_format, mdb.browser_term.browser_term, mdb.browser_info.browser_persistent_state, mdb.browser_info.browser_persistent_state, io.io, io.io).
+:- mode browse_browser_term_format_no_modes((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred browse_browser_term_no_modes(io.text_input_stream, io.text_output_stream, mdb.browser_term.browser_term, mdb.browser_info.maybe_track_subterm(list.list(mdb.browser_info.down_dir)), mdb.browser_info.browser_persistent_state, mdb.browser_info.browser_persistent_state, io.io, io.io).
+:- mode browse_browser_term_no_modes((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred browse_external(io.text_input_stream, io.text_output_stream, maybe.maybe(mdb.browser_info.browser_mode_func), T, mdb.browser_info.browser_persistent_state, mdb.browser_info.browser_persistent_state, io.io, io.io).
+:- mode browse_external((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred browse_external_no_modes(io.text_input_stream, io.text_output_stream, T, mdb.browser_info.browser_persistent_state, mdb.browser_info.browser_persistent_state, io.io, io.io).
+:- mode browse_external_no_modes((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred print_browser_term(io.text_output_stream, mdb.browser_info.browse_caller_type, mdb.browser_term.browser_term, mdb.browser_info.browser_persistent_state, io.io, io.io).
+:- mode print_browser_term((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred print_browser_term_format(io.text_output_stream, mdb.browser_info.browse_caller_type, mdb.browser_info.portray_format, mdb.browser_term.browser_term, mdb.browser_info.browser_persistent_state, io.io, io.io).
+:- mode print_browser_term_format((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.

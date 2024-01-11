@@ -1,0 +1,9 @@
+:- module (ml_backend.mlds_to_c_func).
+:- interface.
+:- use_module (ml_backend.mlds).
+:- use_module (ml_backend.mlds_to_c_util).
+:- type maybe_blank_line
+    --->    no_blank_line_start 
+    ;       blank_line_start .
+:- type type_prefix_suffix == pred(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type, string, string).
+:- inst type_prefix_suffix == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det).
