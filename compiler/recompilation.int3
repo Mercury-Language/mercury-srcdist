@@ -1,0 +1,37 @@
+:- module recompilation.
+:- interface.
+:- include_module (recompilation.check).
+:- include_module (recompilation.usage).
+:- include_module (recompilation.used_file).
+:- include_module (recompilation.version).
+:- type eqv_expand_info.
+:- type module_item_version_numbers.
+:- type module_item_version_numbers_map.
+:- type module_qualifier.
+:- type name_arity_version_map.
+:- type recomp_item_id.
+:- type recomp_item_name.
+:- type recomp_item_name_version_map.
+:- type recomp_item_type
+	where	type_is_abstract_enum(4).
+:- type recompilation_info.
+:- type simple_item_set.
+:- type used_item_type
+	where	type_is_abstract_enum(3).
+:- type used_items.
+:- type version_number.
+:- abstract_inst((recomp_pred_or_func)).
+:- abstract_inst((recomp_simple)).
+:- type_representation(module_item_version_numbers, is_word_aligned_ptr).
+:- type_representation(module_item_version_numbers_map, is_eqv_to(map(module_name, recompilation.module_item_version_numbers))).
+:- type_representation(module_qualifier, is_eqv_to(module_name)).
+:- type_representation(name_arity_version_map, is_eqv_to(map(name_arity, recompilation.version_number))).
+:- type_representation(recomp_item_id, is_word_aligned_ptr).
+:- type_representation(recomp_item_name, is_word_aligned_ptr).
+:- type_representation(recomp_item_name_version_map, is_eqv_to(map(recompilation.recomp_item_name, recompilation.version_number))).
+:- type_representation(recomp_item_type, du_repn(enum("recomp_type_name", "recomp_type_defn", ["recomp_inst", "recomp_mode", "recomp_typeclass", "recomp_functor", "recomp_predicate", "recomp_function", "recomp_mutable", "recomp_foreign_proc"],  no_c_j_cs))).
+:- type_representation(recompilation_info, is_word_aligned_ptr).
+:- type_representation(simple_item_set, is_eqv_to(map(name_arity, map(recompilation.module_qualifier, module_name)))).
+:- type_representation(used_item_type, du_repn(enum("used_type_name", "used_type_defn", ["used_inst", "used_mode", "used_typeclass", "used_functor", "used_predicate", "used_function"],  no_c_j_cs))).
+:- type_representation(used_items, is_word_aligned_ptr).
+:- type_representation(version_number, is_eqv_to(timestamp)).

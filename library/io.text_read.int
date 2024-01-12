@@ -1,0 +1,19 @@
+:- module (io.text_read).
+:- interface.
+:- use_module bitmap.
+:- use_module list.
+:- type read_line_as_string_result
+    --->    rlas_ok 
+    ;       rlas_eof 
+    ;       rlas_null_char 
+    ;       rlas_error .
+:- pred read_binary_file_as_bitmap_2(io.binary_input_stream, io.res(bitmap.bitmap), io.io, io.io).
+:- mode read_binary_file_as_bitmap_2((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_file_as_string_2(io.stream, string, int, io.system_error, bool.bool, io.io, io.io).
+:- mode read_file_as_string_2((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_line_2(io.text_input_stream, io.result_code, io.system_error, list.list(char.char), io.io, io.io).
+:- mode read_line_2((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_line_as_string_2(io.stream, bool.bool, io.text_read.read_line_as_string_result, io.system_error, string, io.io, io.io).
+:- mode read_line_as_string_2((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_word_2(io.text_input_stream, io.result(list.list(char.char)), io.io, io.io).
+:- mode read_word_2((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
