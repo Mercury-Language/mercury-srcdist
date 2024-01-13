@@ -1,0 +1,10 @@
+:- module (transform_hlds.intermod_mark_exported).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module (hlds.hlds_module).
+:- use_module (transform_hlds.intermod_info).
+:- pred maybe_opt_export_entities(io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode maybe_opt_export_entities((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_opt_export_listed_entities(transform_hlds.intermod_info.intermod_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode maybe_opt_export_listed_entities((builtin.in), (builtin.in), (builtin.out)) is det.

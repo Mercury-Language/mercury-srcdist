@@ -1,0 +1,37 @@
+:- module measurement_units.
+:- interface.
+:- type memory.
+:- type memory_units
+    --->    units_words 
+    ;       units_bytes .
+:- type num_decimal_places
+    --->    ndp_0 
+    ;       ndp_2 .
+:- type percent.
+:- type probability.
+:- type time.
+:- func '/'(measurement_units.memory, int) = measurement_units.memory is det.
+:- func and(measurement_units.probability, measurement_units.probability) = measurement_units.probability.
+:- func certain = measurement_units.probability.
+:- func commas(int) = string.
+:- pred compare_memory(measurement_units.memory, measurement_units.memory, builtin.comparison_result).
+:- mode compare_memory((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func format_memory(measurement_units.memory, measurement_units.memory_units, measurement_units.num_decimal_places) = string.
+:- func format_percent(measurement_units.percent) = string.
+:- func format_time(measurement_units.time) = string.
+:- func four_decimal_fraction(float) = string.
+:- func impossible = measurement_units.probability.
+:- func memory_words(int, int) = measurement_units.memory.
+:- func not_probability(measurement_units.probability) = measurement_units.probability.
+:- func one_decimal_fraction(float) = string.
+:- func or(measurement_units.probability, measurement_units.probability) = measurement_units.probability.
+:- func percent(float) = measurement_units.percent.
+:- pred percent_at_or_above_threshold(int, measurement_units.percent).
+:- mode percent_at_or_above_threshold((builtin.in), (builtin.in)) is semidet.
+:- func probability_to_float(measurement_units.probability) = float.
+:- func probable(float) = measurement_units.probability.
+:- func ticks_to_time(int, int) = measurement_units.time.
+:- func time_percall(measurement_units.time, int) = measurement_units.time.
+:- func two_decimal_fraction(float) = string.
+:- implementation.
+:- type probability == float.

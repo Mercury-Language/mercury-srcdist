@@ -1,0 +1,7 @@
+:- module (transform_hlds.intermod_info).
+:- interface.
+:- type intermod_info.
+:- type maybe_need_foreign_import_modules
+	where	type_is_abstract_enum(1).
+:- type_representation(intermod_info, is_word_aligned_ptr).
+:- type_representation(maybe_need_foreign_import_modules, du_repn(enum("do_not_need_foreign_import_modules", "do_need_foreign_import_modules", [],  no_c_j_cs))).

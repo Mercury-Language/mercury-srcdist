@@ -1,0 +1,63 @@
+:- module ((ll_backend.llds_out).llds_out_data).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_llds).
+:- use_module (ll_backend.llds).
+:- use_module (parse_tree.prog_data).
+:- use_module ((ll_backend.llds_out).llds_out_util).
+:- func c_global_var_name(ll_backend.llds.c_global_var_ref) = string.
+:- func direct_field_int_constant(ll_backend.llds.llds_type) = bool.bool.
+:- pred float_const_expr_name(ll_backend.llds.rval, string).
+:- mode float_const_expr_name((builtin.in), (builtin.out)) is semidet.
+:- pred int64_const_expr_name(ll_backend.llds.rval, string).
+:- mode int64_const_expr_name((builtin.in), (builtin.out)) is semidet.
+:- func lval_to_string(ll_backend.llds.lval) = string is semidet.
+:- pred output_common_scalar_cell_array_name(io.text_output_stream, ll_backend.llds.type_num, io.io, io.io).
+:- mode output_common_scalar_cell_array_name((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_common_vector_cell_array_name(io.text_output_stream, ll_backend.llds.type_num, int, io.io, io.io).
+:- mode output_common_vector_cell_array_name((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_data_id(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.data_id, io.io, io.io).
+:- mode output_data_id((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_data_id_addr(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.data_id, io.io, io.io).
+:- mode output_data_id_addr((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_llds_type(io.text_output_stream, ll_backend.llds.llds_type, io.io, io.io).
+:- mode output_llds_type((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_llds_type_cast(io.text_output_stream, ll_backend.llds.llds_type, io.io, io.io).
+:- mode output_llds_type_cast((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_lval(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.lval, io.io, io.io).
+:- mode output_lval((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_lval_as_word(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.lval, io.io, io.io).
+:- mode output_lval_as_word((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_lval_for_assign(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.lval, ll_backend.llds.llds_type, io.io, io.io).
+:- mode output_lval_for_assign((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_ptag(io.text_output_stream, parse_tree.prog_data.ptag, io.io, io.io).
+:- mode output_ptag((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_record_data_id_decls(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.data_id, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_record_data_id_decls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_record_data_id_decls_format(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.data_id, string, string, int, int, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_record_data_id_decls_format((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_record_lval_decls(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.lval, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_record_lval_decls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_record_lval_decls_tab(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.lval, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_record_lval_decls_tab((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_record_rval_decls(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.rval, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_record_rval_decls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_record_rval_decls_tab(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.rval, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_record_rval_decls_tab((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_record_rvals_decls(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, list.list(ll_backend.llds.rval), ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_record_rvals_decls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_rval(ll_backend.llds_out.llds_out_util.llds_out_info, ll_backend.llds.rval, io.text_output_stream, io.io, io.io).
+:- mode output_rval((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_rval_as_type(ll_backend.llds_out.llds_out_util.llds_out_info, ll_backend.llds.rval, ll_backend.llds.llds_type, io.text_output_stream, io.io, io.io).
+:- mode output_rval_as_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_test_rval(ll_backend.llds_out.llds_out_util.llds_out_info, ll_backend.llds.rval, io.text_output_stream, io.io, io.io).
+:- mode output_test_rval((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func reg_to_string(hlds.hlds_llds.reg_type, int) = string.
+:- pred uint64_const_expr_name(ll_backend.llds.rval, string).
+:- mode uint64_const_expr_name((builtin.in), (builtin.out)) is semidet.
+:- pred write_ptag(io.text_output_stream, parse_tree.prog_data.ptag, io.io, io.io).
+:- mode write_ptag((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
