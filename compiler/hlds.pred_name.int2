@@ -1,0 +1,78 @@
+:- module (hlds.pred_name).
+:- interface.
+:- type aux_tabling_maybe_single_proc
+    --->    is_not_single_proc 
+    ;       is_single_proc .
+:- type aux_tabling_pred_kind
+    --->    atpk_statistics 
+    ;       atpk_reset .
+:- type compiler_made
+    --->    made_for_uci(mdbcomp.prim_data.special_pred_id, parse_tree.prog_data.type_ctor)
+    ;       made_for_deforestation(int, int)
+    ;       made_for_solver_repn(parse_tree.prog_data.type_ctor, parse_tree.prog_data.solver_type_pred_kind)
+    ;       made_for_tabling(parse_tree.prog_data.pred_pf_name_arity, parse_tree.prog_data.tabling_aux_pred_kind)
+    ;       made_for_mutable(mdbcomp.sym_name.module_name, string, parse_tree.prog_data.mutable_pred_kind)
+    ;       made_for_initialise(string, int)
+    ;       made_for_finalise(string, int).
+:- type instance_method_constraints
+    --->    instance_method_constraints(parse_tree.prog_data.class_id, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.prog_constraint), parse_tree.prog_data.univ_exist_constraints).
+:- type line_number_and_counter
+    --->    lnc(int, int).
+:- type pred_origin
+    --->    origin_user(hlds.pred_name.user_made)
+    ;       origin_compiler(hlds.pred_name.compiler_made)
+    ;       origin_pred_transform(hlds.pred_name.pred_transform, hlds.pred_name.pred_origin, hlds.hlds_pred.pred_id)
+    ;       origin_proc_transform(hlds.pred_name.proc_transform, hlds.pred_name.pred_origin, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id).
+:- type pred_transform
+    --->    pred_transform_pragma_type_spec(one_or_more.one_or_more(pair.pair(int, parse_tree.prog_data.mer_type)))
+    ;       pred_transform_distance_granularity(int)
+    ;       pred_transform_table_generator 
+    ;       pred_transform_ssdebug(mdbcomp.prim_data.pred_or_func)
+    ;       pred_transform_structure_reuse .
+:- type proc_transform
+    --->    proc_transform_user_type_spec(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id)
+    ;       proc_transform_higher_order_spec(int)
+    ;       proc_transform_accumulator(int, list.list(int))
+    ;       proc_transform_unused_args(list.list(int))
+    ;       proc_transform_loop_inv(int, int)
+    ;       proc_transform_tuple(int, int)
+    ;       proc_transform_untuple(int, int)
+    ;       proc_transform_dep_par_conj(list.list(int))
+    ;       proc_transform_par_loop_ctrl 
+    ;       proc_transform_lcmc(int, list.list(int))
+    ;       proc_transform_stm_expansion 
+    ;       proc_transform_io_tabling 
+    ;       proc_transform_direct_arg_in_out .
+:- type stm_clone_kind
+    --->    stmck_top_level 
+    ;       stmck_rollback 
+    ;       stmck_wrapper 
+    ;       stmck_simple_wrapper 
+    ;       stmck_or_else .
+:- type transform_name
+    --->    tn_higher_order(mdbcomp.prim_data.pred_or_func, int)
+    ;       tn_user_type_spec(mdbcomp.prim_data.pred_or_func, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, int)
+    ;       tn_aux_tabling(mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.user_arity, hlds.pred_name.aux_tabling_pred_kind, hlds.pred_name.aux_tabling_maybe_single_proc, int)
+    ;       tn_accumulator(mdbcomp.prim_data.pred_or_func, hlds.pred_name.line_number_and_counter)
+    ;       tn_deforestation(mdbcomp.prim_data.pred_or_func, hlds.pred_name.line_number_and_counter)
+    ;       tn_lambda(mdbcomp.prim_data.pred_or_func, hlds.pred_name.line_number_and_counter)
+    ;       tn_loop_inv(mdbcomp.prim_data.pred_or_func, int, hlds.pred_name.line_number_and_counter)
+    ;       tn_tupling(mdbcomp.prim_data.pred_or_func, int, hlds.pred_name.line_number_and_counter)
+    ;       tn_untupling(mdbcomp.prim_data.pred_or_func, int, hlds.pred_name.line_number_and_counter)
+    ;       tn_last_call_modulo_cons(mdbcomp.prim_data.pred_or_func, int)
+    ;       tn_ssdb_stdlib_proxy(mdbcomp.prim_data.pred_or_func)
+    ;       tn_dep_par_conj(mdbcomp.prim_data.pred_or_func, int, list.list(int))
+    ;       tn_par_distance_granularity(mdbcomp.prim_data.pred_or_func, int)
+    ;       tn_par_loop_control(mdbcomp.prim_data.pred_or_func, int)
+    ;       tn_structure_reuse(mdbcomp.prim_data.pred_or_func, int, list.list(int))
+    ;       tn_pragma_type_spec(maybe.maybe(mdbcomp.prim_data.pred_or_func), parse_tree.prog_data.tvarset, parse_tree.prog_data_pragma.type_subst)
+    ;       tn_io_tabling(mdbcomp.prim_data.pred_or_func)
+    ;       tn_minimal_model_generator(mdbcomp.prim_data.pred_or_func, int)
+    ;       tn_stm_expanded(mdbcomp.prim_data.pred_or_func, hlds.pred_name.stm_clone_kind, int, int, int)
+    ;       tn_unused_args(mdbcomp.prim_data.pred_or_func, int, list.list(int)).
+:- type user_made
+    --->    user_made_pred(mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.sym_name, parse_tree.prog_data.user_arity)
+    ;       user_made_lambda(string, int, int)
+    ;       user_made_class_method(parse_tree.prog_data.class_id, parse_tree.prog_data.pred_pf_name_arity)
+    ;       user_made_instance_method(parse_tree.prog_data.pred_pf_name_arity, hlds.pred_name.instance_method_constraints)
+    ;       user_made_assertion(parse_tree.prog_data.promise_type, string, int).
