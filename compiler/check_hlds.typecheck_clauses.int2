@@ -1,0 +1,5 @@
+:- module (check_hlds.typecheck_clauses).
+:- interface.
+:- type stuff_to_check
+    --->    clause_only 
+    ;       whole_pred .
