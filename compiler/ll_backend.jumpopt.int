@@ -1,0 +1,13 @@
+:- module (ll_backend.jumpopt).
+:- interface.
+:- use_module bool.
+:- use_module counter.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module set_tree234.
+:- use_module (libs.optimization_options).
+:- use_module (ll_backend.llds).
+:- use_module (mdbcomp.prim_data).
+:- pred optimize_jumps_in_proc(set_tree234.set_tree234(ll_backend.llds.label), ll_backend.llds.may_alter_rtti, mdbcomp.prim_data.proc_label, libs.optimization_options.maybe_opt_fulljumps, bool.bool, libs.optimization_options.maybe_pessimize_tailcalls, libs.optimization_options.maybe_opt_checked_nondet_tailcalls, counter.counter, counter.counter, list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), bool.bool).
+:- mode optimize_jumps_in_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.

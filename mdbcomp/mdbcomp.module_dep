@@ -1,0 +1,14 @@
+module(2, "mdbcomp.m",
+	mdbcomp,
+	{},
+	{builtin, private_builtin},
+	{},
+	{(mdbcomp.builtin_modules), (mdbcomp.feedback), (mdbcomp.goal_path), (mdbcomp.prim_data), (mdbcomp.program_representation), (mdbcomp.rtti_access), (mdbcomp.shared_utilities), (mdbcomp.slice_and_dice), (mdbcomp.sym_name), (mdbcomp.trace_counts)},
+	{},
+	{},
+	{"C"},
+	{"C" - mdbcomp, "C#" - mdbcomp, "Java" - mdbcomp},
+	no_foreign_export,
+	no_main,
+	{}
+).
