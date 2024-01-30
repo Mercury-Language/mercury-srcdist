@@ -1,0 +1,109 @@
+:- module uint64.
+:- interface.
+:- use_module pretty_printer.
+:- func '*'(uint64, uint64) = uint64.
+:- mode '*'((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func '+'(uint64, uint64) = uint64.
+:- mode '+'((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- mode '+'((builtin.uo), (builtin.in)) = (builtin.in) is det.
+:- mode '+'((builtin.in), (builtin.uo)) = (builtin.in) is det.
+:- func '-'(uint64, uint64) = uint64.
+:- mode '-'((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- mode '-'((builtin.uo), (builtin.in)) = (builtin.in) is det.
+:- mode '-'((builtin.in), (builtin.uo)) = (builtin.in) is det.
+:- func '/'(uint64, uint64) = uint64.
+:- mode '/'((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func '//'(uint64, uint64) = uint64.
+:- mode '//'((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func '/\\'(uint64, uint64) = uint64.
+:- mode '/\\'((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred '<'(uint64, uint64).
+:- mode '<'((builtin.in), (builtin.in)) is semidet.
+:- func '<<'(uint64, int) = uint64.
+:- mode '<<'((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func '<<u'(uint64, uint) = uint64.
+:- mode '<<u'((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred '=<'(uint64, uint64).
+:- mode '=<'((builtin.in), (builtin.in)) is semidet.
+:- pred '>'(uint64, uint64).
+:- mode '>'((builtin.in), (builtin.in)) is semidet.
+:- pred '>='(uint64, uint64).
+:- mode '>='((builtin.in), (builtin.in)) is semidet.
+:- func '>>'(uint64, int) = uint64.
+:- mode '>>'((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func '>>u'(uint64, uint) = uint64.
+:- mode '>>u'((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func '\\'(uint64) = uint64.
+:- mode '\\'((builtin.in)) = (builtin.uo) is det.
+:- func '\\/'(uint64, uint64) = uint64.
+:- mode '\\/'((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred bit_is_clear(uint64, uint).
+:- mode bit_is_clear((builtin.in), (builtin.in)) is semidet.
+:- pred bit_is_set(uint64, uint).
+:- mode bit_is_set((builtin.in), (builtin.in)) is semidet.
+:- func cast_from_int(int) = uint64.
+:- func cast_from_int64(int64) = uint64.
+:- func cast_from_uint(uint) = uint64.
+:- func cast_from_uint8(uint8) = uint64.
+:- func cast_to_int(uint64) = int.
+:- func cast_to_uint(uint64) = uint.
+:- func cast_to_uint8(uint64) = uint8.
+:- func clear_bit(uint64, uint) = uint64.
+:- func det_from_int(int) = uint64.
+:- func div(uint64, uint64) = uint64.
+:- mode div((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred even(uint64).
+:- mode even((builtin.in)) is semidet.
+:- func flip_bit(uint64, uint) = uint64.
+:- func from_bytes_be(uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8) = uint64.
+:- func from_bytes_le(uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8) = uint64.
+:- pred from_int(int, uint64).
+:- mode from_int((builtin.in), (builtin.out)) is semidet.
+:- func max(uint64, uint64) = uint64.
+:- func max_uint64 = uint64.
+:- func min(uint64, uint64) = uint64.
+:- func minus(uint64, uint64) = uint64.
+:- func mod(uint64, uint64) = uint64.
+:- mode mod((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func num_leading_zeros(uint64) = int.
+:- func num_ones(uint64) = int.
+:- func num_trailing_zeros(uint64) = int.
+:- func num_zeros(uint64) = int.
+:- pred odd(uint64).
+:- mode odd((builtin.in)) is semidet.
+:- func plus(uint64, uint64) = uint64.
+:- func rem(uint64, uint64) = uint64.
+:- mode rem((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func reverse_bits(uint64) = uint64.
+:- func reverse_bytes(uint64) = uint64.
+:- func rotate_left(uint64, uint) = uint64.
+:- func rotate_right(uint64, uint) = uint64.
+:- func set_bit(uint64, uint) = uint64.
+:- func times(uint64, uint64) = uint64.
+:- func uint64_to_doc(uint64) = pretty_printer.doc.
+:- pred unchecked_bit_is_clear(uint64, uint).
+:- mode unchecked_bit_is_clear((builtin.in), (builtin.in)) is semidet.
+:- pred unchecked_bit_is_set(uint64, uint).
+:- mode unchecked_bit_is_set((builtin.in), (builtin.in)) is semidet.
+:- func unchecked_clear_bit(uint64, uint) = uint64.
+:- func unchecked_flip_bit(uint64, uint) = uint64.
+:- func unchecked_left_shift(uint64, int) = uint64.
+:- mode unchecked_left_shift((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func unchecked_left_ushift(uint64, uint) = uint64.
+:- mode unchecked_left_ushift((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func unchecked_quotient(uint64, uint64) = uint64.
+:- mode unchecked_quotient((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func unchecked_rem(uint64, uint64) = uint64.
+:- mode unchecked_rem((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func unchecked_right_shift(uint64, int) = uint64.
+:- mode unchecked_right_shift((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func unchecked_right_ushift(uint64, uint) = uint64.
+:- mode unchecked_right_ushift((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func unchecked_rotate_left(uint64, uint) = uint64.
+:- func unchecked_rotate_right(uint64, uint) = uint64.
+:- func unchecked_set_bit(uint64, uint) = uint64.
+:- func xor(uint64, uint64) = uint64.
+:- mode xor((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- mode xor((builtin.in), (builtin.uo)) = (builtin.in) is det.
+:- mode xor((builtin.uo), (builtin.in)) = (builtin.in) is det.
+:- pragma obsolete(func((uint64.uint64_to_doc)/1), [(pretty_printer.uint64_to_doc)/1]).
