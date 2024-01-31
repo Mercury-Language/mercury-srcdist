@@ -1,0 +1,11 @@
+:- module (mode_robdd.tfeirn).
+:- interface.
+:- type tfeirn.
+:- type tfeirn(T).
+:- abstract_inst((norm_tfeirn)).
+:- abstract_inst((tfeirn)).
+:- abstract_mode((di_tfeirn)).
+:- abstract_mode((ni_tfeirn)).
+:- abstract_mode((no_tfeirn)).
+:- abstract_mode((uo_tfeirn)).
+:- type_representation(tfeirn, is_eqv_to(mode_robdd.tfeirn.tfeirn(generic))).

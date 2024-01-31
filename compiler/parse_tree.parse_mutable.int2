@@ -1,0 +1,5 @@
+:- module (parse_tree.parse_mutable).
+:- interface.
+:- type mutable_locn
+    --->    mutable_locn_item 
+    ;       mutable_locn_in_solver_type .

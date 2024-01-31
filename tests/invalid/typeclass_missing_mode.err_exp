@@ -1,0 +1,2 @@
+typeclass_missing_mode.m:011: Error: no mode declaration for method predicate
+typeclass_missing_mode.m:011:   `p'/1.

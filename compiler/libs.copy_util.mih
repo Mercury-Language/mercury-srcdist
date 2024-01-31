@@ -1,0 +1,96 @@
+/*
+** Automatically generated from `copy_util.m'
+** by the Mercury compiler,
+** version rotd-2024-01-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.copy_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__copy_util
+#define MR_HEADER_GUARD_libs__copy_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__COPY_UTIL_DECL_GUARD
+#define LIBS__COPY_UTIL_DECL_GUARD
+#include "libs.mih"
+
+#if defined(MR_WIN32)
+   #include "mercury_string.h"   // For MR_utf8_to_wide.
+   #include "mercury_windows.h"  // For windows.h.
+   #include <winbase.h>            // For CopyFileW().
+#endif
+
+
+#if defined(MR_HAVE_SYS_TYPES_H)
+    #include <sys/types.h>
+#endif
+#if defined(MR_HAVE_SYS_STAT_H)
+    #include <sys/stat.h>
+#endif
+#if defined(MR_HAVE_UNISTD_H)
+    #include <unistd.h>
+#endif
+
+
+#endif
+
+#define MC_ICM_MERCURY_IMPL 0
+#define MC_ICM_WINDOWS_API 1
+#define MC_ICM_JAVA_LIBRARY 2
+
+
+extern const MR_TypeCtorInfo_Struct libs__copy_util__libs__copy_util__type_ctor_info_copy_chunk_inner_res0_0;
+
+extern const MR_TypeCtorInfo_Struct libs__copy_util__libs__copy_util__type_ctor_info_file_permissions_0;
+
+extern const MR_TypeCtorInfo_Struct libs__copy_util__libs__copy_util__type_ctor_info_internal_copy_method_0;
+
+void MR_CALL 
+libs__copy_util__copy_file_to_directory_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+libs__copy_util__copy_file_to_file_name_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_Word * param_5);
+
+void mercury__libs__copy_util__init(void);
+void mercury__libs__copy_util__init_type_tables(void);
+void mercury__libs__copy_util__init_debugger(void);
+const char *mercury__libs__copy_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.copy_util
+
+// :- end_interface libs.copy_util.
