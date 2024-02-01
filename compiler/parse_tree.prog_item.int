@@ -1,0 +1,644 @@
+:- module (parse_tree.prog_item).
+:- interface.
+:- use_module assoc_list.
+:- use_module cord.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module one_or_more.
+:- use_module one_or_more_map.
+:- use_module pair.
+:- use_module recompilation.
+:- use_module set.
+:- use_module (libs.globals).
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_foreign).
+:- use_module (parse_tree.prog_data_pragma).
+:- type abstract_solver_type_status
+    --->    abstract_solver_type_exported 
+    ;       abstract_solver_type_private .
+:- type ancestor_int_spec
+    --->    ancestor_int0(parse_tree.prog_item.parse_tree_int0, parse_tree.prog_item.read_why_int0).
+:- type aug_compilation_unit
+    --->    aug_compilation_unit(((parse_tree.prog_item).acu_module_src) :: parse_tree.prog_item.parse_tree_module_src, ((parse_tree.prog_item).acu_ancestor_int_specs) :: map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.ancestor_int_spec), ((parse_tree.prog_item).acu_direct_int1_specs) :: map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.direct_int1_spec), ((parse_tree.prog_item).acu_indirect_int2_specs) :: map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.indirect_int2_spec), ((parse_tree.prog_item).acu_plain_opts) :: map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.parse_tree_plain_opt), ((parse_tree.prog_item).acu_trans_opts) :: map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.parse_tree_trans_opt), ((parse_tree.prog_item).acu_int_for_opt_specs) :: map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.int_for_opt_spec), ((parse_tree.prog_item).acu_type_repn_specs) :: map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.type_repn_spec), ((parse_tree.prog_item).acu_module_item_version_numbers_map) :: recompilation.module_item_version_numbers_map).
+:- type aug_make_int_unit
+    --->    aug_make_int_unit(((parse_tree.prog_item).amiu_module_src) :: parse_tree.prog_item.parse_tree_module_src, ((parse_tree.prog_item).amiu_ancestor_int_specs) :: map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.parse_tree_int0), ((parse_tree.prog_item).amiu_direct_int3_specs) :: map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.direct_int3_spec), ((parse_tree.prog_item).amiu_indirect_int3_specs) :: map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.indirect_int3_spec), ((parse_tree.prog_item).amiu_module_item_version_numbers_map) :: recompilation.module_item_version_numbers_map).
+:- type avail_import_info
+    --->    avail_import_info(((parse_tree.prog_item).aii_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).aii_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).aii_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type avail_use_info
+    --->    avail_use_info(((parse_tree.prog_item).aui_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).aui_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).aui_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type c_j_cs_defns == parse_tree.prog_item.c_java_csharp(list.list(parse_tree.prog_item.item_type_defn_info_foreign)).
+:- type c_j_cs_enum_repn == parse_tree.prog_item.c_java_csharp(maybe.maybe(parse_tree.prog_item.enum_foreign_repn)).
+:- type c_j_cs_enums == parse_tree.prog_item.c_java_csharp(list.list(parse_tree.prog_item.item_foreign_enum_info)).
+:- type c_j_cs_maybe_defn == parse_tree.prog_item.c_java_csharp(maybe.maybe(parse_tree.prog_item.item_type_defn_info_foreign)).
+:- type c_j_cs_maybe_defn_or_enum == parse_tree.prog_item.c_java_csharp(maybe.maybe(parse_tree.prog_item.foreign_type_or_enum)).
+:- type c_j_cs_maybe_enum == parse_tree.prog_item.c_java_csharp(maybe.maybe(parse_tree.prog_item.item_foreign_enum_info)).
+:- type c_j_cs_repn == parse_tree.prog_item.c_java_csharp(maybe.maybe(parse_tree.prog_item.foreign_type_repn)).
+:- type c_java_csharp(T)
+    --->    c_java_csharp(T, T, T).
+:- type c_repns(T)
+    --->    c_repns_same(((parse_tree.prog_item).c_repn_same) :: T)
+    ;       c_repns_64_32(((parse_tree.prog_item).c_repn_all_64) :: T, ((parse_tree.prog_item).c_repn_all_32) :: T)
+    ;       c_repns_all(((parse_tree.prog_item).c_repn_64_nospf_noda) :: T, ((parse_tree.prog_item).c_repn_64_nospf_da) :: T, ((parse_tree.prog_item).c_repn_32_nospf_noda) :: T, ((parse_tree.prog_item).c_repn_32_nospf_da) :: T, ((parse_tree.prog_item).c_repn_32_spf_noda) :: T, ((parse_tree.prog_item).c_repn_32_spf_da) :: T).
+:- type catch_any_expr
+    --->    catch_any_expr(((parse_tree.prog_item).catch_any_var) :: parse_tree.prog_data.prog_var, ((parse_tree.prog_item).catch_any_goal) :: parse_tree.prog_item.goal).
+:- type catch_expr
+    --->    catch_expr(((parse_tree.prog_item).catch_pattern) :: parse_tree.prog_data.prog_term, ((parse_tree.prog_item).catch_goal) :: parse_tree.prog_item.goal).
+:- type cell_local_sectag
+    --->    cell_local_sectag(((parse_tree.prog_item).clss_sectag) :: uint, ((parse_tree.prog_item).clss_sectag_size) :: uint8).
+:- type cell_remote_sectag
+    --->    cell_remote_no_sectag 
+    ;       cell_remote_sectag(((parse_tree.prog_item).crss_sectag) :: uint, ((parse_tree.prog_item).crss_sectag_size) :: parse_tree.prog_item.rsectag_word_or_size).
+:- type checked_foreign_enum
+    --->    checked_foreign_enum(parse_tree.prog_item.item_foreign_enum_info, one_or_more.one_or_more(string)).
+:- type class_decl
+    --->    class_decl_pred_or_func(parse_tree.prog_item.class_pred_or_func_info)
+    ;       class_decl_mode(parse_tree.prog_item.class_mode_info).
+:- type class_mode_info
+    --->    class_mode_info(mdbcomp.sym_name.sym_name, maybe.maybe(mdbcomp.prim_data.pred_or_func), list.list(parse_tree.prog_data.mer_mode), maybe.maybe(parse_tree.prog_data.mer_inst), maybe.maybe(parse_tree.prog_data.determinism), parse_tree.prog_data.inst_varset, parse_tree.prog_data.prog_context).
+:- type class_pred_or_func_info
+    --->    class_pred_or_func_info(mdbcomp.sym_name.sym_name, mdbcomp.prim_data.pred_or_func, parse_tree.prog_item.types_and_maybe_modes, maybe.maybe(parse_tree.prog_data.mer_type), maybe.maybe(parse_tree.prog_data.mer_inst), maybe.maybe(parse_tree.prog_data.determinism), parse_tree.prog_data.tvarset, parse_tree.prog_data.inst_varset, parse_tree.prog_data.existq_tvars, parse_tree.prog_data.purity, parse_tree.prog_data.univ_exist_constraints, parse_tree.prog_data.prog_context).
+:- type compiler_origin
+    --->    compiler_origin_initialise 
+    ;       compiler_origin_finalise 
+    ;       compiler_origin_class_method(((parse_tree.prog_item).cm_class_id) :: parse_tree.prog_data.class_id, ((parse_tree.prog_item).cm_method) :: parse_tree.prog_data.pred_pf_name_arity)
+    ;       compiler_origin_solver_repn(((parse_tree.prog_item).cosr_type_ctor) :: parse_tree.prog_data.type_ctor, ((parse_tree.prog_item).cosr_aux_pred_kind) :: parse_tree.prog_data.solver_type_pred_kind)
+    ;       compiler_origin_mutable(((parse_tree.prog_item).com_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).com_mutable_name) :: string, ((parse_tree.prog_item).com_aux_pred_kind) :: parse_tree.prog_data.mutable_pred_kind)
+    ;       compiler_origin_tabling(((parse_tree.prog_item).cot_pred_spec) :: parse_tree.prog_data.pred_pf_name_arity, ((parse_tree.prog_item).cot_aux_pred_kind) :: parse_tree.prog_data.tabling_aux_pred_kind).
+:- type constant_repn
+    --->    constant_repn(((parse_tree.prog_item).cr_sectag) :: uint, ((parse_tree.prog_item).cr_sectag_size) :: parse_tree.prog_item.lsectag_word_or_size).
+:- type contains_foreign_code
+    --->    foreign_code_langs_known(set.set(libs.globals.foreign_language))
+    ;       foreign_code_langs_unknown .
+:- type contains_foreign_export
+    --->    contains_foreign_export 
+    ;       contains_no_foreign_export .
+:- type decl_pragma_format_call_info
+    --->    decl_pragma_format_call_info(((parse_tree.prog_item).format_pred) :: parse_tree.prog_data.pred_pf_name_arity, ((parse_tree.prog_item).format_values) :: one_or_more.one_or_more(parse_tree.prog_data_pragma.format_string_values), ((parse_tree.prog_item).format_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).format_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type decl_pragma_marker_kind
+    --->    dpmk_terminates 
+    ;       dpmk_does_not_terminate 
+    ;       dpmk_check_termination .
+:- type decl_pragma_marker_kind_opt =< parse_tree.prog_item.decl_pragma_marker_kind
+    --->    dpmk_terminates 
+    ;       dpmk_does_not_terminate .
+:- type decl_pragma_obsolete_pred_info
+    --->    decl_pragma_obsolete_pred_info(((parse_tree.prog_item).obspred_obsolete_pred) :: parse_tree.prog_item.pred_pfu_name_arity, ((parse_tree.prog_item).obspred_in_favour_of) :: list.list(parse_tree.prog_data.sym_name_arity), ((parse_tree.prog_item).obspred_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).obspred_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type decl_pragma_obsolete_proc_info
+    --->    decl_pragma_obsolete_proc_info(((parse_tree.prog_item).obsproc_obsolete_proc) :: parse_tree.prog_item.proc_pf_name_modes, ((parse_tree.prog_item).obsproc_in_favour_of) :: list.list(parse_tree.prog_data.sym_name_arity), ((parse_tree.prog_item).obsproc_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).obsproc_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type decl_pragma_oisu_info
+    --->    decl_pragma_oisu_info(((parse_tree.prog_item).oisu_type_ctor) :: parse_tree.prog_data.type_ctor, ((parse_tree.prog_item).oisu_creator_preds) :: list.list(parse_tree.prog_data.pred_pf_name_arity), ((parse_tree.prog_item).oisu_transformer_preds) :: list.list(parse_tree.prog_data.pred_pf_name_arity), ((parse_tree.prog_item).oisu_destroyer_preds) :: list.list(parse_tree.prog_data.pred_pf_name_arity), ((parse_tree.prog_item).oisu_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).oisu_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type decl_pragma_struct_reuse_info
+    --->    decl_pragma_struct_reuse_info(((parse_tree.prog_item).reuse_pred_id) :: parse_tree.prog_item.proc_pf_name_modes, ((parse_tree.prog_item).reuse_headvars) :: list.list(parse_tree.prog_data.prog_var), ((parse_tree.prog_item).reuse_headvar_types) :: list.list(parse_tree.prog_data.mer_type), ((parse_tree.prog_item).reuse_varset) :: parse_tree.prog_data.prog_varset, ((parse_tree.prog_item).reuse_tvarset) :: parse_tree.prog_data.tvarset, ((parse_tree.prog_item).reuse_description) :: maybe.maybe(parse_tree.prog_data_pragma.structure_reuse_domain), ((parse_tree.prog_item).reuse_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).reuse_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type decl_pragma_struct_sharing_info
+    --->    decl_pragma_struct_sharing_info(((parse_tree.prog_item).sharing_pred_id) :: parse_tree.prog_item.proc_pf_name_modes, ((parse_tree.prog_item).sharing_headvars) :: list.list(parse_tree.prog_data.prog_var), ((parse_tree.prog_item).sharing_headvar_types) :: list.list(parse_tree.prog_data.mer_type), ((parse_tree.prog_item).sharing_varset) :: parse_tree.prog_data.prog_varset, ((parse_tree.prog_item).sharing_tvarset) :: parse_tree.prog_data.tvarset, ((parse_tree.prog_item).sharing_description) :: maybe.maybe(parse_tree.prog_data_pragma.structure_sharing_domain), ((parse_tree.prog_item).sharing_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).sharing_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type decl_pragma_termination2_info
+    --->    decl_pragma_termination2_info(((parse_tree.prog_item).terminfo2_pred_id) :: parse_tree.prog_item.proc_pf_name_modes, ((parse_tree.prog_item).terminfo2_args) :: maybe.maybe(parse_tree.prog_data_pragma.pragma_constr_arg_size_info), ((parse_tree.prog_item).terminfo2_args2) :: maybe.maybe(parse_tree.prog_data_pragma.pragma_constr_arg_size_info), ((parse_tree.prog_item).terminfo2_term) :: maybe.maybe(parse_tree.prog_data_pragma.pragma_termination_info), ((parse_tree.prog_item).terminfo2_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).terminfo2_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type decl_pragma_termination_info
+    --->    decl_pragma_termination_info(((parse_tree.prog_item).terminfo_pred_id) :: parse_tree.prog_item.proc_pf_name_modes, ((parse_tree.prog_item).terminfo_args) :: maybe.maybe(parse_tree.prog_data_pragma.pragma_arg_size_info), ((parse_tree.prog_item).terminfo_term) :: maybe.maybe(parse_tree.prog_data_pragma.pragma_termination_info), ((parse_tree.prog_item).terminfo_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).terminfo_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type decl_pragma_type_spec_info
+    --->    decl_pragma_type_spec_info(((parse_tree.prog_item).tspec_pfumm) :: parse_tree.prog_item.pred_func_or_unknown_maybe_modes, ((parse_tree.prog_item).tspec_pred_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).tspec_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).tspec_tsubst) :: parse_tree.prog_data_pragma.type_subst, ((parse_tree.prog_item).tspec_tvarset) :: parse_tree.prog_data.tvarset, ((parse_tree.prog_item).tspec_items) :: set.set(recompilation.recomp_item_id), ((parse_tree.prog_item).tspec_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).tspec_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type direct_dummy_repn
+    --->    direct_dummy_repn(((parse_tree.prog_item).dummy_functor_name) :: string, ((parse_tree.prog_item).dummy_foreign) :: parse_tree.prog_item.c_j_cs_enum_repn).
+:- type direct_int1_spec
+    --->    direct_int1(parse_tree.prog_item.parse_tree_int1, parse_tree.prog_item.read_why_int1).
+:- type direct_int3_spec
+    --->    direct_int3(parse_tree.prog_item.parse_tree_int3, parse_tree.prog_item.read_why_int3).
+:- type du_repn
+    --->    dur_direct_dummy(parse_tree.prog_item.direct_dummy_repn)
+    ;       dur_enum(parse_tree.prog_item.enum_repn)
+    ;       dur_notag(parse_tree.prog_item.notag_repn)
+    ;       dur_gen_only_functor(parse_tree.prog_item.gen_du_only_functor_repn)
+    ;       dur_gen_more_functors(parse_tree.prog_item.gen_du_more_functors_repn).
+:- type enum_foreign_repn
+    --->    enum_foreign_type(parse_tree.prog_item.foreign_type_repn)
+    ;       enum_foreign_enum(one_or_more.one_or_more(string)).
+:- type enum_repn
+    --->    enum_repn(((parse_tree.prog_item).enum_functor1) :: string, ((parse_tree.prog_item).enum_functor2) :: string, ((parse_tree.prog_item).enum_functors3plus) :: list.list(string), ((parse_tree.prog_item).enum_foreign) :: parse_tree.prog_item.c_j_cs_enum_repn).
+:- type fill_kind_size
+    --->    fk_enum(uint)
+    ;       fk_int8 
+    ;       fk_int16 
+    ;       fk_int32 
+    ;       fk_uint8 
+    ;       fk_uint16 
+    ;       fk_uint32 
+    ;       fk_char21 .
+:- type foreign_enum_spec
+    --->    foreign_enum_spec(libs.globals.foreign_language, parse_tree.prog_data.type_ctor, one_or_more.one_or_more(pair.pair(mdbcomp.sym_name.sym_name, string))).
+:- type foreign_type_lang_repn
+    --->    foreign_type_lang_repn(((parse_tree.prog_item).ftlr_lang) :: libs.globals.foreign_language, ((parse_tree.prog_item).ftlr_foreign_type) :: parse_tree.prog_item.foreign_type_repn).
+:- type foreign_type_or_enum
+    --->    foreign_type_or_enum_type(parse_tree.prog_item.item_type_defn_info_foreign)
+    ;       foreign_type_or_enum_enum(parse_tree.prog_item.checked_foreign_enum).
+:- type foreign_type_repn
+    --->    foreign_type_repn(((parse_tree.prog_item).ftr_foreign_type) :: string, ((parse_tree.prog_item).ftr_assertions) :: parse_tree.prog_data.foreign_type_assertions).
+:- type gen_du_functor_repn
+    --->    gen_du_constant_functor_repn(((parse_tree.prog_item).gducf_functor) :: string, ((parse_tree.prog_item).gducf_functor_repn) :: parse_tree.prog_item.c_repns(parse_tree.prog_item.constant_repn))
+    ;       gen_du_nonconstant_functor_repn(((parse_tree.prog_item).gduncf_functor) :: string, ((parse_tree.prog_item).gduncf_deref_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((parse_tree.prog_item).gduncf_functor_repn) :: parse_tree.prog_item.c_repns(parse_tree.prog_item.more_nonconstant_repn)).
+:- type gen_du_more_functors_repn
+    --->    gen_du_more_functors_repn(((parse_tree.prog_item).more_functor1) :: parse_tree.prog_item.gen_du_functor_repn, ((parse_tree.prog_item).more_functor2) :: parse_tree.prog_item.gen_du_functor_repn, ((parse_tree.prog_item).more_functors3plus) :: list.list(parse_tree.prog_item.gen_du_functor_repn), ((parse_tree.prog_item).more_foreign) :: parse_tree.prog_item.c_j_cs_repn).
+:- type gen_du_only_functor_repn
+    --->    gen_du_only_functor_repn(((parse_tree.prog_item).only_functor) :: string, ((parse_tree.prog_item).only_deref_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((parse_tree.prog_item).only_arg_repns) :: parse_tree.prog_item.c_repns(parse_tree.prog_item.only_nonconstant_repn), ((parse_tree.prog_item).only_foreign) :: parse_tree.prog_item.c_j_cs_repn).
+:- type gen_pragma_exceptions_info
+    --->    gen_pragma_exceptions_info(((parse_tree.prog_item).exceptions_proc_id) :: parse_tree.prog_item.proc_pf_name_arity_mn, ((parse_tree.prog_item).exceptions_status) :: parse_tree.prog_data_pragma.exception_status, ((parse_tree.prog_item).exceptions_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).exceptions_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type gen_pragma_mm_tabling_info
+    --->    gen_pragma_mm_tabling_info(((parse_tree.prog_item).mm_tabling_proc_id) :: parse_tree.prog_item.proc_pf_name_arity_mn, ((parse_tree.prog_item).mm_tabling_status) :: parse_tree.prog_data.mm_tabling_status, ((parse_tree.prog_item).mm_tabling_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).mm_tabling_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type gen_pragma_trailing_info
+    --->    gen_pragma_trailing_info(((parse_tree.prog_item).trailing_proc_id) :: parse_tree.prog_item.proc_pf_name_arity_mn, ((parse_tree.prog_item).trailing_status) :: parse_tree.prog_data.trailing_status, ((parse_tree.prog_item).trailing_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).trailing_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type gen_pragma_unused_args_info
+    --->    gen_pragma_unused_args_info(((parse_tree.prog_item).unused_proc_id) :: parse_tree.prog_item.proc_pf_name_arity_mn, ((parse_tree.prog_item).unused_args) :: list.list(int), ((parse_tree.prog_item).unused_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).unused_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type goal
+    --->    unify_expr(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_term, parse_tree.prog_data.prog_term, parse_tree.prog_data.purity)
+    ;       call_expr(parse_tree.prog_data.prog_context, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.prog_term), parse_tree.prog_data.purity)
+    ;       conj_expr(parse_tree.prog_data.prog_context, parse_tree.prog_item.goal, list.list(parse_tree.prog_item.goal))
+    ;       true_expr(parse_tree.prog_data.prog_context)
+    ;       if_then_else_expr(parse_tree.prog_data.prog_context, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), parse_tree.prog_item.goal, parse_tree.prog_item.goal, parse_tree.prog_item.goal)
+    ;       disj_expr(parse_tree.prog_data.prog_context, parse_tree.prog_item.goal, parse_tree.prog_item.goal, list.list(parse_tree.prog_item.goal))
+    ;       not_expr(parse_tree.prog_data.prog_context, parse_tree.prog_item.goal)
+    ;       fail_expr(parse_tree.prog_data.prog_context)
+    ;       par_conj_expr(parse_tree.prog_data.prog_context, parse_tree.prog_item.goal, list.list(parse_tree.prog_item.goal))
+    ;       quant_expr(parse_tree.prog_item.quant_type, parse_tree.prog_item.quant_vars_kind, parse_tree.prog_data.prog_context, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_item.goal)
+    ;       promise_purity_expr(parse_tree.prog_data.prog_context, parse_tree.prog_data.purity, parse_tree.prog_item.goal)
+    ;       promise_equivalent_solutions_expr(parse_tree.prog_data.prog_context, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), parse_tree.prog_item.goal)
+    ;       promise_equivalent_solution_sets_expr(parse_tree.prog_data.prog_context, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), parse_tree.prog_item.goal)
+    ;       promise_equivalent_solution_arbitrary_expr(parse_tree.prog_data.prog_context, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), parse_tree.prog_item.goal)
+    ;       require_detism_expr(parse_tree.prog_data.prog_context, parse_tree.prog_data.determinism, parse_tree.prog_item.goal)
+    ;       require_complete_switch_expr(parse_tree.prog_data.prog_context, parse_tree.prog_item.plain_or_dot_var, parse_tree.prog_item.goal)
+    ;       require_switch_arms_detism_expr(parse_tree.prog_data.prog_context, parse_tree.prog_item.plain_or_dot_var, parse_tree.prog_data.determinism, parse_tree.prog_item.goal)
+    ;       disable_warnings_expr(parse_tree.prog_data.prog_context, parse_tree.prog_data.goal_warning, list.list(parse_tree.prog_data.goal_warning), parse_tree.prog_item.goal)
+    ;       trace_expr(((parse_tree.prog_item).texpr_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).texpr_compiletime) :: maybe.maybe(parse_tree.prog_data.trace_expr(parse_tree.prog_data.trace_compiletime)), ((parse_tree.prog_item).texpr_runtime) :: maybe.maybe(parse_tree.prog_data.trace_expr(parse_tree.prog_data.trace_runtime)), ((parse_tree.prog_item).texpr_maybe_io) :: maybe.maybe(parse_tree.prog_data.prog_var), ((parse_tree.prog_item).texpr_mutable_vars) :: list.list(parse_tree.prog_data.trace_mutable_var), ((parse_tree.prog_item).texpr_goal) :: parse_tree.prog_item.goal)
+    ;       atomic_expr(((parse_tree.prog_item).aexpr_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).aexpr_outer) :: parse_tree.prog_data.atomic_component_state, ((parse_tree.prog_item).aexpr_inner) :: parse_tree.prog_data.atomic_component_state, ((parse_tree.prog_item).aexpr_output_vars) :: maybe.maybe(list.list(parse_tree.prog_data.prog_var)), ((parse_tree.prog_item).aexpr_main_goal) :: parse_tree.prog_item.goal, ((parse_tree.prog_item).aexpr_orelse_goals) :: list.list(parse_tree.prog_item.goal))
+    ;       try_expr(((parse_tree.prog_item).tryexpr_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).tryexpr_maybe_io) :: maybe.maybe(parse_tree.prog_data.prog_var), ((parse_tree.prog_item).tryexpr_goal) :: parse_tree.prog_item.goal, ((parse_tree.prog_item).tryexpr_then) :: parse_tree.prog_item.goal, ((parse_tree.prog_item).tryexpr_maybe_else) :: maybe.maybe(parse_tree.prog_item.goal), ((parse_tree.prog_item).tryexpr_catches) :: list.list(parse_tree.prog_item.catch_expr), ((parse_tree.prog_item).tryexpr_maybe_catch_any) :: maybe.maybe(parse_tree.prog_item.catch_any_expr))
+    ;       implies_expr(parse_tree.prog_data.prog_context, parse_tree.prog_item.goal, parse_tree.prog_item.goal)
+    ;       equivalent_expr(parse_tree.prog_data.prog_context, parse_tree.prog_item.goal, parse_tree.prog_item.goal)
+    ;       event_expr(parse_tree.prog_data.prog_context, string, list.list(parse_tree.prog_data.prog_term)).
+:- type imp_import_context_map
+    --->    imp_import_context_map(parse_tree.prog_item.module_name_context).
+:- type imp_incl_context_map
+    --->    imp_incl_context_map(parse_tree.prog_item.module_name_context).
+:- type imp_use_context_map
+    --->    imp_use_context_map(parse_tree.prog_item.module_name_context).
+:- type impl_pragma_external_proc_info
+    --->    impl_pragma_external_proc_info(((parse_tree.prog_item).external_name) :: parse_tree.prog_data.pred_pf_name_arity, ((parse_tree.prog_item).external_maybe_backend) :: maybe.maybe(libs.globals.backend), ((parse_tree.prog_item).external_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).external_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type impl_pragma_fact_table_info
+    --->    impl_pragma_fact_table_info(((parse_tree.prog_item).fact_table_pred) :: parse_tree.prog_item.pred_pfu_name_arity, ((parse_tree.prog_item).fact_table_filename) :: string, ((parse_tree.prog_item).fact_table_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).fact_table_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type impl_pragma_foreign_code_info
+    --->    impl_pragma_foreign_code_info(((parse_tree.prog_item).code_lang) :: libs.globals.foreign_language, ((parse_tree.prog_item).code_code) :: parse_tree.prog_data_foreign.foreign_literal_or_include, ((parse_tree.prog_item).code_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).code_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type impl_pragma_foreign_decl_info
+    --->    impl_pragma_foreign_decl_info(((parse_tree.prog_item).decl_lang) :: libs.globals.foreign_language, ((parse_tree.prog_item).decl_is_local) :: parse_tree.prog_data_foreign.foreign_decl_is_local, ((parse_tree.prog_item).decl_decl) :: parse_tree.prog_data_foreign.foreign_literal_or_include, ((parse_tree.prog_item).decl_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).decl_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type impl_pragma_fproc_export_info
+    --->    impl_pragma_fproc_export_info(((parse_tree.prog_item).exp_maybe_attrs) :: parse_tree.prog_item.item_maybe_attrs, ((parse_tree.prog_item).exp_language) :: libs.globals.foreign_language, ((parse_tree.prog_item).exp_pred_id) :: parse_tree.prog_item.proc_pf_name_modes, ((parse_tree.prog_item).exp_foreign_name) :: string, ((parse_tree.prog_item).exp_varset) :: parse_tree.prog_data.prog_varset, ((parse_tree.prog_item).exp_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).exp_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type impl_pragma_marker_kind
+    --->    ipmk_inline 
+    ;       ipmk_no_inline 
+    ;       ipmk_consider_used 
+    ;       ipmk_mode_check_clauses 
+    ;       ipmk_no_detism_warning 
+    ;       ipmk_promise_pure 
+    ;       ipmk_promise_semipure 
+    ;       ipmk_promise_eqv_clauses .
+:- type impl_pragma_marker_kind_opt =< parse_tree.prog_item.impl_pragma_marker_kind
+    --->    ipmk_inline 
+    ;       ipmk_no_inline 
+    ;       ipmk_mode_check_clauses 
+    ;       ipmk_promise_pure 
+    ;       ipmk_promise_semipure 
+    ;       ipmk_promise_eqv_clauses .
+:- type impl_pragma_req_feature_set_info
+    --->    impl_pragma_req_feature_set_info(((parse_tree.prog_item).rfs_feature_set) :: set.set(parse_tree.prog_data_pragma.required_feature), ((parse_tree.prog_item).rfs_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).rfs_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type impl_pragma_req_tail_rec_info
+    --->    impl_pragma_req_tail_rec_info(((parse_tree.prog_item).rtr_proc_id) :: parse_tree.prog_item.pred_or_proc_pfumm_name, ((parse_tree.prog_item).rtr_require_tailrec) :: parse_tree.prog_data_pragma.require_tail_recursion, ((parse_tree.prog_item).rtr_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).rtr_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type impl_pragma_tabled_info
+    --->    impl_pragma_tabled_info(((parse_tree.prog_item).tabled_method) :: parse_tree.prog_data_pragma.tabled_eval_method, ((parse_tree.prog_item).tabled_name) :: parse_tree.prog_item.pred_or_proc_pfumm_name, ((parse_tree.prog_item).tabled_attributes) :: maybe.maybe(parse_tree.prog_data_pragma.table_attributes), ((parse_tree.prog_item).tabled_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).tabled_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type implicit_import_or_use
+    --->    implicit_int_import 
+    ;       implicit_int_use 
+    ;       implicit_imp_use .
+:- type import_and_or_use_map == map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.maybe_implicit_import_and_or_use).
+:- type import_locn
+    --->    import_locn_implementation 
+    ;       import_locn_interface 
+    ;       import_locn_import_by_ancestor 
+    ;       import_locn_ancestor_int0_interface 
+    ;       import_locn_ancestor_int0_implementation .
+:- type import_or_use
+    --->    import_decl 
+    ;       use_decl .
+:- type include_module_info
+    --->    include_module_info(parse_tree.prog_item.module_section, parse_tree.prog_data.prog_context).
+:- type include_module_map == map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.include_module_info).
+:- type indirect_int2_spec
+    --->    indirect_int2(parse_tree.prog_item.parse_tree_int2, parse_tree.prog_item.read_why_int2).
+:- type indirect_int3_spec
+    --->    indirect_int3(parse_tree.prog_item.parse_tree_int3, parse_tree.prog_item.read_why_int3).
+:- type inst_ctor_all_defns
+    --->    inst_ctor_all_defns(((parse_tree.prog_item).icad_abstract) :: list.list(parse_tree.prog_item.item_inst_defn_info_abstract), ((parse_tree.prog_item).icad_eqv) :: list.list(parse_tree.prog_item.item_inst_defn_info_eqv)).
+:- type inst_ctor_checked_defn
+    --->    checked_defn_inst(parse_tree.prog_item.std_inst_defn, parse_tree.prog_item.src_defns_inst).
+:- type inst_ctor_checked_map == map.map(parse_tree.prog_data.inst_ctor, parse_tree.prog_item.inst_ctor_checked_defn).
+:- type inst_ctor_defn_map == map.map(parse_tree.prog_data.inst_ctor, parse_tree.prog_item.inst_ctor_all_defns).
+:- type int_for_opt_spec
+    --->    for_opt_int0(parse_tree.prog_item.parse_tree_int0, parse_tree.prog_item.read_why_int0)
+    ;       for_opt_int1(parse_tree.prog_item.parse_tree_int1, parse_tree.prog_item.read_why_int1)
+    ;       for_opt_int2(parse_tree.prog_item.parse_tree_int2, parse_tree.prog_item.read_why_int2).
+:- type int_import_context_map
+    --->    int_import_context_map(parse_tree.prog_item.module_name_context).
+:- type int_import_map == map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.int_section_import).
+:- type int_incl_context_map
+    --->    int_incl_context_map(parse_tree.prog_item.module_name_context).
+:- type int_include_module_info =< parse_tree.prog_item.include_module_info
+    --->    include_module_info(parse_tree.prog_item.int_module_section, parse_tree.prog_data.prog_context).
+:- type int_include_module_map == map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.int_include_module_info).
+:- type int_module_section =< parse_tree.prog_item.module_section
+    --->    ms_interface .
+:- type int_section_import =< parse_tree.prog_item.section_import_and_or_use
+    --->    int_import(parse_tree.prog_data.prog_context).
+:- type int_use_context_map
+    --->    int_use_context_map(parse_tree.prog_item.module_name_context).
+:- type item
+    --->    item_clause(parse_tree.prog_item.item_clause_info)
+    ;       item_type_defn(parse_tree.prog_item.item_type_defn_info)
+    ;       item_inst_defn(parse_tree.prog_item.item_inst_defn_info)
+    ;       item_mode_defn(parse_tree.prog_item.item_mode_defn_info)
+    ;       item_pred_decl(parse_tree.prog_item.item_pred_decl_info)
+    ;       item_mode_decl(parse_tree.prog_item.item_mode_decl_info)
+    ;       item_foreign_proc(parse_tree.prog_item.item_foreign_proc_info)
+    ;       item_foreign_enum(parse_tree.prog_item.item_foreign_enum_info)
+    ;       item_foreign_export_enum(parse_tree.prog_item.item_foreign_export_enum_info)
+    ;       item_decl_pragma(parse_tree.prog_item.item_decl_pragma_info)
+    ;       item_decl_marker(parse_tree.prog_item.item_decl_marker_info)
+    ;       item_impl_pragma(parse_tree.prog_item.item_impl_pragma_info)
+    ;       item_impl_marker(parse_tree.prog_item.item_impl_marker_info)
+    ;       item_generated_pragma(parse_tree.prog_item.item_generated_pragma_info)
+    ;       item_promise(parse_tree.prog_item.item_promise_info)
+    ;       item_typeclass(parse_tree.prog_item.item_typeclass_info)
+    ;       item_instance(parse_tree.prog_item.item_instance_info)
+    ;       item_initialise(parse_tree.prog_item.item_initialise_info)
+    ;       item_finalise(parse_tree.prog_item.item_finalise_info)
+    ;       item_mutable(parse_tree.prog_item.item_mutable_info)
+    ;       item_type_repn(parse_tree.prog_item.item_type_repn_info).
+:- type item_abstract_instance_info =< parse_tree.prog_item.item_instance_info
+    --->    item_instance_info(((parse_tree.prog_item).ci_class_name) :: parse_tree.prog_data.class_name, ((parse_tree.prog_item).ci_types) :: list.list(parse_tree.prog_data.mer_type), ((parse_tree.prog_item).ci_original_types) :: list.list(parse_tree.prog_data.mer_type), ((parse_tree.prog_item).ci_deriving_class) :: list.list(parse_tree.prog_data.prog_constraint), ((parse_tree.prog_item).ci_method_instances) :: parse_tree.prog_data.abstract_instance_body, ((parse_tree.prog_item).ci_varset) :: parse_tree.prog_data.tvarset, ((parse_tree.prog_item).ci_module_containing_instance) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).ci_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).ci_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_abstract_int3_typeclass_info =< parse_tree.prog_item.item_typeclass_info
+    --->    item_typeclass_info(((parse_tree.prog_item).tc_class_name) :: parse_tree.prog_data.class_name, ((parse_tree.prog_item).tc_class_params) :: list.list(parse_tree.prog_data.tvar), ((parse_tree.prog_item).tc_superclasses) :: list.list(parse_tree.prog_data.prog_constraint), ((parse_tree.prog_item).tc_fundeps) :: list.list(parse_tree.prog_data.prog_fundep), ((parse_tree.prog_item).tc_class_methods) :: parse_tree.prog_data.abstract_class_interface, ((parse_tree.prog_item).tc_varset) :: parse_tree.prog_data.tvarset, ((parse_tree.prog_item).tc_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).tc_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_abstract_typeclass_info =< parse_tree.prog_item.item_typeclass_info
+    --->    item_typeclass_info(((parse_tree.prog_item).tc_class_name) :: parse_tree.prog_data.class_name, ((parse_tree.prog_item).tc_class_params) :: list.list(parse_tree.prog_data.tvar), ((parse_tree.prog_item).tc_superclasses) :: list.list(parse_tree.prog_data.prog_constraint), ((parse_tree.prog_item).tc_fundeps) :: list.list(parse_tree.prog_data.prog_fundep), ((parse_tree.prog_item).tc_class_methods) :: parse_tree.prog_data.abstract_class_interface, ((parse_tree.prog_item).tc_varset) :: parse_tree.prog_data.tvarset, ((parse_tree.prog_item).tc_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).tc_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_avail
+    --->    avail_import(parse_tree.prog_item.avail_import_info)
+    ;       avail_use(parse_tree.prog_item.avail_use_info).
+:- type item_clause_info
+    --->    item_clause_info(((parse_tree.prog_item).cl_pred_or_func) :: mdbcomp.prim_data.pred_or_func, ((parse_tree.prog_item).cl_predname) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).cl_head_args) :: list.list(parse_tree.prog_data.prog_term), ((parse_tree.prog_item).cl_varset) :: parse_tree.prog_data.prog_varset, ((parse_tree.prog_item).cl_body) :: parse_tree.maybe_error.maybe2(parse_tree.prog_item.goal, list.list(parse_tree.error_spec.warning_spec)), ((parse_tree.prog_item).cl_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).cl_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_compiler_attributes
+    --->    item_compiler_attributes(parse_tree.prog_item.compiler_origin).
+:- type item_decl_marker_info
+    --->    item_decl_marker_info(((parse_tree.prog_item).dm_marker_kind) :: parse_tree.prog_item.decl_pragma_marker_kind, ((parse_tree.prog_item).dm_pred_spec) :: parse_tree.prog_item.pred_pfu_name_arity, ((parse_tree.prog_item).dm_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).dm_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_decl_marker_info_opt =< parse_tree.prog_item.item_decl_marker_info
+    --->    item_decl_marker_info(((parse_tree.prog_item).dm_marker_kind) :: parse_tree.prog_item.decl_pragma_marker_kind_opt, ((parse_tree.prog_item).dm_pred_spec) :: parse_tree.prog_item.pred_pfu_name_arity_pf, ((parse_tree.prog_item).dm_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).dm_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_decl_pragma_info
+    --->    decl_pragma_obsolete_pred(parse_tree.prog_item.decl_pragma_obsolete_pred_info)
+    ;       decl_pragma_obsolete_proc(parse_tree.prog_item.decl_pragma_obsolete_proc_info)
+    ;       decl_pragma_format_call(parse_tree.prog_item.decl_pragma_format_call_info)
+    ;       decl_pragma_type_spec(parse_tree.prog_item.decl_pragma_type_spec_info)
+    ;       decl_pragma_oisu(parse_tree.prog_item.decl_pragma_oisu_info)
+    ;       decl_pragma_termination(parse_tree.prog_item.decl_pragma_termination_info)
+    ;       decl_pragma_termination2(parse_tree.prog_item.decl_pragma_termination2_info)
+    ;       decl_pragma_struct_sharing(parse_tree.prog_item.decl_pragma_struct_sharing_info)
+    ;       decl_pragma_struct_reuse(parse_tree.prog_item.decl_pragma_struct_reuse_info).
+:- type item_fim
+    --->    item_fim(((parse_tree.prog_item).fim_lang) :: libs.globals.foreign_language, ((parse_tree.prog_item).fim_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).fim_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).fim_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_finalise_info
+    --->    item_finalise_info(((parse_tree.prog_item).final_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).final_arity) :: parse_tree.prog_data.user_arity, ((parse_tree.prog_item).final_maybe_attrs) :: parse_tree.prog_item.item_maybe_attrs, ((parse_tree.prog_item).final_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).final_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_foreign_enum_info
+    --->    item_foreign_enum_info(((parse_tree.prog_item).fe_language) :: libs.globals.foreign_language, ((parse_tree.prog_item).fe_type_ctor) :: parse_tree.prog_data.type_ctor, ((parse_tree.prog_item).fe_values) :: one_or_more.one_or_more(pair.pair(mdbcomp.sym_name.sym_name, string)), ((parse_tree.prog_item).fe_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).fe_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_foreign_export_enum_info
+    --->    item_foreign_export_enum_info(((parse_tree.prog_item).fee_language) :: libs.globals.foreign_language, ((parse_tree.prog_item).fee_type_ctor) :: parse_tree.prog_data.type_ctor, ((parse_tree.prog_item).fee_attributes) :: parse_tree.prog_data_foreign.export_enum_attributes, ((parse_tree.prog_item).fee_overrides) :: assoc_list.assoc_list(mdbcomp.sym_name.sym_name, string), ((parse_tree.prog_item).fee_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).fee_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_foreign_proc_info
+    --->    item_foreign_proc_info(((parse_tree.prog_item).proc_attrs) :: parse_tree.prog_data_foreign.foreign_proc_attributes, ((parse_tree.prog_item).proc_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).proc_p_or_f) :: mdbcomp.prim_data.pred_or_func, ((parse_tree.prog_item).proc_vars) :: list.list(parse_tree.prog_data_foreign.pragma_var), ((parse_tree.prog_item).proc_varset) :: parse_tree.prog_data.prog_varset, ((parse_tree.prog_item).proc_instvarset) :: parse_tree.prog_data.inst_varset, ((parse_tree.prog_item).proc_impl) :: parse_tree.prog_data_foreign.pragma_foreign_proc_impl, ((parse_tree.prog_item).proc_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).proc_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_generated_pragma_info
+    --->    gen_pragma_unused_args(parse_tree.prog_item.gen_pragma_unused_args_info)
+    ;       gen_pragma_exceptions(parse_tree.prog_item.gen_pragma_exceptions_info)
+    ;       gen_pragma_trailing(parse_tree.prog_item.gen_pragma_trailing_info)
+    ;       gen_pragma_mm_tabling(parse_tree.prog_item.gen_pragma_mm_tabling_info).
+:- type item_impl_marker_info
+    --->    item_impl_marker_info(((parse_tree.prog_item).im_marker_kind) :: parse_tree.prog_item.impl_pragma_marker_kind, ((parse_tree.prog_item).im_pred_spec) :: parse_tree.prog_item.pred_pfu_name_arity, ((parse_tree.prog_item).im_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).im_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_impl_marker_info_opt =< parse_tree.prog_item.item_impl_marker_info
+    --->    item_impl_marker_info(((parse_tree.prog_item).im_marker_kind) :: parse_tree.prog_item.impl_pragma_marker_kind_opt, ((parse_tree.prog_item).im_pred_spec) :: parse_tree.prog_item.pred_pfu_name_arity_pf, ((parse_tree.prog_item).im_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).im_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_impl_pragma_info
+    --->    impl_pragma_foreign_decl(parse_tree.prog_item.impl_pragma_foreign_decl_info)
+    ;       impl_pragma_foreign_code(parse_tree.prog_item.impl_pragma_foreign_code_info)
+    ;       impl_pragma_fproc_export(parse_tree.prog_item.impl_pragma_fproc_export_info)
+    ;       impl_pragma_external_proc(parse_tree.prog_item.impl_pragma_external_proc_info)
+    ;       impl_pragma_fact_table(parse_tree.prog_item.impl_pragma_fact_table_info)
+    ;       impl_pragma_tabled(parse_tree.prog_item.impl_pragma_tabled_info)
+    ;       impl_pragma_req_tail_rec(parse_tree.prog_item.impl_pragma_req_tail_rec_info)
+    ;       impl_pragma_req_feature_set(parse_tree.prog_item.impl_pragma_req_feature_set_info).
+:- type item_include
+    --->    item_include(((parse_tree.prog_item).incl_module) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).incl_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).incl_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_initialise_info
+    --->    item_initialise_info(((parse_tree.prog_item).init_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).init_arity) :: parse_tree.prog_data.user_arity, ((parse_tree.prog_item).init_maybe_attrs) :: parse_tree.prog_item.item_maybe_attrs, ((parse_tree.prog_item).init_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).init_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_inst_defn_info == parse_tree.prog_item.item_inst_defn_info_general(parse_tree.prog_item.maybe_abstract_inst_defn).
+:- type item_inst_defn_info_abstract == parse_tree.prog_item.item_inst_defn_info_general(parse_tree.prog_item.no_inst_defn).
+:- type item_inst_defn_info_eqv == parse_tree.prog_item.item_inst_defn_info_general(parse_tree.prog_data.inst_defn).
+:- type item_inst_defn_info_general(T)
+    --->    item_inst_defn_info(((parse_tree.prog_item).id_inst_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).id_inst_args) :: list.list(parse_tree.prog_data.inst_var), ((parse_tree.prog_item).id_maybe_for_type) :: maybe.maybe(parse_tree.prog_data.type_ctor), ((parse_tree.prog_item).id_inst_defn) :: T, ((parse_tree.prog_item).id_varset) :: parse_tree.prog_data.inst_varset, ((parse_tree.prog_item).id_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).id_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_instance_info
+    --->    item_instance_info(((parse_tree.prog_item).ci_class_name) :: parse_tree.prog_data.class_name, ((parse_tree.prog_item).ci_types) :: list.list(parse_tree.prog_data.mer_type), ((parse_tree.prog_item).ci_original_types) :: list.list(parse_tree.prog_data.mer_type), ((parse_tree.prog_item).ci_deriving_class) :: list.list(parse_tree.prog_data.prog_constraint), ((parse_tree.prog_item).ci_method_instances) :: parse_tree.prog_data.instance_body, ((parse_tree.prog_item).ci_varset) :: parse_tree.prog_data.tvarset, ((parse_tree.prog_item).ci_module_containing_instance) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).ci_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).ci_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_maybe_attrs
+    --->    item_origin_user 
+    ;       item_origin_compiler(parse_tree.prog_item.item_compiler_attributes).
+:- type item_mode_decl_info
+    --->    item_mode_decl_info(((parse_tree.prog_item).pfm_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).pfm_p_or_f) :: maybe.maybe(mdbcomp.prim_data.pred_or_func), ((parse_tree.prog_item).pfm_arg_modes) :: list.list(parse_tree.prog_data.mer_mode), ((parse_tree.prog_item).pfm_maybe_with_inst) :: maybe.maybe(parse_tree.prog_data.mer_inst), ((parse_tree.prog_item).pfm_maybe_detism) :: maybe.maybe(parse_tree.prog_data.determinism), ((parse_tree.prog_item).pfm_instvarset) :: parse_tree.prog_data.inst_varset, ((parse_tree.prog_item).pfm_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).pfm_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_mode_defn_info == parse_tree.prog_item.item_mode_defn_info_general(parse_tree.prog_item.maybe_abstract_mode_defn).
+:- type item_mode_defn_info_abstract == parse_tree.prog_item.item_mode_defn_info_general(parse_tree.prog_item.no_mode_defn).
+:- type item_mode_defn_info_eqv == parse_tree.prog_item.item_mode_defn_info_general(parse_tree.prog_data.mode_defn).
+:- type item_mode_defn_info_general(T)
+    --->    item_mode_defn_info(((parse_tree.prog_item).md_mode_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).md_mode_args) :: list.list(parse_tree.prog_data.inst_var), ((parse_tree.prog_item).md_mode_defn) :: T, ((parse_tree.prog_item).md_varset) :: parse_tree.prog_data.inst_varset, ((parse_tree.prog_item).md_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).md_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_mutable_info
+    --->    item_mutable_info(((parse_tree.prog_item).mut_name) :: string, ((parse_tree.prog_item).mut_orig_type) :: parse_tree.prog_data.mer_type, ((parse_tree.prog_item).mut_type) :: parse_tree.prog_data.mer_type, ((parse_tree.prog_item).mut_orig_inst) :: parse_tree.prog_data.mer_inst, ((parse_tree.prog_item).mut_inst) :: parse_tree.prog_data.mer_inst, ((parse_tree.prog_item).mut_init_value) :: parse_tree.prog_data.prog_term, ((parse_tree.prog_item).mut_init_value_varset) :: parse_tree.prog_data.prog_varset, ((parse_tree.prog_item).mut_attrs) :: parse_tree.prog_item.mutable_var_attributes, ((parse_tree.prog_item).mut_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).mut_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_pred_decl_info
+    --->    item_pred_decl_info(((parse_tree.prog_item).pf_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).pf_p_or_f) :: mdbcomp.prim_data.pred_or_func, ((parse_tree.prog_item).pf_arg_decls) :: parse_tree.prog_item.types_and_maybe_modes, ((parse_tree.prog_item).pf_maybe_with_type) :: maybe.maybe(parse_tree.prog_data.mer_type), ((parse_tree.prog_item).pf_maybe_with_inst) :: maybe.maybe(parse_tree.prog_data.mer_inst), ((parse_tree.prog_item).pf_maybe_detism) :: maybe.maybe(parse_tree.prog_data.determinism), ((parse_tree.prog_item).pf_maybe_attrs) :: parse_tree.prog_item.item_maybe_attrs, ((parse_tree.prog_item).pf_tvarset) :: parse_tree.prog_data.tvarset, ((parse_tree.prog_item).pf_instvarset) :: parse_tree.prog_data.inst_varset, ((parse_tree.prog_item).pf_existqvars) :: parse_tree.prog_data.existq_tvars, ((parse_tree.prog_item).pf_purity) :: parse_tree.prog_data.purity, ((parse_tree.prog_item).pf_constraints) :: parse_tree.prog_data.univ_exist_constraints, ((parse_tree.prog_item).pf_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).pf_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_promise_info
+    --->    item_promise_info(((parse_tree.prog_item).prom_type) :: parse_tree.prog_data.promise_type, ((parse_tree.prog_item).prom_clause) :: parse_tree.prog_item.goal, ((parse_tree.prog_item).prom_varset) :: parse_tree.prog_data.prog_varset, ((parse_tree.prog_item).prom_univ_quant_vars) :: list.list(parse_tree.prog_data.prog_var), ((parse_tree.prog_item).prom_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).prom_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_type_defn_info == parse_tree.prog_item.item_type_defn_info_general(parse_tree.prog_data.type_defn).
+:- type item_type_defn_info_abstract == parse_tree.prog_item.item_type_defn_info_general(parse_tree.prog_data.type_details_abstract).
+:- type item_type_defn_info_du == parse_tree.prog_item.item_type_defn_info_general(parse_tree.prog_data.type_details_du).
+:- type item_type_defn_info_eqv == parse_tree.prog_item.item_type_defn_info_general(parse_tree.prog_data.type_details_eqv).
+:- type item_type_defn_info_foreign == parse_tree.prog_item.item_type_defn_info_general(parse_tree.prog_data.type_details_foreign_generic).
+:- type item_type_defn_info_general(T)
+    --->    item_type_defn_info(((parse_tree.prog_item).td_ctor_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).td_ctor_args) :: list.list(parse_tree.prog_data.type_param), ((parse_tree.prog_item).td_ctor_defn) :: T, ((parse_tree.prog_item).td_tvarset) :: parse_tree.prog_data.tvarset, ((parse_tree.prog_item).td_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).td_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_type_defn_info_solver == parse_tree.prog_item.item_type_defn_info_general(parse_tree.prog_data.type_details_solver).
+:- type item_type_defn_info_sub == parse_tree.prog_item.item_type_defn_info_general(parse_tree.prog_data.type_details_sub).
+:- type item_type_repn_info == parse_tree.prog_item.item_type_repn_info_general(parse_tree.prog_item.type_ctor_repn_info).
+:- type item_type_repn_info_eqv == parse_tree.prog_item.item_type_repn_info_general(parse_tree.prog_data.mer_type).
+:- type item_type_repn_info_general(T)
+    --->    item_type_repn_info(((parse_tree.prog_item).tr_ctor) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).tr_ctor_arg_tvars) :: list.list(parse_tree.prog_data.tvar), ((parse_tree.prog_item).tr_ctor_repn_info) :: T, ((parse_tree.prog_item).tr_tvarset) :: parse_tree.prog_data.tvarset, ((parse_tree.prog_item).tr_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).tr_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type item_type_repn_info_subtype == parse_tree.prog_item.item_type_repn_info_general(parse_tree.prog_data.type_ctor).
+:- type item_typeclass_info
+    --->    item_typeclass_info(((parse_tree.prog_item).tc_class_name) :: parse_tree.prog_data.class_name, ((parse_tree.prog_item).tc_class_params) :: list.list(parse_tree.prog_data.tvar), ((parse_tree.prog_item).tc_superclasses) :: list.list(parse_tree.prog_data.prog_constraint), ((parse_tree.prog_item).tc_fundeps) :: list.list(parse_tree.prog_data.prog_fundep), ((parse_tree.prog_item).tc_class_methods) :: parse_tree.prog_data.class_interface, ((parse_tree.prog_item).tc_varset) :: parse_tree.prog_data.tvarset, ((parse_tree.prog_item).tc_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).tc_seq_num) :: parse_tree.prog_data.item_seq_num).
+:- type local_arg_repn
+    --->    local_partial(((parse_tree.prog_item).lp_shift) :: uint, ((parse_tree.prog_item).lp_fill) :: parse_tree.prog_item.fill_kind_size)
+    ;       local_none .
+:- type lsectag_word_or_size
+    --->    lsectag_rest_of_word(uint8)
+    ;       lsectag_part_of_word(uint8).
+:- type maybe_abstract_inst_defn
+    --->    abstract_inst_defn 
+    ;       nonabstract_inst_defn(parse_tree.prog_data.inst_defn).
+:- type maybe_abstract_mode_defn
+    --->    abstract_mode_defn 
+    ;       nonabstract_mode_defn(parse_tree.prog_data.mode_defn).
+:- type maybe_implicit_import_and_or_use
+    --->    explicit_avail(parse_tree.prog_item.section_import_and_or_use)
+    ;       implicit_avail(parse_tree.prog_item.implicit_import_or_use, maybe.maybe(parse_tree.prog_item.section_import_and_or_use)).
+:- type maybe_only_constants
+    --->    not_only_plain_constants 
+    ;       only_plain_constants(((parse_tree.prog_item).opc_head_name) :: string, ((parse_tree.prog_item).opc_tail_names) :: list.list(string)).
+:- type maybe_version_numbers
+    --->    no_version_numbers 
+    ;       version_numbers(recompilation.module_item_version_numbers).
+:- type mode_ctor_all_defns
+    --->    mode_ctor_all_defns(((parse_tree.prog_item).mcad_abstract) :: list.list(parse_tree.prog_item.item_mode_defn_info_abstract), ((parse_tree.prog_item).mcad_eqv) :: list.list(parse_tree.prog_item.item_mode_defn_info_eqv)).
+:- type mode_ctor_checked_defn
+    --->    checked_defn_mode(parse_tree.prog_item.std_mode_defn, parse_tree.prog_item.src_defns_mode).
+:- type mode_ctor_checked_map == map.map(parse_tree.prog_data.mode_ctor, parse_tree.prog_item.mode_ctor_checked_defn).
+:- type mode_ctor_defn_map == map.map(parse_tree.prog_data.mode_ctor, parse_tree.prog_item.mode_ctor_all_defns).
+:- type modes_or_arity
+    --->    moa_modes(list.list(parse_tree.prog_data.mer_mode))
+    ;       moa_arity(parse_tree.prog_data.user_arity).
+:- type module_component
+    --->    mc_section(((parse_tree.prog_item).mcs_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).mcs_section_kind) :: parse_tree.prog_item.module_section, ((parse_tree.prog_item).mcs_section_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).mcs_includes) :: cord.cord(parse_tree.prog_item.item_include), ((parse_tree.prog_item).mcs_avails) :: cord.cord(parse_tree.prog_item.item_avail), ((parse_tree.prog_item).pti_fims) :: cord.cord(parse_tree.prog_item.item_fim), ((parse_tree.prog_item).mcs_items) :: cord.cord(parse_tree.prog_item.item))
+    ;       mc_nested_submodule(((parse_tree.prog_item).mcns_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).mcns_in_section_kind) :: parse_tree.prog_item.module_section, ((parse_tree.prog_item).mcns_in_section_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).mcns_submodule) :: parse_tree.prog_item.parse_tree_src).
+:- type module_name_context == map.map(mdbcomp.sym_name.module_name, parse_tree.prog_data.prog_context).
+:- type module_names_contexts == one_or_more_map.one_or_more_map(mdbcomp.sym_name.module_name, parse_tree.prog_data.prog_context).
+:- type module_section
+    --->    ms_interface 
+    ;       ms_implementation .
+:- type more_nonconstant_local_cell_repn
+    --->    more_nonconstant_local_cell_repn(((parse_tree.prog_item).mnclcr_sectag) :: parse_tree.prog_item.cell_local_sectag, ((parse_tree.prog_item).mnclcr_arg_repns) :: one_or_more.one_or_more(parse_tree.prog_item.local_arg_repn)).
+:- type more_nonconstant_remote_cell_repn
+    --->    more_nonconstant_remote_cell_repn(((parse_tree.prog_item).ncrcr_ptag) :: parse_tree.prog_data.ptag, ((parse_tree.prog_item).ncrcr_sectag) :: parse_tree.prog_item.cell_remote_sectag, ((parse_tree.prog_item).ncrcr_arg_repns) :: one_or_more.one_or_more(parse_tree.prog_item.remote_arg_repn)).
+:- type more_nonconstant_repn
+    --->    mncr_local_cell(parse_tree.prog_item.more_nonconstant_local_cell_repn)
+    ;       mncr_remote_cell(parse_tree.prog_item.more_nonconstant_remote_cell_repn)
+    ;       mncr_direct_arg(parse_tree.prog_data.ptag).
+:- type mutable_attach_to_io_state
+    --->    mutable_dont_attach_to_io_state 
+    ;       mutable_attach_to_io_state .
+:- type mutable_constant
+    --->    mutable_not_constant 
+    ;       mutable_constant .
+:- type mutable_maybe_constant
+    --->    mutable_is_constant 
+    ;       mutable_is_not_constant(parse_tree.prog_item.mutable_attach_to_io_state, parse_tree.prog_item.mutable_maybe_thread_local).
+:- type mutable_maybe_thread_local
+    --->    mutable_is_not_thread_local(parse_tree.prog_item.mutable_trailed)
+    ;       mutable_is_thread_local .
+:- type mutable_thread_local
+    --->    mutable_not_thread_local 
+    ;       mutable_thread_local .
+:- type mutable_trailed
+    --->    mutable_untrailed 
+    ;       mutable_trailed .
+:- type mutable_var_attributes
+    --->    mutable_var_attributes(((parse_tree.prog_item).mutable_foreign_names) :: map.map(libs.globals.foreign_language, string), ((parse_tree.prog_item).mutable_constant) :: parse_tree.prog_item.mutable_maybe_constant).
+:- type no_inst_defn
+    --->    no_inst_defn .
+:- type no_mode_defn
+    --->    no_mode_defn .
+:- type notag_repn
+    --->    notag_repn(((parse_tree.prog_item).notag_functor_name) :: string, ((parse_tree.prog_item).notag_functor_arg_type) :: parse_tree.prog_data.mer_type, ((parse_tree.prog_item).notag_foreign) :: parse_tree.prog_item.c_j_cs_repn).
+:- type only_nonconstant_local_cell_repn
+    --->    only_nonconstant_local_cell_repn(((parse_tree.prog_item).onclcr_arg_repns) :: one_or_more.one_or_more(parse_tree.prog_item.local_arg_repn)).
+:- type only_nonconstant_remote_cell_repn
+    --->    only_nonconstant_remote_cell_repn(((parse_tree.prog_item).ncrcr_arg_repns) :: one_or_more.one_or_more(parse_tree.prog_item.remote_arg_repn)).
+:- type only_nonconstant_repn
+    --->    oncr_local_cell(parse_tree.prog_item.only_nonconstant_local_cell_repn)
+    ;       oncr_remote_cell(parse_tree.prog_item.only_nonconstant_remote_cell_repn).
+:- type parse_tree_int0
+    --->    parse_tree_int0(((parse_tree.prog_item).pti0_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).pti0_module_name_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).pti0_maybe_version_numbers) :: parse_tree.prog_item.maybe_version_numbers, ((parse_tree.prog_item).pti0_include_map) :: parse_tree.prog_item.include_module_map, ((parse_tree.prog_item).pti0_import_use_map) :: parse_tree.prog_item.section_import_and_or_use_map, ((parse_tree.prog_item).pti0_int_fims) :: set.set(parse_tree.prog_data_foreign.fim_spec), ((parse_tree.prog_item).pti0_imp_fims) :: set.set(parse_tree.prog_data_foreign.fim_spec), ((parse_tree.prog_item).pti0_type_defns) :: parse_tree.prog_item.type_ctor_checked_map, ((parse_tree.prog_item).pti0_inst_defns) :: parse_tree.prog_item.inst_ctor_checked_map, ((parse_tree.prog_item).pti1_mode_defns) :: parse_tree.prog_item.mode_ctor_checked_map, ((parse_tree.prog_item).pti0_int_typeclasses) :: list.list(parse_tree.prog_item.item_typeclass_info), ((parse_tree.prog_item).pti0_int_instances) :: list.list(parse_tree.prog_item.item_abstract_instance_info), ((parse_tree.prog_item).pti0_int_pred_decls) :: list.list(parse_tree.prog_item.item_pred_decl_info), ((parse_tree.prog_item).pti0_int_mode_decls) :: list.list(parse_tree.prog_item.item_mode_decl_info), ((parse_tree.prog_item).pti0_int_decl_pragmas) :: list.list(parse_tree.prog_item.item_decl_pragma_info), ((parse_tree.prog_item).pti0_int_decl_markers) :: list.list(parse_tree.prog_item.item_decl_marker_info), ((parse_tree.prog_item).pti0_int_promises) :: list.list(parse_tree.prog_item.item_promise_info), ((parse_tree.prog_item).pti0_imp_typeclasses) :: list.list(parse_tree.prog_item.item_typeclass_info), ((parse_tree.prog_item).pti0_imp_instances) :: list.list(parse_tree.prog_item.item_abstract_instance_info), ((parse_tree.prog_item).pti0_imp_pred_decls) :: list.list(parse_tree.prog_item.item_pred_decl_info), ((parse_tree.prog_item).pti0_imp_mode_decls) :: list.list(parse_tree.prog_item.item_mode_decl_info), ((parse_tree.prog_item).pti0_imp_decl_pragmas) :: list.list(parse_tree.prog_item.item_decl_pragma_info), ((parse_tree.prog_item).pti0_imp_decl_markers) :: list.list(parse_tree.prog_item.item_decl_marker_info), ((parse_tree.prog_item).pti0_imp_promises) :: list.list(parse_tree.prog_item.item_promise_info)).
+:- type parse_tree_int1
+    --->    parse_tree_int1(((parse_tree.prog_item).pti1_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).pti1_module_name_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).pti1_maybe_version_numbers) :: parse_tree.prog_item.maybe_version_numbers, ((parse_tree.prog_item).pti1_include_map) :: parse_tree.prog_item.include_module_map, ((parse_tree.prog_item).pti1_use_map) :: parse_tree.prog_item.section_use_map, ((parse_tree.prog_item).pti1_int_fims) :: set.set(parse_tree.prog_data_foreign.fim_spec), ((parse_tree.prog_item).pti1_imp_fims) :: set.set(parse_tree.prog_data_foreign.fim_spec), ((parse_tree.prog_item).pti1_type_defns) :: parse_tree.prog_item.type_ctor_checked_map, ((parse_tree.prog_item).pti1_inst_defns) :: parse_tree.prog_item.inst_ctor_checked_map, ((parse_tree.prog_item).pti1_mode_defns) :: parse_tree.prog_item.mode_ctor_checked_map, ((parse_tree.prog_item).pti1_int_typeclasses) :: list.list(parse_tree.prog_item.item_typeclass_info), ((parse_tree.prog_item).pti1_int_instances) :: list.list(parse_tree.prog_item.item_abstract_instance_info), ((parse_tree.prog_item).pti1_int_pred_decls) :: list.list(parse_tree.prog_item.item_pred_decl_info), ((parse_tree.prog_item).pti1_int_mode_decls) :: list.list(parse_tree.prog_item.item_mode_decl_info), ((parse_tree.prog_item).pti1_int_decl_pragmas) :: list.list(parse_tree.prog_item.item_decl_pragma_info), ((parse_tree.prog_item).pti1_int_decl_markers) :: list.list(parse_tree.prog_item.item_decl_marker_info), ((parse_tree.prog_item).pti1_int_promises) :: list.list(parse_tree.prog_item.item_promise_info), ((parse_tree.prog_item).pti1_type_repns) :: parse_tree.prog_item.type_ctor_repn_map, ((parse_tree.prog_item).pti1_imp_typeclasses) :: list.list(parse_tree.prog_item.item_abstract_typeclass_info)).
+:- type parse_tree_int2
+    --->    parse_tree_int2(((parse_tree.prog_item).pti2_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).pti2_module_name_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).pti2_maybe_version_numbers) :: parse_tree.prog_item.maybe_version_numbers, ((parse_tree.prog_item).pti2_int_includes) :: parse_tree.prog_item.int_include_module_map, ((parse_tree.prog_item).pti2_use_map) :: parse_tree.prog_item.section_use_map, ((parse_tree.prog_item).pti2_int_fims) :: set.set(parse_tree.prog_data_foreign.fim_spec), ((parse_tree.prog_item).pti2_imp_fims) :: set.set(parse_tree.prog_data_foreign.fim_spec), ((parse_tree.prog_item).pti2_type_defns) :: parse_tree.prog_item.type_ctor_checked_map, ((parse_tree.prog_item).pti2_inst_defns) :: parse_tree.prog_item.inst_ctor_checked_map, ((parse_tree.prog_item).pti2_mode_defns) :: parse_tree.prog_item.mode_ctor_checked_map, ((parse_tree.prog_item).pti2_int_typeclasses) :: list.list(parse_tree.prog_item.item_typeclass_info), ((parse_tree.prog_item).pti2_int_instances) :: list.list(parse_tree.prog_item.item_abstract_instance_info), ((parse_tree.prog_item).pti2_type_repns) :: parse_tree.prog_item.type_ctor_repn_map).
+:- type parse_tree_int3
+    --->    parse_tree_int3(((parse_tree.prog_item).pti3_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).pti3_module_name_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).pti3_int_includes) :: parse_tree.prog_item.int_include_module_map, ((parse_tree.prog_item).pti3_int_import_map) :: parse_tree.prog_item.int_import_map, ((parse_tree.prog_item).pti3_type_defns) :: parse_tree.prog_item.type_ctor_checked_map, ((parse_tree.prog_item).pti3_inst_defns) :: parse_tree.prog_item.inst_ctor_checked_map, ((parse_tree.prog_item).pti3_mode_defns) :: parse_tree.prog_item.mode_ctor_checked_map, ((parse_tree.prog_item).pti3_int_typeclasses) :: list.list(parse_tree.prog_item.item_abstract_typeclass_info), ((parse_tree.prog_item).pti3_int_instances) :: list.list(parse_tree.prog_item.item_abstract_instance_info), ((parse_tree.prog_item).pti3_int_type_repns) :: parse_tree.prog_item.type_ctor_repn_map).
+:- type parse_tree_module_src
+    --->    parse_tree_module_src(((parse_tree.prog_item).ptms_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).ptms_module_name_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).ptms_include_map) :: parse_tree.prog_item.include_module_map, ((parse_tree.prog_item).ptms_import_use_map) :: parse_tree.prog_item.import_and_or_use_map, ((parse_tree.prog_item).ptms_int_fims) :: map.map(parse_tree.prog_data_foreign.fim_spec, parse_tree.prog_data.prog_context), ((parse_tree.prog_item).ptms_imp_fims) :: map.map(parse_tree.prog_data_foreign.fim_spec, parse_tree.prog_data.prog_context), ((parse_tree.prog_item).ptms_int_self_fim_langs) :: set.set(libs.globals.foreign_language), ((parse_tree.prog_item).ptms_imp_self_fim_langs) :: set.set(libs.globals.foreign_language), ((parse_tree.prog_item).ptms_type_defns) :: parse_tree.prog_item.type_ctor_checked_map, ((parse_tree.prog_item).ptms_inst_defns) :: parse_tree.prog_item.inst_ctor_checked_map, ((parse_tree.prog_item).ptms_mode_defns) :: parse_tree.prog_item.mode_ctor_checked_map, ((parse_tree.prog_item).ptms_type_specs) :: list.list(parse_tree.error_spec.error_spec), ((parse_tree.prog_item).ptms_inst_mode_specs) :: list.list(parse_tree.error_spec.error_spec), ((parse_tree.prog_item).ptms_int_typeclasses) :: list.list(parse_tree.prog_item.item_typeclass_info), ((parse_tree.prog_item).ptms_int_instances) :: list.list(parse_tree.prog_item.item_instance_info), ((parse_tree.prog_item).ptms_int_pred_decls) :: list.list(parse_tree.prog_item.item_pred_decl_info), ((parse_tree.prog_item).ptms_int_mode_decls) :: list.list(parse_tree.prog_item.item_mode_decl_info), ((parse_tree.prog_item).ptms_int_decl_pragmas) :: list.list(parse_tree.prog_item.item_decl_pragma_info), ((parse_tree.prog_item).ptms_int_decl_markers) :: list.list(parse_tree.prog_item.item_decl_marker_info), ((parse_tree.prog_item).ptms_int_promises) :: list.list(parse_tree.prog_item.item_promise_info), ((parse_tree.prog_item).ptms_int_bad_clauses) :: set.set(parse_tree.prog_data.pred_pf_name_arity), ((parse_tree.prog_item).ptms_imp_typeclasses) :: list.list(parse_tree.prog_item.item_typeclass_info), ((parse_tree.prog_item).ptms_imp_instances) :: list.list(parse_tree.prog_item.item_instance_info), ((parse_tree.prog_item).ptms_imp_pred_decls) :: list.list(parse_tree.prog_item.item_pred_decl_info), ((parse_tree.prog_item).ptms_imp_mode_decls) :: list.list(parse_tree.prog_item.item_mode_decl_info), ((parse_tree.prog_item).ptms_imp_clauses) :: list.list(parse_tree.prog_item.item_clause_info), ((parse_tree.prog_item).ptms_imp_foreign_procs) :: list.list(parse_tree.prog_item.item_foreign_proc_info), ((parse_tree.prog_item).ptms_imp_foreign_export_enums) :: list.list(parse_tree.prog_item.item_foreign_export_enum_info), ((parse_tree.prog_item).ptms_imp_decl_pragmas) :: list.list(parse_tree.prog_item.item_decl_pragma_info), ((parse_tree.prog_item).ptms_imp_decl_markers) :: list.list(parse_tree.prog_item.item_decl_marker_info), ((parse_tree.prog_item).ptms_imp_impl_pragmas) :: list.list(parse_tree.prog_item.item_impl_pragma_info), ((parse_tree.prog_item).ptms_imp_impl_markers) :: list.list(parse_tree.prog_item.item_impl_marker_info), ((parse_tree.prog_item).ptms_imp_promises) :: list.list(parse_tree.prog_item.item_promise_info), ((parse_tree.prog_item).ptms_imp_initialises) :: list.list(parse_tree.prog_item.item_initialise_info), ((parse_tree.prog_item).ptms_imp_finalises) :: list.list(parse_tree.prog_item.item_finalise_info), ((parse_tree.prog_item).ptms_imp_mutables) :: list.list(parse_tree.prog_item.item_mutable_info)).
+:- type parse_tree_plain_opt
+    --->    parse_tree_plain_opt(((parse_tree.prog_item).ptpo_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).ptpo_module_name_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).ptpo_uses) :: parse_tree.prog_item.module_names_contexts, ((parse_tree.prog_item).ptpo_fims) :: set.set(parse_tree.prog_data_foreign.fim_spec), ((parse_tree.prog_item).ptpo_type_defns) :: list.list(parse_tree.prog_item.item_type_defn_info), ((parse_tree.prog_item).ptpo_foreign_enums) :: list.list(parse_tree.prog_item.item_foreign_enum_info), ((parse_tree.prog_item).ptpo_inst_defns) :: list.list(parse_tree.prog_item.item_inst_defn_info), ((parse_tree.prog_item).ptpo_mode_defns) :: list.list(parse_tree.prog_item.item_mode_defn_info), ((parse_tree.prog_item).ptpo_typeclasses) :: list.list(parse_tree.prog_item.item_typeclass_info), ((parse_tree.prog_item).ptpo_instances) :: list.list(parse_tree.prog_item.item_instance_info), ((parse_tree.prog_item).ptpo_pred_decls) :: list.list(parse_tree.prog_item.item_pred_decl_info), ((parse_tree.prog_item).ptpo_mode_decls) :: list.list(parse_tree.prog_item.item_mode_decl_info), ((parse_tree.prog_item).ptpo_clauses) :: list.list(parse_tree.prog_item.item_clause_info), ((parse_tree.prog_item).ptpo_foreign_procs) :: list.list(parse_tree.prog_item.item_foreign_proc_info), ((parse_tree.prog_item).ptpo_promises) :: list.list(parse_tree.prog_item.item_promise_info), ((parse_tree.prog_item).ptpo_decl_markers) :: list.list(parse_tree.prog_item.item_decl_marker_info_opt), ((parse_tree.prog_item).ptpo_impl_markers) :: list.list(parse_tree.prog_item.item_impl_marker_info_opt), ((parse_tree.prog_item).ptpo_type_specs) :: list.list(parse_tree.prog_item.decl_pragma_type_spec_info), ((parse_tree.prog_item).ptpo_unused_args) :: list.list(parse_tree.prog_item.gen_pragma_unused_args_info), ((parse_tree.prog_item).ptpo_termination) :: list.list(parse_tree.prog_item.decl_pragma_termination_info), ((parse_tree.prog_item).ptpo_termination2) :: list.list(parse_tree.prog_item.decl_pragma_termination2_info), ((parse_tree.prog_item).ptpo_exceptions) :: list.list(parse_tree.prog_item.gen_pragma_exceptions_info), ((parse_tree.prog_item).ptpo_trailing) :: list.list(parse_tree.prog_item.gen_pragma_trailing_info), ((parse_tree.prog_item).ptpo_mm_tabling) :: list.list(parse_tree.prog_item.gen_pragma_mm_tabling_info), ((parse_tree.prog_item).ptpo_struct_sharing) :: list.list(parse_tree.prog_item.decl_pragma_struct_sharing_info), ((parse_tree.prog_item).ptpo_struct_reuse) :: list.list(parse_tree.prog_item.decl_pragma_struct_reuse_info)).
+:- type parse_tree_src
+    --->    parse_tree_src(((parse_tree.prog_item).pts_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).pts_module_name_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).pts_components) :: cord.cord(parse_tree.prog_item.module_component)).
+:- type parse_tree_trans_opt
+    --->    parse_tree_trans_opt(((parse_tree.prog_item).ptto_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.prog_item).ptto_module_name_context) :: parse_tree.prog_data.prog_context, ((parse_tree.prog_item).ptto_termination) :: list.list(parse_tree.prog_item.decl_pragma_termination_info), ((parse_tree.prog_item).ptto_termination2) :: list.list(parse_tree.prog_item.decl_pragma_termination2_info), ((parse_tree.prog_item).ptto_exceptions) :: list.list(parse_tree.prog_item.gen_pragma_exceptions_info), ((parse_tree.prog_item).ptto_trailing) :: list.list(parse_tree.prog_item.gen_pragma_trailing_info), ((parse_tree.prog_item).ptto_mm_tabling) :: list.list(parse_tree.prog_item.gen_pragma_mm_tabling_info), ((parse_tree.prog_item).ptto_struct_sharing) :: list.list(parse_tree.prog_item.decl_pragma_struct_sharing_info), ((parse_tree.prog_item).ptto_struct_reuse) :: list.list(parse_tree.prog_item.decl_pragma_struct_reuse_info)).
+:- type plain_or_dot_var
+    --->    podv_plain(parse_tree.prog_data.prog_var)
+    ;       podv_dot(parse_tree.prog_data.prog_var).
+:- type pred_func_or_unknown
+    --->    pfu_predicate 
+    ;       pfu_function 
+    ;       pfu_unknown .
+:- type pred_func_or_unknown_maybe_modes
+    --->    pfumm_predicate(parse_tree.prog_item.modes_or_arity)
+    ;       pfumm_function(parse_tree.prog_item.modes_or_arity)
+    ;       pfumm_unknown(parse_tree.prog_data.user_arity).
+:- type pred_func_or_unknown_pf =< parse_tree.prog_item.pred_func_or_unknown
+    --->    pfu_predicate 
+    ;       pfu_function .
+:- type pred_or_proc_pfumm_name
+    --->    pred_or_proc_pfumm_name(((parse_tree.prog_item).ppfummn_pfumm) :: parse_tree.prog_item.pred_func_or_unknown_maybe_modes, ((parse_tree.prog_item).ppfummn_pred_name) :: mdbcomp.sym_name.sym_name).
+:- type pred_pfu_name_arity
+    --->    pred_pfu_name_arity(((parse_tree.prog_item).ppfuna_pfu) :: parse_tree.prog_item.pred_func_or_unknown, ((parse_tree.prog_item).ppfuna_pred_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).ppfuna_arity) :: parse_tree.prog_data.user_arity).
+:- type pred_pfu_name_arity_pf =< parse_tree.prog_item.pred_pfu_name_arity
+    --->    pred_pfu_name_arity(((parse_tree.prog_item).ppfuna_pfu) :: parse_tree.prog_item.pred_func_or_unknown_pf, ((parse_tree.prog_item).ppfuna_pred_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).ppfuna_arity) :: parse_tree.prog_data.user_arity).
+:- type proc_pf_name_arity_mn
+    --->    proc_pf_name_arity_mn(((parse_tree.prog_item).ppfnamn_pf) :: mdbcomp.prim_data.pred_or_func, ((parse_tree.prog_item).ppfnamn_pred_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).ppfnamn_arity) :: parse_tree.prog_data.user_arity, ((parse_tree.prog_item).ppfnamn_mode_num) :: parse_tree.prog_data_pragma.mode_num).
+:- type proc_pf_name_modes
+    --->    proc_pf_name_modes(((parse_tree.prog_item).ppfnm_pf) :: mdbcomp.prim_data.pred_or_func, ((parse_tree.prog_item).ppfnm_pred_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_item).ppfnm_arity) :: list.list(parse_tree.prog_data.mer_mode)).
+:- type quant_type
+    --->    quant_some 
+    ;       quant_all .
+:- type quant_vars_kind
+    --->    quant_ordinary_vars 
+    ;       quant_state_vars .
+:- type read_why_int0
+    --->    rwi0_section 
+    ;       rwi0_opt .
+:- type read_why_int1
+    --->    rwi1_int_import 
+    ;       rwi1_int_use 
+    ;       rwi1_imp_import 
+    ;       rwi1_imp_use 
+    ;       rwi1_int_use_imp_import 
+    ;       rwi1_opt 
+    ;       rwi1_type_repn .
+:- type read_why_int2
+    --->    rwi2_int_use 
+    ;       rwi2_imp_use 
+    ;       rwi2_abstract 
+    ;       rwi2_opt .
+:- type read_why_int3
+    --->    rwi3_direct_ancestor_import 
+    ;       rwi3_direct_int_import 
+    ;       rwi3_direct_imp_import 
+    ;       rwi3_direct_ancestor_use 
+    ;       rwi3_direct_int_use 
+    ;       rwi3_direct_imp_use 
+    ;       rwi3_direct_int_use_imp_import 
+    ;       rwi3_indirect_int_use 
+    ;       rwi3_indirect_imp_use .
+:- type remote_arg_repn
+    --->    remote_full(((parse_tree.prog_item).rf_arg_only_offset) :: parse_tree.prog_data.arg_only_offset, ((parse_tree.prog_item).rf_cell_offset) :: parse_tree.prog_data.cell_offset)
+    ;       remote_double(((parse_tree.prog_item).rd_arg_only_offset) :: parse_tree.prog_data.arg_only_offset, ((parse_tree.prog_item).rd_cell_offset) :: parse_tree.prog_data.cell_offset, ((parse_tree.prog_item).rd_kind) :: parse_tree.prog_data.double_word_kind)
+    ;       remote_partial_first(((parse_tree.prog_item).rpf_arg_only_offset) :: parse_tree.prog_data.arg_only_offset, ((parse_tree.prog_item).rpf_cell_offset) :: parse_tree.prog_data.cell_offset, ((parse_tree.prog_item).rpf_shift) :: uint8, ((parse_tree.prog_item).rpf_fill) :: parse_tree.prog_item.fill_kind_size)
+    ;       remote_partial_shifted(((parse_tree.prog_item).rps_arg_only_offset) :: parse_tree.prog_data.arg_only_offset, ((parse_tree.prog_item).rps_cell_offset) :: parse_tree.prog_data.cell_offset, ((parse_tree.prog_item).rps_shift) :: uint8, ((parse_tree.prog_item).rps_fill) :: parse_tree.prog_item.fill_kind_size)
+    ;       remote_none_shifted(((parse_tree.prog_item).rns_arg_only_offset) :: parse_tree.prog_data.arg_only_offset, ((parse_tree.prog_item).rns_cell_offset) :: parse_tree.prog_data.cell_offset)
+    ;       remote_none_nowhere .
+:- type rsectag_word_or_size
+    --->    rsectag_full_word 
+    ;       rsectag_part_of_word(uint8).
+:- type section_import_and_or_use
+    --->    int_import(parse_tree.prog_data.prog_context)
+    ;       int_use(parse_tree.prog_data.prog_context)
+    ;       imp_import(parse_tree.prog_data.prog_context)
+    ;       imp_use(parse_tree.prog_data.prog_context)
+    ;       int_use_imp_import(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_context).
+:- type section_import_and_or_use_map == map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.section_import_and_or_use).
+:- type section_use =< parse_tree.prog_item.section_import_and_or_use
+    --->    int_use(parse_tree.prog_data.prog_context)
+    ;       imp_use(parse_tree.prog_data.prog_context).
+:- type section_use_map == map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.section_use).
+:- type solver_type_defn
+    --->    solver_type_abstract(parse_tree.prog_item.abstract_solver_type_status, parse_tree.prog_item.item_type_defn_info_abstract)
+    ;       solver_type_full(maybe.maybe(parse_tree.prog_item.item_type_defn_info_abstract), parse_tree.prog_item.item_type_defn_info_solver).
+:- type src_defns_inst
+    --->    src_defns_inst(maybe.maybe(parse_tree.prog_item.item_inst_defn_info), maybe.maybe(parse_tree.prog_item.item_inst_defn_info)).
+:- type src_defns_mode
+    --->    src_defns_mode(maybe.maybe(parse_tree.prog_item.item_mode_defn_info), maybe.maybe(parse_tree.prog_item.item_mode_defn_info)).
+:- type src_defns_solver
+    --->    src_defns_solver(maybe.maybe(parse_tree.prog_item.item_type_defn_info), maybe.maybe(parse_tree.prog_item.item_type_defn_info)).
+:- type src_defns_std
+    --->    src_defns_std(list.list(parse_tree.prog_item.item_type_defn_info), list.list(parse_tree.prog_item.item_type_defn_info), list.list(parse_tree.prog_item.item_foreign_enum_info)).
+:- type std_abs_type_status
+    --->    std_abs_type_ft_exported 
+    ;       std_abs_type_abstract_exported 
+    ;       std_abs_type_all_private .
+:- type std_du_type_status
+    --->    std_du_type_mer_ft_exported 
+    ;       std_du_type_mer_exported 
+    ;       std_du_type_abstract_exported 
+    ;       std_du_type_all_private .
+:- type std_eqv_type_status
+    --->    std_eqv_type_mer_exported 
+    ;       std_eqv_type_abstract_exported 
+    ;       std_eqv_type_all_private .
+:- type std_inst_defn
+    --->    std_inst_defn(parse_tree.prog_item.std_inst_status, parse_tree.prog_item.item_inst_defn_info).
+:- type std_inst_status
+    --->    std_inst_exported 
+    ;       std_inst_abstract_exported 
+    ;       std_inst_all_private .
+:- type std_mode_defn
+    --->    std_mode_defn(parse_tree.prog_item.std_mode_status, parse_tree.prog_item.item_mode_defn_info).
+:- type std_mode_status
+    --->    std_mode_exported 
+    ;       std_mode_abstract_exported 
+    ;       std_mode_all_private .
+:- type std_subtype_status
+    --->    std_sub_type_mer_exported 
+    ;       std_sub_type_abstract_exported 
+    ;       std_sub_type_all_private .
+:- type std_type_defn
+    --->    std_mer_type_eqv(parse_tree.prog_item.std_eqv_type_status, parse_tree.prog_item.item_type_defn_info_eqv)
+    ;       std_mer_type_subtype(parse_tree.prog_item.std_subtype_status, parse_tree.prog_item.item_type_defn_info_sub)
+    ;       std_mer_type_du_all_plain_constants(parse_tree.prog_item.std_du_type_status, parse_tree.prog_item.item_type_defn_info_du, string, list.list(string), parse_tree.prog_item.c_j_cs_maybe_defn_or_enum)
+    ;       std_mer_type_du_not_all_plain_constants(parse_tree.prog_item.std_du_type_status, parse_tree.prog_item.item_type_defn_info_du, parse_tree.prog_item.c_j_cs_maybe_defn)
+    ;       std_mer_type_abstract(parse_tree.prog_item.std_abs_type_status, parse_tree.prog_item.item_type_defn_info_abstract, parse_tree.prog_item.c_j_cs_maybe_defn).
+:- type type_ctor_all_defns
+    --->    type_ctor_all_defns(((parse_tree.prog_item).tcad_abstract_solver) :: list.list(parse_tree.prog_item.item_type_defn_info_abstract), ((parse_tree.prog_item).tcad_solver) :: list.list(parse_tree.prog_item.item_type_defn_info_solver), ((parse_tree.prog_item).tcad_abstract_std) :: list.list(parse_tree.prog_item.item_type_defn_info_abstract), ((parse_tree.prog_item).tcad_eqv) :: list.list(parse_tree.prog_item.item_type_defn_info_eqv), ((parse_tree.prog_item).tcad_du) :: list.list(parse_tree.prog_item.item_type_defn_info_du), ((parse_tree.prog_item).tcad_sub) :: list.list(parse_tree.prog_item.item_type_defn_info_sub), ((parse_tree.prog_item).tcad_foreign) :: parse_tree.prog_item.c_j_cs_defns).
+:- type type_ctor_checked_defn
+    --->    checked_defn_solver(parse_tree.prog_item.solver_type_defn, parse_tree.prog_item.src_defns_solver)
+    ;       checked_defn_std(parse_tree.prog_item.std_type_defn, parse_tree.prog_item.src_defns_std).
+:- type type_ctor_checked_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.prog_item.type_ctor_checked_defn).
+:- type type_ctor_defn_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.prog_item.type_ctor_all_defns).
+:- type type_ctor_foreign_enum_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.prog_item.c_j_cs_enums).
+:- type type_ctor_maybe_defn
+    --->    type_ctor_maybe_defn(((parse_tree.prog_item).tcmd_abstract_solver) :: maybe.maybe(parse_tree.prog_item.item_type_defn_info_abstract), ((parse_tree.prog_item).tcmd_solver) :: maybe.maybe(parse_tree.prog_item.item_type_defn_info_solver), ((parse_tree.prog_item).tcmd_abstract_std) :: maybe.maybe(parse_tree.prog_item.item_type_defn_info_abstract), ((parse_tree.prog_item).tcmd_eqv) :: maybe.maybe(parse_tree.prog_item.item_type_defn_info_eqv), ((parse_tree.prog_item).tcmd_du) :: maybe.maybe(parse_tree.prog_item.item_type_defn_info_du), ((parse_tree.prog_item).tcmd_sub) :: maybe.maybe(parse_tree.prog_item.item_type_defn_info_sub), ((parse_tree.prog_item).tcmd_foreign) :: parse_tree.prog_item.c_j_cs_maybe_defn).
+:- type type_ctor_repn_info
+    --->    tcrepn_is_word_aligned_ptr 
+    ;       tcrepn_is_eqv_to(parse_tree.prog_data.mer_type)
+    ;       tcrepn_is_subtype_of(parse_tree.prog_data.type_ctor)
+    ;       tcrepn_du(parse_tree.prog_item.du_repn)
+    ;       tcrepn_foreign(parse_tree.prog_item.c_j_cs_repn).
+:- type type_ctor_repn_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.prog_item.item_type_repn_info).
+:- type type_repn_spec
+    --->    type_repn_spec_int1(parse_tree.prog_item.parse_tree_int1).
+:- type types_and_maybe_modes
+    --->    no_types_arity_zero 
+    ;       types_only(list.list(parse_tree.prog_data.mer_type))
+    ;       types_and_modes(list.list(parse_tree.prog_data.type_and_mode)).
+:- func fill_kind_size_num_bits(parse_tree.prog_item.fill_kind_size) = uint.
+:- func get_decl_pragma_context(parse_tree.prog_item.item_decl_pragma_info) = parse_tree.prog_data.prog_context.
+:- pred get_declared_types_and_maybe_modes(parse_tree.prog_item.types_and_maybe_modes, maybe.maybe(parse_tree.prog_data.mer_inst), maybe.maybe(parse_tree.prog_data.determinism), list.list(parse_tree.prog_data.mer_type), maybe.maybe(list.list(parse_tree.prog_data.mer_mode))).
+:- mode get_declared_types_and_maybe_modes((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func get_gen_pragma_context(parse_tree.prog_item.item_generated_pragma_info) = parse_tree.prog_data.prog_context.
+:- func get_goal_context(parse_tree.prog_item.goal) = parse_tree.prog_data.prog_context.
+:- func get_impl_pragma_context(parse_tree.prog_item.item_impl_pragma_info) = parse_tree.prog_data.prog_context.
+:- func get_item_context(parse_tree.prog_item.item) = parse_tree.prog_data.prog_context.
+:- pred init_aug_compilation_unit(parse_tree.prog_item.parse_tree_module_src, parse_tree.prog_item.aug_compilation_unit).
+:- mode init_aug_compilation_unit((builtin.in), (builtin.out)) is det.
+:- func maybe_pred_or_func_to_pfu(maybe.maybe(mdbcomp.prim_data.pred_or_func)) = parse_tree.prog_item.pred_func_or_unknown.
+:- func mutable_thread_local_trailed(parse_tree.prog_item.mutable_maybe_thread_local) = parse_tree.prog_item.mutable_trailed.
+:- func mutable_var_thread_local(parse_tree.prog_item.mutable_maybe_constant) = parse_tree.prog_item.mutable_thread_local.
+:- func pfu_to_maybe_pred_or_func(parse_tree.prog_item.pred_func_or_unknown) = maybe.maybe(mdbcomp.prim_data.pred_or_func).
+:- pred pfumm_to_maybe_pf_arity_maybe_modes(parse_tree.prog_item.pred_func_or_unknown_maybe_modes, maybe.maybe(mdbcomp.prim_data.pred_or_func), parse_tree.prog_data.user_arity, maybe.maybe(list.list(parse_tree.prog_data.mer_mode))).
+:- mode pfumm_to_maybe_pf_arity_maybe_modes((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred split_types_and_modes(list.list(parse_tree.prog_data.type_and_mode), list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_mode)).
+:- mode split_types_and_modes((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func types_and_maybe_modes_arity(parse_tree.prog_item.types_and_maybe_modes) = parse_tree.prog_data.pred_form_arity.
