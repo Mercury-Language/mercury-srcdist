@@ -1,0 +1,29 @@
+:- module (ml_backend.mlds_to_c_name).
+:- interface.
+:- use_module backend_libs.
+:- use_module bool.
+:- use_module parse_tree.
+:- use_module (backend_libs.rtti).
+:- use_module (ml_backend.mlds).
+:- use_module (parse_tree.prog_data).
+:- type maybe_mangle
+    --->    do_not_mangle 
+    ;       do_mangle .
+:- inst do_mangle for (ml_backend.mlds_to_c_name).maybe_mangle/0
+    --->    do_mangle.
+:- inst do_not_mangle for (ml_backend.mlds_to_c_name).maybe_mangle/0
+    --->    do_not_mangle.
+:- func class_name_arity_to_string_for_c(ml_backend.mlds.mlds_class_name, parse_tree.prog_data.arity) = string.
+:- func field_var_name_to_string_for_c(ml_backend.mlds.mlds_field_var_name) = string.
+:- func global_var_ref_to_string(ml_backend.mlds.global_var_ref) = string.
+:- func local_var_name_to_string_for_c(ml_backend.mlds.mlds_local_var_name) = string.
+:- func maybe_qual_global_var_name_to_string_for_c(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_global_var_name) = string.
+:- func pred_label_to_string_for_c(ml_backend.mlds_to_c_name.maybe_mangle, ml_backend.mlds.mlds_pred_label) = string.
+:- mode pred_label_to_string_for_c(builtin.in(((ml_backend.mlds_to_c_name).do_not_mangle)), (builtin.in)) = (builtin.out) is det.
+:- mode pred_label_to_string_for_c(builtin.in(((ml_backend.mlds_to_c_name).do_mangle)), (builtin.in)) = (builtin.out) is det.
+:- func qual_field_var_name_to_string_for_c(ml_backend.mlds.qual_field_var_name) = string.
+:- func qual_function_name_to_string_for_c(ml_backend.mlds.qual_function_name) = string.
+:- func qual_proc_label_to_string_for_c(ml_backend.mlds.qual_proc_label) = string.
+:- func qualifier_to_string_for_c(ml_backend.mlds.mlds_module_name) = string.
+:- func should_module_qualify_global_var_name(ml_backend.mlds.mlds_global_var_name) = bool.bool.
+:- func tabling_struct_id_to_string(ml_backend.mlds.mlds_proc_label, backend_libs.rtti.proc_tabling_struct_id) = string.

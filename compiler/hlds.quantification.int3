@@ -1,0 +1,10 @@
+:- module (hlds.quantification).
+:- interface.
+:- type maybe_keep_quant_vars
+	where	type_is_abstract_enum(1).
+:- type nonlocals_to_recompute
+	where	type_is_abstract_enum(2).
+:- type quant_warning.
+:- type_representation(maybe_keep_quant_vars, du_repn(enum("do_not_keep_quant_vars", "keep_quant_vars", [],  no_c_j_cs))).
+:- type_representation(nonlocals_to_recompute, du_repn(enum("ord_nl_maybe_lambda", "ord_nl_no_lambda", ["cg_nl_no_lambda"],  no_c_j_cs))).
+:- type_representation(quant_warning, is_word_aligned_ptr).
