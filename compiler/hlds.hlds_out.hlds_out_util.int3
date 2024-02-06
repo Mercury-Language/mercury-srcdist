@@ -1,0 +1,13 @@
+:- module ((hlds.hlds_out).hlds_out_util).
+:- interface.
+:- type hlds_out_info.
+:- type is_first
+	where	type_is_abstract_enum(1).
+:- type is_last
+	where	type_is_abstract_enum(1).
+:- type maybe_qualify_cons_id
+	where	type_is_abstract_enum(1).
+:- type_representation(hlds_out_info, is_word_aligned_ptr).
+:- type_representation(is_first, du_repn(enum("is_first", "is_not_first", [],  no_c_j_cs))).
+:- type_representation(is_last, du_repn(enum("is_last", "is_not_last", [],  no_c_j_cs))).
+:- type_representation(maybe_qualify_cons_id, du_repn(enum("qualify_cons_id", "do_not_qualify_cons_id", [],  no_c_j_cs))).

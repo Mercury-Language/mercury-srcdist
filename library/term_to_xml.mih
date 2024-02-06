@@ -1,0 +1,662 @@
+/*
+** Automatically generated from `term_to_xml.m'
+** by the Mercury compiler,
+** version rotd-2024-02-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module term_to_xml.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_term_to_xml
+#define MR_HEADER_GUARD_term_to_xml
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TERM_TO_XML_DECL_GUARD
+#define TERM_TO_XML_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__term_to_xml__term_to_xml__type_ctor_info_attr_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term_to_xml__term_to_xml__type_ctor_info_attr_from_source_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term_to_xml__term_to_xml__type_ctor_info_attr_source_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term_to_xml__term_to_xml__type_ctor_info_doctype_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term_to_xml__term_to_xml__type_ctor_info_dtd_generation_result_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term_to_xml__term_to_xml__type_ctor_info_element_mapping_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term_to_xml__term_to_xml__type_ctor_info_element_pred_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term_to_xml__term_to_xml__type_ctor_info_maybe_dtd_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term_to_xml__term_to_xml__type_ctor_info_maybe_format_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term_to_xml__term_to_xml__type_ctor_info_maybe_functor_info_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term_to_xml__term_to_xml__type_ctor_info_maybe_stylesheet_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term_to_xml__term_to_xml__type_ctor_info_xml_0;
+
+extern const MR_TypeClassDeclStruct mercury__term_to_xml__term_to_xml__type_class_decl_xmlable_1;
+
+void MR_CALL 
+mercury__term_to_xml__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_119_114_105_116_101_95_99_104_105_108_100_95_120_109_108_95_101_108_101_109_101_110_116_115_95_95_91_51_93_95_48_8_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__term_to_xml__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_119_114_105_116_101_95_99_104_105_108_100_95_120_109_108_95_101_108_101_109_101_110_116_115_95_95_91_51_93_95_49_8_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__term_to_xml__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_119_114_105_116_101_95_99_104_105_108_100_95_120_109_108_95_101_108_101_109_101_110_116_115_95_95_91_51_93_95_50_8_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__term_to_xml__contains_noformat_xml_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__term_to_xml__get_element_pred_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__term_to_xml__indent_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__term_to_xml__is_discriminated_union_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mercury__term_to_xml__is_maybe_yes_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+MR_bool MR_CALL 
+mercury__term_to_xml__primitive_value_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+mercury__term_to_xml__write_attribute_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__term_to_xml__write_child_xml_elements_8_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__term_to_xml__write_child_xml_elements_8_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__term_to_xml__write_child_xml_elements_8_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__term_to_xml__write_child_xml_elements_8_p_3(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__term_to_xml__write_dtd_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+mercury__term_to_xml__write_dtd_from_type_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+mercury__term_to_xml__write_element_end_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__term_to_xml__write_element_start_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__term_to_xml__write_element_start_with_attr_from_source_9_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__term_to_xml__write_empty_element_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__term_to_xml__write_empty_element_with_attr_from_source_9_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__term_to_xml__write_primitive_element_with_attr_from_source_8_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_doc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_doc_general_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_doc_general_cc_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_doc_style_dtd_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_format_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_general_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_general_7_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_general_7_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_general_7_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_univ_9_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_univ_9_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_univ_9_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_univ_9_p_3(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_univ_canonicalize_8_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_univ_do_not_allow_8_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_element_univ_include_details_cc_8_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__term_to_xml__write_xml_header_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_Word MR_CALL 
+mercury__term_to_xml__attr_from_source_to_maybe_attr_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+mercury__term_to_xml__can_format_siblings_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__term_to_xml__can_generate_dtd_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__term_to_xml__get_field_names_3_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3);
+
+MR_Word MR_CALL 
+mercury__term_to_xml__make_attrs_from_sources_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+mercury__term_to_xml__to_xml_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__term_to_xml____Compare____attr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term_to_xml____Compare____attr_from_source_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term_to_xml____Compare____attr_source_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term_to_xml____Compare____doctype_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term_to_xml____Compare____dtd_generation_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term_to_xml____Compare____element_mapping_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term_to_xml____Compare____element_pred_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term_to_xml____Compare____maybe_dtd_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term_to_xml____Compare____maybe_format_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term_to_xml____Compare____maybe_functor_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term_to_xml____Compare____maybe_stylesheet_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term_to_xml____Compare____xml_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__term_to_xml____Unify____attr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term_to_xml____Unify____attr_from_source_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term_to_xml____Unify____attr_source_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term_to_xml____Unify____doctype_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term_to_xml____Unify____dtd_generation_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term_to_xml____Unify____element_mapping_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term_to_xml____Unify____element_pred_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term_to_xml____Unify____maybe_dtd_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term_to_xml____Unify____maybe_format_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term_to_xml____Unify____maybe_functor_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term_to_xml____Unify____maybe_stylesheet_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term_to_xml____Unify____xml_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__term_to_xml__init(void);
+void mercury__term_to_xml__init_type_tables(void);
+void mercury__term_to_xml__init_debugger(void);
+const char *mercury__term_to_xml__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_term_to_xml
+
+// :- end_interface term_to_xml.

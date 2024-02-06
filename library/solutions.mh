@@ -1,0 +1,59 @@
+// Automatically generated from `solutions.m'
+// by the Mercury compiler,
+// version rotd-2024-02-06
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef SOLUTIONS_MH
+#define SOLUTIONS_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef SOLUTIONS_DECL_GUARD
+#define SOLUTIONS_DECL_GUARD
+
+
+#include "mercury_deep_copy.h"
+
+#ifndef MR_RECLAIM_HP_ON_FAILURE
+  // For conservative GC, shallow copies suffice.
+  #define MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr,                        \
+        OldVar, NewVal, TypeInfo_for_T)                                 \
+    do {                                                                \
+        NewVal = OldVal;                                                \
+    } while (0)
+#else
+  // Note that we need to save/restore the MR_hp register,
+  // if it is transient, before/after calling MR_deep_copy().
+  #define MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr,                        \
+        OldVar, NewVal, TypeInfo_for_T)                                 \
+    do {                                                                \
+        MR_save_transient_hp();                                         \
+        NewVal = MR_deep_copy(OldVal, (MR_TypeInfo) TypeInfo_for_T,     \
+            (const MR_Word *) SolutionsHeapPtr,                         \
+            MR_ENGINE(MR_eng_solutions_heap_zone)->MR_zone_top);        \
+        MR_restore_transient_hp();                                      \
+    } while (0)
+#endif
+
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* SOLUTIONS_MH */

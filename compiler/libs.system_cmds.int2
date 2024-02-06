@@ -1,0 +1,8 @@
+:- module (libs.system_cmds).
+:- interface.
+:- type command_verbosity
+    --->    cmd_verbose 
+    ;       cmd_verbose_commands .
+:- type quote_char
+    --->    forward 
+    ;       double .
