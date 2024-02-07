@@ -1,0 +1,20 @@
+:- module ((transform_hlds.ctgc).fixpoint_table).
+:- interface.
+:- use_module list.
+:- type fixpoint_table(K, E).
+:- pred add_to_fixpoint_table(pred(E, E), K, E, transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E), transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E)).
+:- mode add_to_fixpoint_table(builtin.in((pred((builtin.in), (builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func description(transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E)) = string.
+:- pred fixpoint_reached(transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E)).
+:- mode fixpoint_reached((builtin.in)) is semidet.
+:- pred get_from_fixpoint_table(K, E, transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E), transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E)).
+:- mode get_from_fixpoint_table((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- func get_from_fixpoint_table_final(K, transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E)) = E.
+:- pred get_from_fixpoint_table_final_semidet(K, transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E), E).
+:- mode get_from_fixpoint_table_final_semidet((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func init_fixpoint_table(((func K) = E), list.list(K)) = transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E).
+:- pred is_recursive(transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E)).
+:- mode is_recursive((builtin.in)) is semidet.
+:- pred new_run(transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E), transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E)).
+:- mode new_run((builtin.in), (builtin.out)) is det.
+:- func which_run(transform_hlds.ctgc.fixpoint_table.fixpoint_table(K, E)) = int.

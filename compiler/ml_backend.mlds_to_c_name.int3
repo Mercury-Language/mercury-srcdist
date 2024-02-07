@@ -1,0 +1,7 @@
+:- module (ml_backend.mlds_to_c_name).
+:- interface.
+:- type maybe_mangle
+	where	type_is_abstract_enum(1).
+:- abstract_inst((do_mangle)).
+:- abstract_inst((do_not_mangle)).
+:- type_representation(maybe_mangle, du_repn(enum("do_not_mangle", "do_mangle", [],  no_c_j_cs))).

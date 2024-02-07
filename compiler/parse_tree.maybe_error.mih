@@ -1,0 +1,417 @@
+/*
+** Automatically generated from `maybe_error.m'
+** by the Mercury compiler,
+** version rotd-2024-02-07
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.maybe_error.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__maybe_error
+#define MR_HEADER_GUARD_parse_tree__maybe_error
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__MAYBE_ERROR_DECL_GUARD
+#define PARSE_TREE__MAYBE_ERROR_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe1_1;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe1_2;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe2_2;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe2_3;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe3_3;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe3_4;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe4_4;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe4_5;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe5_5;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe5_6;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe6_6;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe6_7;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe_safe_to_continue_0;
+
+void MR_CALL 
+parse_tree__maybe_error__det_project_ok1_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error__project_ok1_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+parse_tree__maybe_error__separate_ok1_error1_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+parse_tree__maybe_error__get_any_errors1_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__maybe_error__get_any_errors2_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+parse_tree__maybe_error__get_any_errors3_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+parse_tree__maybe_error__get_any_errors4_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+parse_tree__maybe_error__get_any_errors5_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+MR_Word MR_CALL 
+parse_tree__maybe_error__get_any_errors6_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7);
+
+MR_Word MR_CALL 
+parse_tree__maybe_error__get_any_errors_warnings2_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__maybe_error__get_any_errors_warnings3_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+parse_tree__maybe_error__get_any_errors_warnings4_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+parse_tree__maybe_error__get_any_errors_warnings5_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+parse_tree__maybe_error__get_any_errors_warnings6_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe1_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe1_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe2_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe2_3_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe3_3_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe3_4_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word param_7);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe4_4_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word param_7);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe4_5_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word param_8);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe5_5_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word param_8);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe5_6_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word param_9);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe6_6_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word param_9);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe6_7_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word param_10);
+
+void MR_CALL 
+parse_tree__maybe_error____Compare____maybe_safe_to_continue_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe1_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe1_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe2_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe2_3_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe3_3_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe3_4_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe4_4_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe4_5_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe5_5_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe5_6_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe6_6_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe6_7_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9);
+
+MR_bool MR_CALL 
+parse_tree__maybe_error____Unify____maybe_safe_to_continue_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__maybe_error__init(void);
+void mercury__parse_tree__maybe_error__init_type_tables(void);
+void mercury__parse_tree__maybe_error__init_debugger(void);
+const char *mercury__parse_tree__maybe_error__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.maybe_error
+
+// :- end_interface parse_tree.maybe_error.

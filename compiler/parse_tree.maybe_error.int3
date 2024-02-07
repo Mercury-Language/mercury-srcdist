@@ -1,0 +1,29 @@
+:- module (parse_tree.maybe_error).
+:- interface.
+:- type maybe1(T1).
+:- type maybe1(T1, E).
+:- type maybe2(T1, T2).
+:- type maybe2(T1, T2, E).
+:- type maybe3(T1, T2, T3).
+:- type maybe3(T1, T2, T3, E).
+:- type maybe4(T1, T2, T3, T4).
+:- type maybe4(T1, T2, T3, T4, E).
+:- type maybe5(T1, T2, T3, T4, T5).
+:- type maybe5(T1, T2, T3, T4, T5, E).
+:- type maybe6(T1, T2, T3, T4, T5, T6).
+:- type maybe6(T1, T2, T3, T4, T5, T6, E).
+:- type maybe_safe_to_continue
+	where	type_is_abstract_enum(1).
+:- abstract_inst((maybe1(I))).
+:- abstract_inst((maybe2(I1, I2))).
+:- abstract_inst((maybe3(I1, I2, I3))).
+:- abstract_inst((maybe4(I1, I2, I3, I4))).
+:- abstract_inst((maybe5(I1, I2, I3, I4, I5))).
+:- abstract_inst((maybe6(I1, I2, I3, I4, I5, I6))).
+:- type_representation(maybe1(V_1), is_eqv_to(parse_tree.maybe_error.maybe1(V_1, list(error_spec)))).
+:- type_representation(maybe2(V_1, V_2), is_eqv_to(parse_tree.maybe_error.maybe2(V_1, V_2, list(error_spec)))).
+:- type_representation(maybe3(V_1, V_2, V_3), is_eqv_to(parse_tree.maybe_error.maybe3(V_1, V_2, V_3, list(error_spec)))).
+:- type_representation(maybe4(V_1, V_2, V_3, V_4), is_eqv_to(parse_tree.maybe_error.maybe4(V_1, V_2, V_3, V_4, list(error_spec)))).
+:- type_representation(maybe5(V_1, V_2, V_3, V_4, V_5), is_eqv_to(parse_tree.maybe_error.maybe5(V_1, V_2, V_3, V_4, V_5, list(error_spec)))).
+:- type_representation(maybe6(V_1, V_2, V_3, V_4, V_5, V_6), is_eqv_to(parse_tree.maybe_error.maybe6(V_1, V_2, V_3, V_4, V_5, V_6, list(error_spec)))).
+:- type_representation(maybe_safe_to_continue, du_repn(enum("safe_to_continue", "unsafe_to_continue", [],  no_c_j_cs))).

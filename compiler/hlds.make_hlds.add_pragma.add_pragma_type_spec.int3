@@ -1,0 +1,4 @@
+:- module (((hlds.make_hlds).add_pragma).add_pragma_type_spec).
+:- interface.
+:- type_representation(class_solns_map, is_eqv_to(map(class_id, set(subst_soln)))).
+:- type_representation(type_spec_constraint_map, is_eqv_to(one_or_more_map(class_id, arg_vector))).

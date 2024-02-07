@@ -1,0 +1,22 @@
+:- module (libs.system_cmds).
+:- interface.
+:- use_module io.
+:- use_module maybe.
+:- use_module (libs.globals).
+:- use_module (libs.maybe_util).
+:- type command_verbosity
+    --->    cmd_verbose 
+    ;       cmd_verbose_commands .
+:- type quote_char
+    --->    forward 
+    ;       double .
+:- pred invoke_long_system_command(libs.globals.globals, io.text_output_stream, io.text_output_stream, libs.system_cmds.command_verbosity, string, string, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode invoke_long_system_command((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred invoke_long_system_command_maybe_filter_output(libs.globals.globals, io.text_output_stream, io.text_output_stream, libs.system_cmds.command_verbosity, string, string, string, maybe.maybe(string), libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode invoke_long_system_command_maybe_filter_output((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred invoke_system_command(libs.globals.globals, io.text_output_stream, io.text_output_stream, libs.system_cmds.command_verbosity, string, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode invoke_system_command((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred invoke_system_command_maybe_filter_output(libs.globals.globals, io.text_output_stream, io.text_output_stream, libs.system_cmds.command_verbosity, string, maybe.maybe(string), libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode invoke_system_command_maybe_filter_output((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_command_string(string, libs.system_cmds.quote_char, string).
+:- mode make_command_string((builtin.in), (builtin.in), (builtin.out)) is det.
