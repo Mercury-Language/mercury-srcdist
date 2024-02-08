@@ -1,0 +1,188 @@
+:- module stream.string_writer.
+:- use_module array.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module calendar.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module int.
+:- use_module integer.
+:- use_module io.
+:- use_module list.
+:- use_module ops.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module rtti_implementation.
+:- use_module stream.
+:- use_module string.
+:- use_module term_io.
+:- use_module type_desc.
+:- use_module univ.
+:- use_module version_array.
+:- use_module io.stream_db.
+:- use_module string.format.
+:- use_module string.parse_util.
+
+:- type builtin_type_in_builtin
+    --->    type_builtin_string 
+    ;       type_builtin_character 
+    ;       type_builtin_float 
+    ;       type_builtin_int 
+    ;       type_builtin_int8 
+    ;       type_builtin_int16 
+    ;       type_builtin_int32 
+    ;       type_builtin_int64 
+    ;       type_builtin_uint 
+    ;       type_builtin_uint8 
+    ;       type_builtin_uint16 
+    ;       type_builtin_uint32 
+    ;       type_builtin_uint64 
+    ;       type_builtin_c_ptr .
+
+:- pred (stream.string_writer).do_write_univ(Stream, deconstruct.noncanon_handling, univ.univ, State, State) <= (stream.writer(Stream, string, State)).
+:- mode do_write_univ(builtin.in, builtin.in(deconstruct.do_not_allow), builtin.in, builtin.di, builtin.uo) is det.
+:- mode do_write_univ(builtin.in, builtin.in(deconstruct.canonicalize), builtin.in, builtin.di, builtin.uo) is det.
+:- mode do_write_univ(builtin.in, builtin.in(deconstruct.include_details_cc), builtin.in, builtin.di, builtin.uo) is cc_multi.
+:- mode do_write_univ(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is cc_multi.
+:- pragma type_spec(pred((stream.string_writer).do_write_univ/5), (Stream = io.text_output_stream, State = io.state)).
+:- pred (stream.string_writer).do_write_univ_prio(Stream, deconstruct.noncanon_handling, univ.univ, ops.priority, State, State) <= (stream.writer(Stream, string, State)).
+:- mode do_write_univ_prio(builtin.in, builtin.in(deconstruct.do_not_allow), builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- mode do_write_univ_prio(builtin.in, builtin.in(deconstruct.canonicalize), builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- mode do_write_univ_prio(builtin.in, builtin.in(deconstruct.include_details_cc), builtin.in, builtin.in, builtin.di, builtin.uo) is cc_multi.
+:- mode do_write_univ_prio(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is cc_multi.
+:- pragma promise_pure(pred((stream.string_writer).do_write_univ_prio/6)).
+:- pragma type_spec(pred((stream.string_writer).do_write_univ_prio/6), (Stream = io.text_output_stream, State = io.state)).
+
+stream.string_writer.do_write_univ(V_6, V_7, V_8, V_10, V_11) :-
+    V_12 = ops.mercury_op_table_universal_priority,
+    stream.string_writer.do_write_univ_prio(V_6, V_7, V_8, V_12, V_10, V_11).
+
+stream.string_writer.format(V_6, V_7, V_8, V_11, V_12) :-
+    disable_warnings [unknown_format_calls] (
+      string.format(V_7, V_8, V_10)
+    ),
+    stream.put(V_6, V_10, V_11, V_12).
+
+:- pragma inline(pred((stream.string_writer).maybe_write_paren/6)).
+stream.string_writer.maybe_write_paren(V_7, V_8, V_9, V_10, V_12, V_13) :-
+    ( if
+      ops.priority_lt(V_10, V_9)
+    then
+      stream.put(V_7, V_8, V_12, V_13)
+    else
+      V_13 = V_12
+    ).
+
+stream.string_writer.nl(V_4, V_6, V_7) :-
+    V_8 = "\n" : string,
+    stream.put(V_4, V_8, V_6, V_7).
+
+stream.string_writer.print(V_5, V_6, V_8, V_9) :-
+    V_10 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    stream.string_writer.print(V_5, V_10, V_6, V_8, V_9).
+
+stream.string_writer.print_cc(V_5, V_6, V_8, V_9) :-
+    V_10 = deconstruct.include_details_cc : deconstruct.noncanon_handling,
+    stream.string_writer.print(V_5, V_10, V_6, V_8, V_9).
+
+stream.string_writer.write(V_5, V_6, V_8, V_9) :-
+    V_10 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    stream.string_writer.write(V_5, V_10, V_6, V_8, V_9).
+
+stream.string_writer.write(V_6, V_7, V_8, V_11, V_12) :-
+    univ.type_to_univ(V_8, V_10),
+    stream.string_writer.do_write_univ(V_6, V_7, V_10, V_11, V_12).
+
+stream.string_writer.write_cc(V_5, V_6, V_8, V_9) :-
+    V_10 = deconstruct.include_details_cc : deconstruct.noncanon_handling,
+    stream.string_writer.write(V_5, V_10, V_6, V_8, V_9).
+
+stream.string_writer.write_univ(V_5, V_6, V_8, V_9) :-
+    V_10 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    stream.string_writer.do_write_univ(V_5, V_10, V_6, V_8, V_9).
+
+stream.string_writer.write_univ(V_6, V_7, V_8, V_10, V_11) :-
+    stream.string_writer.do_write_univ(V_6, V_7, V_8, V_10, V_11).
+
+:- pragma termination_info((stream.string_writer).do_write_univ(builtin.in, builtin.in(deconstruct.do_not_allow), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).do_write_univ(builtin.in, builtin.in(deconstruct.canonicalize), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).do_write_univ(builtin.in, builtin.in(deconstruct.include_details_cc), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).do_write_univ(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).do_write_univ_prio(builtin.in, builtin.in(deconstruct.do_not_allow), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).do_write_univ_prio(builtin.in, builtin.in(deconstruct.canonicalize), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).do_write_univ_prio(builtin.in, builtin.in(deconstruct.include_details_cc), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).do_write_univ_prio(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).format(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).maybe_write_paren(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).nl(builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).print(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).print(builtin.in, builtin.in(deconstruct.do_not_allow), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).print(builtin.in, builtin.in(deconstruct.canonicalize), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).print(builtin.in, builtin.in(deconstruct.include_details_cc), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).print(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).print_cc(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).put_char(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).put_float(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).put_int(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).put_int16(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).put_int32(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).put_int64(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).put_int8(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).put_uint(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).put_uint16(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).put_uint32(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).put_uint64(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).put_uint8(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).write(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).write(builtin.in, builtin.in(deconstruct.do_not_allow), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).write(builtin.in, builtin.in(deconstruct.canonicalize), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).write(builtin.in, builtin.in(deconstruct.include_details_cc), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).write(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).write_cc(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).write_univ(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).write_univ(builtin.in, builtin.in(deconstruct.do_not_allow), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).write_univ(builtin.in, builtin.in(deconstruct.canonicalize), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).write_univ(builtin.in, builtin.in(deconstruct.include_details_cc), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((stream.string_writer).write_univ(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+
+:- pragma exceptions(predicate, (stream.string_writer).do_write_univ, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).do_write_univ, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).do_write_univ, 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).do_write_univ, 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).do_write_univ_prio, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).do_write_univ_prio, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).do_write_univ_prio, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).do_write_univ_prio, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).format, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).maybe_write_paren, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).nl, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).print, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).print, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).print, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).print, 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).print, 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).print_cc, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).put_char, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).put_float, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).put_int, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).put_int16, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).put_int32, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).put_int64, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).put_int8, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).put_uint, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).put_uint16, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).put_uint32, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).put_uint64, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).put_uint8, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).write, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).write, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).write, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).write, 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).write, 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).write_cc, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).write_univ, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).write_univ, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).write_univ, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).write_univ, 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.string_writer).write_univ, 5, 3, may_throw(user_exception)).

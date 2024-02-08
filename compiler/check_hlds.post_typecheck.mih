@@ -1,0 +1,69 @@
+/*
+** Automatically generated from `post_typecheck.m'
+** by the Mercury compiler,
+** version rotd-2024-02-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.post_typecheck.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__post_typecheck
+#define MR_HEADER_GUARD_check_hlds__post_typecheck
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__POST_TYPECHECK_DECL_GUARD
+#define CHECK_HLDS__POST_TYPECHECK_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__post_typecheck__check_hlds__post_typecheck__type_ctor_info_maybe_all_tvars_0;
+
+void MR_CALL 
+check_hlds__post_typecheck__post_typecheck_finish_preds_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Integer * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__post_typecheck__setup_var_table_in_clauses_for_imported_pred_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void mercury__check_hlds__post_typecheck__init(void);
+void mercury__check_hlds__post_typecheck__init_type_tables(void);
+void mercury__check_hlds__post_typecheck__init_debugger(void);
+const char *mercury__check_hlds__post_typecheck__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.post_typecheck
+
+// :- end_interface check_hlds.post_typecheck.

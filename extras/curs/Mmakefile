@@ -1,0 +1,57 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+#
+# Copyright (C) 2001 Ralph Becket <rbeck@microsoft.com>
+#
+#   THIS FILE IS HEREBY CONTRIBUTED TO THE MERCURY PROJECT TO
+#   BE RELEASED UNDER WHATEVER LICENCE IS DEEMED APPROPRIATE
+#   BY THE ADMINISTRATORS OF THE MERCURY PROJECT.
+
+include Ncurses.options
+
+# To build, do the following:
+#
+# Check that the values in the file Ncurses.options are appropriate
+# for linking against ncurses on your system.
+# Then do:
+#
+#     $ mmake depend
+#     $ mmake
+#
+# And to install...
+#
+#     $ mmake install
+
+# Omit this line if you want to install in the standard location.
+# Edit this line if you want to install the library elsewhere.
+# A directory $(INSTALL_PREFIX)/lib/mercury will be created, if
+# necessary, and everything put there.
+#
+#INSTALL_PREFIX = $(HOME)/mercury
+INSTALL_PREFIX := $(INSTALL_PREFIX)/extras
+
+# Omit this line if you want to install the default grades.
+# Edit this line if you want to install with different grades.
+#
+#LIBGRADES = asm_fast.gc hlc.gc
+
+# The following libraries must be linked against in any application using the
+# curs library (i.e. MLLIBS must include at least the following and in this
+# order).
+#
+MLLIBS = $(PANEL_LIBS) $(NCURSES_LIBS)
+
+# Any application using this library will also need the following
+# in its Mmakefile:
+#
+#EXTRA_LIBRARIES = curs
+
+# Needed to avoid conflicts with `bool'
+CFLAGS = -DMERCURY_BOOTSTRAP_H
+
+-include ../Mmake.params
+
+MAIN_TARGET = libcurs
+depend: curs.depend
+install: $(MAIN_TARGET).install

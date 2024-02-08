@@ -1,0 +1,6 @@
+:- module parse_tree.find_module.
+:- interface.
+:- type path_name_and_contents
+    --->    path_name_and_contents(string, string).
+:- type path_name_and_stream
+    --->    path_name_and_stream(string, io.text_input_stream).

@@ -1,0 +1,16 @@
+:- module parse_tree.parse_tree_out_info.
+:- interface.
+:- type maybe_output_line_numbers
+	where	type_is_abstract_enum(1).
+:- type maybe_qualified_item_names
+	where	type_is_abstract_enum(1).
+:- type merc_out_info.
+:- type output_lang
+	where	type_is_abstract_enum(1).
+:- type type_repn_for
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_output_line_numbers, du_repn(enum("dont_output_line_numbers", "do_output_line_numbers", [],  no_c_j_cs))).
+:- type_representation(maybe_qualified_item_names, du_repn(enum("unqualified_item_names", "qualified_item_names", [],  no_c_j_cs))).
+:- type_representation(merc_out_info, is_word_aligned_ptr).
+:- type_representation(output_lang, du_repn(enum("output_mercury", "output_debug", [],  no_c_j_cs))).
+:- type_representation(type_repn_for, du_repn(enum("type_repn_for_machines", "type_repn_for_humans", [],  no_c_j_cs))).

@@ -1,0 +1,5 @@
+:- module transform_hlds.higher_order.
+:- interface.
+:- type_representation(goal_sizes, is_eqv_to(map(pred_id, int))).
+:- type_representation(known_var_map, is_eqv_to(map(prog_var, known_const))).
+:- type_representation(new_pred_map, is_eqv_to(map(pred_proc_id, set(new_pred)))).
