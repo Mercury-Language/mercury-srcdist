@@ -1,0 +1,5 @@
+:- module parse_tree.parse_module.
+:- interface.
+:- type maybe_require_module_decl
+    --->    dont_require_module_decl 
+    ;       require_module_decl .

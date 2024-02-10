@@ -1,0 +1,14 @@
+:- module parse_tree.comp_unit_interface.
+:- interface.
+:- type generate_int0_result
+    --->    gpti0_ok(parse_tree.prog_item.parse_tree_int0, maybe.maybe(libs.timestamp.timestamp), libs.file_util.file_name, libs.file_util.file_name, list.list(parse_tree.error_spec.error_spec))
+    ;       gpti0_error(mdbcomp.sym_name.module_name, list.list(parse_tree.error_spec.format_piece), list.list(parse_tree.error_spec.error_spec)).
+:- type generate_int12_result
+    --->    gpti12_ok(parse_tree.prog_item.parse_tree_int1, parse_tree.prog_item.parse_tree_int2, maybe.maybe(libs.timestamp.timestamp), libs.file_util.file_name, libs.file_util.file_name, libs.file_util.file_name, libs.file_util.file_name, list.list(parse_tree.error_spec.error_spec))
+    ;       gpti12_error(mdbcomp.sym_name.module_name, list.list(parse_tree.error_spec.format_piece), list.list(parse_tree.error_spec.error_spec)).
+:- type generate_int3_result
+    --->    gpti3_ok(parse_tree.prog_item.parse_tree_int3, libs.file_util.file_name, libs.file_util.file_name, list.list(parse_tree.error_spec.error_spec))
+    ;       gpti3_error(mdbcomp.sym_name.module_name, list.list(parse_tree.error_spec.format_piece), list.list(parse_tree.error_spec.error_spec)).
+:- type maybe_add_to_hptm
+    --->    do_not_add_new_to_hptm 
+    ;       do_add_new_to_hptm .

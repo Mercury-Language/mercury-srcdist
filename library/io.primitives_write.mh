@@ -1,0 +1,47 @@
+// Automatically generated from `io.primitives_write.m'
+// by the Mercury compiler,
+// version rotd-2024-02-10
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef IO__PRIMITIVES_WRITE_MH
+#define IO__PRIMITIVES_WRITE_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef IO__PRIMITIVES_WRITE_DECL_GUARD
+#define IO__PRIMITIVES_WRITE_DECL_GUARD
+
+// XXX zs: I don't know which other #includes from io.m, if any,
+// we should have here to make the C code for this module self-contained.
+
+#include "mercury_types.h"            // for MR_Integer
+#include "mercury_library_types.h"    // for MercuryFilePtr, MR_PUTCH etc
+#include "mercury_int.h"              // for MR_*_reverse_bytes
+
+#include <stdio.h>
+#include <stdarg.h>
+#include <inttypes.h>
+
+int ML_fprintf(MercuryFilePtr mf, const char *format, ...);
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* IO__PRIMITIVES_WRITE_MH */

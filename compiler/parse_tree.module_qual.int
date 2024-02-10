@@ -1,0 +1,71 @@
+:- module parse_tree.module_qual.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module recompilation.
+:- use_module set_tree234.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_event.
+:- use_module parse_tree.prog_item.
+:- type maybe_found_undef_inst
+    --->    did_not_find_undef_inst 
+    ;       found_undef_inst .
+:- type maybe_found_undef_mode
+    --->    did_not_find_undef_mode 
+    ;       found_undef_mode .
+:- type maybe_found_undef_type
+    --->    did_not_find_undef_type 
+    ;       found_undef_type .
+:- type maybe_found_undef_typeclass
+    --->    did_not_find_undef_typeclass 
+    ;       found_undef_typeclass .
+:- type maybe_suppress_found_undef
+    --->    do_not_suppress_found_undef 
+    ;       suppress_found_undef .
+:- type mq_in_interface
+    --->    mq_not_used_in_interface 
+    ;       mq_used_in_interface .
+:- type mq_info.
+:- type partial_qualifier_info.
+:- pred get_partial_qualifiers(parse_tree.module_qual.mq_in_interface, mdbcomp.sym_name.module_name, parse_tree.module_qual.partial_qualifier_info, list.list(mdbcomp.sym_name.module_name)).
+:- mode get_partial_qualifiers(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred module_qualify_aug_comp_unit(libs.globals.globals, parse_tree.prog_item.aug_compilation_unit, parse_tree.prog_item.aug_compilation_unit, parse_tree.prog_data_event.event_spec_map, parse_tree.prog_data_event.event_spec_map, string, parse_tree.module_qual.mq_info, set_tree234.set_tree234(parse_tree.prog_data.type_ctor), set_tree234.set_tree234(parse_tree.prog_data.inst_ctor), set_tree234.set_tree234(parse_tree.prog_data.mode_ctor), set_tree234.set_tree234(parse_tree.prog_data.sym_name_arity), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode module_qualify_aug_comp_unit(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred module_qualify_aug_make_int_unit(libs.globals.globals, parse_tree.prog_item.aug_make_int_unit, parse_tree.prog_item.aug_make_int_unit, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode module_qualify_aug_make_int_unit(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred module_qualify_parse_tree_int3(libs.globals.globals, parse_tree.prog_item.parse_tree_int3, parse_tree.prog_item.parse_tree_int3, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode module_qualify_parse_tree_int3(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred mq_info_get_partial_qualifier_info(parse_tree.module_qual.mq_info, parse_tree.module_qual.partial_qualifier_info).
+:- mode mq_info_get_partial_qualifier_info(builtin.in, builtin.out) is det.
+:- pred mq_info_get_recompilation_info(parse_tree.module_qual.mq_info, maybe.maybe(recompilation.recompilation_info)).
+:- mode mq_info_get_recompilation_info(builtin.in, builtin.out) is det.
+:- pred mq_info_get_suppress_found_undef(parse_tree.module_qual.mq_info, parse_tree.module_qual.maybe_suppress_found_undef).
+:- mode mq_info_get_suppress_found_undef(builtin.in, builtin.out) is det.
+:- pred mq_info_get_undef_insts(parse_tree.module_qual.mq_info, set_tree234.set_tree234(parse_tree.prog_data.inst_ctor)).
+:- mode mq_info_get_undef_insts(builtin.in, builtin.out) is det.
+:- pred mq_info_get_undef_modes(parse_tree.module_qual.mq_info, set_tree234.set_tree234(parse_tree.prog_data.mode_ctor)).
+:- mode mq_info_get_undef_modes(builtin.in, builtin.out) is det.
+:- pred mq_info_get_undef_typeclasses(parse_tree.module_qual.mq_info, set_tree234.set_tree234(parse_tree.prog_data.sym_name_arity)).
+:- mode mq_info_get_undef_typeclasses(builtin.in, builtin.out) is det.
+:- pred mq_info_get_undef_types(parse_tree.module_qual.mq_info, set_tree234.set_tree234(parse_tree.prog_data.type_ctor)).
+:- mode mq_info_get_undef_types(builtin.in, builtin.out) is det.
+:- pred mq_info_set_recompilation_info(maybe.maybe(recompilation.recompilation_info), parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info).
+:- mode mq_info_set_recompilation_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_suppress_found_undef(parse_tree.module_qual.maybe_suppress_found_undef, parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info).
+:- mode mq_info_set_suppress_found_undef(builtin.in, builtin.in, builtin.out) is det.
+:- pred qualify_clause_mode_list(parse_tree.module_qual.mq_in_interface, parse_tree.prog_data.prog_context, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_mode), parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode qualify_clause_mode_list(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred qualify_lambda_mode(parse_tree.module_qual.mq_in_interface, parse_tree.prog_data.prog_context, parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_mode, parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode qualify_lambda_mode(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred qualify_type_qualification(parse_tree.module_qual.mq_in_interface, parse_tree.prog_data.prog_context, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type, parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode qualify_type_qualification(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- implementation.
+:- include_module (parse_tree.module_qual).collect_mq_info.
+:- include_module (parse_tree.module_qual).id_set.
+:- include_module (parse_tree.module_qual).qual_errors.
+:- include_module (parse_tree.module_qual).qualify_items.
