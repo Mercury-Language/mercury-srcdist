@@ -1,0 +1,47 @@
+:- module hlds.special_pred.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module hlds.hlds_data.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.status.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- type special_pred_maps
+    --->    special_pred_maps((hlds.special_pred).spm_unify_map :: map.map(parse_tree.prog_data.type_ctor, hlds.hlds_pred.pred_id), (hlds.special_pred).spm_index_map :: map.map(parse_tree.prog_data.type_ctor, hlds.hlds_pred.pred_id), (hlds.special_pred).spm_compare_map :: map.map(parse_tree.prog_data.type_ctor, hlds.hlds_pred.pred_id)).
+:- pred can_generate_special_pred_clauses_for_type(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_body).
+:- mode can_generate_special_pred_clauses_for_type(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred compiler_generated_rtti_for_builtins(hlds.hlds_module.module_info).
+:- mode compiler_generated_rtti_for_builtins(builtin.in) is semidet.
+:- pred get_special_proc(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor, mdbcomp.prim_data.special_pred_id, mdbcomp.sym_name.sym_name, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id).
+:- mode get_special_proc(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is semidet.
+:- pred get_special_proc_det(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor, mdbcomp.prim_data.special_pred_id, mdbcomp.sym_name.sym_name, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id).
+:- mode get_special_proc_det(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred is_builtin_type_special_preds_defined_in_mercury(parse_tree.prog_data.type_ctor, string).
+:- mode is_builtin_type_special_preds_defined_in_mercury(builtin.in, builtin.out) is semidet.
+:- pred lookup_special_pred_maps(hlds.special_pred.special_pred_maps, mdbcomp.prim_data.special_pred_id, parse_tree.prog_data.type_ctor, hlds.hlds_pred.pred_id).
+:- mode lookup_special_pred_maps(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred search_special_pred_maps(hlds.special_pred.special_pred_maps, mdbcomp.prim_data.special_pred_id, parse_tree.prog_data.type_ctor, hlds.hlds_pred.pred_id).
+:- mode search_special_pred_maps(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred special_pred_description(mdbcomp.prim_data.special_pred_id, string).
+:- mode special_pred_description(builtin.in, builtin.out) is det.
+:- pred special_pred_for_type_needs_typecheck(hlds.hlds_module.module_info, mdbcomp.prim_data.special_pred_id, hlds.hlds_data.hlds_type_body).
+:- mode special_pred_for_type_needs_typecheck(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred special_pred_get_type(mdbcomp.prim_data.special_pred_id, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var).
+:- mode special_pred_get_type(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred special_pred_get_type_det(mdbcomp.prim_data.special_pred_id, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var).
+:- mode special_pred_get_type_det(builtin.in, builtin.in, builtin.out) is det.
+:- pred special_pred_interface(mdbcomp.prim_data.special_pred_id, parse_tree.prog_data.mer_type, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.determinism).
+:- mode special_pred_interface(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred special_pred_is_generated_lazily(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor).
+:- mode special_pred_is_generated_lazily(builtin.in, builtin.in) is semidet.
+:- pred special_pred_is_generated_lazily_for_defn(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_body, hlds.status.type_status).
+:- mode special_pred_is_generated_lazily_for_defn(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred special_pred_list(list.list(mdbcomp.prim_data.special_pred_id)).
+:- mode special_pred_list(builtin.out) is det.
+:- pred special_pred_mode_num(mdbcomp.prim_data.special_pred_id, int).
+:- mode special_pred_mode_num(builtin.in, builtin.out) is det.

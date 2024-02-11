@@ -1,0 +1,12 @@
+:- module mdb.frame.
+:- interface.
+:- use_module list.
+:- use_module pair.
+:- type clip_rect == pair.pair(int, int).
+:- type frame == list.list(string).
+:- func clip(mdb.frame.clip_rect, mdb.frame.frame) = mdb.frame.frame.
+:- func from_string(string) = mdb.frame.frame.
+:- func hglue(mdb.frame.frame, mdb.frame.frame) = mdb.frame.frame.
+:- func hsize(mdb.frame.frame) = int.
+:- func vglue(mdb.frame.frame, mdb.frame.frame) = mdb.frame.frame.
+:- func vsize(mdb.frame.frame) = int.

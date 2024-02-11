@@ -1,0 +1,118 @@
+/*
+** Automatically generated from `exclude.m'
+** by the Mercury compiler,
+** version rotd-2024-02-11
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module exclude.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_exclude
+#define MR_HEADER_GUARD_exclude
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef EXCLUDE_DECL_GUARD
+#define EXCLUDE_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct exclude__exclude__type_ctor_info_exclude_contents_0;
+
+extern const MR_TypeCtorInfo_Struct exclude__exclude__type_ctor_info_exclude_file_0;
+
+extern const MR_TypeCtorInfo_Struct exclude__exclude__type_ctor_info_exclude_spec_0;
+
+extern const MR_TypeCtorInfo_Struct exclude__exclude__type_ctor_info_excluded_modules_0;
+
+extern const MR_TypeCtorInfo_Struct exclude__exclude__type_ctor_info_exclusion_type_0;
+
+void MR_CALL 
+exclude__read_exclude_file_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+exclude__apply_contour_exclusion_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+exclude____Compare____exclude_contents_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+exclude____Compare____exclude_file_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+exclude____Compare____exclude_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+exclude____Compare____excluded_modules_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+exclude____Unify____exclude_contents_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+exclude____Unify____exclude_file_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+exclude____Unify____exclude_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+exclude____Unify____excluded_modules_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__exclude__init(void);
+void mercury__exclude__init_type_tables(void);
+void mercury__exclude__init_debugger(void);
+const char *mercury__exclude__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_exclude
+
+// :- end_interface exclude.
