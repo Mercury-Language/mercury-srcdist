@@ -1,0 +1,34 @@
+:- module mdbcomp.builtin_modules.
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.sym_name.
+:- func all_builtin_modules = list.list(mdbcomp.sym_name.sym_name).
+:- pred any_mercury_builtin_module(mdbcomp.sym_name.sym_name).
+:- mode any_mercury_builtin_module(builtin.in) is semidet.
+:- pred is_mdbcomp_module_name(mdbcomp.sym_name.sym_name).
+:- mode is_mdbcomp_module_name(builtin.in) is semidet.
+:- pred is_std_lib_module_name(mdbcomp.sym_name.sym_name, string).
+:- mode is_std_lib_module_name(builtin.in, builtin.out) is semidet.
+:- func mercury_exception_module = mdbcomp.sym_name.sym_name.
+:- func mercury_int_module = mdbcomp.sym_name.sym_name.
+:- func mercury_io_module = mdbcomp.sym_name.sym_name.
+:- func mercury_list_module = mdbcomp.sym_name.sym_name.
+:- func mercury_par_builtin_module = mdbcomp.sym_name.sym_name.
+:- func mercury_private_builtin_module = mdbcomp.sym_name.sym_name.
+:- func mercury_profiling_builtin_module = mdbcomp.sym_name.sym_name.
+:- func mercury_public_builtin_module = mdbcomp.sym_name.sym_name.
+:- func mercury_region_builtin_module = mdbcomp.sym_name.sym_name.
+:- func mercury_rtti_implementation_builtin_module = mdbcomp.sym_name.sym_name.
+:- func mercury_ssdb_builtin_module = mdbcomp.sym_name.sym_name.
+:- func mercury_std_lib_module_name(mdbcomp.sym_name.sym_name) = mdbcomp.sym_name.sym_name.
+:- func mercury_stm_builtin_module = mdbcomp.sym_name.sym_name.
+:- func mercury_stream_module = mdbcomp.sym_name.sym_name.
+:- func mercury_string_format_module = mdbcomp.sym_name.sym_name.
+:- func mercury_string_module = mdbcomp.sym_name.sym_name.
+:- func mercury_string_parse_util_module = mdbcomp.sym_name.sym_name.
+:- func mercury_table_builtin_module = mdbcomp.sym_name.sym_name.
+:- func mercury_table_statistics_module = mdbcomp.sym_name.sym_name.
+:- func mercury_term_size_prof_builtin_module = mdbcomp.sym_name.sym_name.
+:- func mercury_univ_module = mdbcomp.sym_name.sym_name.
+:- pred non_traced_mercury_builtin_module(mdbcomp.sym_name.sym_name).
+:- mode non_traced_mercury_builtin_module(builtin.in) is semidet.

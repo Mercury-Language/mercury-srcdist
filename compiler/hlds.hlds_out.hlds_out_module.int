@@ -1,0 +1,6 @@
+:- module (hlds.hlds_out).hlds_out_module.
+:- interface.
+:- use_module io.
+:- use_module hlds.hlds_module.
+:- pred write_hlds(io.text_output_stream, hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_hlds(builtin.in, builtin.in, builtin.di, builtin.uo) is det.

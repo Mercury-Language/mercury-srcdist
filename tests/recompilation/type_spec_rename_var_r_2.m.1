@@ -1,0 +1,16 @@
+%---------------------------------------------------------------------------%
+% vim: ts=4 sw=4 et ft=mercury
+%---------------------------------------------------------------------------%
+
+:- module type_spec_rename_var_r_2.
+
+:- interface.
+
+:- import_module pair.
+
+:- pred p(T::in, U::in, pair(T, U)::out) is det.
+:- pragma type_spec(p/3, T = int).
+
+:- implementation.
+
+p(T, U, T - U).
