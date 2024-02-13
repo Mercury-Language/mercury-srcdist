@@ -1,0 +1,14 @@
+:- module (hlds.hlds_out).hlds_out_inst_table.
+:- interface.
+:- use_module io.
+:- use_module parse_tree.
+:- use_module hlds.hlds_inst_mode.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.parse_tree_out_info.
+:- type maybe_use_error_msg_inst
+    --->    do_not_use_error_msg_inst 
+    ;       use_error_msg_inst(hlds.hlds_module.module_info).
+:- pred write_inst_table(io.text_output_stream, parse_tree.parse_tree_out_info.output_lang, hlds.hlds_out.hlds_out_inst_table.maybe_use_error_msg_inst, int, int, hlds.hlds_inst_mode.inst_table, io.io, io.io).
+:- mode write_inst_table(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred write_mode_table(io.text_output_stream, hlds.hlds_inst_mode.mode_table, io.io, io.io).
+:- mode write_mode_table(builtin.in, builtin.in, builtin.di, builtin.uo) is det.

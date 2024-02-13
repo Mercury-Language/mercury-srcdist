@@ -1,0 +1,8 @@
+bad_mutable.m:012: In declaration for mutable `not_a_type':
+bad_mutable.m:012:   error: undefined type `no_type'/0.
+bad_mutable.m:014: In declaration for mutable `not_an_inst':
+bad_mutable.m:014:   error: undefined inst `special_ground'/0.
+bad_mutable.m:021: Error: in the expansion of the named inst
+bad_mutable.m:021:   `bad_mutable.t1'/0:
+bad_mutable.m:021:   the inst `unique' may not appear in `:- mutable'
+bad_mutable.m:021:   declarations.

@@ -1,0 +1,86 @@
+/*
+** Automatically generated from `compute_grade.m'
+** by the Mercury compiler,
+** version rotd-2024-02-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.compute_grade.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__compute_grade
+#define MR_HEADER_GUARD_libs__compute_grade
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__COMPUTE_GRADE_DECL_GUARD
+#define LIBS__COMPUTE_GRADE_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__compute_grade__libs__compute_grade__type_ctor_info_grade_component_0;
+
+void MR_CALL 
+libs__compute_grade__check_grade_component_compatibility_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+libs__compute_grade__compute_grade_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+MR_bool MR_CALL 
+libs__compute_grade__convert_grade_option_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__compute_grade__grade_directory_component_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+libs__compute_grade__postprocess_options_libgrades_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void mercury__libs__compute_grade__init(void);
+void mercury__libs__compute_grade__init_type_tables(void);
+void mercury__libs__compute_grade__init_debugger(void);
+const char *mercury__libs__compute_grade__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.compute_grade
+
+// :- end_interface libs.compute_grade.
