@@ -1,0 +1,4 @@
+:- module ml_backend.ml_rename_classes.
+:- interface.
+:- type class_name_renaming
+    --->    class_name_renaming((ml_backend.ml_rename_classes).cnr_module :: ml_backend.mlds.mlds_module_name, (ml_backend.ml_rename_classes).cnr_renaming :: map.map(ml_backend.mlds.mlds_class_name, ml_backend.mlds.mlds_class_name)).
