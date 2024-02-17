@@ -1,0 +1,137 @@
+:- module digraph.
+:- interface.
+:- use_module assoc_list.
+:- use_module enum.
+:- use_module list.
+:- use_module map.
+:- use_module pair.
+:- use_module set.
+:- use_module sparse_bitset.
+:- type digraph(T).
+:- type digraph_key(T).
+:- type digraph_key_set(T) == sparse_bitset.sparse_bitset(digraph.digraph_key(T)).
+:- instance (enum.uenum(digraph.digraph_key(T))).
+:- pred add_assoc_list(assoc_list.assoc_list(digraph.digraph_key(T), digraph.digraph_key(T)), digraph.digraph(T), digraph.digraph(T)).
+:- mode add_assoc_list(builtin.in, builtin.in, builtin.out) is det.
+:- func add_assoc_list(assoc_list.assoc_list(digraph.digraph_key(T), digraph.digraph_key(T)), digraph.digraph(T)) = digraph.digraph(T).
+:- pred add_edge(digraph.digraph_key(T), digraph.digraph_key(T), digraph.digraph(T), digraph.digraph(T)).
+:- mode add_edge(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func add_edge(digraph.digraph_key(T), digraph.digraph_key(T), digraph.digraph(T)) = digraph.digraph(T).
+:- pred add_vertex(T, digraph.digraph_key(T), digraph.digraph(T), digraph.digraph(T)).
+:- mode add_vertex(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_vertex_pair(pair.pair(T), digraph.digraph(T), digraph.digraph(T)).
+:- mode add_vertex_pair(builtin.in, builtin.in, builtin.out) is det.
+:- func add_vertex_pair(pair.pair(T), digraph.digraph(T)) = digraph.digraph(T).
+:- pred add_vertices_and_edge(T, T, digraph.digraph(T), digraph.digraph(T)).
+:- mode add_vertices_and_edge(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func add_vertices_and_edge(T, T, digraph.digraph(T)) = digraph.digraph(T).
+:- pred atsort(digraph.digraph(T), list.list(set.set(T))).
+:- mode atsort(builtin.in, builtin.out) is det.
+:- func atsort(digraph.digraph(T)) = list.list(set.set(T)).
+:- pred cliques(digraph.digraph(T), set.set(set.set(digraph.digraph_key(T)))).
+:- mode cliques(builtin.in, builtin.out) is det.
+:- func cliques(digraph.digraph(T)) = set.set(set.set(digraph.digraph_key(T))).
+:- pred components(digraph.digraph(T), set.set(set.set(digraph.digraph_key(T)))).
+:- mode components(builtin.in, builtin.out) is det.
+:- func components(digraph.digraph(T)) = set.set(set.set(digraph.digraph_key(T))).
+:- pred compose(digraph.digraph(T), digraph.digraph(T), digraph.digraph(T)).
+:- mode compose(builtin.in, builtin.in, builtin.out) is det.
+:- func compose(digraph.digraph(T), digraph.digraph(T)) = digraph.digraph(T).
+:- pred delete_assoc_list(assoc_list.assoc_list(digraph.digraph_key(T), digraph.digraph_key(T)), digraph.digraph(T), digraph.digraph(T)).
+:- mode delete_assoc_list(builtin.in, builtin.in, builtin.out) is det.
+:- func delete_assoc_list(assoc_list.assoc_list(digraph.digraph_key(T), digraph.digraph_key(T)), digraph.digraph(T)) = digraph.digraph(T).
+:- pred delete_edge(digraph.digraph_key(T), digraph.digraph_key(T), digraph.digraph(T), digraph.digraph(T)).
+:- mode delete_edge(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func delete_edge(digraph.digraph_key(T), digraph.digraph_key(T), digraph.digraph(T)) = digraph.digraph(T).
+:- pred dfs(digraph.digraph(T), list.list(digraph.digraph_key(T))).
+:- mode dfs(builtin.in, builtin.out) is det.
+:- func dfs(digraph.digraph(T)) = list.list(digraph.digraph_key(T)).
+:- pred dfs(digraph.digraph(T), digraph.digraph_key(T), list.list(digraph.digraph_key(T))).
+:- mode dfs(builtin.in, builtin.in, builtin.out) is det.
+:- func dfs(digraph.digraph(T), digraph.digraph_key(T)) = list.list(digraph.digraph_key(T)).
+:- pred dfs(digraph.digraph(T), digraph.digraph_key(T), digraph.digraph_key_set(T), digraph.digraph_key_set(T), list.list(digraph.digraph_key(T))).
+:- mode dfs(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred dfsrev(digraph.digraph(T), list.list(digraph.digraph_key(T))).
+:- mode dfsrev(builtin.in, builtin.out) is det.
+:- func dfsrev(digraph.digraph(T)) = list.list(digraph.digraph_key(T)).
+:- pred dfsrev(digraph.digraph(T), digraph.digraph_key(T), list.list(digraph.digraph_key(T))).
+:- mode dfsrev(builtin.in, builtin.in, builtin.out) is det.
+:- func dfsrev(digraph.digraph(T), digraph.digraph_key(T)) = list.list(digraph.digraph_key(T)).
+:- pred dfsrev(digraph.digraph(T), digraph.digraph_key(T), digraph.digraph_key_set(T), digraph.digraph_key_set(T), list.list(digraph.digraph_key(T))).
+:- mode dfsrev(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred from_assoc_list(assoc_list.assoc_list(T, T), digraph.digraph(T)).
+:- mode from_assoc_list(builtin.in, builtin.out) is det.
+:- func from_assoc_list(assoc_list.assoc_list(T, T)) = digraph.digraph(T).
+:- pred init(digraph.digraph(T)).
+:- mode init(builtin.out) is det.
+:- func init = digraph.digraph(T).
+:- pred inverse(digraph.digraph(T), digraph.digraph(T)).
+:- mode inverse(builtin.in, builtin.out) is det.
+:- func inverse(digraph.digraph(T)) = digraph.digraph(T).
+:- pred is_dag(digraph.digraph(T)).
+:- mode is_dag(builtin.in) is semidet.
+:- pred is_edge(digraph.digraph(T), digraph.digraph_key(T), digraph.digraph_key(T)).
+:- mode is_edge(builtin.in, builtin.in, builtin.out) is nondet.
+:- mode is_edge(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred is_edge_rev(digraph.digraph(T), digraph.digraph_key(T), digraph.digraph_key(T)).
+:- mode is_edge_rev(builtin.in, builtin.out, builtin.in) is nondet.
+:- mode is_edge_rev(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred lookup_from(digraph.digraph(T), digraph.digraph_key(T), set.set(digraph.digraph_key(T))).
+:- mode lookup_from(builtin.in, builtin.in, builtin.out) is det.
+:- func lookup_from(digraph.digraph(T), digraph.digraph_key(T)) = set.set(digraph.digraph_key(T)).
+:- pred lookup_key(digraph.digraph(T), T, digraph.digraph_key(T)).
+:- mode lookup_key(builtin.in, builtin.in, builtin.out) is det.
+:- func lookup_key(digraph.digraph(T), T) = digraph.digraph_key(T).
+:- pred lookup_key_set_from(digraph.digraph(T), digraph.digraph_key(T), digraph.digraph_key_set(T)).
+:- mode lookup_key_set_from(builtin.in, builtin.in, builtin.out) is det.
+:- func lookup_key_set_from(digraph.digraph(T), digraph.digraph_key(T)) = digraph.digraph_key_set(T).
+:- pred lookup_key_set_to(digraph.digraph(T), digraph.digraph_key(T), digraph.digraph_key_set(T)).
+:- mode lookup_key_set_to(builtin.in, builtin.in, builtin.out) is det.
+:- func lookup_key_set_to(digraph.digraph(T), digraph.digraph_key(T)) = digraph.digraph_key_set(T).
+:- pred lookup_to(digraph.digraph(T), digraph.digraph_key(T), set.set(digraph.digraph_key(T))).
+:- mode lookup_to(builtin.in, builtin.in, builtin.out) is det.
+:- func lookup_to(digraph.digraph(T), digraph.digraph_key(T)) = set.set(digraph.digraph_key(T)).
+:- pred lookup_vertex(digraph.digraph(T), digraph.digraph_key(T), T).
+:- mode lookup_vertex(builtin.in, builtin.in, builtin.out) is det.
+:- func lookup_vertex(digraph.digraph(T), digraph.digraph_key(T)) = T.
+:- pred reduced(digraph.digraph(T), digraph.digraph(set.set(T))).
+:- mode reduced(builtin.in, builtin.out) is det.
+:- func reduced(digraph.digraph(T)) = digraph.digraph(set.set(T)).
+:- pred reduced(digraph.digraph(T), digraph.digraph(set.set(T)), map.map(digraph.digraph_key(T), digraph.digraph_key(set.set(T)))).
+:- mode reduced(builtin.in, builtin.out, builtin.out) is det.
+:- func reflexive_transitive_closure(digraph.digraph(T)) = digraph.digraph(T).
+:- func return_sccs_in_from_to_order(digraph.digraph(T)) = list.list(set.set(T)).
+:- func return_sccs_in_to_from_order(digraph.digraph(T)) = list.list(set.set(T)).
+:- pred return_vertices_in_from_to_order(digraph.digraph(T), list.list(T)).
+:- mode return_vertices_in_from_to_order(builtin.in, builtin.out) is semidet.
+:- pred return_vertices_in_to_from_order(digraph.digraph(T), list.list(T)).
+:- mode return_vertices_in_to_from_order(builtin.in, builtin.out) is semidet.
+:- pred rtc(digraph.digraph(T), digraph.digraph(T)).
+:- mode rtc(builtin.in, builtin.out) is det.
+:- func rtc(digraph.digraph(T)) = digraph.digraph(T).
+:- pred sc(digraph.digraph(T), digraph.digraph(T)).
+:- mode sc(builtin.in, builtin.out) is det.
+:- func sc(digraph.digraph(T)) = digraph.digraph(T).
+:- pred search_key(digraph.digraph(T), T, digraph.digraph_key(T)).
+:- mode search_key(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred slow_tc(digraph.digraph(T), digraph.digraph(T)).
+:- mode slow_tc(builtin.in, builtin.out) is det.
+:- func symmetric_closure(digraph.digraph(T)) = digraph.digraph(T).
+:- pred tc(digraph.digraph(T), digraph.digraph(T)).
+:- mode tc(builtin.in, builtin.out) is det.
+:- func tc(digraph.digraph(T)) = digraph.digraph(T).
+:- pred to_assoc_list(digraph.digraph(T), assoc_list.assoc_list(T, T)).
+:- mode to_assoc_list(builtin.in, builtin.out) is det.
+:- func to_assoc_list(digraph.digraph(T)) = assoc_list.assoc_list(T, T).
+:- pred to_key_assoc_list(digraph.digraph(T), assoc_list.assoc_list(digraph.digraph_key(T), digraph.digraph_key(T))).
+:- mode to_key_assoc_list(builtin.in, builtin.out) is det.
+:- func to_key_assoc_list(digraph.digraph(T)) = assoc_list.assoc_list(digraph.digraph_key(T), digraph.digraph_key(T)).
+:- func transitive_closure(digraph.digraph(T)) = digraph.digraph(T).
+:- pred traverse(digraph.digraph(T), pred(T, A, A), pred(T, T, A, A), A, A).
+:- mode traverse(builtin.in, builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.di, builtin.uo) is det.
+:- mode traverse(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.out) is det.
+:- pred tsort(digraph.digraph(T), list.list(T)).
+:- mode tsort(builtin.in, builtin.out) is semidet.
+:- pred vertices(digraph.digraph(T), set.set(T)).
+:- mode vertices(builtin.in, builtin.out) is det.
+:- func vertices(digraph.digraph(T)) = set.set(T).

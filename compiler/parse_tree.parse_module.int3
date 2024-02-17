@@ -1,0 +1,7 @@
+:- module parse_tree.parse_module.
+:- interface.
+:- type maybe_require_module_decl
+	where	type_is_abstract_enum(1).
+:- type_representation(make_dummy_parse_tree(V_1), is_eqv_to(pred(module_name, V_1))).
+:- type_representation(maybe_require_module_decl, du_repn(enum("dont_require_module_decl", "require_module_decl", [],  no_c_j_cs))).
+:- type_representation(read_parse_tree(V_1), is_eqv_to(pred(file_name, string, int, line_context, line_posn, module_name, list(prog_context), maybe(V_1), read_module_errors))).
