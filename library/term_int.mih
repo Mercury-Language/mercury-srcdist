@@ -1,0 +1,178 @@
+/*
+** Automatically generated from `term_int.m'
+** by the Mercury compiler,
+** version rotd-2024-02-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module term_int.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_term_int
+#define MR_HEADER_GUARD_term_int
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TERM_INT_DECL_GUARD
+#define TERM_INT_DECL_GUARD
+
+#endif
+
+
+
+MR_bool MR_CALL 
+mercury__term_int__decimal_term_to_int_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__term_int__term_to_int_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__term_int__term_to_int16_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  int16_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term_int__term_to_int32_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  int32_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term_int__term_to_int64_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  int64_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term_int__term_to_int8_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  int8_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term_int__term_to_uint_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Unsigned * param_3);
+
+MR_bool MR_CALL 
+mercury__term_int__term_to_uint16_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  uint16_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term_int__term_to_uint32_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  uint32_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term_int__term_to_uint64_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  uint64_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term_int__term_to_uint8_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  uint8_t * param_3);
+
+MR_Word MR_CALL 
+mercury__term_int__int16_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  int16_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term_int__int32_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  int32_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term_int__int64_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  int64_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term_int__int8_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  int8_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term_int__int_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term_int__uint16_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  uint16_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term_int__uint32_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  uint32_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term_int__uint64_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  uint64_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term_int__uint8_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  uint8_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term_int__uint_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Word param_3);
+
+void mercury__term_int__init(void);
+void mercury__term_int__init_type_tables(void);
+void mercury__term_int__init_debugger(void);
+const char *mercury__term_int__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_term_int
+
+// :- end_interface term_int.

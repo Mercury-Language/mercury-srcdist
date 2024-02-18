@@ -1,0 +1,2 @@
+:- module recompilation.usage.
+:- interface.

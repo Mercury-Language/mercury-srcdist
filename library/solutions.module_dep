@@ -1,0 +1,14 @@
+module(2, "solutions.m",
+	solutions,
+	{},
+	{bool, builtin, list, private_builtin, set},
+	{mutvar, require},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - solutions, "C#" - solutions, "Java" - solutions},
+	no_foreign_export,
+	no_main,
+	{}
+).
