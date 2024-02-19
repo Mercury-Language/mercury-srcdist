@@ -1,0 +1,31 @@
+// Automatically generated from `univ.m'
+// by the Mercury compiler,
+// version rotd-2024-02-19
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef UNIV_MH
+#define UNIV_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+void ML_construct_univ(MR_Word, MR_Word, MR_Word *);
+void ML_unravel_univ(MR_Word *, MR_Word, MR_Word *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* UNIV_MH */

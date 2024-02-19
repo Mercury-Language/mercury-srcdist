@@ -1,0 +1,21 @@
+:- module hlds.pred_name.
+:- interface.
+:- type aux_tabling_maybe_single_proc
+	where	type_is_abstract_enum(1).
+:- type aux_tabling_pred_kind
+	where	type_is_abstract_enum(1).
+:- type compiler_made.
+:- type instance_method_constraints.
+:- type line_number_and_counter.
+:- type pred_origin.
+:- type pred_transform.
+:- type proc_transform.
+:- type stm_clone_kind
+	where	type_is_abstract_enum(3).
+:- type transform_name.
+:- type user_made.
+:- type_representation(aux_tabling_maybe_single_proc, du_repn(enum("is_not_single_proc", "is_single_proc", [],  no_c_j_cs))).
+:- type_representation(aux_tabling_pred_kind, du_repn(enum("atpk_statistics", "atpk_reset", [],  no_c_j_cs))).
+:- type_representation(instance_method_constraints, is_word_aligned_ptr).
+:- type_representation(line_number_and_counter, is_word_aligned_ptr).
+:- type_representation(stm_clone_kind, du_repn(enum("stmck_top_level", "stmck_rollback", ["stmck_wrapper", "stmck_simple_wrapper", "stmck_or_else"],  no_c_j_cs))).
