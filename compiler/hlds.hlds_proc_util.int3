@@ -1,0 +1,5 @@
+:- module hlds.hlds_proc_util.
+:- interface.
+:- type can_proc_succeed
+	where	type_is_abstract_enum(1).
+:- type_representation(can_proc_succeed, du_repn(enum("proc_can_maybe_succeed", "proc_cannot_succeed", [],  no_c_j_cs))).

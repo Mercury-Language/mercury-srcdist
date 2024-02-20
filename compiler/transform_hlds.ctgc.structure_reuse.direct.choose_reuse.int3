@@ -1,0 +1,3 @@
+:- module (((transform_hlds.ctgc).structure_reuse).direct).choose_reuse.
+:- interface.
+:- type_representation(match_table, is_eqv_to(multi_map(dead_var, match))).
