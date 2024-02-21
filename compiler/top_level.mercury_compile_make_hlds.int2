@@ -1,0 +1,5 @@
+:- module top_level.mercury_compile_make_hlds.
+:- interface.
+:- type maybe_write_d_file
+    --->    do_not_write_d_file 
+    ;       write_d_file .

@@ -1,0 +1,28 @@
+:- module ll_backend.lookup_switch.
+:- interface.
+:- use_module backend_libs.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module backend_libs.switch_util.
+:- use_module hlds.hlds_data.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_llds.
+:- use_module ll_backend.code_info.
+:- use_module ll_backend.code_loc_dep.
+:- use_module ll_backend.llds.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.set_of_var.
+:- type case_kind
+    --->    kind_zero_solns 
+    ;       kind_one_soln 
+    ;       kind_several_solns .
+:- type lookup_switch_info(Key)
+    --->    lookup_switch_info((ll_backend.lookup_switch).lsi_cases :: backend_libs.switch_util.case_consts(Key, ll_backend.llds.rval, backend_libs.switch_util.case_consts_several_llds), (ll_backend.lookup_switch).lsi_out_variables :: list.list(parse_tree.prog_data.prog_var), (ll_backend.lookup_switch).lsi_out_types :: list.list(ll_backend.llds.llds_type), (ll_backend.lookup_switch).lsi_liveness :: parse_tree.set_of_var.set_of_progvar).
+:- func default_value_for_type(ll_backend.llds.llds_type) = ll_backend.llds.rval.
+:- pred generate_code_for_all_kinds(list.list(ll_backend.lookup_switch.case_kind), int, list.list(parse_tree.prog_data.prog_var), parse_tree.set_of_var.set_of_progvar, ll_backend.llds.label, hlds.hlds_llds.abs_store_map, parse_tree.set_of_var.set_of_progvar, ll_backend.llds.add_trail_ops, ll_backend.llds.lval, ll_backend.llds.rval, ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_code_for_all_kinds(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in) is det.
+:- pred generate_int_lookup_switch(ll_backend.llds.rval, ll_backend.lookup_switch.lookup_switch_info(int), ll_backend.llds.label, hlds.hlds_llds.abs_store_map, int, int, backend_libs.switch_util.need_bit_vec_check, backend_libs.switch_util.need_range_check, ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_int_lookup_switch(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in) is det.
+:- pred is_lookup_switch(ll_backend.code_loc_dep.position_info, pred(hlds.hlds_data.cons_tag, Key), list.list(hlds.hlds_goal.tagged_case), hlds.hlds_goal.hlds_goal_info, hlds.hlds_llds.abs_store_map, ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, ll_backend.lookup_switch.lookup_switch_info(Key), ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode is_lookup_switch(builtin.in, builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is semidet.
