@@ -1,0 +1,6 @@
+:- module ml_backend.ml_lookup_switch.
+:- interface.
+:- type ml_lookup_switch_info
+    --->    ml_lookup_switch_info((ml_backend.ml_lookup_switch).mllsi_cases :: backend_libs.switch_util.case_consts(hlds.hlds_goal.case_id, ml_backend.mlds.mlds_rval, unit.unit), (ml_backend.ml_lookup_switch).mllsi_out_variables :: list.list(parse_tree.prog_data.prog_var), (ml_backend.ml_lookup_switch).mllsi_out_types :: list.list(ml_backend.mlds.mlds_type)).
+:- type ml_several_soln_lookup_vars
+    --->    ml_several_soln_lookup_vars((ml_backend.ml_lookup_switch).msslv_num_later_solns_var :: ml_backend.mlds.mlds_local_var_name_type, (ml_backend.ml_lookup_switch).msslv_later_slot_var :: ml_backend.mlds.mlds_local_var_name_type, (ml_backend.ml_lookup_switch).msslv_limit_var :: ml_backend.mlds.mlds_local_var_name_type, (ml_backend.ml_lookup_switch).msslv_limit_assign_statement :: ml_backend.mlds.mlds_stmt, (ml_backend.ml_lookup_switch).msslv_incr_later_slot_statement :: ml_backend.mlds.mlds_stmt, (ml_backend.ml_lookup_switch).msslv_denfs :: list.list(ml_backend.mlds.mlds_local_var_defn)).
