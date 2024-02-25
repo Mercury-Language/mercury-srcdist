@@ -1,0 +1,13 @@
+:- module thread.
+:- interface.
+:- include_module thread.barrier.
+:- include_module thread.channel.
+:- include_module thread.closeable_channel.
+:- include_module thread.future.
+:- include_module thread.mvar.
+:- include_module thread.semaphore.
+:- type thread.
+:- type thread_options.
+:- type_representation(thread, du_repn(notag("thread", thread_id,  no_c_j_cs))).
+:- type_representation(thread_id, is_eqv_to(string)).
+:- type_representation(thread_options, du_repn(notag("thread_options", uint,  no_c_j_cs))).

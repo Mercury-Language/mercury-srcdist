@@ -1,0 +1,5 @@
+:- module transform_hlds.term_constr_util.
+:- interface.
+:- use_module map.
+:- use_module transform_hlds.term_constr_data.
+:- type var_substitution == map.map(transform_hlds.term_constr_data.size_var, transform_hlds.term_constr_data.size_var).
