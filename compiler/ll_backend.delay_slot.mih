@@ -1,0 +1,58 @@
+/*
+** Automatically generated from `delay_slot.m'
+** by the Mercury compiler,
+** version rotd-2024-02-26
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.delay_slot.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__delay_slot
+#define MR_HEADER_GUARD_ll_backend__delay_slot
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__DELAY_SLOT_DECL_GUARD
+#define LL_BACKEND__DELAY_SLOT_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+void MR_CALL 
+ll_backend__delay_slot__fill_branch_delay_slot_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void mercury__ll_backend__delay_slot__init(void);
+void mercury__ll_backend__delay_slot__init_type_tables(void);
+void mercury__ll_backend__delay_slot__init_debugger(void);
+const char *mercury__ll_backend__delay_slot__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.delay_slot
+
+// :- end_interface ll_backend.delay_slot.

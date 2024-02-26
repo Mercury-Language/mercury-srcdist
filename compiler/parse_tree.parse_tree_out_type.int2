@@ -1,0 +1,5 @@
+:- module parse_tree.parse_tree_out_type.
+:- interface.
+:- type maybe_exist_constraints
+    --->    no_exist_constraints 
+    ;       have_exist_constraints_print_paren(list.list(parse_tree.prog_data.prog_constraint)).
