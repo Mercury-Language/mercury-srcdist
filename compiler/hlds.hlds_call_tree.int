@@ -1,0 +1,13 @@
+:- module hlds.hlds_call_tree.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- type call_tree_info.
+:- pred compute_local_call_tree(hlds.hlds_module.module_info, hlds.hlds_call_tree.call_tree_info).
+:- mode compute_local_call_tree(builtin.in, builtin.out) is det.
+:- pred construct_local_call_tree_file_contents(hlds.hlds_module.module_info, hlds.hlds_call_tree.call_tree_info, string, string).
+:- mode construct_local_call_tree_file_contents(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred generate_movability_report(hlds.hlds_module.module_info, hlds.hlds_call_tree.call_tree_info, list.list(string), list.list(parse_tree.error_spec.error_spec)).
+:- mode generate_movability_report(builtin.in, builtin.in, builtin.in, builtin.out) is det.

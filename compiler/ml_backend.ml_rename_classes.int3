@@ -1,0 +1,4 @@
+:- module ml_backend.ml_rename_classes.
+:- interface.
+:- type class_name_renaming.
+:- type_representation(class_name_renaming, is_word_aligned_ptr).
