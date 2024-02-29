@@ -1,0 +1,43 @@
+// Automatically generated from `make.deps_cache.m'
+// by the Mercury compiler,
+// version rotd-2024-02-29
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MAKE__DEPS_CACHE_MH
+#define MAKE__DEPS_CACHE_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MAKE__DEPS_CACHE_DECL_GUARD
+#define MAKE__DEPS_CACHE_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word make__deps_cache__mutable_variable_deps_cache_stats;
+#else
+    extern MR_Word make__deps_cache__mutable_variable_deps_cache_stats;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock make__deps_cache__mutable_variable_deps_cache_stats_lock;
+#endif
+
+
+#endif
+void make__deps_cache__user_init_pred_53_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MAKE__DEPS_CACHE_MH */

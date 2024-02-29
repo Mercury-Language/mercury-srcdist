@@ -1,0 +1,548 @@
+/*
+** Automatically generated from `declarative_edt.m'
+** by the Mercury compiler,
+** version rotd-2024-02-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.declarative_edt.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__declarative_edt
+#define MR_HEADER_GUARD_mdb__declarative_edt
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__DECLARATIVE_EDT_DECL_GUARD
+#define MDB__DECLARATIVE_EDT_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_find_origin_response_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_maybe_found_descendant_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_primitive_op_type_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_search_space_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_subterm_mode_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_subterm_origin_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_suspect_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_suspect_id_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_suspect_status_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_weighting_heuristic_0;
+
+extern const MR_TypeClassDeclStruct mdb__declarative_edt__mdb__declarative_edt__type_class_decl_mercury_edt_2;
+
+void MR_CALL 
+mdb__declarative_edt__assert_suspect_is_correct_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdb__declarative_edt__assert_suspect_is_erroneous_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdb__declarative_edt__assert_suspect_is_inadmissible_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__children_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__choose_skipped_suspect_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__edt_children_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__edt_context_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mdb__declarative_edt__edt_dependency_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mdb__declarative_edt__edt_get_e_bug_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdb__declarative_edt__edt_get_i_bug_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__edt_is_implicit_root_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mdb__declarative_edt__edt_number_of_events_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__edt_parent_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mdb__declarative_edt__edt_question_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__edt_same_nodes_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+void MR_CALL 
+mdb__declarative_edt__edt_subterm_mode_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mdb__declarative_edt__edt_subtree_suspicion_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__edt_topmost_node_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__extend_search_space_upwards_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mdb__declarative_edt__find_subterm_origin_11_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Word param_10,
+  MR_Word * param_11,
+  MR_Word * param_12);
+
+void MR_CALL 
+mdb__declarative_edt__first_unknown_descendant_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__get_path_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__give_up_subterm_tracking_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdb__declarative_edt__ignore_suspect_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mdb__declarative_edt__incorporate_explicit_subtree_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mdb__declarative_edt__incorporate_explicit_supertree_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mdb__declarative_edt__initialise_search_space_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mdb__declarative_edt__maybe_check_search_space_consistency_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String param_4);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__non_ignored_descendants_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__parent_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mdb__declarative_edt__revise_root_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__root_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mdb__declarative_edt__skip_suspect_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_correct_or_inadmissible_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_erroneous_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_ignored_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_in_excluded_complement_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_in_excluded_subtree_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_inadmissible_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_skipped_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_unknown_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mdb__declarative_edt__topmost_det_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mdb__declarative_edt__travel_up_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5);
+
+void MR_CALL 
+mdb__declarative_edt__update_weighting_heuristic_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Integer MR_CALL 
+mdb__declarative_edt__edt_arg_pos_to_user_arg_num_3_f_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mdb__declarative_edt__edt_proc_label_2_f_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_Word MR_CALL 
+mdb__declarative_edt__empty_search_space_0_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdb__declarative_edt__get_current_maybe_weighting_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Box MR_CALL 
+mdb__declarative_edt__get_edt_node_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_Word MR_CALL 
+mdb__declarative_edt__get_proc_label_for_suspect_3_f_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer param_4);
+
+MR_Integer MR_CALL 
+mdb__declarative_edt__get_weight_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_String MR_CALL 
+mdb__declarative_edt__primitive_op_type_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mdb__declarative_edt__suspect_depth_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mdb__declarative_edt____Compare____find_origin_response_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__declarative_edt____Compare____maybe_found_descendant_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__declarative_edt____Compare____primitive_op_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__declarative_edt____Compare____search_space_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdb__declarative_edt____Compare____subterm_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__declarative_edt____Compare____subterm_origin_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdb__declarative_edt____Compare____suspect_id_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mdb__declarative_edt____Compare____weighting_heuristic_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____find_origin_response_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____maybe_found_descendant_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____primitive_op_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____search_space_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____subterm_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____subterm_origin_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____suspect_id_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____weighting_heuristic_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdb__declarative_edt__init(void);
+void mercury__mdb__declarative_edt__init_type_tables(void);
+void mercury__mdb__declarative_edt__init_debugger(void);
+const char *mercury__mdb__declarative_edt__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.declarative_edt
+
+// :- end_interface mdb.declarative_edt.

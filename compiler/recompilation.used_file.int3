@@ -1,0 +1,34 @@
+:- module recompilation.used_file.
+:- interface.
+:- type imported_item_set.
+:- type imported_items.
+:- type module_imported_items.
+:- type recomp_used_module.
+:- type resolved_functor.
+:- type resolved_functor_map.
+:- type resolved_functor_set.
+:- type resolved_item_list(T).
+:- type resolved_item_map(T).
+:- type resolved_item_set(T).
+:- type resolved_pred_or_func_map.
+:- type resolved_pred_or_func_set.
+:- type resolved_used_items.
+:- type used_file.
+:- type used_file_contents.
+:- type used_file_error.
+:- type used_file_result(T).
+:- type_representation(imported_item_set, is_eqv_to(set(name_arity))).
+:- type_representation(imported_items, is_eqv_to(map(module_name, recompilation.used_file.module_imported_items))).
+:- type_representation(module_imported_items, is_word_aligned_ptr).
+:- type_representation(parse_resolved_item_matches(V_1), is_eqv_to(pred(term, recompilation.used_file.resolved_item_map(V_1), recompilation.used_file.resolved_item_map(V_1), cord(recompilation.used_file.used_file_error), cord(recompilation.used_file.used_file_error)))).
+:- type_representation(recomp_used_module, is_word_aligned_ptr).
+:- type_representation(resolved_functor_map, is_eqv_to(recompilation.used_file.resolved_item_map(set(recompilation.used_file.resolved_functor)))).
+:- type_representation(resolved_functor_set, is_eqv_to(recompilation.used_file.resolved_item_set(set(recompilation.used_file.resolved_functor)))).
+:- type_representation(resolved_item_list(V_1), is_eqv_to(assoc_list(arity, recompilation.used_file.resolved_item_map(V_1)))).
+:- type_representation(resolved_item_map(V_1), is_eqv_to(map(module_qualifier, V_1))).
+:- type_representation(resolved_item_set(V_1), is_eqv_to(map(string, recompilation.used_file.resolved_item_list(V_1)))).
+:- type_representation(resolved_pred_or_func_map, is_eqv_to(recompilation.used_file.resolved_item_map(set(pair(pred_id, module_name))))).
+:- type_representation(resolved_pred_or_func_set, is_eqv_to(recompilation.used_file.resolved_item_set(set(pair(pred_id, module_name))))).
+:- type_representation(resolved_used_items, is_word_aligned_ptr).
+:- type_representation(used_file, is_word_aligned_ptr).
+:- type_representation(used_file_contents, is_word_aligned_ptr).
