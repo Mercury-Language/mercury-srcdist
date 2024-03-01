@@ -1,0 +1,14 @@
+module(2, "declarative_execution.m",
+	mdb.declarative_execution,
+	{mdb},
+	{bool, builtin, io, list, maybe, mdbcomp, private_builtin, mdb.term_rep, mdbcomp.prim_data, mdbcomp.program_representation, mdbcomp.rtti_access, mdbcomp.sym_name},
+	{exception, int, map, store, univ, mdb.declarative_debugger, mdbcomp.goal_path},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - mdb.declarative_execution, "C#" - mdb.declarative_execution, "Java" - mdb.declarative_execution},
+	contains_foreign_export,
+	no_main,
+	{}
+).
