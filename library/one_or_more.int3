@@ -1,0 +1,3 @@
+:- module one_or_more.
+:- interface.
+:- type one_or_more(T).
