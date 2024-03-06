@@ -1,0 +1,42 @@
+// Automatically generated from `program_representation.m'
+// by the Mercury compiler,
+// version rotd-2024-03-06
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MDBCOMP__PROGRAM_REPRESENTATION_MH
+#define MDBCOMP__PROGRAM_REPRESENTATION_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MDBCOMP__PROGRAM_REPRESENTATION_DECL_GUARD
+#define MDBCOMP__PROGRAM_REPRESENTATION_DECL_GUARD
+
+#ifdef MR_HAVE_SYS_STAT_H
+#include <sys/stat.h>
+#include <fcntl.h>
+#endif
+
+
+#endif
+MR_Word ML_proc_defn_rep_type(void);
+MR_Word ML_goal_rep_type(void);
+MR_bool MR_MDBCOMP_trace_read_proc_defn_rep(const MR_uint_least8_t *, const MR_LabelLayout *, MR_Word *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDBCOMP__PROGRAM_REPRESENTATION_MH */

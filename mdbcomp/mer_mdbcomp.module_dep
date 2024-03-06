@@ -1,0 +1,14 @@
+module(2, "mer_mdbcomp.m",
+	mer_mdbcomp,
+	{},
+	{builtin, private_builtin},
+	{mdbcomp},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

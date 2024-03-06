@@ -1,0 +1,2 @@
+:- module mdbcomp.builtin_modules.
+:- interface.
