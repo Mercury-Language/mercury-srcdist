@@ -1,0 +1,76 @@
+:- module ra_list.
+:- interface.
+:- use_module list.
+:- type ra_list(T).
+:- pred append(ra_list.ra_list(T), ra_list.ra_list(T), ra_list.ra_list(T)).
+:- mode append(builtin.in, builtin.in, builtin.out) is det.
+:- pred cons(T, ra_list.ra_list(T), ra_list.ra_list(T)).
+:- mode cons(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_index0(ra_list.ra_list(T), int, T).
+:- mode det_index0(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_index1(ra_list.ra_list(T), int, T).
+:- mode det_index1(builtin.in, builtin.in, builtin.out) is det.
+:- pred drop(int, ra_list.ra_list(T), ra_list.ra_list(T)).
+:- mode drop(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred foldl(pred(L, A, A), ra_list.ra_list(L), A, A).
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.out) is multi.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out) is nondet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is nondet)), builtin.in, builtin.mdi, builtin.muo) is nondet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.out) is cc_multi.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.di, builtin.uo) is cc_multi.
+:- func foldl((func(L, A) = A), ra_list.ra_list(L), A) = A.
+:- pred foldr(pred(L, A, A), ra_list.ra_list(L), A, A).
+:- mode foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.out) is multi.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out) is nondet.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is nondet)), builtin.in, builtin.mdi, builtin.muo) is nondet.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.di, builtin.uo) is cc_multi.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.out) is cc_multi.
+:- func foldr((func(L, A) = A), ra_list.ra_list(L), A) = A.
+:- pred head(ra_list.ra_list(T), T).
+:- mode head(builtin.in, builtin.out) is semidet.
+:- pred head_tail(ra_list.ra_list(T), T, ra_list.ra_list(T)).
+:- mode head_tail(builtin.in, builtin.out, builtin.out) is semidet.
+:- pred index0(ra_list.ra_list(T), int, T).
+:- mode index0(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred index1(ra_list.ra_list(T), int, T).
+:- mode index1(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred init(ra_list.ra_list(T)).
+:- mode init(builtin.uo) is det.
+:- pred is_empty(ra_list.ra_list(T)).
+:- mode is_empty(builtin.in) is semidet.
+:- pred is_not_empty(ra_list.ra_list(T)).
+:- mode is_not_empty(builtin.in) is semidet.
+:- pred is_singleton(ra_list.ra_list(T), T).
+:- mode is_singleton(builtin.in, builtin.out) is semidet.
+:- pred length(ra_list.ra_list(T), int).
+:- mode length(builtin.in, builtin.out) is det.
+:- func length(ra_list.ra_list(T)) = int.
+:- pred list_to_ra_list(list.list(T), ra_list.ra_list(T)).
+:- mode list_to_ra_list(builtin.in, builtin.out) is det.
+:- pred map(pred(X, Y), ra_list.ra_list(X), ra_list.ra_list(Y)).
+:- mode map(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.out) is det.
+:- mode map(builtin.in((pred(builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.out) is cc_multi.
+:- mode map(builtin.in((pred(builtin.in, builtin.out) is semidet)), builtin.in, builtin.out) is semidet.
+:- mode map(builtin.in((pred(builtin.in, builtin.out) is multi)), builtin.in, builtin.out) is multi.
+:- mode map(builtin.in((pred(builtin.in, builtin.out) is nondet)), builtin.in, builtin.out) is nondet.
+:- mode map(builtin.in((pred(builtin.in, builtin.in) is semidet)), builtin.in, builtin.in) is semidet.
+:- func map(((func X) = Y), ra_list.ra_list(X)) = ra_list.ra_list(Y).
+:- pred ra_list_to_list(ra_list.ra_list(T), list.list(T)).
+:- mode ra_list_to_list(builtin.in, builtin.out) is det.
+:- func singleton(T) = ra_list.ra_list(T).
+:- pred tail(ra_list.ra_list(T), ra_list.ra_list(T)).
+:- mode tail(builtin.in, builtin.out) is semidet.
+:- pred update(int, T, ra_list.ra_list(T), ra_list.ra_list(T)).
+:- mode update(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.

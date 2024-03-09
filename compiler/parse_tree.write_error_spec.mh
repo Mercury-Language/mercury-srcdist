@@ -1,0 +1,47 @@
+// Automatically generated from `write_error_spec.m'
+// by the Mercury compiler,
+// version rotd-2024-03-09
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef PARSE_TREE__WRITE_ERROR_SPEC_MH
+#define PARSE_TREE__WRITE_ERROR_SPEC_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PARSE_TREE__WRITE_ERROR_SPEC_DECL_GUARD
+#define PARSE_TREE__WRITE_ERROR_SPEC_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Unsigned parse_tree__write_error_spec__mutable_variable_extra_error_info;
+#else
+    extern MR_Unsigned parse_tree__write_error_spec__mutable_variable_extra_error_info;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Unsigned parse_tree__write_error_spec__mutable_variable_some_errors_were_context_limited;
+#else
+    extern MR_Unsigned parse_tree__write_error_spec__mutable_variable_some_errors_were_context_limited;
+#endif
+
+
+#endif
+void parse_tree__write_error_spec__user_init_pred_168_0(void);
+void parse_tree__write_error_spec__user_init_pred_169_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PARSE_TREE__WRITE_ERROR_SPEC_MH */

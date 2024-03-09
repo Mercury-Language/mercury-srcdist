@@ -1,0 +1,52 @@
+:- module analysis.
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module term.
+:- import_module unit.
+:- import_module hlds.hlds_module.
+:- import_module hlds.hlds_pred.
+:- import_module libs.globals.
+:- import_module mdbcomp.prim_data.
+:- import_module mdbcomp.sym_name.
+:- import_module parse_tree.error_spec.
+:- import_module parse_tree.file_names.
+:- import_module parse_tree.prog_data.
+:- type analysis_info.
+:- type analysis_name.
+:- type analysis_result(Call, Answer).
+:- type analysis_status
+	where	type_is_abstract_enum(2).
+:- type analysis_type.
+:- type any_call.
+:- type fixpoint_type
+	where	type_is_abstract_enum(1).
+:- type func_id.
+:- type no_func_info.
+:- typeclass analysis(FuncInfo, Call, Answer).
+:- typeclass answer_pattern(FuncInfo, Answer).
+:- typeclass call_pattern(FuncInfo, Call).
+:- typeclass compiler(Compiler).
+:- typeclass partial_order(FuncInfo, T).
+:- typeclass to_term(S).
+:- instance (analysis.call_pattern(analysis.no_func_info, analysis.any_call)).
+:- instance (analysis.partial_order(analysis.no_func_info, analysis.any_call)).
+:- instance (analysis.to_term(analysis.any_call)).
+:- type_representation(analysis_info, is_word_aligned_ptr).
+:- type_representation(analysis_map(V_1), is_eqv_to(map(module_name, module_analysis_map(V_1)))).
+:- type_representation(analysis_name, is_eqv_to(string)).
+:- type_representation(analysis_status, du_repn(enum("invalid", "suboptimal", ["optimal"],  no_c_j_cs))).
+:- type_representation(analysis_type, is_word_aligned_ptr).
+:- type_representation(any_call, du_repn(direct_dummy("any_call",  no_c_j_cs))).
+:- type_representation(fixpoint_type, du_repn(enum("least_fixpoint", "greatest_fixpoint", [],  no_c_j_cs))).
+:- type_representation(func_analysis_map(V_1), is_eqv_to(map(analysis.func_id, list(V_1)))).
+:- type_representation(func_id, is_word_aligned_ptr).
+:- type_representation(module_analysis_map(V_1), is_eqv_to(map(analysis.analysis_name, func_analysis_map(V_1)))).
+:- type_representation(no_func_info, du_repn(direct_dummy("no_func_info",  no_c_j_cs))).
