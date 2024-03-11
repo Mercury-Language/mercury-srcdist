@@ -1,0 +1,4 @@
+:- module term_context.
+:- interface.
+:- type term_context
+    --->    context(term_context.context_filename :: string, term_context.context_linenumber :: int).
