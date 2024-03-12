@@ -1,0 +1,39 @@
+:- module (transform_hlds.higher_order).higher_order_global_info.
+:- interface.
+:- use_module map.
+:- use_module set.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.prog_data.
+:- type goal_size_map == map.map(hlds.hlds_pred.pred_id, int).
+:- type higher_order_arg
+    --->    higher_order_arg(((transform_hlds.higher_order).higher_order_global_info).hoa_cons_id :: parse_tree.prog_data.cons_id, ((transform_hlds.higher_order).higher_order_global_info).hoa_index :: int, ((transform_hlds.higher_order).higher_order_global_info).hoa_num_curried_args :: int, ((transform_hlds.higher_order).higher_order_global_info).hoa_curry_arg_in_caller :: list.list(parse_tree.prog_data.prog_var), ((transform_hlds.higher_order).higher_order_global_info).hoa_curry_type_in_caller :: list.list(parse_tree.prog_data.mer_type), ((transform_hlds.higher_order).higher_order_global_info).hoa_curry_rtti_type :: list.list(hlds.hlds_rtti.rtti_var_info), ((transform_hlds.higher_order).higher_order_global_info).hoa_known_curry_args :: list.list(transform_hlds.higher_order.higher_order_global_info.higher_order_arg), ((transform_hlds.higher_order).higher_order_global_info).hoa_is_constant :: transform_hlds.higher_order.higher_order_global_info.is_arg_const).
+:- type higher_order_global_info.
+:- type ho_params
+    --->    ho_params(((transform_hlds.higher_order).higher_order_global_info).param_do_higher_order_spec :: libs.optimization_options.maybe_opt_higher_order, ((transform_hlds.higher_order).higher_order_global_info).param_do_type_spec :: libs.optimization_options.maybe_spec_types, ((transform_hlds.higher_order).higher_order_global_info).param_do_user_type_spec :: libs.optimization_options.maybe_spec_types_user_guided, ((transform_hlds.higher_order).higher_order_global_info).param_size_limit :: int, ((transform_hlds.higher_order).higher_order_global_info).param_arg_limit :: int).
+:- type ho_request
+    --->    ho_request(((transform_hlds.higher_order).higher_order_global_info).rq_caller :: hlds.hlds_pred.pred_proc_id, ((transform_hlds.higher_order).higher_order_global_info).rq_callee :: hlds.hlds_pred.pred_proc_id, ((transform_hlds.higher_order).higher_order_global_info).rq_args :: assoc_list.assoc_list(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type), ((transform_hlds.higher_order).higher_order_global_info).rq_tvars :: list.list(parse_tree.prog_data.tvar), ((transform_hlds.higher_order).higher_order_global_info).rq_ho_args :: list.list(transform_hlds.higher_order.higher_order_global_info.higher_order_arg), ((transform_hlds.higher_order).higher_order_global_info).rq_caller_tvarset :: parse_tree.prog_data.tvarset, ((transform_hlds.higher_order).higher_order_global_info).rq_typeinfo_liveness :: bool.bool, ((transform_hlds.higher_order).higher_order_global_info).rq_request_kind :: transform_hlds.higher_order.higher_order_global_info.ho_request_kind, ((transform_hlds.higher_order).higher_order_global_info).rq_call_context :: parse_tree.prog_data.prog_context).
+:- type ho_request_kind
+    --->    non_user_type_spec 
+    ;       user_type_spec .
+:- type is_arg_const
+    --->    arg_is_not_const 
+    ;       arg_is_const .
+:- type known_const
+    --->    known_const(parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var)).
+:- type known_var_map == map.map(parse_tree.prog_data.prog_var, transform_hlds.higher_order.higher_order_global_info.known_const).
+:- type match
+    --->    match(transform_hlds.higher_order.higher_order_global_info.new_pred, transform_hlds.higher_order.higher_order_global_info.match_completeness, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_type)).
+:- type match_completeness
+    --->    complete_match 
+    ;       partial_match(int).
+:- type must_recompute
+    --->    must_recompute 
+    ;       need_not_recompute .
+:- type new_pred
+    --->    new_pred(((transform_hlds.higher_order).higher_order_global_info).np_version_ppid :: hlds.hlds_pred.pred_proc_id, ((transform_hlds.higher_order).higher_order_global_info).np_old_ppid :: hlds.hlds_pred.pred_proc_id, ((transform_hlds.higher_order).higher_order_global_info).np_req_ppid :: hlds.hlds_pred.pred_proc_id, ((transform_hlds.higher_order).higher_order_global_info).np_name :: mdbcomp.sym_name.sym_name, ((transform_hlds.higher_order).higher_order_global_info).np_spec_args :: list.list(transform_hlds.higher_order.higher_order_global_info.higher_order_arg), ((transform_hlds.higher_order).higher_order_global_info).np_unspec_actuals :: assoc_list.assoc_list(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type), ((transform_hlds.higher_order).higher_order_global_info).np_extra_act_ti_vars :: list.list(parse_tree.prog_data.tvar), ((transform_hlds.higher_order).higher_order_global_info).np_call_tvarset :: parse_tree.prog_data.tvarset, ((transform_hlds.higher_order).higher_order_global_info).np_typeinfo_liveness :: bool.bool, ((transform_hlds.higher_order).higher_order_global_info).np_is_user_spec :: transform_hlds.higher_order.higher_order_global_info.ho_request_kind).
+:- type new_pred_map == map.map(hlds.hlds_pred.pred_proc_id, set.set(transform_hlds.higher_order.higher_order_global_info.new_pred)).
+:- type parent_version_info
+    --->    parent_version_info(hlds.hlds_pred.pred_proc_id, int).
+:- type version_info
+    --->    version_info(hlds.hlds_pred.pred_proc_id, int, transform_hlds.higher_order.higher_order_global_info.known_var_map, list.list(transform_hlds.higher_order.higher_order_global_info.parent_version_info)).
+:- type version_info_map == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.higher_order.higher_order_global_info.version_info).

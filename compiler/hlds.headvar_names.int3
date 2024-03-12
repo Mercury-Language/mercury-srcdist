@@ -1,0 +1,3 @@
+:- module hlds.headvar_names.
+:- interface.
+:- type_representation(var_name_info_map, is_eqv_to(map(prog_var, var_name_info))).

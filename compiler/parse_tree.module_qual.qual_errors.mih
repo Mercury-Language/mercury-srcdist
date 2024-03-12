@@ -1,0 +1,129 @@
+/*
+** Automatically generated from `module_qual.qual_errors.m'
+** by the Mercury compiler,
+** version rotd-2024-03-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.module_qual.qual_errors.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__module_qual__qual_errors
+#define MR_HEADER_GUARD_parse_tree__module_qual__qual_errors
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__MODULE_QUAL__QUAL_ERRORS_DECL_GUARD
+#define PARSE_TREE__MODULE_QUAL__QUAL_ERRORS_DECL_GUARD
+#include "parse_tree.mih"
+#include "parse_tree.module_qual.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__qual_errors__parse_tree__module_qual__qual_errors__type_ctor_info_mq_constraint_error_context_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__qual_errors__parse_tree__module_qual__qual_errors__type_ctor_info_mq_error_context_0;
+
+void MR_CALL 
+parse_tree__module_qual__qual_errors__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_112_111_114_116_95_105_110_118_97_108_105_100_95_117_115_101_114_95_105_110_115_116_95_95_91_49_44_32_50_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__qual_errors__report_ambiguous_match_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+parse_tree__module_qual__qual_errors__report_invalid_user_inst_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__module_qual__qual_errors__report_undefined_mq_id_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+parse_tree__module_qual__qual_errors__warn_unused_interface_import_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_qual__qual_errors____Compare____mq_constraint_error_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_qual__qual_errors____Compare____mq_error_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_qual__qual_errors____Index____mq_error_context_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_qual__qual_errors____Unify____mq_constraint_error_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_qual__qual_errors____Unify____mq_error_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__module_qual__qual_errors__init(void);
+void mercury__parse_tree__module_qual__qual_errors__init_type_tables(void);
+void mercury__parse_tree__module_qual__qual_errors__init_debugger(void);
+const char *mercury__parse_tree__module_qual__qual_errors__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.module_qual.qual_errors
+
+// :- end_interface parse_tree.module_qual.qual_errors.

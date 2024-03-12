@@ -1,0 +1,16 @@
+:- module edit_distance.
+:- interface.
+:- use_module char.
+:- use_module list.
+:- type edit_params(T)
+    --->    edit_params(edit_distance.cost_of_delete :: uint, edit_distance.cost_of_insert :: uint, edit_distance.cost_of_replace :: (func(T, T) = uint), edit_distance.cost_of_transpose :: uint).
+:- pred find_best_close_enough_seqs(edit_distance.edit_params(T), list.list(T), list.list(list.list(T)), uint, uint, list.list(T), list.list(list.list(T))).
+:- mode find_best_close_enough_seqs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is semidet.
+:- pred find_best_close_enough_strings(edit_distance.edit_params(char.char), string, list.list(string), uint, uint, string, list.list(string)).
+:- mode find_best_close_enough_strings(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is semidet.
+:- pred find_closest_seqs(edit_distance.edit_params(T), list.list(T), list.list(list.list(T)), uint, list.list(T), list.list(list.list(T))).
+:- mode find_closest_seqs(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred find_closest_strings(edit_distance.edit_params(char.char), string, list.list(string), uint, string, list.list(string)).
+:- mode find_closest_strings(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred find_edit_distance(edit_distance.edit_params(T), list.list(T), list.list(T), uint).
+:- mode find_edit_distance(builtin.in, builtin.in, builtin.in, builtin.out) is det.

@@ -1,0 +1,49 @@
+:- module backend_libs.switch_util.
+:- interface.
+:- type case_consts(Key, Rval, SeveralInfo).
+:- type case_consts_several_llds.
+:- type case_id_ptags_map.
+:- type int_switch_info(T).
+:- type maybe_int_switch_info.
+:- type need_bit_vec_check
+	where	type_is_abstract_enum(2).
+:- type need_range_check
+	where	type_is_abstract_enum(1).
+:- type ptag_case(CaseRep).
+:- type ptag_case_entry(CaseRep).
+:- type ptag_case_group(CaseRep).
+:- type ptag_case_list(CaseRep).
+:- type ptag_case_map(CaseRep).
+:- type ptag_count_map.
+:- type ptag_sectag_info.
+:- type shared_ptag_info(CaseRep).
+:- type shared_sectag_locn
+	where	type_is_abstract_subtype(sectag_locn/0).
+:- type soln_consts(Rval).
+:- type stag_case_list(CaseRep).
+:- type stag_case_map(CaseRep).
+:- type stag_goal_list(CaseRep).
+:- type stag_goal_map(CaseRep).
+:- type string_hash_slot(CaseRep).
+:- type switch_category
+	where	type_is_abstract_enum(3).
+:- type table_size_upgrade
+	where	type_is_abstract_enum(1).
+:- type whole_ptags_info(CaseRep).
+:- type_representation(case_consts_several_llds, is_word_aligned_ptr).
+:- type_representation(case_id_ptags_map, is_eqv_to(map(case_id, set(ptag)))).
+:- type_representation(need_bit_vec_check, du_repn(enum("need_bit_vec_check", "dont_need_bit_vec_check_no_gaps", ["dont_need_bit_vec_check_with_gaps"],  no_c_j_cs))).
+:- type_representation(need_range_check, du_repn(enum("need_range_check", "dont_need_range_check", [],  no_c_j_cs))).
+:- type_representation(ptag_case_list(V_1), is_eqv_to(list(backend_libs.switch_util.ptag_case_entry(V_1)))).
+:- type_representation(ptag_case_map(V_1), is_eqv_to(map(ptag, backend_libs.switch_util.ptag_case(V_1)))).
+:- type_representation(ptag_count_map, is_eqv_to(map(ptag, backend_libs.switch_util.ptag_sectag_info))).
+:- type_representation(ptag_sectag_info, is_word_aligned_ptr).
+:- type_representation(shared_sectag_locn, is_subtype_of(sectag_locn/0)).
+:- type_representation(stag_case_cord_map(V_1), is_eqv_to(map(V_1, cord(uint)))).
+:- type_representation(stag_case_list(V_1), is_eqv_to(assoc_list(V_1, one_or_more(uint)))).
+:- type_representation(stag_case_map(V_1), is_eqv_to(map(V_1, one_or_more(uint)))).
+:- type_representation(stag_goal_list(V_1), is_eqv_to(assoc_list(uint, V_1))).
+:- type_representation(stag_goal_map(V_1), is_eqv_to(map(uint, V_1))).
+:- type_representation(switch_category, du_repn(enum("ite_chain_switch", "int_max_32_switch", ["int_64_switch", "string_switch", "float_switch", "tag_switch"],  no_c_j_cs))).
+:- type_representation(table_size_upgrade, du_repn(enum("keep_first_size", "allow_doubling", [],  no_c_j_cs))).
+:- type_representation(whole_ptags_map(V_1), is_eqv_to(map(V_1, backend_libs.switch_util.whole_ptags_info(V_1)))).

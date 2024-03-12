@@ -1,0 +1,186 @@
+\`configure' configures this package to adapt to many kinds of systems.
+
+Usage: configure [OPTION]... [VAR=VALUE]...
+
+To assign environment variables (e.g., CC, CFLAGS...), specify them as
+VAR=VALUE.  See below for descriptions of some of the useful variables.
+
+Defaults for the options are specified in brackets.
+
+Configuration:
+  -h, --help              display this help and exit
+      --help=short        display options specific to this package
+      --help=recursive    display the short help of all the included packages
+  -V, --version           display version information and exit
+  -q, --quiet, --silent   do not print \`checking ...' messages
+      --cache-file=FILE   cache test results in FILE [disabled]
+  -C, --config-cache      alias for \`--cache-file=config.cache'
+  -n, --no-create         do not create output files
+      --srcdir=DIR        find the sources in DIR [configure dir or \`..']
+
+Installation directories:
+  --prefix=PREFIX         install architecture-independent files in PREFIX
+                          [/usr/local/mercury-rotd-2024-03-12]
+  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+                          [PREFIX]
+
+By default, \`make install' will install all the files in
+\`/usr/local/mercury-rotd-2024-03-12/bin', \`/usr/local/mercury-rotd-2024-03-12/lib' etc.  You can specify
+an installation prefix other than \`/usr/local/mercury-rotd-2024-03-12' using \`--prefix',
+for instance \`--prefix=$HOME'.
+
+For better control, use the options below.
+
+Fine tuning of the installation directories:
+  --bindir=DIR            user executables [EPREFIX/bin]
+  --sbindir=DIR           system admin executables [EPREFIX/sbin]
+  --libexecdir=DIR        program executables [EPREFIX/libexec]
+  --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
+  --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
+  --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
+  --libdir=DIR            object code libraries [EPREFIX/lib]
+  --includedir=DIR        C header files [PREFIX/include]
+  --oldincludedir=DIR     C header files for non-gcc [/usr/include]
+  --datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]
+  --datadir=DIR           read-only architecture-independent data [DATAROOTDIR]
+  --infodir=DIR           info documentation [DATAROOTDIR/info]
+  --localedir=DIR         locale-dependent data [DATAROOTDIR/locale]
+  --mandir=DIR            man documentation [DATAROOTDIR/man]
+  --docdir=DIR            documentation root [DATAROOTDIR/doc/PACKAGE]
+  --htmldir=DIR           html documentation [DOCDIR]
+  --dvidir=DIR            dvi documentation [DOCDIR]
+  --pdfdir=DIR            pdf documentation [DOCDIR]
+  --psdir=DIR             ps documentation [DOCDIR]
+
+System types:
+  --build=BUILD     configure for building on BUILD [guessed]
+  --host=HOST       cross-compile to build programs to run on HOST [BUILD]
+
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+
+  --disable-gc-large-config
+                          disable large heaps when using conservative GC
+  --disable-gc-mmap       use sbrk instead of mmap when using Boehm GC
+  --disable-gc-munmap     disable unmapping of unused pages when using Boehm
+                          GC
+  --disable-shared-libs   do not build shared version of the library even if
+                          that is supported
+  --enable-symlinks       enable symbolic links. This is the default on all
+                          systems except Windows. On Windows you can force
+                          symbolic links to be used by giving this option.
+                          Note that symbolic links will only work on Windows
+                          if you are using the Cygwin version of GCC.
+  --enable-javac-flags-for-heap-size
+                          enable maximum heap size option for Java compiler
+  --enable-deep-profiler=<directory>
+                          install deep profiler CGI script in <directory>
+  --enable-inefficient-grades
+                          install inefficient versions of the library
+  --disable-most-grades   install only the essential versions of the library
+  --enable-nogc-grades    install no-gc versions of the library
+  --disable-debug-grades  do not install the debugging versions of the library
+  --disable-decl-debug-grades
+                          do not install the declarative debugging versions of
+                          the library
+  --enable-ssdebug-grades install the ssdebug versions of the library
+  --disable-prof-grades   do not install profiling versions of the library
+  --disable-old-prof-grades
+                          do not install non-deep profiling versions of the
+                          library
+  --disable-trail-grades  do not install trailing versions of the library
+  --disable-par-grades    do not install thread-safe versions of the library
+  --enable-mm-grades      install minimal model versions of the library
+  --enable-mmos-grades    install experimental minimal model own stack
+                          versions of the library
+  --enable-dmm-grades     install minimal model debug versions of the library
+  --enable-hlc-prof-grades
+                          install profiling versions of the high level C grade
+  --enable-hlc-gdb-grades install a version of the high level C grade that
+                          supports debuggers for C
+  --enable-rbmm-grades    install experimental region-based memory management
+                          versions of the library
+  --enable-stseg-grades   install stack segments versions of the library
+  --enable-minimal-install
+                          install the minimal system required to bootstrap
+                          Mercury
+  --disable-csharp-grade  do not install the C# grade
+  --disable-java-grade    do not install the Java grade
+  --enable-libgrades=...  install exactly the given versions of the library.
+                          The versions are specified using a comma-separated
+                          list.
+  --enable-additional-libgrades=...
+                          install the given versions of the library in
+                          addition to those requested by other options. The
+                          versions are specified using a comma-separated list.
+  --enable-sanitizers     enable AddressSanitizer and
+                          UndefinedBehaviorSanitizer
+  --disable-extern-debug  disable the external (separate process) debugger
+  --disable-dynamic-link  disable the use of dynamic linking
+  --enable-new-mercuryfile-struct
+                          enable new MercuryFile struct.
+  --disable-tagged-trail  do not use tagged trail entries, even if they are
+                          supported.
+  --enable-lto            Enable link-time optimization for C grades
+                          (experimental)
+
+Optional Packages:
+  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+  --with-pkgversion=<pkgversion>
+                          Specify the package version for version messages.
+  --with-cc=<program>     Specify which C compiler to use.
+  --with-csharp-compiler=<compiler>
+                          Specify which C Sharp compiler to use (default:
+                          autodetect)
+  --with-gc-win32-pthreads
+                          Force the use of pthreads-win32 or winpthreads with
+                          Boehm GC. This is the default for MinGW if detected.
+  --with-llds-base-grade=<base_grade>
+                          Force the use of <base_grade> as the base LLDS
+                          grade. <base_grade> must be one of asm_fast, reg or
+                          none
+  --with-default-grade=GRADE
+                          Have the built compiler default to using GRADE
+  --with-macosx-deployment-target=<target>
+                          Specify the deployment target on Mac OS X.
+  --with-msvcrt           use the MS Visual C runtime if using MS C compiler.
+  --without-readline      Do not use the GPL GNU readline library
+  --without-editline      Do not use the NetBSD editline library (libedit)
+  --with-hwloc            Use libhwloc in support of thread pinning
+                          (developers only)
+  --with-cp               Use the cp command for file copying by the Mercury
+                          compiler. The is the default except when using MSVC
+                          or on MinGW.
+
+Some influential environment variables:
+  CC          C compiler command
+  CFLAGS      C compiler flags
+  LDFLAGS     linker flags, e.g. -L<lib dir> if you have libraries in a
+              nonstandard directory <lib dir>
+  LIBS        libraries to pass to the linker, e.g. -l<library>
+  CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I<include dir> if
+              you have headers in a nonstandard directory <include dir>
+  CPP         C preprocessor
+  PKG_CONFIG  path to pkg-config utility
+  PKG_CONFIG_PATH
+              directories to add to pkg-config's search path
+  PKG_CONFIG_LIBDIR
+              path overriding pkg-config's built-in search path
+  libhwloc_CFLAGS
+              C compiler flags for libhwloc, overriding pkg-config
+  libhwloc_LIBS
+              linker flags for libhwloc, overriding pkg-config
+  YACC        The \`Yet Another Compiler Compiler' implementation to use.
+              Defaults to the first program found out of: \`bison -y', \`byacc',
+              \`yacc'.
+  YFLAGS      The list of arguments that will be passed by default to $YACC.
+              This script will default YFLAGS to the empty string to avoid a
+              default value of \`-d' given by some make applications.
+
+Use these variables to override the choices made by \`configure' or to help
+it to find libraries and programs with nonstandard names/locations.
+
+Report bugs to the package provider.
