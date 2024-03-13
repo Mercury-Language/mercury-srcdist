@@ -1,0 +1,117 @@
+/*
+** Automatically generated from `io.error_util.m'
+** by the Mercury compiler,
+** version rotd-2024-03-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module io.error_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_io__error_util
+#define MR_HEADER_GUARD_io__error_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef IO__ERROR_UTIL_DECL_GUARD
+#define IO__ERROR_UTIL_DECL_GUARD
+#include "io.mih"
+
+#endif
+
+#define ML_SYSERR_ERRNO 0
+#define ML_SYSERR_ERRNO_OR_WIN32 1
+#define ML_SYSERR_EXCEPTION_OBJECT 2
+
+
+extern const MR_TypeCtorInfo_Struct mercury__io__error_util__io__error_util__type_ctor_info_system_error_style_0;
+
+void MR_CALL 
+mercury__io__error_util__is_error_5_p_0(
+  MR_Box param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__io__error_util__is_error_maybe_win32_6_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__io__error_util__make_io_error_from_maybe_win32_error_6_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__io__error_util__make_io_error_from_system_error_impl_5_p_0(
+  MR_Box param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__io__error_util__make_io_error_from_windows_error_impl_5_p_0(
+  MR_Box param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__io__error_util__throw_on_close_error_3_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__io__error_util__throw_on_error_4_p_0(
+  MR_Box param_1,
+  MR_String param_2);
+
+void MR_CALL 
+mercury__io__error_util__throw_on_output_error_3_p_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mercury__io__error_util__no_error_0_f_0(void);
+
+void MR_CALL 
+mercury__io__error_util____Compare____system_error_style_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__io__error_util____Unify____system_error_style_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__io__error_util__init(void);
+void mercury__io__error_util__init_type_tables(void);
+void mercury__io__error_util__init_debugger(void);
+const char *mercury__io__error_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_io.error_util
+
+// :- end_interface io.error_util.

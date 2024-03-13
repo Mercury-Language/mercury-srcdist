@@ -1,0 +1,6 @@
+:- module backend_libs.string_switch_util.
+:- interface.
+:- type string_hash_slot(CaseRep).
+:- type table_size_upgrade
+	where	type_is_abstract_enum(1).
+:- type_representation(table_size_upgrade, du_repn(enum("keep_first_size", "allow_doubling", [],  no_c_j_cs))).

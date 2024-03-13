@@ -1,0 +1,89 @@
+/*
+** Automatically generated from `recursion_patterns.m'
+** by the Mercury compiler,
+** version rotd-2024-03-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module recursion_patterns.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_recursion_patterns
+#define MR_HEADER_GUARD_recursion_patterns
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RECURSION_PATTERNS_DECL_GUARD
+#define RECURSION_PATTERNS_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct recursion_patterns__recursion_patterns__type_ctor_info_first_proc_info_0;
+
+extern const MR_TypeCtorInfo_Struct recursion_patterns__recursion_patterns__type_ctor_info_own_and_inherit_prof_info_0;
+
+extern const MR_TypeCtorInfo_Struct recursion_patterns__recursion_patterns__type_ctor_info_recursion_analysis_info_0;
+
+extern const MR_TypeCtorInfo_Struct recursion_patterns__recursion_patterns__type_ctor_info_recursion_data_0;
+
+extern const MR_TypeCtorInfo_Struct recursion_patterns__recursion_patterns__type_ctor_info_recursion_error_0;
+
+extern const MR_TypeCtorInfo_Struct recursion_patterns__recursion_patterns__type_ctor_info_recursion_level_0;
+
+extern const MR_TypeCtorInfo_Struct recursion_patterns__recursion_patterns__type_ctor_info_recursion_type_raw_freq_data_0;
+
+extern const MR_TypeCtorInfo_Struct recursion_patterns__recursion_patterns__type_ctor_info_recursion_type_raw_proc_freq_data_0;
+
+void MR_CALL 
+recursion_patterns__create_clique_recursion_costs_report_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+recursion_patterns__create_recursion_types_frequency_report_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+recursion_patterns__recursion_type_get_maybe_avg_max_depth_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+recursion_patterns__recursion_type_get_maybe_avg_max_depth_2_p_1(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void mercury__recursion_patterns__init(void);
+void mercury__recursion_patterns__init_type_tables(void);
+void mercury__recursion_patterns__init_debugger(void);
+const char *mercury__recursion_patterns__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_recursion_patterns
+
+// :- end_interface recursion_patterns.
