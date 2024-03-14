@@ -1,0 +1,99 @@
+:- module parse_tree.prog_mode.
+:- interface.
+:- use_module list.
+:- use_module term.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_util.
+:- func any_inst = parse_tree.prog_data.mer_inst.
+:- pred bound_inst_to_cons_id(parse_tree.prog_data.type_ctor, parse_tree.prog_data.bound_inst, parse_tree.prog_data.cons_id).
+:- mode bound_inst_to_cons_id(builtin.in, builtin.in, builtin.out) is det.
+:- pred bound_insts_to_cons_ids(parse_tree.prog_data.type_ctor, list.list(parse_tree.prog_data.bound_inst), list.list(parse_tree.prog_data.cons_id)).
+:- mode bound_insts_to_cons_ids(builtin.in, builtin.in, builtin.out) is det.
+:- func clobbered_inst = parse_tree.prog_data.mer_inst.
+:- pred constrain_inst_vars_in_mode(parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_mode).
+:- mode constrain_inst_vars_in_mode(builtin.in, builtin.out) is det.
+:- pred constrain_inst_vars_in_mode_sub(parse_tree.prog_data.inst_var_sub, parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_mode).
+:- mode constrain_inst_vars_in_mode_sub(builtin.in, builtin.in, builtin.out) is det.
+:- pred di_mode(parse_tree.prog_data.mer_mode).
+:- mode di_mode(builtin.out) is det.
+:- func di_mode = parse_tree.prog_data.mer_mode.
+:- func free_inst = parse_tree.prog_data.mer_inst.
+:- pred from_to_insts_is_standard_mode(parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, string).
+:- mode from_to_insts_is_standard_mode(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred get_arg_insts(parse_tree.prog_data.mer_inst, parse_tree.prog_data.cons_id, parse_tree.prog_data.arity, list.list(parse_tree.prog_data.mer_inst)).
+:- mode get_arg_insts(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred get_arg_insts_det(parse_tree.prog_data.mer_inst, parse_tree.prog_data.cons_id, parse_tree.prog_data.arity, list.list(parse_tree.prog_data.mer_inst)).
+:- mode get_arg_insts_det(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func ground_inst = parse_tree.prog_data.mer_inst.
+:- func in_any_mode = parse_tree.prog_data.mer_mode.
+:- pred in_mode(parse_tree.prog_data.mer_mode).
+:- mode in_mode(builtin.out) is det.
+:- func in_mode = parse_tree.prog_data.mer_mode.
+:- func in_mode(parse_tree.prog_data.mer_inst) = parse_tree.prog_data.mer_mode.
+:- pred inconsistent_constrained_inst_vars_in_modes(list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.inst_var)).
+:- mode inconsistent_constrained_inst_vars_in_modes(builtin.in, builtin.out) is det.
+:- pred inconsistent_constrained_inst_vars_in_tms(list.list(parse_tree.prog_data.type_and_mode), list.list(parse_tree.prog_data.inst_var)).
+:- mode inconsistent_constrained_inst_vars_in_tms(builtin.in, builtin.out) is det.
+:- pred inst_apply_substitution(parse_tree.prog_data.inst_var_sub, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_apply_substitution(builtin.in, builtin.in, builtin.out) is det.
+:- pred inst_contains_unconstrained_var(parse_tree.prog_data.mer_inst).
+:- mode inst_contains_unconstrained_var(builtin.in) is semidet.
+:- pred inst_list_apply_substitution(parse_tree.prog_data.inst_var_sub, list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst)).
+:- mode inst_list_apply_substitution(builtin.in, builtin.in, builtin.out) is det.
+:- pred inst_lists_to_mode_list(list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_mode)).
+:- mode inst_lists_to_mode_list(builtin.in, builtin.in, builtin.out) is det.
+:- pred inst_substitute_arg_list(list.list(parse_tree.prog_data.inst_var), list.list(parse_tree.prog_data.mer_inst), parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_substitute_arg_list(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred insts_to_mode(parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_mode).
+:- mode insts_to_mode(builtin.in, builtin.in, builtin.out) is det.
+:- pred make_std_mode(string, list.list(parse_tree.prog_data.mer_inst), parse_tree.prog_data.mer_mode).
+:- mode make_std_mode(builtin.in, builtin.in, builtin.out) is det.
+:- func make_std_mode(string, list.list(parse_tree.prog_data.mer_inst)) = parse_tree.prog_data.mer_mode.
+:- pred mdi_mode(parse_tree.prog_data.mer_mode).
+:- mode mdi_mode(builtin.out) is det.
+:- func mdi_mode = parse_tree.prog_data.mer_mode.
+:- pred mode_list_apply_substitution(parse_tree.prog_data.inst_var_sub, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_mode)).
+:- mode mode_list_apply_substitution(builtin.in, builtin.in, builtin.out) is det.
+:- pred mode_substitute_arg_list(parse_tree.prog_data.mer_mode, list.list(parse_tree.prog_data.inst_var), list.list(parse_tree.prog_data.mer_inst), parse_tree.prog_data.mer_mode).
+:- mode mode_substitute_arg_list(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func mostly_clobbered_inst = parse_tree.prog_data.mer_inst.
+:- func mostly_unique_inst = parse_tree.prog_data.mer_inst.
+:- pred muo_mode(parse_tree.prog_data.mer_mode).
+:- mode muo_mode(builtin.out) is det.
+:- func muo_mode = parse_tree.prog_data.mer_mode.
+:- func out_any_mode = parse_tree.prog_data.mer_mode.
+:- pred out_mode(parse_tree.prog_data.mer_mode).
+:- mode out_mode(builtin.out) is det.
+:- func out_mode = parse_tree.prog_data.mer_mode.
+:- func out_mode(parse_tree.prog_data.mer_inst) = parse_tree.prog_data.mer_mode.
+:- pred rename_apart_inst_vars(parse_tree.prog_data.inst_varset, parse_tree.prog_data.inst_varset, parse_tree.prog_data.inst_varset, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_mode)).
+:- mode rename_apart_inst_vars(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred report_inconsistent_constrained_inst_vars(string, term.context, parse_tree.prog_data.inst_varset, parse_tree.prog_data.inst_var, list.list(parse_tree.prog_data.inst_var), parse_tree.error_spec.error_spec).
+:- mode report_inconsistent_constrained_inst_vars(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func simplify_std_from_to_mode(parse_tree.prog_data.mer_mode) = parse_tree.prog_data.mer_mode.
+:- pred strip_module_names_from_ho_inst_info(parse_tree.prog_util.strip_what_module_names, parse_tree.prog_data.ho_inst_info, parse_tree.prog_data.ho_inst_info).
+:- mode strip_module_names_from_ho_inst_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred strip_module_names_from_inst(parse_tree.prog_util.strip_what_module_names, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode strip_module_names_from_inst(builtin.in, builtin.in, builtin.out) is det.
+:- pred strip_module_names_from_inst_list(parse_tree.prog_util.strip_what_module_names, list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst)).
+:- mode strip_module_names_from_inst_list(builtin.in, builtin.in, builtin.out) is det.
+:- pred strip_module_names_from_mode(parse_tree.prog_util.strip_what_module_names, parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_mode).
+:- mode strip_module_names_from_mode(builtin.in, builtin.in, builtin.out) is det.
+:- pred strip_module_names_from_mode_list(parse_tree.prog_util.strip_what_module_names, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_mode)).
+:- mode strip_module_names_from_mode_list(builtin.in, builtin.in, builtin.out) is det.
+:- pred strip_typed_insts_from_inst(parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode strip_typed_insts_from_inst(builtin.in, builtin.out) is det.
+:- pred strip_typed_insts_from_inst_list(list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst)).
+:- mode strip_typed_insts_from_inst_list(builtin.in, builtin.out) is det.
+:- pred strip_typed_insts_from_mode(parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_mode).
+:- mode strip_typed_insts_from_mode(builtin.in, builtin.out) is det.
+:- pred strip_typed_insts_from_mode_list(list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_mode)).
+:- mode strip_typed_insts_from_mode_list(builtin.in, builtin.out) is det.
+:- func unique_inst = parse_tree.prog_data.mer_inst.
+:- pred unused_mode(parse_tree.prog_data.mer_mode).
+:- mode unused_mode(builtin.out) is det.
+:- func unused_mode = parse_tree.prog_data.mer_mode.
+:- pred uo_mode(parse_tree.prog_data.mer_mode).
+:- mode uo_mode(builtin.out) is det.
+:- func uo_mode = parse_tree.prog_data.mer_mode.

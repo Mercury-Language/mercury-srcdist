@@ -1,0 +1,18 @@
+:- module backend_libs.string_switch_util.
+:- interface.
+:- use_module assoc_list.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module pair.
+:- use_module backend_libs.builtin_ops.
+:- use_module hlds.hlds_goal.
+:- type string_hash_slot(CaseRep)
+    --->    string_hash_slot(string, int, CaseRep).
+:- type table_size_upgrade
+    --->    keep_first_size 
+    ;       allow_doubling .
+:- pred construct_string_hash_cases(assoc_list.assoc_list(string, CaseRep), backend_libs.string_switch_util.table_size_upgrade, int, map.map(int, backend_libs.string_switch_util.string_hash_slot(CaseRep)), backend_libs.builtin_ops.unary_op, int).
+:- mode construct_string_hash_cases(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred string_binary_cases(list.list(hlds.hlds_goal.tagged_case), pred(hlds.hlds_goal.tagged_case, CaseRep, StateA, StateA, StateB, StateB, StateC, StateC, StateD, StateD), StateA, StateA, StateB, StateB, StateC, StateC, StateD, StateD, assoc_list.assoc_list(string, CaseRep)).
+:- mode string_binary_cases(builtin.in, builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.out) is det.

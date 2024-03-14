@@ -1,0 +1,39 @@
+:- module backend_libs.switch_util.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_data.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.prog_data.
+:- type int_switch_info(T)
+    --->    int_switch_info((backend_libs.switch_util).lower_limt :: T, (backend_libs.switch_util).upper_limit :: T, (backend_libs.switch_util).num_values :: int).
+:- type maybe_int_switch_info
+    --->    int_switch(backend_libs.switch_util.int_switch_info(int))
+    ;       uint_switch(backend_libs.switch_util.int_switch_info(uint))
+    ;       int8_switch(backend_libs.switch_util.int_switch_info(int8))
+    ;       uint8_switch(backend_libs.switch_util.int_switch_info(uint8))
+    ;       int16_switch(backend_libs.switch_util.int_switch_info(int16))
+    ;       uint16_switch(backend_libs.switch_util.int_switch_info(uint16))
+    ;       int32_switch(backend_libs.switch_util.int_switch_info(int32))
+    ;       uint32_switch(backend_libs.switch_util.int_switch_info(uint32))
+    ;       int64_switch(backend_libs.switch_util.int_switch_info(int64))
+    ;       uint64_switch(backend_libs.switch_util.int_switch_info(uint64))
+    ;       not_int_switch .
+:- type switch_category
+    --->    ite_chain_switch 
+    ;       int_max_32_switch 
+    ;       int_64_switch 
+    ;       string_switch 
+    ;       float_switch 
+    ;       tag_switch .
+:- func estimate_switch_tag_test_cost(hlds.hlds_data.cons_tag) = int.
+:- pred find_switch_category(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, backend_libs.switch_util.switch_category).
+:- mode find_switch_category(builtin.in, builtin.in, builtin.out) is det.
+:- pred num_cons_ids_in_tagged_cases(list.list(hlds.hlds_goal.tagged_case), int, int).
+:- mode num_cons_ids_in_tagged_cases(builtin.in, builtin.out, builtin.out) is det.
+:- pred tag_cases(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, list.list(hlds.hlds_goal.case), list.list(hlds.hlds_goal.tagged_case), backend_libs.switch_util.maybe_int_switch_info).
+:- mode tag_cases(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- implementation.
+:- typeclass int_tag_value(T).

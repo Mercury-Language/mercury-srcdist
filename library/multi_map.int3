@@ -1,0 +1,4 @@
+:- module multi_map.
+:- interface.
+:- type multi_map(K, V).
+:- type_representation(multi_map(V_1, V_2), is_eqv_to(map(V_1, list(V_2)))).

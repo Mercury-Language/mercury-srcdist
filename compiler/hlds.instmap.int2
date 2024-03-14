@@ -1,0 +1,14 @@
+:- module hlds.instmap.
+:- interface.
+:- type arm_instmap
+    --->    arm_instmap(parse_tree.prog_data.prog_context, hlds.instmap.instmap).
+:- type instmap.
+:- type instmap_delta.
+:- type overlay_how
+    --->    large_base 
+    ;       large_overlay 
+    ;       test_size .
+:- type var_init_final_insts
+    --->    var_init_final_insts((hlds.instmap).vifi_var :: parse_tree.prog_data.prog_var, (hlds.instmap).vifi_init_inst :: parse_tree.prog_data.mer_inst, (hlds.instmap).vifi_final_inst :: parse_tree.prog_data.mer_inst).
+:- implementation.
+:- type instmap_delta == hlds.instmap.instmap.
