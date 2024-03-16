@@ -1,0 +1,2115 @@
+:- module string.
+:- use_module assoc_list.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module cord.
+:- use_module deconstruct.
+:- use_module int.
+:- use_module list.
+:- use_module maybe.
+:- use_module ops.
+:- use_module pair.
+:- use_module pretty_printer.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module stream.
+:- use_module uint.
+:- use_module uint8.
+:- use_module string.format.
+:- use_module string.parse_util.
+:- use_module string.to_string.
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", version_array).
+:- pragma foreign_import_module("C", io.stream_ops).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", string).
+:- pragma foreign_import_module("C#", version_array).
+:- pragma foreign_import_module("C#", io.stream_ops).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", string).
+:- pragma foreign_import_module("Java", version_array).
+:- pragma foreign_import_module("Java", io.stream_ops).
+
+:- type justify_sense
+    --->    just_left 
+    ;       just_right .
+:- type sense_width
+    --->    sense_width(string.justify_sense, int).
+:- type string_buffer
+    --->    string_buffer(string).
+:- pragma foreign_type(c, string_buffer, "char *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, string_buffer, "java.lang.StringBuilder").
+:- pragma foreign_type(csharp, string_buffer, "char[]").
+
+:- pred string.accumulate_int(int, character, int, int).
+:- mode accumulate_int(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred string.accumulate_negative_int(int, character, int, int).
+:- mode accumulate_negative_int(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred string.all_match_loop((pred character), string, int).
+:- mode all_match_loop(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in) is semidet.
+:- pred string.alloc_buffer(int, string.string_buffer).
+:- mode alloc_buffer(builtin.in, builtin.uo) is det.
+:- pred string.append_iio(string, string, string).
+:- mode append_iio(builtin.in, builtin.in, builtin.uo) is det.
+:- pred string.buffer_to_string(string.string_buffer, string).
+:- mode buffer_to_string(builtin.di, builtin.uo) is det.
+:- pred string.code_point_offset_loop(string, int, int, int, int).
+:- mode code_point_offset_loop(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred string.contains_match_loop((pred character), string, int).
+:- mode contains_match_loop(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in) is semidet.
+:- pred string.copy_into_buffer(string.string_buffer, string.string_buffer, int, int, string, int, int).
+:- mode copy_into_buffer(builtin.di, builtin.uo, builtin.in, builtin.out, builtin.in, builtin.in, builtin.in) is det.
+:- pred string.count_code_points_loop(string, int, int, int).
+:- mode count_code_points_loop(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred string.do_from_code_unit_list(list.list(int), bool.bool, string).
+:- mode do_from_code_unit_list(builtin.in, builtin.in, builtin.uo) is semidet.
+:- pred string.do_to_char_list_loop(string, int, list.list(character), list.list(character)).
+:- mode do_to_char_list_loop(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred string.do_to_rev_char_list_loop(string, int, list.list(character), list.list(character)).
+:- mode do_to_rev_char_list_loop(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred string.find_first_ill_formed_pos(string, int).
+:- mode find_first_ill_formed_pos(builtin.in, builtin.out) is det.
+:- pred string.foldl2_between_2(pred(character, A, A, B, B), string, int, int, A, A, B, B).
+:- mode foldl2_between_2(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det.
+:- mode foldl2_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl2_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl2_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl2_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet.
+:- mode foldl2_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is multi.
+:- pred string.foldl_between_2(pred(character, A, A), string, int, int, A, A).
+:- mode foldl_between_2(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldl_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- mode foldl_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldl_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is nondet.
+:- mode foldl_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is multi.
+:- pred string.foldr_between_2(pred(character, T, T), string, int, int, T, T).
+:- mode foldr_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- mode foldr_between_2(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldr_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldr_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is nondet.
+:- mode foldr_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is multi.
+:- pred (string.internal_encoding_is_utf8).
+:- mode internal_encoding_is_utf8 is semidet.
+:- func string.make_string_piece(string) = string.string_piece.
+:- mode make_string_piece(builtin.in) = builtin.out is det.
+:- func (string.max_precision) = int.
+:- mode max_precision = builtin.out is det.
+:- func (string.min_precision) = int.
+:- mode min_precision = builtin.out is det.
+:- pred string.nondet_append_2(int, int, string, string, string).
+:- mode nondet_append_2(builtin.in, builtin.in, builtin.out, builtin.out, builtin.in) is multi.
+:- pred string.prefix_length_loop((pred character), string, int, int).
+:- mode prefix_length_loop(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out) is det.
+:- pred string.skip_to_next_word_start((pred character), string, int, int).
+:- mode skip_to_next_word_start(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out) is det.
+:- pred string.skip_to_word_end((pred character), string, int, int).
+:- mode skip_to_word_end(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out) is det.
+:- pred string.split_at_separator_loop((pred character), string, int, int, list.list(string), list.list(string)).
+:- mode split_at_separator_loop(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred string.split_at_string_loop(string, int, string, int, list.list(string)).
+:- mode split_at_string_loop(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred string.split_into_lines_loop(string, int, list.list(string), list.list(string)).
+:- mode split_into_lines_loop(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred string.string_index_is_in_bounds(int, int).
+:- mode string_index_is_in_bounds(builtin.in, builtin.in) is semidet.
+:- pred string.suffix_length_loop((pred character), string, int, int).
+:- mode suffix_length_loop(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out) is det.
+:- pred string.to_code_unit_list_loop(string, int, int, list.list(int)).
+:- mode to_code_unit_list_loop(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred string.unsafe_index_next_repl_2(string, int, int, character, int).
+:- mode unsafe_index_next_repl_2(builtin.in, builtin.in, builtin.out, builtin.uo, builtin.out) is semidet.
+:- pragma inline(pred(string.unsafe_index_next_repl_2/5)).
+:- pred string.unsafe_prev_index_repl_2(string, int, int, character, int).
+:- mode unsafe_prev_index_repl_2(builtin.in, builtin.in, builtin.out, builtin.uo, builtin.out) is semidet.
+:- pragma inline(pred(string.unsafe_prev_index_repl_2/5)).
+:- pred string.unsafe_set_char_copy_string(character, int, int, string, string).
+:- mode unsafe_set_char_copy_string(builtin.in, builtin.in, builtin.in, builtin.in, builtin.uo) is det.
+:- pred string.utf8_is_trail_byte(int).
+:- mode utf8_is_trail_byte(builtin.in) is semidet.
+:- pred string.words_loop((pred character), string, int, list.list(string)).
+:- mode words_loop(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out) is det.
+
+string.(V_4 ++ V_5) = V_3 :-
+    V_3 = string.append(V_4, V_5).
+
+string.accumulate_int(V_5, V_6, V_7, V_8) :-
+    char.unsafe_base_digit_to_int(V_5, V_6, V_9),
+    V_8 = int.(V_10 + V_9),
+    V_10 = int.(V_5 * V_7),
+    int.(V_7 =< V_8).
+
+string.accumulate_negative_int(V_5, V_6, V_7, V_8) :-
+    char.unsafe_base_digit_to_int(V_5, V_6, V_9),
+    V_8 = int.(V_10 - V_9),
+    V_10 = int.(V_5 * V_7),
+    int.(V_8 =< V_7).
+
+string.add_suffix(V_4, V_5) = V_3 :-
+    V_3 = string.(V_5 ++ V_4).
+
+string.all_match(V_3, V_4) :-
+    V_5 = 0 : int,
+    string.all_match_loop(V_3, V_4, V_5).
+
+string.all_match_loop(V_4, V_5, V_6) :-
+    ( if
+      string.unsafe_index_next_repl(V_5, V_6, V_7, V_8, V_9)
+    then
+      V_9 = string.not_replaced : string.maybe_replaced,
+      call(V_4, V_8),
+      string.all_match_loop(V_4, V_5, V_7)
+    else
+      true
+    ).
+
+:- pragma foreign_proc("C",
+    string.alloc_buffer(Size :: builtin.in, Buffer :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    MR_allocate_aligned_string_msg(Buffer, Size, MR_ALLOC_ID);
+    Buffer[Size] = \'\\0\';
+").
+
+string.append(V_4, V_5) = V_6 :-
+    string.append(V_4, V_5, V_6).
+
+:- pragma foreign_proc("C",
+    string.append_iio(S1 :: builtin.in, S2 :: builtin.in, S3 :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"{
+    size_t len_1, len_2;
+    len_1 = strlen(S1);
+    len_2 = strlen(S2);
+    MR_allocate_aligned_string_msg(S3, len_1 + len_2, MR_ALLOC_ID);
+    strcpy(S3, S1);
+    strcpy(S3 + len_1, S2);
+}").
+
+string.append_list(V_3, V_4) :-
+    V_5 = list.map(V_6, V_3),
+    V_6 = string.make_string_piece : ((func string) = string.string_piece),
+    string.unsafe_append_string_pieces(V_5, V_4).
+
+string.between(V_5, V_6, V_7) = V_8 :-
+    string.between(V_5, V_6, V_7, V_8).
+
+string.between_code_points(V_5, V_6, V_7) = V_8 :-
+    string.between_code_points(V_5, V_6, V_7, V_8).
+
+string.between_codepoints(V_5, V_6, V_7) = V_8 :-
+    string.between_code_points(V_5, V_6, V_7, V_8).
+
+string.between_codepoints(V_5, V_6, V_7, V_8) :-
+    string.between_code_points(V_5, V_6, V_7, V_8).
+
+:- pragma foreign_proc("C",
+    string.buffer_to_string(Buffer :: builtin.di, Str :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail, doesnt_affect_liveness],
+"
+    Str = Buffer;
+").
+
+string.c_pointer_to_string(V_3) = V_4 :-
+    string.c_pointer_to_string(V_3, V_4).
+
+string.capitalize_first(V_3) = V_4 :-
+    string.capitalize_first(V_3, V_4).
+
+string.char_to_string(V_3) = V_4 :-
+    string.char_to_string(V_3, V_4).
+
+string.code_point_offset(V_4, V_5, V_6) :-
+    V_7 = 0 : int,
+    string.code_point_offset(V_4, V_7, V_5, V_6).
+
+string.code_point_offset(V_5, V_6, V_7, V_8) :-
+    V_10 = 0 : int,
+    int.(V_6 >= V_10),
+    V_9 = string.length(V_5),
+    string.code_point_offset_loop(V_5, V_6, V_9, V_7, V_8).
+
+string.codepoint_offset(V_4, V_5, V_6) :-
+    V_7 = 0 : int,
+    string.code_point_offset(V_4, V_7, V_5, V_6).
+
+string.codepoint_offset(V_5, V_6, V_7, V_8) :-
+    string.code_point_offset(V_5, V_6, V_7, V_8).
+
+:- pragma foreign_proc("C",
+    string.contains_char(Str :: builtin.in, Ch :: builtin.in),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    char    buf[5];
+    size_t  len;
+    if (MR_is_ascii(Ch)) {
+        // Fast path.
+        // strchr always returns true when searching for NUL,
+        // but the NUL is not part of the string itself.
+        SUCCESS_INDICATOR = (Ch != \'\\0\') && (strchr(Str, Ch) != NULL);
+    } else {
+        len = MR_utf8_encode(buf, Ch);
+        buf[len] = \'\\0\';
+        SUCCESS_INDICATOR = (len > 0) && (strstr(Str, buf) != NULL);
+    }
+").
+
+string.contains_match(V_3, V_4) :-
+    V_5 = 0 : int,
+    string.contains_match_loop(V_3, V_4, V_5).
+
+string.contains_match_loop(V_4, V_5, V_6) :-
+    string.unsafe_index_next_repl(V_5, V_6, V_7, V_8, V_9),
+    ( if
+      V_9 = string.not_replaced : string.maybe_replaced,
+      call(V_4, V_8)
+    then
+      true
+    else
+      string.contains_match_loop(V_4, V_5, V_7)
+    ).
+
+:- pragma foreign_proc("C",
+    string.copy_into_buffer(Dest0 :: builtin.di, Dest :: builtin.uo, DestOffset0 :: builtin.in, DestOffset :: builtin.out, Src :: builtin.in, SrcStart :: builtin.in, SrcEnd :: builtin.in),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail, doesnt_affect_liveness],
+"
+    size_t count;
+
+    MR_CHECK_EXPR_TYPE(Dest0, char *);
+    MR_CHECK_EXPR_TYPE(Dest, char *);
+
+    count = SrcEnd - SrcStart;
+    Dest = Dest0;
+    MR_memcpy(Dest + DestOffset0, Src + SrcStart, count);
+    DestOffset = DestOffset0 + count;
+").
+
+string.count_code_points(V_3) = V_4 :-
+    string.count_code_points(V_3, V_4).
+
+string.count_code_points(V_3, V_4) :-
+    V_5 = 0 : int,
+    V_6 = 0 : int,
+    string.count_code_points_loop(V_3, V_5, V_6, V_4).
+
+string.count_code_units(V_3) = V_2 :-
+    V_2 = string.length(V_3).
+
+string.count_code_units(V_3, V_4) :-
+    string.length(V_3, V_4).
+
+string.count_codepoints(V_3) = V_4 :-
+    string.count_code_points(V_3, V_4).
+
+string.count_codepoints(V_3, V_4) :-
+    string.count_code_points(V_3, V_4).
+
+string.det_index(V_4, V_5) = V_6 :-
+    string.det_index(V_4, V_5, V_6).
+
+:- pragma inline(pred(string.det_index/3)).
+string.det_index(V_4, V_5, V_6) :-
+    ( if
+      string.index(V_4, V_5, V_7)
+    then
+      V_6 = V_7
+    else
+      V_8 = "predicate `string.det_index\'/3" : string,
+      V_9 = "index out of range" : string,
+      require.unexpected(V_8, V_9)
+    ).
+
+string.det_set_char(V_5, V_6, V_7) = V_8 :-
+    string.det_set_char(V_5, V_6, V_7, V_8).
+
+string.det_to_int(V_3) = V_2 :-
+    V_2 = string.det_base_string_to_int(V_4, V_3),
+    V_4 = 10 : int.
+
+string.det_to_uint(V_3) = V_2 :-
+    V_2 = string.det_base_string_to_uint(V_4, V_3),
+    V_4 = 10 : int.
+
+string.duplicate_char(V_4, V_5) = V_6 :-
+    string.duplicate_char(V_4, V_5, V_6).
+
+string.duplicate_char(V_4, V_5, V_6) :-
+    V_6 = string.from_char_list(V_7),
+    V_7 = list.duplicate(V_5, V_4).
+
+string.elem(V_5, V_4) = V_3 :-
+    V_3 = string.det_index(V_4, V_5).
+
+:- pragma foreign_proc("C",
+    string.find_first_ill_formed_pos(S :: builtin.in, FirstIllFormedPos :: builtin.out),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness],
+"
+    FirstIllFormedPos = MR_utf8_find_ill_formed_char(S);
+").
+
+string.float_to_string(V_3) = V_4 :-
+    string.float_to_string(V_3, V_4).
+
+:- pragma foreign_proc("C",
+    string.float_to_string(Flt :: builtin.in, Str :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"{
+    // For efficiency reasons we duplicate the C implementation
+    // of lowlevel_float_to_string.
+    MR_float_to_string(Flt, Str, MR_ALLOC_ID);
+}").
+
+string.foldl(V_5, V_6, V_7) = V_8 :-
+    V_9 = (pred(V_13::(ground >> ground), V_14::(ground >> ground), V_15::(free >> ground)) is det :-
+      some [] ( % compiler
+        V_13 = V_16,
+        V_14 = V_17,
+        V_18 = apply(V_5, V_16, V_17),
+        V_15 = V_18
+      )
+    ) : pred(character, A_1, A_1),
+    string.foldl(V_9, V_6, V_7, V_8).
+
+string.foldl(V_5, V_6, V_9, V_10) :-
+    string.length(V_6, V_8),
+    V_11 = 0 : int,
+    string.foldl_between(V_5, V_6, V_11, V_8, V_9, V_10).
+
+string.foldl2(V_7, V_8, V_12, V_13, V_14, V_15) :-
+    string.length(V_8, V_11),
+    V_16 = 0 : int,
+    string.foldl2_between(V_7, V_8, V_16, V_11, V_12, V_13, V_14, V_15).
+
+string.foldl2_between(V_9, V_10, V_11, V_12, V_17, V_18, V_19, V_20) :-
+    V_15 = int.max(V_21, V_11),
+    V_21 = 0 : int,
+    V_16 = int.min(V_12, V_22),
+    V_22 = string.length(V_10),
+    string.foldl2_between_2(V_9, V_10, V_15, V_16, V_17, V_18, V_19, V_20).
+
+string.foldl2_between_2(V_9, V_10, V_11, V_12, V_17, V_18, V_19, V_20) :-
+    ( if
+      int.(V_11 < V_12),
+      string.unsafe_index_next(V_10, V_11, V_15, V_16),
+      int.(V_15 =< V_12)
+    then
+      call(V_9, V_16, V_17, V_21, V_19, V_22),
+      string.foldl2_between_2(V_9, V_10, V_15, V_12, V_21, V_18, V_22, V_20)
+    else
+      V_20 = V_19,
+      V_18 = V_17
+    ).
+
+string.foldl_between(V_7, V_8, V_9, V_10, V_11) = V_12 :-
+    V_13 = (pred(V_17::(ground >> ground), V_18::(ground >> ground), V_19::(free >> ground)) is det :-
+      some [] ( % compiler
+        V_17 = V_20,
+        V_18 = V_21,
+        V_22 = apply(V_7, V_20, V_21),
+        V_19 = V_22
+      )
+    ) : pred(character, A_1, A_1),
+    string.foldl_between(V_13, V_8, V_9, V_10, V_11, V_12).
+
+string.foldl_between(V_7, V_8, V_9, V_10, V_14, V_15) :-
+    V_12 = int.max(V_16, V_9),
+    V_16 = 0 : int,
+    V_13 = int.min(V_10, V_17),
+    V_17 = string.length(V_8),
+    string.foldl_between_2(V_7, V_8, V_12, V_13, V_14, V_15).
+
+string.foldl_between_2(V_7, V_8, V_9, V_10, V_14, V_15) :-
+    ( if
+      int.(V_9 < V_10),
+      string.unsafe_index_next(V_8, V_9, V_12, V_13),
+      int.(V_12 =< V_10)
+    then
+      call(V_7, V_13, V_14, V_16),
+      string.foldl_between_2(V_7, V_8, V_12, V_10, V_16, V_15)
+    else
+      V_15 = V_14
+    ).
+
+string.foldr(V_5, V_6, V_7) = V_8 :-
+    V_9 = (pred(V_13::(ground >> ground), V_14::(ground >> ground), V_15::(free >> ground)) is det :-
+      some [] ( % compiler
+        V_13 = V_16,
+        V_14 = V_17,
+        V_18 = apply(V_5, V_16, V_17),
+        V_15 = V_18
+      )
+    ) : pred(character, T_1, T_1),
+    string.foldr(V_9, V_6, V_7, V_8).
+
+string.foldr(V_5, V_6, V_8, V_9) :-
+    V_10 = 0 : int,
+    V_11 = string.length(V_6),
+    string.foldr_between(V_5, V_6, V_10, V_11, V_8, V_9).
+
+string.foldr_between(V_7, V_8, V_9, V_10, V_11) = V_12 :-
+    V_13 = (pred(V_17::(ground >> ground), V_18::(ground >> ground), V_19::(free >> ground)) is det :-
+      some [] ( % compiler
+        V_17 = V_20,
+        V_18 = V_21,
+        V_22 = apply(V_7, V_20, V_21),
+        V_19 = V_22
+      )
+    ) : pred(character, T_1, T_1),
+    string.foldr_between(V_13, V_8, V_9, V_10, V_11, V_12).
+
+string.foldr_between(V_7, V_8, V_9, V_10, V_14, V_15) :-
+    V_12 = int.max(V_16, V_9),
+    V_16 = 0 : int,
+    V_13 = int.min(V_10, V_17),
+    V_17 = string.length(V_8),
+    string.foldr_between_2(V_7, V_8, V_12, V_13, V_14, V_15).
+
+string.foldr_between_2(V_7, V_8, V_9, V_10, V_14, V_15) :-
+    ( if
+      int.(V_10 > V_9),
+      string.unsafe_prev_index(V_8, V_10, V_12, V_13),
+      int.(V_12 >= V_9)
+    then
+      call(V_7, V_13, V_14, V_16),
+      string.foldr_between_2(V_7, V_8, V_9, V_12, V_16, V_15)
+    else
+      V_15 = V_14
+    ).
+
+string.format(V_4, V_5) = V_6 :-
+    disable_warnings [unknown_format_calls] (
+      string.format(V_4, V_5, V_6)
+    ).
+
+string.format(V_4, V_5, V_6) :-
+    string.format.format_impl(V_4, V_5, V_6).
+
+string.from_c_pointer(V_3) = V_4 :-
+    string.c_pointer_to_string(V_3, V_4).
+
+string.from_char(V_3) = V_2 :-
+    V_2 = string.char_to_string(V_3).
+
+string.from_char_list(V_3) = V_4 :-
+    string.from_char_list(V_3, V_4).
+
+string.from_code_unit_list(V_3, V_4) :-
+    V_5 = bool.yes : bool.bool,
+    string.do_from_code_unit_list(V_3, V_5, V_4).
+
+string.from_code_unit_list_allow_ill_formed(V_3, V_4) :-
+    V_5 = bool.no : bool.bool,
+    string.do_from_code_unit_list(V_3, V_5, V_4).
+
+string.from_float(V_3) = V_2 :-
+    V_2 = string.float_to_string(V_3).
+
+string.from_int(V_3) = V_2 :-
+    V_2 = string.int_to_string(V_3).
+
+string.from_rev_char_list(V_3) = V_4 :-
+    string.from_rev_char_list(V_3, V_4).
+
+string.hash(V_3) = V_4 :-
+    string.hash(V_3, V_4).
+
+:- pragma inline(pred(string.index/3)).
+string.index(V_4, V_5, V_6) :-
+    V_7 = string.length(V_4),
+    ( if
+      string.string_index_is_in_bounds(V_5, V_7)
+    then
+      string.unsafe_index(V_4, V_5, V_6)
+    else
+      fail
+    ).
+
+:- pragma inline(pred(string.index_next/4)).
+string.index_next(V_5, V_6, V_7, V_8) :-
+    string.index_next_repl(V_5, V_6, V_7, V_8, V_9).
+
+:- pragma inline(pred(string.index_next_repl/5)).
+string.index_next_repl(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = string.length(V_6),
+    ( if
+      string.string_index_is_in_bounds(V_7, V_11)
+    then
+      string.unsafe_index_next_repl(V_6, V_7, V_8, V_9, V_10)
+    else
+      fail
+    ).
+
+:- pragma foreign_proc("C",
+    string.int16_to_string(I16 :: builtin.in) = (S :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    char buffer[7]; // 1 for sign, 5 for digits, 1 for nul.
+    sprintf(buffer, \"%\" PRId16, I16);
+    MR_allocate_aligned_string_msg(S, strlen(buffer), MR_ALLOC_ID);
+    strcpy(S, buffer);
+").
+
+:- pragma foreign_proc("C",
+    string.int32_to_string(I32 :: builtin.in) = (S :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    char buffer[12]; // 1 for sign, 10 for digits, 1 for nul.
+    sprintf(buffer, \"%\" PRId32, I32);
+    MR_allocate_aligned_string_msg(S, strlen(buffer), MR_ALLOC_ID);
+    strcpy(S, buffer);
+").
+
+:- pragma foreign_proc("C",
+    string.int64_to_string(I64 :: builtin.in) = (S :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    char buffer[21]; // 1 for sign, 19 for digits, 1 for nul.
+    sprintf(buffer, \"%\" PRId64, I64);
+    MR_allocate_aligned_string_msg(S, strlen(buffer), MR_ALLOC_ID);
+    strcpy(S, buffer);
+").
+
+:- pragma foreign_proc("C",
+    string.int8_to_string(I8 :: builtin.in) = (S :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    char buffer[5]; // 1 for sign, 3 for digits, 1 for nul.
+    sprintf(buffer, \"%\" PRId8, I8);
+    MR_allocate_aligned_string_msg(S, strlen(buffer), MR_ALLOC_ID);
+    strcpy(S, buffer);
+").
+
+string.int_to_base_string(V_4, V_5) = V_6 :-
+    string.int_to_base_string(V_4, V_5, V_6).
+
+:- pragma foreign_proc("C",
+    string.int_to_string(I :: builtin.in) = (S :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    char buffer[21]; // 1 for sign, 19 for digits, 1 for nul.
+    sprintf(buffer, \"%\" MR_INTEGER_LENGTH_MODIFIER \"d\", I);
+    MR_allocate_aligned_string_msg(S, strlen(buffer), MR_ALLOC_ID);
+    strcpy(S, buffer);
+").
+
+string.int_to_string(V_3, V_4) :-
+    V_4 = string.int_to_string(V_3).
+
+string.int_to_string_thousands(V_3) = V_2 :-
+    V_2 = string.int_to_base_string_group(V_3, V_4, V_5, V_6),
+    V_4 = 10 : int,
+    V_5 = 3 : int,
+    V_6 = "," : string.
+
+:- pragma foreign_proc("C",
+    string.internal_encoding_is_utf8,
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail],
+"
+    SUCCESS_INDICATOR = MR_TRUE;
+").
+
+string.is_all_alnum(V_2) :-
+    V_3 = char.is_alnum : (pred character),
+    string.all_match(V_3, V_2).
+
+:- pragma foreign_proc("C",
+    string.is_all_alnum_or_underscore(S :: builtin.in),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness, may_duplicate],
+"
+    const char  *p;
+
+    SUCCESS_INDICATOR = MR_TRUE;
+    for (p = S; *p != \'\\0\'; p++) {
+        switch (*p) {
+            case \'0\': case \'1\': case \'2\': case \'3\': case \'4\':
+            case \'5\': case \'6\': case \'7\': case \'8\': case \'9\':
+
+            case \'a\': case \'b\': case \'c\': case \'d\': case \'e\':
+            case \'f\': case \'g\': case \'h\': case \'i\': case \'j\':
+            case \'k\': case \'l\': case \'m\': case \'n\': case \'o\':
+            case \'p\': case \'q\': case \'r\': case \'s\': case \'t\':
+            case \'u\': case \'v\': case \'w\': case \'x\': case \'y\':
+            case \'z\':
+
+            case \'A\': case \'B\': case \'C\': case \'D\': case \'E\':
+            case \'F\': case \'G\': case \'H\': case \'I\': case \'J\':
+            case \'K\': case \'L\': case \'M\': case \'N\': case \'O\':
+            case \'P\': case \'Q\': case \'R\': case \'S\': case \'T\':
+            case \'U\': case \'V\': case \'W\': case \'X\': case \'Y\':
+            case \'Z\':
+
+            case \'_\':
+                continue;
+
+            default:
+                SUCCESS_INDICATOR = MR_FALSE;
+                break;
+        }
+    }
+").
+
+:- pragma foreign_proc("C",
+    string.is_all_alpha(S :: builtin.in),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness, may_duplicate],
+"
+    const char  *p;
+
+    SUCCESS_INDICATOR = MR_TRUE;
+    for (p = S; *p != \'\\0\'; p++) {
+        switch (*p) {
+            case \'a\': case \'b\': case \'c\': case \'d\': case \'e\':
+            case \'f\': case \'g\': case \'h\': case \'i\': case \'j\':
+            case \'k\': case \'l\': case \'m\': case \'n\': case \'o\':
+            case \'p\': case \'q\': case \'r\': case \'s\': case \'t\':
+            case \'u\': case \'v\': case \'w\': case \'x\': case \'y\':
+            case \'z\':
+
+            case \'A\': case \'B\': case \'C\': case \'D\': case \'E\':
+            case \'F\': case \'G\': case \'H\': case \'I\': case \'J\':
+            case \'K\': case \'L\': case \'M\': case \'N\': case \'O\':
+            case \'P\': case \'Q\': case \'R\': case \'S\': case \'T\':
+            case \'U\': case \'V\': case \'W\': case \'X\': case \'Y\':
+            case \'Z\':
+                continue;
+
+            default:
+                SUCCESS_INDICATOR = MR_FALSE;
+                break;
+        }
+    }
+").
+
+:- pragma foreign_proc("C",
+    string.is_all_alpha_or_underscore(S :: builtin.in),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness, may_duplicate],
+"
+    const char  *p;
+
+    SUCCESS_INDICATOR = MR_TRUE;
+    for (p = S; *p != \'\\0\'; p++) {
+        switch (*p) {
+            case \'a\': case \'b\': case \'c\': case \'d\': case \'e\':
+            case \'f\': case \'g\': case \'h\': case \'i\': case \'j\':
+            case \'k\': case \'l\': case \'m\': case \'n\': case \'o\':
+            case \'p\': case \'q\': case \'r\': case \'s\': case \'t\':
+            case \'u\': case \'v\': case \'w\': case \'x\': case \'y\':
+            case \'z\':
+
+            case \'A\': case \'B\': case \'C\': case \'D\': case \'E\':
+            case \'F\': case \'G\': case \'H\': case \'I\': case \'J\':
+            case \'K\': case \'L\': case \'M\': case \'N\': case \'O\':
+            case \'P\': case \'Q\': case \'R\': case \'S\': case \'T\':
+            case \'U\': case \'V\': case \'W\': case \'X\': case \'Y\':
+            case \'Z\':
+
+            case \'_\':
+                continue;
+
+            default:
+                SUCCESS_INDICATOR = MR_FALSE;
+                break;
+        }
+    }
+").
+
+:- pragma foreign_proc("C",
+    string.is_all_digits(S :: builtin.in),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness, may_duplicate],
+"
+    const char  *p;
+
+    SUCCESS_INDICATOR = MR_TRUE;
+    for (p = S; *p != \'\\0\'; p++) {
+        switch (*p) {
+            case \'0\': case \'1\': case \'2\': case \'3\': case \'4\':
+            case \'5\': case \'6\': case \'7\': case \'8\': case \'9\':
+                continue;
+
+            default:
+                SUCCESS_INDICATOR = MR_FALSE;
+                break;
+        }
+    }
+").
+
+string.is_empty("").
+
+string.is_well_formed(V_2) :-
+    string.find_first_ill_formed_pos(V_2, V_3),
+    V_4 = 0 : int,
+    int.(V_3 < V_4).
+
+string.left(V_4, V_5) = V_6 :-
+    string.left(V_4, V_5, V_6).
+
+string.left(V_4, V_5, V_6) :-
+    V_7 = 0 : int,
+    string.between(V_4, V_7, V_5, V_6).
+
+string.left_by_code_point(V_4, V_5) = V_6 :-
+    string.left_by_code_point(V_4, V_5, V_6).
+
+string.left_by_code_point(V_4, V_5, V_6) :-
+    string.split_by_code_point(V_4, V_5, V_6, V_7).
+
+string.left_by_codepoint(V_4, V_5) = V_6 :-
+    string.left_by_code_point(V_4, V_5, V_6).
+
+string.left_by_codepoint(V_4, V_5, V_6) :-
+    string.split_by_code_point(V_4, V_5, V_6, V_7).
+
+string.length(V_3) = V_4 :-
+    string.length(V_3, V_4).
+
+:- pragma promise_equivalent_clauses(pred(string.length/2)).
+:- pragma foreign_proc("C",
+    string.length(Str :: builtin.ui, Length :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    Length = strlen(Str);
+").
+:- pragma foreign_proc("C",
+    string.length(Str :: builtin.in, Length :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    Length = strlen(Str);
+").
+
+string.lstrip(V_3) = V_2 :-
+    V_2 = string.lstrip_pred(V_4, V_3),
+    V_4 = char.is_whitespace : (pred character).
+
+string.lstrip_pred(V_4, V_5) = V_6 :-
+    V_7 = string.prefix_length(V_4, V_5),
+    V_6 = string.unsafe_between(V_5, V_7, V_8),
+    V_8 = string.length(V_5).
+
+string.make_string_piece(V_3) = string.substring(V_3, V_4, V_5) :-
+    V_4 = 0 : int,
+    V_5 = string.length(V_3).
+
+string.max_precision = V_1 :-
+    V_1 = int.(V_2 + V_3),
+    V_2 = string.min_precision,
+    V_3 = 2 : int.
+
+string.min_precision = 15.
+
+string.nondet_append(V_4, V_5, V_6) :-
+    V_7 = string.length(V_6),
+    V_8 = 0 : int,
+    string.nondet_append_2(V_8, V_7, V_4, V_5, V_6).
+
+string.pad_left(V_5, V_6, V_7) = V_8 :-
+    string.pad_left(V_5, V_6, V_7, V_8).
+
+string.pad_right(V_5, V_6, V_7) = V_8 :-
+    string.pad_right(V_5, V_6, V_7, V_8).
+
+string.prefix_length(V_4, V_5) = V_6 :-
+    V_7 = 0 : int,
+    string.prefix_length_loop(V_4, V_5, V_7, V_6).
+
+string.prefix_length_loop(V_5, V_6, V_7, V_8) :-
+    ( if
+      V_11 = string.not_replaced : string.maybe_replaced,
+      string.unsafe_index_next_repl(V_6, V_7, V_9, V_10, V_11),
+      call(V_5, V_10)
+    then
+      string.prefix_length_loop(V_5, V_6, V_9, V_8)
+    else
+      V_8 = V_7
+    ).
+
+:- pragma inline(pred(string.prev_index/4)).
+string.prev_index(V_5, V_6, V_7, V_8) :-
+    string.prev_index_repl(V_5, V_6, V_7, V_8, V_9).
+
+:- pragma inline(pred(string.prev_index_repl/5)).
+string.prev_index_repl(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = string.length(V_6),
+    ( if
+      V_12 = int.(V_7 - V_13),
+      V_13 = 1 : int,
+      string.string_index_is_in_bounds(V_12, V_11)
+    then
+      string.unsafe_prev_index_repl(V_6, V_7, V_8, V_9, V_10)
+    else
+      fail
+    ).
+
+string.remove_prefix(V_4, V_5, V_6) :-
+    string.append(V_4, V_6, V_5).
+
+string.remove_prefix_if_present(V_4, V_5) = V_6 :-
+    ( if
+      string.remove_prefix(V_4, V_5, V_7)
+    then
+      V_6 = V_7
+    else
+      V_6 = V_5
+    ).
+
+string.remove_suffix(V_4, V_5, V_6) :-
+    string.append(V_6, V_5, V_4).
+
+string.remove_suffix_if_present(V_4, V_5) = V_6 :-
+    ( if
+      string.remove_suffix(V_5, V_4, V_7)
+    then
+      V_6 = V_7
+    else
+      V_6 = V_5
+    ).
+
+string.replace_all(V_5, V_6, V_7) = V_8 :-
+    string.replace_all(V_5, V_6, V_7, V_8).
+
+string.right(V_4, V_5) = V_6 :-
+    string.right(V_4, V_5, V_6).
+
+string.right(V_4, V_5, V_6) :-
+    string.length(V_4, V_7),
+    V_8 = int.(V_7 - V_5),
+    string.between(V_4, V_8, V_7, V_6).
+
+string.right_by_code_point(V_4, V_5) = V_6 :-
+    string.right_by_code_point(V_4, V_5, V_6).
+
+string.right_by_code_point(V_4, V_5, V_6) :-
+    string.count_code_points(V_4, V_7),
+    V_8 = int.(V_7 - V_5),
+    string.split_by_code_point(V_4, V_8, V_9, V_6).
+
+string.right_by_codepoint(V_4, V_5) = V_6 :-
+    string.right_by_code_point(V_4, V_5, V_6).
+
+string.right_by_codepoint(V_4, V_5, V_6) :-
+    string.right_by_code_point(V_4, V_5, V_6).
+
+string.rstrip(V_3) = V_2 :-
+    V_2 = string.rstrip_pred(V_4, V_3),
+    V_4 = char.is_whitespace : (pred character).
+
+string.rstrip_pred(V_4, V_5) = V_6 :-
+    V_7 = string.suffix_length(V_4, V_5),
+    V_6 = string.unsafe_between(V_5, V_8, V_9),
+    V_8 = 0 : int,
+    V_9 = int.(V_10 - V_7),
+    V_10 = string.length(V_5).
+
+string.skip_to_next_word_start(V_5, V_6, V_7, V_8) :-
+    ( if
+      V_11 = string.not_replaced : string.maybe_replaced,
+      string.unsafe_index_next_repl(V_6, V_7, V_9, V_10, V_11),
+      call(V_5, V_10)
+    then
+      string.skip_to_next_word_start(V_5, V_6, V_9, V_8)
+    else
+      V_8 = V_7
+    ).
+
+string.skip_to_word_end(V_5, V_6, V_7, V_8) :-
+    ( if
+      string.unsafe_index_next_repl(V_6, V_7, V_9, V_10, V_11)
+    then
+      ( if
+        V_11 = string.not_replaced : string.maybe_replaced,
+        call(V_5, V_10)
+      then
+        V_8 = V_7
+      else
+        string.skip_to_word_end(V_5, V_6, V_9, V_8)
+      )
+    else
+      V_8 = V_7
+    ).
+
+string.split_at_char(V_4, V_5) = V_3 :-
+    V_3 = string.split_at_separator(V_6, V_5),
+    V_6 = builtin.unify(V_4) : (pred character).
+
+string.split_at_separator(V_4, V_5) = V_6 :-
+    V_7 = string.length(V_5),
+    V_8 = V_7,
+    V_9 = list.[] : list.list(string),
+    string.split_at_separator_loop(V_4, V_5, V_7, V_8, V_9, V_6).
+
+string.split_at_separator_loop(V_7, V_8, V_9, V_10, V_17, V_18) :-
+    ( if
+      string.unsafe_prev_index_repl(V_8, V_9, V_12, V_13, V_14)
+    then
+      ( if
+        V_14 = string.not_replaced : string.maybe_replaced,
+        call(V_7, V_13)
+      then
+        V_15 = V_9,
+        V_16 = string.unsafe_between(V_8, V_15, V_10),
+        V_19 = list.[V_16 | V_17] : list.list(string),
+        V_20 = V_12,
+        string.split_at_separator_loop(V_7, V_8, V_12, V_20, V_19, V_18)
+      else
+        string.split_at_separator_loop(V_7, V_8, V_12, V_10, V_17, V_18)
+      )
+    else
+      V_25 = string.unsafe_between(V_8, V_23, V_10),
+      V_23 = 0 : int,
+      V_18 = list.[V_25 | V_17] : list.list(string)
+    ).
+
+string.split_at_string(V_4, V_5) = V_6 :-
+    V_7 = string.length(V_4),
+    V_8 = 0 : int,
+    string.split_at_string_loop(V_4, V_7, V_5, V_8, V_6).
+
+string.split_by_codepoint(V_5, V_6, V_7, V_8) :-
+    string.split_by_code_point(V_5, V_6, V_7, V_8).
+
+string.split_into_lines(V_3) = V_4 :-
+    V_6 = 0 : int,
+    V_7 = list.[] : list.list(string),
+    string.split_into_lines_loop(V_3, V_6, V_7, V_5),
+    list.reverse(V_5, V_4).
+
+string.string(V_3) = V_2 :-
+    V_2 = string.to_string.string_impl(V_3).
+
+:- pragma foreign_proc("C",
+    string.string_index_is_in_bounds(Index :: builtin.in, Length :: builtin.in),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    // We do not test for negative values of Index because (a) MR_Unsigned
+    // is unsigned and hence a negative argument will appear as a very large
+    // positive one after the cast and (b) anybody dealing with the case
+    // where strlen(Str) > MAXINT is clearly barking mad (and one may well get
+    // an integer overflow error in this case).
+    SUCCESS_INDICATOR = ((MR_Unsigned) Index < (MR_Unsigned) Length);
+").
+
+string.string_ops(V_4, V_5) = V_3 :-
+    V_3 = string.to_string.string_ops_impl(V_4, V_5).
+
+string.string_ops_noncanon(V_5, V_6, V_7, V_8) :-
+    string.to_string.string_ops_noncanon_impl(V_5, V_6, V_7, V_8).
+
+string.string_to_doc(V_3) = V_2 :-
+    V_2 = pretty_printer.string_to_doc(V_3).
+
+string.sub_string_search(V_4, V_5, V_6) :-
+    V_7 = 0 : int,
+    string.sub_string_search_start(V_4, V_5, V_7, V_6).
+
+string.suffix_length(V_4, V_5) = V_3 :-
+    V_3 = int.(V_6 - V_7),
+    V_6 = string.length(V_5),
+    string.suffix_length_loop(V_4, V_5, V_6, V_7).
+
+string.suffix_length_loop(V_5, V_6, V_7, V_8) :-
+    ( if
+      V_11 = string.not_replaced : string.maybe_replaced,
+      string.unsafe_prev_index_repl(V_6, V_7, V_9, V_10, V_11),
+      call(V_5, V_10)
+    then
+      string.suffix_length_loop(V_5, V_6, V_9, V_8)
+    else
+      V_8 = V_7
+    ).
+
+string.to_char_list(V_3) = V_4 :-
+    string.to_char_list(V_3, V_4).
+
+string.to_char_list(V_3, V_4) :-
+    V_5 = string.length(V_3),
+    V_6 = list.[] : list.list(character),
+    string.do_to_char_list_loop(V_3, V_5, V_6, V_4).
+
+string.to_code_unit_list(V_3, V_4) :-
+    V_5 = 0 : int,
+    V_6 = string.length(V_3),
+    string.to_code_unit_list_loop(V_3, V_5, V_6, V_4).
+
+:- pragma foreign_proc("C",
+    string.to_float(FloatString :: builtin.in, FloatVal :: builtin.out),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"{
+    // The %c checks for any erroneous characters appearing after the float;
+    // if there are then sscanf() will return 2 rather than 1.
+    char    tmpc;
+    SUCCESS_INDICATOR =
+        (!MR_isspace(FloatString[0])) &&
+        (sscanf(FloatString, MR_FLT_FMT \"%c\", &FloatVal, &tmpc) == 1);
+        // MR_TRUE if sscanf succeeds, MR_FALSE otherwise.
+}").
+
+string.to_int(V_3, V_4) :-
+    V_5 = 10 : int,
+    string.base_string_to_int(V_5, V_3, V_4).
+
+string.to_lower(V_3) = V_4 :-
+    string.to_lower(V_3, V_4).
+
+string.to_rev_char_list(V_3) = V_4 :-
+    string.to_rev_char_list(V_3, V_4).
+
+string.to_rev_char_list(V_3, V_4) :-
+    V_5 = 0 : int,
+    V_6 = list.[] : list.list(character),
+    string.do_to_rev_char_list_loop(V_3, V_5, V_6, V_4).
+
+string.to_uint(V_3, V_4) :-
+    V_5 = 10 : int,
+    string.base_string_to_uint(V_5, V_3, V_4).
+
+string.to_upper(V_3) = V_4 :-
+    string.to_upper(V_3, V_4).
+
+:- pragma foreign_proc("C",
+    string.uint16_to_string(U16 :: builtin.in) = (S :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    char buffer[6]; // 5 for digits, 1 for nul.
+    sprintf(buffer, \"%\" PRIu16, U16);
+    MR_allocate_aligned_string_msg(S, strlen(buffer), MR_ALLOC_ID);
+    strcpy(S, buffer);
+").
+
+:- pragma foreign_proc("C",
+    string.uint32_to_string(U32 :: builtin.in) = (S :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    int num_digits;
+    if (U32 < 10) {
+        num_digits = 1;
+    } else if (U32 < 100) {
+        num_digits = 2;
+    } else if (U32 < 1000) {
+        num_digits = 3;
+    } else if (U32 < 10000) {
+        num_digits = 4;
+    } else if (U32 < 100000) {
+        num_digits = 5;
+    } else if (U32 < 1000000) {
+        num_digits = 6;
+    } else if (U32 < 10000000) {
+        num_digits = 7;
+    } else if (U32 < 100000000) {
+        num_digits = 8;
+    } else if (U32 < 1000000000) {
+        num_digits = 9;
+    } else {
+        num_digits = 10;
+    }
+
+    MR_allocate_aligned_string_msg(S, num_digits, MR_ALLOC_ID);
+    S[num_digits] = \'\\0\';
+    int i = num_digits - 1;
+    do {
+        S[i] = \"0123456789\"[U32 % 10];
+        i--;
+        U32 /= 10;
+    } while(U32 > 0);
+").
+
+string.uint64_to_hex_string(V_3) = V_2 :-
+    V_2 = string.uint64_to_lc_hex_string(V_3).
+
+:- pragma inline(func(string.uint64_to_lc_hex_string/1)).
+:- pragma foreign_proc("C",
+    string.uint64_to_lc_hex_string(U64 :: builtin.in) = (S :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    char buffer[17]; // 16 for digits, 1 for nul.
+    sprintf(buffer, \"%\" PRIx64, U64);
+    MR_allocate_aligned_string_msg(S, strlen(buffer), MR_ALLOC_ID);
+    strcpy(S, buffer);
+").
+
+:- pragma foreign_proc("C",
+    string.uint64_to_octal_string(U64 :: builtin.in) = (Str :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    char buffer[23]; // 22 for digits, 1 for nul.
+    sprintf(buffer, \"%\" PRIo64, U64);
+    MR_allocate_aligned_string_msg(Str, strlen(buffer), MR_ALLOC_ID);
+    strcpy(Str, buffer);
+").
+
+:- pragma foreign_proc("C",
+    string.uint64_to_string(U64 :: builtin.in) = (S :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    char buffer[21]; // 20 for digits, 1 for nul.
+    sprintf(buffer, \"%\" PRIu64, U64);
+    MR_allocate_aligned_string_msg(S, strlen(buffer), MR_ALLOC_ID);
+    strcpy(S, buffer);
+").
+
+:- pragma foreign_proc("C",
+    string.uint64_to_uc_hex_string(U64 :: builtin.in) = (S :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    char buffer[17]; // 16 for digits, 1 for nul.
+    sprintf(buffer, \"%\" PRIX64, U64);
+    MR_allocate_aligned_string_msg(S, strlen(buffer), MR_ALLOC_ID);
+    strcpy(S, buffer);
+").
+
+:- pragma foreign_proc("C",
+    string.uint8_to_string(U8 :: builtin.in) = (S :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    // Use a larger buffer than necessary (3 bytes for digits, 1 for nul)
+    // to avoid spurious warning from gcc -Werror=format-overflow.
+    char buffer[24];
+    sprintf(buffer, \"%\" PRIu8, U8);
+    MR_allocate_aligned_string_msg(S, strlen(buffer), MR_ALLOC_ID);
+    strcpy(S, buffer);
+").
+
+string.uint_to_hex_string(V_3) = V_2 :-
+    V_2 = string.uint_to_lc_hex_string(V_3).
+
+:- pragma inline(func(string.uint_to_lc_hex_string/1)).
+:- pragma foreign_proc("C",
+    string.uint_to_lc_hex_string(U :: builtin.in) = (Str :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    char buffer[17]; // 16 for digits, 1 for nul.
+    sprintf(buffer, \"%\" MR_INTEGER_LENGTH_MODIFIER \"x\", U);
+    MR_allocate_aligned_string_msg(Str, strlen(buffer), MR_ALLOC_ID);
+    strcpy(Str, buffer);
+").
+
+:- pragma foreign_proc("C",
+    string.uint_to_octal_string(U :: builtin.in) = (Str :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    char buffer[23]; // 22 for digits, 1 for nul.
+    sprintf(buffer, \"%\" MR_INTEGER_LENGTH_MODIFIER \"o\", U);
+    MR_allocate_aligned_string_msg(Str, strlen(buffer), MR_ALLOC_ID);
+    strcpy(Str, buffer);
+").
+
+:- pragma foreign_proc("C",
+    string.uint_to_string(U :: builtin.in) = (Str :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    char buffer[21]; // 20 for digits, 1 for nul.
+    sprintf(buffer, \"%\" MR_INTEGER_LENGTH_MODIFIER \"u\", U);
+    MR_allocate_aligned_string_msg(Str, strlen(buffer), MR_ALLOC_ID);
+    strcpy(Str, buffer);
+").
+
+:- pragma foreign_proc("C",
+    string.uint_to_uc_hex_string(U :: builtin.in) = (Str :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    char buffer[17]; // 16 for digits, 1 for nul.
+    sprintf(buffer, \"%\" MR_INTEGER_LENGTH_MODIFIER \"X\", U);
+    MR_allocate_aligned_string_msg(Str, strlen(buffer), MR_ALLOC_ID);
+    strcpy(Str, buffer);
+").
+
+string.uncapitalize_first(V_3) = V_4 :-
+    string.uncapitalize_first(V_3, V_4).
+
+string.unsafe_between(V_5, V_6, V_7) = V_8 :-
+    string.unsafe_between(V_5, V_6, V_7, V_8).
+
+:- pragma foreign_proc("C",
+    string.unsafe_between(Str :: builtin.in, Start :: builtin.in, End :: builtin.in, SubString :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = \'\\0\';
+}").
+
+:- pragma foreign_proc("C",
+    string.unsafe_compare_substrings(Res :: builtin.uo, X :: builtin.in, StartX :: builtin.in, Y :: builtin.in, StartY :: builtin.in, Length :: builtin.in),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    int res = memcmp(X + StartX, Y + StartY, Length);
+    Res = ((res < 0) ? MR_COMPARE_LESS
+        : (res == 0) ? MR_COMPARE_EQUAL
+        : MR_COMPARE_GREATER);
+").
+
+string.unsafe_elem(V_5, V_4) = V_3 :-
+    V_3 = string.unsafe_index(V_4, V_5).
+
+string.unsafe_index(V_4, V_5) = V_6 :-
+    string.unsafe_index(V_4, V_5, V_6).
+
+:- pragma foreign_proc("C",
+    string.unsafe_index(Str :: builtin.in, Index :: builtin.in, Ch :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    Ch = (unsigned char) Str[Index];
+    if (!MR_is_ascii(Ch)) {
+        int width;
+        Ch = MR_utf8_get_mb(Str, Index, &width);
+        if (Ch < 0) {
+            Ch = 0xFFFD;
+        }
+    }
+").
+
+:- pragma foreign_proc("C",
+    string.unsafe_index_code_unit(Str :: builtin.in, Index :: builtin.in, Code :: builtin.out),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail],
+"
+    const unsigned char *s = (const unsigned char *) Str;
+    Code = s[Index];
+").
+
+:- pragma inline(pred(string.unsafe_index_next/4)).
+string.unsafe_index_next(V_5, V_6, V_7, V_8) :-
+    string.unsafe_index_next_repl_2(V_5, V_6, V_7, V_8, V_9).
+
+:- pragma inline(pred(string.unsafe_index_next_repl/5)).
+string.unsafe_index_next_repl(V_6, V_7, V_8, V_9, V_10) :-
+    string.unsafe_index_next_repl_2(V_6, V_7, V_8, V_9, V_11),
+    ( if
+      V_11 = -1 : int
+    then
+      V_10 = string.not_replaced : string.maybe_replaced
+    else
+      V_12 = uint8.cast_from_int(V_11),
+      V_10 = string.replaced_code_unit(V_12) : string.maybe_replaced
+    ).
+
+:- pragma inline(pred(string.unsafe_index_next_repl_2/5)).
+:- pragma foreign_proc("C",
+    string.unsafe_index_next_repl_2(Str :: builtin.in, Index :: builtin.in, NextIndex :: builtin.out, Ch :: builtin.uo, ReplacedCodeUnit :: builtin.out),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    Ch = (unsigned char) Str[Index];
+    ReplacedCodeUnit = -1;
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        if (Ch < 0) {
+            Ch = 0xfffd;
+            ReplacedCodeUnit = (unsigned char) Str[Index];
+            NextIndex = Index + 1;
+        }
+        SUCCESS_INDICATOR = MR_TRUE;
+    }
+").
+
+:- pragma inline(pred(string.unsafe_prev_index/4)).
+string.unsafe_prev_index(V_5, V_6, V_7, V_8) :-
+    string.unsafe_prev_index_repl_2(V_5, V_6, V_7, V_8, V_9).
+
+:- pragma inline(pred(string.unsafe_prev_index_repl/5)).
+string.unsafe_prev_index_repl(V_6, V_7, V_8, V_9, V_10) :-
+    string.unsafe_prev_index_repl_2(V_6, V_7, V_8, V_9, V_11),
+    ( if
+      V_11 = -1 : int
+    then
+      V_10 = string.not_replaced : string.maybe_replaced
+    else
+      V_12 = uint8.cast_from_int(V_11),
+      V_10 = string.replaced_code_unit(V_12) : string.maybe_replaced
+    ).
+
+:- pragma inline(pred(string.unsafe_prev_index_repl_2/5)).
+:- pragma foreign_proc("C",
+    string.unsafe_prev_index_repl_2(Str :: builtin.in, Index :: builtin.in, PrevIndex :: builtin.out, Ch :: builtin.uo, ReplacedCodeUnit :: builtin.out),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"
+    ReplacedCodeUnit = -1;
+    if (Index <= 0) {
+        PrevIndex = Index;
+        Ch = 0;
+        SUCCESS_INDICATOR = MR_FALSE;
+    } else {
+        PrevIndex = Index - 1;
+        Ch = (unsigned char) Str[PrevIndex];
+        if (! MR_is_ascii(Ch)) {
+            Ch = MR_utf8_prev_get(Str, &PrevIndex);
+            // XXX MR_utf8_prev_get currently just scans backwards to find a
+            // lead byte, so we need a separate check to ensure no bytes are
+            // unaccounted for.
+            if (Ch < 0 || PrevIndex + MR_utf8_width(Ch) != Index) {
+                Ch = 0xfffd;
+                ReplacedCodeUnit = (unsigned char) Str[Index - 1];
+                PrevIndex = Index - 1;
+            }
+        }
+        SUCCESS_INDICATOR = MR_TRUE;
+    }
+").
+
+string.unsafe_set_char(V_5, V_6, V_7) = V_8 :-
+    string.unsafe_set_char(V_5, V_6, V_7, V_8).
+
+:- pragma foreign_proc("C",
+    string.unsafe_set_char_copy_string(Ch :: builtin.in, Index :: builtin.in, Len0 :: builtin.in, Str0 :: builtin.in, Str :: builtin.uo),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness],
+"
+    int b;
+    size_t oldlen;
+    size_t oldwidth;
+    size_t newwidth;
+    size_t newlen;
+
+    // The cast to (unsigned char *) is to prevent sign extension.
+    b = ((const unsigned char *) Str0)[Index];
+    if (MR_utf8_is_lead_byte(b)) {
+        MR_Integer next_index = Index;
+        int oldc = MR_utf8_get_next_mb(Str0, &next_index);
+        if (oldc < 0) {
+            oldwidth = 1;
+        } else {
+            oldwidth = next_index - Index;
+        }
+    } else {
+        oldwidth = 1;
+    }
+
+    if (MR_is_ascii(Ch)) {
+        // Fast path.
+        newwidth = 1;
+    } else {
+        newwidth = MR_utf8_width(Ch);
+    }
+
+    oldlen = Len0;
+    newlen = oldlen - oldwidth + newwidth;
+
+    MR_allocate_aligned_string_msg(Str, newlen, MR_ALLOC_ID);
+    MR_memcpy(Str, Str0, Index);
+    if (MR_is_ascii(Ch)) {
+        // Fast path.
+        Str[Index] = Ch;
+    } else {
+        MR_utf8_encode(Str + Index, Ch);
+    }
+    MR_memcpy(Str + Index + newwidth,
+        Str0 + Index + oldwidth,
+        oldlen - Index - oldwidth + 1);
+").
+
+:- pragma foreign_proc("C",
+    string.unsafe_sub_string_search_start(WholeString :: builtin.in, Pattern :: builtin.in, BeginAt :: builtin.in, Index :: builtin.out),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness],
+"{
+    char *match = strstr(WholeString + BeginAt, Pattern);
+    if (match) {
+        Index = match - WholeString;
+        SUCCESS_INDICATOR = MR_TRUE;
+    } else {
+        SUCCESS_INDICATOR = MR_FALSE;
+    }
+}").
+
+string.utf8_is_trail_byte(V_2) :-
+    V_3 = int.(V_2 /\ V_4),
+    V_4 = 192 : int,
+    V_3 = 128 : int.
+
+string.word_wrap(V_4, V_5) = V_3 :-
+    V_3 = string.word_wrap_separator(V_4, V_5, V_6),
+    V_6 = "" : string.
+
+string.words(V_3) = V_2 :-
+    V_2 = string.words_separator(V_4, V_3),
+    V_4 = char.is_whitespace : (pred character).
+
+string.words_loop(V_5, V_6, V_7, V_8) :-
+    string.skip_to_word_end(V_5, V_6, V_7, V_9),
+    ( if
+      V_9 = V_7
+    then
+      V_8 = list.[] : list.list(string)
+    else
+      string.unsafe_between(V_6, V_7, V_9, V_10),
+      string.skip_to_next_word_start(V_5, V_6, V_9, V_11),
+      ( if
+        V_9 = V_11
+      then
+        V_8 = list.[V_10 | V_13] : list.list(string),
+        V_13 = list.[] : list.list(string)
+      else
+        string.words_loop(V_5, V_6, V_11, V_12),
+        V_8 = list.[V_10 | V_12] : list.list(string)
+      )
+    ).
+
+string.words_separator(V_4, V_5) = V_6 :-
+    V_8 = 0 : int,
+    string.skip_to_next_word_start(V_4, V_5, V_8, V_7),
+    string.words_loop(V_4, V_5, V_7, V_6).
+
+:- pragma termination_info(string.'++'(builtin.in, builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.accumulate_int(builtin.in, builtin.in, builtin.in, builtin.out), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(string.accumulate_negative_int(builtin.in, builtin.in, builtin.in, builtin.out), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(string.add_suffix(builtin.in, builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(string.all_match(builtin.in((pred(builtin.in) is semidet)), builtin.in), infinite, can_loop).
+:- pragma termination_info(string.all_match_loop(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in), infinite, can_loop).
+:- pragma termination_info(string.alloc_buffer(builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.append(builtin.in, builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.append(builtin.in, builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(string.append(builtin.in, builtin.uo, builtin.in), infinite, cannot_loop).
+:- pragma termination_info(string.append(builtin.in, builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.append(builtin.uo, builtin.in, builtin.in), infinite, cannot_loop).
+:- pragma termination_info(string.append_iio(builtin.in, builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.append_list(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.append_list(builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.append_string_pieces(builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.base_string_to_int(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.base_string_to_uint(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.between(builtin.in, builtin.in, builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.between(builtin.in, builtin.in, builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.between_code_points(builtin.in, builtin.in, builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info(string.between_code_points(builtin.in, builtin.in, builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.between_codepoints(builtin.in, builtin.in, builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info(string.between_codepoints(builtin.in, builtin.in, builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.buffer_to_string(builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.c_pointer_to_string(builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info(string.c_pointer_to_string(builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.capitalize_first(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.capitalize_first(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.char_to_string(builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info(string.char_to_string(builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.char_to_string(builtin.out, builtin.in), infinite, can_loop).
+:- pragma termination_info(string.check_well_formedness(builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.chomp(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.code_point_offset(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.code_point_offset(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.code_point_offset_loop(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.codepoint_offset(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.codepoint_offset(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.compare_ignore_case_ascii(builtin.uo, builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(string.compare_substrings(builtin.uo, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in), infinite, cannot_loop).
+:- pragma termination_info(string.contains_char(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(string.contains_match(builtin.in((pred(builtin.in) is semidet)), builtin.in), infinite, can_loop).
+:- pragma termination_info(string.contains_match_loop(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in), infinite, can_loop).
+:- pragma termination_info(string.copy_into_buffer(builtin.di, builtin.uo, builtin.in, builtin.out, builtin.in, builtin.in, builtin.in), infinite, cannot_loop).
+:- pragma termination_info(string.count_code_points(builtin.in) = builtin.out, finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.count_code_points(builtin.in, builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.count_code_points_loop(builtin.in, builtin.in, builtin.in, builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(string.count_code_units(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(string.count_code_units(builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.count_codepoints(builtin.in) = builtin.out, finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.count_codepoints(builtin.in, builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.count_utf8_code_units(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.det_base_string_to_int(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.det_base_string_to_uint(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.det_index(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.det_index(builtin.in, builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.det_remove_prefix(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.det_remove_suffix(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.det_set_char(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.det_set_char(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.det_to_float(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.det_to_int(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.det_to_uint(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.do_from_code_unit_list(builtin.in, builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.do_to_char_list_loop(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.do_to_rev_char_list_loop(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.duplicate_char(builtin.in, builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info(string.duplicate_char(builtin.in, builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.elem(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.find_first_ill_formed_pos(builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.first_char(builtin.in, builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(string.first_char(builtin.in, builtin.uo, builtin.in), infinite, can_loop).
+:- pragma termination_info(string.first_char(builtin.in, builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.first_char(builtin.in, builtin.uo, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.first_char(builtin.uo, builtin.in, builtin.in), infinite, can_loop).
+:- pragma termination_info(string.float_to_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.float_to_string(builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.foldl(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.foldl(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl2(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl2_between(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.foldl2_between(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.foldl2_between(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl2_between(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl2_between(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl2_between(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl2_between_2(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.foldl2_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.foldl2_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl2_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl2_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl2_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl_between(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.foldl_between(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl_between(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.foldl_between(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl_between(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl_between(builtin.in((pred(builtin.in, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl_between_2(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.foldl_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldl_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldr(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldr(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldr_between(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.foldr_between(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldr_between(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.foldr_between(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldr_between(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldr_between(builtin.in((pred(builtin.in, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldr_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldr_between_2(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.foldr_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldr_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.foldr_between_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.format(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.format(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.format_table(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.format_table_max(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.from_c_pointer(builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info(string.from_char(builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info(string.from_char_list(builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info(string.from_char_list(builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.from_code_unit_list(builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.from_code_unit_list_allow_ill_formed(builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.from_float(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.from_int(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.from_rev_char_list(builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info(string.from_rev_char_list(builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.from_utf16_code_unit_list(builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.from_utf8_code_unit_list(builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.hash(builtin.in) = builtin.out, finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.hash(builtin.in, builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.hash2(builtin.in) = builtin.out, finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.hash3(builtin.in) = builtin.out, finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.hash4(builtin.in) = builtin.out, finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.hash5(builtin.in) = builtin.out, finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.hash6(builtin.in) = builtin.out, finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.index(builtin.in, builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.index_next(builtin.in, builtin.in, builtin.out, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.index_next_repl(builtin.in, builtin.in, builtin.out, builtin.uo, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.int16_to_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.int32_to_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.int64_to_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.int8_to_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.int_to_base_string(builtin.in, builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info(string.int_to_base_string(builtin.in, builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.int_to_base_string_group(builtin.in, builtin.in, builtin.in, builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info(string.int_to_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.int_to_string(builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.int_to_string_thousands(builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info((string.internal_encoding_is_utf8), finite(0, []), cannot_loop).
+:- pragma termination_info(string.is_all_alnum(builtin.in), infinite, can_loop).
+:- pragma termination_info(string.is_all_alnum_or_underscore(builtin.in), finite(0, [no]), cannot_loop).
+:- pragma termination_info(string.is_all_alpha(builtin.in), finite(0, [no]), cannot_loop).
+:- pragma termination_info(string.is_all_alpha_or_underscore(builtin.in), finite(0, [no]), cannot_loop).
+:- pragma termination_info(string.is_all_digits(builtin.in), finite(0, [no]), cannot_loop).
+:- pragma termination_info(string.is_empty(builtin.in), finite(0, [no]), cannot_loop).
+:- pragma termination_info(string.is_well_formed(builtin.in), finite(0, [no]), cannot_loop).
+:- pragma termination_info(string.join_list(builtin.in, builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.left(builtin.in, builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(string.left(builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.left_by_code_point(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.left_by_code_point(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.left_by_codepoint(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.left_by_codepoint(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.length(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.length(builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.length(builtin.ui, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.lstrip(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.lstrip_pred(builtin.in((pred(builtin.in) is semidet)), builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.make_string_piece(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info((string.max_precision) = builtin.out, finite(0, [no]), cannot_loop).
+:- pragma termination_info((string.min_precision) = builtin.out, finite(0, [no]), cannot_loop).
+:- pragma termination_info(string.nondet_append(builtin.out, builtin.out, builtin.in), infinite, can_loop).
+:- pragma termination_info(string.nondet_append_2(builtin.in, builtin.in, builtin.out, builtin.out, builtin.in), infinite, can_loop).
+:- pragma termination_info(string.pad_left(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.pad_left(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.pad_right(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.pad_right(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.prefix(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(string.prefix_length(builtin.in((pred(builtin.in) is semidet)), builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.prefix_length_loop(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.prev_index(builtin.in, builtin.in, builtin.out, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.prev_index_repl(builtin.in, builtin.in, builtin.out, builtin.uo, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.remove_prefix(builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.remove_prefix_if_present(builtin.in, builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(string.remove_suffix(builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.remove_suffix_if_present(builtin.in, builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(string.replace(builtin.in, builtin.in, builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.replace_all(builtin.in, builtin.in, builtin.in) = builtin.uo, infinite, can_loop).
+:- pragma termination_info(string.replace_all(builtin.in, builtin.in, builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.right(builtin.in, builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(string.right(builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.right_by_code_point(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.right_by_code_point(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.right_by_codepoint(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.right_by_codepoint(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.rstrip(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.rstrip_pred(builtin.in((pred(builtin.in) is semidet)), builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.semidet_from_char_list(builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.semidet_from_rev_char_list(builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.set_char(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.skip_to_next_word_start(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.skip_to_word_end(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.split(builtin.in, builtin.in, builtin.out, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.split_at_char(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.split_at_separator(builtin.in((pred(builtin.in) is semidet)), builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.split_at_separator_loop(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.split_at_string(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.split_at_string_loop(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.split_by_code_point(builtin.in, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.split_by_codepoint(builtin.in, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.split_into_lines(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.split_into_lines_loop(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.string(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.string_index_is_in_bounds(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(string.string_ops(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.string_ops_noncanon(builtin.in(deconstruct.do_not_allow), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.string_ops_noncanon(builtin.in(deconstruct.canonicalize), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.string_ops_noncanon(builtin.in(deconstruct.include_details_cc), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.string_ops_noncanon(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.string_to_doc(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.strip(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.sub_string_search(builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.sub_string_search_start(builtin.in, builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.suffix(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(string.suffix_length(builtin.in((pred(builtin.in) is semidet)), builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.suffix_length_loop(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.to_char_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.to_char_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.to_code_unit_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.to_code_unit_list_loop(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.to_float(builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.to_int(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.to_lower(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.to_lower(builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.to_lower(builtin.in, builtin.in), finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.to_rev_char_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.to_rev_char_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.to_uint(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.to_upper(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.to_upper(builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.to_upper(builtin.in, builtin.in), finite(0, [no, no]), can_loop).
+:- pragma termination_info(string.to_utf16_code_unit_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.to_utf8_code_unit_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.uint16_to_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uint32_to_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uint64_to_hex_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uint64_to_lc_hex_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uint64_to_octal_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uint64_to_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uint64_to_uc_hex_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uint8_to_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uint_to_hex_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uint_to_lc_hex_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uint_to_octal_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uint_to_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uint_to_uc_hex_string(builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.uncapitalize_first(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.uncapitalize_first(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.unsafe_append_string_pieces(builtin.in, builtin.uo), infinite, can_loop).
+:- pragma termination_info(string.unsafe_between(builtin.in, builtin.in, builtin.in) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(string.unsafe_between(builtin.in, builtin.in, builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.unsafe_compare_substrings(builtin.uo, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in), infinite, cannot_loop).
+:- pragma termination_info(string.unsafe_elem(builtin.in, builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(string.unsafe_index(builtin.in, builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(string.unsafe_index(builtin.in, builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.unsafe_index_code_unit(builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.unsafe_index_next(builtin.in, builtin.in, builtin.out, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.unsafe_index_next_repl(builtin.in, builtin.in, builtin.out, builtin.uo, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.unsafe_index_next_repl_2(builtin.in, builtin.in, builtin.out, builtin.uo, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.unsafe_prev_index(builtin.in, builtin.in, builtin.out, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.unsafe_prev_index_repl(builtin.in, builtin.in, builtin.out, builtin.uo, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.unsafe_prev_index_repl_2(builtin.in, builtin.in, builtin.out, builtin.uo, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.unsafe_set_char(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.unsafe_set_char(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.unsafe_set_char_copy_string(builtin.in, builtin.in, builtin.in, builtin.in, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(string.unsafe_sub_string_search_start(builtin.in, builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(string.utf8_is_trail_byte(builtin.in), finite(0, [no]), cannot_loop).
+:- pragma termination_info(string.word_wrap(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.word_wrap_separator(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.words(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(string.words_loop(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(string.words_separator(builtin.in((pred(builtin.in) is semidet)), builtin.in) = builtin.out, infinite, can_loop).
+
+:- pragma exceptions(function, string.(++), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.accumulate_int, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.accumulate_negative_int, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.accumulate_uint, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.add_suffix, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.all_match, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.all_match_loop, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.alloc_buffer, 2, 0, will_not_throw).
+:- pragma exceptions(function, string.append, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.append, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.append, 3, 1, will_not_throw).
+:- pragma exceptions(predicate, string.append, 3, 2, will_not_throw).
+:- pragma exceptions(predicate, string.append, 3, 3, will_not_throw).
+:- pragma exceptions(predicate, string.append_iii, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.append_iio, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.append_ioi, 3, 0, will_not_throw).
+:- pragma exceptions(function, string.append_list, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.append_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.append_oii, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.append_string_pieces, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.base_negative_int_accumulator, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.base_positive_int_accumulator, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.base_string_to_int, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.base_string_to_uint, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.base_uint_accumulator, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.between, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.between, 4, 0, will_not_throw).
+:- pragma exceptions(function, string.between_code_points, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.between_code_points, 4, 0, will_not_throw).
+:- pragma exceptions(function, string.between_codepoints, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.between_codepoints, 4, 0, will_not_throw).
+:- pragma exceptions(function, string.break_up_string_reverse, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.buffer_to_string, 2, 0, will_not_throw).
+:- pragma exceptions(function, string.c_pointer_to_string, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.c_pointer_to_string, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.capitalize_first, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.capitalize_first, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.char_to_string, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.char_to_string, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.char_to_string, 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.check_lower_loop, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.check_upper_loop, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.check_well_formedness, 2, 0, will_not_throw).
+:- pragma exceptions(function, string.chomp, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.code_point_offset, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.code_point_offset, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, string.code_point_offset_loop, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, string.codepoint_offset, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.codepoint_offset, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, string.column_counts_match, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.compare_ignore_case_ascii, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.compare_ignore_case_ascii_loop, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.compare_substrings, 6, 0, will_not_throw).
+:- pragma exceptions(predicate, string.contains_char, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.contains_char_loop, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.contains_match, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.contains_match_loop, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.copy_into_buffer, 7, 0, will_not_throw).
+:- pragma exceptions(predicate, string.copy_piece_into_buffer, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, string.count_and_find_max_str_length, 5, 0, will_not_throw).
+:- pragma exceptions(function, string.count_code_points, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.count_code_points, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.count_code_points_loop, 4, 0, will_not_throw).
+:- pragma exceptions(function, string.count_code_units, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.count_code_units, 2, 0, will_not_throw).
+:- pragma exceptions(function, string.count_codepoints, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.count_codepoints, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.count_utf16_to_utf8_code_units, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.count_utf8_code_units, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.decode_utf16, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.decode_utf8, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.det_base_string_to_int, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.det_base_string_to_uint, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.det_index, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.det_index, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.det_remove_prefix, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.det_remove_suffix, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.det_set_char, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.det_set_char, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.det_to_float, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.det_to_int, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.det_to_uint, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.do_append_string_pieces, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.do_from_code_unit_list, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.do_to_char_list_loop, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, string.do_to_rev_char_list_loop, 4, 0, will_not_throw).
+:- pragma exceptions(function, string.duplicate_char, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.duplicate_char, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.elem, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.encode_utf8, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.find_first_ill_formed_pos, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.find_max_width, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.find_max_width_with_limit, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.first_char, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.first_char, 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.first_char, 3, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.first_char, 3, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.first_char, 3, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.first_char_rest_in, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.first_char_rest_in, 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.first_char_rest_out, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.first_char_rest_out, 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.first_char_str_out, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.float_to_string, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.float_to_string, 2, 0, will_not_throw).
+:- pragma exceptions(function, string.float_to_string_loop, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.foldl, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl, 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2, 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2_between, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2_between, 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2_between, 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2_between, 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2_between, 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2_between, 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2_between_2, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2_between_2, 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2_between_2, 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2_between_2, 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2_between_2, 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl2_between_2, 8, 5, may_throw(user_exception)).
+:- pragma exceptions(function, string.foldl_between, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl_between, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl_between, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl_between, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl_between, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl_between, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl_between_2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl_between_2, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl_between_2, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl_between_2, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldl_between_2, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(function, string.foldr, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr, 4, 4, may_throw(user_exception)).
+:- pragma exceptions(function, string.foldr_between, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr_between, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr_between, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr_between, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr_between, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr_between, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr_between_2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr_between_2, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr_between_2, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr_between_2, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.foldr_between_2, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(function, string.format, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.format, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.format_table, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.format_table_max, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.from_c_pointer, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.from_char, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.from_char_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.from_char_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.from_code_unit_list, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.from_code_unit_list_allow_ill_formed, 2, 0, will_not_throw).
+:- pragma exceptions(function, string.from_float, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.from_int, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.from_rev_char_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.from_rev_char_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.from_utf16_code_unit_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.from_utf8_code_unit_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.generate_rows, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.get_next_line, 3, 0, will_not_throw).
+:- pragma exceptions(function, string.hash, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.hash, 2, 0, will_not_throw).
+:- pragma exceptions(function, string.hash2, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.hash2_loop, 5, 0, will_not_throw).
+:- pragma exceptions(function, string.hash3, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.hash3_loop, 5, 0, will_not_throw).
+:- pragma exceptions(function, string.hash4, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.hash4_loop, 5, 0, will_not_throw).
+:- pragma exceptions(function, string.hash5, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.hash5_loop, 5, 0, will_not_throw).
+:- pragma exceptions(function, string.hash6, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.hash6_loop, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, string.hash_loop, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, string.index, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.index_next, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.index_next_repl, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.int16_to_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.int32_to_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.int64_to_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.int8_to_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.int_to_base_string, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.int_to_base_string, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.int_to_base_string_1, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.int_to_base_string_2, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.int_to_base_string_group, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.int_to_base_string_group_1, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.int_to_base_string_group_2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.int_to_string, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.int_to_string, 2, 0, will_not_throw).
+:- pragma exceptions(function, string.int_to_string_thousands, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.internal_encoding_is_utf8, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, string.is_all_alnum, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.is_all_alnum_or_underscore, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.is_all_alpha, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.is_all_alpha_or_underscore, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.is_all_digits, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.is_empty, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.is_well_formed, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.join_list, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.join_list_loop, 3, 0, will_not_throw).
+:- pragma exceptions(function, string.keep_30_bits, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.left, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.left, 3, 0, will_not_throw).
+:- pragma exceptions(function, string.left_by_code_point, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.left_by_code_point, 3, 0, will_not_throw).
+:- pragma exceptions(function, string.left_by_codepoint, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.left_by_codepoint, 3, 0, will_not_throw).
+:- pragma exceptions(function, string.length, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.length, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.length, 2, 1, will_not_throw).
+:- pragma exceptions(function, string.lstrip, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.lstrip_pred, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.make_string_piece, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.max_precision, 0, 0, will_not_throw).
+:- pragma exceptions(function, string.min_precision, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, string.nondet_append, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.nondet_append_2, 5, 0, will_not_throw).
+:- pragma exceptions(function, string.pad_left, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.pad_left, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.pad_right, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.pad_right, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.pad_row, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.prefix, 2, 0, will_not_throw).
+:- pragma exceptions(function, string.prefix_length, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.prefix_length_loop, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.prepend_code_units, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, string.prev_index, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.prev_index_repl, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.remove_prefix, 3, 0, will_not_throw).
+:- pragma exceptions(function, string.remove_prefix_if_present, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.remove_suffix, 3, 0, will_not_throw).
+:- pragma exceptions(function, string.remove_suffix_if_present, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.replace, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.replace_all, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.replace_all, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.replace_all_empty_pat, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.replace_all_empty_pat_loop, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.replace_all_loop, 7, 0, will_not_throw).
+:- pragma exceptions(function, string.right, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.right, 3, 0, will_not_throw).
+:- pragma exceptions(function, string.right_by_code_point, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.right_by_code_point, 3, 0, will_not_throw).
+:- pragma exceptions(function, string.right_by_codepoint, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.right_by_codepoint, 3, 0, will_not_throw).
+:- pragma exceptions(function, string.rstrip, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.rstrip_pred, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.semidet_from_char_list, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.semidet_from_rev_char_list, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.set_char, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.skip_to_next_word_start, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.skip_to_word_end, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.split, 4, 0, will_not_throw).
+:- pragma exceptions(function, string.split_at_char, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.split_at_separator, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.split_at_separator_loop, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.split_at_string, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.split_at_string_loop, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, string.split_by_code_point, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, string.split_by_codepoint, 4, 0, will_not_throw).
+:- pragma exceptions(function, string.split_into_lines, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.split_into_lines_loop, 4, 0, will_not_throw).
+:- pragma exceptions(function, string.string, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.string_index_is_in_bounds, 2, 0, will_not_throw).
+:- pragma exceptions(function, string.string_ops, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.string_ops_noncanon, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.string_ops_noncanon, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.string_ops_noncanon, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.string_ops_noncanon, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(function, string.string_to_doc, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.strip, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.sub_string_search, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.sub_string_search_start, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, string.suffix, 2, 0, will_not_throw).
+:- pragma exceptions(function, string.suffix_length, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.suffix_length_loop, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.sum_piece_lengths, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.to_char_list, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.to_char_list, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.to_code_unit_list, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.to_code_unit_list_loop, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, string.to_float, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.to_int, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.to_lower, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.to_lower, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.to_lower, 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.to_lower_code_unit, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.to_rev_char_list, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.to_rev_char_list, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.to_uint, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.to_upper, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.to_upper, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.to_upper, 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.to_upper_code_unit, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.to_utf16_code_unit_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.to_utf8_code_unit_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.uint16_to_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uint32_to_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uint64_to_hex_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uint64_to_lc_hex_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uint64_to_octal_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uint64_to_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uint64_to_uc_hex_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uint8_to_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uint_to_hex_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uint_to_lc_hex_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uint_to_octal_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uint_to_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uint_to_uc_hex_string, 1, 0, will_not_throw).
+:- pragma exceptions(function, string.uncapitalize_first, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.uncapitalize_first, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.unsafe_append_string_pieces, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.unsafe_between, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.unsafe_between, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, string.unsafe_compare_substrings, 6, 0, will_not_throw).
+:- pragma exceptions(predicate, string.unsafe_compare_substrings_loop, 6, 0, will_not_throw).
+:- pragma exceptions(function, string.unsafe_elem, 2, 0, will_not_throw).
+:- pragma exceptions(function, string.unsafe_index, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, string.unsafe_index, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.unsafe_index_code_unit, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, string.unsafe_index_next, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, string.unsafe_index_next_repl, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.unsafe_index_next_repl_2, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, string.unsafe_prev_index, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, string.unsafe_prev_index_repl, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.unsafe_prev_index_repl_2, 5, 0, will_not_throw).
+:- pragma exceptions(function, string.unsafe_set_char, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.unsafe_set_char, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.unsafe_set_char_copy_string, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, string.unsafe_sub_string_search_start, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, string.unsafe_sub_string_search_start_loop, 6, 0, will_not_throw).
+:- pragma exceptions(predicate, string.utf8_is_trail_byte, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, string.utf8_to_utf16_code_units_loop, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.word_wrap, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.word_wrap_loop, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.word_wrap_separator, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.words, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, string.words_loop, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, string.words_separator, 2, 0, may_throw(user_exception)).

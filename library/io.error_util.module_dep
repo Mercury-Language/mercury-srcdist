@@ -1,0 +1,14 @@
+module(2, "io.error_util.m",
+	io.error_util,
+	{io},
+	{builtin, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - io.error_util, "C#" - io.error_util, "Java" - io.error_util},
+	no_foreign_export,
+	no_main,
+	{}
+).
