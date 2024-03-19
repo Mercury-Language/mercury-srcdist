@@ -1,0 +1,2 @@
+:- module io.stream_ops.
+:- interface.

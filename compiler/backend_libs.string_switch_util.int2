@@ -1,0 +1,7 @@
+:- module backend_libs.string_switch_util.
+:- interface.
+:- type string_hash_slot(CaseRep)
+    --->    string_hash_slot(string, int, CaseRep).
+:- type table_size_upgrade
+    --->    keep_first_size 
+    ;       allow_doubling .
