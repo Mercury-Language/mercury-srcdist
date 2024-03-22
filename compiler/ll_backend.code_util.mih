@@ -1,0 +1,166 @@
+/*
+** Automatically generated from `code_util.m'
+** by the Mercury compiler,
+** version rotd-2024-03-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.code_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__code_util
+#define MR_HEADER_GUARD_ll_backend__code_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__CODE_UTIL_DECL_GUARD
+#define LL_BACKEND__CODE_UTIL_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__code_util__ll_backend__code_util__type_ctor_info_for_from_where_0;
+
+void MR_CALL 
+ll_backend__code_util__arg_loc_to_register_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_util__build_input_arg_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_util__goal_may_alloc_temp_frame_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_util__instr_rvals_and_lvals_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_util__instrs_rvals_and_lvals_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_util__max_mentioned_abs_regs_3_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+ll_backend__code_util__max_mentioned_regs_3_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+ll_backend__code_util__neg_rval_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_util__negate_the_test_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_Integer MR_CALL 
+ll_backend__code_util__encode_num_generic_call_vars_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+ll_backend__code_util__extract_proc_label_from_code_addr_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__code_util__lvals_in_lval_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__code_util__lvals_in_lvals_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__code_util__lvals_in_rval_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__code_util__make_entry_label_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+ll_backend__code_util__make_entry_label_from_rtti_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ll_backend__code_util__make_internal_label_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+MR_Word MR_CALL 
+ll_backend__code_util__make_local_entry_label_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4);
+
+MR_Integer MR_CALL 
+ll_backend__code_util__size_of_cell_args_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ll_backend__code_util____Compare____for_from_where_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__code_util____Unify____for_from_where_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__code_util__init(void);
+void mercury__ll_backend__code_util__init_type_tables(void);
+void mercury__ll_backend__code_util__init_debugger(void);
+const char *mercury__ll_backend__code_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.code_util
+
+// :- end_interface ll_backend.code_util.
