@@ -1,0 +1,14 @@
+module(2, "uint16.m",
+	uint16,
+	{},
+	{builtin, pretty_printer, private_builtin},
+	{exception, int, require, uint},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - uint16, "C#" - uint16, "Java" - uint16},
+	no_foreign_export,
+	no_main,
+	{}
+).

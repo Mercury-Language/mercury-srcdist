@@ -1,0 +1,7 @@
+:- module transform_hlds.untupling.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module hlds.hlds_module.
+:- pred untuple_arguments(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode untuple_arguments(builtin.in, builtin.out, builtin.di, builtin.uo) is det.

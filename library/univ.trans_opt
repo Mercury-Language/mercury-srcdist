@@ -1,0 +1,27 @@
+:- module univ.
+
+:- pragma termination_info(univ.det_univ_to_type(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(univ.type_to_univ(builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(univ.type_to_univ(builtin.in, builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(univ.type_to_univ(builtin.out, builtin.in), infinite, cannot_loop).
+:- pragma termination_info(univ.univ(builtin.in) = builtin.out, finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(univ.univ(builtin.di) = builtin.uo, infinite, cannot_loop).
+:- pragma termination_info(univ.univ(builtin.out) = builtin.in, infinite, cannot_loop).
+:- pragma termination_info(univ.univ_to_type(builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(univ.univ_to_type(builtin.out, builtin.in), finite(1, [no, no, yes]), cannot_loop).
+:- pragma termination_info(univ.univ_to_type(builtin.uo, builtin.di), infinite, cannot_loop).
+:- pragma termination_info(univ.univ_type(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(univ.univ_value(builtin.in) = builtin.out, infinite, cannot_loop).
+
+:- pragma exceptions(predicate, univ.det_univ_to_type, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, univ.type_to_univ, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, univ.type_to_univ, 2, 1, will_not_throw).
+:- pragma exceptions(predicate, univ.type_to_univ, 2, 2, may_throw(type_exception)).
+:- pragma exceptions(function, univ.univ, 1, 0, will_not_throw).
+:- pragma exceptions(function, univ.univ, 1, 1, will_not_throw).
+:- pragma exceptions(function, univ.univ, 1, 2, may_throw(type_exception)).
+:- pragma exceptions(predicate, univ.univ_to_type, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, univ.univ_to_type, 2, 1, will_not_throw).
+:- pragma exceptions(predicate, univ.univ_to_type, 2, 2, will_not_throw).
+:- pragma exceptions(function, univ.univ_type, 1, 0, will_not_throw).
+:- pragma exceptions(function, univ.univ_value, 1, 0, will_not_throw).

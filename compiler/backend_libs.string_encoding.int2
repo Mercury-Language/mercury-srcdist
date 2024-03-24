@@ -1,0 +1,5 @@
+:- module backend_libs.string_encoding.
+:- interface.
+:- type string_encoding
+    --->    utf8 
+    ;       utf16 .
