@@ -1,0 +1,2 @@
+:- module backend_libs.bytecode_data.
+:- interface.

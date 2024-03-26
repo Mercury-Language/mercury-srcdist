@@ -1,0 +1,15 @@
+:- module parse_tree.parse_tree_out_info.
+:- interface.
+:- type maybe_output_line_numbers
+    --->    dont_output_line_numbers 
+    ;       do_output_line_numbers .
+:- type maybe_qualified_item_names
+    --->    unqualified_item_names 
+    ;       qualified_item_names .
+:- type merc_out_info.
+:- type output_lang
+    --->    output_mercury 
+    ;       output_debug .
+:- type type_repn_for
+    --->    type_repn_for_machines 
+    ;       type_repn_for_humans .

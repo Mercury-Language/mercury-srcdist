@@ -1,0 +1,5 @@
+:- module canonical.
+:- interface.
+:- use_module profile.
+:- pred canonicalize_cliques(profile.initial_deep, profile.initial_deep).
+:- mode canonicalize_cliques(builtin.in, builtin.out) is det.
