@@ -1,0 +1,403 @@
+:- module test_bitset.
+:- use_module bool.
+:- use_module builtin.
+:- use_module enum.
+:- use_module exception.
+:- use_module fat_sparse_bitset.
+:- use_module fatter_sparse_bitset.
+:- use_module list.
+:- use_module maybe.
+:- use_module pair.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module set.
+:- use_module set_ordlist.
+:- use_module solutions.
+:- use_module sparse_bitset.
+:- use_module string.
+:- use_module tree_bitset.
+:- use_module uint.
+
+:- type test_bitset(T)
+    --->    tb(tree_bitset.tree_bitset(T), sparse_bitset.sparse_bitset(T), fat_sparse_bitset.fat_sparse_bitset(T), fatter_sparse_bitset.fatter_sparse_bitset(T), set_ordlist.set_ordlist(T)).
+
+test_bitset.all_true(V_3, test_bitset.tb(V_4, V_5, V_6, V_7, V_8)) :-
+    ( if
+      tree_bitset.all_true(V_3, V_4)
+    then
+      V_9 = bool.yes : bool.bool
+    else
+      V_9 = bool.no : bool.bool
+    ),
+    ( if
+      sparse_bitset.all_true(V_3, V_5)
+    then
+      V_10 = bool.yes : bool.bool
+    else
+      V_10 = bool.no : bool.bool
+    ),
+    ( if
+      fat_sparse_bitset.all_true(V_3, V_6)
+    then
+      V_11 = bool.yes : bool.bool
+    else
+      V_11 = bool.no : bool.bool
+    ),
+    ( if
+      fatter_sparse_bitset.all_true(V_3, V_7)
+    then
+      V_12 = bool.yes : bool.bool
+    else
+      V_12 = bool.no : bool.bool
+    ),
+    ( if
+      set_ordlist.all_true(V_3, V_8)
+    then
+      V_13 = bool.yes : bool.bool
+    else
+      V_13 = bool.no : bool.bool
+    ),
+    ( if
+      V_9 = V_13,
+      V_10 = V_13,
+      V_11 = V_13,
+      V_12 = V_13
+    then
+      V_13 = bool.yes : bool.bool
+    else
+      V_14 = "predicate `test_bitset.all_true\'/2" : string,
+      V_15 = "failed" : string,
+      require.unexpected(V_14, V_15)
+    ).
+
+test_bitset.bitset_to_set(V_3) = V_4 :-
+    V_5 = test_bitset.to_sorted_list(V_3),
+    set.sorted_list_to_set(V_5, V_4).
+
+test_bitset.difference(V_4, V_5, V_3) :-
+    V_3 = test_bitset.difference(V_4, V_5).
+
+test_bitset.divide(V_5, test_bitset.tb(V_6, V_7, V_8, V_9, V_10), V_11, V_12) :-
+    tree_bitset.divide(V_5, V_6, V_13, V_14),
+    sparse_bitset.divide(V_5, V_7, V_15, V_16),
+    fat_sparse_bitset.divide(V_5, V_8, V_17, V_18),
+    fatter_sparse_bitset.divide(V_5, V_9, V_19, V_20),
+    set_ordlist.divide(V_5, V_10, V_21, V_22),
+    tree_bitset.to_sorted_list(V_6, V_23),
+    tree_bitset.to_sorted_list(V_13, V_24),
+    tree_bitset.to_sorted_list(V_14, V_25),
+    sparse_bitset.to_sorted_list(V_7, V_26),
+    sparse_bitset.to_sorted_list(V_15, V_27),
+    sparse_bitset.to_sorted_list(V_16, V_28),
+    fat_sparse_bitset.to_sorted_list(V_8, V_29),
+    fat_sparse_bitset.to_sorted_list(V_17, V_30),
+    fat_sparse_bitset.to_sorted_list(V_18, V_31),
+    fatter_sparse_bitset.to_sorted_list(V_9, V_32),
+    fatter_sparse_bitset.to_sorted_list(V_19, V_33),
+    fatter_sparse_bitset.to_sorted_list(V_20, V_34),
+    set_ordlist.to_sorted_list(V_10, V_35),
+    set_ordlist.to_sorted_list(V_21, V_36),
+    set_ordlist.to_sorted_list(V_22, V_37),
+    ( if
+      V_23 = V_35,
+      V_26 = V_35,
+      V_29 = V_35,
+      V_32 = V_35,
+      V_24 = V_36,
+      V_27 = V_36,
+      V_30 = V_36,
+      V_33 = V_36,
+      V_25 = V_37,
+      V_28 = V_37,
+      V_31 = V_37,
+      V_34 = V_37
+    then
+      V_11 = test_bitset.tb(V_13, V_15, V_17, V_19, V_21) : test_bitset.test_bitset(T_1),
+      V_12 = test_bitset.tb(V_14, V_16, V_18, V_20, V_22) : test_bitset.test_bitset(T_1)
+    else
+      V_38 = "predicate `test_bitset.divide\'/4" : string,
+      V_39 = "failed" : string,
+      require.unexpected(V_38, V_39)
+    ).
+
+test_bitset.filter(V_4, test_bitset.tb(V_5, V_6, V_7, V_8, V_9)) = V_10 :-
+    tree_bitset.to_sorted_list(V_5, V_11),
+    sparse_bitset.to_sorted_list(V_6, V_12),
+    fat_sparse_bitset.to_sorted_list(V_7, V_13),
+    fatter_sparse_bitset.to_sorted_list(V_8, V_14),
+    set_ordlist.to_sorted_list(V_9, V_15),
+    V_16 = tree_bitset.filter(V_4, V_5),
+    V_17 = sparse_bitset.filter(V_4, V_6),
+    V_18 = fat_sparse_bitset.filter(V_4, V_7),
+    V_19 = fatter_sparse_bitset.filter(V_4, V_8),
+    V_20 = set_ordlist.filter(V_4, V_9),
+    tree_bitset.to_sorted_list(V_16, V_21),
+    sparse_bitset.to_sorted_list(V_17, V_22),
+    fat_sparse_bitset.to_sorted_list(V_18, V_23),
+    fatter_sparse_bitset.to_sorted_list(V_19, V_24),
+    set_ordlist.to_sorted_list(V_20, V_25),
+    ( if
+      V_11 = V_15,
+      V_12 = V_15,
+      V_13 = V_15,
+      V_14 = V_15,
+      V_21 = V_25,
+      V_22 = V_25,
+      V_23 = V_25,
+      V_24 = V_25
+    then
+      V_10 = test_bitset.tb(V_16, V_17, V_18, V_19, V_20) : test_bitset.test_bitset(T_1)
+    else
+      V_26 = "function `test_bitset.filter\'/2" : string,
+      V_27 = "failed" : string,
+      require.unexpected(V_26, V_27)
+    ).
+
+test_bitset.filter(V_5, test_bitset.tb(V_6, V_7, V_8, V_9, V_10), V_11, V_12) :-
+    tree_bitset.to_sorted_list(V_6, V_13),
+    sparse_bitset.to_sorted_list(V_7, V_14),
+    fat_sparse_bitset.to_sorted_list(V_8, V_15),
+    fatter_sparse_bitset.to_sorted_list(V_9, V_16),
+    set_ordlist.to_sorted_list(V_10, V_17),
+    tree_bitset.filter(V_5, V_6, V_18, V_19),
+    sparse_bitset.filter(V_5, V_7, V_20, V_21),
+    fat_sparse_bitset.filter(V_5, V_8, V_22, V_23),
+    fatter_sparse_bitset.filter(V_5, V_9, V_24, V_25),
+    set_ordlist.filter(V_5, V_10, V_26, V_27),
+    tree_bitset.to_sorted_list(V_18, V_28),
+    tree_bitset.to_sorted_list(V_19, V_29),
+    sparse_bitset.to_sorted_list(V_20, V_30),
+    sparse_bitset.to_sorted_list(V_21, V_31),
+    fat_sparse_bitset.to_sorted_list(V_22, V_32),
+    fat_sparse_bitset.to_sorted_list(V_23, V_33),
+    fatter_sparse_bitset.to_sorted_list(V_24, V_34),
+    fatter_sparse_bitset.to_sorted_list(V_25, V_35),
+    set_ordlist.to_sorted_list(V_26, V_36),
+    set_ordlist.to_sorted_list(V_27, V_37),
+    ( if
+      V_13 = V_17,
+      V_14 = V_17,
+      V_15 = V_17,
+      V_16 = V_17,
+      V_28 = V_36,
+      V_30 = V_36,
+      V_32 = V_36,
+      V_34 = V_36,
+      V_29 = V_37,
+      V_31 = V_37,
+      V_33 = V_37,
+      V_35 = V_37
+    then
+      V_11 = test_bitset.tb(V_18, V_20, V_22, V_24, V_26) : test_bitset.test_bitset(T_1),
+      V_12 = test_bitset.tb(V_19, V_21, V_23, V_25, V_27) : test_bitset.test_bitset(T_1)
+    else
+      V_38 = "predicate `test_bitset.filter\'/4" : string,
+      V_39 = "failed" : string,
+      require.unexpected(V_38, V_39)
+    ).
+
+test_bitset.foldl(V_5, test_bitset.tb(V_6, V_7, V_8, V_9, V_10), V_11) = V_12 :-
+    tree_bitset.to_sorted_list(V_6, V_13),
+    sparse_bitset.to_sorted_list(V_7, V_14),
+    fat_sparse_bitset.to_sorted_list(V_8, V_15),
+    fatter_sparse_bitset.to_sorted_list(V_9, V_16),
+    set_ordlist.to_sorted_list(V_10, V_17),
+    V_18 = tree_bitset.foldl(V_5, V_6, V_11),
+    V_19 = sparse_bitset.foldl(V_5, V_7, V_11),
+    V_20 = fat_sparse_bitset.foldl(V_5, V_8, V_11),
+    V_21 = fatter_sparse_bitset.foldl(V_5, V_9, V_11),
+    V_22 = set_ordlist.fold(V_5, V_10, V_11),
+    ( if
+      V_13 = V_17,
+      V_14 = V_17,
+      V_15 = V_17,
+      V_16 = V_17,
+      V_18 = V_22,
+      V_19 = V_22,
+      V_20 = V_22,
+      V_21 = V_22
+    then
+      V_12 = V_22
+    else
+      V_23 = "function `test_bitset.foldl\'/3" : string,
+      V_24 = "failed" : string,
+      require.unexpected(V_23, V_24)
+    ).
+
+test_bitset.foldl(V_5, test_bitset.tb(V_6, V_7, V_8, V_9, V_10), V_11, V_12) :-
+    tree_bitset.to_sorted_list(V_6, V_13),
+    sparse_bitset.to_sorted_list(V_7, V_14),
+    fat_sparse_bitset.to_sorted_list(V_8, V_15),
+    fatter_sparse_bitset.to_sorted_list(V_9, V_16),
+    set_ordlist.to_sorted_list(V_10, V_17),
+    tree_bitset.foldl(V_5, V_6, V_11, V_18),
+    sparse_bitset.foldl(V_5, V_7, V_11, V_19),
+    fat_sparse_bitset.foldl(V_5, V_8, V_11, V_20),
+    fatter_sparse_bitset.foldl(V_5, V_9, V_11, V_21),
+    set_ordlist.fold(V_5, V_10, V_11, V_22),
+    ( if
+      V_13 = V_17,
+      V_14 = V_17,
+      V_15 = V_17,
+      V_16 = V_17,
+      V_18 = V_22,
+      V_19 = V_22,
+      V_20 = V_22,
+      V_21 = V_22
+    then
+      V_12 = V_22
+    else
+      V_23 = "predicate `test_bitset.foldl\'/4" : string,
+      V_24 = "failed" : string,
+      require.unexpected(V_23, V_24)
+    ).
+
+test_bitset.from_set(V_3) = V_2 :-
+    V_2 = test_bitset.set_to_bitset(V_3).
+
+test_bitset.init(V_1) :-
+    V_1 = test_bitset.init.
+
+test_bitset.intersect(V_4, V_5, V_3) :-
+    V_3 = test_bitset.intersect(V_4, V_5).
+
+test_bitset.intersect_list(V_3, V_2) :-
+    V_2 = test_bitset.intersect_list(V_3).
+
+test_bitset.list_to_set(V_3, V_2) :-
+    V_2 = test_bitset.list_to_set(V_3).
+
+test_bitset.make_singleton_set(V_1, V_3) :-
+    V_1 = test_bitset.make_singleton_set(V_3).
+
+test_bitset.set_to_bitset(V_3) = V_4 :-
+    set.to_sorted_list(V_3, V_5),
+    V_4 = test_bitset.sorted_list_to_set(V_5).
+
+test_bitset.singleton_set(V_1, V_3) :-
+    V_1 = test_bitset.singleton_set(V_3).
+
+test_bitset.sorted_list_to_set(V_3, V_2) :-
+    V_2 = test_bitset.sorted_list_to_set(V_3).
+
+test_bitset.to_set(V_3) = V_2 :-
+    V_2 = test_bitset.bitset_to_set(V_3).
+
+test_bitset.to_sorted_list(V_3, V_2) :-
+    V_2 = test_bitset.to_sorted_list(V_3).
+
+test_bitset.union(V_4, V_5, V_3) :-
+    V_3 = test_bitset.union(V_4, V_5).
+
+test_bitset.union_list(V_3, V_2) :-
+    V_2 = test_bitset.union_list(V_3).
+
+:- pragma termination_info(test_bitset.all_true(builtin.in((pred(builtin.in) is semidet)), builtin.in), infinite, can_loop).
+:- pragma termination_info(test_bitset.bitset_to_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.contains(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(test_bitset.count(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.delete(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.delete_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.difference(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.difference(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.divide(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.divide_by_set(builtin.in, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.equal(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(test_bitset.filter(builtin.in((pred(builtin.in) is semidet)), builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.filter(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.foldl(builtin.in((func(builtin.in, builtin.in) = builtin.out is det)), builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.from_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info((test_bitset.init) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.init(builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.insert(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.insert_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.insert_new(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.intersect(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.intersect(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.intersect_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.intersect_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.is_empty(builtin.in), finite(0, [no, no]), can_loop).
+:- pragma termination_info(test_bitset.is_non_empty(builtin.in), finite(0, [no, no]), can_loop).
+:- pragma termination_info(test_bitset.is_singleton(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.list_to_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.list_to_set(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.make_singleton_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.make_singleton_set(builtin.out, builtin.in), infinite, can_loop).
+:- pragma termination_info(test_bitset.member(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(test_bitset.member(builtin.out, builtin.in), infinite, can_loop).
+:- pragma termination_info(test_bitset.remove(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.remove_gt(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.remove_least(builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.remove_leq(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.remove_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.set_to_bitset(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.singleton_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.singleton_set(builtin.out, builtin.in), infinite, can_loop).
+:- pragma termination_info(test_bitset.sorted_list_to_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.sorted_list_to_set(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.subset(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(test_bitset.superset(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(test_bitset.to_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.to_sorted_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.to_sorted_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.union(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.union(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(test_bitset.union_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(test_bitset.union_list(builtin.in, builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, test_bitset.all_true, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.bitset_to_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.contains, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.count, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.delete, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.delete_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.difference, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.difference, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.divide, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.divide_by_set, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.equal, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.filter, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.filter, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.foldl, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.foldl, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.foldl, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.from_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.init, 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.init, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.insert, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.insert_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.insert_new, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.intersect, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.intersect, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.intersect_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.intersect_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.is_empty, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.is_non_empty, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.is_singleton, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.list_to_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.list_to_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.make_singleton_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.make_singleton_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.member, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.member, 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.remove, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.remove_gt, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.remove_least, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.remove_leq, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.remove_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.set_to_bitset, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.singleton_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.singleton_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.sorted_list_to_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.sorted_list_to_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.subset, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.superset, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.to_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.to_sorted_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.to_sorted_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.union, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.union, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, test_bitset.union_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, test_bitset.union_list, 2, 0, may_throw(user_exception)).

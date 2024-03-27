@@ -1,0 +1,157 @@
+/*
+** Automatically generated from `thread.closeable_channel.m'
+** by the Mercury compiler,
+** version rotd-2024-03-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module thread.closeable_channel.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_thread__closeable_channel
+#define MR_HEADER_GUARD_thread__closeable_channel
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef THREAD__CLOSEABLE_CHANNEL_DECL_GUARD
+#define THREAD__CLOSEABLE_CHANNEL_DECL_GUARD
+#include "thread.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__closeable_channel__thread__closeable_channel__type_ctor_info_closeable_channel_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__closeable_channel__thread__closeable_channel__type_ctor_info_item_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__closeable_channel__thread__closeable_channel__type_ctor_info_stream_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__closeable_channel__thread__closeable_channel__type_ctor_info_take_result_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__closeable_channel__thread__closeable_channel__type_ctor_info_try_take_result_1;
+
+void MR_CALL 
+mercury__thread__closeable_channel__close_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__thread__closeable_channel__init_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__thread__closeable_channel__put_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__thread__closeable_channel__take_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__thread__closeable_channel__try_take_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__thread__closeable_channel____Compare____closeable_channel_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__thread__closeable_channel____Compare____item_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__thread__closeable_channel____Compare____stream_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__thread__closeable_channel____Compare____take_result_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__thread__closeable_channel____Compare____try_take_result_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__thread__closeable_channel____Unify____closeable_channel_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__thread__closeable_channel____Unify____item_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__thread__closeable_channel____Unify____stream_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__thread__closeable_channel____Unify____take_result_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__thread__closeable_channel____Unify____try_take_result_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__thread__closeable_channel__init(void);
+void mercury__thread__closeable_channel__init_type_tables(void);
+void mercury__thread__closeable_channel__init_debugger(void);
+const char *mercury__thread__closeable_channel__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_thread.closeable_channel
+
+// :- end_interface thread.closeable_channel.

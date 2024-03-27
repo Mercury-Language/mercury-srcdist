@@ -1,0 +1,11 @@
+:- module transform_hlds.intermod.
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module string.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.prog_item.
+:- use_module string.builder.
+:- use_module transform_hlds.intermod_info.
+:- pred format_initial_opt_file(hlds.hlds_module.module_info, transform_hlds.intermod_info.intermod_info, parse_tree.prog_item.parse_tree_plain_opt, string.builder.state, string.builder.state).
+:- mode format_initial_opt_file(builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
