@@ -1,0 +1,17 @@
+:- module (transform_hlds.rbmm).points_to_graph.
+:- interface.
+:- use_module map.
+:- type rpt_graph.
+:- type rptg_edge
+    --->    rptg_edge(int).
+:- type rptg_edge_content
+    --->    rptg_edge_content(((transform_hlds.rbmm).points_to_graph).rptg_ec_label :: parse_tree.prog_data_pragma.selector).
+:- type rptg_edge_info
+    --->    rptg_edge_info(((transform_hlds.rbmm).points_to_graph).rptg_edge_from_node :: transform_hlds.rbmm.points_to_graph.rptg_node, ((transform_hlds.rbmm).points_to_graph).rptg_edge_to_node :: transform_hlds.rbmm.points_to_graph.rptg_node, ((transform_hlds.rbmm).points_to_graph).rptg_edge_label :: transform_hlds.rbmm.points_to_graph.rptg_edge_content).
+:- type rptg_edges == map.map(transform_hlds.rbmm.points_to_graph.rptg_edge, transform_hlds.rbmm.points_to_graph.rptg_edge_info).
+:- type rptg_node
+    --->    rptg_node(int).
+:- type rptg_node_content
+    --->    rptg_node_content(((transform_hlds.rbmm).points_to_graph).rptg_nc_vars :: set.set(parse_tree.prog_data.prog_var), ((transform_hlds.rbmm).points_to_graph).rptg_nc_reg_var_name :: string, ((transform_hlds.rbmm).points_to_graph).rptg_nc_merged_from :: set.set(transform_hlds.rbmm.points_to_graph.rptg_node), ((transform_hlds.rbmm).points_to_graph).rptg_nc_node_type :: parse_tree.prog_data.mer_type, ((transform_hlds.rbmm).points_to_graph).rptg_nc_is_allocated :: bool.bool).
+:- type rptg_nodes == map.map(transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_node_content).
+:- type rptg_outedges == map.map(transform_hlds.rbmm.points_to_graph.rptg_node, map.map(transform_hlds.rbmm.points_to_graph.rptg_edge, transform_hlds.rbmm.points_to_graph.rptg_node)).

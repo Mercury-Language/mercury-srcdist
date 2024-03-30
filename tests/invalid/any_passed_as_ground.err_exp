@@ -1,0 +1,11 @@
+any_passed_as_ground.m:029: In clause for `main(di, uo)':
+any_passed_as_ground.m:029:   in call to predicate `list.member'/2:
+any_passed_as_ground.m:029:   mode error: arguments `V_10, Xs' have the
+any_passed_as_ground.m:029:   following insts:
+any_passed_as_ground.m:029:     free,
+any_passed_as_ground.m:029:     any
+any_passed_as_ground.m:029:   which does not match any of the modes for
+any_passed_as_ground.m:029:   predicate `list.member'/2.
+any_passed_as_ground.m:029:   The second argument `Xs' has inst `any', which
+any_passed_as_ground.m:029:   does not match any of those modes.
+For more information, recompile with `-E'.

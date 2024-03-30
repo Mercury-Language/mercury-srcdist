@@ -1,0 +1,41 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# This source file is hereby placed in the public domain.  -fjh (the author).
+#-----------------------------------------------------------------------------#
+
+# samples/Mmake - this is the main part of the Makefile
+# for building the Mercury sample programs.
+
+# To build these programs, first install the Mercury compiler,
+# type `mmake depend', and then type `mmake'.
+
+PROGS = \
+	beer		\
+	calculator	\
+	calculator2	\
+	cat		\
+	eliza		\
+	e		\
+	expand_terms	\
+	hello		\
+	interpreter	\
+	mcowsay		\
+	sort		\
+	ultra_sub
+
+DEPENDS=$(PROGS:%=%.depend)
+
+MAIN_TARGET=all
+
+#-----------------------------------------------------------------------------#
+
+# targets
+
+.PHONY: all
+all : $(PROGS)
+
+.PHONY: depend
+depend: $(DEPENDS)
+
+#-----------------------------------------------------------------------------#
