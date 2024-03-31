@@ -1,0 +1,14 @@
+module(2, "io.stream_db.m",
+	io.stream_db,
+	{io},
+	{builtin, map, maybe, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - io.stream_db, "C#" - io.stream_db, "Java" - io.stream_db},
+	no_foreign_export,
+	no_main,
+	{}
+).
