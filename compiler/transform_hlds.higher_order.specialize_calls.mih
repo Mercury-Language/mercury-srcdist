@@ -1,0 +1,84 @@
+/*
+** Automatically generated from `higher_order.specialize_calls.m'
+** by the Mercury compiler,
+** version rotd-2024-04-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.higher_order.specialize_calls.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__higher_order__specialize_calls
+#define MR_HEADER_GUARD_transform_hlds__higher_order__specialize_calls
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__HIGHER_ORDER__SPECIALIZE_CALLS_DECL_GUARD
+#define TRANSFORM_HLDS__HIGHER_ORDER__SPECIALIZE_CALLS_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.higher_order.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__specialize_calls__transform_hlds__higher_order__specialize_calls__type_ctor_info_can_request_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__specialize_calls__transform_hlds__higher_order__specialize_calls__type_ctor_info_find_result_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__specialize_calls__transform_hlds__higher_order__specialize_calls__type_ctor_info_post_branch_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__specialize_calls__transform_hlds__higher_order__specialize_calls__type_ctor_info_pre_branch_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__specialize_calls__transform_hlds__higher_order__specialize_calls__type_ctor_info_reachability_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__specialize_calls__transform_hlds__higher_order__specialize_calls__type_ctor_info_specialization_result_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__specialize_calls__transform_hlds__higher_order__specialize_calls__type_ctor_info_type_class_info_args_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__specialize_calls__transform_hlds__higher_order__specialize_calls__type_ctor_info_typeclass_info_manipulator_0;
+
+void MR_CALL 
+transform_hlds__higher_order__specialize_calls__get_specialization_requests_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__specialize_calls__ho_traverse_proc_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void mercury__transform_hlds__higher_order__specialize_calls__init(void);
+void mercury__transform_hlds__higher_order__specialize_calls__init_type_tables(void);
+void mercury__transform_hlds__higher_order__specialize_calls__init_debugger(void);
+const char *mercury__transform_hlds__higher_order__specialize_calls__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.higher_order.specialize_calls
+
+// :- end_interface transform_hlds.higher_order.specialize_calls.
