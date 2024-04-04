@@ -1,0 +1,14 @@
+module(2, "mercury_term_parser.m",
+	mercury_term_parser,
+	{},
+	{builtin, io, mercury_term_lexer, ops, private_builtin, term, varset},
+	{bool, char, float, integer, list, map, maybe, require, string, term_context, uint, string.format, string.parse_util},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
