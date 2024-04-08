@@ -1,0 +1,300 @@
+:- module diet.
+
+:- pragma termination_info(diet.'=<'(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.'ClassMethod_for_diet__diet_element____int__arity0______diet__less_than_2'(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.'ClassMethod_for_diet__diet_element____int__arity0______diet__predecessor_1'(builtin.in) = builtin.out, finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.'ClassMethod_for_diet__diet_element____int__arity0______diet__successor_1'(builtin.in) = builtin.out, finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.add(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.all_true(builtin.in((pred(builtin.in) is semidet)), builtin.in), infinite, can_loop).
+:- pragma termination_info(diet.all_true_interval(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in), infinite, can_loop).
+:- pragma termination_info(diet.cons_interval(builtin.in, builtin.in, builtin.in, builtin.out), finite(2, [no, yes, yes, yes, no]), cannot_loop).
+:- pragma termination_info(diet.contains(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.count(builtin.in) = builtin.out, finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.count(builtin.in, builtin.in, builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(diet.delete(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.delete(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.delete_list(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.delete_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.difference(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.difference(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.divide(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.divide_2(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.divide_by_set(builtin.in, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.do_insert(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.equal(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.filter(builtin.in((pred(builtin.in) is semidet)), builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.filter(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.fold_down(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.fold_down(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.fold_down(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.fold_down(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.fold_down(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.fold_down(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.fold_up4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.fold_up4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.fold_up5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.fold_up5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.fold_up5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldl(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldl(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldl4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldl4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldl5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldl5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl_2(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldl_2(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl_2(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldl_2(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl_intervals(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl_intervals(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldl_intervals(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldr(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldr(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldr(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldr(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(diet.foldr(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldr_intervals(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldr_intervals(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(diet.foldr_intervals(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.from_interval_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.from_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.from_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info((diet.init) = builtin.out, finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.init(builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.insert(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.insert(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.insert_interval(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.insert_interval(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.insert_list(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.insert_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.insert_new(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.inter(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.intersect(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.intersect(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.intersect_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.intersect_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.is_empty(builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.is_non_empty(builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.is_singleton(builtin.in, builtin.out), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(diet.less_than(builtin.in, builtin.in), infinite, can_loop).
+:- pragma termination_info(diet.list_to_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.list_to_set(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.make_interval_set(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.make_singleton_set(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(diet.member(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.member(builtin.out, builtin.in), infinite, can_loop).
+:- pragma termination_info(diet.predecessor(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.remove(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.remove_least(builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.remove_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.singleton(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(diet.sorted_list_to_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.sorted_list_to_set(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.split(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.subset(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.successor(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.superset(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.to_sorted_interval_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.to_sorted_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.to_sorted_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.unexpected_interval(builtin.in, builtin.in, builtin.in), infinite, can_loop).
+:- pragma termination_info(diet.union(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.union(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.union_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(diet.union_list(builtin.in, builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, diet.(=<), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.add, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.all_true, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.all_true_interval, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.cons_interval, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, diet.contains, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.count, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.count, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.delete, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.delete, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.delete_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.delete_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.difference, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.difference, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.divide, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.divide_2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.divide_by_set, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.do_insert, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.equal, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, diet.filter, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.filter, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_down, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_down, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_down, 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_down, 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_down, 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_down, 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up2, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up2, 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up2, 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up2, 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up2, 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up2, 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up3, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up3, 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up3, 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up3, 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up3, 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up3, 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up4, 11, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up4, 11, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up4, 11, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up4, 11, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up4, 11, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up4, 11, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up5, 13, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up5, 13, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up5, 13, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up5, 13, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up5, 13, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.fold_up5, 13, 5, may_throw(user_exception)).
+:- pragma exceptions(function, diet.foldl, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl, 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl, 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl2, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl2, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl2, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl2, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl2, 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl3, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl3, 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl3, 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl3, 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl3, 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl3, 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl4, 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl4, 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl4, 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl4, 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl4, 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl4, 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl5, 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl5, 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl5, 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl5, 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl5, 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl5, 12, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl_2, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl_2, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl_2, 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl_2, 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl_2, 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl_2, 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl_intervals, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl_intervals, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldl_intervals, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(function, diet.foldr, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldr, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldr, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldr, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldr, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldr, 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldr, 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldr_intervals, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldr_intervals, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.foldr_intervals, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.from_interval_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.from_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.from_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.init, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, diet.init, 1, 0, will_not_throw).
+:- pragma exceptions(function, diet.insert, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.insert, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.insert_interval, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.insert_interval, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.insert_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.insert_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.insert_new, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.inter, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.intersect, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.intersect, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.intersect_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.intersect_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.is_empty, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, diet.is_non_empty, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, diet.is_singleton, 2, 0, conditional).
+:- pragma exceptions(predicate, diet.less_than, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.list_to_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.list_to_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.make_interval_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.make_singleton_set, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, diet.member, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.member, 2, 1, may_throw(user_exception)).
+:- pragma exceptions(function, diet.predecessor, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.remove, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.remove_least, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.remove_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.singleton, 1, 0, will_not_throw).
+:- pragma exceptions(function, diet.sorted_list_to_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.sorted_list_to_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.split, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.subset, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.successor, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.superset, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.to_sorted_interval_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.to_sorted_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.to_sorted_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.unexpected_interval, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.union, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.union, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, diet.union_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, diet.union_list, 2, 0, may_throw(user_exception)).

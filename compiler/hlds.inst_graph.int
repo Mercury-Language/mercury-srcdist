@@ -1,0 +1,49 @@
+:- module hlds.inst_graph.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module parse_tree.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_table.
+:- type inst_graph == map.map(parse_tree.prog_data.prog_var, hlds.inst_graph.node).
+:- type inst_graph_info
+    --->    inst_graph_info((hlds.inst_graph).interface_inst_graph :: hlds.inst_graph.inst_graph, (hlds.inst_graph).interface_vars :: list.list(parse_tree.prog_data.prog_var), (hlds.inst_graph).interface_var_table :: parse_tree.var_table.var_table, (hlds.inst_graph).implementation_inst_graph :: hlds.inst_graph.inst_graph).
+:- type maybe_parent
+    --->    top_level 
+    ;       parent(parse_tree.prog_data.prog_var).
+:- type node
+    --->    node(map.map(parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var)), hlds.inst_graph.maybe_parent).
+:- pred corresponding_members(list.list(T), list.list(U), T, U).
+:- mode corresponding_members(builtin.in, builtin.in, builtin.out, builtin.out) is nondet.
+:- pred corresponding_nodes_from_lists(hlds.inst_graph.inst_graph, hlds.inst_graph.inst_graph, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var).
+:- mode corresponding_nodes_from_lists(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is nondet.
+:- pred descendant(hlds.inst_graph.inst_graph, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var).
+:- mode descendant(builtin.in, builtin.in, builtin.out) is nondet.
+:- pred dump_inst_graph(io.text_output_stream, parse_tree.prog_data.prog_varset, hlds.inst_graph.inst_graph, io.io, io.io).
+:- mode dump_inst_graph(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred foldl_reachable(pred(parse_tree.prog_data.prog_var, T, T), hlds.inst_graph.inst_graph, parse_tree.prog_data.prog_var, T, T).
+:- mode foldl_reachable(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred foldl_reachable2(pred(parse_tree.prog_data.prog_var, T, T, U, U), hlds.inst_graph.inst_graph, parse_tree.prog_data.prog_var, T, T, U, U).
+:- mode foldl_reachable2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred foldl_reachable_from_list(pred(parse_tree.prog_data.prog_var, T, T), hlds.inst_graph.inst_graph, list.list(parse_tree.prog_data.prog_var), T, T).
+:- mode foldl_reachable_from_list(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred foldl_reachable_from_list2(pred(parse_tree.prog_data.prog_var, T, T, U, U), hlds.inst_graph.inst_graph, list.list(parse_tree.prog_data.prog_var), T, T, U, U).
+:- mode foldl_reachable_from_list2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred init(list.list(parse_tree.prog_data.prog_var), hlds.inst_graph.inst_graph).
+:- mode init(builtin.in, builtin.out) is det.
+:- func inst_graph_info_init = hlds.inst_graph.inst_graph_info.
+:- pred merge_inst_graphs(hlds.inst_graph.inst_graph, parse_tree.prog_data.prog_varset, hlds.inst_graph.inst_graph, parse_tree.prog_data.prog_varset, hlds.inst_graph.inst_graph, parse_tree.prog_data.prog_varset, map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var)).
+:- mode merge_inst_graphs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred reachable(hlds.inst_graph.inst_graph, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var).
+:- mode reachable(builtin.in, builtin.in, builtin.out) is multi.
+:- pred reachable_from_list(hlds.inst_graph.inst_graph, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var).
+:- mode reachable_from_list(builtin.in, builtin.in, builtin.out) is nondet.
+:- pred same_graph_corresponding_nodes(hlds.inst_graph.inst_graph, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var).
+:- mode same_graph_corresponding_nodes(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is multi.
+:- pred set_parent(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, hlds.inst_graph.inst_graph, hlds.inst_graph.inst_graph).
+:- mode set_parent(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred top_level_node(hlds.inst_graph.inst_graph, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var).
+:- mode top_level_node(builtin.in, builtin.in, builtin.out) is det.
+:- pred two_graphs_corresponding_nodes(hlds.inst_graph.inst_graph, hlds.inst_graph.inst_graph, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var).
+:- mode two_graphs_corresponding_nodes(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is multi.
