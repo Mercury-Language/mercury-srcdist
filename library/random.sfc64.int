@@ -1,0 +1,31 @@
+:- module random.sfc64.
+:- interface.
+:- type params.
+:- type ustate.
+:- instance (random.urandom(random.sfc64.params, random.sfc64.ustate)).
+:- instance (random.urandom_dup(random.sfc64.ustate)).
+:- pred generate_uint16(uint16, random.sfc64.ustate, random.sfc64.ustate).
+:- mode generate_uint16(builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_uint16(random.sfc64.params, uint16, random.sfc64.ustate, random.sfc64.ustate).
+:- mode generate_uint16(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_uint32(uint32, random.sfc64.ustate, random.sfc64.ustate).
+:- mode generate_uint32(builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_uint32(random.sfc64.params, uint32, random.sfc64.ustate, random.sfc64.ustate).
+:- mode generate_uint32(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_uint64(uint64, random.sfc64.ustate, random.sfc64.ustate).
+:- mode generate_uint64(builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_uint64(random.sfc64.params, uint64, random.sfc64.ustate, random.sfc64.ustate).
+:- mode generate_uint64(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_uint8(uint8, random.sfc64.ustate, random.sfc64.ustate).
+:- mode generate_uint8(builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_uint8(random.sfc64.params, uint8, random.sfc64.ustate, random.sfc64.ustate).
+:- mode generate_uint8(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred init(random.sfc64.params, random.sfc64.ustate).
+:- mode init(builtin.out, builtin.uo) is det.
+:- pred seed(uint64, uint64, uint64, random.sfc64.params, random.sfc64.ustate).
+:- mode seed(builtin.in, builtin.in, builtin.in, builtin.out, builtin.uo) is det.
+:- pred urandom_dup(random.sfc64.ustate, random.sfc64.ustate, random.sfc64.ustate).
+:- mode urandom_dup(builtin.di, builtin.uo, builtin.uo) is det.
+:- implementation.
+:- type params
+    --->    params .

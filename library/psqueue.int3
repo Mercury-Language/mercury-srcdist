@@ -1,0 +1,4 @@
+:- module psqueue.
+:- interface.
+:- type psqueue(P, K).
+:- type_representation(loser_tree_size, is_eqv_to(int)).
