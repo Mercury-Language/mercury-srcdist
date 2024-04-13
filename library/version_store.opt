@@ -1,0 +1,118 @@
+:- module version_store.
+:- use_module builtin.
+:- use_module counter.
+:- use_module int.
+:- use_module private_builtin.
+:- use_module unit.
+:- use_module univ.
+:- use_module version_array.
+
+:- type mutvar(T, S)
+    --->    mutvar(int).
+:- type some_version_store_type
+    --->    some_version_store_type .
+:- type version_store(S)
+    --->    version_store(version_array.version_array(univ.univ)).
+
+:- pred version_store.resize(int, version_store.version_store(S), version_store.version_store(S)).
+:- mode resize(builtin.in, builtin.in, builtin.out) is det.
+:- func version_store.size(version_store.version_store(S)) = int.
+:- mode size(builtin.in) = builtin.out is det.
+
+version_store.copy_mutvar(V_5, V_6, V_7, V_8) :-
+    version_store.get_mutvar(V_5, V_9, V_7, V_10),
+    version_store.new_mutvar(V_9, V_6, V_7, V_8).
+
+version_store.elem(V_5, V_4) = V_6 :-
+    version_store.get_mutvar(V_5, V_6, V_4, V_7).
+
+version_store.'elem :='(V_6, V_5, V_7) = V_8 :-
+    version_store.set_mutvar(V_6, V_7, V_5, V_8).
+
+version_store.get_mutvar(version_store.mutvar(V_5), V_6, V_7, V_7) :-
+    V_7 = version_store.version_store(V_8) : version_store.version_store(S_2),
+    V_9 = version_array.lookup(V_8, V_5),
+    univ.det_univ_to_type(V_9, V_6).
+
+version_store.lookup(V_4, V_5) = V_6 :-
+    version_store.get_mutvar(V_5, V_6, V_4, V_7).
+
+version_store.new_cyclic_mutvar(V_5, V_6, V_13, V_14) :-
+    V_8 = version_store.mutvar(V_15) : version_store.mutvar(counter.counter, S_2),
+    V_15 = 0 : int,
+    V_9 = version_store.lookup(V_13, V_8),
+    counter.allocate(V_10, V_9, V_11),
+    V_6 = version_store.mutvar(V_10) : version_store.mutvar(T_1, S_2),
+    V_12 = version_store.size(V_13),
+    ( if
+      int.(V_10 >= V_12)
+    then
+      V_16 = int.(V_12 + V_18),
+      V_18 = V_12,
+      version_store.resize(V_16, V_13, V_17)
+    else
+      V_17 = V_13
+    ),
+    version_store.set_mutvar(V_8, V_11, V_17, V_19),
+    V_20 = apply(V_5, V_6),
+    version_store.set_mutvar(V_6, V_20, V_19, V_14).
+
+version_store.new_mutvar(V_5, V_6, V_9, V_10) :-
+    V_11 = (func(V_13::(ground >> ground)) = (V_14::(free >> ground)) is det :-
+      some [] ( % compiler
+        V_13 = V_15,
+        V_14 = V_5
+      )
+    ) : ((func version_store.mutvar(T_1, S_2)) = T_1),
+    version_store.new_cyclic_mutvar(V_11, V_6, V_9, V_10).
+
+version_store.resize(V_4, version_store.version_store(V_5), version_store.version_store(V_6)) :-
+    V_7 = univ.univ(V_8),
+    V_8 = unit.unit : unit.unit,
+    version_array.resize(V_4, V_7, V_5, V_6).
+
+version_store.set(V_5, V_6, V_7) = V_8 :-
+    version_store.set_mutvar(V_6, V_7, V_5, V_8).
+
+version_store.set_mutvar(version_store.mutvar(V_5), V_6, version_store.version_store(V_7), version_store.version_store(V_8)) :-
+    V_9 = univ.univ(V_6),
+    version_array.set(V_5, V_9, V_7, V_8).
+
+version_store.size(version_store.version_store(V_3)) = V_2 :-
+    V_2 = version_array.size(V_3).
+
+version_store.unsafe_rewind(V_3) = V_4 :-
+    version_store.unsafe_rewind(V_3, V_4).
+
+version_store.unsafe_rewind(version_store.version_store(V_3), version_store.version_store(V_4)) :-
+    version_array.unsafe_rewind(V_3, V_4).
+
+:- pragma termination_info(version_store.copy_mutvar(builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(version_store.elem(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_store.'elem :='(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_store.get_mutvar(builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info((version_store.init) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_store.lookup(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_store.new_cyclic_mutvar(builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(version_store.new_mutvar(builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(version_store.resize(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(version_store.set(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_store.set_mutvar(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(version_store.size(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_store.unsafe_rewind(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_store.unsafe_rewind(builtin.in, builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, version_store.copy_mutvar, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_store.elem, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_store.'elem :=', 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_store.get_mutvar, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_store.init, 0, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_store.lookup, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_store.new_cyclic_mutvar, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_store.new_mutvar, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_store.resize, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_store.set, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_store.set_mutvar, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_store.size, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_store.unsafe_rewind, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_store.unsafe_rewind, 2, 0, may_throw(user_exception)).

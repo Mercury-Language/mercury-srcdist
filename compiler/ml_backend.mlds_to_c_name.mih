@@ -1,0 +1,131 @@
+/*
+** Automatically generated from `mlds_to_c_name.m'
+** by the Mercury compiler,
+** version rotd-2024-04-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.mlds_to_c_name.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_c_name
+#define MR_HEADER_GUARD_ml_backend__mlds_to_c_name
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_C_NAME_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_C_NAME_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_c_name__ml_backend__mlds_to_c_name__type_ctor_info_maybe_mangle_0;
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_112_114_101_100_95_108_97_98_101_108_95_116_111_95_115_116_114_105_110_103_95_102_111_114_95_99_95_95_91_49_93_95_48_2_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_112_114_101_100_95_108_97_98_101_108_95_116_111_95_115_116_114_105_110_103_95_102_111_114_95_99_95_95_91_49_93_95_49_2_f_1(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__class_name_arity_to_string_for_c_2_f_0(
+  MR_String param_1,
+  MR_Integer param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__field_var_name_to_string_for_c_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__global_var_ref_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__local_var_name_to_string_for_c_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__maybe_qual_global_var_name_to_string_for_c_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__pred_label_to_string_for_c_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__pred_label_to_string_for_c_2_f_1(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__qual_field_var_name_to_string_for_c_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__qual_function_name_to_string_for_c_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__qual_proc_label_to_string_for_c_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__qualifier_to_string_for_c_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__mlds_to_c_name__should_module_qualify_global_var_name_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_c_name__tabling_struct_id_to_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ml_backend__mlds_to_c_name____Compare____maybe_mangle_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_c_name____Unify____maybe_mangle_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ml_backend__mlds_to_c_name__init(void);
+void mercury__ml_backend__mlds_to_c_name__init_type_tables(void);
+void mercury__ml_backend__mlds_to_c_name__init_debugger(void);
+const char *mercury__ml_backend__mlds_to_c_name__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.mlds_to_c_name
+
+// :- end_interface ml_backend.mlds_to_c_name.

@@ -1,0 +1,30 @@
+:- module parse_tree.error_spec.
+:- interface.
+:- type actual_severity
+	where	type_is_abstract_enum(2).
+:- type error_msg.
+:- type error_msg_component.
+:- type error_phase.
+:- type error_severity.
+:- type error_spec.
+:- type format_piece.
+:- type lp_piece_kind
+	where	type_is_abstract_enum(1).
+:- type maybe_always_treat_as_first
+	where	type_is_abstract_enum(1).
+:- type maybe_error_specs(T).
+:- type mode_report_control
+	where	type_is_abstract_enum(1).
+:- type rp_piece_kind
+	where	type_is_abstract_enum(1).
+:- type verbose_always_or_once
+	where	type_is_abstract_enum(1).
+:- type warning_spec.
+:- typeclass print_anything(T).
+:- type_representation(actual_severity, du_repn(enum("actual_severity_error", "actual_severity_warning", ["actual_severity_informational"],  no_c_j_cs))).
+:- type_representation(lp_piece_kind, du_repn(enum("lp_plain", "lp_suffix", [],  no_c_j_cs))).
+:- type_representation(maybe_always_treat_as_first, du_repn(enum("always_treat_as_first", "treat_based_on_posn", [],  no_c_j_cs))).
+:- type_representation(mode_report_control, du_repn(enum("report_in_any_mode", "report_only_if_in_all_modes", [],  no_c_j_cs))).
+:- type_representation(rp_piece_kind, du_repn(enum("rp_plain", "rp_prefix", [],  no_c_j_cs))).
+:- type_representation(verbose_always_or_once, du_repn(enum("verbose_always", "verbose_once", [],  no_c_j_cs))).
+:- type_representation(warning_spec, is_eqv_to(parse_tree.error_spec.error_spec)).
