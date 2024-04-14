@@ -1,0 +1,264 @@
+/*
+** Automatically generated from `pred_name.m'
+** by the Mercury compiler,
+** version rotd-2024-04-14
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.pred_name.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__pred_name
+#define MR_HEADER_GUARD_hlds__pred_name
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__PRED_NAME_DECL_GUARD
+#define HLDS__PRED_NAME_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_name__hlds__pred_name__type_ctor_info_aux_tabling_maybe_single_proc_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_name__hlds__pred_name__type_ctor_info_aux_tabling_pred_kind_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_name__hlds__pred_name__type_ctor_info_compiler_made_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_name__hlds__pred_name__type_ctor_info_instance_method_constraints_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_name__hlds__pred_name__type_ctor_info_line_number_and_counter_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_name__hlds__pred_name__type_ctor_info_pred_origin_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_name__hlds__pred_name__type_ctor_info_pred_transform_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_name__hlds__pred_name__type_ctor_info_proc_transform_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_name__hlds__pred_name__type_ctor_info_stm_clone_kind_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_name__hlds__pred_name__type_ctor_info_transform_name_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_name__hlds__pred_name__type_ctor_info_user_made_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_name__hlds__pred_name__type_ctor_info_user_or_dev_0;
+
+void MR_CALL 
+hlds__pred_name__make_instance_method_pred_name_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+hlds__pred_name__make_instance_string_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+hlds__pred_name__make_transformed_pred_name_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+hlds__pred_name__make_transformed_pred_sym_name_4_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_String MR_CALL 
+hlds__pred_name__dump_origin_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4);
+
+MR_String MR_CALL 
+hlds__pred_name__layout_origin_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_String MR_CALL 
+hlds__pred_name__layout_origin_name_new_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+hlds__pred_name__pred_origin_to_dev_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+hlds__pred_name__pred_origin_to_user_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+hlds__pred_name__promise_pred_name_3_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3);
+
+MR_String MR_CALL 
+hlds__pred_name__uci_pred_name_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+hlds__pred_name____Compare____aux_tabling_maybe_single_proc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_name____Compare____aux_tabling_pred_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_name____Compare____compiler_made_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_name____Compare____instance_method_constraints_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_name____Compare____line_number_and_counter_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_name____Compare____pred_origin_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_name____Compare____pred_transform_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_name____Compare____proc_transform_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_name____Compare____stm_clone_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_name____Compare____transform_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_name____Compare____user_made_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_name____Index____transform_name_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+hlds__pred_name____Unify____aux_tabling_maybe_single_proc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_name____Unify____aux_tabling_pred_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_name____Unify____compiler_made_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_name____Unify____instance_method_constraints_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_name____Unify____line_number_and_counter_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_name____Unify____pred_origin_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_name____Unify____pred_transform_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_name____Unify____proc_transform_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_name____Unify____stm_clone_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_name____Unify____transform_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_name____Unify____user_made_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__pred_name__init(void);
+void mercury__hlds__pred_name__init_type_tables(void);
+void mercury__hlds__pred_name__init_debugger(void);
+const char *mercury__hlds__pred_name__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.pred_name
+
+// :- end_interface hlds.pred_name.

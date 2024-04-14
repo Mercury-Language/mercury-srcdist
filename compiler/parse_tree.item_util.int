@@ -1,0 +1,134 @@
+:- module parse_tree.item_util.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module one_or_more.
+:- use_module set.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_foreign.
+:- use_module parse_tree.prog_item.
+:- type imp_import_context_map
+    --->    imp_import_context_map(parse_tree.item_util.module_name_context).
+:- type imp_use_context_map
+    --->    imp_use_context_map(parse_tree.item_util.module_name_context).
+:- type int_import_context_map
+    --->    int_import_context_map(parse_tree.item_util.module_name_context).
+:- type int_use_context_map
+    --->    int_use_context_map(parse_tree.item_util.module_name_context).
+:- type maybe_include_implicit
+    --->    do_include_implicit 
+    ;       do_not_include_implicit .
+:- type module_name_context == map.map(mdbcomp.sym_name.module_name, parse_tree.prog_data.prog_context).
+:- pred acc_avails_with_contexts(parse_tree.prog_item.import_or_use, mdbcomp.sym_name.module_name, one_or_more.one_or_more(parse_tree.prog_data.prog_context), list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.item_avail)).
+:- mode acc_avails_with_contexts(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred acc_needed_self_fim_langs_for_foreign_enum(parse_tree.prog_item.item_foreign_enum_info, set.set(libs.globals.foreign_language), set.set(libs.globals.foreign_language)).
+:- mode acc_needed_self_fim_langs_for_foreign_enum(builtin.in, builtin.in, builtin.out) is det.
+:- pred acc_needed_self_fim_langs_for_foreign_proc(parse_tree.prog_item.item_foreign_proc_info, set.set(libs.globals.foreign_language), set.set(libs.globals.foreign_language)).
+:- mode acc_needed_self_fim_langs_for_foreign_proc(builtin.in, builtin.in, builtin.out) is det.
+:- pred acc_needed_self_fim_langs_for_impl_pragma(parse_tree.prog_item.item_impl_pragma_info, set.set(libs.globals.foreign_language), set.set(libs.globals.foreign_language)).
+:- mode acc_needed_self_fim_langs_for_impl_pragma(builtin.in, builtin.in, builtin.out) is det.
+:- pred acc_needed_self_fim_langs_for_type_defn(parse_tree.prog_item.item_type_defn_info, set.set(libs.globals.foreign_language), set.set(libs.globals.foreign_language)).
+:- mode acc_needed_self_fim_langs_for_type_defn(builtin.in, builtin.in, builtin.out) is det.
+:- pred accumulate_imports_uses_maps(list.list(parse_tree.prog_item.item_avail), parse_tree.prog_item.module_names_contexts, parse_tree.prog_item.module_names_contexts, parse_tree.prog_item.module_names_contexts, parse_tree.prog_item.module_names_contexts).
+:- mode accumulate_imports_uses_maps(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_implicit_fim_for_module(mdbcomp.sym_name.module_name, libs.globals.foreign_language, map.map(parse_tree.prog_data_foreign.fim_spec, parse_tree.prog_data.prog_context), map.map(parse_tree.prog_data_foreign.fim_spec, parse_tree.prog_data.prog_context)).
+:- mode add_implicit_fim_for_module(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred add_only_int_include(mdbcomp.sym_name.module_name, parse_tree.prog_item.include_module_info, parse_tree.prog_item.int_include_module_map, parse_tree.prog_item.int_include_module_map).
+:- mode add_only_int_include(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred avail_imports_uses(list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.avail_import_info), list.list(parse_tree.prog_item.avail_use_info)).
+:- mode avail_imports_uses(builtin.in, builtin.out, builtin.out) is det.
+:- pred avail_is_import(parse_tree.prog_item.item_avail, parse_tree.prog_item.avail_import_info).
+:- mode avail_is_import(builtin.in, builtin.out) is semidet.
+:- pred avail_is_use(parse_tree.prog_item.item_avail, parse_tree.prog_item.avail_use_info).
+:- mode avail_is_use(builtin.in, builtin.out) is semidet.
+:- pred classify_include_modules(list.list(parse_tree.prog_item.item_include), list.list(parse_tree.prog_item.item_include), parse_tree.prog_item.include_module_map, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode classify_include_modules(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred classify_int_imp_import_use_modules(mdbcomp.sym_name.module_name, list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.item_avail), parse_tree.prog_item.section_import_and_or_use_map, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode classify_int_imp_import_use_modules(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred classify_int_imp_use_modules(mdbcomp.sym_name.module_name, parse_tree.prog_item.module_names_contexts, parse_tree.prog_item.module_names_contexts, parse_tree.prog_item.section_use_map, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode classify_int_imp_use_modules(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func decl_marker_desc_pieces(parse_tree.prog_item.item_decl_marker_info) = list.list(parse_tree.error_spec.format_piece).
+:- func decl_pragma_desc_pieces(parse_tree.prog_item.item_decl_pragma_info) = list.list(parse_tree.error_spec.format_piece).
+:- func fim_item_to_spec(parse_tree.prog_item.item_fim) = parse_tree.prog_data_foreign.fim_spec.
+:- func fim_module_lang_to_item(mdbcomp.sym_name.module_name, libs.globals.foreign_language) = parse_tree.prog_item.item_fim.
+:- func fim_module_lang_to_spec(mdbcomp.sym_name.module_name, libs.globals.foreign_language) = parse_tree.prog_data_foreign.fim_spec.
+:- func fim_spec_to_item(parse_tree.prog_data_foreign.fim_spec) = parse_tree.prog_item.item_fim.
+:- func gen_pragma_desc_pieces(parse_tree.prog_item.item_generated_pragma_info) = list.list(parse_tree.error_spec.format_piece).
+:- func get_avail_context(parse_tree.prog_item.item_avail) = parse_tree.prog_data.prog_context.
+:- func get_avail_module_name(parse_tree.prog_item.item_avail) = mdbcomp.sym_name.module_name.
+:- func get_import_context(parse_tree.prog_item.avail_import_info) = parse_tree.prog_data.prog_context.
+:- func get_import_module_name(parse_tree.prog_item.avail_import_info) = mdbcomp.sym_name.module_name.
+:- pred get_imports_uses(mdbcomp.sym_name.module_name, parse_tree.prog_item.section_import_and_or_use, set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode get_imports_uses(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func get_use_context(parse_tree.prog_item.avail_use_info) = parse_tree.prog_data.prog_context.
+:- func get_use_module_name(parse_tree.prog_item.avail_use_info) = mdbcomp.sym_name.module_name.
+:- pred get_uses(mdbcomp.sym_name.module_name, parse_tree.prog_item.section_use, set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode get_uses(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func impl_marker_desc_pieces(parse_tree.prog_item.item_impl_marker_info) = list.list(parse_tree.error_spec.format_piece).
+:- func impl_pragma_desc_pieces(parse_tree.prog_item.item_impl_pragma_info) = list.list(parse_tree.error_spec.format_piece).
+:- pred import_and_or_use_map_section_to_maybe_implicit(parse_tree.prog_item.section_import_and_or_use_map, parse_tree.prog_item.import_and_or_use_map).
+:- mode import_and_or_use_map_section_to_maybe_implicit(builtin.in, builtin.out) is det.
+:- pred import_and_or_use_map_to_explicit_int_imp_import_use_maps(parse_tree.prog_item.import_and_or_use_map, parse_tree.prog_item.section_import_and_or_use_map, parse_tree.item_util.int_import_context_map, parse_tree.item_util.int_use_context_map, parse_tree.item_util.imp_import_context_map, parse_tree.item_util.imp_use_context_map).
+:- mode import_and_or_use_map_to_explicit_int_imp_import_use_maps(builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred import_and_or_use_map_to_item_avails(parse_tree.item_util.maybe_include_implicit, parse_tree.prog_item.import_and_or_use_map, list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.item_avail)).
+:- mode import_and_or_use_map_to_item_avails(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred import_and_or_use_map_to_module_name_contexts(parse_tree.prog_item.import_and_or_use_map, parse_tree.item_util.module_name_context, parse_tree.item_util.module_name_context, parse_tree.item_util.module_name_context, parse_tree.item_util.module_name_context, parse_tree.item_util.module_name_context).
+:- mode import_and_or_use_map_to_module_name_contexts(builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- func import_or_use_decl_name(parse_tree.prog_item.import_or_use) = string.
+:- pred include_map_to_int_imp_modules(parse_tree.prog_item.include_module_map, set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode include_map_to_int_imp_modules(builtin.in, builtin.out, builtin.out) is det.
+:- pred inst_ctor_checked_map_get_src_defns(parse_tree.prog_item.inst_ctor_checked_map, list.list(parse_tree.prog_item.item_inst_defn_info), list.list(parse_tree.prog_item.item_inst_defn_info)).
+:- mode inst_ctor_checked_map_get_src_defns(builtin.in, builtin.out, builtin.out) is det.
+:- func item_desc_pieces(parse_tree.prog_item.item) = list.list(parse_tree.error_spec.format_piece).
+:- func item_include_module_name(parse_tree.prog_item.item_include) = mdbcomp.sym_name.module_name.
+:- func item_needs_foreign_imports(parse_tree.prog_item.item) = list.list(libs.globals.foreign_language).
+:- pred mode_ctor_checked_map_get_src_defns(parse_tree.prog_item.mode_ctor_checked_map, list.list(parse_tree.prog_item.item_mode_defn_info), list.list(parse_tree.prog_item.item_mode_defn_info)).
+:- mode mode_ctor_checked_map_get_src_defns(builtin.in, builtin.out, builtin.out) is det.
+:- func parse_tree_module_src_project_name(parse_tree.prog_item.parse_tree_module_src) = mdbcomp.sym_name.module_name.
+:- pred section_import_and_or_use_map_to_item_avails(parse_tree.prog_item.section_import_and_or_use_map, list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.item_avail)).
+:- mode section_import_and_or_use_map_to_item_avails(builtin.in, builtin.out, builtin.out) is det.
+:- pred section_use_map_to_item_avails(parse_tree.prog_item.section_use_map, list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.item_avail)).
+:- mode section_use_map_to_item_avails(builtin.in, builtin.out, builtin.out) is det.
+:- pred type_ctor_checked_map_get_src_defns(parse_tree.prog_item.type_ctor_checked_map, list.list(parse_tree.prog_item.item_type_defn_info), list.list(parse_tree.prog_item.item_type_defn_info), list.list(parse_tree.prog_item.item_foreign_enum_info)).
+:- mode type_ctor_checked_map_get_src_defns(builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- func use_map_to_item_avails(parse_tree.prog_item.module_names_contexts) = list.list(parse_tree.prog_item.item_avail).
+:- func wrap_abstract_inst_defn(parse_tree.prog_item.item_inst_defn_info_abstract) = parse_tree.prog_item.item_inst_defn_info.
+:- func wrap_abstract_mode_defn(parse_tree.prog_item.item_mode_defn_info_abstract) = parse_tree.prog_item.item_mode_defn_info.
+:- func wrap_abstract_type_defn(parse_tree.prog_item.item_type_defn_info_abstract) = parse_tree.prog_item.item_type_defn_info.
+:- func wrap_avail_import(parse_tree.prog_item.avail_import_info) = parse_tree.prog_item.item_avail.
+:- func wrap_avail_use(parse_tree.prog_item.avail_use_info) = parse_tree.prog_item.item_avail.
+:- func wrap_clause(parse_tree.prog_item.item_clause_info) = parse_tree.prog_item.item.
+:- func wrap_decl_pragma_item(parse_tree.prog_item.item_decl_pragma_info) = parse_tree.prog_item.item.
+:- func wrap_du_type_defn(parse_tree.prog_item.item_type_defn_info_du) = parse_tree.prog_item.item_type_defn_info.
+:- func wrap_eqv_inst_defn(parse_tree.prog_item.item_inst_defn_info_eqv) = parse_tree.prog_item.item_inst_defn_info.
+:- func wrap_eqv_mode_defn(parse_tree.prog_item.item_mode_defn_info_eqv) = parse_tree.prog_item.item_mode_defn_info.
+:- func wrap_eqv_type_defn(parse_tree.prog_item.item_type_defn_info_eqv) = parse_tree.prog_item.item_type_defn_info.
+:- func wrap_finalise_item(parse_tree.prog_item.item_finalise_info) = parse_tree.prog_item.item.
+:- func wrap_foreign_enum_item(parse_tree.prog_item.item_foreign_enum_info) = parse_tree.prog_item.item.
+:- func wrap_foreign_export_enum_item(parse_tree.prog_item.item_foreign_export_enum_info) = parse_tree.prog_item.item.
+:- func wrap_foreign_type_defn(parse_tree.prog_item.item_type_defn_info_foreign) = parse_tree.prog_item.item_type_defn_info.
+:- func wrap_generated_pragma_item(parse_tree.prog_item.item_generated_pragma_info) = parse_tree.prog_item.item.
+:- func wrap_impl_pragma_item(parse_tree.prog_item.item_impl_pragma_info) = parse_tree.prog_item.item.
+:- func wrap_import(mdbcomp.sym_name.module_name) = parse_tree.prog_item.avail_import_info.
+:- func wrap_import_avail(mdbcomp.sym_name.module_name) = parse_tree.prog_item.item_avail.
+:- func wrap_include(mdbcomp.sym_name.module_name) = parse_tree.prog_item.item_include.
+:- func wrap_initialise_item(parse_tree.prog_item.item_initialise_info) = parse_tree.prog_item.item.
+:- func wrap_inst_defn_item(parse_tree.prog_item.item_inst_defn_info) = parse_tree.prog_item.item.
+:- func wrap_instance_item(parse_tree.prog_item.item_instance_info) = parse_tree.prog_item.item.
+:- func wrap_mode_decl_item(parse_tree.prog_item.item_mode_decl_info) = parse_tree.prog_item.item.
+:- func wrap_mode_defn_item(parse_tree.prog_item.item_mode_defn_info) = parse_tree.prog_item.item.
+:- func wrap_mutable_item(parse_tree.prog_item.item_mutable_info) = parse_tree.prog_item.item.
+:- func wrap_pred_decl_item(parse_tree.prog_item.item_pred_decl_info) = parse_tree.prog_item.item.
+:- func wrap_promise_item(parse_tree.prog_item.item_promise_info) = parse_tree.prog_item.item.
+:- func wrap_solver_type_defn(parse_tree.prog_item.item_type_defn_info_solver) = parse_tree.prog_item.item_type_defn_info.
+:- func wrap_sub_type_defn(parse_tree.prog_item.item_type_defn_info_sub) = parse_tree.prog_item.item_type_defn_info.
+:- func wrap_type_defn_item(parse_tree.prog_item.item_type_defn_info) = parse_tree.prog_item.item.
+:- func wrap_type_repn_item(parse_tree.prog_item.item_type_repn_info) = parse_tree.prog_item.item.
+:- func wrap_typeclass_item(parse_tree.prog_item.item_typeclass_info) = parse_tree.prog_item.item.
+:- func wrap_use(mdbcomp.sym_name.module_name) = parse_tree.prog_item.avail_use_info.
+:- func wrap_use_avail(mdbcomp.sym_name.module_name) = parse_tree.prog_item.item_avail.

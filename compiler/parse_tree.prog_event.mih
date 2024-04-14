@@ -1,0 +1,130 @@
+/*
+** Automatically generated from `prog_event.m'
+** by the Mercury compiler,
+** version rotd-2024-04-14
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_event.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_event
+#define MR_HEADER_GUARD_parse_tree__prog_event
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_EVENT_DECL_GUARD
+#define PARSE_TREE__PROG_EVENT_DECL_GUARD
+#include "parse_tree.mih"
+
+#include "mercury_event_spec.h"
+#include <stdio.h>
+#include <fcntl.h>
+
+MR_String   read_specs_file_2(MR_AllocSiteInfoPtr alloc_id,
+                MR_String specs_file_name, MR_String term_file_name);
+MR_String   read_specs_file_3(MR_AllocSiteInfoPtr alloc_id,
+                MR_String specs_file_name, MR_String term_file_name,
+                int spec_fd);
+MR_String   read_specs_file_4(MR_AllocSiteInfoPtr alloc_id,
+                MR_String specs_file_name, MR_String term_file_name,
+                int spec_fd, size_t size, char *spec_buf);
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_attr_dep_rel_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_attr_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_attr_key_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_attr_key_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_attr_name_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_attr_num_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_attr_type_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_event_attr_function_kind_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_event_attr_synth_call_term_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_event_attr_term_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_event_attr_type_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_event_attr_type_term_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_event_set_spec_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_event__parse_tree__prog_event__type_ctor_info_event_spec_term_0;
+
+MR_bool MR_CALL 
+parse_tree__prog_event__event_arg_modes_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_event__event_arg_types_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_event__event_attributes_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_event__event_number_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+parse_tree__prog_event__read_event_set_6_p_0(
+  MR_String param_1,
+  MR_String * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+parse_tree__prog_event__derive_event_set_data_1_f_0(
+  MR_Word param_1);
+
+void mercury__parse_tree__prog_event__init(void);
+void mercury__parse_tree__prog_event__init_type_tables(void);
+void mercury__parse_tree__prog_event__init_debugger(void);
+const char *mercury__parse_tree__prog_event__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.prog_event
+
+// :- end_interface parse_tree.prog_event.

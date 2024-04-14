@@ -1,0 +1,215 @@
+/*
+** Automatically generated from `io.stream_db.m'
+** by the Mercury compiler,
+** version rotd-2024-04-14
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module io.stream_db.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_io__stream_db
+#define MR_HEADER_GUARD_io__stream_db
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef IO__STREAM_DB_DECL_GUARD
+#define IO__STREAM_DB_DECL_GUARD
+#include "io.mih"
+
+extern MR_Word          ML_io_stream_db;
+
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock  ML_io_stream_db_lock;
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__io__stream_db__io__stream_db__type_ctor_info_maybe_stream_info_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__io__stream_db__io__stream_db__type_ctor_info_stream_content_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__io__stream_db__io__stream_db__type_ctor_info_stream_db_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__io__stream_db__io__stream_db__type_ctor_info_stream_info_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__io__stream_db__io__stream_db__type_ctor_info_stream_mode_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__io__stream_db__io__stream_db__type_ctor_info_stream_source_0;
+
+void MR_CALL 
+mercury__io__stream_db__get_stream_db_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__io__stream_db__get_stream_db_with_locking_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__io__stream_db__insert_stream_info_4_p_0(
+  MR_Box param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__io__stream_db__lock_stream_db_2_p_0(void);
+
+void MR_CALL 
+mercury__io__stream_db__maybe_delete_stream_info_3_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__io__stream_db__set_stream_db_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__io__stream_db__stream_info_4_p_0(
+  MR_Box param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__io__stream_db__stream_name_4_p_0(
+  MR_Box param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+mercury__io__stream_db__unlock_stream_db_2_p_0(void);
+
+MR_Word MR_CALL 
+mercury__io__stream_db__binary_input_stream_info_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__io__stream_db__binary_output_stream_info_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__io__stream_db__get_io_stream_info_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+mercury__io__stream_db__get_maybe_stream_info_2_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Integer MR_CALL 
+mercury__io__stream_db__get_stream_id_1_f_0(
+  MR_Box param_1);
+
+MR_Word MR_CALL 
+mercury__io__stream_db__input_stream_info_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__io__stream_db__output_stream_info_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+mercury__io__stream_db__source_name_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__io__stream_db____Compare____maybe_stream_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__io__stream_db____Compare____stream_content_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__io__stream_db____Compare____stream_db_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__io__stream_db____Compare____stream_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__io__stream_db____Compare____stream_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__io__stream_db____Compare____stream_source_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__io__stream_db____Unify____maybe_stream_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__io__stream_db____Unify____stream_content_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__io__stream_db____Unify____stream_db_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__io__stream_db____Unify____stream_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__io__stream_db____Unify____stream_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__io__stream_db____Unify____stream_source_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__io__stream_db__init(void);
+void mercury__io__stream_db__init_type_tables(void);
+void mercury__io__stream_db__init_debugger(void);
+const char *mercury__io__stream_db__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_io.stream_db
+
+// :- end_interface io.stream_db.
