@@ -1,0 +1,23 @@
+:- module mdb.declarative_user.
+:- interface.
+:- type are_we_testing
+    --->    we_are_not_testing 
+    ;       we_are_testing .
+:- type user_question(T)
+    --->    plain_question(mdb.declarative_debugger.decl_question(T))
+    ;       question_with_default(mdb.declarative_debugger.decl_question(T), mdb.declarative_debugger.decl_truth).
+:- type user_response(T)
+    --->    user_response_answer(mdb.declarative_debugger.decl_question(T), mdb.declarative_debugger.decl_answer(T))
+    ;       user_response_trust_predicate(mdb.declarative_debugger.decl_question(T))
+    ;       user_response_trust_module(mdb.declarative_debugger.decl_question(T))
+    ;       user_response_show_info(io.text_output_stream)
+    ;       user_response_change_search(mdb.declarative_user.user_search_mode)
+    ;       user_response_undo 
+    ;       user_response_exit_diagnosis(T)
+    ;       user_response_abort_diagnosis .
+:- type user_search_mode
+    --->    user_top_down 
+    ;       user_divide_and_query 
+    ;       user_suspicion_divide_and_query 
+    ;       user_binary .
+:- type user_state.
