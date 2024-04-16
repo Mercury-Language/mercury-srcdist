@@ -1,0 +1,37 @@
+:- module io.stream_db.
+
+:- pragma termination_info((io.stream_db).binary_input_stream_info(builtin.in, builtin.in) = builtin.out, finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info((io.stream_db).binary_output_stream_info(builtin.in, builtin.in) = builtin.out, finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info((io.stream_db).get_io_stream_info(builtin.in, builtin.in) = builtin.out, finite(0, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info((io.stream_db).get_maybe_stream_info(builtin.in, builtin.in) = builtin.out, finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info((io.stream_db).get_stream_db(builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.stream_db).get_stream_db_with_locking(builtin.out), infinite, cannot_loop).
+:- pragma termination_info((io.stream_db).get_stream_id(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info((io.stream_db).input_stream_info(builtin.in, builtin.in) = builtin.out, finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info((io.stream_db).insert_stream_info(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.stream_db).lock_stream_db(builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.stream_db).maybe_delete_stream_info(builtin.in, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.stream_db).output_stream_info(builtin.in, builtin.in) = builtin.out, finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info((io.stream_db).set_stream_db(builtin.in, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.stream_db).source_name(builtin.in) = builtin.out, finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info((io.stream_db).stream_info(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.stream_db).stream_name(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.stream_db).unlock_stream_db(builtin.di, builtin.uo), infinite, cannot_loop).
+
+:- pragma exceptions(function, (io.stream_db).binary_input_stream_info, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (io.stream_db).binary_output_stream_info, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (io.stream_db).get_io_stream_info, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (io.stream_db).get_maybe_stream_info, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (io.stream_db).get_stream_db, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.stream_db).get_stream_db_with_locking, 1, 0, will_not_throw).
+:- pragma exceptions(function, (io.stream_db).get_stream_id, 1, 0, will_not_throw).
+:- pragma exceptions(function, (io.stream_db).input_stream_info, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (io.stream_db).insert_stream_info, 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (io.stream_db).lock_stream_db, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.stream_db).maybe_delete_stream_info, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (io.stream_db).output_stream_info, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (io.stream_db).set_stream_db, 3, 0, will_not_throw).
+:- pragma exceptions(function, (io.stream_db).source_name, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.stream_db).stream_info, 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (io.stream_db).stream_name, 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (io.stream_db).unlock_stream_db, 2, 0, will_not_throw).
