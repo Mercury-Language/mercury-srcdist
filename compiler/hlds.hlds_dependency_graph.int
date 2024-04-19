@@ -1,0 +1,36 @@
+:- module hlds.hlds_dependency_graph.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module set.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module libs.dependency_graph.
+:- type hlds_bottom_up_dependency_sccs == libs.dependency_graph.bottom_up_dependency_sccs(hlds.hlds_pred.pred_proc_id).
+:- type hlds_dependency_graph == libs.dependency_graph.dependency_graph(hlds.hlds_pred.pred_proc_id).
+:- type hlds_dependency_graph_key == libs.dependency_graph.dependency_graph_key(hlds.hlds_pred.pred_proc_id).
+:- type hlds_dependency_info == libs.dependency_graph.dependency_info(hlds.hlds_pred.pred_proc_id).
+:- type include_imported
+    --->    include_imported 
+    ;       do_not_include_imported .
+:- type scc_with_entry_points
+    --->    scc_with_entry_points((hlds.hlds_dependency_graph).swep_scc_procs :: set.set(hlds.hlds_pred.pred_proc_id), (hlds.hlds_dependency_graph).swep_called_from_higher_sccs :: set.set(hlds.hlds_pred.pred_proc_id), (hlds.hlds_dependency_graph).swep_exported_procs :: set.set(hlds.hlds_pred.pred_proc_id)).
+:- type what_dependency_edges
+    --->    only_tail_calls 
+    ;       only_all_calls 
+    ;       all_calls_and_unifies .
+:- func build_pred_dependency_graph(hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_id), hlds.hlds_dependency_graph.include_imported) = libs.dependency_graph.dependency_info(hlds.hlds_pred.pred_id).
+:- func build_proc_dependency_graph(hlds.hlds_module.module_info, set.set(hlds.hlds_pred.pred_proc_id), hlds.hlds_dependency_graph.what_dependency_edges) = libs.dependency_graph.dependency_info(hlds.hlds_pred.pred_proc_id).
+:- pred get_bottom_up_sccs_with_entry_points(hlds.hlds_module.module_info, hlds.hlds_dependency_graph.hlds_dependency_info, list.list(hlds.hlds_dependency_graph.scc_with_entry_points)).
+:- mode get_bottom_up_sccs_with_entry_points(builtin.in, builtin.in, builtin.out) is det.
+:- pred module_info_ensure_dependency_info(hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_dependency_graph.hlds_dependency_info).
+:- mode module_info_ensure_dependency_info(builtin.in, builtin.out, builtin.out) is det.
+:- pred module_info_rebuild_dependency_info(hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_dependency_graph.hlds_dependency_info).
+:- mode module_info_rebuild_dependency_info(builtin.in, builtin.out, builtin.out) is det.
+:- pred write_dependency_graph(io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_dependency_graph(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred write_prof_dependency_graph(io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_prof_dependency_graph(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- implementation.
+:- typeclass dependency_node(T).

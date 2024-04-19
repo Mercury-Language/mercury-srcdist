@@ -1,0 +1,4 @@
+:- module univ.
+:- interface.
+:- type univ.
+:- type_representation(univ, is_word_aligned_ptr).

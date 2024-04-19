@@ -1,0 +1,65 @@
+/*
+** Automatically generated from `higher_order.specialize_unify_compare.m'
+** by the Mercury compiler,
+** version rotd-2024-04-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.higher_order.specialize_unify_compare.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__higher_order__specialize_unify_compare
+#define MR_HEADER_GUARD_transform_hlds__higher_order__specialize_unify_compare
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__HIGHER_ORDER__SPECIALIZE_UNIFY_COMPARE_DECL_GUARD
+#define TRANSFORM_HLDS__HIGHER_ORDER__SPECIALIZE_UNIFY_COMPARE_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.higher_order.mih"
+
+#endif
+
+
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__specialize_unify_compare__specialize_call_to_unify_or_compare_8_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void mercury__transform_hlds__higher_order__specialize_unify_compare__init(void);
+void mercury__transform_hlds__higher_order__specialize_unify_compare__init_type_tables(void);
+void mercury__transform_hlds__higher_order__specialize_unify_compare__init_debugger(void);
+const char *mercury__transform_hlds__higher_order__specialize_unify_compare__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.higher_order.specialize_unify_compare
+
+// :- end_interface transform_hlds.higher_order.specialize_unify_compare.
