@@ -1,0 +1,98 @@
+/*
+** Automatically generated from `recompilation.version.m'
+** by the Mercury compiler,
+** version rotd-2024-04-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module recompilation.version.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_recompilation__version
+#define MR_HEADER_GUARD_recompilation__version
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RECOMPILATION__VERSION_DECL_GUARD
+#define RECOMPILATION__VERSION_DECL_GUARD
+#include "recompilation.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct recompilation__version__recompilation__version__type_ctor_info_decl_pragma_record_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__version__recompilation__version__type_ctor_info_gathered_item_multi_map_in_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__version__recompilation__version__type_ctor_info_gathered_item_multi_map_na_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__version__recompilation__version__type_ctor_info_gathered_items_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__version__recompilation__version__type_ctor_info_item_version_numbers_result_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__version__recompilation__version__type_ctor_info_maybe_pred_or_func_id_0;
+
+void MR_CALL 
+recompilation__version__compute_version_numbers_int0_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+recompilation__version__compute_version_numbers_int1_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+recompilation__version__compute_version_numbers_int2_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+recompilation__version__parse_module_item_version_numbers_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_String MR_CALL 
+recompilation__version__module_item_version_numbers_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+recompilation__version__module_item_version_numbers_version_number_0_f_0(void);
+
+void mercury__recompilation__version__init(void);
+void mercury__recompilation__version__init_type_tables(void);
+void mercury__recompilation__version__init_debugger(void);
+const char *mercury__recompilation__version__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_recompilation.version
+
+// :- end_interface recompilation.version.

@@ -1,0 +1,7 @@
+:- module (transform_hlds.higher_order).higher_order_info.
+:- interface.
+:- type higher_order_info.
+:- type ho_changed
+    --->    hoc_changed 
+    ;       hoc_request 
+    ;       hoc_unchanged .
