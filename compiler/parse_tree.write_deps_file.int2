@@ -1,0 +1,11 @@
+:- module parse_tree.write_deps_file.
+:- interface.
+:- type maybe_include_trans_opt_rule
+    --->    do_not_include_trans_opt_rule 
+    ;       include_trans_opt_rule(parse_tree.write_deps_file.trans_opt_rule_info).
+:- type maybe_intermod_deps
+    --->    no_intermod_deps 
+    ;       intermod_deps((parse_tree.write_deps_file).id_int_deps :: set.set(mdbcomp.sym_name.module_name), (parse_tree.write_deps_file).id_imp_deps :: set.set(mdbcomp.sym_name.module_name), (parse_tree.write_deps_file).id_indirect_deps :: set.set(mdbcomp.sym_name.module_name), (parse_tree.write_deps_file).id_fim_deps :: set.set(mdbcomp.sym_name.module_name), (parse_tree.write_deps_file).id_trans_opt_deps :: set.set(mdbcomp.sym_name.module_name)).
+:- type trans_opt_rule_info
+    --->    trans_opt_deps_from_order(set.set(mdbcomp.sym_name.module_name))
+    ;       trans_opt_deps_from_d_file(set.set(mdbcomp.sym_name.module_name)).
