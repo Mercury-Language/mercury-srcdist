@@ -1,0 +1,86 @@
+/*
+** Automatically generated from `goal_expr_to_goal.m'
+** by the Mercury compiler,
+** version rotd-2024-04-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_hlds.goal_expr_to_goal.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__goal_expr_to_goal
+#define MR_HEADER_GUARD_hlds__make_hlds__goal_expr_to_goal
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__GOAL_EXPR_TO_GOAL_DECL_GUARD
+#define HLDS__MAKE_HLDS__GOAL_EXPR_TO_GOAL_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__goal_expr_to_goal__hlds__make_hlds__goal_expr_to_goal__type_ctor_info_loc_kind_0;
+
+void MR_CALL 
+hlds__make_hlds__goal_expr_to_goal__transform_parse_tree_goal_to_hlds_16_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Word param_11,
+  MR_Word * param_12,
+  MR_Word param_13,
+  MR_Word * param_14,
+  MR_Word param_15,
+  MR_Word * param_16);
+
+void MR_CALL 
+hlds__make_hlds__goal_expr_to_goal____Compare____loc_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__goal_expr_to_goal____Unify____loc_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__make_hlds__goal_expr_to_goal__init(void);
+void mercury__hlds__make_hlds__goal_expr_to_goal__init_type_tables(void);
+void mercury__hlds__make_hlds__goal_expr_to_goal__init_debugger(void);
+const char *mercury__hlds__make_hlds__goal_expr_to_goal__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.make_hlds.goal_expr_to_goal
+
+// :- end_interface hlds.make_hlds.goal_expr_to_goal.

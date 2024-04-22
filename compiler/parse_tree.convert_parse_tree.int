@@ -1,0 +1,42 @@
+:- module parse_tree.convert_parse_tree.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.file_kind.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item.
+:- type parse_tree_int
+    --->    parse_tree_int((parse_tree.convert_parse_tree).pti_module_name :: mdbcomp.sym_name.module_name, (parse_tree.convert_parse_tree).pti_int_file_kind :: parse_tree.file_kind.int_file_kind, (parse_tree.convert_parse_tree).pti_module_name_context :: parse_tree.prog_data.prog_context, (parse_tree.convert_parse_tree).pti_maybe_version_numbers :: parse_tree.prog_item.maybe_version_numbers, (parse_tree.convert_parse_tree).pti_int_includes :: list.list(parse_tree.prog_item.item_include), (parse_tree.convert_parse_tree).pti_imp_includes :: list.list(parse_tree.prog_item.item_include), (parse_tree.convert_parse_tree).pti_int_avails :: list.list(parse_tree.prog_item.item_avail), (parse_tree.convert_parse_tree).pti_imp_avails :: list.list(parse_tree.prog_item.item_avail), (parse_tree.convert_parse_tree).pti_int_fims :: list.list(parse_tree.prog_item.item_fim), (parse_tree.convert_parse_tree).pti_imp_fims :: list.list(parse_tree.prog_item.item_fim), (parse_tree.convert_parse_tree).pti_int_items :: list.list(parse_tree.prog_item.item), (parse_tree.convert_parse_tree).pti_imp_items :: list.list(parse_tree.prog_item.item)).
+:- type parse_tree_opt
+    --->    parse_tree_opt((parse_tree.convert_parse_tree).pto_module_name :: mdbcomp.sym_name.module_name, (parse_tree.convert_parse_tree).pto_opt_file_kind :: parse_tree.file_kind.opt_file_kind, (parse_tree.convert_parse_tree).pto_module_name_context :: parse_tree.prog_data.prog_context, (parse_tree.convert_parse_tree).pto_uses :: list.list(parse_tree.prog_item.avail_use_info), (parse_tree.convert_parse_tree).pto_fims :: list.list(parse_tree.prog_item.item_fim), (parse_tree.convert_parse_tree).pto_items :: list.list(parse_tree.prog_item.item)).
+:- type raw_compilation_unit
+    --->    raw_compilation_unit((parse_tree.convert_parse_tree).rcu_module_name :: mdbcomp.sym_name.module_name, (parse_tree.convert_parse_tree).rcu_module_name_context :: parse_tree.prog_data.prog_context, (parse_tree.convert_parse_tree).rcu_raw_item_blocks :: list.list(parse_tree.convert_parse_tree.raw_item_block)).
+:- type raw_item_block
+    --->    item_block(mdbcomp.sym_name.module_name, parse_tree.prog_item.module_section, list.list(parse_tree.prog_item.item_include), list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.item_fim), list.list(parse_tree.prog_item.item)).
+:- pred check_convert_parse_tree_int_to_int0(parse_tree.convert_parse_tree.parse_tree_int, parse_tree.prog_item.parse_tree_int0, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode check_convert_parse_tree_int_to_int0(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred check_convert_parse_tree_int_to_int1(parse_tree.convert_parse_tree.parse_tree_int, parse_tree.prog_item.parse_tree_int1, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode check_convert_parse_tree_int_to_int1(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred check_convert_parse_tree_int_to_int2(parse_tree.convert_parse_tree.parse_tree_int, parse_tree.prog_item.parse_tree_int2, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode check_convert_parse_tree_int_to_int2(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred check_convert_parse_tree_int_to_int3(parse_tree.convert_parse_tree.parse_tree_int, parse_tree.prog_item.parse_tree_int3, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode check_convert_parse_tree_int_to_int3(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred check_convert_parse_tree_opt_to_plain_opt(parse_tree.convert_parse_tree.parse_tree_opt, parse_tree.prog_item.parse_tree_plain_opt, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode check_convert_parse_tree_opt_to_plain_opt(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred check_convert_parse_tree_opt_to_trans_opt(parse_tree.convert_parse_tree.parse_tree_opt, parse_tree.prog_item.parse_tree_trans_opt, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode check_convert_parse_tree_opt_to_trans_opt(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred check_convert_raw_comp_unit_to_module_src(libs.globals.globals, parse_tree.convert_parse_tree.raw_compilation_unit, parse_tree.prog_item.parse_tree_module_src, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode check_convert_raw_comp_unit_to_module_src(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func inst_ctor_defn_items_to_map(list.list(parse_tree.prog_item.item_inst_defn_info)) = parse_tree.prog_item.inst_ctor_defn_map.
+:- func inst_ctor_defn_map_to_inst_defns(parse_tree.prog_item.inst_ctor_defn_map) = list.list(parse_tree.prog_item.item_inst_defn_info).
+:- func mode_ctor_defn_items_to_map(list.list(parse_tree.prog_item.item_mode_defn_info)) = parse_tree.prog_item.mode_ctor_defn_map.
+:- func mode_ctor_defn_map_to_mode_defns(parse_tree.prog_item.mode_ctor_defn_map) = list.list(parse_tree.prog_item.item_mode_defn_info).
+:- func type_ctor_defn_items_to_map(list.list(parse_tree.prog_item.item_type_defn_info)) = parse_tree.prog_item.type_ctor_defn_map.
+:- func type_ctor_defn_map_to_type_defns(parse_tree.prog_item.type_ctor_defn_map) = list.list(parse_tree.prog_item.item_type_defn_info).
+:- func type_ctor_foreign_enum_items_to_map(list.list(parse_tree.prog_item.item_foreign_enum_info)) = parse_tree.prog_item.type_ctor_foreign_enum_map.
+:- func type_ctor_repn_items_to_map(list.list(parse_tree.prog_item.item_type_repn_info)) = parse_tree.prog_item.type_ctor_repn_map.
+:- func type_ctor_repn_map_to_type_repns(parse_tree.prog_item.type_ctor_repn_map) = list.list(parse_tree.prog_item.item_type_repn_info).

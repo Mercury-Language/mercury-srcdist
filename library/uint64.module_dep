@@ -1,0 +1,14 @@
+module(2, "uint64.m",
+	uint64,
+	{},
+	{builtin, pretty_printer, private_builtin},
+	{exception, int, require, uint},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - uint64, "C#" - uint64, "Java" - uint64},
+	no_foreign_export,
+	no_main,
+	{}
+).

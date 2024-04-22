@@ -1,0 +1,201 @@
+:- module set_tree234.
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module set.
+:- type set_tree234(_T).
+:- pred all_true((pred T), set_tree234.set_tree234(T)).
+:- mode all_true(builtin.in((pred(builtin.in) is semidet)), builtin.in) is semidet.
+:- pred contains(set_tree234.set_tree234(T), T).
+:- mode contains(builtin.in, builtin.in) is semidet.
+:- func count(set_tree234.set_tree234(T)) = int.
+:- pred delete(T, set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode delete(builtin.in, builtin.in, builtin.out) is det.
+:- func delete(T, set_tree234.set_tree234(T)) = set_tree234.set_tree234(T).
+:- pred delete_list(list.list(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode delete_list(builtin.in, builtin.in, builtin.out) is det.
+:- func delete_list(list.list(T), set_tree234.set_tree234(T)) = set_tree234.set_tree234(T).
+:- pred det_remove(T, set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode det_remove(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_remove_list(list.list(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode det_remove_list(builtin.in, builtin.in, builtin.out) is det.
+:- pred difference(set_tree234.set_tree234(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode difference(builtin.in, builtin.in, builtin.out) is det.
+:- func difference(set_tree234.set_tree234(T), set_tree234.set_tree234(T)) = set_tree234.set_tree234(T).
+:- pred divide((pred T), set_tree234.set_tree234(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode divide(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out) is det.
+:- pred divide_by_set(set_tree234.set_tree234(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode divide_by_set(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred equal(set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode equal(builtin.in, builtin.in) is semidet.
+:- pred filter((pred T), set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode filter(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out) is det.
+:- func filter((pred T), set_tree234.set_tree234(T)) = set_tree234.set_tree234(T).
+:- mode filter(builtin.in((pred(builtin.in) is semidet)), builtin.in) = builtin.out is det.
+:- pred filter((pred T), set_tree234.set_tree234(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode filter(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out) is det.
+:- pred filter_map(pred(T1, T2), set_tree234.set_tree234(T1), set_tree234.set_tree234(T2)).
+:- mode filter_map(builtin.in((pred(builtin.in, builtin.out) is semidet)), builtin.in, builtin.out) is det.
+:- func filter_map(((func T1) = T2), set_tree234.set_tree234(T1)) = set_tree234.set_tree234(T2).
+:- mode filter_map(builtin.in((func(builtin.in) = builtin.out is semidet)), builtin.in) = builtin.out is det.
+:- pred fold(pred(T1, T2, T2), set_tree234.set_tree234(T1), T2, T2).
+:- mode fold(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode fold(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode fold(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode fold(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode fold(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode fold(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- func fold((func(T1, T2) = T2), set_tree234.set_tree234(T1), T2) = T2.
+:- pred fold2(pred(T1, T2, T2, T3, T3), set_tree234.set_tree234(T1), T2, T2, T3, T3).
+:- mode fold2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode fold2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode fold2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode fold2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode fold2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode fold2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred fold3(pred(T1, T2, T2, T3, T3, T4, T4), set_tree234.set_tree234(T1), T2, T2, T3, T3, T4, T4).
+:- mode fold3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode fold3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode fold3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode fold3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode fold3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode fold3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred fold4(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5), set_tree234.set_tree234(T1), T2, T2, T3, T3, T4, T4, T5, T5).
+:- mode fold4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode fold4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode fold4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode fold4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode fold4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode fold4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred fold5(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5, T6, T6), set_tree234.set_tree234(T1), T2, T2, T3, T3, T4, T4, T5, T5, T6, T6).
+:- mode fold5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode fold5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode fold5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode fold5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode fold5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode fold5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred fold6(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5, T6, T6, T7, T7), set_tree234.set_tree234(T1), T2, T2, T3, T3, T4, T4, T5, T5, T6, T6, T7, T7).
+:- mode fold6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode fold6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode fold6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode fold6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode fold6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode fold6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldl(pred(T1, T2, T2), set_tree234.set_tree234(T1), T2, T2).
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- func foldl((func(T1, T2) = T2), set_tree234.set_tree234(T1), T2) = T2.
+:- pred foldl2(pred(T1, T2, T2, T3, T3), set_tree234.set_tree234(T1), T2, T2, T3, T3).
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldl3(pred(T1, T2, T2, T3, T3, T4, T4), set_tree234.set_tree234(T1), T2, T2, T3, T3, T4, T4).
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldl4(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5), set_tree234.set_tree234(T1), T2, T2, T3, T3, T4, T4, T5, T5).
+:- mode foldl4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldl5(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5, T6, T6), set_tree234.set_tree234(T1), T2, T2, T3, T3, T4, T4, T5, T5, T6, T6).
+:- mode foldl5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldl6(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5, T6, T6, T7, T7), set_tree234.set_tree234(T1), T2, T2, T3, T3, T4, T4, T5, T5, T6, T6, T7, T7).
+:- mode foldl6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred from_list(list.list(T), set_tree234.set_tree234(T)).
+:- mode from_list(builtin.in, builtin.out) is det.
+:- func from_list(list.list(T)) = set_tree234.set_tree234(T).
+:- func from_set(set.set(T)) = set_tree234.set_tree234(T).
+:- func init = set_tree234.set_tree234(T).
+:- pred insert(T, set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode insert(builtin.in, builtin.in, builtin.out) is det.
+:- func insert(T, set_tree234.set_tree234(T)) = set_tree234.set_tree234(T).
+:- pred insert_list(list.list(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode insert_list(builtin.in, builtin.in, builtin.out) is det.
+:- func insert_list(list.list(T), set_tree234.set_tree234(T)) = set_tree234.set_tree234(T).
+:- pred insert_new(T, set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode insert_new(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred intersect(set_tree234.set_tree234(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode intersect(builtin.in, builtin.in, builtin.out) is det.
+:- func intersect(set_tree234.set_tree234(T), set_tree234.set_tree234(T)) = set_tree234.set_tree234(T).
+:- pred intersect_list(list.list(set_tree234.set_tree234(T)), set_tree234.set_tree234(T)).
+:- mode intersect_list(builtin.in, builtin.out) is det.
+:- func intersect_list(list.list(set_tree234.set_tree234(T))) = set_tree234.set_tree234(T).
+:- pred intersection_and_differences(set_tree234.set_tree234(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode intersection_and_differences(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred is_empty(set_tree234.set_tree234(_T)).
+:- mode is_empty(builtin.in) is semidet.
+:- pred is_member(set_tree234.set_tree234(T), T, bool.bool).
+:- mode is_member(builtin.in, builtin.in, builtin.out) is det.
+:- func is_member(set_tree234.set_tree234(T), T) = bool.bool.
+:- pred is_non_empty(set_tree234.set_tree234(T)).
+:- mode is_non_empty(builtin.in) is semidet.
+:- pred is_singleton(set_tree234.set_tree234(T), T).
+:- mode is_singleton(builtin.in, builtin.out) is semidet.
+:- pred list_to_set(list.list(T), set_tree234.set_tree234(T)).
+:- mode list_to_set(builtin.in, builtin.out) is det.
+:- func list_to_set(list.list(T)) = set_tree234.set_tree234(T).
+:- func make_singleton_set(T) = set_tree234.set_tree234(T).
+:- pred map(pred(T1, T2), set_tree234.set_tree234(T1), set_tree234.set_tree234(T2)).
+:- mode map(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.out) is det.
+:- func map(((func T1) = T2), set_tree234.set_tree234(T1)) = set_tree234.set_tree234(T2).
+:- pred member(T, set_tree234.set_tree234(T)).
+:- mode member(builtin.in, builtin.in) is semidet.
+:- mode member(builtin.out, builtin.in) is nondet.
+:- pred power_intersect(set_tree234.set_tree234(set_tree234.set_tree234(T)), set_tree234.set_tree234(T)).
+:- mode power_intersect(builtin.in, builtin.out) is det.
+:- func power_intersect(set_tree234.set_tree234(set_tree234.set_tree234(T))) = set_tree234.set_tree234(T).
+:- pred power_union(set_tree234.set_tree234(set_tree234.set_tree234(T)), set_tree234.set_tree234(T)).
+:- mode power_union(builtin.in, builtin.out) is det.
+:- func power_union(set_tree234.set_tree234(set_tree234.set_tree234(T))) = set_tree234.set_tree234(T).
+:- pred remove(T, set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode remove(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred remove_least(T, set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode remove_least(builtin.out, builtin.in, builtin.out) is semidet.
+:- pred remove_list(list.list(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode remove_list(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred rev_sorted_list_to_set(list.list(T), set_tree234.set_tree234(T)).
+:- mode rev_sorted_list_to_set(builtin.in, builtin.out) is det.
+:- func rev_sorted_list_to_set(list.list(T)) = set_tree234.set_tree234(T).
+:- pred singleton_set(T, set_tree234.set_tree234(T)).
+:- mode singleton_set(builtin.in, builtin.out) is det.
+:- mode singleton_set(builtin.out, builtin.in) is semidet.
+:- pred sorted_list_to_set(list.list(T), set_tree234.set_tree234(T)).
+:- mode sorted_list_to_set(builtin.in, builtin.out) is det.
+:- func sorted_list_to_set(list.list(T)) = set_tree234.set_tree234(T).
+:- pred subset(set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode subset(builtin.in, builtin.in) is semidet.
+:- pred superset(set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode superset(builtin.in, builtin.in) is semidet.
+:- func to_set(set_tree234.set_tree234(T)) = set.set(T).
+:- pred to_sorted_list(set_tree234.set_tree234(T), list.list(T)).
+:- mode to_sorted_list(builtin.in, builtin.out) is det.
+:- func to_sorted_list(set_tree234.set_tree234(T)) = list.list(T).
+:- pred union(set_tree234.set_tree234(T), set_tree234.set_tree234(T), set_tree234.set_tree234(T)).
+:- mode union(builtin.in, builtin.in, builtin.out) is det.
+:- func union(set_tree234.set_tree234(T), set_tree234.set_tree234(T)) = set_tree234.set_tree234(T).
+:- pred union_list(list.list(set_tree234.set_tree234(T)), set_tree234.set_tree234(T)).
+:- mode union_list(builtin.in, builtin.out) is det.
+:- func union_list(list.list(set_tree234.set_tree234(T))) = set_tree234.set_tree234(T).
