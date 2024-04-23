@@ -1,0 +1,54 @@
+:- module eqvclass.
+:- interface.
+:- use_module list.
+:- use_module set.
+:- type eqvclass(T).
+:- type partition_id.
+:- func divide_equivalence_classes(((func T) = U), eqvclass.eqvclass(T)) = eqvclass.eqvclass(T).
+:- pred ensure_corresponding_equivalences(list.list(T), list.list(T), eqvclass.eqvclass(T), eqvclass.eqvclass(T)).
+:- mode ensure_corresponding_equivalences(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func ensure_corresponding_equivalences(list.list(T), list.list(T), eqvclass.eqvclass(T)) = eqvclass.eqvclass(T).
+:- pred ensure_element(T, eqvclass.eqvclass(T), eqvclass.eqvclass(T)).
+:- mode ensure_element(builtin.in, builtin.in, builtin.out) is det.
+:- func ensure_element(eqvclass.eqvclass(T), T) = eqvclass.eqvclass(T).
+:- pred ensure_element_partition_id(T, eqvclass.partition_id, eqvclass.eqvclass(T), eqvclass.eqvclass(T)).
+:- mode ensure_element_partition_id(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred ensure_equivalence(T, T, eqvclass.eqvclass(T), eqvclass.eqvclass(T)).
+:- mode ensure_equivalence(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func ensure_equivalence(eqvclass.eqvclass(T), T, T) = eqvclass.eqvclass(T).
+:- func get_equivalent_elements(eqvclass.eqvclass(T), T) = set.set(T).
+:- func get_minimum_element(eqvclass.eqvclass(T), T) = T.
+:- pred init(eqvclass.eqvclass(T)).
+:- mode init(builtin.out) is det.
+:- func init = eqvclass.eqvclass(T).
+:- pred is_member(eqvclass.eqvclass(T), T).
+:- mode is_member(builtin.in, builtin.in) is semidet.
+:- pred new_element(T, eqvclass.eqvclass(T), eqvclass.eqvclass(T)).
+:- mode new_element(builtin.in, builtin.in, builtin.out) is det.
+:- func new_element(eqvclass.eqvclass(T), T) = eqvclass.eqvclass(T).
+:- pred new_equivalence(T, T, eqvclass.eqvclass(T), eqvclass.eqvclass(T)).
+:- mode new_equivalence(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func new_equivalence(eqvclass.eqvclass(T), T, T) = eqvclass.eqvclass(T).
+:- pred partition_id(eqvclass.eqvclass(T), T, eqvclass.partition_id).
+:- mode partition_id(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred partition_list(eqvclass.eqvclass(T), list.list(set.set(T))).
+:- mode partition_list(builtin.in, builtin.out) is det.
+:- func partition_list(eqvclass.eqvclass(T)) = list.list(set.set(T)).
+:- pred partition_list_to_eqvclass(list.list(set.set(T)), eqvclass.eqvclass(T)).
+:- mode partition_list_to_eqvclass(builtin.in, builtin.out) is det.
+:- func partition_list_to_eqvclass(list.list(set.set(T))) = eqvclass.eqvclass(T).
+:- pred partition_set(eqvclass.eqvclass(T), set.set(set.set(T))).
+:- mode partition_set(builtin.in, builtin.out) is det.
+:- func partition_set(eqvclass.eqvclass(T)) = set.set(set.set(T)).
+:- pred partition_set_to_eqvclass(set.set(set.set(T)), eqvclass.eqvclass(T)).
+:- mode partition_set_to_eqvclass(builtin.in, builtin.out) is det.
+:- func partition_set_to_eqvclass(set.set(set.set(T))) = eqvclass.eqvclass(T).
+:- pred remove_equivalent_elements(T, eqvclass.eqvclass(T), eqvclass.eqvclass(T)).
+:- mode remove_equivalent_elements(builtin.in, builtin.in, builtin.out) is det.
+:- func remove_equivalent_elements(eqvclass.eqvclass(T), T) = eqvclass.eqvclass(T).
+:- pred same_eqvclass(eqvclass.eqvclass(T), T, T).
+:- mode same_eqvclass(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred same_eqvclass_list(eqvclass.eqvclass(T), list.list(T)).
+:- mode same_eqvclass_list(builtin.in, builtin.in) is semidet.
+:- implementation.
+:- type partition_id == int.

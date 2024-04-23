@@ -1,0 +1,16 @@
+:- module ll_backend.proc_gen.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module ll_backend.global_data.
+:- use_module ll_backend.llds.
+:- pred add_all_tabling_info_structs(hlds.hlds_module.module_info, ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode add_all_tabling_info_structs(builtin.in, builtin.in, builtin.out) is det.
+:- pred generate_module_code(io.text_output_stream, hlds.hlds_module.module_info, list.list(ll_backend.llds.c_procedure), ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode generate_module_code(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred generate_proc_code(io.text_output_stream, hlds.hlds_module.module_info, ll_backend.llds.const_struct_map, hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_info, ll_backend.llds.c_procedure, ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode generate_proc_code(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func push_msg(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id) = string.
