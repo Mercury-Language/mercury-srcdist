@@ -1,0 +1,117 @@
+/*
+** Automatically generated from `prog_type_unify.m'
+** by the Mercury compiler,
+** version rotd-2024-04-23
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_type_unify.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_type_unify
+#define MR_HEADER_GUARD_parse_tree__prog_type_unify
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_TYPE_UNIFY_DECL_GUARD
+#define PARSE_TREE__PROG_TYPE_UNIFY_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+MR_bool MR_CALL 
+parse_tree__prog_type_unify__arg_type_list_subsumes_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8);
+
+void MR_CALL 
+parse_tree__prog_type_unify__compute_caller_callee_type_substitution_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_unify__identical_up_to_renaming_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_unify__type_list_subsumes_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__prog_type_unify__type_list_subsumes_det_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_unify__type_subsumes_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__prog_type_unify__type_subsumes_det_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_unify__type_unify_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_unify__type_unify_list_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void mercury__parse_tree__prog_type_unify__init(void);
+void mercury__parse_tree__prog_type_unify__init_type_tables(void);
+void mercury__parse_tree__prog_type_unify__init_debugger(void);
+const char *mercury__parse_tree__prog_type_unify__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.prog_type_unify
+
+// :- end_interface parse_tree.prog_type_unify.
