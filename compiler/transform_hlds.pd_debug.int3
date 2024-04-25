@@ -1,0 +1,2 @@
+:- module transform_hlds.pd_debug.
+:- interface.

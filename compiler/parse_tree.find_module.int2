@@ -1,0 +1,8 @@
+:- module parse_tree.find_module.
+:- interface.
+:- type dir_name_and_contents
+    --->    dir_name_and_contents(libs.file_util.dir_name, string).
+:- type dir_name_and_stream
+    --->    dir_name_and_stream(libs.file_util.dir_name, io.text_input_stream).
+:- type path_name_and_stream
+    --->    path_name_and_stream(libs.file_util.file_name, io.text_input_stream).

@@ -1,0 +1,185 @@
+/*
+** Automatically generated from `lookup_switch_util.m'
+** by the Mercury compiler,
+** version rotd-2024-04-25
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module backend_libs.lookup_switch_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_backend_libs__lookup_switch_util
+#define MR_HEADER_GUARD_backend_libs__lookup_switch_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BACKEND_LIBS__LOOKUP_SWITCH_UTIL_DECL_GUARD
+#define BACKEND_LIBS__LOOKUP_SWITCH_UTIL_DECL_GUARD
+#include "backend_libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct backend_libs__lookup_switch_util__backend_libs__lookup_switch_util__type_ctor_info_case_consts_3;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__lookup_switch_util__backend_libs__lookup_switch_util__type_ctor_info_case_consts_several_llds_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__lookup_switch_util__backend_libs__lookup_switch_util__type_ctor_info_need_bit_vec_check_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__lookup_switch_util__backend_libs__lookup_switch_util__type_ctor_info_need_range_check_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__lookup_switch_util__backend_libs__lookup_switch_util__type_ctor_info_soln_consts_1;
+
+void MR_CALL 
+backend_libs__lookup_switch_util__filter_out_failing_cases_if_needed_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+backend_libs__lookup_switch_util__find_int_lookup_switch_params_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Word * param_8,
+  MR_Word * param_9,
+  MR_Integer * param_10,
+  MR_Integer * param_11);
+
+MR_bool MR_CALL 
+backend_libs__lookup_switch_util__project_all_to_one_solution_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+backend_libs__lookup_switch_util__project_solns_to_rval_lists_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+backend_libs__lookup_switch_util__type_range_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6);
+
+MR_Integer MR_CALL 
+backend_libs__lookup_switch_util__get_int_tag_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+backend_libs__lookup_switch_util__get_string_tag_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+backend_libs__lookup_switch_util__switch_density_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+backend_libs__lookup_switch_util____Compare____case_consts_3_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+backend_libs__lookup_switch_util____Compare____case_consts_several_llds_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__lookup_switch_util____Compare____need_bit_vec_check_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__lookup_switch_util____Compare____need_range_check_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__lookup_switch_util____Compare____soln_consts_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+backend_libs__lookup_switch_util____Unify____case_consts_3_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_bool MR_CALL 
+backend_libs__lookup_switch_util____Unify____case_consts_several_llds_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__lookup_switch_util____Unify____need_bit_vec_check_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__lookup_switch_util____Unify____need_range_check_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__lookup_switch_util____Unify____soln_consts_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__backend_libs__lookup_switch_util__init(void);
+void mercury__backend_libs__lookup_switch_util__init_type_tables(void);
+void mercury__backend_libs__lookup_switch_util__init_debugger(void);
+const char *mercury__backend_libs__lookup_switch_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_backend_libs.lookup_switch_util
+
+// :- end_interface backend_libs.lookup_switch_util.
