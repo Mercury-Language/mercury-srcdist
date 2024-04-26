@@ -1,0 +1,14 @@
+module(2, "builtin_modules.m",
+	mdbcomp.builtin_modules,
+	{mdbcomp},
+	{builtin, list, private_builtin, mdbcomp.sym_name},
+	{library},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

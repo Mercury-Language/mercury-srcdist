@@ -1,0 +1,6 @@
+:- module parse_tree.write_error_spec.
+:- interface.
+:- type error_line.
+:- type_representation(already_printed_verbose, is_eqv_to(set(list(format_piece)))).
+:- type_representation(color_stack, is_eqv_to(stack(color))).
+:- type_representation(error_line, is_word_aligned_ptr).

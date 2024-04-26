@@ -1,0 +1,176 @@
+:- module parse_tree.error_spec.
+:- interface.
+:- use_module bool.
+:- use_module edit_seq.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module libs.globals.
+:- use_module libs.options.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- type actual_severity
+    --->    actual_severity_error 
+    ;       actual_severity_warning 
+    ;       actual_severity_informational .
+:- type color_name
+    --->    color_incorrect 
+    ;       color_correct .
+:- type error_msg
+    --->    msg((parse_tree.error_spec).simplest_context :: parse_tree.prog_data.prog_context, (parse_tree.error_spec).simplest_pieces :: list.list(parse_tree.error_spec.format_piece))
+    ;       no_ctxt_msg((parse_tree.error_spec).simplestnc_pieces :: list.list(parse_tree.error_spec.format_piece))
+    ;       simple_msg((parse_tree.error_spec).simple_context :: parse_tree.prog_data.prog_context, (parse_tree.error_spec).simple_components :: list.list(parse_tree.error_spec.error_msg_component))
+    ;       error_msg((parse_tree.error_spec).error_context :: maybe.maybe(parse_tree.prog_data.prog_context), (parse_tree.error_spec).error_treat_as_first :: parse_tree.error_spec.maybe_always_treat_as_first, (parse_tree.error_spec).error_extra_indent :: int, (parse_tree.error_spec).error_components :: list.list(parse_tree.error_spec.error_msg_component)).
+:- type error_msg_component
+    --->    always(list.list(parse_tree.error_spec.format_piece))
+    ;       option_is_set(libs.options.option, bool.bool, list.list(parse_tree.error_spec.error_msg_component))
+    ;       verbose_only(parse_tree.error_spec.verbose_always_or_once, list.list(parse_tree.error_spec.format_piece))
+    ;       verbose_and_nonverbose(list.list(parse_tree.error_spec.format_piece), list.list(parse_tree.error_spec.format_piece))
+    ;       some [T] (print_anything(T) => ((parse_tree.error_spec).print_anything(T))).
+:- type error_phase
+    --->    phase_options 
+    ;       phase_check_libs 
+    ;       phase_make_target 
+    ;       phase_make_int 
+    ;       phase_find_files(string)
+    ;       phase_read_files 
+    ;       phase_module_name 
+    ;       phase_t2pt 
+    ;       phase_tim_check_invalid_type 
+    ;       phase_tim_check_invalid_inst_mode 
+    ;       phase_tim_check 
+    ;       phase_type_repn 
+    ;       phase_pt2h 
+    ;       phase_expand_types 
+    ;       phase_type_check 
+    ;       phase_inst_check 
+    ;       phase_polymorphism 
+    ;       phase_mode_check(parse_tree.error_spec.mode_report_control)
+    ;       phase_purity_check 
+    ;       phase_detism_check 
+    ;       phase_fact_table_check 
+    ;       phase_oisu_check 
+    ;       phase_simplify(parse_tree.error_spec.mode_report_control)
+    ;       phase_direct_arg_in_out 
+    ;       phase_style 
+    ;       phase_dead_code 
+    ;       phase_termination_analysis 
+    ;       phase_accumulator_intro 
+    ;       phase_auto_parallelism 
+    ;       phase_interface_gen 
+    ;       phase_code_gen .
+:- type error_severity
+    --->    severity_error 
+    ;       severity_warning 
+    ;       severity_informational 
+    ;       severity_conditional((parse_tree.error_spec).cond_option :: libs.options.option, (parse_tree.error_spec).cond_option_value :: bool.bool, (parse_tree.error_spec).cond_if_match :: parse_tree.error_spec.error_severity, (parse_tree.error_spec).cond_if_no_match :: maybe.maybe(parse_tree.error_spec.error_severity)).
+:- type error_spec
+    --->    spec((parse_tree.error_spec).simp_id :: string, (parse_tree.error_spec).simp_spec_severity :: parse_tree.error_spec.error_severity, (parse_tree.error_spec).simp_spec_phase :: parse_tree.error_spec.error_phase, (parse_tree.error_spec).simp_spec_context :: parse_tree.prog_data.prog_context, (parse_tree.error_spec).simp_spec_pieces :: list.list(parse_tree.error_spec.format_piece))
+    ;       no_ctxt_spec((parse_tree.error_spec).simpnc_id :: string, (parse_tree.error_spec).simpnc_spec_severity :: parse_tree.error_spec.error_severity, (parse_tree.error_spec).simpnc_spec_phase :: parse_tree.error_spec.error_phase, (parse_tree.error_spec).simpnc_spec_pieces :: list.list(parse_tree.error_spec.format_piece))
+    ;       error_spec((parse_tree.error_spec).error_id :: string, (parse_tree.error_spec).error_severity :: parse_tree.error_spec.error_severity, (parse_tree.error_spec).error_phase :: parse_tree.error_spec.error_phase, (parse_tree.error_spec).error_msgs :: list.list(parse_tree.error_spec.error_msg))
+    ;       conditional_spec((parse_tree.error_spec).cond_id :: string, (parse_tree.error_spec).cond_spec_option :: libs.options.option, (parse_tree.error_spec).cond_spec_value :: bool.bool, (parse_tree.error_spec).cond_spec_severity :: parse_tree.error_spec.error_severity, (parse_tree.error_spec).cond_spec_phase :: parse_tree.error_spec.error_phase, (parse_tree.error_spec).cond_spec_msgs :: list.list(parse_tree.error_spec.error_msg)).
+:- type format_piece
+    --->    invis_order_default_start(int, string)
+    ;       fixed(string)
+    ;       quote(string)
+    ;       int_fixed(int)
+    ;       int_name(int)
+    ;       nth_fixed(int)
+    ;       lower_case_next_if_not_first 
+    ;       treat_next_as_first 
+    ;       prefix(string)
+    ;       suffix(string)
+    ;       words(string)
+    ;       words_quote(string)
+    ;       qual_sym_name(mdbcomp.sym_name.sym_name)
+    ;       unqual_sym_name(mdbcomp.sym_name.sym_name)
+    ;       name_arity(parse_tree.prog_data.name_arity)
+    ;       qual_sym_name_arity(parse_tree.prog_data.sym_name_arity)
+    ;       unqual_sym_name_arity(parse_tree.prog_data.sym_name_arity)
+    ;       qual_pf_sym_name_pred_form_arity(parse_tree.prog_data.pf_sym_name_arity)
+    ;       unqual_pf_sym_name_pred_form_arity(parse_tree.prog_data.pf_sym_name_arity)
+    ;       qual_pf_sym_name_user_arity(parse_tree.prog_data.pred_pf_name_arity)
+    ;       unqual_pf_sym_name_user_arity(parse_tree.prog_data.pred_pf_name_arity)
+    ;       qual_type_ctor(parse_tree.prog_data.type_ctor)
+    ;       unqual_type_ctor(parse_tree.prog_data.type_ctor)
+    ;       qual_inst_ctor(parse_tree.prog_data.inst_ctor)
+    ;       unqual_inst_ctor(parse_tree.prog_data.inst_ctor)
+    ;       qual_mode_ctor(parse_tree.prog_data.mode_ctor)
+    ;       unqual_mode_ctor(parse_tree.prog_data.mode_ctor)
+    ;       qual_class_id(parse_tree.prog_data.class_id)
+    ;       unqual_class_id(parse_tree.prog_data.class_id)
+    ;       qual_cons_id_and_maybe_arity(parse_tree.prog_data.cons_id)
+    ;       unqual_cons_id_and_maybe_arity(parse_tree.prog_data.cons_id)
+    ;       qual_top_ctor_of_type(parse_tree.prog_data.mer_type)
+    ;       p_or_f(mdbcomp.prim_data.pred_or_func)
+    ;       purity_desc(parse_tree.prog_data.purity)
+    ;       a_purity_desc(parse_tree.prog_data.purity)
+    ;       decl(string)
+    ;       pragma_decl(string)
+    ;       left_paren_maybe_nl_inc(string, parse_tree.error_spec.lp_piece_kind)
+    ;       maybe_nl_dec_right_paren(string, parse_tree.error_spec.rp_piece_kind)
+    ;       nl 
+    ;       nl_indent_delta(int)
+    ;       blank_line 
+    ;       not_for_general_use_start_color(parse_tree.error_spec.color_name)
+    ;       not_for_general_use_end_color 
+    ;       invis_order_default_end(int, string).
+:- type lp_piece_kind
+    --->    lp_plain 
+    ;       lp_suffix .
+:- type maybe_always_treat_as_first
+    --->    always_treat_as_first 
+    ;       treat_based_on_posn .
+:- type maybe_error_specs(T)
+    --->    ok_no_spec(T)
+    ;       error_specs(parse_tree.error_spec.error_spec, list.list(parse_tree.error_spec.error_spec)).
+:- type mode_report_control
+    --->    report_in_any_mode 
+    ;       report_only_if_in_all_modes .
+:- type rp_piece_kind
+    --->    rp_plain 
+    ;       rp_prefix .
+:- type verbose_always_or_once
+    --->    verbose_always 
+    ;       verbose_once .
+:- type warning_spec == parse_tree.error_spec.error_spec.
+:- typeclass print_anything(T) where [
+	pred print_anything(io.text_output_stream, T, io.io, io.io),
+	mode print_anything(builtin.in, builtin.in, builtin.di, builtin.uo) is det
+].
+:- pred accumulate_contexts(parse_tree.error_spec.error_spec, set.set(parse_tree.prog_data.prog_context), set.set(parse_tree.prog_data.prog_context)).
+:- mode accumulate_contexts(builtin.in, builtin.in, builtin.out) is det.
+:- func add_quotes(string) = string.
+:- pred change_hunk_to_pieces(edit_seq.change_hunk(string), list.list(parse_tree.error_spec.format_piece)).
+:- mode change_hunk_to_pieces(builtin.in, builtin.out) is det.
+:- func choose_number(list.list(T), U, U) = U.
+:- func color_pieces_as_correct(list.list(parse_tree.error_spec.format_piece)) = list.list(parse_tree.error_spec.format_piece).
+:- func color_pieces_as_incorrect(list.list(parse_tree.error_spec.format_piece)) = list.list(parse_tree.error_spec.format_piece).
+:- func component_list_to_line_pieces(list.list(list.list(parse_tree.error_spec.format_piece)), list.list(parse_tree.error_spec.format_piece)) = list.list(parse_tree.error_spec.format_piece).
+:- func component_list_to_pieces(string, list.list(parse_tree.error_spec.format_piece)) = list.list(parse_tree.error_spec.format_piece).
+:- func component_lists_to_pieces(string, list.list(list.list(parse_tree.error_spec.format_piece))) = list.list(parse_tree.error_spec.format_piece).
+:- func describe_sym_name(mdbcomp.sym_name.sym_name) = string.
+:- func describe_sym_name_arity(parse_tree.prog_data.sym_name_arity) = string.
+:- pred extract_spec_msgs(libs.globals.globals, parse_tree.error_spec.error_spec, list.list(parse_tree.error_spec.error_msg)).
+:- mode extract_spec_msgs(builtin.in, builtin.in, builtin.out) is det.
+:- pred extract_spec_msgs_opt_table(libs.options.option_table, parse_tree.error_spec.error_spec, list.list(parse_tree.error_spec.error_msg)).
+:- mode extract_spec_msgs_opt_table(builtin.in, builtin.in, builtin.out) is det.
+:- pred extract_spec_phase(parse_tree.error_spec.error_spec, parse_tree.error_spec.error_phase).
+:- mode extract_spec_phase(builtin.in, builtin.out) is det.
+:- func indented_list(list.list(parse_tree.error_spec.format_piece)) = list.list(parse_tree.error_spec.format_piece).
+:- func is_or_are(list.list(T)) = string.
+:- func list_to_pieces(list.list(string)) = list.list(parse_tree.error_spec.format_piece).
+:- func list_to_quoted_pieces(list.list(string)) = list.list(parse_tree.error_spec.format_piece).
+:- func list_to_quoted_pieces_or(list.list(string)) = list.list(parse_tree.error_spec.format_piece).
+:- pred maybe_construct_did_you_mean_pieces(string, list.list(string), list.list(parse_tree.error_spec.format_piece)).
+:- mode maybe_construct_did_you_mean_pieces(builtin.in, builtin.in, builtin.out) is det.
+:- pred maybe_construct_prefixed_did_you_mean_pieces(string, string, list.list(string), list.list(parse_tree.error_spec.format_piece)).
+:- mode maybe_construct_prefixed_did_you_mean_pieces(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func strict_component_list_to_pieces(list.list(parse_tree.error_spec.format_piece)) = list.list(parse_tree.error_spec.format_piece).
+:- func strict_component_lists_to_pieces(list.list(list.list(parse_tree.error_spec.format_piece))) = list.list(parse_tree.error_spec.format_piece).
+:- func strict_list_to_pieces(list.list(string)) = list.list(parse_tree.error_spec.format_piece).
+:- func string_to_words_piece(string) = parse_tree.error_spec.format_piece.
