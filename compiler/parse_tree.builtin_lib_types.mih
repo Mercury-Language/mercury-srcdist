@@ -1,0 +1,262 @@
+/*
+** Automatically generated from `builtin_lib_types.m'
+** by the Mercury compiler,
+** version rotd-2024-04-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.builtin_lib_types.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__builtin_lib_types
+#define MR_HEADER_GUARD_parse_tree__builtin_lib_types
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__BUILTIN_LIB_TYPES_DECL_GUARD
+#define PARSE_TREE__BUILTIN_LIB_TYPES_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+MR_bool MR_CALL 
+parse_tree__builtin_lib_types__type_is_type_info_or_ctor_type_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+parse_tree__builtin_lib_types__type_is_typeclass_info_type_1_p_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__build_type_info_type_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__c_pointer_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__char_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__char_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__comparison_result_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__exception_exception_functor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__exception_failed_functor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__exception_result_type_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__exception_result_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__exception_succeeded_functor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__float_box_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__float_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__float_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__future_type_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__heap_pointer_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__int16_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__int16_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__int32_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__int32_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__int64_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__int64_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__int8_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__int8_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__int_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__int_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__io_io_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__io_state_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__list_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__poly_type_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__pseudo_type_desc_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__region_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__sample_type_info_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__sample_typeclass_info_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_atomic_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_dummy_output_functor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_dummy_output_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_dummy_output_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_rollback_exception_functor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_rollback_exception_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_rollback_exception_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_rollback_retry_functor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_state_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_valid_result_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_valid_result_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_validres_invalid_functor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_validres_valid_functor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__string_builder_state_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__string_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__string_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__type_ctor_desc_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__type_ctor_info_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__type_desc_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__type_info_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__typeclass_info_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__uint16_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__uint16_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__uint32_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__uint32_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__uint64_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__uint64_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__uint8_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__uint8_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__uint_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__uint_type_ctor_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__univ_type_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__void_type_0_f_0(void);
+
+void mercury__parse_tree__builtin_lib_types__init(void);
+void mercury__parse_tree__builtin_lib_types__init_type_tables(void);
+void mercury__parse_tree__builtin_lib_types__init_debugger(void);
+const char *mercury__parse_tree__builtin_lib_types__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.builtin_lib_types
+
+// :- end_interface parse_tree.builtin_lib_types.
