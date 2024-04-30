@@ -1,0 +1,104 @@
+#!/bin/sh
+# vim: ts=4 sw=4 expandtab
+
+exitstatus=0
+echo RUNNING TEST "${this_dir}/${test_full}" "${params_msg}"
+echo "MERCURY_OPTIONS=${MERCURY_OPTIONS}" > "${test_full}.log"
+trace_count=false
+case "${MERCURY_OPTIONS}" in
+    *trace-count*)
+        trace_count=true
+        /bin/rm .mercury_trace_counts.* > /dev/null 2>&1
+        ;;
+esac
+
+rm -f ${test_full}.failed
+case ${test_full} in
+    *-nodepend)
+        ;;
+    *)
+        ( mmake "${test}.depend" 2>&1 || touch "${test_full}.failed" ) \
+            >> "${test_full}.log"
+        ;;
+esac
+
+if test -f "${test_full}.failed"
+then
+    echo FAILED TEST "${this_dir}/${test_full}" "${params_msg}" \
+        >> "${test_full}.log"
+    cat "${test_full}.log"
+    echo "${test_full}" >> FAILED_TESTS
+    echo "${this_dir}/${test_full}" "${params_msg}" >> \
+        "${tests_dir}/FAILED_TESTS_SUMMARY"
+    exitstatus=1
+else
+    ( mmake "${test}.runtest" 2>&1 || touch "${test_full}.failed" ) \
+        >> "${test_full}.log"
+    if test -f "${test_full}.failed"
+    then
+        rm -f "${test_full}.failed"
+        echo FAILED TEST "${this_dir}/${test_full}" "${params_msg}"
+        if test -s "${test_full}.err"
+        then
+            echo "ERROR OUTPUT" >> "${test_full}.log"
+            cat "${test_full}.err" >> "${test_full}.log"
+            echo "END OF THE ERROR OUTPUT" >> "${test_full}.log"
+        fi
+        echo "LOG OF THE FAILED TEST"
+        cat "${test_full}.log"
+        echo "END OF THE LOG OF THE FAILED TEST"
+        echo "${test_full}" >> FAILED_TESTS
+        echo "${this_dir}/${test_full}" "${params_msg}" \
+            >> "${tests_dir}/FAILED_TESTS_SUMMARY"
+        tcdir=FAILED_TC_DIR
+        exitstatus=1
+    else
+        if test "${KEEP_SUCCESS_LOG_FILES}" = "keep_success_log_files"
+        then
+            mv -f "${test_full}.log" "${test_full}.kept_log"
+        else
+            rm -f "${test_full}.log"
+        fi
+        rm -f ${test}.out* ${test}.*res*
+        mmake "${test}.realclean" > /dev/null 2>&1
+        # The lack of a FAILED TEST is enough to tell you that the test passed.
+        # echo PASSED TEST "${this_dir}/${test_full}" "${params_msg}"
+        tcdir=PASSED_TC_DIR
+    fi
+
+    case "${trace_count}" in
+        true)
+            max_num_trace_counts=50
+            n=`cat "${tests_dir}/${tcdir}/NEXT_NUMBER"`
+            for counts_file in .mercury_trace_counts.*
+            do
+                if test -s "${counts_file}"
+                then
+                    mv "${counts_file}" \
+                        "${tests_dir}/${tcdir}/trace_counts.${n}"
+                    n=`expr ${n} + 1`
+                fi
+            done
+            if test "${n}" -gt "${max_num_trace_counts}"
+            then
+                ${SLICE_DIR}mtc_union -o "${tests_dir}/${tcdir}/tmp_summary" \
+                    ${tests_dir}/${tcdir}/trace_counts.*
+                /bin/rm -f ${tests_dir}/${tcdir}/trace_counts.*
+                mv "${tests_dir}/${tcdir}/tmp_summary" \
+                    "${tests_dir}/${tcdir}/trace_counts.0"
+
+                echo 1 > "${tests_dir}/${tcdir}/NEXT_NUMBER"
+            else
+                echo "${n}" > "${tests_dir}/${tcdir}/NEXT_NUMBER"
+            fi
+            ;;
+    esac
+fi
+
+case "${BOOTCHECK_TEST_PROGRESS}" in
+    yes)
+        touch ".date.${test}"
+        ;;
+esac
+
+exit ${exitstatus}

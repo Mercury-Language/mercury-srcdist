@@ -1,0 +1,7 @@
+:- module backend_libs.c_util.
+:- interface.
+:- type maybe_set_line_numbers
+	where	type_is_abstract_enum(1).
+:- type multi_string.
+:- type_representation(maybe_set_line_numbers, du_repn(enum("dont_set_line_numbers", "set_line_numbers", [],  no_c_j_cs))).
+:- type_representation(multi_string, is_eqv_to(list(string))).

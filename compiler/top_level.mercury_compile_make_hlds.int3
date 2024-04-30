@@ -1,0 +1,5 @@
+:- module top_level.mercury_compile_make_hlds.
+:- interface.
+:- type maybe_write_d_file
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_write_d_file, du_repn(enum("do_not_write_d_file", "write_d_file", [],  no_c_j_cs))).
