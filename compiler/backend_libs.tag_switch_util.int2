@@ -1,0 +1,33 @@
+:- module backend_libs.tag_switch_util.
+:- interface.
+:- use_module assoc_list.
+:- use_module map.
+:- use_module one_or_more.
+:- use_module pair.
+:- type empty_ptag_list =< list.list(parse_tree.prog_data.ptag)
+    --->    [] .
+:- type is_switch_complete
+    --->    incomplete_switch 
+    ;       complete_switch .
+:- type ptag_case_group(CaseRep)
+    --->    one_or_more_whole_ptags(backend_libs.tag_switch_util.whole_ptags_info(CaseRep))
+    ;       one_shared_ptag(backend_libs.tag_switch_util.shared_ptag_info(CaseRep)).
+:- type sectag_case(CaseRep) == pair.pair(CaseRep, one_or_more.one_or_more(uint)).
+:- type sectag_case_list(CaseRep) == assoc_list.assoc_list(CaseRep, one_or_more.one_or_more(uint)).
+:- type sectag_case_map(CaseRep) == map.map(CaseRep, one_or_more.one_or_more(uint)).
+:- type sectag_goal_list(CaseRep) == assoc_list.assoc_list(uint, CaseRep).
+:- type sectag_goal_map(CaseRep) == map.map(uint, CaseRep).
+:- type shared_ptag_info(CaseRep)
+    --->    shared_ptag_info((backend_libs.tag_switch_util).spi_ptag :: parse_tree.prog_data.ptag, (backend_libs.tag_switch_util).spi_sectag_locn :: backend_libs.tag_switch_util.shared_sectag_locn, (backend_libs.tag_switch_util).spi_max_sectag :: uint, (backend_libs.tag_switch_util).spi_complete :: backend_libs.tag_switch_util.is_switch_complete, (backend_libs.tag_switch_util).spi_num_functors :: uint, (backend_libs.tag_switch_util).spi_sectag_to_goal_map :: backend_libs.tag_switch_util.sectag_goal_map(CaseRep), (backend_libs.tag_switch_util).spi_goal_to_sectags_map :: backend_libs.tag_switch_util.sectag_case_map(CaseRep)).
+:- type shared_sectag_locn =< backend_libs.rtti.sectag_locn
+    --->    sectag_local_rest_of_word 
+    ;       sectag_local_bits(uint8, uint)
+    ;       sectag_remote_word 
+    ;       sectag_remote_bits(uint8, uint).
+:- type single_ptag_case(CaseRep) =< backend_libs.tag_switch_util.ptag_case_group(CaseRep)
+    --->    one_or_more_whole_ptags(backend_libs.tag_switch_util.whole_ptag_info(CaseRep))
+    ;       one_shared_ptag(backend_libs.tag_switch_util.shared_ptag_info(CaseRep)).
+:- type whole_ptag_info(CaseRep) =< backend_libs.tag_switch_util.whole_ptags_info(CaseRep)
+    --->    whole_ptags_info((backend_libs.tag_switch_util).wpi_head_ptag :: parse_tree.prog_data.ptag, (backend_libs.tag_switch_util).wpi_tail_ptags :: backend_libs.tag_switch_util.empty_ptag_list, (backend_libs.tag_switch_util).wpi_num_functors :: uint, (backend_libs.tag_switch_util).wpi_case_rep :: CaseRep).
+:- type whole_ptags_info(CaseRep)
+    --->    whole_ptags_info((backend_libs.tag_switch_util).wpi_head_ptag :: parse_tree.prog_data.ptag, (backend_libs.tag_switch_util).wpi_tail_ptags :: list.list(parse_tree.prog_data.ptag), (backend_libs.tag_switch_util).wpi_num_functors :: uint, (backend_libs.tag_switch_util).wpi_case_rep :: CaseRep).

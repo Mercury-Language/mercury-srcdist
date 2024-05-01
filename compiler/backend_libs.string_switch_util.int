@@ -1,0 +1,31 @@
+:- module backend_libs.string_switch_util.
+:- interface.
+:- use_module assoc_list.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module pair.
+:- use_module string.
+:- use_module backend_libs.builtin_ops.
+:- use_module hlds.hlds_goal.
+:- type string_hash_slot(CaseRep)
+    --->    string_hash_slot(string, int, CaseRep).
+:- type table_size_upgrade
+    --->    keep_first_size 
+    ;       allow_doubling .
+:- type trie_node
+    --->    trie_leaf((backend_libs.string_switch_util).leaf_matched :: list.list(int), (backend_libs.string_switch_util).leaf_unmatched :: list.list(int), hlds.hlds_goal.case_id)
+    ;       trie_choice((backend_libs.string_switch_util).choice_matched :: list.list(int), (backend_libs.string_switch_util).choice_next_level :: map.map(int, backend_libs.string_switch_util.trie_node), (backend_libs.string_switch_util).choice_end :: maybe.maybe(hlds.hlds_goal.case_id)).
+:- inst trie_choice for (backend_libs.string_switch_util).trie_node/0
+    --->    trie_choice(ground, ground, ground).
+:- pred build_str_case_id_list(list.list(hlds.hlds_goal.tagged_case), int, assoc_list.assoc_list(string, hlds.hlds_goal.case_id)).
+:- mode build_str_case_id_list(builtin.in, builtin.out, builtin.out) is det.
+:- pred chase_any_stick_in_trie(backend_libs.string_switch_util.trie_node, assoc_list.assoc_list(int, backend_libs.string_switch_util.trie_node), list.list(int), backend_libs.string_switch_util.trie_node).
+:- mode chase_any_stick_in_trie(builtin.in((backend_libs.string_switch_util).trie_choice), builtin.out, builtin.out, builtin.out) is det.
+:- pred construct_string_hash_cases(assoc_list.assoc_list(string, CaseRep), backend_libs.string_switch_util.table_size_upgrade, int, map.map(int, backend_libs.string_switch_util.string_hash_slot(CaseRep)), backend_libs.builtin_ops.unary_op, int).
+:- mode construct_string_hash_cases(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred create_trie(string.string_encoding, assoc_list.assoc_list(string, hlds.hlds_goal.case_id), backend_libs.string_switch_util.trie_node).
+:- mode create_trie(builtin.in, builtin.in, builtin.out) is det.
+:- pred string_binary_cases(list.list(hlds.hlds_goal.tagged_case), pred(hlds.hlds_goal.tagged_case, CaseRep, StateA, StateA, StateB, StateB, StateC, StateC, StateD, StateD), StateA, StateA, StateB, StateB, StateC, StateC, StateD, StateD, assoc_list.assoc_list(string, CaseRep)).
+:- mode string_binary_cases(builtin.in, builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.out) is det.
