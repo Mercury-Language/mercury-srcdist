@@ -1,0 +1,24 @@
+:- module create_report.
+:- interface.
+:- use_module maybe.
+:- use_module measurements.
+:- use_module profile.
+:- use_module query.
+:- use_module report.
+:- pred create_call_site_dynamic_var_use_report(profile.deep, profile.call_site_dynamic_ptr, maybe.maybe_error(report.call_site_dynamic_var_use_info)).
+:- mode create_call_site_dynamic_var_use_report(builtin.in, builtin.in, builtin.out) is det.
+:- pred create_clique_report(profile.deep, profile.clique_ptr, maybe.maybe_error(report.clique_report)).
+:- mode create_clique_report(builtin.in, builtin.in, builtin.out) is det.
+:- pred create_dynamic_procrep_coverage_report(profile.deep, profile.proc_dynamic_ptr, maybe.maybe_error(report.procrep_coverage_info)).
+:- mode create_dynamic_procrep_coverage_report(builtin.in, builtin.in, builtin.out) is det.
+:- pred create_proc_report(profile.deep, profile.proc_static_ptr, maybe.maybe_error(report.proc_report)).
+:- mode create_proc_report(builtin.in, builtin.in, builtin.out) is det.
+:- pred create_report(query.cmd, profile.deep, report.deep_report).
+:- mode create_report(builtin.in, builtin.in, builtin.out) is det.
+:- pred create_static_procrep_coverage_report(profile.deep, profile.proc_static_ptr, maybe.maybe_error(report.procrep_coverage_info)).
+:- mode create_static_procrep_coverage_report(builtin.in, builtin.in, builtin.out) is det.
+:- pred create_top_procs_report(profile.deep, query.display_limit, query.cost_kind, query.include_descendants, query.measurement_scope, maybe.maybe_error(report.top_procs_report)).
+:- mode create_top_procs_report(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func describe_proc(profile.deep, profile.proc_static_ptr) = report.proc_desc.
+:- pred own_and_inherit_to_perf_row_data(profile.deep, T, measurements.own_prof_info, measurements.inherit_prof_info, report.perf_row_data(T)).
+:- mode own_and_inherit_to_perf_row_data(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

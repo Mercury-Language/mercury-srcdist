@@ -1,0 +1,136 @@
+:- module bimap.
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- type bimap(K, V).
+:- pred apply_forward_map_to_list(bimap.bimap(K, V), list.list(K), list.list(V)).
+:- mode apply_forward_map_to_list(builtin.in, builtin.in, builtin.out) is det.
+:- func apply_forward_map_to_list(bimap.bimap(K, V), list.list(K)) = list.list(V).
+:- pred apply_reverse_map_to_list(bimap.bimap(K, V), list.list(V), list.list(K)).
+:- mode apply_reverse_map_to_list(builtin.in, builtin.in, builtin.out) is det.
+:- func apply_reverse_map_to_list(bimap.bimap(K, V), list.list(V)) = list.list(K).
+:- pred contains_key(bimap.bimap(K, V), K).
+:- mode contains_key(builtin.in, builtin.in) is semidet.
+:- pred contains_value(bimap.bimap(K, V), V).
+:- mode contains_value(builtin.in, builtin.in) is semidet.
+:- pred coordinates(bimap.bimap(K, V), list.list(V)).
+:- mode coordinates(builtin.in, builtin.out) is det.
+:- func coordinates(bimap.bimap(K, V)) = list.list(V).
+:- func count(bimap.bimap(K, V)) = int.
+:- pred delete_key(K, bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode delete_key(builtin.in, builtin.in, builtin.out) is det.
+:- func delete_key(bimap.bimap(K, V), K) = bimap.bimap(K, V).
+:- pred delete_keys(list.list(K), bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode delete_keys(builtin.in, builtin.in, builtin.out) is det.
+:- func delete_keys(bimap.bimap(K, V), list.list(K)) = bimap.bimap(K, V).
+:- pred delete_value(V, bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode delete_value(builtin.in, builtin.in, builtin.out) is det.
+:- func delete_value(bimap.bimap(K, V), V) = bimap.bimap(K, V).
+:- pred delete_values(list.list(V), bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode delete_values(builtin.in, builtin.in, builtin.out) is det.
+:- func delete_values(bimap.bimap(K, V), list.list(V)) = bimap.bimap(K, V).
+:- pred det_from_assoc_list(assoc_list.assoc_list(K, V), bimap.bimap(K, V)).
+:- mode det_from_assoc_list(builtin.in, builtin.out) is det.
+:- func det_from_assoc_list(assoc_list.assoc_list(K, V)) = bimap.bimap(K, V).
+:- pred det_from_corresponding_lists(list.list(K), list.list(V), bimap.bimap(K, V)).
+:- mode det_from_corresponding_lists(builtin.in, builtin.in, builtin.out) is det.
+:- func det_from_corresponding_lists(list.list(K), list.list(V)) = bimap.bimap(K, V).
+:- pred det_insert(K, V, bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode det_insert(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func det_insert(bimap.bimap(K, V), K, V) = bimap.bimap(K, V).
+:- pred det_insert_from_assoc_list(assoc_list.assoc_list(K, V), bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode det_insert_from_assoc_list(builtin.in, builtin.in, builtin.out) is det.
+:- func det_insert_from_assoc_list(assoc_list.assoc_list(K, V), bimap.bimap(K, V)) = bimap.bimap(K, V).
+:- pred det_insert_from_corresponding_lists(list.list(K), list.list(V), bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode det_insert_from_corresponding_lists(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func det_insert_from_corresponding_lists(list.list(K), list.list(V), bimap.bimap(K, V)) = bimap.bimap(K, V).
+:- pred equal(bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode equal(builtin.in, builtin.in) is semidet.
+:- pred foldl(pred(K, V, A, A), bimap.bimap(K, V), A, A).
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- func foldl((func(K, V, A) = A), bimap.bimap(K, V), A) = A.
+:- pred foldl2(pred(K, V, A, A, B, B), bimap.bimap(K, V), A, A, B, B).
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldl3(pred(K, V, A, A, B, B, C, C), bimap.bimap(K, V), A, A, B, B, C, C).
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo, builtin.di, builtin.uo) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo, builtin.di, builtin.uo) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- func forward_map(bimap.bimap(K, V)) = map.map(K, V).
+:- pred forward_search(bimap.bimap(K, V), K, V).
+:- mode forward_search(builtin.in, builtin.in, builtin.out) is semidet.
+:- func forward_search(bimap.bimap(K, V), K) = V is semidet.
+:- pred from_assoc_list(assoc_list.assoc_list(K, V), bimap.bimap(K, V)).
+:- mode from_assoc_list(builtin.in, builtin.out) is semidet.
+:- func from_assoc_list(assoc_list.assoc_list(K, V)) = bimap.bimap(K, V) is semidet.
+:- pred from_corresponding_lists(list.list(K), list.list(V), bimap.bimap(K, V)).
+:- mode from_corresponding_lists(builtin.in, builtin.in, builtin.out) is semidet.
+:- func from_corresponding_lists(list.list(K), list.list(V)) = bimap.bimap(K, V) is semidet.
+:- pred init(bimap.bimap(K, V)).
+:- mode init(builtin.out) is det.
+:- func init = bimap.bimap(K, V).
+:- pred insert(K, V, bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode insert(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- func insert(bimap.bimap(K, V), K, V) = bimap.bimap(K, V) is semidet.
+:- pred insert_from_assoc_list(assoc_list.assoc_list(K, V), bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode insert_from_assoc_list(builtin.in, builtin.in, builtin.out) is semidet.
+:- func insert_from_assoc_list(assoc_list.assoc_list(K, V), bimap.bimap(K, V)) = bimap.bimap(K, V) is semidet.
+:- pred is_empty(bimap.bimap(K, V)).
+:- mode is_empty(builtin.in) is semidet.
+:- pred lookup(bimap.bimap(K, V), K, V).
+:- mode lookup(builtin.in, builtin.in, builtin.out) is det.
+:- func lookup(bimap.bimap(K, V), K) = V.
+:- pred map_keys(pred(V, K, L), bimap.bimap(K, V), bimap.bimap(L, V)).
+:- mode map_keys(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.out) is det.
+:- func map_keys((func(V, K) = L), bimap.bimap(K, V)) = bimap.bimap(L, V).
+:- pred map_values(pred(K, V, W), bimap.bimap(K, V), bimap.bimap(K, W)).
+:- mode map_values(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.out) is det.
+:- func map_values((func(K, V) = W), bimap.bimap(K, V)) = bimap.bimap(K, W).
+:- pred ordinates(bimap.bimap(K, V), list.list(K)).
+:- mode ordinates(builtin.in, builtin.out) is det.
+:- func ordinates(bimap.bimap(K, V)) = list.list(K).
+:- pred overlay(bimap.bimap(K, V), bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode overlay(builtin.in, builtin.in, builtin.out) is det.
+:- func overlay(bimap.bimap(K, V), bimap.bimap(K, V)) = bimap.bimap(K, V).
+:- pred reverse_lookup(bimap.bimap(K, V), K, V).
+:- mode reverse_lookup(builtin.in, builtin.out, builtin.in) is det.
+:- func reverse_lookup(bimap.bimap(K, V), V) = K.
+:- func reverse_map(bimap.bimap(K, V)) = map.map(V, K).
+:- pred reverse_search(bimap.bimap(K, V), K, V).
+:- mode reverse_search(builtin.in, builtin.out, builtin.in) is semidet.
+:- func reverse_search(bimap.bimap(K, V), V) = K is semidet.
+:- pred search(bimap.bimap(K, V), K, V).
+:- mode search(builtin.in, builtin.in, builtin.out) is semidet.
+:- mode search(builtin.in, builtin.out, builtin.in) is semidet.
+:- pred search_insert(K, V, maybe.maybe(V), bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode search_insert(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred set(K, V, bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode set(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func set(bimap.bimap(K, V), K, V) = bimap.bimap(K, V).
+:- pred set_from_assoc_list(assoc_list.assoc_list(K, V), bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode set_from_assoc_list(builtin.in, builtin.in, builtin.out) is det.
+:- func set_from_assoc_list(assoc_list.assoc_list(K, V), bimap.bimap(K, V)) = bimap.bimap(K, V).
+:- pred set_from_corresponding_lists(list.list(K), list.list(V), bimap.bimap(K, V), bimap.bimap(K, V)).
+:- mode set_from_corresponding_lists(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func set_from_corresponding_lists(list.list(K), list.list(V), bimap.bimap(K, V)) = bimap.bimap(K, V).
+:- func singleton(K, V) = bimap.bimap(K, V).
+:- pred to_assoc_list(bimap.bimap(K, V), assoc_list.assoc_list(K, V)).
+:- mode to_assoc_list(builtin.in, builtin.out) is det.
+:- func to_assoc_list(bimap.bimap(K, V)) = assoc_list.assoc_list(K, V).

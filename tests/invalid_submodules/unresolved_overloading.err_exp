@@ -1,0 +1,14 @@
+unresolved_overloading.m:026: Error: unresolved predicate overloading.
+unresolved_overloading.m:026:   The matches are
+unresolved_overloading.m:026:     predicate
+unresolved_overloading.m:026:     `unresolved_overloading.sub.loud_and_annoying'/3,
+unresolved_overloading.m:026:     and
+unresolved_overloading.m:026:     predicate
+unresolved_overloading.m:026:     `unresolved_overloading.loud_and_annoying'/3.
+unresolved_overloading.m:026:   You need to use an explicit module qualifier to
+unresolved_overloading.m:026:   select the one you intend to refer to.
+unresolved_overloading.m:026:   Proceeding on the assumption that the intended
+unresolved_overloading.m:026:   match is the first. If this assumption is
+unresolved_overloading.m:026:   incorrect, other error messages may be reported
+unresolved_overloading.m:026:   for this predicate or function solely because
+unresolved_overloading.m:026:   of this wrong assumption.
