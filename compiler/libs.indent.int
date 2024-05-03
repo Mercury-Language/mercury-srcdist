@@ -1,0 +1,13 @@
+:- module libs.indent.
+:- interface.
+:- use_module io.
+:- use_module string.
+:- use_module string.builder.
+:- type indent == uint.
+:- func add_indent2_prefix(libs.indent.indent, string) = string.
+:- pred format_indent2(libs.indent.indent, string.builder.state, string.builder.state).
+:- mode format_indent2(builtin.in, builtin.di, builtin.uo) is det.
+:- func indent2_increment = libs.indent.indent.
+:- func indent2_string(libs.indent.indent) = string.
+:- pred write_indent2(io.text_output_stream, libs.indent.indent, io.io, io.io).
+:- mode write_indent2(builtin.in, builtin.in, builtin.di, builtin.uo) is det.

@@ -1,0 +1,241 @@
+<!--
+vim: ts=4 sw=4 expandtab ft=html
+-->
+
+<html>
+<head>
+<title>The type class transformation</title>
+</head>
+
+<body>
+
+<h1>The type class transformation</h1>
+
+This document describes
+the transformation that the compiler does to implement type classes.
+<p>
+Note: the transformation described here should eventually be replaced
+by a design documented in runtime/mercury_typeclass_info.h.
+
+<h2>Transformation of code using type classes</h2>
+
+Every predicate which has a typeclass constraint is given an extra
+argument for every constraint in the predicate's type declaration.
+The argument is the "dictionary", or "typeclass_info" for the typeclass.
+The dictionary contains pointers to each of the class methods.
+<p>
+Representation of a typeclass_info:
+The typeclass_info is represented in two parts (the typeclass_info
+itself, and a base_typeclass_info), in a similar fashion to the
+type_info being represented in two parts (the type_info and the
+type_ctor_info).
+<p>
+
+The base_typeclass_info contains:
+<ul>
+<li> the sum of the number of constraints on the instance declaration
+and the number of unconstrained type variables
+from the head of the instance decl. (`n1')
+<li> the number of constraints on the instance decl. (`n2')
+<li> the number of constraints on the typeclass decl. (`n3')
+<li> the number of parameters (type variables) from the typeclass decl. (`n4')
+<li> the number of methods from the typeclass decl. (`n5')
+<li> pointer to method #1
+<li> ...
+<li> pointer to method #n5
+</ul>
+<p>
+
+The typeclass_info contains:
+<ul>
+<li> a pointer to the base typeclass info
+<li> type info for unconstrained type var #1 from the instance decl
+<li> ...
+<li> type info for unconstrained type var #(n1-n2) from the instance decl
+<li> typeclass info #1 for constraint on instance decl
+<li> ...
+<li> typeclass info #n2 for constraint on instance decl
+<li> typeclass info for superclass #1
+<li> ...
+<li> typeclass info for superclass #n3
+<li> type info #1
+<li> ...
+<li> type info #n4
+</ul>
+<p>
+
+The base_typeclass_info is produced statically,
+and there is one for each instance declaration.
+For each constraint on the instance declaration,
+the corresponding typeclass_info is stored in the second part.
+<p>
+For example for the following program:
+<p>
+
+<pre>
+:- typeclass foo(T) where [...].
+:- instance  foo(int) where [...].
+:- instance  foo(list(T)) <= foo(T) where [...].
+</pre>
+
+The typeclass_info for foo(int) is:
+<ul>
+<li>The base_typeclass_info:
+    <ul>
+    <li> 0 (there are no unconstrained type variables and no constraints)
+    <li> 0 (there are no constraints on the instance decl)
+    <li> 0 (there are no constraints on the typeclass decl)
+    <li> 1 (this is a single-parameter type class)
+    <li> n5 (the number of methods)
+    <li> pointer to method #1
+    <li> ...
+    <li> pointer to method #n5
+    </ul>
+
+<li>The typeclass_info:
+    <ul>
+    <li> a pointer to the base typeclass info
+    <li> type_info for int
+    </ul>
+</ul>
+
+The typeclass_info for foo(list(T)) is:
+<ul>
+<li>The base_typeclass_info:
+	<ul>
+	<li> 1 (no unconstrained tvars, 1 constraint on the instance decl)
+	<li> 1 (there is 1 constraint on the instance decl)
+	<li> 0 (there are no constraints on the typeclass decl)
+	<li> 1 (this is a single-parameter type class)
+	<li> n5 (the number of methods)
+	<li> pointer to method #1
+	<li> ...
+	<li> pointer to method #n5
+	</ul>
+
+<li>The typeclass_info contains:
+	<ul>
+	<li> a pointer to the base typeclass info
+	<li> typeclass info for foo(T)
+	<li> type_info for list(T)
+	</ul>
+</ul>
+
+If the "T" for the list is known,
+the whole typeclass_info will be static data.
+When we do not know until runtime,
+the typeclass_info is constructed dynamically.
+<p>
+
+<h3>Example of transformation</H3>
+
+Take the following code as an example (assuming the declarations above),
+ignoring the requirement for super-homogeneous form for clarity:
+<p>
+
+<pre>
+:- pred p(T1) <= foo(T1).
+:- pred q(T2, T3) <= foo(T2), bar(T3).
+:- pred r(T4, T5) <= foo(T4).
+
+p(X) :- q([X], 0), r(1, 0).
+</pre>
+
+We add an extra argument for each type class constraint,
+and one argument for each unconstrained type variable.
+<p>
+
+<pre>
+:- pred p(typeclass_info(foo(T1)), T1).
+:- pred q(typeclass_info(foo(T2)), typeclass_info(bar(T3)), T2, T3).
+:- pred r(typeclass_info(foo(T4)), type_info(T5), T4, T5).
+</pre>
+
+We transform the body of p to this:
+<pre>
+p(TypeClassInfoT1, X) :-
+	BaseTypeClassInfoT2 = base_typeclass_info(
+		1,
+		1,
+		0,
+		1,
+		n5, (ie. the number of methods)
+		...
+		... (The methods for the foo class from the list
+		...  instance)
+		...
+		),
+	TypeClassInfoT2 = typeclass_info(
+		BaseTypeClassInfoT2,
+		TypeClassInfoT1,
+		&lt;type_info for list(T1)&gt;),
+	BaseTypeClassInfoT3 = base_typeclass_info(
+		0,
+		0,
+		0,  (presuming bar has no superclasses)
+		1,
+		...
+		... (The methods for the bar class from the int
+		...  instance)
+		...
+		),
+	TypeClassInfoT3 = typeclass_info(
+		BaseTypeClassInfoT3,
+		&lt;type_info for int&gt;),
+	q(TypeClassInfoT2, TypeClassInfoT3, [X], 0),
+	BaseTypeClassInfoT4 = baseclass_type_info(
+		0,
+		0,
+		0,
+		1,
+		...
+		... (The methods for the foo class from the int
+		...  instance)
+		...
+		),
+	TypeClassInfoT4 = typeclass_info(
+		BaseTypeClassInfoT4,
+		&lt;type_info for int&gt;),
+	r(TypeClassInfoT4, &lt;type_info for int&gt;, X, 0).
+</pre>
+<p>
+
+<h3>Detecting duplicate instance declarations</h3>
+
+We would like to catch duplicate instance declarations
+(those that declare the same vector of possibly unground types
+to be members of the same typeclass)
+as early as possible.
+Since duplicate declarations can occur in different modules,
+the earliest practical time is link time.
+We would therefore like to generate a name for the global variable
+that holds the base_typeclass_info of an instance declaration
+that depends only on the identity of the typeclass
+and on the instance declaration's vector of argument types.
+<p>
+For the C backends, this is what we actually do.
+As a result, duplicate instance declarations will result in a link error
+for a multiply defined symbol if linking is done statically.
+(With dynamic linking, multiply defined symbols
+don't seem to cause any warnings or errors on the platforms we use,
+unless both definitions occur in the same shared library
+or both occur in the main program.)
+Note that the names of the global variables
+do in fact have module names in them,
+but they are the names of the modules that declare the type class
+and that declare the type constructors occuring in the argument types.
+The name of the module that contains the instance declaration
+need not be among these names.
+<p>
+For the Java backend, the data structures we generate
+must all be module qualified with the name of the module which generates them.
+If two modules contain duplicate instance declarations,
+we cannot catch that fact at link time.
+We could catch them at runtime,
+by having each module register its base_typeclass_infos
+at module initialization time,
+and detecting duplicate registrations.
+However, we currently have no such mechanism in place.
+
+</body>
+</html>
