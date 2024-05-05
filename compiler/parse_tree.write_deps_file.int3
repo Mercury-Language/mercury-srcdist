@@ -1,0 +1,8 @@
+:- module parse_tree.write_deps_file.
+:- interface.
+:- type maybe_include_trans_opt_rule.
+:- type maybe_intermod_deps.
+:- type trans_opt_rule_info.
+:- type_representation(file_name_cache_stats, is_eqv_to(map(ext, cache_stats))).
+:- type_representation(maybe_mmake_var, is_eqv_to(pair(list(string), string))).
+:- type_representation(module_file_name_cache, is_eqv_to(map(ext, map(module_name, file_name)))).

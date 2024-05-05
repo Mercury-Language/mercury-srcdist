@@ -1,0 +1,23 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2000, 2002-2003 The University of Melbourne.
+# Copyright (C) 2015, 2018 The Mercury team.
+# This file is distributed under the terms specified in COPYING.LIB.
+#-----------------------------------------------------------------------------#
+
+INSTALL_PREFIX := $(INSTALL_PREFIX)/extras
+
+-include ../Mmake.params
+
+MAIN_TARGET = all
+
+all:	libcomplex_numbers
+
+depend:	complex_numbers.depend
+
+install: libcomplex_numbers.install
+
+.PHONY: check
+check:
+	true

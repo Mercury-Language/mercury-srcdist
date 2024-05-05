@@ -1,0 +1,216 @@
+/*
+** Automatically generated from `slice_and_dice.m'
+** by the Mercury compiler,
+** version rotd-2024-05-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdbcomp.slice_and_dice.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdbcomp__slice_and_dice
+#define MR_HEADER_GUARD_mdbcomp__slice_and_dice
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDBCOMP__SLICE_AND_DICE_DECL_GUARD
+#define MDBCOMP__SLICE_AND_DICE_DECL_GUARD
+#include "mdbcomp.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__slice_and_dice__mdbcomp__slice_and_dice__type_ctor_info_dice_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__slice_and_dice__mdbcomp__slice_and_dice__type_ctor_info_dice_exec_count_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__slice_and_dice__mdbcomp__slice_and_dice__type_ctor_info_dice_label_count_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__slice_and_dice__mdbcomp__slice_and_dice__type_ctor_info_dice_proc_map_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__slice_and_dice__mdbcomp__slice_and_dice__type_ctor_info_proc_dice_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__slice_and_dice__mdbcomp__slice_and_dice__type_ctor_info_proc_slice_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__slice_and_dice__mdbcomp__slice_and_dice__type_ctor_info_slice_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__slice_and_dice__mdbcomp__slice_and_dice__type_ctor_info_slice_exec_count_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__slice_and_dice__mdbcomp__slice_and_dice__type_ctor_info_slice_label_count_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__slice_and_dice__mdbcomp__slice_and_dice__type_ctor_info_slice_proc_map_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__slice_and_dice__mdbcomp__slice_and_dice__type_ctor_info_trace_counts_kind_0;
+
+void MR_CALL 
+mdbcomp__slice_and_dice__read_dice_5_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdbcomp__slice_and_dice__read_dice_to_string_12_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_String param_8,
+  MR_String * param_9,
+  MR_String * param_10);
+
+void MR_CALL 
+mdbcomp__slice_and_dice__read_slice_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdbcomp__slice_and_dice__read_slice_to_string_11_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_String param_7,
+  MR_String * param_8,
+  MR_String * param_9);
+
+MR_Float MR_CALL 
+mdbcomp__slice_and_dice__suspicion_ratio_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Float MR_CALL 
+mdbcomp__slice_and_dice__suspicion_ratio_binary_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Float MR_CALL 
+mdbcomp__slice_and_dice__suspicion_ratio_normalised_4_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+void MR_CALL 
+mdbcomp__slice_and_dice____Compare____dice_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__slice_and_dice____Compare____dice_exec_count_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__slice_and_dice____Compare____dice_proc_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__slice_and_dice____Compare____proc_dice_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__slice_and_dice____Compare____proc_slice_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__slice_and_dice____Compare____slice_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__slice_and_dice____Compare____slice_exec_count_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__slice_and_dice____Compare____slice_proc_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__slice_and_dice____Unify____dice_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__slice_and_dice____Unify____dice_exec_count_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__slice_and_dice____Unify____dice_proc_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__slice_and_dice____Unify____proc_dice_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__slice_and_dice____Unify____proc_slice_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__slice_and_dice____Unify____slice_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__slice_and_dice____Unify____slice_exec_count_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__slice_and_dice____Unify____slice_proc_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdbcomp__slice_and_dice__init(void);
+void mercury__mdbcomp__slice_and_dice__init_type_tables(void);
+void mercury__mdbcomp__slice_and_dice__init_debugger(void);
+const char *mercury__mdbcomp__slice_and_dice__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdbcomp.slice_and_dice
+
+// :- end_interface mdbcomp.slice_and_dice.

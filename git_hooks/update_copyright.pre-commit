@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+#
+# This script is designed to update the Copyright lines of all files
+# that are going to be modified in the commit in a workspace,
+# before the commit is made.
+#
+# If ${ws} is the pathname of a workspace, then you enable this script
+# for that workspace by
+#
+# - compiling update_copyright.m to an executable, and
+# - copying or symlinking this script to ${ws}/.git/hooks/pre-commit.
+#
+# The first step can be done by the command
+#
+#   make update_copyright
+#
+# The unneeded intermediate files from the first step can cleaned up
+# by the command
+#
+#   make clean
+#
+# By default, this script requires the executable git_hooks/update_copyright
+# to be present in the workspace. You can avoid having a duplicate copy
+# of that executable in every workspace by
+#
+# - putting that executable in some central location, and
+# - setting the environment variable UPDATE_MERCURY_COPYRIGHT
+#   to invoke that executable.
+#
+
+set -e
+
+rootdir=$( git rev-parse --show-toplevel )
+if test "${UPDATE_MERCURY_COPYRIGHT}" != ""
+then
+    update_copyright="${UPDATE_MERCURY_COPYRIGHT}"
+else
+    update_copyright="${rootdir}/git_hooks/update_copyright"
+fi
+
+# Continue only if the update_copyright program is available.
+command -v "${update_copyright}" > /dev/null || exit 0
+
+# Find changed files for this commit.
+changed_files=($( git diff --name-only --cached --diff-filter=ACMR ))
+update_files=()
+unknown_files=()
+
+for file in "${changed_files[@]}"
+do
+    case ${file} in
+        *.[mchly] | *.in | *.java | *Mmake*)
+            update_files+=( "$file" )
+            ;;
+        *)
+            unknown_files+=( "$file" )
+            ;;
+    esac
+done
+
+if test "${#unknown_files}" -gt 0
+then
+    update_files+=($( grep -sl 'Copyright .* Mercury [Tt]eam' "${unknown_files[@]}" \
+        || true ))
+fi
+
+if test "${#update_files}" -gt 0
+then
+    # Accept both "Mercury team" and "Mercury Team".
+    exec "${update_copyright}" --suffix ' Mercury ' -- "${update_files[@]}"
+fi
