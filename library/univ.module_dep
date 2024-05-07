@@ -1,0 +1,14 @@
+module(2, "univ.m",
+	univ,
+	{},
+	{builtin, private_builtin, type_desc},
+	{list, require, string},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - univ, "C#" - univ, "Java" - univ},
+	contains_foreign_export,
+	no_main,
+	{}
+).
