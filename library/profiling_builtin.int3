@@ -1,0 +1,24 @@
+:- module profiling_builtin.
+:- interface.
+:- type call_site_dynamic.
+:- type call_site_nums_2.
+:- type call_site_nums_3.
+:- type call_site_nums_4.
+:- type call_site_nums_5.
+:- type call_site_nums_6.
+:- type call_site_nums_7.
+:- type call_site_nums_8.
+:- type call_site_nums_9.
+:- type proc_dynamic.
+:- type proc_layout.
+:- type_representation(call_site_dynamic, du_repn(notag("call_site_dynamic", c_pointer,  c_j_cs(foreign_type("MR_CallSiteDynamic *", []), no_foreign, no_foreign)))).
+:- type_representation(call_site_nums_2, is_word_aligned_ptr).
+:- type_representation(call_site_nums_3, is_word_aligned_ptr).
+:- type_representation(call_site_nums_4, is_word_aligned_ptr).
+:- type_representation(call_site_nums_5, is_word_aligned_ptr).
+:- type_representation(call_site_nums_6, is_word_aligned_ptr).
+:- type_representation(call_site_nums_7, is_word_aligned_ptr).
+:- type_representation(call_site_nums_8, is_word_aligned_ptr).
+:- type_representation(call_site_nums_9, is_word_aligned_ptr).
+:- type_representation(proc_dynamic, du_repn(notag("proc_dynamic", c_pointer,  c_j_cs(foreign_type("MR_ProcDynamic *", []), no_foreign, no_foreign)))).
+:- type_representation(proc_layout, du_repn(notag("proc_layout", c_pointer,  c_j_cs(foreign_type("MR_ProcLayout *", []), no_foreign, no_foreign)))).
