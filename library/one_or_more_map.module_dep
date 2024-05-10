@@ -1,0 +1,14 @@
+module(2, "one_or_more_map.m",
+	one_or_more_map,
+	{},
+	{assoc_list, builtin, list, map, one_or_more, private_builtin, set},
+	{cord, int, pair, require},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
