@@ -1,0 +1,7 @@
+:- module ml_backend.ml_type_gen.
+:- interface.
+:- type mlds_field_info
+    --->    mlds_field_info(ml_backend.mlds.mlds_field_var_name, ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_gc_statement, parse_tree.prog_data.prog_context).
+:- type tag_uses_base_class
+    --->    tag_does_not_use_base_class 
+    ;       tag_uses_base_class .

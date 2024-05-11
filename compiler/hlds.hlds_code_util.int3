@@ -1,0 +1,4 @@
+:- module hlds.hlds_code_util.
+:- interface.
+:- type_representation(inst_var_renaming, is_eqv_to(map(inst_var, inst_var))).
+:- type_representation(inst_var_renamings, is_eqv_to(list(inst_var_renaming))).
