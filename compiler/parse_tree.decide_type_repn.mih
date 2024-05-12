@@ -1,0 +1,125 @@
+/*
+** Automatically generated from `decide_type_repn.m'
+** by the Mercury compiler,
+** version rotd-2024-05-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.decide_type_repn.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__decide_type_repn
+#define MR_HEADER_GUARD_parse_tree__decide_type_repn
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__DECIDE_TYPE_REPN_DECL_GUARD
+#define PARSE_TREE__DECIDE_TYPE_REPN_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_arg_class_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_arg_pack_class_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_base_params_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_classified_arg_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_classified_constructor_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_ctor_repn_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_ctor_repn_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_eqv_repn_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_maybe_direct_args_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_maybe_double_word_floats_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_maybe_double_word_int64s_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_maybe_treat_as_first_arg_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_must_mask_remote_sectag_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_packable_arg_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_packable_constructor_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_platform_params_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_remote_shared_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_simple_du_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_simple_du_repn_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_subtype_repn_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__decide_type_repn__parse_tree__decide_type_repn__type_ctor_info_word_aligned_type_ctors_c_0;
+
+void MR_CALL 
+parse_tree__decide_type_repn__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_105_100_101_95_114_101_112_110_115_95_102_111_114_95_97_108_108_95_116_121_112_101_115_95_102_111_114_95_105_110_116_49_95_95_91_50_93_95_48_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__decide_type_repn__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_105_100_101_95_114_101_112_110_115_95_102_111_114_95_115_105_109_112_108_101_95_116_121_112_101_115_95_102_111_114_95_105_110_116_51_95_95_91_49_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__decide_type_repn__decide_repns_for_all_types_for_int1_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+parse_tree__decide_type_repn__decide_repns_for_simple_types_for_int3_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void mercury__parse_tree__decide_type_repn__init(void);
+void mercury__parse_tree__decide_type_repn__init_type_tables(void);
+void mercury__parse_tree__decide_type_repn__init_debugger(void);
+const char *mercury__parse_tree__decide_type_repn__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.decide_type_repn
+
+// :- end_interface parse_tree.decide_type_repn.

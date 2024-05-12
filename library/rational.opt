@@ -1,0 +1,128 @@
+:- module rational.
+:- use_module builtin.
+:- use_module integer.
+:- use_module private_builtin.
+:- use_module require.
+
+:- type rational
+    --->    r(integer.integer, integer.integer).
+
+:- func rational.cmp(rational.rational, rational.rational) = builtin.comparison_result.
+:- mode cmp(builtin.in, builtin.in) = builtin.out is det.
+:- func rational.rational_norm(integer.integer, integer.integer) = rational.rational.
+:- mode rational_norm(builtin.in, builtin.in) = builtin.out is det.
+
+rational.(+ V_3) = V_3.
+
+rational.(- rational.r(V_3, V_4)) = rational.r(V_5, V_4) :-
+    V_5 = integer.(- V_3).
+
+rational.(V_4 - V_5) = V_3 :-
+    V_3 = rational.(V_4 + V_6),
+    V_6 = rational.(- V_5).
+
+rational.(V_4 / V_5) = V_3 :-
+    V_3 = rational.(V_4 * V_6),
+    V_6 = rational.reciprocal(V_5).
+
+rational.(V_3 < V_4) :-
+    V_5 = rational.cmp(V_3, V_4),
+    V_5 = builtin.(<) : builtin.comparison_result.
+
+rational.(V_3 =< V_4) :-
+    V_5 = rational.cmp(V_3, V_4),
+    ( % disjunction
+      V_5 = builtin.(<) : builtin.comparison_result
+    ;
+      V_5 = builtin.(=) : builtin.comparison_result
+    ).
+
+rational.(V_3 > V_4) :-
+    V_5 = rational.cmp(V_3, V_4),
+    V_5 = builtin.(>) : builtin.comparison_result.
+
+rational.(V_3 >= V_4) :-
+    V_5 = rational.cmp(V_3, V_4),
+    ( % disjunction
+      V_5 = builtin.(>) : builtin.comparison_result
+    ;
+      V_5 = builtin.(=) : builtin.comparison_result
+    ).
+
+rational.abs(rational.r(V_3, V_4)) = rational.r(V_5, V_4) :-
+    V_5 = integer.abs(V_3).
+
+rational.denom(rational.r(V_3, V_4)) = V_4.
+
+rational.from_integer(V_3) = V_2 :-
+    V_2 = rational.rational_norm(V_3, V_4),
+    V_4 = integer.one.
+
+rational.from_integers(V_4, V_5) = V_3 :-
+    V_3 = rational.rational_norm(V_4, V_5).
+
+rational.numer(rational.r(V_3, V_4)) = V_3.
+
+rational.one = rational.r(V_2, V_3) :-
+    V_2 = integer.one,
+    V_3 = integer.one.
+
+rational.rational(V_3) = V_2 :-
+    V_2 = rational.rational_norm(V_4, V_5),
+    V_4 = integer.integer(V_3),
+    V_5 = integer.one.
+
+rational.rational(V_4, V_5) = V_3 :-
+    V_3 = rational.rational_norm(V_6, V_7),
+    V_6 = integer.integer(V_4),
+    V_7 = integer.integer(V_5).
+
+rational.zero = rational.r(V_2, V_3) :-
+    V_2 = integer.zero,
+    V_3 = integer.one.
+
+:- pragma termination_info(rational.'*'(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rational.'+'(builtin.in) = builtin.out, finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(rational.'+'(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rational.'-'(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rational.'-'(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rational.'/'(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rational.'<'(builtin.in, builtin.in), finite(0, [no, no]), can_loop).
+:- pragma termination_info(rational.'=<'(builtin.in, builtin.in), finite(0, [no, no]), can_loop).
+:- pragma termination_info(rational.'>'(builtin.in, builtin.in), finite(0, [no, no]), can_loop).
+:- pragma termination_info(rational.'>='(builtin.in, builtin.in), finite(0, [no, no]), can_loop).
+:- pragma termination_info(rational.abs(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rational.cmp(builtin.in, builtin.in) = builtin.out, finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(rational.denom(builtin.in) = builtin.out, finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info(rational.from_integer(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rational.from_integers(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rational.numer(builtin.in) = builtin.out, finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info((rational.one) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rational.rational(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rational.rational(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rational.rational_norm(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rational.reciprocal(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info((rational.zero) = builtin.out, infinite, can_loop).
+
+:- pragma exceptions(function, rational.(*), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.(+), 1, 0, will_not_throw).
+:- pragma exceptions(function, rational.(+), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.(-), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.(-), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.(/), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rational.(<), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rational.(=<), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rational.(>), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rational.(>=), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.abs, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.cmp, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.denom, 1, 0, will_not_throw).
+:- pragma exceptions(function, rational.from_integer, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.from_integers, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.numer, 1, 0, will_not_throw).
+:- pragma exceptions(function, rational.one, 0, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.rational, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.rational, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.rational_norm, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.reciprocal, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rational.zero, 0, 0, may_throw(user_exception)).
