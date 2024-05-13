@@ -1,0 +1,62 @@
+:- module parse_tree.parse_tree_out_pred_decl.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module string.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.parse_tree_out_info.
+:- use_module parse_tree.parse_tree_output.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item.
+:- use_module string.builder.
+:- pred mercury_format_func_decl(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.var_name_print, parse_tree.prog_data.tvarset, parse_tree.prog_data.inst_varset, parse_tree.prog_data.existq_tvars, mdbcomp.sym_name.sym_name, parse_tree.prog_item.types_and_maybe_modes, maybe.maybe(parse_tree.prog_data.determinism), parse_tree.prog_data.purity, parse_tree.prog_data.univ_exist_constraints, string, string, string, S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_func_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_func_mode_decl(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.mer_mode, maybe.maybe(parse_tree.prog_data.determinism), S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_func_mode_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_func_mode_decl_gen(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.mer_mode, maybe.maybe(parse_tree.prog_data.determinism), string, string, S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_func_mode_decl_gen(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_func_mode_subdecl(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.mer_mode, maybe.maybe(parse_tree.prog_data.determinism), S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_func_mode_subdecl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_func_type(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.existq_tvars, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.mer_type, maybe.maybe(parse_tree.prog_data.determinism), parse_tree.prog_data.purity, parse_tree.prog_data.univ_exist_constraints, S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_func_type(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_mode_subdecl(parse_tree.parse_tree_out_info.output_lang, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), maybe.maybe(parse_tree.prog_data.determinism), S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_mode_subdecl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_pred_mode_decl(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), maybe.maybe(parse_tree.prog_data.mer_inst), maybe.maybe(parse_tree.prog_data.determinism), S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_pred_mode_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_pred_or_func_decl(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.var_name_print, parse_tree.prog_data.tvarset, parse_tree.prog_data.inst_varset, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.existq_tvars, mdbcomp.sym_name.sym_name, parse_tree.prog_item.types_and_maybe_modes, maybe.maybe(parse_tree.prog_data.mer_type), maybe.maybe(parse_tree.prog_data.mer_inst), maybe.maybe(parse_tree.prog_data.determinism), parse_tree.prog_data.purity, parse_tree.prog_data.univ_exist_constraints, string, string, string, S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_pred_or_func_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_pred_or_func_mode_decl_gen(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), maybe.maybe(parse_tree.prog_data.mer_inst), maybe.maybe(parse_tree.prog_data.determinism), string, string, S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_pred_or_func_mode_decl_gen(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_pred_or_func_mode_subdecl(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), maybe.maybe(parse_tree.prog_data.mer_inst), maybe.maybe(parse_tree.prog_data.determinism), S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_pred_or_func_mode_subdecl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_pred_type(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.existq_tvars, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_type), maybe.maybe(parse_tree.prog_data.determinism), parse_tree.prog_data.purity, parse_tree.prog_data.univ_exist_constraints, S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_pred_type(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- func mercury_func_mode_decl_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.mer_mode, maybe.maybe(parse_tree.prog_data.determinism)) = string.
+:- func mercury_func_mode_subdecl_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.mer_mode, maybe.maybe(parse_tree.prog_data.determinism)) = string.
+:- func mercury_func_type_to_string(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.existq_tvars, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.mer_type, maybe.maybe(parse_tree.prog_data.determinism), parse_tree.prog_data.purity, parse_tree.prog_data.univ_exist_constraints) = string.
+:- func mercury_mode_subdecl_to_string(parse_tree.parse_tree_out_info.output_lang, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), maybe.maybe(parse_tree.prog_data.determinism)) = string.
+:- pred mercury_output_func_mode_decl(io.text_output_stream, parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.mer_mode, maybe.maybe(parse_tree.prog_data.determinism), io.io, io.io).
+:- mode mercury_output_func_mode_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_func_mode_subdecl(io.text_output_stream, parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.mer_mode, maybe.maybe(parse_tree.prog_data.determinism), io.io, io.io).
+:- mode mercury_output_func_mode_subdecl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_func_type(io.text_output_stream, parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.existq_tvars, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.mer_type, maybe.maybe(parse_tree.prog_data.determinism), parse_tree.prog_data.purity, parse_tree.prog_data.univ_exist_constraints, io.io, io.io).
+:- mode mercury_output_func_type(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_mode_subdecl(io.text_output_stream, parse_tree.parse_tree_out_info.output_lang, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), maybe.maybe(parse_tree.prog_data.determinism), io.io, io.io).
+:- mode mercury_output_mode_subdecl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_pred_mode_decl(io.text_output_stream, parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), maybe.maybe(parse_tree.prog_data.mer_inst), maybe.maybe(parse_tree.prog_data.determinism), io.io, io.io).
+:- mode mercury_output_pred_mode_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_pred_mode_subdecl(io.text_output_stream, parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), maybe.maybe(parse_tree.prog_data.determinism), io.io, io.io).
+:- mode mercury_output_pred_mode_subdecl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_pred_type(io.text_output_stream, parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.existq_tvars, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_type), maybe.maybe(parse_tree.prog_data.determinism), parse_tree.prog_data.purity, parse_tree.prog_data.univ_exist_constraints, io.io, io.io).
+:- mode mercury_output_pred_type(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- func mercury_pred_mode_decl_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), maybe.maybe(parse_tree.prog_data.mer_inst), maybe.maybe(parse_tree.prog_data.determinism)) = string.
+:- func mercury_pred_mode_subdecl_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_mode), maybe.maybe(parse_tree.prog_data.determinism)) = string.
+:- func mercury_pred_type_to_string(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.existq_tvars, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_type), maybe.maybe(parse_tree.prog_data.determinism), parse_tree.prog_data.purity, parse_tree.prog_data.univ_exist_constraints) = string.
+:- pragma type_spec_constrained_preds([    (parse_tree.parse_tree_output).pt_output(Stream, State)
+], apply_to_superclasses, [
+    subst([Stream = io.text_output_stream, State = io.state]),
+    subst([Stream = string.builder.handle, State = string.builder.state])
+]).
