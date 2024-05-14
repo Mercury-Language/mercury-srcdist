@@ -1,0 +1,8 @@
+:- module check_hlds.modecheck_conj.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module check_hlds.mode_info.
+:- use_module hlds.hlds_goal.
+:- pred modecheck_conj_list(hlds.hlds_goal.conj_type, list.list(hlds.hlds_goal.hlds_goal), list.list(hlds.hlds_goal.hlds_goal), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_conj_list(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

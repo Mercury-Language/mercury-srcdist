@@ -1,0 +1,7 @@
+bug410.m:055: Error: clause for predicate `make_titles'/3
+bug410.m:055:   without corresponding `:- pred' declaration.
+bug410.m:055: Inferred :- pred make_titles(pred(V_1, V_2, V_2), V_2, T3).
+bug410.m:055: Inferred :- mode make_titles(di(/* unique */(pred(out, in, out)
+bug410.m:055:   is det)), (ground >> not_reached), out(not_reached)).
+bug410.m:055: Inferred :- mode make_titles(di(/* unique */(pred(out, in, out)
+bug410.m:055:   is det)), di, out(not_reached)).

@@ -1,0 +1,6 @@
+:- module parse_tree.prog_mutable.
+:- interface.
+:- type module_params.
+:- type type_foreign_name_func.
+:- type_representation(module_params, is_word_aligned_ptr).
+:- type_representation(type_foreign_name_func, is_eqv_to((func(foreign_language, mer_type) = string))).

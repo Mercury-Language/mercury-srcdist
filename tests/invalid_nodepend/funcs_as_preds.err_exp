@@ -1,0 +1,30 @@
+funcs_as_preds.m:012: Warning: the interface of module [38;5;87m`funcs_as_preds'[39;49m [38;5;203mdoes[39;49m
+funcs_as_preds.m:012:   [38;5;203mnot export anything.[39;49m
+funcs_as_preds.m:014: Error: module `funcs_as_preds' should start with either
+funcs_as_preds.m:014:   an `:- interface' or an `:- implementation'
+funcs_as_preds.m:014:   declaration.
+funcs_as_preds.m:014:   The following assumes that the missing declaration is
+funcs_as_preds.m:014:   an `:- implementation' declaration.
+funcs_as_preds.m:018: Error: clause for function `null'/1
+funcs_as_preds.m:018:   without corresponding `:- func' declaration.
+funcs_as_preds.m:018: In clause for function `null'/1:
+funcs_as_preds.m:018:   in function result term of clause head:
+funcs_as_preds.m:018:   error: the language construct `='/2 should be used as a
+funcs_as_preds.m:018:   goal, not as an expression.
+funcs_as_preds.m:022: Error: clause for function `car'/1
+funcs_as_preds.m:022:   without corresponding `:- func' declaration.
+funcs_as_preds.m:022: Inferred :- func car(list.list(list.list(T))) =
+funcs_as_preds.m:022:   list.list(T).
+funcs_as_preds.m:025: Error: clause for function `cdr'/1
+funcs_as_preds.m:025:   without corresponding `:- func' declaration.
+funcs_as_preds.m:025: Inferred :- func cdr(list.list(T)) = list.list(T).
+funcs_as_preds.m:028: Error: clause for function `cons'/2
+funcs_as_preds.m:028:   without corresponding `:- func' declaration.
+funcs_as_preds.m:028: Inferred :- func cons(T, list.list(T)) = list.list(T).
+funcs_as_preds.m:031: Error: clause for function `ap'/2
+funcs_as_preds.m:031:   without corresponding `:- func' declaration.
+funcs_as_preds.m:031: In clause for function `ap'/2:
+funcs_as_preds.m:031:   error: undefined predicate `null'/1.
+funcs_as_preds.m:031:   [38;5;226m(There is a *function* with that name, however.[39;49m
+funcs_as_preds.m:031:   [38;5;226mPerhaps you forgot to add ` = ...'?)[39;49m
+For more information, recompile with `-E'.
