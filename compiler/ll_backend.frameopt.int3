@@ -1,0 +1,9 @@
+:- module ll_backend.frameopt.
+:- interface.
+:- type_representation(det_frame_block_map, is_eqv_to(frame_block_map(det_entry_info, det_exit_info))).
+:- type_representation(frame_block_map(V_1, V_2), is_eqv_to(map(label, frame_block_info(V_1, V_2)))).
+:- type_representation(ord_needs_frame, is_eqv_to(map(label, block_needs_frame))).
+:- type_representation(pre_exit_dummy_label_map, is_eqv_to(map(label, label))).
+:- type_representation(pred_map, is_eqv_to(map(label, label))).
+:- type_representation(prop_queue, is_eqv_to(queue(label))).
+:- type_representation(rev_map, is_eqv_to(map(label, list(label)))).

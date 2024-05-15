@@ -1,0 +1,29 @@
+vars_in_wrong_places.m:005: Warning: the interface of module
+vars_in_wrong_places.m:005:   [38;5;87m`vars_in_wrong_places'[39;49m [38;5;203mdoes not export anything.[39;49m
+vars_in_wrong_places.m:005:   To be useful, a module should export something. A
+vars_in_wrong_places.m:005:   file should contain at least one declaration
+vars_in_wrong_places.m:005:   other than `:- import_module' in its interface
+vars_in_wrong_places.m:005:   section(s). This would normally be a `:- pred' or
+vars_in_wrong_places.m:005:   `:- func' declaration, or a `:- type', `:- inst',
+vars_in_wrong_places.m:005:   `:- mode', `:- typeclass' or `:- instance'
+vars_in_wrong_places.m:005:   definition.
+vars_in_wrong_places.m:006: Error: module `vars_in_wrong_places' should start
+vars_in_wrong_places.m:006:   with either an `:- interface' or an
+vars_in_wrong_places.m:006:   `:- implementation' declaration.
+vars_in_wrong_places.m:006:   The following assumes that the missing
+vars_in_wrong_places.m:006:   declaration is an `:- implementation'
+vars_in_wrong_places.m:006:   declaration.
+vars_in_wrong_places.m:006: In clause head:
+vars_in_wrong_places.m:006:   error: expected a [38;5;40msymbol name,[39;49m got [38;5;203m`Oops1'.[39;49m
+vars_in_wrong_places.m:007: In equation head:
+vars_in_wrong_places.m:007:   error: expected a [38;5;40msymbol name,[39;49m got [38;5;203m`Oops2'.[39;49m
+vars_in_wrong_places.m:008: In equation head:
+vars_in_wrong_places.m:008:   error: expected a [38;5;40msymbol name,[39;49m got [38;5;203m`Oops3'.[39;49m
+vars_in_wrong_places.m:009: In `:- pred' declaration:
+vars_in_wrong_places.m:009:   error: expected a [38;5;40msymbol name,[39;49m got [38;5;203m`Oops4'.[39;49m
+vars_in_wrong_places.m:010: In `:- func' declaration:
+vars_in_wrong_places.m:010:   error: expected a [38;5;40msymbol name,[39;49m got [38;5;203m`Oops5'.[39;49m
+vars_in_wrong_places.m:011: In `:- mode' declaration:
+vars_in_wrong_places.m:011:   error: expected a [38;5;40msymbol name,[39;49m got [38;5;203m`Oops6'.[39;49m
+vars_in_wrong_places.m:012: In function `:- mode' declaration:
+vars_in_wrong_places.m:012:   error: expected a [38;5;40msymbol name,[39;49m got [38;5;203m`Oops7'.[39;49m
