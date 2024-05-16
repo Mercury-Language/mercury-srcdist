@@ -1,0 +1,23 @@
+:- module backend_libs.switch_util.
+:- interface.
+:- type int_switch_info(T)
+    --->    int_switch_info((backend_libs.switch_util).lower_limt :: T, (backend_libs.switch_util).upper_limit :: T, (backend_libs.switch_util).num_values :: int).
+:- type maybe_int_switch_info
+    --->    int_switch(backend_libs.switch_util.int_switch_info(int))
+    ;       uint_switch(backend_libs.switch_util.int_switch_info(uint))
+    ;       int8_switch(backend_libs.switch_util.int_switch_info(int8))
+    ;       uint8_switch(backend_libs.switch_util.int_switch_info(uint8))
+    ;       int16_switch(backend_libs.switch_util.int_switch_info(int16))
+    ;       uint16_switch(backend_libs.switch_util.int_switch_info(uint16))
+    ;       int32_switch(backend_libs.switch_util.int_switch_info(int32))
+    ;       uint32_switch(backend_libs.switch_util.int_switch_info(uint32))
+    ;       int64_switch(backend_libs.switch_util.int_switch_info(int64))
+    ;       uint64_switch(backend_libs.switch_util.int_switch_info(uint64))
+    ;       not_int_switch .
+:- type switch_category
+    --->    ite_chain_switch 
+    ;       int_max_32_switch 
+    ;       int_64_switch 
+    ;       string_switch 
+    ;       float_switch 
+    ;       tag_switch .
