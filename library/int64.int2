@@ -1,0 +1,2 @@
+:- module int64.
+:- interface.
