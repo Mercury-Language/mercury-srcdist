@@ -1,0 +1,28 @@
+try_detism.m:016: In [38;5;87m`p'(out, di, uo):[39;49m
+try_detism.m:016:   error: determinism declaration not satisfied.
+try_detism.m:016:   Declared [38;5;40m`cc_multi',[39;49m inferred [38;5;203m`cc_nondet'.[39;49m
+try_detism.m:016:   The reason for the difference is the following.
+try_detism.m:023:   In argument 1 of call to predicate `try_detism.q'/3:
+try_detism.m:023:   [38;5;226munification with `X' can fail.[39;49m
+try_detism.m:022: Error: call to predicate [38;5;87m`exception.magic_exception_result'/1[39;49m
+try_detism.m:022:   with determinism `cc_multi' [38;5;203moccurs in a context which[39;49m
+try_detism.m:022:   [38;5;203mrequires all solutions.[39;49m
+try_detism.m:023:   Unification of X and V_17 can fail.
+try_detism.m:022: In clause for `p(out, di, uo)':
+try_detism.m:022:   in call to predicate `exception.try_io'/4:
+try_detism.m:022:   mode error: arguments
+try_detism.m:022:   [38;5;87m`TryLambda, TryResult, STATE_VARIABLE_IO_10, TryIOOutput'[39;49m
+try_detism.m:022:   have the following insts:
+try_detism.m:022:     /* unique */ (pred(out, di, uo) is semidet),
+try_detism.m:022:     free,
+try_detism.m:022:     unique,
+try_detism.m:022:     free
+try_detism.m:022:   which does not match any of the modes for predicate
+try_detism.m:022:   `exception.try_io'/4.
+try_detism.m:022:   The [38;5;87mfirst argument `TryLambda'[39;49m has inst
+try_detism.m:022:     [38;5;203m/* unique */ (pred(out, di, uo) is semidet),[39;49m
+try_detism.m:022:   which does not match any of those modes.
+try_detism.m:022:   (For higher order insts like this, the mismatch is
+try_detism.m:022:   sometimes caused by the arity of the predicate or function
+try_detism.m:022:   being different in the inst than in the type.)
+For more information, recompile with `-E'.
