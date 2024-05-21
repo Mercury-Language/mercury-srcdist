@@ -1,0 +1,22 @@
+:- module parse_tree.parse_mutable.
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module varset.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.maybe_error.
+:- use_module parse_tree.parse_types.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item.
+:- type mutable_locn
+    --->    mutable_locn_item 
+    ;       mutable_locn_in_solver_type .
+:- pred parse_finalise_item(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_finalise_item(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_initialise_item(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_initialise_item(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_mutable_decl_info(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.parse_mutable.mutable_locn, parse_tree.maybe_error.maybe1(parse_tree.prog_item.item_mutable_info)).
+:- mode parse_mutable_decl_info(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_mutable_item(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_mutable_item(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
