@@ -1,0 +1,51 @@
+errors_3.m:012: Error: [38;5;203mmodule must start with a `:- module' declaration.[39;49m
+errors_3.m:012: Error: module `errors_3' [38;5;203mshould start with[39;49m either an
+errors_3.m:012:   [38;5;40m`:- interface' declaration[39;49m or an [38;5;40m`:- implementation'[39;49m
+errors_3.m:012:   [38;5;40mdeclaration.[39;49m
+errors_3.m:012:   The following assumes that the missing declaration is an
+errors_3.m:012:   `:- implementation' declaration.
+errors_3.m:012: Warning: the interface of module [38;5;87m`errors_3'[39;49m [38;5;203mdoes not export[39;49m
+errors_3.m:012:   [38;5;203manything.[39;49m
+errors_3.m:030: Error: `:- mode' declaration for predicate
+errors_3.m:030:   [38;5;87m`mode_declaration_without_pred_declaration'/0[39;49m [38;5;203mwithout[39;49m a
+errors_3.m:030:   corresponding `:- pred' declaration.
+errors_3.m:034: Error: `:- mode' declaration for predicate
+errors_3.m:034:   [38;5;87m`missing_pred_declaration'/0[39;49m [38;5;203mwithout[39;49m a corresponding
+errors_3.m:034:   `:- pred' declaration.
+errors_3.m:040: Error: clause for predicate
+errors_3.m:040:   [38;5;87m`clause_without_pred_or_mode_declaration'/0[39;49m [38;5;203mwithout[39;49m a
+errors_3.m:040:   corresponding `:- pred' declaration.
+errors_3.m:053: Error: [38;5;87m`a'/0[39;49m [38;5;203moccurs more than once[39;49m in the definition of type
+errors_3.m:053:   constructor [38;5;87m`type_with_multiply_defined_ctors'/0.[39;49m
+errors_3.m:055: Error: [38;5;87m`f'/1[39;49m [38;5;203moccurs more than once[39;49m in the definition of type
+errors_3.m:055:   constructor [38;5;87m`type_with_multiply_defined_ctors'/0.[39;49m
+errors_3.m:058: In the first argument of function symbol `f' of the type
+errors_3.m:058:   `du_type_which_references_undefined_type'/0:
+errors_3.m:058:   error: the type [38;5;87m`undefined_type'/0[39;49m [38;5;203mis undefined.[39;49m
+errors_3.m:060: In definition of type
+errors_3.m:060:   `eqv_type_which_references_undefined_type'/0:
+errors_3.m:060:   error: the type [38;5;87m`undefined_type'/0[39;49m [38;5;203mis undefined.[39;49m
+errors_3.m:062: Error: equivalence type [38;5;87m`errors_3.circular_eqv_type'/0[39;49m is
+errors_3.m:062:   [38;5;203mcircular.[39;49m
+errors_3.m:064: Error: equivalence type
+errors_3.m:064:   [38;5;87m`errors_3.indirectly_circular_eqv_type_1'/0[39;49m is [38;5;203mcircular.[39;49m
+errors_3.m:065: Error: equivalence type
+errors_3.m:065:   [38;5;87m`errors_3.indirectly_circular_eqv_type_2'/0[39;49m is [38;5;203mcircular.[39;49m
+errors_3.m:068: Error: [38;5;87ma free type parameter such as [38;5;87m`T'[39;49m [38;5;203mmay not appear[39;49m on the
+errors_3.m:068:   right hand side of a type definition.
+errors_3.m:070: Error: the [38;5;87mtype variable[39;49m [38;5;87m`T'[39;49m occurs [38;5;203monly on the right hand side[39;49m
+errors_3.m:070:   [38;5;203mof this type definition.[39;49m
+errors_3.m:084: In clause for predicate `pred_with_unresolved_polymorphism'/0:
+errors_3.m:084:   warning: variable [38;5;87m`Arg'[39;49m [38;5;203moccurs only once[39;49m in this scope.
+errors_3.m:100: In clause for predicate `pred_with_singleton_vars'/1:
+errors_3.m:100:   warning: variable [38;5;87m`X'[39;49m [38;5;203moccurs only once[39;49m in this scope.
+errors_3.m:106: Warning: this `:- use_module' declaration for module `int' in
+errors_3.m:106:   the implementation section is redundant, given the
+errors_3.m:106:   `:- import_module' declaration for the same module in the
+errors_3.m:106:   same section.
+errors_3.m:104:   The previous declaration is here.
+errors_3.m:109: In definition of type `needs_qualification'/0:
+errors_3.m:109:   error: the type [38;5;87m`state'/0[39;49m [38;5;203mis undefined.[39;49m
+errors_3.m:109:   [38;5;226m(Only fully module qualified names may refer to the entities[39;49m
+errors_3.m:109:   [38;5;226mdefined in module `io'.)[39;49m
+For more information, recompile with `-E'.
