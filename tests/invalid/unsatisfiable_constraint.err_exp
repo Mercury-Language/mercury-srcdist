@@ -1,0 +1,23 @@
+unsatisfiable_constraint.m:039: Error: predicate [38;5;87m`test'/1[39;49m contains some
+unsatisfiable_constraint.m:039:   unsatisified typeclass constraints:
+unsatisfiable_constraint.m:039:     [38;5;203m`unsatisfiable_constraint.a(A, B, A, V_8)',[39;49m
+unsatisfiable_constraint.m:039:     [38;5;203m`unsatisfiable_constraint.a(A, B, C, V_14)',[39;49m
+unsatisfiable_constraint.m:039:     [38;5;203m`unsatisfiable_constraint.b(A, C)'.[39;49m
+unsatisfiable_constraint.m:039:   The constraints are due to:
+unsatisfiable_constraint.m:043:     a goal here,
+unsatisfiable_constraint.m:044:     a goal here, and
+unsatisfiable_constraint.m:045:     a goal here.
+unsatisfiable_constraint.m:039: Warning: unresolved polymorphism in predicate
+unsatisfiable_constraint.m:039:   [38;5;87m`test'/1.[39;49m
+unsatisfiable_constraint.m:039:   The variables with unbound types were:
+unsatisfiable_constraint.m:039:     [38;5;203m`B',[39;49m
+unsatisfiable_constraint.m:039:     [38;5;203m`C'.[39;49m
+unsatisfiable_constraint.m:039:   Their types will be implicitly set to the
+unsatisfiable_constraint.m:039:   builtin type `void'.
+unsatisfiable_constraint.m:039:   The body of the clause contains a call to a
+unsatisfiable_constraint.m:039:   polymorphic predicate, but I can't determine
+unsatisfiable_constraint.m:039:   which version should be called, because the
+unsatisfiable_constraint.m:039:   types of the variables listed above are not
+unsatisfiable_constraint.m:039:   known. (I ought to tell you which call caused
+unsatisfiable_constraint.m:039:   the problem, but I am afraid you will have to
+unsatisfiable_constraint.m:039:   work it out yourself. My apologies.)

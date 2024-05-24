@@ -1,0 +1,73 @@
+/*
+** Automatically generated from `startup.m'
+** by the Mercury compiler,
+** version rotd-2024-05-24
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module startup.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_startup
+#define MR_HEADER_GUARD_startup
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef STARTUP_DECL_GUARD
+#define STARTUP_DECL_GUARD
+
+#endif
+
+
+
+void MR_CALL 
+startup__read_and_startup_10_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+startup__read_and_startup_default_deep_options_9_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void mercury__startup__init(void);
+void mercury__startup__init_type_tables(void);
+void mercury__startup__init_debugger(void);
+const char *mercury__startup__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_startup
+
+// :- end_interface startup.
