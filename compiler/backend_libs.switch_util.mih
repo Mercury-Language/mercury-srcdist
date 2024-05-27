@@ -1,0 +1,154 @@
+/*
+** Automatically generated from `switch_util.m'
+** by the Mercury compiler,
+** version rotd-2024-05-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module backend_libs.switch_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_backend_libs__switch_util
+#define MR_HEADER_GUARD_backend_libs__switch_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BACKEND_LIBS__SWITCH_UTIL_DECL_GUARD
+#define BACKEND_LIBS__SWITCH_UTIL_DECL_GUARD
+#include "backend_libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_int_switch_info_1;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_maybe_int_switch_info_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_switch_category_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_backend_libs__switch_util__int_tag_value__arity1__int16__arity0__[9];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_backend_libs__switch_util__int_tag_value__arity1__int32__arity0__[9];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_backend_libs__switch_util__int_tag_value__arity1__int64__arity0__[9];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_backend_libs__switch_util__int_tag_value__arity1__int8__arity0__[9];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_backend_libs__switch_util__int_tag_value__arity1__int__arity0__[9];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_backend_libs__switch_util__int_tag_value__arity1__uint16__arity0__[9];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_backend_libs__switch_util__int_tag_value__arity1__uint32__arity0__[9];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_backend_libs__switch_util__int_tag_value__arity1__uint64__arity0__[9];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_backend_libs__switch_util__int_tag_value__arity1__uint8__arity0__[9];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_backend_libs__switch_util__int_tag_value__arity1__uint__arity0__[9];
+
+extern const MR_TypeClassDeclStruct backend_libs__switch_util__backend_libs__switch_util__type_class_decl_int_tag_value_1;
+
+void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+backend_libs__switch_util__find_switch_category_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__switch_util__get_target_host_min_word_size_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+backend_libs__switch_util__num_cons_ids_in_tagged_cases_3_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+backend_libs__switch_util__tag_cases_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_Integer MR_CALL 
+backend_libs__switch_util__estimate_switch_tag_test_cost_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+backend_libs__switch_util____Compare____int_switch_info_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+backend_libs__switch_util____Compare____maybe_int_switch_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__switch_util____Compare____switch_category_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____int_switch_info_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____maybe_int_switch_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____switch_category_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__backend_libs__switch_util__init(void);
+void mercury__backend_libs__switch_util__init_type_tables(void);
+void mercury__backend_libs__switch_util__init_debugger(void);
+const char *mercury__backend_libs__switch_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_backend_libs.switch_util
+
+// :- end_interface backend_libs.switch_util.
