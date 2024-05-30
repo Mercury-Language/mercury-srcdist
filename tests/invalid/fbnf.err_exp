@@ -1,0 +1,17 @@
+fbnf.m:214: In clause for predicate `execute'/7:
+fbnf.m:214:   in argument 1 (i.e. the predicate term) of higher-order predicate
+fbnf.m:214:   call:
+fbnf.m:214:   type error: [38;5;87mvariable `Entry'[39;49m has type
+fbnf.m:214:     [38;5;203mpred([39;49m
+fbnf.m:214:       [38;5;203mfbnf.fstate :: in,[39;49m
+fbnf.m:214:       [38;5;203mfbnf.fstate :: out,[39;49m
+fbnf.m:214:       [38;5;203mio.state :: di,[39;49m
+fbnf.m:214:       [38;5;203mio.state :: uo,[39;49m
+fbnf.m:214:       [38;5;203mlist.list(string) :: in,[39;49m
+fbnf.m:214:       [38;5;203mlist.list(string) :: out[39;49m
+fbnf.m:214:     [38;5;203m) is det;[39;49m
+fbnf.m:214:   expected type was
+fbnf.m:214:     [38;5;40mpred(V_7, V_8, V_9, V_10).[39;49m
+fbnf.m:214:   [38;5;203mArity mismatch[39;49m for the predicate: expected [38;5;226mfour arguments,[39;49m got
+fbnf.m:214:   [38;5;226msix.[39;49m
+For more information, recompile with `-E'.

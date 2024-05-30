@@ -1,0 +1,16 @@
+:- module ml_backend.ml_foreign_proc_gen.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.code_model.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_pred.
+:- use_module ml_backend.ml_gen_info.
+:- use_module ml_backend.mlds.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_foreign.
+:- pred ml_gen_foreign_proc(hlds.code_model.code_model, parse_tree.prog_data_foreign.foreign_proc_attributes, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, list.list(hlds.hlds_goal.foreign_arg), list.list(hlds.hlds_goal.foreign_arg), string, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_foreign_proc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred ml_gen_trace_runtime_cond(parse_tree.prog_data.trace_expr(parse_tree.prog_data.trace_runtime), parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_trace_runtime_cond(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
