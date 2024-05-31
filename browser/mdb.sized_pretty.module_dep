@@ -1,0 +1,14 @@
+module(2, "sized_pretty.m",
+	mdb.sized_pretty,
+	{mdb},
+	{builtin, private_builtin, univ, mdb.browser_info, mdb.browser_term},
+	{bool, deconstruct, int, list, maybe, pair, pprint, std_util, string},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
