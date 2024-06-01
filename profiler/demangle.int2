@@ -1,0 +1,2 @@
+:- module demangle.
+:- interface.

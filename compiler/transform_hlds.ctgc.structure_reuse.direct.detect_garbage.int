@@ -1,0 +1,6 @@
+:- module (((transform_hlds.ctgc).structure_reuse).direct).detect_garbage.
+:- interface.
+:- use_module hlds.
+:- use_module hlds.hlds_goal.
+:- pred determine_dead_deconstructions(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, transform_hlds.ctgc.structure_sharing.domain.sharing_as_table, hlds.hlds_goal.hlds_goal, transform_hlds.ctgc.structure_reuse.direct.dead_cell_table).
+:- mode determine_dead_deconstructions(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

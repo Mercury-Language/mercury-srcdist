@@ -1,0 +1,7 @@
+:- module (transform_hlds.higher_order).higher_order_info.
+:- interface.
+:- type higher_order_info.
+:- type ho_changed
+	where	type_is_abstract_enum(2).
+:- type_representation(higher_order_info, is_word_aligned_ptr).
+:- type_representation(ho_changed, du_repn(enum("hoc_changed", "hoc_request", ["hoc_unchanged"],  no_c_j_cs))).
