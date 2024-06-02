@@ -1,0 +1,38 @@
+// Automatically generated from `make.build.m'
+// by the Mercury compiler,
+// version rotd-2024-06-02
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MAKE__BUILD_MH
+#define MAKE__BUILD_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MAKE__BUILD_DECL_GUARD
+#define MAKE__BUILD_DECL_GUARD
+
+typedef struct MC_JobCtl MC_JobCtl;
+
+
+#endif
+MR_Word MC_make_yes_job_ctl(MC_JobCtl *);
+MR_Word MC_make_no_job_ctl(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MAKE__BUILD_MH */

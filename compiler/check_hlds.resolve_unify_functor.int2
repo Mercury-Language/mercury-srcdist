@@ -1,0 +1,6 @@
+:- module check_hlds.resolve_unify_functor.
+:- interface.
+:- type is_plain_unify
+    --->    is_not_plain_unify 
+    ;       is_plain_unify 
+    ;       is_unknown_ref(parse_tree.error_spec.error_spec).
