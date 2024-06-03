@@ -1,0 +1,137 @@
+/*
+** Automatically generated from `io.environment.m'
+** by the Mercury compiler,
+** version rotd-2024-06-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module io.environment.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_io__environment
+#define MR_HEADER_GUARD_io__environment
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef IO__ENVIRONMENT_DECL_GUARD
+#define IO__ENVIRONMENT_DECL_GUARD
+#include "io.mih"
+
+#if defined(MR_WIN32)
+   #include "mercury_string.h" // For MR_utf8_to_wide.
+#endif
+
+
+#include <stdlib.h> // for getenv() and setenv()
+
+
+// A note regarding the declaration of the environ global variable
+// that follows:
+//
+// The man page (on Linux) says that it should be declared by the user program.
+//
+// On MinGW, environ is a macro (defined in stdlib.h) that expands to a
+// function call that returns the user environment; no additional
+// declaration is required.
+//
+// On Mac OS X, shared libraries do not have direct access to environ.
+// The man page for environ(7) says that we should look it up at runtime
+// using _NSGetEnviron().
+
+#if defined(MR_HAVE_ENVIRON) && !defined(MR_MAC_OSX)
+    #include <unistd.h>
+
+    #if !defined(MR_MINGW)
+        extern char **environ;
+    #endif
+#endif
+
+#if defined(MR_MAC_OSX)
+    #include <crt_externs.h>
+#endif
+
+#ifdef MR_HAVE_SPAWN_H
+    #include <spawn.h>
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__io__environment__io__environment__type_ctor_info_env_var_assoc_list_0;
+
+void MR_CALL 
+mercury__io__environment__get_environment_var_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__io__environment__get_environment_var_assoc_list_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__io__environment__get_environment_var_map_3_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+mercury__io__environment__getenv_2_p_0(
+  MR_String param_1,
+  MR_String * param_2);
+
+MR_bool MR_CALL 
+mercury__io__environment__have_set_environment_var_0_p_0(void);
+
+void MR_CALL 
+mercury__io__environment__set_environment_var_4_p_0(
+  MR_String param_1,
+  MR_String param_2);
+
+void MR_CALL 
+mercury__io__environment__set_environment_var_5_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__io__environment____Compare____env_var_assoc_list_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__io__environment____Unify____env_var_assoc_list_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__io__environment__init(void);
+void mercury__io__environment__init_type_tables(void);
+void mercury__io__environment__init_debugger(void);
+const char *mercury__io__environment__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_io.environment
+
+// :- end_interface io.environment.
