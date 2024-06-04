@@ -1,0 +1,12 @@
+:- module parse_tree.prog_type_repn.
+:- interface.
+:- use_module one_or_more.
+:- use_module parse_tree.prog_data.
+:- pred non_sub_du_type_is_dummy(parse_tree.prog_data.type_details_du).
+:- mode non_sub_du_type_is_dummy(builtin.in) is semidet.
+:- pred non_sub_du_type_is_enum(parse_tree.prog_data.type_details_du, int).
+:- mode non_sub_du_type_is_enum(builtin.in, builtin.out) is semidet.
+:- pred non_sub_du_type_is_notag(one_or_more.one_or_more(parse_tree.prog_data.constructor), parse_tree.prog_data.maybe_canonical).
+:- mode non_sub_du_type_is_notag(builtin.in, builtin.in) is semidet.
+:- pred num_bits_needed_for_n_dense_values(int, int).
+:- mode num_bits_needed_for_n_dense_values(builtin.in, builtin.out) is det.
