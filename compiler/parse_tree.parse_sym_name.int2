@@ -1,0 +1,11 @@
+:- module parse_tree.parse_sym_name.
+:- interface.
+:- use_module list.
+:- use_module term.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.maybe_error.
+:- type maybe_functor == parse_tree.parse_sym_name.maybe_functor(term.generic).
+:- type maybe_functor(T) == parse_tree.maybe_error.maybe2(mdbcomp.sym_name.sym_name, list.list(term.term(T))).
+:- type sym_name_specifier
+    --->    sym_name_specifier_name(mdbcomp.sym_name.sym_name)
+    ;       sym_name_specifier_name_arity(mdbcomp.sym_name.sym_name, parse_tree.prog_data.user_arity).

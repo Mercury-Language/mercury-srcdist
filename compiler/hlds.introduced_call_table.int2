@@ -1,0 +1,2 @@
+:- module hlds.introduced_call_table.
+:- interface.

@@ -1,0 +1,3 @@
+:- module hlds.hlds_call_tree.
+:- interface.
+:- type call_tree_info.
