@@ -1,0 +1,7 @@
+:- module mdb.help.
+:- interface.
+:- type help_res.
+:- type help_system.
+:- type path.
+:- type_representation(help_system, is_eqv_to(list(help_node))).
+:- type_representation(path, is_eqv_to(list(string))).
