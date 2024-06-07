@@ -1,0 +1,17 @@
+:- module (hlds.make_hlds).make_hlds_passes.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module libs.globals.
+:- use_module parse_tree.equiv_type.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.module_qual.
+:- use_module parse_tree.prog_data_used_modules.
+:- use_module parse_tree.prog_item.
+:- use_module (hlds.make_hlds).make_hlds_types.
+:- use_module (hlds.make_hlds).qual_info.
+:- pred parse_tree_to_hlds(io.text_output_stream, parse_tree.prog_item.aug_compilation_unit, libs.globals.globals, string, parse_tree.module_qual.mq_info, parse_tree.equiv_type.type_eqv_map, parse_tree.prog_data_used_modules.used_modules, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.make_hlds_types.found_invalid_type, hlds.make_hlds.make_hlds_types.found_invalid_inst_or_mode, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec)).
+:- mode parse_tree_to_hlds(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out) is det.

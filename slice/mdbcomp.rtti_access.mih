@@ -1,0 +1,332 @@
+/*
+** Automatically generated from `rtti_access.m'
+** by the Mercury compiler,
+** version rotd-2024-06-07
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdbcomp.rtti_access.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdbcomp__rtti_access
+#define MR_HEADER_GUARD_mdbcomp__rtti_access
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDBCOMP__RTTI_ACCESS_DECL_GUARD
+#define MDBCOMP__RTTI_ACCESS_DECL_GUARD
+#include "mdbcomp.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__rtti_access__mdbcomp__rtti_access__type_ctor_info_bytecode_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__rtti_access__mdbcomp__rtti_access__type_ctor_info_bytecode_bytes_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__rtti_access__mdbcomp__rtti_access__type_ctor_info_label_layout_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__rtti_access__mdbcomp__rtti_access__type_ctor_info_module_layout_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__rtti_access__mdbcomp__rtti_access__type_ctor_info_proc_layout_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__rtti_access__mdbcomp__rtti_access__type_ctor_info_string_table_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__rtti_access__mdbcomp__rtti_access__type_ctor_info_string_table_chars_0;
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__containing_module_layout_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__encode_byte_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdbcomp__rtti_access__encode_byte_det_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__encode_int32_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdbcomp__rtti_access__encode_int32_det_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdbcomp__rtti_access__encode_len_string_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__encode_num_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdbcomp__rtti_access__encode_num_det_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__encode_short_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdbcomp__rtti_access__encode_short_det_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__find_initial_version_arg_num_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__get_context_from_label_layout_3_p_0(
+  MR_Box param_1,
+  MR_String * param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__read_byte_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__read_int32_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__read_len_string_4_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__read_line_4_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__read_num_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__read_short_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__read_string_table_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access__read_string_via_offset_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5);
+
+MR_Box MR_CALL 
+mdbcomp__rtti_access__containing_proc_layout_1_f_0(
+  MR_Box param_1);
+
+MR_Word MR_CALL 
+mdbcomp__rtti_access__encode_byte_func_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mdbcomp__rtti_access__encode_int32_func_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mdbcomp__rtti_access__encode_len_string_func_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+mdbcomp__rtti_access__encode_num_func_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mdbcomp__rtti_access__encode_short_func_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mdbcomp__rtti_access__get_all_modes_for_layout_1_f_0(
+  MR_Box param_1);
+
+MR_String MR_CALL 
+mdbcomp__rtti_access__get_goal_path_from_label_layout_1_f_0(
+  MR_Box param_1);
+
+MR_String MR_CALL 
+mdbcomp__rtti_access__get_goal_path_from_maybe_label_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdbcomp__rtti_access__get_path_port_from_label_layout_1_f_0(
+  MR_Box param_1);
+
+MR_Word MR_CALL 
+mdbcomp__rtti_access__get_port_from_label_layout_1_f_0(
+  MR_Box param_1);
+
+MR_Word MR_CALL 
+mdbcomp__rtti_access__get_proc_label_from_layout_1_f_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mdbcomp__rtti_access__get_proc_layout_from_label_layout_1_f_0(
+  MR_Box param_1);
+
+MR_String MR_CALL 
+mdbcomp__rtti_access__get_proc_name_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mdbcomp__rtti_access__lookup_string_table_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mdbcomp__rtti_access__module_string_table_1_f_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mdbcomp__rtti_access__proc_bytecode_bytes_1_f_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mdbcomp__rtti_access____Compare____bytecode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__rtti_access____Compare____bytecode_bytes_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mdbcomp__rtti_access____Compare____label_layout_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mdbcomp__rtti_access____Compare____module_layout_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mdbcomp__rtti_access____Compare____proc_layout_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mdbcomp__rtti_access____Compare____string_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__rtti_access____Compare____string_table_chars_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access____Unify____bytecode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access____Unify____bytecode_bytes_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access____Unify____label_layout_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access____Unify____module_layout_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access____Unify____proc_layout_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access____Unify____string_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__rtti_access____Unify____string_table_chars_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void mercury__mdbcomp__rtti_access__init(void);
+void mercury__mdbcomp__rtti_access__init_type_tables(void);
+void mercury__mdbcomp__rtti_access__init_debugger(void);
+const char *mercury__mdbcomp__rtti_access__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdbcomp.rtti_access
+
+// :- end_interface mdbcomp.rtti_access.
