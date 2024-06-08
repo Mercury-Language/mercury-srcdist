@@ -1,0 +1,2 @@
+:- module transform_hlds.dep_par_conj.
+:- interface.
