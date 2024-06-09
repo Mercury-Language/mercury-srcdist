@@ -1,0 +1,87 @@
+/*
+** Automatically generated from `mercury_compile_llds_back_end.m'
+** by the Mercury compiler,
+** version rotd-2024-06-09
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module top_level.mercury_compile_llds_back_end.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_top_level__mercury_compile_llds_back_end
+#define MR_HEADER_GUARD_top_level__mercury_compile_llds_back_end
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TOP_LEVEL__MERCURY_COMPILE_LLDS_BACK_END_DECL_GUARD
+#define TOP_LEVEL__MERCURY_COMPILE_LLDS_BACK_END_DECL_GUARD
+#include "top_level.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct top_level__mercury_compile_llds_back_end__top_level__mercury_compile_llds_back_end__type_ctor_info_dup_proc_label_map_0;
+
+extern const MR_TypeCtorInfo_Struct top_level__mercury_compile_llds_back_end__top_level__mercury_compile_llds_back_end__type_ctor_info_foreign_interface_info_0;
+
+void MR_CALL 
+top_level__mercury_compile_llds_back_end__llds_backend_pass_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+top_level__mercury_compile_llds_back_end__llds_output_pass_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+top_level__mercury_compile_llds_back_end__map_args_to_regs_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void mercury__top_level__mercury_compile_llds_back_end__init(void);
+void mercury__top_level__mercury_compile_llds_back_end__init_type_tables(void);
+void mercury__top_level__mercury_compile_llds_back_end__init_debugger(void);
+const char *mercury__top_level__mercury_compile_llds_back_end__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_top_level.mercury_compile_llds_back_end
+
+// :- end_interface top_level.mercury_compile_llds_back_end.
