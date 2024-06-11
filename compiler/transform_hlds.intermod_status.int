@@ -1,0 +1,11 @@
+:- module transform_hlds.intermod_status.
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module hlds.status.
+:- func inst_status_to_write(hlds.status.inst_status) = bool.bool.
+:- func instance_status_to_write(hlds.status.instance_status) = bool.bool.
+:- func mode_status_to_write(hlds.status.mode_status) = bool.bool.
+:- func pred_status_to_write(hlds.status.pred_status) = bool.bool.
+:- func type_status_to_write(hlds.status.type_status) = bool.bool.
+:- func typeclass_status_to_write(hlds.status.typeclass_status) = bool.bool.

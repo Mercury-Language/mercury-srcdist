@@ -1,0 +1,5 @@
+:- module transform_hlds.term_constr_errors.
+:- interface.
+:- type term2_error.
+:- type term2_error_kind.
+:- type_representation(term2_error, is_word_aligned_ptr).
