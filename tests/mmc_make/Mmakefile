@@ -1,0 +1,107 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = mmc_make
+MAYBE_J1 =
+
+#-----------------------------------------------------------------------------#
+
+MMAKE_USE_MMC_MAKE=yes
+
+PROGS0 =	\
+	bug489 \
+	complex_test \
+	hello \
+	include_file \
+	include_file2 \
+	linkage_test \
+	rebuild
+
+ifeq "$(filter csharp% java%,$(GRADE))" ""
+	C_ONLY_PROGS = \
+		factt
+else
+	C_ONLY_PROGS =
+endif
+
+PROGS = $(PROGS0) $(C_ONLY_PROGS)
+
+# These tests only work if the workspace was compiled with `--use-subdirs'.
+ifneq ($(origin WORKSPACE),undefined)
+    ifeq ($(shell [ -d $(WORKSPACE)/library/Mercury ] || echo cannot_run),cannot_run)
+	PROGS =
+    endif
+endif
+
+TESTS = $(sort $(PROGS))
+include ../Mmake.common
+
+%.runtest: %.res ;
+
+Mercury.modules: lexer.m
+	$(MC) -f $^
+
+bug489.log: Mercury.modules
+
+complex_test.log: install_libs
+
+# Check that included files are identified as dependencies of the target code.
+# sleep 1 is required because mmc --make timestamps are not granular enough.
+include_file2.runtest: include_file
+	sleep 1 && touch inc/code.c inc/code.java inc/code.cs
+	$(MCM) --verbose-make include_file > include_file2.err 2>&1
+	! grep -qi 'error' include_file2.err && \
+		grep '^Making Mercury/.*/include_file[.]' include_file2.err
+
+linkage_test.log: install_libs_linkage_test2
+
+# Just test that the executable is rebuilt.
+rebuild.runtest:
+	$(MCM) --rebuild rebuild
+	$(MCM) --rebuild --verbose-make rebuild > rebuild.err2 2>&1
+	! grep -qi 'error' rebuild.err2 && \
+		grep '^Making rebuild\($$\|\.\)' rebuild.err2
+
+# The compiler used to fail when invoked as `mmc --make build_object.o'.
+build_object.runtest: build_object.o
+
+# Check that no errors occur while reading back the .module_dep file on the
+# second run.
+factt.runtest:
+	$(MCM) --make factt
+	$(MCM) --make factt >factt.err2 2>&1
+	! grep -i 'Error' factt.err2
+
+.PHONY: install_libs
+install_libs: start_runtests_local
+	$(MMAKE) TESTS_FLAGS
+	( cd lib; \
+	$(MCM) --no-libgrade --install-prefix $(shell pwd)/install \
+		libcomplex_numbers.install ) \
+	|| touch complex_test.failed
+
+.PHONY: install_libs_linkage_test2
+install_libs_linkage_test2: start_runtests_local
+	$(MMAKE) TESTS_FLAGS
+	( cd lib; \
+	$(MCM) --no-libgrade --install-prefix $(shell pwd)/install \
+		liblinkage_test2.install --lib-linkage static ) \
+	|| touch linkage_test.failed
+
+# Copy/symlink TESTS_FLAGS into the current directory for when
+# we change into the `lib' subdirectory.
+TESTS_FLAGS: ../TESTS_FLAGS
+	ln -s $< $@ || cp $< $@
+
+realclean_local: realclean_mmc_make
+
+realclean_mmc_make: TESTS_FLAGS
+	rm -rf install include_file2.err rebuild.err2 factt.err2
+	# ./TESTS_FLAGS is expected by the following line.
+	cd lib; $(MCM) complex_numbers.realclean linkage_test2.realclean
+	rm -f TESTS_FLAGS
+	rm -f Mercury.modules
+
+#-----------------------------------------------------------------------------#

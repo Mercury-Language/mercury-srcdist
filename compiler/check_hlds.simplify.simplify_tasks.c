@@ -1,0 +1,3836 @@
+/*
+** Automatically generated from `simplify_tasks.m'
+** by the Mercury compiler,
+** version rotd-2024-06-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.simplify.simplify_tasks.
+// :- implementation.
+
+/*
+INIT mercury__check_hlds__simplify__simplify_tasks__init
+ENDINIT
+*/
+
+#include "check_hlds.simplify.simplify_tasks.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "enum.mih"
+#include "getopt.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "one_or_more.mih"
+#include "one_or_more_map.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "sparse_bitset.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "term_context.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "check_hlds.simplify.mih"
+#include "libs.globals.mih"
+#include "libs.op_mode.mih"
+#include "libs.optimization_options.mih"
+#include "libs.options.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.sym_name.mih"
+#include "parse_tree.error_spec.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.set_of_var.mih"
+
+
+
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_after_front_end_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_after_front_end_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_after_front_end_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_after_front_end_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_after_front_end_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_elim_removable_scopes_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_elim_removable_scopes_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_elim_removable_scopes_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_elim_removable_scopes_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_elim_removable_scopes_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_generate_warnings_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_generate_warnings_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_generate_warnings_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_generate_warnings_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_generate_warnings_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_ignore_par_conjs_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_ignore_par_conjs_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_ignore_par_conjs_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_ignore_par_conjs_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_ignore_par_conjs_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_invoke_format_call_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_invoke_format_call_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_invoke_format_call_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_invoke_format_call_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_invoke_format_call_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_mark_cm_changes_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_mark_cm_changes_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_mark_cm_changes_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_mark_cm_changes_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_mark_cm_changes_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_const_structs_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_const_structs_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_opt_const_structs_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_opt_const_structs_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_opt_const_structs_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_extra_structs_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_extra_structs_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_opt_extra_structs_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_opt_extra_structs_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_opt_extra_structs_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_split_switch_arms_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_split_switch_arms_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_opt_split_switch_arms_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_opt_split_switch_arms_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_opt_split_switch_arms_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_try_opt_const_structs_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_try_opt_const_structs_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_try_opt_const_structs_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_try_opt_const_structs_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_try_opt_const_structs_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_duplicate_calls_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_duplicate_calls_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_duplicate_calls_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_duplicate_calls_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_duplicate_calls_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_implicit_streams_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_implicit_streams_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_implicit_streams_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_implicit_streams_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_implicit_streams_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_no_soln_disjunct_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_no_soln_disjunct_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_no_soln_disjunct_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_no_soln_disjunct_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_no_soln_disjunct_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_obsolete_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_obsolete_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_obsolete_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_obsolete_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_obsolete_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_simple_code_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_simple_code_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_simple_code_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_simple_code_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_simple_code_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_suspicious_rec_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_suspicious_rec_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_suspicious_rec_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_suspicious_rec_0[2];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_suspicious_rec_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_1;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_2;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_3;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_4;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_5;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_6;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_7;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_8;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_9;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_10;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_11;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_12;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_13;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_14;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_15;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_16;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_17;
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_18;
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_simplify_task_0[19];
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_simplify_task_0[19];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_simplify_task_0[19];
+
+static const MR_PseudoTypeInfo check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__field_types_simplify_tasks_0_0[20];
+
+static const MR_ConstString check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__field_names_simplify_tasks_0_0[20];
+
+static const MR_DuArgLocn check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__field_locns_simplify_tasks_0_0[20];
+
+static const MR_DuFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_functor_desc_simplify_tasks_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_stag_ordered_simplify_tasks_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_ptag_ordered_simplify_tasks_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_name_ordered_simplify_tasks_0[1];
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_simplify_tasks_0[1];
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_after_front_end_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_after_front_end_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_elim_removable_scopes_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_elim_removable_scopes_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_generate_warnings_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_generate_warnings_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_ignore_par_conjs_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_ignore_par_conjs_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_invoke_format_call_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_invoke_format_call_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_mark_cm_changes_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_mark_cm_changes_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_opt_const_structs_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_opt_const_structs_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_opt_extra_structs_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_opt_extra_structs_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_opt_split_switch_arms_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_opt_split_switch_arms_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_try_opt_const_structs_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_try_opt_const_structs_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_duplicate_calls_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_duplicate_calls_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_implicit_streams_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_implicit_streams_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_no_soln_disjunct_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_no_soln_disjunct_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_obsolete_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_obsolete_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_simple_code_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_simple_code_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_suspicious_rec_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_suspicious_rec_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____simplify_task_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____simplify_task_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____simplify_tasks_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____simplify_tasks_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+
+
+
+
+
+#include "array.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "io.stream_ops.mh"
+
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_after_front_end_0_0 = {
+  (MR_String) "not_after_front_end",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_after_front_end_0_1 = {
+  (MR_String) "after_front_end",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_after_front_end_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_after_front_end_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_after_front_end_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_after_front_end_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_after_front_end_0_1,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_after_front_end_0_0
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_after_front_end_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_after_front_end_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_after_front_end_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_after_front_end_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_after_front_end",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_after_front_end_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_after_front_end_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_after_front_end_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_elim_removable_scopes_0_0 = {
+  (MR_String) "do_not_elim_removable_scopes",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_elim_removable_scopes_0_1 = {
+  (MR_String) "elim_removable_scopes",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_elim_removable_scopes_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_elim_removable_scopes_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_elim_removable_scopes_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_elim_removable_scopes_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_elim_removable_scopes_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_elim_removable_scopes_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_elim_removable_scopes_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_elim_removable_scopes_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_elim_removable_scopes_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_elim_removable_scopes_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_elim_removable_scopes",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_elim_removable_scopes_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_elim_removable_scopes_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_elim_removable_scopes_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_generate_warnings_0_0 = {
+  (MR_String) "do_not_generate_warnings",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_generate_warnings_0_1 = {
+  (MR_String) "generate_warnings",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_generate_warnings_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_generate_warnings_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_generate_warnings_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_generate_warnings_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_generate_warnings_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_generate_warnings_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_generate_warnings_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_generate_warnings_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_generate_warnings_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_generate_warnings_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_generate_warnings",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_generate_warnings_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_generate_warnings_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_generate_warnings_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_ignore_par_conjs_0_0 = {
+  (MR_String) "do_not_ignore_par_conjs",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_ignore_par_conjs_0_1 = {
+  (MR_String) "ignore_par_conjs",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_ignore_par_conjs_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_ignore_par_conjs_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_ignore_par_conjs_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_ignore_par_conjs_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_ignore_par_conjs_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_ignore_par_conjs_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_ignore_par_conjs_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_ignore_par_conjs_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_ignore_par_conjs_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_ignore_par_conjs_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_ignore_par_conjs",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_ignore_par_conjs_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_ignore_par_conjs_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_ignore_par_conjs_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_invoke_format_call_0_0 = {
+  (MR_String) "do_not_invoke_format_call",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_invoke_format_call_0_1 = {
+  (MR_String) "invoke_format_call",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_invoke_format_call_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_invoke_format_call_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_invoke_format_call_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_invoke_format_call_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_invoke_format_call_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_invoke_format_call_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_invoke_format_call_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_invoke_format_call_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_invoke_format_call_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_invoke_format_call_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_invoke_format_call",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_invoke_format_call_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_invoke_format_call_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_invoke_format_call_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_mark_cm_changes_0_0 = {
+  (MR_String) "do_not_mark_code_model_changes",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_mark_cm_changes_0_1 = {
+  (MR_String) "mark_code_model_changes",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_mark_cm_changes_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_mark_cm_changes_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_mark_cm_changes_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_mark_cm_changes_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_mark_cm_changes_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_mark_cm_changes_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_mark_cm_changes_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_mark_cm_changes_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_mark_cm_changes_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_mark_cm_changes_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_mark_cm_changes",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_mark_cm_changes_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_mark_cm_changes_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_mark_cm_changes_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_const_structs_0_0 = {
+  (MR_String) "do_not_opt_const_structs",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_const_structs_0_1 = {
+  (MR_String) "opt_const_structs",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_opt_const_structs_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_const_structs_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_const_structs_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_opt_const_structs_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_const_structs_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_const_structs_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_opt_const_structs_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_opt_const_structs_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_opt_const_structs_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_opt_const_structs_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_opt_const_structs",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_opt_const_structs_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_opt_const_structs_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_opt_const_structs_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_extra_structs_0_0 = {
+  (MR_String) "do_not_opt_extra_structs",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_extra_structs_0_1 = {
+  (MR_String) "opt_extra_structs",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_opt_extra_structs_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_extra_structs_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_extra_structs_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_opt_extra_structs_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_extra_structs_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_extra_structs_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_opt_extra_structs_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_opt_extra_structs_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_opt_extra_structs_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_opt_extra_structs_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_opt_extra_structs",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_opt_extra_structs_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_opt_extra_structs_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_opt_extra_structs_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_split_switch_arms_0_0 = {
+  (MR_String) "do_not_opt_split_switch_arms",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_split_switch_arms_0_1 = {
+  (MR_String) "split_opt_switch_arms",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_opt_split_switch_arms_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_split_switch_arms_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_split_switch_arms_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_opt_split_switch_arms_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_split_switch_arms_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_opt_split_switch_arms_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_opt_split_switch_arms_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_opt_split_switch_arms_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_opt_split_switch_arms_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_opt_split_switch_arms_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_opt_split_switch_arms",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_opt_split_switch_arms_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_opt_split_switch_arms_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_opt_split_switch_arms_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_try_opt_const_structs_0_0 = {
+  (MR_String) "do_not_try_opt_const_structs",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_try_opt_const_structs_0_1 = {
+  (MR_String) "try_opt_const_structs",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_try_opt_const_structs_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_try_opt_const_structs_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_try_opt_const_structs_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_try_opt_const_structs_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_try_opt_const_structs_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_try_opt_const_structs_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_try_opt_const_structs_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_try_opt_const_structs_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_try_opt_const_structs_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_try_opt_const_structs_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_try_opt_const_structs",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_try_opt_const_structs_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_try_opt_const_structs_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_try_opt_const_structs_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_duplicate_calls_0_0 = {
+  (MR_String) "do_not_warn_duplicate_calls",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_duplicate_calls_0_1 = {
+  (MR_String) "warn_duplicate_calls",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_duplicate_calls_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_duplicate_calls_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_duplicate_calls_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_duplicate_calls_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_duplicate_calls_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_duplicate_calls_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_duplicate_calls_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_duplicate_calls_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_warn_duplicate_calls_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_warn_duplicate_calls_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_warn_duplicate_calls",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_duplicate_calls_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_duplicate_calls_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_duplicate_calls_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_implicit_streams_0_0 = {
+  (MR_String) "do_not_warn_implicit_streams",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_implicit_streams_0_1 = {
+  (MR_String) "warn_implicit_streams",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_implicit_streams_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_implicit_streams_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_implicit_streams_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_implicit_streams_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_implicit_streams_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_implicit_streams_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_implicit_streams_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_implicit_streams_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_warn_implicit_streams_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_warn_implicit_streams_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_warn_implicit_streams",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_implicit_streams_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_implicit_streams_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_implicit_streams_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_no_soln_disjunct_0_0 = {
+  (MR_String) "do_not_warn_no_soln_disjunct",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_no_soln_disjunct_0_1 = {
+  (MR_String) "warn_no_soln_disjunct",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_no_soln_disjunct_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_no_soln_disjunct_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_no_soln_disjunct_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_no_soln_disjunct_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_no_soln_disjunct_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_no_soln_disjunct_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_no_soln_disjunct_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_no_soln_disjunct_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_warn_no_soln_disjunct_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_warn_no_soln_disjunct_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_warn_no_soln_disjunct",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_no_soln_disjunct_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_no_soln_disjunct_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_no_soln_disjunct_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_obsolete_0_0 = {
+  (MR_String) "do_not_warn_obsolete",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_obsolete_0_1 = {
+  (MR_String) "warn_obsolete",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_obsolete_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_obsolete_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_obsolete_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_obsolete_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_obsolete_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_obsolete_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_obsolete_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_obsolete_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_warn_obsolete_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_warn_obsolete_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_warn_obsolete",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_obsolete_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_obsolete_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_obsolete_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_simple_code_0_0 = {
+  (MR_String) "do_not_warn_simple_code",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_simple_code_0_1 = {
+  (MR_String) "warn_simple_code",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_simple_code_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_simple_code_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_simple_code_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_simple_code_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_simple_code_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_simple_code_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_simple_code_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_simple_code_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_warn_simple_code_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_warn_simple_code_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_warn_simple_code",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_simple_code_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_simple_code_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_simple_code_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_suspicious_rec_0_0 = {
+  (MR_String) "do_not_warn_suspicious_rec",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_suspicious_rec_0_1 = {
+  (MR_String) "warn_suspicious_rec",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_suspicious_rec_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_suspicious_rec_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_suspicious_rec_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_suspicious_rec_0[2] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_suspicious_rec_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_maybe_warn_suspicious_rec_0_1
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_suspicious_rec_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_suspicious_rec_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____maybe_warn_suspicious_rec_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____maybe_warn_suspicious_rec_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "maybe_warn_suspicious_rec",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_maybe_warn_suspicious_rec_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_maybe_warn_suspicious_rec_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_maybe_warn_suspicious_rec_0,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_0 = {
+  (MR_String) "simptask_warn_simple_code",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_1 = {
+  (MR_String) "simptask_warn_duplicate_calls",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_2 = {
+  (MR_String) "simptask_warn_implicit_stream_calls",
+  INT32_C(2)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_3 = {
+  (MR_String) "simptask_format_calls",
+  INT32_C(3)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_4 = {
+  (MR_String) "simptask_warn_obsolete",
+  INT32_C(4)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_5 = {
+  (MR_String) "simptask_mark_code_model_changes",
+  INT32_C(5)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_6 = {
+  (MR_String) "simptask_after_front_end",
+  INT32_C(6)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_7 = {
+  (MR_String) "simptask_excess_assigns",
+  INT32_C(7)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_8 = {
+  (MR_String) "simptask_merge_code_after_switch",
+  INT32_C(8)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_9 = {
+  (MR_String) "simptask_elim_removable_scopes",
+  INT32_C(9)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_10 = {
+  (MR_String) "simptask_opt_duplicate_calls",
+  INT32_C(10)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_11 = {
+  (MR_String) "simptask_constant_prop",
+  INT32_C(11)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_12 = {
+  (MR_String) "simptask_common_structs",
+  INT32_C(12)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_13 = {
+  (MR_String) "simptask_extra_common_structs",
+  INT32_C(13)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_14 = {
+  (MR_String) "simptask_try_opt_const_structs",
+  INT32_C(14)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_15 = {
+  (MR_String) "simptask_ignore_par_conjs",
+  INT32_C(15)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_16 = {
+  (MR_String) "simptask_warn_suspicious_recursion",
+  INT32_C(16)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_17 = {
+  (MR_String) "simptask_warn_no_solution_disjunct",
+  INT32_C(17)
+};
+
+static const MR_EnumFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_18 = {
+  (MR_String) "simptask_split_switch_arms",
+  INT32_C(18)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_simplify_task_0[19] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_1,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_2,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_3,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_4,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_5,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_6,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_7,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_8,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_9,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_10,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_11,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_12,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_13,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_14,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_15,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_16,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_17,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_18
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_simplify_task_0[19] = {
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_6,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_12,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_11,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_9,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_7,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_13,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_3,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_15,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_5,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_8,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_10,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_18,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_14,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_1,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_2,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_17,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_4,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_0,
+  &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_functor_desc_simplify_task_0_16
+};
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_simplify_task_0[19] = {
+  (MR_Integer) 17,
+  (MR_Integer) 13,
+  (MR_Integer) 14,
+  (MR_Integer) 6,
+  (MR_Integer) 16,
+  (MR_Integer) 8,
+  (MR_Integer) 0,
+  (MR_Integer) 4,
+  (MR_Integer) 9,
+  (MR_Integer) 3,
+  (MR_Integer) 10,
+  (MR_Integer) 2,
+  (MR_Integer) 1,
+  (MR_Integer) 5,
+  (MR_Integer) 12,
+  (MR_Integer) 7,
+  (MR_Integer) 18,
+  (MR_Integer) 15,
+  (MR_Integer) 11
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____simplify_task_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____simplify_task_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "simplify_task",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_name_ordered_simplify_task_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__enum_ordinal_ordered_simplify_task_0 },
+  (MR_Integer) 19,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_simplify_task_0,
+
+};
+
+static const MR_PseudoTypeInfo check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__field_types_simplify_tasks_0_0[20] = {
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_simple_code_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_duplicate_calls_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_implicit_streams_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_invoke_format_call_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_obsolete_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_mark_cm_changes_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_after_front_end_0),
+  (MR_PseudoTypeInfo) (&libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_elim_excess_assigns_0),
+  (MR_PseudoTypeInfo) (&libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_merge_code_after_switch_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_elim_removable_scopes_0),
+  (MR_PseudoTypeInfo) (&libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_dup_calls_0),
+  (MR_PseudoTypeInfo) (&libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_prop_constants_0),
+  (MR_PseudoTypeInfo) (&libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_common_structs_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_opt_extra_structs_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_try_opt_const_structs_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_opt_const_structs_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_ignore_par_conjs_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_suspicious_rec_0),
+  (MR_PseudoTypeInfo) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_no_soln_disjunct_0),
+  (MR_PseudoTypeInfo) (&libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_split_switch_arms_0)
+};
+
+static const MR_ConstString check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__field_names_simplify_tasks_0_0[20] = {
+  (MR_String) "do_warn_simple_code",
+  (MR_String) "do_warn_duplicate_calls",
+  (MR_String) "do_warn_implicit_streams",
+  (MR_String) "do_invoke_format_call",
+  (MR_String) "do_warn_obsolete",
+  (MR_String) "do_mark_code_model_changes",
+  (MR_String) "do_after_front_end",
+  (MR_String) "do_excess_assign",
+  (MR_String) "do_merge_code_after_switch",
+  (MR_String) "do_elim_removable_scopes",
+  (MR_String) "do_opt_duplicate_calls",
+  (MR_String) "do_constant_prop",
+  (MR_String) "do_opt_common_structs",
+  (MR_String) "do_opt_extra_structs",
+  (MR_String) "do_try_opt_const_structs",
+  (MR_String) "do_opt_const_structs",
+  (MR_String) "do_ignore_par_conjunctions",
+  (MR_String) "do_warn_suspicious_recursion",
+  (MR_String) "do_warn_no_solution_disjunct",
+  (MR_String) "do_switch_split_arms"
+};
+
+static const MR_DuArgLocn check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__field_locns_simplify_tasks_0_0[20] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 19,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 18,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 17,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 16,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 15,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 14,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 13,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 12,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 11,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 10,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 9,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 8,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 7,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 6,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 5,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 4,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 3,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 2,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 1,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_functor_desc_simplify_tasks_0_0 = {
+  (MR_String) "simplify_tasks",
+  INT16_C(20),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__field_types_simplify_tasks_0_0,
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__field_names_simplify_tasks_0_0,
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__field_locns_simplify_tasks_0_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_stag_ordered_simplify_tasks_0_0[1] = { &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_functor_desc_simplify_tasks_0_0 };
+
+static const MR_DuPtagLayout check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_ptag_ordered_simplify_tasks_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_stag_ordered_simplify_tasks_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_name_ordered_simplify_tasks_0[1] = { &check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_functor_desc_simplify_tasks_0_0 };
+
+static const MR_Integer check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_simplify_tasks_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_tasks_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Unify____simplify_tasks_0_0_10001)),
+  ((MR_Box) (check_hlds__simplify__simplify_tasks____Compare____simplify_tasks_0_0_10001)),
+  (MR_String) "check_hlds.simplify.simplify_tasks",
+  (MR_String) "simplify_tasks",
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_name_ordered_simplify_tasks_0 },
+  { check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__du_ptag_ordered_simplify_tasks_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__functor_number_map_simplify_tasks_0,
+
+};
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____simplify_tasks_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_63 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_64 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_63 == CastY_64);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Word ArgX1_4 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 19)) & (MR_Integer) 1);
+    MR_Word ArgY1_5 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 19)) & (MR_Integer) 1);
+    MR_Word ArgX2_7 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 18)) & (MR_Integer) 1);
+    MR_Word ArgY2_8 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 18)) & (MR_Integer) 1);
+    MR_Word ArgX3_10 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 17)) & (MR_Integer) 1);
+    MR_Word ArgY3_11 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 17)) & (MR_Integer) 1);
+    MR_Word ArgX4_13 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 16)) & (MR_Integer) 1);
+    MR_Word ArgY4_14 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 16)) & (MR_Integer) 1);
+    MR_Word ArgX5_16 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 15)) & (MR_Integer) 1);
+    MR_Word ArgY5_17 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 15)) & (MR_Integer) 1);
+    MR_Word ArgX6_19 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 14)) & (MR_Integer) 1);
+    MR_Word ArgY6_20 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 14)) & (MR_Integer) 1);
+    MR_Word ArgX7_22 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 13)) & (MR_Integer) 1);
+    MR_Word ArgY7_23 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 13)) & (MR_Integer) 1);
+    MR_Word ArgX8_25 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 12)) & (MR_Integer) 1);
+    MR_Word ArgY8_26 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 12)) & (MR_Integer) 1);
+    MR_Word ArgX9_28 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 11)) & (MR_Integer) 1);
+    MR_Word ArgY9_29 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 11)) & (MR_Integer) 1);
+    MR_Word ArgX10_31 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 10)) & (MR_Integer) 1);
+    MR_Word ArgY10_32 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 10)) & (MR_Integer) 1);
+    MR_Word ArgX11_34 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 9)) & (MR_Integer) 1);
+    MR_Word ArgY11_35 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 9)) & (MR_Integer) 1);
+    MR_Word ArgX12_37 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 8)) & (MR_Integer) 1);
+    MR_Word ArgY12_38 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 8)) & (MR_Integer) 1);
+    MR_Word ArgX13_40 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 7)) & (MR_Integer) 1);
+    MR_Word ArgY13_41 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 7)) & (MR_Integer) 1);
+    MR_Word ArgX14_43 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 6)) & (MR_Integer) 1);
+    MR_Word ArgY14_44 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 6)) & (MR_Integer) 1);
+    MR_Word ArgX15_46 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 5)) & (MR_Integer) 1);
+    MR_Word ArgY15_47 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 5)) & (MR_Integer) 1);
+    MR_Word ArgX16_49 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 4)) & (MR_Integer) 1);
+    MR_Word ArgY16_50 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 4)) & (MR_Integer) 1);
+    MR_Word ArgX17_52 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 3)) & (MR_Integer) 1);
+    MR_Word ArgY17_53 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 3)) & (MR_Integer) 1);
+    MR_Word ArgX18_55 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 2)) & (MR_Integer) 1);
+    MR_Word ArgY18_56 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 2)) & (MR_Integer) 1);
+    MR_Word ArgX19_58 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+    MR_Word ArgY19_59 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+    MR_Word ArgX20_61 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+    MR_Word ArgY20_62 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 1);
+    MR_Word SubResult1_6;
+    MR_Integer Var_85 = (MR_Integer) (ArgX1_4);
+    MR_Integer Var_86 = (MR_Integer) (ArgY1_5);
+
+    succeeded = (Var_85 < Var_86);
+    if (succeeded)
+    {
+      SubResult1_6 = (MR_Integer) 1;
+      succeeded = MR_TRUE;
+    }
+    else
+    {
+      succeeded = (Var_85 > Var_86);
+      if (succeeded)
+      {
+        SubResult1_6 = (MR_Integer) 2;
+        succeeded = MR_TRUE;
+      }
+      else
+      {
+        succeeded = MR_TRUE;
+        succeeded = !(succeeded);
+        if (succeeded)
+        {
+          SubResult1_6 = (MR_Integer) 0;
+          succeeded = MR_TRUE;
+        }
+      }
+    }
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+    {
+      MR_Word SubResult2_9;
+      MR_Integer Var_87 = (MR_Integer) (ArgX2_7);
+      MR_Integer Var_88 = (MR_Integer) (ArgY2_8);
+
+      succeeded = (Var_87 < Var_88);
+      if (succeeded)
+      {
+        SubResult2_9 = (MR_Integer) 1;
+        succeeded = MR_TRUE;
+      }
+      else
+      {
+        succeeded = (Var_87 > Var_88);
+        if (succeeded)
+        {
+          SubResult2_9 = (MR_Integer) 2;
+          succeeded = MR_TRUE;
+        }
+        else
+        {
+          succeeded = MR_TRUE;
+          succeeded = !(succeeded);
+          if (succeeded)
+          {
+            SubResult2_9 = (MR_Integer) 0;
+            succeeded = MR_TRUE;
+          }
+        }
+      }
+      if (succeeded)
+        *HeadVar__1_1 = SubResult2_9;
+      else
+      {
+        MR_Word SubResult3_12;
+        MR_Integer Var_89 = (MR_Integer) (ArgX3_10);
+        MR_Integer Var_90 = (MR_Integer) (ArgY3_11);
+
+        succeeded = (Var_89 < Var_90);
+        if (succeeded)
+        {
+          SubResult3_12 = (MR_Integer) 1;
+          succeeded = MR_TRUE;
+        }
+        else
+        {
+          succeeded = (Var_89 > Var_90);
+          if (succeeded)
+          {
+            SubResult3_12 = (MR_Integer) 2;
+            succeeded = MR_TRUE;
+          }
+          else
+          {
+            succeeded = MR_TRUE;
+            succeeded = !(succeeded);
+            if (succeeded)
+            {
+              SubResult3_12 = (MR_Integer) 0;
+              succeeded = MR_TRUE;
+            }
+          }
+        }
+        if (succeeded)
+          *HeadVar__1_1 = SubResult3_12;
+        else
+        {
+          MR_Word SubResult4_15;
+          MR_Integer Var_91 = (MR_Integer) (ArgX4_13);
+          MR_Integer Var_92 = (MR_Integer) (ArgY4_14);
+
+          succeeded = (Var_91 < Var_92);
+          if (succeeded)
+          {
+            SubResult4_15 = (MR_Integer) 1;
+            succeeded = MR_TRUE;
+          }
+          else
+          {
+            succeeded = (Var_91 > Var_92);
+            if (succeeded)
+            {
+              SubResult4_15 = (MR_Integer) 2;
+              succeeded = MR_TRUE;
+            }
+            else
+            {
+              succeeded = MR_TRUE;
+              succeeded = !(succeeded);
+              if (succeeded)
+              {
+                SubResult4_15 = (MR_Integer) 0;
+                succeeded = MR_TRUE;
+              }
+            }
+          }
+          if (succeeded)
+            *HeadVar__1_1 = SubResult4_15;
+          else
+          {
+            MR_Word SubResult5_18;
+            MR_Integer Var_93 = (MR_Integer) (ArgX5_16);
+            MR_Integer Var_94 = (MR_Integer) (ArgY5_17);
+
+            succeeded = (Var_93 < Var_94);
+            if (succeeded)
+            {
+              SubResult5_18 = (MR_Integer) 1;
+              succeeded = MR_TRUE;
+            }
+            else
+            {
+              succeeded = (Var_93 > Var_94);
+              if (succeeded)
+              {
+                SubResult5_18 = (MR_Integer) 2;
+                succeeded = MR_TRUE;
+              }
+              else
+              {
+                succeeded = MR_TRUE;
+                succeeded = !(succeeded);
+                if (succeeded)
+                {
+                  SubResult5_18 = (MR_Integer) 0;
+                  succeeded = MR_TRUE;
+                }
+              }
+            }
+            if (succeeded)
+              *HeadVar__1_1 = SubResult5_18;
+            else
+            {
+              MR_Word SubResult6_21;
+              MR_Integer Var_95 = (MR_Integer) (ArgX6_19);
+              MR_Integer Var_96 = (MR_Integer) (ArgY6_20);
+
+              succeeded = (Var_95 < Var_96);
+              if (succeeded)
+              {
+                SubResult6_21 = (MR_Integer) 1;
+                succeeded = MR_TRUE;
+              }
+              else
+              {
+                succeeded = (Var_95 > Var_96);
+                if (succeeded)
+                {
+                  SubResult6_21 = (MR_Integer) 2;
+                  succeeded = MR_TRUE;
+                }
+                else
+                {
+                  succeeded = MR_TRUE;
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                  {
+                    SubResult6_21 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                }
+              }
+              if (succeeded)
+                *HeadVar__1_1 = SubResult6_21;
+              else
+              {
+                MR_Word SubResult7_24;
+                MR_Integer Var_97 = (MR_Integer) (ArgX7_22);
+                MR_Integer Var_98 = (MR_Integer) (ArgY7_23);
+
+                succeeded = (Var_97 < Var_98);
+                if (succeeded)
+                {
+                  SubResult7_24 = (MR_Integer) 1;
+                  succeeded = MR_TRUE;
+                }
+                else
+                {
+                  succeeded = (Var_97 > Var_98);
+                  if (succeeded)
+                  {
+                    SubResult7_24 = (MR_Integer) 2;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = MR_TRUE;
+                    succeeded = !(succeeded);
+                    if (succeeded)
+                    {
+                      SubResult7_24 = (MR_Integer) 0;
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                }
+                if (succeeded)
+                  *HeadVar__1_1 = SubResult7_24;
+                else
+                {
+                  MR_Word SubResult8_27;
+                  MR_Integer Var_99 = (MR_Integer) (ArgX8_25);
+                  MR_Integer Var_100 = (MR_Integer) (ArgY8_26);
+
+                  succeeded = (Var_99 < Var_100);
+                  if (succeeded)
+                  {
+                    SubResult8_27 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (Var_99 > Var_100);
+                    if (succeeded)
+                    {
+                      SubResult8_27 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = MR_TRUE;
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                      {
+                        SubResult8_27 = (MR_Integer) 0;
+                        succeeded = MR_TRUE;
+                      }
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult8_27;
+                  else
+                  {
+                    MR_Word SubResult9_30;
+                    MR_Integer Var_101 = (MR_Integer) (ArgX9_28);
+                    MR_Integer Var_102 = (MR_Integer) (ArgY9_29);
+
+                    succeeded = (Var_101 < Var_102);
+                    if (succeeded)
+                    {
+                      SubResult9_30 = (MR_Integer) 1;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = (Var_101 > Var_102);
+                      if (succeeded)
+                      {
+                        SubResult9_30 = (MR_Integer) 2;
+                        succeeded = MR_TRUE;
+                      }
+                      else
+                      {
+                        succeeded = MR_TRUE;
+                        succeeded = !(succeeded);
+                        if (succeeded)
+                        {
+                          SubResult9_30 = (MR_Integer) 0;
+                          succeeded = MR_TRUE;
+                        }
+                      }
+                    }
+                    if (succeeded)
+                      *HeadVar__1_1 = SubResult9_30;
+                    else
+                    {
+                      MR_Word SubResult10_33;
+                      MR_Integer Var_103 = (MR_Integer) (ArgX10_31);
+                      MR_Integer Var_104 = (MR_Integer) (ArgY10_32);
+
+                      succeeded = (Var_103 < Var_104);
+                      if (succeeded)
+                      {
+                        SubResult10_33 = (MR_Integer) 1;
+                        succeeded = MR_TRUE;
+                      }
+                      else
+                      {
+                        succeeded = (Var_103 > Var_104);
+                        if (succeeded)
+                        {
+                          SubResult10_33 = (MR_Integer) 2;
+                          succeeded = MR_TRUE;
+                        }
+                        else
+                        {
+                          succeeded = MR_TRUE;
+                          succeeded = !(succeeded);
+                          if (succeeded)
+                          {
+                            SubResult10_33 = (MR_Integer) 0;
+                            succeeded = MR_TRUE;
+                          }
+                        }
+                      }
+                      if (succeeded)
+                        *HeadVar__1_1 = SubResult10_33;
+                      else
+                      {
+                        MR_Word SubResult11_36;
+                        MR_Integer Var_105 = (MR_Integer) (ArgX11_34);
+                        MR_Integer Var_106 = (MR_Integer) (ArgY11_35);
+
+                        succeeded = (Var_105 < Var_106);
+                        if (succeeded)
+                        {
+                          SubResult11_36 = (MR_Integer) 1;
+                          succeeded = MR_TRUE;
+                        }
+                        else
+                        {
+                          succeeded = (Var_105 > Var_106);
+                          if (succeeded)
+                          {
+                            SubResult11_36 = (MR_Integer) 2;
+                            succeeded = MR_TRUE;
+                          }
+                          else
+                          {
+                            succeeded = MR_TRUE;
+                            succeeded = !(succeeded);
+                            if (succeeded)
+                            {
+                              SubResult11_36 = (MR_Integer) 0;
+                              succeeded = MR_TRUE;
+                            }
+                          }
+                        }
+                        if (succeeded)
+                          *HeadVar__1_1 = SubResult11_36;
+                        else
+                        {
+                          MR_Word SubResult12_39;
+                          MR_Integer Var_107 = (MR_Integer) (ArgX12_37);
+                          MR_Integer Var_108 = (MR_Integer) (ArgY12_38);
+
+                          succeeded = (Var_107 < Var_108);
+                          if (succeeded)
+                          {
+                            SubResult12_39 = (MR_Integer) 1;
+                            succeeded = MR_TRUE;
+                          }
+                          else
+                          {
+                            succeeded = (Var_107 > Var_108);
+                            if (succeeded)
+                            {
+                              SubResult12_39 = (MR_Integer) 2;
+                              succeeded = MR_TRUE;
+                            }
+                            else
+                            {
+                              succeeded = MR_TRUE;
+                              succeeded = !(succeeded);
+                              if (succeeded)
+                              {
+                                SubResult12_39 = (MR_Integer) 0;
+                                succeeded = MR_TRUE;
+                              }
+                            }
+                          }
+                          if (succeeded)
+                            *HeadVar__1_1 = SubResult12_39;
+                          else
+                          {
+                            MR_Word SubResult13_42;
+                            MR_Integer Var_109 = (MR_Integer) (ArgX13_40);
+                            MR_Integer Var_110 = (MR_Integer) (ArgY13_41);
+
+                            succeeded = (Var_109 < Var_110);
+                            if (succeeded)
+                            {
+                              SubResult13_42 = (MR_Integer) 1;
+                              succeeded = MR_TRUE;
+                            }
+                            else
+                            {
+                              succeeded = (Var_109 > Var_110);
+                              if (succeeded)
+                              {
+                                SubResult13_42 = (MR_Integer) 2;
+                                succeeded = MR_TRUE;
+                              }
+                              else
+                              {
+                                succeeded = MR_TRUE;
+                                succeeded = !(succeeded);
+                                if (succeeded)
+                                {
+                                  SubResult13_42 = (MR_Integer) 0;
+                                  succeeded = MR_TRUE;
+                                }
+                              }
+                            }
+                            if (succeeded)
+                              *HeadVar__1_1 = SubResult13_42;
+                            else
+                            {
+                              MR_Word SubResult14_45;
+                              MR_Integer Var_111 = (MR_Integer) (ArgX14_43);
+                              MR_Integer Var_112 = (MR_Integer) (ArgY14_44);
+
+                              succeeded = (Var_111 < Var_112);
+                              if (succeeded)
+                              {
+                                SubResult14_45 = (MR_Integer) 1;
+                                succeeded = MR_TRUE;
+                              }
+                              else
+                              {
+                                succeeded = (Var_111 > Var_112);
+                                if (succeeded)
+                                {
+                                  SubResult14_45 = (MR_Integer) 2;
+                                  succeeded = MR_TRUE;
+                                }
+                                else
+                                {
+                                  succeeded = MR_TRUE;
+                                  succeeded = !(succeeded);
+                                  if (succeeded)
+                                  {
+                                    SubResult14_45 = (MR_Integer) 0;
+                                    succeeded = MR_TRUE;
+                                  }
+                                }
+                              }
+                              if (succeeded)
+                                *HeadVar__1_1 = SubResult14_45;
+                              else
+                              {
+                                MR_Word SubResult15_48;
+                                MR_Integer Var_113 = (MR_Integer) (ArgX15_46);
+                                MR_Integer Var_114 = (MR_Integer) (ArgY15_47);
+
+                                succeeded = (Var_113 < Var_114);
+                                if (succeeded)
+                                {
+                                  SubResult15_48 = (MR_Integer) 1;
+                                  succeeded = MR_TRUE;
+                                }
+                                else
+                                {
+                                  succeeded = (Var_113 > Var_114);
+                                  if (succeeded)
+                                  {
+                                    SubResult15_48 = (MR_Integer) 2;
+                                    succeeded = MR_TRUE;
+                                  }
+                                  else
+                                  {
+                                    succeeded = MR_TRUE;
+                                    succeeded = !(succeeded);
+                                    if (succeeded)
+                                    {
+                                      SubResult15_48 = (MR_Integer) 0;
+                                      succeeded = MR_TRUE;
+                                    }
+                                  }
+                                }
+                                if (succeeded)
+                                  *HeadVar__1_1 = SubResult15_48;
+                                else
+                                {
+                                  MR_Word SubResult16_51;
+                                  MR_Integer Var_115 = (MR_Integer) (ArgX16_49);
+                                  MR_Integer Var_116 = (MR_Integer) (ArgY16_50);
+
+                                  succeeded = (Var_115 < Var_116);
+                                  if (succeeded)
+                                  {
+                                    SubResult16_51 = (MR_Integer) 1;
+                                    succeeded = MR_TRUE;
+                                  }
+                                  else
+                                  {
+                                    succeeded = (Var_115 > Var_116);
+                                    if (succeeded)
+                                    {
+                                      SubResult16_51 = (MR_Integer) 2;
+                                      succeeded = MR_TRUE;
+                                    }
+                                    else
+                                    {
+                                      succeeded = MR_TRUE;
+                                      succeeded = !(succeeded);
+                                      if (succeeded)
+                                      {
+                                        SubResult16_51 = (MR_Integer) 0;
+                                        succeeded = MR_TRUE;
+                                      }
+                                    }
+                                  }
+                                  if (succeeded)
+                                    *HeadVar__1_1 = SubResult16_51;
+                                  else
+                                  {
+                                    MR_Word SubResult17_54;
+                                    MR_Integer Var_117 = (MR_Integer) (ArgX17_52);
+                                    MR_Integer Var_118 = (MR_Integer) (ArgY17_53);
+
+                                    succeeded = (Var_117 < Var_118);
+                                    if (succeeded)
+                                    {
+                                      SubResult17_54 = (MR_Integer) 1;
+                                      succeeded = MR_TRUE;
+                                    }
+                                    else
+                                    {
+                                      succeeded = (Var_117 > Var_118);
+                                      if (succeeded)
+                                      {
+                                        SubResult17_54 = (MR_Integer) 2;
+                                        succeeded = MR_TRUE;
+                                      }
+                                      else
+                                      {
+                                        succeeded = MR_TRUE;
+                                        succeeded = !(succeeded);
+                                        if (succeeded)
+                                        {
+                                          SubResult17_54 = (MR_Integer) 0;
+                                          succeeded = MR_TRUE;
+                                        }
+                                      }
+                                    }
+                                    if (succeeded)
+                                      *HeadVar__1_1 = SubResult17_54;
+                                    else
+                                    {
+                                      MR_Word SubResult18_57;
+                                      MR_Integer Var_119 = (MR_Integer) (ArgX18_55);
+                                      MR_Integer Var_120 = (MR_Integer) (ArgY18_56);
+
+                                      succeeded = (Var_119 < Var_120);
+                                      if (succeeded)
+                                      {
+                                        SubResult18_57 = (MR_Integer) 1;
+                                        succeeded = MR_TRUE;
+                                      }
+                                      else
+                                      {
+                                        succeeded = (Var_119 > Var_120);
+                                        if (succeeded)
+                                        {
+                                          SubResult18_57 = (MR_Integer) 2;
+                                          succeeded = MR_TRUE;
+                                        }
+                                        else
+                                        {
+                                          succeeded = MR_TRUE;
+                                          succeeded = !(succeeded);
+                                          if (succeeded)
+                                          {
+                                            SubResult18_57 = (MR_Integer) 0;
+                                            succeeded = MR_TRUE;
+                                          }
+                                        }
+                                      }
+                                      if (succeeded)
+                                        *HeadVar__1_1 = SubResult18_57;
+                                      else
+                                      {
+                                        MR_Word SubResult19_60;
+                                        MR_Integer Var_121 = (MR_Integer) (ArgX19_58);
+                                        MR_Integer Var_122 = (MR_Integer) (ArgY19_59);
+
+                                        succeeded = (Var_121 < Var_122);
+                                        if (succeeded)
+                                        {
+                                          SubResult19_60 = (MR_Integer) 1;
+                                          succeeded = MR_TRUE;
+                                        }
+                                        else
+                                        {
+                                          succeeded = (Var_121 > Var_122);
+                                          if (succeeded)
+                                          {
+                                            SubResult19_60 = (MR_Integer) 2;
+                                            succeeded = MR_TRUE;
+                                          }
+                                          else
+                                          {
+                                            succeeded = MR_TRUE;
+                                            succeeded = !(succeeded);
+                                            if (succeeded)
+                                            {
+                                              SubResult19_60 = (MR_Integer) 0;
+                                              succeeded = MR_TRUE;
+                                            }
+                                          }
+                                        }
+                                        if (succeeded)
+                                          *HeadVar__1_1 = SubResult19_60;
+                                        else
+                                        {
+                                          MR_Integer Var_123 = (MR_Integer) (ArgX20_61);
+                                          MR_Integer Var_124 = (MR_Integer) (ArgY20_62);
+
+                                          succeeded = (Var_123 < Var_124);
+                                          if (succeeded)
+                                            *HeadVar__1_1 = (MR_Integer) 1;
+                                          else
+                                          {
+                                            succeeded = (Var_123 > Var_124);
+                                            if (succeeded)
+                                              *HeadVar__1_1 = (MR_Integer) 2;
+                                            else
+                                              *HeadVar__1_1 = (MR_Integer) 0;
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____simplify_tasks_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_43 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_44 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_43 == CastY_44);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Word ArgX1_3 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 19)) & (MR_Integer) 1);
+    MR_Word ArgY1_4 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 19)) & (MR_Integer) 1);
+    MR_Word ArgX2_5 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 18)) & (MR_Integer) 1);
+    MR_Word ArgY2_6 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 18)) & (MR_Integer) 1);
+    MR_Word ArgX3_7 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 17)) & (MR_Integer) 1);
+    MR_Word ArgY3_8 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 17)) & (MR_Integer) 1);
+    MR_Word ArgX4_9 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 16)) & (MR_Integer) 1);
+    MR_Word ArgY4_10 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 16)) & (MR_Integer) 1);
+    MR_Word ArgX5_11 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 15)) & (MR_Integer) 1);
+    MR_Word ArgY5_12 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 15)) & (MR_Integer) 1);
+    MR_Word ArgX6_13 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 14)) & (MR_Integer) 1);
+    MR_Word ArgY6_14 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 14)) & (MR_Integer) 1);
+    MR_Word ArgX7_15 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 13)) & (MR_Integer) 1);
+    MR_Word ArgY7_16 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 13)) & (MR_Integer) 1);
+    MR_Word ArgX8_17 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 12)) & (MR_Integer) 1);
+    MR_Word ArgY8_18 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 12)) & (MR_Integer) 1);
+    MR_Word ArgX9_19 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 11)) & (MR_Integer) 1);
+    MR_Word ArgY9_20 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 11)) & (MR_Integer) 1);
+    MR_Word ArgX10_21 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 10)) & (MR_Integer) 1);
+    MR_Word ArgY10_22 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 10)) & (MR_Integer) 1);
+    MR_Word ArgX11_23 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 9)) & (MR_Integer) 1);
+    MR_Word ArgY11_24 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 9)) & (MR_Integer) 1);
+    MR_Word ArgX12_25 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 8)) & (MR_Integer) 1);
+    MR_Word ArgY12_26 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 8)) & (MR_Integer) 1);
+    MR_Word ArgX13_27 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 7)) & (MR_Integer) 1);
+    MR_Word ArgY13_28 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 7)) & (MR_Integer) 1);
+    MR_Word ArgX14_29 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 6)) & (MR_Integer) 1);
+    MR_Word ArgY14_30 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 6)) & (MR_Integer) 1);
+    MR_Word ArgX15_31 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 5)) & (MR_Integer) 1);
+    MR_Word ArgY15_32 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 5)) & (MR_Integer) 1);
+    MR_Word ArgX16_33 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 4)) & (MR_Integer) 1);
+    MR_Word ArgY16_34 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 4)) & (MR_Integer) 1);
+    MR_Word ArgX17_35 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 3)) & (MR_Integer) 1);
+    MR_Word ArgY17_36 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 3)) & (MR_Integer) 1);
+    MR_Word ArgX18_37 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 2)) & (MR_Integer) 1);
+    MR_Word ArgY18_38 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 2)) & (MR_Integer) 1);
+    MR_Word ArgX19_39 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+    MR_Word ArgY19_40 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+    MR_Word ArgX20_41 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 1);
+    MR_Word ArgY20_42 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 1);
+
+    succeeded = (ArgX1_3 == ArgY1_4);
+    if (succeeded)
+    {
+      succeeded = (ArgX2_5 == ArgY2_6);
+      if (succeeded)
+      {
+        succeeded = (ArgX3_7 == ArgY3_8);
+        if (succeeded)
+        {
+          succeeded = (ArgX4_9 == ArgY4_10);
+          if (succeeded)
+          {
+            succeeded = (ArgX5_11 == ArgY5_12);
+            if (succeeded)
+            {
+              succeeded = (ArgX6_13 == ArgY6_14);
+              if (succeeded)
+              {
+                succeeded = (ArgX7_15 == ArgY7_16);
+                if (succeeded)
+                {
+                  succeeded = (ArgX8_17 == ArgY8_18);
+                  if (succeeded)
+                  {
+                    succeeded = (ArgX9_19 == ArgY9_20);
+                    if (succeeded)
+                    {
+                      succeeded = (ArgX10_21 == ArgY10_22);
+                      if (succeeded)
+                      {
+                        succeeded = (ArgX11_23 == ArgY11_24);
+                        if (succeeded)
+                        {
+                          succeeded = (ArgX12_25 == ArgY12_26);
+                          if (succeeded)
+                          {
+                            succeeded = (ArgX13_27 == ArgY13_28);
+                            if (succeeded)
+                            {
+                              succeeded = (ArgX14_29 == ArgY14_30);
+                              if (succeeded)
+                              {
+                                succeeded = (ArgX15_31 == ArgY15_32);
+                                if (succeeded)
+                                {
+                                  succeeded = (ArgX16_33 == ArgY16_34);
+                                  if (succeeded)
+                                  {
+                                    succeeded = (ArgX17_35 == ArgY17_36);
+                                    if (succeeded)
+                                    {
+                                      succeeded = (ArgX18_37 == ArgY18_38);
+                                      if (succeeded)
+                                      {
+                                        succeeded = (ArgX19_39 == ArgY19_40);
+                                        if (succeeded)
+                                          succeeded = (ArgX20_41 == ArgY20_42);
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____simplify_task_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____simplify_task_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_suspicious_rec_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_suspicious_rec_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_simple_code_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_simple_code_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_obsolete_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_obsolete_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_no_soln_disjunct_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_no_soln_disjunct_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_implicit_streams_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_implicit_streams_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_duplicate_calls_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_duplicate_calls_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_try_opt_const_structs_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_try_opt_const_structs_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_opt_split_switch_arms_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_opt_split_switch_arms_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_opt_extra_structs_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_opt_extra_structs_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_opt_const_structs_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_opt_const_structs_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_mark_cm_changes_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_mark_cm_changes_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_invoke_format_call_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_invoke_format_call_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_ignore_par_conjs_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_ignore_par_conjs_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_generate_warnings_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_generate_warnings_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_elim_removable_scopes_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_elim_removable_scopes_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_after_front_end_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_after_front_end_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+check_hlds__simplify__simplify_tasks__find_simplify_tasks_3_p_0(
+  MR_Word Globals_4,
+  MR_Word WarnThisPass_5,
+  MR_Word * SimplifyTasks_6)
+{
+  MR_bool succeeded;
+  MR_Word WarnSimple_7;
+  MR_Word WarnDupCalls_8;
+  MR_Word WarnImplicitStreamCalls_9;
+  MR_Word WarnKnownBadFormat_10;
+  MR_Word WarnUnknownFormat_11;
+  MR_Word OptTuple_12;
+  MR_Word OptFormatCalls_13;
+  MR_Word InvokeFormatCall_14;
+  MR_Word WarnObsolete_15;
+  MR_Word ExcessAssign_16;
+  MR_Word MergeCodeAfterSwitch_17;
+  MR_Word OptDuplicateCalls_18;
+  MR_Word ConstantProp_19;
+  MR_Word CommonStructs_23;
+  MR_Word RemoveParConjunctions_27;
+  MR_Word WarnSuspiciousRecursion_28;
+  MR_Word SplitSwitchArms_29;
+  MR_Word Var_38;
+  MR_Word Var_39;
+  MR_Word Var_40;
+  MR_Word Var_41;
+  MR_Word Var_42;
+  MR_Word Var_43;
+  MR_Word Var_44;
+
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 27, &WarnSimple_7);
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 28, &WarnDupCalls_8);
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 29, &WarnImplicitStreamCalls_9);
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 46, &WarnKnownBadFormat_10);
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 48, &WarnUnknownFormat_11);
+  libs__globals__get_opt_tuple_2_p_0(Globals_4, &OptTuple_12);
+  OptFormatCalls_13 = ((((MR_Unsigned) ((MR_hl_field(0, OptTuple_12, (MR_Integer) 0))) >> 17)) & (MR_Integer) 1);
+  succeeded = (WarnThisPass_5 == (MR_Integer) 1);
+  if (succeeded)
+  {
+    succeeded = (WarnKnownBadFormat_10 == (MR_Integer) 1);
+    if (!(succeeded))
+      succeeded = (WarnUnknownFormat_11 == (MR_Integer) 1);
+  }
+  if (!(succeeded))
+    succeeded = (OptFormatCalls_13 == (MR_Integer) 0);
+  if (succeeded)
+    InvokeFormatCall_14 = (MR_Integer) 1;
+  else
+    InvokeFormatCall_14 = (MR_Integer) 0;
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 49, &WarnObsolete_15);
+  CommonStructs_23 = ((((MR_Unsigned) ((MR_hl_field(0, OptTuple_12, (MR_Integer) 0))) >> 24)) & (MR_Integer) 1);
+  OptDuplicateCalls_18 = ((((MR_Unsigned) ((MR_hl_field(0, OptTuple_12, (MR_Integer) 0))) >> 21)) & (MR_Integer) 1);
+  ConstantProp_19 = ((((MR_Unsigned) ((MR_hl_field(0, OptTuple_12, (MR_Integer) 0))) >> 20)) & (MR_Integer) 1);
+  ExcessAssign_16 = ((((MR_Unsigned) ((MR_hl_field(0, OptTuple_12, (MR_Integer) 0))) >> 19)) & (MR_Integer) 1);
+  MergeCodeAfterSwitch_17 = ((((MR_Unsigned) ((MR_hl_field(0, OptTuple_12, (MR_Integer) 0))) >> 18)) & (MR_Integer) 1);
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 737, &RemoveParConjunctions_27);
+  libs__globals__lookup_bool_option_3_p_0(Globals_4, (MR_Integer) 34, &WarnSuspiciousRecursion_28);
+  SplitSwitchArms_29 = ((((MR_Unsigned) ((MR_hl_field(0, OptTuple_12, (MR_Integer) 0))) >> 16)) & (MR_Integer) 1);
+  succeeded = (WarnSimple_7 == (MR_Integer) 1);
+  if (succeeded)
+    succeeded = (WarnThisPass_5 == (MR_Integer) 1);
+  if (succeeded)
+    Var_38 = (MR_Integer) 1;
+  else
+    Var_38 = (MR_Integer) 0;
+  succeeded = (WarnDupCalls_8 == (MR_Integer) 1);
+  if (succeeded)
+    succeeded = (WarnThisPass_5 == (MR_Integer) 1);
+  if (succeeded)
+    Var_39 = (MR_Integer) 1;
+  else
+    Var_39 = (MR_Integer) 0;
+  succeeded = (WarnImplicitStreamCalls_9 == (MR_Integer) 1);
+  if (succeeded)
+    succeeded = (WarnThisPass_5 == (MR_Integer) 1);
+  if (succeeded)
+    Var_40 = (MR_Integer) 1;
+  else
+    Var_40 = (MR_Integer) 0;
+  succeeded = (WarnObsolete_15 == (MR_Integer) 1);
+  if (succeeded)
+    succeeded = (WarnThisPass_5 == (MR_Integer) 1);
+  if (succeeded)
+    Var_41 = (MR_Integer) 1;
+  else
+    Var_41 = (MR_Integer) 0;
+  succeeded = (RemoveParConjunctions_27 == (MR_Integer) 1);
+  if (succeeded)
+    Var_42 = (MR_Integer) 1;
+  else
+    Var_42 = (MR_Integer) 0;
+  succeeded = (WarnSuspiciousRecursion_28 == (MR_Integer) 1);
+  if (succeeded)
+    Var_43 = (MR_Integer) 1;
+  else
+    Var_43 = (MR_Integer) 0;
+  succeeded = (WarnSimple_7 == (MR_Integer) 1);
+  if (succeeded)
+    succeeded = (WarnThisPass_5 == (MR_Integer) 1);
+  if (succeeded)
+    Var_44 = (MR_Integer) 1;
+  else
+    Var_44 = (MR_Integer) 0;
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+    *SimplifyTasks_6 = base;
+    MR_hl_field(0, base, 0) = (MR_Box) (((((MR_Unsigned) (Var_38) << 19)) | (((((MR_Unsigned) (Var_39) << 18)) | (((((MR_Unsigned) (Var_40) << 17)) | (((((MR_Unsigned) (InvokeFormatCall_14) << 16)) | (((((MR_Unsigned) (Var_41) << 15)) | (((((MR_Unsigned) ((MR_Integer) 0) << 14)) | (((((MR_Unsigned) ((MR_Integer) 0) << 13)) | (((((MR_Unsigned) (ExcessAssign_16) << 12)) | (((((MR_Unsigned) (MergeCodeAfterSwitch_17) << 11)) | (((((MR_Unsigned) ((MR_Integer) 0) << 10)) | (((((MR_Unsigned) (OptDuplicateCalls_18) << 9)) | (((((MR_Unsigned) (ConstantProp_19) << 8)) | (((((MR_Unsigned) (CommonStructs_23) << 7)) | (((((MR_Unsigned) ((MR_Integer) 0) << 6)) | (((((MR_Unsigned) ((MR_Integer) 0) << 5)) | (((((MR_Unsigned) ((MR_Integer) 0) << 4)) | (((((MR_Unsigned) (Var_42) << 3)) | (((((MR_Unsigned) (Var_43) << 2)) | (((((MR_Unsigned) (Var_44) << 1)) | (MR_Unsigned) (SplitSwitchArms_29)))))))))))))))))))))))))))))))))))))));
+  }
+}
+
+MR_Word MR_CALL 
+check_hlds__simplify__simplify_tasks__list_to_simplify_tasks_2_f_0(
+  MR_Word Globals_4,
+  MR_Word List_5)
+{
+  MR_bool succeeded;
+  MR_Word Tasks_6;
+  MR_Word OptTuple_7;
+  MR_Word Var_8;
+  MR_Word Var_10;
+  MR_Word Var_12;
+  MR_Word Var_14;
+  MR_Word Var_16;
+  MR_Word Var_18;
+  MR_Word Var_20;
+  MR_Word Var_22;
+  MR_Word Var_24;
+  MR_Word Var_26;
+  MR_Word Var_28;
+  MR_Word Var_30;
+  MR_Word Var_32;
+  MR_Word Var_34;
+  MR_Word Var_36;
+  MR_Word Var_38;
+  MR_Word Var_41;
+  MR_Word Var_43;
+  MR_Word Var_45;
+  MR_Word Var_47;
+  MR_Word Var_40;
+
+  libs__globals__get_opt_tuple_2_p_0(Globals_4, &OptTuple_7);
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 0)), List_5);
+  if (succeeded)
+    Var_8 = (MR_Integer) 1;
+  else
+    Var_8 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 1)), List_5);
+  if (succeeded)
+    Var_10 = (MR_Integer) 1;
+  else
+    Var_10 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 2)), List_5);
+  if (succeeded)
+    Var_12 = (MR_Integer) 1;
+  else
+    Var_12 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 3)), List_5);
+  if (succeeded)
+    Var_14 = (MR_Integer) 1;
+  else
+    Var_14 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 4)), List_5);
+  if (succeeded)
+    Var_16 = (MR_Integer) 1;
+  else
+    Var_16 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 5)), List_5);
+  if (succeeded)
+    Var_18 = (MR_Integer) 1;
+  else
+    Var_18 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 6)), List_5);
+  if (succeeded)
+    Var_20 = (MR_Integer) 1;
+  else
+    Var_20 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 7)), List_5);
+  if (succeeded)
+    Var_22 = (MR_Integer) 0;
+  else
+    Var_22 = (MR_Integer) 1;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 8)), List_5);
+  if (succeeded)
+    Var_24 = (MR_Integer) 0;
+  else
+    Var_24 = (MR_Integer) 1;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 9)), List_5);
+  if (succeeded)
+    Var_26 = (MR_Integer) 1;
+  else
+    Var_26 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 10)), List_5);
+  if (succeeded)
+    Var_28 = (MR_Integer) 0;
+  else
+    Var_28 = (MR_Integer) 1;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 11)), List_5);
+  if (succeeded)
+    Var_30 = (MR_Integer) 0;
+  else
+    Var_30 = (MR_Integer) 1;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 12)), List_5);
+  if (succeeded)
+    Var_32 = (MR_Integer) 0;
+  else
+    Var_32 = (MR_Integer) 1;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 13)), List_5);
+  if (succeeded)
+    Var_34 = (MR_Integer) 1;
+  else
+    Var_34 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 14)), List_5);
+  if (succeeded)
+    Var_36 = (MR_Integer) 1;
+  else
+    Var_36 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 14)), List_5);
+  if (succeeded)
+  {
+    Var_40 = ((((MR_Unsigned) ((MR_hl_field(0, OptTuple_7, (MR_Integer) 0))) >> 25)) & (MR_Integer) 1);
+    succeeded = (Var_40 == (MR_Integer) 0);
+  }
+  if (succeeded)
+    Var_38 = (MR_Integer) 1;
+  else
+    Var_38 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 15)), List_5);
+  if (succeeded)
+    Var_41 = (MR_Integer) 1;
+  else
+    Var_41 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 16)), List_5);
+  if (succeeded)
+    Var_43 = (MR_Integer) 1;
+  else
+    Var_43 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 17)), List_5);
+  if (succeeded)
+    Var_45 = (MR_Integer) 1;
+  else
+    Var_45 = (MR_Integer) 0;
+  succeeded = mercury__list__member_2_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 18)), List_5);
+  if (succeeded)
+    Var_47 = (MR_Integer) 0;
+  else
+    Var_47 = (MR_Integer) 1;
+  {
+    Tasks_6 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Tasks_6, 0) = (MR_Box) (((((MR_Unsigned) (Var_8) << 19)) | (((((MR_Unsigned) (Var_10) << 18)) | (((((MR_Unsigned) (Var_12) << 17)) | (((((MR_Unsigned) (Var_14) << 16)) | (((((MR_Unsigned) (Var_16) << 15)) | (((((MR_Unsigned) (Var_18) << 14)) | (((((MR_Unsigned) (Var_20) << 13)) | (((((MR_Unsigned) (Var_22) << 12)) | (((((MR_Unsigned) (Var_24) << 11)) | (((((MR_Unsigned) (Var_26) << 10)) | (((((MR_Unsigned) (Var_28) << 9)) | (((((MR_Unsigned) (Var_30) << 8)) | (((((MR_Unsigned) (Var_32) << 7)) | (((((MR_Unsigned) (Var_34) << 6)) | (((((MR_Unsigned) (Var_36) << 5)) | (((((MR_Unsigned) (Var_38) << 4)) | (((((MR_Unsigned) (Var_41) << 3)) | (((((MR_Unsigned) (Var_43) << 2)) | (((((MR_Unsigned) (Var_45) << 1)) | (MR_Unsigned) (Var_47)))))))))))))))))))))))))))))))))))))));
+  }
+  return Tasks_6;
+}
+
+MR_Word MR_CALL 
+check_hlds__simplify__simplify_tasks__simplify_tasks_to_list_1_f_0(
+  MR_Word SimplifyTasks_3)
+{
+  MR_bool succeeded;
+  MR_Word STATE_VARIABLE_List_25;
+  MR_Word WarnSimpleCode_5 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 19)) & (MR_Integer) 1);
+  MR_Word WarnDupCalls_6 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 18)) & (MR_Integer) 1);
+  MR_Word WarnImplicitStreamCalls_7 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 17)) & (MR_Integer) 1);
+  MR_Word DoFormatCalls_8 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 16)) & (MR_Integer) 1);
+  MR_Word WarnObsolete_9 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 15)) & (MR_Integer) 1);
+  MR_Word MarkCodeModelChanges_10 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 14)) & (MR_Integer) 1);
+  MR_Word AfterFrontEnd_11 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 13)) & (MR_Integer) 1);
+  MR_Word ExcessAssign_12 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 12)) & (MR_Integer) 1);
+  MR_Word MergeCodeAfterSwitch_13 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 11)) & (MR_Integer) 1);
+  MR_Word ElimRemovableScopes_14 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 10)) & (MR_Integer) 1);
+  MR_Word OptDuplicateCalls_15 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 9)) & (MR_Integer) 1);
+  MR_Word ConstantProp_16 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 8)) & (MR_Integer) 1);
+  MR_Word OptCommonStructs_17 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 7)) & (MR_Integer) 1);
+  MR_Word OptExtraStructs_18 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 6)) & (MR_Integer) 1);
+  MR_Word TryOptConstStructs_19 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 5)) & (MR_Integer) 1);
+  MR_Word IgnoreParConjs_21 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 3)) & (MR_Integer) 1);
+  MR_Word WarnSuspiciousRecursion_22 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 2)) & (MR_Integer) 1);
+  MR_Word WarnNoSolutionDisjunct_23 = ((((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) >> 1)) & (MR_Integer) 1);
+  MR_Word SplitSwitchArms_24 = ((MR_Unsigned) ((MR_hl_field(0, SimplifyTasks_3, (MR_Integer) 0))) & (MR_Integer) 1);
+  MR_Word STATE_VARIABLE_List_28_28;
+  MR_Word STATE_VARIABLE_List_30_30;
+  MR_Word STATE_VARIABLE_List_32_32;
+  MR_Word STATE_VARIABLE_List_34_34;
+  MR_Word STATE_VARIABLE_List_36_36;
+  MR_Word STATE_VARIABLE_List_38_38;
+  MR_Word STATE_VARIABLE_List_40_40;
+  MR_Word STATE_VARIABLE_List_42_42;
+  MR_Word STATE_VARIABLE_List_44_44;
+  MR_Word STATE_VARIABLE_List_46_46;
+  MR_Word STATE_VARIABLE_List_48_48;
+  MR_Word STATE_VARIABLE_List_50_50;
+  MR_Word STATE_VARIABLE_List_52_52;
+  MR_Word STATE_VARIABLE_List_54_54;
+  MR_Word STATE_VARIABLE_List_56_56;
+  MR_Word STATE_VARIABLE_List_58_58;
+  MR_Word STATE_VARIABLE_List_60_60;
+  MR_Word STATE_VARIABLE_List_62_62;
+
+  succeeded = (WarnSimpleCode_5 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 0)), (MR_Word) ((MR_Unsigned) 0U), &STATE_VARIABLE_List_28_28);
+  else
+    STATE_VARIABLE_List_28_28 = (MR_Word) ((MR_Unsigned) 0U);
+  succeeded = (WarnDupCalls_6 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 1)), STATE_VARIABLE_List_28_28, &STATE_VARIABLE_List_30_30);
+  else
+    STATE_VARIABLE_List_30_30 = STATE_VARIABLE_List_28_28;
+  succeeded = (WarnImplicitStreamCalls_7 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 2)), STATE_VARIABLE_List_30_30, &STATE_VARIABLE_List_32_32);
+  else
+    STATE_VARIABLE_List_32_32 = STATE_VARIABLE_List_30_30;
+  succeeded = (DoFormatCalls_8 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 3)), STATE_VARIABLE_List_32_32, &STATE_VARIABLE_List_34_34);
+  else
+    STATE_VARIABLE_List_34_34 = STATE_VARIABLE_List_32_32;
+  succeeded = (WarnObsolete_9 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 4)), STATE_VARIABLE_List_34_34, &STATE_VARIABLE_List_36_36);
+  else
+    STATE_VARIABLE_List_36_36 = STATE_VARIABLE_List_34_34;
+  succeeded = (MarkCodeModelChanges_10 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 5)), STATE_VARIABLE_List_36_36, &STATE_VARIABLE_List_38_38);
+  else
+    STATE_VARIABLE_List_38_38 = STATE_VARIABLE_List_36_36;
+  succeeded = (AfterFrontEnd_11 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 6)), STATE_VARIABLE_List_38_38, &STATE_VARIABLE_List_40_40);
+  else
+    STATE_VARIABLE_List_40_40 = STATE_VARIABLE_List_38_38;
+  succeeded = (ExcessAssign_12 == (MR_Integer) 0);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 7)), STATE_VARIABLE_List_40_40, &STATE_VARIABLE_List_42_42);
+  else
+    STATE_VARIABLE_List_42_42 = STATE_VARIABLE_List_40_40;
+  succeeded = (MergeCodeAfterSwitch_13 == (MR_Integer) 0);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 8)), STATE_VARIABLE_List_42_42, &STATE_VARIABLE_List_44_44);
+  else
+    STATE_VARIABLE_List_44_44 = STATE_VARIABLE_List_42_42;
+  succeeded = (ElimRemovableScopes_14 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 9)), STATE_VARIABLE_List_44_44, &STATE_VARIABLE_List_46_46);
+  else
+    STATE_VARIABLE_List_46_46 = STATE_VARIABLE_List_44_44;
+  succeeded = (OptDuplicateCalls_15 == (MR_Integer) 0);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 10)), STATE_VARIABLE_List_46_46, &STATE_VARIABLE_List_48_48);
+  else
+    STATE_VARIABLE_List_48_48 = STATE_VARIABLE_List_46_46;
+  succeeded = (ConstantProp_16 == (MR_Integer) 0);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 11)), STATE_VARIABLE_List_48_48, &STATE_VARIABLE_List_50_50);
+  else
+    STATE_VARIABLE_List_50_50 = STATE_VARIABLE_List_48_48;
+  succeeded = (OptCommonStructs_17 == (MR_Integer) 0);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 12)), STATE_VARIABLE_List_50_50, &STATE_VARIABLE_List_52_52);
+  else
+    STATE_VARIABLE_List_52_52 = STATE_VARIABLE_List_50_50;
+  succeeded = (OptExtraStructs_18 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 13)), STATE_VARIABLE_List_52_52, &STATE_VARIABLE_List_54_54);
+  else
+    STATE_VARIABLE_List_54_54 = STATE_VARIABLE_List_52_52;
+  succeeded = (TryOptConstStructs_19 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 14)), STATE_VARIABLE_List_54_54, &STATE_VARIABLE_List_56_56);
+  else
+    STATE_VARIABLE_List_56_56 = STATE_VARIABLE_List_54_54;
+  succeeded = (IgnoreParConjs_21 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 15)), STATE_VARIABLE_List_56_56, &STATE_VARIABLE_List_58_58);
+  else
+    STATE_VARIABLE_List_58_58 = STATE_VARIABLE_List_56_56;
+  succeeded = (WarnSuspiciousRecursion_22 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 16)), STATE_VARIABLE_List_58_58, &STATE_VARIABLE_List_60_60);
+  else
+    STATE_VARIABLE_List_60_60 = STATE_VARIABLE_List_58_58;
+  succeeded = (WarnNoSolutionDisjunct_23 == (MR_Integer) 1);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 17)), STATE_VARIABLE_List_60_60, &STATE_VARIABLE_List_62_62);
+  else
+    STATE_VARIABLE_List_62_62 = STATE_VARIABLE_List_60_60;
+  succeeded = (SplitSwitchArms_24 == (MR_Integer) 0);
+  if (succeeded)
+    mercury__list__cons_3_p_0((MR_Word) (&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0), ((MR_Box) ((MR_Integer) 18)), STATE_VARIABLE_List_62_62, &STATE_VARIABLE_List_25);
+  else
+    STATE_VARIABLE_List_25 = STATE_VARIABLE_List_62_62;
+  return STATE_VARIABLE_List_25;
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_after_front_end_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_after_front_end_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_after_front_end_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_after_front_end_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_elim_removable_scopes_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_elim_removable_scopes_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_elim_removable_scopes_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_elim_removable_scopes_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_generate_warnings_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_generate_warnings_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_generate_warnings_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_generate_warnings_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_ignore_par_conjs_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_ignore_par_conjs_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_ignore_par_conjs_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_ignore_par_conjs_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_invoke_format_call_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_invoke_format_call_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_invoke_format_call_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_invoke_format_call_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_mark_cm_changes_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_mark_cm_changes_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_mark_cm_changes_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_mark_cm_changes_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_opt_const_structs_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_opt_const_structs_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_opt_const_structs_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_opt_const_structs_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_opt_extra_structs_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_opt_extra_structs_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_opt_extra_structs_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_opt_extra_structs_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_opt_split_switch_arms_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_opt_split_switch_arms_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_opt_split_switch_arms_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_opt_split_switch_arms_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_try_opt_const_structs_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_try_opt_const_structs_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_try_opt_const_structs_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_try_opt_const_structs_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_duplicate_calls_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_warn_duplicate_calls_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_duplicate_calls_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_warn_duplicate_calls_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_implicit_streams_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_warn_implicit_streams_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_implicit_streams_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_warn_implicit_streams_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_no_soln_disjunct_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_warn_no_soln_disjunct_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_no_soln_disjunct_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_warn_no_soln_disjunct_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_obsolete_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_warn_obsolete_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_obsolete_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_warn_obsolete_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_simple_code_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_warn_simple_code_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_simple_code_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_warn_simple_code_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____maybe_warn_suspicious_rec_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____maybe_warn_suspicious_rec_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____maybe_warn_suspicious_rec_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____maybe_warn_suspicious_rec_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____simplify_task_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____simplify_task_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____simplify_task_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____simplify_task_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__simplify__simplify_tasks____Unify____simplify_tasks_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__simplify__simplify_tasks____Unify____simplify_tasks_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__simplify__simplify_tasks____Compare____simplify_tasks_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__simplify__simplify_tasks____Compare____simplify_tasks_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+void mercury__check_hlds__simplify__simplify_tasks__init(void)
+{
+}
+
+void mercury__check_hlds__simplify__simplify_tasks__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_after_front_end_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_elim_removable_scopes_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_generate_warnings_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_ignore_par_conjs_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_invoke_format_call_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_mark_cm_changes_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_opt_const_structs_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_opt_extra_structs_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_opt_split_switch_arms_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_try_opt_const_structs_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_duplicate_calls_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_implicit_streams_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_no_soln_disjunct_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_obsolete_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_simple_code_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_maybe_warn_suspicious_rec_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_task_0);
+	MR_register_type_ctor_info(&check_hlds__simplify__simplify_tasks__check_hlds__simplify__simplify_tasks__type_ctor_info_simplify_tasks_0);
+}
+
+void mercury__check_hlds__simplify__simplify_tasks__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__check_hlds__simplify__simplify_tasks__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module check_hlds.simplify.simplify_tasks.

@@ -1,0 +1,2 @@
+:- module backend_libs.type_class_info.
+:- interface.
