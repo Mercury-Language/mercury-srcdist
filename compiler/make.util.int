@@ -1,0 +1,59 @@
+:- module make.util.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module libs.options.
+:- use_module make.make_info.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.file_names.
+:- pred debug_make_msg(libs.globals.globals, (pred string), string).
+:- mode debug_make_msg(builtin.in, builtin.in((pred(builtin.out) is det)), builtin.out) is det.
+:- pred file_error_msg(libs.file_util.file_name, string).
+:- mode file_error_msg(builtin.in, builtin.out) is det.
+:- pred get_real_milliseconds(int, io.io, io.io).
+:- mode get_real_milliseconds(builtin.out, builtin.di, builtin.uo) is det.
+:- func make_dependency_list(list.list(mdbcomp.sym_name.module_name), make.make_info.module_target_type) = list.list(make.make_info.dependency_file).
+:- func make_target_file_list(list.list(mdbcomp.sym_name.module_name), make.make_info.module_target_type) = list.list(make.make_info.target_file).
+:- pred maybe_making_filename_msg(libs.globals.globals, libs.file_util.file_name, string).
+:- mode maybe_making_filename_msg(builtin.in, builtin.in, builtin.out) is det.
+:- pred maybe_reanalyse_modules_msg(libs.globals.globals, string).
+:- mode maybe_reanalyse_modules_msg(builtin.in, builtin.out) is det.
+:- pred maybe_symlink_or_copy_linked_target_msg(libs.globals.globals, libs.file_util.file_name, string).
+:- mode maybe_symlink_or_copy_linked_target_msg(builtin.in, builtin.in, builtin.out) is det.
+:- pred maybe_warn_up_to_date_target_msg(libs.globals.globals, make.make_info.top_target_file, libs.file_util.file_name, make.make_info.make_info, make.make_info.make_info, string).
+:- mode maybe_warn_up_to_date_target_msg(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred maybe_write_msg(io.text_output_stream, string, io.io, io.io).
+:- mode maybe_write_msg(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred maybe_write_msg_locked(io.text_output_stream, make.make_info.make_info, string, io.io, io.io).
+:- mode maybe_write_msg_locked(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred option_set_four_part_msg(libs.globals.globals, libs.options.option, string, string, string, string, string).
+:- mode option_set_four_part_msg(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred option_set_one_part_msg(libs.globals.globals, libs.options.option, string, string).
+:- mode option_set_one_part_msg(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred option_set_three_part_msg(libs.globals.globals, libs.options.option, string, string, string, string).
+:- mode option_set_three_part_msg(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred option_set_two_part_msg(libs.globals.globals, libs.options.option, string, string, string).
+:- mode option_set_two_part_msg(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred remove_file_for_make(io.text_output_stream, libs.globals.globals, libs.options.option, libs.file_util.file_name, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode remove_file_for_make(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred remove_make_target_file(io.text_output_stream, libs.globals.globals, string, libs.options.option, make.make_info.target_file, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode remove_make_target_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred remove_make_target_file_by_name(io.text_output_stream, libs.globals.globals, string, libs.options.option, mdbcomp.sym_name.module_name, make.make_info.module_target_type, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode remove_make_target_file_by_name(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred remove_module_file_for_make(io.text_output_stream, libs.globals.globals, libs.options.option, mdbcomp.sym_name.module_name, parse_tree.file_names.ext, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode remove_module_file_for_make(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred target_is_grade_or_arch_dependent(make.make_info.module_target_type).
+:- mode target_is_grade_or_arch_dependent(builtin.in) is semidet.
+:- pred verbose_make_four_part_msg(libs.globals.globals, string, string, string, string, string).
+:- mode verbose_make_four_part_msg(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred verbose_make_one_part_msg(libs.globals.globals, string, string).
+:- mode verbose_make_one_part_msg(builtin.in, builtin.in, builtin.out) is det.
+:- pred verbose_make_three_part_msg(libs.globals.globals, string, string, string, string).
+:- mode verbose_make_three_part_msg(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred verbose_make_two_part_msg(libs.globals.globals, string, string, string).
+:- mode verbose_make_two_part_msg(builtin.in, builtin.in, builtin.in, builtin.out) is det.
