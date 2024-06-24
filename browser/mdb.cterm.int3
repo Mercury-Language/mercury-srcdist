@@ -1,0 +1,6 @@
+:- module mdb.cterm.
+:- interface.
+:- type cargs.
+:- type cterm.
+:- type_representation(cargs, du_repn(direct_dummy("cargs",  c_j_cs(foreign_type("MR_CArgs", [can_pass_as_mercury_type]), no_foreign, no_foreign)))).
+:- type_representation(cterm, du_repn(direct_dummy("cterm",  c_j_cs(foreign_type("MR_CTerm", [can_pass_as_mercury_type]), no_foreign, no_foreign)))).

@@ -1,0 +1,4 @@
+:- module map.
+:- interface.
+:- type map(K, V).
+:- type_representation(map(V_1, V_2), is_eqv_to(tree234(V_1, V_2))).
