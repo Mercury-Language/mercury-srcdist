@@ -1,0 +1,53 @@
+/*
+** Automatically generated from `implicit_parallelism.m'
+** by the Mercury compiler,
+** version rotd-2024-06-25
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.implicit_parallelism.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__implicit_parallelism
+#define MR_HEADER_GUARD_transform_hlds__implicit_parallelism
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__IMPLICIT_PARALLELISM_DECL_GUARD
+#define TRANSFORM_HLDS__IMPLICIT_PARALLELISM_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+void mercury__transform_hlds__implicit_parallelism__init(void);
+void mercury__transform_hlds__implicit_parallelism__init_type_tables(void);
+void mercury__transform_hlds__implicit_parallelism__init_debugger(void);
+const char *mercury__transform_hlds__implicit_parallelism__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.implicit_parallelism
+
+// :- end_interface transform_hlds.implicit_parallelism.
