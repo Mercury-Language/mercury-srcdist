@@ -1,0 +1,9 @@
+:- module (transform_hlds.implicit_parallelism).introduce_parallelism.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- pred apply_implicit_parallelism_transformation(list.list(parse_tree.error_spec.error_spec), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode apply_implicit_parallelism_transformation(builtin.out, builtin.in, builtin.out) is det.

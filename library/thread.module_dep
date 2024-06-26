@@ -1,0 +1,14 @@
+module(2, "thread.m",
+	thread,
+	{},
+	{builtin, io, maybe, private_builtin},
+	{bool, mutvar, require},
+	{thread.barrier, thread.channel, thread.closeable_channel, thread.future, thread.mvar, thread.semaphore},
+	{},
+	{},
+	{"C"},
+	{"C" - thread, "C#" - thread, "Java" - thread},
+	contains_foreign_export,
+	no_main,
+	{}
+).

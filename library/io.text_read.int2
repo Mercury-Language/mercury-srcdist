@@ -1,0 +1,7 @@
+:- module io.text_read.
+:- interface.
+:- type read_line_as_string_result
+    --->    rlas_ok 
+    ;       rlas_eof 
+    ;       rlas_null_char 
+    ;       rlas_error .
