@@ -1,0 +1,7 @@
+:- module transform_hlds.dep_par_conj.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module hlds.hlds_module.
+:- pred impl_dep_par_conjs_in_module(io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode impl_dep_par_conjs_in_module(builtin.in, builtin.in, builtin.out) is det.

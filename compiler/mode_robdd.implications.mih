@@ -1,0 +1,176 @@
+/*
+** Automatically generated from `mode_robdd.implications.m'
+** by the Mercury compiler,
+** version rotd-2024-06-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mode_robdd.implications.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mode_robdd__implications
+#define MR_HEADER_GUARD_mode_robdd__implications
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MODE_ROBDD__IMPLICATIONS_DECL_GUARD
+#define MODE_ROBDD__IMPLICATIONS_DECL_GUARD
+#include "mode_robdd.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mode_robdd__implications__mode_robdd__implications__type_ctor_info_bin_clause_1;
+
+extern const MR_TypeCtorInfo_Struct mode_robdd__implications__mode_robdd__implications__type_ctor_info_extract_0;
+
+extern const MR_TypeCtorInfo_Struct mode_robdd__implications__mode_robdd__implications__type_ctor_info_mklit_1;
+
+void MR_CALL 
+mode_robdd__implications__extract_implication_vars_from_robdd_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mode_robdd__implications__normalise_true_false_implication_vars_7_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+MR_bool MR_CALL 
+mode_robdd__implications__propagate_equivalences_into_implications_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mode_robdd__implications__propagate_implications_into_equivalences_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_Word MR_CALL 
+mode_robdd__implications__f_times_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__implications__f_plus_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__implications__add_equalities_to_imp_vars_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__implications__at_most_one_of_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__implications__delete_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__implications__difference_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__implications__either_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mode_robdd__implications__filter_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__implications__imp_vars_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mode_robdd__implications__init_imp_vars_0_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mode_robdd__implications__neq_vars_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mode_robdd__implications__not_both_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mode_robdd__implications__restrict_threshold_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__mode_robdd__implications__init(void);
+void mercury__mode_robdd__implications__init_type_tables(void);
+void mercury__mode_robdd__implications__init_debugger(void);
+const char *mercury__mode_robdd__implications__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mode_robdd.implications
+
+// :- end_interface mode_robdd.implications.
