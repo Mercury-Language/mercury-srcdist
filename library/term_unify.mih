@@ -1,0 +1,93 @@
+/*
+** Automatically generated from `term_unify.m'
+** by the Mercury compiler,
+** version rotd-2024-06-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module term_unify.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_term_unify
+#define MR_HEADER_GUARD_term_unify
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TERM_UNIFY_DECL_GUARD
+#define TERM_UNIFY_DECL_GUARD
+
+#endif
+
+
+
+MR_bool MR_CALL 
+mercury__term_unify__first_term_list_subsumes_second_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__term_unify__unify_term_lists_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__term_unify__unify_term_lists_dont_bind_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__term_unify__unify_terms_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__term_unify__unify_terms_dont_bind_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void mercury__term_unify__init(void);
+void mercury__term_unify__init_type_tables(void);
+void mercury__term_unify__init_debugger(void);
+const char *mercury__term_unify__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_term_unify
+
+// :- end_interface term_unify.

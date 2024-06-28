@@ -1,0 +1,32 @@
+:- module (transform_hlds.higher_order).higher_order_info.
+:- interface.
+:- use_module hlds.
+:- use_module set.
+:- use_module hlds.hlds_pred.
+:- use_module (transform_hlds.higher_order).higher_order_global_info.
+:- type higher_order_info.
+:- type ho_changed
+    --->    hoc_changed 
+    ;       hoc_request 
+    ;       hoc_unchanged .
+:- pred hoi_add_request(transform_hlds.higher_order.higher_order_global_info.ho_request, transform_hlds.higher_order.higher_order_info.higher_order_info, transform_hlds.higher_order.higher_order_info.higher_order_info).
+:- mode hoi_add_request(builtin.in, builtin.in, builtin.out) is det.
+:- func hoi_get_changed(transform_hlds.higher_order.higher_order_info.higher_order_info) = transform_hlds.higher_order.higher_order_info.ho_changed.
+:- func hoi_get_global_info(transform_hlds.higher_order.higher_order_info.higher_order_info) = transform_hlds.higher_order.higher_order_global_info.higher_order_global_info.
+:- func hoi_get_known_var_map(transform_hlds.higher_order.higher_order_info.higher_order_info) = transform_hlds.higher_order.higher_order_global_info.known_var_map.
+:- func hoi_get_pred_info(transform_hlds.higher_order.higher_order_info.higher_order_info) = hlds.hlds_pred.pred_info.
+:- func hoi_get_pred_proc_id(transform_hlds.higher_order.higher_order_info.higher_order_info) = hlds.hlds_pred.pred_proc_id.
+:- func hoi_get_proc_info(transform_hlds.higher_order.higher_order_info.higher_order_info) = hlds.hlds_pred.proc_info.
+:- func hoi_init(transform_hlds.higher_order.higher_order_global_info.higher_order_global_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id) = transform_hlds.higher_order.higher_order_info.higher_order_info.
+:- pred hoi_results(transform_hlds.higher_order.higher_order_info.higher_order_info, transform_hlds.higher_order.higher_order_global_info.higher_order_global_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, set.set(transform_hlds.higher_order.higher_order_global_info.ho_request)).
+:- mode hoi_results(builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred hoi_set_changed(transform_hlds.higher_order.higher_order_info.ho_changed, transform_hlds.higher_order.higher_order_info.higher_order_info, transform_hlds.higher_order.higher_order_info.higher_order_info).
+:- mode hoi_set_changed(builtin.in, builtin.in, builtin.out) is det.
+:- pred hoi_set_global_info(transform_hlds.higher_order.higher_order_global_info.higher_order_global_info, transform_hlds.higher_order.higher_order_info.higher_order_info, transform_hlds.higher_order.higher_order_info.higher_order_info).
+:- mode hoi_set_global_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred hoi_set_known_var_map(transform_hlds.higher_order.higher_order_global_info.known_var_map, transform_hlds.higher_order.higher_order_info.higher_order_info, transform_hlds.higher_order.higher_order_info.higher_order_info).
+:- mode hoi_set_known_var_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred hoi_set_pred_info(hlds.hlds_pred.pred_info, transform_hlds.higher_order.higher_order_info.higher_order_info, transform_hlds.higher_order.higher_order_info.higher_order_info).
+:- mode hoi_set_pred_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred hoi_set_proc_info(hlds.hlds_pred.proc_info, transform_hlds.higher_order.higher_order_info.higher_order_info, transform_hlds.higher_order.higher_order_info.higher_order_info).
+:- mode hoi_set_proc_info(builtin.in, builtin.in, builtin.out) is det.

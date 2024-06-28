@@ -1,0 +1,234 @@
+/*
+** Automatically generated from `hlds_out_goal.m'
+** by the Mercury compiler,
+** version rotd-2024-06-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_out.hlds_out_goal.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_out__hlds_out_goal
+#define MR_HEADER_GUARD_hlds__hlds_out__hlds_out_goal
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_OUT__HLDS_OUT_GOAL_DECL_GUARD
+#define HLDS__HLDS_OUT__HLDS_OUT_GOAL_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.hlds_out.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_out__hlds_out_goal__hlds__hlds_out__hlds_out_goal__type_ctor_info_hlds_out_info_goal_0;
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__do_format_goal_6_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__do_write_goal_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Unsigned param_3,
+  MR_String param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__dump_goal_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__dump_goal_nl_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__format_goal_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Unsigned param_7,
+  MR_String param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word * param_11);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__format_goal_list_6_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__format_goal_nl_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Unsigned param_7,
+  MR_String param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word * param_11);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__format_unify_rhs_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Unsigned param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__format_var_to_abs_locns_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Unsigned param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__project_cons_name_and_tag_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__write_goal_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Unsigned param_8,
+  MR_String param_9,
+  MR_Word param_10);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__write_goal_list_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Unsigned param_3,
+  MR_String param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__write_goal_nl_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Unsigned param_8,
+  MR_String param_9,
+  MR_Word param_10);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__write_unify_rhs_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Unsigned param_8,
+  MR_Word param_9);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__write_var_to_abs_locns_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Unsigned param_4,
+  MR_Word param_5);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_goal__case_comment_3_f_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Word param_3);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_goal__unify_rhs_to_string_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal____Compare____hlds_out_info_goal_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_out__hlds_out_goal____Unify____hlds_out_info_goal_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__hlds_out__hlds_out_goal__init(void);
+void mercury__hlds__hlds_out__hlds_out_goal__init_type_tables(void);
+void mercury__hlds__hlds_out__hlds_out_goal__init_debugger(void);
+const char *mercury__hlds__hlds_out__hlds_out_goal__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.hlds_out.hlds_out_goal
+
+// :- end_interface hlds.hlds_out.hlds_out_goal.
