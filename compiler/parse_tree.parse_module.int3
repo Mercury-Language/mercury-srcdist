@@ -1,0 +1,4 @@
+:- module parse_tree.parse_module.
+:- interface.
+:- type_representation(make_dummy_parse_tree(V_1), is_eqv_to(pred(module_name, V_1))).
+:- type_representation(read_parse_tree(V_1), is_eqv_to(pred(file_name, string, int, line_context, line_posn, module_name, list(prog_context), maybe(V_1), read_module_errors))).

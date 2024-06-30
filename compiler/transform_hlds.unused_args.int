@@ -1,0 +1,26 @@
+:- module transform_hlds.unused_args.
+:- interface.
+:- use_module analysis.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module analysis.framework.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_item.
+:- type unused_args_answer.
+:- type unused_args_call.
+:- type unused_args_func_info.
+:- instance ((analysis.framework).analysis(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_call, transform_hlds.unused_args.unused_args_answer)).
+:- instance ((analysis.framework).answer_pattern(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_answer)).
+:- instance ((analysis.framework).call_pattern(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_call)).
+:- instance ((analysis.framework).partial_order(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_answer)).
+:- instance ((analysis.framework).partial_order(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_call)).
+:- instance ((analysis.framework).to_term(transform_hlds.unused_args.unused_args_answer)).
+:- instance ((analysis.framework).to_term(transform_hlds.unused_args.unused_args_call)).
+:- pred unused_args_process_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), set.set(parse_tree.prog_item.gen_pragma_unused_args_info)).
+:- mode unused_args_process_module(builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- implementation.
+:- type unused_args_call
+    --->    unused_args_call .

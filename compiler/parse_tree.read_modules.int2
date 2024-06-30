@@ -1,0 +1,37 @@
+:- module parse_tree.read_modules.
+:- interface.
+:- use_module map.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_item.
+:- type have_module(PT)
+    --->    have_module(libs.file_util.file_name, PT, parse_tree.read_modules.have_parse_tree_source)
+    ;       have_not_read_module(libs.file_util.file_name, parse_tree.parse_error.read_module_errors).
+:- type have_parse_tree_int0_map == parse_tree.read_modules.have_parse_tree_map(parse_tree.prog_item.parse_tree_int0).
+:- type have_parse_tree_int1_map == parse_tree.read_modules.have_parse_tree_map(parse_tree.prog_item.parse_tree_int1).
+:- type have_parse_tree_int2_map == parse_tree.read_modules.have_parse_tree_map(parse_tree.prog_item.parse_tree_int2).
+:- type have_parse_tree_int3_map == parse_tree.read_modules.have_parse_tree_map(parse_tree.prog_item.parse_tree_int3).
+:- type have_parse_tree_key(Kind)
+    --->    have_parse_tree_key(mdbcomp.sym_name.module_name, Kind).
+:- type have_parse_tree_map(PT) == map.map(mdbcomp.sym_name.module_name, parse_tree.read_modules.have_module(PT)).
+:- type have_parse_tree_maps
+    --->    have_parse_tree_maps((parse_tree.read_modules).hptm_src :: parse_tree.read_modules.have_parse_tree_src_map, (parse_tree.read_modules).hptm_module_src :: parse_tree.read_modules.have_parse_tree_msrc_map, (parse_tree.read_modules).hptm_int0 :: parse_tree.read_modules.have_parse_tree_int0_map, (parse_tree.read_modules).hptm_int1 :: parse_tree.read_modules.have_parse_tree_int1_map, (parse_tree.read_modules).hptm_int2 :: parse_tree.read_modules.have_parse_tree_int2_map, (parse_tree.read_modules).hptm_int3 :: parse_tree.read_modules.have_parse_tree_int3_map, (parse_tree.read_modules).hptm_plain_opt :: parse_tree.read_modules.have_parse_tree_plain_opt_map, (parse_tree.read_modules).hptm_trans_opt :: parse_tree.read_modules.have_parse_tree_trans_opt_map).
+:- type have_parse_tree_msrc_map == map.map(mdbcomp.sym_name.module_name, parse_tree.prog_item.parse_tree_module_src).
+:- type have_parse_tree_plain_opt_map == parse_tree.read_modules.have_parse_tree_map(parse_tree.prog_item.parse_tree_plain_opt).
+:- type have_parse_tree_read =< parse_tree.read_modules.have_parse_tree_source
+    --->    was_read(maybe.maybe(libs.timestamp.timestamp), parse_tree.parse_error.read_module_errors).
+:- type have_parse_tree_source
+    --->    was_read(maybe.maybe(libs.timestamp.timestamp), parse_tree.parse_error.read_module_errors)
+    ;       was_constructed .
+:- type have_parse_tree_src_map == parse_tree.read_modules.have_parse_tree_map(parse_tree.prog_item.parse_tree_src).
+:- type have_parse_tree_trans_opt_map == parse_tree.read_modules.have_parse_tree_map(parse_tree.prog_item.parse_tree_trans_opt).
+:- type have_read_module(PT) =< parse_tree.read_modules.have_module(PT)
+    --->    have_module(libs.file_util.file_name, PT, parse_tree.read_modules.have_parse_tree_read)
+    ;       have_not_read_module(libs.file_util.file_name, parse_tree.parse_error.read_module_errors).
+:- type maybe_ignore_errors
+    --->    ignore_errors 
+    ;       do_not_ignore_errors .
+:- type read_reason_msg
+    --->    rrm_file 
+    ;       rrm_std 
+    ;       rrm_old 
+    ;       rrm_get_deps .
