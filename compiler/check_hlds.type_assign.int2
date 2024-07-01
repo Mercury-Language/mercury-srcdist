@@ -1,0 +1,28 @@
+:- module check_hlds.type_assign.
+:- interface.
+:- use_module list.
+:- type args_type_assign
+    --->    args_type_assign((check_hlds.type_assign).ata_caller_arg_assign :: check_hlds.type_assign.type_assign, (check_hlds.type_assign).ata_expected_arg_types :: list.list(parse_tree.prog_data.mer_type), (check_hlds.type_assign).ata_expected_constraints :: hlds.hlds_class.hlds_constraints, (check_hlds.type_assign).ata_source :: check_hlds.type_assign.args_type_assign_source).
+:- type args_type_assign_set == list.list(check_hlds.type_assign.args_type_assign).
+:- type args_type_assign_source
+    --->    atas_pred(hlds.hlds_pred.pred_id)
+    ;       atas_higher_order_call(parse_tree.prog_data.prog_var)
+    ;       atas_cons(check_hlds.type_assign.cons_type_info_source)
+    ;       atas_ensure_have_a_type .
+:- type coerce_constraint
+    --->    coerce_constraint((check_hlds.type_assign).coerce_from :: parse_tree.prog_data.mer_type, (check_hlds.type_assign).coerce_to :: parse_tree.prog_data.mer_type, (check_hlds.type_assign).coerce_context :: parse_tree.prog_data.prog_context, (check_hlds.type_assign).coerce_status :: check_hlds.type_assign.coerce_constraint_status).
+:- type coerce_constraint_status
+    --->    need_to_check 
+    ;       unsatisfiable 
+    ;       satisfied_but_redundant .
+:- type cons_type_info
+    --->    cons_type_info((check_hlds.type_assign).cti_varset :: parse_tree.prog_data.tvarset, (check_hlds.type_assign).cti_existq_tvars :: parse_tree.prog_data.existq_tvars, (check_hlds.type_assign).cti_result_type :: parse_tree.prog_data.mer_type, (check_hlds.type_assign).cti_arg_types :: list.list(parse_tree.prog_data.mer_type), (check_hlds.type_assign).cti_constraints :: hlds.hlds_class.hlds_constraints, (check_hlds.type_assign).cti_source :: check_hlds.type_assign.cons_type_info_source).
+:- type cons_type_info_source
+    --->    source_type(parse_tree.prog_data.type_ctor, parse_tree.prog_data.du_ctor)
+    ;       source_builtin_type(string)
+    ;       source_field_access(hlds.hlds_cons.field_access_type, parse_tree.prog_data.type_ctor, parse_tree.prog_data.du_ctor, string)
+    ;       source_apply(string)
+    ;       source_pred(hlds.hlds_pred.pred_id).
+:- type type_assign
+    --->    type_assign((check_hlds.type_assign).ta_var_types :: parse_tree.vartypes.vartypes, (check_hlds.type_assign).ta_type_varset :: parse_tree.prog_data.tvarset, (check_hlds.type_assign).ta_existq_tvars :: list.list(parse_tree.prog_data.tvar), (check_hlds.type_assign).ta_type_bindings :: parse_tree.prog_data.tsubst, (check_hlds.type_assign).ta_coerce_constraints :: list.list(check_hlds.type_assign.coerce_constraint), (check_hlds.type_assign).ta_class_constraints :: hlds.hlds_class.hlds_constraints, (check_hlds.type_assign).ta_constraint_proof_map :: hlds.hlds_class.constraint_proof_map, (check_hlds.type_assign).ta_constraint_map :: hlds.hlds_class.constraint_map).
+:- type type_assign_set == list.list(check_hlds.type_assign.type_assign).

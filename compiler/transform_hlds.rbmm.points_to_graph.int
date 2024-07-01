@@ -1,0 +1,96 @@
+:- module (transform_hlds.rbmm).points_to_graph.
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_pragma.
+:- type rpt_graph.
+:- type rptg_edge
+    --->    rptg_edge(int).
+:- type rptg_edge_content
+    --->    rptg_edge_content(((transform_hlds.rbmm).points_to_graph).rptg_ec_label :: parse_tree.prog_data_pragma.selector).
+:- type rptg_edge_info
+    --->    rptg_edge_info(((transform_hlds.rbmm).points_to_graph).rptg_edge_from_node :: transform_hlds.rbmm.points_to_graph.rptg_node, ((transform_hlds.rbmm).points_to_graph).rptg_edge_to_node :: transform_hlds.rbmm.points_to_graph.rptg_node, ((transform_hlds.rbmm).points_to_graph).rptg_edge_label :: transform_hlds.rbmm.points_to_graph.rptg_edge_content).
+:- type rptg_edges == map.map(transform_hlds.rbmm.points_to_graph.rptg_edge, transform_hlds.rbmm.points_to_graph.rptg_edge_info).
+:- type rptg_node
+    --->    rptg_node(int).
+:- type rptg_node_content
+    --->    rptg_node_content(((transform_hlds.rbmm).points_to_graph).rptg_nc_vars :: set.set(parse_tree.prog_data.prog_var), ((transform_hlds.rbmm).points_to_graph).rptg_nc_reg_var_name :: string, ((transform_hlds.rbmm).points_to_graph).rptg_nc_merged_from :: set.set(transform_hlds.rbmm.points_to_graph.rptg_node), ((transform_hlds.rbmm).points_to_graph).rptg_nc_node_type :: parse_tree.prog_data.mer_type, ((transform_hlds.rbmm).points_to_graph).rptg_nc_is_allocated :: bool.bool).
+:- type rptg_nodes == map.map(transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_node_content).
+:- type rptg_outedges == map.map(transform_hlds.rbmm.points_to_graph.rptg_node, map.map(transform_hlds.rbmm.points_to_graph.rptg_edge, transform_hlds.rbmm.points_to_graph.rptg_node)).
+:- pred edge_operator(transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_edge_content, transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rpt_graph).
+:- mode edge_operator(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func rpt_graph_init = transform_hlds.rbmm.points_to_graph.rpt_graph.
+:- pred rptg_add_node(transform_hlds.rbmm.points_to_graph.rptg_node_content, transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rpt_graph).
+:- mode rptg_add_node(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func rptg_edge_content_get_label(transform_hlds.rbmm.points_to_graph.rptg_edge_content) = parse_tree.prog_data_pragma.selector.
+:- pred rptg_edge_content_set_label(parse_tree.prog_data_pragma.selector, transform_hlds.rbmm.points_to_graph.rptg_edge_content, transform_hlds.rbmm.points_to_graph.rptg_edge_content).
+:- mode rptg_edge_content_set_label(builtin.in, builtin.in, builtin.out) is det.
+:- pred rptg_edge_in_graph(transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_edge_content, transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rpt_graph).
+:- mode rptg_edge_in_graph(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred rptg_equal(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rpt_graph).
+:- mode rptg_equal(builtin.in, builtin.in) is semidet.
+:- pred rptg_find_edge_from_node_with_same_content(transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_edge_content, transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node).
+:- mode rptg_find_edge_from_node_with_same_content(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred rptg_get_edge_contents(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_edge, transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_edge_content).
+:- mode rptg_get_edge_contents(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- func rptg_get_edges(transform_hlds.rbmm.points_to_graph.rpt_graph) = transform_hlds.rbmm.points_to_graph.rptg_edges.
+:- func rptg_get_next_node_id(transform_hlds.rbmm.points_to_graph.rpt_graph) = int.
+:- pred rptg_get_node_by_node(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_node).
+:- mode rptg_get_node_by_node(builtin.in, builtin.in, builtin.out) is det.
+:- pred rptg_get_node_by_region_name(transform_hlds.rbmm.points_to_graph.rpt_graph, string, transform_hlds.rbmm.points_to_graph.rptg_node).
+:- mode rptg_get_node_by_region_name(builtin.in, builtin.in, builtin.out) is det.
+:- pred rptg_get_node_by_variable(transform_hlds.rbmm.points_to_graph.rpt_graph, parse_tree.prog_data.prog_var, transform_hlds.rbmm.points_to_graph.rptg_node).
+:- mode rptg_get_node_by_variable(builtin.in, builtin.in, builtin.out) is det.
+:- pred rptg_get_node_by_vars(transform_hlds.rbmm.points_to_graph.rpt_graph, set.set(parse_tree.prog_data.prog_var), transform_hlds.rbmm.points_to_graph.rptg_node).
+:- mode rptg_get_node_by_vars(builtin.in, builtin.in, builtin.out) is det.
+:- func rptg_get_node_content(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node) = transform_hlds.rbmm.points_to_graph.rptg_node_content.
+:- func rptg_get_nodes(transform_hlds.rbmm.points_to_graph.rpt_graph) = transform_hlds.rbmm.points_to_graph.rptg_nodes.
+:- func rptg_get_nodes_as_list(transform_hlds.rbmm.points_to_graph.rpt_graph) = list.list(transform_hlds.rbmm.points_to_graph.rptg_node).
+:- func rptg_get_outedges(transform_hlds.rbmm.points_to_graph.rpt_graph) = transform_hlds.rbmm.points_to_graph.rptg_outedges.
+:- pred rptg_is_allocated_node(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node).
+:- mode rptg_is_allocated_node(builtin.in, builtin.in) is semidet.
+:- func rptg_lookup_list_endnodes(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node) = list.list(transform_hlds.rbmm.points_to_graph.rptg_node).
+:- func rptg_lookup_list_outedges(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node) = list.list(transform_hlds.rbmm.points_to_graph.rptg_edge).
+:- func rptg_lookup_map_outedges(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node) = map.map(transform_hlds.rbmm.points_to_graph.rptg_edge, transform_hlds.rbmm.points_to_graph.rptg_node).
+:- func rptg_lookup_node_is_allocated(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node) = bool.bool.
+:- func rptg_lookup_node_type(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node) = parse_tree.prog_data.mer_type.
+:- func rptg_lookup_node_vars(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node) = set.set(parse_tree.prog_data.prog_var).
+:- func rptg_lookup_region_name(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node) = string.
+:- func rptg_node_content_get_is_allocated(transform_hlds.rbmm.points_to_graph.rptg_node_content) = bool.bool.
+:- func rptg_node_content_get_merged_from(transform_hlds.rbmm.points_to_graph.rptg_node_content) = set.set(transform_hlds.rbmm.points_to_graph.rptg_node).
+:- func rptg_node_content_get_node_type(transform_hlds.rbmm.points_to_graph.rptg_node_content) = parse_tree.prog_data.mer_type.
+:- func rptg_node_content_get_region_name(transform_hlds.rbmm.points_to_graph.rptg_node_content) = string.
+:- func rptg_node_content_get_vars(transform_hlds.rbmm.points_to_graph.rptg_node_content) = set.set(parse_tree.prog_data.prog_var).
+:- pred rptg_node_content_set_is_allocated(bool.bool, transform_hlds.rbmm.points_to_graph.rptg_node_content, transform_hlds.rbmm.points_to_graph.rptg_node_content).
+:- mode rptg_node_content_set_is_allocated(builtin.in, builtin.in, builtin.out) is det.
+:- pred rptg_node_content_set_merged_from(set.set(transform_hlds.rbmm.points_to_graph.rptg_node), transform_hlds.rbmm.points_to_graph.rptg_node_content, transform_hlds.rbmm.points_to_graph.rptg_node_content).
+:- mode rptg_node_content_set_merged_from(builtin.in, builtin.in, builtin.out) is det.
+:- pred rptg_node_content_set_node_type(parse_tree.prog_data.mer_type, transform_hlds.rbmm.points_to_graph.rptg_node_content, transform_hlds.rbmm.points_to_graph.rptg_node_content).
+:- mode rptg_node_content_set_node_type(builtin.in, builtin.in, builtin.out) is det.
+:- pred rptg_node_content_set_region_name(string, transform_hlds.rbmm.points_to_graph.rptg_node_content, transform_hlds.rbmm.points_to_graph.rptg_node_content).
+:- mode rptg_node_content_set_region_name(builtin.in, builtin.in, builtin.out) is det.
+:- pred rptg_node_content_set_vars(set.set(parse_tree.prog_data.prog_var), transform_hlds.rbmm.points_to_graph.rptg_node_content, transform_hlds.rbmm.points_to_graph.rptg_node_content).
+:- mode rptg_node_content_set_vars(builtin.in, builtin.in, builtin.out) is det.
+:- pred rptg_path(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_node, list.list(transform_hlds.rbmm.points_to_graph.rptg_edge)).
+:- mode rptg_path(builtin.in, builtin.in, builtin.in, builtin.out) is nondet.
+:- mode rptg_path(builtin.in, builtin.in, builtin.out, builtin.out) is nondet.
+:- pred rptg_reach_from_a_variable(transform_hlds.rbmm.points_to_graph.rpt_graph, hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, parse_tree.prog_data.prog_var, set.set(transform_hlds.rbmm.points_to_graph.rptg_node), set.set(transform_hlds.rbmm.points_to_graph.rptg_node)).
+:- mode rptg_reach_from_a_variable(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred rptg_reachable_and_having_type(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node, parse_tree.prog_data.mer_type, transform_hlds.rbmm.points_to_graph.rptg_node).
+:- mode rptg_reachable_and_having_type(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred rptg_set_edge(transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_edge_content, transform_hlds.rbmm.points_to_graph.rptg_edge, transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rpt_graph).
+:- mode rptg_set_edge(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred rptg_set_node_content(transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_node_content, transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rpt_graph).
+:- mode rptg_set_node_content(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred rptg_set_node_is_allocated(transform_hlds.rbmm.points_to_graph.rptg_node, bool.bool, transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rpt_graph).
+:- mode rptg_set_node_is_allocated(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func rptg_successors(transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rptg_node) = set.set(transform_hlds.rbmm.points_to_graph.rptg_node).
+:- pred unify_operator(transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rpt_graph, transform_hlds.rbmm.points_to_graph.rpt_graph).
+:- mode unify_operator(builtin.in, builtin.in, builtin.in, builtin.out) is det.
