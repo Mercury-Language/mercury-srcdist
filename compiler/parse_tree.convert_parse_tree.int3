@@ -1,0 +1,10 @@
+:- module parse_tree.convert_parse_tree.
+:- interface.
+:- type parse_tree_int.
+:- type parse_tree_opt.
+:- type raw_compilation_unit.
+:- type raw_item_block.
+:- type_representation(parse_tree_int, is_word_aligned_ptr).
+:- type_representation(parse_tree_opt, is_word_aligned_ptr).
+:- type_representation(raw_compilation_unit, is_word_aligned_ptr).
+:- type_representation(raw_item_block, is_word_aligned_ptr).
