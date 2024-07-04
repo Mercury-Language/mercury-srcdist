@@ -1,0 +1,42 @@
+:- module queue.
+:- interface.
+:- use_module list.
+:- type queue(T).
+:- pred delete_all(T, queue.queue(T), queue.queue(T)).
+:- mode delete_all(builtin.in, builtin.in, builtin.out) is det.
+:- func delete_all(queue.queue(T), T) = queue.queue(T).
+:- pred equal(queue.queue(T), queue.queue(T)).
+:- mode equal(builtin.in, builtin.in) is semidet.
+:- pred first(queue.queue(T), T).
+:- mode first(builtin.in, builtin.out) is semidet.
+:- func from_list(list.list(T)) = queue.queue(T).
+:- pred get(T, queue.queue(T), queue.queue(T)).
+:- mode get(builtin.out, builtin.in, builtin.out) is semidet.
+:- pred get_from_back(T, queue.queue(T), queue.queue(T)).
+:- mode get_from_back(builtin.out, builtin.in, builtin.out) is semidet.
+:- pred init(queue.queue(T)).
+:- mode init(builtin.out) is det.
+:- func init = queue.queue(T).
+:- pred is_empty(queue.queue(T)).
+:- mode is_empty(builtin.in) is semidet.
+:- pred is_full(queue.queue(T)).
+:- mode is_full(builtin.in) is semidet.
+:- pred length(queue.queue(T), int).
+:- mode length(builtin.in, builtin.out) is det.
+:- func length(queue.queue(T)) = int.
+:- pred list_to_queue(list.list(T), queue.queue(T)).
+:- mode list_to_queue(builtin.in, builtin.out) is det.
+:- func list_to_queue(list.list(T)) = queue.queue(T).
+:- pred put(T, queue.queue(T), queue.queue(T)).
+:- mode put(builtin.in, builtin.in, builtin.out) is det.
+:- func put(queue.queue(T), T) = queue.queue(T).
+:- pred put_list(list.list(T), queue.queue(T), queue.queue(T)).
+:- mode put_list(builtin.in, builtin.in, builtin.out) is det.
+:- func put_list(queue.queue(T), list.list(T)) = queue.queue(T).
+:- pred put_list_on_front(list.list(T), queue.queue(T), queue.queue(T)).
+:- mode put_list_on_front(builtin.in, builtin.in, builtin.out) is det.
+:- func put_list_on_front(queue.queue(T), list.list(T)) = queue.queue(T).
+:- pred put_on_front(T, queue.queue(T), queue.queue(T)).
+:- mode put_on_front(builtin.in, builtin.in, builtin.out) is det.
+:- func put_on_front(queue.queue(T), T) = queue.queue(T).
+:- func to_list(queue.queue(T)) = list.list(T).

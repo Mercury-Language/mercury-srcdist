@@ -1,0 +1,33 @@
+:- module (transform_hlds.rbmm).region_resurrection_renaming.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module multi_map.
+:- use_module hlds.hlds_pred.
+:- use_module transform_hlds.smm_common.
+:- use_module (transform_hlds.rbmm).points_to_info.
+:- use_module (transform_hlds.rbmm).region_instruction.
+:- use_module (transform_hlds.rbmm).region_liveness_info.
+:- type exec_path_region_set_table == map.map(transform_hlds.rbmm.region_liveness_info.execution_path, transform_hlds.rbmm.region_liveness_info.region_set).
+:- type join_point_region_name_table == map.map(hlds.hlds_pred.pred_proc_id, map.map(transform_hlds.smm_common.program_point, string)).
+:- type proc_resurrection_path_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_resurrection_renaming.exec_path_region_set_table).
+:- type rbmm_renaming == multi_map.multi_map(string, string).
+:- type rbmm_renaming_annotation_proc == map.map(transform_hlds.smm_common.program_point, list.list(transform_hlds.rbmm.region_instruction.region_instr)).
+:- type rbmm_renaming_annotation_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_annotation_proc).
+:- type rbmm_renaming_proc == map.map(transform_hlds.smm_common.program_point, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming).
+:- type rbmm_renaming_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_proc).
+:- pred collect_join_points(transform_hlds.rbmm.region_resurrection_renaming.proc_resurrection_path_table, transform_hlds.rbmm.region_liveness_info.execution_path_table, transform_hlds.rbmm.region_resurrection_renaming.join_point_region_name_table).
+:- mode collect_join_points(builtin.in, builtin.in, builtin.out) is det.
+:- pred collect_paths_containing_join_points(transform_hlds.rbmm.region_liveness_info.execution_path_table, transform_hlds.rbmm.region_resurrection_renaming.join_point_region_name_table, transform_hlds.rbmm.region_resurrection_renaming.proc_resurrection_path_table, transform_hlds.rbmm.region_resurrection_renaming.proc_resurrection_path_table).
+:- mode collect_paths_containing_join_points(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred collect_region_resurrection_renaming(transform_hlds.rbmm.region_liveness_info.proc_pp_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_region_set_table, transform_hlds.rbmm.points_to_info.rpta_info_table, transform_hlds.rbmm.region_resurrection_renaming.proc_resurrection_path_table, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_table).
+:- mode collect_region_resurrection_renaming(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred collect_renaming_and_annotation(transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_table, transform_hlds.rbmm.region_resurrection_renaming.join_point_region_name_table, transform_hlds.rbmm.region_liveness_info.proc_pp_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_pp_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_region_set_table, transform_hlds.rbmm.points_to_info.rpta_info_table, transform_hlds.rbmm.region_resurrection_renaming.proc_resurrection_path_table, transform_hlds.rbmm.region_liveness_info.execution_path_table, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_annotation_table, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_table).
+:- mode collect_renaming_and_annotation(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred compute_resurrection_paths(transform_hlds.rbmm.region_liveness_info.execution_path_table, transform_hlds.rbmm.region_liveness_info.proc_pp_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_pp_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_pp_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_pp_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_pp_region_set_table, transform_hlds.rbmm.region_resurrection_renaming.proc_resurrection_path_table).
+:- mode compute_resurrection_paths(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred make_renaming_instruction(string, string, transform_hlds.rbmm.region_instruction.region_instr).
+:- mode make_renaming_instruction(builtin.in, builtin.in, builtin.out) is det.
+:- pred record_annotation(transform_hlds.smm_common.program_point, transform_hlds.rbmm.region_instruction.region_instr, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_annotation_proc, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_annotation_proc).
+:- mode record_annotation(builtin.in, builtin.in, builtin.in, builtin.out) is det.
