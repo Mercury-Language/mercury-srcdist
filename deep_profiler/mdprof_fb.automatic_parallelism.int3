@@ -1,0 +1,4 @@
+:- module mdprof_fb.automatic_parallelism.
+:- interface.
+:- include_module (mdprof_fb.automatic_parallelism).autopar_reports.
+:- include_module (mdprof_fb.automatic_parallelism).autopar_search_callgraph.
