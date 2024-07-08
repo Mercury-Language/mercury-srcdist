@@ -1,0 +1,53 @@
+:- module libs.op_mode.
+:- interface.
+:- type maybe_make_ints
+    --->    do_not_make_ints 
+    ;       do_make_ints .
+:- type op_mode
+    --->    opm_top_make 
+    ;       opm_top_generate_source_file_mapping 
+    ;       opm_top_generate_standalone_interface(string)
+    ;       opm_top_query(libs.op_mode.op_mode_query)
+    ;       opm_top_args(libs.op_mode.op_mode_args, libs.op_mode.op_mode_invoked_by_mmc_make).
+:- type op_mode_args
+    --->    opma_generate_dependencies(libs.op_mode.maybe_make_ints)
+    ;       opma_generate_dependency_file 
+    ;       opma_make_interface(libs.op_mode.op_mode_interface_file)
+    ;       opma_convert_to_mercury 
+    ;       opma_augment(libs.op_mode.op_mode_augment).
+:- type op_mode_augment
+    --->    opmau_make_plain_opt 
+    ;       opmau_make_trans_opt 
+    ;       opmau_make_analysis_registry 
+    ;       opmau_make_xml_documentation 
+    ;       opmau_typecheck_only 
+    ;       opmau_errorcheck_only 
+    ;       opmau_generate_code(libs.op_mode.op_mode_codegen).
+:- type op_mode_codegen
+    --->    opmcg_target_code_only 
+    ;       opmcg_target_and_object_code_only 
+    ;       opmcg_target_object_and_executable .
+:- type op_mode_interface_file
+    --->    omif_int0 
+    ;       omif_int1_int2 
+    ;       omif_int3 .
+:- type op_mode_invoked_by_mmc_make
+    --->    op_mode_not_invoked_by_mmc_make 
+    ;       op_mode_invoked_by_mmc_make .
+:- type op_mode_query
+    --->    opmq_output_cc 
+    ;       opmq_output_c_compiler_type 
+    ;       opmq_output_cflags 
+    ;       opmq_output_c_include_directory_flags 
+    ;       opmq_output_grade_defines 
+    ;       opmq_output_csharp_compiler 
+    ;       opmq_output_csharp_compiler_type 
+    ;       opmq_output_java_class_dir 
+    ;       opmq_output_link_command 
+    ;       opmq_output_shared_lib_link_command 
+    ;       opmq_output_library_link_flags 
+    ;       opmq_output_grade_string 
+    ;       opmq_output_libgrades 
+    ;       opmq_output_stdlib_grades 
+    ;       opmq_output_stdlib_modules 
+    ;       opmq_output_target_arch .

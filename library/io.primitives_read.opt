@@ -1,0 +1,162 @@
+:- module io.primitives_read.
+:- use_module array.
+:- use_module benchmarking.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module dir.
+:- use_module exception.
+:- use_module int.
+:- use_module int16.
+:- use_module int32.
+:- use_module int64.
+:- use_module int8.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mercury_term_parser.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module rtti_implementation.
+:- use_module stream.
+:- use_module string.
+:- use_module table_builtin.
+:- use_module term.
+:- use_module term_conversion.
+:- use_module term_subst.
+:- use_module time.
+:- use_module type_desc.
+:- use_module uint16.
+:- use_module uint32.
+:- use_module uint64.
+:- use_module uint8.
+:- use_module univ.
+:- use_module io.call_system.
+:- use_module io.environment.
+:- use_module io.error_util.
+:- use_module io.file.
+:- use_module io.primitives_read.
+:- use_module io.primitives_write.
+:- use_module io.stream_db.
+:- use_module io.stream_ops.
+:- use_module io.text_read.
+:- use_module stream.string_writer.
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", io.primitives_read).
+:- pragma foreign_import_module("C", io.stream_ops).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("C#", io.primitives_read).
+:- pragma foreign_import_module("C#", io.primitives_write).
+:- pragma foreign_import_module("C#", io.stream_ops).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Java", io.primitives_read).
+:- pragma foreign_import_module("Java", io.stream_ops).
+
+:- pred (io.primitives_read).read_byte_val_2(io.stream, io.result_code, io.system_error, int, io.state, io.state).
+:- mode read_byte_val_2(builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred (io.primitives_read).read_char_code_2(io.stream, io.result_code, io.system_error, character, io.state, io.state).
+:- mode read_char_code_2(builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+
+:- pragma foreign_proc("C",
+    (io.primitives_read).do_read_binary_uint16(Stream :: builtin.in, ByteOrder :: builtin.in, ResultCode :: builtin.out, Error :: builtin.out, IncompleteBytes :: builtin.out, UInt16 :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    ML_do_read_binary_uintN(2, 16, Stream, ByteOrder, ResultCode, Error,
+        IncompleteBytes, UInt16);
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_read).do_read_binary_uint32(Stream :: builtin.in, ByteOrder :: builtin.in, ResultCode :: builtin.out, Error :: builtin.out, IncompleteBytes :: builtin.out, UInt32 :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    ML_do_read_binary_uintN(4, 32, Stream, ByteOrder, ResultCode, Error,
+        IncompleteBytes, UInt32);
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_read).do_read_binary_uint64(Stream :: builtin.in, ByteOrder :: builtin.in, ResultCode :: builtin.out, Error :: builtin.out, IncompleteBytes :: builtin.out, UInt64 :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    ML_do_read_binary_uintN(8, 64, Stream, ByteOrder, ResultCode, Error,
+        IncompleteBytes, UInt64);
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_read).putback_uint8_2(Stream :: builtin.in, UInt8 :: builtin.in, Ok :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, not_thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    MercuryFilePtr mf = Stream;
+    if (MR_UNGETCH(*mf, UInt8) == EOF) {
+        Ok = MR_FALSE;
+    } else {
+        Ok = MR_TRUE;
+    }
+").
+
+io.primitives_read.read_byte_val(io.text_input_stream(V_7), V_8, V_9, V_10, V_12, V_13) :-
+    io.primitives_read.read_byte_val_2(V_7, V_8, V_9, V_10, V_12, V_13).
+
+:- pragma foreign_proc("C",
+    (io.primitives_read).read_byte_val_2(Stream :: builtin.in, ResultCode :: builtin.out, Error :: builtin.out, ByteVal :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, not_thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    int b = mercury_get_byte(Stream);
+    if (b == EOF) {
+        if (MR_FERROR(*Stream)) {
+            ResultCode = ML_RESULT_CODE_ERROR;
+            Error = errno;
+        } else {
+            ResultCode = ML_RESULT_CODE_EOF;
+            Error = 0;
+        }
+        ByteVal = 0;
+    } else {
+        ResultCode = ML_RESULT_CODE_OK;
+        ByteVal = b;
+        Error = 0;
+    }
+").
+
+io.primitives_read.read_char_code(io.text_input_stream(V_7), V_8, V_9, V_10, V_12, V_13) :-
+    io.primitives_read.read_char_code_2(V_7, V_8, V_9, V_10, V_12, V_13).
+
+:- pragma termination_info((io.primitives_read).do_read_binary_uint16(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_read).do_read_binary_uint32(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_read).do_read_binary_uint64(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_read).putback_char_2(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_read).putback_uint8_2(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_read).read_byte_val(builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_read).read_byte_val_2(builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_read).read_char_code(builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_read).read_char_code_2(builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, (io.primitives_read).do_read_binary_uint16, 8, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_read).do_read_binary_uint32, 8, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_read).do_read_binary_uint64, 8, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_read).putback_char_2, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_read).putback_uint8_2, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_read).read_byte_val, 6, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_read).read_byte_val_2, 6, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_read).read_char_code, 6, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_read).read_char_code_2, 6, 0, will_not_throw).

@@ -1,0 +1,4 @@
+:- module thread.future.
+:- interface.
+:- type future(T).
+:- type future_io(T).
