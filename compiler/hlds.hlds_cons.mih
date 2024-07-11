@@ -1,0 +1,202 @@
+/*
+** Automatically generated from `hlds_cons.m'
+** by the Mercury compiler,
+** version rotd-2024-07-11
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_cons.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_cons
+#define MR_HEADER_GUARD_hlds__hlds_cons
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_CONS_DECL_GUARD
+#define HLDS__HLDS_CONS_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_cons__hlds__hlds_cons__type_ctor_info_cons_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_cons__hlds__hlds_cons__type_ctor_info_ctor_field_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_cons__hlds__hlds_cons__type_ctor_info_field_access_type_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_cons__hlds__hlds_cons__type_ctor_info_hlds_cons_defn_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_cons__hlds__hlds_cons__type_ctor_info_hlds_ctor_field_defn_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_cons__hlds__hlds_cons__type_ctor_info_inner_cons_entry_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_cons__hlds__hlds_cons__type_ctor_info_inner_cons_table_0;
+
+void MR_CALL 
+hlds__hlds_cons__cons_table_names_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_cons__cons_table_optimize_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_cons__get_all_cons_defns_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_cons__insert_into_cons_table_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+hlds__hlds_cons__is_known_data_cons_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+hlds__hlds_cons__lookup_cons_table_of_type_ctor_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_cons__replace_cons_defns_in_cons_table_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_cons__return_cons_arities_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_cons__return_cons_defns_with_given_name_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_cons__search_cons_table_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_cons__search_cons_table_of_type_ctor_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+hlds__hlds_cons__init_cons_table_0_f_0(void);
+
+void MR_CALL 
+hlds__hlds_cons____Compare____cons_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_cons____Compare____ctor_field_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_cons____Compare____field_access_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_cons____Compare____hlds_cons_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_cons____Compare____hlds_ctor_field_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_cons____Compare____inner_cons_entry_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_cons____Unify____cons_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_cons____Unify____ctor_field_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_cons____Unify____field_access_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_cons____Unify____hlds_cons_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_cons____Unify____hlds_ctor_field_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_cons____Unify____inner_cons_entry_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__hlds_cons__init(void);
+void mercury__hlds__hlds_cons__init_type_tables(void);
+void mercury__hlds__hlds_cons__init_debugger(void);
+const char *mercury__hlds__hlds_cons__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.hlds_cons
+
+// :- end_interface hlds.hlds_cons.
