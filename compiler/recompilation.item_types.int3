@@ -1,0 +1,21 @@
+:- module recompilation.item_types.
+:- interface.
+:- type module_item_version_numbers.
+:- type module_item_version_numbers_map.
+:- type name_arity_version_map.
+:- type recomp_item_id.
+:- type recomp_item_name.
+:- type recomp_item_name_version_map.
+:- type recomp_item_type
+	where	type_is_abstract_enum(4).
+:- type version_number.
+:- abstract_inst((recomp_pred_or_func)).
+:- abstract_inst((recomp_simple)).
+:- type_representation(module_item_version_numbers, is_word_aligned_ptr).
+:- type_representation(module_item_version_numbers_map, is_eqv_to(map(module_name, recompilation.item_types.module_item_version_numbers))).
+:- type_representation(name_arity_version_map, is_eqv_to(map(name_arity, recompilation.item_types.version_number))).
+:- type_representation(recomp_item_id, is_word_aligned_ptr).
+:- type_representation(recomp_item_name, is_word_aligned_ptr).
+:- type_representation(recomp_item_name_version_map, is_eqv_to(map(recompilation.item_types.recomp_item_name, recompilation.item_types.version_number))).
+:- type_representation(recomp_item_type, du_repn(enum("recomp_type_name", "recomp_type_defn", ["recomp_inst", "recomp_mode", "recomp_typeclass", "recomp_functor", "recomp_predicate", "recomp_function", "recomp_mutable", "recomp_foreign_proc"],  no_c_j_cs))).
+:- type_representation(version_number, is_eqv_to(timestamp)).

@@ -1,0 +1,7 @@
+:- module (transform_hlds.rbmm).points_to_analysis.
+:- interface.
+:- use_module hlds.
+:- use_module hlds.hlds_module.
+:- use_module (transform_hlds.rbmm).points_to_info.
+:- pred region_points_to_analysis(transform_hlds.rbmm.points_to_info.rpta_info_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode region_points_to_analysis(builtin.out, builtin.in, builtin.out) is det.
