@@ -1,0 +1,43 @@
+// Automatically generated from `globals.m'
+// by the Mercury compiler,
+// version rotd-2024-07-16
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef GLOBALS_MH
+#define GLOBALS_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef GLOBALS_DECL_GUARD
+#define GLOBALS_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word globals__mutable_variable_profiler_globals;
+#else
+    extern MR_Word globals__mutable_variable_profiler_globals;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock globals__mutable_variable_profiler_globals_lock;
+#endif
+
+
+#endif
+void globals__user_init_pred_51_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* GLOBALS_MH */

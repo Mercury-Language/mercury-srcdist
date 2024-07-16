@@ -1,0 +1,17 @@
+:- module transform_hlds.direct_arg_in_out.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_table.
+:- pred do_direct_arg_in_out_transform_in_module(io.text_output_stream, hlds.hlds_module.direct_arg_proc_map, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec)).
+:- mode do_direct_arg_in_out_transform_in_module(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred find_and_record_any_direct_arg_in_out_posns(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, parse_tree.var_table.var_table, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode find_and_record_any_direct_arg_in_out_posns(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- implementation.
+:- typeclass goal_like(G).
