@@ -1,0 +1,8 @@
+:- module check_hlds.proc_requests.
+:- interface.
+:- use_module queue.
+:- use_module hlds.hlds_pred.
+:- type proc_requests.
+:- type req_queue == queue.queue(hlds.hlds_pred.pred_proc_id).
+:- type unify_proc_id
+    --->    unify_proc_id(parse_tree.prog_data.type_ctor, hlds.hlds_goal.unify_mode).
