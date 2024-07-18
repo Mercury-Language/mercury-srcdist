@@ -1,0 +1,20 @@
+:- module libs.check_libgrades.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module make.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module libs.globals.
+:- use_module libs.options.
+:- use_module make.options_file.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.maybe_error.
+:- pred do_detect_libgrades(string, set.set(string), io.io, io.io).
+:- mode do_detect_libgrades(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred find_mercury_stdlib(libs.options.option_table, make.options_file.options_variables, parse_tree.maybe_error.maybe1(string), io.io, io.io).
+:- mode find_mercury_stdlib(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred maybe_check_libraries_are_installed(libs.globals.globals, list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode maybe_check_libraries_are_installed(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred maybe_detect_stdlib_grades(libs.options.option_table, make.options_file.options_variables, parse_tree.maybe_error.maybe1(set.set(string)), list.list(string), io.io, io.io).
+:- mode maybe_detect_stdlib_grades(builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.

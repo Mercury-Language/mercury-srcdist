@@ -1,0 +1,13 @@
+:- module (hlds.make_hlds).state_var.
+:- interface.
+:- type hlds_goal_svar_state.
+:- type svar.
+:- type svar_inner_atomic_scope_info.
+:- type svar_outer_atomic_scope_info.
+:- type svar_state.
+:- type svar_store.
+:- type_representation(hlds_goal_svar_state, is_word_aligned_ptr).
+:- type_representation(svar, is_eqv_to(prog_var)).
+:- type_representation(svar_inner_atomic_scope_info, is_word_aligned_ptr).
+:- type_representation(svar_state, du_repn(notag("svar_state", map(svar, svar_status),  no_c_j_cs))).
+:- type_representation(svar_store, is_word_aligned_ptr).
