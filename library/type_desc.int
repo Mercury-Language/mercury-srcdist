@@ -1,0 +1,49 @@
+:- module type_desc.
+:- interface.
+:- use_module list.
+:- use_module rtti_implementation.
+:- type pseudo_type_desc.
+:- type pseudo_type_rep
+    --->    bound(type_desc.type_ctor_desc, list.list(type_desc.pseudo_type_desc))
+    ;       univ_tvar(int)
+    ;       exist_tvar(int).
+:- type type_ctor_desc.
+:- type type_desc.
+:- func det_ground_pseudo_type_desc_to_type_desc(type_desc.pseudo_type_desc) = type_desc.type_desc.
+:- func det_make_type(type_desc.type_ctor_desc, list.list(type_desc.type_desc)) = type_desc.type_desc.
+:- pred ground_pseudo_type_desc_to_type_desc(type_desc.pseudo_type_desc, type_desc.type_desc).
+:- mode ground_pseudo_type_desc_to_type_desc(builtin.in, builtin.out) is semidet.
+:- func ground_pseudo_type_desc_to_type_desc(type_desc.pseudo_type_desc) = type_desc.type_desc is semidet.
+:- some [T] (pred has_type(T, type_desc.type_desc)).
+:- mode has_type(builtin.unused, builtin.in) is det.
+:- func make_type(type_desc.type_ctor_desc, list.list(type_desc.type_desc)) = type_desc.type_desc.
+:- mode make_type(builtin.in, builtin.in) = builtin.out is semidet.
+:- mode make_type(builtin.out, builtin.out) = builtin.in is cc_multi.
+:- func pseudo_type_args(type_desc.pseudo_type_desc) = list.list(type_desc.pseudo_type_desc) is semidet.
+:- func pseudo_type_ctor(type_desc.pseudo_type_desc) = type_desc.type_ctor_desc is semidet.
+:- pred pseudo_type_ctor_and_args(type_desc.pseudo_type_desc, type_desc.type_ctor_desc, list.list(type_desc.pseudo_type_desc)).
+:- mode pseudo_type_ctor_and_args(builtin.in, builtin.out, builtin.out) is semidet.
+:- pred pseudo_type_desc_is_ground(type_desc.pseudo_type_desc).
+:- mode pseudo_type_desc_is_ground(builtin.in) is semidet.
+:- func pseudo_type_desc_to_rep(type_desc.pseudo_type_desc) = type_desc.pseudo_type_rep.
+:- pred same_type(T, T).
+:- mode same_type(builtin.unused, builtin.unused) is det.
+:- func type_args(type_desc.type_desc) = list.list(type_desc.type_desc).
+:- func type_ctor(type_desc.type_desc) = type_desc.type_ctor_desc.
+:- pred type_ctor_and_args(type_desc.type_desc, type_desc.type_ctor_desc, list.list(type_desc.type_desc)).
+:- mode type_ctor_and_args(builtin.in, builtin.out, builtin.out) is det.
+:- func type_ctor_arity(type_desc.type_ctor_desc) = int.
+:- func type_ctor_module_name(type_desc.type_ctor_desc) = string.
+:- func type_ctor_name(type_desc.type_ctor_desc) = string.
+:- pred type_ctor_name_and_arity(type_desc.type_ctor_desc, string, string, int).
+:- mode type_ctor_name_and_arity(builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- func type_desc_to_pseudo_type_desc(type_desc.type_desc) = type_desc.pseudo_type_desc.
+:- pred type_desc_to_type_info(type_desc.type_desc, rtti_implementation.type_info).
+:- mode type_desc_to_type_info(builtin.in, builtin.out) is det.
+:- pred type_info_list_to_type_desc_list(list.list(rtti_implementation.type_info), list.list(type_desc.type_desc)).
+:- mode type_info_list_to_type_desc_list(builtin.in, builtin.out) is det.
+:- pred type_info_to_type_desc(rtti_implementation.type_info, type_desc.type_desc).
+:- mode type_info_to_type_desc(builtin.in, builtin.out) is det.
+:- func type_name(type_desc.type_desc) = string.
+:- func type_of(T) = type_desc.type_desc.
+:- mode type_of(builtin.unused) = builtin.out is det.

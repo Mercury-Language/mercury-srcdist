@@ -1,0 +1,5 @@
+:- module ll_backend.code_util.
+:- interface.
+:- type for_from_where
+    --->    for_from_everywhere 
+    ;       for_from_proc(libs.optimization_options.maybe_use_just_one_c_func, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id).
