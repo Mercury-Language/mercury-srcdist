@@ -1,0 +1,16 @@
+:- module apply_exclusion.
+:- interface.
+:- use_module assoc_list.
+:- use_module exclude.
+:- use_module list.
+:- use_module measurements.
+:- use_module pair.
+:- use_module profile.
+:- pred compute_parent_csd_prof_info(profile.deep, profile.proc_static_ptr, list.list(profile.call_site_dynamic_ptr), measurements.own_prof_info, measurements.inherit_prof_info).
+:- mode compute_parent_csd_prof_info(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- func group_csds_by_call_site(profile.deep, list.list(pair.pair(profile.call_site_dynamic_ptr))) = assoc_list.assoc_list(profile.call_site_static_ptr, list.list(profile.call_site_dynamic_ptr)).
+:- func group_csds_by_clique(profile.deep, list.list(pair.pair(profile.call_site_dynamic_ptr))) = assoc_list.assoc_list(profile.clique_ptr, list.list(profile.call_site_dynamic_ptr)).
+:- func group_csds_by_module(profile.deep, list.list(pair.pair(profile.call_site_dynamic_ptr))) = assoc_list.assoc_list(string, list.list(profile.call_site_dynamic_ptr)).
+:- func group_csds_by_procedure(profile.deep, list.list(pair.pair(profile.call_site_dynamic_ptr))) = assoc_list.assoc_list(profile.proc_static_ptr, list.list(profile.call_site_dynamic_ptr)).
+:- func pair_contour(profile.deep, exclude.excluded_modules, profile.call_site_dynamic_ptr) = pair.pair(profile.call_site_dynamic_ptr).
+:- func pair_self(profile.call_site_dynamic_ptr) = pair.pair(profile.call_site_dynamic_ptr).
