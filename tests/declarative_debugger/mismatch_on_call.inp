@@ -1,0 +1,11 @@
+register --quiet
+context none
+echo on
+
+f
+dd -d 3 -n 7
+b 4
+mark
+n
+y
+quit -y
