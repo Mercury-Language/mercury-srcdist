@@ -1,0 +1,46 @@
+:- module check_hlds.mode_util.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.prog_data.
+:- pred constructors_to_bound_any_insts(hlds.hlds_module.module_info, parse_tree.prog_data.uniqueness, parse_tree.prog_data.type_ctor, list.list(parse_tree.prog_data.constructor), list.list(parse_tree.prog_data.bound_inst)).
+:- mode constructors_to_bound_any_insts(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred constructors_to_bound_insts(hlds.hlds_module.module_info, parse_tree.prog_data.uniqueness, parse_tree.prog_data.type_ctor, list.list(parse_tree.prog_data.constructor), list.list(parse_tree.prog_data.bound_inst)).
+:- mode constructors_to_bound_insts(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func from_to_insts_to_final_inst(parse_tree.prog_data.from_to_insts) = parse_tree.prog_data.mer_inst.
+:- func from_to_insts_to_init_inst(parse_tree.prog_data.from_to_insts) = parse_tree.prog_data.mer_inst.
+:- func from_to_insts_to_mode(parse_tree.prog_data.from_to_insts) = parse_tree.prog_data.mer_mode.
+:- pred from_to_insts_to_unify_mode(parse_tree.prog_data.from_to_insts, parse_tree.prog_data.from_to_insts, hlds.hlds_goal.unify_mode).
+:- mode from_to_insts_to_unify_mode(builtin.in, builtin.in, builtin.out) is det.
+:- pred from_to_insts_to_unify_modes(list.list(parse_tree.prog_data.from_to_insts), list.list(parse_tree.prog_data.from_to_insts), list.list(hlds.hlds_goal.unify_mode)).
+:- mode from_to_insts_to_unify_modes(builtin.in, builtin.in, builtin.out) is det.
+:- pred get_arg_lives(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.is_live)).
+:- mode get_arg_lives(builtin.in, builtin.in, builtin.out) is det.
+:- func mode_get_final_inst(hlds.hlds_module.module_info, parse_tree.prog_data.mer_mode) = parse_tree.prog_data.mer_inst.
+:- pred mode_get_from_to_insts(hlds.hlds_module.module_info, parse_tree.prog_data.mer_mode, parse_tree.prog_data.from_to_insts).
+:- mode mode_get_from_to_insts(builtin.in, builtin.in, builtin.out) is det.
+:- func mode_get_initial_inst(hlds.hlds_module.module_info, parse_tree.prog_data.mer_mode) = parse_tree.prog_data.mer_inst.
+:- pred mode_get_insts(hlds.hlds_module.module_info, parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode mode_get_insts(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred mode_get_insts_semidet(hlds.hlds_module.module_info, parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode mode_get_insts_semidet(builtin.in, builtin.in, builtin.out, builtin.out) is semidet.
+:- pred mode_list_get_final_insts(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_inst)).
+:- mode mode_list_get_final_insts(builtin.in, builtin.in, builtin.out) is det.
+:- pred mode_list_get_initial_final_insts(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst)).
+:- mode mode_list_get_initial_final_insts(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred mode_list_get_initial_insts(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_inst)).
+:- mode mode_list_get_initial_insts(builtin.in, builtin.in, builtin.out) is det.
+:- func mode_to_from_to_insts(hlds.hlds_module.module_info, parse_tree.prog_data.mer_mode) = parse_tree.prog_data.from_to_insts.
+:- pred modes_to_unify_mode(hlds.hlds_module.module_info, parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_mode, hlds.hlds_goal.unify_mode).
+:- mode modes_to_unify_mode(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred modes_to_unify_modes(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_mode), list.list(hlds.hlds_goal.unify_mode)).
+:- mode modes_to_unify_modes(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func unify_mode_to_lhs_from_to_insts(hlds.hlds_goal.unify_mode) = parse_tree.prog_data.from_to_insts.
+:- func unify_mode_to_lhs_mode(hlds.hlds_goal.unify_mode) = parse_tree.prog_data.mer_mode.
+:- pred unify_mode_to_lhs_rhs_from_to_insts(hlds.hlds_goal.unify_mode, parse_tree.prog_data.from_to_insts, parse_tree.prog_data.from_to_insts).
+:- mode unify_mode_to_lhs_rhs_from_to_insts(builtin.in, builtin.out, builtin.out) is det.
+:- func unify_mode_to_rhs_from_to_insts(hlds.hlds_goal.unify_mode) = parse_tree.prog_data.from_to_insts.
+:- func unify_mode_to_rhs_mode(hlds.hlds_goal.unify_mode) = parse_tree.prog_data.mer_mode.

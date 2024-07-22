@@ -1,0 +1,33 @@
+:- module check_hlds.inst_lookup.
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.prog_data.
+:- inst inst_name_user for (parse_tree.prog_data).inst_name/0
+    --->    user_inst(ground, ground).
+:- inst mer_inst_expanded for (parse_tree.prog_data).mer_inst/0
+    --->    any(ground, ground)
+    ;       bound(ground, ground, ground)
+    ;       constrained_inst_vars(ground, ground)
+    ;       free
+    ;       ground(ground, ground)
+    ;       inst_var(ground)
+    ;       not_reached.
+:- inst mer_inst_expanded_nc for (parse_tree.prog_data).mer_inst/0
+    --->    any(ground, ground)
+    ;       bound(ground, ground, ground)
+    ;       free
+    ;       ground(ground, ground)
+    ;       inst_var(ground)
+    ;       not_reached.
+:- pred inst_expand(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_expand(builtin.in, builtin.in, builtin.out((check_hlds.inst_lookup).mer_inst_expanded)) is det.
+:- pred inst_expand_and_remove_constrained_inst_vars(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_expand_and_remove_constrained_inst_vars(builtin.in, builtin.in, builtin.out((check_hlds.inst_lookup).mer_inst_expanded_nc)) is det.
+:- pred inst_lookup(hlds.hlds_module.module_info, parse_tree.prog_data.inst_name, parse_tree.prog_data.mer_inst).
+:- mode inst_lookup(builtin.in, builtin.in, builtin.out) is det.
+:- pred inst_lookup_debug(hlds.hlds_module.module_info, parse_tree.prog_data.inst_name, parse_tree.prog_data.mer_inst).
+:- mode inst_lookup_debug(builtin.in, builtin.in, builtin.out) is det.
+:- pred is_unknown_or_missing_user_inst_name(parse_tree.prog_data.inst_name).
+:- mode is_unknown_or_missing_user_inst_name(builtin.in((check_hlds.inst_lookup).inst_name_user)) is semidet.

@@ -1,0 +1,35 @@
+:- module parse_tree.error_util.
+:- interface.
+:- use_module bool.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module libs.globals.
+:- use_module libs.options.
+:- use_module parse_tree.error_spec.
+:- type error_spec_accumulator.
+:- pred accumulate_error_specs_for_proc(list.list(parse_tree.error_spec.error_spec), parse_tree.error_util.error_spec_accumulator, parse_tree.error_util.error_spec_accumulator).
+:- mode accumulate_error_specs_for_proc(builtin.in, builtin.in, builtin.out) is det.
+:- func actual_error_severity(libs.globals.globals, parse_tree.error_spec.error_severity) = maybe.maybe(parse_tree.error_spec.actual_severity).
+:- func actual_error_severity_opt_table(libs.options.option_table, parse_tree.error_spec.error_severity) = maybe.maybe(parse_tree.error_spec.actual_severity).
+:- func actual_spec_severity(libs.globals.globals, parse_tree.error_spec.error_spec) = maybe.maybe(parse_tree.error_spec.actual_severity).
+:- func actual_spec_severity_opt_table(libs.options.option_table, parse_tree.error_spec.error_spec) = maybe.maybe(parse_tree.error_spec.actual_severity).
+:- func contains_errors(libs.globals.globals, list.list(parse_tree.error_spec.error_spec)) = bool.bool.
+:- func contains_errors_and_or_warnings(libs.globals.globals, list.list(parse_tree.error_spec.error_spec)) = bool.bool.
+:- func contains_errors_and_or_warnings_opt_table(libs.options.option_table, list.list(parse_tree.error_spec.error_spec)) = bool.bool.
+:- func contains_errors_option_table(libs.options.option_table, list.list(parse_tree.error_spec.error_spec)) = bool.bool.
+:- func contains_errors_or_warnings_treated_as_errors(libs.globals.globals, list.list(parse_tree.error_spec.error_spec)) = bool.bool.
+:- func contains_errors_or_warnings_treated_as_errors_opt_table(libs.options.option_table, list.list(parse_tree.error_spec.error_spec)) = bool.bool.
+:- pred does_spec_print_anything(libs.globals.globals, parse_tree.error_spec.error_spec).
+:- mode does_spec_print_anything(builtin.in, builtin.in) is semidet.
+:- func error_spec_accumulator_to_list(parse_tree.error_util.error_spec_accumulator) = list.list(parse_tree.error_spec.error_spec).
+:- pred filter_interface_generation_specs(libs.globals.globals, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode filter_interface_generation_specs(builtin.in, builtin.in, builtin.out) is det.
+:- func init_error_spec_accumulator = parse_tree.error_util.error_spec_accumulator.
+:- func worst_severity(parse_tree.error_spec.actual_severity, parse_tree.error_spec.actual_severity) = parse_tree.error_spec.actual_severity.
+:- func worst_severity_in_specs(libs.globals.globals, list.list(parse_tree.error_spec.error_spec)) = maybe.maybe(parse_tree.error_spec.actual_severity).
+:- func worst_severity_in_specs_opt_table(libs.options.option_table, list.list(parse_tree.error_spec.error_spec)) = maybe.maybe(parse_tree.error_spec.actual_severity).
+:- implementation.
+:- use_module pair.
+:- use_module set.
+:- type error_spec_accumulator == maybe.maybe(pair.pair(set.set(parse_tree.error_spec.error_spec))).
