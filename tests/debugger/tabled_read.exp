@@ -1,0 +1,54 @@
+      E1:     C1 CALL pred tabled_read.main/2-0 (det) tabled_read.m:20
+mdb> echo on
+Command echo enabled.
+mdb> register --quiet
+mdb> context none
+Contexts will not be printed.
+mdb> table_io allow
+mdb> table_io
+I/O tabling has not yet started.
+mdb> break tabled_read__test
+ 0: + stop  interface pred tabled_read.test/5-0 (det)
+mdb> table_io start
+I/O tabling started.
+mdb> continue
+      E2:     C2 CALL pred tabled_read.test/5-0 (det)
+mdb> finish -n
+      E3:     C2 EXIT pred tabled_read.test/5-0 (det)
+mdb> print *
+       Stream (arg 1)         	c_pointer(0xXXXX)
+       SoFar (arg 2)          	0
+       N (arg 3)              	123
+mdb> retry -o -a
+      E2:     C2 CALL pred tabled_read.test/5-0 (det)
+mdb> print *
+       Stream (arg 1)         	c_pointer(0xXXXX)
+       SoFar (arg 2)          	0
+mdb> finish -n
+      E3:     C2 EXIT pred tabled_read.test/5-0 (det)
+mdb> print *
+       Stream (arg 1)         	c_pointer(0xXXXX)
+       SoFar (arg 2)          	0
+       N (arg 3)              	123
+mdb> table_io end
+I/O tabling stopped.
+mdb> continue
+123
+456
+      E4:     C3 CALL pred tabled_read.test/5-0 (det)
+mdb> finish -n
+      E5:     C3 EXIT pred tabled_read.test/5-0 (det)
+mdb> print *
+       Stream (arg 1)         	c_pointer(0xXXXX)
+       SoFar (arg 2)          	0
+       N (arg 3)              	789
+mdb> retry -f
+      E4:     C3 CALL pred tabled_read.test/5-0 (det)
+mdb> finish -n
+      E6:     C3 EXIT pred tabled_read.test/5-0 (det)
+mdb> print *
+       Stream (arg 1)         	c_pointer(0xXXXX)
+       SoFar (arg 2)          	0
+       N (arg 3)              	42
+mdb> continue -S
+42

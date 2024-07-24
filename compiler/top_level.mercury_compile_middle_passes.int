@@ -1,0 +1,22 @@
+:- module top_level.mercury_compile_middle_passes.
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_module.
+:- use_module hlds.passes_aux.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_item.
+:- pred maybe_unused_args(io.text_output_stream, bool.bool, bool.bool, set.set(parse_tree.prog_item.gen_pragma_unused_args_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode maybe_unused_args(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred middle_pass(io.text_output_stream, io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode middle_pass(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred middle_pass_for_opt_file(io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info, set.set(parse_tree.prog_item.gen_pragma_unused_args_info), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode middle_pass_for_opt_file(builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred output_analysis_file(io.text_output_stream, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, io.io, io.io).
+:- mode output_analysis_file(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred output_trans_opt_file(io.text_output_stream, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, io.io, io.io).
+:- mode output_trans_opt_file(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
