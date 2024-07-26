@@ -1,0 +1,3 @@
+:- module bag.
+:- interface.
+:- type bag(T).
