@@ -1,0 +1,3 @@
+:- module check_hlds.resolve_unify_functor.
+:- interface.
+:- type is_plain_unify.

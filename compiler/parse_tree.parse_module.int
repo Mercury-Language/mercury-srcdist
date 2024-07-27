@@ -1,0 +1,30 @@
+:- module parse_tree.parse_module.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.maybe_error.
+:- use_module parse_tree.parse_error.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item.
+:- pred parse_int0_file(libs.globals.globals, libs.file_util.file_name, string, int, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), maybe.maybe(parse_tree.prog_item.parse_tree_int0), parse_tree.parse_error.read_module_errors).
+:- mode parse_int0_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred parse_int1_file(libs.globals.globals, libs.file_util.file_name, string, int, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), maybe.maybe(parse_tree.prog_item.parse_tree_int1), parse_tree.parse_error.read_module_errors).
+:- mode parse_int1_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred parse_int2_file(libs.globals.globals, libs.file_util.file_name, string, int, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), maybe.maybe(parse_tree.prog_item.parse_tree_int2), parse_tree.parse_error.read_module_errors).
+:- mode parse_int2_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred parse_int3_file(libs.globals.globals, libs.file_util.file_name, string, int, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), maybe.maybe(parse_tree.prog_item.parse_tree_int3), parse_tree.parse_error.read_module_errors).
+:- mode parse_int3_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred parse_plain_opt_file(libs.file_util.file_name, string, int, mdbcomp.sym_name.module_name, maybe.maybe(parse_tree.prog_item.parse_tree_plain_opt), parse_tree.parse_error.read_module_errors).
+:- mode parse_plain_opt_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred parse_src_file(libs.file_util.file_name, string, int, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_data.prog_context), maybe.maybe(parse_tree.prog_item.parse_tree_src), parse_tree.parse_error.read_module_errors).
+:- mode parse_src_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred parse_trans_opt_file(libs.file_util.file_name, string, int, mdbcomp.sym_name.module_name, maybe.maybe(parse_tree.prog_item.parse_tree_trans_opt), parse_tree.parse_error.read_module_errors).
+:- mode parse_trans_opt_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred peek_at_file(io.text_input_stream, libs.file_util.file_name, mdbcomp.sym_name.module_name, parse_tree.maybe_error.maybe1(mdbcomp.sym_name.module_name), io.io, io.io).
+:- mode peek_at_file(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.

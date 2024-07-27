@@ -1,0 +1,17 @@
+:- module parse_tree.prog_data_used_modules.
+:- interface.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module mdbcomp.sym_name.
+:- type item_visibility
+    --->    visibility_public 
+    ;       visibility_private .
+:- type used_modules
+    --->    used_modules((parse_tree.prog_data_used_modules).int_used_modules :: set.set(mdbcomp.sym_name.module_name), (parse_tree.prog_data_used_modules).imp_used_modules :: set.set(mdbcomp.sym_name.module_name)).
+:- pred record_format_modules_as_used(parse_tree.prog_data_used_modules.used_modules, parse_tree.prog_data_used_modules.used_modules).
+:- mode record_format_modules_as_used(builtin.in, builtin.out) is det.
+:- pred record_module_and_ancestors_as_used(parse_tree.prog_data_used_modules.item_visibility, mdbcomp.sym_name.sym_name, parse_tree.prog_data_used_modules.used_modules, parse_tree.prog_data_used_modules.used_modules).
+:- mode record_module_and_ancestors_as_used(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred record_sym_name_module_as_used(parse_tree.prog_data_used_modules.item_visibility, mdbcomp.sym_name.sym_name, parse_tree.prog_data_used_modules.used_modules, parse_tree.prog_data_used_modules.used_modules).
+:- mode record_sym_name_module_as_used(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func used_modules_init = parse_tree.prog_data_used_modules.used_modules.

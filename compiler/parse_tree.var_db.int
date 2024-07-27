@@ -1,0 +1,27 @@
+:- module parse_tree.var_db.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_table.
+:- use_module parse_tree.vartypes.
+:- type var_db
+    --->    var_db_varset_vartypes(parse_tree.vartypes.prog_var_set_types)
+    ;       var_db_var_table(parse_tree.var_table.var_table).
+:- type var_name_source
+    --->    vns_varset(parse_tree.prog_data.prog_varset)
+    ;       vns_var_table(parse_tree.var_table.var_table).
+:- type var_type_source
+    --->    vts_vartypes(parse_tree.vartypes.vartypes)
+    ;       vts_var_table(parse_tree.var_table.var_table).
+:- pred lookup_var_name_in_source(parse_tree.var_db.var_name_source, parse_tree.prog_data.prog_var, string).
+:- mode lookup_var_name_in_source(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_var_type_in_db(parse_tree.var_db.var_db, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type).
+:- mode lookup_var_type_in_db(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_var_type_in_source(parse_tree.var_db.var_type_source, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type).
+:- mode lookup_var_type_in_source(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_var_types_in_db(parse_tree.var_db.var_db, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_type)).
+:- mode lookup_var_types_in_db(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_var_types_in_source(parse_tree.var_db.var_type_source, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_type)).
+:- mode lookup_var_types_in_source(builtin.in, builtin.in, builtin.out) is det.
+:- pred search_var_name_in_source(parse_tree.var_db.var_name_source, parse_tree.prog_data.prog_var, string).
+:- mode search_var_name_in_source(builtin.in, builtin.in, builtin.out) is semidet.
