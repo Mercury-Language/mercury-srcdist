@@ -1,0 +1,11 @@
+:- module parse_tree.write_deps_file.
+:- interface.
+:- type maybe_include_trans_opt_rule.
+:- type maybe_intermod_deps.
+:- type maybe_look_for_src
+	where	type_is_abstract_enum(1).
+:- type trans_opt_rule_info.
+:- type_representation(file_name_cache_stats, is_eqv_to(map(ext, cache_stats))).
+:- type_representation(maybe_look_for_src, du_repn(enum("do_not_look_for_src", "look_for_src", [],  no_c_j_cs))).
+:- type_representation(maybe_mmake_var, is_eqv_to(pair(list(string), string))).
+:- type_representation(module_file_name_cache, is_eqv_to(map(ext, map(module_name, file_name)))).

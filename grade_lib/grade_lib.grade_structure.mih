@@ -1,0 +1,252 @@
+/*
+** Automatically generated from `grade_structure.m'
+** by the Mercury compiler,
+** version rotd-2024-07-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module grade_lib.grade_structure.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_grade_lib__grade_structure
+#define MR_HEADER_GUARD_grade_lib__grade_structure
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef GRADE_LIB__GRADE_STRUCTURE_DECL_GUARD
+#define GRADE_LIB__GRADE_STRUCTURE_DECL_GUARD
+#include "grade_lib.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_c_gc_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_grade_structure_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_grade_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_minmodel_gc_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_minmodel_kind_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_perf_prof_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_rbmm_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_llds_thread_safe_minmodel_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_c_perf_prof_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_c_thread_safe_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_grade_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_mlds_target_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_pregen_grade_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_pregen_kind_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_structure__grade_lib__grade_structure__type_ctor_info_thread_safe_c_gc_0;
+
+MR_Word MR_CALL 
+grade_lib__grade_structure__grade_vars_to_grade_structure_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____c_gc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____grade_structure_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____llds_grade_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____llds_minmodel_gc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____llds_minmodel_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____llds_perf_prof_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____llds_rbmm_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____llds_thread_safe_minmodel_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_c_perf_prof_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_c_thread_safe_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_grade_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____mlds_target_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____pregen_grade_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____pregen_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_structure____Compare____thread_safe_c_gc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____c_gc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____grade_structure_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_grade_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_minmodel_gc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_minmodel_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_perf_prof_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_rbmm_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____llds_thread_safe_minmodel_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_c_perf_prof_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_c_thread_safe_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_grade_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____mlds_target_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____pregen_grade_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____pregen_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_structure____Unify____thread_safe_c_gc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__grade_lib__grade_structure__init(void);
+void mercury__grade_lib__grade_structure__init_type_tables(void);
+void mercury__grade_lib__grade_structure__init_debugger(void);
+const char *mercury__grade_lib__grade_structure__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_grade_lib.grade_structure
+
+// :- end_interface grade_lib.grade_structure.

@@ -1,0 +1,5 @@
+:- module (check_hlds.simplify).format_call_errors.
+:- interface.
+:- type maybe_warn_unknown_format
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_warn_unknown_format, du_repn(enum("do_not_warn_unknown_format", "warn_unknown_format", [],  no_c_j_cs))).

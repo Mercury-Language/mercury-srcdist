@@ -1,0 +1,12 @@
+:- module (hlds.hlds_out).hlds_out_type_table.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module string.
+:- use_module hlds.hlds_data.
+:- use_module string.builder.
+:- use_module (hlds.hlds_out).hlds_out_util.
+:- pred format_type_table(hlds.hlds_out.hlds_out_util.hlds_out_info, bool.bool, hlds.hlds_data.type_table, string.builder.state, string.builder.state).
+:- mode format_type_table(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred write_type_table(hlds.hlds_out.hlds_out_util.hlds_out_info, io.text_output_stream, bool.bool, hlds.hlds_data.type_table, io.io, io.io).
+:- mode write_type_table(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
