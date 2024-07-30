@@ -1,0 +1,3597 @@
+/*
+** Automatically generated from `array.m'
+** by the Mercury compiler,
+** version rotd-2024-07-30
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module array.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_array
+#define MR_HEADER_GUARD_array
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ARRAY_DECL_GUARD
+#define ARRAY_DECL_GUARD
+
+#include "mercury_heap.h"             // for MR_maybe_record_allocation()
+#include "mercury_library_types.h"    // for MR_ArrayPtr
+
+// We do not yet record term sizes for arrays in term size profiling
+// grades. Doing so would require
+//
+// - modifying ML_alloc_array to allocate an extra word for the size;
+// - modifying all the predicates that call ML_alloc_array to compute the
+//   size of the array (the sum of the sizes of the elements and the size of
+//   the array itself);
+// - modifying all the predicates that update array elements to compute the
+//   difference between the sizes of the terms being added to and deleted from
+//   the array, and updating the array size accordingly.
+
+#define ML_alloc_array(newarray, arraysize, alloc_id)                       do {                                                                        MR_Word newarray_word;                                                  MR_offset_incr_hp_msg(newarray_word, 0, (arraysize),                        alloc_id, "array.array/1");                                       (newarray) = (MR_ArrayPtr) newarray_word;                           } while (0)
+
+void ML_init_array(MR_ArrayPtr, MR_Integer size, MR_Word item);
+
+
+extern void
+ML_copy_array(MR_ArrayPtr array, MR_ConstArrayPtr old_array);
+
+
+extern void
+ML_resize_array(MR_ArrayPtr new_array, MR_ArrayPtr old_array,
+    MR_Integer array_size, MR_Word item);
+
+
+extern void
+ML_shrink_array(MR_ArrayPtr array, MR_ArrayPtr old_array,
+    MR_Integer array_size);
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__array__array__type_ctor_info_array_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__array__array__type_ctor_info_index_out_of_bounds_0;
+
+void MR_CALL 
+mercury__array__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_115_97_109_115_111_114_116_95_117_112_95_95_91_84_32_61_32_105_110_116_93_95_48_95_49_8_p_0(
+  MR_Integer param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr * param_3,
+  MR_ArrayPtr param_4,
+  MR_ArrayPtr * param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Integer param_8);
+
+void MR_CALL 
+mercury__array__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_115_97_109_115_111_114_116_95_117_112_95_95_91_84_32_61_32_115_116_114_105_110_103_93_95_48_95_49_8_p_0(
+  MR_Integer param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr * param_3,
+  MR_ArrayPtr param_4,
+  MR_ArrayPtr * param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Integer param_8);
+
+MR_bool MR_CALL 
+mercury__array__all_false_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3);
+
+MR_bool MR_CALL 
+mercury__array__all_true_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3);
+
+MR_bool MR_CALL 
+mercury__array__approx_binary_search_3_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Box param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__array__approx_binary_search_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_Box param_4,
+  MR_Integer * param_5);
+
+MR_bool MR_CALL 
+mercury__array__approx_binary_search_loop_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_Box param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer * param_7);
+
+void MR_CALL 
+mercury__array__array_compare_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr param_4);
+
+MR_bool MR_CALL 
+mercury__array__array_equal_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr param_3);
+
+MR_bool MR_CALL 
+mercury__array__binary_search_3_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Box param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__array__binary_search_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_Box param_4,
+  MR_Integer * param_5);
+
+MR_bool MR_CALL 
+mercury__array__binary_search_loop_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_Box param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer * param_7);
+
+void MR_CALL 
+mercury__array__bounds_3_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__array__bounds_checks_0_p_0(void);
+
+void MR_CALL 
+mercury__array__copy_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr * param_3);
+
+MR_bool MR_CALL 
+mercury__array__do_all_false_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_ArrayPtr param_5);
+
+MR_bool MR_CALL 
+mercury__array__do_all_true_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_ArrayPtr param_5);
+
+void MR_CALL 
+mercury__array__do_fill_range_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr * param_6);
+
+void MR_CALL 
+mercury__array__do_foldl2_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__array__do_foldl2_8_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__array__do_foldl2_8_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl2_8_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl2_8_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl2_8_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__array__do_foldl2_corresponding_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13);
+
+void MR_CALL 
+mercury__array__do_foldl2_corresponding_9_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13);
+
+void MR_CALL 
+mercury__array__do_foldl2_corresponding_9_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl2_corresponding_9_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl2_corresponding_9_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl2_corresponding_9_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13);
+
+void MR_CALL 
+mercury__array__do_foldl3_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+void MR_CALL 
+mercury__array__do_foldl3_10_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+void MR_CALL 
+mercury__array__do_foldl3_10_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl3_10_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl3_10_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl3_10_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+void MR_CALL 
+mercury__array__do_foldl4_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+void MR_CALL 
+mercury__array__do_foldl4_12_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+void MR_CALL 
+mercury__array__do_foldl4_12_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl4_12_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl4_12_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl4_12_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+void MR_CALL 
+mercury__array__do_foldl5_14_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_ArrayPtr param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+void MR_CALL 
+mercury__array__do_foldl5_14_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_ArrayPtr param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+void MR_CALL 
+mercury__array__do_foldl5_14_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_ArrayPtr param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl5_14_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_ArrayPtr param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl5_14_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_ArrayPtr param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl5_14_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_ArrayPtr param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+void MR_CALL 
+mercury__array__do_foldl_corresponding_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__array__do_foldl_corresponding_7_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__array__do_foldl_corresponding_7_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl_corresponding_7_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl_corresponding_7_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl_corresponding_7_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__array__do_foldl_pred_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__array__do_foldl_pred_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__array__do_foldl_pred_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl_pred_6_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl_pred_6_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__array__do_foldl_pred_6_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__array__do_foldr2_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__array__do_foldr2_8_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__array__do_foldr2_8_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr2_8_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr2_8_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr2_8_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__array__do_foldr3_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+void MR_CALL 
+mercury__array__do_foldr3_10_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+void MR_CALL 
+mercury__array__do_foldr3_10_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr3_10_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr3_10_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr3_10_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+void MR_CALL 
+mercury__array__do_foldr4_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+void MR_CALL 
+mercury__array__do_foldr4_12_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+void MR_CALL 
+mercury__array__do_foldr4_12_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr4_12_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr4_12_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr4_12_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_ArrayPtr param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+void MR_CALL 
+mercury__array__do_foldr5_14_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_ArrayPtr param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+void MR_CALL 
+mercury__array__do_foldr5_14_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_ArrayPtr param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+void MR_CALL 
+mercury__array__do_foldr5_14_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_ArrayPtr param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr5_14_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_ArrayPtr param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr5_14_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_ArrayPtr param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr5_14_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_ArrayPtr param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+void MR_CALL 
+mercury__array__do_foldr_pred_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__array__do_foldr_pred_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__array__do_foldr_pred_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr_pred_6_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr_pred_6_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__array__do_foldr_pred_6_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__array__do_resize_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_ArrayPtr param_4,
+  MR_ArrayPtr * param_5);
+
+MR_bool MR_CALL 
+mercury__array__dynamic_cast_to_array_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+mercury__array__fetch_items_4_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__array__fill_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+mercury__array__fill_range_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr * param_6);
+
+void MR_CALL 
+mercury__array__foldl_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__array__foldl_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__array__foldl_4_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__array__foldl_4_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__array__foldl_4_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__array__foldl_4_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__array__foldl2_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__array__foldl2_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__array__foldl2_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__array__foldl2_6_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__array__foldl2_6_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__array__foldl2_6_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__array__foldl2_corresponding_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__array__foldl2_corresponding_7_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__array__foldl2_corresponding_7_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__array__foldl2_corresponding_7_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__array__foldl2_corresponding_7_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__array__foldl2_corresponding_7_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__array__foldl3_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__array__foldl3_8_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__array__foldl3_8_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__array__foldl3_8_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__array__foldl3_8_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__array__foldl3_8_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__array__foldl4_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__array__foldl4_10_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__array__foldl4_10_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__array__foldl4_10_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__array__foldl4_10_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__array__foldl4_10_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__array__foldl5_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__array__foldl5_12_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__array__foldl5_12_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__array__foldl5_12_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__array__foldl5_12_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__array__foldl5_12_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__array__foldl_corresponding_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__array__foldl_corresponding_5_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__array__foldl_corresponding_5_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__array__foldl_corresponding_5_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__array__foldl_corresponding_5_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__array__foldl_corresponding_5_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__array__foldr_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__array__foldr_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__array__foldr_4_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__array__foldr_4_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__array__foldr_4_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__array__foldr_4_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__array__foldr2_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__array__foldr2_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__array__foldr2_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__array__foldr2_6_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__array__foldr2_6_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__array__foldr2_6_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__array__foldr3_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__array__foldr3_8_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__array__foldr3_8_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__array__foldr3_8_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__array__foldr3_8_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__array__foldr3_8_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__array__foldr4_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__array__foldr4_10_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__array__foldr4_10_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__array__foldr4_10_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__array__foldr4_10_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__array__foldr4_10_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_ArrayPtr param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__array__foldr5_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__array__foldr5_12_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__array__foldr5_12_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__array__foldr5_12_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__array__foldr5_12_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__array__foldr5_12_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_ArrayPtr param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__array__from_list_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr * param_3);
+
+void MR_CALL 
+mercury__array__from_reverse_list_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr * param_3);
+
+void MR_CALL 
+mercury__array__generate_foldl_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_ArrayPtr * param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+mercury__array__generate_foldl_5_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_ArrayPtr * param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+mercury__array__generate_foldl_5_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_ArrayPtr * param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+MR_bool MR_CALL 
+mercury__array__generate_foldl_5_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_ArrayPtr * param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+MR_bool MR_CALL 
+mercury__array__generate_foldl_5_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_ArrayPtr * param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+MR_bool MR_CALL 
+mercury__array__generate_foldl_5_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_ArrayPtr * param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+mercury__array__generate_foldl2_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_ArrayPtr * param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__array__generate_foldl2_7_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_ArrayPtr * param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__array__generate_foldl2_7_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_ArrayPtr * param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+MR_bool MR_CALL 
+mercury__array__generate_foldl2_7_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_ArrayPtr * param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+MR_bool MR_CALL 
+mercury__array__generate_foldl2_7_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_ArrayPtr * param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+MR_bool MR_CALL 
+mercury__array__generate_foldl2_7_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_ArrayPtr * param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__array__generate_foldl2_loop_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__array__generate_foldl2_loop_9_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__array__generate_foldl2_loop_9_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__array__generate_foldl2_loop_9_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__array__generate_foldl2_loop_9_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__array__generate_foldl2_loop_9_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__array__generate_foldl_loop_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__array__generate_foldl_loop_7_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__array__generate_foldl_loop_7_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__array__generate_foldl_loop_7_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__array__generate_foldl_loop_7_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__array__generate_foldl_loop_7_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__array__generate_loop_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr * param_6);
+
+MR_bool MR_CALL 
+mercury__array__in_bounds_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__array__init_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+mercury__array__init_2_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_ArrayPtr * param_4);
+
+MR_bool MR_CALL 
+mercury__array__is_empty_1_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2);
+
+void MR_CALL 
+mercury__array__lookup_3_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__array__make_empty_array_1_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr * param_2);
+
+void MR_CALL 
+mercury__array__map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_ArrayPtr * param_5);
+
+void MR_CALL 
+mercury__array__map_2_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8);
+
+void MR_CALL 
+mercury__array__map_corresponding_foldl_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__array__map_corresponding_foldl_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__array__map_corresponding_foldl_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+MR_bool MR_CALL 
+mercury__array__map_corresponding_foldl_6_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+MR_bool MR_CALL 
+mercury__array__map_corresponding_foldl_6_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+MR_bool MR_CALL 
+mercury__array__map_corresponding_foldl_6_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__array__map_corresponding_foldl_2_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_ArrayPtr param_9,
+  MR_ArrayPtr param_10,
+  MR_ArrayPtr * param_11,
+  MR_Box param_12,
+  MR_Box * param_13);
+
+void MR_CALL 
+mercury__array__map_corresponding_foldl_2_9_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_ArrayPtr param_9,
+  MR_ArrayPtr param_10,
+  MR_ArrayPtr * param_11,
+  MR_Box param_12,
+  MR_Box * param_13);
+
+void MR_CALL 
+mercury__array__map_corresponding_foldl_2_9_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_ArrayPtr param_9,
+  MR_ArrayPtr param_10,
+  MR_ArrayPtr * param_11,
+  MR_Box param_12,
+  MR_Box * param_13);
+
+MR_bool MR_CALL 
+mercury__array__map_corresponding_foldl_2_9_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_ArrayPtr param_9,
+  MR_ArrayPtr param_10,
+  MR_ArrayPtr * param_11,
+  MR_Box param_12,
+  MR_Box * param_13);
+
+MR_bool MR_CALL 
+mercury__array__map_corresponding_foldl_2_9_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_ArrayPtr param_9,
+  MR_ArrayPtr param_10,
+  MR_ArrayPtr * param_11,
+  MR_Box param_12,
+  MR_Box * param_13);
+
+MR_bool MR_CALL 
+mercury__array__map_corresponding_foldl_2_9_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_ArrayPtr param_8,
+  MR_ArrayPtr param_9,
+  MR_ArrayPtr param_10,
+  MR_ArrayPtr * param_11,
+  MR_Box param_12,
+  MR_Box * param_13);
+
+void MR_CALL 
+mercury__array__map_foldl_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__array__map_foldl_5_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__array__map_foldl_5_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__array__map_foldl_5_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__array__map_foldl_loop_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__array__map_foldl_loop_7_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__array__map_foldl_loop_7_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+MR_bool MR_CALL 
+mercury__array__map_foldl_loop_7_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_ArrayPtr param_6,
+  MR_ArrayPtr param_7,
+  MR_ArrayPtr * param_8,
+  MR_Box param_9,
+  MR_Box * param_10);
+
+void MR_CALL 
+mercury__array__max_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__array__member_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Box * param_3,
+  MR_Cont param_4,
+  void * param_5);
+
+void MR_CALL 
+mercury__array__min_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__array__out_of_bounds_error_3_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3,
+  MR_String param_4);
+
+void MR_CALL 
+mercury__array__resize_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_ArrayPtr param_4,
+  MR_ArrayPtr * param_5);
+
+void MR_CALL 
+mercury__array__samsort_up_8_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4,
+  MR_ArrayPtr param_5,
+  MR_ArrayPtr * param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_Integer param_9);
+
+MR_bool MR_CALL 
+mercury__array__semidet_lookup_3_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3,
+  MR_Box * param_4);
+
+MR_bool MR_CALL 
+mercury__array__semidet_set_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_ArrayPtr param_4,
+  MR_ArrayPtr * param_5);
+
+MR_bool MR_CALL 
+mercury__array__semidet_slow_set_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_ArrayPtr param_4,
+  MR_ArrayPtr * param_5);
+
+void MR_CALL 
+mercury__array__set_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_ArrayPtr param_4,
+  MR_ArrayPtr * param_5);
+
+void MR_CALL 
+mercury__array__shrink_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+mercury__array__size_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__array__slow_set_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_ArrayPtr param_4,
+  MR_ArrayPtr * param_5);
+
+void MR_CALL 
+mercury__array__swap_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_ArrayPtr param_4,
+  MR_ArrayPtr * param_5);
+
+void MR_CALL 
+mercury__array__to_list_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__array__unsafe_init_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Integer param_4,
+  MR_ArrayPtr * param_5);
+
+void MR_CALL 
+mercury__array__unsafe_lookup_3_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__array__unsafe_set_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_ArrayPtr param_4,
+  MR_ArrayPtr * param_5);
+
+void MR_CALL 
+mercury__array__unsafe_swap_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_ArrayPtr param_4,
+  MR_ArrayPtr * param_5);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_115_97_109_115_111_114_116_95_115_117_98_97_114_114_97_121_95_95_91_84_32_61_32_105_110_116_93_95_48_95_49_3_f_0(
+  MR_ArrayPtr param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_115_97_109_115_111_114_116_95_115_117_98_97_114_114_97_121_95_95_91_84_32_61_32_115_116_114_105_110_103_93_95_48_95_49_3_f_0(
+  MR_ArrayPtr param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_115_111_114_116_95_95_91_84_32_61_32_105_110_116_93_95_48_95_49_1_f_0(
+  MR_ArrayPtr param_1);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_115_111_114_116_95_95_91_84_32_61_32_115_116_114_105_110_103_93_95_48_95_49_1_f_0(
+  MR_ArrayPtr param_1);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__append_2_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr param_3);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__array_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__array__array_compare_2_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr param_3);
+
+MR_Word MR_CALL 
+mercury__array__array_to_doc_1_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__copy_1_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2);
+
+MR_Integer MR_CALL 
+mercury__array__det_greatest_index_1_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2);
+
+MR_Integer MR_CALL 
+mercury__array__det_least_index_1_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2);
+
+MR_Box MR_CALL 
+mercury__array__do_foldl_func_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Integer param_6,
+  MR_Integer param_7);
+
+MR_Box MR_CALL 
+mercury__array__do_foldl_func_5_f_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Integer param_6,
+  MR_Integer param_7);
+
+MR_Box MR_CALL 
+mercury__array__do_foldr_func_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Integer param_6,
+  MR_Integer param_7);
+
+MR_Box MR_CALL 
+mercury__array__do_foldr_func_5_f_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5,
+  MR_Integer param_6,
+  MR_Integer param_7);
+
+MR_Box MR_CALL 
+mercury__array__elem_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_ArrayPtr param_3);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__f_101_108_101_109_32_58_61_3_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_ArrayPtr param_3,
+  MR_Box param_4);
+
+MR_Word MR_CALL 
+mercury__array__fetch_items_3_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+MR_Box MR_CALL 
+mercury__array__foldl_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5);
+
+MR_Box MR_CALL 
+mercury__array__foldl_3_f_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5);
+
+MR_Box MR_CALL 
+mercury__array__foldr_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5);
+
+MR_Box MR_CALL 
+mercury__array__foldr_3_f_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4,
+  MR_Box param_5);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__from_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__from_reverse_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__generate_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__init_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3);
+
+MR_Box MR_CALL 
+mercury__array__lookup_2_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__make_empty_array_0_f_0(
+  MR_Word param_1);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__map_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_ArrayPtr param_4);
+
+MR_Integer MR_CALL 
+mercury__array__max_1_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2);
+
+MR_Integer MR_CALL 
+mercury__array__min_1_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__resize_3_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3,
+  MR_Box param_4);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__samsort_subarray_3_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+MR_bool MR_CALL 
+mercury__array__semidet_greatest_index_1_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__array__semidet_least_index_1_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer * param_3);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__set_3_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3,
+  MR_Box param_4);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__shrink_2_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3);
+
+MR_Integer MR_CALL 
+mercury__array__size_1_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__slow_set_3_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_Integer param_3,
+  MR_Box param_4);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__sort_1_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2);
+
+MR_Word MR_CALL 
+mercury__array__to_list_1_f_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2);
+
+MR_Box MR_CALL 
+mercury__array__unsafe_elem_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_ArrayPtr param_3);
+
+MR_ArrayPtr MR_CALL 
+mercury__array__f_117_110_115_97_102_101_95_101_108_101_109_32_58_61_3_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_ArrayPtr param_3,
+  MR_Box param_4);
+
+void MR_CALL 
+mercury__array____Compare____array_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr param_4);
+
+void MR_CALL 
+mercury__array____Compare____index_out_of_bounds_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__array____Unify____array_1_0(
+  MR_Word param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr param_3);
+
+MR_bool MR_CALL 
+mercury__array____Unify____index_out_of_bounds_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__array__init(void);
+void mercury__array__init_type_tables(void);
+void mercury__array__init_debugger(void);
+const char *mercury__array__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_array
+
+// :- end_interface array.

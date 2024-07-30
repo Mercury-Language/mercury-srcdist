@@ -1,0 +1,13 @@
+:- module check_hlds.purity.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.error_spec.
+:- pred puritycheck_module(io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode puritycheck_module(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred repuritycheck_proc(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- mode repuritycheck_proc(builtin.in, builtin.in, builtin.in, builtin.out) is det.
