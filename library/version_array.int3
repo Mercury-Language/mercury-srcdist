@@ -1,0 +1,5 @@
+:- module version_array.
+:- interface.
+:- type index_out_of_bounds.
+:- type version_array(T).
+:- type_representation(index_out_of_bounds, du_repn(notag("index_out_of_bounds", string,  no_c_j_cs))).

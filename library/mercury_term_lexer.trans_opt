@@ -1,0 +1,27 @@
+:- module mercury_term_lexer.
+
+:- pragma termination_info(mercury_term_lexer.execute_get_token_action(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(mercury_term_lexer.get_context(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(mercury_term_lexer.get_token(builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(mercury_term_lexer.get_token_list(builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(mercury_term_lexer.get_token_list(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(mercury_term_lexer.get_token_list_loop(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(mercury_term_lexer.graphic_token_char(builtin.in), finite(0, [no]), cannot_loop).
+:- pragma termination_info(mercury_term_lexer.linestr_get_token_list_max(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(mercury_term_lexer.lookup_token_action(builtin.in, builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(mercury_term_lexer.string_get_token_list(builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(mercury_term_lexer.string_get_token_list_max(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(mercury_term_lexer.token_to_string(builtin.in, builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, mercury_term_lexer.execute_get_token_action, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, mercury_term_lexer.get_context, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, mercury_term_lexer.get_token, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, mercury_term_lexer.get_token_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, mercury_term_lexer.get_token_list, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, mercury_term_lexer.get_token_list_loop, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, mercury_term_lexer.graphic_token_char, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, mercury_term_lexer.linestr_get_token_list_max, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, mercury_term_lexer.lookup_token_action, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, mercury_term_lexer.string_get_token_list, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, mercury_term_lexer.string_get_token_list_max, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, mercury_term_lexer.token_to_string, 2, 0, may_throw(user_exception)).

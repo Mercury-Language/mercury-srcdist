@@ -1,0 +1,101 @@
+/*
+** Automatically generated from `dep_par_conj.m'
+** by the Mercury compiler,
+** version rotd-2024-07-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.dep_par_conj.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__dep_par_conj
+#define MR_HEADER_GUARD_transform_hlds__dep_par_conj
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__DEP_PAR_CONJ_DECL_GUARD
+#define TRANSFORM_HLDS__DEP_PAR_CONJ_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_arg_pos_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_cost_after_signal_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_cost_before_wait_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_done_par_procs_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_future_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_future_var_pair_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_maybe_spec_proc_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_maybe_worth_pushing_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_new_par_proc_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_par_proc_call_pattern_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_pending_par_procs_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_proc_pushable_args_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_push_op_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_pushable_args_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_rev_proc_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_spec_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_sync_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_ts_string_table_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_wait_or_get_pred_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_waited_in_conjunct_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__dep_par_conj__transform_hlds__dep_par_conj__type_ctor_info_waited_on_all_success_paths_0;
+
+void MR_CALL 
+transform_hlds__dep_par_conj__impl_dep_par_conjs_in_module_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void mercury__transform_hlds__dep_par_conj__init(void);
+void mercury__transform_hlds__dep_par_conj__init_type_tables(void);
+void mercury__transform_hlds__dep_par_conj__init_debugger(void);
+const char *mercury__transform_hlds__dep_par_conj__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.dep_par_conj
+
+// :- end_interface transform_hlds.dep_par_conj.
