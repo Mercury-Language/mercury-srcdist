@@ -1,0 +1,14 @@
+module(2, "diff.m",
+	mdb.diff,
+	{mdb},
+	{builtin, io, private_builtin, univ},
+	{deconstruct, int, list, mdbcomp, require, string, mdbcomp.program_representation, string.format, string.parse_util},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - mdb.diff},
+	contains_foreign_export,
+	no_main,
+	{}
+).

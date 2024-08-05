@@ -1,0 +1,87 @@
+/*
+** Automatically generated from `goal_mode.m'
+** by the Mercury compiler,
+** version rotd-2024-08-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.goal_mode.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__goal_mode
+#define MR_HEADER_GUARD_hlds__goal_mode
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__GOAL_MODE_DECL_GUARD
+#define HLDS__GOAL_MODE_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__goal_mode__hlds__goal_mode__type_ctor_info_goal_mode_0;
+
+void MR_CALL 
+hlds__goal_mode__compute_goal_modes_in_module_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__goal_mode__rename_vars_in_goal_mode_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+hlds__goal_mode__dump_goal_mode_3_f_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__goal_mode__make_dummy_goal_mode_0_f_0(void);
+
+void MR_CALL 
+hlds__goal_mode____Compare____goal_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__goal_mode____Unify____goal_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__goal_mode__init(void);
+void mercury__hlds__goal_mode__init_type_tables(void);
+void mercury__hlds__goal_mode__init_debugger(void);
+const char *mercury__hlds__goal_mode__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.goal_mode
+
+// :- end_interface hlds.goal_mode.

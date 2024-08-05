@@ -1,0 +1,2 @@
+:- module parse_tree.prog_type_subst.
+:- interface.

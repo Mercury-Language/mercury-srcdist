@@ -1,0 +1,16 @@
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2000-2004, 2006, 2011 The University of Melbourne.
+# Copyright (C) 2013-2014, 2019 The Mercury team
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+#
+# RESERVED_MACRO_NAMES
+#
+# For the purpose of this file, see the top of RESERVED_MACRO_NAMES in the top
+# directory.
+#
+#-----------------------------------------------------------------------------#
+# This is defined on Windows to workaround problems with windows.h.
+WIN32_LEAN_AND_MEAN
+#-----------------------------------------------------------------------------#

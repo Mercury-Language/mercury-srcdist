@@ -1,0 +1,12 @@
+:- module mdb.declarative_user.
+:- interface.
+:- type are_we_testing
+	where	type_is_abstract_enum(1).
+:- type user_question(T).
+:- type user_response(T).
+:- type user_search_mode
+	where	type_is_abstract_enum(2).
+:- type user_state.
+:- type_representation(are_we_testing, du_repn(enum("we_are_not_testing", "we_are_testing", [],  no_c_j_cs))).
+:- type_representation(user_search_mode, du_repn(enum("user_top_down", "user_divide_and_query", ["user_suspicion_divide_and_query", "user_binary"],  no_c_j_cs))).
+:- type_representation(user_state, is_word_aligned_ptr).

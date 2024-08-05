@@ -1,0 +1,123 @@
+/*
+** Automatically generated from `io.text_read.m'
+** by the Mercury compiler,
+** version rotd-2024-08-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module io.text_read.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_io__text_read
+#define MR_HEADER_GUARD_io__text_read
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef IO__TEXT_READ_DECL_GUARD
+#define IO__TEXT_READ_DECL_GUARD
+#include "io.mih"
+
+#endif
+
+#define ML_RLAS_OK 0
+#define ML_RLAS_EOF 1
+#define ML_RLAS_NULL_CHAR 2
+#define ML_RLAS_ERROR 3
+
+
+extern const MR_TypeCtorInfo_Struct mercury__io__text_read__io__text_read__type_ctor_info_buffer_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__io__text_read__io__text_read__type_ctor_info_read_line_as_string_result_0;
+
+void MR_CALL 
+mercury__io__text_read__LCMC__pred__read_line_2__1_6_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__io__text_read__read_binary_file_as_bitmap_2_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__io__text_read__read_file_as_string_2_7_p_0(
+  MR_Box param_1,
+  MR_String * param_2,
+  MR_Integer * param_3,
+  MR_Box * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__io__text_read__read_line_2_6_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__io__text_read__read_line_as_string_2_7_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Box * param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__io__text_read__read_word_2_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__io__text_read____Compare____buffer_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__io__text_read____Compare____read_line_as_string_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__io__text_read____Unify____buffer_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__io__text_read____Unify____read_line_as_string_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__io__text_read__init(void);
+void mercury__io__text_read__init_type_tables(void);
+void mercury__io__text_read__init_debugger(void);
+const char *mercury__io__text_read__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_io.text_read
+
+// :- end_interface io.text_read.

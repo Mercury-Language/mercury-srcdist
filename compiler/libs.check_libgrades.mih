@@ -1,0 +1,85 @@
+/*
+** Automatically generated from `check_libgrades.m'
+** by the Mercury compiler,
+** version rotd-2024-08-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.check_libgrades.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__check_libgrades
+#define MR_HEADER_GUARD_libs__check_libgrades
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__CHECK_LIBGRADES_DECL_GUARD
+#define LIBS__CHECK_LIBGRADES_DECL_GUARD
+#include "libs.mih"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Unsigned libs__check_libgrades__mutable_variable_has_check_libraries_been_done;
+#else
+    extern MR_Unsigned libs__check_libgrades__mutable_variable_has_check_libraries_been_done;
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__check_libgrades__libs__check_libgrades__type_ctor_info_check_libraries_maybe_done_0;
+
+void MR_CALL 
+libs__check_libgrades__do_detect_libgrades_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__check_libgrades__find_mercury_stdlib_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__check_libgrades__maybe_check_libraries_are_installed_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__check_libgrades__maybe_detect_stdlib_grades_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void mercury__libs__check_libgrades__init(void);
+void mercury__libs__check_libgrades__init_type_tables(void);
+void mercury__libs__check_libgrades__init_debugger(void);
+void mercury__libs__check_libgrades__required_init(void);
+const char *mercury__libs__check_libgrades__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.check_libgrades
+
+// :- end_interface libs.check_libgrades.

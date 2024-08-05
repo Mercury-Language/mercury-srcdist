@@ -1,0 +1,3 @@
+:- module check_hlds.typecheck_coerce.
+:- interface.
+:- type_representation(invariant_set, is_eqv_to(set(tvar))).
