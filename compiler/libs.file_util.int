@@ -1,0 +1,39 @@
+:- module libs.file_util.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- type dir_name == string.
+:- type file_name == string.
+:- pred get_install_name_option(libs.globals.globals, string, string).
+:- mode get_install_name_option(builtin.in, builtin.in, builtin.out) is det.
+:- func make_install_file_command(libs.globals.globals, string, string) = string.
+:- pred maybe_flush_output(io.text_output_stream, bool.bool, io.io, io.io).
+:- mode maybe_flush_output(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred maybe_flush_output_to_stream(maybe.maybe(io.text_output_stream), io.io, io.io).
+:- mode maybe_flush_output_to_stream(builtin.in, builtin.di, builtin.uo) is det.
+:- pred maybe_report_stats(io.text_output_stream, bool.bool, io.io, io.io).
+:- mode maybe_report_stats(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred maybe_report_stats_to_stream(maybe.maybe(io.text_output_stream), io.io, io.io).
+:- mode maybe_report_stats_to_stream(builtin.in, builtin.di, builtin.uo) is det.
+:- pred maybe_write_string(io.text_output_stream, bool.bool, string, io.io, io.io).
+:- mode maybe_write_string(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred maybe_write_string_to_stream(maybe.maybe(io.text_output_stream), string, io.io, io.io).
+:- mode maybe_write_string_to_stream(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred open_temp_output(maybe.maybe_error({string, io.text_output_stream}), io.io, io.io).
+:- mode open_temp_output(builtin.out, builtin.di, builtin.uo) is det.
+:- pred open_temp_output_with_naming_scheme(string, string, string, maybe.maybe_error({string, io.text_output_stream}), io.io, io.io).
+:- mode open_temp_output_with_naming_scheme(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred output_to_file_stream(io.text_output_stream, libs.globals.globals, string, pred(io.text_output_stream, list.list(string), io.io, io.io), libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode output_to_file_stream(builtin.in, builtin.in, builtin.in, builtin.in((pred(builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.out, builtin.di, builtin.uo) is det.
+:- pred report_error(io.text_output_stream, string, io.io, io.io).
+:- mode report_error(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred report_unable_to_open_file(io.text_output_stream, string, io.error, io.io, io.io).
+:- mode report_unable_to_open_file(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred write_include_file_contents(io.text_output_stream, string, maybe.maybe_error, io.io, io.io).
+:- mode write_include_file_contents(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred write_string_to_file(io.text_output_stream, libs.globals.globals, string, libs.file_util.file_name, string, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode write_string_to_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
