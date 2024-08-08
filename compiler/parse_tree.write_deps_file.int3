@@ -1,0 +1,5 @@
+:- module parse_tree.write_deps_file.
+:- interface.
+:- type maybe_look_for_src
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_look_for_src, du_repn(enum("do_not_look_for_src", "look_for_src", [],  no_c_j_cs))).

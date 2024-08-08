@@ -1,0 +1,75 @@
+/*
+** Automatically generated from `ml_switch_gen.m'
+** by the Mercury compiler,
+** version rotd-2024-08-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.ml_switch_gen.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_switch_gen
+#define MR_HEADER_GUARD_ml_backend__ml_switch_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_SWITCH_GEN_DECL_GUARD
+#define ML_BACKEND__ML_SWITCH_GEN_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+void MR_CALL 
+ml_backend__ml_switch_gen__ml_gen_switch_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+ml_backend__ml_switch_gen__ml_switch_generate_default_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void mercury__ml_backend__ml_switch_gen__init(void);
+void mercury__ml_backend__ml_switch_gen__init_type_tables(void);
+void mercury__ml_backend__ml_switch_gen__init_debugger(void);
+const char *mercury__ml_backend__ml_switch_gen__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.ml_switch_gen
+
+// :- end_interface ml_backend.ml_switch_gen.
