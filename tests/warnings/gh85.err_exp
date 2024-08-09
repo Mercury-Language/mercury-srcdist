@@ -1,0 +1,3 @@
+gh85.m:061: Warning: this disjunct [38;5;203mwill never have any solutions.[39;49m
+gh85.m:061:   This warning applies to the first mode of this predicate. It may
+gh85.m:061:   or may not apply to other modes.

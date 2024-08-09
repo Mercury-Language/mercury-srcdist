@@ -1,0 +1,14 @@
+module(2, "term_unify.m",
+	term_unify,
+	{},
+	{builtin, list, private_builtin, term},
+	{map, term_context, term_subst, term_vars},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
