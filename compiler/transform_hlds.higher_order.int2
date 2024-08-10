@@ -1,0 +1,3 @@
+:- module transform_hlds.higher_order.
+:- interface.
+:- include_module (transform_hlds.higher_order).specialize_in_module.

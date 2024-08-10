@@ -1,0 +1,9 @@
+:- module check_hlds.proc_requests.
+:- interface.
+:- type proc_requests.
+:- type req_queue.
+:- type unify_proc_id.
+:- type_representation(proc_requests, is_word_aligned_ptr).
+:- type_representation(req_queue, is_eqv_to(queue(pred_proc_id))).
+:- type_representation(unify_proc_id, is_word_aligned_ptr).
+:- type_representation(unify_req_map, is_eqv_to(map(check_hlds.proc_requests.unify_proc_id, proc_id))).

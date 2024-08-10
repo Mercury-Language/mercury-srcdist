@@ -1,0 +1,89 @@
+:- module version_bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module int.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module version_array.
+
+:- type version_bitmap == version_array.version_array(int).
+
+version_bitmap.bit(V_5, V_4) = V_3 :-
+    ( if
+      version_bitmap.is_set(V_4, V_5)
+    then
+      V_3 = bool.yes : bool.bool
+    else
+      V_3 = bool.no : bool.bool
+    ).
+
+version_bitmap.clear(V_4, V_5, V_3) :-
+    V_3 = version_bitmap.clear(V_5, V_4).
+
+version_bitmap.copy(V_3) = V_2 :-
+    V_2 = version_array.copy(V_3).
+
+version_bitmap.flip(V_4, V_5, V_3) :-
+    V_3 = version_bitmap.flip(V_5, V_4).
+
+version_bitmap.num_bits(V_3) = V_2 :-
+    V_4 = 0 : int,
+    V_2 = version_array.elem(V_4, V_3).
+
+version_bitmap.resize(V_5, V_6, V_7, V_4) :-
+    V_4 = version_bitmap.resize(V_7, V_5, V_6).
+
+version_bitmap.set(V_4, V_5, V_3) :-
+    V_3 = version_bitmap.set(V_5, V_4).
+
+version_bitmap.unsafe_rewind(V_3) = V_2 :-
+    V_2 = version_array.unsafe_rewind(V_3).
+
+version_bitmap.unsafe_rewind(V_3, V_2) :-
+    V_2 = version_bitmap.unsafe_rewind(V_3).
+
+:- pragma termination_info(version_bitmap.bit(builtin.in, builtin.in) = builtin.out, finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(version_bitmap.'bit :='(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.clear(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.clear(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(version_bitmap.complement(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.copy(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.difference(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.flip(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.flip(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(version_bitmap.init(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.intersect(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.is_clear(builtin.in, builtin.in), finite(0, [no, no]), can_loop).
+:- pragma termination_info(version_bitmap.is_set(builtin.in, builtin.in), finite(0, [no, no]), can_loop).
+:- pragma termination_info(version_bitmap.num_bits(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.resize(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.resize(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(version_bitmap.set(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.set(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(version_bitmap.union(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.unsafe_rewind(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_bitmap.unsafe_rewind(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(version_bitmap.xor(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+
+:- pragma exceptions(function, version_bitmap.bit, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.'bit :=', 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.clear, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_bitmap.clear, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.complement, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.copy, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.difference, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.flip, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_bitmap.flip, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.init, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.intersect, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_bitmap.is_clear, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_bitmap.is_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.num_bits, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.resize, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_bitmap.resize, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_bitmap.set, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.union, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.unsafe_rewind, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_bitmap.unsafe_rewind, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_bitmap.xor, 2, 0, may_throw(user_exception)).
