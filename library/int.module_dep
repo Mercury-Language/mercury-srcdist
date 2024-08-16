@@ -1,0 +1,14 @@
+module(2, "int.m",
+	int,
+	{},
+	{array, builtin, enum, pretty_printer, private_builtin},
+	{exception, uint},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - int, "C#" - int, "Java" - int},
+	no_foreign_export,
+	no_main,
+	{}
+).
