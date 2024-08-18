@@ -1,0 +1,38 @@
+:- module libs.lp_rational.
+:- interface.
+:- type direction
+	where	type_is_abstract_enum(1).
+:- type entailment_result
+	where	type_is_abstract_enum(2).
+:- type lp_coefficient.
+:- type lp_constant.
+:- type lp_constraint.
+:- type lp_constraint_conj.
+:- type lp_operator
+	where	type_is_abstract_enum(2).
+:- type lp_result.
+:- type lp_term.
+:- type lp_terms.
+:- type lp_var.
+:- type lp_vars.
+:- type lp_varset.
+:- type objective.
+:- type output_var.
+:- type projection_result.
+:- abstract_inst((lp_op_lt_eq_or_eq)).
+:- type_representation(cc_map, is_eqv_to(map(libs.lp_rational.lp_var, coeff_info))).
+:- type_representation(direction, du_repn(enum("max", "min", [],  no_c_j_cs))).
+:- type_representation(entailment_result, du_repn(enum("entailed", "not_entailed", ["inconsistent"],  no_c_j_cs))).
+:- type_representation(lp_coefficient, is_eqv_to(rat)).
+:- type_representation(lp_constant, is_eqv_to(rat)).
+:- type_representation(lp_constraint_conj, is_eqv_to(list(libs.lp_rational.lp_constraint))).
+:- type_representation(lp_operator, du_repn(enum("lp_lt_eq", "lp_eq", ["lp_gt_eq"],  no_c_j_cs))).
+:- type_representation(lp_term, is_eqv_to(pair(libs.lp_rational.lp_var, libs.lp_rational.lp_coefficient))).
+:- type_representation(lp_terms, is_eqv_to(list(libs.lp_rational.lp_term))).
+:- type_representation(lp_var, is_eqv_to(var)).
+:- type_representation(lp_vars, is_eqv_to(list(libs.lp_rational.lp_var))).
+:- type_representation(lp_varset, is_eqv_to(varset)).
+:- type_representation(matrix, is_eqv_to(list(vector))).
+:- type_representation(objective, is_eqv_to(libs.lp_rational.lp_terms)).
+:- type_representation(output_var, is_eqv_to(((func libs.lp_rational.lp_var) = string))).
+:- type_representation(var_num_map, is_eqv_to(map(libs.lp_rational.lp_var, int))).

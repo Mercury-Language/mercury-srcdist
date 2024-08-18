@@ -1,0 +1,23 @@
+:- module enum.
+:- use_module builtin.
+:- use_module private_builtin.
+:- use_module require.
+
+enum.from_int(V_3) = V_4 :-
+    enum.from_int(V_3, V_4).
+
+:- pragma termination_info(enum.det_from_int(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(enum.det_from_uint(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(enum.from_int(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(enum.from_int(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(enum.from_uint(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(enum.to_int(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(enum.to_uint(builtin.in) = builtin.out, infinite, can_loop).
+
+:- pragma exceptions(function, enum.det_from_int, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, enum.det_from_uint, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, enum.from_int, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, enum.from_int, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, enum.from_uint, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, enum.to_int, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, enum.to_uint, 1, 0, may_throw(user_exception)).
