@@ -1,0 +1,19 @@
+:- module parse_tree.prog_foreign.
+:- interface.
+:- use_module list.
+:- use_module pair.
+:- use_module parse_tree.prog_data.
+:- type foreign_body_code
+    --->    foreign_body_code((parse_tree.prog_foreign).fbody_lang :: libs.globals.foreign_language, (parse_tree.prog_foreign).fbody_code :: parse_tree.prog_data_foreign.foreign_literal_or_include, (parse_tree.prog_foreign).fbody_context :: parse_tree.prog_data.prog_context).
+:- type foreign_decl_code
+    --->    foreign_decl_code((parse_tree.prog_foreign).fdecl_lang :: libs.globals.foreign_language, (parse_tree.prog_foreign).fdecl_is_local :: parse_tree.prog_data_foreign.foreign_decl_is_local, (parse_tree.prog_foreign).fdecl_code :: parse_tree.prog_data_foreign.foreign_literal_or_include, (parse_tree.prog_foreign).fdecl_context :: parse_tree.prog_data.prog_context).
+:- type foreign_export_decl
+    --->    foreign_export_decl((parse_tree.prog_foreign).fexp_decl_lang :: libs.globals.foreign_language, (parse_tree.prog_foreign).fexp_decl_ret_type :: string, (parse_tree.prog_foreign).fexp_decl_func_name :: string, (parse_tree.prog_foreign).fexp_decl_arg_decls :: string).
+:- type foreign_export_decls
+    --->    foreign_export_decls((parse_tree.prog_foreign).fexp_decls_codes :: list.list(parse_tree.prog_foreign.foreign_decl_code), (parse_tree.prog_foreign).fexp_decls_list :: list.list(parse_tree.prog_foreign.foreign_export_decl)).
+:- type foreign_export_defn
+    --->    foreign_export_defn(string).
+:- type foreign_export_defns == list.list(parse_tree.prog_foreign.foreign_export_defn).
+:- type pred_target_name == pair.pair(parse_tree.prog_data.sym_name_arity, string).
+:- type pred_target_names
+    --->    pred_target_names(map.map(int, list.list(parse_tree.prog_foreign.pred_target_name))).
