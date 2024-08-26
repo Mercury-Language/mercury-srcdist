@@ -1,0 +1,17 @@
+:- module parse_tree.write_module_interface_files.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- use_module parse_tree.comp_unit_interface.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.module_baggage.
+:- use_module parse_tree.read_modules.
+:- pred generate_and_write_interface_file_int0(io.text_output_stream, libs.globals.globals, parse_tree.comp_unit_interface.maybe_add_to_hptm, parse_tree.module_baggage.burdened_module, libs.maybe_util.maybe_succeeded, list.list(parse_tree.error_spec.error_spec), parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, io.io, io.io).
+:- mode generate_and_write_interface_file_int0(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_and_write_interface_file_int1_int2(io.text_output_stream, libs.globals.globals, parse_tree.comp_unit_interface.maybe_add_to_hptm, parse_tree.module_baggage.burdened_module, libs.maybe_util.maybe_succeeded, list.list(parse_tree.error_spec.error_spec), parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, io.io, io.io).
+:- mode generate_and_write_interface_file_int1_int2(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_and_write_interface_file_int3(io.text_output_stream, libs.globals.globals, parse_tree.comp_unit_interface.maybe_add_to_hptm, parse_tree.module_baggage.burdened_module, libs.maybe_util.maybe_succeeded, list.list(parse_tree.error_spec.error_spec), parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, io.io, io.io).
+:- mode generate_and_write_interface_file_int3(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.

@@ -1,0 +1,56 @@
+/*
+** Automatically generated from `grade_lib.m'
+** by the Mercury compiler,
+** version rotd-2024-08-26
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module grade_lib.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_grade_lib
+#define MR_HEADER_GUARD_grade_lib
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef GRADE_LIB_DECL_GUARD
+#define GRADE_LIB_DECL_GUARD
+
+#endif
+
+
+
+void MR_CALL 
+grade_lib__grade_lib_version_1_p_0(
+  MR_String * param_1);
+
+void mercury__grade_lib__init(void);
+void mercury__grade_lib__init_type_tables(void);
+void mercury__grade_lib__init_debugger(void);
+const char *mercury__grade_lib__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_grade_lib
+
+// :- end_interface grade_lib.
