@@ -1,0 +1,14 @@
+module(2, "math.m",
+	math,
+	{},
+	{builtin, private_builtin},
+	{exception, float},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - float, "C" - math, "C#" - math, "Java" - math},
+	no_foreign_export,
+	no_main,
+	{}
+).
