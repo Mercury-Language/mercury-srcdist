@@ -1,0 +1,9 @@
+:- module libs.timestamp.
+:- interface.
+:- type maybe_return_timestamp
+    --->    do_not_return_timestamp 
+    ;       do_return_timestamp .
+:- type read_module_and_timestamps
+    --->    always_read_module(libs.timestamp.maybe_return_timestamp)
+    ;       do_not_read_module_if_match(libs.timestamp.timestamp).
+:- type timestamp.

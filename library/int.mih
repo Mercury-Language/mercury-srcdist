@@ -1,0 +1,1174 @@
+/*
+** Automatically generated from `int.m'
+** by the Mercury compiler,
+** version rotd-2024-09-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module int.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_int
+#define MR_HEADER_GUARD_int
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef INT_DECL_GUARD
+#define INT_DECL_GUARD
+
+    #include <limits.h>
+
+    #define ML_BITS_PER_INT     (sizeof(MR_Integer) * CHAR_BIT)
+
+
+#endif
+
+
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_enum__enum__arity1__int__arity0__[7];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_enum__uenum__arity1__int__arity0__[7];
+
+MR_bool MR_CALL 
+mercury__int__f_less_than_2_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__int__f_less_or_equal_2_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__int__f_greater_than_2_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__int__f_greater_or_equal_2_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__int__ClassMethod_for_enum__enum____int__arity0______enum__from_int_2_2_p_0(
+  MR_Integer param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mercury__int__ClassMethod_for_enum__uenum____int__arity0______enum__from_uint_2_2_p_0(
+  MR_Unsigned param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+mercury__int__abs_2_p_0(
+  MR_Integer param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mercury__int__all_true_in_range_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__int__bits_per_int_1_p_0(
+  MR_Integer * param_1);
+
+MR_bool MR_CALL 
+mercury__int__even_1_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__int__fold_down_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__int__fold_down_5_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__int__fold_down_5_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__int__fold_down_5_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__int__fold_down_5_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__int__fold_down_5_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__int__fold_down_5_p_6(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__int__fold_down_5_p_7(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Cont param_7,
+  void * param_8);
+
+void MR_CALL 
+mercury__int__fold_down_5_p_8(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Cont param_7,
+  void * param_8);
+
+void MR_CALL 
+mercury__int__fold_down_5_p_9(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__int__fold_down_5_p_10(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__int__fold_down2_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__int__fold_down2_7_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__int__fold_down2_7_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__int__fold_down2_7_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__int__fold_down2_7_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__int__fold_down2_7_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__int__fold_down2_7_p_6(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__int__fold_down2_7_p_7(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Cont param_10,
+  void * param_11);
+
+void MR_CALL 
+mercury__int__fold_down2_7_p_8(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Cont param_10,
+  void * param_11);
+
+void MR_CALL 
+mercury__int__fold_down3_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__int__fold_down3_9_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__int__fold_down3_9_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__int__fold_down3_9_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__int__fold_down3_9_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__int__fold_down3_9_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__int__fold_down3_9_p_6(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__int__fold_down3_9_p_7(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__int__fold_down3_9_p_8(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Cont param_13,
+  void * param_14);
+
+void MR_CALL 
+mercury__int__fold_down3_9_p_9(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Cont param_13,
+  void * param_14);
+
+void MR_CALL 
+mercury__int__fold_up_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__int__fold_up_5_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__int__fold_up_5_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__int__fold_up_5_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__int__fold_up_5_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__int__fold_up_5_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__int__fold_up_5_p_6(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__int__fold_up_5_p_7(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Cont param_7,
+  void * param_8);
+
+void MR_CALL 
+mercury__int__fold_up_5_p_8(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Cont param_7,
+  void * param_8);
+
+void MR_CALL 
+mercury__int__fold_up_5_p_9(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__int__fold_up_5_p_10(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__int__fold_up2_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__int__fold_up2_7_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__int__fold_up2_7_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__int__fold_up2_7_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__int__fold_up2_7_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__int__fold_up2_7_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__int__fold_up2_7_p_6(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__int__fold_up2_7_p_7(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__int__fold_up2_7_p_8(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Cont param_10,
+  void * param_11);
+
+void MR_CALL 
+mercury__int__fold_up2_7_p_9(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Cont param_10,
+  void * param_11);
+
+void MR_CALL 
+mercury__int__fold_up3_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__int__fold_up3_9_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__int__fold_up3_9_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__int__fold_up3_9_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__int__fold_up3_9_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__int__fold_up3_9_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__int__fold_up3_9_p_6(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__int__fold_up3_9_p_7(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__int__fold_up3_9_p_8(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Cont param_13,
+  void * param_14);
+
+void MR_CALL 
+mercury__int__fold_up3_9_p_9(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Cont param_13,
+  void * param_14);
+
+void MR_CALL 
+mercury__int__hash_2_p_0(
+  MR_Integer param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mercury__int__int_domain_checks_0_p_0(void);
+
+void MR_CALL 
+mercury__int__log2_2_p_0(
+  MR_Integer param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+mercury__int__max_3_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__int__max_int_1_p_0(
+  MR_Integer * param_1);
+
+void MR_CALL 
+mercury__int__min_3_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__int__min_int_1_p_0(
+  MR_Integer * param_1);
+
+void MR_CALL 
+mercury__int__nondet_int_in_range_3_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3,
+  MR_Cont param_4,
+  void * param_5);
+
+MR_bool MR_CALL 
+mercury__int__odd_1_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__int__pow_3_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__int__ubits_per_int_1_p_0(
+  MR_Unsigned * param_1);
+
+MR_Integer MR_CALL 
+mercury__int__f_times_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__f_plus_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__int__f_plus_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__int__f_plus_2_f_1(
+  MR_Integer * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__int__f_plus_2_f_2(
+  MR_Integer param_1,
+  MR_Integer * param_2,
+  MR_Integer param_3);
+
+MR_Integer MR_CALL 
+mercury__int__f_minus_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__int__f_minus_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__int__f_minus_2_f_1(
+  MR_Integer * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__int__f_minus_2_f_2(
+  MR_Integer param_1,
+  MR_Integer * param_2,
+  MR_Integer param_3);
+
+MR_Integer MR_CALL 
+mercury__int__f_slash_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__f_47_47_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__f_47_92_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__f_60_60_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__f_60_60_117_2_f_0(
+  MR_Integer param_1,
+  MR_Unsigned param_2);
+
+MR_Integer MR_CALL 
+mercury__int__f_62_62_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__f_62_62_117_2_f_0(
+  MR_Integer param_1,
+  MR_Unsigned param_2);
+
+MR_Integer MR_CALL 
+mercury__int__ClassMethod_for_enum__enum____int__arity0______enum__to_int_1_1_f_0(
+  MR_Integer param_1);
+
+MR_Unsigned MR_CALL 
+mercury__int__ClassMethod_for_enum__uenum____int__arity0______enum__to_uint_1_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__int__f_92_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__int__f_92_47_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__abs_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__int__bits_per_int_0_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__int__div_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__floor_to_multiple_of_bits_per_int_1_f_0(
+  MR_Integer param_1);
+
+MR_Box MR_CALL 
+mercury__int__fold_down_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5);
+
+MR_Box MR_CALL 
+mercury__int__fold_up_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5);
+
+MR_Integer MR_CALL 
+mercury__int__hash_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mercury__int__int_to_doc_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__int__log2_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__int__max_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__max_int_0_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__int__min_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__min_int_0_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__int__minus_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__mod_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__nabs_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__int__plus_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__pow_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__quot_bits_per_int_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__int__rem_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__rem_bits_per_int_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__int__times_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__times_bits_per_int_1_f_0(
+  MR_Integer param_1);
+
+MR_Unsigned MR_CALL 
+mercury__int__ubits_per_int_0_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__int__unchecked_abs_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__int__unchecked_left_shift_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__unchecked_left_ushift_2_f_0(
+  MR_Integer param_1,
+  MR_Unsigned param_2);
+
+MR_Integer MR_CALL 
+mercury__int__unchecked_quotient_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__unchecked_rem_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__unchecked_right_shift_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__int__unchecked_right_ushift_2_f_0(
+  MR_Integer param_1,
+  MR_Unsigned param_2);
+
+MR_Integer MR_CALL 
+mercury__int__xor_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__int__xor_2_f_1(
+  MR_Integer param_1,
+  MR_Integer * param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__int__xor_2_f_2(
+  MR_Integer * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void mercury__int__init(void);
+void mercury__int__init_type_tables(void);
+void mercury__int__init_debugger(void);
+const char *mercury__int__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_int
+
+// :- end_interface int.

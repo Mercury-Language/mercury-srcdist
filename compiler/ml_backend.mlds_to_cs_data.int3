@@ -1,0 +1,5 @@
+:- module ml_backend.mlds_to_cs_data.
+:- interface.
+:- type maybe_for_call
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_for_call, du_repn(enum("is_not_for_call", "is_for_call", [],  no_c_j_cs))).

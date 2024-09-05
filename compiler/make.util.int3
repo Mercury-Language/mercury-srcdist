@@ -1,0 +1,5 @@
+:- module make.util.
+:- interface.
+:- type stop_or_continue
+	where	type_is_abstract_enum(1).
+:- type_representation(stop_or_continue, du_repn(enum("soc_stop", "soc_continue", [],  no_c_j_cs))).

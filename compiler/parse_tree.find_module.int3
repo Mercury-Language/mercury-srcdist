@@ -1,0 +1,8 @@
+:- module parse_tree.find_module.
+:- interface.
+:- type dir_name_and_contents.
+:- type dir_name_and_stream.
+:- type path_name_and_stream.
+:- type_representation(dir_name_and_contents, is_word_aligned_ptr).
+:- type_representation(dir_name_and_stream, is_word_aligned_ptr).
+:- type_representation(path_name_and_stream, is_word_aligned_ptr).

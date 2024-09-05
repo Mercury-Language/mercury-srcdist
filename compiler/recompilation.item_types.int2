@@ -1,0 +1,41 @@
+:- module recompilation.item_types.
+:- interface.
+:- use_module libs.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module term.
+:- use_module libs.timestamp.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- type module_item_version_numbers
+    --->    module_item_version_numbers((recompilation.item_types).mivn_type_names :: recompilation.item_types.name_arity_version_map, (recompilation.item_types).mivn_type_defns :: recompilation.item_types.name_arity_version_map, (recompilation.item_types).mivn_insts :: recompilation.item_types.name_arity_version_map, (recompilation.item_types).mivn_modes :: recompilation.item_types.name_arity_version_map, (recompilation.item_types).mivn_typeclasses :: recompilation.item_types.name_arity_version_map, (recompilation.item_types).mivn_instances :: recompilation.item_types.recomp_item_name_version_map, (recompilation.item_types).mivn_predicates :: recompilation.item_types.name_arity_version_map, (recompilation.item_types).mivn_functions :: recompilation.item_types.name_arity_version_map).
+:- type module_item_version_numbers_map == map.map(mdbcomp.sym_name.module_name, recompilation.item_types.module_item_version_numbers).
+:- type name_arity_version_map == map.map(parse_tree.prog_data.name_arity, recompilation.item_types.version_number).
+:- type recomp_item_id
+    --->    recomp_item_id(recompilation.item_types.recomp_item_type, recompilation.item_types.recomp_item_name).
+:- type recomp_item_name
+    --->    recomp_item_name(mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity).
+:- type recomp_item_name_version_map == map.map(recompilation.item_types.recomp_item_name, recompilation.item_types.version_number).
+:- type recomp_item_type
+    --->    recomp_type_name 
+    ;       recomp_type_defn 
+    ;       recomp_inst 
+    ;       recomp_mode 
+    ;       recomp_typeclass 
+    ;       recomp_functor 
+    ;       recomp_predicate 
+    ;       recomp_function 
+    ;       recomp_mutable 
+    ;       recomp_foreign_proc .
+:- type version_number == libs.timestamp.timestamp.
+:- inst recomp_pred_or_func for (recompilation.item_types).recomp_item_type/0
+    --->    recomp_function
+    ;       recomp_predicate.
+:- inst recomp_simple for (recompilation.item_types).recomp_item_type/0
+    --->    recomp_inst
+    ;       recomp_mode
+    ;       recomp_type_defn
+    ;       recomp_type_name
+    ;       recomp_typeclass.
