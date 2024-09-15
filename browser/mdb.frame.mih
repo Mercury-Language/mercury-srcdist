@@ -1,0 +1,106 @@
+/*
+** Automatically generated from `frame.m'
+** by the Mercury compiler,
+** version rotd-2024-09-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.frame.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__frame
+#define MR_HEADER_GUARD_mdb__frame
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__FRAME_DECL_GUARD
+#define MDB__FRAME_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__frame__mdb__frame__type_ctor_info_clip_rect_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__frame__mdb__frame__type_ctor_info_frame_0;
+
+MR_Word MR_CALL 
+mdb__frame__clip_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mdb__frame__from_string_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+mdb__frame__hglue_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+mdb__frame__hsize_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdb__frame__vglue_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+mdb__frame__vsize_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mdb__frame____Compare____clip_rect_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__frame____Compare____frame_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__frame____Unify____clip_rect_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__frame____Unify____frame_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdb__frame__init(void);
+void mercury__mdb__frame__init_type_tables(void);
+void mercury__mdb__frame__init_debugger(void);
+const char *mercury__mdb__frame__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.frame
+
+// :- end_interface mdb.frame.
