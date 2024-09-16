@@ -1,0 +1,29 @@
+// Automatically generated from `hash_table.m'
+// by the Mercury compiler,
+// version rotd-2024-09-16
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef HASH_TABLE_MH
+#define HASH_TABLE_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* HASH_TABLE_MH */

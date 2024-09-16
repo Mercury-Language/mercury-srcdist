@@ -1,0 +1,14 @@
+module(2, "random.m",
+	random,
+	{},
+	{array, builtin, io, list, private_builtin},
+	{float, int, math, mutvar, uint, uint32},
+	{random.sfc16, random.sfc32, random.sfc64, random.system_rng},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

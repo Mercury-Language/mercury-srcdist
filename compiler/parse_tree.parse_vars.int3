@@ -1,0 +1,10 @@
+:- module parse_tree.parse_vars.
+:- interface.
+:- type plain_state_dot_colon_vars(T).
+:- type plain_state_vars(T).
+:- type quantifier_type
+	where	type_is_abstract_enum(1).
+:- type var_or_type_var
+	where	type_is_abstract_enum(1).
+:- type_representation(quantifier_type, du_repn(enum("quant_type_exist", "quant_type_univ", [],  no_c_j_cs))).
+:- type_representation(var_or_type_var, du_repn(enum("ordinary_var", "type_var", [],  no_c_j_cs))).
