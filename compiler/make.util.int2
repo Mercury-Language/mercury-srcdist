@@ -1,0 +1,5 @@
+:- module make.util.
+:- interface.
+:- type stop_or_continue
+    --->    soc_stop 
+    ;       soc_continue .
