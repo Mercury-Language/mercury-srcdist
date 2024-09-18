@@ -1,0 +1,18 @@
+:- module thread.channel.
+:- interface.
+:- use_module io.
+:- use_module maybe.
+:- type channel(T).
+:- pred duplicate(thread.channel.channel(T), thread.channel.channel(T), io.io, io.io).
+:- mode duplicate(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred init(thread.channel.channel(T), io.io, io.io).
+:- mode init(builtin.out, builtin.di, builtin.uo) is det.
+:- pred put(thread.channel.channel(T), T, io.io, io.io).
+:- mode put(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred take(thread.channel.channel(T), T, io.io, io.io).
+:- mode take(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred try_take(thread.channel.channel(T), maybe.maybe(T), io.io, io.io).
+:- mode try_take(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred untake(thread.channel.channel(T), T, io.io, io.io).
+:- mode untake(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pragma obsolete(pred((thread.channel).untake/4), []).
