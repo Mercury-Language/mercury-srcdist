@@ -1,0 +1,108 @@
+:- module parse_tree.file_names.
+:- interface.
+:- type ext
+    --->    ext_cur(parse_tree.file_names.ext_cur)
+    ;       ext_cur_ngs(parse_tree.file_names.ext_cur_ngs)
+    ;       ext_cur_gs(parse_tree.file_names.ext_cur_gs)
+    ;       ext_cur_gas(parse_tree.file_names.ext_cur_gas)
+    ;       ext_cur_ngs_gs(parse_tree.file_names.ext_cur_ngs_gs)
+    ;       ext_cur_ngs_gas(parse_tree.file_names.ext_cur_ngs_gas)
+    ;       ext_cur_ngs_gs_err(parse_tree.file_names.ext_cur_ngs_gs_err)
+    ;       ext_cur_ngs_gs_java(parse_tree.file_names.ext_cur_ngs_gs_java)
+    ;       ext_cur_ngs_max_cur(parse_tree.file_names.ext_cur_ngs_max_cur)
+    ;       ext_cur_ngs_gs_max_cur(parse_tree.file_names.ext_cur_ngs_gs_max_cur)
+    ;       ext_cur_ngs_gs_max_ngs(parse_tree.file_names.ext_cur_ngs_gs_max_ngs).
+:- type ext_cur
+    --->    ext_cur_user_defn_ext 
+    ;       ext_cur_user_defn_lc 
+    ;       ext_cur_user_defns 
+    ;       ext_cur_user_depgraph 
+    ;       ext_cur_user_hlds_dump 
+    ;       ext_cur_user_imports_graph 
+    ;       ext_cur_user_lct 
+    ;       ext_cur_user_lct_full 
+    ;       ext_cur_user_lct_order 
+    ;       ext_cur_user_mlds_dump 
+    ;       ext_cur_user_mode_constr 
+    ;       ext_cur_user_order 
+    ;       ext_cur_user_order_to 
+    ;       ext_cur_user_type_repns 
+    ;       ext_cur_user_ugly 
+    ;       ext_cur_user_xml .
+:- type ext_cur_gas
+    --->    ext_cur_gas_exec_noext 
+    ;       ext_cur_gas_exec_exe 
+    ;       ext_cur_gas_exec_bat 
+    ;       ext_cur_gas_exec_exec_opt 
+    ;       ext_cur_gas_lib_dollar_efsl 
+    ;       ext_cur_gas_lib_dollar_a 
+    ;       ext_cur_gas_lib_archive 
+    ;       ext_cur_gas_lib_dll 
+    ;       ext_cur_gas_lib_lib_opt 
+    ;       ext_cur_gas_lib_sh_lib_opt .
+:- type ext_cur_gs
+    --->    ext_cur_gs_lib_init 
+    ;       ext_cur_gs_lib_jar .
+:- type ext_cur_ngs
+    --->    ext_cur_ngs_int_int0 
+    ;       ext_cur_ngs_int_int1 
+    ;       ext_cur_ngs_int_int2 
+    ;       ext_cur_ngs_int_int3 
+    ;       ext_cur_ngs_int_date_int0 
+    ;       ext_cur_ngs_int_date_int12 
+    ;       ext_cur_ngs_int_date_int3 
+    ;       ext_cur_ngs_mf_d 
+    ;       ext_cur_ngs_mf_dv 
+    ;       ext_cur_ngs_mf_dep 
+    ;       ext_cur_ngs_misc_module_dep 
+    ;       ext_cur_ngs_misc_prof .
+:- type ext_cur_ngs_gas
+    --->    ext_cur_ngs_gas_obj_dollar_o 
+    ;       ext_cur_ngs_gas_obj_dollar_efpo 
+    ;       ext_cur_ngs_gas_obj_o 
+    ;       ext_cur_ngs_gas_obj_pic_o 
+    ;       ext_cur_ngs_gas_obj_obj_opt 
+    ;       ext_cur_ngs_gas_obj_pic_obj_opt 
+    ;       ext_cur_ngs_gas_init_obj_dollar_o 
+    ;       ext_cur_ngs_gas_init_obj_o 
+    ;       ext_cur_ngs_gas_init_obj_pic_o 
+    ;       ext_cur_ngs_gas_init_obj_obj_opt 
+    ;       ext_cur_ngs_gas_init_obj_pic_obj_opt .
+:- type ext_cur_ngs_gs
+    --->    ext_cur_ngs_gs_opt_date_plain 
+    ;       ext_cur_ngs_gs_opt_date_trans 
+    ;       ext_cur_ngs_gs_target_c 
+    ;       ext_cur_ngs_gs_target_cs 
+    ;       ext_cur_ngs_gs_target_date_c 
+    ;       ext_cur_ngs_gs_target_date_cs 
+    ;       ext_cur_ngs_gs_target_date_java 
+    ;       ext_cur_ngs_gs_init_c 
+    ;       ext_cur_ngs_gs_an_ds_date 
+    ;       ext_cur_ngs_gs_an_ds_status 
+    ;       ext_cur_ngs_gs_misc_err_date 
+    ;       ext_cur_ngs_gs_misc_used 
+    ;       ext_cur_ngs_gs_misc_track_flags .
+:- type ext_cur_ngs_gs_err
+    --->    ext_cur_ngs_gs_err_err .
+:- type ext_cur_ngs_gs_java
+    --->    ext_cur_ngs_gs_java_java 
+    ;       ext_cur_ngs_gs_java_class .
+:- type ext_cur_ngs_gs_max_cur
+    --->    ext_cur_ngs_gs_max_cur_mih .
+:- type ext_cur_ngs_gs_max_ngs
+    --->    ext_cur_ngs_gs_max_ngs_opt_plain 
+    ;       ext_cur_ngs_gs_max_ngs_opt_trans 
+    ;       ext_cur_ngs_gs_max_ngs_an_analysis 
+    ;       ext_cur_ngs_gs_max_ngs_an_imdg 
+    ;       ext_cur_ngs_gs_max_ngs_an_request .
+:- type ext_cur_ngs_max_cur
+    --->    ext_cur_ngs_max_cur_mh .
+:- type maybe_create_dirs
+    --->    do_create_dirs 
+    ;       do_not_create_dirs .
+:- type maybe_for_search
+    --->    not_for_search 
+    ;       for_search .
+:- type maybe_search
+    --->    do_not_search 
+    ;       do_search .

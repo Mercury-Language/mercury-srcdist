@@ -1,0 +1,3 @@
+:- module libs.lines_builder.
+:- interface.
+:- type lines_builder.

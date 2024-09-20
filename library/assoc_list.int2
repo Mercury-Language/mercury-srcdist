@@ -1,0 +1,8 @@
+:- module assoc_list.
+:- interface.
+:- use_module list.
+:- use_module pair.
+:- type assoc_list(T) == list.list(pair.pair(T, T)).
+:- type assoc_list(K, V) == list.list(pair.pair(K, V)).
+:- inst assoc_list(I) == list.list(pair.pair(I, I)).
+:- inst assoc_list(I1, I2) == list.list(pair.pair(I1, I2)).

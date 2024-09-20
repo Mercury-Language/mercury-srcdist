@@ -1,0 +1,154 @@
+/*
+** Automatically generated from `higher_order.higher_order_info.m'
+** by the Mercury compiler,
+** version rotd-2024-09-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.higher_order.higher_order_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__higher_order__higher_order_info
+#define MR_HEADER_GUARD_transform_hlds__higher_order__higher_order_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__HIGHER_ORDER__HIGHER_ORDER_INFO_DECL_GUARD
+#define TRANSFORM_HLDS__HIGHER_ORDER__HIGHER_ORDER_INFO_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.higher_order.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_info__transform_hlds__higher_order__higher_order_info__type_ctor_info_higher_order_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_info__transform_hlds__higher_order__higher_order_info__type_ctor_info_ho_changed_0;
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_add_request_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_results_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_set_changed_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_set_global_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_set_known_var_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_set_pred_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_set_proc_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_get_changed_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_get_global_info_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_get_known_var_map_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_get_pred_info_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_get_pred_proc_id_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_get_proc_info_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_info__hoi_init_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_info____Compare____higher_order_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_info____Compare____ho_changed_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_info____Unify____higher_order_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_info____Unify____ho_changed_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__higher_order__higher_order_info__init(void);
+void mercury__transform_hlds__higher_order__higher_order_info__init_type_tables(void);
+void mercury__transform_hlds__higher_order__higher_order_info__init_debugger(void);
+const char *mercury__transform_hlds__higher_order__higher_order_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.higher_order.higher_order_info
+
+// :- end_interface transform_hlds.higher_order.higher_order_info.
