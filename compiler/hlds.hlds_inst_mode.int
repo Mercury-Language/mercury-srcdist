@@ -1,0 +1,161 @@
+:- module hlds.hlds_inst_mode.
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module hlds.status.
+:- use_module parse_tree.prog_data.
+:- type any_inst_table.
+:- type ground_inst_table.
+:- type hlds_inst_defn
+    --->    hlds_inst_defn((hlds.hlds_inst_mode).inst_varset :: parse_tree.prog_data.inst_varset, (hlds.hlds_inst_mode).inst_params :: list.list(parse_tree.prog_data.inst_var), (hlds.hlds_inst_mode).inst_body :: parse_tree.prog_data.inst_defn, (hlds.hlds_inst_mode).inst_for_type :: hlds.hlds_inst_mode.inst_for_type_ctor, (hlds.hlds_inst_mode).inst_context :: parse_tree.prog_data.prog_context, (hlds.hlds_inst_mode).inst_status :: hlds.status.inst_status).
+:- type hlds_mode_body
+    --->    hlds_mode_body(parse_tree.prog_data.mer_mode).
+:- type hlds_mode_defn
+    --->    hlds_mode_defn((hlds.hlds_inst_mode).mode_varset :: parse_tree.prog_data.inst_varset, (hlds.hlds_inst_mode).mode_params :: list.list(parse_tree.prog_data.inst_var), (hlds.hlds_inst_mode).mody_body :: hlds.hlds_inst_mode.hlds_mode_body, (hlds.hlds_inst_mode).mode_context :: parse_tree.prog_data.prog_context, (hlds.hlds_inst_mode).mode_status :: hlds.status.mode_status).
+:- type inst_for_type_ctor
+    --->    iftc_not_bound_inst 
+    ;       iftc_applicable_declared(parse_tree.prog_data.type_ctor)
+    ;       iftc_applicable_not_known 
+    ;       iftc_applicable_known(list.list(parse_tree.prog_data.type_ctor))
+    ;       iftc_applicable_error_unknown_type 
+    ;       iftc_applicable_error_eqv_type(parse_tree.prog_data.type_ctor)
+    ;       iftc_applicable_error_visibility(parse_tree.prog_data.type_ctor)
+    ;       iftc_applicable_error_mismatches(parse_tree.prog_data.type_ctor).
+:- type inst_pair
+    --->    inst_pair(parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- type inst_table.
+:- type maybe_inst
+    --->    inst_unknown 
+    ;       inst_known(parse_tree.prog_data.mer_inst).
+:- type maybe_inst_det
+    --->    inst_det_unknown 
+    ;       inst_det_known(parse_tree.prog_data.mer_inst, parse_tree.prog_data.determinism).
+:- type merge_inst_table.
+:- type mode_defns == map.map(parse_tree.prog_data.mode_ctor, hlds.hlds_inst_mode.hlds_mode_defn).
+:- type mode_table.
+:- type mostly_uniq_inst_table.
+:- type shared_inst_table.
+:- type unify_inst_table.
+:- type user_inst_table == map.map(parse_tree.prog_data.inst_ctor, hlds.hlds_inst_mode.hlds_inst_defn).
+:- pred any_insts_from_sorted_pairs(assoc_list.assoc_list(parse_tree.prog_data.any_inst_info, hlds.hlds_inst_mode.maybe_inst_det), hlds.hlds_inst_mode.any_inst_table).
+:- mode any_insts_from_sorted_pairs(builtin.in, builtin.out) is det.
+:- pred any_insts_to_sorted_pairs(hlds.hlds_inst_mode.any_inst_table, assoc_list.assoc_list(parse_tree.prog_data.any_inst_info, hlds.hlds_inst_mode.maybe_inst_det)).
+:- mode any_insts_to_sorted_pairs(builtin.in, builtin.out) is det.
+:- pred det_update_any_inst(parse_tree.prog_data.any_inst_info, hlds.hlds_inst_mode.maybe_inst_det, hlds.hlds_inst_mode.any_inst_table, hlds.hlds_inst_mode.any_inst_table).
+:- mode det_update_any_inst(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred det_update_ground_inst(parse_tree.prog_data.ground_inst_info, hlds.hlds_inst_mode.maybe_inst_det, hlds.hlds_inst_mode.ground_inst_table, hlds.hlds_inst_mode.ground_inst_table).
+:- mode det_update_ground_inst(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred det_update_merge_inst(parse_tree.prog_data.merge_inst_info, hlds.hlds_inst_mode.maybe_inst, hlds.hlds_inst_mode.merge_inst_table, hlds.hlds_inst_mode.merge_inst_table).
+:- mode det_update_merge_inst(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred det_update_mostly_uniq_inst(parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst, hlds.hlds_inst_mode.mostly_uniq_inst_table, hlds.hlds_inst_mode.mostly_uniq_inst_table).
+:- mode det_update_mostly_uniq_inst(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred det_update_shared_inst(parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst, hlds.hlds_inst_mode.shared_inst_table, hlds.hlds_inst_mode.shared_inst_table).
+:- mode det_update_shared_inst(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred det_update_unify_inst(parse_tree.prog_data.unify_inst_info, hlds.hlds_inst_mode.maybe_inst_det, hlds.hlds_inst_mode.unify_inst_table, hlds.hlds_inst_mode.unify_inst_table).
+:- mode det_update_unify_inst(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred ground_insts_from_sorted_pairs(assoc_list.assoc_list(parse_tree.prog_data.ground_inst_info, hlds.hlds_inst_mode.maybe_inst_det), hlds.hlds_inst_mode.ground_inst_table).
+:- mode ground_insts_from_sorted_pairs(builtin.in, builtin.out) is det.
+:- pred ground_insts_to_sorted_pairs(hlds.hlds_inst_mode.ground_inst_table, assoc_list.assoc_list(parse_tree.prog_data.ground_inst_info, hlds.hlds_inst_mode.maybe_inst_det)).
+:- mode ground_insts_to_sorted_pairs(builtin.in, builtin.out) is det.
+:- pred inst_table_get_any_insts(hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.any_inst_table).
+:- mode inst_table_get_any_insts(builtin.in, builtin.out) is det.
+:- pred inst_table_get_ground_insts(hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.ground_inst_table).
+:- mode inst_table_get_ground_insts(builtin.in, builtin.out) is det.
+:- pred inst_table_get_merge_insts(hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.merge_inst_table).
+:- mode inst_table_get_merge_insts(builtin.in, builtin.out) is det.
+:- pred inst_table_get_mostly_uniq_insts(hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.mostly_uniq_inst_table).
+:- mode inst_table_get_mostly_uniq_insts(builtin.in, builtin.out) is det.
+:- pred inst_table_get_shared_insts(hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.shared_inst_table).
+:- mode inst_table_get_shared_insts(builtin.in, builtin.out) is det.
+:- pred inst_table_get_unify_insts(hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.unify_inst_table).
+:- mode inst_table_get_unify_insts(builtin.in, builtin.out) is det.
+:- pred inst_table_get_user_insts(hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.user_inst_table).
+:- mode inst_table_get_user_insts(builtin.in, builtin.out) is det.
+:- pred inst_table_init(hlds.hlds_inst_mode.inst_table).
+:- mode inst_table_init(builtin.out) is det.
+:- pred inst_table_set_any_insts(hlds.hlds_inst_mode.any_inst_table, hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.inst_table).
+:- mode inst_table_set_any_insts(builtin.in, builtin.in, builtin.out) is det.
+:- pred inst_table_set_ground_insts(hlds.hlds_inst_mode.ground_inst_table, hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.inst_table).
+:- mode inst_table_set_ground_insts(builtin.in, builtin.in, builtin.out) is det.
+:- pred inst_table_set_merge_insts(hlds.hlds_inst_mode.merge_inst_table, hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.inst_table).
+:- mode inst_table_set_merge_insts(builtin.in, builtin.in, builtin.out) is det.
+:- pred inst_table_set_mostly_uniq_insts(hlds.hlds_inst_mode.mostly_uniq_inst_table, hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.inst_table).
+:- mode inst_table_set_mostly_uniq_insts(builtin.in, builtin.in, builtin.out) is det.
+:- pred inst_table_set_shared_insts(hlds.hlds_inst_mode.shared_inst_table, hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.inst_table).
+:- mode inst_table_set_shared_insts(builtin.in, builtin.in, builtin.out) is det.
+:- pred inst_table_set_unify_insts(hlds.hlds_inst_mode.unify_inst_table, hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.inst_table).
+:- mode inst_table_set_unify_insts(builtin.in, builtin.in, builtin.out) is det.
+:- pred inst_table_set_user_insts(hlds.hlds_inst_mode.user_inst_table, hlds.hlds_inst_mode.inst_table, hlds.hlds_inst_mode.inst_table).
+:- mode inst_table_set_user_insts(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_any_inst(hlds.hlds_inst_mode.any_inst_table, parse_tree.prog_data.any_inst_info, hlds.hlds_inst_mode.maybe_inst_det).
+:- mode lookup_any_inst(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_ground_inst(hlds.hlds_inst_mode.ground_inst_table, parse_tree.prog_data.ground_inst_info, hlds.hlds_inst_mode.maybe_inst_det).
+:- mode lookup_ground_inst(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_merge_inst(hlds.hlds_inst_mode.merge_inst_table, parse_tree.prog_data.merge_inst_info, hlds.hlds_inst_mode.maybe_inst).
+:- mode lookup_merge_inst(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_mostly_uniq_inst(hlds.hlds_inst_mode.mostly_uniq_inst_table, parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst).
+:- mode lookup_mostly_uniq_inst(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_shared_inst(hlds.hlds_inst_mode.shared_inst_table, parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst).
+:- mode lookup_shared_inst(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_unify_inst(hlds.hlds_inst_mode.unify_inst_table, parse_tree.prog_data.unify_inst_info, hlds.hlds_inst_mode.maybe_inst_det).
+:- mode lookup_unify_inst(builtin.in, builtin.in, builtin.out) is det.
+:- pred merge_insts_from_sorted_pairs(assoc_list.assoc_list(parse_tree.prog_data.merge_inst_info, hlds.hlds_inst_mode.maybe_inst), hlds.hlds_inst_mode.merge_inst_table).
+:- mode merge_insts_from_sorted_pairs(builtin.in, builtin.out) is det.
+:- pred merge_insts_to_sorted_pairs(hlds.hlds_inst_mode.merge_inst_table, assoc_list.assoc_list(parse_tree.prog_data.merge_inst_info, hlds.hlds_inst_mode.maybe_inst)).
+:- mode merge_insts_to_sorted_pairs(builtin.in, builtin.out) is det.
+:- pred mode_table_get_mode_defns(hlds.hlds_inst_mode.mode_table, hlds.hlds_inst_mode.mode_defns).
+:- mode mode_table_get_mode_defns(builtin.in, builtin.out) is det.
+:- pred mode_table_init(hlds.hlds_inst_mode.mode_table).
+:- mode mode_table_init(builtin.out) is det.
+:- pred mode_table_insert(parse_tree.prog_data.mode_ctor, hlds.hlds_inst_mode.hlds_mode_defn, hlds.hlds_inst_mode.mode_table, hlds.hlds_inst_mode.mode_table).
+:- mode mode_table_insert(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred mode_table_optimize(hlds.hlds_inst_mode.mode_table, hlds.hlds_inst_mode.mode_table).
+:- mode mode_table_optimize(builtin.in, builtin.out) is det.
+:- pred mostly_uniq_insts_from_sorted_pairs(assoc_list.assoc_list(parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst), hlds.hlds_inst_mode.mostly_uniq_inst_table).
+:- mode mostly_uniq_insts_from_sorted_pairs(builtin.in, builtin.out) is det.
+:- pred mostly_uniq_insts_to_sorted_pairs(hlds.hlds_inst_mode.mostly_uniq_inst_table, assoc_list.assoc_list(parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst)).
+:- mode mostly_uniq_insts_to_sorted_pairs(builtin.in, builtin.out) is det.
+:- pred search_any_inst(hlds.hlds_inst_mode.any_inst_table, parse_tree.prog_data.any_inst_info, hlds.hlds_inst_mode.maybe_inst_det).
+:- mode search_any_inst(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred search_ground_inst(hlds.hlds_inst_mode.ground_inst_table, parse_tree.prog_data.ground_inst_info, hlds.hlds_inst_mode.maybe_inst_det).
+:- mode search_ground_inst(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred search_insert_unknown_any_inst(parse_tree.prog_data.any_inst_info, maybe.maybe(hlds.hlds_inst_mode.maybe_inst_det), hlds.hlds_inst_mode.any_inst_table, hlds.hlds_inst_mode.any_inst_table).
+:- mode search_insert_unknown_any_inst(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred search_insert_unknown_ground_inst(parse_tree.prog_data.ground_inst_info, maybe.maybe(hlds.hlds_inst_mode.maybe_inst_det), hlds.hlds_inst_mode.ground_inst_table, hlds.hlds_inst_mode.ground_inst_table).
+:- mode search_insert_unknown_ground_inst(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred search_insert_unknown_merge_inst(parse_tree.prog_data.merge_inst_info, maybe.maybe(hlds.hlds_inst_mode.maybe_inst), hlds.hlds_inst_mode.merge_inst_table, hlds.hlds_inst_mode.merge_inst_table).
+:- mode search_insert_unknown_merge_inst(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred search_insert_unknown_mostly_uniq_inst(parse_tree.prog_data.inst_name, maybe.maybe(hlds.hlds_inst_mode.maybe_inst), hlds.hlds_inst_mode.mostly_uniq_inst_table, hlds.hlds_inst_mode.mostly_uniq_inst_table).
+:- mode search_insert_unknown_mostly_uniq_inst(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred search_insert_unknown_shared_inst(parse_tree.prog_data.inst_name, maybe.maybe(hlds.hlds_inst_mode.maybe_inst), hlds.hlds_inst_mode.shared_inst_table, hlds.hlds_inst_mode.shared_inst_table).
+:- mode search_insert_unknown_shared_inst(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred search_insert_unknown_unify_inst(parse_tree.prog_data.unify_inst_info, maybe.maybe(hlds.hlds_inst_mode.maybe_inst_det), hlds.hlds_inst_mode.unify_inst_table, hlds.hlds_inst_mode.unify_inst_table).
+:- mode search_insert_unknown_unify_inst(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred search_merge_inst(hlds.hlds_inst_mode.merge_inst_table, parse_tree.prog_data.merge_inst_info, hlds.hlds_inst_mode.maybe_inst).
+:- mode search_merge_inst(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred search_mostly_uniq_inst(hlds.hlds_inst_mode.mostly_uniq_inst_table, parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst).
+:- mode search_mostly_uniq_inst(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred search_shared_inst(hlds.hlds_inst_mode.shared_inst_table, parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst).
+:- mode search_shared_inst(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred search_unify_inst(hlds.hlds_inst_mode.unify_inst_table, parse_tree.prog_data.unify_inst_info, hlds.hlds_inst_mode.maybe_inst_det).
+:- mode search_unify_inst(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred shared_insts_from_sorted_pairs(assoc_list.assoc_list(parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst), hlds.hlds_inst_mode.shared_inst_table).
+:- mode shared_insts_from_sorted_pairs(builtin.in, builtin.out) is det.
+:- pred shared_insts_to_sorted_pairs(hlds.hlds_inst_mode.shared_inst_table, assoc_list.assoc_list(parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst)).
+:- mode shared_insts_to_sorted_pairs(builtin.in, builtin.out) is det.
+:- pred unify_insts_from_four_assoc_lists(assoc_list.assoc_list(hlds.hlds_inst_mode.inst_pair, hlds.hlds_inst_mode.maybe_inst_det), assoc_list.assoc_list(hlds.hlds_inst_mode.inst_pair, hlds.hlds_inst_mode.maybe_inst_det), assoc_list.assoc_list(hlds.hlds_inst_mode.inst_pair, hlds.hlds_inst_mode.maybe_inst_det), assoc_list.assoc_list(hlds.hlds_inst_mode.inst_pair, hlds.hlds_inst_mode.maybe_inst_det), hlds.hlds_inst_mode.unify_inst_table).
+:- mode unify_insts_from_four_assoc_lists(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred unify_insts_to_four_assoc_lists(hlds.hlds_inst_mode.unify_inst_table, assoc_list.assoc_list(hlds.hlds_inst_mode.inst_pair, hlds.hlds_inst_mode.maybe_inst_det), assoc_list.assoc_list(hlds.hlds_inst_mode.inst_pair, hlds.hlds_inst_mode.maybe_inst_det), assoc_list.assoc_list(hlds.hlds_inst_mode.inst_pair, hlds.hlds_inst_mode.maybe_inst_det), assoc_list.assoc_list(hlds.hlds_inst_mode.inst_pair, hlds.hlds_inst_mode.maybe_inst_det)).
+:- mode unify_insts_to_four_assoc_lists(builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred unify_insts_to_sorted_pairs(hlds.hlds_inst_mode.unify_inst_table, assoc_list.assoc_list(parse_tree.prog_data.unify_inst_info, hlds.hlds_inst_mode.maybe_inst_det)).
+:- mode unify_insts_to_sorted_pairs(builtin.in, builtin.out) is det.
+:- implementation.
+:- type any_inst_table == map.map(parse_tree.prog_data.any_inst_info, hlds.hlds_inst_mode.maybe_inst_det).
+:- type ground_inst_table == map.map(parse_tree.prog_data.ground_inst_info, hlds.hlds_inst_mode.maybe_inst_det).
+:- type merge_inst_table == map.map(parse_tree.prog_data.merge_inst_info, hlds.hlds_inst_mode.maybe_inst).
+:- type mode_table == hlds.hlds_inst_mode.mode_defns.
+:- type mostly_uniq_inst_table == map.map(parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst).
+:- type shared_inst_table == map.map(parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst).

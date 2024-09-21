@@ -1,0 +1,13 @@
+:- module hlds.from_ground_term_util.
+:- interface.
+:- type fgt_build_info.
+:- type fgt_build_info_map.
+:- type fgt_invariants_status
+	where	type_is_abstract_enum(1).
+:- type fgt_marked_goal.
+:- type goal_order
+	where	type_is_abstract_enum(1).
+:- type_representation(fgt_build_info, is_word_aligned_ptr).
+:- type_representation(fgt_build_info_map, is_eqv_to(map(prog_var, hlds.from_ground_term_util.fgt_build_info))).
+:- type_representation(fgt_invariants_status, du_repn(enum("fgt_invariants_kept", "fgt_invariants_broken", [],  no_c_j_cs))).
+:- type_representation(goal_order, du_repn(enum("construct_bottom_up", "deconstruct_top_down", [],  no_c_j_cs))).
