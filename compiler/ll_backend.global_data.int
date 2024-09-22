@@ -1,0 +1,77 @@
+:- module ll_backend.global_data.
+:- interface.
+:- use_module hlds.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set_tree234.
+:- use_module hlds.hlds_pred.
+:- use_module libs.optimization_options.
+:- use_module ll_backend.continuation_info.
+:- use_module ll_backend.layout.
+:- use_module ll_backend.llds.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- type global_data.
+:- type global_data_remapping.
+:- type num_words
+    --->    one_word 
+    ;       two_words .
+:- type static_cell_info.
+:- type static_cell_remap_info.
+:- pred add_scalar_static_cell(list.list(ll_backend.llds.typed_rval), ll_backend.llds.data_id, ll_backend.global_data.static_cell_info, ll_backend.global_data.static_cell_info).
+:- mode add_scalar_static_cell(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_scalar_static_cell_natural_types(list.list(ll_backend.llds.rval), ll_backend.llds.data_id, ll_backend.global_data.static_cell_info, ll_backend.global_data.static_cell_info).
+:- mode add_scalar_static_cell_natural_types(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_vector_static_cell(list.list(ll_backend.llds.llds_type), list.list(list.list(ll_backend.llds.rval)), ll_backend.llds.data_id, ll_backend.global_data.static_cell_info, ll_backend.global_data.static_cell_info).
+:- mode add_vector_static_cell(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred bump_type_num_counter(int, ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode bump_type_num_counter(builtin.in, builtin.in, builtin.out) is det.
+:- pred find_general_llds_types(ll_backend.llds.have_unboxed_floats, ll_backend.llds.have_unboxed_int64s, list.list(parse_tree.prog_data.mer_type), list.list(list.list(ll_backend.llds.rval)), list.list(ll_backend.llds.llds_type)).
+:- mode find_general_llds_types(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred get_static_cells(ll_backend.global_data.static_cell_info, list.list(ll_backend.llds.scalar_common_data_array), list.list(ll_backend.llds.vector_common_data_array)).
+:- mode get_static_cells(builtin.in, builtin.out, builtin.out) is det.
+:- pred global_data_add_new_alloc_sites(set_tree234.set_tree234(ll_backend.layout.alloc_site_info), ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode global_data_add_new_alloc_sites(builtin.in, builtin.in, builtin.out) is det.
+:- pred global_data_add_new_closure_layouts(list.list(ll_backend.layout.closure_proc_id_data), ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode global_data_add_new_closure_layouts(builtin.in, builtin.in, builtin.out) is det.
+:- pred global_data_add_new_proc_layout(hlds.hlds_pred.pred_proc_id, ll_backend.continuation_info.proc_layout_info, ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode global_data_add_new_proc_layout(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred global_data_add_new_proc_var(hlds.hlds_pred.pred_proc_id, ll_backend.llds.tabling_info_struct, ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode global_data_add_new_proc_var(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred global_data_get_all_alloc_sites(ll_backend.global_data.global_data, list.list(ll_backend.layout.alloc_site_info), map.map(ll_backend.llds.alloc_site_id, ll_backend.layout.layout_slot_name)).
+:- mode global_data_get_all_alloc_sites(builtin.in, builtin.out, builtin.out) is det.
+:- pred global_data_get_all_closure_layouts(ll_backend.global_data.global_data, list.list(ll_backend.layout.closure_proc_id_data)).
+:- mode global_data_get_all_closure_layouts(builtin.in, builtin.out) is det.
+:- pred global_data_get_all_proc_layouts(ll_backend.global_data.global_data, list.list(ll_backend.continuation_info.proc_layout_info)).
+:- mode global_data_get_all_proc_layouts(builtin.in, builtin.out) is det.
+:- pred global_data_get_all_proc_vars(ll_backend.global_data.global_data, list.list(ll_backend.llds.tabling_info_struct)).
+:- mode global_data_get_all_proc_vars(builtin.in, builtin.out) is det.
+:- pred global_data_get_proc_layout(ll_backend.global_data.global_data, hlds.hlds_pred.pred_proc_id, ll_backend.continuation_info.proc_layout_info).
+:- mode global_data_get_proc_layout(builtin.in, builtin.in, builtin.out) is det.
+:- pred global_data_get_static_cell_info(ll_backend.global_data.global_data, ll_backend.global_data.static_cell_info).
+:- mode global_data_get_static_cell_info(builtin.in, builtin.out) is det.
+:- pred global_data_get_threadscope_rev_string_table(ll_backend.global_data.global_data, list.list(string), int).
+:- mode global_data_get_threadscope_rev_string_table(builtin.in, builtin.out, builtin.out) is det.
+:- pred global_data_get_threadscope_string_table(ll_backend.global_data.global_data, list.list(string)).
+:- mode global_data_get_threadscope_string_table(builtin.in, builtin.out) is det.
+:- pred global_data_init(ll_backend.global_data.static_cell_info, int, list.list(string), ll_backend.global_data.global_data).
+:- mode global_data_init(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred global_data_maybe_get_proc_layout(ll_backend.global_data.global_data, hlds.hlds_pred.pred_proc_id, ll_backend.continuation_info.proc_layout_info).
+:- mode global_data_maybe_get_proc_layout(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred global_data_set_static_cell_info(ll_backend.global_data.static_cell_info, ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode global_data_set_static_cell_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred global_data_set_threadscope_rev_string_table(list.list(string), int, ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode global_data_set_threadscope_rev_string_table(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred global_data_update_proc_layout(hlds.hlds_pred.pred_proc_id, ll_backend.continuation_info.proc_layout_info, ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode global_data_update_proc_layout(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func init_static_cell_info(mdbcomp.sym_name.module_name, ll_backend.llds.have_unboxed_floats, ll_backend.llds.have_unboxed_int64s, libs.optimization_options.maybe_use_common_data) = ll_backend.global_data.static_cell_info.
+:- pred merge_global_datas(ll_backend.global_data.global_data, ll_backend.global_data.global_data, ll_backend.global_data.global_data, ll_backend.global_data.global_data_remapping).
+:- mode merge_global_datas(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred remap_references_to_global_data(ll_backend.global_data.global_data_remapping, ll_backend.llds.c_procedure, ll_backend.llds.c_procedure).
+:- mode remap_references_to_global_data(builtin.in, builtin.in, builtin.out) is det.
+:- func rval_type_as_arg(ll_backend.llds.have_unboxed_floats, ll_backend.llds.have_unboxed_int64s, ll_backend.global_data.num_words, ll_backend.llds.rval) = ll_backend.llds.llds_type.
+:- pred search_scalar_static_cell_offset(ll_backend.global_data.static_cell_info, ll_backend.llds.data_id, int, ll_backend.llds.rval).
+:- mode search_scalar_static_cell_offset(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
