@@ -1,0 +1,53 @@
+:- module make.deps_cache.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module map.
+:- use_module libs.maybe_util.
+:- use_module make.deps_set.
+:- use_module make.make_info.
+:- type dependency_file_deps_result == make.deps_cache.deps_result(make.deps_set.dependency_file_index).
+:- type deps_result(T)
+    --->    deps_result((make.deps_cache).dr_success :: libs.maybe_util.maybe_succeeded, (make.deps_cache).dr_set :: make.deps_set.deps_set(T)).
+:- type module_deps_result == make.deps_cache.deps_result(make.deps_set.module_index).
+:- type module_to_dep_file_set_cache == map.map(make.deps_set.module_index, make.deps_cache.dependency_file_deps_result).
+:- type module_to_module_set_cache == map.map(make.deps_set.module_index, make.deps_cache.module_deps_result).
+:- type process_modules_where
+    --->    process_only_modules_in_cur_dir 
+    ;       process_modules_anywhere .
+:- type trans_deps_cache == map.map(make.deps_cache.trans_deps_key, make.deps_cache.module_deps_result).
+:- type trans_deps_key
+    --->    trans_deps_key(make.deps_set.module_index, make.deps_cache.transitive_dependencies_type, make.deps_cache.process_modules_where).
+:- type transitive_dependencies_type
+    --->    interface_imports 
+    ;       all_imports 
+    ;       all_dependencies .
+:- pred add_to_anc0_dir1_indir2_intermod_cache(make.deps_set.module_index, make.deps_cache.dependency_file_deps_result, make.make_info.make_info, make.make_info.make_info).
+:- mode add_to_anc0_dir1_indir2_intermod_cache(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred add_to_direct_imports_intermod_cache(make.deps_set.module_index, make.deps_cache.module_deps_result, make.make_info.make_info, make.make_info.make_info).
+:- mode add_to_direct_imports_intermod_cache(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred add_to_direct_imports_non_intermod_cache(make.deps_set.module_index, make.deps_cache.module_deps_result, make.make_info.make_info, make.make_info.make_info).
+:- mode add_to_direct_imports_non_intermod_cache(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred add_to_foreign_imports_non_intermod_trans_cache(make.deps_set.module_index, make.deps_cache.module_deps_result, make.make_info.make_info, make.make_info.make_info).
+:- mode add_to_foreign_imports_non_intermod_trans_cache(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred add_to_indirect_imports_intermod_cache(make.deps_set.module_index, make.deps_cache.module_deps_result, make.make_info.make_info, make.make_info.make_info).
+:- mode add_to_indirect_imports_intermod_cache(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred add_to_trans_deps_cache(make.deps_cache.trans_deps_key, make.deps_cache.module_deps_result, make.make_info.make_info, make.make_info.make_info).
+:- mode add_to_trans_deps_cache(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func init_module_to_dep_file_set_cache = make.deps_cache.module_to_dep_file_set_cache.
+:- func init_module_to_module_set_cache = make.deps_cache.module_to_module_set_cache.
+:- func init_trans_deps_cache = make.deps_cache.trans_deps_cache.
+:- pred record_make_deps_cache_stats(io.io, io.io).
+:- mode record_make_deps_cache_stats(builtin.di, builtin.uo) is det.
+:- pred search_anc0_dir1_indir2_intermod_cache(make.make_info.make_info, make.deps_set.module_index, make.deps_cache.dependency_file_deps_result).
+:- mode search_anc0_dir1_indir2_intermod_cache(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred search_direct_imports_intermod_cache(make.make_info.make_info, make.deps_set.module_index, make.deps_cache.module_deps_result).
+:- mode search_direct_imports_intermod_cache(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred search_direct_imports_non_intermod_cache(make.make_info.make_info, make.deps_set.module_index, make.deps_cache.module_deps_result).
+:- mode search_direct_imports_non_intermod_cache(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred search_foreign_imports_non_intermod_trans_cache(make.make_info.make_info, make.deps_set.module_index, make.deps_cache.module_deps_result).
+:- mode search_foreign_imports_non_intermod_trans_cache(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred search_indirect_imports_intermod_cache(make.make_info.make_info, make.deps_set.module_index, make.deps_cache.module_deps_result).
+:- mode search_indirect_imports_intermod_cache(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred search_trans_deps_cache(make.make_info.make_info, make.deps_cache.trans_deps_key, make.deps_cache.module_deps_result).
+:- mode search_trans_deps_cache(builtin.in, builtin.in, builtin.out) is semidet.

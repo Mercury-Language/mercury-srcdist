@@ -1,0 +1,14 @@
+:- module term_unify.
+:- interface.
+:- use_module list.
+:- use_module term.
+:- pred first_term_list_subsumes_second(list.list(term.term(T)), list.list(term.term(T)), term.substitution(T)).
+:- mode first_term_list_subsumes_second(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred unify_term_lists(list.list(term.term(T)), list.list(term.term(T)), term.substitution(T), term.substitution(T)).
+:- mode unify_term_lists(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred unify_term_lists_dont_bind(list.list(term.term(T)), list.list(term.term(T)), list.list(term.var(T)), term.substitution(T), term.substitution(T)).
+:- mode unify_term_lists_dont_bind(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred unify_terms(term.term(T), term.term(T), term.substitution(T), term.substitution(T)).
+:- mode unify_terms(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred unify_terms_dont_bind(term.term(T), term.term(T), list.list(term.var(T)), term.substitution(T), term.substitution(T)).
+:- mode unify_terms_dont_bind(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is semidet.

@@ -1,0 +1,29 @@
+// Automatically generated from `ite_gen.m'
+// by the Mercury compiler,
+// version rotd-2024-09-23
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef LL_BACKEND__ITE_GEN_MH
+#define LL_BACKEND__ITE_GEN_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* LL_BACKEND__ITE_GEN_MH */

@@ -1,0 +1,3 @@
+:- module (hlds.hlds_out).hlds_out_inst_table.
+:- interface.
+:- type maybe_use_error_msg_inst.
