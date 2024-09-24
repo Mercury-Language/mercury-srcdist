@@ -1,0 +1,18 @@
+:- module digraph.
+:- interface.
+:- import_module assoc_list.
+:- import_module enum.
+:- import_module list.
+:- import_module map.
+:- import_module pair.
+:- import_module set.
+:- import_module sparse_bitset.
+:- type digraph(T).
+:- type digraph_key(T).
+:- type digraph_key_set(T).
+:- instance uenum(digraph.digraph_key(T)).
+:- type_representation(clique_map(V_1), is_eqv_to(map(digraph.digraph_key(V_1), digraph.digraph_key(set(V_1))))).
+:- type_representation(digraph_key(V_1), du_repn(notag("digraph_key", uint,  no_c_j_cs))).
+:- type_representation(digraph_key_set(V_1), is_eqv_to(sparse_bitset(digraph.digraph_key(V_1)))).
+:- type_representation(key_map(V_1), is_eqv_to(map(uint, digraph.digraph_key(V_1)))).
+:- type_representation(key_set_map(V_1), is_eqv_to(map(uint, digraph.digraph_key_set(V_1)))).
