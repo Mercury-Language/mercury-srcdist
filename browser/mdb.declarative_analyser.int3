@@ -1,0 +1,6 @@
+:- module mdb.declarative_analyser.
+:- interface.
+:- type analyser_response(T).
+:- type analyser_state(T).
+:- type analysis_type(T).
+:- type search_mode.

@@ -1,0 +1,480 @@
+:- module ml_backend.mlds.
+:- interface.
+:- use_module backend_libs.
+:- use_module bool.
+:- use_module hlds.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module backend_libs.builtin_ops.
+:- use_module backend_libs.rtti.
+:- use_module hlds.hlds_data.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module libs.globals.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- use_module ml_backend.ml_global_data.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_foreign.
+:- use_module parse_tree.prog_data_pragma.
+:- use_module parse_tree.prog_foreign.
+:- use_module parse_tree.prog_type.
+:- type class_access
+    --->    class_public 
+    ;       class_private .
+:- type constness
+    --->    modifiable 
+    ;       const .
+:- type function_access
+    --->    func_public 
+    ;       func_private .
+:- type global_var_access
+    --->    gvar_acc_module_only 
+    ;       gvar_acc_whole_program .
+:- type global_var_ref
+    --->    env_var_ref(string).
+:- type initializer_array_size
+    --->    array_size(int)
+    ;       no_size .
+:- type mercury_mlds_import_type
+    --->    user_visible_interface 
+    ;       compiler_visible_interface .
+:- type mercury_module_name == mdbcomp.sym_name.module_name.
+:- type ml_call_kind
+    --->    no_return_call 
+    ;       tail_call 
+    ;       ordinary_call .
+:- type ml_scalar_common_type_num
+    --->    ml_scalar_common_type_num(int).
+:- type ml_vector_common_type_num
+    --->    ml_vector_common_type_num(int).
+:- type mlds
+    --->    mlds((ml_backend.mlds).mlds_name :: ml_backend.mlds.mercury_module_name, (ml_backend.mlds).mlds_toplevel_imports :: list.list(ml_backend.mlds.mlds_import), (ml_backend.mlds).mlds_global_defns :: ml_backend.ml_global_data.ml_global_data, (ml_backend.mlds).mlds_type_defns :: list.list(ml_backend.mlds.mlds_class_defn), (ml_backend.mlds).mlds_enum_defns :: list.list(ml_backend.mlds.mlds_enum_class_defn), (ml_backend.mlds).mlds_env_defns :: list.list(ml_backend.mlds.mlds_env_defn), (ml_backend.mlds).mlds_table_struct_defns :: list.list(ml_backend.mlds.mlds_global_var_defn), (ml_backend.mlds).mlds_proc_defns :: list.list(ml_backend.mlds.mlds_function_defn), (ml_backend.mlds).mlds_init_preds :: list.list(string), (ml_backend.mlds).mlds_final_preds :: list.list(string), (ml_backend.mlds).mlds_foreign_code_map :: map.map(libs.globals.foreign_language, ml_backend.mlds.mlds_foreign_code), (ml_backend.mlds).mlds_exported_enums :: list.list(ml_backend.mlds.mlds_exported_enum)).
+:- type mlds_alloc_id
+    --->    mlds_alloc_id(int).
+:- type mlds_arg_types == list.list(ml_backend.mlds.mlds_type).
+:- type mlds_argument
+    --->    mlds_argument(ml_backend.mlds.mlds_local_var_name, ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_gc_statement).
+:- type mlds_atomic_statement
+    --->    comment(string)
+    ;       assign(ml_backend.mlds.mlds_lval, ml_backend.mlds.mlds_rval)
+    ;       assign_if_in_heap(ml_backend.mlds.mlds_lval, ml_backend.mlds.mlds_rval)
+    ;       delete_object(ml_backend.mlds.mlds_rval)
+    ;       new_object(ml_backend.mlds.mlds_lval, parse_tree.prog_data.ptag, bool.bool, ml_backend.mlds.mlds_type, maybe.maybe(ml_backend.mlds.mlds_rval), maybe.maybe(ml_backend.mlds.qual_ctor_id), list.list(ml_backend.mlds.mlds_typed_rval), hlds.hlds_data.may_use_atomic_alloc, maybe.maybe(ml_backend.mlds.mlds_alloc_id))
+    ;       gc_check 
+    ;       mark_hp(ml_backend.mlds.mlds_lval)
+    ;       restore_hp(ml_backend.mlds.mlds_rval)
+    ;       trail_op(ml_backend.mlds.trail_op)
+    ;       inline_target_code(ml_backend.mlds.mlds_target_lang, list.list(ml_backend.mlds.target_code_component))
+    ;       outline_foreign_proc(libs.globals.foreign_language, list.list(ml_backend.mlds.outline_arg), list.list(ml_backend.mlds.mlds_lval), string).
+:- type mlds_case_match_cond
+    --->    match_value(ml_backend.mlds.mlds_rval)
+    ;       match_range(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_rval).
+:- type mlds_class_decl_flags
+    --->    mlds_class_decl_flags((ml_backend.mlds).mcdf_access :: ml_backend.mlds.class_access, (ml_backend.mlds).mcdf_overridability :: ml_backend.mlds.overridability, (ml_backend.mlds).mcdf_constness :: ml_backend.mlds.constness).
+:- type mlds_class_defn
+    --->    mlds_class_defn((ml_backend.mlds).mcd_class_name :: ml_backend.mlds.mlds_class_name, (ml_backend.mlds).mcd_class_arity :: parse_tree.prog_data.arity, (ml_backend.mlds).mcd_context :: parse_tree.prog_data.prog_context, (ml_backend.mlds).mcd_decl_flags :: ml_backend.mlds.mlds_class_decl_flags, (ml_backend.mlds).mcd_imports :: list.list(ml_backend.mlds.mlds_import), (ml_backend.mlds).mcd_inherits :: ml_backend.mlds.mlds_class_inherits, (ml_backend.mlds).mcd_implements :: list.list(ml_backend.mlds.mlds_interface_id), (ml_backend.mlds).mcd_tparams :: list.list(parse_tree.prog_data.type_param), (ml_backend.mlds).mcd_member_fields :: list.list(ml_backend.mlds.mlds_field_var_defn), (ml_backend.mlds).mcd_member_classes :: list.list(ml_backend.mlds.mlds_class_defn), (ml_backend.mlds).mcd_member_methods :: list.list(ml_backend.mlds.mlds_function_defn), (ml_backend.mlds).mcd_ctors :: list.list(ml_backend.mlds.mlds_function_defn)).
+:- type mlds_class_id
+    --->    mlds_class_id(ml_backend.mlds.qual_class_name, parse_tree.prog_data.arity).
+:- type mlds_class_inherits
+    --->    inherits_nothing 
+    ;       inherits_class(ml_backend.mlds.mlds_class_id).
+:- type mlds_class_name == string.
+:- type mlds_code_addr
+    --->    mlds_code_addr(ml_backend.mlds.qual_func_label, ml_backend.mlds.mlds_func_signature).
+:- type mlds_compiler_aux_var
+    --->    mcav_commit 
+    ;       mcav_slot 
+    ;       mcav_later_slot 
+    ;       mcav_num_later_solns 
+    ;       mcav_limit 
+    ;       mcav_str 
+    ;       mcav_lo 
+    ;       mcav_mid 
+    ;       mcav_hi 
+    ;       mcav_stop_loop 
+    ;       mcav_result 
+    ;       mcav_case_num .
+:- type mlds_compiler_var
+    --->    lvnc_non_prog_var_boxed(string)
+    ;       lvnc_non_prog_var_conv(int, string)
+    ;       lvnc_non_prog_var_next_value(string)
+    ;       lvnc_succeeded 
+    ;       lvnc_success_indicator 
+    ;       lvnc_tscc_proc_selector 
+    ;       lvnc_new_obj(int)
+    ;       lvnc_cond(int)
+    ;       lvnc_conv_var(int)
+    ;       lvnc_arg(int)
+    ;       lvnc_wrapper_arg(int)
+    ;       lvnc_param(int)
+    ;       lvnc_out_param(int)
+    ;       lvnc_return_value 
+    ;       lvnc_closure 
+    ;       lvnc_closure_arg 
+    ;       lvnc_closure_layout_ptr 
+    ;       lvnc_type_params 
+    ;       lvnc_type_info 
+    ;       lvnc_cont 
+    ;       lvnc_cont_env_ptr 
+    ;       lvnc_env 
+    ;       lvnc_env_ptr 
+    ;       lvnc_env_ptr_arg 
+    ;       lvnc_frame 
+    ;       lvnc_frame_ptr 
+    ;       lvnc_this_frame 
+    ;       lvnc_stack_chain 
+    ;       lvnc_saved_stack_chain(int)
+    ;       lvnc_args 
+    ;       lvnc_aux_var(ml_backend.mlds.mlds_compiler_aux_var, int)
+    ;       lvnc_packed_word(int).
+:- type mlds_ctor_id
+    --->    ctor_id(ml_backend.mlds.mlds_class_name, parse_tree.prog_data.arity).
+:- type mlds_enum_class_defn
+    --->    mlds_enum_class_defn((ml_backend.mlds).mecd_class_name :: ml_backend.mlds.mlds_class_name, (ml_backend.mlds).mecd_class_arity :: parse_tree.prog_data.arity, (ml_backend.mlds).mecd_context :: parse_tree.prog_data.prog_context, (ml_backend.mlds).mecd_inherits :: ml_backend.mlds.mlds_enum_class_inherits, (ml_backend.mlds).mecd_implements :: maybe.maybe(ml_backend.mlds.mlds_interface_id), (ml_backend.mlds).mcd_tparams :: list.list(parse_tree.prog_data.type_param), (ml_backend.mlds).mecd_value_field :: ml_backend.mlds.mlds_field_var_defn, (ml_backend.mlds).mecd_enum_consts :: list.list(ml_backend.mlds.mlds_enum_const_defn), (ml_backend.mlds).mecd_ctors :: list.list(ml_backend.mlds.mlds_function_defn)).
+:- type mlds_enum_class_id
+    --->    mlds_enum_class_id(ml_backend.mlds.mlds_module_name, string, parse_tree.prog_data.arity).
+:- type mlds_enum_class_inherits =< ml_backend.mlds.mlds_class_inherits
+    --->    inherits_nothing 
+    ;       inherits_class(ml_backend.mlds.mlds_class_id).
+:- type mlds_enum_const
+    --->    mlds_enum_const_uint(uint)
+    ;       mlds_enum_const_foreign(libs.globals.foreign_language, string, ml_backend.mlds.mlds_type).
+:- type mlds_enum_const_defn
+    --->    mlds_enum_const_defn((ml_backend.mlds).mecd_name :: ml_backend.mlds.mlds_field_var_name, (ml_backend.mlds).mecd_context :: parse_tree.prog_data.prog_context, (ml_backend.mlds).mecd_const_value :: ml_backend.mlds.mlds_enum_const).
+:- type mlds_env_defn
+    --->    mlds_env_defn((ml_backend.mlds).med_env_name :: string, (ml_backend.mlds).med_context :: parse_tree.prog_data.prog_context, (ml_backend.mlds).med_field_vars :: list.list(ml_backend.mlds.mlds_field_var_defn)).
+:- type mlds_env_id
+    --->    mlds_env_id(ml_backend.mlds.mlds_module_name, string).
+:- type mlds_exception_handler
+    --->    handler(maybe.maybe(ml_backend.mlds.mlds_type), maybe.maybe(string)).
+:- type mlds_exported_enum
+    --->    mlds_exported_enum((ml_backend.mlds).exported_enum_lang :: libs.globals.foreign_language, (ml_backend.mlds).exported_enum_context :: parse_tree.prog_data.prog_context, (ml_backend.mlds).exported_enum_type_ctor :: parse_tree.prog_data.type_ctor, (ml_backend.mlds).exported_enum_constants :: list.list(ml_backend.mlds.mlds_exported_enum_constant)).
+:- type mlds_exported_enum_constant
+    --->    mlds_exported_enum_constant((ml_backend.mlds).exported_enum_constant_name :: string, (ml_backend.mlds).exported_enum_constant_value :: ml_backend.mlds.mlds_initializer).
+:- type mlds_exported_enums == list.list(ml_backend.mlds.mlds_exported_enum).
+:- type mlds_field_id
+    --->    ml_field_offset(ml_backend.mlds.mlds_rval)
+    ;       ml_field_named(ml_backend.mlds.qual_field_var_name, ml_backend.mlds.mlds_type).
+:- type mlds_field_var_decl_flags
+    --->    mlds_field_var_decl_flags((ml_backend.mlds).mfvdf_per_instance :: ml_backend.mlds.per_instance, (ml_backend.mlds).mfvdf_constness :: ml_backend.mlds.constness).
+:- type mlds_field_var_defn
+    --->    mlds_field_var_defn((ml_backend.mlds).mfvd_name :: ml_backend.mlds.mlds_field_var_name, (ml_backend.mlds).mfvd_context :: parse_tree.prog_data.prog_context, (ml_backend.mlds).mfvd_decl_flags :: ml_backend.mlds.mlds_field_var_decl_flags, (ml_backend.mlds).mfvd_type :: ml_backend.mlds.mlds_type, (ml_backend.mlds).mfvd_init :: ml_backend.mlds.mlds_initializer, (ml_backend.mlds).mfvd_gc :: ml_backend.mlds.mlds_gc_statement).
+:- type mlds_field_var_name
+    --->    fvn_global_data_field(int, int)
+    ;       fvn_du_ctor_field_hld(string)
+    ;       fvn_mr_value 
+    ;       fvn_data_tag 
+    ;       fvn_enum_const(string)
+    ;       fvn_base_class(int)
+    ;       fvn_ptr_num 
+    ;       fvn_env_field_from_local_var(ml_backend.mlds.mlds_local_var_name)
+    ;       fvn_prev 
+    ;       fvn_trace .
+:- type mlds_foreign_code
+    --->    mlds_foreign_code(list.list(parse_tree.prog_foreign.foreign_decl_code), list.list(parse_tree.prog_foreign.foreign_body_code), list.list(parse_tree.prog_data_foreign.fim_spec), list.list(ml_backend.mlds.mlds_pragma_export)).
+:- type mlds_func_label
+    --->    mlds_func_label(ml_backend.mlds.mlds_proc_label, ml_backend.mlds.mlds_maybe_aux_func_id).
+:- type mlds_func_params
+    --->    mlds_func_params(list.list(ml_backend.mlds.mlds_argument), ml_backend.mlds.mlds_return_types).
+:- type mlds_func_signature
+    --->    mlds_func_signature(ml_backend.mlds.mlds_arg_types, ml_backend.mlds.mlds_return_types).
+:- type mlds_func_source
+    --->    mlds_func_source_proc(hlds.hlds_pred.pred_proc_id)
+    ;       mlds_func_source_constructor 
+    ;       mlds_func_source_continuation 
+    ;       mlds_func_source_trace 
+    ;       mlds_func_source_wrapper .
+:- type mlds_function_body
+    --->    body_defined_here(ml_backend.mlds.mlds_stmt)
+    ;       body_external .
+:- type mlds_function_decl_flags
+    --->    mlds_function_decl_flags((ml_backend.mlds).mfdf_access :: ml_backend.mlds.function_access, (ml_backend.mlds).mfdf_per_instance :: ml_backend.mlds.per_instance).
+:- type mlds_function_defn
+    --->    mlds_function_defn((ml_backend.mlds).mfd_function_name :: ml_backend.mlds.mlds_function_name, (ml_backend.mlds).mfd_context :: parse_tree.prog_data.prog_context, (ml_backend.mlds).mfd_decl_flags :: ml_backend.mlds.mlds_function_decl_flags, (ml_backend.mlds).mfd_orig_proc :: ml_backend.mlds.mlds_func_source, (ml_backend.mlds).mfd_param :: ml_backend.mlds.mlds_func_params, (ml_backend.mlds).mfd_body :: ml_backend.mlds.mlds_function_body, (ml_backend.mlds).mfd_env_vars :: set.set(string), (ml_backend.mlds).mfd_tail_rec :: maybe.maybe(parse_tree.prog_data_pragma.require_tail_recursion)).
+:- type mlds_function_name
+    --->    mlds_function_name(ml_backend.mlds.mlds_plain_func_name)
+    ;       mlds_function_export(string).
+:- type mlds_gc_statement
+    --->    gc_trace_code(ml_backend.mlds.mlds_stmt)
+    ;       gc_initialiser(ml_backend.mlds.mlds_stmt)
+    ;       gc_no_stmt .
+:- type mlds_global_const_var
+    --->    mgcv_const_var 
+    ;       mgcv_float 
+    ;       mgcv_int64 
+    ;       mgcv_uint64 
+    ;       mgcv_closure_layout 
+    ;       mgcv_typevar_vector 
+    ;       mgcv_bit_vector .
+:- type mlds_global_var_decl_flags
+    --->    mlds_global_var_decl_flags((ml_backend.mlds).mgvdf_access :: ml_backend.mlds.global_var_access, (ml_backend.mlds).mgvdf_constness :: ml_backend.mlds.constness).
+:- type mlds_global_var_defn
+    --->    mlds_global_var_defn((ml_backend.mlds).mgvd_name :: ml_backend.mlds.mlds_global_var_name, (ml_backend.mlds).mgvd_context :: parse_tree.prog_data.prog_context, (ml_backend.mlds).mgvd_decl_flags :: ml_backend.mlds.mlds_global_var_decl_flags, (ml_backend.mlds).mgvd_type :: ml_backend.mlds.mlds_type, (ml_backend.mlds).mgvd_init :: ml_backend.mlds.mlds_initializer, (ml_backend.mlds).mgvd_gc :: ml_backend.mlds.mlds_gc_statement).
+:- type mlds_global_var_name
+    --->    gvn_rtti_var(backend_libs.rtti.rtti_id)
+    ;       gvn_tabling_var(ml_backend.mlds.mlds_proc_label, backend_libs.rtti.proc_tabling_struct_id)
+    ;       gvn_const_var(ml_backend.mlds.mlds_global_const_var, int)
+    ;       gvn_dummy_var .
+:- type mlds_goto_target
+    --->    goto_label(ml_backend.mlds.mlds_label)
+    ;       goto_break_switch 
+    ;       goto_break_loop 
+    ;       goto_continue_loop .
+:- type mlds_import
+    --->    mlds_import((ml_backend.mlds).mercury_mlds_import_type :: ml_backend.mlds.mercury_mlds_import_type, (ml_backend.mlds).import_name :: mdbcomp.sym_name.module_name).
+:- type mlds_initializer
+    --->    init_obj(ml_backend.mlds.mlds_rval)
+    ;       init_struct(ml_backend.mlds.mlds_type, list.list(ml_backend.mlds.mlds_initializer))
+    ;       init_array(list.list(ml_backend.mlds.mlds_initializer))
+    ;       no_initializer .
+:- type mlds_interface_id
+    --->    mlds_interface_id(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_class_name).
+:- type mlds_label
+    --->    mlds_label(string).
+:- type mlds_local_var_defn
+    --->    mlds_local_var_defn((ml_backend.mlds).mlvd_name :: ml_backend.mlds.mlds_local_var_name, (ml_backend.mlds).mlvd_context :: parse_tree.prog_data.prog_context, (ml_backend.mlds).mlvd_type :: ml_backend.mlds.mlds_type, (ml_backend.mlds).mlvd_init :: ml_backend.mlds.mlds_initializer, (ml_backend.mlds).mlvd_gc :: ml_backend.mlds.mlds_gc_statement).
+:- type mlds_local_var_name
+    --->    lvn_prog_var(string, int)
+    ;       lvn_prog_var_foreign(string)
+    ;       lvn_prog_var_boxed(string, int)
+    ;       lvn_prog_var_conv(int, string, int)
+    ;       lvn_prog_var_next_value(string, int)
+    ;       lvn_local_var(string, int)
+    ;       lvn_tscc_proc_input_var(ml_backend.mlds.proc_id_in_tscc, int, string)
+    ;       lvn_tscc_output_var(int, string)
+    ;       lvn_tscc_output_var_ptr(int, string)
+    ;       lvn_tscc_output_var_succeeded 
+    ;       lvn_field_var_as_local(ml_backend.mlds.mlds_field_var_name)
+    ;       lvn_comp_var(ml_backend.mlds.mlds_compiler_var).
+:- type mlds_local_var_name_type
+    --->    mlds_local_var_name_type(ml_backend.mlds.mlds_local_var_name, ml_backend.mlds.mlds_type).
+:- type mlds_lval
+    --->    ml_field((ml_backend.mlds).field_ptag :: maybe.maybe(parse_tree.prog_data.ptag), (ml_backend.mlds).field_ptr :: ml_backend.mlds.mlds_rval, (ml_backend.mlds).field_ptr_type :: ml_backend.mlds.mlds_type, (ml_backend.mlds).field_field_id :: ml_backend.mlds.mlds_field_id, (ml_backend.mlds).field_field_type :: ml_backend.mlds.mlds_type)
+    ;       ml_mem_ref(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_type)
+    ;       ml_target_global_var_ref(ml_backend.mlds.global_var_ref)
+    ;       ml_local_var(ml_backend.mlds.mlds_local_var_name, ml_backend.mlds.mlds_type)
+    ;       ml_global_var(ml_backend.mlds.qual_global_var_name, ml_backend.mlds.mlds_type).
+:- type mlds_maybe_aux_func_id
+    --->    proc_func 
+    ;       proc_aux_func(int)
+    ;       gc_trace_for_proc_func 
+    ;       gc_trace_for_proc_aux_func(int).
+:- type mlds_module_name.
+:- type mlds_package_name == ml_backend.mlds.mlds_module_name.
+:- type mlds_plain_func_name
+    --->    mlds_plain_func_name((ml_backend.mlds).pfn_func_label :: ml_backend.mlds.mlds_func_label, (ml_backend.mlds).pfn_pred_id :: hlds.hlds_pred.pred_id).
+:- type mlds_pragma_export
+    --->    ml_pragma_export(libs.globals.foreign_language, string, ml_backend.mlds.qual_function_name, ml_backend.mlds.mlds_func_params, list.list(parse_tree.prog_data.tvar), parse_tree.prog_data.prog_context).
+:- type mlds_pred_label
+    --->    mlds_user_pred_label(mdbcomp.prim_data.pred_or_func, maybe.maybe(ml_backend.mlds.mercury_module_name), string, parse_tree.prog_data.pred_form_arity)
+    ;       mlds_special_pred_label(string, maybe.maybe(ml_backend.mlds.mercury_module_name), string, parse_tree.prog_data.arity).
+:- type mlds_proc_label
+    --->    mlds_proc_label(ml_backend.mlds.mlds_pred_label, hlds.hlds_pred.proc_id).
+:- type mlds_qual_kind
+    --->    module_qual 
+    ;       type_qual .
+:- type mlds_reset_trail_reason
+    --->    undo 
+    ;       commit 
+    ;       solve 
+    ;       exception 
+    ;       gc .
+:- type mlds_return_types == list.list(ml_backend.mlds.mlds_type).
+:- type mlds_rval
+    --->    ml_lval(ml_backend.mlds.mlds_lval)
+    ;       ml_mkword(parse_tree.prog_data.ptag, ml_backend.mlds.mlds_rval)
+    ;       ml_const(ml_backend.mlds.mlds_rval_const)
+    ;       ml_box(ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_rval)
+    ;       ml_unbox(ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_rval)
+    ;       ml_cast(ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_rval)
+    ;       ml_unop(backend_libs.builtin_ops.unary_op, ml_backend.mlds.mlds_rval)
+    ;       ml_binop(backend_libs.builtin_ops.binary_op, ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_rval)
+    ;       ml_mem_addr(ml_backend.mlds.mlds_lval)
+    ;       ml_scalar_common(ml_backend.mlds.mlds_scalar_common)
+    ;       ml_scalar_common_addr(ml_backend.mlds.mlds_scalar_common)
+    ;       ml_vector_common_row_addr(ml_backend.mlds.mlds_vector_common, ml_backend.mlds.mlds_rval)
+    ;       ml_self(ml_backend.mlds.mlds_type).
+:- type mlds_rval_const
+    --->    mlconst_true 
+    ;       mlconst_false 
+    ;       mlconst_int(int)
+    ;       mlconst_uint(uint)
+    ;       mlconst_int8(int8)
+    ;       mlconst_uint8(uint8)
+    ;       mlconst_int16(int16)
+    ;       mlconst_uint16(uint16)
+    ;       mlconst_int32(int32)
+    ;       mlconst_uint32(uint32)
+    ;       mlconst_int64(int64)
+    ;       mlconst_uint64(uint64)
+    ;       mlconst_enum(int, ml_backend.mlds.mlds_type)
+    ;       mlconst_char(int)
+    ;       mlconst_float(float)
+    ;       mlconst_string(string)
+    ;       mlconst_multi_string(list.list(string))
+    ;       mlconst_foreign(libs.globals.foreign_language, string, ml_backend.mlds.mlds_type)
+    ;       mlconst_named_const(backend_libs.rtti.target_prefixes, string)
+    ;       mlconst_code_addr(ml_backend.mlds.mlds_code_addr)
+    ;       mlconst_data_addr_local_var(ml_backend.mlds.mlds_local_var_name)
+    ;       mlconst_data_addr_global_var(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_global_var_name)
+    ;       mlconst_data_addr_rtti(ml_backend.mlds.mlds_module_name, backend_libs.rtti.rtti_id)
+    ;       mlconst_data_addr_tabling(ml_backend.mlds.qual_proc_label, backend_libs.rtti.proc_tabling_struct_id)
+    ;       mlconst_null(ml_backend.mlds.mlds_type).
+:- type mlds_scalar_common
+    --->    mlds_scalar_common(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_type, ml_backend.mlds.ml_scalar_common_type_num, int).
+:- type mlds_stmt
+    --->    ml_stmt_block(list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_function_defn), list.list(ml_backend.mlds.mlds_stmt), parse_tree.prog_data.prog_context)
+    ;       ml_stmt_while(ml_backend.mlds.while_loop_kind, ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_stmt, list.list(ml_backend.mlds.mlds_local_var_name), parse_tree.prog_data.prog_context)
+    ;       ml_stmt_if_then_else(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_stmt, maybe.maybe(ml_backend.mlds.mlds_stmt), parse_tree.prog_data.prog_context)
+    ;       ml_stmt_switch(ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_switch_range, list.list(ml_backend.mlds.mlds_switch_case), ml_backend.mlds.mlds_switch_default, parse_tree.prog_data.prog_context)
+    ;       ml_stmt_label(ml_backend.mlds.mlds_label, parse_tree.prog_data.prog_context)
+    ;       ml_stmt_goto(ml_backend.mlds.mlds_goto_target, parse_tree.prog_data.prog_context)
+    ;       ml_stmt_computed_goto(ml_backend.mlds.mlds_rval, list.list(ml_backend.mlds.mlds_label), parse_tree.prog_data.prog_context)
+    ;       ml_stmt_call(ml_backend.mlds.mlds_func_signature, ml_backend.mlds.mlds_rval, list.list(ml_backend.mlds.mlds_rval), list.list(ml_backend.mlds.mlds_lval), ml_backend.mlds.ml_call_kind, parse_tree.prog_data.prog_context)
+    ;       ml_stmt_return(list.list(ml_backend.mlds.mlds_rval), parse_tree.prog_data.prog_context)
+    ;       ml_stmt_try_commit(ml_backend.mlds.mlds_lval, ml_backend.mlds.mlds_stmt, ml_backend.mlds.mlds_stmt, parse_tree.prog_data.prog_context)
+    ;       ml_stmt_do_commit(ml_backend.mlds.mlds_rval, parse_tree.prog_data.prog_context)
+    ;       ml_stmt_atomic(ml_backend.mlds.mlds_atomic_statement, parse_tree.prog_data.prog_context).
+:- type mlds_struct_defn
+    --->    mlds_struct_defn((ml_backend.mlds).msd_class_name :: ml_backend.mlds.mlds_class_name, (ml_backend.mlds).msd_context :: parse_tree.prog_data.prog_context, (ml_backend.mlds).msd_member_fields :: list.list(ml_backend.mlds.mlds_field_var_defn), (ml_backend.mlds).msd_maybe_ctor :: maybe.maybe(ml_backend.mlds.mlds_function_defn)).
+:- type mlds_struct_id
+    --->    mlds_struct_id(ml_backend.mlds.mlds_module_name, string).
+:- type mlds_switch_case
+    --->    mlds_switch_case(ml_backend.mlds.mlds_case_match_cond, list.list(ml_backend.mlds.mlds_case_match_cond), ml_backend.mlds.mlds_stmt).
+:- type mlds_switch_default
+    --->    default_is_unreachable 
+    ;       default_do_nothing 
+    ;       default_case(ml_backend.mlds.mlds_stmt).
+:- type mlds_switch_range
+    --->    mlds_switch_range_unknown 
+    ;       mlds_switch_range((ml_backend.mlds).range_min :: int, (ml_backend.mlds).range_max :: int).
+:- type mlds_target_lang
+    --->    ml_target_c 
+    ;       ml_target_csharp 
+    ;       ml_target_java .
+:- type mlds_type
+    --->    mercury_nb_type(parse_tree.prog_data.mer_type, parse_tree.prog_type.nb_type_ctor_category)
+    ;       mlds_mercury_array_type(ml_backend.mlds.mlds_type)
+    ;       mlds_cont_type(ml_backend.mlds.mlds_return_types)
+    ;       mlds_commit_type 
+    ;       mlds_builtin_type_int(parse_tree.prog_data.int_type)
+    ;       mlds_builtin_type_float 
+    ;       mlds_builtin_type_string 
+    ;       mlds_builtin_type_char 
+    ;       mlds_native_bool_type 
+    ;       mlds_foreign_type(parse_tree.prog_data.generic_language_foreign_type)
+    ;       mlds_class_type(ml_backend.mlds.mlds_class_id)
+    ;       mlds_enum_class_type(ml_backend.mlds.mlds_enum_class_id)
+    ;       mlds_env_type(ml_backend.mlds.mlds_env_id)
+    ;       mlds_struct_type(ml_backend.mlds.mlds_struct_id)
+    ;       mlds_array_type(ml_backend.mlds.mlds_type)
+    ;       mlds_mostly_generic_array_type(list.list(ml_backend.mlds.mlds_type))
+    ;       mlds_ptr_type(ml_backend.mlds.mlds_type)
+    ;       mlds_func_type(ml_backend.mlds.mlds_func_params)
+    ;       mlds_generic_type 
+    ;       mlds_generic_env_ptr_type 
+    ;       mlds_type_info_type 
+    ;       mlds_pseudo_type_info_type 
+    ;       mlds_rtti_type(backend_libs.rtti.rtti_id_maybe_element)
+    ;       mlds_tabling_type(backend_libs.rtti.proc_tabling_struct_id)
+    ;       mlds_unknown_type .
+:- type mlds_typed_rval
+    --->    ml_typed_rval(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_type).
+:- type mlds_vector_common
+    --->    mlds_vector_common(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_type, ml_backend.mlds.ml_vector_common_type_num, int, int).
+:- type outline_arg
+    --->    ola_in(ml_backend.mlds.mlds_type, string, ml_backend.mlds.mlds_rval)
+    ;       ola_out(ml_backend.mlds.mlds_type, string, ml_backend.mlds.mlds_lval)
+    ;       ola_unused .
+:- type overridability
+    --->    overridable 
+    ;       sealed .
+:- type per_instance
+    --->    one_copy 
+    ;       per_instance .
+:- type proc_id_in_tscc
+    --->    proc_id_in_tscc(int).
+:- type qual_class_name
+    --->    qual_class_name(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_qual_kind, ml_backend.mlds.mlds_class_name).
+:- type qual_ctor_id
+    --->    qual_ctor_id(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_qual_kind, ml_backend.mlds.mlds_ctor_id).
+:- type qual_field_var_name
+    --->    qual_field_var_name(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_qual_kind, ml_backend.mlds.mlds_field_var_name).
+:- type qual_func_label
+    --->    qual_func_label(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_func_label).
+:- type qual_function_name
+    --->    qual_function_name(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_function_name).
+:- type qual_global_var_name
+    --->    qual_global_var_name(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_global_var_name).
+:- type qual_proc_label
+    --->    qual_proc_label(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_proc_label).
+:- type target_code_component
+    --->    user_target_code(string, maybe.maybe(parse_tree.prog_data.prog_context))
+    ;       raw_target_code(string)
+    ;       target_code_input(ml_backend.mlds.mlds_rval)
+    ;       target_code_output(ml_backend.mlds.mlds_lval)
+    ;       target_code_type(ml_backend.mlds.mlds_type)
+    ;       target_code_function_name(ml_backend.mlds.qual_function_name)
+    ;       target_code_alloc_id(ml_backend.mlds.mlds_alloc_id).
+:- type trail_op
+    --->    store_ticket(ml_backend.mlds.mlds_lval)
+    ;       reset_ticket(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_reset_trail_reason)
+    ;       discard_ticket 
+    ;       prune_ticket 
+    ;       mark_ticket_stack(ml_backend.mlds.mlds_lval)
+    ;       prune_tickets_to(ml_backend.mlds.mlds_rval).
+:- type while_loop_kind
+    --->    may_loop_zero_times 
+    ;       loop_at_least_once .
+:- inst atomic_stmt_is_new_object for (ml_backend.mlds).mlds_atomic_statement/0
+    --->    new_object(ground, ground, ground, ground, ground, ground, ground, ground, ground).
+:- inst lvn_prog_var for (ml_backend.mlds).mlds_local_var_name/0
+    --->    lvn_prog_var(ground, ground).
+:- inst ml_stmt_is_atomic for (ml_backend.mlds).mlds_stmt/0
+    --->    ml_stmt_atomic(ground, ground).
+:- inst ml_stmt_is_block for (ml_backend.mlds).mlds_stmt/0
+    --->    ml_stmt_block(ground, ground, ground, ground).
+:- inst ml_stmt_is_call for (ml_backend.mlds).mlds_stmt/0
+    --->    ml_stmt_call(ground, ground, ground, ground, ground, ground).
+:- inst ml_stmt_is_computed_goto for (ml_backend.mlds).mlds_stmt/0
+    --->    ml_stmt_computed_goto(ground, ground, ground).
+:- inst ml_stmt_is_do_commit for (ml_backend.mlds).mlds_stmt/0
+    --->    ml_stmt_do_commit(ground, ground).
+:- inst ml_stmt_is_goto for (ml_backend.mlds).mlds_stmt/0
+    --->    ml_stmt_goto(ground, ground).
+:- inst ml_stmt_is_if_then_else for (ml_backend.mlds).mlds_stmt/0
+    --->    ml_stmt_if_then_else(ground, ground, ground, ground).
+:- inst ml_stmt_is_label for (ml_backend.mlds).mlds_stmt/0
+    --->    ml_stmt_label(ground, ground).
+:- inst ml_stmt_is_return for (ml_backend.mlds).mlds_stmt/0
+    --->    ml_stmt_return(ground, ground).
+:- inst ml_stmt_is_switch for (ml_backend.mlds).mlds_stmt/0
+    --->    ml_stmt_switch(ground, ground, ground, ground, ground, ground).
+:- inst ml_stmt_is_try_commit for (ml_backend.mlds).mlds_stmt/0
+    --->    ml_stmt_try_commit(ground, ground, ground, ground).
+:- inst ml_stmt_is_while for (ml_backend.mlds).mlds_stmt/0
+    --->    ml_stmt_while(ground, ground, ground, ground, ground).
+:- func get_initializer_array_size(ml_backend.mlds.mlds_initializer) = ml_backend.mlds.initializer_array_size.
+:- func global_dummy_var = ml_backend.mlds.qual_global_var_name.
+:- pred is_std_lib_module(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mercury_module_name).
+:- mode is_std_lib_module(builtin.in, builtin.out) is semidet.
+:- func mercury_module_and_package_name_to_mlds(ml_backend.mlds.mercury_module_name, ml_backend.mlds.mercury_module_name) = ml_backend.mlds.mlds_module_name.
+:- func mercury_module_name_to_mlds(ml_backend.mlds.mercury_module_name) = ml_backend.mlds.mlds_module_name.
+:- func mercury_type_to_mlds_type(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type) = ml_backend.mlds.mlds_type.
+:- func ml_field_var_name_to_string(ml_backend.mlds.mlds_field_var_name) = string.
+:- func ml_global_const_var_name_to_string(ml_backend.mlds.mlds_global_const_var, int) = string.
+:- func ml_local_var_name_to_string(ml_backend.mlds.mlds_local_var_name) = string.
+:- func mlds_append_class_qualifier(ml_backend.mlds.mlds_target_lang, ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_qual_kind, ml_backend.mlds.mlds_class_name, parse_tree.prog_data.arity) = ml_backend.mlds.mlds_module_name.
+:- func mlds_append_class_qualifier_module_qual(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_class_name, parse_tree.prog_data.arity) = ml_backend.mlds.mlds_module_name.
+:- func mlds_append_name(ml_backend.mlds.mlds_module_name, string) = ml_backend.mlds.mlds_module_name.
+:- func mlds_get_arg_types(list.list(ml_backend.mlds.mlds_argument)) = list.list(ml_backend.mlds.mlds_type).
+:- func mlds_get_func_signature(ml_backend.mlds.mlds_func_params) = ml_backend.mlds.mlds_func_signature.
+:- func mlds_get_module_name(ml_backend.mlds.mlds) = ml_backend.mlds.mercury_module_name.
+:- func mlds_module_name_to_package_name(ml_backend.mlds.mlds_module_name) = mdbcomp.sym_name.sym_name.
+:- func mlds_module_name_to_sym_name(ml_backend.mlds.mlds_package_name) = mdbcomp.sym_name.sym_name.

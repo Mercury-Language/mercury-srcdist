@@ -1,0 +1,43 @@
+// Automatically generated from `analysis.operations.m'
+// by the Mercury compiler,
+// version rotd-2024-09-28
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef ANALYSIS__OPERATIONS_MH
+#define ANALYSIS__OPERATIONS_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef ANALYSIS__OPERATIONS_DECL_GUARD
+#define ANALYSIS__OPERATIONS_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word analysis__operations__mutable_variable_debug_analysis_stream;
+#else
+    extern MR_Word analysis__operations__mutable_variable_debug_analysis_stream;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock analysis__operations__mutable_variable_debug_analysis_stream_lock;
+#endif
+
+
+#endif
+void analysis__operations__user_init_pred_147_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* ANALYSIS__OPERATIONS_MH */

@@ -1,0 +1,82 @@
+/*
+** Automatically generated from `pragma_c_gen.m'
+** by the Mercury compiler,
+** version rotd-2024-09-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.pragma_c_gen.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__pragma_c_gen
+#define MR_HEADER_GUARD_ll_backend__pragma_c_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__PRAGMA_C_GEN_DECL_GUARD
+#define LL_BACKEND__PRAGMA_C_GEN_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__pragma_c_gen__ll_backend__pragma_c_gen__type_ctor_info_c_arg_0;
+
+void MR_CALL 
+ll_backend__pragma_c_gen__generate_code_for_foreign_proc_14_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Word param_11,
+  MR_Word * param_12,
+  MR_Word param_13,
+  MR_Word * param_14);
+
+MR_String MR_CALL 
+ll_backend__pragma_c_gen__foreign_proc_struct_name_4_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+MR_String MR_CALL 
+ll_backend__pragma_c_gen__foreign_proc_succ_ind_name_0_f_0(void);
+
+void mercury__ll_backend__pragma_c_gen__init(void);
+void mercury__ll_backend__pragma_c_gen__init_type_tables(void);
+void mercury__ll_backend__pragma_c_gen__init_debugger(void);
+const char *mercury__ll_backend__pragma_c_gen__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.pragma_c_gen
+
+// :- end_interface ll_backend.pragma_c_gen.

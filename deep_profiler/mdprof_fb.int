@@ -1,0 +1,3 @@
+:- module mdprof_fb.
+:- interface.
+:- include_module mdprof_fb.automatic_parallelism.
