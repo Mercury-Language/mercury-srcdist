@@ -1,0 +1,22 @@
+:- module backend_libs.name_mangle.
+:- interface.
+:- use_module mdbcomp.
+:- use_module backend_libs.rtti.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- type maybe_add_label_prefix
+    --->    do_not_add_label_prefix 
+    ;       add_label_prefix .
+:- func make_base_typeclass_info_name(backend_libs.rtti.tc_name, string) = string.
+:- func make_base_typeclass_info_name_with_data_prefix(backend_libs.rtti.tc_name, string) = string.
+:- func mercury_common_type_prefix = string.
+:- func mercury_data_prefix = string.
+:- func mercury_label_prefix = string.
+:- func mercury_scalar_common_array_prefix = string.
+:- func mercury_var_prefix = string.
+:- func mercury_vector_common_array_prefix = string.
+:- pred name_doesnt_need_mangling(string).
+:- mode name_doesnt_need_mangling(builtin.in) is semidet.
+:- func proc_label_to_c_string(backend_libs.name_mangle.maybe_add_label_prefix, mdbcomp.prim_data.proc_label) = string.
+:- pred sym_name_doesnt_need_mangling(mdbcomp.sym_name.sym_name).
+:- mode sym_name_doesnt_need_mangling(builtin.in) is semidet.
