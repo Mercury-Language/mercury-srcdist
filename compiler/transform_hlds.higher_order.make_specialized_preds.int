@@ -1,0 +1,10 @@
+:- module (transform_hlds.higher_order).make_specialized_preds.
+:- interface.
+:- use_module io.
+:- use_module maybe.
+:- use_module set.
+:- use_module (transform_hlds.higher_order).higher_order_global_info.
+:- pred process_ho_spec_requests(maybe.maybe(io.text_output_stream), set.set(transform_hlds.higher_order.higher_order_global_info.ho_request), set.set(transform_hlds.higher_order.higher_order_global_info.ho_request), transform_hlds.higher_order.higher_order_global_info.higher_order_global_info, transform_hlds.higher_order.higher_order_global_info.higher_order_global_info, io.io, io.io).
+:- mode process_ho_spec_requests(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred process_ho_spec_requests_to_fixpoint(maybe.maybe(io.text_output_stream), set.set(transform_hlds.higher_order.higher_order_global_info.ho_request), transform_hlds.higher_order.higher_order_global_info.higher_order_global_info, transform_hlds.higher_order.higher_order_global_info.higher_order_global_info, io.io, io.io).
+:- mode process_ho_spec_requests_to_fixpoint(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
