@@ -1,0 +1,63 @@
+/*
+** Automatically generated from `diff.m'
+** by the Mercury compiler,
+** version rotd-2024-10-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.diff.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__diff
+#define MR_HEADER_GUARD_mdb__diff
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__DIFF_DECL_GUARD
+#define MDB__DIFF_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__diff__mdb__diff__type_ctor_info_term_path_diff_0;
+
+void MR_CALL 
+mdb__diff__report_diffs_7_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void mercury__mdb__diff__init(void);
+void mercury__mdb__diff__init_type_tables(void);
+void mercury__mdb__diff__init_debugger(void);
+const char *mercury__mdb__diff__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.diff
+
+// :- end_interface mdb.diff.

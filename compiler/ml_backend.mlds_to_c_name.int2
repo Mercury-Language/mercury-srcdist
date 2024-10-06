@@ -1,0 +1,15 @@
+:- module ml_backend.mlds_to_c_name.
+:- interface.
+:- use_module backend_libs.
+:- use_module bool.
+:- use_module parse_tree.
+:- use_module backend_libs.rtti.
+:- use_module ml_backend.mlds.
+:- use_module parse_tree.prog_data.
+:- type maybe_mangle
+    --->    do_not_mangle 
+    ;       do_mangle .
+:- inst do_mangle for (ml_backend.mlds_to_c_name).maybe_mangle/0
+    --->    do_mangle.
+:- inst do_not_mangle for (ml_backend.mlds_to_c_name).maybe_mangle/0
+    --->    do_not_mangle.
