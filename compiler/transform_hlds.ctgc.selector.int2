@@ -1,0 +1,7 @@
+:- module (transform_hlds.ctgc).selector.
+:- interface.
+:- type encounter_existential_subtype
+    --->    encounter_existential_subtype .
+:- type normalization
+    --->    need_normalization 
+    ;       already_normalized .

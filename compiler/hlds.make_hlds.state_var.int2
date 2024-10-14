@@ -1,0 +1,13 @@
+:- module (hlds.make_hlds).state_var.
+:- interface.
+:- use_module parse_tree.prog_data.
+:- type hlds_goal_svar_state
+    --->    hlds_goal_svar_state(hlds.hlds_goal.hlds_goal, hlds.make_hlds.state_var.svar_state).
+:- type svar == parse_tree.prog_data.prog_var.
+:- type svar_inner_atomic_scope_info.
+:- type svar_outer_atomic_scope_info.
+:- type svar_state.
+:- type svar_store.
+:- implementation.
+:- type readonly_context_kind
+    --->    roc_lambda .
