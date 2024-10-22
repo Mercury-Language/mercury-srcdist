@@ -1,0 +1,4 @@
+:- module mdb.util.
+:- interface.
+:- type line_number.
+:- type_representation(line_number, is_eqv_to(int)).
