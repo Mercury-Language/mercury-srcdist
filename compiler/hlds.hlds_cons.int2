@@ -1,0 +1,18 @@
+:- module hlds.hlds_cons.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.sym_name.
+:- type cons_table.
+:- type ctor_field_table == map.map(mdbcomp.sym_name.sym_name, list.list(hlds.hlds_cons.hlds_ctor_field_defn)).
+:- type field_access_type
+    --->    get 
+    ;       set .
+:- type hlds_cons_defn
+    --->    hlds_cons_defn((hlds.hlds_cons).cons_type_ctor :: parse_tree.prog_data.type_ctor, (hlds.hlds_cons).cons_type_tvarset :: parse_tree.prog_data.tvarset, (hlds.hlds_cons).cons_type_params :: list.list(parse_tree.prog_data.type_param), (hlds.hlds_cons).cons_type_kinds :: parse_tree.prog_data.tvar_kind_map, (hlds.hlds_cons).cons_maybe_exist :: parse_tree.prog_data.maybe_cons_exist_constraints, (hlds.hlds_cons).cons_args :: list.list(parse_tree.prog_data.constructor_arg), (hlds.hlds_cons).cons_context :: parse_tree.prog_data.prog_context).
+:- type hlds_ctor_field_defn
+    --->    hlds_ctor_field_defn((hlds.hlds_cons).field_context :: parse_tree.prog_data.prog_context, (hlds.hlds_cons).field_status :: hlds.status.type_status, (hlds.hlds_cons).field_type_ctor :: parse_tree.prog_data.type_ctor, (hlds.hlds_cons).field_du_ctor :: parse_tree.prog_data.du_ctor, (hlds.hlds_cons).field_arg_num :: int).
+:- implementation.
+:- type cons_table == map.map(string, hlds.hlds_cons.inner_cons_table).
+:- type inner_cons_entry.
+:- type inner_cons_table == list.list(hlds.hlds_cons.inner_cons_entry).
