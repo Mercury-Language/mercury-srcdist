@@ -1,0 +1,27 @@
+:- module parse_tree.find_module.
+:- interface.
+:- type dir_name_and_contents
+    --->    dir_name_and_contents(libs.file_util.dir_name, string).
+:- type dir_name_and_stream
+    --->    dir_name_and_stream(libs.file_util.dir_name, io.text_input_stream).
+:- type path_name_and_stream
+    --->    path_name_and_stream(libs.file_util.file_name, io.text_input_stream).
+:- type search_which_dirs
+    --->    search_cur_dir 
+    ;       search_this_dir(libs.file_util.dir_name)
+    ;       search_this_dir_and(libs.file_util.dir_name, parse_tree.find_module.search_which_tail_dirs)
+    ;       search_normal_dirs(libs.options.option_table)
+    ;       search_intermod_dirs(libs.options.option_table)
+    ;       search_init_file_dirs(libs.options.option_table)
+    ;       search_c_include_dirs(libs.options.option_table)
+    ;       search_options_file_dirs(libs.options.option_table)
+    ;       search_mercury_library_dirs(libs.globals.globals).
+:- type search_which_tail_dirs =< parse_tree.find_module.search_which_dirs
+    --->    search_cur_dir 
+    ;       search_this_dir(libs.file_util.dir_name)
+    ;       search_normal_dirs(libs.options.option_table)
+    ;       search_intermod_dirs(libs.options.option_table)
+    ;       search_init_file_dirs(libs.options.option_table)
+    ;       search_c_include_dirs(libs.options.option_table)
+    ;       search_options_file_dirs(libs.options.option_table)
+    ;       search_mercury_library_dirs(libs.globals.globals).
