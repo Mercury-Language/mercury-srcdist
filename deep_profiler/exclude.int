@@ -1,0 +1,20 @@
+:- module exclude.
+:- interface.
+:- use_module io.
+:- use_module map.
+:- use_module maybe.
+:- use_module profile.
+:- type exclude_contents
+    --->    no_exclude_file 
+    ;       unreadable_exclude_file(exclude.exclude_syntax_error :: string)
+    ;       readable_exclude_file(exclude.exclude_specs :: exclude.excluded_modules, exclude.exclude_maybe_error :: maybe.maybe(string)).
+:- type exclude_file
+    --->    exclude_file(exclude.exclude_filename :: string, exclude.exclude_file_contents :: exclude.exclude_contents).
+:- type excluded_modules.
+:- func apply_contour_exclusion(profile.deep, exclude.excluded_modules, profile.call_site_dynamic_ptr) = profile.call_site_dynamic_ptr.
+:- pred read_exclude_file(string, map.map(string, profile.module_data), exclude.exclude_file, io.io, io.io).
+:- mode read_exclude_file(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- implementation.
+:- use_module set.
+:- type exclude_spec.
+:- type excluded_modules == set.set(exclude.exclude_spec).
