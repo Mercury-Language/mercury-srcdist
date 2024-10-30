@@ -1,0 +1,14 @@
+:- module parse_tree.parse_tree_output.
+:- interface.
+:- import_module char.
+:- import_module io.
+:- import_module list.
+:- import_module stream.
+:- import_module string.
+:- import_module term.
+:- import_module parse_tree.prog_data.
+:- import_module parse_tree.prog_data_pragma.
+:- import_module string.builder.
+:- typeclass pt_output(S, U).
+:- instance ((parse_tree.parse_tree_output).pt_output(io.text_output_stream, io.state)).
+:- instance ((parse_tree.parse_tree_output).pt_output(string.builder.handle, string.builder.state)).
