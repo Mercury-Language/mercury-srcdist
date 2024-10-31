@@ -1,0 +1,86 @@
+:- module analysis.framework.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module term.
+:- use_module unit.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module libs.globals.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.file_names.
+:- use_module parse_tree.prog_data.
+:- type analysis_map(T) == map.map(mdbcomp.sym_name.module_name, analysis.framework.module_analysis_map(T)).
+:- type analysis_name == string.
+:- type analysis_result(Call, Answer)
+    --->    analysis_result((analysis.framework).ar_call :: Call, (analysis.framework).ar_answer :: Answer, (analysis.framework).ar_status :: analysis.framework.analysis_status).
+:- type analysis_status
+    --->    invalid 
+    ;       suboptimal 
+    ;       optimal .
+:- type analysis_type
+    --->    some [FuncInfo, Call, Answer] (analysis_type(unit.unit(Call), unit.unit(Answer)) => ((analysis.framework).analysis(FuncInfo, Call, Answer))).
+:- type fixpoint_type
+    --->    least_fixpoint 
+    ;       greatest_fixpoint .
+:- type func_analysis_map(T) == map.map(analysis.framework.func_id, list.list(T)).
+:- type func_id
+    --->    func_id((analysis.framework).fid_pf :: mdbcomp.prim_data.pred_or_func, (analysis.framework).fid_name :: string, (analysis.framework).fid_arity :: parse_tree.prog_data.pred_form_arity, (analysis.framework).fid_mode :: hlds.hlds_pred.proc_id).
+:- type module_analysis_map(T) == map.map(analysis.framework.analysis_name, analysis.framework.func_analysis_map(T)).
+:- type some_analysis_result
+    --->    some [FuncInfo, Call, Answer] (some_analysis_result((analysis.framework).some_ar_call :: Call, (analysis.framework).some_ar_answer :: Answer, (analysis.framework).some_ar_status :: analysis.framework.analysis_status) => ((analysis.framework).analysis(FuncInfo, Call, Answer))).
+:- inst analysis_ext for (parse_tree.file_names).ext/0
+    --->    ext_cur_ngs_gs((analysis.framework).analysis_ext_sd)
+    ;       ext_cur_ngs_gs_max_ngs((analysis.framework).analysis_ext_rai).
+:- inst analysis_ext_rai for (parse_tree.file_names).ext_cur_ngs_gs_max_ngs/0
+    --->    ext_cur_ngs_gs_max_ngs_an_analysis
+    ;       ext_cur_ngs_gs_max_ngs_an_imdg
+    ;       ext_cur_ngs_gs_max_ngs_an_request.
+:- inst analysis_ext_sd for (parse_tree.file_names).ext_cur_ngs_gs/0
+    --->    ext_cur_ngs_gs_an_ds_date
+    ;       ext_cur_ngs_gs_an_ds_status.
+:- typeclass analysis(FuncInfo, Call, Answer) <= ((analysis.framework).call_pattern(FuncInfo, Call), (analysis.framework).answer_pattern(FuncInfo, Answer)) where [
+	func analysis_name(Call, Answer) = analysis.framework.analysis_name,
+	mode analysis_name(builtin.unused, builtin.unused) = builtin.out is det,
+	func analysis_version_number(Call, Answer) = int,
+	mode analysis_version_number(builtin.unused, builtin.unused) = builtin.out is det,
+	func preferred_fixpoint_type(Call, Answer) = analysis.framework.fixpoint_type,
+	mode preferred_fixpoint_type(builtin.unused, builtin.unused) = builtin.out is det,
+	func bottom(FuncInfo, Call) = Answer,
+	mode bottom(builtin.in, builtin.unused) = builtin.out is det,
+	func top(FuncInfo, Call) = Answer,
+	mode top(builtin.in, builtin.unused) = builtin.out is det,
+	pred get_func_info(hlds.hlds_module.module_info, mdbcomp.sym_name.module_name, analysis.framework.func_id, Call, Answer, FuncInfo),
+	mode get_func_info(builtin.in, builtin.in, builtin.in, builtin.unused, builtin.unused, builtin.out) is det
+].
+:- typeclass answer_pattern(FuncInfo, Answer) <= ((analysis.framework).partial_order(FuncInfo, Answer), (analysis.framework).to_term(Answer)) where [].
+:- typeclass call_pattern(FuncInfo, Call) <= ((analysis.framework).partial_order(FuncInfo, Call), (analysis.framework).to_term(Call)) where [].
+:- typeclass compiler(Compiler) where [
+	func compiler_name(Compiler) = string,
+	pred analyses(Compiler, analysis.framework.analysis_name, analysis.framework.analysis_type),
+	mode analyses(builtin.in, builtin.in, builtin.out) is semidet,
+	mode analyses(builtin.in, builtin.out, builtin.out) is multi,
+	pred module_name_to_read_file_name(Compiler, libs.globals.globals, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, maybe.maybe_error(string), io.io, io.io),
+	mode module_name_to_read_file_name(builtin.in, builtin.in, builtin.in((analysis.framework).analysis_ext), builtin.in, builtin.out, builtin.di, builtin.uo) is det,
+	pred module_name_to_write_file_name(Compiler, libs.globals.globals, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, string, io.io, io.io),
+	mode module_name_to_write_file_name(builtin.in, builtin.in, builtin.in((analysis.framework).analysis_ext), builtin.in, builtin.out, builtin.di, builtin.uo) is det
+].
+:- typeclass partial_order(FuncInfo, T) <= ((T -> FuncInfo)) where [
+	pred more_precise_than(FuncInfo, T, T),
+	mode more_precise_than(builtin.in, builtin.in, builtin.in) is semidet,
+	pred equivalent(FuncInfo, T, T),
+	mode equivalent(builtin.in, builtin.in, builtin.in) is semidet
+].
+:- typeclass to_term(S) where [
+	func to_term(S) = term.term,
+	pred from_term(term.term, S),
+	mode from_term(builtin.in, builtin.out) is semidet
+].
+:- func lub(analysis.framework.analysis_status, analysis.framework.analysis_status) = analysis.framework.analysis_status.

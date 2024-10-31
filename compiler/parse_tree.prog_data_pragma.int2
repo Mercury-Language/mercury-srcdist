@@ -1,0 +1,129 @@
+:- module parse_tree.prog_data_pragma.
+:- interface.
+:- use_module list.
+:- use_module one_or_more.
+:- use_module pair.
+:- use_module set.
+:- use_module unit.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.set_of_var.
+:- type arg_size_constr
+    --->    le(list.list(parse_tree.prog_data_pragma.arg_size_term), libs.rat.rat)
+    ;       eq(list.list(parse_tree.prog_data_pragma.arg_size_term), libs.rat.rat).
+:- type arg_size_term
+    --->    arg_size_term((parse_tree.prog_data_pragma).as_term_var :: int, (parse_tree.prog_data_pragma).as_term_coeff :: libs.rat.rat).
+:- type arg_tabling_method
+    --->    arg_value 
+    ;       arg_addr 
+    ;       arg_promise_implied .
+:- type call_table_strictness
+    --->    cts_all_strict 
+    ;       cts_all_fast_loose 
+    ;       cts_specified(list.list(maybe.maybe(parse_tree.prog_data_pragma.arg_tabling_method)), parse_tree.prog_data_pragma.hidden_arg_tabling_method).
+:- type datastruct
+    --->    selected_cel((parse_tree.prog_data_pragma).sc_var :: parse_tree.prog_data.prog_var, (parse_tree.prog_data_pragma).sc_selector :: parse_tree.prog_data_pragma.selector).
+:- type dead_datastruct == parse_tree.prog_data_pragma.datastruct.
+:- type dead_datastructs == set.set(parse_tree.prog_data_pragma.dead_datastruct).
+:- type dead_var == parse_tree.prog_data.prog_var.
+:- type dead_vars == list.list(parse_tree.prog_data_pragma.dead_var).
+:- type eval_method
+    --->    eval_normal 
+    ;       eval_tabled(parse_tree.prog_data_pragma.tabled_eval_method).
+:- type eval_minimal_method
+    --->    stack_copy 
+    ;       own_stacks_consumer 
+    ;       own_stacks_generator .
+:- type exception_status
+    --->    will_not_throw 
+    ;       may_throw(parse_tree.prog_data_pragma.exception_type)
+    ;       throw_conditional .
+:- type exception_type
+    --->    user_exception 
+    ;       type_exception .
+:- type format_string_values
+    --->    format_string_values((parse_tree.prog_data_pragma).fsv_user_fs :: int, (parse_tree.prog_data_pragma).fsv_user_vl :: int, (parse_tree.prog_data_pragma).fsv_cur_fs :: int, (parse_tree.prog_data_pragma).fsv_cur_vl :: int).
+:- type generic_arg_size_info(ErrorInfo)
+    --->    finite(int, list.list(bool.bool))
+    ;       infinite(ErrorInfo).
+:- type generic_termination_info(TermInfo, ErrorInfo)
+    --->    cannot_loop(TermInfo)
+    ;       can_loop(ErrorInfo).
+:- type hidden_arg_tabling_method
+    --->    table_hidden_arg_value 
+    ;       table_hidden_arg_addr .
+:- type live_datastruct == parse_tree.prog_data_pragma.datastruct.
+:- type live_datastructs == list.list(parse_tree.prog_data_pragma.live_datastruct).
+:- type live_var == parse_tree.prog_data.prog_var.
+:- type live_vars == list.list(parse_tree.prog_data.prog_var).
+:- type mode_num == int.
+:- type pragma_arg_size_info == parse_tree.prog_data_pragma.generic_arg_size_info(unit.unit).
+:- type pragma_constr_arg_size_info == list.list(parse_tree.prog_data_pragma.arg_size_constr).
+:- type pragma_termination_info == parse_tree.prog_data_pragma.generic_termination_info(unit.unit, unit.unit).
+:- type require_tail_recursion
+    --->    suppress_tailrec_warnings((parse_tree.prog_data_pragma).rtrs_context :: parse_tree.prog_data.prog_context)
+    ;       enable_tailrec_warnings((parse_tree.prog_data_pragma).rtre_warn_or_error :: libs.compiler_util.warning_or_error, (parse_tree.prog_data_pragma).rtre_recursion_type :: parse_tree.prog_data_pragma.require_tail_recursion_type, (parse_tree.prog_data_pragma).rtre_context :: parse_tree.prog_data.prog_context).
+:- type require_tail_recursion_type
+    --->    only_self_recursion_must_be_tail 
+    ;       both_self_and_mutual_recursion_must_be_tail .
+:- type required_feature
+    --->    reqf_concurrency 
+    ;       reqf_single_prec_float 
+    ;       reqf_double_prec_float 
+    ;       reqf_memo 
+    ;       reqf_parallel_conj 
+    ;       reqf_trailing 
+    ;       reqf_strict_sequential 
+    ;       reqf_conservative_gc .
+:- type selector == list.list(parse_tree.prog_data_pragma.unit_selector).
+:- type set_of_live_var == parse_tree.set_of_var.set_of_progvar.
+:- type structure_reuse_condition
+    --->    structure_reuse_condition((parse_tree.prog_data_pragma).dead_nodes :: parse_tree.prog_data_pragma.dead_datastructs, (parse_tree.prog_data_pragma).local_use_nodes :: parse_tree.prog_data_pragma.live_datastructs, (parse_tree.prog_data_pragma).local_sharing :: parse_tree.prog_data_pragma.structure_sharing_domain).
+:- type structure_reuse_conditions == list.list(parse_tree.prog_data_pragma.structure_reuse_condition).
+:- type structure_reuse_domain
+    --->    has_no_reuse 
+    ;       has_only_unconditional_reuse 
+    ;       has_conditional_reuse(parse_tree.prog_data_pragma.structure_reuse_conditions).
+:- type structure_sharing == list.list(parse_tree.prog_data_pragma.structure_sharing_pair).
+:- type structure_sharing_domain
+    --->    structure_sharing_bottom 
+    ;       structure_sharing_real(parse_tree.prog_data_pragma.structure_sharing)
+    ;       structure_sharing_top(set.set(parse_tree.prog_data_pragma.top_feedback)).
+:- type structure_sharing_pair == pair.pair(parse_tree.prog_data_pragma.datastruct).
+:- type table_attr_allow_reset
+    --->    table_do_not_allow_reset 
+    ;       table_allow_reset .
+:- type table_attr_backend_warning
+    --->    table_attr_ignore_with_warning 
+    ;       table_attr_ignore_without_warning .
+:- type table_attr_statistics
+    --->    table_do_not_gather_statistics 
+    ;       table_gather_statistics .
+:- type table_attributes
+    --->    table_attributes((parse_tree.prog_data_pragma).table_attr_strictness :: parse_tree.prog_data_pragma.call_table_strictness, (parse_tree.prog_data_pragma).table_attr_size_limit :: maybe.maybe(int), (parse_tree.prog_data_pragma).table_attr_statistics :: parse_tree.prog_data_pragma.table_attr_statistics, (parse_tree.prog_data_pragma).table_attr_allow_reset :: parse_tree.prog_data_pragma.table_attr_allow_reset, (parse_tree.prog_data_pragma).table_attr_backend_warning :: parse_tree.prog_data_pragma.table_attr_backend_warning).
+:- type table_io_entry_kind
+    --->    entry_stores_outputs 
+    ;       entry_stores_procid_outputs 
+    ;       entry_stores_procid_inputs_outputs .
+:- type table_io_is_unitize
+    --->    table_io_unitize 
+    ;       table_io_alone .
+:- type tabled_eval_method
+    --->    tabled_loop_check 
+    ;       tabled_memo(parse_tree.prog_data_pragma.table_attr_backend_warning)
+    ;       tabled_io(parse_tree.prog_data_pragma.table_io_entry_kind, parse_tree.prog_data_pragma.table_io_is_unitize)
+    ;       tabled_minimal(parse_tree.prog_data_pragma.eval_minimal_method).
+:- type top_feedback
+    --->    top_failed_lookup(parse_tree.prog_data.shrouded_pred_proc_id)
+    ;       top_from_lookup(parse_tree.prog_data.shrouded_pred_proc_id)
+    ;       top_cannot_improve(string).
+:- type tvar_subst
+    --->    tvar_subst(parse_tree.prog_data.tvar, parse_tree.prog_data.mer_type).
+:- type type_subst == one_or_more.one_or_more(parse_tree.prog_data_pragma.tvar_subst).
+:- type unit_selector
+    --->    termsel(parse_tree.prog_data.cons_id, int)
+    ;       typesel(parse_tree.prog_data.mer_type).
+:- type user_annotated_sharing
+    --->    no_user_annotated_sharing 
+    ;       user_sharing((parse_tree.prog_data_pragma).sharing :: parse_tree.prog_data_pragma.structure_sharing_domain, (parse_tree.prog_data_pragma).maybe_types :: maybe.maybe(parse_tree.prog_data_pragma.user_sharing_type_information)).
+:- type user_sharing_type_information
+    --->    user_type_info((parse_tree.prog_data_pragma).types :: list.list(parse_tree.prog_data.mer_type), (parse_tree.prog_data_pragma).typevarset :: parse_tree.prog_data.tvarset).

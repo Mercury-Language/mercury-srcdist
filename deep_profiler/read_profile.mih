@@ -1,0 +1,66 @@
+/*
+** Automatically generated from `read_profile.m'
+** by the Mercury compiler,
+** version rotd-2024-10-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module read_profile.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_read_profile
+#define MR_HEADER_GUARD_read_profile
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef READ_PROFILE_DECL_GUARD
+#define READ_PROFILE_DECL_GUARD
+#include "mercury_deep_profiling.h"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct read_profile__read_profile__type_ctor_info_maybe_error2_2;
+
+extern const MR_TypeCtorInfo_Struct read_profile__read_profile__type_ctor_info_maybe_init_deep_complete_0;
+
+extern const MR_TypeCtorInfo_Struct read_profile__read_profile__type_ctor_info_next_deep_item_0;
+
+extern const MR_TypeCtorInfo_Struct read_profile__read_profile__type_ctor_info_ptr_kind_0;
+
+void MR_CALL 
+read_profile__read_call_graph_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void mercury__read_profile__init(void);
+void mercury__read_profile__init_type_tables(void);
+void mercury__read_profile__init_debugger(void);
+const char *mercury__read_profile__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_read_profile
+
+// :- end_interface read_profile.
