@@ -1,0 +1,16 @@
+register --quiet
+context none
+echo on
+table_io allow
+table_io start
+trust q
+break q
+c
+f
+dd -d 3 -n 7 -a
+maybe
+Yes
+quit
+dd -d 3 -n 7 -a
+n
+quit -y
