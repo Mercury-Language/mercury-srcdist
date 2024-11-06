@@ -1,0 +1,32 @@
+:- module analysis.framework.
+:- interface.
+:- type analysis_map(T).
+:- type analysis_name.
+:- type analysis_result(Call, Answer).
+:- type analysis_status
+	where	type_is_abstract_enum(2).
+:- type analysis_type.
+:- type fixpoint_type
+	where	type_is_abstract_enum(1).
+:- type func_analysis_map(T).
+:- type func_id.
+:- type module_analysis_map(T).
+:- type some_analysis_result.
+:- abstract_inst((analysis_ext)).
+:- abstract_inst((analysis_ext_rai)).
+:- abstract_inst((analysis_ext_sd)).
+:- typeclass analysis(FuncInfo, Call, Answer).
+:- typeclass answer_pattern(FuncInfo, Answer).
+:- typeclass call_pattern(FuncInfo, Call).
+:- typeclass compiler(Compiler).
+:- typeclass partial_order(FuncInfo, T).
+:- typeclass to_term(S).
+:- type_representation(analysis_map(V_1), is_eqv_to(map(module_name, analysis.framework.module_analysis_map(V_1)))).
+:- type_representation(analysis_name, is_eqv_to(string)).
+:- type_representation(analysis_status, du_repn(enum("invalid", "suboptimal", ["optimal"],  no_c_j_cs))).
+:- type_representation(analysis_type, is_word_aligned_ptr).
+:- type_representation(fixpoint_type, du_repn(enum("least_fixpoint", "greatest_fixpoint", [],  no_c_j_cs))).
+:- type_representation(func_analysis_map(V_1), is_eqv_to(map(analysis.framework.func_id, list(V_1)))).
+:- type_representation(func_id, is_word_aligned_ptr).
+:- type_representation(module_analysis_map(V_1), is_eqv_to(map(analysis.framework.analysis_name, analysis.framework.func_analysis_map(V_1)))).
+:- type_representation(some_analysis_result, is_word_aligned_ptr).

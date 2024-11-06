@@ -1,0 +1,2 @@
+:- module check_hlds.cse_detection.
+:- interface.

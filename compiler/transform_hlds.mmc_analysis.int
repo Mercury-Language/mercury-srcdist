@@ -1,0 +1,18 @@
+:- module transform_hlds.mmc_analysis.
+:- interface.
+:- use_module analysis.
+:- use_module hlds.
+:- use_module mdbcomp.
+:- use_module analysis.framework.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module mdbcomp.sym_name.
+:- type mmc
+    --->    mmc .
+:- instance ((analysis.framework).compiler(transform_hlds.mmc_analysis.mmc)).
+:- pred func_id_to_ppid(hlds.hlds_module.module_info, mdbcomp.sym_name.module_name, analysis.framework.func_id, hlds.hlds_pred.pred_proc_id).
+:- mode func_id_to_ppid(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred module_name_func_id(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, mdbcomp.sym_name.module_name, analysis.framework.func_id).
+:- mode module_name_func_id(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred module_name_func_id_from_pred_info(hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_id, mdbcomp.sym_name.module_name, analysis.framework.func_id).
+:- mode module_name_func_id_from_pred_info(builtin.in, builtin.in, builtin.out, builtin.out) is det.

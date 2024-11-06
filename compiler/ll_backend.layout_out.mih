@@ -1,0 +1,231 @@
+/*
+** Automatically generated from `layout_out.m'
+** by the Mercury compiler,
+** version rotd-2024-11-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.layout_out.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__layout_out
+#define MR_HEADER_GUARD_ll_backend__layout_out
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__LAYOUT_OUT_DECL_GUARD
+#define LL_BACKEND__LAYOUT_OUT_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__layout_out__ll_backend__layout_out__type_ctor_info_being_defined_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__layout_out__ll_backend__layout_out__type_ctor_info_use_layout_macro_0;
+
+void MR_CALL 
+ll_backend__layout_out__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_111_117_116_112_117_116_95_99_108_111_115_117_114_101_95_108_97_121_111_117_116_95_100_97_116_97_95_100_101_102_110_95_95_91_49_93_95_48_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__layout_out__output_closure_layout_data_defn_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__layout_out__output_layout_array_decls_23_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word param_21);
+
+void MR_CALL 
+ll_backend__layout_out__output_layout_array_defns_26_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word param_21,
+  MR_Word param_22,
+  MR_Word param_23,
+  MR_Word * param_24);
+
+void MR_CALL 
+ll_backend__layout_out__output_layout_array_name_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ll_backend__layout_out__output_layout_array_name_storage_type_name_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ll_backend__layout_out__output_layout_name_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__layout_out__output_layout_name_decl_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__layout_out__output_layout_name_storage_type_name_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__layout_out__output_layout_slot_addr_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ll_backend__layout_out__output_layout_slot_id_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ll_backend__layout_out__output_maybe_layout_name_decl_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__layout_out__output_module_layout_data_defn_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__layout_out__output_proc_layout_data_defn_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+ll_backend__layout_out__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_108_97_121_111_117_116_95_110_97_109_101_95_119_111_117_108_100_95_105_110_99_108_117_100_101_95_99_111_100_101_95_97_100_100_114_95_95_91_49_93_95_48_1_f_0(void);
+
+MR_Word MR_CALL 
+ll_backend__layout_out__layout_name_would_include_code_addr_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ll_backend__layout_out__mr_pred_or_func_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__layout_out__proc_label_user_or_uci_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ll_backend__layout_out__trace_port_to_string_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ll_backend__layout_out____Compare____being_defined_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__layout_out____Compare____use_layout_macro_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__layout_out____Unify____being_defined_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__layout_out____Unify____use_layout_macro_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__layout_out__init(void);
+void mercury__ll_backend__layout_out__init_type_tables(void);
+void mercury__ll_backend__layout_out__init_debugger(void);
+const char *mercury__ll_backend__layout_out__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.layout_out
+
+// :- end_interface ll_backend.layout_out.
