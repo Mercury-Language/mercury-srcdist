@@ -1,0 +1,14 @@
+module(2, "io_action.m",
+	mdb.io_action,
+	{mdb},
+	{builtin, io, list, mdbcomp, private_builtin, univ, mdb.browser_term, mdbcomp.prim_data},
+	{bool, maybe},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - mdb.io_action},
+	contains_foreign_export,
+	no_main,
+	{}
+).
