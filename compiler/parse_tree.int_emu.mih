@@ -1,0 +1,194 @@
+/*
+** Automatically generated from `int_emu.m'
+** by the Mercury compiler,
+** version rotd-2024-11-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.int_emu.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__int_emu
+#define MR_HEADER_GUARD_parse_tree__int_emu
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__INT_EMU_DECL_GUARD
+#define PARSE_TREE__INT_EMU_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__int_emu__parse_tree__int_emu__type_ctor_info_op_num_bits_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__int_emu__parse_tree__int_emu__type_ctor_info_op_type_0;
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_and_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_int_floor_to_multiple_of_bits_per_int_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_int_quot_bits_per_int_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_int_rem_bits_per_int_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_int_times_bits_per_int_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_left_shift_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_minus_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_mod_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_not_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_or_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_plus_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_quotient_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_rem_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_right_shift_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_times_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__int_emu__emu_xor_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+parse_tree__int_emu__target_op_type_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+parse_tree__int_emu__target_word_bits_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__int_emu____Compare____op_num_bits_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__int_emu____Compare____op_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__int_emu____Unify____op_num_bits_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__int_emu____Unify____op_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__int_emu__init(void);
+void mercury__parse_tree__int_emu__init_type_tables(void);
+void mercury__parse_tree__int_emu__init_debugger(void);
+const char *mercury__parse_tree__int_emu__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.int_emu
+
+// :- end_interface parse_tree.int_emu.

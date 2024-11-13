@@ -1,0 +1,12 @@
+:- module (parse_tree.module_qual).mq_info.
+:- interface.
+:- type maybe_should_report_errors
+	where	type_is_abstract_enum(1).
+:- type maybe_suppress_found_undef
+	where	type_is_abstract_enum(1).
+:- type mq_info.
+:- type partial_qualifier_info.
+:- type_representation(maybe_should_report_errors, du_repn(enum("should_not_report_errors", "should_report_errors", [],  no_c_j_cs))).
+:- type_representation(maybe_suppress_found_undef, du_repn(enum("do_not_suppress_found_undef", "suppress_found_undef", [],  no_c_j_cs))).
+:- type_representation(mq_info, is_word_aligned_ptr).
+:- type_representation(partial_qualifier_info, du_repn(notag("partial_qualifier_info", module_id_set,  no_c_j_cs))).

@@ -1,0 +1,69 @@
+// Automatically generated from `float.m'
+// by the Mercury compiler,
+// version rotd-2024-11-13
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef FLOAT_MH
+#define FLOAT_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef FLOAT_DECL_GUARD
+#define FLOAT_DECL_GUARD
+
+    #include <float.h>
+    #include <inttypes.h>
+    #include <math.h>
+
+#ifdef MR_HAVE_IEEEFP_H
+    #include <ieeefp.h>
+#endif
+
+
+    #define ML_FLOAT_RADIX  FLT_RADIX   // There is no DBL_RADIX.
+
+    #if defined(MR_USE_SINGLE_PREC_FLOAT)
+        #define ML_FLOAT_MAX        FLT_MAX
+        #define ML_FLOAT_MIN        FLT_MIN
+        #define ML_FLOAT_EPSILON    FLT_EPSILON
+        #define ML_FLOAT_MANT_DIG   FLT_MANT_DIG
+        #define ML_FLOAT_MIN_EXP    FLT_MIN_EXP
+        #define ML_FLOAT_MAX_EXP    FLT_MAX_EXP
+    #else
+        #define ML_FLOAT_MAX        DBL_MAX
+        #define ML_FLOAT_MIN        DBL_MIN
+        #define ML_FLOAT_EPSILON    DBL_EPSILON
+        #define ML_FLOAT_MANT_DIG   DBL_MANT_DIG
+        #define ML_FLOAT_MIN_EXP    DBL_MIN_EXP
+        #define ML_FLOAT_MAX_EXP    DBL_MAX_EXP
+    #endif
+
+    #if defined(MR_USE_SINGLE_PREC_FLOAT)
+        #define ML_FLOAT_FLOOR(X)   floorf(X)
+        #define ML_FLOAT_CEIL(X)    ceilf(X)
+    #else
+        #define ML_FLOAT_FLOOR(X)   floor(X)
+        #define ML_FLOAT_CEIL(X)    ceil(X)
+    #endif
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* FLOAT_MH */

@@ -1,0 +1,60 @@
+:- module parse_tree.find_module.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module time.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module libs.options.
+:- use_module mdbcomp.sym_name.
+:- type dir_name_and_contents
+    --->    dir_name_and_contents(libs.file_util.dir_name, string).
+:- type dir_name_and_stream
+    --->    dir_name_and_stream(libs.file_util.dir_name, io.text_input_stream).
+:- type path_name_and_stream
+    --->    path_name_and_stream(libs.file_util.file_name, io.text_input_stream).
+:- type search_auth_dirs
+    --->    search_auth_cur_dir 
+    ;       search_auth_cur_dir_and(parse_tree.find_module.search_auth_tail_dirs)
+    ;       search_auth_this_dir(libs.file_util.dir_name)
+    ;       search_auth_this_dir_and(libs.file_util.dir_name, parse_tree.find_module.search_auth_tail_dirs)
+    ;       search_auth_private(parse_tree.find_module.search_auth_private_dirs).
+:- type search_auth_private_dirs
+    --->    private_auth_normal_dirs(libs.options.option_table)
+    ;       private_auth_intermod_dirs(libs.options.option_table)
+    ;       private_auth_init_file_dirs(libs.options.option_table)
+    ;       private_auth_c_include_dirs(libs.options.option_table)
+    ;       private_auth_options_file_dirs(libs.options.option_table)
+    ;       private_auth_mercury_library_dirs(libs.globals.globals).
+:- type search_auth_private_tail_dirs =< parse_tree.find_module.search_auth_private_dirs
+    --->    private_auth_normal_dirs(libs.options.option_table)
+    ;       private_auth_intermod_dirs(libs.options.option_table)
+    ;       private_auth_c_include_dirs(libs.options.option_table)
+    ;       private_auth_options_file_dirs(libs.options.option_table).
+:- type search_auth_tail_dirs =< parse_tree.find_module.search_auth_dirs
+    --->    search_auth_cur_dir 
+    ;       search_auth_private(parse_tree.find_module.search_auth_private_tail_dirs).
+:- func get_search_auth_init_file_dirs(libs.options.option_table) = parse_tree.find_module.search_auth_dirs.
+:- func get_search_auth_intermod_dirs(libs.options.option_table) = parse_tree.find_module.search_auth_dirs.
+:- func get_search_auth_mercury_library_dirs(libs.globals.globals) = parse_tree.find_module.search_auth_dirs.
+:- func get_search_auth_normal_dirs(libs.options.option_table) = parse_tree.find_module.search_auth_dirs.
+:- func get_search_auth_options_file_dirs(libs.options.option_table) = parse_tree.find_module.search_auth_tail_dirs.
+:- pred search_for_file(parse_tree.find_module.search_auth_dirs, libs.file_util.file_name, list.list(libs.file_util.dir_name), maybe.maybe_error(libs.file_util.file_name), io.io, io.io).
+:- mode search_for_file(builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred search_for_file_and_stream(parse_tree.find_module.search_auth_dirs, libs.file_util.file_name, list.list(libs.file_util.dir_name), maybe.maybe_error(parse_tree.find_module.path_name_and_stream), io.io, io.io).
+:- mode search_for_file_and_stream(builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred search_for_file_mod_time(parse_tree.find_module.search_auth_dirs, libs.file_util.file_name, list.list(libs.file_util.dir_name), maybe.maybe_error(time.time_t), io.io, io.io).
+:- mode search_for_file_mod_time(builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred search_for_file_returning_dir(parse_tree.find_module.search_auth_dirs, libs.file_util.file_name, list.list(libs.file_util.dir_name), maybe.maybe_error(libs.file_util.dir_name), io.io, io.io).
+:- mode search_for_file_returning_dir(builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred search_for_file_returning_dir_and_contents(parse_tree.find_module.search_auth_dirs, libs.file_util.file_name, list.list(libs.file_util.dir_name), maybe.maybe_error(parse_tree.find_module.dir_name_and_contents), io.io, io.io).
+:- mode search_for_file_returning_dir_and_contents(builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred search_for_file_returning_dir_and_stream(parse_tree.find_module.search_auth_dirs, libs.file_util.file_name, list.list(libs.file_util.dir_name), maybe.maybe_error(parse_tree.find_module.path_name_and_stream), io.io, io.io).
+:- mode search_for_file_returning_dir_and_stream(builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred search_for_module_source(parse_tree.find_module.search_auth_dirs, mdbcomp.sym_name.module_name, list.list(libs.file_util.dir_name), maybe.maybe_error(libs.file_util.file_name), io.io, io.io).
+:- mode search_for_module_source(builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred search_for_module_source_and_stream(parse_tree.find_module.search_auth_dirs, mdbcomp.sym_name.module_name, list.list(libs.file_util.dir_name), maybe.maybe_error(parse_tree.find_module.path_name_and_stream), io.io, io.io).
+:- mode search_for_module_source_and_stream(builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
