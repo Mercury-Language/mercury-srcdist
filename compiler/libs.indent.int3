@@ -1,0 +1,4 @@
+:- module libs.indent.
+:- interface.
+:- type indent.
+:- type_representation(indent, is_eqv_to(uint)).

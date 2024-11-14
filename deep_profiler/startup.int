@@ -1,0 +1,12 @@
+:- module startup.
+:- interface.
+:- use_module bool.
+:- use_module dump.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module profile.
+:- pred read_and_startup(string, string, string, bool.bool, maybe.maybe(io.text_output_stream), list.list(string), dump.dump_options, maybe.maybe_error(profile.deep), io.io, io.io).
+:- mode read_and_startup(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred read_and_startup_default_deep_options(string, string, string, bool.bool, maybe.maybe(io.text_output_stream), list.list(string), maybe.maybe_error(profile.deep), io.io, io.io).
+:- mode read_and_startup_default_deep_options(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
