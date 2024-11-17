@@ -1,0 +1,5 @@
+:- module parse_tree.write_deps_file.
+:- interface.
+:- type maybe_look_for_src
+    --->    do_not_look_for_src 
+    ;       look_for_src .

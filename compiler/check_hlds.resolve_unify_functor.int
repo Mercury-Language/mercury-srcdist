@@ -1,0 +1,17 @@
+:- module check_hlds.resolve_unify_functor.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_table.
+:- type is_plain_unify
+    --->    is_not_plain_unify 
+    ;       is_plain_unify 
+    ;       is_unknown_ref(parse_tree.error_spec.error_spec).
+:- pred resolve_unify_functor(hlds.hlds_module.module_info, parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.unify_mode, hlds.hlds_goal.unification, hlds.hlds_goal.unify_context, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal, check_hlds.resolve_unify_functor.is_plain_unify, list.list(parse_tree.error_spec.error_spec), parse_tree.var_table.var_table, parse_tree.var_table.var_table, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- mode resolve_unify_functor(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

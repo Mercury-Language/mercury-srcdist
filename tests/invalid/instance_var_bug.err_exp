@@ -1,0 +1,4 @@
+instance_var_bug.m:018: In instance declaration for `tc(V)':
+instance_var_bug.m:018:   error: the first instance type [38;5;87m`V'[39;49m is a [38;5;203mtype[39;49m
+instance_var_bug.m:018:   [38;5;203mvariable;[39;49m it should be a [38;5;40mtype constructor applied to[39;49m
+instance_var_bug.m:018:   [38;5;40mzero or more type variables.[39;49m
