@@ -1,0 +1,3 @@
+:- module mdb.browser_term.
+:- interface.
+:- type browser_term.
