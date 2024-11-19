@@ -1,0 +1,70 @@
+:- module parse_tree.file_names.
+:- interface.
+:- type ext.
+:- type ext_cur
+	where	type_is_abstract_enum(4).
+:- type ext_cur_gas
+	where	type_is_abstract_enum(4).
+:- type ext_cur_gs
+	where	type_is_abstract_enum(2).
+:- type ext_cur_ngs
+	where	type_is_abstract_enum(4).
+:- type ext_cur_ngs_gas
+	where	type_is_abstract_enum(4).
+:- type ext_cur_ngs_gs
+	where	type_is_abstract_enum(4).
+:- type ext_cur_ngs_gs_err.
+:- type ext_cur_ngs_gs_java
+	where	type_is_abstract_enum(1).
+:- type ext_cur_ngs_gs_max_cur.
+:- type ext_cur_ngs_gs_max_ngs
+	where	type_is_abstract_enum(3).
+:- type ext_cur_pgs_max_cur.
+:- type maybe_create_dirs
+	where	type_is_abstract_enum(1).
+:- type maybe_for_search
+	where	type_is_abstract_enum(1).
+:- type maybe_search
+	where	type_is_abstract_enum(1).
+:- type search_which_dirs.
+:- type search_which_tail_dirs
+	where	type_is_abstract_subtype(search_which_dirs/0).
+:- abstract_inst((ext_analysis)).
+:- abstract_inst((ext_analysis_rai)).
+:- abstract_inst((ext_analysis_sd)).
+:- abstract_inst((ext_int)).
+:- abstract_inst((ext_int_0123)).
+:- abstract_inst((ext_int_0123_md)).
+:- abstract_inst((ext_int_md)).
+:- abstract_inst((ext_max_opt_pt)).
+:- abstract_inst((ext_mt)).
+:- abstract_inst((ext_opt)).
+:- abstract_inst((ext_opt_pt)).
+:- abstract_inst((mt_ext_cur)).
+:- abstract_inst((mt_ext_cur_ngs)).
+:- abstract_inst((mt_ext_cur_ngs_gas)).
+:- abstract_inst((mt_ext_cur_ngs_gs)).
+:- abstract_inst((mt_ext_cur_ngs_gs_err)).
+:- abstract_inst((mt_ext_cur_ngs_gs_java)).
+:- abstract_inst((mt_ext_cur_ngs_gs_max_cur)).
+:- abstract_inst((mt_ext_cur_ngs_gs_max_ngs)).
+:- abstract_inst((mt_ext_cur_pgs_max_cur)).
+:- abstract_inst((search_cur_or_intermod)).
+:- abstract_inst((search_cur_or_normal)).
+:- abstract_inst((search_ext)).
+:- abstract_inst((search_intermod)).
+:- type_representation(ext_cur, du_repn(enum("ext_cur_user_defn_ext", "ext_cur_user_defn_lc", ["ext_cur_user_defns", "ext_cur_user_depgraph", "ext_cur_user_hlds_dump", "ext_cur_user_imports_graph", "ext_cur_user_lct", "ext_cur_user_lct_full", "ext_cur_user_lct_order", "ext_cur_user_mlds_dump", "ext_cur_user_mode_constr", "ext_cur_user_order", "ext_cur_user_order_to", "ext_cur_user_type_repns", "ext_cur_user_ugly", "ext_cur_user_xml"],  no_c_j_cs))).
+:- type_representation(ext_cur_gas, du_repn(enum("ext_cur_gas_exec_noext", "ext_cur_gas_exec_exe", ["ext_cur_gas_exec_bat", "ext_cur_gas_exec_exec_opt", "ext_cur_gas_lib_dollar_efsl", "ext_cur_gas_lib_dollar_a", "ext_cur_gas_lib_archive", "ext_cur_gas_lib_lib_opt", "ext_cur_gas_lib_sh_lib_opt"],  no_c_j_cs))).
+:- type_representation(ext_cur_gs, du_repn(enum("ext_cur_gs_lib_init", "ext_cur_gs_lib_jar", ["ext_cur_gs_lib_cil_dll"],  no_c_j_cs))).
+:- type_representation(ext_cur_ngs, du_repn(enum("ext_cur_ngs_int_int0", "ext_cur_ngs_int_int1", ["ext_cur_ngs_int_int2", "ext_cur_ngs_int_int3", "ext_cur_ngs_int_date_int0", "ext_cur_ngs_int_date_int12", "ext_cur_ngs_int_date_int3", "ext_cur_ngs_mf_d", "ext_cur_ngs_mf_dv", "ext_cur_ngs_mf_dep", "ext_cur_ngs_misc_module_dep", "ext_cur_ngs_misc_call_graph_for_prof"],  no_c_j_cs))).
+:- type_representation(ext_cur_ngs_gas, du_repn(enum("ext_cur_ngs_gas_obj_dollar_o", "ext_cur_ngs_gas_obj_dollar_efpo", ["ext_cur_ngs_gas_obj_o", "ext_cur_ngs_gas_obj_pic_o", "ext_cur_ngs_gas_obj_obj_opt", "ext_cur_ngs_gas_obj_pic_obj_opt", "ext_cur_ngs_gas_init_obj_dollar_o", "ext_cur_ngs_gas_init_obj_o", "ext_cur_ngs_gas_init_obj_pic_o", "ext_cur_ngs_gas_init_obj_obj_opt", "ext_cur_ngs_gas_init_obj_pic_obj_opt"],  no_c_j_cs))).
+:- type_representation(ext_cur_ngs_gs, du_repn(enum("ext_cur_ngs_gs_proposed_opt_plain", "ext_cur_ngs_gs_proposed_opt_trans", ["ext_cur_ngs_gs_opt_date_plain", "ext_cur_ngs_gs_opt_date_trans", "ext_cur_ngs_gs_target_c", "ext_cur_ngs_gs_target_cs", "ext_cur_ngs_gs_target_date_c", "ext_cur_ngs_gs_target_date_cs", "ext_cur_ngs_gs_target_date_java", "ext_cur_ngs_gs_init_c", "ext_cur_ngs_gs_an_ds_date", "ext_cur_ngs_gs_an_ds_status", "ext_cur_ngs_gs_misc_err_date", "ext_cur_ngs_gs_misc_used", "ext_cur_ngs_gs_misc_track_flags"],  no_c_j_cs))).
+:- type_representation(ext_cur_ngs_gs_err, du_repn(direct_dummy("ext_cur_ngs_gs_err_err",  no_c_j_cs))).
+:- type_representation(ext_cur_ngs_gs_java, du_repn(enum("ext_cur_ngs_gs_java_java", "ext_cur_ngs_gs_java_class", [],  no_c_j_cs))).
+:- type_representation(ext_cur_ngs_gs_max_cur, du_repn(direct_dummy("ext_cur_ngs_gs_max_cur_mih",  no_c_j_cs))).
+:- type_representation(ext_cur_ngs_gs_max_ngs, du_repn(enum("ext_cur_ngs_gs_max_ngs_legacy_opt_plain", "ext_cur_ngs_gs_max_ngs_legacy_opt_trans", ["ext_cur_ngs_gs_max_ngs_an_analysis", "ext_cur_ngs_gs_max_ngs_an_imdg", "ext_cur_ngs_gs_max_ngs_an_request"],  no_c_j_cs))).
+:- type_representation(ext_cur_pgs_max_cur, du_repn(direct_dummy("ext_cur_pgs_max_cur_mh",  no_c_j_cs))).
+:- type_representation(maybe_create_dirs, du_repn(enum("do_create_dirs", "do_not_create_dirs", [],  no_c_j_cs))).
+:- type_representation(maybe_for_search, du_repn(enum("not_for_search", "for_search", [],  no_c_j_cs))).
+:- type_representation(maybe_search, du_repn(enum("do_not_search", "do_search", [],  no_c_j_cs))).
+:- type_representation(search_which_tail_dirs, is_subtype_of((parse_tree.file_names).search_which_dirs/0)).

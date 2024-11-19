@@ -1,0 +1,2 @@
+:- module transform_hlds.direct_arg_in_out.
+:- interface.

@@ -1,0 +1,14 @@
+module(2, "getopt_io.m",
+	getopt_io,
+	{},
+	{bool, builtin, char, io, list, map, maybe, private_builtin, set},
+	{cord, pair, require, solutions, string, unit, string.format, string.parse_util},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
