@@ -1,0 +1,73 @@
+/*
+** Automatically generated from `make.hash.m'
+** by the Mercury compiler,
+** version rotd-2024-11-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.hash.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__hash
+#define MR_HEADER_GUARD_make__hash
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__HASH_DECL_GUARD
+#define MAKE__HASH_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+void MR_CALL 
+make__hash__dependency_file_hash_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+make__hash__dependency_file_with_module_index_hash_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+make__hash__module_name_hash_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+make__hash__target_file_hash_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void mercury__make__hash__init(void);
+void mercury__make__hash__init_type_tables(void);
+void mercury__make__hash__init_debugger(void);
+const char *mercury__make__hash__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.hash
+
+// :- end_interface make.hash.

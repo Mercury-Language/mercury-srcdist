@@ -1,0 +1,114 @@
+/*
+** Automatically generated from `mode_comparison.m'
+** by the Mercury compiler,
+** version rotd-2024-11-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.mode_comparison.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__mode_comparison
+#define MR_HEADER_GUARD_check_hlds__mode_comparison
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODE_COMPARISON_DECL_GUARD
+#define CHECK_HLDS__MODE_COMPARISON_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_comparison__check_hlds__mode_comparison__type_ctor_info_match_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_comparison__check_hlds__mode_comparison__type_ctor_info_proc_mode_0;
+
+void MR_CALL 
+check_hlds__mode_comparison__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_111_111_115_101_95_98_101_115_116_95_109_97_116_99_104_95_95_91_51_93_95_48_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+check_hlds__mode_comparison__choose_best_match_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer * param_6,
+  MR_Word * param_7,
+  MR_Word * param_8);
+
+MR_bool MR_CALL 
+check_hlds__mode_comparison__modes_are_identical_bar_cc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+MR_bool MR_CALL 
+check_hlds__mode_comparison__modes_are_indistinguishable_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+void MR_CALL 
+check_hlds__mode_comparison____Compare____match_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_comparison____Compare____proc_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__mode_comparison____Unify____match_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_comparison____Unify____proc_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__mode_comparison__init(void);
+void mercury__check_hlds__mode_comparison__init_type_tables(void);
+void mercury__check_hlds__mode_comparison__init_debugger(void);
+const char *mercury__check_hlds__mode_comparison__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.mode_comparison
+
+// :- end_interface check_hlds.mode_comparison.

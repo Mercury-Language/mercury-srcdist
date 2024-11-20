@@ -1,0 +1,9 @@
+:- module ll_backend.middle_rec.
+:- interface.
+:- use_module hlds.
+:- use_module hlds.hlds_goal.
+:- use_module ll_backend.code_info.
+:- use_module ll_backend.code_loc_dep.
+:- use_module ll_backend.llds.
+:- pred match_and_generate(hlds.hlds_goal.hlds_goal, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode match_and_generate(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
