@@ -1,0 +1,2 @@
+:- module (transform_hlds.rbmm).live_region_analysis.
+:- interface.
