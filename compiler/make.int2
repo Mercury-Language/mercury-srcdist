@@ -1,0 +1,8 @@
+:- module make.
+:- interface.
+:- include_module make.build.
+:- include_module make.deps_cache.
+:- include_module make.get_module_dep_info.
+:- include_module make.module_dep_file.
+:- include_module make.options_file.
+:- include_module make.top_level.

@@ -1,0 +1,24 @@
+:- module (hlds.make_hlds).field_access.
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.maybe_error.
+:- use_module parse_tree.prog_data.
+:- use_module (hlds.make_hlds).qual_info.
+:- use_module (hlds.make_hlds).state_var.
+:- type field_list == assoc_list.assoc_list(mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.prog_term)).
+:- pred expand_dcg_field_extraction_goal(parse_tree.prog_data.prog_context, hlds.hlds_goal.unify_main_context, list.list(hlds.hlds_goal.unify_sub_context), hlds.make_hlds.field_access.field_list, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, pair.pair(parse_tree.prog_data.cons_id, list.list(hlds.hlds_goal.unify_sub_context)), hlds.hlds_goal.hlds_goal, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_store, hlds.make_hlds.state_var.svar_store, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode expand_dcg_field_extraction_goal(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred expand_get_field_function_call(parse_tree.prog_data.prog_context, hlds.hlds_goal.unify_main_context, list.list(hlds.hlds_goal.unify_sub_context), hlds.make_hlds.field_access.field_list, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.purity, parse_tree.prog_data.cons_id, pair.pair(parse_tree.prog_data.cons_id, list.list(hlds.hlds_goal.unify_sub_context)), hlds.hlds_goal.hlds_goal, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_store, hlds.make_hlds.state_var.svar_store, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode expand_get_field_function_call(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred expand_set_field_function_call(parse_tree.prog_data.prog_context, hlds.hlds_goal.unify_main_context, list.list(hlds.hlds_goal.unify_sub_context), hlds.make_hlds.field_access.field_list, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, pair.pair(parse_tree.prog_data.cons_id, list.list(hlds.hlds_goal.unify_sub_context)), hlds.hlds_goal.hlds_goal, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_store, hlds.make_hlds.state_var.svar_store, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode expand_set_field_function_call(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred parse_field_list(parse_tree.prog_data.prog_term, parse_tree.prog_data.prog_varset, list.list(parse_tree.error_spec.format_piece), parse_tree.maybe_error.maybe1(hlds.make_hlds.field_access.field_list)).
+:- mode parse_field_list(builtin.in, builtin.in, builtin.in, builtin.out) is det.
