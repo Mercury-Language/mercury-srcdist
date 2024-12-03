@@ -1,0 +1,5 @@
+:- module make.dependencies.
+:- interface.
+:- type find_prereqs_result
+    --->    could_not_find_some_prereqs(set.set(make.make_info.dependency_file))
+    ;       found_all_prereqs(set.set(make.make_info.dependency_file)).
