@@ -1,0 +1,72 @@
+:- module (check_hlds.simplify).simplify_tasks.
+:- interface.
+:- type maybe_after_front_end
+    --->    not_after_front_end 
+    ;       after_front_end .
+:- type maybe_elim_removable_scopes
+    --->    do_not_elim_removable_scopes 
+    ;       elim_removable_scopes .
+:- type maybe_generate_warnings
+    --->    do_not_generate_warnings 
+    ;       generate_warnings .
+:- type maybe_ignore_par_conjs
+    --->    do_not_ignore_par_conjs 
+    ;       ignore_par_conjs .
+:- type maybe_invoke_format_call
+    --->    do_not_invoke_format_call 
+    ;       invoke_format_call .
+:- type maybe_mark_cm_changes
+    --->    do_not_mark_code_model_changes 
+    ;       mark_code_model_changes .
+:- type maybe_opt_const_structs
+    --->    do_not_opt_const_structs 
+    ;       opt_const_structs .
+:- type maybe_opt_extra_structs
+    --->    do_not_opt_extra_structs 
+    ;       opt_extra_structs .
+:- type maybe_opt_split_switch_arms
+    --->    do_not_opt_split_switch_arms 
+    ;       split_opt_switch_arms .
+:- type maybe_try_opt_const_structs
+    --->    do_not_try_opt_const_structs 
+    ;       try_opt_const_structs .
+:- type maybe_warn_duplicate_calls
+    --->    do_not_warn_duplicate_calls 
+    ;       warn_duplicate_calls .
+:- type maybe_warn_implicit_streams
+    --->    do_not_warn_implicit_streams 
+    ;       warn_implicit_streams .
+:- type maybe_warn_no_soln_disjunct
+    --->    do_not_warn_no_soln_disjunct 
+    ;       warn_no_soln_disjunct .
+:- type maybe_warn_obsolete
+    --->    do_not_warn_obsolete 
+    ;       warn_obsolete .
+:- type maybe_warn_simple_code
+    --->    do_not_warn_simple_code 
+    ;       warn_simple_code .
+:- type maybe_warn_suspicious_rec
+    --->    do_not_warn_suspicious_rec 
+    ;       warn_suspicious_rec .
+:- type simplify_task
+    --->    simptask_warn_simple_code 
+    ;       simptask_warn_duplicate_calls 
+    ;       simptask_warn_implicit_stream_calls 
+    ;       simptask_format_calls 
+    ;       simptask_warn_obsolete 
+    ;       simptask_mark_code_model_changes 
+    ;       simptask_after_front_end 
+    ;       simptask_excess_assigns 
+    ;       simptask_merge_code_after_switch 
+    ;       simptask_elim_removable_scopes 
+    ;       simptask_opt_duplicate_calls 
+    ;       simptask_constant_prop 
+    ;       simptask_common_structs 
+    ;       simptask_extra_common_structs 
+    ;       simptask_try_opt_const_structs 
+    ;       simptask_ignore_par_conjs 
+    ;       simptask_warn_suspicious_recursion 
+    ;       simptask_warn_no_solution_disjunct 
+    ;       simptask_split_switch_arms .
+:- type simplify_tasks
+    --->    simplify_tasks(((check_hlds.simplify).simplify_tasks).do_warn_simple_code :: check_hlds.simplify.simplify_tasks.maybe_warn_simple_code, ((check_hlds.simplify).simplify_tasks).do_warn_duplicate_calls :: check_hlds.simplify.simplify_tasks.maybe_warn_duplicate_calls, ((check_hlds.simplify).simplify_tasks).do_warn_implicit_streams :: check_hlds.simplify.simplify_tasks.maybe_warn_implicit_streams, ((check_hlds.simplify).simplify_tasks).do_invoke_format_call :: check_hlds.simplify.simplify_tasks.maybe_invoke_format_call, ((check_hlds.simplify).simplify_tasks).do_warn_obsolete :: check_hlds.simplify.simplify_tasks.maybe_warn_obsolete, ((check_hlds.simplify).simplify_tasks).do_mark_code_model_changes :: check_hlds.simplify.simplify_tasks.maybe_mark_cm_changes, ((check_hlds.simplify).simplify_tasks).do_after_front_end :: check_hlds.simplify.simplify_tasks.maybe_after_front_end, ((check_hlds.simplify).simplify_tasks).do_excess_assign :: libs.optimization_options.maybe_elim_excess_assigns, ((check_hlds.simplify).simplify_tasks).do_merge_code_after_switch :: libs.optimization_options.maybe_merge_code_after_switch, ((check_hlds.simplify).simplify_tasks).do_elim_removable_scopes :: check_hlds.simplify.simplify_tasks.maybe_elim_removable_scopes, ((check_hlds.simplify).simplify_tasks).do_opt_duplicate_calls :: libs.optimization_options.maybe_opt_dup_calls, ((check_hlds.simplify).simplify_tasks).do_constant_prop :: libs.optimization_options.maybe_prop_constants, ((check_hlds.simplify).simplify_tasks).do_opt_common_structs :: libs.optimization_options.maybe_opt_common_structs, ((check_hlds.simplify).simplify_tasks).do_opt_extra_structs :: check_hlds.simplify.simplify_tasks.maybe_opt_extra_structs, ((check_hlds.simplify).simplify_tasks).do_try_opt_const_structs :: check_hlds.simplify.simplify_tasks.maybe_try_opt_const_structs, ((check_hlds.simplify).simplify_tasks).do_opt_const_structs :: check_hlds.simplify.simplify_tasks.maybe_opt_const_structs, ((check_hlds.simplify).simplify_tasks).do_ignore_par_conjunctions :: check_hlds.simplify.simplify_tasks.maybe_ignore_par_conjs, ((check_hlds.simplify).simplify_tasks).do_warn_suspicious_recursion :: check_hlds.simplify.simplify_tasks.maybe_warn_suspicious_rec, ((check_hlds.simplify).simplify_tasks).do_warn_no_solution_disjunct :: check_hlds.simplify.simplify_tasks.maybe_warn_no_soln_disjunct, ((check_hlds.simplify).simplify_tasks).do_switch_split_arms :: libs.optimization_options.maybe_split_switch_arms).
