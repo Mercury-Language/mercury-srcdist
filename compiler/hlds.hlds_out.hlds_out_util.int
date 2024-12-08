@@ -1,0 +1,90 @@
+:- module (hlds.hlds_out).hlds_out_util.
+:- interface.
+:- use_module assoc_list.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module string.
+:- use_module term.
+:- use_module hlds.hlds_class.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.status.
+:- use_module libs.globals.
+:- use_module libs.indent.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.parse_tree_out_info.
+:- use_module parse_tree.parse_tree_out_term.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_db.
+:- use_module parse_tree.var_table.
+:- use_module string.builder.
+:- type hlds_out_info
+    --->    hlds_out_info(((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_options :: string, ((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_options_backup :: string, ((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_pred_ids :: list.list(string), ((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_pred_names :: list.list(string), ((hlds.hlds_out).hlds_out_util).hoi_merc_out_info :: parse_tree.parse_tree_out_info.merc_out_info).
+:- type is_first
+    --->    is_first 
+    ;       is_not_first .
+:- type is_last
+    --->    is_last 
+    ;       is_not_last .
+:- type last_context_word
+    --->    lcw_none 
+    ;       lcw_call 
+    ;       lcw_result 
+    ;       lcw_argument 
+    ;       lcw_element .
+:- type maybe_print_ho_var_name
+    --->    do_not_print_ho_var_name 
+    ;       print_ho_var_name .
+:- type maybe_qualify_cons_id
+    --->    qualify_cons_id 
+    ;       do_not_qualify_cons_id .
+:- func call_arg_id_to_pieces(hlds.hlds_out.hlds_out_util.maybe_print_ho_var_name, hlds.hlds_pred.call_id, int, hlds.hlds_pred.pred_markers) = list.list(parse_tree.error_spec.format_piece).
+:- func call_id_to_pieces(hlds.hlds_out.hlds_out_util.maybe_print_ho_var_name, hlds.hlds_pred.call_id) = list.list(parse_tree.error_spec.format_piece).
+:- func cast_type_to_string(hlds.hlds_goal.cast_kind) = string.
+:- func cons_id_and_vars_or_arity_to_string(parse_tree.var_table.var_table, hlds.hlds_out.hlds_out_util.maybe_qualify_cons_id, parse_tree.prog_data.cons_id, maybe.maybe(list.list(parse_tree.prog_data.prog_var))) = string.
+:- func context_to_brief_string(term.context) = string.
+:- pred format_constraint_proof_map(libs.indent.indent, parse_tree.prog_data.var_name_print, parse_tree.prog_data.tvarset, hlds.hlds_class.constraint_proof_map, string.builder.state, string.builder.state).
+:- mode format_constraint_proof_map(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred format_intlist(list.list(int), string.builder.state, string.builder.state).
+:- mode format_intlist(builtin.in, builtin.di, builtin.uo) is det.
+:- func functor_cons_id_to_string(hlds.hlds_module.module_info, parse_tree.var_db.var_name_source, parse_tree.prog_data.var_name_print, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var)) = string.
+:- func functor_to_string(parse_tree.var_db.var_name_source, parse_tree.prog_data.var_name_print, term.const, list.list(parse_tree.prog_data.prog_var)) = string.
+:- func functor_to_string_maybe_needs_quotes(parse_tree.var_db.var_name_source, parse_tree.prog_data.var_name_print, parse_tree.parse_tree_out_term.needs_quotes, term.const, list.list(parse_tree.prog_data.prog_var)) = string.
+:- func generic_call_to_pieces(hlds.hlds_out.hlds_out_util.maybe_print_ho_var_name, parse_tree.var_db.var_name_source, hlds.hlds_goal.generic_call) = list.list(parse_tree.error_spec.format_piece).
+:- func generic_callee_to_pieces(hlds.hlds_out.hlds_out_util.maybe_print_ho_var_name, parse_tree.var_db.var_name_source, hlds.hlds_goal.generic_call) = list.list(parse_tree.error_spec.format_piece).
+:- func init_hlds_out_info(libs.globals.globals, parse_tree.parse_tree_out_info.output_lang) = hlds.hlds_out.hlds_out_util.hlds_out_info.
+:- func inst_import_status_to_string(hlds.status.inst_status) = string.
+:- func instance_import_status_to_string(hlds.status.instance_status) = string.
+:- pred maybe_format_context_comment(libs.indent.indent, string, term.context, string.builder.state, string.builder.state).
+:- mode maybe_format_context_comment(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred maybe_output_context_comment(io.text_output_stream, libs.indent.indent, string, term.context, io.io, io.io).
+:- mode maybe_output_context_comment(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- func mode_import_status_to_string(hlds.status.mode_status) = string.
+:- func pred_id_to_dev_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id) = string.
+:- func pred_id_to_user_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id) = string.
+:- func pred_import_status_to_string(hlds.status.pred_status) = string.
+:- func pred_proc_id_pair_to_dev_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id) = string.
+:- func pred_proc_id_pair_to_user_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id) = string.
+:- func pred_proc_id_to_dev_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id) = string.
+:- func pred_proc_id_to_user_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id) = string.
+:- func qualified_functor_to_string(parse_tree.var_db.var_name_source, parse_tree.prog_data.var_name_print, mdbcomp.sym_name.module_name, term.const, list.list(parse_tree.prog_data.prog_var)) = string.
+:- func qualified_functor_with_term_args_to_string(parse_tree.var_db.var_name_source, parse_tree.prog_data.var_name_print, mdbcomp.sym_name.module_name, term.const, list.list(parse_tree.prog_data.prog_term)) = string.
+:- func type_import_status_to_string(hlds.status.type_status) = string.
+:- func typeclass_import_status_to_string(hlds.status.typeclass_status) = string.
+:- pred unify_context_first_to_pieces(hlds.hlds_out.hlds_out_util.is_first, hlds.hlds_out.hlds_out_util.is_first, hlds.hlds_goal.unify_context, hlds.hlds_out.hlds_out_util.last_context_word, list.list(parse_tree.error_spec.format_piece), list.list(parse_tree.error_spec.format_piece)).
+:- mode unify_context_first_to_pieces(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred unify_context_to_pieces(hlds.hlds_goal.unify_context, hlds.hlds_out.hlds_out_util.last_context_word, list.list(parse_tree.error_spec.format_piece), list.list(parse_tree.error_spec.format_piece)).
+:- mode unify_context_to_pieces(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func var_mode_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.var_db.var_name_source, parse_tree.prog_data.inst_varset, parse_tree.prog_data.var_name_print, pair.pair(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_mode)) = string.
+:- func var_modes_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.var_db.var_name_source, parse_tree.prog_data.inst_varset, parse_tree.prog_data.var_name_print, assoc_list.assoc_list(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_mode)) = string.
+:- pred write_constraint_proof_map(io.text_output_stream, libs.indent.indent, parse_tree.prog_data.var_name_print, parse_tree.prog_data.tvarset, hlds.hlds_class.constraint_proof_map, io.io, io.io).
+:- mode write_constraint_proof_map(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred write_intlist(io.text_output_stream, list.list(int), io.io, io.io).
+:- mode write_intlist(builtin.in, builtin.in, builtin.di, builtin.uo) is det.

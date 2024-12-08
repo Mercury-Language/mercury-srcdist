@@ -1,0 +1,11 @@
+:- module backend_libs.compile_target_code.
+:- interface.
+:- type linked_target_type
+	where	type_is_abstract_enum(3).
+:- type pic
+	where	type_is_abstract_enum(1).
+:- abstract_inst((ext_cur_ngs_gas_init_obj)).
+:- abstract_inst((ext_cur_ngs_gas_obj)).
+:- type_representation(compile_init_file_pred, is_eqv_to(pred(file_name, maybe_succeeded, io, io))).
+:- type_representation(linked_target_type, du_repn(enum("executable", "static_library", ["shared_library", "csharp_executable", "csharp_library", "java_executable", "java_archive"],  no_c_j_cs))).
+:- type_representation(pic, du_repn(enum("pic", "non_pic", [],  no_c_j_cs))).

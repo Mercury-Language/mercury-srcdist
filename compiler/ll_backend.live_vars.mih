@@ -1,0 +1,129 @@
+/*
+** Automatically generated from `live_vars.m'
+** by the Mercury compiler,
+** version rotd-2024-12-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.live_vars.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__live_vars
+#define MR_HEADER_GUARD_ll_backend__live_vars
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__LIVE_VARS_DECL_GUARD
+#define LL_BACKEND__LIVE_VARS_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__live_vars__ll_backend__live_vars__type_ctor_info_alloc_data_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__live_vars__ll_backend__live_vars__type_ctor_info_dummy_var_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__live_vars__ll_backend__live_vars__type_ctor_info_parallel_stackvars_0;
+
+extern const MR_TypeClassDeclStruct ll_backend__live_vars__ll_backend__live_vars__type_class_decl_stack_alloc_info_1;
+
+void MR_CALL 
+ll_backend__live_vars__at_call_site_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+ll_backend__live_vars__at_par_conj_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+ll_backend__live_vars__at_recursive_call_for_loop_control_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+ll_backend__live_vars__at_resume_site_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+ll_backend__live_vars__build_live_sets_in_goal_no_par_stack_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Word param_10,
+  MR_Word * param_11);
+
+void MR_CALL 
+ll_backend__live_vars____Compare____alloc_data_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__live_vars____Compare____dummy_var_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__live_vars____Unify____alloc_data_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__live_vars____Unify____dummy_var_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__live_vars__init(void);
+void mercury__ll_backend__live_vars__init_type_tables(void);
+void mercury__ll_backend__live_vars__init_debugger(void);
+const char *mercury__ll_backend__live_vars__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.live_vars
+
+// :- end_interface ll_backend.live_vars.
