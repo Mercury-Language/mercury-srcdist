@@ -1,0 +1,35 @@
+:- module ml_backend.mlds_to_java_util.
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module libs.indent.
+:- use_module ml_backend.mlds.
+:- use_module ml_backend.mlds_to_target_util.
+:- use_module parse_tree.prog_data.
+:- type code_addr_wrapper
+    --->    code_addr_wrapper((ml_backend.mlds_to_java_util).caw_class :: string, (ml_backend.mlds_to_java_util).caw_ptr_num :: maybe.maybe(int)).
+:- type context_marker
+    --->    marker_begin_block 
+    ;       marker_end_block 
+    ;       marker_comment .
+:- type java_out_info
+    --->    java_out_info((ml_backend.mlds_to_java_util).joi_module_info :: hlds.hlds_module.module_info, (ml_backend.mlds_to_java_util).joi_auto_comments :: bool.bool, (ml_backend.mlds_to_java_util).joi_line_numbers :: bool.bool, (ml_backend.mlds_to_java_util).joi_foreign_line_numbers :: bool.bool, (ml_backend.mlds_to_java_util).joi_module_name :: ml_backend.mlds.mlds_module_name, (ml_backend.mlds_to_java_util).joi_source_filename :: string, (ml_backend.mlds_to_java_util).joi_addrof_map :: map.map(ml_backend.mlds.mlds_code_addr, ml_backend.mlds_to_java_util.code_addr_wrapper), (ml_backend.mlds_to_java_util).joi_output_generics :: ml_backend.mlds_to_target_util.output_generics, (ml_backend.mlds_to_java_util).joi_break_context :: ml_backend.mlds_to_target_util.break_context, (ml_backend.mlds_to_java_util).joi_univ_tvars :: list.list(parse_tree.prog_data.tvar)).
+:- func get_debug_class_init(ml_backend.mlds_to_java_util.java_out_info) = bool.bool.
+:- pred indent_line_after_context(io.text_output_stream, bool.bool, ml_backend.mlds_to_java_util.context_marker, parse_tree.prog_data.prog_context, libs.indent.indent, io.io, io.io).
+:- mode indent_line_after_context(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- func init_java_out_info(hlds.hlds_module.module_info, string, map.map(ml_backend.mlds.mlds_code_addr, ml_backend.mlds_to_java_util.code_addr_wrapper)) = ml_backend.mlds_to_java_util.java_out_info.
+:- pred is_specialised_method_ptr_arity(int).
+:- mode is_specialised_method_ptr_arity(builtin.in) is semidet.
+:- pred maybe_output_inline_comment_for_java(ml_backend.mlds_to_java_util.java_out_info, io.text_output_stream, string, io.io, io.io).
+:- mode maybe_output_inline_comment_for_java(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred output_context_for_java(io.text_output_stream, bool.bool, ml_backend.mlds_to_java_util.context_marker, parse_tree.prog_data.prog_context, io.io, io.io).
+:- mode output_context_for_java(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred write_string_with_context_block(ml_backend.mlds_to_java_util.java_out_info, io.text_output_stream, libs.indent.indent, string, parse_tree.prog_data.prog_context, io.io, io.io).
+:- mode write_string_with_context_block(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.

@@ -1,0 +1,136 @@
+:- module hlds.hlds_pred.
+:- interface.
+:- type arg_info.
+:- type arg_loc.
+:- type arg_modes_map.
+:- type call_id.
+:- type call_site_static_data.
+:- type can_process
+	where	type_is_abstract_enum(1).
+:- type cur_user_decl_info.
+:- type decl_section
+	where	type_is_abstract_enum(1).
+:- type deep_original_body.
+:- type deep_profile_proc_info.
+:- type deep_profile_role.
+:- type deep_recursion_info.
+:- type detism_decl
+	where	type_is_abstract_enum(2).
+:- type external_type_params.
+:- type format_call.
+:- type generic_call_id.
+:- type goal_type.
+:- type has_mutual_tail_rec_call
+	where	type_is_abstract_enum(1).
+:- type has_parallel_conj
+	where	type_is_abstract_enum(1).
+:- type has_self_tail_rec_call
+	where	type_is_abstract_enum(1).
+:- type has_tail_rec_call.
+:- type has_user_event
+	where	type_is_abstract_enum(1).
+:- type hlds_deep_excp_vars.
+:- type hlds_deep_layout.
+:- type hlds_proc_static.
+:- type implementation_language.
+:- type is_address_taken
+	where	type_is_abstract_enum(1).
+:- type liveness_info.
+:- type maybe_predmode_decl
+	where	type_is_abstract_enum(1).
+:- type need_to_requantify
+	where	type_is_abstract_enum(1).
+:- type needs_maxfr_slot
+	where	type_is_abstract_enum(1).
+:- type np_goal_type
+	where	type_is_abstract_enum(2).
+:- type oisu_pred_kind_for.
+:- type pred_id.
+:- type pred_info.
+:- type pred_marker
+	where	type_is_abstract_enum(5).
+:- type pred_markers.
+:- type pred_proc_id.
+:- type proc_exception_info.
+:- type proc_foreign_exports
+	where	type_is_abstract_enum(1).
+:- type proc_id.
+:- type proc_info.
+:- type proc_mm_tabling_info.
+:- type proc_table.
+:- type proc_table_io_info.
+:- type proc_table_struct_info.
+:- type proc_trailing_info.
+:- type scc.
+:- type special_proc_return.
+:- type structure_reuse_domain_and_status.
+:- type structure_reuse_info.
+:- type structure_sharing_domain_and_status.
+:- type structure_sharing_info.
+:- type table_arg_info.
+:- type table_arg_infos.
+:- type table_is_poly
+	where	type_is_abstract_enum(1).
+:- type table_locn.
+:- type table_step_desc.
+:- type table_trie_step.
+:- type table_value_or_addr
+	where	type_is_abstract_enum(1).
+:- type top_functor_mode
+	where	type_is_abstract_enum(2).
+:- type untuple_proc_info.
+:- type visible_scc_data.
+:- type_representation(arg_info, is_word_aligned_ptr).
+:- type_representation(arg_loc, is_word_aligned_ptr).
+:- type_representation(arg_modes_map, is_eqv_to(pair(map(prog_var, bool)))).
+:- type_representation(can_process, du_repn(enum("cannot_process_yet", "can_process_now", [],  no_c_j_cs))).
+:- type_representation(cur_user_decl_info, is_word_aligned_ptr).
+:- type_representation(decl_section, du_repn(enum("decl_interface", "decl_implementation", [],  no_c_j_cs))).
+:- type_representation(deep_original_body, is_word_aligned_ptr).
+:- type_representation(deep_profile_proc_info, is_word_aligned_ptr).
+:- type_representation(deep_recursion_info, is_word_aligned_ptr).
+:- type_representation(detism_decl, du_repn(enum("detism_decl_explicit", "detism_decl_implicit", ["detism_decl_none"],  no_c_j_cs))).
+:- type_representation(external_type_params, is_eqv_to(list(tvar))).
+:- type_representation(format_call, is_word_aligned_ptr).
+:- type_representation(has_mutual_tail_rec_call, du_repn(enum("has_mutual_tail_rec_call", "has_no_mutual_tail_rec_call", [],  no_c_j_cs))).
+:- type_representation(has_parallel_conj, du_repn(enum("has_parallel_conj", "has_no_parallel_conj", [],  no_c_j_cs))).
+:- type_representation(has_self_tail_rec_call, du_repn(enum("has_self_tail_rec_call", "has_no_self_tail_rec_call", [],  no_c_j_cs))).
+:- type_representation(has_tail_rec_call, is_word_aligned_ptr).
+:- type_representation(has_user_event, du_repn(enum("has_user_event", "has_no_user_event", [],  no_c_j_cs))).
+:- type_representation(hlds_deep_excp_vars, is_word_aligned_ptr).
+:- type_representation(hlds_deep_layout, is_word_aligned_ptr).
+:- type_representation(hlds_proc_static, is_word_aligned_ptr).
+:- type_representation(is_address_taken, du_repn(enum("address_is_taken", "address_is_not_taken", [],  no_c_j_cs))).
+:- type_representation(liveness_info, is_eqv_to(set_of_progvar)).
+:- type_representation(maybe_predmode_decl, du_repn(enum("no_predmode_decl", "predmode_decl", [],  no_c_j_cs))).
+:- type_representation(need_to_requantify, du_repn(enum("need_to_requantify", "do_not_need_to_requantify", [],  no_c_j_cs))).
+:- type_representation(needs_maxfr_slot, du_repn(enum("needs_maxfr_slot", "does_not_need_maxfr_slot", [],  no_c_j_cs))).
+:- type_representation(np_goal_type, du_repn(enum("np_goal_type_none", "np_goal_type_clause", ["np_goal_type_foreign", "np_goal_type_clause_and_foreign"],  no_c_j_cs))).
+:- type_representation(pred_id, du_repn(notag("pred_id", int,  no_c_j_cs))).
+:- type_representation(pred_info, is_word_aligned_ptr).
+:- type_representation(pred_marker, du_repn(enum("marker_stub", "marker_builtin_stub", ["marker_infer_type", "marker_infer_modes", "marker_no_pred_decl", "marker_no_detism_warning", "marker_user_marked_inline", "marker_heuristic_inline", "marker_user_marked_no_inline", "marker_mmc_marked_no_inline", "marker_consider_used", "marker_class_method", "marker_class_instance_method", "marker_named_class_instance_method", "marker_is_impure", "marker_is_semipure", "marker_promised_pure", "marker_promised_semipure", "marker_promised_equivalent_clauses", "marker_terminates", "marker_does_not_terminate", "marker_check_termination", "marker_calls_are_fully_qualified", "marker_mode_check_clauses", "marker_mutable_access_pred", "marker_has_require_scope", "marker_has_incomplete_switch", "marker_has_format_call", "marker_has_rhs_lambda", "marker_fact_table_semantic_errors"],  no_c_j_cs))).
+:- type_representation(pred_markers, is_eqv_to(set(hlds.hlds_pred.pred_marker))).
+:- type_representation(pred_proc_id, is_word_aligned_ptr).
+:- type_representation(proc_exception_info, is_word_aligned_ptr).
+:- type_representation(proc_foreign_exports, du_repn(enum("no_foreign_exports", "has_foreign_exports", [],  no_c_j_cs))).
+:- type_representation(proc_id, is_eqv_to(int)).
+:- type_representation(proc_info, is_word_aligned_ptr).
+:- type_representation(proc_mm_tabling_info, is_word_aligned_ptr).
+:- type_representation(proc_table, is_eqv_to(map(hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_info))).
+:- type_representation(proc_table_io_info, du_repn(notag("proc_table_io_info", maybe(table_arg_infos),  no_c_j_cs))).
+:- type_representation(proc_table_struct_info, is_word_aligned_ptr).
+:- type_representation(proc_trailing_info, is_word_aligned_ptr).
+:- type_representation(scc, is_eqv_to(set(hlds.hlds_pred.pred_proc_id))).
+:- type_representation(special_proc_return, is_word_aligned_ptr).
+:- type_representation(structure_reuse_domain_and_status, is_word_aligned_ptr).
+:- type_representation(structure_reuse_info, is_word_aligned_ptr).
+:- type_representation(structure_sharing_domain_and_status, is_word_aligned_ptr).
+:- type_representation(structure_sharing_info, is_word_aligned_ptr).
+:- type_representation(table_arg_info, is_word_aligned_ptr).
+:- type_representation(table_arg_infos, is_word_aligned_ptr).
+:- type_representation(table_is_poly, du_repn(enum("table_is_mono", "table_is_poly", [],  no_c_j_cs))).
+:- type_representation(table_step_desc, is_word_aligned_ptr).
+:- type_representation(table_value_or_addr, du_repn(enum("table_value", "table_addr", [],  no_c_j_cs))).
+:- type_representation(top_functor_mode, du_repn(enum("top_in", "top_out", ["top_unused"],  no_c_j_cs))).
+:- type_representation(untuple_proc_info, du_repn(notag("untuple_proc_info", map(prog_var, list(prog_var)),  no_c_j_cs))).
+:- type_representation(visible_scc_data, is_word_aligned_ptr).

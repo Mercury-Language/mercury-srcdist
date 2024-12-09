@@ -1,0 +1,4 @@
+:- module ll_backend.lookup_util.
+:- interface.
+:- type end_branch_info.
+:- type_representation(end_branch_info, is_word_aligned_ptr).
