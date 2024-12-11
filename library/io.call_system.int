@@ -1,0 +1,7 @@
+:- module io.call_system.
+:- interface.
+:- pred call_system(string, io.res(int), io.io, io.io).
+:- mode call_system(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred call_system_return_signal(string, io.res(io.system_result), io.io, io.io).
+:- mode call_system_return_signal(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- func decode_system_command_exit_code(int) = io.res(io.system_result).
