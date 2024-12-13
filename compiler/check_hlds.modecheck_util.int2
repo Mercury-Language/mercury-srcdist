@@ -1,0 +1,9 @@
+:- module check_hlds.modecheck_util.
+:- interface.
+:- type after_goals
+    --->    no_after_goals 
+    ;       after_goals((check_hlds.modecheck_util).after_instmap :: hlds.instmap.instmap, (check_hlds.modecheck_util).after_goals :: list.list(hlds.hlds_goal.hlds_goal)).
+:- type extra_goals
+    --->    no_extra_goals 
+    ;       extra_goals((check_hlds.modecheck_util).extra_before_main :: list.list(hlds.hlds_goal.hlds_goal), (check_hlds.modecheck_util).extra_after_main :: list.list(hlds.hlds_goal.hlds_goal)).
+:- type modecheck_arg_offset.

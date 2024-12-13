@@ -1,0 +1,5 @@
+:- module check_hlds.polymorphism_type_class_info.
+:- interface.
+:- type record_type_info_locns
+    --->    do_record_type_info_locns 
+    ;       do_not_record_type_info_locns .

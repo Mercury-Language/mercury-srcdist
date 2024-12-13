@@ -1,0 +1,110 @@
+/*
+** Automatically generated from `java_names.m'
+** by the Mercury compiler,
+** version rotd-2024-12-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.java_names.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__java_names
+#define MR_HEADER_GUARD_parse_tree__java_names
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__JAVA_NAMES_DECL_GUARD
+#define PARSE_TREE__JAVA_NAMES_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__java_names__parse_tree__java_names__type_ctor_info_csj_qual_kind_0;
+
+MR_bool MR_CALL 
+parse_tree__java_names__is_csharp_keyword_1_p_0(
+  MR_String param_1);
+
+MR_bool MR_CALL 
+parse_tree__java_names__is_java_keyword_1_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+parse_tree__java_names__mangle_sym_name_for_csharp_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+parse_tree__java_names__mangle_sym_name_for_java_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String * param_4);
+
+MR_Word MR_CALL 
+parse_tree__java_names__csharp_mercury_runtime_package_name_0_f_0(void);
+
+MR_String MR_CALL 
+parse_tree__java_names__flip_initial_case_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+parse_tree__java_names__flip_initial_case_of_final_part_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__java_names__java_mercury_runtime_package_name_0_f_0(void);
+
+MR_String MR_CALL 
+parse_tree__java_names__make_valid_csharp_symbol_name_1_f_0(
+  MR_String param_1);
+
+MR_String MR_CALL 
+parse_tree__java_names__make_valid_java_symbol_name_1_f_0(
+  MR_String param_1);
+
+void MR_CALL 
+parse_tree__java_names____Compare____csj_qual_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__java_names____Unify____csj_qual_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__java_names__init(void);
+void mercury__parse_tree__java_names__init_type_tables(void);
+void mercury__parse_tree__java_names__init_debugger(void);
+const char *mercury__parse_tree__java_names__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.java_names
+
+// :- end_interface parse_tree.java_names.

@@ -1,0 +1,25 @@
+:- module parse_tree.get_dependencies.
+:- interface.
+:- type implicit_avail_needs
+    --->    implicit_avail_needs((parse_tree.get_dependencies).ian_tabling :: parse_tree.get_dependencies.maybe_need_tabling, (parse_tree.get_dependencies).ian_tabling_statistics :: parse_tree.get_dependencies.maybe_need_tabling_statistics, (parse_tree.get_dependencies).ian_stm :: parse_tree.get_dependencies.maybe_need_stm, (parse_tree.get_dependencies).ian_exception :: parse_tree.get_dependencies.maybe_need_exception, (parse_tree.get_dependencies).ian_string_format :: parse_tree.get_dependencies.maybe_need_string_format, (parse_tree.get_dependencies).ian_stream_format :: parse_tree.get_dependencies.maybe_need_stream_format, (parse_tree.get_dependencies).ian_io :: parse_tree.get_dependencies.maybe_need_io).
+:- type maybe_need_exception
+    --->    do_not_need_exception 
+    ;       do_need_exception .
+:- type maybe_need_io
+    --->    do_not_need_io 
+    ;       do_need_io .
+:- type maybe_need_stm
+    --->    do_not_need_stm 
+    ;       do_need_stm .
+:- type maybe_need_stream_format
+    --->    do_not_need_stream_format 
+    ;       do_need_stream_format .
+:- type maybe_need_string_format
+    --->    do_not_need_string_format 
+    ;       do_need_string_format .
+:- type maybe_need_tabling
+    --->    do_not_need_tabling 
+    ;       do_need_tabling .
+:- type maybe_need_tabling_statistics
+    --->    do_not_need_tabling_statistics 
+    ;       do_need_tabling_statistics .
