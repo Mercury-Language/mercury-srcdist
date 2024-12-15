@@ -1,0 +1,57 @@
+:- module bit_buffer.read.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module exception.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module stream.
+
+:- type read_buffer(Stream, State, Error)
+    --->    read_buffer((bit_buffer.read).bit_buffer :: bit_buffer.bit_buffer(Stream, State, Error)).
+
+bit_buffer.read.finalize(V_1, V_2, V_3, V_4, V_5, V_6) :-
+    V_1 = V_7,
+    V_1 = bit_buffer.read.read_buffer(V_8) : bit_buffer.read.read_buffer(Stream_1, State_2, Error_3),
+    V_2 = bit_buffer.stream(V_8),
+    V_3 = bit_buffer.state(V_8),
+    V_4 = bit_buffer.bitmap(V_8),
+    V_5 = bit_buffer.pos(V_8),
+    V_6 = bit_buffer.read.num_buffered_bits(V_7).
+
+bit_buffer.read.get_bitmap(V_11, V_12, V_8, V_9, V_13, V_14) :-
+    V_15 = 0 : int,
+    V_16 = bitmap.num_bits(V_11),
+    bit_buffer.read.get_bitmap(V_15, V_16, V_11, V_12, V_8, V_9, V_13, V_14).
+
+bit_buffer.read.new_bitmap_reader(V_3) = V_2 :-
+    V_2 = bit_buffer.read.new_bitmap_reader(V_3, V_4, V_5),
+    V_4 = 0 : int,
+    V_5 = bitmap.num_bits(V_3).
+
+:- pragma termination_info((bit_buffer.read).buffer_status(builtin.out, (bit_buffer.read).read_buffer_di, (bit_buffer.read).read_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).finalize((bit_buffer.read).read_buffer_di, builtin.out, builtin.uo, bitmap.bitmap_uo, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).get_bit(builtin.out, (bit_buffer.read).read_buffer_di, (bit_buffer.read).read_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).get_bitmap(bitmap.bitmap_di, bitmap.bitmap_uo, builtin.out, builtin.out, (bit_buffer.read).read_buffer_di, (bit_buffer.read).read_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).get_bitmap(builtin.in, builtin.in, bitmap.bitmap_di, bitmap.bitmap_uo, builtin.out, builtin.out, (bit_buffer.read).read_buffer_di, (bit_buffer.read).read_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).get_bits(builtin.in, builtin.in, builtin.di, builtin.uo, builtin.out, builtin.out, (bit_buffer.read).read_buffer_di, (bit_buffer.read).read_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).new(builtin.in, builtin.in, builtin.di) = (bit_buffer.read).read_buffer_uo, infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).new_bitmap_reader(builtin.in) = (bit_buffer.read).read_buffer_uo, infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).new_bitmap_reader(builtin.in, builtin.in, builtin.in) = (bit_buffer.read).read_buffer_uo, infinite, can_loop).
+:- pragma termination_info((bit_buffer.read).num_bits_to_byte_boundary((bit_buffer.read).read_buffer_ui) = builtin.out, finite(0, [no, no, no, no, no]), can_loop).
+:- pragma termination_info((bit_buffer.read).num_buffered_bits((bit_buffer.read).read_buffer_ui) = builtin.out, infinite, can_loop).
+
+:- pragma exceptions(predicate, (bit_buffer.read).buffer_status, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bit_buffer.read).(finalize), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bit_buffer.read).get_bit, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bit_buffer.read).get_bitmap, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bit_buffer.read).get_bitmap, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bit_buffer.read).get_bits, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bit_buffer.read).new, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bit_buffer.read).new_bitmap_reader, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bit_buffer.read).new_bitmap_reader, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bit_buffer.read).num_bits_to_byte_boundary, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bit_buffer.read).num_buffered_bits, 1, 0, may_throw(user_exception)).
