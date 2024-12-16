@@ -1,0 +1,14 @@
+module(2, "set.m",
+	set,
+	{},
+	{bool, builtin, list, private_builtin, set_ordlist, term},
+	{require},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
