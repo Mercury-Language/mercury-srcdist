@@ -1,0 +1,3 @@
+:- module ra_list.
+:- interface.
+:- type ra_list(T).
