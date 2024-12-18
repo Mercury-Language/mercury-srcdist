@@ -1,0 +1,2 @@
+:- module transform_hlds.table_gen.
+:- interface.

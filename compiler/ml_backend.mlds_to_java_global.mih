@@ -1,0 +1,96 @@
+/*
+** Automatically generated from `mlds_to_java_global.m'
+** by the Mercury compiler,
+** version rotd-2024-12-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.mlds_to_java_global.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_java_global
+#define MR_HEADER_GUARD_ml_backend__mlds_to_java_global
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_JAVA_GLOBAL_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_JAVA_GLOBAL_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+void MR_CALL 
+ml_backend__mlds_to_java_global__output_global_var_assignments_for_java_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Unsigned param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_java_global__output_global_var_decls_for_java_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Unsigned param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_java_global__output_global_var_defn_for_java_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Unsigned param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+ml_backend__mlds_to_java_global__output_rtti_assignments_for_java_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Unsigned param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_java_global__output_scalar_common_data_for_java_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Unsigned param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_java_global__output_vector_common_data_for_java_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Unsigned param_3,
+  MR_Word param_4);
+
+void mercury__ml_backend__mlds_to_java_global__init(void);
+void mercury__ml_backend__mlds_to_java_global__init_type_tables(void);
+void mercury__ml_backend__mlds_to_java_global__init_debugger(void);
+const char *mercury__ml_backend__mlds_to_java_global__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.mlds_to_java_global
+
+// :- end_interface ml_backend.mlds_to_java_global.
