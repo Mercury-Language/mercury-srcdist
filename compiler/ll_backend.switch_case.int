@@ -1,0 +1,24 @@
+:- module ll_backend.switch_case.
+:- interface.
+:- use_module hlds.
+:- use_module map.
+:- use_module unit.
+:- use_module hlds.code_model.
+:- use_module hlds.hlds_goal.
+:- use_module ll_backend.code_info.
+:- use_module ll_backend.code_loc_dep.
+:- use_module ll_backend.llds.
+:- type case_code_included
+    --->    case_code_not_yet_included 
+    ;       case_code_already_included .
+:- type case_label_info
+    --->    case_label_info((ll_backend.switch_case).case_description :: string, (ll_backend.switch_case).case_code :: ll_backend.llds.llds_code, (ll_backend.switch_case).case_code_included :: ll_backend.switch_case.case_code_included).
+:- type case_label_map == map.map(ll_backend.llds.label, ll_backend.switch_case.case_label_info).
+:- type represent_params
+    --->    represent_params((ll_backend.switch_case).switch_var_name :: string, (ll_backend.switch_case).switch_goal_info :: hlds.hlds_goal.hlds_goal_info, (ll_backend.switch_case).switch_code_model :: hlds.code_model.code_model, (ll_backend.switch_case).starting_position :: ll_backend.code_loc_dep.position_info, (ll_backend.switch_case).switch_end_label :: ll_backend.llds.label).
+:- pred add_not_yet_included_cases(ll_backend.llds.llds_code, ll_backend.switch_case.case_label_map, ll_backend.switch_case.case_label_map).
+:- mode add_not_yet_included_cases(builtin.out, builtin.in, builtin.out) is det.
+:- pred generate_case_code_or_jump(ll_backend.llds.label, ll_backend.llds.llds_code, ll_backend.switch_case.case_label_map, ll_backend.switch_case.case_label_map).
+:- mode generate_case_code_or_jump(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred represent_tagged_case_for_llds(ll_backend.switch_case.represent_params, hlds.hlds_goal.tagged_case, ll_backend.llds.label, ll_backend.switch_case.case_label_map, ll_backend.switch_case.case_label_map, ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, ll_backend.code_info.code_info, ll_backend.code_info.code_info, unit.unit, unit.unit).
+:- mode represent_tagged_case_for_llds(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

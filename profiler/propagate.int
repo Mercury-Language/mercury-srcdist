@@ -1,0 +1,7 @@
+:- module propagate.
+:- interface.
+:- use_module digraph.
+:- use_module io.
+:- use_module prof_info.
+:- pred propagate_counts(digraph.digraph(string), prof_info.prof, prof_info.prof, io.io, io.io).
+:- mode propagate_counts(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
