@@ -1,0 +1,138 @@
+:- module io.error_util.
+:- use_module array.
+:- use_module benchmarking.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module dir.
+:- use_module exception.
+:- use_module int.
+:- use_module int16.
+:- use_module int32.
+:- use_module int64.
+:- use_module int8.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mercury_term_parser.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module rtti_implementation.
+:- use_module stream.
+:- use_module string.
+:- use_module table_builtin.
+:- use_module term.
+:- use_module term_conversion.
+:- use_module term_subst.
+:- use_module time.
+:- use_module type_desc.
+:- use_module uint16.
+:- use_module uint32.
+:- use_module uint64.
+:- use_module uint8.
+:- use_module univ.
+:- use_module io.call_system.
+:- use_module io.environment.
+:- use_module io.error_util.
+:- use_module io.file.
+:- use_module io.primitives_read.
+:- use_module io.primitives_write.
+:- use_module io.stream_db.
+:- use_module io.stream_ops.
+:- use_module io.text_read.
+:- use_module stream.string_writer.
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", io.error_util).
+:- pragma foreign_import_module("C", io.stream_ops).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("C#", io.error_util).
+:- pragma foreign_import_module("C#", io.primitives_write).
+:- pragma foreign_import_module("C#", io.stream_ops).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Java", io.error_util).
+:- pragma foreign_import_module("Java", io.stream_ops).
+
+:- type system_error_style
+    --->    syserr_errno 
+    ;       syserr_errno_or_win32 
+    ;       syserr_exception_object .
+
+:- pragma inline(pred((io.error_util).is_error/5)).
+io.error_util.is_error(V_6, V_7, V_8, V_11, V_12) :-
+    ( if
+      io.system_error_is_success(V_6)
+    then
+      V_8 = maybe.no : maybe.maybe(io.error),
+      V_12 = V_11
+    else
+      io.error_util.make_io_error_from_system_error_impl(V_6, V_7, V_10, V_11, V_12),
+      V_8 = maybe.yes(V_10) : maybe.maybe(io.error)
+    ).
+
+:- pragma foreign_proc("C",
+    (io.error_util).no_error = (Error :: builtin.out),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail],
+"
+    Error = 0;
+").
+
+io.error_util.throw_on_close_error(V_4, V_6, V_7) :-
+    V_8 = "error closing file: " : string,
+    io.error_util.throw_on_error(V_4, V_8, V_6, V_7).
+
+:- pragma inline(pred((io.error_util).throw_on_error/4)).
+io.error_util.throw_on_error(V_5, V_6, V_9, V_10) :-
+    ( if
+      io.system_error_is_success(V_5)
+    then
+      V_10 = V_9
+    else
+      io.error_util.make_io_error_from_system_error_impl(V_5, V_6, V_8, V_9, V_10),
+      exception.throw(V_8)
+    ).
+
+:- pragma inline(pred((io.error_util).throw_on_output_error/3)).
+io.error_util.throw_on_output_error(V_4, V_6, V_7) :-
+    V_8 = "error writing to output file: " : string,
+    io.error_util.throw_on_error(V_4, V_8, V_6, V_7).
+
+:- pragma termination_info((io.error_util).is_error(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((io.error_util).is_error_maybe_win32(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((io.error_util).make_io_error_from_maybe_win32_error(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((io.error_util).make_io_error_from_system_error_impl(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((io.error_util).make_io_error_from_windows_error_impl(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(((io.error_util).no_error) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info((io.error_util).throw_on_close_error(builtin.in, builtin.di, builtin.uo), finite(0, [no, yes, no]), can_loop).
+:- pragma termination_info((io.error_util).throw_on_error(builtin.in, builtin.in, builtin.di, builtin.uo), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info((io.error_util).throw_on_output_error(builtin.in, builtin.di, builtin.uo), finite(0, [no, yes, no]), can_loop).
+
+:- pragma exceptions(predicate, (io.error_util).is_error, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.error_util).is_error_maybe_win32, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.error_util).make_io_error_from_maybe_win32_error, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.error_util).make_io_error_from_system_error_impl, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.error_util).make_io_error_from_windows_error_impl, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (io.error_util).no_error, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.error_util).throw_on_close_error, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.error_util).throw_on_error, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.error_util).throw_on_output_error, 3, 0, may_throw(user_exception)).
