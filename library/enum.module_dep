@@ -1,0 +1,14 @@
+module(2, "enum.m",
+	enum,
+	{},
+	{builtin, private_builtin},
+	{require},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

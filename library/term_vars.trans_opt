@@ -1,0 +1,23 @@
+:- module term_vars.
+
+:- pragma termination_info(term_vars.term_contains_var(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(term_vars.term_contains_var(builtin.in, builtin.out), finite(-2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.terms_contain_var(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(term_vars.terms_contain_var(builtin.in, builtin.out), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.vars_in_term(builtin.in) = builtin.out, finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.vars_in_term(builtin.in, builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.vars_in_term_acc(builtin.in, builtin.in, builtin.out), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.vars_in_terms(builtin.in) = builtin.out, finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.vars_in_terms(builtin.in, builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.vars_in_terms_acc(builtin.in, builtin.in, builtin.out), finite(0, [no, yes, yes, no]), cannot_loop).
+
+:- pragma exceptions(predicate, term_vars.term_contains_var, 2, 0, conditional).
+:- pragma exceptions(predicate, term_vars.term_contains_var, 2, 1, will_not_throw).
+:- pragma exceptions(predicate, term_vars.terms_contain_var, 2, 0, conditional).
+:- pragma exceptions(predicate, term_vars.terms_contain_var, 2, 1, will_not_throw).
+:- pragma exceptions(function, term_vars.vars_in_term, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, term_vars.vars_in_term, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, term_vars.vars_in_term_acc, 3, 0, will_not_throw).
+:- pragma exceptions(function, term_vars.vars_in_terms, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, term_vars.vars_in_terms, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, term_vars.vars_in_terms_acc, 3, 0, will_not_throw).

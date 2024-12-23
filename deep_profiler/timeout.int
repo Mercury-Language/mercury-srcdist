@@ -1,0 +1,24 @@
+:- module timeout.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- pred delete_cleanup_files(io.io, io.io).
+:- mode delete_cleanup_files(builtin.di, builtin.uo) is det.
+:- pred get_lock(bool.bool, string, io.io, io.io).
+:- mode get_lock(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred make_want_file(string, io.io, io.io).
+:- mode make_want_file(builtin.in, builtin.di, builtin.uo) is det.
+:- pred register_file_for_cleanup(string, io.io, io.io).
+:- mode register_file_for_cleanup(builtin.in, builtin.di, builtin.uo) is det.
+:- pred release_lock(bool.bool, string, io.io, io.io).
+:- mode release_lock(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred remove_want_file(string, io.io, io.io).
+:- mode remove_want_file(builtin.in, builtin.di, builtin.uo) is det.
+:- pred setup_signals(string, string, string, io.io, io.io).
+:- mode setup_signals(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred setup_timeout(int, io.io, io.io).
+:- mode setup_timeout(builtin.in, builtin.di, builtin.uo) is det.
+:- pred unregister_all_files_for_cleanup(io.io, io.io).
+:- mode unregister_all_files_for_cleanup(builtin.di, builtin.uo) is det.
+:- pred unregister_file_for_cleanup(string, io.io, io.io).
+:- mode unregister_file_for_cleanup(builtin.in, builtin.di, builtin.uo) is det.
