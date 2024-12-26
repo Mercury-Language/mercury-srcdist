@@ -1,0 +1,2 @@
+:- module (transform_hlds.higher_order).specialize_calls.
+:- interface.

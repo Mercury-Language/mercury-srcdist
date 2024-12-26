@@ -1,0 +1,32 @@
+:- module parse_tree.deps_map.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.file_names.
+:- use_module parse_tree.module_baggage.
+:- type deps
+    --->    deps(parse_tree.deps_map.have_processed, parse_tree.deps_map.maybe_dummy_burdened_module, parse_tree.module_baggage.burdened_module).
+:- type deps_map == map.map(mdbcomp.sym_name.module_name, parse_tree.deps_map.deps).
+:- type file_or_module
+    --->    fm_file(libs.file_util.file_name)
+    ;       fm_module(mdbcomp.sym_name.module_name).
+:- type have_processed
+    --->    not_yet_processed 
+    ;       already_processed .
+:- type maybe_dummy_burdened_module
+    --->    non_dummy_burdened_module 
+    ;       dummy_burdened_module .
+:- type submodule_kind
+    --->    toplevel 
+    ;       nested_submodule 
+    ;       separate_submodule .
+:- pred generate_deps_map(io.text_output_stream, libs.globals.globals, parse_tree.file_names.maybe_search, parse_tree.deps_map.file_or_module, mdbcomp.sym_name.module_name, parse_tree.deps_map.deps_map, list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode generate_deps_map(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- func get_submodule_kind(mdbcomp.sym_name.module_name, parse_tree.deps_map.deps_map) = parse_tree.deps_map.submodule_kind.

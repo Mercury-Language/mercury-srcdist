@@ -1,0 +1,16 @@
+freefree.m:020: Warning: [38;5;203munresolved polymorphism[39;49m in predicate [38;5;87m`p'/0.[39;49m
+freefree.m:020:   The variables with unbound types were:
+freefree.m:020:     [38;5;203m`X',[39;49m
+freefree.m:020:     [38;5;203m`Y'.[39;49m
+freefree.m:020:   Their types will be implicitly set to the builtin type
+freefree.m:020:   `void'.
+freefree.m:020:   The body of the clause contains a call to a polymorphic
+freefree.m:020:   predicate, but I can't determine which version should be
+freefree.m:020:   called, because the types of the variables listed above are
+freefree.m:020:   not known. (I ought to tell you which call caused the
+freefree.m:020:   problem, but I am afraid you will have to work it out
+freefree.m:020:   yourself. My apologies.)
+freefree.m:023: In clause for `p':
+freefree.m:023:   mode error in unification of `X' and `Y'.
+freefree.m:023:   Variable [38;5;87m`X'[39;49m has instantiatedness [38;5;171m`free',[39;49m
+freefree.m:023:   variable [38;5;87m`Y'[39;49m has instantiatedness [38;5;171m`free'.[39;49m
