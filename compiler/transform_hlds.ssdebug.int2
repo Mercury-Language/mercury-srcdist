@@ -1,0 +1,10 @@
+:- module transform_hlds.ssdebug.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module hlds.hlds_module.
+:- use_module libs.globals.
+:- inst shallow_or_deep for (libs.globals).ssdb_trace_level/0
+    --->    ssdb_deep
+    ;       ssdb_shallow.

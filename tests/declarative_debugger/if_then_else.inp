@@ -1,0 +1,17 @@
+echo on
+register --quiet
+break if_then_else.ite
+continue
+finish
+dd -d 3 -n 7
+no
+yes
+yes
+yes
+continue
+finish
+dd -d 3 -n 7
+no
+yes
+yes
+continue

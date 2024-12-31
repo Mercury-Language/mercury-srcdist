@@ -1,0 +1,61 @@
+/*
+** Automatically generated from `mdprof_test.m'
+** by the Mercury compiler,
+** version rotd-2024-12-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdprof_test.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdprof_test
+#define MR_HEADER_GUARD_mdprof_test
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDPROF_TEST_DECL_GUARD
+#define MDPROF_TEST_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdprof_test__mdprof_test__type_ctor_info_option_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_test__mdprof_test__type_ctor_info_option_table_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_test__mdprof_test__type_ctor_info_options_0;
+
+void MR_CALL 
+main_2_p_0(void);
+
+void mercury__mdprof_test__init(void);
+void mercury__mdprof_test__init_type_tables(void);
+void mercury__mdprof_test__init_debugger(void);
+const char *mercury__mdprof_test__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdprof_test
+
+// :- end_interface mdprof_test.
