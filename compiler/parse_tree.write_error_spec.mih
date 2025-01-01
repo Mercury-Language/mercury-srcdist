@@ -1,0 +1,219 @@
+/*
+** Automatically generated from `write_error_spec.m'
+** by the Mercury compiler,
+** version rotd-2025-01-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.write_error_spec.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__write_error_spec
+#define MR_HEADER_GUARD_parse_tree__write_error_spec
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__WRITE_ERROR_SPEC_DECL_GUARD
+#define PARSE_TREE__WRITE_ERROR_SPEC_DECL_GUARD
+#include "parse_tree.mih"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Unsigned parse_tree__write_error_spec__mutable_variable_wrote_something;
+#else
+    extern MR_Unsigned parse_tree__write_error_spec__mutable_variable_wrote_something;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Unsigned parse_tree__write_error_spec__mutable_variable_bad_color_schemes;
+#else
+    extern MR_Unsigned parse_tree__write_error_spec__mutable_variable_bad_color_schemes;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Unsigned parse_tree__write_error_spec__mutable_variable_extra_error_info;
+#else
+    extern MR_Unsigned parse_tree__write_error_spec__mutable_variable_extra_error_info;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Unsigned parse_tree__write_error_spec__mutable_variable_some_errors_were_context_limited;
+#else
+    extern MR_Unsigned parse_tree__write_error_spec__mutable_variable_some_errors_were_context_limited;
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_already_printed_verbose_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_color_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_color_change_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_color_db_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_color_stack_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_context_limited_errors_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_error_line_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_in_work_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_is_in_work_text_prefix_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_line_end_reset_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_maybe_change_case_next_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_maybe_extra_error_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_maybe_first_in_msg_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_maybe_print_spec_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_maybe_treat_as_first_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_msg_pieces_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_newline_word_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_paragraph_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_paren_status_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_print_or_not_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_ssc_unit_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_text_word_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__write_error_spec__parse_tree__write_error_spec__type_ctor_info_word_0;
+
+MR_bool MR_CALL 
+parse_tree__write_error_spec__do_lines_fit_in_n_code_points_2_p_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__write_error_spec__maybe_print_delayed_error_messages_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__write_error_spec__pre_hlds_maybe_write_out_errors_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__write_error_spec__record_bad_color_scheme_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__write_error_spec__write_error_pieces_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Unsigned param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+parse_tree__write_error_spec__write_error_pieces_maybe_with_context_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Unsigned param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+parse_tree__write_error_spec__write_error_pieces_plain_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__write_error_spec__write_error_spec_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__write_error_spec__write_error_specs_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__write_error_spec__write_error_specs_opt_table_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_String MR_CALL 
+parse_tree__write_error_spec__error_lines_to_multi_line_string_2_f_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__write_error_spec__error_lines_to_one_line_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__write_error_spec__error_pieces_to_multi_line_string_2_f_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__write_error_spec__error_pieces_to_one_line_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__write_error_spec__error_pieces_to_std_lines_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__write_error_spec____Compare____error_line_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__write_error_spec____Unify____error_line_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__write_error_spec__init(void);
+void mercury__parse_tree__write_error_spec__init_type_tables(void);
+void mercury__parse_tree__write_error_spec__init_debugger(void);
+void mercury__parse_tree__write_error_spec__required_init(void);
+const char *mercury__parse_tree__write_error_spec__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.write_error_spec
+
+// :- end_interface parse_tree.write_error_spec.

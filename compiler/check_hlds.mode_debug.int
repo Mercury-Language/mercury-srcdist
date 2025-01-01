@@ -1,0 +1,13 @@
+:- module check_hlds.mode_debug.
+:- interface.
+:- use_module mdbcomp.
+:- use_module check_hlds.mode_info.
+:- use_module mdbcomp.sym_name.
+:- type port
+    --->    enter 
+    ;       exit 
+    ;       wakeup .
+:- pred mode_checkpoint(check_hlds.mode_debug.port, string, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_checkpoint(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred mode_checkpoint_sn(check_hlds.mode_debug.port, string, mdbcomp.sym_name.sym_name, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_checkpoint_sn(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
