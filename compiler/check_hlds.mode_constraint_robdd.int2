@@ -1,0 +1,25 @@
+:- module check_hlds.mode_constraint_robdd.
+:- interface.
+:- use_module map.
+:- use_module mode_robdd.
+:- use_module robdd.
+:- use_module stack.
+:- use_module term.
+:- use_module mdbcomp.goal_path.
+:- use_module parse_tree.set_of_var.
+:- type lambda_path == stack.stack(mdbcomp.goal_path.goal_id).
+:- type mc_type.
+:- type mode_constraint == mode_robdd.mode_robdd(check_hlds.mode_constraint_robdd.mc_type).
+:- type mode_constraint_info.
+:- type mode_constraint_var == term.var(check_hlds.mode_constraint_robdd.mc_type).
+:- type mode_constraint_vars == robdd.vars(check_hlds.mode_constraint_robdd.mc_type).
+:- type prodvars_map == map.map(check_hlds.mode_constraint_robdd.lambda_path, parse_tree.set_of_var.set_of_progvar).
+:- type prog_var_and_level.
+:- type rep_var
+    --->    in(parse_tree.prog_data.prog_var)
+    ;       out(parse_tree.prog_data.prog_var)
+    ;       at(parse_tree.prog_data.prog_var, mdbcomp.goal_path.goal_id).
+:- type threshold.
+:- implementation.
+:- type mc_type
+    --->    mc_type .

@@ -1,0 +1,27 @@
+:- module ml_backend.mlds_to_c_util.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module libs.
+:- use_module parse_tree.
+:- use_module libs.globals.
+:- use_module ml_backend.mlds.
+:- use_module ml_backend.mlds_to_target_util.
+:- use_module parse_tree.prog_data.
+:- type decl_or_defn
+    --->    forward_decl 
+    ;       definition .
+:- type mlds_to_c_opts
+    --->    mlds_to_c_opts((ml_backend.mlds_to_c_util).m2co_all_globals :: libs.globals.globals, (ml_backend.mlds_to_c_util).m2co_source_filename :: string, (ml_backend.mlds_to_c_util).m2co_line_numbers :: bool.bool, (ml_backend.mlds_to_c_util).m2co_foreign_line_numbers :: bool.bool, (ml_backend.mlds_to_c_util).m2co_auto_comments :: bool.bool, (ml_backend.mlds_to_c_util).m2co_single_prec_float :: bool.bool, (ml_backend.mlds_to_c_util).m2co_profile_calls :: bool.bool, (ml_backend.mlds_to_c_util).m2co_profile_memory :: bool.bool, (ml_backend.mlds_to_c_util).m2co_profile_time :: bool.bool, (ml_backend.mlds_to_c_util).m2co_need_to_init :: bool.bool, (ml_backend.mlds_to_c_util).m2co_target :: libs.globals.compilation_target, (ml_backend.mlds_to_c_util).m2co_gc_method :: libs.globals.gc_method, (ml_backend.mlds_to_c_util).m2co_target_or_dump :: ml_backend.mlds_to_c_util.target_or_dump, (ml_backend.mlds_to_c_util).m2co_std_func_decl :: bool.bool, (ml_backend.mlds_to_c_util).m2co_break_context :: ml_backend.mlds_to_target_util.break_context).
+:- type target_or_dump
+    --->    tod_target 
+    ;       tod_dump .
+:- pred c_output_context(io.text_output_stream, bool.bool, parse_tree.prog_data.prog_context, io.io, io.io).
+:- mode c_output_context(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred c_output_file_line(io.text_output_stream, bool.bool, string, int, io.io, io.io).
+:- mode c_output_file_line(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred c_output_stmt_context(io.text_output_stream, bool.bool, ml_backend.mlds.mlds_stmt, io.io, io.io).
+:- mode c_output_stmt_context(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred c_reset_context(io.text_output_stream, bool.bool, io.io, io.io).
+:- mode c_reset_context(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- func init_mlds_to_c_opts(libs.globals.globals, string, ml_backend.mlds_to_c_util.target_or_dump) = ml_backend.mlds_to_c_util.mlds_to_c_opts.
