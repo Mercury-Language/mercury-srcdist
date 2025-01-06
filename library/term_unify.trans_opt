@@ -1,0 +1,13 @@
+:- module term_unify.
+
+:- pragma termination_info(term_unify.first_term_list_subsumes_second(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_unify.unify_term_lists(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_unify.unify_term_lists_dont_bind(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_unify.unify_terms(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_unify.unify_terms_dont_bind(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, term_unify.first_term_list_subsumes_second, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_unify.unify_term_lists, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_unify.unify_term_lists_dont_bind, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_unify.unify_terms, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_unify.unify_terms_dont_bind, 5, 0, may_throw(user_exception)).

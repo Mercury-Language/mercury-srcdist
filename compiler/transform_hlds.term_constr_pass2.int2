@@ -1,0 +1,3 @@
+:- module transform_hlds.term_constr_pass2.
+:- interface.
+:- type pass2_options.
