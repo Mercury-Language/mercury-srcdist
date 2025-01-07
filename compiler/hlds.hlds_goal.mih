@@ -1,0 +1,1310 @@
+/*
+** Automatically generated from `hlds_goal.m'
+** by the Mercury compiler,
+** version rotd-2025-01-07
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_goal.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_goal
+#define MR_HEADER_GUARD_hlds__hlds_goal
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_GOAL_DECL_GUARD
+#define HLDS__HLDS_GOAL_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_atomic_goal_type_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_atomic_interface_vars_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_builtin_state_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_call_unify_context_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_can_cgc_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_cast_kind_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_catch_part_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_cell_is_unique_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_cell_to_reuse_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_conj_type_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_construct_sub_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_contains_trace_goal_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_ctgc_goal_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_dp_coverage_goal_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_dp_goal_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_force_pruning_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_foreign_arg_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_from_ground_term_kind_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_generic_call_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_goal_feature_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_goal_is_mdprof_inst_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_goal_trivial_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_higher_order_syntax_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_higher_order_value_map_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_code_gen_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_expr_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_extra_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_how_to_construct_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_incremental_rename_map_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_is_conditional_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_is_exist_constr_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_is_first_disjunct_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_lc_use_parent_stack_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_missed_message_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_mode_constr_goal_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_needs_update_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_port_counts_give_coverage_after_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_promise_solutions_kind_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_quant_creator_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_rbmm_goal_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_removable_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_reuse_description_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_scope_reason_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_short_reuse_description_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_shorthand_goal_expr_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_static_how_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_tagged_case_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_term_size_value_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_trace_mutable_var_hlds_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_try_io_state_vars_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unification_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_context_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_main_context_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_mode_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_rhs_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_sub_context_0;
+
+void MR_CALL 
+hlds__hlds_goal__conj_list_to_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__conjoin_goal_and_goal_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__conjoin_goals_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__disj_list_to_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__generic_call_to_id_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_goal__goal_add_feature_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_add_features_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_get_goal_purity_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_goal__goal_has_feature_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_add_feature_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_add_features_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_get_goal_purity_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_goal__goal_info_has_feature_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_init_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_init_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_init_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_init_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_init_context_purity_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_remove_feature_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_code_gen_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_code_gen_nonlocals_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_context_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_determinism_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_features_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_goal_id_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_goal_mode_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_higher_order_value_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_instmap_delta_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_maybe_ctgc_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_maybe_dp_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_maybe_mode_constr_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_maybe_rbmm_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_nonlocals_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_purity_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_reverse_goal_path_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_list_determinism_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_goal__goal_list_instmap_delta_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_goal__goal_list_nonlocals_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_goal__goal_list_purity_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_goal__goal_remove_feature_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_set_context_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_set_goal_id_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_set_purity_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__goal_to_conj_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_goal__goal_to_disj_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_goal__goal_to_par_conj_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_goal__incremental_rename_vars_in_goal_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_goal__make_foreign_args_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_goal__must_rename_vars_in_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__negate_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__par_conj_list_to_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__rename_some_vars_in_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_goal__rename_vars_in_goal_expr_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_goal__rename_vars_in_goal_expr_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_goal__rename_vars_in_goal_expr_4_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_goal__rename_vars_in_goal_expr_4_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_goal__rename_vars_in_goal_expr_4_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_goal__rename_vars_in_goal_info_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_goal__rename_vars_in_goals_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_goal__set_goal_contexts_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__ctgc_goal_info_init_0_f_0(void);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__foreign_arg_box_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__foreign_arg_maybe_name_mode_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__foreign_arg_type_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__foreign_arg_var_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__generic_call_pred_or_func_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__get_hlds_goal_expr_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__get_hlds_goal_info_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_get_nonlocals_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_get_purity_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_code_gen_info_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_code_gen_nonlocals_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_context_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_determinism_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_features_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_goal_id_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_goal_mode_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_higher_order_value_map_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_instmap_delta_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_maybe_ctgc_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_maybe_dp_info_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_maybe_mode_constr_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_maybe_rbmm_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_purity_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_reverse_goal_path_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__impure_init_goal_info_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__impure_reachable_init_goal_info_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__impure_unreachable_init_goal_info_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__rbmm_info_init_0_f_0(void);
+
+MR_Word MR_CALL 
+hlds__hlds_goal__worst_contains_trace_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____atomic_goal_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____atomic_interface_vars_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____builtin_state_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____call_unify_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____can_cgc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____case_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____case_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____cast_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____catch_part_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____cell_is_unique_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____cell_to_reuse_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____conj_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____construct_sub_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____contains_trace_goal_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____ctgc_goal_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____dp_coverage_goal_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____dp_goal_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____force_pruning_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____foreign_arg_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____from_ground_term_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____generic_call_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____goal_feature_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____goal_is_mdprof_inst_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____goal_trivial_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____higher_order_syntax_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____higher_order_value_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____hlds_goal_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____hlds_goal_code_gen_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____hlds_goal_expr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____hlds_goal_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____how_to_construct_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____incremental_rename_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____is_conditional_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____is_exist_constr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____is_first_disjunct_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____lc_use_parent_stack_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____missed_message_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____mode_constr_goal_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____needs_update_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____port_counts_give_coverage_after_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____promise_solutions_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____quant_creator_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____rbmm_goal_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____removable_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____reuse_description_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____scope_reason_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____short_reuse_description_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____shorthand_goal_expr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____static_how_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____tagged_case_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____term_size_value_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____trace_mutable_var_hlds_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____try_io_state_vars_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____unification_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____unify_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____unify_main_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____unify_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____unify_rhs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_goal____Compare____unify_sub_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____atomic_goal_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____atomic_interface_vars_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____builtin_state_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____call_unify_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____can_cgc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____case_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____case_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____cast_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____catch_part_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____cell_is_unique_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____cell_to_reuse_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____conj_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____construct_sub_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____contains_trace_goal_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____ctgc_goal_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____dp_coverage_goal_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____dp_goal_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____force_pruning_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____foreign_arg_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____from_ground_term_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____generic_call_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____goal_feature_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____goal_is_mdprof_inst_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____goal_trivial_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____higher_order_syntax_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____higher_order_value_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____hlds_goal_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____hlds_goal_code_gen_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____hlds_goal_expr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____hlds_goal_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____how_to_construct_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____incremental_rename_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____is_conditional_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____is_exist_constr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____is_first_disjunct_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____lc_use_parent_stack_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____missed_message_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____mode_constr_goal_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____needs_update_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____port_counts_give_coverage_after_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____promise_solutions_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____quant_creator_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____rbmm_goal_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____removable_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____reuse_description_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____scope_reason_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____short_reuse_description_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____shorthand_goal_expr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____static_how_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____tagged_case_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____term_size_value_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____trace_mutable_var_hlds_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____try_io_state_vars_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unification_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unify_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unify_main_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unify_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unify_rhs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unify_sub_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__hlds_goal__init(void);
+void mercury__hlds__hlds_goal__init_type_tables(void);
+void mercury__hlds__hlds_goal__init_debugger(void);
+const char *mercury__hlds__hlds_goal__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.hlds_goal
+
+// :- end_interface hlds.hlds_goal.

@@ -1,0 +1,19 @@
+:- module top_level.mercury_compile_augment.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module recompilation.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module libs.op_mode.
+:- use_module libs.timestamp.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.parse_error.
+:- use_module parse_tree.prog_parse_tree.
+:- use_module parse_tree.read_modules.
+:- use_module recompilation.check.
+:- pred augment_and_process_source_file(io.text_output_stream, io.text_output_stream, libs.globals.globals, libs.op_mode.op_mode_augment, libs.op_mode.op_mode_invoked_by_mmc_make, libs.file_util.file_name, maybe.maybe(libs.timestamp.timestamp), parse_tree.parse_error.read_module_errors, parse_tree.prog_parse_tree.parse_tree_src, recompilation.check.modules_to_recompile, list.list(string), list.list(string), list.list(parse_tree.error_spec.error_spec), parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, io.io, io.io).
+:- mode augment_and_process_source_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
