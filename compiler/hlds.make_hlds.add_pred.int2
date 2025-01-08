@@ -1,0 +1,5 @@
+:- module (hlds.make_hlds).add_pred.
+:- interface.
+:- type part_of_predmode
+    --->    not_part_of_predmode 
+    ;       part_of_predmode .

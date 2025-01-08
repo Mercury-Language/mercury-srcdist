@@ -1,0 +1,5 @@
+:- module (transform_hlds.implicit_parallelism).introduce_parallelism.
+:- interface.
+:- type_representation(candidate_par_conjunction, is_eqv_to(candidate_par_conjunction(pard_goal))).
+:- type_representation(module_candidate_par_conjs_map, is_eqv_to(map(intra_module_proc_label, candidate_par_conjunctions_proc))).
+:- type_representation(seq_conj, is_eqv_to(seq_conj(pard_goal))).
