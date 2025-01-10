@@ -1,0 +1,2 @@
+:- module browse_test.
+:- interface.

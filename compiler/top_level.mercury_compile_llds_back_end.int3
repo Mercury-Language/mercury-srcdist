@@ -1,0 +1,3 @@
+:- module top_level.mercury_compile_llds_back_end.
+:- interface.
+:- type_representation(dup_proc_label_map, is_eqv_to(map(mdbcomp.prim_data.proc_label, mdbcomp.prim_data.proc_label))).

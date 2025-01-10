@@ -1,0 +1,89 @@
+/*
+** Automatically generated from `indent.m'
+** by the Mercury compiler,
+** version rotd-2025-01-10
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.indent.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__indent
+#define MR_HEADER_GUARD_libs__indent
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__INDENT_DECL_GUARD
+#define LIBS__INDENT_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__indent__libs__indent__type_ctor_info_indent_0;
+
+void MR_CALL 
+libs__indent__format_indent2_3_p_0(
+  MR_Unsigned param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__indent__write_indent2_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2);
+
+MR_String MR_CALL 
+libs__indent__add_indent2_prefix_2_f_0(
+  MR_Unsigned param_1,
+  MR_String param_2);
+
+MR_Unsigned MR_CALL 
+libs__indent__indent2_increment_0_f_0(void);
+
+MR_String MR_CALL 
+libs__indent__indent2_string_1_f_0(
+  MR_Unsigned param_1);
+
+void MR_CALL 
+libs__indent____Compare____indent_0_0(
+  MR_Word * param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned param_3);
+
+MR_bool MR_CALL 
+libs__indent____Unify____indent_0_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+void mercury__libs__indent__init(void);
+void mercury__libs__indent__init_type_tables(void);
+void mercury__libs__indent__init_debugger(void);
+const char *mercury__libs__indent__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.indent
+
+// :- end_interface libs.indent.
