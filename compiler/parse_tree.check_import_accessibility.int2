@@ -1,0 +1,3 @@
+:- module parse_tree.check_import_accessibility.
+:- interface.
+:- type import_accessibility_info.
