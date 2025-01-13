@@ -1,0 +1,55 @@
+:- module io.stream_ops.
+:- interface.
+:- pred binary_input_stream_2(io.stream, io.io, io.io).
+:- mode binary_input_stream_2(builtin.out, builtin.di, builtin.uo) is det.
+:- pred binary_output_stream_2(io.stream, io.io, io.io).
+:- mode binary_output_stream_2(builtin.out, builtin.di, builtin.uo) is det.
+:- pred binary_stream_offset_2(io.stream, int64, io.system_error, io.io, io.io).
+:- mode binary_stream_offset_2(builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred close_stream(io.stream, io.system_error, io.io, io.io).
+:- mode close_stream(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred do_open_binary(string, string, int, io.stream, io.system_error, io.io, io.io).
+:- mode do_open_binary(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred do_open_text(string, string, int, io.stream, io.system_error, io.io, io.io).
+:- mode do_open_text(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred flush_binary_output_2(io.stream, io.system_error, io.io, io.io).
+:- mode flush_binary_output_2(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred flush_text_output_2(io.stream, io.system_error, io.io, io.io).
+:- mode flush_text_output_2(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred get_input_line_number_2(io.stream, int, io.io, io.io).
+:- mode get_input_line_number_2(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred get_output_line_number_2(io.stream, int, io.io, io.io).
+:- mode get_output_line_number_2(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred input_stream_2(io.stream, io.io, io.io).
+:- mode input_stream_2(builtin.out, builtin.di, builtin.uo) is det.
+:- pred output_stream_2(io.stream, io.io, io.io).
+:- mode output_stream_2(builtin.out, builtin.di, builtin.uo) is det.
+:- pred seek_binary_2(io.stream, int, int64, io.system_error, io.io, io.io).
+:- mode seek_binary_2(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred set_binary_input_stream_2(io.stream, io.stream, io.io, io.io).
+:- mode set_binary_input_stream_2(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred set_binary_output_stream_2(io.stream, io.stream, io.io, io.io).
+:- mode set_binary_output_stream_2(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred set_input_line_number_2(io.stream, int, io.io, io.io).
+:- mode set_input_line_number_2(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred set_input_stream_2(io.stream, io.stream, io.io, io.io).
+:- mode set_input_stream_2(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred set_output_line_number_2(io.stream, int, io.io, io.io).
+:- mode set_output_line_number_2(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred set_output_stream_2(io.stream, io.stream, io.io, io.io).
+:- mode set_output_stream_2(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- func stderr_stream_2 = io.stream.
+:- pred stderr_stream_2(io.stream, io.io, io.io).
+:- mode stderr_stream_2(builtin.out, builtin.di, builtin.uo) is det.
+:- pred stdin_binary_stream_2(io.stream, io.io, io.io).
+:- mode stdin_binary_stream_2(builtin.out, builtin.di, builtin.uo) is det.
+:- func stdin_stream_2 = io.stream.
+:- pred stdin_stream_2(io.stream, io.io, io.io).
+:- mode stdin_stream_2(builtin.out, builtin.di, builtin.uo) is det.
+:- pred stdout_binary_stream_2(io.stream, io.io, io.io).
+:- mode stdout_binary_stream_2(builtin.out, builtin.di, builtin.uo) is det.
+:- func stdout_stream_2 = io.stream.
+:- pred stdout_stream_2(io.stream, io.io, io.io).
+:- mode stdout_stream_2(builtin.out, builtin.di, builtin.uo) is det.
+:- pred whence_to_int(io.whence, int).
+:- mode whence_to_int(builtin.in, builtin.out) is det.

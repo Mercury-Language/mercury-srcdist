@@ -1,0 +1,16 @@
+:- module libs.timestamp.
+:- interface.
+:- use_module time.
+:- type maybe_return_timestamp
+    --->    do_not_return_timestamp 
+    ;       do_return_timestamp .
+:- type read_module_and_timestamps
+    --->    always_read_module(libs.timestamp.maybe_return_timestamp)
+    ;       do_not_read_module_if_match(libs.timestamp.timestamp).
+:- type timestamp.
+:- func newest_timestamp = libs.timestamp.timestamp.
+:- func oldest_timestamp = libs.timestamp.timestamp.
+:- pred parse_timestamp_string(string, libs.timestamp.timestamp).
+:- mode parse_timestamp_string(builtin.in, builtin.out) is semidet.
+:- func time_t_to_timestamp(time.time_t) = libs.timestamp.timestamp.
+:- func timestamp_to_string(libs.timestamp.timestamp) = string.
