@@ -1,0 +1,101 @@
+/*
+** Automatically generated from `prog_data_used_modules.m'
+** by the Mercury compiler,
+** version rotd-2025-01-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_data_used_modules.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_data_used_modules
+#define MR_HEADER_GUARD_parse_tree__prog_data_used_modules
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_DATA_USED_MODULES_DECL_GUARD
+#define PARSE_TREE__PROG_DATA_USED_MODULES_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__type_ctor_info_item_visibility_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__type_ctor_info_used_modules_0;
+
+void MR_CALL 
+parse_tree__prog_data_used_modules__record_format_modules_as_used_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__prog_data_used_modules__record_module_and_ancestors_as_used_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__prog_data_used_modules__record_sym_name_module_as_used_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+parse_tree__prog_data_used_modules__used_modules_init_0_f_0(void);
+
+void MR_CALL 
+parse_tree__prog_data_used_modules____Compare____item_visibility_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_data_used_modules____Compare____used_modules_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_data_used_modules____Unify____item_visibility_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_data_used_modules____Unify____used_modules_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__prog_data_used_modules__init(void);
+void mercury__parse_tree__prog_data_used_modules__init_type_tables(void);
+void mercury__parse_tree__prog_data_used_modules__init_debugger(void);
+const char *mercury__parse_tree__prog_data_used_modules__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.prog_data_used_modules
+
+// :- end_interface parse_tree.prog_data_used_modules.

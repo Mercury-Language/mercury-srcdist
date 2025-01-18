@@ -1,0 +1,14 @@
+module(2, "io.stream_ops.m",
+	io.stream_ops,
+	{io},
+	{builtin, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - io.stream_ops, "C#" - io.stream_ops, "Java" - io.stream_ops},
+	contains_foreign_export,
+	no_main,
+	{}
+).
