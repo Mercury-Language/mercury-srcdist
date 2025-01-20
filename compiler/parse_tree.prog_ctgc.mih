@@ -1,0 +1,213 @@
+/*
+** Automatically generated from `prog_ctgc.m'
+** by the Mercury compiler,
+** version rotd-2025-01-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_ctgc.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_ctgc
+#define MR_HEADER_GUARD_parse_tree__prog_ctgc
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_CTGC_DECL_GUARD
+#define PARSE_TREE__PROG_CTGC_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+void MR_CALL 
+parse_tree__prog_ctgc__dump_structure_reuse_domain_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+parse_tree__prog_ctgc__dump_structure_sharing_domain_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+parse_tree__prog_ctgc__format_interface_maybe_structure_reuse_domain_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+parse_tree__prog_ctgc__format_interface_structure_sharing_domain_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+MR_bool MR_CALL 
+parse_tree__prog_ctgc__parse_user_annotated_sharing_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__prog_ctgc__rename_datastruct_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__prog_ctgc__rename_selector_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__prog_ctgc__rename_structure_reuse_condition_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__prog_ctgc__rename_structure_reuse_conditions_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__prog_ctgc__rename_structure_reuse_domain_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__prog_ctgc__rename_structure_sharing_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__prog_ctgc__rename_structure_sharing_domain_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__prog_ctgc__rename_structure_sharing_pair_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__prog_ctgc__rename_unit_selector_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__prog_ctgc__rename_user_annotated_sharing_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+parse_tree__prog_ctgc__parse_datastruct_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_ctgc__parse_selector_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_ctgc__parse_structure_reuse_condition_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_ctgc__parse_structure_reuse_conditions_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_ctgc__parse_structure_reuse_domain_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_ctgc__parse_structure_sharing_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_ctgc__parse_structure_sharing_domain_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_ctgc__parse_structure_sharing_pair_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_ctgc__parse_unit_selector_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__prog_ctgc__init(void);
+void mercury__parse_tree__prog_ctgc__init_type_tables(void);
+void mercury__parse_tree__prog_ctgc__init_debugger(void);
+const char *mercury__parse_tree__prog_ctgc__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.prog_ctgc
+
+// :- end_interface parse_tree.prog_ctgc.
