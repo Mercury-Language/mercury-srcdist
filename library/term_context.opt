@@ -1,0 +1,28 @@
+:- module term_context.
+:- use_module builtin.
+:- use_module private_builtin.
+
+term_context.context_file(term_context.context(V_3, V_4)) = V_3.
+
+term_context.context_init(V_4, V_5) = term_context.context(V_4, V_5).
+
+term_context.context_line(term_context.context(V_3, V_4)) = V_4.
+
+term_context.dummy_context = term_context.context(V_2, V_3) :-
+    V_2 = "" : string,
+    V_3 = 0 : int.
+
+term_context.is_dummy_context(V_2) :-
+    V_2 = term_context.dummy_context.
+
+:- pragma termination_info(term_context.context_file(builtin.in) = builtin.out, finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info(term_context.context_init(builtin.in, builtin.in) = builtin.out, finite(2, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(term_context.context_line(builtin.in) = builtin.out, finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info((term_context.dummy_context) = builtin.out, finite(2, [no]), cannot_loop).
+:- pragma termination_info(term_context.is_dummy_context(builtin.in), finite(0, [no]), cannot_loop).
+
+:- pragma exceptions(function, term_context.context_file, 1, 0, will_not_throw).
+:- pragma exceptions(function, term_context.context_init, 2, 0, will_not_throw).
+:- pragma exceptions(function, term_context.context_line, 1, 0, will_not_throw).
+:- pragma exceptions(function, term_context.dummy_context, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, term_context.is_dummy_context, 1, 0, may_throw(type_exception)).

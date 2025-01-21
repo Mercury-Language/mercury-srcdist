@@ -1,0 +1,5 @@
+:- module top_level.mercury_compile_args.
+:- interface.
+:- type arg_processing_result
+    --->    apr_failure 
+    ;       apr_success((top_level.mercury_compile_args).aprs_globals :: libs.globals.globals, (top_level.mercury_compile_args).aprs_env_optfile_variables :: make.options_file.env_optfile_variables, (top_level.mercury_compile_args).aprs_env_var_args :: list.list(string), (top_level.mercury_compile_args).aprs_option_args :: list.list(string), (top_level.mercury_compile_args).aprs_nonoption_args :: list.list(string)).

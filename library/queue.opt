@@ -1,0 +1,116 @@
+:- module queue.
+:- use_module builtin.
+:- use_module int.
+:- use_module list.
+:- use_module private_builtin.
+
+:- type queue(T)
+    --->    queue(queue.on_list :: list.list(T), queue.off_list :: list.list(T)).
+
+queue.delete_all(V_6, V_5) = V_7 :-
+    queue.delete_all(V_5, V_6, V_7).
+
+queue.first(queue.queue(V_3, V_6), V_4) :-
+    V_6 = list.[V_4 | V_5] : list.list(T_1).
+
+queue.from_list(V_3) = queue.queue(V_4, V_3) :-
+    V_4 = list.[] : list.list(T_1).
+
+queue.init = V_2 :-
+    queue.init(V_2).
+
+queue.init(queue.queue(V_2, V_3)) :-
+    V_2 = list.[] : list.list(T_1),
+    V_3 = list.[] : list.list(T_1).
+
+queue.is_empty(queue.queue(V_2, V_3)) :-
+    V_3 = list.[] : list.list(T_1).
+
+queue.is_full(V_2) :-
+    builtin.semidet_fail.
+
+queue.length(V_3) = V_4 :-
+    queue.length(V_3, V_4).
+
+queue.length(queue.queue(V_3, V_4), V_5) :-
+    list.length(V_3, V_6),
+    list.length(V_4, V_7),
+    V_5 = int.(V_6 + V_7).
+
+queue.list_to_queue(V_3) = V_4 :-
+    queue.list_to_queue(V_3, V_4).
+
+queue.list_to_queue(V_3, queue.queue(V_4, V_3)) :-
+    V_4 = list.[] : list.list(T_1).
+
+queue.put(V_6, V_5) = V_7 :-
+    queue.put(V_5, V_6, V_7).
+
+queue.put_list(V_6, V_5) = V_7 :-
+    queue.put_list(V_5, V_6, V_7).
+
+queue.put_list_on_front(V_6, V_5) = V_7 :-
+    queue.put_list_on_front(V_5, V_6, V_7).
+
+queue.put_list_on_front(V_4, queue.queue(V_5, V_6), queue.queue(V_5, V_7)) :-
+    V_7 = list.(V_4 ++ V_6).
+
+queue.put_on_front(V_6, V_5) = V_7 :-
+    queue.put_on_front(V_5, V_6, V_7).
+
+queue.put_on_front(V_4, queue.queue(V_5, V_6), queue.queue(V_5, V_7)) :-
+    V_7 = list.[V_4 | V_6] : list.list(T_1).
+
+queue.to_list(queue.queue(V_3, V_4)) = V_2 :-
+    V_2 = list.(V_4 ++ V_5),
+    V_5 = list.reverse(V_3).
+
+:- pragma termination_info(queue.delete_all(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(queue.delete_all(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(queue.equal(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(queue.first(builtin.in, builtin.out), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(queue.from_list(builtin.in) = builtin.out, finite(2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(queue.get(builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(queue.get_from_back(builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info((queue.init) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(queue.init(builtin.out), infinite, cannot_loop).
+:- pragma termination_info(queue.is_empty(builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(queue.is_full(builtin.in), finite(0, [no, no]), can_loop).
+:- pragma termination_info(queue.length(builtin.in) = builtin.out, finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(queue.length(builtin.in, builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(queue.list_to_queue(builtin.in) = builtin.out, finite(2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(queue.list_to_queue(builtin.in, builtin.out), finite(2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(queue.put(builtin.in, builtin.in) = builtin.out, finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(queue.put(builtin.in, builtin.in, builtin.out), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(queue.put_list(builtin.in, builtin.in) = builtin.out, finite(0, [no, yes, yes, no]), can_loop).
+:- pragma termination_info(queue.put_list(builtin.in, builtin.in, builtin.out), finite(0, [no, yes, yes, no]), can_loop).
+:- pragma termination_info(queue.put_list_on_front(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(queue.put_list_on_front(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(queue.put_on_front(builtin.in, builtin.in) = builtin.out, finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(queue.put_on_front(builtin.in, builtin.in, builtin.out), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(queue.to_list(builtin.in) = builtin.out, infinite, can_loop).
+
+:- pragma exceptions(function, queue.delete_all, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, queue.delete_all, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, queue.equal, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, queue.first, 2, 0, will_not_throw).
+:- pragma exceptions(function, queue.from_list, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, queue.get, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, queue.get_from_back, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, queue.init, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, queue.init, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, queue.is_empty, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, queue.is_full, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, queue.length, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, queue.length, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, queue.list_to_queue, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, queue.list_to_queue, 2, 0, will_not_throw).
+:- pragma exceptions(function, queue.put, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, queue.put, 3, 0, will_not_throw).
+:- pragma exceptions(function, queue.put_list, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, queue.put_list, 3, 0, will_not_throw).
+:- pragma exceptions(function, queue.put_list_on_front, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, queue.put_list_on_front, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, queue.put_on_front, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, queue.put_on_front, 3, 0, will_not_throw).
+:- pragma exceptions(function, queue.to_list, 1, 0, may_throw(user_exception)).
