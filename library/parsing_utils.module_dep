@@ -1,0 +1,14 @@
+module(2, "parsing_utils.m",
+	parsing_utils,
+	{},
+	{builtin, char, list, maybe, private_builtin, unit},
+	{array, int, mutvar, string},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - parsing_utils, "C#" - parsing_utils, "Java" - parsing_utils},
+	no_foreign_export,
+	no_main,
+	{}
+).
