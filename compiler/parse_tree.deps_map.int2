@@ -1,0 +1,16 @@
+:- module parse_tree.deps_map.
+:- interface.
+:- use_module map.
+:- use_module mdbcomp.sym_name.
+:- type deps
+    --->    deps(parse_tree.deps_map.have_processed, parse_tree.deps_map.maybe_dummy_burdened_module, parse_tree.module_baggage.burdened_module).
+:- type deps_map == map.map(mdbcomp.sym_name.module_name, parse_tree.deps_map.deps).
+:- type file_or_module
+    --->    fm_file(libs.file_util.file_name)
+    ;       fm_module(mdbcomp.sym_name.module_name).
+:- type have_processed
+    --->    not_yet_processed 
+    ;       already_processed .
+:- type maybe_dummy_burdened_module
+    --->    non_dummy_burdened_module 
+    ;       dummy_burdened_module .

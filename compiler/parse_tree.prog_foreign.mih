@@ -1,0 +1,230 @@
+/*
+** Automatically generated from `prog_foreign.m'
+** by the Mercury compiler,
+** version rotd-2025-01-25
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_foreign.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_foreign
+#define MR_HEADER_GUARD_parse_tree__prog_foreign
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_FOREIGN_DECL_GUARD
+#define PARSE_TREE__PROG_FOREIGN_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_foreign__parse_tree__prog_foreign__type_ctor_info_foreign_body_code_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_foreign__parse_tree__prog_foreign__type_ctor_info_foreign_decl_code_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_foreign__parse_tree__prog_foreign__type_ctor_info_foreign_export_decl_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_foreign__parse_tree__prog_foreign__type_ctor_info_foreign_export_decls_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_foreign__parse_tree__prog_foreign__type_ctor_info_foreign_export_defn_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_foreign__parse_tree__prog_foreign__type_ctor_info_pred_target_name_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_foreign__parse_tree__prog_foreign__type_ctor_info_pred_target_names_0;
+
+MR_bool MR_CALL 
+parse_tree__prog_foreign__foreign_body_code_is_for_lang_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_foreign__foreign_decl_code_is_for_lang_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__prog_foreign__foreign_language_file_extension_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__prog_foreign__foreign_language_module_name_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__prog_foreign__new_user_init_or_final_pred_target_name_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_String * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+MR_Word MR_CALL 
+parse_tree__prog_foreign__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_112_114_101_102_101_114_95_102_111_114_101_105_103_110_95_108_97_110_103_117_97_103_101_95_95_91_49_93_95_48_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+parse_tree__prog_foreign__all_foreign_languages_0_f_0(void);
+
+MR_String MR_CALL 
+parse_tree__prog_foreign__convert_to_valid_c_identifier_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_foreign__fim_spec_module_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_foreign__fim_spec_module_name_from_module_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_foreign__foreign_type_language_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_foreign__make_init_name_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_foreign__name_mangle_1_f_0(
+  MR_String param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_foreign__name_mangle_no_leading_digit_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_foreign__prefer_foreign_language_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_String MR_CALL 
+parse_tree__prog_foreign__qualify_name_2_f_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_String MR_CALL 
+parse_tree__prog_foreign__sym_name_mangle_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__prog_foreign____Compare____foreign_body_code_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_foreign____Compare____foreign_decl_code_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_foreign____Compare____foreign_export_decl_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_foreign____Compare____foreign_export_decls_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_foreign____Compare____foreign_export_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_foreign____Compare____pred_target_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_foreign____Compare____pred_target_names_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_foreign____Unify____foreign_body_code_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_foreign____Unify____foreign_decl_code_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_foreign____Unify____foreign_export_decl_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_foreign____Unify____foreign_export_decls_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_foreign____Unify____foreign_export_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_foreign____Unify____pred_target_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_foreign____Unify____pred_target_names_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__prog_foreign__init(void);
+void mercury__parse_tree__prog_foreign__init_type_tables(void);
+void mercury__parse_tree__prog_foreign__init_debugger(void);
+const char *mercury__parse_tree__prog_foreign__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.prog_foreign
+
+// :- end_interface parse_tree.prog_foreign.
