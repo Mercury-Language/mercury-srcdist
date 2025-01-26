@@ -1,0 +1,5 @@
+:- module (hlds.hlds_out).hlds_out_pred.
+:- interface.
+:- type write_which_modes
+    --->    write_actual_modes 
+    ;       write_declared_modes .

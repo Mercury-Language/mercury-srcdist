@@ -1,0 +1,35 @@
+:- module parse_tree.equiv_type.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module one_or_more.
+:- use_module recompilation.
+:- use_module libs.maybe_util.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_event.
+:- use_module parse_tree.prog_data_used_modules.
+:- use_module parse_tree.prog_item.
+:- use_module parse_tree.prog_parse_tree.
+:- use_module recompilation.record_uses.
+:- type eqv_type_body
+    --->    eqv_type_body(parse_tree.prog_data.tvarset, list.list(parse_tree.prog_data.type_param), parse_tree.prog_data.mer_type).
+:- type type_eqv_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.equiv_type.eqv_type_body).
+:- pred expand_eqv_types_insts(parse_tree.prog_parse_tree.aug_compilation_unit, parse_tree.prog_parse_tree.aug_compilation_unit, parse_tree.prog_data_event.event_spec_map, parse_tree.prog_data_event.event_spec_map, parse_tree.equiv_type.type_eqv_map, parse_tree.prog_data_used_modules.used_modules, maybe.maybe(recompilation.record_uses.recompilation_info), maybe.maybe(recompilation.record_uses.recompilation_info), list.list(parse_tree.error_spec.error_spec)).
+:- mode expand_eqv_types_insts(builtin.in, builtin.out, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.out) is det.
+:- pred replace_in_ctors(parse_tree.equiv_type.type_eqv_map, one_or_more.one_or_more(parse_tree.prog_data.constructor), one_or_more.one_or_more(parse_tree.prog_data.constructor), parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.eqv_expand_info, recompilation.record_uses.eqv_expand_info).
+:- mode replace_in_ctors(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_prog_constraint_list(parse_tree.equiv_type.type_eqv_map, list.list(parse_tree.prog_data.prog_constraint), list.list(parse_tree.prog_data.prog_constraint), parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.eqv_expand_info, recompilation.record_uses.eqv_expand_info).
+:- mode replace_in_prog_constraint_list(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_type(parse_tree.equiv_type.type_eqv_map, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type, libs.maybe_util.maybe_changed, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.eqv_expand_info, recompilation.record_uses.eqv_expand_info).
+:- mode replace_in_type(builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_type_list(parse_tree.equiv_type.type_eqv_map, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_type), libs.maybe_util.maybe_changed, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.eqv_expand_info, recompilation.record_uses.eqv_expand_info).
+:- mode replace_in_type_list(builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_type_repn_eqv(parse_tree.equiv_type.type_eqv_map, parse_tree.prog_item.item_type_repn_info_eqv, parse_tree.prog_item.item_type_repn_info_eqv, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode replace_in_type_repn_eqv(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_type_report_circular_eqvs(parse_tree.equiv_type.type_eqv_map, parse_tree.prog_data.tvarset, parse_tree.prog_data.prog_context, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type, libs.maybe_util.maybe_changed, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode replace_in_type_report_circular_eqvs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_univ_exist_constraints(parse_tree.equiv_type.type_eqv_map, parse_tree.prog_data.univ_exist_constraints, parse_tree.prog_data.univ_exist_constraints, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.eqv_expand_info, recompilation.record_uses.eqv_expand_info).
+:- mode replace_in_univ_exist_constraints(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
