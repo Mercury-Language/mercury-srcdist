@@ -1,0 +1,13 @@
+:- module ml_backend.ml_proc_gen.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module ml_backend.ml_gen_info.
+:- use_module ml_backend.ml_global_data.
+:- use_module ml_backend.mlds.
+:- use_module parse_tree.error_spec.
+:- pred ml_gen_preds(io.text_output_stream, ml_backend.mlds.mlds_target_lang, ml_backend.ml_gen_info.ml_const_struct_map, list.list(ml_backend.mlds.mlds_function_defn), ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_global_data, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode ml_gen_preds(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

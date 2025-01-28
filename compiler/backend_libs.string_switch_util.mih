@@ -1,0 +1,144 @@
+/*
+** Automatically generated from `string_switch_util.m'
+** by the Mercury compiler,
+** version rotd-2025-01-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module backend_libs.string_switch_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_backend_libs__string_switch_util
+#define MR_HEADER_GUARD_backend_libs__string_switch_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BACKEND_LIBS__STRING_SWITCH_UTIL_DECL_GUARD
+#define BACKEND_LIBS__STRING_SWITCH_UTIL_DECL_GUARD
+#include "backend_libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct backend_libs__string_switch_util__backend_libs__string_switch_util__type_ctor_info_string_case_id_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__string_switch_util__backend_libs__string_switch_util__type_ctor_info_string_hash_slot_1;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__string_switch_util__backend_libs__string_switch_util__type_ctor_info_table_size_upgrade_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__string_switch_util__backend_libs__string_switch_util__type_ctor_info_trie_node_0;
+
+void MR_CALL 
+backend_libs__string_switch_util__build_str_case_id_list_3_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__string_switch_util__chase_any_stick_in_trie_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+backend_libs__string_switch_util__construct_string_hash_cases_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Integer * param_7);
+
+void MR_CALL 
+backend_libs__string_switch_util__create_trie_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+backend_libs__string_switch_util__string_binary_cases_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Word * param_16);
+
+void MR_CALL 
+backend_libs__string_switch_util____Compare____string_hash_slot_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+backend_libs__string_switch_util____Compare____table_size_upgrade_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__string_switch_util____Compare____trie_node_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+backend_libs__string_switch_util____Unify____string_hash_slot_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+backend_libs__string_switch_util____Unify____table_size_upgrade_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__string_switch_util____Unify____trie_node_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__backend_libs__string_switch_util__init(void);
+void mercury__backend_libs__string_switch_util__init_type_tables(void);
+void mercury__backend_libs__string_switch_util__init_debugger(void);
+const char *mercury__backend_libs__string_switch_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_backend_libs.string_switch_util
+
+// :- end_interface backend_libs.string_switch_util.

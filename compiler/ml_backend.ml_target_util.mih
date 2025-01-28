@@ -1,0 +1,102 @@
+/*
+** Automatically generated from `ml_target_util.m'
+** by the Mercury compiler,
+** version rotd-2025-01-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.ml_target_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_target_util
+#define MR_HEADER_GUARD_ml_backend__ml_target_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_TARGET_UTIL_DECL_GUARD
+#define ML_BACKEND__ML_TARGET_UTIL_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+MR_Word MR_CALL 
+ml_backend__ml_target_util__globals_target_supports_break_and_continue_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_target_util__globals_target_supports_computed_goto_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_target_util__globals_target_supports_goto_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_target_util__globals_target_supports_int64_switch_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_target_util__globals_target_supports_int_type_switch_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_target_util__globals_target_supports_string_switch_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_target_util__target_supports_break_and_continue_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_target_util__target_supports_computed_goto_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_target_util__target_supports_goto_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_target_util__target_supports_inheritence_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_target_util__target_supports_int64_switch_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_target_util__target_supports_string_switch_1_f_0(
+  MR_Word param_1);
+
+void mercury__ml_backend__ml_target_util__init(void);
+void mercury__ml_backend__ml_target_util__init_type_tables(void);
+void mercury__ml_backend__ml_target_util__init_debugger(void);
+const char *mercury__ml_backend__ml_target_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.ml_target_util
+
+// :- end_interface ml_backend.ml_target_util.
