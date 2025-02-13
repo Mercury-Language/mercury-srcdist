@@ -1,0 +1,8 @@
+:- module recompilation.
+:- interface.
+:- include_module recompilation.check.
+:- include_module recompilation.item_types.
+:- include_module recompilation.record_uses.
+:- include_module recompilation.usage.
+:- include_module recompilation.used_file.
+:- include_module recompilation.version.

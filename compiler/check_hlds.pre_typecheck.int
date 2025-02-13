@@ -1,0 +1,6 @@
+:- module check_hlds.pre_typecheck.
+:- interface.
+:- use_module hlds.
+:- use_module hlds.hlds_module.
+:- pred prepare_for_typecheck_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode prepare_for_typecheck_module(builtin.in, builtin.out) is det.

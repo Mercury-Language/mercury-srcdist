@@ -1,0 +1,199 @@
+/*
+** Automatically generated from `version_store.m'
+** by the Mercury compiler,
+** version rotd-2025-02-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module version_store.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_version_store
+#define MR_HEADER_GUARD_version_store
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef VERSION_STORE_DECL_GUARD
+#define VERSION_STORE_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__version_store__version_store__type_ctor_info_mutvar_2;
+
+extern const MR_TypeCtorInfo_Struct mercury__version_store__version_store__type_ctor_info_some_version_store_type_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__version_store__version_store__type_ctor_info_version_store_1;
+
+void MR_CALL 
+mercury__version_store__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_118_101_114_115_105_111_110_95_115_116_111_114_101_95_95_115_111_109_101_95_118_101_114_115_105_111_110_95_115_116_111_114_101_95_116_121_112_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__version_store__copy_mutvar_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__version_store__get_mutvar_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__version_store__new_cyclic_mutvar_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__version_store__new_mutvar_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__version_store__resize_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__version_store__set_mutvar_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__version_store__unsafe_rewind_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Box MR_CALL 
+mercury__version_store__elem_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mercury__version_store__f_101_108_101_109_32_58_61_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5);
+
+MR_Word MR_CALL 
+mercury__version_store__init_0_f_0(
+  MR_Word * param_1);
+
+MR_Box MR_CALL 
+mercury__version_store__lookup_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mercury__version_store__set_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5);
+
+MR_Integer MR_CALL 
+mercury__version_store__size_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__version_store__unsafe_rewind_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__version_store____Compare____mutvar_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+mercury__version_store____Compare____some_version_store_type_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__version_store____Compare____version_store_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__version_store____Unify____mutvar_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__version_store____Unify____some_version_store_type_0_0(void);
+
+MR_bool MR_CALL 
+mercury__version_store____Unify____version_store_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__version_store__init(void);
+void mercury__version_store__init_type_tables(void);
+void mercury__version_store__init_debugger(void);
+const char *mercury__version_store__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_version_store
+
+// :- end_interface version_store.

@@ -1,0 +1,14 @@
+module(2, "rtti_implementation.m",
+	rtti_implementation,
+	{},
+	{builtin, deconstruct, list, private_builtin, univ},
+	{array, bitmap, bool, char, int, int16, int32, maybe, require, stream, string, term_io, type_desc, string.format, string.parse_util},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - rtti_implementation, "C#" - rtti_implementation, "Java" - rtti_implementation},
+	no_foreign_export,
+	no_main,
+	{}
+).
