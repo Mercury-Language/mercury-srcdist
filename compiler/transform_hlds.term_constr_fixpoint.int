@@ -1,0 +1,13 @@
+:- module transform_hlds.term_constr_fixpoint.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module set.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module transform_hlds.term_constr_data.
+:- use_module transform_hlds.term_constr_errors.
+:- type fixpoint_options.
+:- pred do_fixpoint_calculation(transform_hlds.term_constr_fixpoint.fixpoint_options, set.set(hlds.hlds_pred.pred_proc_id), int, list.list(transform_hlds.term_constr_errors.term2_error), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode do_fixpoint_calculation(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func fixpoint_options_init(transform_hlds.term_constr_data.widening, int) = transform_hlds.term_constr_fixpoint.fixpoint_options.
