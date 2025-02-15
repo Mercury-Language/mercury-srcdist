@@ -1,0 +1,80 @@
+:- module prolog.
+:- use_module builtin.
+:- use_module deconstruct.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module pair.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module univ.
+
+prolog.(V_3 =.. pair.(V_4 - V_5)) :-
+    V_7 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    deconstruct.deconstruct(V_3, V_7, V_4, V_6, V_5).
+
+prolog.(V_3 =:= V_3).
+
+prolog.(V_3 == V_3).
+
+prolog.(V_3 =\= V_4) :-
+    not (
+      V_3 = V_4
+    ).
+
+prolog.(V_3 \== V_4) :-
+    not (
+      V_3 = V_4
+    ).
+
+prolog.seen(V_6, V_7) :-
+    io.stdin_stream(V_4, V_6, V_8),
+    io.set_input_stream(V_4, V_5, V_8, V_9),
+    io.close_input(V_5, V_9, V_7).
+
+prolog.seen_binary(V_6, V_7) :-
+    io.stdin_binary_stream(V_4, V_6, V_8),
+    io.set_binary_input_stream(V_4, V_5, V_8, V_9),
+    io.close_binary_input(V_5, V_9, V_7).
+
+prolog.told(V_6, V_7) :-
+    io.stdout_stream(V_4, V_6, V_8),
+    io.set_output_stream(V_4, V_5, V_8, V_9),
+    io.close_output(V_5, V_9, V_7).
+
+prolog.told_binary(V_6, V_7) :-
+    io.stdout_binary_stream(V_4, V_6, V_8),
+    io.set_binary_output_stream(V_4, V_5, V_8, V_9),
+    io.close_binary_output(V_5, V_9, V_7).
+
+:- pragma termination_info(prolog.'=..'(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(prolog.'=:='(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.'=='(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.'=\\='(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.'\\=='(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.arg(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(prolog.det_arg(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(prolog.see(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(prolog.see_binary(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(prolog.seen(builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(prolog.seen_binary(builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(prolog.tell(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(prolog.tell_binary(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(prolog.told(builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(prolog.told_binary(builtin.di, builtin.uo), infinite, can_loop).
+
+:- pragma exceptions(predicate, prolog.(=..), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, prolog.(=:=), 2, 0, conditional).
+:- pragma exceptions(predicate, prolog.(==), 2, 0, conditional).
+:- pragma exceptions(predicate, prolog.(=\=), 2, 0, conditional).
+:- pragma exceptions(predicate, prolog.(\==), 2, 0, conditional).
+:- pragma exceptions(predicate, prolog.arg, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, prolog.det_arg, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, prolog.see, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, prolog.see_binary, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, prolog.seen, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, prolog.seen_binary, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, prolog.tell, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, prolog.tell_binary, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, prolog.told, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, prolog.told_binary, 2, 0, may_throw(user_exception)).

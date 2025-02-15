@@ -1,0 +1,7 @@
+:- module libs.color_schemes.
+:- interface.
+:- type color_spec
+    --->    color_8bit(uint8)
+    ;       color_24bit(uint8, uint8, uint8).
+:- type color_specs
+    --->    color_specs((libs.color_schemes).color_spec_subject :: maybe.maybe(libs.color_schemes.color_spec), (libs.color_schemes).color_spec_correct :: maybe.maybe(libs.color_schemes.color_spec), (libs.color_schemes).color_spec_incorrect :: maybe.maybe(libs.color_schemes.color_spec), (libs.color_schemes).color_spec_inconsistent :: maybe.maybe(libs.color_schemes.color_spec), (libs.color_schemes).color_spec_hint :: maybe.maybe(libs.color_schemes.color_spec)).
