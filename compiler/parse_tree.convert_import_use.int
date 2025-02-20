@@ -1,0 +1,57 @@
+:- module parse_tree.convert_import_use.
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module one_or_more.
+:- use_module set.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item.
+:- use_module parse_tree.prog_parse_tree.
+:- type imp_import_context_map
+    --->    imp_import_context_map(parse_tree.convert_import_use.module_name_context).
+:- type imp_use_context_map
+    --->    imp_use_context_map(parse_tree.convert_import_use.module_name_context).
+:- type int_import_context_map
+    --->    int_import_context_map(parse_tree.convert_import_use.module_name_context).
+:- type int_use_context_map
+    --->    int_use_context_map(parse_tree.convert_import_use.module_name_context).
+:- type maybe_include_implicit
+    --->    do_include_implicit 
+    ;       do_not_include_implicit .
+:- type module_name_context == map.map(mdbcomp.sym_name.module_name, parse_tree.prog_data.prog_context).
+:- pred acc_avails_with_contexts(parse_tree.prog_item.import_or_use, mdbcomp.sym_name.module_name, one_or_more.one_or_more(parse_tree.prog_data.prog_context), list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.item_avail)).
+:- mode acc_avails_with_contexts(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred accumulate_imports_uses_maps(list.list(parse_tree.prog_item.item_avail), parse_tree.prog_parse_tree.module_names_contexts, parse_tree.prog_parse_tree.module_names_contexts, parse_tree.prog_parse_tree.module_names_contexts, parse_tree.prog_parse_tree.module_names_contexts).
+:- mode accumulate_imports_uses_maps(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred avail_imports_uses(list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.avail_import_info), list.list(parse_tree.prog_item.avail_use_info)).
+:- mode avail_imports_uses(builtin.in, builtin.out, builtin.out) is det.
+:- pred avail_is_import(parse_tree.prog_item.item_avail, parse_tree.prog_item.avail_import_info).
+:- mode avail_is_import(builtin.in, builtin.out) is semidet.
+:- pred avail_is_use(parse_tree.prog_item.item_avail, parse_tree.prog_item.avail_use_info).
+:- mode avail_is_use(builtin.in, builtin.out) is semidet.
+:- pred classify_int_imp_import_use_modules(bool.bool, mdbcomp.sym_name.module_name, list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.item_avail), parse_tree.prog_parse_tree.section_import_and_or_use_map, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode classify_int_imp_import_use_modules(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred classify_int_imp_use_modules(mdbcomp.sym_name.module_name, parse_tree.prog_parse_tree.module_names_contexts, parse_tree.prog_parse_tree.module_names_contexts, parse_tree.prog_parse_tree.section_use_map, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode classify_int_imp_use_modules(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred get_imports_uses(mdbcomp.sym_name.module_name, parse_tree.prog_parse_tree.section_import_and_or_use, set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode get_imports_uses(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred get_uses(mdbcomp.sym_name.module_name, parse_tree.prog_parse_tree.section_use, set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode get_uses(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred import_and_or_use_map_section_to_maybe_implicit(parse_tree.prog_parse_tree.section_import_and_or_use_map, parse_tree.prog_parse_tree.import_and_or_use_map).
+:- mode import_and_or_use_map_section_to_maybe_implicit(builtin.in, builtin.out) is det.
+:- pred import_and_or_use_map_to_explicit_int_imp_import_use_maps(parse_tree.prog_parse_tree.import_and_or_use_map, parse_tree.prog_parse_tree.section_import_and_or_use_map, parse_tree.convert_import_use.int_import_context_map, parse_tree.convert_import_use.int_use_context_map, parse_tree.convert_import_use.imp_import_context_map, parse_tree.convert_import_use.imp_use_context_map).
+:- mode import_and_or_use_map_to_explicit_int_imp_import_use_maps(builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred import_and_or_use_map_to_item_avails(parse_tree.convert_import_use.maybe_include_implicit, parse_tree.prog_parse_tree.import_and_or_use_map, list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.item_avail)).
+:- mode import_and_or_use_map_to_item_avails(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred import_and_or_use_map_to_module_name_contexts(parse_tree.prog_parse_tree.import_and_or_use_map, parse_tree.convert_import_use.module_name_context, parse_tree.convert_import_use.module_name_context, parse_tree.convert_import_use.module_name_context, parse_tree.convert_import_use.module_name_context, parse_tree.convert_import_use.module_name_context).
+:- mode import_and_or_use_map_to_module_name_contexts(builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- func import_or_use_decl_name(parse_tree.prog_item.import_or_use) = string.
+:- pred section_import_and_or_use_map_to_item_avails(parse_tree.prog_parse_tree.section_import_and_or_use_map, list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.item_avail)).
+:- mode section_import_and_or_use_map_to_item_avails(builtin.in, builtin.out, builtin.out) is det.
+:- pred section_use_map_to_item_avails(parse_tree.prog_parse_tree.section_use_map, list.list(parse_tree.prog_item.item_avail), list.list(parse_tree.prog_item.item_avail)).
+:- mode section_use_map_to_item_avails(builtin.in, builtin.out, builtin.out) is det.
+:- func use_map_to_item_avails(parse_tree.prog_parse_tree.module_names_contexts) = list.list(parse_tree.prog_item.item_avail).

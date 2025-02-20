@@ -1,0 +1,43 @@
+--no-unboxed-float --conf-low-tag-bits 2 --bits-per-word 32 --bytes-per-word 4
+--halt-at-warn
+--no-allow-ho-insts-as-modes
+--no-detect-libgrades
+--no-halt-at-warn-make-int
+--no-halt-at-warn-make-opt
+--no-infer-all
+--no-libgrade-install-check
+--no-mercury-stdlib-dir
+--warn-dead-preds
+--warn-implicit-stream-calls
+--warn-inconsistent-pred-order-clauses
+--warn-insts-with-functors-without-type
+--warn-known-bad-format-calls
+--warn-non-contiguous-clauses
+--warn-non-contiguous-foreign-procs
+--warn-potentially-ambiguous-pragma
+--warn-suspicious-foreign-code
+--warn-unknown-format-calls
+--warn-unused-imports
+-I../ssdb
+-I../browser
+-I../library
+--c-include-directory ../boehm_gc
+--c-include-directory ../boehm_gc/include
+--c-include-directory ../runtime
+--c-include-directory ../library
+--c-include-directory ../library/Mercury/mhs
+--c-include-directory ../library/Mercury/mihs
+--c-include-directory ../browser
+--c-include-directory ../browser/Mercury/mhs
+--c-include-directory ../browser/Mercury/mihs
+--c-include-directory ../ssdb
+--c-include-directory ../ssdb/Mercury/mhs
+--c-include-directory ../ssdb/Mercury/mihs
+--c-include-directory ../trace
+--csharp-flag -keyfile:../mercury.snk
+--no-java-classpath
+--java-classpath ../library/mer_rt.jar
+--java-classpath ../library/mer_std.jar
+--java-classpath ../mdbcomp/mer_mdbcomp.jar
+--config-file ../scripts/Mercury.config.bootstrap
+--force-disable-tracing

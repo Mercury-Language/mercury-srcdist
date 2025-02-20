@@ -1,0 +1,14 @@
+module(2, "rtti_access.m",
+	mdbcomp.rtti_access,
+	{mdbcomp},
+	{builtin, list, maybe, private_builtin, mdbcomp.goal_path, mdbcomp.prim_data, mdbcomp.trace_counts},
+	{char, int, require, string, mdbcomp.sym_name},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - mdbcomp.rtti_access, "C#" - mdbcomp.rtti_access, "Java" - mdbcomp.rtti_access},
+	no_foreign_export,
+	no_main,
+	{}
+).

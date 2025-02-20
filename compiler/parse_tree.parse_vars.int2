@@ -1,0 +1,12 @@
+:- module parse_tree.parse_vars.
+:- interface.
+:- type plain_state_dot_colon_vars(T)
+    --->    plain_state_dot_colon_vars(list.list(term.var(T)), list.list(term.var(T)), list.list(term.var(T)), list.list(term.var(T))).
+:- type plain_state_vars(T)
+    --->    plain_state_vars(list.list(term.var(T)), list.list(term.var(T))).
+:- type quantifier_type
+    --->    quant_type_exist 
+    ;       quant_type_univ .
+:- type var_or_type_var
+    --->    ordinary_var 
+    ;       type_var .
