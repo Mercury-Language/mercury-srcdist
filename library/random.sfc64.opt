@@ -1,0 +1,83 @@
+:- module random.sfc64.
+:- use_module array.
+:- use_module builtin.
+:- use_module float.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module math.
+:- use_module mutvar.
+:- use_module private_builtin.
+:- use_module uint.
+:- use_module uint16.
+:- use_module uint32.
+:- use_module uint64.
+:- use_module uint8.
+
+:- type params
+    --->    params .
+:- type ustate
+    --->    ustate(array.array(uint64)).
+
+:- instance (random.urandom(random.sfc64.params, random.sfc64.ustate)) where [
+	pred((random.generate_uint8)/4) is (random.sfc64).generate_uint8,
+	pred((random.generate_uint16)/4) is (random.sfc64).generate_uint16,
+	pred((random.generate_uint32)/4) is (random.sfc64).generate_uint32,
+	pred((random.generate_uint64)/4) is (random.sfc64).generate_uint64
+].
+:- instance (random.urandom_dup(random.sfc64.ustate)) where [
+	pred((random.urandom_dup)/3) is (random.sfc64).urandom_dup
+].
+
+random.sfc64.generate_uint16(V_5, V_6, V_8, V_9) :-
+    random.sfc64.generate_uint16(V_6, V_8, V_9).
+
+random.sfc64.generate_uint32(V_4, V_7, V_8) :-
+    random.sfc64.generate_uint64(V_6, V_7, V_8),
+    V_4 = uint32.cast_from_uint64(V_10),
+    V_10 = uint64.(V_6 >> V_11),
+    V_11 = 32 : int.
+
+random.sfc64.generate_uint32(V_5, V_6, V_8, V_9) :-
+    random.sfc64.generate_uint32(V_6, V_8, V_9).
+
+random.sfc64.generate_uint64(V_5, V_6, V_8, V_9) :-
+    random.sfc64.generate_uint64(V_6, V_8, V_9).
+
+random.sfc64.generate_uint8(V_5, V_6, V_8, V_9) :-
+    random.sfc64.generate_uint8(V_6, V_8, V_9).
+
+random.sfc64.init(V_3, V_4) :-
+    V_5 = 10770414526938563505u64 : uint64,
+    V_6 = 10770414526938563505u64 : uint64,
+    V_7 = 10770414526938563505u64 : uint64,
+    random.sfc64.seed(V_5, V_6, V_7, V_3, V_4).
+
+:- pragma termination_info((random.sfc64).'ClassMethod_for_random__urandom____random__sfc64__params__arity0__random__sfc64__ustate__arity0______random__generate_uint16_4'(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).'ClassMethod_for_random__urandom____random__sfc64__params__arity0__random__sfc64__ustate__arity0______random__generate_uint32_4'(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).'ClassMethod_for_random__urandom____random__sfc64__params__arity0__random__sfc64__ustate__arity0______random__generate_uint64_4'(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).'ClassMethod_for_random__urandom____random__sfc64__params__arity0__random__sfc64__ustate__arity0______random__generate_uint8_4'(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).'ClassMethod_for_random__urandom_dup____random__sfc64__ustate__arity0______random__urandom_dup_3'(builtin.di, builtin.uo, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).generate_uint16(builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).generate_uint16(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).generate_uint32(builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).generate_uint32(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).generate_uint64(builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).generate_uint64(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).generate_uint8(builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).generate_uint8(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).init(builtin.out, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).seed(builtin.in, builtin.in, builtin.in, builtin.out, builtin.uo), infinite, can_loop).
+:- pragma termination_info((random.sfc64).urandom_dup(builtin.di, builtin.uo, builtin.uo), infinite, can_loop).
+
+:- pragma exceptions(predicate, (random.sfc64).generate_uint16, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.sfc64).generate_uint16, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.sfc64).generate_uint32, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.sfc64).generate_uint32, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.sfc64).generate_uint64, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.sfc64).generate_uint64, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.sfc64).generate_uint8, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.sfc64).generate_uint8, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.sfc64).init, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.sfc64).seed, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.sfc64).urandom_dup, 3, 0, may_throw(user_exception)).
