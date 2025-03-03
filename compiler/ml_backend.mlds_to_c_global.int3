@@ -1,0 +1,5 @@
+:- module ml_backend.mlds_to_c_global.
+:- interface.
+:- type maybe_blank_line_between_defns
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_blank_line_between_defns, du_repn(enum("no_blank_line_between_defns", "blank_line_between_defns", [],  no_c_j_cs))).

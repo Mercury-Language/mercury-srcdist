@@ -1,0 +1,13 @@
+:- module check_hlds.typecheck_errors.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module check_hlds.type_assign.
+:- use_module check_hlds.typecheck_info.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- func report_invalid_coerce_from_to(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.tvarset, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type) = parse_tree.error_spec.error_spec.
+:- func report_missing_tvar_in_foreign_code(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, string) = parse_tree.error_spec.error_spec.
+:- func report_redundant_coerce(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.tvarset, parse_tree.prog_data.mer_type) = parse_tree.error_spec.error_spec.
+:- func report_unresolved_coerce_from_to(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.tvarset, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type) = parse_tree.error_spec.error_spec.
+:- func report_unsatisfiable_constraints(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, check_hlds.type_assign.type_assign_set) = parse_tree.error_spec.error_spec.

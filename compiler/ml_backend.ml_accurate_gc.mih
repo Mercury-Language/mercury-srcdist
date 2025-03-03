@@ -1,0 +1,86 @@
+/*
+** Automatically generated from `ml_accurate_gc.m'
+** by the Mercury compiler,
+** version rotd-2025-03-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.ml_accurate_gc.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_accurate_gc
+#define MR_HEADER_GUARD_ml_backend__ml_accurate_gc
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_ACCURATE_GC_DECL_GUARD
+#define ML_BACKEND__ML_ACCURATE_GC_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_fixup_newobj_info_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_how_to_get_type_info_0;
+
+void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_statement_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_statement_poly_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_statement_with_typeinfo_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void mercury__ml_backend__ml_accurate_gc__init(void);
+void mercury__ml_backend__ml_accurate_gc__init_type_tables(void);
+void mercury__ml_backend__ml_accurate_gc__init_debugger(void);
+const char *mercury__ml_backend__ml_accurate_gc__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.ml_accurate_gc
+
+// :- end_interface ml_backend.ml_accurate_gc.
