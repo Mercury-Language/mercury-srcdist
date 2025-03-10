@@ -1,0 +1,2 @@
+:- module array_util.
+:- interface.

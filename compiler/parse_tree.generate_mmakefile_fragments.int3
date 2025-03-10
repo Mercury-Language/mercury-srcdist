@@ -1,0 +1,14 @@
+:- module parse_tree.generate_mmakefile_fragments.
+:- interface.
+:- type intermod_deps.
+:- type maybe_include_trans_opt_rule.
+:- type maybe_intermod_mh_deps
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_file_deps.
+:- type maybe_trans_opt_deps.
+:- type std_deps.
+:- type trans_opt_rule_info.
+:- type_representation(intermod_deps, is_word_aligned_ptr).
+:- type_representation(maybe_intermod_mh_deps, du_repn(enum("no_intermod_mh_deps", "intermod_mh_deps", [],  no_c_j_cs))).
+:- type_representation(maybe_mmake_var, is_eqv_to(pair(list(string), string))).
+:- type_representation(std_deps, is_word_aligned_ptr).

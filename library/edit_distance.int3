@@ -1,0 +1,3 @@
+:- module edit_distance.
+:- interface.
+:- type edit_params(T).
