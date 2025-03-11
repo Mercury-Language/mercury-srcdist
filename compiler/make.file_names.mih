@@ -1,0 +1,117 @@
+/*
+** Automatically generated from `make.file_names.m'
+** by the Mercury compiler,
+** version rotd-2025-03-11
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.file_names.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__file_names
+#define MR_HEADER_GUARD_make__file_names
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__FILE_NAMES_DECL_GUARD
+#define MAKE__FILE_NAMES_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct make__file_names__make__file_names__type_ctor_info_maybe_target_extension_0;
+
+MR_bool MR_CALL 
+make__file_names__date_file_extension_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+make__file_names__dependency_file_to_file_name_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+make__file_names__module_maybe_nested_target_file_to_file_name_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_String * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+make__file_names__module_maybe_nested_target_file_to_search_file_name_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_String * param_6,
+  MR_String * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+make__file_names__module_target_file_to_file_name_7_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+make__file_names__module_target_to_file_name_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+make__file_names__module_target_to_search_file_name_9_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_String * param_6,
+  MR_String * param_7);
+
+void mercury__make__file_names__init(void);
+void mercury__make__file_names__init_type_tables(void);
+void mercury__make__file_names__init_debugger(void);
+const char *mercury__make__file_names__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.file_names
+
+// :- end_interface make.file_names.

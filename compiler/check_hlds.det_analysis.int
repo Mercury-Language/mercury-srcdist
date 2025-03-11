@@ -1,0 +1,15 @@
+:- module check_hlds.det_analysis.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.error_spec.
+:- pred det_infer_proc_ignore_msgs(io.text_output_stream, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode det_infer_proc_ignore_msgs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred determinism_check_proc(io.text_output_stream, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, list.list(parse_tree.error_spec.error_spec), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode determinism_check_proc(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred determinism_pass(io.text_output_stream, list.list(parse_tree.error_spec.error_spec), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode determinism_pass(builtin.in, builtin.out, builtin.in, builtin.out) is det.
