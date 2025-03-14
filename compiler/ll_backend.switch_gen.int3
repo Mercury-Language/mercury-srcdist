@@ -1,0 +1,2 @@
+:- module ll_backend.switch_gen.
+:- interface.

@@ -1,0 +1,16 @@
+:- module ml_backend.mlds_to_c_type.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module ml_backend.mlds.
+:- use_module ml_backend.mlds_to_c_util.
+:- func cast_to_prefix_string_for_c(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type) = string.
+:- pred mlds_output_return_list(io.text_output_stream, pred(T, io.text_output_stream, io.io, io.io), list.list(T), io.io, io.io).
+:- mode mlds_output_return_list(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- func return_list_to_string_for_c(list.list(string)) = string.
+:- func semicanonicalize_types_in_initializer_for_c(ml_backend.mlds.mlds_initializer) = ml_backend.mlds.mlds_initializer.
+:- pred type_to_prefix_suffix_for_c(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type, ml_backend.mlds.initializer_array_size, string, string).
+:- mode type_to_prefix_suffix_for_c(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred type_to_prefix_suffix_for_c_no_size(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type, string, string).
+:- mode type_to_prefix_suffix_for_c_no_size(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- func type_to_string_for_c(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type) = string.

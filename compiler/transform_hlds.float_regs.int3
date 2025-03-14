@@ -1,0 +1,2 @@
+:- module transform_hlds.float_regs.
+:- interface.
