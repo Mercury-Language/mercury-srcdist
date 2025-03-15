@@ -1,0 +1,9 @@
+:- module parse_tree.warn_unread_modules.
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module set_tree234.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- pred warn_about_any_unread_modules_with_read_ancestors(set_tree234.set_tree234(mdbcomp.sym_name.module_name), set_tree234.set_tree234(mdbcomp.sym_name.module_name), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode warn_about_any_unread_modules_with_read_ancestors(builtin.in, builtin.in, builtin.in, builtin.out) is det.
