@@ -1,0 +1,31 @@
+#!/bin/sh
+# This generates mercury_getopt*.[ch] from the files in ../getopt
+
+chmod 644 mercury_getopt.h mercury_getopt.c mercury_getopt_long.c
+
+for file in getopt.h getopt.c getopt_long.c
+do
+	echo processing mercury_$file
+	cp ../getopt/$file mercury_$file
+	ex mercury_$file << END
+	g/#include/s/getopt/mercury_getopt/
+	g/\<getopt\(.*(\)/s//MR_getopt\1/g
+	g/\<optarg\>/s//MR_optarg/g
+	g/\<optind\>/s//MR_optind/g
+	g/\<opterr\>/s//MR_opterr/g
+	g/\<optopt\>/s//MR_optopt/g
+	g/\<optreset\>/s//MR_optreset/g
+	g/\<__optpos\>/s//MR__optpos/g
+	g/\<__optreset\>/s//MR__optreset/g
+	g/\<__getopt_msg\>/s//MR__getopt_msg/g
+	g/\<struct option\>/s//struct MR_option/g
+	g/\<no_argument\>/s//MR_no_argument/g
+	g/\<required_argument\>/s//MR_required_argument/g
+	g/\<optional_argument\>/s//MR_optional_argument/g
+	g/\<_GETOPT_H\>/s//MERCURY_GETOPT_H/g
+	w
+	q
+END
+done
+
+chmod 444 mercury_getopt.h mercury_getopt.c mercury_getopt_long.c

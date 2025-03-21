@@ -1,0 +1,14 @@
+module(2, "prim_data.m",
+	mdbcomp.prim_data,
+	{mdbcomp},
+	{builtin, private_builtin, mdbcomp.sym_name},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
