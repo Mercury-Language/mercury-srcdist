@@ -1,0 +1,183 @@
+/*
+** Automatically generated from `make_hlds_types.m'
+** by the Mercury compiler,
+** version rotd-2025-03-26
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_hlds.make_hlds_types.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__make_hlds_types
+#define MR_HEADER_GUARD_hlds__make_hlds__make_hlds_types
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__MAKE_HLDS_TYPES_DECL_GUARD
+#define HLDS__MAKE_HLDS__MAKE_HLDS_TYPES_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_types__hlds__make_hlds__make_hlds_types__type_ctor_info_found_invalid_inst_or_mode_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_types__hlds__make_hlds__make_hlds_types__type_ctor_info_found_invalid_type_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_types__hlds__make_hlds__make_hlds_types__type_ctor_info_ims_cord_1;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_types__hlds__make_hlds__make_hlds_types__type_ctor_info_ims_list_1;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_types__hlds__make_hlds__make_hlds_types__type_ctor_info_ims_sub_list_1;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_types__hlds__make_hlds__make_hlds_types__type_ctor_info_sec_cord_1;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_types__hlds__make_hlds__make_hlds_types__type_ctor_info_sec_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_types__hlds__make_hlds__make_hlds_types__type_ctor_info_sec_list_1;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_types__hlds__make_hlds__make_hlds_types__type_ctor_info_sec_sub_list_1;
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_types____Compare____found_invalid_inst_or_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_types____Compare____found_invalid_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_types____Compare____ims_cord_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_types____Compare____ims_list_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_types____Compare____ims_sub_list_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_types____Compare____sec_cord_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_types____Compare____sec_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_types____Compare____sec_list_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_types____Compare____sec_sub_list_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_types____Unify____found_invalid_inst_or_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_types____Unify____found_invalid_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_types____Unify____ims_cord_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_types____Unify____ims_list_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_types____Unify____ims_sub_list_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_types____Unify____sec_cord_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_types____Unify____sec_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_types____Unify____sec_list_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_types____Unify____sec_sub_list_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__hlds__make_hlds__make_hlds_types__init(void);
+void mercury__hlds__make_hlds__make_hlds_types__init_type_tables(void);
+void mercury__hlds__make_hlds__make_hlds_types__init_debugger(void);
+const char *mercury__hlds__make_hlds__make_hlds_types__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.make_hlds.make_hlds_types
+
+// :- end_interface hlds.make_hlds.make_hlds_types.
