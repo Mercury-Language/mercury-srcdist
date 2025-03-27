@@ -1,0 +1,53 @@
+/*
+** Automatically generated from `module_qual.m'
+** by the Mercury compiler,
+** version rotd-2025-03-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.module_qual.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__module_qual
+#define MR_HEADER_GUARD_parse_tree__module_qual
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__MODULE_QUAL_DECL_GUARD
+#define PARSE_TREE__MODULE_QUAL_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+void mercury__parse_tree__module_qual__init(void);
+void mercury__parse_tree__module_qual__init_type_tables(void);
+void mercury__parse_tree__module_qual__init_debugger(void);
+const char *mercury__parse_tree__module_qual__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.module_qual
+
+// :- end_interface parse_tree.module_qual.

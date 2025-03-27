@@ -1,0 +1,7 @@
+:- module check_hlds.xml_documentation.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module hlds.hlds_module.
+:- pred xml_documentation(io.text_output_stream, hlds.hlds_module.module_info, io.io, io.io).
+:- mode xml_documentation(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
