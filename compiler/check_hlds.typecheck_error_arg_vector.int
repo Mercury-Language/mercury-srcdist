@@ -1,0 +1,13 @@
+:- module check_hlds.typecheck_error_arg_vector.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module check_hlds.type_assign.
+:- use_module check_hlds.typecheck_error_type_assign.
+:- use_module check_hlds.typecheck_error_util.
+:- use_module check_hlds.typecheck_info.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- type arg_vector_type_error
+    --->    arg_vector_type_error(int, parse_tree.prog_data.prog_var, check_hlds.typecheck_error_type_assign.actual_expected_types).
+:- func report_error_wrong_types_in_arg_vector(check_hlds.typecheck_info.typecheck_info, parse_tree.prog_data.prog_context, check_hlds.typecheck_error_util.arg_vector_kind, check_hlds.type_assign.type_assign_set, list.list(check_hlds.typecheck_error_arg_vector.arg_vector_type_error)) = parse_tree.error_spec.error_spec.

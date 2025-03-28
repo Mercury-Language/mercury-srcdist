@@ -1,0 +1,14 @@
+module(2, "set_ctree234.m",
+	set_ctree234,
+	{},
+	{bool, builtin, list, private_builtin},
+	{cord, int, io, require, string, term, string.format, string.parse_util},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

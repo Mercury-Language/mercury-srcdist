@@ -1,0 +1,6 @@
+:- module check_hlds.mode_ordering.
+:- interface.
+:- type pred_constraint_info.
+:- type pred_constraint_map.
+:- type_representation(pred_constraint_info, is_word_aligned_ptr).
+:- type_representation(pred_constraint_map, is_eqv_to(map(pred_id, check_hlds.mode_ordering.pred_constraint_info))).

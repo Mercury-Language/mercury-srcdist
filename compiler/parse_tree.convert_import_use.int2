@@ -1,0 +1,17 @@
+:- module parse_tree.convert_import_use.
+:- interface.
+:- use_module map.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- type imp_import_context_map
+    --->    imp_import_context_map(parse_tree.convert_import_use.module_name_context).
+:- type imp_use_context_map
+    --->    imp_use_context_map(parse_tree.convert_import_use.module_name_context).
+:- type int_import_context_map
+    --->    int_import_context_map(parse_tree.convert_import_use.module_name_context).
+:- type int_use_context_map
+    --->    int_use_context_map(parse_tree.convert_import_use.module_name_context).
+:- type maybe_include_implicit
+    --->    do_include_implicit 
+    ;       do_not_include_implicit .
+:- type module_name_context == map.map(mdbcomp.sym_name.module_name, parse_tree.prog_data.prog_context).

@@ -1,0 +1,307 @@
+/*
+** Automatically generated from `ml_unify_gen_util.m'
+** by the Mercury compiler,
+** version rotd-2025-03-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.ml_unify_gen_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_unify_gen_util
+#define MR_HEADER_GUARD_ml_backend__ml_unify_gen_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_UNIFY_GEN_UTIL_DECL_GUARD
+#define ML_BACKEND__ML_UNIFY_GEN_UTIL_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_unify_gen_util__ml_backend__ml_unify_gen_util__type_ctor_info_arg_const_type_and_width_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_unify_gen_util__ml_backend__ml_unify_gen_util__type_ctor_info_arg_to_type_1;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_unify_gen_util__ml_backend__ml_unify_gen_util__type_ctor_info_arg_type_and_width_1;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_unify_gen_util__ml_backend__ml_unify_gen_util__type_ctor_info_arg_var_type_and_width_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_unify_gen_util__ml_backend__ml_unify_gen_util__type_ctor_info_assign_dir_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_unify_gen_util__ml_backend__ml_unify_gen_util__type_ctor_info_field_gen_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_unify_gen_util__ml_backend__ml_unify_gen_util__type_ctor_info_field_via_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_unify_gen_util__ml_backend__ml_unify_gen_util__type_ctor_info_may_have_extra_args_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_unify_gen_util__ml_backend__ml_unify_gen_util__type_ctor_info_ml_maybe_zero_const_0;
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util__associate_cons_id_args_with_types_widths_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util__associate_cons_id_args_with_types_widths_7_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util__decide_field_gen_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util__local_primsectag_filled_bitfield_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util__ml_compute_assign_direction_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util__ml_cons_id_to_tag_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util__ml_field_names_and_types_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util__ml_gen_secondary_tag_rval_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util__ml_tag_ptag_and_initial_offset_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util__ml_type_as_field_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util__remote_sectag_filled_bitfield_3_p_0(
+  MR_Unsigned param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util__specified_arg_types_and_consecutive_full_words_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+ml_backend__ml_unify_gen_util__ml_bitwise_mask_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_unify_gen_util__ml_bitwise_or_rvals_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_unify_gen_util__ml_bitwise_or_some_rvals_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_unify_gen_util__ml_bitwise_or_two_rvals_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_unify_gen_util__ml_is_zero_const_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_unify_gen_util__ml_left_shift_rval_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+ml_backend__ml_unify_gen_util__ml_right_shift_rval_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util____Compare____arg_const_type_and_width_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util____Compare____arg_to_type_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util____Compare____arg_type_and_width_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util____Compare____arg_var_type_and_width_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util____Compare____assign_dir_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util____Compare____field_gen_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util____Compare____field_via_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util____Compare____may_have_extra_args_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__ml_unify_gen_util____Compare____ml_maybe_zero_const_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ml_backend__ml_unify_gen_util____Unify____arg_const_type_and_width_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_unify_gen_util____Unify____arg_to_type_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ml_backend__ml_unify_gen_util____Unify____arg_type_and_width_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ml_backend__ml_unify_gen_util____Unify____arg_var_type_and_width_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_unify_gen_util____Unify____assign_dir_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_unify_gen_util____Unify____field_gen_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_unify_gen_util____Unify____field_via_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_unify_gen_util____Unify____may_have_extra_args_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_unify_gen_util____Unify____ml_maybe_zero_const_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ml_backend__ml_unify_gen_util__init(void);
+void mercury__ml_backend__ml_unify_gen_util__init_type_tables(void);
+void mercury__ml_backend__ml_unify_gen_util__init_debugger(void);
+const char *mercury__ml_backend__ml_unify_gen_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.ml_unify_gen_util
+
+// :- end_interface ml_backend.ml_unify_gen_util.
