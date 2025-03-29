@@ -1,0 +1,102 @@
+/*
+** Automatically generated from `det_check_proc.m'
+** by the Mercury compiler,
+** version rotd-2025-03-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.det_check_proc.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__det_check_proc
+#define MR_HEADER_GUARD_check_hlds__det_check_proc
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__DET_CHECK_PROC_DECL_GUARD
+#define CHECK_HLDS__DET_CHECK_PROC_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+void MR_CALL 
+check_hlds__det_check_proc__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_100_101_116_101_114_109_105_110_105_115_109_95_111_102_95_105_109_112_111_114_116_101_100_95_112_114_111_99_115_95_95_91_49_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__det_check_proc__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_100_101_116_101_114_109_105_110_105_115_109_95_111_102_95_112_114_111_99_95_95_91_49_93_95_48_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__det_check_proc__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_100_101_116_101_114_109_105_110_105_115_109_95_111_102_95_112_114_111_99_115_95_95_91_49_93_95_48_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__det_check_proc__check_determinism_of_imported_procs_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__det_check_proc__check_determinism_of_proc_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+check_hlds__det_check_proc__check_determinism_of_procs_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void mercury__check_hlds__det_check_proc__init(void);
+void mercury__check_hlds__det_check_proc__init_type_tables(void);
+void mercury__check_hlds__det_check_proc__init_debugger(void);
+const char *mercury__check_hlds__det_check_proc__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.det_check_proc
+
+// :- end_interface check_hlds.det_check_proc.
