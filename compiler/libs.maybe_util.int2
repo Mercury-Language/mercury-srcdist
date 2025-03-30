@@ -1,0 +1,11 @@
+:- module libs.maybe_util.
+:- interface.
+:- type maybe_changed
+    --->    unchanged 
+    ;       changed .
+:- type maybe_succeeded
+    --->    did_not_succeed 
+    ;       succeeded .
+:- type need_to_requantify
+    --->    need_to_requantify 
+    ;       do_not_need_to_requantify .

@@ -1,0 +1,36 @@
+:- module ll_backend.unify_gen_util.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_data.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module ll_backend.llds.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.set_of_var.
+:- type arg_and_width(Arg)
+    --->    arg_and_width(Arg, parse_tree.prog_data.arg_pos_width).
+:- type assign_dir
+    --->    assign_left 
+    ;       assign_right 
+    ;       assign_unused .
+:- type maybe_zero_const
+    --->    is_not_zero_const 
+    ;       is_zero_const .
+:- pred associate_cons_id_args_with_widths(hlds.hlds_module.module_info, parse_tree.prog_data.cons_id, list.list(Arg), list.list(ll_backend.unify_gen_util.arg_and_width(Arg))).
+:- mode associate_cons_id_args_with_widths(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func bitwise_or_rvals(list.list(ll_backend.llds.rval)) = ll_backend.llds.rval.
+:- func bitwise_or_some_rvals(ll_backend.llds.rval, list.list(ll_backend.llds.rval)) = ll_backend.llds.rval.
+:- func bitwise_or_two_rvals(ll_backend.llds.rval, ll_backend.llds.rval) = ll_backend.llds.rval.
+:- pred cast_to_unsigned_without_sign_extend(parse_tree.prog_data.fill_kind, ll_backend.llds.rval, ll_backend.llds.rval).
+:- mode cast_to_unsigned_without_sign_extend(builtin.in, builtin.in, builtin.out) is det.
+:- pred compute_assign_direction(hlds.hlds_module.module_info, parse_tree.set_of_var.set_of_progvar, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, hlds.hlds_goal.unify_mode, ll_backend.unify_gen_util.assign_dir).
+:- mode compute_assign_direction(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred int_tag_to_const_and_int_type(hlds.hlds_data.int_tag, ll_backend.llds.rval_const, parse_tree.prog_data.int_type).
+:- mode int_tag_to_const_and_int_type(builtin.in, builtin.out, builtin.out) is det.
+:- func is_zero_const(ll_backend.llds.rval_const) = ll_backend.unify_gen_util.maybe_zero_const.
+:- func left_shift_rval(ll_backend.llds.rval, parse_tree.prog_data.arg_shift, parse_tree.prog_data.fill_kind) = ll_backend.llds.rval.
+:- pred maybe_cast_masked_off_rval(parse_tree.prog_data.fill_kind, ll_backend.llds.rval, ll_backend.llds.rval).
+:- mode maybe_cast_masked_off_rval(builtin.in, builtin.in, builtin.out) is det.
+:- func right_shift_rval(ll_backend.llds.rval, parse_tree.prog_data.arg_shift) = ll_backend.llds.rval.

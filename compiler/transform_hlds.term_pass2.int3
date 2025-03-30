@@ -1,0 +1,4 @@
+:- module transform_hlds.term_pass2.
+:- interface.
+:- type_representation(call_weight_dst_map, is_eqv_to(map(pred_proc_id, call_weight_edge))).
+:- type_representation(call_weight_graph, is_eqv_to(map(pred_proc_id, call_weight_dst_map))).
