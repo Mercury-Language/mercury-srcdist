@@ -1,0 +1,371 @@
+/*
+** Automatically generated from `var_table.m'
+** by the Mercury compiler,
+** version rotd-2025-03-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.var_table.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__var_table
+#define MR_HEADER_GUARD_parse_tree__var_table
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__VAR_TABLE_DECL_GUARD
+#define PARSE_TREE__VAR_TABLE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__var_table__parse_tree__var_table__type_ctor_info_type_qual_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__var_table__parse_tree__var_table__type_ctor_info_var_table_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__var_table__parse_tree__var_table__type_ctor_info_var_table_entry_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__var_table__parse_tree__var_table__type_ctor_info_var_table_map_0;
+
+void MR_CALL 
+parse_tree__var_table__add_prefix_number_var_entry_6_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__var_table__add_var_entry_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__var_table__apply_rec_subst_to_var_table_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__var_table__apply_subst_to_var_table_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__var_table__apply_variable_renaming_to_var_table_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__construct_var_table_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__deconstruct_var_table_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__delete_sorted_var_entries_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__delete_var_entries_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__delete_var_entry_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__foldl_var_table_values_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+parse_tree__var_table__init_var_table_1_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+parse_tree__var_table__is_in_var_table_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__var_table__lookup_var_entries_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__lookup_var_entry_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__lookup_var_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__lookup_var_types_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__search_insert_var_entry_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+parse_tree__var_table__search_var_entry_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__var_table__search_var_name_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__var_table__transform_foldl_var_table_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+parse_tree__var_table__transform_var_table_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__update_var_entry_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__var_table__update_var_name_4_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__var_table__var_table_count_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+parse_tree__var_table__var_table_entries_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__var_table__var_table_from_corresponding_lists_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__var_table_from_rev_sorted_assoc_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__var_table__var_table_from_sorted_assoc_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+parse_tree__var_table__var_table_is_empty_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__var_table__var_table_max_var_num_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+parse_tree__var_table__var_table_optimize_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__var_table__var_table_select_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_table__var_table_to_sorted_assoc_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__var_table__var_table_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_Word MR_CALL 
+parse_tree__var_table__lookup_var_entry_func_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__var_table__lookup_var_type_func_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__var_table__var_entry_name_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__var_table__var_entry_name_and_number_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__var_table__var_entry_name_and_number_default_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3);
+
+MR_String MR_CALL 
+parse_tree__var_table__var_entry_name_default_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3);
+
+MR_String MR_CALL 
+parse_tree__var_table__var_table_entry_name_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__var_table__var_table_entry_name_and_number_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__var_table__var_table_entry_name_and_number_default_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3);
+
+MR_String MR_CALL 
+parse_tree__var_table__var_table_entry_name_default_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3);
+
+void MR_CALL 
+parse_tree__var_table____Compare____type_qual_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__var_table____Compare____var_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__var_table____Compare____var_table_entry_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__var_table____Compare____var_table_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__var_table____Unify____type_qual_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__var_table____Unify____var_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__var_table____Unify____var_table_entry_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__var_table____Unify____var_table_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__var_table__init(void);
+void mercury__parse_tree__var_table__init_type_tables(void);
+void mercury__parse_tree__var_table__init_debugger(void);
+const char *mercury__parse_tree__var_table__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.var_table
+
+// :- end_interface parse_tree.var_table.

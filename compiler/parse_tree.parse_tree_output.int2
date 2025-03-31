@@ -1,0 +1,8 @@
+:- module parse_tree.parse_tree_output.
+:- interface.
+:- use_module io.
+:- use_module stream.
+:- use_module string.builder.
+:- typeclass pt_output(S, U) <= ((U -> S), stream.writer(S, string, U)).
+:- instance ((parse_tree.parse_tree_output).pt_output(io.text_output_stream, io.state)).
+:- instance ((parse_tree.parse_tree_output).pt_output(string.builder.handle, string.builder.state)).
