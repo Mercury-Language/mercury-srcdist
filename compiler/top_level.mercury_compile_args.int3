@@ -1,0 +1,3 @@
+:- module top_level.mercury_compile_args.
+:- interface.
+:- type arg_processing_result.
