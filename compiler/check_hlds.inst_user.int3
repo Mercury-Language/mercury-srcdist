@@ -1,0 +1,3 @@
+:- module check_hlds.inst_user.
+:- interface.
+:- type_representation(maybe_inst_defns_map, is_eqv_to(map(inst_ctor, maybe_user_inst))).
