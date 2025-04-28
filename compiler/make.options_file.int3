@@ -1,0 +1,5 @@
+:- module make.options_file.
+:- interface.
+:- type env_optfile_variables.
+:- type_representation(env_optfile_var, is_eqv_to(string)).
+:- type_representation(env_optfile_variables, is_word_aligned_ptr).

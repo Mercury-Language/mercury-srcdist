@@ -1,0 +1,61 @@
+/*
+** Automatically generated from `add_heap_ops.m'
+** by the Mercury compiler,
+** version rotd-2025-04-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.add_heap_ops.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__add_heap_ops
+#define MR_HEADER_GUARD_ml_backend__add_heap_ops
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ADD_HEAP_OPS_DECL_GUARD
+#define ML_BACKEND__ADD_HEAP_OPS_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__add_heap_ops__ml_backend__add_heap_ops__type_ctor_info_heap_ops_info_0;
+
+void MR_CALL 
+ml_backend__add_heap_ops__add_heap_ops_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void mercury__ml_backend__add_heap_ops__init(void);
+void mercury__ml_backend__add_heap_ops__init_type_tables(void);
+void mercury__ml_backend__add_heap_ops__init_debugger(void);
+const char *mercury__ml_backend__add_heap_ops__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.add_heap_ops
+
+// :- end_interface ml_backend.add_heap_ops.

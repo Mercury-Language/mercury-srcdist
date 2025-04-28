@@ -1,0 +1,49 @@
+:- module array2d.
+:- interface.
+:- use_module array.
+:- use_module list.
+:- type array2d(T)
+    --->    array2d(int, int, array.array(T)).
+:- inst array2d for array2d.array2d/1
+    --->    array2d(ground, ground, array.array).
+:- mode (array2d_di) == builtin.di(array2d.array2d).
+:- mode (array2d_ui) == builtin.in(array2d.array2d).
+:- mode (array2d_uo) == builtin.out(array2d.array2d).
+:- func array2d(list.list(list.list(T))) = array2d.array2d(T).
+:- mode array2d(builtin.in) = array2d.array2d_uo is det.
+:- pred bounds(array2d.array2d(T), int, int).
+:- mode bounds(builtin.in, builtin.out, builtin.out) is det.
+:- func elem(int, int, array2d.array2d(T)) = T.
+:- mode elem(builtin.in, builtin.in, builtin.in) = builtin.out is det.
+:- func 'elem :='(int, int, array2d.array2d(T), T) = array2d.array2d(T).
+:- mode 'elem :='(builtin.in, builtin.in, array2d.array2d_di, builtin.in) = array2d.array2d_uo is det.
+:- pred fill(T, array2d.array2d(T), array2d.array2d(T)).
+:- mode fill(builtin.in, array2d.array2d_di, array2d.array2d_uo) is det.
+:- func from_array(int, int, array.array(T)) = array2d.array2d(T).
+:- mode from_array(builtin.in, builtin.in, array.array_di) = array2d.array2d_uo is det.
+:- func from_lists(list.list(list.list(T))) = array2d.array2d(T).
+:- mode from_lists(builtin.in) = array2d.array2d_uo is det.
+:- pred in_bounds(array2d.array2d(T), int, int).
+:- mode in_bounds(builtin.in, builtin.in, builtin.in) is semidet.
+:- func init(int, int, T) = array2d.array2d(T).
+:- mode init(builtin.in, builtin.in, builtin.in) = array2d.array2d_uo is det.
+:- pred is_empty(array2d.array2d(T)).
+:- mode is_empty(builtin.in) is semidet.
+:- func lists(array2d.array2d(T)) = list.list(list.list(T)).
+:- mode lists(builtin.in) = builtin.out is det.
+:- pred lookup(array2d.array2d(T), int, int, T).
+:- mode lookup(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func lookup(array2d.array2d(T), int, int) = T.
+:- mode lookup(builtin.in, builtin.in, builtin.in) = builtin.out is det.
+:- pred set(int, int, T, array2d.array2d(T), array2d.array2d(T)).
+:- mode set(builtin.in, builtin.in, builtin.in, array2d.array2d_di, array2d.array2d_uo) is det.
+:- func unsafe_elem(int, int, array2d.array2d(T)) = T.
+:- mode unsafe_elem(builtin.in, builtin.in, builtin.in) = builtin.out is det.
+:- func 'unsafe_elem :='(int, int, array2d.array2d(T), T) = array2d.array2d(T).
+:- mode 'unsafe_elem :='(builtin.in, builtin.in, array.array_di, builtin.in) = array2d.array2d_uo is det.
+:- pred unsafe_lookup(array2d.array2d(T), int, int, T).
+:- mode unsafe_lookup(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func unsafe_lookup(array2d.array2d(T), int, int) = T.
+:- mode unsafe_lookup(builtin.in, builtin.in, builtin.in) = builtin.out is det.
+:- pred unsafe_set(int, int, T, array2d.array2d(T), array2d.array2d(T)).
+:- mode unsafe_set(builtin.in, builtin.in, builtin.in, array2d.array2d_di, array2d.array2d_uo) is det.

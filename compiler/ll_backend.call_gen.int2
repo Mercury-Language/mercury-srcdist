@@ -1,0 +1,5 @@
+:- module ll_backend.call_gen.
+:- interface.
+:- type known_call_variant
+    --->    ho_call_known_num 
+    ;       ho_call_unknown .
