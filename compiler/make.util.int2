@@ -1,0 +1,8 @@
+:- module make.util.
+:- interface.
+:- type maybe_grade_dependent
+    --->    not_grade_dependent 
+    ;       grade_dependent .
+:- type stop_or_continue
+    --->    soc_stop 
+    ;       soc_continue .

@@ -1,0 +1,2 @@
+:- module ((transform_hlds.ctgc).structure_reuse).lfu.
+:- interface.

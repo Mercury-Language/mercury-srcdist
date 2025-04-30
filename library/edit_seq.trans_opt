@@ -1,0 +1,11 @@
+:- module edit_seq.
+
+:- pragma termination_info(edit_seq.find_change_hunks(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(edit_seq.find_diff_cord(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(edit_seq.find_diff_seq(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(edit_seq.find_shortest_edit_seq(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, edit_seq.find_change_hunks, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, edit_seq.find_diff_cord, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, edit_seq.find_diff_seq, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, edit_seq.find_shortest_edit_seq, 4, 0, may_throw(user_exception)).

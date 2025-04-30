@@ -1,0 +1,44 @@
+:- module io.stream_db.
+:- interface.
+:- use_module map.
+:- use_module maybe.
+:- type maybe_stream_info
+    --->    stream((io.stream_db).maybe_stream_id :: int, (io.stream_db).maybe_stream_mode :: io.stream_db.stream_mode, (io.stream_db).maybe_stream_content :: io.stream_db.stream_content, (io.stream_db).maybe_stream_source :: io.stream_db.stream_source)
+    ;       unknown_stream .
+:- type stream_content
+    --->    text 
+    ;       binary 
+    ;       preopen .
+:- type stream_db == map.map(io.stream_id, io.stream_db.stream_info).
+:- type stream_info
+    --->    stream((io.stream_db).stream_id :: int, (io.stream_db).stream_mode :: io.stream_db.stream_mode, (io.stream_db).stream_content :: io.stream_db.stream_content, (io.stream_db).stream_source :: io.stream_db.stream_source).
+:- type stream_mode
+    --->    input 
+    ;       output 
+    ;       append .
+:- type stream_source
+    --->    file(string)
+    ;       stdin 
+    ;       stdout 
+    ;       stderr .
+:- func binary_input_stream_info(io.stream_db.stream_db, io.binary_input_stream) = io.stream_db.maybe_stream_info.
+:- func binary_output_stream_info(io.stream_db.stream_db, io.binary_output_stream) = io.stream_db.maybe_stream_info.
+:- pred get_io_stream_info(io.stream_db.stream_db, T, io.stream_db.maybe_stream_info).
+:- mode get_io_stream_info(builtin.in, builtin.in, builtin.out) is semidet.
+:- func get_io_stream_info(io.stream_db.stream_db, T) = io.stream_db.maybe_stream_info is semidet.
+:- pred get_stream_db(io.stream_db.stream_db, io.io, io.io).
+:- mode get_stream_db(builtin.out, builtin.di, builtin.uo) is det.
+:- impure pred get_stream_db_with_locking(io.stream_db.stream_db).
+:- mode get_stream_db_with_locking(builtin.out) is det.
+:- func input_stream_info(io.stream_db.stream_db, io.text_input_stream) = io.stream_db.maybe_stream_info.
+:- pred insert_stream_info(io.stream, io.stream_db.stream_info, io.io, io.io).
+:- mode insert_stream_info(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred maybe_delete_stream_info(io.stream, io.io, io.io).
+:- mode maybe_delete_stream_info(builtin.in, builtin.di, builtin.uo) is det.
+:- func output_stream_info(io.stream_db.stream_db, io.text_output_stream) = io.stream_db.maybe_stream_info.
+:- pred set_stream_db(io.stream_db.stream_db, io.io, io.io).
+:- mode set_stream_db(builtin.in, builtin.di, builtin.uo) is det.
+:- pred stream_info(io.stream, maybe.maybe(io.stream_db.stream_info), io.io, io.io).
+:- mode stream_info(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred stream_name(io.stream, string, io.io, io.io).
+:- mode stream_name(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
