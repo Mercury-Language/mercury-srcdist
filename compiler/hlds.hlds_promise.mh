@@ -1,0 +1,29 @@
+// Automatically generated from `hlds_promise.m'
+// by the Mercury compiler,
+// version rotd-2025-05-03
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef HLDS__HLDS_PROMISE_MH
+#define HLDS__HLDS_PROMISE_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* HLDS__HLDS_PROMISE_MH */

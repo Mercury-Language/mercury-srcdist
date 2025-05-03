@@ -1,0 +1,11 @@
+:- module check_hlds.check_pragma_format_call.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.error_spec.
+:- pred check_pragma_format_call_preds(set.set(hlds.hlds_pred.pred_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode check_pragma_format_call_preds(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
