@@ -1,0 +1,81 @@
+/*
+** Automatically generated from `split_parse_tree_src.m'
+** by the Mercury compiler,
+** version rotd-2025-05-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.split_parse_tree_src.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__split_parse_tree_src
+#define MR_HEADER_GUARD_parse_tree__split_parse_tree_src
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__SPLIT_PARSE_TREE_SRC_DECL_GUARD
+#define PARSE_TREE__SPLIT_PARSE_TREE_SRC_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__split_parse_tree_src__parse_tree__split_parse_tree_src__type_ctor_info_duplicated_section_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__split_parse_tree_src__parse_tree__split_parse_tree_src__type_ctor_info_module_ancestors_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__split_parse_tree_src__parse_tree__split_parse_tree_src__type_ctor_info_module_to_submodules_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__split_parse_tree_src__parse_tree__split_parse_tree_src__type_ctor_info_parent_module_context_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__split_parse_tree_src__parse_tree__split_parse_tree_src__type_ctor_info_section_ancestors_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__split_parse_tree_src__parse_tree__split_parse_tree_src__type_ctor_info_split_module_entry_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__split_parse_tree_src__parse_tree__split_parse_tree_src__type_ctor_info_split_module_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__split_parse_tree_src__parse_tree__split_parse_tree_src__type_ctor_info_split_nested_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__split_parse_tree_src__parse_tree__split_parse_tree_src__type_ctor_info_submodule_include_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__split_parse_tree_src__parse_tree__split_parse_tree_src__type_ctor_info_submodule_include_info_map_0;
+
+void MR_CALL 
+parse_tree__split_parse_tree_src__split_into_component_modules_perform_checks_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void mercury__parse_tree__split_parse_tree_src__init(void);
+void mercury__parse_tree__split_parse_tree_src__init_type_tables(void);
+void mercury__parse_tree__split_parse_tree_src__init_debugger(void);
+const char *mercury__parse_tree__split_parse_tree_src__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.split_parse_tree_src
+
+// :- end_interface parse_tree.split_parse_tree_src.

@@ -1,0 +1,86 @@
+:- module hlds.hlds_markers.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module parse_tree.prog_data.
+:- type goal_feature
+    --->    feature_constraint 
+    ;       feature_from_head 
+    ;       feature_not_impure_for_determinism 
+    ;       feature_stack_opt 
+    ;       feature_tuple_opt 
+    ;       feature_call_table_gen 
+    ;       feature_preserve_backtrack_into 
+    ;       feature_save_deep_excp_vars 
+    ;       feature_hide_debug_event 
+    ;       feature_deep_self_tail_rec_call 
+    ;       feature_debug_self_tail_rec_call 
+    ;       feature_self_or_mutual_tail_rec_call 
+    ;       feature_obvious_nontail_rec_call 
+    ;       feature_keep_constant_binding 
+    ;       feature_do_not_warn_singleton 
+    ;       feature_state_var_copy 
+    ;       feature_duplicated_for_switch 
+    ;       feature_mode_check_clauses_goal 
+    ;       feature_will_not_modify_trail 
+    ;       feature_will_not_call_mm_tabled 
+    ;       feature_contains_trace 
+    ;       feature_pretest_equality 
+    ;       feature_pretest_equality_condition 
+    ;       feature_lambda_undetermined_mode 
+    ;       feature_contains_stm_inner_outer 
+    ;       feature_do_not_tailcall 
+    ;       feature_do_not_warn_implicit_stream 
+    ;       feature_lifted_by_cse 
+    ;       feature_lambda_from_try .
+:- type pred_marker
+    --->    marker_stub 
+    ;       marker_builtin_stub 
+    ;       marker_infer_type 
+    ;       marker_infer_modes 
+    ;       marker_no_pred_decl 
+    ;       marker_no_detism_warning 
+    ;       marker_user_marked_inline 
+    ;       marker_heuristic_inline 
+    ;       marker_user_marked_no_inline 
+    ;       marker_mmc_marked_no_inline 
+    ;       marker_consider_used 
+    ;       marker_class_method 
+    ;       marker_class_instance_method 
+    ;       marker_named_class_instance_method 
+    ;       marker_is_impure 
+    ;       marker_is_semipure 
+    ;       marker_promised_pure 
+    ;       marker_promised_semipure 
+    ;       marker_promised_equivalent_clauses 
+    ;       marker_terminates 
+    ;       marker_does_not_terminate 
+    ;       marker_check_termination 
+    ;       marker_calls_are_fully_qualified 
+    ;       marker_mode_check_clauses 
+    ;       marker_mutable_access_pred 
+    ;       marker_has_require_scope 
+    ;       marker_has_incomplete_switch 
+    ;       marker_has_format_call 
+    ;       marker_has_rhs_lambda 
+    ;       marker_fact_table_semantic_errors .
+:- type pred_markers == set.set(hlds.hlds_markers.pred_marker).
+:- pred add_marker(hlds.hlds_markers.pred_marker, hlds.hlds_markers.pred_markers, hlds.hlds_markers.pred_markers).
+:- mode add_marker(builtin.in, builtin.in, builtin.out) is det.
+:- pred add_markers(list.list(hlds.hlds_markers.pred_marker), hlds.hlds_markers.pred_markers, hlds.hlds_markers.pred_markers).
+:- mode add_markers(builtin.in, builtin.in, builtin.out) is det.
+:- pred init_markers(hlds.hlds_markers.pred_markers).
+:- mode init_markers(builtin.out) is det.
+:- pred marker_is_present(hlds.hlds_markers.pred_markers, hlds.hlds_markers.pred_marker).
+:- mode marker_is_present(builtin.in, builtin.in) is semidet.
+:- pred marker_list_to_markers(list.list(hlds.hlds_markers.pred_marker), hlds.hlds_markers.pred_markers).
+:- mode marker_list_to_markers(builtin.in, builtin.out) is det.
+:- pred marker_name(hlds.hlds_markers.pred_marker, string).
+:- mode marker_name(builtin.in, builtin.out) is det.
+:- pred markers_to_marker_list(hlds.hlds_markers.pred_markers, list.list(hlds.hlds_markers.pred_marker)).
+:- mode markers_to_marker_list(builtin.in, builtin.out) is det.
+:- pred purity_to_markers(parse_tree.prog_data.purity, list.list(hlds.hlds_markers.pred_marker)).
+:- mode purity_to_markers(builtin.in, builtin.out) is det.
+:- pred remove_marker(hlds.hlds_markers.pred_marker, hlds.hlds_markers.pred_markers, hlds.hlds_markers.pred_markers).
+:- mode remove_marker(builtin.in, builtin.in, builtin.out) is det.

@@ -1,0 +1,26 @@
+one_member.m:046: Error: this `arbitrary' scope is [38;5;203mnot nested[39;49m inside a
+one_member.m:046:   `promise_equivalent_solution_sets' scope.
+one_member.m:049: Warning: the determinism declaration for predicate
+one_member.m:049:   [38;5;87m`one_member2'/2[39;49m [38;5;203mcould be tighter.[39;49m
+one_member.m:049:   Declared [38;5;40m`nondet',[39;49m inferred [38;5;203m`semidet'.[39;49m
+one_member.m:053: Error: the `arbitrary' goal [38;5;203mlists an extra variable:[39;49m [38;5;87m`Tree'.[39;49m
+one_member.m:053: Error: this `arbitrary' scope and the
+one_member.m:053:   `promise_equivalent_solution_sets' scope it is nested
+one_member.m:053:   inside [38;5;203moverlap[39;49m on the variable [38;5;87m`Item'.[39;49m
+one_member.m:052:   This is the outer `promise_equivalent_solution_sets' scope.
+one_member.m:054: Error: [38;5;87munification for non-canonical type[39;49m
+one_member.m:054:   [38;5;87m`one_member.set_ctree234'/1[39;49m occurs in a context that
+one_member.m:054:   [38;5;203mrequires all solutions.[39;49m
+one_member.m:054:   Since the type has a user-defined equality predicate, I
+one_member.m:054:   must presume that there is more than one possible concrete
+one_member.m:054:   representation for each abstract value of this type. The
+one_member.m:054:   results of this unification might depend on the choice of
+one_member.m:054:   concrete representation. Finding all possible solutions to
+one_member.m:054:   this unification would require backtracking over all
+one_member.m:054:   possible representations, but I am not going to do that
+one_member.m:054:   implicitly. (If that is really what you want, you must do
+one_member.m:054:   it explicitly.)
+one_member.m:055:   Call to [38;5;87mdo_one_member[39;49m [38;5;203mcan fail.[39;49m
+one_member.m:063: Error: this `promise_equivalent_solution_sets' scope is
+one_member.m:063:   [38;5;203mnested[39;49m inside another.
+one_member.m:062:   This is the outer `promise_equivalent_solution_sets' scope.

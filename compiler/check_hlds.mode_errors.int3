@@ -1,0 +1,44 @@
+:- module check_hlds.mode_errors.
+:- interface.
+:- type bound_functor_cons_id_error.
+:- type cannot_create_reason
+	where	type_is_abstract_enum(1).
+:- type coerce_error.
+:- type coerce_error_reason.
+:- type coerce_error_term_path_step.
+:- type delayed_goal.
+:- type exact_or_not
+	where	type_is_abstract_enum(1).
+:- type final_inst_error
+	where	type_is_abstract_enum(2).
+:- type higher_order_mismatch_info.
+:- type match_what.
+:- type merge_context
+	where	type_is_abstract_enum(2).
+:- type merge_error.
+:- type mode_error.
+:- type mode_error_info.
+:- type mode_error_unify_rhs.
+:- type mode_mismatch.
+:- type mode_warning.
+:- type mode_warning_info.
+:- type negated_context_desc
+	where	type_is_abstract_enum(1).
+:- type pred_id_var_multimode_error.
+:- type schedule_culprit.
+:- type var_multimode_error.
+:- type_representation(arg_ok_or_not_map, is_eqv_to(one_or_more_map(ok_or_not, int))).
+:- type_representation(cannot_create_reason, du_repn(enum("cannot_init_any", "cannot_deep_copy_partial_term", [],  no_c_j_cs))).
+:- type_representation(coerce_error, is_word_aligned_ptr).
+:- type_representation(coerce_error_term_path_step, is_word_aligned_ptr).
+:- type_representation(delayed_goal, is_word_aligned_ptr).
+:- type_representation(exact_or_not, du_repn(enum("eon_not_exact", "eon_exact", [],  no_c_j_cs))).
+:- type_representation(final_inst_error, du_repn(enum("too_instantiated", "not_instantiated_enough", ["wrongly_instantiated"],  no_c_j_cs))).
+:- type_representation(merge_context, du_repn(enum("merge_disj", "merge_if_then_else", ["merge_stm_atomic"],  no_c_j_cs))).
+:- type_representation(merge_error, is_word_aligned_ptr).
+:- type_representation(mode_error_info, is_word_aligned_ptr).
+:- type_representation(mode_mismatch, is_word_aligned_ptr).
+:- type_representation(mode_warning_info, is_word_aligned_ptr).
+:- type_representation(negated_context_desc, du_repn(enum("if_then_else", "negation", [],  no_c_j_cs))).
+:- type_representation(ok_or_not_map, is_eqv_to(map(int, arg_ok_or_not_map))).
+:- type_representation(pred_id_var_multimode_error, is_word_aligned_ptr).
