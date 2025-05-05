@@ -1,0 +1,22 @@
+:- module hlds.var_origins.
+:- interface.
+:- use_module map.
+:- use_module set.
+:- use_module parse_tree.prog_data.
+:- type lhs_or_rhs
+    --->    lor_lhs((hlds.var_origins).rhs_var :: parse_tree.prog_data.prog_var)
+    ;       lor_rhs((hlds.var_origins).lhs_var :: parse_tree.prog_data.prog_var).
+:- type lhs_or_rhs_arg
+    --->    lora_lhs((hlds.var_origins).rhs_argvars :: list.list(parse_tree.prog_data.prog_var))
+    ;       lora_rhs((hlds.var_origins).lhs_var :: parse_tree.prog_data.prog_var, (hlds.var_origins).rhs_arg_num :: uint).
+:- type record_var_origin(T) == pred(hlds.var_origins.var_origins_map, parse_tree.prog_data.prog_var, hlds.var_origins.var_origin, T, T).
+:- type var_origin
+    --->    var_origin_clause_head((hlds.var_origins).voch_context :: parse_tree.prog_data.prog_context, (hlds.var_origins).voch_clause :: uint, (hlds.var_origins).voch_arg_num :: uint)
+    ;       var_origin_lambda_head((hlds.var_origins).volh_context :: parse_tree.prog_data.prog_context, (hlds.var_origins).volh_p_or_f :: mdbcomp.prim_data.pred_or_func, (hlds.var_origins).volh_arg_num :: uint)
+    ;       var_origin_unify_var((hlds.var_origins).vouv_context :: parse_tree.prog_data.prog_context, (hlds.var_origins).vouv_lorhs :: hlds.var_origins.lhs_or_rhs)
+    ;       var_origin_unify_func((hlds.var_origins).vouf_context :: parse_tree.prog_data.prog_context, (hlds.var_origins).vouf_cons_id :: parse_tree.prog_data.cons_id, (hlds.var_origins).vouf_lorhsa :: hlds.var_origins.lhs_or_rhs_arg)
+    ;       var_origin_plain_call((hlds.var_origins).vopc_context :: parse_tree.prog_data.prog_context, (hlds.var_origins).vopc_callee :: hlds.hlds_pred.pred_id, (hlds.var_origins).vopc_arg_num :: uint)
+    ;       var_origin_foreign_call((hlds.var_origins).vofc_context :: parse_tree.prog_data.prog_context, (hlds.var_origins).vofc_callee :: hlds.hlds_pred.pred_id, (hlds.var_origins).vofc_arg_num :: uint)
+    ;       var_origin_generic_call((hlds.var_origins).vogc_context :: parse_tree.prog_data.prog_context, (hlds.var_origins).vogc_callee :: hlds.hlds_goal.generic_call, (hlds.var_origins).vogc_arg_num :: uint).
+:- type var_origins_map == map.map(parse_tree.prog_data.prog_var, set.set(hlds.var_origins.var_origin)).
+:- inst record_var_origin == (pred(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det).

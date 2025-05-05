@@ -1,0 +1,60 @@
+:- module backend_libs.compile_target_code.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.file_names.
+:- use_module parse_tree.module_dep_info.
+:- type pic
+    --->    pic 
+    ;       non_pic .
+:- inst ext_cur_ngs_gas_init_obj for (parse_tree.file_names).ext_cur_ngs_gas/0
+    --->    ext_cur_ngs_gas_init_obj_obj_opt
+    ;       ext_cur_ngs_gas_init_obj_pic_obj_opt.
+:- inst ext_cur_ngs_gas_obj for (parse_tree.file_names).ext_cur_ngs_gas/0
+    --->    ext_cur_ngs_gas_obj_obj_opt
+    ;       ext_cur_ngs_gas_obj_pic_obj_opt.
+:- pred compile_c_file(libs.globals.globals, io.text_output_stream, backend_libs.compile_target_code.pic, mdbcomp.sym_name.module_name, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode compile_c_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred compile_csharp_file(libs.globals.globals, io.text_output_stream, parse_tree.module_dep_info.module_dep_info, libs.file_util.file_name, libs.file_util.file_name, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode compile_csharp_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred compile_java_files(libs.globals.globals, io.text_output_stream, string, list.list(string), libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode compile_java_files(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred do_compile_c_file(libs.globals.globals, io.text_output_stream, backend_libs.compile_target_code.pic, string, string, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode do_compile_c_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred do_make_init_obj_file(libs.globals.globals, io.text_output_stream, bool.bool, mdbcomp.sym_name.module_name, list.list(mdbcomp.sym_name.module_name), maybe.maybe(libs.file_util.file_name), io.io, io.io).
+:- mode do_make_init_obj_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred get_c_compiler_flags(libs.globals.globals, string).
+:- mode get_c_compiler_flags(builtin.in, builtin.out) is det.
+:- pred get_c_grade_defines(libs.globals.globals, string).
+:- mode get_c_grade_defines(builtin.in, builtin.out) is det.
+:- pred get_c_include_dir_flags(libs.globals.globals, string).
+:- mode get_c_include_dir_flags(builtin.in, builtin.out) is det.
+:- pred get_executable_object_code_type(libs.globals.globals, backend_libs.compile_target_code.pic).
+:- mode get_executable_object_code_type(builtin.in, builtin.out) is det.
+:- pred get_framework_directories(libs.globals.globals, string).
+:- mode get_framework_directories(builtin.in, builtin.out) is det.
+:- pred is_maybe_pic_object_file_extension(libs.globals.globals, string, backend_libs.compile_target_code.pic).
+:- mode is_maybe_pic_object_file_extension(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred join_quoted_string_list(list.list(string), string, string, string, string).
+:- mode join_quoted_string_list(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred join_string_list(list.list(string), string, string, string, string).
+:- mode join_string_list(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred make_all_module_command(string, mdbcomp.sym_name.module_name, list.list(mdbcomp.sym_name.module_name), string, io.io, io.io).
+:- mode make_all_module_command(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred make_init_obj_file(libs.globals.globals, io.text_output_stream, mdbcomp.sym_name.module_name, list.list(mdbcomp.sym_name.module_name), maybe.maybe(libs.file_util.file_name), io.io, io.io).
+:- mode make_init_obj_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred make_library_init_file(libs.globals.globals, io.text_output_stream, mdbcomp.sym_name.module_name, list.list(mdbcomp.sym_name.module_name), libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode make_library_init_file(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred make_standalone_interface(libs.globals.globals, io.text_output_stream, string, io.io, io.io).
+:- mode make_standalone_interface(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred maybe_pic_object_file_extension(backend_libs.compile_target_code.pic, parse_tree.file_names.ext_cur_ngs_gas, parse_tree.file_names.ext_cur_ngs_gas).
+:- mode maybe_pic_object_file_extension(builtin.in, builtin.out((backend_libs.compile_target_code).ext_cur_ngs_gas_obj), builtin.out((backend_libs.compile_target_code).ext_cur_ngs_gas_init_obj)) is det.

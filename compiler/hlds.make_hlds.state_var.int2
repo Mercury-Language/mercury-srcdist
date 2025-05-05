@@ -1,0 +1,15 @@
+:- module (hlds.make_hlds).state_var.
+:- interface.
+:- use_module parse_tree.prog_data.
+:- type hlds_goal_svar_state
+    --->    hlds_goal_svar_state(hlds.hlds_goal.hlds_goal, hlds.make_hlds.state_var.svar_state).
+:- type svar == parse_tree.prog_data.prog_var.
+:- type svar_inner_atomic_scope_info.
+:- type svar_outer_atomic_scope_info.
+:- type svar_state.
+:- type svar_store.
+:- type unravel_info
+    --->    unravel_info(((hlds.make_hlds).state_var).ui_module_info :: hlds.hlds_module.module_info, ((hlds.make_hlds).state_var).ui_fgt_threshold :: int, ((hlds.make_hlds).state_var).ui_qual_info :: hlds.make_hlds.qual_info.qual_info, ((hlds.make_hlds).state_var).ui_varset :: parse_tree.prog_data.prog_varset, ((hlds.make_hlds).state_var).ui_state_var_store :: hlds.make_hlds.state_var.svar_store, ((hlds.make_hlds).state_var).ui_error_specs :: list.list(parse_tree.error_spec.error_spec)).
+:- implementation.
+:- type readonly_context_kind
+    --->    roc_lambda .
