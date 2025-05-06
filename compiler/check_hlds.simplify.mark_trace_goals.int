@@ -1,0 +1,6 @@
+:- module (check_hlds.simplify).mark_trace_goals.
+:- interface.
+:- use_module hlds.
+:- use_module hlds.hlds_goal.
+:- pred set_goal_contains_trace_features_in_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.contains_trace_goal).
+:- mode set_goal_contains_trace_features_in_goal(builtin.in, builtin.out, builtin.out) is det.

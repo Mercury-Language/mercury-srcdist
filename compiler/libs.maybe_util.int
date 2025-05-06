@@ -1,0 +1,14 @@
+:- module libs.maybe_util.
+:- interface.
+:- use_module list.
+:- type maybe_changed
+    --->    unchanged 
+    ;       changed .
+:- type maybe_succeeded
+    --->    did_not_succeed 
+    ;       succeeded .
+:- type need_to_requantify
+    --->    need_to_requantify 
+    ;       do_not_need_to_requantify .
+:- func and(libs.maybe_util.maybe_succeeded, libs.maybe_util.maybe_succeeded) = libs.maybe_util.maybe_succeeded.
+:- func and_list(list.list(libs.maybe_util.maybe_succeeded)) = libs.maybe_util.maybe_succeeded.
