@@ -1,0 +1,15 @@
+:- module ml_backend.mlds_to_c_file.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- use_module ml_backend.mlds.
+:- use_module ml_backend.mlds_to_c_util.
+:- pred func_defn_has_name_in_list(list.list(string), ml_backend.mlds.mlds_function_defn).
+:- mode func_defn_has_name_in_list(builtin.in, builtin.in) is semidet.
+:- pred output_c_dump_preds(io.text_output_stream, ml_backend.mlds.mlds, libs.globals.globals, ml_backend.mlds_to_c_util.target_or_dump, string, list.list(string), io.io, io.io).
+:- mode output_c_dump_preds(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred output_c_mlds(io.text_output_stream, ml_backend.mlds.mlds, libs.globals.globals, ml_backend.mlds_to_c_util.target_or_dump, string, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode output_c_mlds(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
