@@ -1,0 +1,142 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = term
+MAYBE_J1 =
+
+#-----------------------------------------------------------------------------#
+
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+# `mmc --make' doesn't know how to create `.trans_opt' files.
+TERM_PROGS =
+else
+TERM_PROGS = \
+	ack \
+	append \
+	arit_exp \
+	associative \
+	dds1_2 \
+	dds3_13 \
+	dds3_14 \
+	dds3_15 \
+	dds3_17 \
+	dds3_8 \
+	exception_analysis_test \
+	exception_analysis_test2 \
+	existential_error1 \
+	existential_error2 \
+	existential_error3 \
+	fold \
+	foreign_valid \
+	generic_call \
+	inf_const_bug \
+	my_list \
+	lte \
+	my_map \
+	member \
+	mergesort \
+	mergesort_ap \
+	mergesort_t \
+	mmatrix \
+	money \
+	naive_rev \
+	occur \
+	ordered \
+	overlap \
+	permutation \
+	pl1_1 \
+	pl1_2 \
+	pl2_3_1 \
+	pl3_1_1 \
+	pl3_5_6 \
+	pl3_5_6a \
+	pl4_01 \
+	pl4_4_3 \
+	pl4_4_6a \
+	pl4_5_2 \
+	pl4_5_3a \
+	pl5_2_2 \
+	pl6_1_1 \
+	pl7_2_9 \
+	pl7_6_2a \
+	pl7_6_2b \
+	pl7_6_2c \
+	pl8_2_1 \
+	pl8_2_1a \
+	pl8_3_1 \
+	pl8_3_1a \
+	pl8_4_1 \
+	pl8_4_2 \
+	pragma_non_term \
+	pragma_term \
+	promise_will_not_throw \
+	queens \
+	quicksort \
+	select \
+	subset \
+	sum \
+	vangelder
+endif	# $(MMAKE_USE_MMC_MAKE) == no
+
+# Module-specific options should go in Mercury.options so they
+# can be found by `mmc --make'.
+include Mercury.options
+
+PROGS = $(TERM_PROGS)
+
+#-----------------------------------------------------------------------------#
+
+TESTS = $(sort $(PROGS))
+include ../Mmake.common
+
+%.runtest: %.trans_opt_res ;
+
+#-----------------------------------------------------------------------------#
+
+MCTERMFLAGS = --enable-termination --term-single-arg 5 --enable-termination2
+MCOPTFLAGS  = --no-inlining --no-optimize-unused-args --no-deforestation \
+	      --no-optimize-higher-order
+MCTRANSOPTFLAGS = $(MCTERMFLAGS) $(MCOPTFLAGS)
+
+# if EXTRA_MCFLAGS=-O5 then --no-inlining must occur after the -O5
+# to turn inlining off.
+# The following ensures that MCTRANSOPTFLAGS overrides anything
+# set by EXTRA_MCFLAGS, by placing them later in the argument list.
+ALL_MCTOIFLAGS+=$(MCTRANSOPTFLAGS)
+
+%.trans_opt_res: %.trans_opt_exp $(trans_opts_subdir)%.trans_opt
+	@echo "Comparing $(trans_opts_subdir)$*.trans_opt"
+	@echo "with $*.trans_opt_exp"
+	@-rm -f $@ $*.trans_opt_res[1-2]
+	@{ diff $(DIFF_OPTS) $*.trans_opt_exp $(trans_opts_subdir)$*.trans_opt \
+			> $*.trans_opt_res1 && \
+		echo "Matches $*.trans_opt_exp" && \
+		cp $*.trans_opt_res1 $@; } || \
+	{ test -f $*.trans_opt_exp2 && \
+		echo "with $*.trans_opt_exp2" && \
+		diff $(DIFF_OPTS) $*.trans_opt_exp2 \
+			$(trans_opts_subdir)$*.trans_opt \
+			> $*.trans_opt_res2 && \
+		echo "Matches $*.trans_opt_exp2" && \
+		cp $*.trans_opt_res2 $@; } || \
+	{ shortest=`wc -l $*.trans_opt_res[1-2] | grep -v total | sort -n | \
+		head -1 | awk '{ print $$2; }' `; \
+		echo "** $*.err did not match the expected error output"; \
+		echo "** (closest match was $$shortest)"; \
+		cp $$shortest $@; \
+		cat $@; \
+		exit 1; }
+
+#-----------------------------------------------------------------------------#
+
+clean_local: clean_term
+
+clean_term:
+	rm -f *.trans_opt_err
+
+realclean_local: realclean_term
+
+realclean_term:
+	rm -f *.trans_opt_res
