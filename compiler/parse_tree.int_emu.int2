@@ -1,0 +1,11 @@
+:- module parse_tree.int_emu.
+:- interface.
+:- type op_num_bits
+    --->    word_bits(int)
+    ;       bits_8 
+    ;       bits_16 
+    ;       bits_32 
+    ;       bits_64 .
+:- type op_type
+    --->    op_int(parse_tree.int_emu.op_num_bits)
+    ;       op_uint(parse_tree.int_emu.op_num_bits).

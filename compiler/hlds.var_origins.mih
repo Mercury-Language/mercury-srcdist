@@ -1,0 +1,151 @@
+/*
+** Automatically generated from `var_origins.m'
+** by the Mercury compiler,
+** version rotd-2025-05-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.var_origins.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__var_origins
+#define MR_HEADER_GUARD_hlds__var_origins
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__VAR_ORIGINS_DECL_GUARD
+#define HLDS__VAR_ORIGINS_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__var_origins__hlds__var_origins__type_ctor_info_lhs_or_rhs_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__var_origins__hlds__var_origins__type_ctor_info_lhs_or_rhs_arg_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__var_origins__hlds__var_origins__type_ctor_info_origin_clause_head_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__var_origins__hlds__var_origins__type_ctor_info_origin_foreign_call_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__var_origins__hlds__var_origins__type_ctor_info_origin_generic_call_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__var_origins__hlds__var_origins__type_ctor_info_origin_lambda_head_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__var_origins__hlds__var_origins__type_ctor_info_origin_plain_call_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__var_origins__hlds__var_origins__type_ctor_info_origin_unify_func_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__var_origins__hlds__var_origins__type_ctor_info_origin_unify_var_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__var_origins__hlds__var_origins__type_ctor_info_record_var_origin_1;
+
+extern const MR_TypeCtorInfo_Struct hlds__var_origins__hlds__var_origins__type_ctor_info_var_origin_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__var_origins__hlds__var_origins__type_ctor_info_var_origins_map_0;
+
+void MR_CALL 
+hlds__var_origins__compute_var_origins_in_pred_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+hlds__var_origins__explain_var_origin_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__var_origins____Compare____lhs_or_rhs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__var_origins____Compare____lhs_or_rhs_arg_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__var_origins____Compare____record_var_origin_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+hlds__var_origins____Compare____var_origin_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__var_origins____Compare____var_origins_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__var_origins____Unify____lhs_or_rhs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__var_origins____Unify____lhs_or_rhs_arg_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__var_origins____Unify____record_var_origin_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__var_origins____Unify____var_origin_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__var_origins____Unify____var_origins_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__var_origins__init(void);
+void mercury__hlds__var_origins__init_type_tables(void);
+void mercury__hlds__var_origins__init_debugger(void);
+const char *mercury__hlds__var_origins__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.var_origins
+
+// :- end_interface hlds.var_origins.

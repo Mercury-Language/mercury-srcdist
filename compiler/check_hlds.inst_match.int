@@ -1,0 +1,39 @@
+:- module check_hlds.inst_match.
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.prog_data.
+:- type ground_matches_bound
+    --->    ground_matches_bound_if_complete 
+    ;       ground_matches_bound_always .
+:- pred ho_inst_info_matches_ground(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.ho_inst_info).
+:- mode ho_inst_info_matches_ground(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred inst_contains_nondefault_func_mode(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst).
+:- mode inst_contains_nondefault_func_mode(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred inst_is_at_least_as_instantiated(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_is_at_least_as_instantiated(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred inst_matches_binding(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_matches_binding(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred inst_matches_binding_allow_any_any(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_matches_binding_allow_any_any(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred inst_matches_final(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_matches_final(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred inst_matches_final_gmb(hlds.hlds_module.module_info, check_hlds.inst_match.ground_matches_bound, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_matches_final_gmb(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred inst_matches_initial(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_matches_initial(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred inst_matches_initial_no_implied_modes(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_matches_initial_no_implied_modes(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred inst_matches_initial_no_implied_modes_sub(parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, hlds.hlds_module.module_info, hlds.hlds_module.module_info, parse_tree.prog_data.inst_var_sub, parse_tree.prog_data.inst_var_sub).
+:- mode inst_matches_initial_no_implied_modes_sub(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- pred inst_matches_initial_sub(parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, hlds.hlds_module.module_info, hlds.hlds_module.module_info, parse_tree.prog_data.inst_var_sub, parse_tree.prog_data.inst_var_sub).
+:- mode inst_matches_initial_sub(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- pred pred_inst_matches(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.pred_inst_info, parse_tree.prog_data.pred_inst_info).
+:- mode pred_inst_matches(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred pred_inst_matches_ground(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.pred_inst_info).
+:- mode pred_inst_matches_ground(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred unique_matches_final(parse_tree.prog_data.uniqueness, parse_tree.prog_data.uniqueness).
+:- mode unique_matches_final(builtin.in, builtin.in) is semidet.
+:- pred unique_matches_initial(parse_tree.prog_data.uniqueness, parse_tree.prog_data.uniqueness).
+:- mode unique_matches_initial(builtin.in, builtin.in) is semidet.
