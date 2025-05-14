@@ -1,0 +1,126 @@
+:- module rtree.
+
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box3d__arity0______rtree__bounding_region_2'(builtin.in, builtin.in) = builtin.out, finite(-6, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box3d__arity0______rtree__bounding_region_size_2'(builtin.in, builtin.in) = builtin.out, finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box3d__arity0______rtree__contains_2'(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box3d__arity0______rtree__intersects_2'(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box3d__arity0______rtree__size_1'(builtin.in) = builtin.out, finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box__arity0______rtree__bounding_region_2'(builtin.in, builtin.in) = builtin.out, finite(-4, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box__arity0______rtree__bounding_region_size_2'(builtin.in, builtin.in) = builtin.out, finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box__arity0______rtree__contains_2'(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box__arity0______rtree__intersects_2'(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box__arity0______rtree__size_1'(builtin.in) = builtin.out, finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__interval__arity0______rtree__bounding_region_2'(builtin.in, builtin.in) = builtin.out, finite(-2, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__interval__arity0______rtree__bounding_region_size_2'(builtin.in, builtin.in) = builtin.out, finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__interval__arity0______rtree__contains_2'(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__interval__arity0______rtree__intersects_2'(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__interval__arity0______rtree__size_1'(builtin.in) = builtin.out, finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.bounding_region(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rtree.bounding_region_size(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rtree.box3d_bounding_region(builtin.in, builtin.in) = builtin.out, finite(-6, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(rtree.box3d_bounding_region_volume(builtin.in, builtin.in) = builtin.out, finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rtree.box3d_contains(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.box3d_intersects(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.box3d_volume(builtin.in) = builtin.out, finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.box_area(builtin.in) = builtin.out, finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.box_bounding_region(builtin.in, builtin.in) = builtin.out, finite(-4, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(rtree.box_bounding_region_area(builtin.in, builtin.in) = builtin.out, finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rtree.box_contains(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.box_intersects(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.contains(builtin.in, builtin.in), infinite, can_loop).
+:- pragma termination_info(rtree.delete(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.fold(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.fold(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(rtree.fold(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.fold_2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.fold_2(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(rtree.fold_2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.fold_subtree(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.fold_subtree(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(rtree.fold_subtree(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info((rtree.init) = builtin.uo, finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rtree.insert(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rtree.insert(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.intersects(builtin.in, builtin.in), infinite, can_loop).
+:- pragma termination_info(rtree.interval_bounding_region(builtin.in, builtin.in) = builtin.out, finite(-2, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(rtree.interval_bounding_region_length(builtin.in, builtin.in) = builtin.out, finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rtree.interval_contains(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.interval_intersects(builtin.in, builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.interval_length(builtin.in) = builtin.out, finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.is_empty(builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rtree.map_values(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.map_values(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.map_values_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.map_values_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.map_values_key_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.map_values_key_2(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.maybe_limit(builtin.in, builtin.in((pred(builtin.in, builtin.out) is semidet)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.search_contains(builtin.in, builtin.in) = builtin.out, finite(0, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(rtree.search_first(builtin.in((pred(builtin.in, builtin.out) is semidet)), builtin.in((pred(builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.search_first_2(builtin.in, builtin.in((pred(builtin.in, builtin.out) is semidet)), builtin.in((pred(builtin.in, builtin.out) is semidet)), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.search_general(builtin.in((pred(builtin.in) is semidet)), builtin.in((pred(builtin.in) is semidet)), builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(rtree.search_general_2(builtin.in, builtin.in((pred(builtin.in) is semidet)), builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_fold(builtin.in((pred(builtin.in) is semidet)), builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_fold(builtin.in((pred(builtin.in) is semidet)), builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_fold_2(builtin.in, builtin.in((pred(builtin.in) is semidet)), builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_fold_2(builtin.in, builtin.in((pred(builtin.in) is semidet)), builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_fold_subtree(builtin.in, builtin.in, builtin.in((pred(builtin.in) is semidet)), builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_fold_subtree(builtin.in, builtin.in, builtin.in((pred(builtin.in) is semidet)), builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_subtree(builtin.in, builtin.in, builtin.in((pred(builtin.in) is semidet)), builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.search_intersects(builtin.in, builtin.in) = builtin.out, finite(0, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(rtree.size(builtin.in) = builtin.out, infinite, can_loop).
+
+:- pragma exceptions(function, rtree.bounding_region, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rtree.bounding_region_size, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rtree.box3d_bounding_region, 2, 0, will_not_throw).
+:- pragma exceptions(function, rtree.box3d_bounding_region_volume, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, rtree.box3d_contains, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, rtree.box3d_intersects, 2, 0, will_not_throw).
+:- pragma exceptions(function, rtree.box3d_volume, 1, 0, will_not_throw).
+:- pragma exceptions(function, rtree.box_area, 1, 0, will_not_throw).
+:- pragma exceptions(function, rtree.box_bounding_region, 2, 0, will_not_throw).
+:- pragma exceptions(function, rtree.box_bounding_region_area, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, rtree.box_contains, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, rtree.box_intersects, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, rtree.contains, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.delete, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.fold, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.fold, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.fold, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.fold_2, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.fold_2, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.fold_2, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.fold_subtree, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.fold_subtree, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.fold_subtree, 5, 2, may_throw(user_exception)).
+:- pragma exceptions(function, rtree.init, 0, 0, will_not_throw).
+:- pragma exceptions(function, rtree.insert, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.insert, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.intersects, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rtree.interval_bounding_region, 2, 0, will_not_throw).
+:- pragma exceptions(function, rtree.interval_bounding_region_length, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, rtree.interval_contains, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, rtree.interval_intersects, 2, 0, will_not_throw).
+:- pragma exceptions(function, rtree.interval_length, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, rtree.is_empty, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, rtree.map_values, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.map_values, 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.map_values_2, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.map_values_2, 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.map_values_key_2, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.map_values_key_2, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.maybe_limit, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rtree.search_contains, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.search_first, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.search_first_2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rtree.search_general, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.search_general_2, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.search_general_fold, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.search_general_fold, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.search_general_fold_2, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.search_general_fold_2, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.search_general_fold_subtree, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.search_general_fold_subtree, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, rtree.search_general_subtree, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rtree.search_intersects, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, rtree.size, 1, 0, may_throw(user_exception)).
