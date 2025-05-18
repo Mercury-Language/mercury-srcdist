@@ -1,0 +1,10 @@
+:- module transform_hlds.size_prof.
+:- interface.
+:- type construct_transform
+	where	type_is_abstract_enum(1).
+:- type_representation(construct_transform, du_repn(enum("term_words", "term_cells", [],  no_c_j_cs))).
+:- type_representation(known_size_map, is_eqv_to(map(prog_var, int))).
+:- type_representation(rev_type_ctor_map, is_eqv_to(map(prog_var, type_ctor))).
+:- type_representation(rev_type_info_map, is_eqv_to(map(prog_var, mer_type))).
+:- type_representation(type_ctor_map, is_eqv_to(map(type_ctor, prog_var))).
+:- type_representation(type_info_map, is_eqv_to(map(mer_type, prog_var))).

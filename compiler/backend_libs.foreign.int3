@@ -1,0 +1,4 @@
+:- module backend_libs.foreign.
+:- interface.
+:- type foreign_type_and_assertions.
+:- type_representation(foreign_type_and_assertions, is_word_aligned_ptr).

@@ -1,0 +1,1225 @@
+/*
+** Automatically generated from `optimization_options.m'
+** by the Mercury compiler,
+** version rotd-2025-05-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.optimization_options.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__optimization_options
+#define MR_HEADER_GUARD_libs__optimization_options
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__OPTIMIZATION_OPTIONS_DECL_GUARD
+#define LIBS__OPTIMIZATION_OPTIONS_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_allow_hijacks_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_allow_inlining_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_allow_some_paths_only_waits_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_analyse_regions_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_deforest_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_delay_constructs_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_elim_excess_assigns_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_elim_local_vars_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_elim_unused_mlds_assigns_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_emit_c_loops_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_enable_const_struct_poly_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_enable_const_struct_user_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_from_opt_level_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_gen_trail_ops_inline_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_inline_alloc_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_inline_builtins_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_inline_linear_tail_rec_sccs_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_inline_par_builtins_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_inline_simple_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_inline_single_use_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_introduce_accumulators_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_merge_code_after_switch_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_c_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_checked_nondet_tailcalls_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_common_structs_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_dead_procs_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_delay_slot_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_dup_calls_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_dups_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_follow_code_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_format_calls_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_frames_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_fulljumps_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_higher_order_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_initializations_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_jumps_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_labels_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_lcmc_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_lcmc_accumulator_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_lcmc_null_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_loop_invariants_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_middle_rec_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_mlds_tailcalls_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_peep_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_peep_mkword_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_proc_dups_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_reassign_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_saved_vars_const_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_simple_neg_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_svcell_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_svcell_all_candidates_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_svcell_candidate_headvars_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_svcell_full_path_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_svcell_loop_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_svcell_on_stack_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_unneeded_code_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_unused_args_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_opt_unused_args_intermod_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_optimize_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_pessimize_tailcalls_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_prop_constants_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_prop_constraints_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_prop_local_constraints_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_put_base_first_multi_rec_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_put_base_first_single_rec_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_seen_opt_level_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_spec_in_all_dep_par_conjs_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_spec_types_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_spec_types_user_guided_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_split_switch_arms_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_standardize_labels_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_tuple_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_untuple_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_atomic_cells_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_common_data_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_common_layout_data_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_just_one_c_func_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_local_thread_engine_base_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_local_vars_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_macro_for_redo_fail_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_smart_indexing_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_smart_indexing_atomic_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_smart_indexing_float_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_smart_indexing_string_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_smart_indexing_tag_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_static_code_addresses_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_static_ground_cells_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_static_ground_floats_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_maybe_use_static_ground_int64s_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_opt_tuple_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optimization_options__libs__optimization_options__type_ctor_info_optimization_option_0;
+
+void MR_CALL 
+libs__optimization_options__process_optimization_options_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_allow_hijacks_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_allow_inlining_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_allow_some_paths_only_waits_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_analyse_regions_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_deforest_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_delay_constructs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_elim_excess_assigns_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_elim_local_vars_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_elim_unused_mlds_assigns_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_emit_c_loops_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_enable_const_struct_poly_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_enable_const_struct_user_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_gen_trail_ops_inline_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_inline_alloc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_inline_builtins_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_inline_linear_tail_rec_sccs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_inline_par_builtins_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_inline_simple_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_inline_single_use_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_introduce_accumulators_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_merge_code_after_switch_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_c_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_checked_nondet_tailcalls_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_common_structs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_dead_procs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_delay_slot_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_dup_calls_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_dups_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_follow_code_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_format_calls_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_frames_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_fulljumps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_higher_order_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_initializations_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_jumps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_labels_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_lcmc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_lcmc_accumulator_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_lcmc_null_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_loop_invariants_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_middle_rec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_mlds_tailcalls_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_peep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_peep_mkword_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_proc_dups_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_reassign_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_saved_vars_const_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_simple_neg_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_svcell_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_svcell_all_candidates_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_svcell_candidate_headvars_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_svcell_full_path_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_svcell_loop_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_svcell_on_stack_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_unneeded_code_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_unused_args_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_opt_unused_args_intermod_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_optimize_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_pessimize_tailcalls_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_prop_constants_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_prop_constraints_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_prop_local_constraints_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_put_base_first_multi_rec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_put_base_first_single_rec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_spec_in_all_dep_par_conjs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_spec_types_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_spec_types_user_guided_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_split_switch_arms_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_standardize_labels_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_tuple_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_untuple_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_atomic_cells_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_common_data_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_common_layout_data_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_just_one_c_func_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_local_thread_engine_base_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_local_vars_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_macro_for_redo_fail_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_smart_indexing_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_smart_indexing_atomic_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_smart_indexing_float_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_smart_indexing_string_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_smart_indexing_tag_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_static_code_addresses_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_static_ground_cells_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_static_ground_floats_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____maybe_use_static_ground_int64s_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____opt_tuple_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Compare____optimization_option_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optimization_options____Index____optimization_option_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_allow_hijacks_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_allow_inlining_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_allow_some_paths_only_waits_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_analyse_regions_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_deforest_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_delay_constructs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_elim_excess_assigns_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_elim_local_vars_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_elim_unused_mlds_assigns_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_emit_c_loops_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_enable_const_struct_poly_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_enable_const_struct_user_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_gen_trail_ops_inline_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_inline_alloc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_inline_builtins_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_inline_linear_tail_rec_sccs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_inline_par_builtins_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_inline_simple_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_inline_single_use_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_introduce_accumulators_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_merge_code_after_switch_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_c_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_checked_nondet_tailcalls_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_common_structs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_dead_procs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_delay_slot_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_dup_calls_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_dups_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_follow_code_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_format_calls_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_frames_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_fulljumps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_higher_order_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_initializations_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_jumps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_labels_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_lcmc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_lcmc_accumulator_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_lcmc_null_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_loop_invariants_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_middle_rec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_mlds_tailcalls_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_peep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_peep_mkword_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_proc_dups_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_reassign_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_saved_vars_const_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_simple_neg_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_svcell_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_svcell_all_candidates_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_svcell_candidate_headvars_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_svcell_full_path_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_svcell_loop_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_svcell_on_stack_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_unneeded_code_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_unused_args_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_opt_unused_args_intermod_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_optimize_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_pessimize_tailcalls_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_prop_constants_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_prop_constraints_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_prop_local_constraints_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_put_base_first_multi_rec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_put_base_first_single_rec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_spec_in_all_dep_par_conjs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_spec_types_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_spec_types_user_guided_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_split_switch_arms_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_standardize_labels_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_tuple_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_untuple_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_atomic_cells_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_common_data_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_common_layout_data_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_just_one_c_func_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_local_thread_engine_base_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_local_vars_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_macro_for_redo_fail_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_smart_indexing_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_smart_indexing_atomic_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_smart_indexing_float_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_smart_indexing_string_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_smart_indexing_tag_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_static_code_addresses_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_static_ground_cells_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_static_ground_floats_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____maybe_use_static_ground_int64s_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____opt_tuple_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optimization_options____Unify____optimization_option_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__optimization_options__init(void);
+void mercury__libs__optimization_options__init_type_tables(void);
+void mercury__libs__optimization_options__init_debugger(void);
+const char *mercury__libs__optimization_options__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.optimization_options
+
+// :- end_interface libs.optimization_options.
