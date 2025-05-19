@@ -1,0 +1,5 @@
+:- module hlds.headvar_names.
+:- interface.
+:- type maybe_look_for_unused_statevars
+    --->    do_not_look_for_unused_statevars 
+    ;       look_for_unused_statevars(list.list(string)).

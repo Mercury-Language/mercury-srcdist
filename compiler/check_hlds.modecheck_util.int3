@@ -1,0 +1,7 @@
+:- module check_hlds.modecheck_util.
+:- interface.
+:- type after_goals.
+:- type extra_goals.
+:- type modecheck_arg_offset.
+:- type_representation(inst_expansions, is_eqv_to(set_tree234(inst_name))).
+:- type_representation(modecheck_arg_offset, du_repn(notag("modecheck_arg_offset", int,  no_c_j_cs))).
