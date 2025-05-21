@@ -1,0 +1,38 @@
+:- module require.
+:- interface.
+:- pred error(string).
+:- mode error(builtin.in) is erroneous.
+:- pred error(string, string).
+:- mode error(builtin.in, builtin.in) is erroneous.
+:- pred expect((pred), string, string).
+:- mode expect(builtin.in(((pred) is semidet)), builtin.in, builtin.in) is det.
+:- pred expect((pred), string, string, string).
+:- mode expect(builtin.in(((pred) is semidet)), builtin.in, builtin.in, builtin.in) is det.
+:- pred expect_not((pred), string, string).
+:- mode expect_not(builtin.in(((pred) is semidet)), builtin.in, builtin.in) is det.
+:- pred expect_not((pred), string, string, string).
+:- mode expect_not(builtin.in(((pred) is semidet)), builtin.in, builtin.in, builtin.in) is det.
+:- func func_error(string) = V_1 is erroneous.
+:- func func_error(string, string) = V_1 is erroneous.
+:- pred report_lookup_error(string, K).
+:- mode report_lookup_error(builtin.in, builtin.in) is erroneous.
+:- pred report_lookup_error(string, K, V).
+:- mode report_lookup_error(builtin.in, builtin.in, builtin.unused) is erroneous.
+:- pred require((pred), string).
+:- mode require(builtin.in(((pred) is semidet)), builtin.in) is det.
+:- pred sorry(string, string).
+:- mode sorry(builtin.in, builtin.in) is erroneous.
+:- pred sorry(string, string, string).
+:- mode sorry(builtin.in, builtin.in, builtin.in) is erroneous.
+:- func sorry(string, string) = V_1 is erroneous.
+:- func sorry(string, string, string) = V_1 is erroneous.
+:- pred unexpected(string, string).
+:- mode unexpected(builtin.in, builtin.in) is erroneous.
+:- pred unexpected(string, string, string).
+:- mode unexpected(builtin.in, builtin.in, builtin.in) is erroneous.
+:- func unexpected(string, string) = V_1 is erroneous.
+:- func unexpected(string, string, string) = V_1 is erroneous.
+:- pragma terminates(pred(require.error/1)).
+:- pragma terminates(pred(require.error/2)).
+:- pragma terminates(func(require.func_error/1)).
+:- pragma terminates(func(require.func_error/2)).

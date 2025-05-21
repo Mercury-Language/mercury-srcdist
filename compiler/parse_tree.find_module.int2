@@ -1,0 +1,29 @@
+:- module parse_tree.find_module.
+:- interface.
+:- type dir_name_and_contents
+    --->    dir_name_and_contents(libs.file_util.dir_name, string).
+:- type dir_name_and_stream
+    --->    dir_name_and_stream(libs.file_util.dir_name, io.text_input_stream).
+:- type path_name_and_stream
+    --->    path_name_and_stream(libs.file_util.file_name, io.text_input_stream).
+:- type search_auth_dirs
+    --->    search_auth_cur_dir 
+    ;       search_auth_cur_dir_and(parse_tree.find_module.search_auth_tail_dirs)
+    ;       search_auth_this_dir(libs.file_util.dir_name)
+    ;       search_auth_this_dir_and(libs.file_util.dir_name, parse_tree.find_module.search_auth_tail_dirs)
+    ;       search_auth_private(parse_tree.find_module.search_auth_private_dirs).
+:- type search_auth_private_dirs
+    --->    private_auth_interface_dirs(libs.globals.interface_ext, libs.globals.globals)
+    ;       private_auth_intermod_dirs(libs.globals.intermod_ext, libs.globals.globals)
+    ;       private_auth_c_include_dirs(libs.globals.c_incl_ext, libs.globals.globals)
+    ;       private_auth_options_file_dirs(libs.options.option_table)
+    ;       private_auth_lib_dirs(libs.globals.lib_ext, libs.globals.globals)
+    ;       private_auth_stdlib_dirs(libs.globals.stdlib_ext, libs.globals.globals).
+:- type search_auth_private_tail_dirs =< parse_tree.find_module.search_auth_private_dirs
+    --->    private_auth_interface_dirs(libs.globals.interface_ext, libs.globals.globals)
+    ;       private_auth_intermod_dirs(libs.globals.intermod_ext, libs.globals.globals)
+    ;       private_auth_c_include_dirs(libs.globals.c_incl_ext, libs.globals.globals)
+    ;       private_auth_options_file_dirs(libs.options.option_table).
+:- type search_auth_tail_dirs =< parse_tree.find_module.search_auth_dirs
+    --->    search_auth_cur_dir 
+    ;       search_auth_private(parse_tree.find_module.search_auth_private_tail_dirs).
