@@ -1,0 +1,11 @@
+:- module hlds.error_msg_inst.
+:- interface.
+:- type maybe_expand_named_insts
+    --->    do_not_expand_named_insts 
+    ;       expand_named_insts .
+:- type short_inst
+    --->    quote_short_inst 
+    ;       fixed_short_inst .
+:- type user_or_developer
+    --->    uod_user 
+    ;       uod_developer(parse_tree.prog_data.tvarset).
