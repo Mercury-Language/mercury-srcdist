@@ -1,0 +1,14 @@
+module(2, "thread.future.m",
+	thread.future,
+	{thread},
+	{builtin, private_builtin},
+	{exception, mutvar, thread.semaphore},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - thread.future, "C#" - thread.future, "Java" - thread.future},
+	no_foreign_export,
+	no_main,
+	{}
+).

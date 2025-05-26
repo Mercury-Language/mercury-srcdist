@@ -1,0 +1,8 @@
+:- module transform_hlds.delay_construct.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- pred delay_construct_proc(io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode delay_construct_proc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

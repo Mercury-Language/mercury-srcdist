@@ -1,0 +1,20 @@
+:- module mdb.term_paths.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module mdb.browser_info.
+:- use_module mdb.browser_term.
+:- use_module mdb.parse.
+:- type deref_result(T)
+    --->    deref_result(T)
+    ;       deref_error(list.list(mdb.browser_info.down_dir), mdb.browser_info.down_dir).
+:- pred change_dir(list.list(mdb.browser_info.down_dir), mdb.parse.path, list.list(mdb.browser_info.down_dir)).
+:- mode change_dir(builtin.in, builtin.in, builtin.out) is det.
+:- pred deref_subterm(mdb.browser_term.browser_term, list.list(mdb.browser_info.down_dir), mdb.term_paths.deref_result(mdb.browser_term.browser_term)).
+:- mode deref_subterm(builtin.in, builtin.in, builtin.out) is cc_multi.
+:- pred report_deref_error(mdb.browser_info.debugger, list.list(mdb.browser_info.down_dir), mdb.browser_info.down_dir, io.io, io.io).
+:- mode report_deref_error(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred set_path(mdb.parse.path, mdb.browser_info.browser_info, mdb.browser_info.browser_info).
+:- mode set_path(builtin.in, builtin.in, builtin.out) is det.
+:- pred string_is_return_value_alias(string).
+:- mode string_is_return_value_alias(builtin.in) is semidet.
