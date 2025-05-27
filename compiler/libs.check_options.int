@@ -1,0 +1,16 @@
+:- module libs.check_options.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module libs.globals.
+:- use_module libs.options.
+:- use_module libs.trace_params.
+:- use_module mdbcomp.feedback.
+:- use_module parse_tree.error_spec.
+:- pred check_option_values(libs.options.option_table, libs.options.option_table, libs.globals.compilation_target, libs.globals.word_size, libs.globals.gc_method, libs.globals.termination_norm, libs.globals.termination_norm, libs.trace_params.trace_level, libs.trace_params.trace_suppress_items, libs.globals.ssdb_trace_level, libs.globals.may_be_thread_safe, libs.globals.c_compiler_type, libs.globals.csharp_compiler_type, libs.globals.reuse_strategy, maybe.maybe(mdbcomp.feedback.feedback_info), libs.globals.env_type, libs.globals.env_type, libs.globals.env_type, libs.globals.limit_error_contexts_map, libs.globals.linked_target_ext_info_map, list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode check_option_values(builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred convert_dump_alias(string, string).
+:- mode convert_dump_alias(builtin.in, builtin.out) is semidet.

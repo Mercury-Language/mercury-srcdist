@@ -1,0 +1,5 @@
+:- module parse_tree.module_dep_info.
+:- interface.
+:- type module_dep_info.
+:- type module_dep_summary.
+:- type_representation(module_dep_summary, is_word_aligned_ptr).

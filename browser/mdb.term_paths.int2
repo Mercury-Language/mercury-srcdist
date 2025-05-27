@@ -1,0 +1,5 @@
+:- module mdb.term_paths.
+:- interface.
+:- type deref_result(T)
+    --->    deref_result(T)
+    ;       deref_error(list.list(mdb.browser_info.down_dir), mdb.browser_info.down_dir).
