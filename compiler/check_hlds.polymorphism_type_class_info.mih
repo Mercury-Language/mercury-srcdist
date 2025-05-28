@@ -1,0 +1,104 @@
+/*
+** Automatically generated from `polymorphism_type_class_info.m'
+** by the Mercury compiler,
+** version rotd-2025-05-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.polymorphism_type_class_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__polymorphism_type_class_info
+#define MR_HEADER_GUARD_check_hlds__polymorphism_type_class_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__POLYMORPHISM_TYPE_CLASS_INFO_DECL_GUARD
+#define CHECK_HLDS__POLYMORPHISM_TYPE_CLASS_INFO_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_type_class_info__check_hlds__polymorphism_type_class_info__type_ctor_info_record_type_info_locns_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_type_class_info__check_hlds__polymorphism_type_class_info__type_ctor_info_tci_var_kind_0;
+
+void MR_CALL 
+check_hlds__polymorphism_type_class_info__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_107_101_95_116_121_112_101_99_108_97_115_115_95_105_110_102_111_95_118_97_114_115_95_95_91_50_93_95_48_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+check_hlds__polymorphism_type_class_info__make_existq_typeclass_info_vars_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+check_hlds__polymorphism_type_class_info__make_typeclass_info_head_vars_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__polymorphism_type_class_info__make_typeclass_info_vars_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+check_hlds__polymorphism_type_class_info____Compare____record_type_info_locns_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_type_class_info____Unify____record_type_info_locns_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__polymorphism_type_class_info__init(void);
+void mercury__check_hlds__polymorphism_type_class_info__init_type_tables(void);
+void mercury__check_hlds__polymorphism_type_class_info__init_debugger(void);
+const char *mercury__check_hlds__polymorphism_type_class_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.polymorphism_type_class_info
+
+// :- end_interface check_hlds.polymorphism_type_class_info.
