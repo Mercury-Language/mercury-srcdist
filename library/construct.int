@@ -1,0 +1,28 @@
+:- module construct.
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module type_desc.
+:- use_module univ.
+:- type functor_number_lex == int.
+:- type functor_number_ordinal == int.
+:- pred construct(type_desc.type_desc, construct.functor_number_lex, list.list(univ.univ), univ.univ).
+:- mode construct(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- func construct(type_desc.type_desc, construct.functor_number_lex, list.list(univ.univ)) = univ.univ is semidet.
+:- func construct_tuple(list.list(univ.univ)) = univ.univ.
+:- func det_num_functors(type_desc.type_desc) = int.
+:- pred find_functor(type_desc.type_desc, string, int, construct.functor_number_lex, list.list(type_desc.type_desc)).
+:- mode find_functor(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is semidet.
+:- pred get_functor(type_desc.type_desc, construct.functor_number_lex, string, int, list.list(type_desc.pseudo_type_desc)).
+:- mode get_functor(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is semidet.
+:- pred get_functor_lex(type_desc.type_desc, construct.functor_number_ordinal, construct.functor_number_lex).
+:- mode get_functor_lex(builtin.in, builtin.in, builtin.out) is semidet.
+:- func get_functor_lex(type_desc.type_desc, construct.functor_number_ordinal) = construct.functor_number_lex is semidet.
+:- pred get_functor_ordinal(type_desc.type_desc, construct.functor_number_lex, construct.functor_number_ordinal).
+:- mode get_functor_ordinal(builtin.in, builtin.in, builtin.out) is semidet.
+:- func get_functor_ordinal(type_desc.type_desc, construct.functor_number_lex) = construct.functor_number_ordinal is semidet.
+:- pred get_functor_with_names(type_desc.type_desc, construct.functor_number_lex, string, int, list.list(type_desc.pseudo_type_desc), list.list(maybe.maybe(string))).
+:- mode get_functor_with_names(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is semidet.
+:- pred num_functors(type_desc.type_desc, int).
+:- mode num_functors(builtin.in, builtin.out) is semidet.
+:- func num_functors(type_desc.type_desc) = int is semidet.
