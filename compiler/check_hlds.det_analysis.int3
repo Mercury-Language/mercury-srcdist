@@ -1,0 +1,4 @@
+:- module check_hlds.det_analysis.
+:- interface.
+:- type options_to_restore.
+:- type_representation(options_to_restore, is_eqv_to(assoc_list(option, option_data))).
