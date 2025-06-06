@@ -1,0 +1,59 @@
+:- module ll_backend.layout.
+:- interface.
+:- type alloc_site_info.
+:- type basic_label_layout.
+:- type closure_proc_id_data.
+:- type data_or_slot_id.
+:- type deep_excp_slots.
+:- type event_set_layout_data.
+:- type file_layout_data.
+:- type label_layout_long_vars.
+:- type label_layout_no_vars.
+:- type label_layout_short_vars.
+:- type label_long_var_info.
+:- type label_short_var_info.
+:- type label_vars
+	where	type_is_abstract_enum(2).
+:- type layout_array_name.
+:- type layout_name.
+:- type layout_slot_name.
+:- type maybe_proc_id_and_more.
+:- type module_layout_data.
+:- type module_layout_debug.
+:- type module_layout_deep_prof.
+:- type proc_layout_data.
+:- type proc_layout_exec_trace.
+:- type proc_layout_kind.
+:- type proc_layout_proc_static.
+:- type proc_layout_stack_traversal.
+:- type proc_layout_user_or_uci
+	where	type_is_abstract_enum(1).
+:- type string_with_0s.
+:- type table_io_args_data.
+:- type table_io_entry_data.
+:- type user_event_data.
+:- type_representation(alloc_site_info, is_word_aligned_ptr).
+:- type_representation(basic_label_layout, is_word_aligned_ptr).
+:- type_representation(closure_proc_id_data, is_word_aligned_ptr).
+:- type_representation(deep_excp_slots, is_word_aligned_ptr).
+:- type_representation(event_set_layout_data, is_word_aligned_ptr).
+:- type_representation(file_layout_data, is_word_aligned_ptr).
+:- type_representation(label_layout_long_vars, is_word_aligned_ptr).
+:- type_representation(label_layout_no_vars, du_repn(notag("label_layout_no_vars", basic_label_layout,  no_c_j_cs))).
+:- type_representation(label_layout_short_vars, is_word_aligned_ptr).
+:- type_representation(label_long_var_info, is_word_aligned_ptr).
+:- type_representation(label_short_var_info, is_word_aligned_ptr).
+:- type_representation(label_vars, du_repn(enum("label_has_no_var_info", "label_has_short_var_info", ["label_has_long_var_info"],  no_c_j_cs))).
+:- type_representation(layout_slot_name, is_word_aligned_ptr).
+:- type_representation(module_layout_data, is_word_aligned_ptr).
+:- type_representation(module_layout_debug, is_word_aligned_ptr).
+:- type_representation(module_layout_deep_prof, is_word_aligned_ptr).
+:- type_representation(proc_layout_data, is_word_aligned_ptr).
+:- type_representation(proc_layout_exec_trace, is_word_aligned_ptr).
+:- type_representation(proc_layout_proc_static, is_word_aligned_ptr).
+:- type_representation(proc_layout_stack_traversal, is_word_aligned_ptr).
+:- type_representation(proc_layout_user_or_uci, du_repn(enum("user", "uci", [],  no_c_j_cs))).
+:- type_representation(string_with_0s, du_repn(notag("string_with_0s", list(string),  no_c_j_cs))).
+:- type_representation(table_io_args_data, is_word_aligned_ptr).
+:- type_representation(table_io_entry_data, is_word_aligned_ptr).
+:- type_representation(user_event_data, is_word_aligned_ptr).
