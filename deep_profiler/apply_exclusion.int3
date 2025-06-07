@@ -1,0 +1,2 @@
+:- module apply_exclusion.
+:- interface.

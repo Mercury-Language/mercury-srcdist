@@ -1,0 +1,14 @@
+module(2, "pretty_printer.m",
+	pretty_printer,
+	{},
+	{array, builtin, char, deconstruct, io, list, one_or_more, private_builtin, stream, string, tree234, type_desc, univ, version_array, string.builder},
+	{bool, int, map, ops, require, term_io, string.format, string.parse_util},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - pretty_printer, "C#" - pretty_printer, "Java" - pretty_printer},
+	contains_foreign_export,
+	no_main,
+	{}
+).

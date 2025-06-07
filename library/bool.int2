@@ -1,0 +1,7 @@
+:- module bool.
+:- interface.
+:- use_module enum.
+:- type bool
+    --->    no 
+    ;       yes .
+:- instance (enum.enum(bool.bool)).

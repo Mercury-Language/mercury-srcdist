@@ -1,0 +1,8 @@
+:- module ll_backend.llds_out.
+:- interface.
+:- include_module (ll_backend.llds_out).llds_out_code_addr.
+:- include_module (ll_backend.llds_out).llds_out_data.
+:- include_module (ll_backend.llds_out).llds_out_file.
+:- include_module (ll_backend.llds_out).llds_out_global.
+:- include_module (ll_backend.llds_out).llds_out_instr.
+:- include_module (ll_backend.llds_out).llds_out_util.
