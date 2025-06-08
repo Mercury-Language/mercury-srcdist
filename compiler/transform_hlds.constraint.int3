@@ -1,0 +1,4 @@
+:- module transform_hlds.constraint.
+:- interface.
+:- type constraint_info.
+:- type_representation(constraint_info, is_word_aligned_ptr).
