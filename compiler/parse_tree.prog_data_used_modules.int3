@@ -1,0 +1,7 @@
+:- module parse_tree.prog_data_used_modules.
+:- interface.
+:- type item_visibility
+	where	type_is_abstract_enum(1).
+:- type used_modules.
+:- type_representation(item_visibility, du_repn(enum("visibility_public", "visibility_private", [],  no_c_j_cs))).
+:- type_representation(used_modules, is_word_aligned_ptr).
