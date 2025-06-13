@@ -1,0 +1,272 @@
+:- module libs.optimization_options.
+:- interface.
+:- type maybe_allow_hijacks
+	where	type_is_abstract_enum(1).
+:- type maybe_allow_inlining
+	where	type_is_abstract_enum(1).
+:- type maybe_allow_some_paths_only_waits
+	where	type_is_abstract_enum(1).
+:- type maybe_analyse_regions
+	where	type_is_abstract_enum(1).
+:- type maybe_deforest
+	where	type_is_abstract_enum(1).
+:- type maybe_delay_constructs
+	where	type_is_abstract_enum(1).
+:- type maybe_elim_excess_assigns
+	where	type_is_abstract_enum(1).
+:- type maybe_elim_local_vars
+	where	type_is_abstract_enum(1).
+:- type maybe_elim_unused_mlds_assigns
+	where	type_is_abstract_enum(1).
+:- type maybe_emit_c_loops
+	where	type_is_abstract_enum(1).
+:- type maybe_enable_const_struct_poly
+	where	type_is_abstract_enum(1).
+:- type maybe_enable_const_struct_user
+	where	type_is_abstract_enum(1).
+:- type maybe_gen_trail_ops_inline
+	where	type_is_abstract_enum(1).
+:- type maybe_inline_alloc
+	where	type_is_abstract_enum(1).
+:- type maybe_inline_builtins
+	where	type_is_abstract_enum(1).
+:- type maybe_inline_par_builtins
+	where	type_is_abstract_enum(1).
+:- type maybe_inline_simple
+	where	type_is_abstract_enum(1).
+:- type maybe_inline_single_use
+	where	type_is_abstract_enum(1).
+:- type maybe_inline_tr_sccs
+	where	type_is_abstract_enum(1).
+:- type maybe_introduce_accumulators
+	where	type_is_abstract_enum(1).
+:- type maybe_merge_code_after_switch
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_c
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_checked_nondet_tailcalls
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_common_structs
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_dead_procs
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_delay_slot
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_dup_calls
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_dups
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_follow_code
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_format_calls
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_frames
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_fulljumps
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_higher_order
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_initializations
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_jumps
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_labels
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_lcmc
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_lcmc_accumulator
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_lcmc_null
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_loop_invariants
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_middle_rec
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_mlds_tailcalls
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_proc_dups
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_reassign
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_saved_vars_const
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_simple_neg
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_svcell
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_svcell_all_candidates
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_svcell_candidate_headvars
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_svcell_full_path
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_svcell_loop
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_svcell_on_stack
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_unneeded_code
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_unused_args
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_unused_args_intermod
+	where	type_is_abstract_enum(1).
+:- type maybe_optimize_llds
+	where	type_is_abstract_enum(1).
+:- type maybe_optimize_mlds
+	where	type_is_abstract_enum(1).
+:- type maybe_peep_llds
+	where	type_is_abstract_enum(1).
+:- type maybe_peep_llds_mkword
+	where	type_is_abstract_enum(1).
+:- type maybe_peep_mlds
+	where	type_is_abstract_enum(1).
+:- type maybe_pessimize_tailcalls
+	where	type_is_abstract_enum(1).
+:- type maybe_prop_constants
+	where	type_is_abstract_enum(1).
+:- type maybe_prop_constraints
+	where	type_is_abstract_enum(1).
+:- type maybe_prop_local_constraints
+	where	type_is_abstract_enum(1).
+:- type maybe_put_base_first_multi_rec
+	where	type_is_abstract_enum(1).
+:- type maybe_put_base_first_single_rec
+	where	type_is_abstract_enum(1).
+:- type maybe_spec_in_all_dep_par_conjs
+	where	type_is_abstract_enum(1).
+:- type maybe_spec_types
+	where	type_is_abstract_enum(1).
+:- type maybe_spec_types_user_guided
+	where	type_is_abstract_enum(1).
+:- type maybe_split_switch_arms
+	where	type_is_abstract_enum(1).
+:- type maybe_standardize_labels
+	where	type_is_abstract_enum(1).
+:- type maybe_tuple
+	where	type_is_abstract_enum(1).
+:- type maybe_untuple
+	where	type_is_abstract_enum(1).
+:- type maybe_use_atomic_cells
+	where	type_is_abstract_enum(1).
+:- type maybe_use_common_data
+	where	type_is_abstract_enum(1).
+:- type maybe_use_common_layout_data
+	where	type_is_abstract_enum(1).
+:- type maybe_use_just_one_c_func
+	where	type_is_abstract_enum(1).
+:- type maybe_use_local_thread_engine_base
+	where	type_is_abstract_enum(1).
+:- type maybe_use_local_vars
+	where	type_is_abstract_enum(1).
+:- type maybe_use_macro_for_redo_fail
+	where	type_is_abstract_enum(1).
+:- type maybe_use_smart_indexing
+	where	type_is_abstract_enum(1).
+:- type maybe_use_smart_indexing_atomic
+	where	type_is_abstract_enum(1).
+:- type maybe_use_smart_indexing_float
+	where	type_is_abstract_enum(1).
+:- type maybe_use_smart_indexing_string
+	where	type_is_abstract_enum(1).
+:- type maybe_use_smart_indexing_tag
+	where	type_is_abstract_enum(1).
+:- type maybe_use_static_code_addresses
+	where	type_is_abstract_enum(1).
+:- type maybe_use_static_ground_cells
+	where	type_is_abstract_enum(1).
+:- type maybe_use_static_ground_floats
+	where	type_is_abstract_enum(1).
+:- type maybe_use_static_ground_int64s
+	where	type_is_abstract_enum(1).
+:- type opt_tuple.
+:- type optimization_option.
+:- type_representation(maybe_allow_hijacks, du_repn(enum("allow_hijacks", "do_not_allow_hijacks", [],  no_c_j_cs))).
+:- type_representation(maybe_allow_inlining, du_repn(enum("allow_inlining", "do_not_allow_inlining", [],  no_c_j_cs))).
+:- type_representation(maybe_allow_some_paths_only_waits, du_repn(enum("allow_some_paths_only_waits", "do_not_allow_some_paths_only_waits", [],  no_c_j_cs))).
+:- type_representation(maybe_analyse_regions, du_repn(enum("analyse_regions", "do_not_analyse_regions", [],  no_c_j_cs))).
+:- type_representation(maybe_deforest, du_repn(enum("deforest", "do_not_deforest", [],  no_c_j_cs))).
+:- type_representation(maybe_delay_constructs, du_repn(enum("delay_constructs", "do_not_delay_constructs", [],  no_c_j_cs))).
+:- type_representation(maybe_elim_excess_assigns, du_repn(enum("elim_excess_assigns", "do_not_elim_excess_assigns", [],  no_c_j_cs))).
+:- type_representation(maybe_elim_local_vars, du_repn(enum("elim_local_vars", "do_not_elim_local_vars", [],  no_c_j_cs))).
+:- type_representation(maybe_elim_unused_mlds_assigns, du_repn(enum("elim_unused_mlds_assigns", "do_not_elim_unused_mlds_assigns", [],  no_c_j_cs))).
+:- type_representation(maybe_emit_c_loops, du_repn(enum("emit_c_loops", "do_not_emit_c_loops", [],  no_c_j_cs))).
+:- type_representation(maybe_enable_const_struct_poly, du_repn(enum("enable_const_struct_poly", "do_not_enable_const_struct_poly", [],  no_c_j_cs))).
+:- type_representation(maybe_enable_const_struct_user, du_repn(enum("enable_const_struct_user", "do_not_enable_const_struct_user", [],  no_c_j_cs))).
+:- type_representation(maybe_gen_trail_ops_inline, du_repn(enum("gen_trail_ops_inline", "do_not_gen_trail_ops_inline", [],  no_c_j_cs))).
+:- type_representation(maybe_inline_alloc, du_repn(enum("inline_alloc", "do_not_inline_alloc", [],  no_c_j_cs))).
+:- type_representation(maybe_inline_builtins, du_repn(enum("inline_builtins", "do_not_inline_builtins", [],  no_c_j_cs))).
+:- type_representation(maybe_inline_par_builtins, du_repn(enum("inline_par_builtins", "do_not_inline_par_builtins", [],  no_c_j_cs))).
+:- type_representation(maybe_inline_simple, du_repn(enum("inline_simple", "do_not_inline_simple", [],  no_c_j_cs))).
+:- type_representation(maybe_inline_single_use, du_repn(enum("inline_single_use", "do_not_inline_single_use", [],  no_c_j_cs))).
+:- type_representation(maybe_inline_tr_sccs, du_repn(enum("inline_tr_sccs", "do_not_inline_tr_sccs", [],  no_c_j_cs))).
+:- type_representation(maybe_introduce_accumulators, du_repn(enum("introduce_accumulators", "do_not_introduce_accumulators", [],  no_c_j_cs))).
+:- type_representation(maybe_merge_code_after_switch, du_repn(enum("merge_code_after_switch", "do_not_merge_code_after_switch", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_c, du_repn(enum("opt_c", "do_not_opt_c", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_checked_nondet_tailcalls, du_repn(enum("opt_checked_nondet_tailcalls", "do_not_opt_checked_nondet_tailcalls", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_common_structs, du_repn(enum("opt_common_structs", "do_not_opt_common_structs", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_dead_procs, du_repn(enum("opt_dead_procs", "do_not_opt_dead_procs", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_delay_slot, du_repn(enum("opt_delay_slot", "do_not_opt_delay_slot", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_dup_calls, du_repn(enum("opt_dup_calls", "do_not_opt_dup_calls", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_dups, du_repn(enum("opt_dups", "do_not_opt_dups", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_follow_code, du_repn(enum("opt_follow_code", "do_not_opt_follow_code", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_format_calls, du_repn(enum("opt_format_calls", "do_not_opt_format_calls", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_frames, du_repn(enum("opt_frames", "do_not_opt_frames", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_fulljumps, du_repn(enum("opt_fulljumps", "do_not_opt_fulljumps", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_higher_order, du_repn(enum("opt_higher_order", "do_not_opt_higher_order", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_initializations, du_repn(enum("opt_initializations", "do_not_opt_initializations", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_jumps, du_repn(enum("opt_jumps", "do_not_opt_jumps", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_labels, du_repn(enum("opt_labels", "do_not_opt_labels", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_lcmc, du_repn(enum("opt_lcmc", "do_not_opt_lcmc", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_lcmc_accumulator, du_repn(enum("opt_lcmc_accumulator", "do_not_opt_lcmc_accumulator", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_lcmc_null, du_repn(enum("opt_lcmc_null", "do_not_opt_lcmc_null", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_loop_invariants, du_repn(enum("opt_loop_invariants", "do_not_opt_loop_invariants", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_middle_rec, du_repn(enum("opt_middle_rec", "do_not_opt_middle_rec", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_mlds_tailcalls, du_repn(enum("opt_mlds_tailcalls", "do_not_opt_mlds_tailcalls", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_proc_dups, du_repn(enum("opt_proc_dups", "do_not_opt_proc_dups", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_reassign, du_repn(enum("opt_reassign", "do_not_opt_reassign", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_saved_vars_const, du_repn(enum("opt_saved_vars_const", "do_not_opt_saved_vars_const", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_simple_neg, du_repn(enum("opt_simple_neg", "do_not_opt_simple_neg", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_svcell, du_repn(enum("opt_svcell", "do_not_opt_svcell", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_svcell_all_candidates, du_repn(enum("opt_svcell_all_candidates", "do_not_opt_svcell_all_candidates", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_svcell_candidate_headvars, du_repn(enum("opt_svcell_candidate_headvars", "do_not_opt_svcell_candidate_headvars", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_svcell_full_path, du_repn(enum("opt_svcell_full_path", "do_not_opt_svcell_full_path", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_svcell_loop, du_repn(enum("opt_svcell_loop", "do_not_opt_svcell_loop", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_svcell_on_stack, du_repn(enum("opt_svcell_on_stack", "do_not_opt_svcell_on_stack", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_unneeded_code, du_repn(enum("opt_unneeded_code", "do_not_opt_unneeded_code", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_unused_args, du_repn(enum("opt_unused_args", "do_not_opt_unused_args", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_unused_args_intermod, du_repn(enum("opt_unused_args_intermod", "do_not_opt_unused_args_intermod", [],  no_c_j_cs))).
+:- type_representation(maybe_optimize_llds, du_repn(enum("optimize_llds", "do_not_optimize_llds", [],  no_c_j_cs))).
+:- type_representation(maybe_optimize_mlds, du_repn(enum("optimize_mlds", "do_not_optimize_mlds", [],  no_c_j_cs))).
+:- type_representation(maybe_peep_llds, du_repn(enum("peep_llds", "do_not_peep_llds", [],  no_c_j_cs))).
+:- type_representation(maybe_peep_llds_mkword, du_repn(enum("peep_llds_mkword", "do_not_peep_llds_mkword", [],  no_c_j_cs))).
+:- type_representation(maybe_peep_mlds, du_repn(enum("peep_mlds", "do_not_peep_mlds", [],  no_c_j_cs))).
+:- type_representation(maybe_pessimize_tailcalls, du_repn(enum("pessimize_tailcalls", "do_not_pessimize_tailcalls", [],  no_c_j_cs))).
+:- type_representation(maybe_prop_constants, du_repn(enum("prop_constants", "do_not_prop_constants", [],  no_c_j_cs))).
+:- type_representation(maybe_prop_constraints, du_repn(enum("prop_constraints", "do_not_prop_constraints", [],  no_c_j_cs))).
+:- type_representation(maybe_prop_local_constraints, du_repn(enum("prop_local_constraints", "do_not_prop_local_constraints", [],  no_c_j_cs))).
+:- type_representation(maybe_put_base_first_multi_rec, du_repn(enum("put_base_first_multi_rec", "do_not_put_base_first_multi_rec", [],  no_c_j_cs))).
+:- type_representation(maybe_put_base_first_single_rec, du_repn(enum("put_base_first_single_rec", "do_not_put_base_first_single_rec", [],  no_c_j_cs))).
+:- type_representation(maybe_spec_in_all_dep_par_conjs, du_repn(enum("spec_in_all_dep_par_conjs", "do_not_spec_in_all_dep_par_conjs", [],  no_c_j_cs))).
+:- type_representation(maybe_spec_types, du_repn(enum("spec_types", "do_not_spec_types", [],  no_c_j_cs))).
+:- type_representation(maybe_spec_types_user_guided, du_repn(enum("spec_types_user_guided", "do_not_spec_types_user_guided", [],  no_c_j_cs))).
+:- type_representation(maybe_split_switch_arms, du_repn(enum("split_switch_arms", "do_not_split_switch_arms", [],  no_c_j_cs))).
+:- type_representation(maybe_standardize_labels, du_repn(enum("standardize_labels", "do_not_standardize_labels", [],  no_c_j_cs))).
+:- type_representation(maybe_tuple, du_repn(enum("tuple", "do_not_tuple", [],  no_c_j_cs))).
+:- type_representation(maybe_untuple, du_repn(enum("untuple", "do_not_untuple", [],  no_c_j_cs))).
+:- type_representation(maybe_use_atomic_cells, du_repn(enum("use_atomic_cells", "do_not_use_atomic_cells", [],  no_c_j_cs))).
+:- type_representation(maybe_use_common_data, du_repn(enum("use_common_data", "do_not_use_common_data", [],  no_c_j_cs))).
+:- type_representation(maybe_use_common_layout_data, du_repn(enum("use_common_layout_data", "do_not_use_common_layout_data", [],  no_c_j_cs))).
+:- type_representation(maybe_use_just_one_c_func, du_repn(enum("use_just_one_c_func", "do_not_use_just_one_c_func", [],  no_c_j_cs))).
+:- type_representation(maybe_use_local_thread_engine_base, du_repn(enum("use_local_thread_engine_base", "do_not_use_local_thread_engine_base", [],  no_c_j_cs))).
+:- type_representation(maybe_use_local_vars, du_repn(enum("use_local_vars", "do_not_use_local_vars", [],  no_c_j_cs))).
+:- type_representation(maybe_use_macro_for_redo_fail, du_repn(enum("use_macro_for_redo_fail", "do_not_use_macro_for_redo_fail", [],  no_c_j_cs))).
+:- type_representation(maybe_use_smart_indexing, du_repn(enum("use_smart_indexing", "do_not_use_smart_indexing", [],  no_c_j_cs))).
+:- type_representation(maybe_use_smart_indexing_atomic, du_repn(enum("use_smart_indexing_atomic", "do_not_use_smart_indexing_atomic", [],  no_c_j_cs))).
+:- type_representation(maybe_use_smart_indexing_float, du_repn(enum("use_smart_indexing_float", "do_not_use_smart_indexing_float", [],  no_c_j_cs))).
+:- type_representation(maybe_use_smart_indexing_string, du_repn(enum("use_smart_indexing_string", "do_not_use_smart_indexing_string", [],  no_c_j_cs))).
+:- type_representation(maybe_use_smart_indexing_tag, du_repn(enum("use_smart_indexing_tag", "do_not_use_smart_indexing_tag", [],  no_c_j_cs))).
+:- type_representation(maybe_use_static_code_addresses, du_repn(enum("use_static_code_addresses", "do_not_use_static_code_addresses", [],  no_c_j_cs))).
+:- type_representation(maybe_use_static_ground_cells, du_repn(enum("use_static_ground_cells", "do_not_use_static_ground_cells", [],  no_c_j_cs))).
+:- type_representation(maybe_use_static_ground_floats, du_repn(enum("use_static_ground_floats", "do_not_use_static_ground_floats", [],  no_c_j_cs))).
+:- type_representation(maybe_use_static_ground_int64s, du_repn(enum("use_static_ground_int64s", "do_not_use_static_ground_int64s", [],  no_c_j_cs))).
+:- type_representation(opt_tuple, is_word_aligned_ptr).
