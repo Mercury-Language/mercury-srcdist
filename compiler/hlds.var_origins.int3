@@ -1,0 +1,10 @@
+:- module hlds.var_origins.
+:- interface.
+:- type lhs_or_rhs.
+:- type lhs_or_rhs_arg.
+:- type record_var_origin(T).
+:- type var_origin.
+:- type var_origins_map.
+:- abstract_inst((record_var_origin)).
+:- type_representation(record_var_origin(V_1), is_eqv_to(pred(hlds.var_origins.var_origins_map, prog_var, hlds.var_origins.var_origin, V_1, V_1))).
+:- type_representation(var_origins_map, is_eqv_to(map(prog_var, set(hlds.var_origins.var_origin)))).

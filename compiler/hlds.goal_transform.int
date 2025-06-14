@@ -1,0 +1,38 @@
+:- module hlds.goal_transform.
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_markers.
+:- use_module hlds.hlds_module.
+:- use_module hlds.instmap.
+:- use_module mdbcomp.goal_path.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_table.
+:- type attach_in_from_ground_term
+    --->    attach_in_from_ground_term 
+    ;       do_not_attach_in_from_ground_term .
+:- type maybe_transformed_goal
+    --->    ok(hlds.hlds_goal.hlds_goal)
+    ;       error(string)
+    ;       goal_not_found .
+:- pred attach_features_to_all_goals(list.list(hlds.hlds_markers.goal_feature), hlds.goal_transform.attach_in_from_ground_term, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode attach_features_to_all_goals(builtin.in, builtin.in(bound(attach_in_from_ground_term)), builtin.in, builtin.out) is det.
+:- mode attach_features_to_all_goals(builtin.in, builtin.in(bound(do_not_attach_in_from_ground_term)), builtin.in, builtin.out) is det.
+:- pred case_to_disjunct(parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, hlds.instmap.instmap, parse_tree.prog_data.cons_id, hlds.hlds_goal.hlds_goal, parse_tree.var_table.var_table, parse_tree.var_table.var_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode case_to_disjunct(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred flatten_conj(list.list(hlds.hlds_goal.hlds_goal), list.list(hlds.hlds_goal.hlds_goal)).
+:- mode flatten_conj(builtin.in, builtin.out) is det.
+:- pred flatten_disj(list.list(hlds.hlds_goal.hlds_goal), list.list(hlds.hlds_goal.hlds_goal)).
+:- mode flatten_disj(builtin.in, builtin.out) is det.
+:- func maybe_strip_equality_pretest(hlds.hlds_goal.hlds_goal) = hlds.hlds_goal.hlds_goal.
+:- pred maybe_transform_goal_at_goal_path(pred(hlds.hlds_goal.hlds_goal, maybe.maybe_error(hlds.hlds_goal.hlds_goal)), mdbcomp.goal_path.forward_goal_path, hlds.hlds_goal.hlds_goal, hlds.goal_transform.maybe_transformed_goal).
+:- mode maybe_transform_goal_at_goal_path(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- pred maybe_transform_goal_at_goal_path_with_instmap(pred(hlds.instmap.instmap, hlds.hlds_goal.hlds_goal, maybe.maybe_error(hlds.hlds_goal.hlds_goal)), mdbcomp.goal_path.forward_goal_path, hlds.instmap.instmap, hlds.hlds_goal.hlds_goal, hlds.goal_transform.maybe_transformed_goal).
+:- mode maybe_transform_goal_at_goal_path_with_instmap(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred switch_to_disjunction(parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.case), hlds.instmap.instmap, list.list(hlds.hlds_goal.hlds_goal), parse_tree.var_table.var_table, parse_tree.var_table.var_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode switch_to_disjunction(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred transform_all_goals(pred(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal), hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode transform_all_goals(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.out) is det.
