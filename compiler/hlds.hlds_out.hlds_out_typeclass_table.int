@@ -1,0 +1,15 @@
+:- module (hlds.hlds_out).hlds_out_typeclass_table.
+:- interface.
+:- use_module io.
+:- use_module string.
+:- use_module hlds.hlds_class.
+:- use_module string.builder.
+:- use_module (hlds.hlds_out).hlds_out_util.
+:- pred format_classes(hlds.hlds_out.hlds_out_util.hlds_out_info, hlds.hlds_class.class_table, string.builder.state, string.builder.state).
+:- mode format_classes(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred format_instances(hlds.hlds_out.hlds_out_util.hlds_out_info, hlds.hlds_class.instance_table, string.builder.state, string.builder.state).
+:- mode format_instances(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred write_classes(hlds.hlds_out.hlds_out_util.hlds_out_info, io.text_output_stream, hlds.hlds_class.class_table, io.io, io.io).
+:- mode write_classes(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred write_instances(hlds.hlds_out.hlds_out_util.hlds_out_info, io.text_output_stream, hlds.hlds_class.instance_table, io.io, io.io).
+:- mode write_instances(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
