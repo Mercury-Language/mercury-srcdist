@@ -1,0 +1,5 @@
+:- module check_hlds.det_infer_goal.
+:- interface.
+:- type soln_context
+    --->    all_solns 
+    ;       first_soln .

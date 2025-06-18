@@ -1,0 +1,34 @@
+:- module libs.print_help.
+:- interface.
+:- type alt_name_pos
+    --->    xpos_one_line 
+    ;       xpos_sep_lines .
+:- type arg_align
+    --->    arg_align((libs.print_help).aa_arg_name :: string, (libs.print_help).aa_aligned_text :: string).
+:- type help
+    --->    no_help 
+    ;       xgen_help((libs.print_help).gh_long_name :: string, (libs.print_help).gh_alt_name_pos :: libs.print_help.alt_name_pos, (libs.print_help).gh_alt_long_names :: list.list(string), (libs.print_help).gh_short_names :: list.list(char.char), (libs.print_help).gh_public_or_private :: libs.print_help.help_public_or_private, (libs.print_help).gh_description :: list.list(string))
+    ;       xhelp((libs.print_help).h_long_name :: string, (libs.print_help).h_description :: list.list(string))
+    ;       xarg_help((libs.print_help).hr_long_name :: string, (libs.print_help).hr_arg_name :: string, (libs.print_help).hr_description :: list.list(string))
+    ;       xpriv_help((libs.print_help).ph_long_name :: string, (libs.print_help).ph_description :: list.list(string))
+    ;       xpriv_arg_help((libs.print_help).prh_long_name :: string, (libs.print_help).prh_arg_name :: string, (libs.print_help).prh_description :: list.list(string))
+    ;       xalt_help((libs.print_help).ah_long_name :: string, (libs.print_help).ah_alt_name_pos :: libs.print_help.alt_name_pos, (libs.print_help).ah_alt_long_names :: list.list(string), (libs.print_help).ah_description :: list.list(string))
+    ;       xalt_arg_align_help((libs.print_help).arlh_long_name :: string, (libs.print_help).arlh_alt_arg_pos :: libs.print_help.alt_name_pos, (libs.print_help).arlh_arg_aligns :: list.list(libs.print_help.arg_align), (libs.print_help).arlh_description :: list.list(string))
+    ;       xalt_align_help((libs.print_help).alh_long_name :: string, (libs.print_help).alh_alt_name_pos :: libs.print_help.alt_name_pos, (libs.print_help).alh_alt_long_names :: list.list(string), (libs.print_help).alh_aligned_text :: string, (libs.print_help).alh_description :: list.list(string))
+    ;       xno_align_help((libs.print_help).nlh_long_name :: string, (libs.print_help).nlh_aligned_text :: string, (libs.print_help).alh_no_aligned_text :: string, (libs.print_help).nlh_description :: list.list(string))
+    ;       xpriv_alt_align_help((libs.print_help).palh_long_name :: string, (libs.print_help).palh_alt_name_pos :: libs.print_help.alt_name_pos, (libs.print_help).palh_alt_long_names :: list.list(string), (libs.print_help).palh_aligned_text :: string, (libs.print_help).palh_description :: list.list(string))
+    ;       xshort_alt_align_help((libs.print_help).salh_short_name :: char.char, (libs.print_help).salh_long_name :: string, (libs.print_help).salh_alt_name_pos :: libs.print_help.alt_name_pos, (libs.print_help).salh_alt_long_names :: list.list(string), (libs.print_help).salh_aligned_text :: string, (libs.print_help).salh_description :: list.list(string))
+    ;       xalt_arg_help((libs.print_help).aah_long_name :: string, (libs.print_help).aah_alt_name_pos :: libs.print_help.alt_name_pos, (libs.print_help).aah_alt_long_names :: list.list(string), (libs.print_help).aah_arg_name :: string, (libs.print_help).aah_description :: list.list(string))
+    ;       xpriv_alt_help((libs.print_help).pah_long_name :: string, (libs.print_help).pah_alt_name_pos :: libs.print_help.alt_name_pos, (libs.print_help).pah_alt_long_names :: list.list(string), (libs.print_help).pah_description :: list.list(string))
+    ;       xpriv_alt_arg_help((libs.print_help).paah_long_name :: string, (libs.print_help).paah_alt_name_pos :: libs.print_help.alt_name_pos, (libs.print_help).paah_alt_long_names :: list.list(string), (libs.print_help).paah_arg_name :: string, (libs.print_help).paah_description :: list.list(string))
+    ;       xshort_help((libs.print_help).sh_short_name :: char.char, (libs.print_help).sh_long_name :: string, (libs.print_help).sh_alt_long_names :: list.list(string), (libs.print_help).sh_description :: list.list(string))
+    ;       xpriv_short_help((libs.print_help).psh_short_name :: char.char, (libs.print_help).psh_long_name :: string, (libs.print_help).psh_alt_long_names :: list.list(string), (libs.print_help).psh_description :: list.list(string))
+    ;       xshort_arg_help((libs.print_help).sah_short_name :: char.char, (libs.print_help).sah_long_name :: string, (libs.print_help).sah_alt_long_names :: list.list(string), (libs.print_help).sah_arg_name :: string, (libs.print_help).sah_description :: list.list(string))
+    ;       xpriv_short_arg_help((libs.print_help).psah_short_name :: char.char, (libs.print_help).psah_long_name :: string, (libs.print_help).psah_alt_long_names :: list.list(string), (libs.print_help).psah_arg_name :: string, (libs.print_help).psah_description :: list.list(string))
+    ;       xunnamed_help((libs.print_help).uh_description :: list.list(string)).
+:- type help_public_or_private
+    --->    help_public 
+    ;       help_private .
+:- type print_what_help
+    --->    print_public_help 
+    ;       print_public_and_private_help .

@@ -1,0 +1,8 @@
+:- module make.util.
+:- interface.
+:- type maybe_grade_dependent
+	where	type_is_abstract_enum(1).
+:- type stop_or_continue
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_grade_dependent, du_repn(enum("not_grade_dependent", "grade_dependent", [],  no_c_j_cs))).
+:- type_representation(stop_or_continue, du_repn(enum("soc_stop", "soc_continue", [],  no_c_j_cs))).

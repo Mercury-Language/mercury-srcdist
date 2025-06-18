@@ -1,0 +1,14 @@
+:- module libs.print_help.
+:- interface.
+:- type alt_name_pos
+	where	type_is_abstract_enum(1).
+:- type arg_align.
+:- type help.
+:- type help_public_or_private
+	where	type_is_abstract_enum(1).
+:- type print_what_help
+	where	type_is_abstract_enum(1).
+:- type_representation(alt_name_pos, du_repn(enum("xpos_one_line", "xpos_sep_lines", [],  no_c_j_cs))).
+:- type_representation(arg_align, is_word_aligned_ptr).
+:- type_representation(help_public_or_private, du_repn(enum("help_public", "help_private", [],  no_c_j_cs))).
+:- type_representation(print_what_help, du_repn(enum("print_public_help", "print_public_and_private_help", [],  no_c_j_cs))).

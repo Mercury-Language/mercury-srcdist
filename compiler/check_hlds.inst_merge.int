@@ -1,0 +1,12 @@
+:- module check_hlds.inst_merge.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.prog_data.
+:- pred inst_merge(parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode inst_merge(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- pred insts_merge(parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, list.list(parse_tree.prog_data.mer_inst), maybe.maybe(parse_tree.prog_data.mer_inst), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode insts_merge(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

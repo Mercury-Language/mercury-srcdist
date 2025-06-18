@@ -1,0 +1,21 @@
+:- module term_conversion.
+
+:- pragma termination_info(term_conversion.det_term_to_type(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_conversion.det_term_to_type(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_conversion.term_to_type(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_conversion.try_term_to_type(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_conversion.try_term_to_type(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_conversion.type_to_term(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_conversion.type_to_term(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_conversion.univ_to_term(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_conversion.univ_to_term(builtin.in, builtin.out), infinite, can_loop).
+
+:- pragma exceptions(function, term_conversion.det_term_to_type, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_conversion.det_term_to_type, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_conversion.term_to_type, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, term_conversion.try_term_to_type, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_conversion.try_term_to_type, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, term_conversion.type_to_term, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_conversion.type_to_term, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, term_conversion.univ_to_term, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_conversion.univ_to_term, 2, 0, may_throw(user_exception)).
