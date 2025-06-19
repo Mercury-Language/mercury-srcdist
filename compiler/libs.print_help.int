@@ -1,0 +1,5 @@
+:- module libs.print_help.
+:- interface.
+:- use_module io.
+:- pred options_help_new(io.text_output_stream, io.io, io.io).
+:- mode options_help_new(builtin.in, builtin.di, builtin.uo) is det.

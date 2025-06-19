@@ -1,0 +1,60 @@
+/*
+** Automatically generated from `print_help.m'
+** by the Mercury compiler,
+** version rotd-2025-06-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.print_help.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__print_help
+#define MR_HEADER_GUARD_libs__print_help
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__PRINT_HELP_DECL_GUARD
+#define LIBS__PRINT_HELP_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+void MR_CALL 
+libs__print_help__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_111_112_116_105_111_110_115_95_104_101_108_112_95_110_101_119_95_95_91_49_93_95_48_3_p_0(void);
+
+void MR_CALL 
+libs__print_help__options_help_new_3_p_0(
+  MR_Word param_1);
+
+void mercury__libs__print_help__init(void);
+void mercury__libs__print_help__init_type_tables(void);
+void mercury__libs__print_help__init_debugger(void);
+const char *mercury__libs__print_help__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.print_help
+
+// :- end_interface libs.print_help.
