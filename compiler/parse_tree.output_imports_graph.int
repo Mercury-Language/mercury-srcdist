@@ -1,0 +1,10 @@
+:- module parse_tree.output_imports_graph.
+:- interface.
+:- use_module digraph.
+:- use_module io.
+:- use_module libs.
+:- use_module mdbcomp.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- pred maybe_output_imports_graph(io.text_output_stream, libs.globals.globals, mdbcomp.sym_name.module_name, digraph.digraph(mdbcomp.sym_name.sym_name), digraph.digraph(mdbcomp.sym_name.sym_name), io.io, io.io).
+:- mode maybe_output_imports_graph(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.

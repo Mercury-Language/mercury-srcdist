@@ -1,0 +1,8 @@
+:- module libs.print_help.
+:- interface.
+:- use_module io.
+:- type print_what_help
+    --->    print_public_help 
+    ;       print_public_and_private_help .
+:- pred options_help_new(io.text_output_stream, libs.print_help.print_what_help, io.io, io.io).
+:- mode options_help_new(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
