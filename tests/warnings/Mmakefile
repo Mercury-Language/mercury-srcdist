@@ -1,0 +1,135 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = warnings
+MAYBE_J1 =
+
+#-----------------------------------------------------------------------------#
+
+ERRORCHECK_PROGS = \
+	abstract_type_decl \
+	allow_non_contiguity_for \
+	ambiguous_overloading \
+	arg_order_rearrangment \
+	bad_type_order_switch \
+	bug311 \
+	bug412 \
+	bug477 \
+	det_infer_warning \
+	disabled_warning \
+	double_underscore \
+	duplicate_call \
+	duplicate_const \
+	empty_interface \
+	foreign_singleton \
+	foreign_term_invalid \
+	format_call_multi \
+	format_call_warning \
+	gh85 \
+	inconsistent_pred_order \
+	inf_recursion_lambda \
+	inference_test \
+	infinite_recursion \
+	inst_with_no_type \
+	missing_if \
+	missing_singleton_warning \
+	moved_trace_goal \
+	non_contiguous_decls \
+	non_stratification \
+	non_term_user_special \
+	obsolete_proc_pragma \
+	occurs \
+	petdr1 \
+	pragma_source_file \
+	pragma_term_conflict \
+	purity_warnings \
+	redundant_coerce \
+	repeated_singleton \
+	save \
+	simple_code \
+	singleton_test \
+	singleton_test_state_var \
+	spurious_obsolete \
+	state_vars_test \
+	subtype_order \
+	suspicious_foreign_code \
+	suspicious_recursion \
+	table_with_inline \
+	term_indirect_warning \
+	test_tscp \
+	unify_f_g \
+	unify_x_f_x \
+	unknown_warning \
+	unneeded_mode_specific_clause \
+	unneeded_final_statevar \
+	unsigned_zero_cmp \
+	unsorted_import_blocks \
+	unused_args_test \
+	unused_import \
+	unused_interface_import \
+	unresolved_polymorphism_anon \
+	warn_contiguous_foreign \
+	warn_dead_procs \
+	warn_dead_procs_trace \
+	warn_non_contiguous \
+	warn_non_contiguous_foreign \
+	warn_non_contiguous_foreign_group \
+	warn_return \
+	warn_self_import \
+	warn_stubs \
+	warn_succ_ind
+
+# We do not pass these two tests, which were intended to test the shadowing
+# of standard library modules. Ironically, the reason why we compare the
+# actual .err files of these test cases with their .err_exp files is that
+# mmake finds what it thinks are *their* .err files in the stage2/library
+# directory, and thus does not actually compile them. This leaves no .err
+# file in *this* directory for the %.res_error rule to compare against
+# the .err_exp file.
+#
+#	profiling_builtin
+#	time
+
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+	ERRORCHECK_PROGS += unused_args_analysis
+endif
+
+PROGS = $(ERRORCHECK_PROGS) up_to_date
+
+TESTS = $(sort $(PROGS))
+include ../Mmake.common
+
+# Module-specific options should go in Mercury.options so they
+# can be found by `mmc --make'.
+include Mercury.options
+
+# With `mmc --make', the errors should only go to the `.err' files, not stderr.
+MCFLAGS += --output-compile-error-lines 0
+MCFLAGS += --color-diagnostics
+MCFLAGS += --infer-all
+
+$(ERRORCHECK_PROGS:%=%.runtest): %.runtest: %.err_res ;
+
+# Build the `.analysis' file for unused_args_analysis_helper_1
+# before building unused_args_analysis.c.
+# XXX These dependencies are only for C.
+unused_args_analysis.c:   unused_args_analysis_helper_1.c
+unused_args_analysis.err: unused_args_analysis_helper_1.c
+
+# Check that `mmc --make up_to_date.m' generates a warning.
+up_to_date.runtest:
+	$(MCM) up_to_date.m > up_to_date.err_make 2>&1
+	diff $(DIFF_OPTS) up_to_date.err_exp up_to_date.err_make \
+		> up_to_date.res_make || \
+		{ cat up_to_date.err_make; cat up_to_date.res_make; exit 1; }
+
+#-----------------------------------------------------------------------------#
+
+clean_local:	clean_err clean_res
+
+clean_err:
+	rm -f *.err up_to_date.err_make
+
+#-----------------------------------------------------------------------------#

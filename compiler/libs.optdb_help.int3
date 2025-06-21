@@ -1,0 +1,8 @@
+:- module libs.optdb_help.
+:- interface.
+:- type arg_align.
+:- type help.
+:- type help_public_or_private
+	where	type_is_abstract_enum(1).
+:- type_representation(arg_align, is_word_aligned_ptr).
+:- type_representation(help_public_or_private, du_repn(enum("help_public", "help_private", [],  no_c_j_cs))).

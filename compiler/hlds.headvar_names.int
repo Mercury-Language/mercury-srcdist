@@ -1,0 +1,11 @@
+:- module hlds.headvar_names.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module hlds.hlds_pred.
+:- use_module libs.globals.
+:- type maybe_look_for_unneeded_statevars
+    --->    do_not_look_for_unneeded_statevars 
+    ;       look_for_unneeded_statevars(list.list(string)).
+:- pred maybe_improve_headvar_names(libs.globals.globals, hlds.headvar_names.maybe_look_for_unneeded_statevars, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- mode maybe_improve_headvar_names(builtin.in, builtin.out, builtin.in, builtin.out) is det.
