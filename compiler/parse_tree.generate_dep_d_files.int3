@@ -1,0 +1,6 @@
+:- module parse_tree.generate_dep_d_files.
+:- interface.
+:- type d_file_deps.
+:- type dep_graphs.
+:- type_representation(d_file_deps, is_word_aligned_ptr).
+:- type_representation(dep_graphs, is_word_aligned_ptr).

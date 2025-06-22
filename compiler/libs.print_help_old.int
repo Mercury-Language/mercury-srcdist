@@ -1,0 +1,34 @@
+:- module libs.print_help_old.
+:- interface.
+:- use_module char.
+:- use_module io.
+:- use_module list.
+:- type alt_name_pos
+    --->    pos_one_line 
+    ;       pos_sep_lines .
+:- type help
+    --->    no_help 
+    ;       gen_help((libs.print_help_old).gh_long_name :: string, (libs.print_help_old).gh_alt_name_pos :: libs.print_help_old.alt_name_pos, (libs.print_help_old).gh_alt_long_names :: list.list(string), (libs.print_help_old).gh_short_names :: list.list(char.char), (libs.print_help_old).gh_public_or_private :: libs.print_help_old.help_public_or_private, (libs.print_help_old).gh_description :: list.list(string))
+    ;       help((libs.print_help_old).h_long_name :: string, (libs.print_help_old).h_description :: list.list(string))
+    ;       priv_help((libs.print_help_old).ph_long_name :: string, (libs.print_help_old).ph_description :: list.list(string))
+    ;       alt_help((libs.print_help_old).ah_long_name :: string, (libs.print_help_old).ah_alt_name_pos :: libs.print_help_old.alt_name_pos, (libs.print_help_old).ah_alt_long_names :: list.list(string), (libs.print_help_old).ah_description :: list.list(string))
+    ;       priv_alt_help((libs.print_help_old).pah_long_name :: string, (libs.print_help_old).pah_alt_name_pos :: libs.print_help_old.alt_name_pos, (libs.print_help_old).pah_alt_long_names :: list.list(string), (libs.print_help_old).pah_description :: list.list(string))
+    ;       short_help((libs.print_help_old).sh_short_name :: char.char, (libs.print_help_old).sh_long_name :: string, (libs.print_help_old).sh_alt_long_names :: list.list(string), (libs.print_help_old).sh_description :: list.list(string))
+    ;       priv_short_help((libs.print_help_old).psh_short_name :: char.char, (libs.print_help_old).psh_long_name :: string, (libs.print_help_old).psh_alt_long_names :: list.list(string), (libs.print_help_old).psh_description :: list.list(string))
+    ;       short_arg_help((libs.print_help_old).sah_short_name :: string, (libs.print_help_old).sah_long_name :: string, (libs.print_help_old).sah_alt_long_names :: list.list(string), (libs.print_help_old).sah_description :: list.list(string))
+    ;       priv_short_arg_help((libs.print_help_old).psah_short_name :: string, (libs.print_help_old).psah_long_name :: string, (libs.print_help_old).psah_alt_long_names :: list.list(string), (libs.print_help_old).psah_description :: list.list(string))
+    ;       unnamed_help((libs.print_help_old).uh_description :: list.list(string)).
+:- type help_public_or_private
+    --->    help_public 
+    ;       help_private .
+:- type help_section
+    --->    help_section((libs.print_help_old).hs_section_name :: string, (libs.print_help_old).hs_section_comment_lines :: list.list(string), (libs.print_help_old).hs_help_structs :: list.list(libs.print_help_old.help))
+    ;       unnamed_help_section((libs.print_help_old).uhs_help_structs :: list.list(libs.print_help_old.help)).
+:- type maybe_nested_help_section
+    --->    std_help_section(libs.print_help_old.help_section)
+    ;       nested_help_section((libs.print_help_old).nhs_overall_name :: string, (libs.print_help_old).nhs_overall_comment_lines :: list.list(string), (libs.print_help_old).nhs_subsections :: list.list(libs.print_help_old.help_section)).
+:- type print_what_help
+    --->    print_public_help 
+    ;       print_public_and_private_help .
+:- pred output_maybe_nested_help_section(io.text_output_stream, libs.print_help_old.print_what_help, libs.print_help_old.maybe_nested_help_section, io.io, io.io).
+:- mode output_maybe_nested_help_section(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
