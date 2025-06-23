@@ -1,0 +1,20 @@
+typeclass_test_8.m:009: Error: predicate [38;5;87m`main'/2[39;49m contains an unsatisified
+typeclass_test_8.m:009:   typeclass constraint:
+typeclass_test_8.m:009:     [38;5;203m`typeclass_test_8.fooable(T)'.[39;49m
+typeclass_test_8.m:009:   The constraint is due to:
+typeclass_test_8.m:019:     the call to typeclass method predicate
+typeclass_test_8.m:019:     `typeclass_test_8.foo'/1, and
+typeclass_test_8.m:020:     the call to typeclass method predicate
+typeclass_test_8.m:020:     `typeclass_test_8.bar'/1.
+typeclass_test_8.m:009: Warning: [38;5;203munresolved polymorphism[39;49m in predicate [38;5;87m`main'/2.[39;49m
+typeclass_test_8.m:009:   The variable with an unbound type was:
+typeclass_test_8.m:009:     [38;5;203m`X'.[39;49m
+typeclass_test_8.m:009:   Its type will be implicitly set to the builtin type
+typeclass_test_8.m:009:   `void'.
+typeclass_test_8.m:009:   This usually means that the body of the clause
+typeclass_test_8.m:009:   contains a call to a polymorphic predicate, but I
+typeclass_test_8.m:009:   cannot determine which version should be called,
+typeclass_test_8.m:009:   because the type of the variable listed above is not
+typeclass_test_8.m:009:   known. (I ought to tell you which call caused the
+typeclass_test_8.m:009:   problem, but I am afraid you will have to work it out
+typeclass_test_8.m:009:   yourself. My apologies.)

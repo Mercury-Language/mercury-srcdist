@@ -1,0 +1,25 @@
+:- module mdb.dl.
+:- interface.
+:- use_module io.
+:- use_module mdb.name_mangle.
+:- type dl_result
+    --->    dl_ok 
+    ;       dl_error(string).
+:- type dl_result(T)
+    --->    dl_ok(T)
+    ;       dl_error(string).
+:- type handle.
+:- type link_mode
+    --->    lazy 
+    ;       now .
+:- type scope
+    --->    scope_local 
+    ;       scope_global .
+:- pred close(mdb.dl.handle, mdb.dl.dl_result, io.io, io.io).
+:- mode close(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred mercury_sym(mdb.dl.handle, mdb.name_mangle.mercury_proc, mdb.dl.dl_result(T), io.io, io.io).
+:- mode mercury_sym(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred open(string, mdb.dl.link_mode, mdb.dl.scope, mdb.dl.dl_result(mdb.dl.handle), io.io, io.io).
+:- mode open(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred sym(mdb.dl.handle, string, mdb.dl.dl_result(builtin.c_pointer), io.io, io.io).
+:- mode sym(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.

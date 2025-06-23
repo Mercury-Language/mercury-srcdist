@@ -1,0 +1,8 @@
+:- module backend_libs.compile_target_code.
+:- interface.
+:- type pic
+	where	type_is_abstract_enum(1).
+:- abstract_inst((ext_cur_ngs_gas_init_obj)).
+:- abstract_inst((ext_cur_ngs_gas_obj)).
+:- type_representation(compile_init_file_pred, is_eqv_to(pred(file_name, maybe_succeeded, io, io))).
+:- type_representation(pic, du_repn(enum("pic", "non_pic", [],  no_c_j_cs))).
