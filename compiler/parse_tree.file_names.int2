@@ -1,0 +1,209 @@
+:- module parse_tree.file_names.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.find_module.
+:- type ext
+    --->    ext_cur(parse_tree.file_names.ext_cur)
+    ;       ext_cur_ngs(parse_tree.file_names.ext_cur_ngs)
+    ;       ext_cur_gs(parse_tree.file_names.ext_cur_gs)
+    ;       ext_cur_gas(parse_tree.file_names.ext_cur_gas)
+    ;       ext_cur_ngs_gs(parse_tree.file_names.ext_cur_ngs_gs)
+    ;       ext_cur_ngs_gas(parse_tree.file_names.ext_cur_ngs_gas)
+    ;       ext_cur_ngs_gs_err(parse_tree.file_names.ext_cur_ngs_gs_err)
+    ;       ext_cur_ngs_gs_java(parse_tree.file_names.ext_cur_ngs_gs_java)
+    ;       ext_cur_pgs_max_cur(parse_tree.file_names.ext_cur_pgs_max_cur)
+    ;       ext_cur_ngs_gs_max_cur(parse_tree.file_names.ext_cur_ngs_gs_max_cur)
+    ;       ext_cur_ngs_gs_max_ngs(parse_tree.file_names.ext_cur_ngs_gs_max_ngs).
+:- type ext_cur
+    --->    ext_cur_user_defn_ext 
+    ;       ext_cur_user_defn_lc 
+    ;       ext_cur_user_defns 
+    ;       ext_cur_user_depgraph 
+    ;       ext_cur_user_hlds_dump 
+    ;       ext_cur_user_imports_graph 
+    ;       ext_cur_user_lct 
+    ;       ext_cur_user_lct_full 
+    ;       ext_cur_user_lct_order 
+    ;       ext_cur_user_mlds_dump 
+    ;       ext_cur_user_mode_constr 
+    ;       ext_cur_user_order 
+    ;       ext_cur_user_order_to 
+    ;       ext_cur_user_type_repns 
+    ;       ext_cur_user_ugly 
+    ;       ext_cur_user_xml .
+:- type ext_cur_gas
+    --->    ext_cur_gas_exec_noext 
+    ;       ext_cur_gas_exec_exe 
+    ;       ext_cur_gas_exec_bat 
+    ;       ext_cur_gas_exec_exec_opt 
+    ;       ext_cur_gas_lib_dollar_efsl 
+    ;       ext_cur_gas_lib_dollar_a 
+    ;       ext_cur_gas_lib_archive 
+    ;       ext_cur_gas_lib_lib_opt 
+    ;       ext_cur_gas_lib_sh_lib_opt .
+:- type ext_cur_gs
+    --->    ext_cur_gs_lib_init 
+    ;       ext_cur_gs_lib_jar 
+    ;       ext_cur_gs_lib_cil_dll .
+:- type ext_cur_ngs
+    --->    ext_cur_ngs_int_int0 
+    ;       ext_cur_ngs_int_int1 
+    ;       ext_cur_ngs_int_int2 
+    ;       ext_cur_ngs_int_int3 
+    ;       ext_cur_ngs_int_date_int0 
+    ;       ext_cur_ngs_int_date_int12 
+    ;       ext_cur_ngs_int_date_int3 
+    ;       ext_cur_ngs_mf_d 
+    ;       ext_cur_ngs_mf_dv 
+    ;       ext_cur_ngs_mf_dep 
+    ;       ext_cur_ngs_misc_module_dep 
+    ;       ext_cur_ngs_misc_call_graph_for_prof .
+:- type ext_cur_ngs_gas
+    --->    ext_cur_ngs_gas_obj_dollar_o 
+    ;       ext_cur_ngs_gas_obj_dollar_efpo 
+    ;       ext_cur_ngs_gas_obj_o 
+    ;       ext_cur_ngs_gas_obj_pic_o 
+    ;       ext_cur_ngs_gas_obj_obj_opt 
+    ;       ext_cur_ngs_gas_obj_pic_obj_opt 
+    ;       ext_cur_ngs_gas_init_obj_dollar_o 
+    ;       ext_cur_ngs_gas_init_obj_o 
+    ;       ext_cur_ngs_gas_init_obj_pic_o 
+    ;       ext_cur_ngs_gas_init_obj_obj_opt 
+    ;       ext_cur_ngs_gas_init_obj_pic_obj_opt .
+:- type ext_cur_ngs_gs
+    --->    ext_cur_ngs_gs_proposed_opt_plain 
+    ;       ext_cur_ngs_gs_proposed_opt_trans 
+    ;       ext_cur_ngs_gs_opt_date_plain 
+    ;       ext_cur_ngs_gs_opt_date_trans 
+    ;       ext_cur_ngs_gs_target_c 
+    ;       ext_cur_ngs_gs_target_cs 
+    ;       ext_cur_ngs_gs_target_date_c 
+    ;       ext_cur_ngs_gs_target_date_cs 
+    ;       ext_cur_ngs_gs_target_date_java 
+    ;       ext_cur_ngs_gs_init_c 
+    ;       ext_cur_ngs_gs_an_analysis_date 
+    ;       ext_cur_ngs_gs_an_analysis_status 
+    ;       ext_cur_ngs_gs_misc_err_date 
+    ;       ext_cur_ngs_gs_misc_used 
+    ;       ext_cur_ngs_gs_misc_track_flags .
+:- type ext_cur_ngs_gs_err
+    --->    ext_cur_ngs_gs_err_err .
+:- type ext_cur_ngs_gs_java
+    --->    ext_cur_ngs_gs_java_java 
+    ;       ext_cur_ngs_gs_java_class .
+:- type ext_cur_ngs_gs_max_cur
+    --->    ext_cur_ngs_gs_max_cur_mih .
+:- type ext_cur_ngs_gs_max_ngs
+    --->    ext_cur_ngs_gs_max_ngs_legacy_opt_plain 
+    ;       ext_cur_ngs_gs_max_ngs_legacy_opt_trans 
+    ;       ext_cur_ngs_gs_max_ngs_an_analysis 
+    ;       ext_cur_ngs_gs_max_ngs_an_imdg 
+    ;       ext_cur_ngs_gs_max_ngs_an_request .
+:- type ext_cur_pgs_max_cur
+    --->    ext_cur_pgs_max_cur_mh .
+:- type maybe_create_dirs
+    --->    do_create_dirs 
+    ;       do_not_create_dirs .
+:- type maybe_for_search
+    --->    not_for_search 
+    ;       for_search .
+:- type maybe_search
+    --->    do_not_search 
+    ;       do_search .
+:- type search_which_dirs
+    --->    search_cur_dir 
+    ;       search_this_dir(libs.file_util.dir_name)
+    ;       search_this_dir_and(libs.file_util.dir_name, parse_tree.file_names.search_which_tail_dirs)
+    ;       search_interface_dirs 
+    ;       search_intermod_dirs 
+    ;       search_dirs_for_ext .
+:- type search_which_tail_dirs =< parse_tree.file_names.search_which_dirs
+    --->    search_cur_dir 
+    ;       search_interface_dirs 
+    ;       search_intermod_dirs .
+:- inst ext_analysis for (parse_tree.file_names).ext/0
+    --->    ext_cur_ngs_gs((parse_tree.file_names).ext_analysis_sd)
+    ;       ext_cur_ngs_gs_max_ngs((parse_tree.file_names).ext_analysis_rai).
+:- inst ext_analysis_rai for (parse_tree.file_names).ext_cur_ngs_gs_max_ngs/0
+    --->    ext_cur_ngs_gs_max_ngs_an_analysis
+    ;       ext_cur_ngs_gs_max_ngs_an_imdg
+    ;       ext_cur_ngs_gs_max_ngs_an_request.
+:- inst ext_analysis_sd for (parse_tree.file_names).ext_cur_ngs_gs/0
+    --->    ext_cur_ngs_gs_an_analysis_date
+    ;       ext_cur_ngs_gs_an_analysis_status.
+:- inst ext_int for (parse_tree.file_names).ext/0
+    --->    ext_cur_ngs((parse_tree.file_names).ext_int_0123).
+:- inst ext_int_0123 for (parse_tree.file_names).ext_cur_ngs/0
+    --->    ext_cur_ngs_int_int0
+    ;       ext_cur_ngs_int_int1
+    ;       ext_cur_ngs_int_int2
+    ;       ext_cur_ngs_int_int3.
+:- inst ext_int_0123_md for (parse_tree.file_names).ext_cur_ngs/0
+    --->    ext_cur_ngs_int_int0
+    ;       ext_cur_ngs_int_int1
+    ;       ext_cur_ngs_int_int2
+    ;       ext_cur_ngs_int_int3
+    ;       ext_cur_ngs_misc_module_dep.
+:- inst ext_int_md for (parse_tree.file_names).ext/0
+    --->    ext_cur_ngs((parse_tree.file_names).ext_int_0123_md).
+:- inst ext_max_opt_pt for (parse_tree.file_names).ext_cur_ngs_gs_max_ngs/0
+    --->    ext_cur_ngs_gs_max_ngs_legacy_opt_plain
+    ;       ext_cur_ngs_gs_max_ngs_legacy_opt_trans.
+:- inst ext_mt for (parse_tree.file_names).ext/0
+    --->    ext_cur((parse_tree.file_names).mt_ext_cur)
+    ;       ext_cur_ngs((parse_tree.file_names).mt_ext_cur_ngs)
+    ;       ext_cur_ngs_gas((parse_tree.file_names).mt_ext_cur_ngs_gas)
+    ;       ext_cur_ngs_gs((parse_tree.file_names).mt_ext_cur_ngs_gs)
+    ;       ext_cur_ngs_gs_err((parse_tree.file_names).mt_ext_cur_ngs_gs_err)
+    ;       ext_cur_ngs_gs_java((parse_tree.file_names).mt_ext_cur_ngs_gs_java)
+    ;       ext_cur_ngs_gs_max_cur((parse_tree.file_names).mt_ext_cur_ngs_gs_max_cur)
+    ;       ext_cur_ngs_gs_max_ngs((parse_tree.file_names).mt_ext_cur_ngs_gs_max_ngs)
+    ;       ext_cur_pgs_max_cur((parse_tree.file_names).mt_ext_cur_pgs_max_cur).
+:- inst ext_opt for (parse_tree.file_names).ext/0
+    --->    ext_cur_ngs_gs((parse_tree.file_names).ext_opt_pt)
+    ;       ext_cur_ngs_gs_max_ngs((parse_tree.file_names).ext_max_opt_pt).
+:- inst ext_opt_pt for (parse_tree.file_names).ext_cur_ngs_gs/0
+    --->    ext_cur_ngs_gs_proposed_opt_plain
+    ;       ext_cur_ngs_gs_proposed_opt_trans.
+:- inst mt_ext_cur for (parse_tree.file_names).ext_cur/0
+    --->    ext_cur_user_xml.
+:- inst mt_ext_cur_ngs for (parse_tree.file_names).ext_cur_ngs/0
+    --->    ext_cur_ngs_int_int0
+    ;       ext_cur_ngs_int_int1
+    ;       ext_cur_ngs_int_int2
+    ;       ext_cur_ngs_int_int3.
+:- inst mt_ext_cur_ngs_gas for (parse_tree.file_names).ext_cur_ngs_gas/0
+    --->    ext_cur_ngs_gas_obj_obj_opt
+    ;       ext_cur_ngs_gas_obj_pic_obj_opt.
+:- inst mt_ext_cur_ngs_gs for (parse_tree.file_names).ext_cur_ngs_gs/0
+    --->    ext_cur_ngs_gs_misc_track_flags
+    ;       ext_cur_ngs_gs_target_c
+    ;       ext_cur_ngs_gs_target_cs.
+:- inst mt_ext_cur_ngs_gs_err for (parse_tree.file_names).ext_cur_ngs_gs_err/0
+    --->    ext_cur_ngs_gs_err_err.
+:- inst mt_ext_cur_ngs_gs_java for (parse_tree.file_names).ext_cur_ngs_gs_java/0
+    --->    ext_cur_ngs_gs_java_class
+    ;       ext_cur_ngs_gs_java_java.
+:- inst mt_ext_cur_ngs_gs_max_cur for (parse_tree.file_names).ext_cur_ngs_gs_max_cur/0
+    --->    ext_cur_ngs_gs_max_cur_mih.
+:- inst mt_ext_cur_ngs_gs_max_ngs for (parse_tree.file_names).ext_cur_ngs_gs_max_ngs/0
+    --->    ext_cur_ngs_gs_max_ngs_an_analysis
+    ;       ext_cur_ngs_gs_max_ngs_legacy_opt_plain.
+:- inst mt_ext_cur_pgs_max_cur for (parse_tree.file_names).ext_cur_pgs_max_cur/0
+    --->    ext_cur_pgs_max_cur_mh.
+:- inst search_cur_or_interface for (parse_tree.file_names).search_which_dirs/0
+    --->    search_cur_dir
+    ;       search_interface_dirs.
+:- inst search_cur_or_intermod for (parse_tree.file_names).search_which_dirs/0
+    --->    search_cur_dir
+    ;       search_intermod_dirs.
+:- inst search_ext for (parse_tree.file_names).search_which_dirs/0
+    --->    search_dirs_for_ext.
+:- inst search_intermod for (parse_tree.file_names).search_which_dirs/0
+    --->    search_intermod_dirs.
