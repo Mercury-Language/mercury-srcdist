@@ -1,0 +1,115 @@
+// Automatically generated from `io.m'
+// by the Mercury compiler,
+// version rotd-2025-06-25
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef IO_MH
+#define IO_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef IO_DECL_GUARD
+#define IO_DECL_GUARD
+#define ML_MIRC_OK 0
+#define ML_MIRC_EOF 1
+#define ML_MIRC_INCOMPLETE 2
+#define ML_MIRC_ERROR 3
+#define ML_RESULT_CODE_OK 0
+#define ML_RESULT_CODE_EOF 1
+#define ML_RESULT_CODE_ERROR 2
+#define ML_BIG_ENDIAN 0
+#define ML_LITTLE_ENDIAN 1
+
+#ifdef MR_WIN32
+  #include <wchar.h>    // for dev_t, ino_t
+#endif
+
+#ifdef MR_HAVE_DEV_T
+  typedef   dev_t       ML_dev_t;
+#else
+  typedef   MR_Integer  ML_dev_t;
+#endif
+
+#ifdef MR_HAVE_INO_T
+  typedef   ino_t       ML_ino_t;
+#else
+  typedef   MR_Integer  ML_ino_t;
+#endif
+
+typedef struct {
+    ML_dev_t device;
+    ML_ino_t inode;
+} ML_File_Id;
+
+
+#ifdef MR_HAVE_UNISTD_H
+    #include <unistd.h>
+#endif
+#ifdef MR_HAVE_SYS_STAT_H
+    #include <sys/stat.h>
+#endif
+#include "mercury_types.h"            // for MR_Integer
+#include "mercury_library_types.h"    // for MercuryFilePtr
+#include "mercury_int.h"              // for MR_*_reverse_bytes
+
+#include "mercury_init.h"
+#include "mercury_wrapper.h"
+#include "mercury_type_info.h"
+#include "mercury_errno_name.h"
+#include "mercury_file.h"
+#include "mercury_heap.h"
+#include "mercury_misc.h"
+#include "mercury_runtime_util.h"
+#include "mercury_report_stats.h"
+#include "mercury_windows_error_name.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
+#include <errno.h>
+#include <inttypes.h>
+#include <limits.h>
+
+#ifdef MR_HAVE_SYS_WAIT_H
+  #include <sys/wait.h>     // for WIFEXITED, WEXITSTATUS, etc.
+#endif
+
+#ifdef MR_WIN32
+  #include "mercury_windows.h"
+#endif
+
+extern MR_Word          ML_io_user_globals;
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock  ML_io_user_globals_lock;
+#endif
+
+#if 0
+    extern MR_Word      ML_io_ops_table;
+#endif
+
+void                    mercury_init_io(void);
+
+
+
+#endif
+void ML_io_print_to_stream(MR_Word, MercuryFilePtr, MR_Word);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* IO_MH */

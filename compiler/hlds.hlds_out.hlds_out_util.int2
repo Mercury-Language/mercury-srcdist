@@ -1,0 +1,18 @@
+:- module (hlds.hlds_out).hlds_out_util.
+:- interface.
+:- type hlds_dump_options
+    --->    hlds_dump_options(((hlds.hlds_out).hlds_out_util).dump_unify_argmodes :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_call_builtin_status :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_goal_type_contexts :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_goal_determinism :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_region_annotations :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_follow_vars :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_goal_features :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_goal_instmap_vars :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_call_pred_ids :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_clause_modes :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_goal_nonlocals :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_goal_birth_death_sets :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_goal_resume_points :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_goal_store_maps :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_termination_analysis :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_unification_details :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_var_numbers_in_names :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_predicates :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_unify_argmodes_struct :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_goal_purity_markers :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_arg_passing_info :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_mode_constraints :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_clauses :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_goal_instmap_deltas :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_deep_profiling :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_ctgc :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_imports :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_type_table_only_local :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_inst_mode_tables :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_dependency_ordering :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_goal_ids_paths :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_use_reuse_info :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_struct_sharing_info :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_type_typeclass_tables :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_unify_compare_preds :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_constant_structures :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_structured_insts :: bool.bool, ((hlds.hlds_out).hlds_out_util).dump_call_answer_tables :: bool.bool).
+:- type hlds_out_info
+    --->    hlds_out_info(((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_options :: hlds.hlds_out.hlds_out_util.hlds_dump_options, ((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_options_backup :: hlds.hlds_out.hlds_out_util.hlds_dump_options, ((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_pred_ids :: list.list(string), ((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_pred_names :: list.list(string), ((hlds.hlds_out).hlds_out_util).hoi_merc_out_info :: parse_tree.parse_tree_out_info.merc_out_info).
+:- type last_context_word
+    --->    lcw_none 
+    ;       lcw_call 
+    ;       lcw_result 
+    ;       lcw_argument 
+    ;       lcw_element .
+:- type maybe_print_ho_var_name
+    --->    do_not_print_ho_var_name 
+    ;       print_ho_var_name .
+:- type maybe_qualify_cons_id
+    --->    qualify_cons_id 
+    ;       do_not_qualify_cons_id .
