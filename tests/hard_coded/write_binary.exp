@@ -1,0 +1,186 @@
+TESTING TERMS WITH OPERATORS
+
+test input <var("X") + int(3) * var("X^2") ; (type)>
+test passed
+
+test input <{ type }>
+test passed
+
+test input <{ '?-' }>
+test passed
+
+test input <'?-'>
+test passed
+
+test input <{ blah }>
+test passed
+
+test input <blah ; (type), (type) * blah ; (type)>
+test passed
+
+test input <((blah ; blah), blah) * blah ; blah>
+test passed
+
+test input <(type) * blah ; (type)>
+test passed
+
+TESTING DISCRIMINATED UNIONS
+
+test input <one>
+test passed
+
+test input <two>
+test passed
+
+test input <three>
+test passed
+
+test input <apple([9, 5, 1])>
+test passed
+
+test input <banana([three, one, two])>
+test passed
+
+test input <zop(3.3, 2.03)>
+test passed
+
+test input <zip(3, 2)>
+test passed
+
+test input <zap(3, -2.111)>
+test passed
+
+test input <wombat>
+test passed
+
+test input <foo>
+test passed
+
+TESTING POLYMORPHISM
+
+test input <poly_one([2399.3])>
+test passed
+
+test input <poly_two(3)>
+test passed
+
+test input <poly_three(3.33, 4, poly_one(9.11))>
+test passed
+
+TESTING BUILTINS
+
+test input <>
+test passed
+
+test input <Hello, world
+>
+test passed
+
+test input <Foo%sFoo>
+test passed
+
+test input <">
+test passed
+
+test input <a>
+test passed
+
+test input <&>
+test passed
+
+test input <.>
+test passed
+
+test input <%>
+test passed
+
+test input < >
+test passed
+
+test input <	>
+test passed
+
+test input <
+>
+test passed
+
+test input <\>
+test passed
+
+test input <*>
+test passed
+
+test input </>
+test passed
+
+test input <3.14159>
+test passed
+
+test input <1.128324983e-21>
+test passed
+
+test input <2.23954899e+23>
+test passed
+
+test input <-65>
+test passed
+
+test input <4>
+test passed
+
+test input <651>
+test passed
+
+test input <-128>
+test passed
+
+test input <127>
+test passed
+
+test input <255>
+test passed
+
+test input <-32768>
+test passed
+
+test input <32767>
+test passed
+
+test input <65535>
+test passed
+
+test input <-2147483648>
+test passed
+
+test input <2147483647>
+test passed
+
+test input <4294967295>
+test passed
+
+the next test is expected to fail:
+
+test input <'<<predicate>>'>
+test failed with this error:
+orig '<<predicate>>', readback error
+<predicate `io.read'/4: the term read did not have the right type>
+
+TESTING OTHER TYPES
+
+test input <var(1)>
+test passed
+
+test input <var_supply(0)>
+test passed
+
+test input <var_supply(1)>
+test passed
+
+test input <empty>
+test passed
+
+test input <qwerty(4)>
+test passed
+
+test input <array([1, 2, 3, 4])>
+test passed
