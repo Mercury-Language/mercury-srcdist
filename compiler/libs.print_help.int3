@@ -1,0 +1,7 @@
+:- module libs.print_help.
+:- interface.
+:- type print_what_help
+	where	type_is_abstract_enum(1).
+:- type_representation(cur_line, is_eqv_to(cord(string))).
+:- type_representation(finished_lines, is_eqv_to(cord(string))).
+:- type_representation(print_what_help, du_repn(enum("print_public_help", "print_public_and_private_help", [],  no_c_j_cs))).

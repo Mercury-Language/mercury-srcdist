@@ -1,0 +1,59 @@
+:- module parse_tree.parse_tree_output.
+:- interface.
+:- use_module char.
+:- use_module io.
+:- use_module list.
+:- use_module stream.
+:- use_module string.
+:- use_module term.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_pragma.
+:- use_module string.builder.
+:- typeclass pt_output(S, U) <= ((U -> S), stream.writer(S, string, U)) where [
+	pred add_char(char.char, S, U, U),
+	mode add_char(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_string(string, S, U, U),
+	mode add_string(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_strings(list.list(string), S, U, U),
+	mode add_strings(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_escaped_string(string, S, U, U),
+	mode add_escaped_string(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_quoted_string(string, S, U, U),
+	mode add_quoted_string(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_int(int, S, U, U),
+	mode add_int(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_int8(int8, S, U, U),
+	mode add_int8(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_int16(int16, S, U, U),
+	mode add_int16(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_int32(int32, S, U, U),
+	mode add_int32(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_int64(int64, S, U, U),
+	mode add_int64(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_uint(uint, S, U, U),
+	mode add_uint(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_uint8(uint8, S, U, U),
+	mode add_uint8(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_uint16(uint16, S, U, U),
+	mode add_uint16(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_uint32(uint32, S, U, U),
+	mode add_uint32(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_uint64(uint64, S, U, U),
+	mode add_uint64(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_float(float, S, U, U),
+	mode add_float(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_purity_prefix(parse_tree.prog_data.purity, S, U, U),
+	mode add_purity_prefix(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_quoted_atom(string, S, U, U),
+	mode add_quoted_atom(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_constant(term.const, S, U, U),
+	mode add_constant(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_eval_method(parse_tree.prog_data_pragma.eval_method, S, U, U),
+	mode add_eval_method(builtin.in, builtin.in, builtin.di, builtin.uo) is det,
+	pred add_list(pred(T, S, U, U), string, list.list(T), S, U, U),
+	mode add_list(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det
+].
+:- instance ((parse_tree.parse_tree_output).pt_output(io.text_output_stream, io.state)).
+:- instance ((parse_tree.parse_tree_output).pt_output(string.builder.handle, string.builder.state)).
+:- pred write_out_list(pred(T, io.text_output_stream, io.io, io.io), string, list.list(T), io.text_output_stream, io.io, io.io).
+:- mode write_out_list(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.

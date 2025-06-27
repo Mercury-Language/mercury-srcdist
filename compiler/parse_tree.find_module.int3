@@ -1,0 +1,16 @@
+:- module parse_tree.find_module.
+:- interface.
+:- type dir_name_and_contents.
+:- type dir_name_and_stream.
+:- type path_name_and_stream.
+:- type search_auth_dirs.
+:- type search_auth_private_dirs.
+:- type search_auth_private_tail_dirs
+	where	type_is_abstract_subtype(search_auth_private_dirs/0).
+:- type search_auth_tail_dirs
+	where	type_is_abstract_subtype(search_auth_dirs/0).
+:- type_representation(dir_name_and_contents, is_word_aligned_ptr).
+:- type_representation(dir_name_and_stream, is_word_aligned_ptr).
+:- type_representation(path_name_and_stream, is_word_aligned_ptr).
+:- type_representation(search_auth_private_tail_dirs, is_subtype_of((parse_tree.find_module).search_auth_private_dirs/0)).
+:- type_representation(search_auth_tail_dirs, is_subtype_of((parse_tree.find_module).search_auth_dirs/0)).

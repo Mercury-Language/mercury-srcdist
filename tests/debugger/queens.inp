@@ -1,0 +1,121 @@
+echo on
+register --quiet
+retry 1
+print *
+b data
+continue
+delete 0
+print *
+
+print *
+
+print *
+
+print *
+print_optionals on
+print *
+print_optionals off
+print *
+
+print *
+
+print *
+
+print *
+level 1
+level -d 1
+context nextline
+level 1
+level -d 1
+context prevline
+level 1
+level -d 1
+print *
+up 1
+vars
+print *
+
+print HeadVar__1
+print HeadVar__2
+print HeadVar__3
+hold HeadVar__2^1 x
+hold HeadVar__2^2 y
+hold HeadVar__2 y
+hold HeadVar__2 z
+held_vars
+print $x
+print $y
+print $z
+diff $x $y
+diff $y $z
+diff -m 2 $y $z
+diff -s 2 -m 2 $y $z
+diff -s 4 -m 2 $y $z
+diff $y $z^2
+
+print *
+
+print *
+
+print *
+
+print *
+
+print *
+
+goto -a 21
+stack
+stack -d
+stack 3
+stack -d 3
+print *
+
+retry
+print *
+finish -a
+register --quiet
+break print_list
+break qdelete
+break_print HeadVar__2^2
+continue -a
+break info
+enable *
+step -aS 5
+disable 1
+retry 4
+break 46
+continue -n
+continue -n
+continue -n
+continue -n
+continue -n
+continue -n
+return
+continue -n
+continue -n
+forward
+continue -n
+continue -n
+delete *
+break main SWTC
+break main EXIT
+continue -n
+retry
+yes
+delete 0
+break safe
+condition HeadVar__1 = [
+condition HeadVar__1 = [a, c
+condition HeadVar__1 = [f(a, b]
+condition HeadVar__1 = [1,2, 5, 4, 3 ]
+continue
+print
+retry 2
+yes
+disable 0
+break nodiag SWTC
+1
+continue
+print *
+delete *
+continue -n -S
