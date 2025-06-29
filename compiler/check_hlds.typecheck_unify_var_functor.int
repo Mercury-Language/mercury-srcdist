@@ -1,0 +1,15 @@
+:- module check_hlds.typecheck_unify_var_functor.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module check_hlds.type_assign.
+:- use_module check_hlds.typecheck_info.
+:- use_module hlds.hlds_goal.
+:- use_module mdbcomp.goal_path.
+:- use_module parse_tree.prog_data.
+:- pred typecheck_unify_var_functor_builtin(hlds.hlds_goal.unify_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, parse_tree.prog_data.builtin_type, string, check_hlds.type_assign.type_assign_set, check_hlds.type_assign.type_assign_set, check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.typecheck_info).
+:- mode typecheck_unify_var_functor_builtin(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred typecheck_unify_var_functor_std(hlds.hlds_goal.unify_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), mdbcomp.goal_path.goal_id, check_hlds.type_assign.type_assign_set, check_hlds.type_assign.type_assign_set, check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.typecheck_info).
+:- mode typecheck_unify_var_functor_std(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

@@ -1,0 +1,30 @@
+:- module libs.optdb_help.
+:- interface.
+:- use_module char.
+:- use_module list.
+:- type arg_align
+    --->    arg_align((libs.optdb_help).aa_arg_name :: string, (libs.optdb_help).aa_aligned_text :: string).
+:- type help
+    --->    no_help 
+    ;       gen_help((libs.optdb_help).gh_short_names :: list.list(char.char), (libs.optdb_help).gh_long_name :: string, (libs.optdb_help).gh_alt_long_names :: list.list(string), (libs.optdb_help).gh_public_or_private :: libs.optdb_help.help_public_or_private, (libs.optdb_help).gh_description :: list.list(string))
+    ;       help((libs.optdb_help).h_long_name :: string, (libs.optdb_help).h_description :: list.list(string))
+    ;       arg_help((libs.optdb_help).hr_long_name :: string, (libs.optdb_help).hr_arg_name :: string, (libs.optdb_help).hr_description :: list.list(string))
+    ;       priv_help((libs.optdb_help).ph_long_name :: string, (libs.optdb_help).ph_description :: list.list(string))
+    ;       priv_arg_help((libs.optdb_help).prh_long_name :: string, (libs.optdb_help).prh_arg_name :: string, (libs.optdb_help).prh_description :: list.list(string))
+    ;       alt_help((libs.optdb_help).ah_long_name :: string, (libs.optdb_help).ah_alt_long_names :: list.list(string), (libs.optdb_help).ah_description :: list.list(string))
+    ;       alt_arg_align_help((libs.optdb_help).arlh_long_name :: string, (libs.optdb_help).arlh_arg_aligns :: list.list(libs.optdb_help.arg_align), (libs.optdb_help).arlh_description :: list.list(string))
+    ;       alt_align_help((libs.optdb_help).alh_long_name :: string, (libs.optdb_help).alh_alt_long_names :: list.list(string), (libs.optdb_help).alh_aligned_text :: string, (libs.optdb_help).alh_description :: list.list(string))
+    ;       no_align_help((libs.optdb_help).nlh_long_name :: string, (libs.optdb_help).nlh_aligned_text :: string, (libs.optdb_help).alh_no_aligned_text :: string, (libs.optdb_help).nlh_description :: list.list(string))
+    ;       priv_alt_align_help((libs.optdb_help).palh_long_name :: string, (libs.optdb_help).palh_alt_long_names :: list.list(string), (libs.optdb_help).palh_aligned_text :: string, (libs.optdb_help).palh_description :: list.list(string))
+    ;       short_alt_align_help((libs.optdb_help).salh_short_name :: char.char, (libs.optdb_help).salh_long_name :: string, (libs.optdb_help).salh_alt_long_names :: list.list(string), (libs.optdb_help).salh_aligned_text :: string, (libs.optdb_help).salh_description :: list.list(string))
+    ;       alt_arg_help((libs.optdb_help).aah_long_name :: string, (libs.optdb_help).aah_alt_long_names :: list.list(string), (libs.optdb_help).aah_arg_name :: string, (libs.optdb_help).aah_description :: list.list(string))
+    ;       priv_alt_help((libs.optdb_help).pah_long_name :: string, (libs.optdb_help).pah_alt_long_names :: list.list(string), (libs.optdb_help).pah_description :: list.list(string))
+    ;       priv_alt_arg_help((libs.optdb_help).paah_long_name :: string, (libs.optdb_help).paah_alt_long_names :: list.list(string), (libs.optdb_help).paah_arg_name :: string, (libs.optdb_help).paah_description :: list.list(string))
+    ;       short_help((libs.optdb_help).sh_short_name :: char.char, (libs.optdb_help).sh_long_name :: string, (libs.optdb_help).sh_alt_long_names :: list.list(string), (libs.optdb_help).sh_description :: list.list(string))
+    ;       priv_short_help((libs.optdb_help).psh_short_name :: char.char, (libs.optdb_help).psh_long_name :: string, (libs.optdb_help).psh_alt_long_names :: list.list(string), (libs.optdb_help).psh_description :: list.list(string))
+    ;       short_arg_help((libs.optdb_help).sah_short_name :: char.char, (libs.optdb_help).sah_long_name :: string, (libs.optdb_help).sah_alt_long_names :: list.list(string), (libs.optdb_help).sah_arg_name :: string, (libs.optdb_help).sah_description :: list.list(string))
+    ;       priv_short_arg_help((libs.optdb_help).psah_short_name :: char.char, (libs.optdb_help).psah_long_name :: string, (libs.optdb_help).psah_alt_long_names :: list.list(string), (libs.optdb_help).psah_arg_name :: string, (libs.optdb_help).psah_description :: list.list(string))
+    ;       unnamed_help((libs.optdb_help).uh_description :: list.list(string)).
+:- type help_public_or_private
+    --->    help_public 
+    ;       help_private .
