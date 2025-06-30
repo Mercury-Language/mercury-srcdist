@@ -1,0 +1,95 @@
+/*
+** Automatically generated from `recompilation.check.m'
+** by the Mercury compiler,
+** version rotd-2025-06-30
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module recompilation.check.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_recompilation__check
+#define MR_HEADER_GUARD_recompilation__check
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RECOMPILATION__CHECK_DECL_GUARD
+#define RECOMPILATION__CHECK_DECL_GUARD
+#include "recompilation.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct recompilation__check__recompilation__check__type_ctor_info_ambiguity_checkables_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__check__recompilation__check__type_ctor_info_file_components_to_recompile_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__check__recompilation__check__type_ctor_info_functor_match_arity_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__check__recompilation__check__type_ctor_info_maybe_compiler_arg_module_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__check__recompilation__check__type_ctor_info_recompilation_check_info_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__check__recompilation__check__type_ctor_info_recompile_reason_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_recompilation__check__check_imported_module_int_file__arity1__parse_tree__prog_parse_tree__parse_tree_int0__arity0__[10];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_recompilation__check__check_imported_module_int_file__arity1__parse_tree__prog_parse_tree__parse_tree_int1__arity0__[10];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_recompilation__check__check_imported_module_int_file__arity1__parse_tree__prog_parse_tree__parse_tree_int2__arity0__[10];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_recompilation__check__check_imported_module_int_file__arity1__parse_tree__prog_parse_tree__parse_tree_int3__arity0__[10];
+
+extern const MR_TypeClassDeclStruct recompilation__check__recompilation__check__type_class_decl_check_imported_module_int_file_1;
+
+void MR_CALL 
+recompilation__check__what_file_components_should_we_recompile_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+recompilation__check____Compare____file_components_to_recompile_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+recompilation__check____Unify____file_components_to_recompile_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__recompilation__check__init(void);
+void mercury__recompilation__check__init_type_tables(void);
+void mercury__recompilation__check__init_debugger(void);
+const char *mercury__recompilation__check__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_recompilation.check
+
+// :- end_interface recompilation.check.
