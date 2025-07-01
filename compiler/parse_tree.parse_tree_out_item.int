@@ -1,0 +1,83 @@
+:- module parse_tree.parse_tree_out_item.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module string.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.canonicalize_interface.
+:- use_module parse_tree.parse_tree_out_info.
+:- use_module parse_tree.parse_tree_output.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_foreign.
+:- use_module parse_tree.prog_item.
+:- use_module string.builder.
+:- func item_abstract_instance_to_string(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.item_abstract_instance_info) = string.
+:- pred maybe_brace_for_name_prefix_suffix(parse_tree.prog_data.arity, string, string, string).
+:- mode maybe_brace_for_name_prefix_suffix(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred maybe_cons_exist_constraints_to_prefix_suffix(parse_tree.prog_data.tvarset, string, string, parse_tree.prog_data.maybe_cons_exist_constraints, string, string).
+:- mode maybe_cons_exist_constraints_to_prefix_suffix(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred maybe_format_block_start_blank_line(S, list.list(T), U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode maybe_format_block_start_blank_line(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_ctor(parse_tree.prog_data.tvarset, parse_tree.prog_data.constructor, S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_ctor(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_fim_spec(S, parse_tree.prog_data_foreign.fim_spec, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_fim_spec(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_instance_method(parse_tree.prog_data.instance_method, S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_instance_method(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_abstract_instance(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_abstract_instance_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_abstract_instance(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_abstract_typeclass(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_abstract_typeclass_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_abstract_typeclass(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_finalise(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_finalise_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_finalise(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_foreign_enum(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_foreign_enum_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_foreign_enum(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_foreign_export_enum(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_foreign_export_enum_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_foreign_export_enum(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_foreign_import_module(S, parse_tree.prog_item.item_fim, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_foreign_import_module(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_initialise(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_initialise_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_initialise(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_inst_defn(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_inst_defn_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_inst_defn(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_instance(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_instance_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_instance(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_mode_decl(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_mode_decl_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_mode_decl(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_mode_defn(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_mode_defn_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_mode_defn(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_mutable(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_mutable_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_mutable(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_pred_decl(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.var_name_print, S, parse_tree.prog_item.item_pred_decl_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_pred_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_pred_decl_mu_mc(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_data.var_name_print, S, parse_tree.prog_item.item_pred_decl_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_pred_decl_mu_mc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_promise(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_promise_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_promise(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_type_defn(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_type_defn_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_type_defn(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_item_typeclass(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item.item_typeclass_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_typeclass(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_items(parse_tree.parse_tree_out_info.merc_out_info, S, list.list(parse_tree.prog_item.item), U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_items(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_module_decl(S, string, mdbcomp.sym_name.module_name, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_module_decl(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_pred_or_mode_decl(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_data.var_name_print, S, parse_tree.canonicalize_interface.pred_or_mode_decl_item, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_pred_or_mode_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_pred_or_mode_decls(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_data.var_name_print, S, list.list(parse_tree.canonicalize_interface.pred_or_mode_decl_item), U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_pred_or_mode_decls(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_where_attributes(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_data.tvarset, maybe.maybe(parse_tree.prog_data.solver_type_details), parse_tree.prog_data.maybe_canonical, maybe.maybe(list.list(parse_tree.prog_data.sym_name_arity)), S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_where_attributes(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_fim_spec(io.text_output_stream, parse_tree.prog_data_foreign.fim_spec, io.io, io.io).
+:- mode mercury_output_fim_spec(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_module_decl(io.text_output_stream, string, mdbcomp.sym_name.module_name, io.io, io.io).
+:- mode mercury_output_module_decl(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pragma type_spec_constrained_preds([    (parse_tree.parse_tree_output).pt_output(Stream, State)
+], apply_to_superclasses, [
+    subst([Stream = io.text_output_stream, State = io.state]),
+    subst([Stream = string.builder.handle, State = string.builder.state])
+]).

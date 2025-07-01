@@ -1,0 +1,4 @@
+:- module parse_tree.error_sort.
+:- interface.
+:- type error_msg_group
+    --->    error_msg_group(parse_tree.error_spec.error_msg, list.list(parse_tree.error_spec.error_msg)).
