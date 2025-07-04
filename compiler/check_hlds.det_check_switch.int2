@@ -1,0 +1,21 @@
+:- module check_hlds.det_check_switch.
+:- interface.
+:- type maybe_inform_incomplete_switches
+    --->    do_not_inform_incomplete_switches 
+    ;       inform_incomplete_switches .
+:- type maybe_req_arms_in_type_order
+    --->    no_req_arms_in_type_order 
+    ;       req_arms_in_type_order .
+:- type missing_cons_id_info
+    --->    missing_cons_id_info(int, int, list.list(parse_tree.error_spec.format_piece), list.list(parse_tree.error_spec.format_piece)).
+:- type reported_switch
+    --->    reported_switch(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.case)).
+:- type reqscope_params
+    --->    reqscope_params(check_hlds.det_check_switch.maybe_inform_incomplete_switches, check_hlds.det_check_switch.maybe_req_arms_in_type_order).
+:- type switch_context
+    --->    switch_context(parse_tree.prog_data.prog_var, check_hlds.det_check_switch.switch_match, list.list(check_hlds.det_check_switch.switch_match)).
+:- type switch_match
+    --->    switch_match(parse_tree.prog_data.cons_id, maybe.maybe(list.list(parse_tree.prog_data.prog_var))).
+:- type why_report_incomplete_switch
+    --->    switch_required_to_be_complete 
+    ;       inform_incomplete_switch_option .

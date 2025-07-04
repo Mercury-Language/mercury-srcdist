@@ -1,0 +1,5 @@
+:- module parse_tree.make_module_file_names.
+:- interface.
+:- type module_file_name_cache.
+:- type_representation(file_name_cache_stats, is_eqv_to(map(ext, cache_stats))).
+:- type_representation(module_file_name_cache, is_eqv_to(map(ext, map(module_name, file_name)))).

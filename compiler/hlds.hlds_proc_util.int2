@@ -1,0 +1,5 @@
+:- module hlds.hlds_proc_util.
+:- interface.
+:- type can_proc_succeed
+    --->    proc_can_maybe_succeed 
+    ;       proc_cannot_succeed .

@@ -1,0 +1,187 @@
+/*
+** Automatically generated from `listing.m'
+** by the Mercury compiler,
+** version rotd-2025-07-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.listing.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__listing
+#define MR_HEADER_GUARD_mdb__listing
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__LISTING_DECL_GUARD
+#define MDB__LISTING_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__listing__mdb__listing__type_ctor_info_c_file_ptr_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__listing__mdb__listing__type_ctor_info_file_name_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__listing__mdb__listing__type_ctor_info_line_no_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__listing__mdb__listing__type_ctor_info_path_name_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__listing__mdb__listing__type_ctor_info_search_path_0;
+
+void MR_CALL 
+mdb__listing__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_108_101_97_114_95_108_105_115_116_95_112_97_116_104_95_95_91_49_93_95_48_2_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mdb__listing__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_116_95_108_105_115_116_95_112_97_116_104_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdb__listing__clear_list_path_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdb__listing__list_file_9_p_0(
+  MR_Box param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Word param_7);
+
+void MR_CALL 
+mdb__listing__list_file_portable_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Word param_7);
+
+void MR_CALL 
+mdb__listing__list_file_with_command_10_p_0(
+  MR_Box param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Word param_8);
+
+void MR_CALL 
+mdb__listing__pop_list_path_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdb__listing__push_list_path_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdb__listing__set_list_path_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+mdb__listing__get_list_path_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdb__listing__new_list_path_0_f_0(void);
+
+void MR_CALL 
+mdb__listing____Compare____c_file_ptr_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mdb__listing____Compare____file_name_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+mdb__listing____Compare____line_no_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mdb__listing____Compare____path_name_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+mdb__listing____Compare____search_path_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__listing____Unify____c_file_ptr_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mdb__listing____Unify____file_name_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+mdb__listing____Unify____line_no_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mdb__listing____Unify____path_name_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+mdb__listing____Unify____search_path_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdb__listing__init(void);
+void mercury__mdb__listing__init_type_tables(void);
+void mercury__mdb__listing__init_debugger(void);
+const char *mercury__mdb__listing__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.listing
+
+// :- end_interface mdb.listing.

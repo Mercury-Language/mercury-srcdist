@@ -1,0 +1,4 @@
+:- module (check_hlds.simplify).mark_trace_goals.
+:- interface.
+:- use_module map.
+:- type last_nontrace_map == map.map(string, int).
