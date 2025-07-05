@@ -1,0 +1,29 @@
+// Automatically generated from `write_module_interface_files.m'
+// by the Mercury compiler,
+// version rotd-2025-07-05
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef PARSE_TREE__WRITE_MODULE_INTERFACE_FILES_MH
+#define PARSE_TREE__WRITE_MODULE_INTERFACE_FILES_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PARSE_TREE__WRITE_MODULE_INTERFACE_FILES_MH */

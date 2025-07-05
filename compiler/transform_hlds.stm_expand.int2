@@ -1,0 +1,2 @@
+:- module transform_hlds.stm_expand.
+:- interface.

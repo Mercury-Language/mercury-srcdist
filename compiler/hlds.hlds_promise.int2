@@ -1,0 +1,6 @@
+:- module hlds.hlds_promise.
+:- interface.
+:- type assert_id.
+:- type assertion_table.
+:- type exclusive_id.
+:- type exclusive_table.

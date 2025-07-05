@@ -1,0 +1,58 @@
+:- module ml_backend.ml_gen_info.
+:- interface.
+:- use_module map.
+:- use_module one_or_more.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.prog_data.
+:- type bitfield
+    --->    bitfield(parse_tree.prog_data.arg_shift, parse_tree.prog_data.arg_num_bits, parse_tree.prog_data.fill_kind).
+:- type bitfield_value
+    --->    bv_var(parse_tree.prog_data.prog_var)
+    ;       bv_rval(ml_backend.mlds.mlds_rval)
+    ;       bv_const(uint).
+:- type cond_seq
+    --->    cond_seq(int).
+:- type conv_seq
+    --->    conv_seq(int).
+:- type filled_bitfield
+    --->    filled_bitfield(ml_backend.ml_gen_info.bitfield, ml_backend.ml_gen_info.bitfield_value).
+:- type filled_packed_word == one_or_more.one_or_more(ml_backend.ml_gen_info.filled_bitfield).
+:- type in_scc_info
+    --->    in_scc_info((ml_backend.ml_gen_info).isi_maybe_in_tscc :: ml_backend.ml_gen_info.maybe_in_tscc_target_info, (ml_backend.ml_gen_info).isi_is_target_of_self_tr :: ml_backend.ml_gen_info.target_of_self_tail_rec_call, (ml_backend.ml_gen_info).isi_is_target_of_mutual_tr :: ml_backend.ml_gen_info.target_of_mutual_tail_rec_call, (ml_backend.ml_gen_info).isi_is_target_of_non_tail_rec :: list.list(ml_backend.ml_gen_info.nontail_rec_call)).
+:- type in_scc_map == map.map(hlds.hlds_pred.pred_proc_id, ml_backend.ml_gen_info.in_scc_info).
+:- type label_num == int.
+:- type maybe_in_tscc_target_info
+    --->    not_in_tscc 
+    ;       in_tscc((ml_backend.ml_gen_info).itti_id :: ml_backend.mlds.proc_id_in_tscc, (ml_backend.ml_gen_info).itti_input_args :: list.list(ml_backend.mlds.mlds_argument)).
+:- type ml_const_struct_map == map.map(int, ml_backend.ml_gen_info.ml_ground_term).
+:- type ml_gen_info.
+:- type ml_gen_tscc_info
+    --->    ml_gen_tscc_info((ml_backend.ml_gen_info).mgti_func_label_counter :: counter.counter, (ml_backend.ml_gen_info).mgti_label_counter :: counter.counter, (ml_backend.ml_gen_info).mgti_aux_var_counter :: counter.counter, (ml_backend.ml_gen_info).mgti_cond_var_counter :: counter.counter, (ml_backend.ml_gen_info).mgti_conv_var_counter :: counter.counter, (ml_backend.ml_gen_info).mgti_packed_word_counter :: counter.counter, (ml_backend.ml_gen_info).mgti_tail_rec_info :: ml_backend.ml_gen_info.tail_rec_info).
+:- type ml_ground_term
+    --->    ml_ground_term(ml_backend.mlds.mlds_rval, parse_tree.prog_data.mer_type, ml_backend.mlds.mlds_type).
+:- type ml_ground_term_map == map.map(parse_tree.prog_data.prog_var, ml_backend.ml_gen_info.ml_ground_term).
+:- type nontail_rec_call
+    --->    nontail_rec_call((ml_backend.ml_gen_info).ntrc_caller :: hlds.hlds_pred.pred_proc_id, (ml_backend.ml_gen_info).ntrc_callee :: hlds.hlds_pred.pred_proc_id, (ml_backend.ml_gen_info).ntrc_context :: parse_tree.prog_data.prog_context, (ml_backend.ml_gen_info).ntrc_reason :: hlds.mark_tail_calls.nontail_rec_call_reason, (ml_backend.ml_gen_info).ntrc_obviousness :: hlds.mark_tail_calls.nontail_rec_obviousness, (ml_backend.ml_gen_info).ntrc_warn_status :: ml_backend.ml_gen_info.nontail_rec_call_warn_status).
+:- type nontail_rec_call_warn_status
+    --->    nontail_rec_call_warn_disabled 
+    ;       nontail_rec_call_warn_enabled .
+:- type packed_word == one_or_more.one_or_more(ml_backend.ml_gen_info.bitfield).
+:- type packed_word_instance
+    --->    packed_word_instance(ml_backend.ml_gen_info.filled_packed_word, ml_backend.mlds.mlds_rval).
+:- type packed_word_map == map.map(ml_backend.ml_gen_info.packed_word, one_or_more.one_or_more(ml_backend.ml_gen_info.packed_word_instance)).
+:- type success_cont
+    --->    success_cont(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_rval, assoc_list.assoc_list(ml_backend.mlds.mlds_lval, ml_backend.mlds.mlds_type)).
+:- type tail_rec_info
+    --->    tail_rec_info((ml_backend.ml_gen_info).tri_in_scc_map :: ml_backend.ml_gen_info.in_scc_map, (ml_backend.ml_gen_info).tri_loop_kind :: ml_backend.ml_gen_info.tail_rec_loop_kind, (ml_backend.ml_gen_info).tri_tscc_kind :: ml_backend.ml_gen_info.tscc_kind).
+:- type tail_rec_loop_kind
+    --->    tail_rec_loop_while_continue 
+    ;       tail_rec_loop_label_goto .
+:- type target_of_mutual_tail_rec_call
+    --->    is_not_target_of_mutual_trcall 
+    ;       is_target_of_mutual_trcall .
+:- type target_of_self_tail_rec_call
+    --->    is_not_target_of_self_trcall 
+    ;       is_target_of_self_trcall .
+:- type tscc_kind
+    --->    tscc_self_rec_only 
+    ;       tscc_self_and_mutual_rec .
