@@ -1,0 +1,17 @@
+:- module libs.color_schemes.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module libs.options.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.maybe_error.
+:- type color_spec
+    --->    color_8bit(uint8)
+    ;       color_24bit(uint8, uint8, uint8).
+:- type color_specs
+    --->    color_specs((libs.color_schemes).color_spec_subject :: maybe.maybe(libs.color_schemes.color_spec), (libs.color_schemes).color_spec_correct :: maybe.maybe(libs.color_schemes.color_spec), (libs.color_schemes).color_spec_incorrect :: maybe.maybe(libs.color_schemes.color_spec), (libs.color_schemes).color_spec_inconsistent :: maybe.maybe(libs.color_schemes.color_spec), (libs.color_schemes).color_spec_hint :: maybe.maybe(libs.color_schemes.color_spec)).
+:- func convert_color_spec_options(libs.options.option_table) = parse_tree.maybe_error.maybe1(libs.color_schemes.color_specs).
+:- pred record_color_scheme_in_options(list.list(parse_tree.error_spec.format_piece), string, list.list(parse_tree.error_spec.error_spec), libs.options.option_table, libs.options.option_table, io.io, io.io).
+:- mode record_color_scheme_in_options(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.

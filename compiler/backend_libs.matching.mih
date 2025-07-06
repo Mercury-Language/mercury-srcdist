@@ -1,0 +1,132 @@
+/*
+** Automatically generated from `matching.m'
+** by the Mercury compiler,
+** version rotd-2025-07-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module backend_libs.matching.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_backend_libs__matching
+#define MR_HEADER_GUARD_backend_libs__matching
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BACKEND_LIBS__MATCHING_DECL_GUARD
+#define BACKEND_LIBS__MATCHING_DECL_GUARD
+#include "backend_libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct backend_libs__matching__backend_libs__matching__type_ctor_info_benefit_node_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__matching__backend_libs__matching__type_ctor_info_benefit_node_and_edge_list_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__matching__backend_libs__matching__type_ctor_info_benefit_operation_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__matching__backend_libs__matching__type_ctor_info_cost_node_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__matching__backend_libs__matching__type_ctor_info_cost_operation_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__matching__backend_libs__matching__type_ctor_info_edge_list_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__matching__backend_libs__matching__type_ctor_info_field_costs_benefits_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__matching__backend_libs__matching__type_ctor_info_matching_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__matching__backend_libs__matching__type_ctor_info_matching_params_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__matching__backend_libs__matching__type_ctor_info_stack_slot_graph_0;
+
+void MR_CALL 
+backend_libs__matching__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_118_105_97_95_99_101_108_108_95_118_97_114_115_95_95_91_49_44_32_50_93_95_48_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+backend_libs__matching__find_via_cell_vars_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Word * param_10,
+  MR_Word * param_11);
+
+void MR_CALL 
+backend_libs__matching____Compare____benefit_node_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__matching____Compare____cost_node_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__matching____Compare____matching_params_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+backend_libs__matching____Unify____benefit_node_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__matching____Unify____cost_node_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__matching____Unify____matching_params_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__backend_libs__matching__init(void);
+void mercury__backend_libs__matching__init_type_tables(void);
+void mercury__backend_libs__matching__init_debugger(void);
+const char *mercury__backend_libs__matching__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_backend_libs.matching
+
+// :- end_interface backend_libs.matching.
