@@ -1,0 +1,70 @@
+// Automatically generated from `process_util.m'
+// by the Mercury compiler,
+// version rotd-2025-07-07
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef LIBS__PROCESS_UTIL_MH
+#define LIBS__PROCESS_UTIL_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef LIBS__PROCESS_UTIL_DECL_GUARD
+#define LIBS__PROCESS_UTIL_DECL_GUARD
+
+#ifdef MR_HAVE_UNISTD_H
+  #include <unistd.h>
+#endif
+
+#ifdef MR_HAVE_SYS_TYPES_H
+  #include <sys/types.h>
+#endif
+
+#ifdef MR_HAVE_SYS_WAIT_H
+  #include <sys/wait.h>
+#endif
+
+#include <errno.h>
+
+#include "mercury_signal.h"
+#include "mercury_types.h"
+#include "mercury_heap.h"
+#include "mercury_misc.h"
+
+#if defined(MR_HAVE_FORK) && defined(MR_HAVE_WAIT) && defined(MR_HAVE_KILL)
+  #define MC_CAN_FORK 1
+#endif
+
+#define MC_SETUP_SIGNAL_HANDLER(sig, handler)         MR_setup_signal(sig, (MR_Code *) handler, MR_FALSE,             "mercury_compile: cannot install signal handler");
+
+    // Have we received a signal.
+extern volatile sig_atomic_t MC_signalled;
+
+    // Which signal did we receive.
+    // XXX This assumes a signal number will fit into a sig_atomic_t.
+extern volatile sig_atomic_t MC_signal_received;
+
+void MC_mercury_compile_signal_handler(int sig);
+
+#include <signal.h>
+
+#endif
+void MC_call_child_process_io_pred(MR_Word, MR_Integer *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* LIBS__PROCESS_UTIL_MH */

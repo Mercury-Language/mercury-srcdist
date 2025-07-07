@@ -1,0 +1,67 @@
+:- module libs.optdb_help.
+:- interface.
+:- use_module list.
+:- type arg_align
+    --->    arg_align((libs.optdb_help).aa_arg_name :: string, (libs.optdb_help).aa_aligned_help_text :: string, (libs.optdb_help).aa_aligned_texinfo :: string).
+:- type help
+    --->    no_help 
+    ;       gen_help((libs.optdb_help).gh_short_names :: list.list(char.char), (libs.optdb_help).gh_long_name :: string, (libs.optdb_help).gh_alt_long_names :: list.list(string), (libs.optdb_help).gh_public_or_private :: libs.optdb_help.help_public_or_private, (libs.optdb_help).gh_description :: libs.optdb_help.help_text)
+    ;       help((libs.optdb_help).h_long_name :: string, (libs.optdb_help).h_description :: libs.optdb_help.help_text)
+    ;       arg_help((libs.optdb_help).hr_long_name :: string, (libs.optdb_help).hr_arg_name :: string, (libs.optdb_help).hr_description :: libs.optdb_help.help_text)
+    ;       priv_help((libs.optdb_help).ph_long_name :: string, (libs.optdb_help).ph_description :: libs.optdb_help.help_text)
+    ;       priv_arg_help((libs.optdb_help).prh_long_name :: string, (libs.optdb_help).prh_arg_name :: string, (libs.optdb_help).prh_description :: libs.optdb_help.help_text)
+    ;       alt_help((libs.optdb_help).ah_long_name :: string, (libs.optdb_help).ah_alt_long_names :: list.list(string), (libs.optdb_help).ah_description :: libs.optdb_help.help_text)
+    ;       alt_arg_align_help((libs.optdb_help).arlh_long_name :: string, (libs.optdb_help).arlh_arg_aligns :: list.list(libs.optdb_help.arg_align), (libs.optdb_help).arlh_description :: libs.optdb_help.help_text)
+    ;       alt_align_help((libs.optdb_help).alh_long_name :: string, (libs.optdb_help).alh_alt_long_names :: list.list(string), (libs.optdb_help).alh_aligned_help_text :: string, (libs.optdb_help).alh_aligned_texinfo :: string, (libs.optdb_help).alh_description :: libs.optdb_help.help_text)
+    ;       no_align_help((libs.optdb_help).nlh_long_name :: string, (libs.optdb_help).nlh_aligned_help_text :: string, (libs.optdb_help).alh_no_aligned_help_text :: string, (libs.optdb_help).nlh_aligned_texinfo :: string, (libs.optdb_help).alh_no_aligned_texinfo :: string, (libs.optdb_help).nlh_description :: libs.optdb_help.help_text)
+    ;       priv_alt_align_help((libs.optdb_help).palh_long_name :: string, (libs.optdb_help).palh_alt_long_names :: list.list(string), (libs.optdb_help).palh_aligned_help_text :: string, (libs.optdb_help).palh_aligned_texinfo :: string, (libs.optdb_help).palh_description :: libs.optdb_help.help_text)
+    ;       short_alt_align_help((libs.optdb_help).salh_short_name :: char.char, (libs.optdb_help).salh_long_name :: string, (libs.optdb_help).salh_alt_long_names :: list.list(string), (libs.optdb_help).salh_aligned_help_text :: string, (libs.optdb_help).salh_aligned_texinfo :: string, (libs.optdb_help).salh_description :: libs.optdb_help.help_text)
+    ;       alt_arg_help((libs.optdb_help).aah_long_name :: string, (libs.optdb_help).aah_alt_long_names :: list.list(string), (libs.optdb_help).aah_arg_name :: string, (libs.optdb_help).aah_description :: libs.optdb_help.help_text)
+    ;       priv_alt_help((libs.optdb_help).pah_long_name :: string, (libs.optdb_help).pah_alt_long_names :: list.list(string), (libs.optdb_help).pah_description :: libs.optdb_help.help_text)
+    ;       priv_alt_arg_help((libs.optdb_help).paah_long_name :: string, (libs.optdb_help).paah_alt_long_names :: list.list(string), (libs.optdb_help).paah_arg_name :: string, (libs.optdb_help).paah_description :: libs.optdb_help.help_text)
+    ;       short_help((libs.optdb_help).sh_short_name :: char.char, (libs.optdb_help).sh_long_name :: string, (libs.optdb_help).sh_alt_long_names :: list.list(string), (libs.optdb_help).sh_description :: libs.optdb_help.help_text)
+    ;       priv_short_help((libs.optdb_help).psh_short_name :: char.char, (libs.optdb_help).psh_long_name :: string, (libs.optdb_help).psh_alt_long_names :: list.list(string), (libs.optdb_help).psh_description :: libs.optdb_help.help_text)
+    ;       short_arg_help((libs.optdb_help).sah_short_name :: char.char, (libs.optdb_help).sah_long_name :: string, (libs.optdb_help).sah_alt_long_names :: list.list(string), (libs.optdb_help).sah_arg_name :: string, (libs.optdb_help).sah_description :: libs.optdb_help.help_text)
+    ;       priv_short_arg_help((libs.optdb_help).psah_short_name :: char.char, (libs.optdb_help).psah_long_name :: string, (libs.optdb_help).psah_alt_long_names :: list.list(string), (libs.optdb_help).psah_arg_name :: string, (libs.optdb_help).psah_description :: libs.optdb_help.help_text)
+    ;       unnamed_help((libs.optdb_help).uh_description :: libs.optdb_help.help_text).
+:- type help_piece
+    --->    w(string)
+    ;       fixed(string)
+    ;       opt(string)
+    ;       opt(string, string)
+    ;       arg(string)
+    ;       arg(string, string)
+    ;       bare_arg(string)
+    ;       bare_arg(string, string)
+    ;       opt_arg(string, string)
+    ;       opt_arg(string, string, string)
+    ;       quote(string)
+    ;       quote(string, string)
+    ;       ref(string, string, string)
+    ;       ref(string, string, string, string)
+    ;       xref(string)
+    ;       xref(string, string)
+    ;       samp(string)
+    ;       samp(string, string)
+    ;       emph(string)
+    ;       emph(string, string)
+    ;       env(string)
+    ;       env(string, string)
+    ;       code(string)
+    ;       code(string, string)
+    ;       file(string)
+    ;       file(string, string)
+    ;       var(string)
+    ;       var(string, string)
+    ;       file_var(string, string)
+    ;       file_var(string, string, string)
+    ;       blank_line 
+    ;       help_text_only(list.list(libs.optdb_help.help_piece))
+    ;       texinfo_only(list.list(libs.optdb_help.help_piece))
+    ;       help_text_texinfo(list.list(libs.optdb_help.help_piece), list.list(libs.optdb_help.help_piece))
+    ;       cindex(string)
+    ;       findex(string).
+:- type help_public_or_private
+    --->    help_public 
+    ;       help_private .
+:- type help_text == list.list(libs.optdb_help.help_piece).
