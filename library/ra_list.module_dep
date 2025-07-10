@@ -1,0 +1,14 @@
+module(2, "ra_list.m",
+	ra_list,
+	{},
+	{builtin, list, private_builtin},
+	{int, require},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
