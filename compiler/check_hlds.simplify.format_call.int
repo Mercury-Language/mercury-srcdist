@@ -1,0 +1,19 @@
+:- module (check_hlds.simplify).format_call.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_table.
+:- type maybe_generate_implicit_stream_warnings
+    --->    do_not_generate_implicit_stream_warnings 
+    ;       generate_implicit_stream_warnings .
+:- pred analyze_and_optimize_format_calls(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, check_hlds.simplify.format_call.maybe_generate_implicit_stream_warnings, hlds.hlds_goal.hlds_goal, maybe.maybe(hlds.hlds_goal.hlds_goal), list.list(parse_tree.error_spec.error_spec), parse_tree.var_table.var_table, parse_tree.var_table.var_table).
+:- mode analyze_and_optimize_format_calls(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred is_format_call(hlds.hlds_pred.pred_info, list.list(parse_tree.prog_data.prog_var)).
+:- mode is_format_call(builtin.in, builtin.in) is semidet.

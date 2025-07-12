@@ -1,0 +1,4 @@
+:- module analysis.
+:- interface.
+:- include_module analysis.framework.
+:- include_module analysis.operations.
