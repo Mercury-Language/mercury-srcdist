@@ -1,0 +1,6 @@
+:- module (transform_hlds.rbmm).condition_renaming.
+:- interface.
+:- type goal_path_regions_table.
+:- type proc_goal_path_regions_table.
+:- type_representation(goal_path_regions_table, is_eqv_to(map(reverse_goal_path, set(string)))).
+:- type_representation(proc_goal_path_regions_table, is_eqv_to(map(pred_proc_id, transform_hlds.rbmm.condition_renaming.goal_path_regions_table))).
