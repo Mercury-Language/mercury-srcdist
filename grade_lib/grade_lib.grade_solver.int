@@ -1,0 +1,57 @@
+:- module grade_lib.grade_solver.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module one_or_more.
+:- use_module grade_lib.grade_spec.
+:- use_module grade_lib.grade_state.
+:- type failure_info.
+:- type failure_tree
+    --->    failure_tree(
+                 grade_lib.grade_spec.solver_var_id,
+                 list.list(grade_lib.grade_solver.why_var_is_not_value)
+            ).
+:- type installed_grade
+    --->    installed_grade(
+                 string,
+                 grade_lib.grade_solver.success_soln_map
+            ).
+:- type installed_grade_solution
+    --->    installed_grade_spec_is_inconsistent(
+                 grade_lib.grade_solver.failure_info
+            )
+    ;       installed_grade_success(
+                 grade_lib.grade_solver.installed_grade
+            )
+    ;       no_such_installed_grade .
+:- type should_commit
+    --->    should_commit 
+    ;       should_not_commit .
+:- type solution
+    --->    soln_failure(
+                 grade_lib.grade_solver.failure_info
+            )
+    ;       soln_success(
+                 grade_lib.grade_solver.success_soln_map
+            ).
+:- type solve_counts
+    --->    solve_counts(
+                 (grade_lib.grade_solver).sc_num_label_steps :: int,
+                 (grade_lib.grade_solver).sc_num_passes :: int,
+                 (grade_lib.grade_solver).sc_num_req_tests :: int
+            ).
+:- type success_soln_map == map.map(grade_lib.grade_spec.solver_var_id, grade_lib.grade_spec.solver_var_value_id).
+:- type why_var_is_not_value
+    --->    why_var_is_not_value(
+                 grade_lib.grade_spec.solver_var_value_id,
+                 grade_lib.grade_state.requirement_id,
+                 string,
+                 list.list(grade_lib.grade_solver.failure_tree)
+            ).
+:- func failure_info_to_failure_trees(grade_lib.grade_solver.failure_info) = one_or_more.one_or_more(grade_lib.grade_solver.failure_tree).
+:- func soln_to_str(string, grade_lib.grade_solver.solution) = string.
+:- pred solve_absolute(grade_lib.grade_state.solver_info, grade_lib.grade_solver.solve_counts, grade_lib.grade_solver.solution).
+:- mode solve_absolute(builtin.in, builtin.out, builtin.out) is det.
+:- pred solve_best_installed_grade(grade_lib.grade_state.solver_info, grade_lib.grade_solver.should_commit, list.list(grade_lib.grade_solver.installed_grade), grade_lib.grade_solver.solve_counts, grade_lib.grade_solver.installed_grade_solution).
+:- mode solve_best_installed_grade(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- func solver_var_map_to_str(string, grade_lib.grade_state.solver_var_map) = string.
