@@ -1,0 +1,163 @@
+/*
+** Automatically generated from `goal_transform.m'
+** by the Mercury compiler,
+** version rotd-2025-07-16
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.goal_transform.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__goal_transform
+#define MR_HEADER_GUARD_hlds__goal_transform
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__GOAL_TRANSFORM_DECL_GUARD
+#define HLDS__GOAL_TRANSFORM_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__goal_transform__hlds__goal_transform__type_ctor_info_attach_in_from_ground_term_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__goal_transform__hlds__goal_transform__type_ctor_info_maybe_transformed_goal_0;
+
+void MR_CALL 
+hlds__goal_transform__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_116_116_97_99_104_95_102_101_97_116_117_114_101_115_95_116_111_95_97_108_108_95_103_111_97_108_115_95_95_91_50_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__goal_transform__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_116_116_97_99_104_95_102_101_97_116_117_114_101_115_95_116_111_95_97_108_108_95_103_111_97_108_115_95_95_91_50_93_95_49_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__goal_transform__attach_features_to_all_goals_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__goal_transform__attach_features_to_all_goals_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__goal_transform__case_to_disjunct_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+hlds__goal_transform__flatten_conj_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__goal_transform__flatten_disj_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__goal_transform__maybe_transform_goal_at_goal_path_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__goal_transform__maybe_transform_goal_at_goal_path_with_instmap_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__goal_transform__switch_to_disjunction_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__goal_transform__transform_all_goals_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+hlds__goal_transform__maybe_strip_equality_pretest_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__goal_transform____Compare____attach_in_from_ground_term_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__goal_transform____Compare____maybe_transformed_goal_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__goal_transform____Unify____attach_in_from_ground_term_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__goal_transform____Unify____maybe_transformed_goal_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__goal_transform__init(void);
+void mercury__hlds__goal_transform__init_type_tables(void);
+void mercury__hlds__goal_transform__init_debugger(void);
+const char *mercury__hlds__goal_transform__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.goal_transform
+
+// :- end_interface hlds.goal_transform.

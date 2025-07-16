@@ -1,0 +1,396 @@
+:- module profile.
+:- interface.
+:- use_module array.
+:- use_module bool.
+:- use_module exclude.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module measurements.
+:- use_module mdbcomp.goal_path.
+:- use_module mdbcomp.program_representation.
+:- type call_site_array_slot
+    --->    slot_normal(
+                 profile.call_site_dynamic_ptr
+            )
+    ;       slot_multi(
+                 profile.is_zeroed,
+                 array.array(profile.call_site_dynamic_ptr)
+            ).
+:- type call_site_callees
+    --->    call_site_callees(
+                 list.list(profile.proc_dynamic_ptr)
+            ).
+:- type call_site_caller
+    --->    call_site_caller(
+                 profile.call_site_static_ptr
+            ).
+:- type call_site_dynamic
+    --->    call_site_dynamic(
+                 profile.csd_caller :: profile.proc_dynamic_ptr,
+                 profile.csd_callee :: profile.proc_dynamic_ptr,
+                 profile.csd_own_prof :: measurements.own_prof_info
+            ).
+:- type call_site_dynamic_ptr
+    --->    call_site_dynamic_ptr(
+                 int
+            ).
+:- type call_site_dynamics == array.array(profile.call_site_dynamic).
+:- type call_site_kind
+    --->    normal_call 
+    ;       special_call 
+    ;       higher_order_call 
+    ;       method_call 
+    ;       callback .
+:- type call_site_kind_and_callee == profile.call_site_kind_and_callee(profile.proc_static_ptr).
+:- type call_site_kind_and_callee(T)
+    --->    normal_call_and_callee(
+                 T,
+                 string
+            )
+    ;       special_call_and_no_callee 
+    ;       higher_order_call_and_no_callee 
+    ;       method_call_and_no_callee 
+    ;       callback_and_no_callee .
+:- type call_site_kind_and_info(T)
+    --->    normal_call_and_info(
+                 T
+            )
+    ;       special_call_and_no_info 
+    ;       higher_order_call_and_no_info 
+    ;       method_call_and_no_info 
+    ;       callback_and_no_info .
+:- type call_site_static
+    --->    call_site_static(
+                 profile.css_container :: profile.proc_static_ptr,
+                 profile.css_slot_num :: int,
+                 profile.css_kind :: profile.call_site_kind_and_callee,
+                 profile.css_file_name :: string,
+                 profile.css_line_num :: int,
+                 profile.css_goal_path :: mdbcomp.goal_path.reverse_goal_path
+            ).
+:- type call_site_static_map == array.array(profile.call_site_static_ptr).
+:- type call_site_static_ptr
+    --->    call_site_static_ptr(
+                 int
+            ).
+:- type call_site_statics == array.array(profile.call_site_static).
+:- type canonical_flag
+    --->    is_canonical 
+    ;       maybe_not_canonical .
+:- type clique_ptr
+    --->    clique_ptr(
+                 int
+            ).
+:- type compensation_table == map.map(profile.proc_static_ptr, measurements.inherit_prof_info).
+:- type coverage_data_type
+    --->    no_coverage_data 
+    ;       static_coverage_data 
+    ;       dynamic_coverage_data .
+:- type deep
+    --->    deep(
+                 profile.profile_stats :: profile.profile_stats,
+                 profile.server_name_port :: string,
+                 profile.script_name :: string,
+                 profile.data_file_name :: string,
+                 profile.root :: profile.proc_dynamic_ptr,
+                 profile.call_site_dynamics :: profile.call_site_dynamics,
+                 profile.proc_dynamics :: profile.proc_dynamics,
+                 profile.call_site_statics :: profile.call_site_statics,
+                 profile.proc_statics :: profile.proc_statics,
+                 profile.clique_index :: array.array(profile.clique_ptr),
+                 profile.clique_members :: array.array(list.list(profile.proc_dynamic_ptr)),
+                 profile.clique_parents :: array.array(profile.call_site_dynamic_ptr),
+                 profile.clique_maybe_child :: array.array(maybe.maybe(profile.clique_ptr)),
+                 profile.proc_callers :: array.array(list.list(profile.call_site_dynamic_ptr)),
+                 profile.call_site_static_map :: profile.call_site_static_map,
+                 profile.call_site_calls :: array.array(map.map(profile.proc_static_ptr, list.list(profile.call_site_dynamic_ptr))),
+                 profile.pd_own :: array.array(measurements.own_prof_info),
+                 profile.pd_desc :: array.array(measurements.inherit_prof_info),
+                 profile.csd_desc :: array.array(measurements.inherit_prof_info),
+                 profile.ps_own :: array.array(measurements.own_prof_info),
+                 profile.ps_desc :: array.array(measurements.inherit_prof_info),
+                 profile.css_own :: array.array(measurements.own_prof_info),
+                 profile.css_desc :: array.array(measurements.inherit_prof_info),
+                 profile.pd_comp_table :: array.array(profile.compensation_table),
+                 profile.csd_comp_table :: array.array(profile.compensation_table),
+                 profile.module_data :: map.map(string, profile.module_data),
+                 profile.maybe_static_coverage :: maybe.maybe(array.array(measurements.static_coverage_info)),
+                 profile.exclude_contour_file :: exclude.exclude_file,
+                 profile.procrep_file :: maybe.maybe(maybe.maybe_error(mdbcomp.program_representation.prog_rep)),
+                 profile.progress_stream :: maybe.maybe(io.text_output_stream)
+            ).
+:- type deep_compression_flag
+    --->    no_compression .
+:- type deep_flags
+    --->    deep_flags(
+                 profile.df_bytes_per_int :: int,
+                 profile.df_canonical_flag :: profile.canonical_flag,
+                 profile.df_compression_flag :: profile.deep_compression_flag,
+                 profile.df_coverage_data_type :: profile.coverage_data_type
+            ).
+:- type initial_deep
+    --->    initial_deep(
+                 profile.init_profile_stats :: profile.profile_stats,
+                 profile.init_root :: profile.proc_dynamic_ptr,
+                 profile.init_call_site_dynamics :: profile.call_site_dynamics,
+                 profile.init_proc_dynamics :: profile.proc_dynamics,
+                 profile.init_call_site_statics :: profile.call_site_statics,
+                 profile.init_proc_statics :: profile.proc_statics
+            ).
+:- type is_zeroed
+    --->    zeroed 
+    ;       not_zeroed .
+:- type module_data
+    --->    module_data(
+                 profile.module_own :: measurements.own_prof_info,
+                 profile.module_desc :: measurements.inherit_prof_info,
+                 profile.module_procs :: list.list(profile.proc_static_ptr)
+            ).
+:- type proc_dynamic
+    --->    proc_dynamic(
+                 profile.pd_proc_static :: profile.proc_static_ptr,
+                 profile.pd_sites :: array.array(profile.call_site_array_slot),
+                 profile.pd_maybe_coverage_points :: maybe.maybe(array.array(int))
+            ).
+:- type proc_dynamic_ptr
+    --->    proc_dynamic_ptr(
+                 int
+            ).
+:- type proc_dynamics == array.array(profile.proc_dynamic).
+:- type proc_static
+    --->    proc_static(
+                 profile.ps_id :: mdbcomp.program_representation.string_proc_label,
+                 profile.ps_decl_module :: string,
+                 profile.ps_uq_refined_id :: string,
+                 profile.ps_q_refined_id :: string,
+                 profile.ps_raw_id :: string,
+                 profile.ps_file_name :: string,
+                 profile.ps_line_number :: int,
+                 profile.ps_in_interface :: bool.bool,
+                 profile.ps_sites :: array.array(profile.call_site_static_ptr),
+                 profile.ps_coverage_point_infos :: array.array(mdbcomp.program_representation.coverage_point_info),
+                 profile.ps_maybe_coverage_points :: maybe.maybe(array.array(int)),
+                 profile.ps_is_zeroed :: profile.is_zeroed
+            ).
+:- type proc_static_ptr
+    --->    proc_static_ptr(
+                 int
+            ).
+:- type proc_statics == array.array(profile.proc_static).
+:- type profile_stats
+    --->    profile_stats(
+                 profile.prs_program_name :: string,
+                 profile.prs_num_csd :: int,
+                 profile.prs_num_css :: int,
+                 profile.prs_num_pd :: int,
+                 profile.prs_num_ps :: int,
+                 profile.prs_ticks_per_sec :: int,
+                 profile.prs_instrument_quanta :: int,
+                 profile.prs_user_quanta :: int,
+                 profile.prs_num_callseqs :: int,
+                 profile.prs_deep_flags :: profile.deep_flags
+            ).
+:- func decl_module(mdbcomp.program_representation.string_proc_label) = string.
+:- pred deep_extract_csdptr_callee(profile.deep, profile.call_site_dynamic_ptr, profile.proc_dynamic_ptr).
+:- mode deep_extract_csdptr_callee(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_extract_csdptr_caller(profile.deep, profile.call_site_dynamic_ptr, profile.proc_dynamic_ptr).
+:- mode deep_extract_csdptr_caller(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_get_maybe_progrep(profile.deep, maybe.maybe_error(mdbcomp.program_representation.prog_rep)).
+:- mode deep_get_maybe_progrep(builtin.in, builtin.out) is det.
+:- pred deep_get_progrep_det(profile.deep, mdbcomp.program_representation.prog_rep).
+:- mode deep_get_progrep_det(builtin.in, builtin.out) is det.
+:- pred deep_lookup_call_site_calls(profile.deep, profile.call_site_static_ptr, map.map(profile.proc_static_ptr, list.list(profile.call_site_dynamic_ptr))).
+:- mode deep_lookup_call_site_calls(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_call_site_dynamics(profile.deep, profile.call_site_dynamic_ptr, profile.call_site_dynamic).
+:- mode deep_lookup_call_site_dynamics(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_call_site_static_map(profile.deep, profile.call_site_dynamic_ptr, profile.call_site_static_ptr).
+:- mode deep_lookup_call_site_static_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_call_site_statics(profile.deep, profile.call_site_static_ptr, profile.call_site_static).
+:- mode deep_lookup_call_site_statics(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_clique_index(profile.deep, profile.proc_dynamic_ptr, profile.clique_ptr).
+:- mode deep_lookup_clique_index(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_clique_maybe_child(profile.deep, profile.call_site_dynamic_ptr, maybe.maybe(profile.clique_ptr)).
+:- mode deep_lookup_clique_maybe_child(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_clique_members(profile.deep, profile.clique_ptr, list.list(profile.proc_dynamic_ptr)).
+:- mode deep_lookup_clique_members(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_clique_parents(profile.deep, profile.clique_ptr, profile.call_site_dynamic_ptr).
+:- mode deep_lookup_clique_parents(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_csd_comp_table(profile.deep, profile.call_site_dynamic_ptr, profile.compensation_table).
+:- mode deep_lookup_csd_comp_table(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_csd_desc(profile.deep, profile.call_site_dynamic_ptr, measurements.inherit_prof_info).
+:- mode deep_lookup_csd_desc(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_csd_own(profile.deep, profile.call_site_dynamic_ptr, measurements.own_prof_info).
+:- mode deep_lookup_csd_own(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_css_desc(profile.deep, profile.call_site_static_ptr, measurements.inherit_prof_info).
+:- mode deep_lookup_css_desc(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_css_own(profile.deep, profile.call_site_static_ptr, measurements.own_prof_info).
+:- mode deep_lookup_css_own(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_pd_comp_table(profile.deep, profile.proc_dynamic_ptr, profile.compensation_table).
+:- mode deep_lookup_pd_comp_table(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_pd_desc(profile.deep, profile.proc_dynamic_ptr, measurements.inherit_prof_info).
+:- mode deep_lookup_pd_desc(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_pd_own(profile.deep, profile.proc_dynamic_ptr, measurements.own_prof_info).
+:- mode deep_lookup_pd_own(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_proc_callers(profile.deep, profile.proc_static_ptr, list.list(profile.call_site_dynamic_ptr)).
+:- mode deep_lookup_proc_callers(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_proc_dynamic_sites(profile.deep, profile.proc_dynamic_ptr, array.array(profile.call_site_array_slot)).
+:- mode deep_lookup_proc_dynamic_sites(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_proc_dynamics(profile.deep, profile.proc_dynamic_ptr, profile.proc_dynamic).
+:- mode deep_lookup_proc_dynamics(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_proc_statics(profile.deep, profile.proc_static_ptr, profile.proc_static).
+:- mode deep_lookup_proc_statics(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_ps_coverage(profile.deep, profile.proc_static_ptr, measurements.static_coverage_info).
+:- mode deep_lookup_ps_coverage(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_ps_desc(profile.deep, profile.proc_static_ptr, measurements.inherit_prof_info).
+:- mode deep_lookup_ps_desc(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_lookup_ps_own(profile.deep, profile.proc_static_ptr, measurements.own_prof_info).
+:- mode deep_lookup_ps_own(builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_update_csd_comp_table(profile.call_site_dynamic_ptr, profile.compensation_table, profile.deep, profile.deep).
+:- mode deep_update_csd_comp_table(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_update_csd_desc(profile.call_site_dynamic_ptr, measurements.inherit_prof_info, profile.deep, profile.deep).
+:- mode deep_update_csd_desc(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_update_pd_comp_table(profile.proc_dynamic_ptr, profile.compensation_table, profile.deep, profile.deep).
+:- mode deep_update_pd_comp_table(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_update_pd_desc(profile.proc_dynamic_ptr, measurements.inherit_prof_info, profile.deep, profile.deep).
+:- mode deep_update_pd_desc(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred deep_update_pd_own(profile.proc_dynamic_ptr, measurements.own_prof_info, profile.deep, profile.deep).
+:- mode deep_update_pd_own(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func dummy_call_site_dynamic_ptr = profile.call_site_dynamic_ptr.
+:- func dummy_call_site_static_ptr = profile.call_site_static_ptr.
+:- func dummy_clique_ptr = profile.clique_ptr.
+:- func dummy_proc_dynamic_ptr = profile.proc_dynamic_ptr.
+:- func dummy_proc_id = mdbcomp.program_representation.string_proc_label.
+:- func dummy_proc_static_ptr = profile.proc_static_ptr.
+:- pred extract_csd_callee(profile.call_site_dynamic, profile.proc_dynamic_ptr).
+:- mode extract_csd_callee(builtin.in, builtin.out) is det.
+:- pred extract_csd_caller(profile.call_site_dynamic, profile.proc_dynamic_ptr).
+:- mode extract_csd_caller(builtin.in, builtin.out) is det.
+:- pred extract_csdptr_callee(profile.initial_deep, profile.call_site_dynamic_ptr, profile.proc_dynamic_ptr).
+:- mode extract_csdptr_callee(builtin.in, builtin.in, builtin.out) is det.
+:- pred extract_csdptr_caller(profile.initial_deep, profile.call_site_dynamic_ptr, profile.proc_dynamic_ptr).
+:- mode extract_csdptr_caller(builtin.in, builtin.in, builtin.out) is det.
+:- pred extract_init_call_site_dynamics(profile.initial_deep, profile.call_site_dynamics).
+:- mode extract_init_call_site_dynamics(builtin.in, builtin.out) is det.
+:- pred extract_init_call_site_statics(profile.initial_deep, profile.call_site_statics).
+:- mode extract_init_call_site_statics(builtin.in, builtin.out) is det.
+:- pred extract_init_proc_dynamics(profile.initial_deep, profile.proc_dynamics).
+:- mode extract_init_proc_dynamics(builtin.in, builtin.out) is det.
+:- pred extract_init_proc_statics(profile.initial_deep, profile.proc_statics).
+:- mode extract_init_proc_statics(builtin.in, builtin.out) is det.
+:- pred extract_init_root(profile.initial_deep, profile.proc_dynamic_ptr).
+:- mode extract_init_root(builtin.in, builtin.out) is det.
+:- pred extract_instrument_quanta(profile.initial_deep, int).
+:- mode extract_instrument_quanta(builtin.in, builtin.out) is det.
+:- pred extract_max_csd(profile.initial_deep, int).
+:- mode extract_max_csd(builtin.in, builtin.out) is det.
+:- pred extract_max_css(profile.initial_deep, int).
+:- mode extract_max_css(builtin.in, builtin.out) is det.
+:- pred extract_max_pd(profile.initial_deep, int).
+:- mode extract_max_pd(builtin.in, builtin.out) is det.
+:- pred extract_max_ps(profile.initial_deep, int).
+:- mode extract_max_ps(builtin.in, builtin.out) is det.
+:- pred extract_num_callseqs(profile.initial_deep, int).
+:- mode extract_num_callseqs(builtin.in, builtin.out) is det.
+:- pred extract_pd_sites(profile.proc_dynamic, array.array(profile.call_site_array_slot)).
+:- mode extract_pd_sites(builtin.in, builtin.out) is det.
+:- pred extract_ticks_per_sec(profile.initial_deep, int).
+:- mode extract_ticks_per_sec(builtin.in, builtin.out) is det.
+:- pred extract_user_quanta(profile.initial_deep, int).
+:- mode extract_user_quanta(builtin.in, builtin.out) is det.
+:- pred is_call_site_kind(int, profile.call_site_kind).
+:- mode is_call_site_kind(builtin.in, builtin.out) is semidet.
+:- pred lookup_call_site_calls(array.array(map.map(profile.proc_static_ptr, list.list(profile.call_site_dynamic_ptr))), profile.call_site_static_ptr, map.map(profile.proc_static_ptr, list.list(profile.call_site_dynamic_ptr))).
+:- mode lookup_call_site_calls(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_call_site_dynamics(profile.call_site_dynamics, profile.call_site_dynamic_ptr, profile.call_site_dynamic).
+:- mode lookup_call_site_dynamics(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_call_site_static_map(profile.call_site_static_map, profile.call_site_dynamic_ptr, profile.call_site_static_ptr).
+:- mode lookup_call_site_static_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_call_site_statics(profile.call_site_statics, profile.call_site_static_ptr, profile.call_site_static).
+:- mode lookup_call_site_statics(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_clique_index(array.array(profile.clique_ptr), profile.proc_dynamic_ptr, profile.clique_ptr).
+:- mode lookup_clique_index(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_clique_maybe_child(array.array(maybe.maybe(profile.clique_ptr)), profile.call_site_dynamic_ptr, maybe.maybe(profile.clique_ptr)).
+:- mode lookup_clique_maybe_child(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_clique_members(array.array(list.list(profile.proc_dynamic_ptr)), profile.clique_ptr, list.list(profile.proc_dynamic_ptr)).
+:- mode lookup_clique_members(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_clique_parents(array.array(profile.call_site_dynamic_ptr), profile.clique_ptr, profile.call_site_dynamic_ptr).
+:- mode lookup_clique_parents(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_csd_comp_table(array.array(profile.compensation_table), profile.call_site_dynamic_ptr, profile.compensation_table).
+:- mode lookup_csd_comp_table(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_csd_desc(array.array(measurements.inherit_prof_info), profile.call_site_dynamic_ptr, measurements.inherit_prof_info).
+:- mode lookup_csd_desc(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_csd_own(array.array(measurements.own_prof_info), profile.call_site_dynamic_ptr, measurements.own_prof_info).
+:- mode lookup_csd_own(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_css_desc(array.array(measurements.inherit_prof_info), profile.call_site_static_ptr, measurements.inherit_prof_info).
+:- mode lookup_css_desc(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_css_own(array.array(measurements.own_prof_info), profile.call_site_static_ptr, measurements.own_prof_info).
+:- mode lookup_css_own(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_pd_comp_table(array.array(profile.compensation_table), profile.proc_dynamic_ptr, profile.compensation_table).
+:- mode lookup_pd_comp_table(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_pd_desc(array.array(measurements.inherit_prof_info), profile.proc_dynamic_ptr, measurements.inherit_prof_info).
+:- mode lookup_pd_desc(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_pd_own(array.array(measurements.own_prof_info), profile.proc_dynamic_ptr, measurements.own_prof_info).
+:- mode lookup_pd_own(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_proc_callers(array.array(list.list(profile.call_site_dynamic_ptr)), profile.proc_static_ptr, list.list(profile.call_site_dynamic_ptr)).
+:- mode lookup_proc_callers(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_proc_dynamics(profile.proc_dynamics, profile.proc_dynamic_ptr, profile.proc_dynamic).
+:- mode lookup_proc_dynamics(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_proc_statics(profile.proc_statics, profile.proc_static_ptr, profile.proc_static).
+:- mode lookup_proc_statics(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_ps_coverage(array.array(measurements.static_coverage_info), profile.proc_static_ptr, measurements.static_coverage_info).
+:- mode lookup_ps_coverage(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_ps_desc(array.array(measurements.inherit_prof_info), profile.proc_static_ptr, measurements.inherit_prof_info).
+:- mode lookup_ps_desc(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_ps_own(array.array(measurements.own_prof_info), profile.proc_static_ptr, measurements.own_prof_info).
+:- mode lookup_ps_own(builtin.in, builtin.in, builtin.out) is det.
+:- func main_parent_proc_id = mdbcomp.program_representation.string_proc_label.
+:- func root_desc_info(profile.deep) = measurements.inherit_prof_info.
+:- func root_own_info(profile.deep) = measurements.own_prof_info.
+:- func root_total_info(profile.deep) = measurements.inherit_prof_info.
+:- pred update_call_site_dynamics(profile.call_site_dynamic_ptr, profile.call_site_dynamic, profile.call_site_dynamics, profile.call_site_dynamics).
+:- mode update_call_site_dynamics(builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- pred update_call_site_static_map(profile.call_site_dynamic_ptr, profile.call_site_static_ptr, profile.call_site_static_map, profile.call_site_static_map).
+:- mode update_call_site_static_map(builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- pred update_call_site_statics(profile.call_site_static_ptr, profile.call_site_static, profile.call_site_statics, profile.call_site_statics).
+:- mode update_call_site_statics(builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- pred update_css_desc(profile.call_site_static_ptr, measurements.inherit_prof_info, array.array(measurements.inherit_prof_info), array.array(measurements.inherit_prof_info)).
+:- mode update_css_desc(builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- pred update_css_own(profile.call_site_static_ptr, measurements.own_prof_info, array.array(measurements.own_prof_info), array.array(measurements.own_prof_info)).
+:- mode update_css_own(builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- pred update_proc_callers(profile.proc_static_ptr, list.list(profile.call_site_dynamic_ptr), array.array(list.list(profile.call_site_dynamic_ptr)), array.array(list.list(profile.call_site_dynamic_ptr))).
+:- mode update_proc_callers(builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- pred update_proc_dynamics(profile.proc_dynamic_ptr, profile.proc_dynamic, profile.proc_dynamics, profile.proc_dynamics).
+:- mode update_proc_dynamics(builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- pred update_proc_statics(profile.proc_static_ptr, profile.proc_static, profile.proc_statics, profile.proc_statics).
+:- mode update_proc_statics(builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- pred update_ps_coverage(profile.proc_static_ptr, measurements.static_coverage_info, array.array(measurements.static_coverage_info), array.array(measurements.static_coverage_info)).
+:- mode update_ps_coverage(builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- pred update_ps_desc(profile.proc_static_ptr, measurements.inherit_prof_info, array.array(measurements.inherit_prof_info), array.array(measurements.inherit_prof_info)).
+:- mode update_ps_desc(builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- pred update_ps_own(profile.proc_static_ptr, measurements.own_prof_info, array.array(measurements.own_prof_info), array.array(measurements.own_prof_info)).
+:- mode update_ps_own(builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- pred valid_call_site_dynamic_ptr(profile.deep, profile.call_site_dynamic_ptr).
+:- mode valid_call_site_dynamic_ptr(builtin.in, builtin.in) is semidet.
+:- pred valid_call_site_dynamic_ptr_raw(profile.call_site_dynamics, profile.call_site_dynamic_ptr).
+:- mode valid_call_site_dynamic_ptr_raw(builtin.in, builtin.in) is semidet.
+:- pred valid_call_site_static_ptr(profile.deep, profile.call_site_static_ptr).
+:- mode valid_call_site_static_ptr(builtin.in, builtin.in) is semidet.
+:- pred valid_call_site_static_ptr_raw(profile.call_site_statics, profile.call_site_static_ptr).
+:- mode valid_call_site_static_ptr_raw(builtin.in, builtin.in) is semidet.
+:- pred valid_clique_ptr(profile.deep, profile.clique_ptr).
+:- mode valid_clique_ptr(builtin.in, builtin.in) is semidet.
+:- pred valid_proc_dynamic_ptr(profile.deep, profile.proc_dynamic_ptr).
+:- mode valid_proc_dynamic_ptr(builtin.in, builtin.in) is semidet.
+:- pred valid_proc_dynamic_ptr_raw(profile.proc_dynamics, profile.proc_dynamic_ptr).
+:- mode valid_proc_dynamic_ptr_raw(builtin.in, builtin.in) is semidet.
+:- pred valid_proc_static_ptr(profile.deep, profile.proc_static_ptr).
+:- mode valid_proc_static_ptr(builtin.in, builtin.in) is semidet.
+:- pred valid_proc_static_ptr_raw(profile.proc_statics, profile.proc_static_ptr).
+:- mode valid_proc_static_ptr_raw(builtin.in, builtin.in) is semidet.
+:- func wrap_proc_static_ptr(int) = profile.proc_static_ptr.
+:- implementation.
+:- pragma foreign_import_module("C", profile).
+:- pragma foreign_enum("C", (profile.call_site_kind)/0, [normal_call - "MR_callsite_normal_call", special_call - "MR_callsite_special_call", higher_order_call - "MR_callsite_higher_order_call", method_call - "MR_callsite_method_call", callback - "MR_callsite_callback"]).

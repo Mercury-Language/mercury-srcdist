@@ -1,0 +1,63 @@
+/*
+** Automatically generated from `closure_analysis.m'
+** by the Mercury compiler,
+** version rotd-2025-07-16
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.closure_analysis.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__closure_analysis
+#define MR_HEADER_GUARD_transform_hlds__closure_analysis
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__CLOSURE_ANALYSIS_DECL_GUARD
+#define TRANSFORM_HLDS__CLOSURE_ANALYSIS_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__closure_analysis__transform_hlds__closure_analysis__type_ctor_info_closure_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__closure_analysis__transform_hlds__closure_analysis__type_ctor_info_closure_values_0;
+
+void MR_CALL 
+transform_hlds__closure_analysis__closure_analyse_module_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void mercury__transform_hlds__closure_analysis__init(void);
+void mercury__transform_hlds__closure_analysis__init_type_tables(void);
+void mercury__transform_hlds__closure_analysis__init_debugger(void);
+const char *mercury__transform_hlds__closure_analysis__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.closure_analysis
+
+// :- end_interface transform_hlds.closure_analysis.
