@@ -1,0 +1,14 @@
+module(2, "io.file.m",
+	io.file,
+	{io},
+	{builtin, private_builtin, time},
+	{io.environment, io.error_util},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - io.file, "C#" - io.file, "Java" - io.file},
+	no_foreign_export,
+	no_main,
+	{}
+).
