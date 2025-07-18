@@ -1,0 +1,10 @@
+:- module backjump.
+:- interface.
+:- type choice_id.
+:- impure pred backjump(backjump.choice_id).
+:- mode backjump(builtin.in) is erroneous.
+:- impure pred get_choice_id(backjump.choice_id).
+:- mode get_choice_id(builtin.out) is nondet.
+:- func to_int(backjump.choice_id) = int.
+:- implementation.
+:- type choice_id == int.
