@@ -1,0 +1,7 @@
+:- module backend_libs.c_util.
+:- interface.
+:- use_module list.
+:- type maybe_set_line_numbers
+    --->    do_not_set_line_numbers 
+    ;       set_line_numbers .
+:- type multi_string == list.list(string).

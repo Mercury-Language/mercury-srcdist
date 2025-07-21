@@ -1,0 +1,53 @@
+:- module parse_tree.module_dep_info.
+:- interface.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.module_baggage.
+:- use_module parse_tree.prog_data_foreign.
+:- use_module parse_tree.prog_item.
+:- type module_dep_info
+    --->    module_dep_info_full(
+                 parse_tree.module_baggage.burdened_module
+            )
+    ;       module_dep_info_summary(
+                 parse_tree.module_dep_info.module_dep_summary
+            ).
+:- type module_dep_summary
+    --->    module_dep_summary(
+                 (parse_tree.module_dep_info).mds_source_file_name :: string,
+                 (parse_tree.module_dep_info).mds_source_file_dir :: string,
+                 (parse_tree.module_dep_info).mds_source_file_module_name :: mdbcomp.sym_name.module_name,
+                 (parse_tree.module_dep_info).mds_module_name :: mdbcomp.sym_name.module_name,
+                 (parse_tree.module_dep_info).mds_children :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.module_dep_info).mds_maybe_top_module :: parse_tree.module_baggage.maybe_top_module,
+                 (parse_tree.module_dep_info).mds_int_deps :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.module_dep_info).mds_imp_deps :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.module_dep_info).mds_fact_table_file_names :: set.set(string),
+                 (parse_tree.module_dep_info).mds_fims :: set.set(parse_tree.prog_data_foreign.fim_spec),
+                 (parse_tree.module_dep_info).mds_foreign_include_files :: set.set(parse_tree.prog_data_foreign.foreign_include_file_info),
+                 (parse_tree.module_dep_info).mds_contains_foreign_code :: parse_tree.prog_item.contains_foreign_code,
+                 (parse_tree.module_dep_info).mds_contains_foreign_export :: parse_tree.prog_item.contains_foreign_export
+            ).
+:- pred module_dep_info_get_children(parse_tree.module_dep_info.module_dep_info, set.set(mdbcomp.sym_name.module_name)).
+:- mode module_dep_info_get_children(builtin.in, builtin.out) is det.
+:- pred module_dep_info_get_fact_tables(parse_tree.module_dep_info.module_dep_info, set.set(string)).
+:- mode module_dep_info_get_fact_tables(builtin.in, builtin.out) is det.
+:- pred module_dep_info_get_fims(parse_tree.module_dep_info.module_dep_info, set.set(parse_tree.prog_data_foreign.fim_spec)).
+:- mode module_dep_info_get_fims(builtin.in, builtin.out) is det.
+:- pred module_dep_info_get_foreign_include_files(parse_tree.module_dep_info.module_dep_info, set.set(parse_tree.prog_data_foreign.foreign_include_file_info)).
+:- mode module_dep_info_get_foreign_include_files(builtin.in, builtin.out) is det.
+:- pred module_dep_info_get_imp_deps(parse_tree.module_dep_info.module_dep_info, set.set(mdbcomp.sym_name.module_name)).
+:- mode module_dep_info_get_imp_deps(builtin.in, builtin.out) is det.
+:- pred module_dep_info_get_int_deps(parse_tree.module_dep_info.module_dep_info, set.set(mdbcomp.sym_name.module_name)).
+:- mode module_dep_info_get_int_deps(builtin.in, builtin.out) is det.
+:- pred module_dep_info_get_maybe_top_module(parse_tree.module_dep_info.module_dep_info, parse_tree.module_baggage.maybe_top_module).
+:- mode module_dep_info_get_maybe_top_module(builtin.in, builtin.out) is det.
+:- pred module_dep_info_get_module_name(parse_tree.module_dep_info.module_dep_info, mdbcomp.sym_name.module_name).
+:- mode module_dep_info_get_module_name(builtin.in, builtin.out) is det.
+:- pred module_dep_info_get_source_file_dir(parse_tree.module_dep_info.module_dep_info, string).
+:- mode module_dep_info_get_source_file_dir(builtin.in, builtin.out) is det.
+:- pred module_dep_info_get_source_file_module_name(parse_tree.module_dep_info.module_dep_info, mdbcomp.sym_name.module_name).
+:- mode module_dep_info_get_source_file_module_name(builtin.in, builtin.out) is det.
+:- pred module_dep_info_get_source_file_name(parse_tree.module_dep_info.module_dep_info, string).
+:- mode module_dep_info_get_source_file_name(builtin.in, builtin.out) is det.
