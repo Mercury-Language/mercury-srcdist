@@ -1,0 +1,38 @@
+// Automatically generated from `io.call_system.m'
+// by the Mercury compiler,
+// version rotd-2025-07-22
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef IO__CALL_SYSTEM_MH
+#define IO__CALL_SYSTEM_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef IO__CALL_SYSTEM_DECL_GUARD
+#define IO__CALL_SYSTEM_DECL_GUARD
+
+#if defined(MR_WIN32)
+   #include "mercury_string.h" // For MR_utf8_to_wide.
+#endif
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* IO__CALL_SYSTEM_MH */

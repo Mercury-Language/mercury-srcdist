@@ -1,0 +1,124 @@
+/*
+** Automatically generated from `error_msg_inst.m'
+** by the Mercury compiler,
+** version rotd-2025-07-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.error_msg_inst.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__error_msg_inst
+#define MR_HEADER_GUARD_hlds__error_msg_inst
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__ERROR_MSG_INST_DECL_GUARD
+#define HLDS__ERROR_MSG_INST_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__error_msg_inst__hlds__error_msg_inst__type_ctor_info_expansions_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__error_msg_inst__hlds__error_msg_inst__type_ctor_info_inst_msg_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__error_msg_inst__hlds__error_msg_inst__type_ctor_info_maybe_expand_named_insts_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__error_msg_inst__hlds__error_msg_inst__type_ctor_info_maybe_inline_pieces_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__error_msg_inst__hlds__error_msg_inst__type_ctor_info_short_inst_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__error_msg_inst__hlds__error_msg_inst__type_ctor_info_user_or_developer_0;
+
+MR_Word MR_CALL 
+hlds__error_msg_inst__error_msg_inst_10_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10);
+
+MR_Word MR_CALL 
+hlds__error_msg_inst__error_msg_inst_name_10_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10);
+
+void MR_CALL 
+hlds__error_msg_inst____Compare____maybe_expand_named_insts_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__error_msg_inst____Compare____short_inst_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__error_msg_inst____Compare____user_or_developer_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__error_msg_inst____Unify____maybe_expand_named_insts_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__error_msg_inst____Unify____short_inst_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__error_msg_inst____Unify____user_or_developer_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__error_msg_inst__init(void);
+void mercury__hlds__error_msg_inst__init_type_tables(void);
+void mercury__hlds__error_msg_inst__init_debugger(void);
+const char *mercury__hlds__error_msg_inst__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.error_msg_inst
+
+// :- end_interface hlds.error_msg_inst.

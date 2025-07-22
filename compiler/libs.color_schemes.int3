@@ -1,0 +1,5 @@
+:- module libs.color_schemes.
+:- interface.
+:- type color_spec.
+:- type color_specs.
+:- type_representation(color_specs, is_word_aligned_ptr).

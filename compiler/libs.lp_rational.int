@@ -1,0 +1,91 @@
+:- module libs.lp_rational.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module pair.
+:- use_module set.
+:- use_module term.
+:- use_module varset.
+:- use_module libs.rat.
+:- type direction
+    --->    max 
+    ;       min .
+:- type entailment_result
+    --->    entailed 
+    ;       not_entailed 
+    ;       inconsistent .
+:- type lp_coefficient == libs.rat.rat.
+:- type lp_constant == libs.rat.rat.
+:- type lp_constraint.
+:- type lp_constraint_conj == list.list(libs.lp_rational.lp_constraint).
+:- type lp_operator
+    --->    lp_lt_eq 
+    ;       lp_eq 
+    ;       lp_gt_eq .
+:- type lp_result
+    --->    lp_res_unbounded 
+    ;       lp_res_inconsistent 
+    ;       lp_res_satisfiable(
+                 libs.rat.rat,
+                 map.map(libs.lp_rational.lp_var, libs.rat.rat)
+            ).
+:- type lp_term == pair.pair(libs.lp_rational.lp_var, libs.lp_rational.lp_coefficient).
+:- type lp_var == term.var.
+:- type lp_varset == varset.varset.
+:- type objective == list.list(libs.lp_rational.lp_term).
+:- type output_var == ((func libs.lp_rational.lp_var) = string).
+:- type projection_result
+    --->    pr_res_ok(
+                 libs.lp_rational.lp_constraint_conj
+            )
+    ;       pr_res_inconsistent 
+    ;       pr_res_aborted .
+:- inst lp_op_lt_eq_or_eq for (libs.lp_rational).lp_operator/0
+    --->    lp_eq
+    ;       lp_lt_eq.
+:- func bounding_box(libs.lp_rational.lp_varset, libs.lp_rational.lp_constraint_conj) = libs.lp_rational.lp_constraint_conj.
+:- func construct_constraint(list.list(libs.lp_rational.lp_term), libs.lp_rational.lp_operator, libs.lp_rational.lp_constant) = libs.lp_rational.lp_constraint.
+:- func construct_non_false_constraint(list.list(libs.lp_rational.lp_term), libs.lp_rational.lp_operator, libs.lp_rational.lp_constant) = libs.lp_rational.lp_constraint.
+:- pred deconstruct_constraint(libs.lp_rational.lp_constraint, list.list(libs.lp_rational.lp_term), libs.lp_rational.lp_operator, libs.lp_rational.lp_constant).
+:- mode deconstruct_constraint(builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred deconstruct_non_false_constraint(libs.lp_rational.lp_constraint, list.list(libs.lp_rational.lp_term), libs.lp_rational.lp_operator, libs.lp_rational.lp_constant).
+:- mode deconstruct_non_false_constraint(builtin.in, builtin.out, builtin.out((libs.lp_rational).lp_op_lt_eq_or_eq), builtin.out) is det.
+:- pred entailed(libs.lp_rational.lp_varset, libs.lp_rational.lp_constraint_conj, libs.lp_rational.lp_constraint).
+:- mode entailed(builtin.in, builtin.in, builtin.in) is semidet.
+:- func entailed(libs.lp_rational.lp_varset, libs.lp_rational.lp_constraint_conj, libs.lp_rational.lp_constraint) = libs.lp_rational.entailment_result.
+:- func false_constraint = libs.lp_rational.lp_constraint.
+:- func get_vars_from_constraints(libs.lp_rational.lp_constraint_conj) = set.set(libs.lp_rational.lp_var).
+:- pred inconsistent(libs.lp_rational.lp_varset, libs.lp_rational.lp_constraint_conj).
+:- mode inconsistent(builtin.in, builtin.in) is semidet.
+:- pred is_false(libs.lp_rational.lp_constraint).
+:- mode is_false(builtin.in) is semidet.
+:- pred is_true(libs.lp_rational.lp_constraint).
+:- mode is_true(builtin.in) is semidet.
+:- func lp_term(libs.lp_rational.lp_var) = libs.lp_rational.lp_term.
+:- func make_nonneg_constr(libs.lp_rational.lp_var) = libs.lp_rational.lp_constraint.
+:- func make_var_const_eq_constraint(libs.lp_rational.lp_var, libs.rat.rat) = libs.lp_rational.lp_constraint.
+:- func make_var_const_gte_constraint(libs.lp_rational.lp_var, libs.rat.rat) = libs.lp_rational.lp_constraint.
+:- func make_vars_eq_constraint(libs.lp_rational.lp_var, libs.lp_rational.lp_var) = libs.lp_rational.lp_constraint.
+:- func nonneg_box(list.list(libs.lp_rational.lp_var), libs.lp_rational.lp_constraint_conj) = libs.lp_rational.lp_constraint_conj.
+:- pred nonneg_constr(libs.lp_rational.lp_constraint).
+:- mode nonneg_constr(builtin.in) is semidet.
+:- pred output_constraints(io.text_output_stream, libs.lp_rational.output_var, libs.lp_rational.lp_constraint_conj, io.io, io.io).
+:- mode output_constraints(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred project_constraints(libs.lp_rational.lp_varset, list.list(libs.lp_rational.lp_var), libs.lp_rational.lp_constraint_conj, libs.lp_rational.projection_result).
+:- mode project_constraints(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred project_constraints_maybe_size_limit(libs.lp_rational.lp_varset, maybe.maybe(int), list.list(libs.lp_rational.lp_var), libs.lp_rational.lp_constraint_conj, libs.lp_rational.projection_result).
+:- mode project_constraints_maybe_size_limit(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred remove_some_entailed_constraints(libs.lp_rational.lp_varset, libs.lp_rational.lp_constraint_conj, libs.lp_rational.lp_constraint_conj).
+:- mode remove_some_entailed_constraints(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred restore_equalities(libs.lp_rational.lp_constraint_conj, libs.lp_rational.lp_constraint_conj).
+:- mode restore_equalities(builtin.in, builtin.out) is det.
+:- func set_vars_to_zero(set.set(libs.lp_rational.lp_var), libs.lp_rational.lp_constraint_conj) = libs.lp_rational.lp_constraint_conj.
+:- func simplify_constraints(libs.lp_rational.lp_constraint_conj) = libs.lp_rational.lp_constraint_conj.
+:- func solve(libs.lp_rational.lp_constraint_conj, libs.lp_rational.direction, libs.lp_rational.objective, libs.lp_rational.lp_varset) = libs.lp_rational.lp_result.
+:- func substitute_vars(map.map(libs.lp_rational.lp_var, libs.lp_rational.lp_var), libs.lp_rational.lp_constraint_conj) = libs.lp_rational.lp_constraint_conj.
+:- func substitute_vars(list.list(libs.lp_rational.lp_var), list.list(libs.lp_rational.lp_var), libs.lp_rational.lp_constraint_conj) = libs.lp_rational.lp_constraint_conj.
+:- func true_constraint = libs.lp_rational.lp_constraint.
+:- pred write_constraints(io.text_output_stream, libs.lp_rational.lp_varset, libs.lp_rational.lp_constraint_conj, io.io, io.io).
+:- mode write_constraints(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
