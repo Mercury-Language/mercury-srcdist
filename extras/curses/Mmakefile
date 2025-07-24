@@ -1,0 +1,33 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2000-2003 The University of Melbourne.
+# Copyright (C) 2015-2018, 2022, 2025 The Mercury team.
+# This file is distributed under the terms specified in COPYING.LIB.
+#-----------------------------------------------------------------------------#
+
+include Ncurses.options
+
+# This is needed to avoid conflicts with `bool'
+CFLAGS = -DMERCURY_BOOTSTRAP_H
+
+INSTALL_PREFIX := $(INSTALL_PREFIX)/extras
+
+# Check that the values in the file Ncurses.options are appropriate for
+# linking against ncurses on your system.
+MLLIBS = $(NCURSES_LIBS)
+
+-include ../Mmake.params
+
+.PHONY: default_target
+default_target:	libmcurses
+
+.PHONY: depend
+depend:	mcurses.depend
+
+.PHONY: install
+install: libmcurses.install
+
+.PHONY: check
+check:
+	true

@@ -1,0 +1,11 @@
+context none
+register --quiet
+echo on
+break q
+continue
+finish
+dd -d 3 -n 7
+no
+yes
+yes
+continue
