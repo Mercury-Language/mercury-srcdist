@@ -1,0 +1,15 @@
+:- module hlds.goal_vars.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.set_of_var.
+:- pred non_svar_copy_vars_in_goal(hlds.hlds_goal.hlds_goal, parse_tree.set_of_var.set_of_progvar).
+:- mode non_svar_copy_vars_in_goal(builtin.in, builtin.out) is det.
+:- pred vars_in_generic_call(hlds.hlds_goal.generic_call, list.list(parse_tree.prog_data.prog_var)).
+:- mode vars_in_generic_call(builtin.in, builtin.out) is det.
+:- pred vars_in_goal(hlds.hlds_goal.hlds_goal, parse_tree.set_of_var.set_of_progvar).
+:- mode vars_in_goal(builtin.in, builtin.out) is det.
+:- pred vars_in_goals(list.list(hlds.hlds_goal.hlds_goal), parse_tree.set_of_var.set_of_progvar).
+:- mode vars_in_goals(builtin.in, builtin.out) is det.

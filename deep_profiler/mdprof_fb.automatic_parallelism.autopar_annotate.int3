@@ -1,0 +1,2 @@
+:- module (mdprof_fb.automatic_parallelism).autopar_annotate.
+:- interface.

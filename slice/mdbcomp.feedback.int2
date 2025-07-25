@@ -1,0 +1,42 @@
+:- module mdbcomp.feedback.
+:- interface.
+:- include_module (mdbcomp.feedback).automatic_parallelism.
+:- use_module maybe.
+:- type feedback_info.
+:- type feedback_info_candidate_parallel_conjunctions
+    --->    feedback_info_candidate_parallel_conjunctions(
+                 (mdbcomp.feedback).cpc_parameters :: mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_params,
+                 (mdbcomp.feedback).cpc_conjunctions :: assoc_list.assoc_list(mdbcomp.program_representation.string_proc_label, mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_proc)
+            ).
+:- type feedback_read_error
+    --->    fre_open_error(
+                 io.error
+            )
+    ;       fre_read_error(
+                 io.error
+            )
+    ;       fre_parse_error(
+                 (mdbcomp.feedback).fre_pe_message :: string,
+                 (mdbcomp.feedback).fre_pe_line_no :: int
+            )
+    ;       fre_unexpected_eof 
+    ;       fre_incorrect_version(
+                 string
+            )
+    ;       fre_incorrect_first_line 
+    ;       fre_incorrect_profiled_program_name(
+                 (mdbcomp.feedback).fre_ippn_expected :: string,
+                 (mdbcomp.feedback).fre_ippn_got :: string
+            )
+    ;       fre_repeated_component(
+                 (mdbcomp.feedback).fre_component_name :: string
+            ).
+:- type feedback_read_result(T) == maybe.maybe_error(T, mdbcomp.feedback.feedback_read_error).
+:- type feedback_write_result
+    --->    fwr_ok 
+    ;       fwr_open_error(
+                 io.error
+            )
+    ;       fwr_write_error(
+                 io.error
+            ).
