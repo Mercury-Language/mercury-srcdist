@@ -1,0 +1,35 @@
+:- module term_int.
+:- interface.
+:- use_module term.
+:- pred decimal_term_to_int(term.term(T), int).
+:- mode decimal_term_to_int(builtin.in, builtin.out) is semidet.
+:- func int16_to_decimal_term(int16, term.context) = term.term(T).
+:- func int32_to_decimal_term(int32, term.context) = term.term(T).
+:- func int64_to_decimal_term(int64, term.context) = term.term(T).
+:- func int8_to_decimal_term(int8, term.context) = term.term(T).
+:- func int_to_decimal_term(int, term.context) = term.term(T).
+:- pred term_to_int(term.term(T), int).
+:- mode term_to_int(builtin.in, builtin.out) is semidet.
+:- pred term_to_int16(term.term(T), int16).
+:- mode term_to_int16(builtin.in, builtin.out) is semidet.
+:- pred term_to_int32(term.term(T), int32).
+:- mode term_to_int32(builtin.in, builtin.out) is semidet.
+:- pred term_to_int64(term.term(T), int64).
+:- mode term_to_int64(builtin.in, builtin.out) is semidet.
+:- pred term_to_int8(term.term(T), int8).
+:- mode term_to_int8(builtin.in, builtin.out) is semidet.
+:- pred term_to_uint(term.term(T), uint).
+:- mode term_to_uint(builtin.in, builtin.out) is semidet.
+:- pred term_to_uint16(term.term(T), uint16).
+:- mode term_to_uint16(builtin.in, builtin.out) is semidet.
+:- pred term_to_uint32(term.term(T), uint32).
+:- mode term_to_uint32(builtin.in, builtin.out) is semidet.
+:- pred term_to_uint64(term.term(T), uint64).
+:- mode term_to_uint64(builtin.in, builtin.out) is semidet.
+:- pred term_to_uint8(term.term(T), uint8).
+:- mode term_to_uint8(builtin.in, builtin.out) is semidet.
+:- func uint16_to_decimal_term(uint16, term.context) = term.term(T).
+:- func uint32_to_decimal_term(uint32, term.context) = term.term(T).
+:- func uint64_to_decimal_term(uint64, term.context) = term.term(T).
+:- func uint8_to_decimal_term(uint8, term.context) = term.term(T).
+:- func uint_to_decimal_term(uint, term.context) = term.term(T).

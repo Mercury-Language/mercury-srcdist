@@ -1,0 +1,95 @@
+:- module array2d.
+:- use_module array.
+:- use_module builtin.
+:- use_module int.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+
+:- pred array2d.get_rows(int, int, array.array(T), list.list(list.list(T)), list.list(list.list(T))).
+:- mode get_rows(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+
+array2d.array2d(V_3) = V_2 :-
+    V_2 = array2d.from_lists(V_3).
+
+array2d.bounds(array2d.array2d(V_4, V_5, V_6), V_4, V_5).
+
+array2d.elem(V_6, V_7, V_5) = V_4 :-
+    V_4 = array2d.lookup(V_5, V_6, V_7).
+
+array2d.'elem :='(V_7, V_8, V_6, V_9) = V_10 :-
+    array2d.set(V_7, V_8, V_9, V_6, V_10).
+
+array2d.fill(V_4, V_5, V_6) :-
+    V_5 = array2d.array2d(V_7, V_8, V_9) : array2d.array2d(T_1),
+    array.fill(V_4, V_9, V_10),
+    V_6 = array2d.array2d(V_7, V_8, V_10) : array2d.array2d(T_1).
+
+array2d.is_empty(array2d.array2d(V_2, V_3, V_4)) :-
+    array.is_empty(V_4).
+
+array2d.lists(array2d.array2d(V_3, V_4, V_5)) = V_6 :-
+    V_7 = int.(V_3 - V_9),
+    V_9 = 1 : int,
+    V_8 = list.[] : list.list(list.list(T_1)),
+    array2d.get_rows(V_7, V_4, V_5, V_8, V_6).
+
+array2d.lookup(V_5, V_6, V_7, V_8) :-
+    V_8 = array2d.lookup(V_5, V_6, V_7).
+
+array2d.unsafe_elem(V_6, V_7, V_5) = V_4 :-
+    V_4 = array2d.unsafe_lookup(V_5, V_6, V_7).
+
+array2d.'unsafe_elem :='(V_7, V_8, V_6, V_9) = V_10 :-
+    array2d.unsafe_set(V_7, V_8, V_9, V_6, V_10).
+
+array2d.unsafe_lookup(V_5, V_6, V_7) = V_8 :-
+    V_5 = array2d.array2d(V_9, V_10, V_11) : array2d.array2d(T_1),
+    V_12 = int.(V_13 + V_7),
+    V_13 = int.(V_6 * V_10),
+    array.unsafe_lookup(V_11, V_12, V_8).
+
+array2d.unsafe_lookup(V_5, V_6, V_7, V_8) :-
+    V_8 = array2d.unsafe_lookup(V_5, V_6, V_7).
+
+:- pragma termination_info(array2d.array2d(builtin.in) = array2d.array2d_uo, infinite, can_loop).
+:- pragma termination_info(array2d.bounds(builtin.in, builtin.out, builtin.out), finite(-3, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(array2d.elem(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(array2d.'elem :='(builtin.in, builtin.in, array2d.array2d_di, builtin.in) = array2d.array2d_uo, infinite, can_loop).
+:- pragma termination_info(array2d.fill(builtin.in, array2d.array2d_di, array2d.array2d_uo), infinite, can_loop).
+:- pragma termination_info(array2d.from_array(builtin.in, builtin.in, array.array_di) = array2d.array2d_uo, finite(3, [no, yes, yes, yes, no]), can_loop).
+:- pragma termination_info(array2d.from_lists(builtin.in) = array2d.array2d_uo, infinite, can_loop).
+:- pragma termination_info(array2d.get_rows(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(array2d.in_bounds(builtin.in, builtin.in, builtin.in), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(array2d.init(builtin.in, builtin.in, builtin.in) = array2d.array2d_uo, infinite, can_loop).
+:- pragma termination_info(array2d.is_empty(builtin.in), finite(0, [no, no]), can_loop).
+:- pragma termination_info(array2d.lists(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(array2d.lookup(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(array2d.lookup(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(array2d.set(builtin.in, builtin.in, builtin.in, array2d.array2d_di, array2d.array2d_uo), infinite, can_loop).
+:- pragma termination_info(array2d.unsafe_elem(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(array2d.'unsafe_elem :='(builtin.in, builtin.in, array.array_di, builtin.in) = array2d.array2d_uo, infinite, can_loop).
+:- pragma termination_info(array2d.unsafe_lookup(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(array2d.unsafe_lookup(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(array2d.unsafe_set(builtin.in, builtin.in, builtin.in, array2d.array2d_di, array2d.array2d_uo), infinite, can_loop).
+
+:- pragma exceptions(function, array2d.array2d, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, array2d.bounds, 3, 0, will_not_throw).
+:- pragma exceptions(function, array2d.elem, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, array2d.'elem :=', 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, array2d.fill, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, array2d.from_array, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, array2d.from_lists, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, array2d.get_rows, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, array2d.in_bounds, 3, 0, will_not_throw).
+:- pragma exceptions(function, array2d.init, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, array2d.is_empty, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, array2d.lists, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, array2d.lookup, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, array2d.lookup, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, array2d.set, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, array2d.unsafe_elem, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, array2d.'unsafe_elem :=', 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, array2d.unsafe_lookup, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, array2d.unsafe_lookup, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, array2d.unsafe_set, 5, 0, may_throw(user_exception)).

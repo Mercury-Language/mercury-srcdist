@@ -1,0 +1,226 @@
+:- module private_builtin.
+:- interface.
+:- type base_typeclass_info.
+:- type float_box
+    --->    float_box(
+                 float
+            ).
+:- type heap_pointer.
+:- type mutvar(T)
+    --->    mutvar(
+                 builtin.c_pointer
+            ).
+:- type ref(T).
+:- type sample_type_info
+    --->    sample_type_info(
+                 private_builtin.type_info
+            ).
+:- type sample_typeclass_info
+    --->    sample_typeclass_info(
+                 private_builtin.typeclass_info
+            ).
+:- type store_at_ref_type(T)
+    --->    store_at_ref_type(
+                 int
+            ).
+:- type ticket == builtin.c_pointer.
+:- type ticket_counter == builtin.c_pointer.
+:- type type_ctor_info.
+:- type type_info.
+:- type typeclass_info.
+:- pred builtin_compare_character(builtin.comparison_result, character, character).
+:- mode builtin_compare_character(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_float(builtin.comparison_result, float, float).
+:- mode builtin_compare_float(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_int(builtin.comparison_result, int, int).
+:- mode builtin_compare_int(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_int16(builtin.comparison_result, int16, int16).
+:- mode builtin_compare_int16(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_int32(builtin.comparison_result, int32, int32).
+:- mode builtin_compare_int32(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_int64(builtin.comparison_result, int64, int64).
+:- mode builtin_compare_int64(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_int8(builtin.comparison_result, int8, int8).
+:- mode builtin_compare_int8(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_non_canonical_type(builtin.comparison_result, T, T).
+:- mode builtin_compare_non_canonical_type(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_pred(builtin.comparison_result, (pred), (pred)).
+:- mode builtin_compare_pred(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_solver_type(builtin.comparison_result, T, T).
+:- mode builtin_compare_solver_type(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_string(builtin.comparison_result, string, string).
+:- mode builtin_compare_string(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_tuple(builtin.comparison_result, T, T).
+:- mode builtin_compare_tuple(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_uint(builtin.comparison_result, uint, uint).
+:- mode builtin_compare_uint(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_uint16(builtin.comparison_result, uint16, uint16).
+:- mode builtin_compare_uint16(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_uint32(builtin.comparison_result, uint32, uint32).
+:- mode builtin_compare_uint32(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_uint64(builtin.comparison_result, uint64, uint64).
+:- mode builtin_compare_uint64(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_compare_uint8(builtin.comparison_result, uint8, uint8).
+:- mode builtin_compare_uint8(builtin.uo, builtin.in, builtin.in) is det.
+:- pred builtin_int16_gt(int16, int16).
+:- mode builtin_int16_gt(builtin.in, builtin.in) is semidet.
+:- pred builtin_int16_lt(int16, int16).
+:- mode builtin_int16_lt(builtin.in, builtin.in) is semidet.
+:- pred builtin_int32_gt(int32, int32).
+:- mode builtin_int32_gt(builtin.in, builtin.in) is semidet.
+:- pred builtin_int32_lt(int32, int32).
+:- mode builtin_int32_lt(builtin.in, builtin.in) is semidet.
+:- pred builtin_int64_gt(int64, int64).
+:- mode builtin_int64_gt(builtin.in, builtin.in) is semidet.
+:- pred builtin_int64_lt(int64, int64).
+:- mode builtin_int64_lt(builtin.in, builtin.in) is semidet.
+:- pred builtin_int8_gt(int8, int8).
+:- mode builtin_int8_gt(builtin.in, builtin.in) is semidet.
+:- pred builtin_int8_lt(int8, int8).
+:- mode builtin_int8_lt(builtin.in, builtin.in) is semidet.
+:- pred builtin_int_gt(int, int).
+:- mode builtin_int_gt(builtin.in, builtin.in) is semidet.
+:- pred builtin_int_lt(int, int).
+:- mode builtin_int_lt(builtin.in, builtin.in) is semidet.
+:- pred builtin_uint16_gt(uint16, uint16).
+:- mode builtin_uint16_gt(builtin.in, builtin.in) is semidet.
+:- pred builtin_uint16_lt(uint16, uint16).
+:- mode builtin_uint16_lt(builtin.in, builtin.in) is semidet.
+:- pred builtin_uint32_gt(uint32, uint32).
+:- mode builtin_uint32_gt(builtin.in, builtin.in) is semidet.
+:- pred builtin_uint32_lt(uint32, uint32).
+:- mode builtin_uint32_lt(builtin.in, builtin.in) is semidet.
+:- pred builtin_uint64_gt(uint64, uint64).
+:- mode builtin_uint64_gt(builtin.in, builtin.in) is semidet.
+:- pred builtin_uint64_lt(uint64, uint64).
+:- mode builtin_uint64_lt(builtin.in, builtin.in) is semidet.
+:- pred builtin_uint8_gt(uint8, uint8).
+:- mode builtin_uint8_gt(builtin.in, builtin.in) is semidet.
+:- pred builtin_uint8_lt(uint8, uint8).
+:- mode builtin_uint8_lt(builtin.in, builtin.in) is semidet.
+:- pred builtin_uint_gt(int, int).
+:- mode builtin_uint_gt(builtin.in, builtin.in) is semidet.
+:- pred builtin_uint_lt(int, int).
+:- mode builtin_uint_lt(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_character(character, character).
+:- mode builtin_unify_character(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_float(float, float).
+:- mode builtin_unify_float(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_int(int, int).
+:- mode builtin_unify_int(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_int16(int16, int16).
+:- mode builtin_unify_int16(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_int32(int32, int32).
+:- mode builtin_unify_int32(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_int64(int64, int64).
+:- mode builtin_unify_int64(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_int8(int8, int8).
+:- mode builtin_unify_int8(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_pred((pred), (pred)).
+:- mode builtin_unify_pred(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_solver_type(T, T).
+:- mode builtin_unify_solver_type(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_string(string, string).
+:- mode builtin_unify_string(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_tuple(T, T).
+:- mode builtin_unify_tuple(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_uint(uint, uint).
+:- mode builtin_unify_uint(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_uint16(uint16, uint16).
+:- mode builtin_unify_uint16(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_uint32(uint32, uint32).
+:- mode builtin_unify_uint32(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_uint64(uint64, uint64).
+:- mode builtin_unify_uint64(builtin.in, builtin.in) is semidet.
+:- pred builtin_unify_uint8(uint8, uint8).
+:- mode builtin_unify_uint8(builtin.in, builtin.in) is semidet.
+:- pred compare_error is erroneous.
+:- pred compare_local_int16_bitfields(T, T, int, builtin.comparison_result).
+:- mode compare_local_int16_bitfields(builtin.in, builtin.in, builtin.in, builtin.uo) is det.
+:- pred compare_local_int32_bitfields(T, T, int, builtin.comparison_result).
+:- mode compare_local_int32_bitfields(builtin.in, builtin.in, builtin.in, builtin.uo) is det.
+:- pred compare_local_int8_bitfields(T, T, int, builtin.comparison_result).
+:- mode compare_local_int8_bitfields(builtin.in, builtin.in, builtin.in, builtin.uo) is det.
+:- pred compare_local_uint_bitfields(T, T, int, int, builtin.comparison_result).
+:- mode compare_local_uint_bitfields(builtin.in, builtin.in, builtin.in, builtin.in, builtin.uo) is det.
+:- pred compare_local_uint_words(T, T, builtin.comparison_result).
+:- mode compare_local_uint_words(builtin.in, builtin.in, builtin.uo) is det.
+:- pred compare_remote_int16_bitfields(T, T, int, int, int, builtin.comparison_result).
+:- mode compare_remote_int16_bitfields(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.uo) is det.
+:- pred compare_remote_int32_bitfields(T, T, int, int, int, builtin.comparison_result).
+:- mode compare_remote_int32_bitfields(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.uo) is det.
+:- pred compare_remote_int8_bitfields(T, T, int, int, int, builtin.comparison_result).
+:- mode compare_remote_int8_bitfields(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.uo) is det.
+:- pred compare_remote_uint_bitfields(T, T, int, int, int, int, builtin.comparison_result).
+:- mode compare_remote_uint_bitfields(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.uo) is det.
+:- pred compare_remote_uint_words(T, T, int, int, builtin.comparison_result).
+:- mode compare_remote_uint_words(builtin.in, builtin.in, builtin.in, builtin.in, builtin.uo) is det.
+:- impure pred discard_ticket is det.
+:- impure pred free_heap(T).
+:- mode free_heap(builtin.di) is det.
+:- impure pred gc_trace(private_builtin.mutvar(T)).
+:- mode gc_trace(builtin.in) is det.
+:- impure pred imp is det.
+:- pred instance_constraint_from_typeclass_info(private_builtin.typeclass_info, int, private_builtin.typeclass_info).
+:- mode instance_constraint_from_typeclass_info(builtin.in, builtin.in, builtin.out) is det.
+:- impure pred mark_hp(private_builtin.heap_pointer).
+:- mode mark_hp(builtin.out) is det.
+:- impure pred mark_ticket_stack(private_builtin.ticket_counter).
+:- mode mark_ticket_stack(builtin.out) is det.
+:- pred no_clauses(string).
+:- mode no_clauses(builtin.in) is erroneous.
+:- impure pred nonvar(T).
+:- mode nonvar(builtin.ui) is det.
+:- mode nonvar(builtin.in) is det.
+:- mode nonvar(builtin.unused) is failure.
+:- pred nyi_foreign_type_compare(builtin.comparison_result, T, T).
+:- mode nyi_foreign_type_compare(builtin.uo, builtin.in, builtin.in) is det.
+:- pred nyi_foreign_type_unify(T, T).
+:- mode nyi_foreign_type_unify(builtin.in, builtin.in) is semidet.
+:- pred partial_inst_copy(T, T).
+:- mode partial_inst_copy(((I =< ground) >> clobbered), (free >> (I =< ground))) is det.
+:- pred pointer_equal(T, T).
+:- mode pointer_equal(builtin.in, builtin.in) is semidet.
+:- impure pred prune_ticket is det.
+:- impure pred prune_tickets_to(private_builtin.ticket_counter).
+:- mode prune_tickets_to(builtin.in) is det.
+:- impure pred reset_ticket_commit(private_builtin.ticket).
+:- mode reset_ticket_commit(builtin.in) is det.
+:- impure pred reset_ticket_solve(private_builtin.ticket).
+:- mode reset_ticket_solve(builtin.in) is det.
+:- impure pred reset_ticket_undo(private_builtin.ticket).
+:- mode reset_ticket_undo(builtin.in) is det.
+:- impure pred restore_hp(private_builtin.heap_pointer).
+:- mode restore_hp(builtin.in) is det.
+:- semipure pred semip is det.
+:- pred sorry(string).
+:- mode sorry(builtin.in) is erroneous.
+:- impure pred store_at_ref_impure(private_builtin.store_at_ref_type(T), T).
+:- mode store_at_ref_impure(builtin.in, builtin.in) is det.
+:- impure pred store_ticket(private_builtin.ticket).
+:- mode store_ticket(builtin.out) is det.
+:- pred superclass_from_typeclass_info(private_builtin.typeclass_info, int, private_builtin.typeclass_info).
+:- mode superclass_from_typeclass_info(builtin.in, builtin.in, builtin.out) is det.
+:- semipure pred trace_evaluate_runtime_condition is semidet.
+:- pred type_info_from_typeclass_info(private_builtin.typeclass_info, int, private_builtin.type_info).
+:- mode type_info_from_typeclass_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred typed_compare(builtin.comparison_result, T1, T2).
+:- mode typed_compare(builtin.uo, builtin.in, builtin.in) is det.
+:- pred typed_unify(T1, T2).
+:- mode typed_unify(builtin.in, builtin.in) is semidet.
+:- mode typed_unify(builtin.in, builtin.out) is semidet.
+:- pred unconstrained_type_info_from_typeclass_info(private_builtin.typeclass_info, int, private_builtin.type_info).
+:- mode unconstrained_type_info_from_typeclass_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred unify_remote_arg_words(T, T, int, int).
+:- mode unify_remote_arg_words(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred unsafe_type_cast(T1, T2).
+:- mode unsafe_type_cast(builtin.in, builtin.out) is det.
+:- pred unsigned_le(int, int).
+:- mode unsigned_le(builtin.in, builtin.in) is semidet.
+:- pred unsigned_lt(int, int).
+:- mode unsigned_lt(builtin.in, builtin.in) is semidet.
+:- pred unused is det.
+:- impure pred var(T).
+:- mode var(builtin.ui) is failure.
+:- mode var(builtin.in) is failure.
+:- mode var(builtin.unused) is det.

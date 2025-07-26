@@ -1,0 +1,40 @@
+:- module getopt.
+:- interface.
+:- type long_option(OptionType).
+:- type maybe_option_error(OptionType).
+:- type maybe_option_table(OptionType).
+:- type maybe_option_table_se(OptionType).
+:- type option_data.
+:- type option_default_value(OptionType).
+:- type option_default_value_map(OptionType).
+:- type option_error(OptionType).
+:- type option_error_reason.
+:- type option_ops(OptionType).
+:- type option_ops_track(OptionType).
+:- type option_ops_userdata(OptionType, UserDataType).
+:- type option_table(OptionType).
+:- type option_value(OptionType).
+:- type short_option(OptionType).
+:- type special_data.
+:- type special_handler(OptionType).
+:- type special_handler_track(OptionType).
+:- type user_data_handler(OptionType, UserDataType).
+:- abstract_inst((long_option)).
+:- abstract_inst((non_file_special)).
+:- abstract_inst((option_default_value_multi)).
+:- abstract_inst((option_default_value_nondet)).
+:- abstract_inst((option_ops)).
+:- abstract_inst((option_ops_track)).
+:- abstract_inst((option_ops_userdata)).
+:- abstract_inst((short_option)).
+:- abstract_inst((special_handler)).
+:- abstract_inst((special_handler_track)).
+:- abstract_inst((user_data_handler)).
+:- type_representation(long_option(V_1), is_eqv_to(pred(string, V_1))).
+:- type_representation(option_default_value(V_1), is_eqv_to(pred(V_1, getopt.option_data))).
+:- type_representation(option_default_value_map(V_1), is_eqv_to(map(V_1, getopt.option_data))).
+:- type_representation(option_table(V_1), is_eqv_to(map(V_1, getopt.option_data))).
+:- type_representation(short_option(V_1), is_eqv_to(pred(char, V_1))).
+:- type_representation(special_handler(V_1), is_eqv_to(pred(V_1, getopt.special_data, getopt.option_table(V_1), getopt.maybe_option_table(V_1)))).
+:- type_representation(special_handler_track(V_1), is_eqv_to(pred(V_1, getopt.special_data, getopt.option_table(V_1), getopt.maybe_option_table(V_1), set(V_1)))).
+:- type_representation(user_data_handler(V_1, V_2), is_eqv_to(pred(V_1, getopt.special_data, getopt.option_table(V_1), getopt.maybe_option_table(V_1), V_2, V_2))).
