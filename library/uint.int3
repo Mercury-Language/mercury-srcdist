@@ -1,0 +1,5 @@
+:- module uint.
+:- interface.
+:- import_module enum.
+:- import_module pretty_printer.
+:- instance uenum(uint).

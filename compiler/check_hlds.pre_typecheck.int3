@@ -1,0 +1,3 @@
+:- module check_hlds.pre_typecheck.
+:- interface.
+:- type_representation(init_and_final_map, is_eqv_to(map(uint, init_and_final))).

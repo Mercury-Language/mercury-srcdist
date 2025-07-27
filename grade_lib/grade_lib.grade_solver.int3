@@ -1,0 +1,19 @@
+:- module grade_lib.grade_solver.
+:- interface.
+:- type failure_info.
+:- type failure_tree.
+:- type installed_grade.
+:- type installed_grade_solution.
+:- type should_commit
+	where	type_is_abstract_enum(1).
+:- type solution.
+:- type solve_counts.
+:- type success_soln_map.
+:- type why_var_is_not_value.
+:- type_representation(failure_info, is_word_aligned_ptr).
+:- type_representation(failure_tree, is_word_aligned_ptr).
+:- type_representation(installed_grade, is_word_aligned_ptr).
+:- type_representation(should_commit, du_repn(enum("should_commit", "should_not_commit", [],  no_c_j_cs))).
+:- type_representation(solve_counts, is_word_aligned_ptr).
+:- type_representation(success_soln_map, is_eqv_to(map(solver_var_id, solver_var_value_id))).
+:- type_representation(why_var_is_not_value, is_word_aligned_ptr).

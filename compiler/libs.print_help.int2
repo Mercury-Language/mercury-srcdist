@@ -1,0 +1,5 @@
+:- module libs.print_help.
+:- interface.
+:- type print_what_help
+    --->    print_public_help 
+    ;       print_public_and_private_help .

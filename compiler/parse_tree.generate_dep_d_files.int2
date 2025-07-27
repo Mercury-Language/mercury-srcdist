@@ -1,0 +1,17 @@
+:- module parse_tree.generate_dep_d_files.
+:- interface.
+:- type d_file_deps
+    --->    d_file_deps(
+                 parse_tree.generate_mmakefile_fragments.std_deps,
+                 set.set(mdbcomp.sym_name.module_name),
+                 parse_tree.generate_mmakefile_fragments.maybe_include_trans_opt_rule
+            ).
+:- type dep_graphs
+    --->    dep_graphs(
+                 (parse_tree.generate_dep_d_files).int_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.generate_dep_d_files).imp_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.generate_dep_d_files).indirect_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.generate_dep_d_files).indirect_opt_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.generate_dep_d_files).trans_opt_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.generate_dep_d_files).trans_opt_order :: list.list(mdbcomp.sym_name.module_name)
+            ).
