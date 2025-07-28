@@ -1,0 +1,11 @@
+mdbcomp.builtin_modules	builtin_modules.m
+mdbcomp.feedback.automatic_parallelism	feedback.automatic_parallelism.m
+mdbcomp.feedback.feedback_info	feedback.feedback_info.m
+mdbcomp.feedback	feedback.m
+mdbcomp.prim_data	prim_data.m
+mdbcomp.program_representation	program_representation.m
+mdbcomp.rtti_access	rtti_access.m
+mdbcomp.shared_utilities	shared_utilities.m
+mdbcomp.slice_and_dice	slice_and_dice.m
+mdbcomp.sym_name	sym_name.m
+mdbcomp.trace_counts	trace_counts.m
