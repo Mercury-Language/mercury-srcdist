@@ -1,0 +1,11 @@
+:- module transform_hlds.ssdebug.
+:- interface.
+:- use_module hlds.
+:- use_module libs.
+:- use_module hlds.hlds_module.
+:- use_module libs.globals.
+:- inst shallow_or_deep for (libs.globals).ssdb_trace_level/0
+    --->    ssdb_deep
+    ;       ssdb_shallow.
+:- pred ssdebug_transform_module(libs.globals.ssdb_trace_level, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode ssdebug_transform_module(builtin.in((transform_hlds.ssdebug).shallow_or_deep), builtin.in, builtin.out) is det.

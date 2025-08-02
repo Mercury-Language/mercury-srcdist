@@ -1,0 +1,29 @@
+:- module backend_libs.builtin_ops.
+:- interface.
+:- type arith_op
+	where	type_is_abstract_enum(3).
+:- type array_elem_type.
+:- type binary_op.
+:- type cmp_op
+	where	type_is_abstract_enum(3).
+:- type float_arith_op
+	where	type_is_abstract_subtype(arith_op/0).
+:- type int_as_uint_cmp_op
+	where	type_is_abstract_subtype(cmp_op/0).
+:- type maybe_size.
+:- type scalar_array_elem_type
+	where	type_is_abstract_enum(2).
+:- type shift_by_type
+	where	type_is_abstract_enum(1).
+:- type simple_assigned_expr(T).
+:- type simple_code(T).
+:- type simple_const.
+:- type simple_test_expr(T).
+:- type unary_op.
+:- abstract_inst((int_misc_binary_op)).
+:- type_representation(arith_op, du_repn(enum("ao_add", "ao_sub", ["ao_mul", "ao_div", "ao_rem"],  no_c_j_cs))).
+:- type_representation(cmp_op, du_repn(enum("eq", "ne", ["lt", "le", "gt", "ge"],  no_c_j_cs))).
+:- type_representation(float_arith_op, is_subtype_of((backend_libs.builtin_ops).arith_op/0)).
+:- type_representation(int_as_uint_cmp_op, is_subtype_of((backend_libs.builtin_ops).cmp_op/0)).
+:- type_representation(scalar_array_elem_type, du_repn(enum("scalar_elem_string", "scalar_elem_int", ["scalar_elem_generic"],  no_c_j_cs))).
+:- type_representation(shift_by_type, du_repn(enum("shift_by_int", "shift_by_uint", [],  no_c_j_cs))).
