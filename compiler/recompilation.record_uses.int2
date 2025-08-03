@@ -1,0 +1,40 @@
+:- module recompilation.record_uses.
+:- interface.
+:- use_module map.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- type eqv_expand_info
+    --->    no_eqv_expand_info 
+    ;       eqv_expand_info(
+                 mdbcomp.sym_name.module_name,
+                 set.set(recompilation.item_types.recomp_item_id)
+            ).
+:- type module_qualifier == mdbcomp.sym_name.module_name.
+:- type recompilation_info
+    --->    recompilation_info(
+                 (recompilation.record_uses).recomp_module_name :: mdbcomp.sym_name.module_name,
+                 (recompilation.record_uses).recomp_used_items :: recompilation.record_uses.used_items,
+                 (recompilation.record_uses).recomp_dependencies :: map.map(recompilation.item_types.recomp_item_id, set.set(recompilation.item_types.recomp_item_id)),
+                 (recompilation.record_uses).recomp_version_numbers :: recompilation.item_types.module_item_version_numbers_map
+            ).
+:- type simple_item_set == map.map(parse_tree.prog_data.name_arity, map.map(recompilation.record_uses.module_qualifier, mdbcomp.sym_name.module_name)).
+:- type used_item_type
+    --->    used_type_name 
+    ;       used_type_defn 
+    ;       used_inst 
+    ;       used_mode 
+    ;       used_typeclass 
+    ;       used_functor 
+    ;       used_predicate 
+    ;       used_function .
+:- type used_items
+    --->    used_items(
+                 (recompilation.record_uses).used_type_names :: recompilation.record_uses.simple_item_set,
+                 (recompilation.record_uses).used_type_defns :: recompilation.record_uses.simple_item_set,
+                 (recompilation.record_uses).used_insts :: recompilation.record_uses.simple_item_set,
+                 (recompilation.record_uses).used_modes :: recompilation.record_uses.simple_item_set,
+                 (recompilation.record_uses).used_typeclasses :: recompilation.record_uses.simple_item_set,
+                 (recompilation.record_uses).used_functors :: recompilation.record_uses.simple_item_set,
+                 (recompilation.record_uses).used_predicates :: recompilation.record_uses.simple_item_set,
+                 (recompilation.record_uses).used_functions :: recompilation.record_uses.simple_item_set
+            ).

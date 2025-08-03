@@ -1,0 +1,75 @@
+/*
+** Automatically generated from `make.find_local_modules.m'
+** by the Mercury compiler,
+** version rotd-2025-08-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.find_local_modules.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__find_local_modules
+#define MR_HEADER_GUARD_make__find_local_modules
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__FIND_LOCAL_MODULES_DECL_GUARD
+#define MAKE__FIND_LOCAL_MODULES_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+void MR_CALL 
+make__find_local_modules__find_reachable_local_modules_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+make__find_local_modules__find_transitive_module_dependencies_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void mercury__make__find_local_modules__init(void);
+void mercury__make__find_local_modules__init_type_tables(void);
+void mercury__make__find_local_modules__init_debugger(void);
+const char *mercury__make__find_local_modules__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.find_local_modules
+
+// :- end_interface make.find_local_modules.
