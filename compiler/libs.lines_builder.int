@@ -1,0 +1,23 @@
+:- module libs.lines_builder.
+:- interface.
+:- use_module char.
+:- use_module list.
+:- use_module string.
+:- type lines_builder.
+:- pred append_char(char.char, libs.lines_builder.lines_builder, libs.lines_builder.lines_builder).
+:- mode append_char(builtin.in, builtin.in, builtin.out) is det.
+:- pred append_string(string, libs.lines_builder.lines_builder, libs.lines_builder.lines_builder).
+:- mode append_string(builtin.in, builtin.in, builtin.out) is det.
+:- pred append_strings(list.list(string), libs.lines_builder.lines_builder, libs.lines_builder.lines_builder).
+:- mode append_strings(builtin.in, builtin.in, builtin.out) is det.
+:- pred append_strings_sep(string, list.list(string), libs.lines_builder.lines_builder, libs.lines_builder.lines_builder).
+:- mode append_strings_sep(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred current_context(libs.lines_builder.lines_builder, string, int).
+:- mode current_context(builtin.in, builtin.out, builtin.out) is det.
+:- pred format(string, list.list(string.poly_type), libs.lines_builder.lines_builder, libs.lines_builder.lines_builder).
+:- mode format(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func init(string, int) = libs.lines_builder.lines_builder.
+:- func to_string(libs.lines_builder.lines_builder) = string.
+:- func total_num_code_points(libs.lines_builder.lines_builder) = int.
+:- pred total_num_code_points_is_at_most(libs.lines_builder.lines_builder, int).
+:- mode total_num_code_points_is_at_most(builtin.in, builtin.in) is semidet.

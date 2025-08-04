@@ -1,0 +1,152 @@
+/*
+** Automatically generated from `timeout.m'
+** by the Mercury compiler,
+** version rotd-2025-08-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module timeout.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_timeout
+#define MR_HEADER_GUARD_timeout
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TIMEOUT_DECL_GUARD
+#define TIMEOUT_DECL_GUARD
+
+#ifdef  MR_DEEP_PROFILER_ENABLED
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>  /* for O_CREAT, O_EXCL */
+#include <signal.h> /* for signal numbers */
+#include <unistd.h> /* for alarm() */
+#include <stdio.h>
+#include <errno.h>  /* for EEXIST etc */
+#include    <dirent.h>
+#include "mercury_signal.h"
+
+#define MP_MAX_CLEANUP_FILES    20  /* this should be plenty */
+
+extern  const char  *MP_cleanup_files[MP_MAX_CLEANUP_FILES];
+extern  int     MP_cleanup_file_next;
+
+extern  void        MP_maybe_print_cleanup_files(const char *msg);
+extern  void        MP_register_cleanup_file(const char *filename);
+extern  void        MP_unregister_cleanup_file(const char *filename);
+extern  void        MP_handle_fatal_exception(void *data);
+extern  void        MP_delete_cleanup_files(void);
+MR_NO_RETURN(extern  void        MP_delete_cleanup_files_and_exit_failure(
+                        const char *signal_name));
+
+extern  int         MP_timeout_seconds;
+extern  const char  *MP_timeout_mutex_file;
+extern  const char  *MP_timeout_want_dir;
+extern  const char  *MP_timeout_want_prefix;
+
+typedef struct
+{
+    int             MP_signum;
+    void            (*MP_handler)(void);
+} MP_sig_handler;
+
+extern  const MP_sig_handler    MP_signal_structs[];
+
+extern  void    MP_handle_timeout(void);
+
+MR_NO_RETURN(extern  void    MP_handle_sig_term(void));
+MR_NO_RETURN(extern  void    MP_handle_sig_hup(void));
+MR_NO_RETURN(extern  void    MP_handle_sig_int(void));
+MR_NO_RETURN(extern  void    MP_handle_sig_quit(void));
+MR_NO_RETURN(extern  void    MP_handle_sig_ill(void));
+MR_NO_RETURN(extern  void    MP_handle_sig_abrt(void));
+MR_NO_RETURN(extern  void    MP_handle_sig_bus(void));
+MR_NO_RETURN(extern  void    MP_handle_sig_fpe(void));
+MR_NO_RETURN(extern  void    MP_handle_sig_segv(void));
+MR_NO_RETURN(extern  void    MP_handle_sig_pipe(void));
+
+extern  MR_bool MP_do_try_get_lock(const char *mutex_file);
+extern  void    MP_do_get_lock(const char *mutex_file);
+extern  void    MP_do_release_lock(const char *mutex_file);
+
+#endif
+
+
+#endif
+
+
+
+void MR_CALL 
+timeout__delete_cleanup_files_2_p_0(void);
+
+void MR_CALL 
+timeout__get_lock_4_p_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+void MR_CALL 
+timeout__make_want_file_3_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+timeout__register_file_for_cleanup_3_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+timeout__release_lock_4_p_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+void MR_CALL 
+timeout__remove_want_file_3_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+timeout__setup_signals_5_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+timeout__setup_timeout_3_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+timeout__unregister_all_files_for_cleanup_2_p_0(void);
+
+void MR_CALL 
+timeout__unregister_file_for_cleanup_3_p_0(
+  MR_String param_1);
+
+void mercury__timeout__init(void);
+void mercury__timeout__init_type_tables(void);
+void mercury__timeout__init_debugger(void);
+const char *mercury__timeout__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_timeout
+
+// :- end_interface timeout.
