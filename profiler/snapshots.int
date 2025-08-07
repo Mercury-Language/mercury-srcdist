@@ -1,0 +1,5 @@
+:- module snapshots.
+:- interface.
+:- use_module io.
+:- pred show_snapshots(io.text_output_stream, io.io, io.io).
+:- mode show_snapshots(builtin.in, builtin.di, builtin.uo) is det.
