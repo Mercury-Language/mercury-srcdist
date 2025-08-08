@@ -1,0 +1,14 @@
+module(2, "read_trace_counts.m",
+	mdbcomp.read_trace_counts,
+	{mdbcomp},
+	{builtin, io, list, map, maybe, private_builtin, set, mdbcomp.trace_counts},
+	{exception, int, integer, mercury_term_lexer, mercury_term_parser, require, string, term_conversion, univ, varset, io.call_system, mdbcomp.goal_path, mdbcomp.prim_data, mdbcomp.sym_name, string.format, string.parse_util},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

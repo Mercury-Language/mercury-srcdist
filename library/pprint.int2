@@ -1,0 +1,19 @@
+:- module pprint.
+:- interface.
+:- use_module char.
+:- type doc.
+:- typeclass doc(T).
+:- instance (pprint.doc(char.char)).
+:- instance (pprint.doc(pprint.doc)).
+:- instance (pprint.doc(int)).
+:- instance (pprint.doc(uint)).
+:- instance (pprint.doc(int8)).
+:- instance (pprint.doc(uint8)).
+:- instance (pprint.doc(int16)).
+:- instance (pprint.doc(uint16)).
+:- instance (pprint.doc(int32)).
+:- instance (pprint.doc(uint32)).
+:- instance (pprint.doc(int64)).
+:- instance (pprint.doc(uint64)).
+:- instance (pprint.doc(float)).
+:- instance (pprint.doc(string)).
