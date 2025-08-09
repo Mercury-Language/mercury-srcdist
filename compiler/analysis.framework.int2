@@ -1,0 +1,46 @@
+:- module analysis.framework.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.sym_name.
+:- type analysis_map(T) == map.map(mdbcomp.sym_name.module_name, analysis.framework.module_analysis_map(T)).
+:- type analysis_name == string.
+:- type analysis_result(Call, Answer)
+    --->    analysis_result(
+                 (analysis.framework).ar_call :: Call,
+                 (analysis.framework).ar_answer :: Answer,
+                 (analysis.framework).ar_status :: analysis.framework.analysis_status
+            ).
+:- type analysis_status
+    --->    invalid 
+    ;       suboptimal 
+    ;       optimal .
+:- type analysis_type
+    --->    some [FuncInfo, Call, Answer] (analysis_type(
+                 unit.unit(Call),
+                 unit.unit(Answer)
+            ) => ((analysis.framework).analysis(FuncInfo, Call, Answer))).
+:- type fixpoint_type
+    --->    least_fixpoint 
+    ;       greatest_fixpoint .
+:- type func_analysis_map(T) == map.map(analysis.framework.func_id, list.list(T)).
+:- type func_id
+    --->    func_id(
+                 (analysis.framework).fid_pf :: mdbcomp.prim_data.pred_or_func,
+                 (analysis.framework).fid_name :: string,
+                 (analysis.framework).fid_arity :: parse_tree.prog_data.pred_form_arity,
+                 (analysis.framework).fid_mode :: hlds.hlds_pred.proc_id
+            ).
+:- type module_analysis_map(T) == map.map(analysis.framework.analysis_name, analysis.framework.func_analysis_map(T)).
+:- type some_analysis_result
+    --->    some [FuncInfo, Call, Answer] (some_analysis_result(
+                 (analysis.framework).some_ar_call :: Call,
+                 (analysis.framework).some_ar_answer :: Answer,
+                 (analysis.framework).some_ar_status :: analysis.framework.analysis_status
+            ) => ((analysis.framework).analysis(FuncInfo, Call, Answer))).
+:- typeclass analysis(FuncInfo, Call, Answer) <= ((analysis.framework).call_pattern(FuncInfo, Call), (analysis.framework).answer_pattern(FuncInfo, Answer)).
+:- typeclass answer_pattern(FuncInfo, Answer) <= ((analysis.framework).partial_order(FuncInfo, Answer), (analysis.framework).to_term(Answer)).
+:- typeclass call_pattern(FuncInfo, Call) <= ((analysis.framework).partial_order(FuncInfo, Call), (analysis.framework).to_term(Call)).
+:- typeclass compiler(Compiler).
+:- typeclass partial_order(FuncInfo, T) <= ((T -> FuncInfo)).
+:- typeclass to_term(S).
