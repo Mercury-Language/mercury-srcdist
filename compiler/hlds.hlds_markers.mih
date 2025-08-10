@@ -1,0 +1,139 @@
+/*
+** Automatically generated from `hlds_markers.m'
+** by the Mercury compiler,
+** version rotd-2025-08-10
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_markers.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_markers
+#define MR_HEADER_GUARD_hlds__hlds_markers
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_MARKERS_DECL_GUARD
+#define HLDS__HLDS_MARKERS_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_markers__hlds__hlds_markers__type_ctor_info_goal_feature_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_markers__hlds__hlds_markers__type_ctor_info_pred_marker_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_markers__hlds__hlds_markers__type_ctor_info_pred_markers_0;
+
+void MR_CALL 
+hlds__hlds_markers__add_marker_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_markers__add_markers_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_markers__init_markers_1_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+hlds__hlds_markers__marker_is_present_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+hlds__hlds_markers__marker_list_to_markers_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_markers__marker_name_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+hlds__hlds_markers__markers_to_marker_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_markers__purity_to_markers_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_markers__remove_marker_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_markers____Compare____goal_feature_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_markers____Compare____pred_marker_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_markers____Compare____pred_markers_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_markers____Unify____goal_feature_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_markers____Unify____pred_marker_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_markers____Unify____pred_markers_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__hlds_markers__init(void);
+void mercury__hlds__hlds_markers__init_type_tables(void);
+void mercury__hlds__hlds_markers__init_debugger(void);
+const char *mercury__hlds__hlds_markers__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.hlds_markers
+
+// :- end_interface hlds.hlds_markers.

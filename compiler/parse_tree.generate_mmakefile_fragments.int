@@ -1,0 +1,65 @@
+:- module parse_tree.generate_mmakefile_fragments.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module libs.mmakefiles.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.deps_map.
+:- use_module parse_tree.make_module_file_names.
+:- use_module parse_tree.module_baggage.
+:- type d_file_deps
+    --->    d_file_deps(
+                 parse_tree.generate_mmakefile_fragments.std_deps,
+                 set.set(mdbcomp.sym_name.module_name),
+                 parse_tree.generate_mmakefile_fragments.maybe_include_trans_opt_rule
+            ).
+:- type intermod_deps
+    --->    intermod_deps(
+                 parse_tree.generate_mmakefile_fragments.maybe_intermod_mh_deps,
+                 parse_tree.generate_mmakefile_fragments.maybe_opt_file_deps
+            ).
+:- type maybe_include_trans_opt_rule
+    --->    do_not_include_trans_opt_rule 
+    ;       include_trans_opt_rule(
+                 parse_tree.generate_mmakefile_fragments.trans_opt_rule_info
+            ).
+:- type maybe_intermod_mh_deps
+    --->    no_intermod_mh_deps 
+    ;       intermod_mh_deps .
+:- type maybe_opt_file_deps
+    --->    no_opt_file_deps 
+    ;       opt_file_deps(
+                 (parse_tree.generate_mmakefile_fragments).ofd_plain_opt_modules :: list.list(mdbcomp.sym_name.module_name),
+                 (parse_tree.generate_mmakefile_fragments).ofd_trans_opt_modules :: maybe.maybe(list.list(mdbcomp.sym_name.module_name))
+            ).
+:- type maybe_trans_opt_deps
+    --->    no_trans_opt_deps 
+    ;       trans_opt_deps(
+                 set.set(mdbcomp.sym_name.module_name)
+            ).
+:- type std_deps
+    --->    std_deps(
+                 (parse_tree.generate_mmakefile_fragments).sd_direct_deps :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.generate_mmakefile_fragments).sd_indirect_deps :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.generate_mmakefile_fragments).sd_fim_deps :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.generate_mmakefile_fragments).sd_trans_opt_deps :: parse_tree.generate_mmakefile_fragments.maybe_trans_opt_deps
+            ).
+:- type trans_opt_rule_info
+    --->    trans_opt_deps_from_order(
+                 set.set(mdbcomp.sym_name.module_name)
+            )
+    ;       trans_opt_deps_from_d_file(
+                 set.set(mdbcomp.sym_name.module_name)
+            ).
+:- pred generate_d_mmakefile(libs.globals.globals, parse_tree.module_baggage.burdened_aug_comp_unit, parse_tree.generate_mmakefile_fragments.d_file_deps, parse_tree.generate_mmakefile_fragments.intermod_deps, libs.mmakefiles.mmakefile, parse_tree.make_module_file_names.module_file_name_cache, parse_tree.make_module_file_names.module_file_name_cache, io.io, io.io).
+:- mode generate_d_mmakefile(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_dep_mmakefile(libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, parse_tree.deps_map.deps_map, libs.mmakefiles.mmakefile, io.io, io.io).
+:- mode generate_dep_mmakefile(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_dv_mmakefile(libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, parse_tree.deps_map.deps_map, libs.mmakefiles.mmakefile).
+:- mode generate_dv_mmakefile(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
