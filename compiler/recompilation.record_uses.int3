@@ -1,0 +1,14 @@
+:- module recompilation.record_uses.
+:- interface.
+:- type eqv_expand_info.
+:- type module_qualifier.
+:- type recompilation_info.
+:- type simple_item_set.
+:- type used_item_type
+	where	type_is_abstract_enum(3).
+:- type used_items.
+:- type_representation(module_qualifier, is_eqv_to(module_name)).
+:- type_representation(recompilation_info, is_word_aligned_ptr).
+:- type_representation(simple_item_set, is_eqv_to(map(name_arity, map(recompilation.record_uses.module_qualifier, module_name)))).
+:- type_representation(used_item_type, du_repn(enum("used_type_name", "used_type_defn", ["used_inst", "used_mode", "used_typeclass", "used_functor", "used_predicate", "used_function"],  no_c_j_cs))).
+:- type_representation(used_items, is_word_aligned_ptr).

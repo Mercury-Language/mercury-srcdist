@@ -1,0 +1,127 @@
+/*
+** Automatically generated from `maybe_util.m'
+** by the Mercury compiler,
+** version rotd-2025-08-11
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.maybe_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__maybe_util
+#define MR_HEADER_GUARD_libs__maybe_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__MAYBE_UTIL_DECL_GUARD
+#define LIBS__MAYBE_UTIL_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__maybe_util__libs__maybe_util__type_ctor_info_is_first_0;
+
+extern const MR_TypeCtorInfo_Struct libs__maybe_util__libs__maybe_util__type_ctor_info_is_last_0;
+
+extern const MR_TypeCtorInfo_Struct libs__maybe_util__libs__maybe_util__type_ctor_info_maybe_changed_0;
+
+extern const MR_TypeCtorInfo_Struct libs__maybe_util__libs__maybe_util__type_ctor_info_maybe_succeeded_0;
+
+extern const MR_TypeCtorInfo_Struct libs__maybe_util__libs__maybe_util__type_ctor_info_need_to_requantify_0;
+
+MR_Word MR_CALL 
+libs__maybe_util__and_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__maybe_util__and_list_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__maybe_util____Compare____is_first_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__maybe_util____Compare____is_last_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__maybe_util____Compare____maybe_changed_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__maybe_util____Compare____maybe_succeeded_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__maybe_util____Compare____need_to_requantify_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__maybe_util____Unify____is_first_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__maybe_util____Unify____is_last_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__maybe_util____Unify____maybe_changed_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__maybe_util____Unify____maybe_succeeded_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__maybe_util____Unify____need_to_requantify_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__maybe_util__init(void);
+void mercury__libs__maybe_util__init_type_tables(void);
+void mercury__libs__maybe_util__init_debugger(void);
+const char *mercury__libs__maybe_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.maybe_util
+
+// :- end_interface libs.maybe_util.
