@@ -1,0 +1,8 @@
+trailed_mutable.m:019: In clause for predicate `initialise_mutable_global2'/0:
+trailed_mutable.m:019:   in argument 1 of call to predicate
+trailed_mutable.m:019:   `trailed_mutable.set_global2'/1:
+trailed_mutable.m:019:   type error: [38;5;87mvariable `X'[39;49m has type
+trailed_mutable.m:019:     [38;5;203mfloat;[39;49m
+trailed_mutable.m:019:   expected type was
+trailed_mutable.m:019:     [38;5;40mint.[39;49m
+For more information, recompile with `-E'.

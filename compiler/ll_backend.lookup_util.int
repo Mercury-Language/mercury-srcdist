@@ -1,0 +1,29 @@
+:- module ll_backend.lookup_util.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_llds.
+:- use_module ll_backend.code_info.
+:- use_module ll_backend.code_loc_dep.
+:- use_module ll_backend.llds.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.set_of_var.
+:- type end_branch_info
+    --->    end_branch_info(
+                 hlds.hlds_llds.abs_store_map,
+                 parse_tree.set_of_var.set_of_progvar
+            ).
+:- pred figure_out_output_vars(ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, hlds.hlds_goal.hlds_goal_info, list.list(parse_tree.prog_data.prog_var)).
+:- mode figure_out_output_vars(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred generate_constants_for_arm(ll_backend.code_loc_dep.position_info, hlds.hlds_goal.hlds_goal, list.list(parse_tree.prog_data.prog_var), hlds.hlds_llds.abs_store_map, list.list(ll_backend.llds.rval), ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, parse_tree.set_of_var.set_of_progvar, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_constants_for_arm(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is semidet.
+:- pred generate_constants_for_disjunct(ll_backend.code_loc_dep.position_info, hlds.hlds_goal.hlds_goal, list.list(parse_tree.prog_data.prog_var), hlds.hlds_llds.abs_store_map, list.list(ll_backend.llds.rval), ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, parse_tree.set_of_var.set_of_progvar, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_constants_for_disjunct(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is semidet.
+:- pred generate_constants_for_disjuncts(ll_backend.code_loc_dep.position_info, list.list(hlds.hlds_goal.hlds_goal), list.list(parse_tree.prog_data.prog_var), hlds.hlds_llds.abs_store_map, list.list(list.list(ll_backend.llds.rval)), ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_constants_for_disjuncts(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- pred record_offset_assigns(list.list(parse_tree.prog_data.prog_var), int, ll_backend.llds.lval, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode record_offset_assigns(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred set_liveness_and_end_branch(ll_backend.lookup_util.end_branch_info, ll_backend.llds.llds_code, ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.code_loc_dep).
+:- mode set_liveness_and_end_branch(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in) is det.
