@@ -1,0 +1,14 @@
+module(2, "version_hash_table.m",
+	version_hash_table,
+	{},
+	{assoc_list, builtin, private_builtin},
+	{bool, exception, float, int, list, pair, require, unit, version_array},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

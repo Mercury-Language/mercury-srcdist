@@ -1,0 +1,7 @@
+:- module ll_backend.lookup_util.
+:- interface.
+:- type end_branch_info
+    --->    end_branch_info(
+                 hlds.hlds_llds.abs_store_map,
+                 parse_tree.set_of_var.set_of_progvar
+            ).
