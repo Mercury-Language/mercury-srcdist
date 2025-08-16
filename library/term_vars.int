@@ -1,0 +1,18 @@
+:- module term_vars.
+:- interface.
+:- use_module list.
+:- use_module term.
+:- pred term_contains_var(term.term(T), term.var(T)).
+:- mode term_contains_var(builtin.in, builtin.in) is semidet.
+:- mode term_contains_var(builtin.in, builtin.out) is nondet.
+:- pred terms_contain_var(list.list(term.term(T)), term.var(T)).
+:- mode terms_contain_var(builtin.in, builtin.in) is semidet.
+:- mode terms_contain_var(builtin.in, builtin.out) is nondet.
+:- pred vars_in_term(term.term(T), list.list(term.var(T))).
+:- mode vars_in_term(builtin.in, builtin.out) is det.
+:- func vars_in_term(term.term(T)) = list.list(term.var(T)).
+:- pred vars_in_term_acc(term.term(T), list.list(term.var(T)), list.list(term.var(T))).
+:- mode vars_in_term_acc(builtin.in, builtin.in, builtin.out) is det.
+:- pred vars_in_terms(list.list(term.term(T)), list.list(term.var(T))).
+:- mode vars_in_terms(builtin.in, builtin.out) is det.
+:- func vars_in_terms(list.list(term.term(T))) = list.list(term.var(T)).

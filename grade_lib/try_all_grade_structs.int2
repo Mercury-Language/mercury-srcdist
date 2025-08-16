@@ -1,0 +1,2 @@
+:- module try_all_grade_structs.
+:- interface.
