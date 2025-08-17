@@ -1,0 +1,327 @@
+/*
+** Automatically generated from `recompilation.used_file.m'
+** by the Mercury compiler,
+** version rotd-2025-08-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module recompilation.used_file.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_recompilation__used_file
+#define MR_HEADER_GUARD_recompilation__used_file
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RECOMPILATION__USED_FILE_DECL_GUARD
+#define RECOMPILATION__USED_FILE_DECL_GUARD
+#include "recompilation.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_cons_ctor_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_imported_item_set_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_imported_items_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_maybe_top_module_used_file_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_module_imported_items_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_module_name_and_timestamp_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_parse_resolved_item_matches_1;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_recomp_used_module_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_resolved_functor_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_resolved_functor_map_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_resolved_functor_set_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_resolved_item_list_1;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_resolved_item_map_1;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_resolved_item_set_1;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_resolved_pred_or_func_map_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_resolved_pred_or_func_set_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_resolved_used_items_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_used_file_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_used_file_contents_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_used_file_error_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__used_file__recompilation__used_file__type_ctor_info_used_file_result_1;
+
+void MR_CALL 
+recompilation__used_file__read_used_file_for_module_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+recompilation__used_file__write_usage_file_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+recompilation__used_file__init_resolved_used_items_0_f_0(void);
+
+void MR_CALL 
+recompilation__used_file____Compare____cons_ctor_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____imported_item_set_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____imported_items_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____maybe_top_module_used_file_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____module_imported_items_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____recomp_used_module_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____resolved_functor_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____resolved_functor_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____resolved_functor_set_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____resolved_item_list_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+recompilation__used_file____Compare____resolved_item_map_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+recompilation__used_file____Compare____resolved_item_set_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+recompilation__used_file____Compare____resolved_pred_or_func_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____resolved_pred_or_func_set_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____resolved_used_items_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____used_file_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____used_file_contents_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____used_file_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__used_file____Compare____used_file_result_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____cons_ctor_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____imported_item_set_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____imported_items_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____maybe_top_module_used_file_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____module_imported_items_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____recomp_used_module_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____resolved_functor_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____resolved_functor_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____resolved_functor_set_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____resolved_item_list_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____resolved_item_map_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____resolved_item_set_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____resolved_pred_or_func_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____resolved_pred_or_func_set_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____resolved_used_items_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____used_file_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____used_file_contents_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____used_file_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__used_file____Unify____used_file_result_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__recompilation__used_file__init(void);
+void mercury__recompilation__used_file__init_type_tables(void);
+void mercury__recompilation__used_file__init_debugger(void);
+const char *mercury__recompilation__used_file__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_recompilation.used_file
+
+// :- end_interface recompilation.used_file.
