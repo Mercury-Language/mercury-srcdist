@@ -1,0 +1,3 @@
+:- module make.library_install.
+:- interface.
+:- type_representation(libdir_map, is_eqv_to(map(string, libdir_info))).

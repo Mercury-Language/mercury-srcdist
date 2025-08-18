@@ -1,0 +1,10 @@
+:- module globals.
+:- interface.
+:- type globals.
+:- type what_to_profile
+    --->    memory_words 
+    ;       memory_cells 
+    ;       memory_snapshots 
+    ;       user_plus_system_time 
+    ;       user_time 
+    ;       real_time .

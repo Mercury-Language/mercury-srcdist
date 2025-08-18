@@ -1,0 +1,22 @@
+:- module check_hlds.inst_util.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.prog_data.
+:- pred get_cons_id_arg_types_for_bound_functor(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.bound_functor, list.list(parse_tree.prog_data.mer_type)).
+:- mode get_cons_id_arg_types_for_bound_functor(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred get_cons_id_arg_types_for_inst(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_type)).
+:- mode get_cons_id_arg_types_for_inst(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred get_higher_order_arg_types(parse_tree.prog_data.mer_type, parse_tree.prog_data.arity, list.list(parse_tree.prog_data.mer_type)).
+:- mode get_higher_order_arg_types(builtin.in, builtin.in, builtin.out) is det.
+:- pred make_mostly_uniq_inst(parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode make_mostly_uniq_inst(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred make_shared_bound_functors(parse_tree.prog_data.mer_type, list.list(parse_tree.prog_data.bound_functor), list.list(parse_tree.prog_data.bound_functor), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode make_shared_bound_functors(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred make_shared_inst(parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode make_shared_inst(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred make_shared_inst_list(list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode make_shared_inst_list(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func pred_inst_info_default_func_mode(parse_tree.prog_data.arity) = parse_tree.prog_data.pred_inst_info.
