@@ -1,0 +1,72 @@
+/*
+** Automatically generated from `snapshots.m'
+** by the Mercury compiler,
+** version rotd-2025-08-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module snapshots.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_snapshots
+#define MR_HEADER_GUARD_snapshots
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef SNAPSHOTS_DECL_GUARD
+#define SNAPSHOTS_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct snapshots__snapshots__type_ctor_info_alloc_id_0;
+
+extern const MR_TypeCtorInfo_Struct snapshots__snapshots__type_ctor_info_alloc_site_0;
+
+extern const MR_TypeCtorInfo_Struct snapshots__snapshots__type_ctor_info_alloc_site_counts_0;
+
+extern const MR_TypeCtorInfo_Struct snapshots__snapshots__type_ctor_info_alloc_site_map_0;
+
+extern const MR_TypeCtorInfo_Struct snapshots__snapshots__type_ctor_info_group_0;
+
+extern const MR_TypeCtorInfo_Struct snapshots__snapshots__type_ctor_info_major_axis_0;
+
+extern const MR_TypeCtorInfo_Struct snapshots__snapshots__type_ctor_info_size_map_0;
+
+extern const MR_TypeCtorInfo_Struct snapshots__snapshots__type_ctor_info_snapshot_options_0;
+
+void MR_CALL 
+snapshots__show_snapshots_3_p_0(
+  MR_Word param_1);
+
+void mercury__snapshots__init(void);
+void mercury__snapshots__init_type_tables(void);
+void mercury__snapshots__init_debugger(void);
+const char *mercury__snapshots__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_snapshots
+
+// :- end_interface snapshots.
