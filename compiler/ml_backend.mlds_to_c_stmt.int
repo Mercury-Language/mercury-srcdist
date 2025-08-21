@@ -1,0 +1,20 @@
+:- module ml_backend.mlds_to_c_stmt.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module parse_tree.
+:- use_module libs.indent.
+:- use_module ml_backend.mlds.
+:- use_module ml_backend.mlds_to_c_util.
+:- use_module parse_tree.prog_data.
+:- type func_info_c
+    --->    func_info_c(
+                 ml_backend.mlds.qual_function_name,
+                 ml_backend.mlds.mlds_func_signature
+            ).
+:- pred mlds_output_gc_statement(ml_backend.mlds_to_c_util.mlds_to_c_opts, io.text_output_stream, libs.indent.indent, ml_backend.mlds.mlds_gc_statement, string, io.io, io.io).
+:- mode mlds_output_gc_statement(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mlds_output_statement(ml_backend.mlds_to_c_util.mlds_to_c_opts, io.text_output_stream, libs.indent.indent, ml_backend.mlds_to_c_stmt.func_info_c, ml_backend.mlds.mlds_stmt, io.io, io.io).
+:- mode mlds_output_statement(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mlds_output_time_profile_instr(ml_backend.mlds_to_c_util.mlds_to_c_opts, io.text_output_stream, parse_tree.prog_data.prog_context, libs.indent.indent, ml_backend.mlds.qual_function_name, io.io, io.io).
+:- mode mlds_output_time_profile_instr(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
