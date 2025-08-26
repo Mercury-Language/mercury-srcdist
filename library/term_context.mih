@@ -1,0 +1,85 @@
+/*
+** Automatically generated from `term_context.m'
+** by the Mercury compiler,
+** version rotd-2025-08-26
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module term_context.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_term_context
+#define MR_HEADER_GUARD_term_context
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TERM_CONTEXT_DECL_GUARD
+#define TERM_CONTEXT_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__term_context__term_context__type_ctor_info_term_context_0;
+
+MR_bool MR_CALL 
+mercury__term_context__is_dummy_context_1_p_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mercury__term_context__context_file_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__term_context__context_init_2_f_0(
+  MR_String param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__term_context__context_line_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__term_context__dummy_context_0_f_0(void);
+
+void MR_CALL 
+mercury__term_context____Compare____term_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__term_context____Unify____term_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__term_context__init(void);
+void mercury__term_context__init_type_tables(void);
+void mercury__term_context__init_debugger(void);
+const char *mercury__term_context__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_term_context
+
+// :- end_interface term_context.

@@ -1,0 +1,12 @@
+:- module (hlds.make_hlds).add_class.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_item.
+:- use_module (hlds.make_hlds).make_hlds_types.
+:- pred add_instance_defns(hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.item_instance_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_instance_defns(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_typeclass_defns(hlds.make_hlds.make_hlds_types.sec_list(parse_tree.prog_item.item_typeclass_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_typeclass_defns(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
