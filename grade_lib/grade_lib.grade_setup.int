@@ -1,0 +1,42 @@
+:- module grade_lib.grade_setup.
+:- interface.
+:- use_module maybe.
+:- use_module grade_lib.grade_spec.
+:- use_module grade_lib.grade_state.
+:- type autoconf_gcc_gotos_avail
+    --->    autoconf_gcc_gotos_avail_no 
+    ;       autoconf_gcc_gotos_avail_yes .
+:- type autoconf_gcc_labels_avail
+    --->    autoconf_gcc_labels_avail_no 
+    ;       autoconf_gcc_labels_avail_yes .
+:- type autoconf_gcc_regs_avail
+    --->    autoconf_gcc_regs_avail_no 
+    ;       autoconf_gcc_regs_avail_yes .
+:- type autoconf_low_tag_bits_avail
+    --->    autoconf_low_tag_bits_avail_0 
+    ;       autoconf_low_tag_bits_avail_2 
+    ;       autoconf_low_tag_bits_avail_3 .
+:- type autoconf_merc_file
+    --->    autoconf_merc_file_no 
+    ;       autoconf_merc_file_yes .
+:- type autoconf_results
+    --->    autoconf_results(
+                 grade_lib.grade_setup.autoconf_gcc_regs_avail,
+                 grade_lib.grade_setup.autoconf_gcc_gotos_avail,
+                 grade_lib.grade_setup.autoconf_gcc_labels_avail,
+                 grade_lib.grade_setup.autoconf_low_tag_bits_avail,
+                 grade_lib.grade_setup.autoconf_size_of_double,
+                 grade_lib.grade_setup.autoconf_merc_file
+            ).
+:- type autoconf_size_of_double
+    --->    autoconf_size_of_double_eq_ptr 
+    ;       autoconf_size_of_double_ne_ptr .
+:- type solver_var_set_to
+    --->    set_to_false 
+    ;       set_to_true .
+:- pred assign_var_in_map(grade_lib.grade_state.not_possible_why, grade_lib.grade_spec.solver_var_id, grade_lib.grade_spec.solver_var_value_id, grade_lib.grade_state.solver_var_map, grade_lib.grade_state.solver_var_map).
+:- mode assign_var_in_map(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred set_solver_var(string, string, grade_lib.grade_spec.solver_var_id, grade_lib.grade_spec.solver_var_value_id, grade_lib.grade_setup.solver_var_set_to, grade_lib.grade_state.not_possible_why, maybe.maybe_error, grade_lib.grade_state.solver_info, grade_lib.grade_state.solver_info).
+:- mode set_solver_var(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred setup_solver_info(grade_lib.grade_spec.specs_version, grade_lib.grade_setup.autoconf_results, grade_lib.grade_state.solver_info).
+:- mode setup_solver_info(builtin.in, builtin.in, builtin.out) is det.
