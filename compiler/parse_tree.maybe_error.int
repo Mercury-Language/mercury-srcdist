@@ -1,0 +1,108 @@
+:- module parse_tree.maybe_error.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.error_spec.
+:- type maybe1(T1) == parse_tree.maybe_error.maybe1(T1, list.list(parse_tree.error_spec.error_spec)).
+:- type maybe1(T1, E)
+    --->    error1(
+                 E
+            )
+    ;       ok1(
+                 T1
+            ).
+:- type maybe2(T1, T2) == parse_tree.maybe_error.maybe2(T1, T2, list.list(parse_tree.error_spec.error_spec)).
+:- type maybe2(T1, T2, E)
+    --->    error2(
+                 E
+            )
+    ;       ok2(
+                 T1,
+                 T2
+            ).
+:- type maybe3(T1, T2, T3) == parse_tree.maybe_error.maybe3(T1, T2, T3, list.list(parse_tree.error_spec.error_spec)).
+:- type maybe3(T1, T2, T3, E)
+    --->    error3(
+                 E
+            )
+    ;       ok3(
+                 T1,
+                 T2,
+                 T3
+            ).
+:- type maybe4(T1, T2, T3, T4) == parse_tree.maybe_error.maybe4(T1, T2, T3, T4, list.list(parse_tree.error_spec.error_spec)).
+:- type maybe4(T1, T2, T3, T4, E)
+    --->    error4(
+                 E
+            )
+    ;       ok4(
+                 T1,
+                 T2,
+                 T3,
+                 T4
+            ).
+:- type maybe5(T1, T2, T3, T4, T5) == parse_tree.maybe_error.maybe5(T1, T2, T3, T4, T5, list.list(parse_tree.error_spec.error_spec)).
+:- type maybe5(T1, T2, T3, T4, T5, E)
+    --->    error5(
+                 E
+            )
+    ;       ok5(
+                 T1,
+                 T2,
+                 T3,
+                 T4,
+                 T5
+            ).
+:- type maybe6(T1, T2, T3, T4, T5, T6) == parse_tree.maybe_error.maybe6(T1, T2, T3, T4, T5, T6, list.list(parse_tree.error_spec.error_spec)).
+:- type maybe6(T1, T2, T3, T4, T5, T6, E)
+    --->    error6(
+                 E
+            )
+    ;       ok6(
+                 T1,
+                 T2,
+                 T3,
+                 T4,
+                 T5,
+                 T6
+            ).
+:- type maybe_found
+    --->    not_found 
+    ;       found .
+:- type maybe_safe_to_continue
+    --->    safe_to_continue 
+    ;       unsafe_to_continue .
+:- inst maybe1(I) for (parse_tree.maybe_error).maybe1/2
+    --->    error1(ground)
+    ;       ok1(I).
+:- inst maybe2(I1, I2) for (parse_tree.maybe_error).maybe2/3
+    --->    error2(ground)
+    ;       ok2(I1, I2).
+:- inst maybe3(I1, I2, I3) for (parse_tree.maybe_error).maybe3/4
+    --->    error3(ground)
+    ;       ok3(I1, I2, I3).
+:- inst maybe4(I1, I2, I3, I4) for (parse_tree.maybe_error).maybe4/5
+    --->    error4(ground)
+    ;       ok4(I1, I2, I3, I4).
+:- inst maybe5(I1, I2, I3, I4, I5) for (parse_tree.maybe_error).maybe5/6
+    --->    error5(ground)
+    ;       ok5(I1, I2, I3, I4, I5).
+:- inst maybe6(I1, I2, I3, I4, I5, I6) for (parse_tree.maybe_error).maybe6/7
+    --->    error6(ground)
+    ;       ok6(I1, I2, I3, I4, I5, I6).
+:- pred det_project_ok1(parse_tree.maybe_error.maybe1(T1), T1).
+:- mode det_project_ok1(builtin.in, builtin.out) is det.
+:- func get_any_errors1(parse_tree.maybe_error.maybe1(T1)) = list.list(parse_tree.error_spec.error_spec).
+:- func get_any_errors2(parse_tree.maybe_error.maybe2(T1, T2)) = list.list(parse_tree.error_spec.error_spec).
+:- func get_any_errors3(parse_tree.maybe_error.maybe3(T1, T2, T3)) = list.list(parse_tree.error_spec.error_spec).
+:- func get_any_errors4(parse_tree.maybe_error.maybe4(T1, T2, T3, T4)) = list.list(parse_tree.error_spec.error_spec).
+:- func get_any_errors5(parse_tree.maybe_error.maybe5(T1, T2, T3, T4, T5)) = list.list(parse_tree.error_spec.error_spec).
+:- func get_any_errors6(parse_tree.maybe_error.maybe6(T1, T2, T3, T4, T5, T6)) = list.list(parse_tree.error_spec.error_spec).
+:- func get_any_errors_warnings2(parse_tree.maybe_error.maybe2(T1, list.list(parse_tree.error_spec.warning_spec))) = list.list(parse_tree.error_spec.error_spec).
+:- func get_any_errors_warnings3(parse_tree.maybe_error.maybe3(T1, T2, list.list(parse_tree.error_spec.warning_spec))) = list.list(parse_tree.error_spec.error_spec).
+:- func get_any_errors_warnings4(parse_tree.maybe_error.maybe4(T1, T2, T3, list.list(parse_tree.error_spec.warning_spec))) = list.list(parse_tree.error_spec.error_spec).
+:- func get_any_errors_warnings5(parse_tree.maybe_error.maybe5(T1, T2, T3, T4, list.list(parse_tree.error_spec.warning_spec))) = list.list(parse_tree.error_spec.error_spec).
+:- func get_any_errors_warnings6(parse_tree.maybe_error.maybe6(T1, T2, T3, T4, T5, list.list(parse_tree.error_spec.warning_spec))) = list.list(parse_tree.error_spec.error_spec).
+:- pred project_ok1(parse_tree.maybe_error.maybe1(T1), T1).
+:- mode project_ok1(builtin.in, builtin.out) is semidet.
+:- pred separate_ok1_error1(list.list(parse_tree.maybe_error.maybe1(T1)), list.list(T1), list.list(parse_tree.error_spec.error_spec)).
+:- mode separate_ok1_error1(builtin.in, builtin.out, builtin.out) is det.
