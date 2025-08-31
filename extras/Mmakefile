@@ -1,0 +1,74 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2002-2003, 2005, 2007, 2011 The University of Melbourne.
+# Copyright (C) 2015-2016, 2018 The Mercury team.
+# This file is distributed under the terms specified in COPYING.LIB.
+#-----------------------------------------------------------------------------#
+#
+# This Mmakefile provides some targets for building and installing most
+# of the libraries and tools in this `extras' distribution.
+#
+# Note that not all subdirectories of `extras' are set up for
+# automatic installation. This Mmakefile will only build those which are.
+# In addition, libraries which are not reasonably portable won't get built.
+# The following subdirectories are not included in the list that gets
+# built by this Mmakefile, because they are often won't install
+# "out-of-the-box":
+#
+#   curs			requires ncurses to be available
+#   curses			requires ncurses to be available
+#   graphics/easyx		requires Xlib to be available	
+#   graphics/mercury_allegro	see README file in that directory for details
+#   graphics/mercury_cairo	see README file in that directory for details
+#   graphics/mercury_glut	requires GLUT (or freeglut) to be available
+#   graphics/mercury_opengl	requires OpenGL to be available
+#   graphics/mercury_tcltk	requires Tcl/Tk to be available				
+#   morphine 		see morphine/README for instructions on how to install
+#   trailed_update 	doesn't work in all compilation grades
+#   lex			see the Makefile in that directory for details	
+#   logged_output 	requires a specially-configured Mercury installation
+#   odbc 		requires an ODBC driver be installed
+
+SUBDIRS = \
+	align_right	\
+	base64		\
+	cgi 		\
+	complex_numbers	\
+	dynamic_linking \
+	error		\
+	fixed		\
+	lex		\
+	moose		\
+	posix		\
+	references	\
+	show_ops	\
+	windows_installer_generator \
+	xml
+
+MMAKEFLAGS =
+
+main_target: 	all
+
+depend:		$(SUBDIRS:%=%_depend)
+all:		$(SUBDIRS)
+install: 	all $(SUBDIRS:%=%_install)
+clean: 		$(SUBDIRS:%=%_clean)
+realclean: 	$(SUBDIRS:%=%_realclean)
+
+$(SUBDIRS:%=%_depend): %_depend:
+	cd $* && $(MMAKE) $(MMAKEFLAGS) depend
+
+$(SUBDIRS): %:
+	cd $* && $(MMAKE) $(MMAKEFLAGS) 
+
+$(SUBDIRS:%=%_install): %_install:
+	cd $* && $(MMAKE) $(MMAKEFLAGS) install
+
+$(SUBDIRS:%=%_clean): %_clean:
+	cd $* && $(MMAKE) $(MMAKEFLAGS) clean
+
+$(SUBDIRS:%=%_realclean): %_realclean:
+	cd $* && $(MMAKE) $(MMAKEFLAGS) realclean
+
+.PHONY: $(SUBDIRS)

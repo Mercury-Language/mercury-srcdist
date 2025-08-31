@@ -1,0 +1,126 @@
+/*
+** Automatically generated from `rtti_out.m'
+** by the Mercury compiler,
+** version rotd-2025-08-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.rtti_out.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__rtti_out
+#define MR_HEADER_GUARD_ll_backend__rtti_out
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__RTTI_OUT_DECL_GUARD
+#define LL_BACKEND__RTTI_OUT_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__rtti_out__ll_backend__rtti_out__type_ctor_info_data_group_0;
+
+void MR_CALL 
+ll_backend__rtti_out__init_rtti_data_if_nec_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__rtti_out__output_addr_of_rtti_data_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__rtti_out__output_cast_addr_of_rtti_data_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__rtti_out__output_rtti_data_decl_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__rtti_out__output_rtti_data_decl_list_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__rtti_out__output_rtti_data_defn_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__rtti_out__output_rtti_id_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__rtti_out__output_rtti_id_storage_type_name_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+ll_backend__rtti_out__output_rtti_id_storage_type_name_no_decl_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ll_backend__rtti_out__register_rtti_data_if_nec_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ll_backend__rtti_out__tabling_struct_data_addr_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__rtti_out__init(void);
+void mercury__ll_backend__rtti_out__init_type_tables(void);
+void mercury__ll_backend__rtti_out__init_debugger(void);
+const char *mercury__ll_backend__rtti_out__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.rtti_out
+
+// :- end_interface ll_backend.rtti_out.

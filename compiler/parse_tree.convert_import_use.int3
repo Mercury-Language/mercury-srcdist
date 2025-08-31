@@ -1,0 +1,16 @@
+:- module parse_tree.convert_import_use.
+:- interface.
+:- type imp_import_context_map.
+:- type imp_use_context_map.
+:- type int_import_context_map.
+:- type int_use_context_map.
+:- type maybe_include_implicit
+	where	type_is_abstract_enum(1).
+:- type module_name_context.
+:- type_representation(imp_import_context_map, du_repn(notag("imp_import_context_map", module_name_context,  no_c_j_cs))).
+:- type_representation(imp_use_context_map, du_repn(notag("imp_use_context_map", module_name_context,  no_c_j_cs))).
+:- type_representation(import_use_file_map, is_eqv_to(multi_map(string, import_use_line))).
+:- type_representation(int_import_context_map, du_repn(notag("int_import_context_map", module_name_context,  no_c_j_cs))).
+:- type_representation(int_use_context_map, du_repn(notag("int_use_context_map", module_name_context,  no_c_j_cs))).
+:- type_representation(maybe_include_implicit, du_repn(enum("do_include_implicit", "do_not_include_implicit", [],  no_c_j_cs))).
+:- type_representation(module_name_context, is_eqv_to(map(module_name, prog_context))).
