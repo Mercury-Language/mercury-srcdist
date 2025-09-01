@@ -1,0 +1,6 @@
+:- module libs.va_map.
+:- interface.
+:- type va_map(K, V).
+:- typeclass va_map_key(K).
+:- typeclass va_map_value(V).
+:- type_representation(va_map(V_1, V_2), du_repn(notag("va_map", version_array(V_2),  no_c_j_cs))).
