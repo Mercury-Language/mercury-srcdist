@@ -1,0 +1,15 @@
+:- module check_hlds.det_infer_goal.
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module check_hlds.det_util.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.instmap.
+:- use_module parse_tree.prog_data.
+:- type soln_context
+    --->    all_solns 
+    ;       first_soln .
+:- pred det_get_soln_context(parse_tree.prog_data.determinism, check_hlds.det_infer_goal.soln_context).
+:- mode det_get_soln_context(builtin.in, builtin.out) is det.
+:- pred det_infer_proc_goal(hlds.instmap.instmap, check_hlds.det_infer_goal.soln_context, parse_tree.prog_data.determinism, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, check_hlds.det_util.det_info, check_hlds.det_util.det_info).
+:- mode det_infer_proc_goal(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

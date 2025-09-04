@@ -1,0 +1,28 @@
+:- module parse_tree.make_module_file_names.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module libs.mmakefiles.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.file_names.
+:- type module_file_name_cache.
+:- pred convert_module_name_list_to_file_names(libs.globals.globals, parse_tree.file_names.ext, list.list(mdbcomp.sym_name.module_name), list.list(libs.mmakefiles.mmake_file_name), parse_tree.make_module_file_names.module_file_name_cache, parse_tree.make_module_file_names.module_file_name_cache).
+:- mode convert_module_name_list_to_file_names(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred convert_module_name_set_to_file_name_group(libs.globals.globals, string, parse_tree.file_names.ext, set.set(mdbcomp.sym_name.module_name), list.list(libs.mmakefiles.mmake_file_name_group), parse_tree.make_module_file_names.module_file_name_cache, parse_tree.make_module_file_names.module_file_name_cache).
+:- mode convert_module_name_set_to_file_name_group(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred convert_module_name_set_to_file_names(libs.globals.globals, parse_tree.file_names.ext, set.set(mdbcomp.sym_name.module_name), list.list(libs.mmakefiles.mmake_file_name), parse_tree.make_module_file_names.module_file_name_cache, parse_tree.make_module_file_names.module_file_name_cache).
+:- mode convert_module_name_set_to_file_names(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred convert_module_name_to_file_name(libs.globals.globals, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name, parse_tree.make_module_file_names.module_file_name_cache, parse_tree.make_module_file_names.module_file_name_cache).
+:- mode convert_module_name_to_file_name(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func init_module_file_name_cache = parse_tree.make_module_file_names.module_file_name_cache.
+:- pred record_write_deps_file_cache_stats(io.io, io.io).
+:- mode record_write_deps_file_cache_stats(builtin.di, builtin.uo) is det.
+:- implementation.
+:- type module_file_name_cache == map.map(string, map.map(mdbcomp.sym_name.module_name, parse_tree.make_module_file_names.module_name_info)).
+:- type module_name_info.

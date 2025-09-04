@@ -1,0 +1,59 @@
+:- module bit_buffer.write.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module exception.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module stream.
+
+:- type write_buffer(Stream, State)
+    --->    write_buffer(
+                 (bit_buffer.write).bit_buffer :: bit_buffer.bit_buffer(Stream, State, {})
+            ).
+
+:- pred (bit_buffer.write).put_bitmap_2(bitmap.bitmap, int, int, bit_buffer.bit_buffer(Stream, State, {}), bit_buffer.bit_buffer(Stream, State, {})) <= (stream.writer(Stream, bitmap.slice, State)).
+:- mode put_bitmap_2(bitmap.bitmap_ui, builtin.in, builtin.in, (bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo) is det.
+
+bit_buffer.write.put_bitmap(V_4, V_6, V_7) :-
+    V_8 = 0 : int,
+    V_9 = bitmap.num_bits(V_4),
+    bit_buffer.write.put_bitmap(V_4, V_8, V_9, V_6, V_7).
+
+bit_buffer.write.put_bitmap(V_6, V_7, V_8, bit_buffer.write.write_buffer(V_10), bit_buffer.write.write_buffer(V_11)) :-
+    bit_buffer.write.put_bitmap_2(V_6, V_7, V_8, V_10, V_11).
+
+bit_buffer.write.put_byte(V_4, V_6, V_7) :-
+    V_8 = bitmap.bits_per_byte,
+    bit_buffer.write.put_bits(V_4, V_8, V_6, V_7).
+
+:- pragma termination_info((bit_buffer.write).finalize((bit_buffer.write).write_buffer_di, builtin.out, builtin.uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.write).finalize_to_bitmap((bit_buffer.write).write_buffer_di) = bitmap.bitmap_uo, infinite, can_loop).
+:- pragma termination_info((bit_buffer.write).flush((bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.write).new(builtin.in, builtin.in, builtin.di) = (bit_buffer.write).write_buffer_uo, infinite, can_loop).
+:- pragma termination_info((bit_buffer.write).new_bitmap_builder(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info((bit_buffer.write).num_bits_to_byte_boundary((bit_buffer.write).write_buffer_ui) = builtin.out, finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info((bit_buffer.write).num_buffered_bits((bit_buffer.write).write_buffer_ui) = builtin.out, infinite, can_loop).
+:- pragma termination_info((bit_buffer.write).put_bit(builtin.in, (bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.write).put_bitmap(bitmap.bitmap_ui, (bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.write).put_bitmap(bitmap.bitmap_ui, builtin.in, builtin.in, (bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.write).put_bitmap_2(bitmap.bitmap_ui, builtin.in, builtin.in, (bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.write).put_bits(builtin.in, builtin.in, (bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo), infinite, can_loop).
+:- pragma termination_info((bit_buffer.write).put_byte(builtin.in, (bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo), infinite, can_loop).
+
+:- pragma exceptions(predicate, (bit_buffer.write).(finalize), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bit_buffer.write).finalize_to_bitmap, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bit_buffer.write).flush, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bit_buffer.write).new, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bit_buffer.write).new_bitmap_builder, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bit_buffer.write).num_bits_to_byte_boundary, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bit_buffer.write).num_buffered_bits, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bit_buffer.write).put_bit, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bit_buffer.write).put_bitmap, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bit_buffer.write).put_bitmap, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bit_buffer.write).put_bitmap_2, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bit_buffer.write).put_bits, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bit_buffer.write).put_byte, 3, 0, may_throw(user_exception)).
