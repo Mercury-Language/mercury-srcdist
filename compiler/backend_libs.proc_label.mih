@@ -1,0 +1,69 @@
+/*
+** Automatically generated from `proc_label.m'
+** by the Mercury compiler,
+** version rotd-2025-09-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module backend_libs.proc_label.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_backend_libs__proc_label
+#define MR_HEADER_GUARD_backend_libs__proc_label
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BACKEND_LIBS__PROC_LABEL_DECL_GUARD
+#define BACKEND_LIBS__PROC_LABEL_DECL_GUARD
+#include "backend_libs.mih"
+
+#endif
+
+
+
+MR_Word MR_CALL 
+backend_libs__proc_label__make_proc_label_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_Word MR_CALL 
+backend_libs__proc_label__make_proc_label_from_rtti_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+backend_libs__proc_label__make_uni_label_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+void mercury__backend_libs__proc_label__init(void);
+void mercury__backend_libs__proc_label__init_type_tables(void);
+void mercury__backend_libs__proc_label__init_debugger(void);
+const char *mercury__backend_libs__proc_label__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_backend_libs.proc_label
+
+// :- end_interface backend_libs.proc_label.

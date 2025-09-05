@@ -1,0 +1,29 @@
+:- module analysis.operations.
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module analysis.framework.
+:- import_module hlds.hlds_module.
+:- import_module libs.globals.
+:- import_module mdbcomp.sym_name.
+:- import_module parse_tree.error_spec.
+:- type analysis_info.
+:- type analysis_request.
+:- type any_call.
+:- type imdg_arc.
+:- type no_func_info.
+:- instance call_pattern(analysis.operations.no_func_info, analysis.operations.any_call).
+:- instance partial_order(analysis.operations.no_func_info, analysis.operations.any_call).
+:- instance to_term(analysis.operations.any_call).
+:- type_representation(analysis_info, is_word_aligned_ptr).
+:- type_representation(analysis_request, is_word_aligned_ptr).
+:- type_representation(any_call, du_repn(direct_dummy("any_call",  no_c_j_cs))).
+:- type_representation(imdg_arc, is_word_aligned_ptr).
+:- type_representation(no_func_info, du_repn(direct_dummy("no_func_info",  no_c_j_cs))).

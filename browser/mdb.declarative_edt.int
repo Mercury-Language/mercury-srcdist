@@ -1,0 +1,171 @@
+:- module mdb.declarative_edt.
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module pair.
+:- use_module unit.
+:- use_module mdb.browser_info.
+:- use_module mdb.declarative_debugger.
+:- use_module mdb.declarative_oracle.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.program_representation.
+:- use_module mdbcomp.rtti_access.
+:- type find_origin_response
+    --->    not_found 
+    ;       origin(
+                 mdb.declarative_edt.suspect_id,
+                 mdbcomp.program_representation.arg_pos,
+                 mdbcomp.program_representation.term_path,
+                 mdb.declarative_edt.subterm_mode
+            )
+    ;       primitive_op(
+                 mdb.declarative_edt.suspect_id,
+                 string,
+                 int,
+                 mdb.declarative_edt.primitive_op_type,
+                 bool.bool
+            )
+    ;       require_explicit_subtree 
+    ;       require_explicit_supertree .
+:- type maybe_found_descendant
+    --->    found(
+                 mdb.declarative_edt.suspect_id
+            )
+    ;       not_found 
+    ;       require_explicit_subtree(
+                 mdb.declarative_edt.suspect_id
+            ).
+:- type primitive_op_type
+    --->    primop_foreign_proc 
+    ;       primop_builtin_call 
+    ;       primop_untraced_call 
+    ;       primop_unification .
+:- type search_space(T).
+:- type subterm_mode
+    --->    subterm_in 
+    ;       subterm_out .
+:- type subterm_origin(T)
+    --->    origin_output(
+                 T,
+                 mdbcomp.program_representation.arg_pos,
+                 mdbcomp.program_representation.term_path
+            )
+    ;       origin_input(
+                 mdbcomp.program_representation.arg_pos,
+                 mdbcomp.program_representation.term_path
+            )
+    ;       origin_primitive_op(
+                 string,
+                 int,
+                 mdb.declarative_edt.primitive_op_type
+            )
+    ;       origin_not_found 
+    ;       origin_require_explicit_subtree .
+:- type suspect_id.
+:- type weighting_heuristic
+    --->    number_of_events 
+    ;       suspicion .
+:- typeclass mercury_edt(S, T) where [
+	pred edt_question(S, T, mdb.declarative_debugger.decl_question(T)),
+	mode edt_question(builtin.in, builtin.in, builtin.out) is det,
+	pred edt_get_e_bug(S, T, mdb.declarative_debugger.decl_e_bug),
+	mode edt_get_e_bug(builtin.in, builtin.in, builtin.out) is det,
+	pred edt_get_i_bug(S, T, T, mdb.declarative_debugger.decl_i_bug),
+	mode edt_get_i_bug(builtin.in, builtin.in, builtin.in, builtin.out) is det,
+	pred edt_children(S, T, list.list(T)),
+	mode edt_children(builtin.in, builtin.in, builtin.out) is semidet,
+	pred edt_parent(S, T, T),
+	mode edt_parent(builtin.in, builtin.in, builtin.out) is semidet,
+	pred edt_dependency(S, T, mdbcomp.program_representation.arg_pos, mdbcomp.program_representation.term_path, mdb.declarative_edt.subterm_mode, mdb.declarative_edt.subterm_origin(T)),
+	mode edt_dependency(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det,
+	pred edt_subterm_mode(S, T, mdbcomp.program_representation.arg_pos, mdbcomp.program_representation.term_path, mdb.declarative_edt.subterm_mode),
+	mode edt_subterm_mode(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det,
+	pred edt_is_implicit_root(S, T),
+	mode edt_is_implicit_root(builtin.in, builtin.in) is semidet,
+	pred edt_same_nodes(S, T, T),
+	mode edt_same_nodes(builtin.in, builtin.in, builtin.in) is semidet,
+	pred edt_topmost_node(S, T),
+	mode edt_topmost_node(builtin.in, builtin.in) is semidet,
+	pred edt_number_of_events(S, T, int, int),
+	mode edt_number_of_events(builtin.in, builtin.in, builtin.out, builtin.out) is det,
+	pred edt_subtree_suspicion(S, T, int, int),
+	mode edt_subtree_suspicion(builtin.in, builtin.in, builtin.out, builtin.out) is det,
+	pred edt_context(S, T, pair.pair(string, int), maybe.maybe(pair.pair(string, int))),
+	mode edt_context(builtin.in, builtin.in, builtin.out, builtin.out) is semidet,
+	func edt_proc_label(S, T) = mdbcomp.prim_data.proc_label,
+	func edt_arg_pos_to_user_arg_num(S, T, mdbcomp.program_representation.arg_pos) = int
+].
+:- pred assert_suspect_is_correct(mdb.declarative_edt.suspect_id, mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T)).
+:- mode assert_suspect_is_correct(builtin.in, builtin.in, builtin.out) is det.
+:- pred assert_suspect_is_erroneous(mdb.declarative_edt.suspect_id, mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T)).
+:- mode assert_suspect_is_erroneous(builtin.in, builtin.in, builtin.out) is det.
+:- pred assert_suspect_is_inadmissible(mdb.declarative_edt.suspect_id, mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T)).
+:- mode assert_suspect_is_inadmissible(builtin.in, builtin.in, builtin.out) is det.
+:- pred children(S, mdb.declarative_oracle.oracle_state, mdb.declarative_edt.suspect_id, mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T), list.list(mdb.declarative_edt.suspect_id)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode children(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is semidet.
+:- pred choose_skipped_suspect(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id).
+:- mode choose_skipped_suspect(builtin.in, builtin.out) is semidet.
+:- func empty_search_space = mdb.declarative_edt.search_space(T).
+:- pred extend_search_space_upwards(S, mdb.declarative_oracle.oracle_state, mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode extend_search_space_upwards(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred find_subterm_origin(S, mdb.declarative_oracle.oracle_state, mdb.declarative_edt.suspect_id, mdbcomp.program_representation.arg_pos, mdbcomp.program_representation.term_path, mdb.browser_info.how_track_subterm, map.map(mdbcomp.rtti_access.proc_layout, unit.unit), map.map(mdbcomp.rtti_access.proc_layout, unit.unit), mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T), mdb.declarative_edt.find_origin_response) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode find_subterm_origin(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.out) is det.
+:- pred first_unknown_descendant(S, mdb.declarative_oracle.oracle_state, mdb.declarative_edt.suspect_id, mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T), mdb.declarative_edt.maybe_found_descendant) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode first_unknown_descendant(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- func get_current_maybe_weighting(mdb.declarative_edt.search_space(T)) = maybe.maybe(mdb.declarative_edt.weighting_heuristic).
+:- func get_edt_node(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id) = T.
+:- pred get_path(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id, mdb.declarative_edt.suspect_id, list.list(mdb.declarative_edt.suspect_id)).
+:- mode get_path(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- func get_proc_label_for_suspect(S, mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id) = mdbcomp.prim_data.proc_label <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- func get_weight(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id) = int.
+:- pred give_up_subterm_tracking(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id, mdb.declarative_edt.subterm_mode).
+:- mode give_up_subterm_tracking(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred ignore_suspect(S, mdb.declarative_edt.suspect_id, mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode ignore_suspect(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred incorporate_explicit_subtree(mdb.declarative_edt.suspect_id, T, mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T)).
+:- mode incorporate_explicit_subtree(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred incorporate_explicit_supertree(S, mdb.declarative_oracle.oracle_state, T, mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode incorporate_explicit_supertree(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred initialise_search_space(S, maybe.maybe(mdb.declarative_edt.weighting_heuristic), T, mdb.declarative_edt.search_space(T)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode initialise_search_space(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred maybe_check_search_space_consistency(S, mdb.declarative_edt.search_space(T), string) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode maybe_check_search_space_consistency(builtin.in, builtin.in, builtin.in) is det.
+:- pred non_ignored_descendants(S, mdb.declarative_oracle.oracle_state, list.list(mdb.declarative_edt.suspect_id), mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T), list.list(mdb.declarative_edt.suspect_id)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode non_ignored_descendants(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is semidet.
+:- pred parent(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id, mdb.declarative_edt.suspect_id).
+:- mode parent(builtin.in, builtin.in, builtin.out) is semidet.
+:- func primitive_op_type_to_string(mdb.declarative_edt.primitive_op_type) = string.
+:- pred revise_root(S, mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode revise_root(builtin.in, builtin.in, builtin.out) is det.
+:- pred root(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id).
+:- mode root(builtin.in, builtin.out) is semidet.
+:- pred skip_suspect(mdb.declarative_edt.suspect_id, mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T)).
+:- mode skip_suspect(builtin.in, builtin.in, builtin.out) is det.
+:- pred suspect_correct_or_inadmissible(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id).
+:- mode suspect_correct_or_inadmissible(builtin.in, builtin.in) is semidet.
+:- func suspect_depth(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id) = int.
+:- pred suspect_erroneous(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id).
+:- mode suspect_erroneous(builtin.in, builtin.in) is semidet.
+:- pred suspect_ignored(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id).
+:- mode suspect_ignored(builtin.in, builtin.in) is semidet.
+:- pred suspect_in_excluded_complement(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id).
+:- mode suspect_in_excluded_complement(builtin.in, builtin.in) is semidet.
+:- pred suspect_in_excluded_subtree(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id).
+:- mode suspect_in_excluded_subtree(builtin.in, builtin.in) is semidet.
+:- pred suspect_inadmissible(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id).
+:- mode suspect_inadmissible(builtin.in, builtin.in) is semidet.
+:- pred suspect_skipped(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id).
+:- mode suspect_skipped(builtin.in, builtin.in) is semidet.
+:- pred suspect_unknown(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id).
+:- mode suspect_unknown(builtin.in, builtin.in) is semidet.
+:- pred topmost_det(mdb.declarative_edt.search_space(T), mdb.declarative_edt.suspect_id).
+:- mode topmost_det(builtin.in, builtin.out) is det.
+:- pred travel_up(mdb.declarative_edt.search_space(V_1), mdb.declarative_edt.suspect_id, int, mdb.declarative_edt.suspect_id).
+:- mode travel_up(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred update_weighting_heuristic(S, mdb.declarative_edt.weighting_heuristic, mdb.declarative_edt.search_space(T), mdb.declarative_edt.search_space(T)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode update_weighting_heuristic(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- implementation.
+:- type suspect_id == int.
