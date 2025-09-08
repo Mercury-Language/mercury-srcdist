@@ -1,0 +1,14 @@
+module(2, "rtree.m",
+	rtree,
+	{},
+	{builtin, list, private_builtin},
+	{float, int, require},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

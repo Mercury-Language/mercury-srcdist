@@ -1,0 +1,4 @@
+:- module prolog.
+:- interface.
+:- type univ_result.
+:- type_representation(univ_result, is_eqv_to(pair(string, list(univ)))).

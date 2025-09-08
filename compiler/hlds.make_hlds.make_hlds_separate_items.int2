@@ -1,0 +1,6 @@
+:- module (hlds.make_hlds).make_hlds_separate_items.
+:- interface.
+:- use_module list.
+:- use_module hlds.status.
+:- type ims_tuple_item(T) == {hlds.status.item_mercury_status, T}.
+:- type ims_tuple_list(T) == list.list(hlds.make_hlds.make_hlds_separate_items.ims_tuple_item(T)).
