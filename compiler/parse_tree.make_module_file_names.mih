@@ -1,0 +1,155 @@
+/*
+** Automatically generated from `make_module_file_names.m'
+** by the Mercury compiler,
+** version rotd-2025-09-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.make_module_file_names.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__make_module_file_names
+#define MR_HEADER_GUARD_parse_tree__make_module_file_names
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__MAKE_MODULE_FILE_NAMES_DECL_GUARD
+#define PARSE_TREE__MAKE_MODULE_FILE_NAMES_DECL_GUARD
+#include "parse_tree.mih"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word parse_tree__make_module_file_names__mutable_variable_module_name_cache_stats;
+#else
+    extern MR_Word parse_tree__make_module_file_names__mutable_variable_module_name_cache_stats;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock parse_tree__make_module_file_names__mutable_variable_module_name_cache_stats_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word parse_tree__make_module_file_names__mutable_variable_ext_cache_stats;
+#else
+    extern MR_Word parse_tree__make_module_file_names__mutable_variable_ext_cache_stats;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock parse_tree__make_module_file_names__mutable_variable_ext_cache_stats_lock;
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__make_module_file_names__parse_tree__make_module_file_names__type_ctor_info_cache_stats_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__make_module_file_names__parse_tree__make_module_file_names__type_ctor_info_ext_stats_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__make_module_file_names__parse_tree__make_module_file_names__type_ctor_info_module_file_name_cache_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__make_module_file_names__parse_tree__make_module_file_names__type_ctor_info_module_name_info_0;
+
+void MR_CALL 
+parse_tree__make_module_file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_110_118_101_114_116_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_102_105_108_101_95_110_97_109_101_95_95_91_50_93_95_48_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__make_module_file_names__convert_module_name_list_to_file_names_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__make_module_file_names__convert_module_name_set_to_file_name_group_7_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+parse_tree__make_module_file_names__convert_module_name_set_to_file_names_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__make_module_file_names__convert_module_name_to_file_name_7_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+parse_tree__make_module_file_names__record_write_deps_file_cache_stats_2_p_0(void);
+
+MR_Word MR_CALL 
+parse_tree__make_module_file_names__init_module_file_name_cache_0_f_0(void);
+
+void MR_CALL 
+parse_tree__make_module_file_names____Compare____module_file_name_cache_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__make_module_file_names____Compare____module_name_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__make_module_file_names____Unify____module_file_name_cache_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__make_module_file_names____Unify____module_name_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__make_module_file_names__init(void);
+void mercury__parse_tree__make_module_file_names__init_type_tables(void);
+void mercury__parse_tree__make_module_file_names__init_debugger(void);
+void mercury__parse_tree__make_module_file_names__required_init(void);
+const char *mercury__parse_tree__make_module_file_names__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.make_module_file_names
+
+// :- end_interface parse_tree.make_module_file_names.

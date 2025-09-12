@@ -1,0 +1,44 @@
+:- module backend_libs.foreign.
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module hlds.hlds_data.
+:- use_module hlds.hlds_module.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_foreign.
+:- type foreign_type_and_assertions
+    --->    foreign_type_and_assertions(
+                 mdbcomp.sym_name.sym_name,
+                 parse_tree.prog_data.foreign_type_assertions
+            ).
+:- func decl_guard(mdbcomp.sym_name.sym_name) = string.
+:- func exported_builtin_type_to_c_string(parse_tree.prog_data.builtin_type) = string.
+:- func exported_builtin_type_to_csharp_string(parse_tree.prog_data.builtin_type) = string.
+:- func exported_builtin_type_to_java_string(parse_tree.prog_data.builtin_type) = string.
+:- func exported_type_to_c_string(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type) = string.
+:- func exported_type_to_string(hlds.hlds_module.module_info, libs.globals.foreign_language, parse_tree.prog_data.mer_type) = string.
+:- pred filter_bodys(libs.globals.foreign_language, list.list(parse_tree.prog_foreign.foreign_body_code), list.list(parse_tree.prog_foreign.foreign_body_code), list.list(parse_tree.prog_foreign.foreign_body_code)).
+:- mode filter_bodys(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred filter_decls(libs.globals.foreign_language, list.list(parse_tree.prog_foreign.foreign_decl_code), list.list(parse_tree.prog_foreign.foreign_decl_code), list.list(parse_tree.prog_foreign.foreign_decl_code)).
+:- mode filter_decls(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred filter_exports(libs.globals.foreign_language, list.list(hlds.hlds_module.pragma_exported_proc), list.list(hlds.hlds_module.pragma_exported_proc), list.list(hlds.hlds_module.pragma_exported_proc)).
+:- mode filter_exports(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred foreign_type_body_has_user_defined_eq_comp_pred(hlds.hlds_module.module_info, hlds.hlds_data.foreign_type_body, parse_tree.prog_data.noncanonical).
+:- mode foreign_type_body_has_user_defined_eq_comp_pred(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred foreign_type_body_to_exported_type(hlds.hlds_module.module_info, hlds.hlds_data.foreign_type_body, mdbcomp.sym_name.sym_name, parse_tree.prog_data.maybe_canonical, parse_tree.prog_data.foreign_type_assertions).
+:- mode foreign_type_body_to_exported_type(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- func foreign_type_to_c_string(backend_libs.foreign.foreign_type_and_assertions) = string.
+:- pred have_foreign_type_for_backend(libs.globals.compilation_target, hlds.hlds_data.foreign_type_body, bool.bool).
+:- mode have_foreign_type_for_backend(builtin.in, builtin.in, builtin.out) is det.
+:- func is_this_a_foreign_type(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type) = maybe.maybe(backend_libs.foreign.foreign_type_and_assertions).
+:- func maybe_foreign_type_to_c_string(parse_tree.prog_data.mer_type, maybe.maybe(backend_libs.foreign.foreign_type_and_assertions)) = string.
+:- func maybe_foreign_type_to_csharp_string(parse_tree.prog_data.mer_type, maybe.maybe(backend_libs.foreign.foreign_type_and_assertions)) = string.
+:- func maybe_foreign_type_to_java_string(parse_tree.prog_data.mer_type, maybe.maybe(backend_libs.foreign.foreign_type_and_assertions)) = string.
+:- func maybe_foreign_type_to_string(libs.globals.foreign_language, parse_tree.prog_data.mer_type, maybe.maybe(backend_libs.foreign.foreign_type_and_assertions)) = string.
