@@ -1,0 +1,14 @@
+module(2, "mutvar.m",
+	mutvar,
+	{},
+	{builtin, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - mutvar, "C#" - mutvar, "Java" - mutvar},
+	no_foreign_export,
+	no_main,
+	{}
+).

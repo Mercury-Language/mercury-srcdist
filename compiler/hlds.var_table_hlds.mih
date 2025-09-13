@@ -1,0 +1,106 @@
+/*
+** Automatically generated from `var_table_hlds.m'
+** by the Mercury compiler,
+** version rotd-2025-09-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.var_table_hlds.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__var_table_hlds
+#define MR_HEADER_GUARD_hlds__var_table_hlds
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__VAR_TABLE_HLDS_DECL_GUARD
+#define HLDS__VAR_TABLE_HLDS_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+void MR_CALL 
+hlds__var_table_hlds__corresponding_vars_types_to_var_table_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__var_table_hlds__create_fresh_named_var_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__var_table_hlds__create_fresh_var_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__var_table_hlds__create_fresh_vars_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__var_table_hlds__make_var_table_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__var_table_hlds__split_var_table_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__var_table_hlds__vars_types_to_var_table_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void mercury__hlds__var_table_hlds__init(void);
+void mercury__hlds__var_table_hlds__init_type_tables(void);
+void mercury__hlds__var_table_hlds__init_debugger(void);
+const char *mercury__hlds__var_table_hlds__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.var_table_hlds
+
+// :- end_interface hlds.var_table_hlds.

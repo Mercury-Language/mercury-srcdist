@@ -1,0 +1,8 @@
+test_feature_set.m:008: Error: this module must be compiled in a grade that
+test_feature_set.m:008:   supports concurrent execution.
+test_feature_set.m:008: Error: this module must be compiled in a grade that
+test_feature_set.m:008:   supports memoisation.
+test_feature_set.m:008: Error: this module must be compiled in a grade that
+test_feature_set.m:008:   uses single precision floats.
+test_feature_set.m:008:   Grades that use single precision floats contain the
+test_feature_set.m:008:   grade modifier `spf'.
