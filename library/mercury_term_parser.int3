@@ -1,0 +1,6 @@
+:- module mercury_term_parser.
+:- interface.
+:- type read_term.
+:- type read_term(T).
+:- type_representation(nest_stack, is_eqv_to(stack(nest_open))).
+:- type_representation(read_term, is_eqv_to(mercury_term_parser.read_term(generic))).
