@@ -1,0 +1,45 @@
+// Automatically generated from `string.m'
+// by the Mercury compiler,
+// version rotd-2025-09-16
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef STRING_MH
+#define STRING_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef STRING_DECL_GUARD
+#define STRING_DECL_GUARD
+#define UTF8 0
+#define UTF16 1
+
+#include <ctype.h>
+#include <string.h>
+#include <stdio.h>
+#include <inttypes.h>
+
+#include "mercury_string.h"   // for MR_allocate_aligned_string*() etc.
+#include "mercury_tags.h"     // for MR_list_*()
+
+
+#endif
+MR_bool ML_string_to_float(MR_String, MR_Float *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* STRING_MH */

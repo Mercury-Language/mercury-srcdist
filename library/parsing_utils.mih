@@ -1,0 +1,580 @@
+/*
+** Automatically generated from `parsing_utils.m'
+** by the Mercury compiler,
+** version rotd-2025-09-16
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parsing_utils.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parsing_utils
+#define MR_HEADER_GUARD_parsing_utils
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSING_UTILS_DECL_GUARD
+#define PARSING_UTILS_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_fail_message_info_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_line_numbers_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_parse_result_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_parser_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_parser_with_state_2;
+
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_ps_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_skip_whitespace_pred_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_src_0;
+
+void MR_CALL 
+mercury__parsing_utils__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_117_114_114_101_110_116_95_111_102_102_115_101_116_95_95_91_49_93_95_48_4_p_0(
+  MR_Integer * param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_97_105_108_95_119_105_116_104_95_109_101_115_115_97_103_101_95_95_91_54_93_95_48_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Box * param_5,
+  MR_Integer * param_6);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__brackets_7_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box * param_6,
+  MR_Integer param_7,
+  MR_Integer * param_8);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__brackets_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Integer param_10,
+  MR_Integer * param_11);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__char_in_class_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Char * param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__comma_separated_list_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Integer param_5,
+  MR_Integer * param_6);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__comma_separated_list_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Integer param_8,
+  MR_Integer * param_9);
+
+void MR_CALL 
+mercury__parsing_utils__current_offset_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__eof_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__fail_with_message_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Box * param_4,
+  MR_Integer param_5,
+  MR_Integer * param_6);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__fail_with_message_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Box * param_5,
+  MR_Integer param_6,
+  MR_Integer * param_7);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__float_literal_4_p_0(
+  MR_Word param_1,
+  MR_Float * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__float_literal_as_string_4_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__parsing_utils__get_skip_whitespace_pred_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__identifier_6_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer param_5,
+  MR_Integer * param_6);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__identifier_2_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__ikeyword_6_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__imatch_string_4_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__parsing_utils__input_string_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__input_substring_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_String * param_4);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__int_literal_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__int_literal_as_string_4_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__keyword_6_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__match_string_4_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__parsing_utils__new_src_and_ps_3_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__parsing_utils__new_src_and_ps_4_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__next_char_4_p_0(
+  MR_Word param_1,
+  MR_Char * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__next_char_no_progress_4_p_0(
+  MR_Word param_1,
+  MR_Char * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__parsing_utils__offset_to_line_number_and_position_4_p_0(
+  MR_ArrayPtr param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__parsing_utils__offset_to_line_number_and_position_2_6_p_0(
+  MR_ArrayPtr param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__one_or_more_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Integer param_5,
+  MR_Integer * param_6);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__one_or_more_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Integer param_8,
+  MR_Integer * param_9);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__optional_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Integer param_5,
+  MR_Integer * param_6);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__optional_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Integer param_8,
+  MR_Integer * param_9);
+
+void MR_CALL 
+mercury__parsing_utils__parse_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__parsing_utils__parse_4_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__punct_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__separated_list_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Integer param_6,
+  MR_Integer * param_7);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__separated_list_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Integer param_9,
+  MR_Integer * param_10);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__skip_to_eol_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__skip_whitespace_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__parsing_utils__src_to_line_numbers_loop_4_p_0(
+  MR_String param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__string_literal_5_p_0(
+  MR_Char param_1,
+  MR_Word param_2,
+  MR_String * param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__string_literal_2_5_p_0(
+  MR_Word param_1,
+  MR_Char param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__parsing_utils__unsafe_skip_ws_pred_cast_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__whitespace_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__zero_or_more_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Integer param_5,
+  MR_Integer * param_6);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__zero_or_more_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Integer param_8,
+  MR_Integer * param_9);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__zero_or_more_rev_acc_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Integer param_6,
+  MR_Integer * param_7);
+
+MR_bool MR_CALL 
+mercury__parsing_utils__zero_or_more_rev_acc_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Integer param_9,
+  MR_Integer * param_10);
+
+MR_ArrayPtr MR_CALL 
+mercury__parsing_utils__src_to_line_numbers_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__parsing_utils____Compare____fail_message_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__parsing_utils____Compare____line_numbers_0_0(
+  MR_Word * param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr param_3);
+
+void MR_CALL 
+mercury__parsing_utils____Compare____parse_result_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__parsing_utils____Compare____parser_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__parsing_utils____Compare____parser_with_state_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+mercury__parsing_utils____Compare____ps_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__parsing_utils____Compare____skip_whitespace_pred_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__parsing_utils____Compare____src_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____fail_message_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____line_numbers_0_0(
+  MR_ArrayPtr param_1,
+  MR_ArrayPtr param_2);
+
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____parse_result_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____parser_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____parser_with_state_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____ps_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____skip_whitespace_pred_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____src_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parsing_utils__init(void);
+void mercury__parsing_utils__init_type_tables(void);
+void mercury__parsing_utils__init_debugger(void);
+const char *mercury__parsing_utils__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parsing_utils
+
+// :- end_interface parsing_utils.
