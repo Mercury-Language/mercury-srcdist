@@ -1,0 +1,41 @@
+:- module parse_tree.convert_parse_tree.
+:- interface.
+:- type parse_tree_int
+    --->    parse_tree_int(
+                 (parse_tree.convert_parse_tree).pti_module_name :: mdbcomp.sym_name.module_name,
+                 (parse_tree.convert_parse_tree).pti_int_file_kind :: parse_tree.file_kind.int_file_kind,
+                 (parse_tree.convert_parse_tree).pti_module_name_context :: parse_tree.prog_data.prog_context,
+                 (parse_tree.convert_parse_tree).pti_maybe_version_numbers :: parse_tree.prog_parse_tree.maybe_version_numbers,
+                 (parse_tree.convert_parse_tree).pti_int_includes :: list.list(parse_tree.prog_item.item_include),
+                 (parse_tree.convert_parse_tree).pti_imp_includes :: list.list(parse_tree.prog_item.item_include),
+                 (parse_tree.convert_parse_tree).pti_int_avails :: list.list(parse_tree.prog_item.item_avail),
+                 (parse_tree.convert_parse_tree).pti_imp_avails :: list.list(parse_tree.prog_item.item_avail),
+                 (parse_tree.convert_parse_tree).pti_int_fims :: list.list(parse_tree.prog_item.item_fim),
+                 (parse_tree.convert_parse_tree).pti_imp_fims :: list.list(parse_tree.prog_item.item_fim),
+                 (parse_tree.convert_parse_tree).pti_int_items :: list.list(parse_tree.prog_item.item),
+                 (parse_tree.convert_parse_tree).pti_imp_items :: list.list(parse_tree.prog_item.item)
+            ).
+:- type parse_tree_opt
+    --->    parse_tree_opt(
+                 (parse_tree.convert_parse_tree).pto_module_name :: mdbcomp.sym_name.module_name,
+                 (parse_tree.convert_parse_tree).pto_opt_file_kind :: parse_tree.file_kind.opt_file_kind,
+                 (parse_tree.convert_parse_tree).pto_module_name_context :: parse_tree.prog_data.prog_context,
+                 (parse_tree.convert_parse_tree).pto_uses :: list.list(parse_tree.prog_item.avail_use_info),
+                 (parse_tree.convert_parse_tree).pto_fims :: list.list(parse_tree.prog_item.item_fim),
+                 (parse_tree.convert_parse_tree).pto_items :: list.list(parse_tree.prog_item.item)
+            ).
+:- type raw_compilation_unit
+    --->    raw_compilation_unit(
+                 (parse_tree.convert_parse_tree).rcu_module_name :: mdbcomp.sym_name.module_name,
+                 (parse_tree.convert_parse_tree).rcu_module_name_context :: parse_tree.prog_data.prog_context,
+                 (parse_tree.convert_parse_tree).rcu_raw_item_blocks :: list.list(parse_tree.convert_parse_tree.raw_item_block)
+            ).
+:- type raw_item_block
+    --->    item_block(
+                 mdbcomp.sym_name.module_name,
+                 parse_tree.prog_parse_tree.module_section,
+                 list.list(parse_tree.prog_item.item_include),
+                 list.list(parse_tree.prog_item.item_avail),
+                 list.list(parse_tree.prog_item.item_fim),
+                 list.list(parse_tree.prog_item.item)
+            ).

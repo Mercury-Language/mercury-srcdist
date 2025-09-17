@@ -1,0 +1,21 @@
+:- module make.prereqs_cache.
+:- interface.
+:- type dependency_file_deps_result.
+:- type deps_result(T).
+:- type module_deps_result.
+:- type module_to_dep_file_set_cache.
+:- type module_to_module_set_cache.
+:- type process_modules_where
+	where	type_is_abstract_enum(1).
+:- type trans_deps_cache.
+:- type trans_deps_key.
+:- type transitive_dependencies_type
+	where	type_is_abstract_enum(2).
+:- type_representation(dependency_file_deps_result, is_eqv_to(make.prereqs_cache.deps_result(dependency_file_index))).
+:- type_representation(module_deps_result, is_eqv_to(make.prereqs_cache.deps_result(module_index))).
+:- type_representation(module_to_dep_file_set_cache, is_eqv_to(map(module_index, make.prereqs_cache.dependency_file_deps_result))).
+:- type_representation(module_to_module_set_cache, is_eqv_to(map(module_index, make.prereqs_cache.module_deps_result))).
+:- type_representation(process_modules_where, du_repn(enum("process_only_modules_in_cur_dir", "process_modules_anywhere", [],  no_c_j_cs))).
+:- type_representation(trans_deps_cache, is_eqv_to(map(make.prereqs_cache.trans_deps_key, make.prereqs_cache.module_deps_result))).
+:- type_representation(trans_deps_key, is_word_aligned_ptr).
+:- type_representation(transitive_dependencies_type, du_repn(enum("interface_imports", "all_imports", ["all_dependencies"],  no_c_j_cs))).

@@ -1,0 +1,87 @@
+:- module message.
+:- interface.
+:- use_module cord.
+:- use_module io.
+:- use_module mdbcomp.
+:- use_module profile.
+:- use_module mdbcomp.goal_path.
+:- use_module mdbcomp.program_representation.
+:- type message
+    --->    message(
+                 message.message_location :: message.program_location,
+                 message.message_type :: message.message_type
+            ).
+:- type message_level
+    --->    message_info 
+    ;       message_notice 
+    ;       message_warning 
+    ;       message_error .
+:- type message_type
+    --->    info_found_candidate_conjunction 
+    ;       info_found_conjs_above_callsite_threshold(
+                 int
+            )
+    ;       info_found_pushed_conjs_above_callsite_threshold 
+    ;       info_split_conjunction_into_partitions(
+                 int
+            )
+    ;       info_found_n_conjunctions_with_positive_speedup(
+                 int
+            )
+    ;       notice_duplicate_instantiation(
+                 int
+            )
+    ;       notice_callpair_has_more_than_one_dependant_var 
+    ;       notice_partition_does_not_have_costly_calls(
+                 int,
+                 int
+            )
+    ;       notice_candidate_conjunction_not_det(
+                 mdbcomp.program_representation.detism_rep
+            )
+    ;       warning_cannot_lookup_proc_defn 
+    ;       warning_cannot_compute_procrep_coverage_fallback(
+                 string
+            )
+    ;       warning_cannot_compute_cost_of_recursive_calls(
+                 string
+            )
+    ;       warning_cannot_compute_first_use_time(
+                 string
+            )
+    ;       error_extra_proc_dynamics_in_clique_proc 
+    ;       error_cannot_lookup_coverage_points 
+    ;       error_exception_thrown(
+                 string
+            ).
+:- type program_location
+    --->    pl_proc(
+                 mdbcomp.program_representation.string_proc_label
+            )
+    ;       pl_goal(
+                 mdbcomp.program_representation.string_proc_label,
+                 mdbcomp.goal_path.reverse_goal_path
+            )
+    ;       pl_clique(
+                 profile.clique_ptr
+            )
+    ;       pl_csd(
+                 profile.call_site_dynamic_ptr
+            ).
+:- pred append_message(message.program_location, message.message_type, cord.cord(message.message), cord.cord(message.message)).
+:- mode append_message(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func default_verbosity_level = int.
+:- func indent(int) = cord.cord(string).
+:- func indent_size(int) = int.
+:- pred location_to_string(int, message.program_location, cord.cord(string)).
+:- mode location_to_string(builtin.in, builtin.in, builtin.out) is det.
+:- func message_get_level(message.message) = message.message_level.
+:- func message_level_to_int(message.message_level) = int.
+:- pred message_to_string(message.message, string).
+:- mode message_to_string(builtin.in, builtin.out) is det.
+:- func nl = cord.cord(string).
+:- func nl_indent(int) = cord.cord(string).
+:- pred set_verbosity_level(int, io.io, io.io).
+:- mode set_verbosity_level(builtin.in, builtin.di, builtin.uo) is det.
+:- pred write_out_messages(io.text_output_stream, cord.cord(message.message), io.io, io.io).
+:- mode write_out_messages(builtin.in, builtin.in, builtin.di, builtin.uo) is det.

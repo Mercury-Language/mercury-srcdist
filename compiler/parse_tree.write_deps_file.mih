@@ -1,0 +1,77 @@
+/*
+** Automatically generated from `write_deps_file.m'
+** by the Mercury compiler,
+** version rotd-2025-09-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.write_deps_file.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__write_deps_file
+#define MR_HEADER_GUARD_parse_tree__write_deps_file
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__WRITE_DEPS_FILE_DECL_GUARD
+#define PARSE_TREE__WRITE_DEPS_FILE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+void MR_CALL 
+parse_tree__write_deps_file__generate_and_write_d_file_gendep_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__write_deps_file__generate_and_write_d_file_hlds_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+parse_tree__write_deps_file__generate_and_write_dep_file_gendep_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void mercury__parse_tree__write_deps_file__init(void);
+void mercury__parse_tree__write_deps_file__init_type_tables(void);
+void mercury__parse_tree__write_deps_file__init_debugger(void);
+const char *mercury__parse_tree__write_deps_file__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.write_deps_file
+
+// :- end_interface parse_tree.write_deps_file.

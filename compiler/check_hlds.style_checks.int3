@@ -1,0 +1,6 @@
+:- module check_hlds.style_checks.
+:- interface.
+:- type maybe_want_style_warnings.
+:- type warnings_we_want.
+:- type_representation(allowed_non_contiguity, is_eqv_to(list(set(pred_id)))).
+:- type_representation(warnings_we_want, is_word_aligned_ptr).

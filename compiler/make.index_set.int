@@ -1,0 +1,52 @@
+:- module make.index_set.
+:- interface.
+:- use_module enum.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module sparse_bitset.
+:- use_module libs.file_util.
+:- use_module make.make_info.
+:- use_module mdbcomp.sym_name.
+:- type dependency_file_index.
+:- type deps_set(T) == sparse_bitset.sparse_bitset(T).
+:- type module_index.
+:- instance (enum.uenum(make.index_set.dependency_file_index)).
+:- instance (enum.uenum(make.index_set.module_index)).
+:- pred dependency_file_index_set_to_plain_set(make.make_info.make_info, make.index_set.deps_set(make.index_set.dependency_file_index), set.set(make.make_info.dependency_file)).
+:- mode dependency_file_index_set_to_plain_set(builtin.in, builtin.in, builtin.out) is det.
+:- pred dependency_file_to_index(make.make_info.dependency_file_with_module_index, make.index_set.dependency_file_index, make.make_info.make_info, make.make_info.make_info).
+:- mode dependency_file_to_index(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred dependency_files_to_index_set(list.list(make.make_info.dependency_file), make.index_set.deps_set(make.index_set.dependency_file_index), make.make_info.make_info, make.make_info.make_info).
+:- mode dependency_files_to_index_set(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred deps_set_delete(T, make.index_set.deps_set(T), make.index_set.deps_set(T)) <= (enum.uenum(T)).
+:- mode deps_set_delete(builtin.in, builtin.in, builtin.out) is det.
+:- func deps_set_difference(make.index_set.deps_set(T), make.index_set.deps_set(T)) = make.index_set.deps_set(T).
+:- pred deps_set_foldl(pred(T, A, A), make.index_set.deps_set(T), A, A) <= (enum.uenum(T)).
+:- mode deps_set_foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- pred deps_set_foldl2(pred(T, A, A, B, B), make.index_set.deps_set(T), A, A, B, B) <= (enum.uenum(T)).
+:- mode deps_set_foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func deps_set_init = make.index_set.deps_set(T).
+:- pred deps_set_insert(T, make.index_set.deps_set(T), make.index_set.deps_set(T)) <= (enum.uenum(T)).
+:- mode deps_set_insert(builtin.in, builtin.in, builtin.out) is det.
+:- pred deps_set_member(T, make.index_set.deps_set(T)) <= (enum.uenum(T)).
+:- mode deps_set_member(builtin.in, builtin.in) is semidet.
+:- func deps_set_to_sorted_list(make.index_set.deps_set(T)) = list.list(T) <= (enum.uenum(T)).
+:- pred deps_set_union(make.index_set.deps_set(T), make.index_set.deps_set(T), make.index_set.deps_set(T)).
+:- mode deps_set_union(builtin.in, builtin.in, builtin.out) is det.
+:- func deps_set_union(make.index_set.deps_set(T), make.index_set.deps_set(T)) = make.index_set.deps_set(T).
+:- func deps_set_union_list(list.list(make.index_set.deps_set(T))) = make.index_set.deps_set(T).
+:- pred file_names_to_index_set(list.list(libs.file_util.file_name), make.index_set.deps_set(make.index_set.dependency_file_index), make.make_info.make_info, make.make_info.make_info).
+:- mode file_names_to_index_set(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred list_to_deps_set(list.list(T), make.index_set.deps_set(T)) <= (enum.uenum(T)).
+:- mode list_to_deps_set(builtin.in, builtin.out) is det.
+:- func list_to_deps_set(list.list(T)) = make.index_set.deps_set(T) <= (enum.uenum(T)).
+:- pred module_index_set_to_plain_set(make.make_info.make_info, make.index_set.deps_set(make.index_set.module_index), set.set(mdbcomp.sym_name.module_name)).
+:- mode module_index_set_to_plain_set(builtin.in, builtin.in, builtin.out) is det.
+:- pred module_index_to_name(make.make_info.make_info, make.index_set.module_index, mdbcomp.sym_name.module_name).
+:- mode module_index_to_name(builtin.in, builtin.in, builtin.out) is det.
+:- pred module_name_to_index(mdbcomp.sym_name.module_name, make.index_set.module_index, make.make_info.make_info, make.make_info.make_info).
+:- mode module_name_to_index(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred module_names_to_index_set(list.list(mdbcomp.sym_name.module_name), make.index_set.deps_set(make.index_set.module_index), make.make_info.make_info, make.make_info.make_info).
+:- mode module_names_to_index_set(builtin.in, builtin.out, builtin.in, builtin.out) is det.

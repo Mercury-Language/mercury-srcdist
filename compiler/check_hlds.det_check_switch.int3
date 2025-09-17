@@ -1,0 +1,21 @@
+:- module check_hlds.det_check_switch.
+:- interface.
+:- type maybe_req_arms_in_type_order
+	where	type_is_abstract_enum(1).
+:- type maybe_warn_incomplete_switches
+	where	type_is_abstract_enum(1).
+:- type missing_cons_id_info.
+:- type reported_switch.
+:- type reqscope_params.
+:- type switch_context.
+:- type switch_match.
+:- type why_report_incomplete_switch
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_req_arms_in_type_order, du_repn(enum("no_req_arms_in_type_order", "req_arms_in_type_order", [],  no_c_j_cs))).
+:- type_representation(maybe_warn_incomplete_switches, du_repn(enum("do_not_warn_incomplete_switches", "warn_incomplete_switches", [],  no_c_j_cs))).
+:- type_representation(missing_cons_id_info, is_word_aligned_ptr).
+:- type_representation(reported_switch, is_word_aligned_ptr).
+:- type_representation(reqscope_params, is_word_aligned_ptr).
+:- type_representation(switch_context, is_word_aligned_ptr).
+:- type_representation(switch_match, is_word_aligned_ptr).
+:- type_representation(why_report_incomplete_switch, du_repn(enum("switch_required_to_be_complete", "warn_incomplete_switch_option", [],  no_c_j_cs))).

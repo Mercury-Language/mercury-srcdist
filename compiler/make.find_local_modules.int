@@ -1,0 +1,16 @@
+:- module make.find_local_modules.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- use_module make.index_set.
+:- use_module make.make_info.
+:- use_module make.prereqs_cache.
+:- use_module mdbcomp.sym_name.
+:- pred find_reachable_local_modules(io.text_output_stream, libs.globals.globals, mdbcomp.sym_name.module_name, libs.maybe_util.maybe_succeeded, set.set(mdbcomp.sym_name.module_name), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode find_reachable_local_modules(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred find_transitive_module_dependencies(io.text_output_stream, libs.globals.globals, make.prereqs_cache.transitive_dependencies_type, make.prereqs_cache.process_modules_where, make.index_set.module_index, libs.maybe_util.maybe_succeeded, make.index_set.deps_set(make.index_set.module_index), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode find_transitive_module_dependencies(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
