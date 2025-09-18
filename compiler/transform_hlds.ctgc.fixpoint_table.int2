@@ -1,0 +1,3 @@
+:- module (transform_hlds.ctgc).fixpoint_table.
+:- interface.
+:- type fixpoint_table(K, E).

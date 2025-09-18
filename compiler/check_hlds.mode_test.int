@@ -1,0 +1,31 @@
+:- module check_hlds.mode_test.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.prog_data.
+:- pred all_modes_are_fully_input(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_mode)).
+:- mode all_modes_are_fully_input(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred all_modes_are_fully_output(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_mode)).
+:- mode all_modes_are_fully_output(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred init_final_insts_is_fully_output(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode init_final_insts_is_fully_output(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred init_final_insts_is_output(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode init_final_insts_is_output(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred init_final_insts_is_unused(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode init_final_insts_is_unused(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred init_inst_is_fully_input(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst).
+:- mode init_inst_is_fully_input(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred init_inst_is_input(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode init_inst_is_input(builtin.in, builtin.in) is semidet.
+:- pred mode_is_fully_input(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_mode).
+:- mode mode_is_fully_input(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred mode_is_fully_output(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_mode).
+:- mode mode_is_fully_output(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred mode_is_input(hlds.hlds_module.module_info, parse_tree.prog_data.mer_mode).
+:- mode mode_is_input(builtin.in, builtin.in) is semidet.
+:- pred mode_is_output(hlds.hlds_module.module_info, parse_tree.prog_data.mer_mode).
+:- mode mode_is_output(builtin.in, builtin.in) is semidet.
+:- pred mode_is_unused(hlds.hlds_module.module_info, parse_tree.prog_data.mer_mode).
+:- mode mode_is_unused(builtin.in, builtin.in) is semidet.
