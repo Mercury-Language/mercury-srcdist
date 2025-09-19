@@ -1,0 +1,110 @@
+/*
+** Automatically generated from `typecheck_error_unify.m'
+** by the Mercury compiler,
+** version rotd-2025-09-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.typecheck_error_unify.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__typecheck_error_unify
+#define MR_HEADER_GUARD_check_hlds__typecheck_error_unify
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__TYPECHECK_ERROR_UNIFY_DECL_GUARD
+#define CHECK_HLDS__TYPECHECK_ERROR_UNIFY_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_unify__check_hlds__typecheck_error_unify__type_ctor_info_actual_and_maybe_special_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_unify__check_hlds__typecheck_error_unify__type_ctor_info_categorized_mismatch_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_unify__check_hlds__typecheck_error_unify__type_ctor_info_does_actual_subsume_expected_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_unify__check_hlds__typecheck_error_unify__type_ctor_info_does_some_type_stuff_match_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_unify__check_hlds__typecheck_error_unify__type_ctor_info_mismatch_category_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_unify__check_hlds__typecheck_error_unify__type_ctor_info_mismatch_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_unify__check_hlds__typecheck_error_unify__type_ctor_info_type_mismatch_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_unify__check_hlds__typecheck_error_unify__type_ctor_info_type_mismatch_special_0;
+
+MR_Word MR_CALL 
+check_hlds__typecheck_error_unify__report_error_unify_var_functor_args_8_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_error_unify__report_error_unify_var_functor_result_8_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Word param_8);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_error_unify__report_error_unify_var_lambda_7_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_error_unify__report_error_unify_var_var_6_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void mercury__check_hlds__typecheck_error_unify__init(void);
+void mercury__check_hlds__typecheck_error_unify__init_type_tables(void);
+void mercury__check_hlds__typecheck_error_unify__init_debugger(void);
+const char *mercury__check_hlds__typecheck_error_unify__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.typecheck_error_unify
+
+// :- end_interface check_hlds.typecheck_error_unify.

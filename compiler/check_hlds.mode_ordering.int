@@ -1,0 +1,32 @@
+:- module check_hlds.mode_ordering.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module parse_tree.
+:- use_module check_hlds.mode_constraint_robdd.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.set_of_var.
+:- type pred_constraint_info
+    --->    pci(
+                 (check_hlds.mode_ordering).pci_mode_constraint :: check_hlds.mode_constraint_robdd.mode_constraint,
+                 (check_hlds.mode_ordering).pci_mci :: check_hlds.mode_constraint_robdd.mode_constraint_info
+            ).
+:- type pred_constraint_map == map.map(hlds.hlds_pred.pred_id, check_hlds.mode_ordering.pred_constraint_info).
+:- pred goal_info_get_consuming_vars(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_get_consuming_vars(builtin.in, builtin.out) is det.
+:- pred goal_info_get_make_visible_vars(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_get_make_visible_vars(builtin.in, builtin.out) is det.
+:- pred goal_info_get_need_visible_vars(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_get_need_visible_vars(builtin.in, builtin.out) is det.
+:- pred goal_info_get_occurring_vars(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_get_occurring_vars(builtin.in, builtin.out) is det.
+:- pred goal_info_get_producing_vars(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_get_producing_vars(builtin.in, builtin.out) is det.
+:- pred goal_info_set_occurring_vars(parse_tree.set_of_var.set_of_progvar, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_occurring_vars(builtin.in, builtin.in, builtin.out) is det.
+:- pred mode_ordering(check_hlds.mode_ordering.pred_constraint_map, list.list(list.list(hlds.hlds_pred.pred_id)), hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode mode_ordering(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.

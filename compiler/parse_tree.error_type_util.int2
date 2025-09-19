@@ -1,0 +1,5 @@
+:- module parse_tree.error_type_util.
+:- interface.
+:- type maybe_add_quotes
+    --->    do_not_add_quotes 
+    ;       add_quotes .
