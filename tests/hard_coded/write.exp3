@@ -1,0 +1,86 @@
+var("X") + int(3) * var("X^2") ; (type)
+{ type }
+{ '?-' }
+'?-'
+{ blah }
+blah ; (type), (type) * blah ; (type)
+((blah ; blah), blah) * blah ; blah
+(type) * blah ; (type)
+TESTING DISCRIMINATED UNIONS
+one
+two
+three
+apple([9, 5, 1])
+banana([three, one, two])
+zop(3.3, 2.03)
+zip(3, 2)
+zap(3, -2.111)
+wombat
+foo
+
+TESTING POLYMORPHISM
+poly_one([2399.3])
+poly_two(3)
+poly_three(3.33, 4, poly_one(9.11))
+
+TESTING BUILTINS
+""
+"Hello, world\n"
+"Foo%sFoo"
+"\""
+"\a\b\f\t\n\r\v\"\\"
+"\001\\037\\177\\200\\237\ "
+'a'
+'A'
+'&'
+'\001\'
+'\a'
+'\b'
+'\f'
+'\t'
+'\n'
+'\r'
+'\v'
+'\037\'
+' '
+'\''
+'\\'
+'\"'
+'~'
+'\177\'
+'\200\'
+'\237\'
+' '
+0.0
+3.14159
+1.128324983E-21
+2.23954899E+23
+-infinity
+infinity
+-65
+4
+651u
+-128i8
+127i8
+255u8
+-32768i16
+32767i16
+65535u16
+-2147483648i32
+2147483647i32
+4294967295u32
+-9223372036854775808i64
+9223372036854775807i64
+18446744073709551615u64
+univ_cons(["hi! I\'m a univ!"])
+'<<predicate>>'
+
+TESTING OTHER TYPES
+var(1)
+var_supply(0)
+var_supply(1)
+empty
+qwerty(4)
+array([1, 2, 3, 4])
+version_array([1, 2, 3, 4])
+

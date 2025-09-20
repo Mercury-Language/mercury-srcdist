@@ -1,0 +1,13 @@
+:- module parse_tree.parse_pragma_tabling.
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module varset.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.maybe_error.
+:- use_module parse_tree.parse_types.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_pragma.
+:- pred parse_tabling_pragma(mdbcomp.sym_name.module_name, varset.varset, term.term, string, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.prog_data_pragma.tabled_eval_method, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_tabling_pragma(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

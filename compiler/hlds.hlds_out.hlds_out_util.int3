@@ -1,0 +1,15 @@
+:- module (hlds.hlds_out).hlds_out_util.
+:- interface.
+:- type hlds_dump_options.
+:- type hlds_out_info.
+:- type last_context_word
+	where	type_is_abstract_enum(3).
+:- type maybe_print_ho_var_name
+	where	type_is_abstract_enum(1).
+:- type maybe_qualify_cons_id
+	where	type_is_abstract_enum(1).
+:- type_representation(hlds_dump_options, is_word_aligned_ptr).
+:- type_representation(hlds_out_info, is_word_aligned_ptr).
+:- type_representation(last_context_word, du_repn(enum("lcw_none", "lcw_call", ["lcw_result", "lcw_argument", "lcw_element"],  no_c_j_cs))).
+:- type_representation(maybe_print_ho_var_name, du_repn(enum("do_not_print_ho_var_name", "print_ho_var_name", [],  no_c_j_cs))).
+:- type_representation(maybe_qualify_cons_id, du_repn(enum("qualify_cons_id", "do_not_qualify_cons_id", [],  no_c_j_cs))).

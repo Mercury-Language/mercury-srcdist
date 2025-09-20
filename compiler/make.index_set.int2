@@ -1,0 +1,11 @@
+:- module make.index_set.
+:- interface.
+:- use_module enum.
+:- use_module sparse_bitset.
+:- type dependency_file_index.
+:- type dependency_file_index_set == make.index_set.index_set(make.index_set.dependency_file_index).
+:- type index_set(T) == sparse_bitset.sparse_bitset(T).
+:- type module_index.
+:- type module_index_set == make.index_set.index_set(make.index_set.module_index).
+:- instance (enum.uenum(make.index_set.dependency_file_index)).
+:- instance (enum.uenum(make.index_set.module_index)).

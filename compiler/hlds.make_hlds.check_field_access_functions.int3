@@ -1,0 +1,2 @@
+:- module (hlds.make_hlds).check_field_access_functions.
+:- interface.
