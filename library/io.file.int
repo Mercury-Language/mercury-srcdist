@@ -1,0 +1,31 @@
+:- module io.file.
+:- interface.
+:- use_module time.
+:- pred check_file_accessibility(string, list.list(io.access_type), io.res, io.io, io.io).
+:- mode check_file_accessibility(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred file_modification_time(string, io.res(time.time_t), io.io, io.io).
+:- mode file_modification_time(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred file_type(bool.bool, string, io.res(io.file_type), io.io, io.io).
+:- mode file_type(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred get_temp_directory(string, io.io, io.io).
+:- mode get_temp_directory(builtin.out, builtin.di, builtin.uo) is det.
+:- pred have_make_temp_directory is semidet.
+:- pred have_symlinks is semidet.
+:- pred make_symlink(string, string, io.res, io.io, io.io).
+:- mode make_symlink(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred make_temp_directory(io.res(string), io.io, io.io).
+:- mode make_temp_directory(builtin.out, builtin.di, builtin.uo) is det.
+:- pred make_temp_directory(string, string, string, io.res(string), io.io, io.io).
+:- mode make_temp_directory(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred make_temp_file(io.res(string), io.io, io.io).
+:- mode make_temp_file(builtin.out, builtin.di, builtin.uo) is det.
+:- pred make_temp_file(string, string, string, io.res(string), io.io, io.io).
+:- mode make_temp_file(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred read_symlink(string, io.res(string), io.io, io.io).
+:- mode read_symlink(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred remove_file(string, io.res, io.io, io.io).
+:- mode remove_file(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred remove_file_recursively(string, io.res, io.io, io.io).
+:- mode remove_file_recursively(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred rename_file(string, string, io.res, io.io, io.io).
+:- mode rename_file(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.

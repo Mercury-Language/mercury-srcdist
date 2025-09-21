@@ -1,0 +1,8 @@
+:- module backend_libs.link_target_code.
+:- interface.
+:- type linked_target_type
+	where	type_is_abstract_enum(3).
+:- type shared_library_support
+	where	type_is_abstract_enum(1).
+:- type_representation(linked_target_type, du_repn(enum("executable", "static_library", ["shared_library", "csharp_executable", "csharp_library", "java_executable", "java_archive"],  no_c_j_cs))).
+:- type_representation(shared_library_support, du_repn(enum("shared_libraries_not_supported", "shared_libraries_supported", [],  no_c_j_cs))).
