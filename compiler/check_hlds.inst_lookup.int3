@@ -1,0 +1,5 @@
+:- module check_hlds.inst_lookup.
+:- interface.
+:- abstract_inst((inst_name_user)).
+:- abstract_inst((mer_inst_expanded)).
+:- abstract_inst((mer_inst_expanded_nc)).
