@@ -1,0 +1,27 @@
+:- module make.prereqs_cache.
+:- interface.
+:- use_module map.
+:- use_module make.index_set.
+:- type dependency_file_deps_result == make.prereqs_cache.deps_result(make.index_set.dependency_file_index).
+:- type deps_result(T)
+    --->    deps_result(
+                 (make.prereqs_cache).dr_success :: libs.maybe_util.maybe_succeeded,
+                 (make.prereqs_cache).dr_set :: make.index_set.index_set(T)
+            ).
+:- type module_deps_result == make.prereqs_cache.deps_result(make.index_set.module_index).
+:- type module_to_dep_file_set_cache == map.map(make.index_set.module_index, make.prereqs_cache.dependency_file_deps_result).
+:- type module_to_module_set_cache == map.map(make.index_set.module_index, make.prereqs_cache.module_deps_result).
+:- type process_modules_where
+    --->    process_only_modules_in_cur_dir 
+    ;       process_modules_anywhere .
+:- type trans_prereqs_cache == map.map(make.prereqs_cache.trans_prereqs_key, make.prereqs_cache.module_deps_result).
+:- type trans_prereqs_key
+    --->    trans_prereqs_key(
+                 make.index_set.module_index,
+                 make.prereqs_cache.transitive_dependencies_type,
+                 make.prereqs_cache.process_modules_where
+            ).
+:- type transitive_dependencies_type
+    --->    interface_imports 
+    ;       all_imports 
+    ;       all_dependencies .
