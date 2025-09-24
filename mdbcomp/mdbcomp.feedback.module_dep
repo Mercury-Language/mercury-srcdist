@@ -1,0 +1,14 @@
+module(2, "feedback.m",
+	mdbcomp.feedback,
+	{mdbcomp},
+	{builtin, private_builtin},
+	{},
+	{(mdbcomp.feedback).automatic_parallelism, (mdbcomp.feedback).feedback_info},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

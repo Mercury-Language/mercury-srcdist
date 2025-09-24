@@ -1,0 +1,76 @@
+:- module thread.
+:- interface.
+:- include_module thread.barrier.
+:- include_module thread.channel.
+:- include_module thread.closeable_channel.
+:- include_module thread.future.
+:- include_module thread.mvar.
+:- include_module thread.semaphore.
+:- import_module io.
+:- import_module maybe.
+:- type joinable_thread(T).
+:- type thread.
+:- type thread_options.
+:- pred can_spawn is semidet.
+:- pred can_spawn_native is semidet.
+:- func init_thread_options = thread.thread_options.
+:- pred join_thread(thread.joinable_thread(T), maybe.maybe_error(T), io.io, io.io).
+:- mode join_thread(builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi.
+:- pred num_processors(maybe.maybe(int), io.io, io.io).
+:- mode num_processors(builtin.out, builtin.di, builtin.uo) is det.
+:- pred set_min_stack_size(uint, thread.thread_options, thread.thread_options).
+:- mode set_min_stack_size(builtin.in, builtin.in, builtin.out) is det.
+:- pred spawn(pred(io.io, io.io), io.io, io.io).
+:- mode spawn(builtin.in((pred(builtin.di, builtin.uo) is cc_multi)), builtin.di, builtin.uo) is cc_multi.
+:- pred spawn(pred(thread.thread, io.io, io.io), maybe.maybe_error(thread.thread), io.io, io.io).
+:- mode spawn(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.out, builtin.di, builtin.uo) is cc_multi.
+:- pred spawn_native(pred(thread.thread, io.io, io.io), maybe.maybe_error(thread.thread), io.io, io.io).
+:- mode spawn_native(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.out, builtin.di, builtin.uo) is cc_multi.
+:- pred spawn_native(pred(thread.thread, io.io, io.io), thread.thread_options, maybe.maybe_error(thread.thread), io.io, io.io).
+:- mode spawn_native(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi.
+:- pred spawn_native_joinable(pred(thread.joinable_thread(T), T, io.io, io.io), thread.thread_options, maybe.maybe_error(thread.joinable_thread(T)), io.io, io.io).
+:- mode spawn_native_joinable(builtin.in((pred(builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi.
+:- pred yield(io.io, io.io).
+:- mode yield(builtin.di, builtin.uo) is det.
+:- implementation.
+:- import_module bool.
+:- import_module mutvar.
+:- import_module require.
+:- pragma foreign_import_module("C", thread).
+:- pragma foreign_import_module("C#", thread).
+:- pragma foreign_import_module("Java", thread).
+:- type joinable_thread(T)
+    --->    joinable_thread(
+                 thread.jt_handle :: thread.thread_handle,
+                 thread.jt_mutvar :: mutvar.mutvar(T)
+            ).
+:- type thread
+    --->    detached_thread(
+                 thread.thread_desc
+            ).
+:- type thread_desc == string.
+:- type thread_handle.
+:- pragma foreign_type(c, thread_handle, "ML_ThreadHandle").
+:- pragma foreign_type(java, thread_handle, "jmercury.runtime.MercuryThread").
+:- pragma foreign_type(csharp, thread_handle, "System.Threading.Thread").
+:- type thread_options
+    --->    thread_options(
+                 thread.min_stack_size :: uint
+            ).
+:- pred call_back_to_mercury_detached(pred(thread.thread, io.io, io.io), thread.thread_desc, io.io, io.io).
+:- mode call_back_to_mercury_detached(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.di, builtin.uo) is cc_multi.
+:- pred call_back_to_mercury_joinable(pred(thread.joinable_thread(T), T, io.io, io.io), thread.thread_handle, mutvar.mutvar(T), io.io, io.io).
+:- mode call_back_to_mercury_joinable(builtin.in((pred(builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.di, builtin.uo) is cc_multi.
+:- pred can_spawn_context is semidet.
+:- pred join_thread_2(thread.thread_handle, bool.bool, string, io.io, io.io).
+:- mode join_thread_2(builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred num_processors(int, bool.bool, io.io, io.io).
+:- mode num_processors(builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred spawn_context(pred(thread.thread, io.io, io.io), maybe.maybe_error(thread.thread), io.io, io.io).
+:- mode spawn_context(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.out, builtin.di, builtin.uo) is cc_multi.
+:- pred spawn_context_2(pred(thread.thread, io.io, io.io), bool.bool, thread.thread_desc, io.io, io.io).
+:- mode spawn_context_2(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.out, builtin.out, builtin.di, builtin.uo) is cc_multi.
+:- pred spawn_native_2(pred(thread.thread, io.io, io.io), T, uint, bool.bool, thread.thread_desc, string, io.io, io.io).
+:- mode spawn_native_2(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is cc_multi.
+:- pred spawn_native_joinable_2(pred(thread.joinable_thread(T), T, io.io, io.io), uint, mutvar.mutvar(T), bool.bool, thread.thread_handle, string, io.io, io.io).
+:- mode spawn_native_joinable_2(builtin.in((pred(builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is cc_multi.
