@@ -1,0 +1,7 @@
+:- module (ll_backend.llds_out).llds_out_instr.
+:- interface.
+:- type after_layout_label
+	where	type_is_abstract_enum(1).
+:- type label_output_info.
+:- type_representation(after_layout_label, du_repn(enum("not_after_layout_label", "after_layout_label", [],  no_c_j_cs))).
+:- type_representation(label_output_info, is_word_aligned_ptr).

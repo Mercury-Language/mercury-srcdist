@@ -1,0 +1,47 @@
+// Automatically generated from `prog_event.m'
+// by the Mercury compiler,
+// version rotd-2025-09-26
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef PARSE_TREE__PROG_EVENT_MH
+#define PARSE_TREE__PROG_EVENT_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PARSE_TREE__PROG_EVENT_DECL_GUARD
+#define PARSE_TREE__PROG_EVENT_DECL_GUARD
+
+#include "mercury_event_spec.h"
+#include <stdio.h>
+#include <fcntl.h>
+
+MR_String   read_specs_file_2(MR_AllocSiteInfoPtr alloc_id,
+                MR_String specs_file_name, MR_String term_file_name);
+MR_String   read_specs_file_3(MR_AllocSiteInfoPtr alloc_id,
+                MR_String specs_file_name, MR_String term_file_name,
+                int spec_fd);
+MR_String   read_specs_file_4(MR_AllocSiteInfoPtr alloc_id,
+                MR_String specs_file_name, MR_String term_file_name,
+                int spec_fd, size_t size, char *spec_buf);
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PARSE_TREE__PROG_EVENT_MH */

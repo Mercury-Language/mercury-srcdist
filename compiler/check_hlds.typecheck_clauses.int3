@@ -1,0 +1,5 @@
+:- module check_hlds.typecheck_clauses.
+:- interface.
+:- type stuff_to_check
+	where	type_is_abstract_enum(1).
+:- type_representation(stuff_to_check, du_repn(enum("clause_only", "whole_pred", [],  no_c_j_cs))).
