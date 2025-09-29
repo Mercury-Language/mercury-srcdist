@@ -1,0 +1,5 @@
+:- module libs.va_map.
+:- interface.
+:- type va_map(K, V).
+:- typeclass va_map_key(K).
+:- typeclass va_map_value(V).

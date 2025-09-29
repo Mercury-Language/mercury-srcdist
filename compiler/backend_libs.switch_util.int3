@@ -1,0 +1,7 @@
+:- module backend_libs.switch_util.
+:- interface.
+:- type int_switch_info(T).
+:- type maybe_int_switch_info.
+:- type switch_category
+	where	type_is_abstract_enum(3).
+:- type_representation(switch_category, du_repn(enum("ite_chain_switch", "int_max_32_switch", ["int_64_switch", "string_switch", "float_switch", "tag_switch"],  no_c_j_cs))).
