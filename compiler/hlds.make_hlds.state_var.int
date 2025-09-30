@@ -1,0 +1,109 @@
+:- module (hlds.make_hlds).state_var.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module one_or_more_map.
+:- use_module parse_tree.
+:- use_module hlds.hlds_clauses.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module mdbcomp.prim_data.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module (hlds.make_hlds).goal_expr_to_goal.
+:- use_module (hlds.make_hlds).qual_info.
+:- type hlds_goal_svar_state
+    --->    hlds_goal_svar_state(
+                 hlds.hlds_goal.hlds_goal,
+                 hlds.make_hlds.state_var.svar_state
+            ).
+:- type new_statevar_map.
+:- type svar == parse_tree.prog_data.prog_var.
+:- type svar_inner_atomic_scope_info.
+:- type svar_outer_atomic_scope_info.
+:- type svar_state.
+:- type svar_store.
+:- type unravel_info
+    --->    unravel_info(
+                 ((hlds.make_hlds).state_var).ui_module_info :: hlds.hlds_module.module_info,
+                 ((hlds.make_hlds).state_var).ui_fgt_threshold :: int,
+                 ((hlds.make_hlds).state_var).ui_qual_info :: hlds.make_hlds.qual_info.qual_info,
+                 ((hlds.make_hlds).state_var).ui_varset :: parse_tree.prog_data.prog_varset,
+                 ((hlds.make_hlds).state_var).ui_state_var_store :: hlds.make_hlds.state_var.svar_store,
+                 ((hlds.make_hlds).state_var).ui_error_specs :: list.list(parse_tree.error_spec.error_spec)
+            ).
+:- pred add_unravel_spec(parse_tree.error_spec.error_spec, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode add_unravel_spec(builtin.in, builtin.in, builtin.out) is det.
+:- pred add_unravel_specs(list.list(parse_tree.error_spec.error_spec), hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode add_unravel_specs(builtin.in, builtin.in, builtin.out) is det.
+:- pred create_new_named_unravel_var(string, parse_tree.prog_data.prog_var, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode create_new_named_unravel_var(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred create_new_unravel_var(parse_tree.prog_data.prog_var, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode create_new_unravel_var(builtin.out, builtin.in, builtin.out) is det.
+:- pred expand_bang_state_pairs_in_instance_method(parse_tree.prog_data.instance_method, parse_tree.prog_data.instance_method).
+:- mode expand_bang_state_pairs_in_instance_method(builtin.in, builtin.out) is det.
+:- pred expand_bang_state_pairs_in_terms(list.list(parse_tree.prog_data.prog_term), list.list(parse_tree.prog_data.prog_term)).
+:- mode expand_bang_state_pairs_in_terms(builtin.in, builtin.out) is det.
+:- pred illegal_state_var_func_result(mdbcomp.prim_data.pred_or_func, list.list(parse_tree.prog_data.prog_term), hlds.make_hlds.state_var.svar, parse_tree.prog_data.prog_context).
+:- mode illegal_state_var_func_result(builtin.in, builtin.in, builtin.out, builtin.out) is semidet.
+:- func initial_state_var_name(string) = string.
+:- pred is_prog_var_for_some_state_var(parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_var, string).
+:- mode is_prog_var_for_some_state_var(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred is_term_a_bang_state_pair(parse_tree.prog_data.prog_term, hlds.make_hlds.state_var.svar, parse_tree.prog_data.prog_context).
+:- mode is_term_a_bang_state_pair(builtin.in, builtin.out, builtin.out) is semidet.
+:- pred lookup_colon_state_var(parse_tree.prog_data.prog_context, hlds.make_hlds.state_var.svar, parse_tree.prog_data.prog_var, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode lookup_colon_state_var(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred lookup_dot_state_var(parse_tree.prog_data.prog_context, hlds.make_hlds.state_var.svar, parse_tree.prog_data.prog_var, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode lookup_dot_state_var(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred record_unravel_found_syntax_error(hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode record_unravel_found_syntax_error(builtin.in, builtin.out) is det.
+:- pred replace_any_dot_colon_state_var_in_term(parse_tree.prog_data.prog_term, parse_tree.prog_data.prog_term, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode replace_any_dot_colon_state_var_in_term(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_any_dot_colon_state_var_in_terms(list.list(parse_tree.prog_data.prog_term), list.list(parse_tree.prog_data.prog_term), hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode replace_any_dot_colon_state_var_in_terms(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred report_illegal_bang_svar_lambda_arg(parse_tree.prog_data.prog_context, hlds.make_hlds.state_var.svar, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode report_illegal_bang_svar_lambda_arg(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func report_illegal_bang_svar_lambda_arg_raw(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_varset, hlds.make_hlds.state_var.svar) = parse_tree.error_spec.error_spec.
+:- pred report_illegal_func_svar_result(parse_tree.prog_data.prog_context, hlds.make_hlds.state_var.svar, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode report_illegal_func_svar_result(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func report_illegal_func_svar_result_raw(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_varset, hlds.make_hlds.state_var.svar) = parse_tree.error_spec.error_spec.
+:- pred report_illegal_state_var_update(parse_tree.prog_data.prog_context, string, parse_tree.prog_data.prog_context, hlds.make_hlds.state_var.svar, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode report_illegal_state_var_update(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred report_svar_unify_error(parse_tree.prog_data.prog_context, hlds.make_hlds.state_var.svar, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode report_svar_unify_error(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred svar_finish_atomic_goal(hlds.make_hlds.goal_expr_to_goal.loc_kind, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state).
+:- mode svar_finish_atomic_goal(builtin.in, builtin.in, builtin.out) is det.
+:- pred svar_finish_clause_body(parse_tree.prog_data.prog_context, hlds.make_hlds.state_var.new_statevar_map, map.map(hlds.make_hlds.state_var.svar, parse_tree.prog_data.prog_var), hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, list.list(parse_tree.error_spec.error_spec), hlds.hlds_clauses.unused_statevar_arg_map, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode svar_finish_clause_body(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred svar_finish_disjunction(list.list(hlds.make_hlds.state_var.hlds_goal_svar_state), list.list(hlds.hlds_goal.hlds_goal), hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode svar_finish_disjunction(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred svar_finish_if_then_else(hlds.make_hlds.goal_expr_to_goal.loc_kind, parse_tree.prog_data.prog_context, list.list(hlds.make_hlds.state_var.svar), hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode svar_finish_if_then_else(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred svar_finish_inner_atomic_scope(parse_tree.prog_data.prog_context, hlds.make_hlds.state_var.svar_inner_atomic_scope_info, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state).
+:- mode svar_finish_inner_atomic_scope(builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred svar_finish_lambda_body(parse_tree.prog_data.prog_context, hlds.make_hlds.state_var.new_statevar_map, map.map(hlds.make_hlds.state_var.svar, parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.hlds_goal), hlds.hlds_goal.hlds_goal, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode svar_finish_lambda_body(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred svar_finish_local_state_vars(hlds.make_hlds.state_var.unravel_info, list.list(hlds.make_hlds.state_var.svar), hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state).
+:- mode svar_finish_local_state_vars(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred svar_finish_outer_atomic_scope(hlds.make_hlds.state_var.svar_outer_atomic_scope_info, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state).
+:- mode svar_finish_outer_atomic_scope(builtin.in, builtin.in, builtin.out) is det.
+:- pred svar_flatten_conj(parse_tree.prog_data.prog_context, list.list(hlds.hlds_goal.hlds_goal), hlds.hlds_goal.hlds_goal, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode svar_flatten_conj(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred svar_goal_to_conj_list(hlds.hlds_goal.hlds_goal, list.list(hlds.hlds_goal.hlds_goal), hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode svar_goal_to_conj_list(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred svar_prepare_for_clause_head(hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, parse_tree.prog_data.prog_varset, list.list(parse_tree.prog_data.prog_term), list.list(parse_tree.prog_data.prog_term), map.map(hlds.make_hlds.state_var.svar, parse_tree.prog_data.prog_var), hlds.make_hlds.state_var.new_statevar_map, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info).
+:- mode svar_prepare_for_clause_head(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred svar_prepare_for_lambda_head(parse_tree.prog_data.prog_context, list.list(parse_tree.prog_data.prog_term), list.list(parse_tree.prog_data.prog_term), map.map(hlds.make_hlds.state_var.svar, parse_tree.prog_data.prog_var), hlds.make_hlds.state_var.new_statevar_map, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode svar_prepare_for_lambda_head(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred svar_prepare_for_local_state_vars(parse_tree.prog_data.prog_context, list.list(hlds.make_hlds.state_var.svar), hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode svar_prepare_for_local_state_vars(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred svar_start_inner_atomic_scope(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, hlds.make_hlds.state_var.svar_inner_atomic_scope_info, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode svar_start_inner_atomic_scope(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred svar_start_outer_atomic_scope(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, hlds.make_hlds.state_var.svar_outer_atomic_scope_info, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.unravel_info, hlds.make_hlds.state_var.unravel_info).
+:- mode svar_start_outer_atomic_scope(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- implementation.
+:- type maybe_statevar_arg_pos.
+:- type new_statevar_map == one_or_more_map.one_or_more_map(parse_tree.prog_data.prog_var, hlds.make_hlds.state_var.maybe_statevar_arg_pos).
+:- type readonly_context_kind
+    --->    roc_lambda .
