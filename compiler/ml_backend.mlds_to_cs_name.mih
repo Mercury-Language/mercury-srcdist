@@ -1,0 +1,144 @@
+/*
+** Automatically generated from `mlds_to_cs_name.m'
+** by the Mercury compiler,
+** version rotd-2025-10-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.mlds_to_cs_name.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_cs_name
+#define MR_HEADER_GUARD_ml_backend__mlds_to_cs_name
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_CS_NAME_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_CS_NAME_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__field_var_name_to_ll_string_for_csharp_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__field_var_name_to_nll_string_for_csharp_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__function_name_to_ll_string_for_csharp_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__function_name_to_nll_string_for_csharp_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__global_var_name_to_ll_string_for_csharp_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__global_var_name_to_nll_string_for_csharp_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__limit_identifier_length_1_f_0(
+  MR_String param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__local_var_name_to_ll_string_for_csharp_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__local_var_name_to_nll_string_for_csharp_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__maybe_qualified_function_name_to_ll_string_for_csharp_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__maybe_qualified_global_var_name_to_string_for_csharp_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__proc_label_to_ll_string_for_csharp_2_f_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__proc_label_to_nll_string_for_csharp_2_f_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__qual_class_name_to_ll_string_for_csharp_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__qual_class_name_to_nll_string_for_csharp_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__qual_nrt_name_to_nll_string_for_csharp_3_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__qualifier_to_nll_string_for_csharp_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__strip_mercury_and_mangle_sym_name_for_csharp_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__unqual_class_name_to_ll_string_for_csharp_2_f_0(
+  MR_String param_1,
+  MR_Integer param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds_to_cs_name__unqual_class_name_to_nll_string_for_csharp_2_f_0(
+  MR_String param_1,
+  MR_Integer param_2);
+
+void mercury__ml_backend__mlds_to_cs_name__init(void);
+void mercury__ml_backend__mlds_to_cs_name__init_type_tables(void);
+void mercury__ml_backend__mlds_to_cs_name__init_debugger(void);
+const char *mercury__ml_backend__mlds_to_cs_name__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.mlds_to_cs_name
+
+// :- end_interface ml_backend.mlds_to_cs_name.

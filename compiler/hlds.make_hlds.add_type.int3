@@ -1,0 +1,3 @@
+:- module (hlds.make_hlds).add_type.
+:- interface.
+:- type_representation(existq_tvar_mapping, is_eqv_to(bimap(tvar, tvar))).
