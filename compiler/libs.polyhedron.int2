@@ -1,0 +1,5 @@
+:- module libs.polyhedron.
+:- interface.
+:- use_module list.
+:- type polyhedra == list.list(libs.polyhedron.polyhedron).
+:- type polyhedron.
