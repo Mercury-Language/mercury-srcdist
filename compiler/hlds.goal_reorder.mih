@@ -1,0 +1,117 @@
+/*
+** Automatically generated from `goal_reorder.m'
+** by the Mercury compiler,
+** version rotd-2025-10-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.goal_reorder.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__goal_reorder
+#define MR_HEADER_GUARD_hlds__goal_reorder
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__GOAL_REORDER_DECL_GUARD
+#define HLDS__GOAL_REORDER_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__goal_reorder__hlds__goal_reorder__type_ctor_info_can_reorder_goals_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__goal_reorder__hlds__goal_reorder__type_ctor_info_reorder_maintains_termination_0;
+
+void MR_CALL 
+hlds__goal_reorder__can_reorder_goals_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+MR_bool MR_CALL 
+hlds__goal_reorder__can_reorder_goals_old_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7);
+
+void MR_CALL 
+hlds__goal_reorder__reordering_maintains_termination_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+hlds__goal_reorder__reordering_maintains_termination_old_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+hlds__goal_reorder____Compare____can_reorder_goals_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__goal_reorder____Compare____reorder_maintains_termination_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__goal_reorder____Unify____can_reorder_goals_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__goal_reorder____Unify____reorder_maintains_termination_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__goal_reorder__init(void);
+void mercury__hlds__goal_reorder__init_type_tables(void);
+void mercury__hlds__goal_reorder__init_debugger(void);
+const char *mercury__hlds__goal_reorder__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.goal_reorder
+
+// :- end_interface hlds.goal_reorder.

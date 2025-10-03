@@ -1,0 +1,8 @@
+:- module parse_tree.make_module_file_names.
+:- interface.
+:- use_module map.
+:- use_module mdbcomp.sym_name.
+:- type module_file_name_cache.
+:- implementation.
+:- type module_file_name_cache == map.map(string, map.map(mdbcomp.sym_name.module_name, parse_tree.make_module_file_names.module_name_info)).
+:- type module_name_info.

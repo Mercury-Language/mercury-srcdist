@@ -1,0 +1,186 @@
+/*
+** Automatically generated from `exprn_aux.m'
+** by the Mercury compiler,
+** version rotd-2025-10-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.exprn_aux.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__exprn_aux
+#define MR_HEADER_GUARD_ll_backend__exprn_aux
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__EXPRN_AUX_DECL_GUARD
+#define LL_BACKEND__EXPRN_AUX_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__exprn_aux__ll_backend__exprn_aux__type_ctor_info_transform_lval_1;
+
+void MR_CALL 
+ll_backend__exprn_aux__const_is_constant_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__exprn_aux__lval_addrs_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__exprn_aux__lval_list_addrs_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__exprn_aux__rval_addrs_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__exprn_aux__rval_list_addrs_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__exprn_aux__simplify_rval_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__exprn_aux__substitute_lval_in_instr_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Integer param_5,
+  MR_Integer * param_6);
+
+void MR_CALL 
+ll_backend__exprn_aux__substitute_lval_in_lval_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__exprn_aux__substitute_lval_in_rval_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__exprn_aux__substitute_rval_in_rval_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__exprn_aux__substitute_rvals_in_rval_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__exprn_aux__substitute_vars_in_rval_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__exprn_aux__transform_lval_in_instr_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+ll_backend__exprn_aux__transform_lval_in_rval_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+ll_backend__exprn_aux__vars_in_lval_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__exprn_aux__vars_in_rval_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_Word MR_CALL 
+ll_backend__exprn_aux__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_118_97_114_95_108_118_97_108_95_116_111_95_114_118_97_108_95_95_91_49_93_95_48_2_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__exprn_aux__lval_to_rval_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__exprn_aux__var_lval_to_rval_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__exprn_aux____Compare____transform_lval_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+ll_backend__exprn_aux____Unify____transform_lval_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__ll_backend__exprn_aux__init(void);
+void mercury__ll_backend__exprn_aux__init_type_tables(void);
+void mercury__ll_backend__exprn_aux__init_debugger(void);
+const char *mercury__ll_backend__exprn_aux__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.exprn_aux
+
+// :- end_interface ll_backend.exprn_aux.
