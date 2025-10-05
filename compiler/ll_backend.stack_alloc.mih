@@ -1,0 +1,64 @@
+/*
+** Automatically generated from `stack_alloc.m'
+** by the Mercury compiler,
+** version rotd-2025-10-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.stack_alloc.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__stack_alloc
+#define MR_HEADER_GUARD_ll_backend__stack_alloc
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__STACK_ALLOC_DECL_GUARD
+#define LL_BACKEND__STACK_ALLOC_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__stack_alloc__ll_backend__stack_alloc__type_ctor_info_stack_alloc_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_ll_backend__live_vars__stack_alloc_info__arity1__ll_backend__stack_alloc__stack_alloc__arity0__[9];
+
+void MR_CALL 
+ll_backend__stack_alloc__allocate_stack_slots_in_proc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void mercury__ll_backend__stack_alloc__init(void);
+void mercury__ll_backend__stack_alloc__init_type_tables(void);
+void mercury__ll_backend__stack_alloc__init_debugger(void);
+const char *mercury__ll_backend__stack_alloc__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.stack_alloc
+
+// :- end_interface ll_backend.stack_alloc.
