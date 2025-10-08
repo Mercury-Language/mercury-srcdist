@@ -1,0 +1,52 @@
+/*
+** Automatically generated from `hlds.m'
+** by the Mercury compiler,
+** version rotd-2025-10-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds
+#define MR_HEADER_GUARD_hlds
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS_DECL_GUARD
+#define HLDS_DECL_GUARD
+
+#endif
+
+
+
+void mercury__hlds__init(void);
+void mercury__hlds__init_type_tables(void);
+void mercury__hlds__init_debugger(void);
+const char *mercury__hlds__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds
+
+// :- end_interface hlds.

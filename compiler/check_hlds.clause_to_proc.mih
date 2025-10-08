@@ -1,0 +1,83 @@
+/*
+** Automatically generated from `clause_to_proc.m'
+** by the Mercury compiler,
+** version rotd-2025-10-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.clause_to_proc.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__clause_to_proc
+#define MR_HEADER_GUARD_check_hlds__clause_to_proc
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__CLAUSE_TO_PROC_DECL_GUARD
+#define CHECK_HLDS__CLAUSE_TO_PROC_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__clause_to_proc__check_hlds__clause_to_proc__type_ctor_info_maybe_in_in_mode_0;
+
+void MR_CALL 
+check_hlds__clause_to_proc__copy_clauses_to_nonmethod_procs_for_preds_in_module_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__clause_to_proc__copy_clauses_to_proc_for_all_valid_procs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__clause_to_proc__copy_clauses_to_proc_in_proc_info_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__clause_to_proc__copy_clauses_to_procs_for_pred_in_module_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__clause_to_proc__should_copy_clauses_to_procs_1_p_0(
+  MR_Word param_1);
+
+void mercury__check_hlds__clause_to_proc__init(void);
+void mercury__check_hlds__clause_to_proc__init_type_tables(void);
+void mercury__check_hlds__clause_to_proc__init_debugger(void);
+const char *mercury__check_hlds__clause_to_proc__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.clause_to_proc
+
+// :- end_interface check_hlds.clause_to_proc.
