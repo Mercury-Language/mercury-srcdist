@@ -1,0 +1,7 @@
+:- module check_hlds.typecheck_error_diff.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- func type_diff_pieces(list.list(parse_tree.prog_data.tvar), parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type) = list.list(parse_tree.error_spec.format_piece).

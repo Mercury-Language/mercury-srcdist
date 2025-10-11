@@ -1,0 +1,6 @@
+:- module make.options_file.
+:- interface.
+:- type env_optfile_variables.
+:- implementation.
+:- type found_options_file_error
+    --->    found_options_file_error .

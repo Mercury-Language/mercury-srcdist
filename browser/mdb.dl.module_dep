@@ -1,0 +1,14 @@
+module(2, "dl.m",
+	mdb.dl,
+	{mdb},
+	{builtin, io, private_builtin, mdb.name_mangle},
+	{int, list, require, string, type_desc},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - mdb.dl},
+	no_foreign_export,
+	no_main,
+	{}
+).

@@ -1,0 +1,5 @@
+:- module int.
+:- interface.
+:- use_module enum.
+:- instance (enum.enum(int)).
+:- instance (enum.uenum(int)).

@@ -1,0 +1,39 @@
+echo on
+register --quiet
+break app
+continue
+continue
+continue
+continue
+finish -n
+dd -d 3 -n 7
+yes
+quit
+continue
+continue
+continue
+dd -d 3 -n 7
+no
+no
+no
+yes
+continue
+continue
+continue
+finish -n
+dd -d 3 -n 7
+no
+no
+no
+no
+no
+no
+no
+no
+no
+no
+yes
+continue
+quit
+y
+
