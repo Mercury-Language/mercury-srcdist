@@ -1,0 +1,10 @@
+:- module mdbcomp.read_trace_counts.
+:- interface.
+:- type read_trace_counts_file_result
+    --->    rtcf_ok(
+                 mdbcomp.trace_counts.trace_count_file_type,
+                 mdbcomp.trace_counts.trace_counts
+            )
+    ;       rtcf_error_message(
+                 string
+            ).

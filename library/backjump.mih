@@ -1,0 +1,115 @@
+/*
+** Automatically generated from `backjump.m'
+** by the Mercury compiler,
+** version rotd-2025-10-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module backjump.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_backjump
+#define MR_HEADER_GUARD_backjump
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BACKJUMP_DECL_GUARD
+#define BACKJUMP_DECL_GUARD
+#include "mercury_backjump.h"
+
+// protect against multiple inclusion
+#ifndef ML_BACKJUMP_GUARD
+#define ML_BACKJUMP_GUARD
+
+#ifdef MR_HIGHLEVEL_CODE
+
+#include <setjmp.h>
+
+#define MR_CONT_PARAMS      MR_Cont cont, void *cont_env
+#define MR_CONT_PARAM_TYPES MR_Cont, void *
+#define MR_CONT_ARGS        cont, cont_env
+#define MR_CONT_CALL()      cont(cont_env)
+
+void MR_CALL
+mercury__backjump__builtin_choice_id_1_p_0(
+    MR_BackJumpChoiceId *id, MR_CONT_PARAMS);
+
+void MR_CALL
+mercury__backjump__builtin_backjump_1_p_0(MR_BackJumpChoiceId id);
+
+#endif // MR_HIGHLEVEL_CODE
+#endif // ML_BACKJUMP_GUARD
+
+
+#ifndef MR_HIGHLEVEL_CODE
+
+#include "mercury_stacks.h"
+#include "mercury_stack_trace.h"
+#include "mercury_trace_base.h"
+#include "mercury_layout_util.h"
+#include "mercury_deep_profiling_hand.h"
+
+#endif // !MR_HIGHLEVEL_CODE
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__backjump__backjump__type_ctor_info_choice_id_0;
+
+void MR_CALL 
+mercury__backjump__backjump_1_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__backjump__get_choice_id_1_p_0(
+  MR_Integer * param_1,
+  MR_Cont param_2,
+  void * param_3);
+
+MR_Integer MR_CALL 
+mercury__backjump__to_int_1_f_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__backjump____Compare____choice_id_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mercury__backjump____Unify____choice_id_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void mercury__backjump__init(void);
+void mercury__backjump__init_type_tables(void);
+void mercury__backjump__init_debugger(void);
+const char *mercury__backjump__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_backjump
+
+// :- end_interface backjump.
