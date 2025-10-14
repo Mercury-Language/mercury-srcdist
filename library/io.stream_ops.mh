@@ -1,0 +1,70 @@
+// Automatically generated from `io.stream_ops.m'
+// by the Mercury compiler,
+// version rotd-2025-10-14
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef IO__STREAM_OPS_MH
+#define IO__STREAM_OPS_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef IO__STREAM_OPS_DECL_GUARD
+#define IO__STREAM_OPS_DECL_GUARD
+
+
+#if defined(MR_WIN32)
+  #include "mercury_string.h" // For MR_utf8_to_wide.
+#endif
+
+extern MercuryFile      mercury_stdin;
+extern MercuryFile      mercury_stdout;
+extern MercuryFile      mercury_stderr;
+extern MercuryFile      mercury_stdin_binary;
+extern MercuryFile      mercury_stdout_binary;
+
+extern MR_Unsigned      mercury_current_text_input_index;
+extern MR_Unsigned      mercury_current_text_output_index;
+extern MR_Unsigned      mercury_current_binary_input_index;
+extern MR_Unsigned      mercury_current_binary_output_index;
+
+// A counter used to generate unique stream ids.
+extern int              ML_next_stream_id;
+
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock  ML_io_next_stream_id_lock;
+#endif
+
+MercuryFilePtr          mercury_current_text_input(void);
+MercuryFilePtr          mercury_current_text_output(void);
+MercuryFilePtr          mercury_current_binary_input(void);
+MercuryFilePtr          mercury_current_binary_output(void);
+int                     mercury_next_stream_id(void);
+MercuryFilePtr          mercury_open(const char *filename,
+                             const char *openmode,
+                             MR_AllocSiteInfoPtr alloc_id);
+int                     mercury_close(MercuryFilePtr mf);
+
+
+#endif
+void ML_io_stdin_stream(MercuryFilePtr *);
+void ML_io_stdout_stream(MercuryFilePtr *);
+void ML_io_stderr_stream(MercuryFilePtr *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* IO__STREAM_OPS_MH */
