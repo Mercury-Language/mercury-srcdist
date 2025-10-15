@@ -1,0 +1,9 @@
+:- module transform_hlds.higher_order.
+:- interface.
+:- include_module (transform_hlds.higher_order).specialize_in_module.
+:- implementation.
+:- include_module (transform_hlds.higher_order).higher_order_global_info.
+:- include_module (transform_hlds.higher_order).higher_order_info.
+:- include_module (transform_hlds.higher_order).make_specialized_preds.
+:- include_module (transform_hlds.higher_order).specialize_calls.
+:- include_module (transform_hlds.higher_order).specialize_unify_compare.

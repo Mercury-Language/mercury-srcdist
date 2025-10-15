@@ -1,0 +1,14 @@
+module(2, "set_unordlist.m",
+	set_unordlist,
+	{},
+	{bool, builtin, list, private_builtin},
+	{require},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
