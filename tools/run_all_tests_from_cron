@@ -1,0 +1,225 @@
+#!/bin/sh
+#
+# This script runs the nightly bootstrap tests.
+# It is invoked directly from cron, so it runs
+# without a proper environment (PATH, etc.) set up.
+#
+# NB. Although this file is under CVS control,
+# the copy that is used by cron does not get
+# automatically updated from the CVS repository.
+# After any modifications, the master copy
+# in /home/mercury/public/test_mercury/scripts
+# should be updated manually.
+
+#-----------------------------------------------------------------------------#
+
+tmpfile=/tmp/run_test$$
+tmpscript=/tmp/test_mercury$$
+mail_subject=/tmp/test_mercury_mail$$
+trap 'rm -f $tmpfile $tmpscript $mail_subject; exit 1' 1 2 3 13 15
+
+#-----------------------------------------------------------------------------#
+
+ulimit -c 0
+
+C_COMPILER=gcc
+BRANCH=
+USE_MMC_MAKE=""
+case $# in
+	1)	HOST=$1 ;;
+	2)	HOST=$1; C_COMPILER=$2 ;;
+	3)	HOST=$1; C_COMPILER=$2; BRANCH=$3 ;;
+	4)	HOST=$1; C_COMPILER=$2; BRANCH=$3; USE_MMC_MAKE=$4 ;;
+	*)	echo "Usage: $0 host [c-compiler] [branch] [use_mmc_make]" 1>&2
+		exit 1 ;;
+esac
+
+#-----------------------------------------------------------------------------#
+
+if [ -d /home/mercury/public/. ]; then
+	TOPDIR=/home/mercury/public
+	PATH="$HOME/bin/$ARCH`awk '/^[^#]/{printf ":%s",$0;}' $TOPDIR/cron/.path`"
+else
+	case "$HOST" in
+		# The repeated `mercury' for eris is deliberate.
+		eris) TOPDIR=/Users/mercury/mercury/public ;;
+		*) TOPDIR=$HOME/public ;;
+	esac
+fi
+PATH="$TOPDIR/mercury-latest/$FULLARCH/bin:$PATH"
+PATH="$TOPDIR/$HOST:$PATH"
+PATH="$HOME/bin:$PATH"
+PATH="$PATH:/usr/bin"
+export PATH
+
+CVSROOT=/home/mercury/mercury1/repository
+if [ -d $CVSROOT/. ]; then
+	:
+else
+	case "$HOST" in
+	neptune|goofy|eris|bob)
+	    CVSROOT=":ext:mercury@cvs.mercury.csse.unimelb.edu.au:$CVSROOT"
+	    ;;
+	*)
+	    CVSROOT=":pserver:guest@cvs.mercury.csse.unimelb.edu.au:$CVSROOT"
+	    ;;
+	esac
+fi
+export CVSROOT
+
+#-----------------------------------------------------------------------------#
+
+# Redirect all output to $tmpfile to stop cron mailing
+# content-free messages to mercury@cs.mu.oz.au.
+{
+tm_dir=$TOPDIR/test_mercury/test_dirs/$HOST
+
+[ -d $TOPDIR/test_mercury/scripts ] || mkdir -p $TOPDIR/test_mercury/scripts
+cd $TOPDIR/test_mercury/scripts
+
+cvs checkout mercury/tools/test_mercury
+cp mercury/tools/test_mercury $tmpscript
+
+cvs checkout mercury/tools/generate_index_html
+cvs checkout mercury/config.guess
+
+FULLARCH="`./mercury/config.guess`"
+ARCH="`expr $FULLARCH : '\([^-]*\)-.*' `"
+
+#-----------------------------------------------------------------------------#
+
+release_branch=12.08
+case "$BRANCH" in
+    "")
+        DAY=`date '+%e'`
+        case $HOST in
+	    mundroo|mundula)
+	    	# For these hosts we only run 3 times a week;
+		# twice during the week and once on the weekend.
+		# During the week, test the main branch.
+		# On the weekend, test the release branch.
+		#case `date '+%w'` in
+		#	0|6)	BRANCH=$release_branch ;;
+		#	*)	BRANCH=latest ;;
+		#esac
+		BRANCH=latest
+		;;
+	   goliath)
+		case $DAY in
+			*[02468]) BRANCH=$release_branch ;;
+		        *) 	  BRANCH=latest ;;
+	       	esac
+	       	;;	
+	   carlton)
+		BRANCH=latest
+		;;
+	   *)
+	    	# On anything else just test the main branch.
+		BRANCH=latest
+		;;
+        esac
+        ;;
+esac
+
+# While we are preparing for the release, test the release branch
+# intensively -- only test the main branch on one host (the ROTD host).
+#case $HOST in
+#earth)	;;
+#*)	BRANCH=$release_branch ;;
+#esac
+#
+#-----------------------------------------------------------------------------#
+
+echo run_test $HOST $C_COMPILER
+echo branch $BRANCH
+
+case "$C_COMPILER" in
+	gcc)	logname="test-$BRANCH-$HOST" ;;
+	*)	logname="test-$BRANCH-$HOST-$C_COMPILER" ;;
+esac
+
+[ -d $tm_dir/logs ] || mkdir -p $tm_dir/logs ]
+[ -d $tm_dir/logs/old ] || mkdir -p $tm_dir/logs/old ]
+[ -d $tm_dir/logs/old2 ] || mkdir -p $tm_dir/logs/old2 ]
+mv -f $tm_dir/logs/old/$logname.out $tm_dir/logs/old2 2>/dev/null
+mv -f $tm_dir/logs/old/$logname.out.errs $tm_dir/logs/old2 2>/dev/null
+mv -f $tm_dir/logs/old/$logname.test_errs $tm_dir/logs/old2 2>/dev/null
+mv -f $tm_dir/logs/$logname.out $tm_dir/logs/old 2>/dev/null
+mv -f $tm_dir/logs/$logname.out.errs $tm_dir/logs/old 2>/dev/null
+mv -f $tm_dir/logs/$logname.test_errs $tm_dir/logs/old 2>/dev/null
+logfile="$tm_dir/logs/$logname.out"
+
+if
+	nice -5 sh $tmpscript \
+		$HOST $ARCH $FULLARCH $BRANCH $C_COMPILER $USE_MMC_MAKE \
+		> $logfile 2>&1
+then
+	test_status="succeeded"
+	fgrep '**' $logfile > $logfile.errs
+	if [ -s $logfile.errs ]; then
+		echo "test passed (with some errors supressed/ignored)"
+		echo "log file summary in $logfile.errs"
+	else
+		rm -f $logfile.errs
+		echo "test passed"
+	fi
+	if [ -s $logfile.test_errs ]; then
+		test_status="FAILED"
+		echo "Error: test passed but $logfile.test_errs not empty"
+	else
+		rm -f $logfile.test_errs
+	fi
+	echo
+	INSTALL_DIR=`tail $logfile | \
+		awk '/^Installation directory:/ { print $3; }' `
+	cd $INSTALL_DIR/bin
+	ls -l mercury_compile
+	size mercury_compile
+	{
+		echo $FULLARCH $BRANCH $HOST $C_COMPILER
+		ls -l mercury_compile
+		size mercury_compile
+		echo
+	} >> $tm_dir/logs/sizes
+else
+	test_status="FAILED"
+	fgrep '**' $logfile > $logfile.errs
+	echo test FAILED
+	echo log file in $logfile
+	echo log file summary in $logfile.errs
+	if [ -s $logfile.test_errs ]; then
+		echo test failure summary in $logfile.test_errs
+	fi
+fi
+
+if [ -s $logfile.errs -o -s $logfile.test_errs ]; then
+	if [ -s $logfile.errs ]; then
+		# Failures building the compiler or library should
+		# occur early in the log summary.
+		echo first 10 lines of log file summary:
+		head -10 $logfile.errs
+		echo
+		echo
+	fi
+	if [ -s $logfile.test_errs ]; then
+		echo first 100 test failures:
+		grep "FAILED TEST" $logfile.test_errs | head -100 -
+	fi
+elif [ $test_status = "FAILED" ]; then
+	echo
+	echo last 20 lines of log file:
+	tail -20 $logfile
+fi
+
+# We can't just set a variable containing the mail subject string
+# because sh (but not bash) executes compound commands with redirection
+# in a sub-shell.
+echo "test_mercury $test_status: $BRANCH $HOST $C_COMPILER" > $mail_subject
+} > $tmpfile 2>&1
+
+# NB we can't just pipe into `mutt' because the $mail_subject file
+# needs to be written before `mutt' is started.
+mutt -s "`cat $mail_subject`" juliensf@csse.unimelb.edu.au < $tmpfile
+rm -f $tmpfile $tmpscript $mail_subject
+
+#-----------------------------------------------------------------------------#
