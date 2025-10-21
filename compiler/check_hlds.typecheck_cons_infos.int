@@ -1,0 +1,23 @@
+:- module check_hlds.typecheck_cons_infos.
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module check_hlds.type_assign.
+:- use_module check_hlds.typecheck_error_undef.
+:- use_module check_hlds.typecheck_info.
+:- use_module mdbcomp.goal_path.
+:- use_module parse_tree.prog_data.
+:- type cons_info_result
+    --->    cons_info_non_du_ctor(
+                 check_hlds.type_assign.cons_type_info
+            )
+    ;       cons_info_du_ctor(
+                 parse_tree.prog_data.du_ctor,
+                 list.list(check_hlds.type_assign.cons_type_info),
+                 list.list(check_hlds.typecheck_error_undef.cons_error)
+            )
+    ;       cons_info_field_access_func 
+    ;       cons_info_comp_gen_cons_id .
+:- pred typecheck_info_construct_all_cons_infos(check_hlds.typecheck_info.typecheck_info, parse_tree.prog_data.cons_id, int, mdbcomp.goal_path.goal_id, check_hlds.typecheck_cons_infos.cons_info_result).
+:- mode typecheck_info_construct_all_cons_infos(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

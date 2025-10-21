@@ -1,0 +1,2 @@
+:- module parse_tree.opt_deps_spec.
+:- interface.

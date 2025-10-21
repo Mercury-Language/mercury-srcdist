@@ -1,0 +1,91 @@
+// Automatically generated from `math.m'
+// by the Mercury compiler,
+// version rotd-2025-10-21
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MATH_MH
+#define MATH_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MATH_DECL_GUARD
+#define MATH_DECL_GUARD
+
+
+    #include <math.h>
+
+    // Mathematical constants.
+    //
+    // The maximum number of significant decimal digits which can be packed
+    // into an IEEE-754 extended precision floating point number is 18.
+    // Therefore 20 significant decimal digits for these constants
+    // should be plenty.
+
+    #define ML_FLOAT_E      2.7182818284590452354
+    #define ML_FLOAT_PI     3.1415926535897932384
+    #define ML_FLOAT_LN2    0.69314718055994530941
+
+    // Choose between float or double cmath functions depending on the type of
+    // MR_Float
+    #if defined(MR_USE_SINGLE_PREC_FLOAT)
+        #define ML_EXP(X)       expf(X)
+        #define ML_LOG(X)       logf(X)
+        #define ML_LOG10(X)     log10f(X)
+        #define ML_POW(X, Y)    powf(X, Y)
+        #define ML_SQRT(X)      sqrtf(X)
+        #define ML_SIN(X)       sinf(X)
+        #define ML_COS(X)       cosf(X)
+        #define ML_TAN(X)       tanf(X)
+        #define ML_ASIN(X)      asinf(X)
+        #define ML_ACOS(X)      acosf(X)
+        #define ML_ATAN(X)      atanf(X)
+        #define ML_ATAN2(X, Y)  atan2f(X, Y)
+        #define ML_SINH(X)      sinhf(X)
+        #define ML_COSH(X)      coshf(X)
+        #define ML_TANH(X)      tanhf(X)
+        #if defined(MR_HAVE_FMA)
+            #define ML_FMA(X, Y, Z) fmaf(X, Y, Z)
+        #endif
+    #else
+        #define ML_EXP(X)       exp(X)
+        #define ML_LOG(X)       log(X)
+        #define ML_LOG10(X)     log10(X)
+        #define ML_POW(X, Y)    pow(X, Y)
+        #define ML_SQRT(X)      sqrt(X)
+        #define ML_SIN(X)       sin(X)
+        #define ML_COS(X)       cos(X)
+        #define ML_TAN(X)       tan(X)
+        #define ML_ASIN(X)      asin(X)
+        #define ML_ACOS(X)      acos(X)
+        #define ML_ATAN(X)      atan(X)
+        #define ML_ATAN2(X, Y)  atan2(X, Y)
+        #define ML_SINH(X)      sinh(X)
+        #define ML_COSH(X)      cosh(X)
+        #define ML_TANH(X)      tanh(X)
+        #if defined(MR_HAVE_FMA)
+            #define ML_FMA(X, Y, Z) fma(X, Y, Z)
+        #endif
+    #endif
+
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MATH_MH */
