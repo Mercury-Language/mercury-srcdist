@@ -1,0 +1,11 @@
+:- module make.index_set.
+:- interface.
+:- use_module enum.
+:- use_module sparse_bitset.
+:- type index_set(T) == sparse_bitset.sparse_bitset(T).
+:- type module_index.
+:- type module_index_set == make.index_set.index_set(make.index_set.module_index).
+:- type target_id_index.
+:- type target_id_index_set == make.index_set.index_set(make.index_set.target_id_index).
+:- instance (enum.uenum(make.index_set.module_index)).
+:- instance (enum.uenum(make.index_set.target_id_index)).
