@@ -1,0 +1,14 @@
+module(2, "term_paths.m",
+	mdb.term_paths,
+	{mdb},
+	{builtin, io, list, private_builtin, mdb.browser_info, mdb.browser_term, mdb.parse},
+	{deconstruct, int, maybe, string, type_desc, univ},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
