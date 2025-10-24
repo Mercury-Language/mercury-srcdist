@@ -1,0 +1,287 @@
+:- module cord.
+
+:- pragma termination_info(cord.'++'(builtin.in, builtin.in) = builtin.out, finite(1, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.condense(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(cord.condense_2(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(cord.cons(builtin.in, builtin.in) = builtin.out, finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.cons(builtin.in, builtin.in, builtin.out), finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.cons_list(builtin.in, builtin.in) = builtin.out, finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.cons_list(builtin.in, builtin.in, builtin.out), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.cord_list_to_cord(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(cord.cord_list_to_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(cord.cord_list_to_list_2(builtin.in, builtin.in) = builtin.out, finite(1, [no, yes, yes, no]), can_loop).
+:- pragma termination_info((cord.empty) = builtin.out, finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(cord.equal(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(cord.filter(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.filter(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.filter_node(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.filter_node(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.find_first_match(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.find_first_match_node(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(cord.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldl2_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl2_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldl2_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldl2_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl2_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldl2_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldl3_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl3_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldl3_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldl3_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl3_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldl3_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node(builtin.in((func(builtin.in, builtin.in) = builtin.out is det)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldl_node_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldr(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(cord.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldr2_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr2_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldr2_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldr2_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr2_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldr2_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldr3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldr3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldr3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldr3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldr3_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr3_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldr3_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldr3_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr3_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldr3_node(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node(builtin.in((func(builtin.in, builtin.in) = builtin.out is det)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldr_node_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.from_list(builtin.in) = builtin.out, finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.get_first(builtin.in, builtin.out), finite(-2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.get_first_node(builtin.in, builtin.out), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.get_last(builtin.in, builtin.out), finite(-2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.get_last_node(builtin.in, builtin.out), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.head(builtin.in, builtin.out), finite(-2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.head_tail(builtin.in, builtin.out, builtin.out), finite(-2, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(cord.head_tail_node(builtin.in, builtin.out, builtin.out), finite(-1, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info((cord.init) = builtin.out, finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(cord.is_empty(builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(cord.is_non_empty(builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(cord.is_singleton(builtin.in, builtin.out), finite(-2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.length(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(cord.list(builtin.in) = builtin.out, finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(cord.map(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred(builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred(builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred(builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred(builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl2(builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl2_node(builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl3(builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl3_node(builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl_node(builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl_node(builtin.in((pred(builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl_node(builtin.in((pred(builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl_node(builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl_node(builtin.in((pred(builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl_node(builtin.in((pred(builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(cord.map_func_node(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(cord.map_pred(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.map_pred_node(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.member(builtin.out, builtin.in), finite(-2, [no, no, yes]), cannot_loop).
+:- pragma termination_info(cord.member_node(builtin.out, builtin.in), finite(-1, [no, no, yes]), cannot_loop).
+:- pragma termination_info(cord.rev_cord_list_to_cord(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(cord.rev_cord_list_to_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(cord.rev_list(builtin.in) = builtin.out, finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(cord.singleton(builtin.in) = builtin.out, finite(2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.snoc(builtin.in, builtin.in) = builtin.out, finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.snoc(builtin.in, builtin.in, builtin.out), finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.snoc_list(builtin.in, builtin.in) = builtin.out, finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.snoc_list(builtin.in, builtin.in, builtin.out), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.split_last(builtin.in, builtin.out, builtin.out), finite(-2, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(cord.split_last_node(builtin.in, builtin.out, builtin.out), finite(-1, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(cord.to_list(builtin.in) = builtin.out, finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(cord.to_rev_list(builtin.in) = builtin.out, finite(1, [no, yes, no]), can_loop).
+
+:- pragma exceptions(function, cord.(++), 2, 0, will_not_throw).
+:- pragma exceptions(function, cord.condense, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, cord.condense_2, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, cord.cons, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.cons, 3, 0, will_not_throw).
+:- pragma exceptions(function, cord.cons_list, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.cons_list, 3, 0, will_not_throw).
+:- pragma exceptions(function, cord.cord_list_to_cord, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, cord.cord_list_to_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, cord.cord_list_to_list_2, 2, 0, will_not_throw).
+:- pragma exceptions(function, cord.empty, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.equal, 2, 0, conditional).
+:- pragma exceptions(predicate, cord.filter, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.filter, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.filter_node, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.filter_node, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.find_first_match, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.find_first_match_node, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, cord.foldl, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl2, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl2, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl2, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl2, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl2, 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl2_node, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl2_node, 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl2_node, 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl2_node, 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl2_node, 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl2_node, 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl3, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl3, 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl3, 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl3, 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl3, 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl3, 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl3_node, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl3_node, 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl3_node, 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl3_node, 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl3_node, 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl3_node, 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_node, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_node_pred, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_node_pred, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_node_pred, 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_node_pred, 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_node_pred, 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_node_pred, 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_pred, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_pred, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_pred, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_pred, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_pred, 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldl_pred, 4, 5, may_throw(user_exception)).
+:- pragma exceptions(function, cord.foldr, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr2, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr2, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr2, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr2, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr2, 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr2_node, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr2_node, 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr2_node, 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr2_node, 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr2_node, 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr2_node, 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr3, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr3, 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr3, 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr3, 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr3, 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr3, 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr3_node, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr3_node, 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr3_node, 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr3_node, 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr3_node, 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr3_node, 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_node, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_node_pred, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_node_pred, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_node_pred, 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_node_pred, 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_node_pred, 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_node_pred, 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_pred, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_pred, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_pred, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_pred, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_pred, 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.foldr_pred, 4, 5, may_throw(user_exception)).
+:- pragma exceptions(function, cord.from_list, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.get_first, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.get_first_node, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.get_last, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.get_last_node, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.head, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.head_tail, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.head_tail_node, 3, 0, will_not_throw).
+:- pragma exceptions(function, cord.init, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.is_empty, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.is_non_empty, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.is_singleton, 2, 0, will_not_throw).
+:- pragma exceptions(function, cord.length, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, cord.list, 1, 0, will_not_throw).
+:- pragma exceptions(function, cord.map, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl, 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl, 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl, 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl, 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl2, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl2_node, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl3, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl3_node, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl_node, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl_node, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl_node, 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl_node, 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl_node, 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_foldl_node, 5, 5, may_throw(user_exception)).
+:- pragma exceptions(function, cord.map_func_node, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_pred, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.map_pred_node, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, cord.member, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.member_node, 2, 0, will_not_throw).
+:- pragma exceptions(function, cord.rev_cord_list_to_cord, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, cord.rev_cord_list_to_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, cord.rev_list, 1, 0, will_not_throw).
+:- pragma exceptions(function, cord.singleton, 1, 0, will_not_throw).
+:- pragma exceptions(function, cord.snoc, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.snoc, 3, 0, will_not_throw).
+:- pragma exceptions(function, cord.snoc_list, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.snoc_list, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.split_last, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, cord.split_last_node, 3, 0, will_not_throw).
+:- pragma exceptions(function, cord.to_list, 1, 0, will_not_throw).
+:- pragma exceptions(function, cord.to_rev_list, 1, 0, will_not_throw).
