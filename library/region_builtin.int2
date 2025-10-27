@@ -1,0 +1,10 @@
+:- module region_builtin.
+:- interface.
+:- type region.
+:- implementation.
+:- pragma foreign_import_module("C", region_builtin).
+:- pragma foreign_import_module("C#", region_builtin).
+:- pragma foreign_import_module("Java", region_builtin).
+:- pragma foreign_type(c, region, "MR_RegionHeader *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, region, "java.lang.Object").
+:- pragma foreign_type(csharp, region, "object").

@@ -1,0 +1,5 @@
+:- module (check_hlds.simplify).opt_format_call.
+:- interface.
+:- type maybe_generate_implicit_stream_warnings
+    --->    do_not_generate_implicit_stream_warnings 
+    ;       generate_implicit_stream_warnings .

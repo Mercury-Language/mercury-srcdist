@@ -1,0 +1,42 @@
+// Automatically generated from `shared_utilities.m'
+// by the Mercury compiler,
+// version rotd-2025-10-27
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MDBCOMP__SHARED_UTILITIES_MH
+#define MDBCOMP__SHARED_UTILITIES_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MDBCOMP__SHARED_UTILITIES_DECL_GUARD
+#define MDBCOMP__SHARED_UTILITIES_DECL_GUARD
+
+
+// On some systems (e.g. Mac OS X 10.3) RLIMIT_STACK is defined in the
+// header sys/resource.h.
+#if defined(MR_HAVE_SYS_RESOURCE_H)
+    #include <sys/resource.h>
+#endif
+
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDBCOMP__SHARED_UTILITIES_MH */

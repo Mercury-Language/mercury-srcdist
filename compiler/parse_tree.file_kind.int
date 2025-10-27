@@ -1,0 +1,36 @@
+:- module parse_tree.file_kind.
+:- interface.
+:- use_module parse_tree.file_names.
+:- type file_kind
+    --->    fk_src 
+    ;       fk_int(
+                 parse_tree.file_kind.int_file_kind
+            )
+    ;       fk_opt(
+                 parse_tree.file_kind.opt_file_kind
+            ).
+:- type int_file_kind
+    --->    ifk_int0 
+    ;       ifk_int1 
+    ;       ifk_int2 
+    ;       ifk_int3 .
+:- type int_or_opt_file_kind
+    --->    iofk_int(
+                 parse_tree.file_kind.int_file_kind
+            )
+    ;       iofk_opt(
+                 parse_tree.file_kind.opt_file_kind
+            ).
+:- type opt_file_kind
+    --->    ofk_opt 
+    ;       ofk_trans_opt .
+:- type src_file_kind
+    --->    sfk_src .
+:- pred extension_to_file_kind(string, parse_tree.file_kind.file_kind).
+:- mode extension_to_file_kind(builtin.in, builtin.out) is semidet.
+:- pred file_kind_to_extension(parse_tree.file_kind.file_kind, string).
+:- mode file_kind_to_extension(builtin.in, builtin.out) is det.
+:- pred int_file_kind_to_extension(parse_tree.file_kind.int_file_kind, string, parse_tree.file_names.ext).
+:- mode int_file_kind_to_extension(builtin.in, builtin.out, builtin.out((parse_tree.file_names).ext_int)) is det.
+:- pred opt_file_kind_to_extension(parse_tree.file_kind.opt_file_kind, string, parse_tree.file_names.ext).
+:- mode opt_file_kind_to_extension(builtin.in, builtin.out, builtin.out((parse_tree.file_names).ext_opt)) is det.

@@ -1,0 +1,19 @@
+:- module ops.
+:- interface.
+:- type arg_prio_gt_or_ge
+	where	type_is_abstract_enum(1).
+:- type maybe_op_info_binary_prefix.
+:- type maybe_op_info_infix.
+:- type maybe_op_info_postfix.
+:- type maybe_op_info_prefix.
+:- type mercury_op_table.
+:- type op_infos.
+:- type priority.
+:- type table.
+:- typeclass op_table(Table).
+:- instance (ops.op_table(ops.mercury_op_table)).
+:- type_representation(arg_prio_gt_or_ge, du_repn(enum("arg_gt", "arg_ge", [],  no_c_j_cs))).
+:- type_representation(mercury_op_table, du_repn(direct_dummy("mercury_op_table",  no_c_j_cs))).
+:- type_representation(op_infos, is_word_aligned_ptr).
+:- type_representation(priority, du_repn(notag("prio", uint,  no_c_j_cs))).
+:- type_representation(table, is_eqv_to(ops.mercury_op_table)).
