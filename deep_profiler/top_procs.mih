@@ -1,0 +1,96 @@
+/*
+** Automatically generated from `top_procs.m'
+** by the Mercury compiler,
+** version rotd-2025-10-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module top_procs.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_top_procs
+#define MR_HEADER_GUARD_top_procs
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TOP_PROCS_DECL_GUARD
+#define TOP_PROCS_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct top_procs__top_procs__type_ctor_info_compare_line_groups_func_2;
+
+extern const MR_TypeCtorInfo_Struct top_procs__top_procs__type_ctor_info_compare_proc_statics_0;
+
+extern const MR_TypeCtorInfo_Struct top_procs__top_procs__type_ctor_info_line_group_2;
+
+void MR_CALL 
+top_procs__sum_line_group_measurements_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+top_procs__find_top_procs_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+top_procs__sort_line_groups_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+top_procs____Compare____line_group_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_bool MR_CALL 
+top_procs____Unify____line_group_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void mercury__top_procs__init(void);
+void mercury__top_procs__init_type_tables(void);
+void mercury__top_procs__init_debugger(void);
+const char *mercury__top_procs__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_top_procs
+
+// :- end_interface top_procs.

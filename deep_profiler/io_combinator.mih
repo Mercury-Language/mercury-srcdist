@@ -1,0 +1,684 @@
+/*
+** Automatically generated from `io_combinator.m'
+** by the Mercury compiler,
+** version rotd-2025-10-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module io_combinator.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_io_combinator
+#define MR_HEADER_GUARD_io_combinator
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef IO_COMBINATOR_DECL_GUARD
+#define IO_COMBINATOR_DECL_GUARD
+
+#endif
+
+
+
+void MR_CALL 
+io_combinator__maybe_error_sequence_10_14_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word param_21,
+  MR_Word param_22,
+  MR_Word * param_23);
+
+void MR_CALL 
+io_combinator__maybe_error_sequence_11_15_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word param_21,
+  MR_Word param_22,
+  MR_Word param_23,
+  MR_Word param_24,
+  MR_Word * param_25);
+
+void MR_CALL 
+io_combinator__maybe_error_sequence_12_16_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word param_21,
+  MR_Word param_22,
+  MR_Word param_23,
+  MR_Word param_24,
+  MR_Word param_25,
+  MR_Word param_26,
+  MR_Word * param_27);
+
+void MR_CALL 
+io_combinator__maybe_error_sequence_13_17_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word param_21,
+  MR_Word param_22,
+  MR_Word param_23,
+  MR_Word param_24,
+  MR_Word param_25,
+  MR_Word param_26,
+  MR_Word param_27,
+  MR_Word param_28,
+  MR_Word * param_29);
+
+void MR_CALL 
+io_combinator__maybe_error_sequence_2_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+io_combinator__maybe_error_sequence_3_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+io_combinator__maybe_error_sequence_4_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word * param_11);
+
+void MR_CALL 
+io_combinator__maybe_error_sequence_5_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word * param_13);
+
+void MR_CALL 
+io_combinator__maybe_error_sequence_6_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word * param_15);
+
+void MR_CALL 
+io_combinator__maybe_error_sequence_7_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word * param_17);
+
+void MR_CALL 
+io_combinator__maybe_error_sequence_8_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word * param_19);
+
+void MR_CALL 
+io_combinator__maybe_error_sequence_9_13_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word * param_21);
+
+void MR_CALL 
+io_combinator__res_sequence_10_14_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word param_21,
+  MR_Word param_22,
+  MR_Word * param_23);
+
+void MR_CALL 
+io_combinator__res_sequence_11_15_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word param_21,
+  MR_Word param_22,
+  MR_Word param_23,
+  MR_Word param_24,
+  MR_Word * param_25);
+
+void MR_CALL 
+io_combinator__res_sequence_2_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+io_combinator__res_sequence_3_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+io_combinator__res_sequence_4_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word * param_11);
+
+void MR_CALL 
+io_combinator__res_sequence_5_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word * param_13);
+
+void MR_CALL 
+io_combinator__res_sequence_6_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word * param_15);
+
+void MR_CALL 
+io_combinator__res_sequence_7_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word * param_17);
+
+void MR_CALL 
+io_combinator__res_sequence_8_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word * param_19);
+
+void MR_CALL 
+io_combinator__res_sequence_9_13_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word * param_21);
+
+void MR_CALL 
+io_combinator__sequence_10_14_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word param_21,
+  MR_Word param_22,
+  MR_Word * param_23);
+
+void MR_CALL 
+io_combinator__sequence_11_15_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word param_21,
+  MR_Word param_22,
+  MR_Word param_23,
+  MR_Word param_24,
+  MR_Word * param_25);
+
+void MR_CALL 
+io_combinator__sequence_2_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+io_combinator__sequence_3_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+io_combinator__sequence_4_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word * param_11);
+
+void MR_CALL 
+io_combinator__sequence_5_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word * param_13);
+
+void MR_CALL 
+io_combinator__sequence_6_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word * param_15);
+
+void MR_CALL 
+io_combinator__sequence_7_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word * param_17);
+
+void MR_CALL 
+io_combinator__sequence_8_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word * param_19);
+
+void MR_CALL 
+io_combinator__sequence_9_13_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word * param_21);
+
+void mercury__io_combinator__init(void);
+void mercury__io_combinator__init_type_tables(void);
+void mercury__io_combinator__init_debugger(void);
+const char *mercury__io_combinator__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_io_combinator
+
+// :- end_interface io_combinator.
