@@ -1,0 +1,62 @@
+:- module version_array2d.
+:- use_module builtin.
+:- use_module int.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module version_array.
+
+:- type version_array2d(T)
+    --->    version_array2d(
+                 int,
+                 int,
+                 version_array.version_array(T)
+            ).
+
+version_array2d.bounds(version_array2d.version_array2d(V_4, V_5, V_6), V_4, V_5).
+
+version_array2d.copy(V_3) = V_4 :-
+    V_3 = version_array2d.version_array2d(V_5, V_6, V_7) : version_array2d.version_array2d(T_1),
+    V_4 = version_array2d.version_array2d(V_5, V_6, V_8) : version_array2d.version_array2d(T_1),
+    V_8 = version_array.copy(V_7).
+
+version_array2d.elem(V_5, V_6, V_7) = V_8 :-
+    version_array2d.lookup(V_7, V_5, V_6, V_8).
+
+version_array2d.'elem :='(V_6, V_7, V_10, V_9) = V_11 :-
+    version_array2d.set(V_6, V_7, V_9, V_10, V_11).
+
+version_array2d.lookup(V_5, V_6, V_7, V_8) :-
+    V_5 = version_array2d.version_array2d(V_9, V_10, V_11) : version_array2d.version_array2d(T_1),
+    V_12 = int.(V_13 + V_7),
+    V_13 = int.(V_6 * V_10),
+    version_array.lookup(V_11, V_12, V_8).
+
+version_array2d.unsafe_rewind(version_array2d.version_array2d(V_3, V_4, V_5)) = version_array2d.version_array2d(V_3, V_4, V_6) :-
+    V_6 = version_array.unsafe_rewind(V_5).
+
+:- pragma termination_info(version_array2d.bounds(builtin.in, builtin.out, builtin.out), finite(-3, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(version_array2d.copy(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_array2d.elem(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_array2d.'elem :='(builtin.in, builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_array2d.in_bounds(builtin.in, builtin.in, builtin.in), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(version_array2d.init(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_array2d.lists(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_array2d.lookup(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(version_array2d.resize(builtin.in, builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_array2d.set(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(version_array2d.unsafe_rewind(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(version_array2d.version_array2d(builtin.in) = builtin.out, infinite, can_loop).
+
+:- pragma exceptions(predicate, version_array2d.bounds, 3, 0, will_not_throw).
+:- pragma exceptions(function, version_array2d.copy, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_array2d.elem, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_array2d.'elem :=', 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_array2d.in_bounds, 3, 0, will_not_throw).
+:- pragma exceptions(function, version_array2d.init, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_array2d.lists, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_array2d.lookup, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_array2d.resize, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, version_array2d.set, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_array2d.unsafe_rewind, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, version_array2d.version_array2d, 1, 0, may_throw(user_exception)).

@@ -1,0 +1,10 @@
+:- module check_hlds.mode_ordering.
+:- interface.
+:- use_module map.
+:- use_module hlds.hlds_pred.
+:- type pred_constraint_info
+    --->    pci(
+                 (check_hlds.mode_ordering).pci_mode_constraint :: check_hlds.mode_constraint_robdd.mode_constraint,
+                 (check_hlds.mode_ordering).pci_mci :: check_hlds.mode_constraint_robdd.mode_constraint_info
+            ).
+:- type pred_constraint_map == map.map(hlds.hlds_pred.pred_id, check_hlds.mode_ordering.pred_constraint_info).

@@ -1,0 +1,4 @@
+:- module check_hlds.typecheck_error_arg_vector.
+:- interface.
+:- type arg_vector_type_error.
+:- type_representation(arg_vector_type_error, is_word_aligned_ptr).
