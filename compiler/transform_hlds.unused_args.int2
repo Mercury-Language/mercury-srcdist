@@ -1,0 +1,16 @@
+:- module transform_hlds.unused_args.
+:- interface.
+:- use_module analysis.framework.
+:- type unused_args_answer.
+:- type unused_args_call.
+:- type unused_args_func_info.
+:- instance ((analysis.framework).analysis(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_call, transform_hlds.unused_args.unused_args_answer)).
+:- instance ((analysis.framework).answer_pattern(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_answer)).
+:- instance ((analysis.framework).call_pattern(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_call)).
+:- instance ((analysis.framework).partial_order(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_answer)).
+:- instance ((analysis.framework).partial_order(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_call)).
+:- instance ((analysis.framework).to_term(transform_hlds.unused_args.unused_args_answer)).
+:- instance ((analysis.framework).to_term(transform_hlds.unused_args.unused_args_call)).
+:- implementation.
+:- type unused_args_call
+    --->    unused_args_call .

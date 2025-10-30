@@ -1,0 +1,43 @@
+// Automatically generated from `message.m'
+// by the Mercury compiler,
+// version rotd-2025-10-30
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MESSAGE_MH
+#define MESSAGE_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MESSAGE_DECL_GUARD
+#define MESSAGE_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Integer message__mutable_variable_verbosity_level_mut;
+#else
+    extern MR_Word message__mutable_variable_verbosity_level_mut;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock message__mutable_variable_verbosity_level_mut_lock;
+#endif
+
+
+#endif
+void message__user_init_pred_52_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MESSAGE_MH */
