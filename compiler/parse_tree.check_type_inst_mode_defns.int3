@@ -1,0 +1,6 @@
+:- module parse_tree.check_type_inst_mode_defns.
+:- interface.
+:- type maybe_insist_on_defn
+	where	type_is_abstract_enum(1).
+:- type_representation(field_name_map, is_eqv_to(map(field_name_of_type_ctor, one_or_more(field_name_locn)))).
+:- type_representation(maybe_insist_on_defn, du_repn(enum("do_not_insist_on_defn", "do_insist_on_defn", [],  no_c_j_cs))).

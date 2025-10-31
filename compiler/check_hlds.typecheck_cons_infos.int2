@@ -1,0 +1,17 @@
+:- module check_hlds.typecheck_cons_infos.
+:- interface.
+:- type cons_info_result
+    --->    cons_info_builtin_const(
+                 parse_tree.prog_data.builtin_type,
+                 string
+            )
+    ;       cons_info_tuple(
+                 check_hlds.type_assign.cons_type_info
+            )
+    ;       cons_info_du_ctor(
+                 parse_tree.prog_data.du_ctor,
+                 list.list(check_hlds.type_assign.cons_type_info),
+                 list.list(check_hlds.typecheck_error_undef.cons_error)
+            )
+    ;       cons_info_field_access_func 
+    ;       cons_info_comp_gen_cons_id .

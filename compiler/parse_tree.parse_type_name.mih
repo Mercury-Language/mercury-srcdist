@@ -1,0 +1,192 @@
+/*
+** Automatically generated from `parse_type_name.m'
+** by the Mercury compiler,
+** version rotd-2025-10-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.parse_type_name.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__parse_type_name
+#define MR_HEADER_GUARD_parse_tree__parse_type_name
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PARSE_TYPE_NAME_DECL_GUARD
+#define PARSE_TREE__PARSE_TYPE_NAME_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_type_name__parse_tree__parse_type_name__type_ctor_info_allow_ho_inst_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_type_name__parse_tree__parse_type_name__type_ctor_info_arg_context_func_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_type_name__parse_tree__parse_type_name__type_ctor_info_known_compound_type_kind_1;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_type_name__parse_tree__parse_type_name__type_ctor_info_known_type_kind_1;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_type_name__parse_tree__parse_type_name__type_ctor_info_maybe_constrain_inst_vars_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_type_name__parse_tree__parse_type_name__type_ctor_info_maybe_require_tm_mode_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_type_name__parse_tree__parse_type_name__type_ctor_info_type_and_maybe_mode_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_type_name__parse_tree__parse_type_name__type_ctor_info_why_no_ho_inst_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_type_name__parse_tree__parse_type_name__type_ctor_info_why_not_allowed_0;
+
+MR_bool MR_CALL 
+parse_tree__parse_type_name__is_known_type_name_1_p_0(
+  MR_String param_1);
+
+MR_bool MR_CALL 
+parse_tree__parse_type_name__maybe_parse_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__parse_type_name__maybe_parse_types_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__parse_type_name__parse_type_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__parse_type_name__parse_type_and_maybe_mode_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+parse_tree__parse_type_name__parse_types_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__parse_type_name__parse_types_and_maybe_modes_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+parse_tree__parse_type_name____Compare____allow_ho_inst_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__parse_type_name____Compare____arg_context_func_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__parse_type_name____Compare____maybe_constrain_inst_vars_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__parse_type_name____Compare____maybe_require_tm_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__parse_type_name____Compare____type_and_maybe_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__parse_type_name____Compare____why_no_ho_inst_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__parse_type_name____Unify____allow_ho_inst_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__parse_type_name____Unify____arg_context_func_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__parse_type_name____Unify____maybe_constrain_inst_vars_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__parse_type_name____Unify____maybe_require_tm_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__parse_type_name____Unify____type_and_maybe_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__parse_type_name____Unify____why_no_ho_inst_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__parse_type_name__init(void);
+void mercury__parse_tree__parse_type_name__init_type_tables(void);
+void mercury__parse_tree__parse_type_name__init_debugger(void);
+const char *mercury__parse_tree__parse_type_name__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.parse_type_name
+
+// :- end_interface parse_tree.parse_type_name.
