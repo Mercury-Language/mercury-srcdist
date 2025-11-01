@@ -1,0 +1,7 @@
+:- module hlds.type_util.
+:- interface.
+:- type ctor_defn.
+:- type is_either_dummy_type
+	where	type_is_abstract_enum(1).
+:- type_representation(ctor_defn, is_word_aligned_ptr).
+:- type_representation(is_either_dummy_type, du_repn(enum("at_least_one_is_dummy_type", "neither_is_dummy_type", [],  no_c_j_cs))).

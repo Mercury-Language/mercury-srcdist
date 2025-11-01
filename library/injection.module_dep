@@ -1,0 +1,14 @@
+module(2, "injection.m",
+	injection,
+	{},
+	{assoc_list, builtin, list, map, private_builtin},
+	{pair, require, string},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
