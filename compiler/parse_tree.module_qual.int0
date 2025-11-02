@@ -1,0 +1,8 @@
+:- module parse_tree.module_qual.
+:- interface.
+:- include_module (parse_tree.module_qual).id_set.
+:- include_module (parse_tree.module_qual).mq_info.
+:- include_module (parse_tree.module_qual).qualify_items.
+:- implementation.
+:- include_module (parse_tree.module_qual).collect_mq_info.
+:- include_module (parse_tree.module_qual).qual_errors.

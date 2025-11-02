@@ -1,0 +1,30 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1998, 2001, 2003, 2005 The University of Melbourne.
+# Copyright (C) 2015, 2018 The Mercury team.
+# This file is distributed under the terms specified in COPYING.LIB.
+#-----------------------------------------------------------------------------#
+
+include Mercury.options
+
+# You may need to modify the line below
+
+TCL_TK_VERSION=8.6
+
+MLLIBS    = -ltk$(TCL_TK_VERSION) -ltcl$(TCL_TK_VERSION) -L/usr/X11R6/lib -lX11 -lXext -lm -ldl \
+   	    -lXt -lICE -lSM
+
+MLFLAGS	  = -R/usr/X11R6/lib
+
+# On some Linux machines you may need to let mgnuc know where the
+# Tcl/Tk header files are.
+EXTRA_CFLAGS = -I/usr/include/tcl -I/usr/include/tk
+
+LIBRARY = libmercury_tcltk
+
+MAIN_TARGET = $(LIBRARY)
+
+depend: mercury_tcltk.depend
+
+install: libmercury_tcltk.install
