@@ -1,0 +1,5 @@
+:- module (hlds.make_hlds).add_pred.
+:- interface.
+:- type part_of_predmode
+	where	type_is_abstract_enum(1).
+:- type_representation(part_of_predmode, du_repn(enum("not_part_of_predmode", "part_of_predmode", [],  no_c_j_cs))).

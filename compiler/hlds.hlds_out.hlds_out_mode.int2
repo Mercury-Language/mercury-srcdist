@@ -1,0 +1,5 @@
+:- module (hlds.hlds_out).hlds_out_mode.
+:- interface.
+:- type incl_addr
+    --->    do_not_incl_addr 
+    ;       do_incl_addr .

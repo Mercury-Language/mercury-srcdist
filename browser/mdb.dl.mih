@@ -1,0 +1,157 @@
+/*
+** Automatically generated from `dl.m'
+** by the Mercury compiler,
+** version rotd-2025-11-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.dl.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__dl
+#define MR_HEADER_GUARD_mdb__dl
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__DL_DECL_GUARD
+#define MDB__DL_DECL_GUARD
+#include "mdb.mih"
+
+    #include <stdio.h>
+    #include "mercury_conf.h"
+    #include "mercury_string.h"   /* for MR_make_aligned_string_copy() */
+    #include "mercury_ho_call.h"
+#ifdef MR_HAVE_DLFCN_H
+    #include <dlfcn.h>
+#endif
+
+
+#include "mercury_ho_call.h"
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__dl__mdb__dl__type_ctor_info_dl_result_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__dl__mdb__dl__type_ctor_info_dl_result_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__dl__mdb__dl__type_ctor_info_handle_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__dl__mdb__dl__type_ctor_info_link_mode_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__dl__mdb__dl__type_ctor_info_scope_0;
+
+void MR_CALL 
+mdb__dl__close_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdb__dl__mercury_sym_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdb__dl__open_6_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdb__dl__sym_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdb__dl____Compare____dl_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__dl____Compare____dl_result_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdb__dl____Compare____handle_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__dl____Compare____link_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__dl____Compare____scope_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__dl____Unify____dl_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__dl____Unify____dl_result_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__dl____Unify____handle_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__dl____Unify____link_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__dl____Unify____scope_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdb__dl__init(void);
+void mercury__mdb__dl__init_type_tables(void);
+void mercury__mdb__dl__init_debugger(void);
+const char *mercury__mdb__dl__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.dl
+
+// :- end_interface mdb.dl.
