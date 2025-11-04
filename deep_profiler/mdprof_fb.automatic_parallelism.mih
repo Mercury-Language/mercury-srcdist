@@ -1,0 +1,53 @@
+/*
+** Automatically generated from `mdprof_fb.automatic_parallelism.m'
+** by the Mercury compiler,
+** version rotd-2025-11-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdprof_fb.automatic_parallelism.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdprof_fb__automatic_parallelism
+#define MR_HEADER_GUARD_mdprof_fb__automatic_parallelism
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDPROF_FB__AUTOMATIC_PARALLELISM_DECL_GUARD
+#define MDPROF_FB__AUTOMATIC_PARALLELISM_DECL_GUARD
+#include "mdprof_fb.mih"
+
+#endif
+
+
+
+void mercury__mdprof_fb__automatic_parallelism__init(void);
+void mercury__mdprof_fb__automatic_parallelism__init_type_tables(void);
+void mercury__mdprof_fb__automatic_parallelism__init_debugger(void);
+const char *mercury__mdprof_fb__automatic_parallelism__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdprof_fb.automatic_parallelism
+
+// :- end_interface mdprof_fb.automatic_parallelism.
