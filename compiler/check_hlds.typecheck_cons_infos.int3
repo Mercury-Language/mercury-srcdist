@@ -1,0 +1,3 @@
+:- module check_hlds.typecheck_cons_infos.
+:- interface.
+:- type cons_info_result.
