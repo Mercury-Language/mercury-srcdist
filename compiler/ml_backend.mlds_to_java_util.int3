@@ -1,0 +1,9 @@
+:- module ml_backend.mlds_to_java_util.
+:- interface.
+:- type code_addr_wrapper.
+:- type context_marker
+	where	type_is_abstract_enum(2).
+:- type java_out_info.
+:- type_representation(code_addr_wrapper, is_word_aligned_ptr).
+:- type_representation(context_marker, du_repn(enum("marker_begin_block", "marker_end_block", ["marker_comment"],  no_c_j_cs))).
+:- type_representation(java_out_info, is_word_aligned_ptr).

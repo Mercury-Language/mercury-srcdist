@@ -1,0 +1,9 @@
+:- module edit_distance.
+:- interface.
+:- type edit_params(T)
+    --->    edit_params(
+                 edit_distance.cost_of_delete :: uint,
+                 edit_distance.cost_of_insert :: uint,
+                 edit_distance.cost_of_replace :: (func(T, T) = uint),
+                 edit_distance.cost_of_transpose :: uint
+            ).
