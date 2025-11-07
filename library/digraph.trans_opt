@@ -1,0 +1,209 @@
+:- module digraph.
+
+:- pragma termination_info(digraph.'ClassMethod_for_enum__uenum____digraph__digraph_key__arity1______enum__from_uint_2'(builtin.in, builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(digraph.'ClassMethod_for_enum__uenum____digraph__digraph_key__arity1______enum__to_uint_1'(builtin.in) = builtin.out, finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(digraph.add_assoc_list(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.add_assoc_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.add_edge(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.add_edge(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.add_reflexive(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.add_vertex(builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.add_vertex_pair(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.add_vertex_pair(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.add_vertices_and_edge(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.add_vertices_and_edge(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.atsort(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.atsort(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.basic_tc(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.check_from_to_order(builtin.in, builtin.in, builtin.in), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(digraph.cliques(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.cliques(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.cliques_2(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.components(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.components(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.compose(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.compose(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.compose_loop(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.delete_assoc_list(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.delete_assoc_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.delete_edge(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.delete_edge(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.dfs(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.dfs(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.dfs(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.dfs(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.dfs(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.dfs_2(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.dfsrev(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.dfsrev(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.dfsrev(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.dfsrev(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.dfsrev(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.digraph_key_from_uint(builtin.in, builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(digraph.digraph_key_to_uint(builtin.in) = builtin.out, finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(digraph.from_assoc_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.from_assoc_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info((digraph.init) = builtin.out, finite(6, [no, no]), cannot_loop).
+:- pragma termination_info(digraph.init(builtin.out), finite(6, [no, no]), cannot_loop).
+:- pragma termination_info(digraph.inverse(builtin.in) = builtin.out, finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(digraph.inverse(builtin.in, builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(digraph.is_dag(builtin.in), infinite, can_loop).
+:- pragma termination_info(digraph.is_dag_2(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.is_edge(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.is_edge(builtin.in, builtin.in, builtin.in), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(digraph.is_edge_rev(builtin.in, builtin.out, builtin.in), infinite, can_loop).
+:- pragma termination_info(digraph.is_edge_rev(builtin.in, builtin.in, builtin.in), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(digraph.keys(builtin.in, builtin.out), finite(-6, [no, yes, no]), cannot_loop).
+:- pragma termination_info(digraph.lookup_from(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.lookup_from(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_key(builtin.in, builtin.in) = builtin.out, finite(-10, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(digraph.lookup_key(builtin.in, builtin.in, builtin.out), finite(-10, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(digraph.lookup_key_set_from(builtin.in, builtin.in) = builtin.out, finite(1, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(digraph.lookup_key_set_from(builtin.in, builtin.in, builtin.out), finite(1, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(digraph.lookup_key_set_to(builtin.in, builtin.in) = builtin.out, finite(1, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(digraph.lookup_key_set_to(builtin.in, builtin.in, builtin.out), finite(1, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(digraph.lookup_to(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.lookup_to(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_vertex(builtin.in, builtin.in) = builtin.out, finite(-10, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(digraph.lookup_vertex(builtin.in, builtin.in, builtin.out), finite(-10, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(digraph.make_clique_map(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.make_reduced_graph(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.reachable_vertices_from(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.reduced(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.reduced(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.reduced(builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.reflexive_closure(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.reflexive_transitive_closure(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.return_sccs_in_from_to_order(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.return_sccs_in_to_from_order(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.return_vertices_in_from_to_order(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.return_vertices_in_to_from_order(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.rtc(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.rtc(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.sc(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.sc(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.search_key(builtin.in, builtin.in, builtin.out), finite(-10, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(digraph.slow_tc(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.symmetric_closure(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.tc(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.tc(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.to_assoc_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.to_assoc_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.to_assoc_list_2(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.to_from_order_loop(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.to_key_assoc_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.to_key_assoc_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.to_key_assoc_list_2(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.transitive_closure(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(digraph.traverse(builtin.in, builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(digraph.traverse(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.traverse_child(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(digraph.traverse_child(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.traverse_vertex(builtin.in, builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(digraph.traverse_vertex(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.tsort(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.vertices(builtin.in) = builtin.out, finite(-5, [no, yes, no]), cannot_loop).
+:- pragma termination_info(digraph.vertices(builtin.in, builtin.out), finite(-5, [no, yes, no]), cannot_loop).
+
+:- pragma exceptions(function, digraph.add_assoc_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.add_assoc_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.add_edge, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.add_edge, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.add_reflexive, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.add_vertex, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.add_vertex_pair, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.add_vertex_pair, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.add_vertices_and_edge, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.add_vertices_and_edge, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.atsort, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.atsort, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.basic_tc, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.check_from_to_order, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.cliques, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.cliques, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.cliques_2, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.components, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.components, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.compose, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.compose, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.compose_loop, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.delete_assoc_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.delete_assoc_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.delete_edge, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.delete_edge, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.dfs, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.dfs, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.dfs, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.dfs, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.dfs, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.dfs_2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.dfsrev, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.dfsrev, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.dfsrev, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.dfsrev, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.dfsrev, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.digraph_key_from_uint, 2, 0, will_not_throw).
+:- pragma exceptions(function, digraph.digraph_key_to_uint, 1, 0, will_not_throw).
+:- pragma exceptions(function, digraph.from_assoc_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.from_assoc_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.init, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, digraph.init, 1, 0, will_not_throw).
+:- pragma exceptions(function, digraph.inverse, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, digraph.inverse, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, digraph.is_dag, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.is_dag_2, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.is_edge, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.is_edge, 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.is_edge_rev, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.is_edge_rev, 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.keys, 2, 0, will_not_throw).
+:- pragma exceptions(function, digraph.lookup_from, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.lookup_from, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.lookup_key, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.lookup_key, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.lookup_key_set_from, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, digraph.lookup_key_set_from, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, digraph.lookup_key_set_to, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, digraph.lookup_key_set_to, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, digraph.lookup_to, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.lookup_to, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.lookup_vertex, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.lookup_vertex, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.make_clique_map, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.make_reduced_graph, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.reachable_vertices_from, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.reduced, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.reduced, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.reduced, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.reflexive_closure, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.reflexive_transitive_closure, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.return_sccs_in_from_to_order, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.return_sccs_in_to_from_order, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.return_vertices_in_from_to_order, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.return_vertices_in_to_from_order, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.rtc, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.rtc, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.sc, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.sc, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.search_key, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, digraph.slow_tc, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.symmetric_closure, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.tc, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.tc, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.to_assoc_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.to_assoc_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.to_assoc_list_2, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.to_from_order_loop, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.to_key_assoc_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.to_key_assoc_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.to_key_assoc_list_2, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.transitive_closure, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.traverse, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.traverse, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.traverse_child, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.traverse_child, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.traverse_vertex, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.traverse_vertex, 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, digraph.tsort, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, digraph.vertices, 1, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, digraph.vertices, 2, 0, conditional).

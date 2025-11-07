@@ -1,0 +1,262 @@
+/*
+** Automatically generated from `make.index_set.m'
+** by the Mercury compiler,
+** version rotd-2025-11-07
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.index_set.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__index_set
+#define MR_HEADER_GUARD_make__index_set
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__INDEX_SET_DECL_GUARD
+#define MAKE__INDEX_SET_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct make__index_set__make__index_set__type_ctor_info_index_set_1;
+
+extern const MR_TypeCtorInfo_Struct make__index_set__make__index_set__type_ctor_info_module_index_0;
+
+extern const MR_TypeCtorInfo_Struct make__index_set__make__index_set__type_ctor_info_module_index_set_0;
+
+extern const MR_TypeCtorInfo_Struct make__index_set__make__index_set__type_ctor_info_target_id_index_0;
+
+extern const MR_TypeCtorInfo_Struct make__index_set__make__index_set__type_ctor_info_target_id_index_set_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_enum__uenum__arity1__make__index_set__module_index__arity0__[7];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_enum__uenum__arity1__make__index_set__target_id_index__arity0__[7];
+
+void MR_CALL 
+make__index_set__file_names_to_index_set_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__index_set__index_set_delete_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__index_set__index_set_foldl_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+make__index_set__index_set_foldl2_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+make__index_set__index_set_insert_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+make__index_set__index_set_member_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__index_set__index_set_union_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__index_set__list_to_index_set_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+make__index_set__module_index_set_to_plain_set_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+make__index_set__module_index_to_name_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+make__index_set__module_name_to_index_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__index_set__module_names_to_index_set_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__index_set__target_id_index_set_to_plain_set_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+make__index_set__target_id_to_index_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__index_set__target_ids_to_index_set_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+make__index_set__index_set_difference_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+make__index_set__index_set_init_0_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+make__index_set__index_set_to_sorted_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+make__index_set__index_set_union_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+make__index_set__index_set_union_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+make__index_set__list_to_index_set_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+make__index_set____Compare____index_set_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+make__index_set____Compare____module_index_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__index_set____Compare____module_index_set_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__index_set____Compare____target_id_index_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__index_set____Compare____target_id_index_set_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+make__index_set____Unify____index_set_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+make__index_set____Unify____module_index_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__index_set____Unify____module_index_set_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__index_set____Unify____target_id_index_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__index_set____Unify____target_id_index_set_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__make__index_set__init(void);
+void mercury__make__index_set__init_type_tables(void);
+void mercury__make__index_set__init_debugger(void);
+const char *mercury__make__index_set__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.index_set
+
+// :- end_interface make.index_set.
