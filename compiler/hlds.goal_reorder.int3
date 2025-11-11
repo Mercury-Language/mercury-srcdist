@@ -1,0 +1,8 @@
+:- module hlds.goal_reorder.
+:- interface.
+:- type can_reorder_goals
+	where	type_is_abstract_enum(1).
+:- type reorder_maintains_termination
+	where	type_is_abstract_enum(1).
+:- type_representation(can_reorder_goals, du_repn(enum("cannot_reorder_goals", "can_reorder_goals", [],  no_c_j_cs))).
+:- type_representation(reorder_maintains_termination, du_repn(enum("reorder_maintains_termination", "reorder_does_not_maintain_termination", [],  no_c_j_cs))).
