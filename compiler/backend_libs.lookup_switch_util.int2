@@ -1,0 +1,30 @@
+:- module backend_libs.lookup_switch_util.
+:- interface.
+:- type case_consts(Key, Rval, SeveralInfo)
+    --->    all_one_soln(
+                 map.map(Key, list.list(Rval))
+            )
+    ;       some_several_solns(
+                 map.map(Key, backend_libs.lookup_switch_util.soln_consts(Rval)),
+                 SeveralInfo
+            ).
+:- type case_consts_several_llds
+    --->    case_consts_several_llds(
+                 parse_tree.set_of_var.set_of_progvar,
+                 bool.bool
+            ).
+:- type need_bit_vec_check
+    --->    do_not_need_bit_vec_check_no_gaps 
+    ;       do_not_need_bit_vec_check_with_gaps 
+    ;       need_bit_vec_check .
+:- type need_range_check
+    --->    do_not_need_range_check 
+    ;       need_range_check .
+:- type soln_consts(Rval)
+    --->    one_soln(
+                 list.list(Rval)
+            )
+    ;       several_solns(
+                 list.list(Rval),
+                 list.list(list.list(Rval))
+            ).

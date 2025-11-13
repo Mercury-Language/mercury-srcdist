@@ -1,0 +1,6 @@
+:- module parse_tree.parse_inst_mode_name.
+:- interface.
+:- type allow_constrained_inst_var.
+:- type why_no_constrained_inst_var
+	where	type_is_abstract_enum(3).
+:- type_representation(why_no_constrained_inst_var, du_repn(enum("wnciv_constraint_rhs", "wnciv_inst_defn_lhs", ["wnciv_eqv_inst_defn_rhs", "wnciv_mode_defn_rhs", "wnciv_type_and_mode", "wnciv_solver_type_inst", "wnciv_mutable_inst"],  no_c_j_cs))).

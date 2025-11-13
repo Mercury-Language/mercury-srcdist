@@ -1,0 +1,73 @@
+/*
+** Automatically generated from `coverage_profiling.m'
+** by the Mercury compiler,
+** version rotd-2025-11-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.coverage_profiling.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__coverage_profiling
+#define MR_HEADER_GUARD_ll_backend__coverage_profiling
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__COVERAGE_PROFILING_DECL_GUARD
+#define LL_BACKEND__COVERAGE_PROFILING_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__coverage_profiling__ll_backend__coverage_profiling__type_ctor_info_coverage_before_known_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__coverage_profiling__ll_backend__coverage_profiling__type_ctor_info_coverage_data_type_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__coverage_profiling__ll_backend__coverage_profiling__type_ctor_info_coverage_profiling_options_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__coverage_profiling__ll_backend__coverage_profiling__type_ctor_info_proc_coverage_info_0;
+
+void MR_CALL 
+ll_backend__coverage_profiling__coverage_prof_transform_proc_body_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void mercury__ll_backend__coverage_profiling__init(void);
+void mercury__ll_backend__coverage_profiling__init_type_tables(void);
+void mercury__ll_backend__coverage_profiling__init_debugger(void);
+const char *mercury__ll_backend__coverage_profiling__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.coverage_profiling
+
+// :- end_interface ll_backend.coverage_profiling.

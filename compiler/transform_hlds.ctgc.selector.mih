@@ -1,0 +1,133 @@
+/*
+** Automatically generated from `ctgc.selector.m'
+** by the Mercury compiler,
+** version rotd-2025-11-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.ctgc.selector.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__ctgc__selector
+#define MR_HEADER_GUARD_transform_hlds__ctgc__selector
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__CTGC__SELECTOR_DECL_GUARD
+#define TRANSFORM_HLDS__CTGC__SELECTOR_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.ctgc.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__selector__transform_hlds__ctgc__selector__type_ctor_info_branch_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__selector__transform_hlds__ctgc__selector__type_ctor_info_encounter_existential_subtype_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__selector__transform_hlds__ctgc__selector__type_ctor_info_normalization_0;
+
+void MR_CALL 
+transform_hlds__ctgc__selector__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_101_108_101_99_116_111_114_95_95_101_110_99_111_117_110_116_101_114_95_101_120_105_115_116_101_110_116_105_97_108_95_115_117_98_116_121_112_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+transform_hlds__ctgc__selector__normalize_selector_with_type_information_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__ctgc__selector__reset_tables_2_p_0(void);
+
+void MR_CALL 
+transform_hlds__ctgc__selector__selector_apply_widening_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__selector__selector_subsumed_by_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+transform_hlds__ctgc__selector__selector_termshift_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__selector__type_of_node_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__selector__selector_init_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__selector__selector_init_from_list_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__selector__top_selector_0_f_0(void);
+
+void MR_CALL 
+transform_hlds__ctgc__selector____Compare____encounter_existential_subtype_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+transform_hlds__ctgc__selector____Compare____normalization_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__selector____Unify____encounter_existential_subtype_0_0(void);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__selector____Unify____normalization_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__ctgc__selector__init(void);
+void mercury__transform_hlds__ctgc__selector__init_type_tables(void);
+void mercury__transform_hlds__ctgc__selector__init_debugger(void);
+const char *mercury__transform_hlds__ctgc__selector__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.ctgc.selector
+
+// :- end_interface transform_hlds.ctgc.selector.

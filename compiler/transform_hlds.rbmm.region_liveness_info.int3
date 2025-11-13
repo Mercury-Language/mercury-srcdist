@@ -1,0 +1,20 @@
+:- module (transform_hlds.rbmm).region_liveness_info.
+:- interface.
+:- type execution_path.
+:- type execution_path_table.
+:- type pp_region_set_table.
+:- type pp_varset_table.
+:- type proc_pp_region_set_table.
+:- type proc_pp_varset_table.
+:- type proc_region_set_table.
+:- type region_set.
+:- type variable_set.
+:- type_representation(execution_path, is_eqv_to(assoc_list(program_point, hlds_goal))).
+:- type_representation(execution_path_table, is_eqv_to(map(pred_proc_id, list(transform_hlds.rbmm.region_liveness_info.execution_path)))).
+:- type_representation(pp_region_set_table, is_eqv_to(map(program_point, transform_hlds.rbmm.region_liveness_info.region_set))).
+:- type_representation(pp_varset_table, is_eqv_to(map(program_point, transform_hlds.rbmm.region_liveness_info.variable_set))).
+:- type_representation(proc_pp_region_set_table, is_eqv_to(map(pred_proc_id, transform_hlds.rbmm.region_liveness_info.pp_region_set_table))).
+:- type_representation(proc_pp_varset_table, is_eqv_to(map(pred_proc_id, transform_hlds.rbmm.region_liveness_info.pp_varset_table))).
+:- type_representation(proc_region_set_table, is_eqv_to(map(pred_proc_id, transform_hlds.rbmm.region_liveness_info.region_set))).
+:- type_representation(region_set, is_eqv_to(set(rptg_node))).
+:- type_representation(variable_set, is_eqv_to(set(prog_var))).
