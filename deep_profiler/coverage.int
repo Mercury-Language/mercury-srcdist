@@ -1,0 +1,52 @@
+:- module coverage.
+:- interface.
+:- use_module analysis_utils.
+:- use_module array.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module measurements.
+:- use_module mdbcomp.goal_path.
+:- use_module mdbcomp.program_representation.
+:- type coverage_info
+    --->    coverage_unknown 
+    ;       coverage_known_zero 
+    ;       coverage_known_same(
+                 int
+            )
+    ;       coverage_known(
+                 int,
+                 int
+            )
+    ;       coverage_known_before(
+                 int
+            )
+    ;       coverage_known_after(
+                 int
+            ).
+:- type coverage_point
+    --->    coverage_point(
+                 int,
+                 mdbcomp.goal_path.reverse_goal_path,
+                 mdbcomp.program_representation.cp_type
+            ).
+:- pred add_coverage_point_to_map(coverage.coverage_point, map.map(mdbcomp.goal_path.reverse_goal_path, coverage.coverage_point), map.map(mdbcomp.goal_path.reverse_goal_path, coverage.coverage_point), map.map(mdbcomp.goal_path.reverse_goal_path, coverage.coverage_point), map.map(mdbcomp.goal_path.reverse_goal_path, coverage.coverage_point)).
+:- mode add_coverage_point_to_map(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred coverage_point_arrays_to_list(array.array(mdbcomp.program_representation.coverage_point_info), array.array(int), list.list(coverage.coverage_point)).
+:- mode coverage_point_arrays_to_list(builtin.in, builtin.in, builtin.out) is det.
+:- pred get_coverage_after(coverage.coverage_info, int).
+:- mode get_coverage_after(builtin.in, builtin.out) is semidet.
+:- pred get_coverage_after_det(coverage.coverage_info, int).
+:- mode get_coverage_after_det(builtin.in, builtin.out) is det.
+:- pred get_coverage_before(coverage.coverage_info, int).
+:- mode get_coverage_before(builtin.in, builtin.out) is semidet.
+:- pred get_coverage_before_and_after(coverage.coverage_info, int, int).
+:- mode get_coverage_before_and_after(builtin.in, builtin.out, builtin.out) is semidet.
+:- pred get_coverage_before_and_after_det(coverage.coverage_info, int, int).
+:- mode get_coverage_before_and_after_det(builtin.in, builtin.out, builtin.out) is det.
+:- pred get_coverage_before_det(coverage.coverage_info, int).
+:- mode get_coverage_before_det(builtin.in, builtin.out) is det.
+:- pred goal_annotate_with_coverage(mdbcomp.program_representation.string_proc_label, mdbcomp.program_representation.goal_rep(mdbcomp.goal_path.goal_id), measurements.own_prof_info, map.map(mdbcomp.goal_path.reverse_goal_path, analysis_utils.cost_and_callees(T)), map.map(mdbcomp.goal_path.reverse_goal_path, coverage.coverage_point), map.map(mdbcomp.goal_path.reverse_goal_path, coverage.coverage_point), mdbcomp.goal_path.containing_goal_map, mdbcomp.goal_path.goal_id, mdbcomp.goal_path.goal_attr_array(coverage.coverage_info)).
+:- mode goal_annotate_with_coverage(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, (mdbcomp.goal_path).gaa_uo) is det.
+:- pred procrep_annotate_with_coverage(mdbcomp.program_representation.proc_rep(mdbcomp.goal_path.goal_id), measurements.own_prof_info, map.map(mdbcomp.goal_path.reverse_goal_path, analysis_utils.cost_and_callees(T)), map.map(mdbcomp.goal_path.reverse_goal_path, coverage.coverage_point), map.map(mdbcomp.goal_path.reverse_goal_path, coverage.coverage_point), mdbcomp.goal_path.containing_goal_map, mdbcomp.goal_path.goal_id, mdbcomp.goal_path.goal_attr_array(coverage.coverage_info)).
+:- mode procrep_annotate_with_coverage(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, (mdbcomp.goal_path).gaa_uo) is det.

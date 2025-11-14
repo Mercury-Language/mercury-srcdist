@@ -1,0 +1,7 @@
+:- module check_hlds.mode_constraints.
+:- interface.
+:- type_representation(can_succeed, is_eqv_to(bool)).
+:- type_representation(constrain_var, is_eqv_to(pred(prog_var, mode_constraint, mode_constraint, mode_constraint_info, mode_constraint_info))).
+:- type_representation(ho_calls, is_eqv_to(multi_map(prog_var_and_level, pair(goal_id, list(prog_var))))).
+:- type_representation(ho_modes, is_eqv_to(multi_map(prog_var_and_level, list(mer_mode)))).
+:- type_representation(sccs, is_eqv_to(list(list(pred_id)))).
