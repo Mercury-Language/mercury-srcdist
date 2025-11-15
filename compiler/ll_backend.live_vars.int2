@@ -1,0 +1,17 @@
+:- module ll_backend.live_vars.
+:- interface.
+:- type alloc_data
+    --->    alloc_data(
+                 (ll_backend.live_vars).ad_module_info :: hlds.hlds_module.module_info,
+                 (ll_backend.live_vars).ad_proc_info :: hlds.hlds_pred.proc_info,
+                 (ll_backend.live_vars).ad_pred_proc_id :: hlds.hlds_pred.pred_proc_id,
+                 (ll_backend.live_vars).ad_dummy_var_info :: ll_backend.live_vars.dummy_var_info,
+                 (ll_backend.live_vars).ad_typeinfo_liveness :: bool.bool,
+                 (ll_backend.live_vars).ad_opt_no_return_calls :: bool.bool
+            ).
+:- type dummy_var_info
+    --->    no_var_is_dummy 
+    ;       some_var_may_be_dummy(
+                 parse_tree.var_table.var_table
+            ).
+:- typeclass stack_alloc_info(T).

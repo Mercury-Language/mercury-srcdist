@@ -1,0 +1,19 @@
+:- module recompilation.check.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.read_modules.
+:- type file_components_to_recompile
+    --->    all_file_components 
+    ;       some_file_components(
+                 list.list(mdbcomp.sym_name.module_name)
+            ).
+:- pred what_file_components_should_we_recompile(io.text_output_stream, libs.globals.globals, mdbcomp.sym_name.module_name, recompilation.check.file_components_to_recompile, parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, io.io, io.io).
+:- mode what_file_components_should_we_recompile(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- implementation.
+:- typeclass check_imported_module_int_file(PT).
