@@ -1,0 +1,15 @@
+:- module check_hlds.typecheck_error_overload.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module check_hlds.type_assign.
+:- use_module check_hlds.typecheck_info.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- type stuff_to_check
+    --->    clause_only 
+    ;       whole_pred .
+:- func report_error_too_much_overloading(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, check_hlds.typecheck_info.overloaded_symbol_map) = parse_tree.error_spec.error_spec.
+:- func report_warning_too_much_overloading(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, check_hlds.typecheck_info.overloaded_symbol_map) = parse_tree.error_spec.error_spec.
+:- pred typecheck_check_for_ambiguity(parse_tree.prog_data.prog_context, check_hlds.typecheck_error_overload.stuff_to_check, list.list(parse_tree.prog_data.prog_var), check_hlds.type_assign.type_assign_set, check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.typecheck_info).
+:- mode typecheck_check_for_ambiguity(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
