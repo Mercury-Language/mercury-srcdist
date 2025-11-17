@@ -1,0 +1,47 @@
+:- module (hlds.hlds_out).hlds_out_mode.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.instmap.
+:- use_module libs.indent.
+:- use_module parse_tree.parse_tree_out_info.
+:- use_module parse_tree.parse_tree_output.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_table.
+:- type incl_addr
+    --->    do_not_incl_addr 
+    ;       do_incl_addr .
+:- func instmap_to_string(parse_tree.var_table.var_table, parse_tree.prog_data.var_name_print, uint, hlds.instmap.instmap) = string.
+:- pred mercury_format_structured_inst(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, hlds.hlds_out.hlds_out_mode.incl_addr, libs.indent.indent, string, parse_tree.prog_data.mer_inst, S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_structured_inst(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_structured_inst_list(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, hlds.hlds_out.hlds_out_mode.incl_addr, libs.indent.indent, list.list(parse_tree.prog_data.mer_inst), S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_structured_inst_list(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_structured_unify_mode(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, hlds.hlds_out.hlds_out_mode.incl_addr, libs.indent.indent, hlds.hlds_goal.unify_mode, S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_structured_unify_mode(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_structured_unify_mode_list(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, hlds.hlds_out.hlds_out_mode.incl_addr, libs.indent.indent, list.list(hlds.hlds_goal.unify_mode), S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_structured_unify_mode_list(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_unify_mode(parse_tree.prog_data.inst_varset, hlds.hlds_goal.unify_mode, S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_unify_mode(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_format_unify_mode_list(parse_tree.prog_data.inst_varset, list.list(hlds.hlds_goal.unify_mode), S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_unify_mode_list(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_structured_inst(io.text_output_stream, parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, hlds.hlds_out.hlds_out_mode.incl_addr, libs.indent.indent, parse_tree.prog_data.mer_inst, io.io, io.io).
+:- mode mercury_output_structured_inst(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_structured_inst_list(io.text_output_stream, parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, hlds.hlds_out.hlds_out_mode.incl_addr, libs.indent.indent, list.list(parse_tree.prog_data.mer_inst), io.io, io.io).
+:- mode mercury_output_structured_inst_list(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_structured_unify_mode(io.text_output_stream, parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, hlds.hlds_out.hlds_out_mode.incl_addr, libs.indent.indent, hlds.hlds_goal.unify_mode, io.io, io.io).
+:- mode mercury_output_structured_unify_mode(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_structured_unify_mode_list(io.text_output_stream, parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, hlds.hlds_out.hlds_out_mode.incl_addr, libs.indent.indent, list.list(hlds.hlds_goal.unify_mode), io.io, io.io).
+:- mode mercury_output_structured_unify_mode_list(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_unify_mode(io.text_output_stream, parse_tree.prog_data.inst_varset, hlds.hlds_goal.unify_mode, io.io, io.io).
+:- mode mercury_output_unify_mode(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_unify_mode_list(io.text_output_stream, parse_tree.prog_data.inst_varset, list.list(hlds.hlds_goal.unify_mode), io.io, io.io).
+:- mode mercury_output_unify_mode_list(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- func mercury_structured_inst_list_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, hlds.hlds_out.hlds_out_mode.incl_addr, libs.indent.indent, list.list(parse_tree.prog_data.mer_inst)) = string.
+:- func mercury_structured_inst_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, hlds.hlds_out.hlds_out_mode.incl_addr, libs.indent.indent, parse_tree.prog_data.mer_inst) = string.
+:- func mercury_structured_unify_mode_list_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, hlds.hlds_out.hlds_out_mode.incl_addr, libs.indent.indent, list.list(hlds.hlds_goal.unify_mode)) = string.
+:- func mercury_structured_unify_mode_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_varset, hlds.hlds_out.hlds_out_mode.incl_addr, libs.indent.indent, hlds.hlds_goal.unify_mode) = string.
+:- func mercury_unify_mode_list_to_string(parse_tree.prog_data.inst_varset, list.list(hlds.hlds_goal.unify_mode)) = string.
+:- func mercury_unify_mode_to_string(parse_tree.prog_data.inst_varset, hlds.hlds_goal.unify_mode) = string.

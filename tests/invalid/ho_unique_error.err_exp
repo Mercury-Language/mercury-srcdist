@@ -1,0 +1,21 @@
+ho_unique_error.m:011: In predicate [38;5;87m`call_ho'/2:[39;49m
+ho_unique_error.m:011:   error: [38;5;203m`multi'[39;49m is not a valid determinism for a
+ho_unique_error.m:011:   predicate that has I/O state arguments. The valid
+ho_unique_error.m:011:   determinisms for such predicates are [38;5;40m`det',[39;49m [38;5;40m`cc_multi'[39;49m
+ho_unique_error.m:011:   and [38;5;40m`erroneous',[39;49m since the I/O state can be neither
+ho_unique_error.m:011:   duplicated nor destroyed.
+ho_unique_error.m:016: In clause for `call_ho(di, uo)':
+ho_unique_error.m:016:   in argument 3 of the call to the `call' builtin
+ho_unique_error.m:016:   predicate:
+ho_unique_error.m:016:   mode error: variable [38;5;87m`STATE_VARIABLE_IO_0'[39;49m has
+ho_unique_error.m:016:   instantiatedness [38;5;203m`mostly_unique',[39;49m
+ho_unique_error.m:016:   expected instantiatedness was [38;5;40m`unique'.[39;49m
+ho_unique_error.m:016:   This kind of uniqueness mismatch is usually caused by
+ho_unique_error.m:016:   doing [38;5;226minput/output[39;49m or [38;5;226msome other kind of destructive[39;49m
+ho_unique_error.m:016:   [38;5;226mupdate[39;49m [38;5;203min a context where it can be backtracked over,[39;49m
+ho_unique_error.m:016:   such as the condition of an if-then-else.
+ho_unique_error.m:016:   Note that it is possible that the cause is code that
+ho_unique_error.m:016:   is intended to be a [38;5;40mcall[39;49m to the current predicate or
+ho_unique_error.m:016:   function, but has been accidentally turned into a
+ho_unique_error.m:016:   [38;5;203mclause[39;49m for it by a typo at the end of the previous
+ho_unique_error.m:016:   line that replaces a comma by a period.
