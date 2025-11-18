@@ -1,0 +1,3 @@
+:- module check_hlds.modecheck_conj.
+:- interface.
+:- type_representation(impurity_error, is_eqv_to(mode_error_info)).

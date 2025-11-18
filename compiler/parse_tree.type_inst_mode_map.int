@@ -1,0 +1,14 @@
+:- module parse_tree.type_inst_mode_map.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item.
+:- func inst_ctor_defn_items_to_map(list.list(parse_tree.prog_item.item_inst_defn_info)) = parse_tree.prog_item.inst_ctor_defn_map.
+:- func inst_ctor_defn_map_to_inst_defns(parse_tree.prog_item.inst_ctor_defn_map) = list.list(parse_tree.prog_item.item_inst_defn_info).
+:- func mode_ctor_defn_items_to_map(list.list(parse_tree.prog_item.item_mode_defn_info)) = parse_tree.prog_item.mode_ctor_defn_map.
+:- func mode_ctor_defn_map_to_mode_defns(parse_tree.prog_item.mode_ctor_defn_map) = list.list(parse_tree.prog_item.item_mode_defn_info).
+:- func type_ctor_defn_items_to_map(list.list(parse_tree.prog_item.item_type_defn_info)) = parse_tree.prog_item.type_ctor_defn_map.
+:- func type_ctor_defn_map_to_type_defns(parse_tree.prog_item.type_ctor_defn_map) = list.list(parse_tree.prog_item.item_type_defn_info).
+:- func type_ctor_foreign_enum_items_to_map(list.list(parse_tree.prog_item.item_foreign_enum_info)) = parse_tree.prog_item.type_ctor_foreign_enum_map.
+:- func type_ctor_repn_items_to_map(list.list(parse_tree.prog_item.item_type_repn_info)) = parse_tree.prog_item.type_ctor_repn_map.
+:- func type_ctor_repn_map_to_type_repns(parse_tree.prog_item.type_ctor_repn_map) = list.list(parse_tree.prog_item.item_type_repn_info).
