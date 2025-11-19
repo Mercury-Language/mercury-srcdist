@@ -1,0 +1,3 @@
+:- module mdbcomp.read_trace_counts.
+:- interface.
+:- type read_trace_counts_file_result.
