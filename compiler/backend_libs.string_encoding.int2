@@ -1,0 +1,2 @@
+:- module backend_libs.string_encoding.
+:- interface.

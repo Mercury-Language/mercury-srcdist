@@ -1,0 +1,3 @@
+:- module recompilation.check.
+:- interface.
+:- type file_components_to_recompile.

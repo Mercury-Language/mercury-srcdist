@@ -1,0 +1,14 @@
+module(2, "bool.m",
+	bool,
+	{},
+	{builtin, enum, list, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
