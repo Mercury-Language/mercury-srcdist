@@ -1,0 +1,4 @@
+*.so
+*.pic_o
+Constants.java
+*.class
