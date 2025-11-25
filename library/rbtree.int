@@ -1,0 +1,127 @@
+:- module rbtree.
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- type rbtree(K, V).
+:- pred assoc_list_to_rbtree(assoc_list.assoc_list(K, V), rbtree.rbtree(K, V)).
+:- mode assoc_list_to_rbtree(builtin.in, builtin.out) is det.
+:- func assoc_list_to_rbtree(assoc_list.assoc_list(K, V)) = rbtree.rbtree(K, V).
+:- pred count(rbtree.rbtree(K, V), int).
+:- mode count(builtin.in, builtin.out) is det.
+:- func count(rbtree.rbtree(K, V)) = int.
+:- pred delete(K, rbtree.rbtree(K, V), rbtree.rbtree(K, V)).
+:- mode delete(builtin.in, builtin.in, builtin.out) is det.
+:- func delete(rbtree.rbtree(K, V), K) = rbtree.rbtree(K, V).
+:- pred foldl(pred(K, V, A, A), rbtree.rbtree(K, V), A, A).
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- func foldl((func(K, V, A) = A), rbtree.rbtree(K, V), A) = A.
+:- pred foldl2(pred(K, V, A, A, B, B), rbtree.rbtree(K, V), A, A, B, B).
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldl2_values(pred(V, A, A, B, B), rbtree.rbtree(K, V), A, A, B, B).
+:- mode foldl2_values(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl2_values(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl2_values(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl2_values(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl2_values(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl2_values(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldl3(pred(K, V, A, A, B, B, C, C), rbtree.rbtree(K, V), A, A, B, B, C, C).
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo, builtin.di, builtin.uo) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo, builtin.di, builtin.uo) is det.
+:- pred foldl_values(pred(V, A, A), rbtree.rbtree(K, V), A, A).
+:- mode foldl_values(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode foldl_values(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode foldl_values(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldl_values(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldl_values(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl_values(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- pred foldr(pred(K, V, A, A), rbtree.rbtree(K, V), A, A).
+:- mode foldr(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode foldr(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- func foldr((func(K, V, A) = A), rbtree.rbtree(K, V), A) = A.
+:- pred foldr2(pred(K, V, A, A, B, B), rbtree.rbtree(K, V), A, A, B, B).
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det.
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldr_values(pred(V, A, A), rbtree.rbtree(K, V), A, A).
+:- mode foldr_values(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode foldr_values(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode foldr_values(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldr_values(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldr_values(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode foldr_values(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- func from_assoc_list(assoc_list.assoc_list(K, V)) = rbtree.rbtree(K, V).
+:- pred init(rbtree.rbtree(K, V)).
+:- mode init(builtin.uo) is det.
+:- func init = rbtree.rbtree(K, V).
+:- pred insert(K, V, rbtree.rbtree(K, V), rbtree.rbtree(K, V)).
+:- mode insert(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred insert_duplicate(K, V, rbtree.rbtree(K, V), rbtree.rbtree(K, V)).
+:- mode insert_duplicate(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func insert_duplicate(rbtree.rbtree(K, V), K, V) = rbtree.rbtree(K, V).
+:- pred is_empty(rbtree.rbtree(K, V)).
+:- mode is_empty(builtin.in) is semidet.
+:- pred keys(rbtree.rbtree(K, V), list.list(K)).
+:- mode keys(builtin.in, builtin.out) is det.
+:- func keys(rbtree.rbtree(K, V)) = list.list(K).
+:- pred lookup(rbtree.rbtree(K, V), K, V).
+:- mode lookup(builtin.in, builtin.in, builtin.out) is det.
+:- func lookup(rbtree.rbtree(K, V), K) = V.
+:- pred lower_bound_lookup(rbtree.rbtree(K, V), K, K, V).
+:- mode lower_bound_lookup(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred lower_bound_search(rbtree.rbtree(K, V), K, K, V).
+:- mode lower_bound_search(builtin.in, builtin.in, builtin.out, builtin.out) is semidet.
+:- pred map_values(pred(K, V1, V2), rbtree.rbtree(K, V1), rbtree.rbtree(K, V2)).
+:- mode map_values(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.out) is det.
+:- mode map_values(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.out) is semidet.
+:- func map_values((func(K, V1) = V2), rbtree.rbtree(K, V1)) = rbtree.rbtree(K, V2).
+:- pred member(rbtree.rbtree(K, V), K, V).
+:- mode member(builtin.in, builtin.out, builtin.out) is nondet.
+:- pred rbtree_to_assoc_list(rbtree.rbtree(K, V), assoc_list.assoc_list(K, V)).
+:- mode rbtree_to_assoc_list(builtin.in, builtin.out) is det.
+:- func rbtree_to_assoc_list(rbtree.rbtree(K, V)) = assoc_list.assoc_list(K, V).
+:- pred remove(K, V, rbtree.rbtree(K, V), rbtree.rbtree(K, V)).
+:- mode remove(builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- pred remove_largest(K, V, rbtree.rbtree(K, V), rbtree.rbtree(K, V)).
+:- mode remove_largest(builtin.out, builtin.out, builtin.in, builtin.out) is semidet.
+:- pred remove_smallest(K, V, rbtree.rbtree(K, V), rbtree.rbtree(K, V)).
+:- mode remove_smallest(builtin.out, builtin.out, builtin.in, builtin.out) is semidet.
+:- pred search(rbtree.rbtree(K, V), K, V).
+:- mode search(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred set(K, V, rbtree.rbtree(K, V), rbtree.rbtree(K, V)).
+:- mode set(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func set(rbtree.rbtree(K, V), K, V) = rbtree.rbtree(K, V).
+:- func singleton(K, V) = rbtree.rbtree(K, V).
+:- func to_assoc_list(rbtree.rbtree(K, V)) = assoc_list.assoc_list(K, V).
+:- pred transform_value(pred(V, V), K, rbtree.rbtree(K, V), rbtree.rbtree(K, V)).
+:- mode transform_value(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is semidet.
+:- pred update(K, V, rbtree.rbtree(K, V), rbtree.rbtree(K, V)).
+:- mode update(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred upper_bound_lookup(rbtree.rbtree(K, V), K, K, V).
+:- mode upper_bound_lookup(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred upper_bound_search(rbtree.rbtree(K, V), K, K, V).
+:- mode upper_bound_search(builtin.in, builtin.in, builtin.out, builtin.out) is semidet.
+:- pred values(rbtree.rbtree(K, V), list.list(V)).
+:- mode values(builtin.in, builtin.out) is det.
+:- func values(rbtree.rbtree(K, V)) = list.list(V).
