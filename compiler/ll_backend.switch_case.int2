@@ -1,0 +1,22 @@
+:- module ll_backend.switch_case.
+:- interface.
+:- use_module map.
+:- use_module ll_backend.llds.
+:- type case_code_included
+    --->    case_code_not_yet_included 
+    ;       case_code_already_included .
+:- type case_label_info
+    --->    case_label_info(
+                 (ll_backend.switch_case).case_description :: string,
+                 (ll_backend.switch_case).case_code :: ll_backend.llds.llds_code,
+                 (ll_backend.switch_case).case_code_included :: ll_backend.switch_case.case_code_included
+            ).
+:- type case_label_map == map.map(ll_backend.llds.label, ll_backend.switch_case.case_label_info).
+:- type represent_params
+    --->    represent_params(
+                 (ll_backend.switch_case).switch_var_name :: string,
+                 (ll_backend.switch_case).switch_goal_info :: hlds.hlds_goal.hlds_goal_info,
+                 (ll_backend.switch_case).switch_code_model :: hlds.code_model.code_model,
+                 (ll_backend.switch_case).starting_position :: ll_backend.code_loc_dep.position_info,
+                 (ll_backend.switch_case).switch_end_label :: ll_backend.llds.label
+            ).
