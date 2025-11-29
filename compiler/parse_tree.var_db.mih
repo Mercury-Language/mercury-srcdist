@@ -1,0 +1,128 @@
+/*
+** Automatically generated from `var_db.m'
+** by the Mercury compiler,
+** version rotd-2025-11-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.var_db.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__var_db
+#define MR_HEADER_GUARD_parse_tree__var_db
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__VAR_DB_DECL_GUARD
+#define PARSE_TREE__VAR_DB_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__var_db__parse_tree__var_db__type_ctor_info_var_db_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__var_db__parse_tree__var_db__type_ctor_info_var_name_source_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__var_db__parse_tree__var_db__type_ctor_info_var_type_source_0;
+
+void MR_CALL 
+parse_tree__var_db__lookup_var_name_in_source_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__var_db__lookup_var_type_in_db_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_db__lookup_var_type_in_source_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_db__lookup_var_types_in_db_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__var_db__lookup_var_types_in_source_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__var_db__search_var_name_in_source_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__var_db____Compare____var_db_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__var_db____Compare____var_name_source_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__var_db____Compare____var_type_source_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__var_db____Unify____var_db_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__var_db____Unify____var_name_source_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__var_db____Unify____var_type_source_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__var_db__init(void);
+void mercury__parse_tree__var_db__init_type_tables(void);
+void mercury__parse_tree__var_db__init_debugger(void);
+const char *mercury__parse_tree__var_db__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.var_db
+
+// :- end_interface parse_tree.var_db.
