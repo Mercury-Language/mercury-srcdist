@@ -1,0 +1,29 @@
+:- module parse_tree.parse_tree_out_cons_id.
+:- interface.
+:- use_module io.
+:- use_module string.
+:- use_module parse_tree.parse_tree_out_info.
+:- use_module parse_tree.parse_tree_output.
+:- use_module parse_tree.prog_data.
+:- use_module string.builder.
+:- type needs_brackets
+    --->    needs_brackets 
+    ;       does_not_need_brackets .
+:- func cons_id_and_arity_to_string(parse_tree.prog_data.cons_id) = string.
+:- func du_ctor_and_arity_to_string(parse_tree.prog_data.du_ctor) = string.
+:- pred int_const_to_string_and_suffix(parse_tree.prog_data.some_int_const, string, string).
+:- mode int_const_to_string_and_suffix(builtin.in, builtin.out, builtin.out) is det.
+:- func maybe_quoted_cons_id_and_arity_to_string(parse_tree.prog_data.cons_id) = string.
+:- func maybe_quoted_du_ctor_and_arity_to_string(parse_tree.prog_data.du_ctor) = string.
+:- func mercury_cons_id_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.parse_tree_out_cons_id.needs_brackets, parse_tree.prog_data.cons_id) = string.
+:- pred mercury_format_cons_id(parse_tree.parse_tree_out_info.output_lang, parse_tree.parse_tree_out_cons_id.needs_brackets, parse_tree.prog_data.cons_id, S, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_cons_id(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mercury_output_cons_id(parse_tree.parse_tree_out_info.output_lang, parse_tree.parse_tree_out_cons_id.needs_brackets, parse_tree.prog_data.cons_id, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_cons_id(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- func unqual_cons_id_and_arity_to_string(parse_tree.prog_data.cons_id) = string.
+:- func unqual_du_ctor_and_arity_to_string(parse_tree.prog_data.du_ctor) = string.
+:- pragma type_spec_constrained_preds([    (parse_tree.parse_tree_output).pt_output(Stream, State)
+], apply_to_superclasses, [
+    subst([Stream = io.text_output_stream, State = io.state]),
+    subst([Stream = string.builder.handle, State = string.builder.state])
+]).
