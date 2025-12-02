@@ -1,0 +1,166 @@
+/*
+** Automatically generated from `make.check_up_to_date.m'
+** by the Mercury compiler,
+** version rotd-2025-12-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.check_up_to_date.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__check_up_to_date
+#define MR_HEADER_GUARD_make__check_up_to_date
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__CHECK_UP_TO_DATE_DECL_GUARD
+#define MAKE__CHECK_UP_TO_DATE_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct make__check_up_to_date__make__check_up_to_date__type_ctor_info_lhs_result_0;
+
+extern const MR_TypeCtorInfo_Struct make__check_up_to_date__make__check_up_to_date__type_ctor_info_make_lhs_files_0;
+
+extern const MR_TypeCtorInfo_Struct make__check_up_to_date__make__check_up_to_date__type_ctor_info_maybe_found_error_0;
+
+extern const MR_TypeCtorInfo_Struct make__check_up_to_date__make__check_up_to_date__type_ctor_info_maybe_oldest_lhs_file_0;
+
+extern const MR_TypeCtorInfo_Struct make__check_up_to_date__make__check_up_to_date__type_ctor_info_should_rebuild_lhs_0;
+
+extern const MR_TypeCtorInfo_Struct make__check_up_to_date__make__check_up_to_date__type_ctor_info_target_status_known_file_0;
+
+extern const MR_TypeCtorInfo_Struct make__check_up_to_date__make__check_up_to_date__type_ctor_info_target_status_result_0;
+
+void MR_CALL 
+make__check_up_to_date__get_target_id_status_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+make__check_up_to_date__must_or_should_we_rebuild_lhs_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+make__check_up_to_date__should_we_rebuild_lhs_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+make__check_up_to_date__should_we_rebuild_lhs_given_timestamps_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+make__check_up_to_date____Compare____lhs_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__check_up_to_date____Compare____make_lhs_files_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__check_up_to_date____Compare____maybe_oldest_lhs_file_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__check_up_to_date____Compare____should_rebuild_lhs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__check_up_to_date____Compare____target_status_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+make__check_up_to_date____Unify____lhs_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__check_up_to_date____Unify____make_lhs_files_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__check_up_to_date____Unify____maybe_oldest_lhs_file_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__check_up_to_date____Unify____should_rebuild_lhs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__check_up_to_date____Unify____target_status_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__make__check_up_to_date__init(void);
+void mercury__make__check_up_to_date__init_type_tables(void);
+void mercury__make__check_up_to_date__init_debugger(void);
+const char *mercury__make__check_up_to_date__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.check_up_to_date
+
+// :- end_interface make.check_up_to_date.

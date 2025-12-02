@@ -1,0 +1,32 @@
+       1:      1  1 CALL pred negation.main/2-0 (det) negation.m:17
+mdb> echo on
+Command echo enabled.
+mdb> register --quiet
+mdb> break p
+ 0: + stop  interface pred negation.p/2-0 (det)
+mdb> continue
+       2:      2  2 CALL pred negation.p/2-0 (det) negation.m:25 (negation.m:18)
+mdb> finish
+      39:      2  2 EXIT pred negation.p/2-0 (det) negation.m:25 (negation.m:18)
+mdb> dd -d 3 -n 7
+p(1, 42)
+Valid? no
+r(1, 11)
+Valid? yes
+q(11)
+Valid? yes
+r(1, 21)
+Valid? yes
+q(21)
+Valid? yes
+Call r(1, _)
+Solutions:
+	r(1, 11)
+	r(1, 21)
+Complete? yes
+Found incorrect contour:
+p(1, 42)
+Is this a bug? yes
+      39:      2  2 EXIT pred negation.p/2-0 (det) negation.m:25 (negation.m:18)
+mdb> continue
+42

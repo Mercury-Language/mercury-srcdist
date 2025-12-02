@@ -1,0 +1,14 @@
+module(2, "store.m",
+	store,
+	{},
+	{builtin, io, private_builtin},
+	{deconstruct, require},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - store, "C#" - store, "Java" - store},
+	no_foreign_export,
+	no_main,
+	{}
+).
