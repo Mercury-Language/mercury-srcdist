@@ -1,0 +1,4 @@
+:- module (check_hlds.simplify).mark_trace_goals.
+:- interface.
+:- type last_nontrace_map.
+:- type_representation(last_nontrace_map, is_eqv_to(map(string, int))).
