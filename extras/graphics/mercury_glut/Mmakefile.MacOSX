@@ -1,0 +1,16 @@
+# To build the GLUT binding on MacOS X, do the following:
+#
+# $ mmake -f Mmakefile.MacOSX depend
+# $ mmake -f Mmakefile.MacOSX
+#
+# After which you can install by ...
+#
+# $ mmake -f Mmakefile.MacOSX install
+
+MAIN_TARGET = libmercury_glut
+
+MLLIBS = -framework GLUT
+
+depend: mercury_glut.depend
+
+install: libmercury_glut.install
