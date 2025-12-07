@@ -1,0 +1,12 @@
+:- module ml_backend.ml_unify_gen.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.code_model.
+:- use_module hlds.hlds_goal.
+:- use_module ml_backend.ml_gen_info.
+:- use_module ml_backend.mlds.
+:- use_module parse_tree.prog_data.
+:- pred ml_generate_unification(hlds.code_model.code_model, hlds.hlds_goal.hlds_goal_info, parse_tree.prog_data.prog_context, hlds.hlds_goal.unification, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_generate_unification(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
