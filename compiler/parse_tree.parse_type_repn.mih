@@ -1,0 +1,62 @@
+/*
+** Automatically generated from `parse_type_repn.m'
+** by the Mercury compiler,
+** version rotd-2025-12-10
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.parse_type_repn.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__parse_type_repn
+#define MR_HEADER_GUARD_parse_tree__parse_type_repn
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PARSE_TYPE_REPN_DECL_GUARD
+#define PARSE_TREE__PARSE_TYPE_REPN_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+void MR_CALL 
+parse_tree__parse_type_repn__parse_type_repn_item_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void mercury__parse_tree__parse_type_repn__init(void);
+void mercury__parse_tree__parse_type_repn__init_type_tables(void);
+void mercury__parse_tree__parse_type_repn__init_debugger(void);
+const char *mercury__parse_tree__parse_type_repn__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.parse_type_repn
+
+// :- end_interface parse_tree.parse_type_repn.
