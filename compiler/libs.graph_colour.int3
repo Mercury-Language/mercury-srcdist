@@ -1,0 +1,2 @@
+:- module libs.graph_colour.
+:- interface.
