@@ -1,0 +1,16 @@
+:- module (mdprof_fb.automatic_parallelism).autopar_search_goals.
+:- interface.
+:- use_module cord.
+:- use_module mdbcomp.
+:- use_module message.
+:- use_module mdbcomp.feedback.
+:- use_module mdbcomp.goal_path.
+:- use_module mdbcomp.program_representation.
+:- use_module (mdbcomp.feedback).automatic_parallelism.
+:- use_module (mdprof_fb.automatic_parallelism).autopar_types.
+:- pred can_parallelise_goal(mdbcomp.program_representation.goal_rep(T)).
+:- mode can_parallelise_goal(builtin.in) is semidet.
+:- pred goal_get_conjunctions_worth_parallelising(mdprof_fb.automatic_parallelism.autopar_types.implicit_parallelism_info, mdbcomp.goal_path.reverse_goal_path, mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail, mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail, cord.cord(mdbcomp.feedback.automatic_parallelism.candidate_par_conjunction(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail)), cord.cord(mdbcomp.feedback.automatic_parallelism.push_goal), cord.cord(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail), cord.cord(message.message)).
+:- mode goal_get_conjunctions_worth_parallelising(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred goal_to_pard_goal(mdprof_fb.automatic_parallelism.autopar_types.implicit_parallelism_info, mdbcomp.goal_path.reverse_goal_path, mdbcomp.program_representation.goal_rep(mdbcomp.goal_path.goal_id), mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail, cord.cord(message.message), cord.cord(message.message)).
+:- mode goal_to_pard_goal(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

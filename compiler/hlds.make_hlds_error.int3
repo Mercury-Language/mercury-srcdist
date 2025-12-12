@@ -1,0 +1,5 @@
+:- module hlds.make_hlds_error.
+:- interface.
+:- type does_pragma_allow_modes
+	where	type_is_abstract_enum(1).
+:- type_representation(does_pragma_allow_modes, du_repn(enum("pragma_does_not_allow_modes", "pragma_allows_modes", [],  no_c_j_cs))).
