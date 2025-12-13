@@ -1,0 +1,6 @@
+:- module char.
+:- interface.
+:- use_module enum.
+:- type char == character.
+:- instance (enum.enum(character)).
+:- instance (enum.uenum(character)).

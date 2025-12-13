@@ -1,0 +1,9 @@
+:- module make.options_file.
+:- interface.
+:- type compiler_arg_pack.
+:- type compiler_params.
+:- type env_optfile_variables.
+:- type_representation(compiler_arg_pack, is_word_aligned_ptr).
+:- type_representation(compiler_params, is_word_aligned_ptr).
+:- type_representation(env_optfile_var, is_eqv_to(string)).
+:- type_representation(env_optfile_variables, is_word_aligned_ptr).
