@@ -1,0 +1,611 @@
+/*
+** Automatically generated from `exception.m'
+** by the Mercury compiler,
+** version rotd-2025-12-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module exception.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_exception
+#define MR_HEADER_GUARD_exception
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef EXCEPTION_DECL_GUARD
+#define EXCEPTION_DECL_GUARD
+
+// protect against multiple inclusion
+#ifndef ML_HLC_EXCEPTION_GUARD
+#define ML_HLC_EXCEPTION_GUARD
+
+  #ifdef MR_HIGHLEVEL_CODE
+
+    #define MR_CONT_PARAMS      MR_Cont cont, void *cont_env
+    #define MR_CONT_PARAM_TYPES MR_Cont, void *
+    #define MR_CONT_ARGS        cont, cont_env
+
+    // det
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_0(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    // semidet
+    MR_bool MR_CALL
+    mercury__exception__builtin_catch_3_p_1(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    // cc_multi
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_2(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    // cc_nondet
+    MR_bool MR_CALL
+    mercury__exception__builtin_catch_3_p_3(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    // multi
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_4(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output,
+        MR_CONT_PARAMS);
+
+    // nondet
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_5(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output,
+        MR_CONT_PARAMS);
+
+    // det ==> model_det
+    #define mercury__exception__builtin_catch_3_p_0         mercury__exception__builtin_catch_model_det
+
+    // semidet ==> model_semi
+    #define mercury__exception__builtin_catch_3_p_1         mercury__exception__builtin_catch_model_semi
+
+    // cc_multi ==> model_det
+    #define mercury__exception__builtin_catch_3_p_2         mercury__exception__builtin_catch_model_det
+
+    // cc_nondet ==> model_semi
+    #define mercury__exception__builtin_catch_3_p_3         mercury__exception__builtin_catch_model_semi
+
+    // multi ==> model_non
+    #define mercury__exception__builtin_catch_3_p_4         mercury__exception__builtin_catch_model_non
+
+    // nondet ==> model_non
+    #define mercury__exception__builtin_catch_3_p_5         mercury__exception__builtin_catch_model_non
+
+    void MR_CALL mercury__exception__builtin_throw_1_p_0(MR_Univ exception);
+
+    void MR_CALL mercury__exception__builtin_catch_model_det(
+        MR_Mercury_Type_Info type_info, MR_Pred pred,
+        MR_Pred handler_pred, MR_Box *output);
+    MR_bool MR_CALL mercury__exception__builtin_catch_model_semi(
+        MR_Mercury_Type_Info type_info, MR_Pred pred,
+        MR_Pred handler_pred, MR_Box *output);
+    void MR_CALL mercury__exception__builtin_catch_model_non(
+        MR_Mercury_Type_Info type_info, MR_Pred pred,
+        MR_Pred handler_pred, MR_Box *output,
+        MR_CONT_PARAMS);
+
+  #else  // MR_HIGHLEVEL_CODE
+    #ifdef MR_DEEP_PROFILING
+      #include "mercury_profiling_builtin.h"
+      #include "profiling_builtin.mh"
+    #endif
+  #endif // MR_HIGHLEVEL_CODE
+
+#endif // ML_HLC_EXCEPTION_GUARD
+
+
+#ifndef MR_HIGHLEVEL_CODE
+    #include <assert.h>
+    #include <stdio.h>
+    #include "mercury_deep_copy.h"
+    #include "mercury_trace_base.h"
+    #include "mercury_stack_trace.h"
+    #include "mercury_layout_util.h"
+    #include "mercury_deep_profiling_hand.h"
+
+    MR_DECLARE_TYPE_CTOR_INFO_STRUCT(mercury_data_univ__type_ctor_info_univ_0);
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__exception__exception__type_ctor_info_domain_error_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__exception__exception__type_ctor_info_exception_result_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__exception__exception__type_ctor_info_handler_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__exception__exception__type_ctor_info_near_stack_limits_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__exception__exception__type_ctor_info_software_error_0;
+
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__exception__builtin_catch_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4);
+
+MR_bool MR_CALL 
+mercury__exception__builtin_catch_3_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__exception__builtin_catch_3_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4);
+
+MR_bool MR_CALL 
+mercury__exception__builtin_catch_3_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__exception__builtin_catch_3_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4,
+  MR_Cont param_5,
+  void * param_6);
+
+void MR_CALL 
+mercury__exception__builtin_catch_3_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4,
+  MR_Cont param_5,
+  void * param_6);
+
+void MR_CALL 
+mercury__exception__catch_impl_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4);
+
+MR_bool MR_CALL 
+mercury__exception__catch_impl_3_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__exception__catch_impl_3_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4);
+
+MR_bool MR_CALL 
+mercury__exception__catch_impl_3_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__exception__catch_impl_3_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4,
+  MR_Cont param_5,
+  void * param_6);
+
+void MR_CALL 
+mercury__exception__catch_impl_3_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4,
+  MR_Cont param_5,
+  void * param_6);
+
+MR_bool MR_CALL 
+mercury__exception__exc_univ_to_type_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__exception__exc_univ_to_type_2_p_1(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__exception__exc_univ_to_type_2_p_2(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__exception__finally_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__exception__finally_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__exception__finally_2_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__exception__finally_2_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__exception__incremental_try_all_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__exception__incremental_try_all_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__exception__magic_exception_result_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__exception__rethrow_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__exception__throw_1_p_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__exception__throw_if_near_stack_limits_0_p_0(void);
+
+void MR_CALL 
+mercury__exception__try_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__exception__try_2_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__exception__try_2_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__exception__try_2_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__exception__try_all_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__exception__try_all_3_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__exception__try_all_3_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__exception__try_all_3_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__exception__try_io_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__exception__try_io_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__exception__try_stm_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__exception__try_stm_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__exception__try_store_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__exception__try_store_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__exception__unreachable_0_p_0(void);
+
+void MR_CALL 
+mercury__exception__unsafe_call_io_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Tuple * param_3);
+
+void MR_CALL 
+mercury__exception__unsafe_call_io_goal_3_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Tuple * param_3);
+
+void MR_CALL 
+mercury__exception__unsafe_call_store_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Tuple * param_4);
+
+void MR_CALL 
+mercury__exception__unsafe_call_store_goal_3_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Tuple * param_4);
+
+void MR_CALL 
+mercury__exception__unsafe_call_transaction_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Tuple * param_4);
+
+void MR_CALL 
+mercury__exception__unsafe_call_transaction_goal_3_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Tuple * param_4);
+
+void MR_CALL 
+mercury__exception__unsafe_try_stm_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__exception__unsafe_try_stm_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__exception__wrap_exception_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__exception__wrap_success_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__exception__wrap_success_2_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__exception__wrap_success_2_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Cont param_4,
+  void * param_5);
+
+void MR_CALL 
+mercury__exception__wrap_success_2_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Cont param_4,
+  void * param_5);
+
+void MR_CALL 
+mercury__exception__wrap_success_2_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__exception__wrap_success_2_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Box MR_CALL 
+mercury__exception__exc_univ_value_1_f_0(
+  MR_Word * param_1,
+  MR_Word param_2);
+
+MR_Box MR_CALL 
+mercury__exception__rethrow_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Box MR_CALL 
+mercury__exception__throw_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__exception____Compare____domain_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__exception____Compare____exception_result_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__exception____Compare____handler_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__exception____Compare____near_stack_limits_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__exception____Compare____software_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__exception____Unify____domain_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__exception____Unify____exception_result_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__exception____Unify____handler_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__exception____Unify____near_stack_limits_0_0(void);
+
+MR_bool MR_CALL 
+mercury__exception____Unify____software_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__exception__init(void);
+void mercury__exception__init_type_tables(void);
+void mercury__exception__init_debugger(void);
+void mercury__exception__required_init(void);
+const char *mercury__exception__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_exception
+
+// :- end_interface exception.

@@ -1,0 +1,77 @@
+/*
+** Automatically generated from `region_builtin.m'
+** by the Mercury compiler,
+** version rotd-2025-12-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module region_builtin.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_region_builtin
+#define MR_HEADER_GUARD_region_builtin
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef REGION_BUILTIN_DECL_GUARD
+#define REGION_BUILTIN_DECL_GUARD
+#include "mercury_region.h"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__region_builtin__region_builtin__type_ctor_info_region_0;
+
+void MR_CALL 
+mercury__region_builtin__create_region_1_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__region_builtin__print_rbmm_profiling_info_2_p_0(void);
+
+void MR_CALL 
+mercury__region_builtin__remove_region_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__region_builtin____Compare____region_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__region_builtin____Unify____region_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void mercury__region_builtin__init(void);
+void mercury__region_builtin__init_type_tables(void);
+void mercury__region_builtin__init_debugger(void);
+const char *mercury__region_builtin__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_region_builtin
+
+// :- end_interface region_builtin.
