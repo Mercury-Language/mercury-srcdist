@@ -1,0 +1,5 @@
+:- module (hlds.make_hlds).make_hlds_warn.
+:- interface.
+:- type maybe_seen_quant
+    --->    have_not_seen_quant 
+    ;       have_seen_quant .

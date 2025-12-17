@@ -1,0 +1,117 @@
+/*
+** Automatically generated from `pair.m'
+** by the Mercury compiler,
+** version rotd-2025-12-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module pair.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_pair
+#define MR_HEADER_GUARD_pair
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PAIR_DECL_GUARD
+#define PAIR_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__pair__pair__type_ctor_info_pair_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__pair__pair__type_ctor_info_pair_2;
+
+void MR_CALL 
+mercury__pair__fst_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__pair__snd_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4);
+
+MR_Box MR_CALL 
+mercury__pair__fst_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__pair__pair_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+MR_Box MR_CALL 
+mercury__pair__snd_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__pair____Compare____pair_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__pair____Compare____pair_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_bool MR_CALL 
+mercury__pair____Unify____pair_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__pair____Unify____pair_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void mercury__pair__init(void);
+void mercury__pair__init_type_tables(void);
+void mercury__pair__init_debugger(void);
+const char *mercury__pair__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_pair
+
+// :- end_interface pair.
