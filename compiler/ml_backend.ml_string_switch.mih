@@ -1,0 +1,134 @@
+/*
+** Automatically generated from `ml_string_switch.m'
+** by the Mercury compiler,
+** version rotd-2025-12-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.ml_string_switch.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_string_switch
+#define MR_HEADER_GUARD_ml_backend__ml_string_switch
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_STRING_SWITCH_DECL_GUARD
+#define ML_BACKEND__ML_STRING_SWITCH_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_hash_slot_rev_map_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_hash_slots_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_ml_binary_search_info_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_string_switch__ml_backend__ml_string_switch__type_ctor_info_ml_hash_search_info_0;
+
+void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_jump_switch_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_binary_lookup_switch_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_jump_switch_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_hash_lookup_switch_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_jump_switch_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+ml_backend__ml_string_switch__ml_generate_string_trie_lookup_switch_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8);
+
+void mercury__ml_backend__ml_string_switch__init(void);
+void mercury__ml_backend__ml_string_switch__init_type_tables(void);
+void mercury__ml_backend__ml_string_switch__init_debugger(void);
+const char *mercury__ml_backend__ml_string_switch__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.ml_string_switch
+
+// :- end_interface ml_backend.ml_string_switch.

@@ -1,0 +1,7 @@
+:- module recompilation.check.
+:- interface.
+:- type file_components_to_recompile
+    --->    all_file_components 
+    ;       some_file_components(
+                 list.list(mdbcomp.sym_name.module_name)
+            ).

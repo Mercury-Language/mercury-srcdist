@@ -1,0 +1,44 @@
+:- module dir.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- type file_error
+    --->    file_error(
+                 string,
+                 dir.file_operation,
+                 io.error
+            ).
+:- type file_operation
+    --->    file_open 
+    ;       file_close 
+    ;       file_get_id 
+    ;       file_get_type 
+    ;       file_check_accessibility 
+    ;       file_read_dir_entry .
+:- type fold_params
+    --->    fold_params(
+                 dir.fp_subdirs :: dir.maybe_subdirs,
+                 dir.fp_on_error :: dir.on_error
+            ).
+:- type foldl_pred(T) == pred(string, string, io.file_type, bool.bool, T, T, io.io, io.io).
+:- type maybe_follow_symlinks
+    --->    do_not_follow_symlinks 
+    ;       follow_symlinks .
+:- type maybe_subdirs
+    --->    do_not_enter_subdirs 
+    ;       enter_subdirs(
+                 dir.maybe_follow_symlinks
+            ).
+:- type on_error
+    --->    on_error_stop 
+    ;       on_error_keep_going .
+:- inst foldl_pred == (pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det).
+:- implementation.
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("Java", dir).
+:- type stream
+    --->    stream .
+:- pragma foreign_type(c, stream, "ML_DIR_STREAM").
+:- pragma foreign_type(java, stream, "java.util.Iterator").
+:- pragma foreign_type(csharp, stream, "System.Collections.IEnumerator").

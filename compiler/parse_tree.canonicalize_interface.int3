@@ -1,0 +1,5 @@
+:- module parse_tree.canonicalize_interface.
+:- interface.
+:- type pred_or_mode_decl_item.
+:- type_representation(pred_related_items_map, is_eqv_to(map(sym_name, pred_related_items))).
+:- type_representation(sym_name_items_map, is_eqv_to(map(sym_name_arity, cord(item)))).

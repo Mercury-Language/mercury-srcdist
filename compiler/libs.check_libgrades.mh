@@ -1,0 +1,40 @@
+// Automatically generated from `check_libgrades.m'
+// by the Mercury compiler,
+// version rotd-2025-12-18
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef LIBS__CHECK_LIBGRADES_MH
+#define LIBS__CHECK_LIBGRADES_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef LIBS__CHECK_LIBGRADES_DECL_GUARD
+#define LIBS__CHECK_LIBGRADES_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Unsigned libs__check_libgrades__mutable_variable_has_check_libraries_been_done;
+#else
+    extern MR_Unsigned libs__check_libgrades__mutable_variable_has_check_libraries_been_done;
+#endif
+
+
+#endif
+void libs__check_libgrades__user_init_pred_34_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* LIBS__CHECK_LIBGRADES_MH */
