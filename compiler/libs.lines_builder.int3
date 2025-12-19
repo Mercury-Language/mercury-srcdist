@@ -1,0 +1,4 @@
+:- module libs.lines_builder.
+:- interface.
+:- type lines_builder.
+:- type_representation(lines_builder, is_word_aligned_ptr).
