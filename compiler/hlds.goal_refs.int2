@@ -1,0 +1,2 @@
+:- module hlds.goal_refs.
+:- interface.

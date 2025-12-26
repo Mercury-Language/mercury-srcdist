@@ -1,0 +1,37 @@
+// Automatically generated from `io.text_read.m'
+// by the Mercury compiler,
+// version rotd-2025-12-26
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef IO__TEXT_READ_MH
+#define IO__TEXT_READ_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef IO__TEXT_READ_DECL_GUARD
+#define IO__TEXT_READ_DECL_GUARD
+#define ML_RLAS_OK 0
+#define ML_RLAS_EOF 1
+#define ML_RLAS_NULL_CHAR 2
+#define ML_RLAS_ERROR 3
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* IO__TEXT_READ_MH */

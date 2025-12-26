@@ -1,0 +1,3 @@
+:- module check_hlds.typecheck_unify_var_functor.
+:- interface.
+:- type_representation(cons_type_assign_set, is_eqv_to(list(cons_type_assign))).
