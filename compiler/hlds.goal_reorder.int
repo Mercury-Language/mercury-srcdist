@@ -1,0 +1,22 @@
+:- module hlds.goal_reorder.
+:- interface.
+:- use_module bool.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.instmap.
+:- use_module parse_tree.var_table.
+:- type can_reorder_goals
+    --->    cannot_reorder_goals 
+    ;       can_reorder_goals .
+:- type reorder_maintains_termination
+    --->    reorder_maintains_termination 
+    ;       reorder_does_not_maintain_termination .
+:- pred can_reorder_goals(parse_tree.var_table.var_table, bool.bool, hlds.instmap.instmap, hlds.hlds_goal.hlds_goal, hlds.instmap.instmap, hlds.hlds_goal.hlds_goal, hlds.goal_reorder.can_reorder_goals, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode can_reorder_goals(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred can_reorder_goals_old(hlds.hlds_module.module_info, parse_tree.var_table.var_table, bool.bool, hlds.instmap.instmap, hlds.hlds_goal.hlds_goal, hlds.instmap.instmap, hlds.hlds_goal.hlds_goal).
+:- mode can_reorder_goals_old(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- pred reordering_maintains_termination(bool.bool, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.goal_reorder.reorder_maintains_termination, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode reordering_maintains_termination(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred reordering_maintains_termination_old(hlds.hlds_module.module_info, bool.bool, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode reordering_maintains_termination_old(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.

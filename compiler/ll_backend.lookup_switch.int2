@@ -1,0 +1,25 @@
+:- module ll_backend.lookup_switch.
+:- interface.
+:- type case_kind
+    --->    kind_zero_solns 
+    ;       kind_one_soln 
+    ;       kind_several_solns .
+:- type lookup_switch_info(Key)
+    --->    lookup_switch_info(
+                 (ll_backend.lookup_switch).lsi_key_to_case_map :: map.map(Key, hlds.hlds_goal.case_id),
+                 (ll_backend.lookup_switch).lsi_cases :: backend_libs.lookup_switch_util.case_consts(hlds.hlds_goal.case_id, ll_backend.llds.rval, backend_libs.lookup_switch_util.case_consts_several_llds),
+                 (ll_backend.lookup_switch).lsi_out_variables :: list.list(parse_tree.prog_data.prog_var),
+                 (ll_backend.lookup_switch).lsi_out_types :: list.list(ll_backend.llds.llds_type),
+                 (ll_backend.lookup_switch).lsi_end_branch_info :: ll_backend.lookup_util.end_branch_info,
+                 (ll_backend.lookup_switch).lsi_branch_end :: ll_backend.code_loc_dep.branch_end,
+                 (ll_backend.lookup_switch).lsi_code_info :: ll_backend.code_info.code_info,
+                 (ll_backend.lookup_switch).lsi_code_loc_dep :: ll_backend.code_loc_dep.code_loc_dep
+            ).
+:- type main_table_row_select
+    --->    main_row_number_reg(
+                 ll_backend.llds.rval,
+                 list.list(ll_backend.llds.llds_type)
+            )
+    ;       main_row_start_offset_reg(
+                 ll_backend.llds.rval
+            ).

@@ -1,0 +1,400 @@
+:- module one_or_more_map.
+:- use_module assoc_list.
+:- use_module builtin.
+:- use_module cord.
+:- use_module int.
+:- use_module list.
+:- use_module map.
+:- use_module one_or_more.
+:- use_module pair.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module set.
+
+:- pred one_or_more_map.accumulate_length(one_or_more.one_or_more(V), int, int).
+:- mode accumulate_length(builtin.in, builtin.in, builtin.out) is det.
+:- pred one_or_more_map.add_from_pair(pair.pair(K, V), tree234.tree234(K, one_or_more.one_or_more(V)), tree234.tree234(K, one_or_more.one_or_more(V))).
+:- mode add_from_pair(builtin.in, builtin.in, builtin.out) is det.
+:- pred one_or_more_map.assoc_list_merge(list.list(pair.pair(K, one_or_more.one_or_more(V))), list.list(pair.pair(K, one_or_more.one_or_more(V))), list.list(pair.pair(K, one_or_more.one_or_more(V)))).
+:- mode assoc_list_merge(builtin.in, builtin.in, builtin.out) is det.
+:- pred one_or_more_map.from_corresponding_lists_2(list.list(K), list.list(V), tree234.tree234(K, one_or_more.one_or_more(V)), tree234.tree234(K, one_or_more.one_or_more(V))).
+:- mode from_corresponding_lists_2(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred one_or_more_map.to_flat_assoc_list_acc(K, one_or_more.one_or_more(V), cord.cord(pair.pair(K, V)), cord.cord(pair.pair(K, V))).
+:- mode to_flat_assoc_list_acc(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+
+one_or_more_map.accumulate_length(V_4, V_7, V_8) :-
+    one_or_more.length(V_4, V_6),
+    V_8 = int.(V_7 + V_6).
+
+one_or_more_map.add(V_8, V_6, V_7) = V_9 :-
+    one_or_more_map.add(V_6, V_7, V_8, V_9).
+
+one_or_more_map.add_from_pair(pair.(V_4 - V_5), V_7, V_8) :-
+    one_or_more_map.add(V_4, V_5, V_7, V_8).
+
+one_or_more_map.all_count(V_3) = V_4 :-
+    one_or_more_map.all_count(V_3, V_4).
+
+one_or_more_map.all_count(V_3, V_4) :-
+    V_5 = one_or_more_map.accumulate_length : pred(one_or_more.one_or_more(V_2), int, int),
+    V_6 = 0 : int,
+    map.foldl_values(V_5, V_3, V_6, V_4).
+
+one_or_more_map.apply_to_list(V_4, V_5) = V_6 :-
+    one_or_more_map.apply_to_list(V_4, V_5, V_6).
+
+one_or_more_map.contains(V_3, V_4) :-
+    map.search(V_3, V_4, V_5).
+
+one_or_more_map.count(V_3) = V_4 :-
+    one_or_more_map.count(V_3, V_4).
+
+one_or_more_map.count(V_3, V_4) :-
+    map.count(V_3, V_4).
+
+one_or_more_map.delete(V_6, V_5) = V_7 :-
+    one_or_more_map.delete(V_5, V_6, V_7).
+
+one_or_more_map.delete(V_4, V_6, V_7) :-
+    map.delete(V_4, V_6, V_7).
+
+one_or_more_map.delete(V_8, V_6, V_7) = V_9 :-
+    one_or_more_map.delete(V_6, V_7, V_8, V_9).
+
+one_or_more_map.det_insert(V_8, V_6, V_7) = V_9 :-
+    one_or_more_map.det_insert(V_6, V_7, V_8, V_9).
+
+one_or_more_map.det_insert(V_5, V_6, V_8, V_9) :-
+    V_10 = one_or_more.one_or_more(V_6, V_12) : one_or_more.one_or_more(V_2),
+    V_12 = list.[] : list.list(V_2),
+    map.det_insert(V_5, V_10, V_8, V_9).
+
+one_or_more_map.det_remove(V_5, V_6, V_7, V_8) :-
+    map.det_remove(V_5, V_6, V_7, V_8).
+
+one_or_more_map.det_replace(V_8, V_6, V_7) = V_9 :-
+    one_or_more_map.det_replace(V_6, V_7, V_8, V_9).
+
+one_or_more_map.det_replace(V_5, V_6, V_8, V_9) :-
+    map.det_update(V_5, V_6, V_8, V_9).
+
+one_or_more_map.det_update(V_8, V_6, V_7) = V_9 :-
+    one_or_more_map.det_update(V_6, V_7, V_8, V_9).
+
+one_or_more_map.from_assoc_list(V_3) = V_4 :-
+    one_or_more_map.from_assoc_list(V_3, V_4).
+
+one_or_more_map.from_assoc_list(V_3, V_4) :-
+    map.from_assoc_list(V_3, V_4).
+
+one_or_more_map.from_corresponding_list_lists(V_4, V_5) = V_6 :-
+    one_or_more_map.from_corresponding_list_lists(V_4, V_5, V_6).
+
+one_or_more_map.from_corresponding_list_lists(V_4, V_5, V_6) :-
+    map.from_corresponding_lists(V_4, V_5, V_6).
+
+one_or_more_map.from_corresponding_lists(V_4, V_5) = V_6 :-
+    one_or_more_map.from_corresponding_lists(V_4, V_5, V_6).
+
+one_or_more_map.from_corresponding_lists(V_4, V_5, V_6) :-
+    one_or_more_map.init(V_7),
+    one_or_more_map.from_corresponding_lists_2(V_4, V_5, V_7, V_6).
+
+one_or_more_map.from_flat_assoc_list(V_3) = V_4 :-
+    one_or_more_map.from_flat_assoc_list(V_3, V_4).
+
+one_or_more_map.from_flat_assoc_list(V_3, V_4) :-
+    V_5 = one_or_more_map.add_from_pair : pred(pair.pair(K_1, V_2), tree234.tree234(K_1, one_or_more.one_or_more(V_2)), tree234.tree234(K_1, one_or_more.one_or_more(V_2))),
+    V_6 = map.init,
+    list.foldl(V_5, V_3, V_6, V_4).
+
+one_or_more_map.from_sorted_assoc_list(V_3) = V_4 :-
+    one_or_more_map.from_sorted_assoc_list(V_3, V_4).
+
+one_or_more_map.from_sorted_assoc_list(V_3, V_4) :-
+    map.from_sorted_assoc_list(V_3, V_4).
+
+one_or_more_map.init = V_2 :-
+    one_or_more_map.init(V_2).
+
+one_or_more_map.init(V_2) :-
+    map.init(V_2).
+
+one_or_more_map.insert(V_5, V_6, V_8, V_9) :-
+    V_10 = one_or_more.one_or_more(V_6, V_12) : one_or_more.one_or_more(V_2),
+    V_12 = list.[] : list.list(V_2),
+    map.insert(V_5, V_10, V_8, V_9).
+
+one_or_more_map.inverse_search(V_4, V_5, V_6) :-
+    map.member(V_4, V_6, V_7),
+    one_or_more.member(V_5, V_7).
+
+one_or_more_map.is_empty(V_2) :-
+    map.is_empty(V_2).
+
+one_or_more_map.keys(V_3) = V_4 :-
+    one_or_more_map.keys(V_3, V_4).
+
+one_or_more_map.keys(V_3, V_4) :-
+    map.keys(V_3, V_4).
+
+one_or_more_map.keys_as_set(V_3) = V_4 :-
+    one_or_more_map.keys_as_set(V_3, V_4).
+
+one_or_more_map.keys_as_set(V_3, V_4) :-
+    one_or_more_map.sorted_keys(V_3, V_5),
+    set.sorted_list_to_set(V_5, V_4).
+
+one_or_more_map.lookup(V_4, V_5) = V_6 :-
+    one_or_more_map.lookup(V_4, V_5, V_6).
+
+one_or_more_map.lookup(V_4, V_5, V_6) :-
+    map.lookup(V_4, V_5, V_6).
+
+one_or_more_map.member(V_4, V_5, V_6) :-
+    map.member(V_4, V_5, V_7),
+    one_or_more.member(V_6, V_7).
+
+one_or_more_map.merge(V_4, V_5) = V_6 :-
+    one_or_more_map.merge(V_4, V_5, V_6).
+
+one_or_more_map.merge(V_4, V_5, V_6) :-
+    one_or_more_map.to_assoc_list(V_4, V_7),
+    one_or_more_map.to_assoc_list(V_5, V_8),
+    one_or_more_map.assoc_list_merge(V_7, V_8, V_9),
+    one_or_more_map.from_sorted_assoc_list(V_9, V_6).
+
+one_or_more_map.nondet_lookup(V_4, V_5, V_6) :-
+    map.search(V_4, V_5, V_7),
+    one_or_more.member(V_6, V_7).
+
+one_or_more_map.nondet_search(V_4, V_5, V_6) :-
+    map.search(V_4, V_5, V_7),
+    one_or_more.member(V_6, V_7).
+
+one_or_more_map.optimize(V_3) = V_4 :-
+    one_or_more_map.optimize(V_3, V_4).
+
+one_or_more_map.optimize(V_3, V_4) :-
+    map.optimize(V_3, V_4).
+
+one_or_more_map.remove(V_5, V_6, V_7, V_8) :-
+    map.remove(V_5, V_6, V_7, V_8).
+
+one_or_more_map.remove_smallest(V_5, V_6, V_7, V_8) :-
+    map.remove_smallest(V_5, V_6, V_7, V_8).
+
+one_or_more_map.replace(V_5, V_6, V_8, V_9) :-
+    map.update(V_5, V_6, V_8, V_9).
+
+one_or_more_map.reverse_add(V_8, V_6, V_7) = V_9 :-
+    one_or_more_map.add(V_7, V_6, V_8, V_9).
+
+one_or_more_map.reverse_add(V_5, V_6, V_8, V_9) :-
+    one_or_more_map.add(V_6, V_5, V_8, V_9).
+
+one_or_more_map.reverse_set(V_8, V_6, V_7) = V_9 :-
+    one_or_more_map.add(V_7, V_6, V_8, V_9).
+
+one_or_more_map.reverse_set(V_5, V_6, V_8, V_9) :-
+    one_or_more_map.add(V_6, V_5, V_8, V_9).
+
+one_or_more_map.search(V_4, V_5, V_6) :-
+    map.search(V_4, V_5, V_6).
+
+one_or_more_map.select(V_4, V_5) = V_6 :-
+    one_or_more_map.select(V_4, V_5, V_6).
+
+one_or_more_map.select(V_4, V_5, V_6) :-
+    map.select(V_4, V_5, V_6).
+
+one_or_more_map.set(V_8, V_6, V_7) = V_9 :-
+    one_or_more_map.add(V_6, V_7, V_8, V_9).
+
+one_or_more_map.set(V_5, V_6, V_8, V_9) :-
+    one_or_more_map.add(V_5, V_6, V_8, V_9).
+
+one_or_more_map.sorted_keys(V_3) = V_4 :-
+    map.sorted_keys(V_3, V_4).
+
+one_or_more_map.sorted_keys(V_3, V_4) :-
+    map.sorted_keys(V_3, V_4).
+
+one_or_more_map.to_assoc_list(V_3) = V_4 :-
+    one_or_more_map.to_assoc_list(V_3, V_4).
+
+one_or_more_map.to_assoc_list(V_3, V_4) :-
+    map.to_assoc_list(V_3, V_4).
+
+one_or_more_map.to_flat_assoc_list(V_3) = V_4 :-
+    one_or_more_map.to_flat_assoc_list(V_3, V_4).
+
+one_or_more_map.to_flat_assoc_list(V_3, V_4) :-
+    V_6 = one_or_more_map.to_flat_assoc_list_acc : pred(K_1, one_or_more.one_or_more(V_2), cord.cord(pair.pair(K_1, V_2)), cord.cord(pair.pair(K_1, V_2))),
+    V_7 = cord.init,
+    map.foldl(V_6, V_3, V_7, V_5),
+    V_4 = cord.list(V_5).
+
+one_or_more_map.update(V_5, V_6, V_10, V_11) :-
+    map.search(V_10, V_5, V_8),
+    V_9 = one_or_more.cons(V_6, V_8),
+    map.update(V_5, V_9, V_10, V_11).
+
+one_or_more_map.values(V_3) = V_4 :-
+    one_or_more_map.values(V_3, V_4).
+
+one_or_more_map.values(V_3, V_4) :-
+    map.values(V_3, V_5),
+    one_or_more.condense(V_5, V_4).
+
+:- pragma termination_info(one_or_more_map.accumulate_length(builtin.in, builtin.in, builtin.out), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(one_or_more_map.add(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.add(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.add_from_pair(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.all_count(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.all_count(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.apply_to_list(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.apply_to_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.assoc_list_merge(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.contains(builtin.in, builtin.in), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(one_or_more_map.count(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.count(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.delete(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.delete(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.delete(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.delete(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.det_insert(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.det_insert(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.det_remove(builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.det_replace(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.det_replace(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.det_update(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.det_update(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_assoc_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_assoc_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_corresponding_list_lists(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_corresponding_list_lists(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_corresponding_lists(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_corresponding_lists(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_corresponding_lists_2(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_flat_assoc_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_flat_assoc_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_sorted_assoc_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_sorted_assoc_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.get_values_for_key(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info((one_or_more_map.init) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.init(builtin.uo), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.insert(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.inverse_search(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.is_empty(builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(one_or_more_map.keys(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.keys(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.keys_as_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.keys_as_set(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.lookup(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.lookup(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.member(builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.merge(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.merge(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.nondet_lookup(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.nondet_search(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.optimize(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.optimize(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.remove(builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.remove_smallest(builtin.out, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.replace(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.reverse_add(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.reverse_add(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.reverse_set(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.reverse_set(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.search(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.select(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.select(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.set(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.set(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.sorted_keys(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.sorted_keys(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.to_assoc_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.to_assoc_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.to_flat_assoc_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.to_flat_assoc_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.to_flat_assoc_list_acc(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.update(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.values(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(one_or_more_map.values(builtin.in, builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, one_or_more_map.accumulate_length, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.add, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.add, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.add_from_pair, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.all_count, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.all_count, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.apply_to_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.apply_to_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.assoc_list_merge, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.contains, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.count, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.count, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.delete, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.delete, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.delete, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.delete, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.det_insert, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.det_insert, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.det_remove, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.det_replace, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.det_replace, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.det_update, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.det_update, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.from_assoc_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.from_assoc_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.from_corresponding_list_lists, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.from_corresponding_list_lists, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.from_corresponding_lists, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.from_corresponding_lists, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.from_corresponding_lists_2, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.from_flat_assoc_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.from_flat_assoc_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.from_sorted_assoc_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.from_sorted_assoc_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.get_values_for_key, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.init, 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.init, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.insert, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.inverse_search, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.is_empty, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.keys, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.keys, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.keys_as_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.keys_as_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.lookup, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.lookup, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.member, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.merge, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.merge, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.nondet_lookup, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.nondet_search, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.optimize, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.optimize, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.remove, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.remove_smallest, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.replace, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.reverse_add, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.reverse_add, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.reverse_set, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.reverse_set, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.search, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.select, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.select, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.set, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.set, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.sorted_keys, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.sorted_keys, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.to_assoc_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.to_assoc_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.to_flat_assoc_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.to_flat_assoc_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.to_flat_assoc_list_acc, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.update, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, one_or_more_map.values, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, one_or_more_map.values, 2, 0, may_throw(user_exception)).

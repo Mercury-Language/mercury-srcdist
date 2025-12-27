@@ -1,0 +1,316 @@
+:- module getopt_io.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module cord.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module pair.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module set.
+:- use_module set_tree234.
+:- use_module solutions.
+:- use_module string.
+:- use_module unit.
+:- use_module string.format.
+:- use_module string.parse_util.
+
+:- type file_options_or_error(OptionType)
+    --->    file_options_no_error(
+                 getopt_io.go_cord(getopt_io.option_value(OptionType))
+            )
+    ;       file_options_error(
+                 getopt_io.option_error(OptionType)
+            ).
+:- type go_cord(T)
+    --->    go_empty_cord 
+    ;       go_nonempty_cord(
+                 getopt_io.go_cord_node(T)
+            ).
+:- type go_cord_node(T)
+    --->    go_unit_node(
+                 T
+            )
+    ;       go_list_node(
+                 T,
+                 list.list(T)
+            )
+    ;       go_branch_node(
+                 getopt_io.go_cord_node(T),
+                 getopt_io.go_cord_node(T)
+            ).
+:- type maybe_after_eq_arg
+    --->    no_after_eq_arg 
+    ;       after_eq_arg(
+                 string
+            ).
+:- type maybe_sep_arg
+    --->    no_sep_arg 
+    ;       sep_arg(
+                 string
+            ).
+:- type option_ops_internal(OptionType, UserDataType)
+    --->    option_ops_internal(
+                 getopt_io.short_option :: pred(character, OptionType),
+                 getopt_io.long_option :: pred(string, OptionType),
+                 getopt_io.special_handler :: getopt_io.option_ops_special(OptionType, UserDataType)
+            ).
+:- type option_ops_special(OptionType, UserDataType)
+    --->    none 
+    ;       notrack(
+                 pred(OptionType, getopt_io.special_data, tree234.tree234(OptionType, getopt_io.option_data), getopt_io.maybe_option_table(OptionType))
+            )
+    ;       track(
+                 pred(OptionType, getopt_io.special_data, tree234.tree234(OptionType, getopt_io.option_data), getopt_io.maybe_option_table(OptionType), set_ordlist.set_ordlist(OptionType))
+            )
+    ;       userdata(
+                 pred(OptionType, getopt_io.special_data, tree234.tree234(OptionType, getopt_io.option_data), getopt_io.maybe_option_table(OptionType), UserDataType, UserDataType)
+            ).
+:- type read_file_contents_result
+    --->    read_success(
+                 string
+            )
+    ;       read_failure_open(
+                 io.error
+            )
+    ;       read_failure_read(
+                 io.error
+            )
+    ;       read_failure_no_io .
+:- type recognize_option_result(OptionType)
+    --->    ror_long_option(
+                 string,
+                 getopt_io.maybe_sep_arg,
+                 getopt_io.option_value(OptionType)
+            )
+    ;       ror_short_options(
+                 string,
+                 getopt_io.maybe_sep_arg,
+                 list.list(getopt_io.option_value(OptionType))
+            )
+    ;       ror_nonoption(
+                 string
+            )
+    ;       ror_error(
+                 getopt_io.option_error(OptionType)
+            )
+    ;       ror_end_of_options .
+:- type value_or_error(OptionType) == maybe.maybe_error(getopt_io.option_value(OptionType), getopt_io.option_error(OptionType)).
+
+:- inst file_options_or_error for getopt_io.file_options_or_error/1
+    --->    file_options_error(ground)
+    ;       file_options_no_error(getopt_io.go_cord_skel(getopt_io.non_file_special)).
+:- inst go_cord_node_skel(I) for getopt_io.go_cord_node/1
+    --->    go_branch_node(getopt_io.go_cord_node_skel(I), getopt_io.go_cord_node_skel(I))
+    ;       go_list_node(I, list.list_skel(I))
+    ;       go_unit_node(I).
+:- inst go_cord_skel(I) for getopt_io.go_cord/1
+    --->    go_empty_cord
+    ;       go_nonempty_cord(getopt_io.go_cord_node_skel(I)).
+:- inst option_data_bool for getopt_io.option_data/0
+    --->    getopt_io.bool(ground)
+    ;       getopt_io.bool_special.
+:- inst option_data_int for getopt_io.option_data/0
+    --->    getopt_io.int(ground)
+    ;       getopt_io.int_special
+    ;       getopt_io.maybe_int(ground).
+:- inst option_data_none for getopt_io.option_data/0
+    --->    getopt_io.special.
+:- inst option_data_string for getopt_io.option_data/0
+    --->    getopt_io.accumulating(ground)
+    ;       getopt_io.file_special
+    ;       getopt_io.maybe_string(ground)
+    ;       getopt_io.maybe_string_special
+    ;       getopt_io.string(ground)
+    ;       getopt_io.string_special.
+:- inst option_ops_internal for getopt_io.option_ops_internal/2
+    --->    option_ops_internal((pred(builtin.in, builtin.out) is semidet), (pred(builtin.in, builtin.out) is semidet), getopt_io.option_ops_special).
+:- inst option_ops_special for getopt_io.option_ops_special/2
+    --->    none
+    ;       notrack((pred(builtin.in, builtin.in, builtin.in, builtin.out) is semidet))
+    ;       track((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is semidet))
+    ;       userdata((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)).
+
+:- typeclass read_file_contents(MaybeIO) where [
+	pred read_file_contents(string, getopt_io.read_file_contents_result, MaybeIO, MaybeIO),
+	mode read_file_contents(builtin.in, builtin.out, builtin.di, builtin.uo) is det
+].
+
+:- instance (getopt_io.read_file_contents(io.state)) where [
+	pred((getopt_io.read_file_contents)/4) is getopt_io.do_read_file_contents
+].
+:- instance (getopt_io.read_file_contents(unit.unit)) where [
+	pred((getopt_io.read_file_contents)/4) is getopt_io.read_file_contents_no_io
+].
+
+:- pred getopt_io.do_read_file_contents(string, getopt_io.read_file_contents_result, io.state, io.state).
+:- mode do_read_file_contents(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred getopt_io.expand_file_specials_check(pred(character, OptionType), pred(string, OptionType), tree234.tree234(OptionType, getopt_io.option_data), list.list(getopt_io.option_value(OptionType)), set_ordlist.set_ordlist(string), getopt_io.maybe_option_error(OptionType), list.list(getopt_io.option_value(OptionType)), MaybeIO, MaybeIO) <= (getopt_io.read_file_contents(MaybeIO)).
+:- mode expand_file_specials_check(builtin.in(getopt_io.short_option), builtin.in(getopt_io.long_option), builtin.in, builtin.in, builtin.in, builtin.out, builtin.out(list.list_skel(getopt_io.non_file_special)), builtin.di, builtin.uo) is det.
+:- pred getopt_io.expand_file_specials_loop(pred(character, OptionType), pred(string, OptionType), tree234.tree234(OptionType, getopt_io.option_data), list.list(getopt_io.option_value(OptionType)), set_ordlist.set_ordlist(string), getopt_io.maybe_option_error(OptionType), getopt_io.go_cord(getopt_io.option_value(OptionType)), getopt_io.go_cord(getopt_io.option_value(OptionType)), MaybeIO, MaybeIO) <= (getopt_io.read_file_contents(MaybeIO)).
+:- mode expand_file_specials_loop(builtin.in(getopt_io.short_option), builtin.in(getopt_io.long_option), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in(getopt_io.go_cord_skel(getopt_io.non_file_special)), builtin.out(getopt_io.go_cord_skel(getopt_io.non_file_special)), builtin.di, builtin.uo) is det.
+:- func getopt_io.go_cord_to_list(getopt_io.go_cord(T)) = list.list(T).
+:- mode go_cord_to_list(builtin.in(getopt_io.go_cord_skel((V_2 =< ground)))) = builtin.out(list.list_skel((V_2 =< ground))) is det.
+:- pred getopt_io.read_file_contents_no_io(string, getopt_io.read_file_contents_result, unit.unit, unit.unit).
+:- mode read_file_contents_no_io(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred getopt_io.recognize_options_loop(pred(character, OptionType), pred(string, OptionType), tree234.tree234(OptionType, getopt_io.option_data), list.list(string), getopt_io.maybe_option_error(OptionType), cord.cord(getopt_io.option_value(OptionType)), cord.cord(getopt_io.option_value(OptionType)), cord.cord(string), cord.cord(string), cord.cord(string), cord.cord(string)).
+:- mode recognize_options_loop(builtin.in(getopt_io.short_option), builtin.in(getopt_io.long_option), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred getopt_io.record_all_arguments_loop(pred(character, OptionType), pred(string, OptionType), tree234.tree234(OptionType, getopt_io.option_data), list.list(string), cord.cord(getopt_io.option_error(OptionType)), cord.cord(getopt_io.option_error(OptionType)), cord.cord(getopt_io.option_value(OptionType)), cord.cord(getopt_io.option_value(OptionType)), cord.cord(string), cord.cord(string), cord.cord(string), cord.cord(string)).
+:- mode record_all_arguments_loop(builtin.in(getopt_io.short_option), builtin.in(getopt_io.long_option), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+
+getopt_io.expand_file_specials(V_9, V_10, V_11, V_12, V_13, V_14, V_16, V_17) :-
+    V_18 = set.init,
+    getopt_io.expand_file_specials_check(V_9, V_10, V_11, V_12, V_18, V_13, V_14, V_16, V_17).
+
+getopt_io.expand_file_specials_check(V_10, V_11, V_12, V_13, V_14, V_15, V_16, V_19, V_20) :-
+    V_21 = getopt_io.go_empty_cord : getopt_io.go_cord(getopt_io.option_value(OptionType_1)),
+    getopt_io.expand_file_specials_loop(V_10, V_11, V_12, V_13, V_14, V_15, V_21, V_18, V_19, V_20),
+    V_16 = getopt_io.go_cord_to_list(V_18).
+
+getopt_io.init_option_table(V_3, V_4) :-
+    V_9 = (pred(V_10::(free >> ground)) is nondet :-
+      some [] ( % compiler
+        call(V_3, V_6, V_7),
+        V_11 = pair.(V_6 - V_7) : pair.pair(OptionType_1, getopt_io.option_data),
+        V_10 = V_11
+      )
+    ) : (pred pair.pair(OptionType_1, getopt_io.option_data)),
+    solutions.solutions(V_9, V_8),
+    map.from_sorted_assoc_list(V_8, V_4).
+
+getopt_io.init_option_table_multi(V_3, V_4) :-
+    V_9 = (pred(V_10::(free >> ground)) is multi :-
+      some [] ( % compiler
+        call(V_3, V_6, V_7),
+        V_11 = pair.(V_6 - V_7) : pair.pair(OptionType_1, getopt_io.option_data),
+        V_10 = V_11
+      )
+    ) : (pred pair.pair(OptionType_1, getopt_io.option_data)),
+    solutions.solutions(V_9, V_8),
+    map.from_sorted_assoc_list(V_8, V_4).
+
+getopt_io.lookup_accumulating_option(V_4, V_5) = V_6 :-
+    getopt_io.lookup_accumulating_option(V_4, V_5, V_6).
+
+getopt_io.lookup_bool_option(V_4, V_5) = V_6 :-
+    getopt_io.lookup_bool_option(V_4, V_5, V_6).
+
+getopt_io.lookup_int_option(V_4, V_5) = V_6 :-
+    getopt_io.lookup_int_option(V_4, V_5, V_6).
+
+getopt_io.lookup_maybe_int_option(V_4, V_5) = V_6 :-
+    getopt_io.lookup_maybe_int_option(V_4, V_5, V_6).
+
+getopt_io.lookup_maybe_string_option(V_4, V_5) = V_6 :-
+    getopt_io.lookup_maybe_string_option(V_4, V_5, V_6).
+
+getopt_io.lookup_string_option(V_4, V_5) = V_6 :-
+    getopt_io.lookup_string_option(V_4, V_5, V_6).
+
+getopt_io.process_options(V_5, V_6, V_7, V_8) :-
+    getopt_io.process_options(V_5, V_6, V_9, V_7, V_8).
+
+getopt_io.process_options_io(V_7, V_8, V_9, V_10, V_13, V_14) :-
+    getopt_io.process_options_io(V_7, V_8, V_12, V_9, V_10, V_13, V_14).
+
+getopt_io.recognize_all_options(V_9, V_10, V_11, V_12, V_13, V_14, V_15, V_16) :-
+    V_21 = cord.init,
+    V_22 = cord.init,
+    V_23 = cord.init,
+    V_24 = cord.init,
+    getopt_io.record_all_arguments_loop(V_9, V_10, V_11, V_12, V_21, V_17, V_22, V_18, V_23, V_19, V_24, V_20),
+    V_13 = cord.list(V_17),
+    V_14 = cord.to_list(V_18),
+    V_15 = cord.list(V_19),
+    V_16 = cord.list(V_20).
+
+getopt_io.recognize_options(V_9, V_10, V_11, V_12, V_13, V_14, V_15, V_16) :-
+    V_20 = cord.init,
+    V_21 = cord.init,
+    V_22 = cord.init,
+    getopt_io.recognize_options_loop(V_9, V_10, V_11, V_12, V_13, V_20, V_17, V_21, V_18, V_22, V_19),
+    V_14 = cord.to_list(V_17),
+    V_15 = cord.list(V_18),
+    V_16 = cord.list(V_19).
+
+getopt_io.record_arguments(V_9, V_10, V_11, V_12, V_13, V_14, V_15, V_16) :-
+    getopt_io.recognize_options(V_9, V_10, V_11, V_12, V_15, V_16, V_14, V_13).
+
+:- pragma termination_info(getopt_io.'ClassMethod_for_getopt_io__read_file_contents____io__state__arity0______getopt_io__read_file_contents_4'(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt_io.'ClassMethod_for_getopt_io__read_file_contents____unit__unit__arity0______getopt_io__read_file_contents_4'(builtin.in, builtin.out, builtin.di, builtin.uo), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(getopt_io.convert_to_maybe_option_table(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(getopt_io.do_read_file_contents(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt_io.expand_file_specials(builtin.in(getopt_io.short_option), builtin.in(getopt_io.long_option), builtin.in, builtin.in, builtin.out, builtin.out(list.list_skel(getopt_io.non_file_special)), builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt_io.expand_file_specials_check(builtin.in(getopt_io.short_option), builtin.in(getopt_io.long_option), builtin.in, builtin.in, builtin.in, builtin.out, builtin.out(list.list_skel(getopt_io.non_file_special)), builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt_io.expand_file_specials_loop(builtin.in(getopt_io.short_option), builtin.in(getopt_io.long_option), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in(getopt_io.go_cord_skel(getopt_io.non_file_special)), builtin.out(getopt_io.go_cord_skel(getopt_io.non_file_special)), builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt_io.go_cord_to_list(builtin.in(getopt_io.go_cord_skel((V_2 =< ground)))) = builtin.out(list.list_skel((V_2 =< ground))), infinite, can_loop).
+:- pragma termination_info(getopt_io.init_option_table(builtin.in((pred(builtin.out, builtin.out) is nondet)), builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.init_option_table_multi(builtin.in((pred(builtin.out, builtin.out) is multi)), builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.lookup_accumulating_option(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(getopt_io.lookup_accumulating_option(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.lookup_bool_option(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(getopt_io.lookup_bool_option(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.lookup_int_option(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(getopt_io.lookup_int_option(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.lookup_maybe_int_option(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(getopt_io.lookup_maybe_int_option(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.lookup_maybe_string_option(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(getopt_io.lookup_maybe_string_option(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.lookup_string_option(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(getopt_io.lookup_string_option(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.option_error_to_string(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(getopt_io.process_options(builtin.in(getopt_io.option_ops), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.process_options(builtin.in(getopt_io.option_ops), builtin.in, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.process_options_io(builtin.in(getopt_io.option_ops), builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt_io.process_options_io(builtin.in(getopt_io.option_ops), builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt_io.process_options_track(builtin.in(getopt_io.option_ops_track), builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.process_options_track_io(builtin.in(getopt_io.option_ops_track), builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt_io.process_options_userdata(builtin.in(getopt_io.option_ops_userdata), builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.process_options_userdata_io(builtin.in(getopt_io.option_ops_userdata), builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt_io.read_file_contents(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt_io.read_file_contents_no_io(builtin.in, builtin.out, builtin.di, builtin.uo), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(getopt_io.recognize_all_options(builtin.in(getopt_io.short_option), builtin.in(getopt_io.long_option), builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.recognize_options(builtin.in(getopt_io.short_option), builtin.in(getopt_io.long_option), builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.recognize_options_loop(builtin.in(getopt_io.short_option), builtin.in(getopt_io.long_option), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.record_all_arguments_loop(builtin.in(getopt_io.short_option), builtin.in(getopt_io.long_option), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt_io.record_arguments(builtin.in(getopt_io.short_option), builtin.in(getopt_io.long_option), builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+
+:- pragma exceptions(function, getopt_io.convert_to_maybe_option_table, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.do_read_file_contents, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.expand_file_specials, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.expand_file_specials_check, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.expand_file_specials_loop, 10, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt_io.go_cord_to_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.init_option_table, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.init_option_table_multi, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt_io.lookup_accumulating_option, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.lookup_accumulating_option, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt_io.lookup_bool_option, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.lookup_bool_option, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt_io.lookup_int_option, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.lookup_int_option, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt_io.lookup_maybe_int_option, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.lookup_maybe_int_option, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt_io.lookup_maybe_string_option, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.lookup_maybe_string_option, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt_io.lookup_string_option, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.lookup_string_option, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt_io.option_error_to_string, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.process_options, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.process_options, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.process_options_io, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.process_options_io, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.process_options_track, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.process_options_track_io, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.process_options_userdata, 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.process_options_userdata_io, 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.read_file_contents, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.read_file_contents_no_io, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, getopt_io.recognize_all_options, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.recognize_options, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.recognize_options_loop, 11, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.record_all_arguments_loop, 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt_io.record_arguments, 8, 0, may_throw(user_exception)).
