@@ -1,0 +1,4 @@
+:- module transform_hlds.implicit_parallelism.
+:- interface.
+:- include_module (transform_hlds.implicit_parallelism).introduce_parallelism.
+:- include_module (transform_hlds.implicit_parallelism).push_goals_together.

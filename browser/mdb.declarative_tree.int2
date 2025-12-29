@@ -1,0 +1,13 @@
+:- module mdb.declarative_tree.
+:- interface.
+:- use_module mdb.declarative_edt.
+:- use_module mdb.declarative_execution.
+:- type edt_node(R)
+    --->    dynamic(
+                 R
+            ).
+:- type wrap(S)
+    --->    wrap(
+                 S
+            ).
+:- instance ((mdb.declarative_edt).mercury_edt(mdb.declarative_tree.wrap(S), mdb.declarative_tree.edt_node(R))) <= ((mdb.declarative_execution).annotated_trace(S, R)).
