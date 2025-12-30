@@ -1,0 +1,90 @@
+/*
+** Automatically generated from `html_format.m'
+** by the Mercury compiler,
+** version rotd-2025-12-30
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module html_format.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_html_format
+#define MR_HEADER_GUARD_html_format
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HTML_FORMAT_DECL_GUARD
+#define HTML_FORMAT_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_column_class_map_0;
+
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_format_info_0;
+
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_html_0;
+
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_style_control_0;
+
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_style_control_map_0;
+
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_style_element_0;
+
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_style_element_map_0;
+
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_table_header_rows_0;
+
+MR_String MR_CALL 
+html_format__escape_break_html_attr_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+html_format__escape_break_html_string_1_f_0(
+  MR_String param_1);
+
+MR_String MR_CALL 
+html_format__escape_html_attr_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+html_format__escape_html_string_1_f_0(
+  MR_String param_1);
+
+MR_String MR_CALL 
+html_format__htmlize_display_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__html_format__init(void);
+void mercury__html_format__init_type_tables(void);
+void mercury__html_format__init_debugger(void);
+const char *mercury__html_format__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_html_format
+
+// :- end_interface html_format.

@@ -1,0 +1,3 @@
+:- module ml_backend.ml_tag_switch.
+:- interface.
+:- type_representation(code_map, is_eqv_to(map(case_id, maybe_code))).

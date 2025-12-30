@@ -1,0 +1,64 @@
+:- module analysis.operations.
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module analysis.framework.
+:- use_module hlds.hlds_module.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- type analysis_info.
+:- type analysis_request
+    --->    some [FuncInfo, Call] (analysis_request(
+                 (analysis.operations).req_call :: Call,
+                 (analysis.operations).req_caller :: mdbcomp.sym_name.module_name
+            ) => ((analysis.framework).call_pattern(FuncInfo, Call))).
+:- type any_call
+    --->    any_call .
+:- type imdg_arc
+    --->    some [FuncInfo, Call] (imdg_arc(
+                 (analysis.operations).imdg_call :: Call,
+                 (analysis.operations).imdg_caller :: mdbcomp.sym_name.module_name
+            ) => ((analysis.framework).call_pattern(FuncInfo, Call))).
+:- type no_func_info
+    --->    no_func_info .
+:- instance ((analysis.framework).call_pattern(analysis.operations.no_func_info, analysis.operations.any_call)).
+:- instance ((analysis.framework).partial_order(analysis.operations.no_func_info, analysis.operations.any_call)).
+:- instance ((analysis.framework).to_term(analysis.operations.any_call)).
+:- some [Compiler] (func analysis_info_get_compiler(analysis.operations.analysis_info) = Compiler => ((analysis.framework).compiler(Compiler))).
+:- pred do_read_module_overall_status(Compiler, libs.globals.globals, mdbcomp.sym_name.module_name, analysis.framework.analysis_status, io.io, io.io) <= ((analysis.framework).compiler(Compiler)).
+:- mode do_read_module_overall_status(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred get_analysis_debug_stream(maybe.maybe(io.text_output_stream), io.io, io.io).
+:- mode get_analysis_debug_stream(builtin.out, builtin.di, builtin.uo) is det.
+:- func init_analysis_info(Compiler, mdbcomp.sym_name.module_name, bool.bool) = analysis.operations.analysis_info <= ((analysis.framework).compiler(Compiler)).
+:- pred lookup_best_result(analysis.operations.analysis_info, mdbcomp.sym_name.module_name, analysis.framework.func_id, FuncInfo, Call, maybe.maybe(analysis.framework.analysis_result(Call, Answer))) <= ((analysis.framework).analysis(FuncInfo, Call, Answer)).
+:- mode lookup_best_result(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_existing_call_patterns(analysis.operations.analysis_info, analysis.framework.analysis_name, mdbcomp.sym_name.module_name, analysis.framework.func_id, list.list(Call)) <= ((analysis.framework).call_pattern(FuncInfo, Call)).
+:- mode lookup_existing_call_patterns(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_matching_results(analysis.operations.analysis_info, mdbcomp.sym_name.module_name, analysis.framework.func_id, FuncInfo, Call, list.list(analysis.framework.analysis_result(Call, Answer))) <= ((analysis.framework).analysis(FuncInfo, Call, Answer)).
+:- mode lookup_matching_results(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_requests(analysis.operations.analysis_info, analysis.framework.analysis_name, mdbcomp.sym_name.module_name, analysis.framework.func_id, list.list(Call)) <= ((analysis.framework).call_pattern(FuncInfo, Call)).
+:- mode lookup_requests(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_results(analysis.operations.analysis_info, mdbcomp.sym_name.module_name, analysis.framework.func_id, list.list(analysis.framework.analysis_result(Call, Answer))) <= ((analysis.framework).analysis(FuncInfo, Call, Answer)).
+:- mode lookup_results(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred module_is_local(analysis.operations.analysis_info, mdbcomp.sym_name.module_name, bool.bool).
+:- mode module_is_local(builtin.in, builtin.in, builtin.out) is det.
+:- pred prepare_intermodule_analysis(io.text_output_stream, libs.globals.globals, set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), list.list(parse_tree.error_spec.error_spec), analysis.operations.analysis_info, analysis.operations.analysis_info, io.io, io.io).
+:- mode prepare_intermodule_analysis(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred record_dependency(mdbcomp.sym_name.module_name, analysis.framework.func_id, FuncInfo, Call, Answer, analysis.operations.analysis_info, analysis.operations.analysis_info) <= ((analysis.framework).analysis(FuncInfo, Call, Answer)).
+:- mode record_dependency(builtin.in, builtin.in, builtin.in, builtin.in, builtin.unused, builtin.in, builtin.out) is det.
+:- pred record_request(analysis.framework.analysis_name, mdbcomp.sym_name.module_name, analysis.framework.func_id, Call, analysis.operations.analysis_info, analysis.operations.analysis_info) <= ((analysis.framework).call_pattern(FuncInfo, Call)).
+:- mode record_request(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred record_result(mdbcomp.sym_name.module_name, analysis.framework.func_id, Call, Answer, analysis.framework.analysis_status, analysis.operations.analysis_info, analysis.operations.analysis_info) <= ((analysis.framework).analysis(FuncInfo, Call, Answer)).
+:- mode record_result(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred set_analysis_debug_stream(maybe.maybe(io.text_output_stream), io.io, io.io).
+:- mode set_analysis_debug_stream(builtin.in, builtin.di, builtin.uo) is det.
+:- pred write_analysis_files(io.text_output_stream, Compiler, hlds.hlds_module.module_info, set.set(mdbcomp.sym_name.module_name), analysis.operations.analysis_info, list.list(parse_tree.error_spec.error_spec), io.io, io.io) <= ((analysis.framework).compiler(Compiler)).
+:- mode write_analysis_files(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
