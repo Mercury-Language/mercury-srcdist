@@ -1,0 +1,39 @@
+// Automatically generated from `store.m'
+// by the Mercury compiler,
+// version rotd-2025-12-31
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef STORE_MH
+#define STORE_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef STORE_DECL_GUARD
+#define STORE_DECL_GUARD
+
+    #include "mercury_type_info.h"
+    #include "mercury_heap.h"
+    #include "mercury_misc.h"         // for MR_fatal_error()
+    #include "mercury_deconstruct.h"  // for MR_arg()
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* STORE_MH */

@@ -1,0 +1,30 @@
+:- module hlds.from_ground_term_util.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module parse_tree.prog_data.
+:- type fgt_build_info.
+:- type fgt_build_info_map == map.map(parse_tree.prog_data.prog_var, hlds.from_ground_term_util.fgt_build_info).
+:- type fgt_invariants_status
+    --->    fgt_invariants_kept 
+    ;       fgt_invariants_broken .
+:- type fgt_marked_goal
+    --->    fgt_kept_goal(
+                 hlds.hlds_goal.hlds_goal,
+                 parse_tree.prog_data.prog_var,
+                 list.list(parse_tree.prog_data.prog_var)
+            )
+    ;       fgt_broken_goal(
+                 hlds.hlds_goal.hlds_goal,
+                 parse_tree.prog_data.prog_var,
+                 list.list(parse_tree.prog_data.prog_var)
+            ).
+:- type goal_order
+    --->    construct_bottom_up 
+    ;       deconstruct_top_down .
+:- pred introduce_partial_fgt_scopes(int, hlds.from_ground_term_util.goal_order, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info, list.list(hlds.from_ground_term_util.fgt_marked_goal), hlds.hlds_goal.hlds_goal).
+:- mode introduce_partial_fgt_scopes(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred project_kept_goal(hlds.from_ground_term_util.fgt_marked_goal, hlds.hlds_goal.hlds_goal).
+:- mode project_kept_goal(builtin.in, builtin.out) is det.
