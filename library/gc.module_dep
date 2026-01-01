@@ -1,0 +1,14 @@
+module(2, "gc.m",
+	gc,
+	{},
+	{builtin, io, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - gc},
+	contains_foreign_export,
+	no_main,
+	{}
+).

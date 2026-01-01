@@ -1,0 +1,8 @@
+:- module check_hlds.style_checks.
+:- interface.
+:- type maybe_want_style_warnings
+    --->    do_not_want_style_warnings 
+    ;       want_style_warnings(
+                 check_hlds.style_checks.warnings_we_want
+            ).
+:- type warnings_we_want.
