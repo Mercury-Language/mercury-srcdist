@@ -1,0 +1,134 @@
+/*
+** Automatically generated from `bool.m'
+** by the Mercury compiler,
+** version rotd-2026-01-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module bool.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_bool
+#define MR_HEADER_GUARD_bool
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BOOL_DECL_GUARD
+#define BOOL_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__bool__bool__type_ctor_info_bool_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_enum__enum__arity1__bool__bool__arity0__[7];
+
+MR_bool MR_CALL 
+mercury__bool__ClassMethod_for_enum__enum____bool__bool__arity0______enum__from_int_2_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__bool__and_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__bool__and_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__bool__not_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__bool__or_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__bool__or_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_Integer MR_CALL 
+mercury__bool__ClassMethod_for_enum__enum____bool__bool__arity0______enum__to_int_1_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__bool__and_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__bool__and_list_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__bool__not_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__bool__or_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__bool__or_list_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__bool__pred_to_bool_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__bool__xor_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__bool____Compare____bool_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__bool____Unify____bool_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__bool__init(void);
+void mercury__bool__init_type_tables(void);
+void mercury__bool__init_debugger(void);
+const char *mercury__bool__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_bool
+
+// :- end_interface bool.

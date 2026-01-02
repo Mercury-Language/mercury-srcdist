@@ -1,0 +1,379 @@
+/*
+** Automatically generated from `mercury_term_lexer.m'
+** by the Mercury compiler,
+** version rotd-2026-01-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mercury_term_lexer.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mercury_term_lexer
+#define MR_HEADER_GUARD_mercury_term_lexer
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MERCURY_TERM_LEXER_DECL_GUARD
+#define MERCURY_TERM_LEXER_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_get_token_action_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_integer_base_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_integer_size_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_last_digit_is_underscore_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_line_context_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_line_posn_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_maybe_have_valid_token_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_non_id_token_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_offset_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_raw_token_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_scanned_past_whitespace_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_signedness_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_string_token_context_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_token_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_token_context_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_token_list_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_unicode_char_result_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__mercury_term_lexer__mercury_term_lexer__type_ctor_info_unicode_decode_error_0;
+
+void MR_CALL 
+mercury__mercury_term_lexer__LCMC__pred__get_token_list_loop__1_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__mercury_term_lexer__execute_get_token_action_8_p_0(
+  MR_Word param_1,
+  MR_Char param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Integer * param_6);
+
+void MR_CALL 
+mercury__mercury_term_lexer__get_context_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+mercury__mercury_term_lexer__get_token_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__mercury_term_lexer__get_token_list_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__mercury_term_lexer__get_token_list_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__mercury_term_lexer__get_token_list_loop_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer__graphic_token_char_1_p_0(
+  MR_Char param_1);
+
+void MR_CALL 
+mercury__mercury_term_lexer__linestr_get_token_list_max_7_p_0(
+  MR_String param_1,
+  MR_Integer param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer__lookup_token_action_2_p_0(
+  MR_Char param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__mercury_term_lexer__raw_token_to_string_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+mercury__mercury_term_lexer__string_get_token_list_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__mercury_term_lexer__string_get_token_list_max_5_p_0(
+  MR_String param_1,
+  MR_Integer param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__mercury_term_lexer__token_to_string_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____get_token_action_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____integer_base_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____integer_size_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____last_digit_is_underscore_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____line_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____line_posn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____maybe_have_valid_token_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____non_id_token_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____offset_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____raw_token_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____scanned_past_whitespace_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____signedness_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____string_token_context_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____token_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____token_context_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____token_list_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____unicode_char_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Compare____unicode_decode_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__mercury_term_lexer____Index____raw_token_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____get_token_action_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____integer_base_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____integer_size_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____last_digit_is_underscore_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____line_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____line_posn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____maybe_have_valid_token_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____non_id_token_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____offset_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____raw_token_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____scanned_past_whitespace_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____signedness_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____string_token_context_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____token_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____token_context_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____token_list_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____unicode_char_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__mercury_term_lexer____Unify____unicode_decode_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mercury_term_lexer__init(void);
+void mercury__mercury_term_lexer__init_type_tables(void);
+void mercury__mercury_term_lexer__init_debugger(void);
+const char *mercury__mercury_term_lexer__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mercury_term_lexer
+
+// :- end_interface mercury_term_lexer.
