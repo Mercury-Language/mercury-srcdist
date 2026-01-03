@@ -1,0 +1,18 @@
+:- module parse_tree.prog_event.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_event.
+:- func derive_event_set_data(parse_tree.prog_data_event.event_set) = parse_tree.prog_data_event.event_set_data.
+:- pred event_arg_modes(parse_tree.prog_data_event.event_spec_map, string, list.list(parse_tree.prog_data.mer_mode)).
+:- mode event_arg_modes(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred event_arg_types(parse_tree.prog_data_event.event_spec_map, string, list.list(parse_tree.prog_data.mer_type)).
+:- mode event_arg_types(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred event_attributes(parse_tree.prog_data_event.event_spec_map, string, list.list(parse_tree.prog_data_event.event_attribute)).
+:- mode event_attributes(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred event_number(parse_tree.prog_data_event.event_spec_map, string, int).
+:- mode event_number(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred read_event_set(string, string, parse_tree.prog_data_event.event_spec_map, list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode read_event_set(builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.

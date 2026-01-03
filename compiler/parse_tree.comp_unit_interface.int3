@@ -1,0 +1,10 @@
+:- module parse_tree.comp_unit_interface.
+:- interface.
+:- type generate_int0_result.
+:- type generate_int12_result.
+:- type generate_int3_result.
+:- type maybe_add_to_hptm
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_add_to_hptm, du_repn(enum("do_not_add_new_to_hptm", "do_add_new_to_hptm", [],  no_c_j_cs))).
+:- type_representation(type_defn_map, is_eqv_to(one_or_more_map(type_ctor, item_type_defn_info))).
+:- type_representation(type_defn_pair, is_eqv_to(pair(type_ctor, item_type_defn_info))).
