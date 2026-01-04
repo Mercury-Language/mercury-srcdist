@@ -1,0 +1,2 @@
+:- module mdprof_dump.
+:- interface.

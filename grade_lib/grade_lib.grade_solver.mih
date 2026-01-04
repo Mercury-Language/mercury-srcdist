@@ -1,0 +1,202 @@
+/*
+** Automatically generated from `grade_solver.m'
+** by the Mercury compiler,
+** version rotd-2026-01-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module grade_lib.grade_solver.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_grade_lib__grade_solver
+#define MR_HEADER_GUARD_grade_lib__grade_solver
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef GRADE_LIB__GRADE_SOLVER_DECL_GUARD
+#define GRADE_LIB__GRADE_SOLVER_DECL_GUARD
+#include "grade_lib.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_solver__grade_lib__grade_solver__type_ctor_info_failure_info_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_solver__grade_lib__grade_solver__type_ctor_info_failure_tree_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_solver__grade_lib__grade_solver__type_ctor_info_installed_grade_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_solver__grade_lib__grade_solver__type_ctor_info_installed_grade_solution_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_solver__grade_lib__grade_solver__type_ctor_info_maybe_changed_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_solver__grade_lib__grade_solver__type_ctor_info_maybe_found_failure_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_solver__grade_lib__grade_solver__type_ctor_info_should_commit_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_solver__grade_lib__grade_solver__type_ctor_info_solution_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_solver__grade_lib__grade_solver__type_ctor_info_solve_counts_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_solver__grade_lib__grade_solver__type_ctor_info_success_soln_map_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_solver__grade_lib__grade_solver__type_ctor_info_why_var_is_not_value_0;
+
+void MR_CALL 
+grade_lib__grade_solver__solve_absolute_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+grade_lib__grade_solver__solve_best_installed_grade_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+grade_lib__grade_solver__failure_info_to_failure_trees_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+grade_lib__grade_solver__soln_to_str_2_f_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+grade_lib__grade_solver__solver_var_map_to_str_2_f_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+grade_lib__grade_solver____Compare____failure_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_solver____Compare____failure_tree_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_solver____Compare____installed_grade_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_solver____Compare____installed_grade_solution_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_solver____Compare____should_commit_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_solver____Compare____solution_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_solver____Compare____solve_counts_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_solver____Compare____success_soln_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_solver____Compare____why_var_is_not_value_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+grade_lib__grade_solver____Unify____failure_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_solver____Unify____failure_tree_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_solver____Unify____installed_grade_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_solver____Unify____installed_grade_solution_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_solver____Unify____should_commit_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_solver____Unify____solution_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_solver____Unify____solve_counts_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_solver____Unify____success_soln_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_solver____Unify____why_var_is_not_value_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__grade_lib__grade_solver__init(void);
+void mercury__grade_lib__grade_solver__init_type_tables(void);
+void mercury__grade_lib__grade_solver__init_debugger(void);
+const char *mercury__grade_lib__grade_solver__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_grade_lib.grade_solver
+
+// :- end_interface grade_lib.grade_solver.
