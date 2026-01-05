@@ -1,0 +1,211 @@
+/*
+** Automatically generated from `io.primitives_write.m'
+** by the Mercury compiler,
+** version rotd-2026-01-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module io.primitives_write.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_io__primitives_write
+#define MR_HEADER_GUARD_io__primitives_write
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef IO__PRIMITIVES_WRITE_DECL_GUARD
+#define IO__PRIMITIVES_WRITE_DECL_GUARD
+#include "io.mih"
+
+// XXX zs: I don't know which other #includes from io.m, if any,
+// we should have here to make the C code for this module self-contained.
+
+#include "mercury_types.h"            // for MR_Integer
+#include "mercury_library_types.h"    // for MercuryFilePtr, MR_PUTCH etc
+#include "mercury_int.h"              // for MR_*_reverse_bytes
+
+#include <stdio.h>
+#include <stdarg.h>
+#include <inttypes.h>
+
+int ML_fprintf(MercuryFilePtr mf, const char *format, ...);
+
+
+#endif
+
+
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_binary_string_utf8_5_p_0(
+  MR_Box param_1,
+  MR_String param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_binary_uint16_5_p_0(
+  MR_Box param_1,
+  uint16_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_binary_uint16_be_5_p_0(
+  MR_Box param_1,
+  uint16_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_binary_uint16_le_5_p_0(
+  MR_Box param_1,
+  uint16_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_binary_uint32_5_p_0(
+  MR_Box param_1,
+  uint32_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_binary_uint32_be_5_p_0(
+  MR_Box param_1,
+  uint32_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_binary_uint32_le_5_p_0(
+  MR_Box param_1,
+  uint32_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_binary_uint64_5_p_0(
+  MR_Box param_1,
+  uint64_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_binary_uint64_be_5_p_0(
+  MR_Box param_1,
+  uint64_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_binary_uint64_le_5_p_0(
+  MR_Box param_1,
+  uint64_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_byte_5_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_char_5_p_0(
+  MR_Box param_1,
+  MR_Char param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_float_5_p_0(
+  MR_Box param_1,
+  MR_Float param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_int_5_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_int16_5_p_0(
+  MR_Box param_1,
+  int16_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_int32_5_p_0(
+  MR_Box param_1,
+  int32_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_int64_5_p_0(
+  MR_Box param_1,
+  int64_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_int8_5_p_0(
+  MR_Box param_1,
+  int8_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_string_5_p_0(
+  MR_Box param_1,
+  MR_String param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_uint_5_p_0(
+  MR_Box param_1,
+  MR_Unsigned param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_uint16_5_p_0(
+  MR_Box param_1,
+  uint16_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_uint32_5_p_0(
+  MR_Box param_1,
+  uint32_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_uint64_5_p_0(
+  MR_Box param_1,
+  uint64_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__primitives_write__do_write_uint8_5_p_0(
+  MR_Box param_1,
+  uint8_t param_2,
+  MR_Box * param_3);
+
+void mercury__io__primitives_write__init(void);
+void mercury__io__primitives_write__init_type_tables(void);
+void mercury__io__primitives_write__init_debugger(void);
+const char *mercury__io__primitives_write__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_io.primitives_write
+
+// :- end_interface io.primitives_write.

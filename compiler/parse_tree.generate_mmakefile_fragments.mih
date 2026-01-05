@@ -1,0 +1,186 @@
+/*
+** Automatically generated from `generate_mmakefile_fragments.m'
+** by the Mercury compiler,
+** version rotd-2026-01-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.generate_mmakefile_fragments.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__generate_mmakefile_fragments
+#define MR_HEADER_GUARD_parse_tree__generate_mmakefile_fragments
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__GENERATE_MMAKEFILE_FRAGMENTS_DECL_GUARD
+#define PARSE_TREE__GENERATE_MMAKEFILE_FRAGMENTS_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__generate_mmakefile_fragments__parse_tree__generate_mmakefile_fragments__type_ctor_info_all_mih_deps_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__generate_mmakefile_fragments__parse_tree__generate_mmakefile_fragments__type_ctor_info_d_file_deps_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__generate_mmakefile_fragments__parse_tree__generate_mmakefile_fragments__type_ctor_info_intermod_deps_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__generate_mmakefile_fragments__parse_tree__generate_mmakefile_fragments__type_ctor_info_intermod_only_fim_deps_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__generate_mmakefile_fragments__parse_tree__generate_mmakefile_fragments__type_ctor_info_maybe_include_trans_opt_rule_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__generate_mmakefile_fragments__parse_tree__generate_mmakefile_fragments__type_ctor_info_maybe_mmake_var_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__generate_mmakefile_fragments__parse_tree__generate_mmakefile_fragments__type_ctor_info_maybe_trans_opt_deps_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__generate_mmakefile_fragments__parse_tree__generate_mmakefile_fragments__type_ctor_info_module_own_fim_deps_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__generate_mmakefile_fragments__parse_tree__generate_mmakefile_fragments__type_ctor_info_trans_opt_rule_info_0;
+
+void MR_CALL 
+parse_tree__generate_mmakefile_fragments__generate_d_mmakefile_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+parse_tree__generate_mmakefile_fragments__generate_dep_mmakefile_7_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__generate_mmakefile_fragments__generate_dv_mmakefile_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__generate_mmakefile_fragments____Compare____all_mih_deps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__generate_mmakefile_fragments____Compare____d_file_deps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__generate_mmakefile_fragments____Compare____intermod_deps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__generate_mmakefile_fragments____Compare____intermod_only_fim_deps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__generate_mmakefile_fragments____Compare____maybe_include_trans_opt_rule_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__generate_mmakefile_fragments____Compare____maybe_trans_opt_deps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__generate_mmakefile_fragments____Compare____module_own_fim_deps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__generate_mmakefile_fragments____Compare____trans_opt_rule_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__generate_mmakefile_fragments____Unify____all_mih_deps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__generate_mmakefile_fragments____Unify____d_file_deps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__generate_mmakefile_fragments____Unify____intermod_deps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__generate_mmakefile_fragments____Unify____intermod_only_fim_deps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__generate_mmakefile_fragments____Unify____maybe_include_trans_opt_rule_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__generate_mmakefile_fragments____Unify____maybe_trans_opt_deps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__generate_mmakefile_fragments____Unify____module_own_fim_deps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__generate_mmakefile_fragments____Unify____trans_opt_rule_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__generate_mmakefile_fragments__init(void);
+void mercury__parse_tree__generate_mmakefile_fragments__init_type_tables(void);
+void mercury__parse_tree__generate_mmakefile_fragments__init_debugger(void);
+const char *mercury__parse_tree__generate_mmakefile_fragments__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.generate_mmakefile_fragments
+
+// :- end_interface parse_tree.generate_mmakefile_fragments.
