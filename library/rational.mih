@@ -1,0 +1,163 @@
+/*
+** Automatically generated from `rational.m'
+** by the Mercury compiler,
+** version rotd-2026-01-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module rational.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_rational
+#define MR_HEADER_GUARD_rational
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RATIONAL_DECL_GUARD
+#define RATIONAL_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__rational__rational__type_ctor_info_rational_0;
+
+MR_bool MR_CALL 
+mercury__rational__f_less_than_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rational__f_less_or_equal_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rational__f_greater_than_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rational__f_greater_or_equal_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__rational__f_times_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__rational__f_plus_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__rational__f_plus_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__rational__f_minus_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__rational__f_minus_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__rational__f_slash_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__rational__abs_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__rational__cmp_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__rational__denom_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__rational__from_integer_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__rational__from_integers_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__rational__numer_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__rational__one_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__rational__rational_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mercury__rational__rational_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mercury__rational__rational_norm_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__rational__reciprocal_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__rational__zero_0_f_0(void);
+
+void MR_CALL 
+mercury__rational____Compare____rational_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__rational____Unify____rational_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__rational__init(void);
+void mercury__rational__init_type_tables(void);
+void mercury__rational__init_debugger(void);
+const char *mercury__rational__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_rational
+
+// :- end_interface rational.

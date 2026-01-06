@@ -1,0 +1,3 @@
+:- module parse_tree.opt_deps_spec.
+:- interface.
+:- type_representation(trans_opt_deps_spec, is_eqv_to(map(module_name, allow_or_disallow_trans_opt_deps))).
