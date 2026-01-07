@@ -1,0 +1,2 @@
+:- module hlds.mode_util.
+:- interface.

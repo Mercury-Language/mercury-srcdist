@@ -1,0 +1,73 @@
+:- module eqvclass.
+
+:- pragma termination_info(eqvclass.add_element(builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.divide_equivalence_classes(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(eqvclass.divide_equivalence_classes_2(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.divide_equivalence_classes_3(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_corresponding_equivalences(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_corresponding_equivalences(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_element(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_element(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_element_partition_id(builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_equivalence(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_equivalence(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.get_equivalent_elements(builtin.in, builtin.in) = builtin.out, finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(eqvclass.get_minimum_element(builtin.in, builtin.in) = builtin.out, finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info((eqvclass.init) = builtin.out, finite(4, [no, no]), cannot_loop).
+:- pragma termination_info(eqvclass.init(builtin.out), finite(4, [no, no]), cannot_loop).
+:- pragma termination_info(eqvclass.is_member(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(eqvclass.new_element(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(eqvclass.new_element(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.new_equivalence(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(eqvclass.new_equivalence(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_id(builtin.in, builtin.in, builtin.out), finite(-7, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(eqvclass.partition_ids(builtin.in, builtin.out), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(eqvclass.partition_list(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(eqvclass.partition_list(builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(eqvclass.partition_list_to_eqvclass(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_list_to_eqvclass(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_set(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_set_to_eqvclass(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_set_to_eqvclass(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.partitions(builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(eqvclass.remove_equivalent_elements(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(eqvclass.remove_equivalent_elements(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.same_eqvclass(builtin.in, builtin.in, builtin.in), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(eqvclass.same_eqvclass_list(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+
+:- pragma exceptions(predicate, eqvclass.add_element, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, eqvclass.divide_equivalence_classes, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.divide_equivalence_classes_2, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.divide_equivalence_classes_3, 11, 0, may_throw(user_exception)).
+:- pragma exceptions(function, eqvclass.ensure_corresponding_equivalences, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.ensure_corresponding_equivalences, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, eqvclass.ensure_element, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.ensure_element, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.ensure_element_partition_id, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, eqvclass.ensure_equivalence, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.ensure_equivalence, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, eqvclass.get_equivalent_elements, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, eqvclass.get_minimum_element, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, eqvclass.init, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, eqvclass.init, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, eqvclass.is_member, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, eqvclass.new_element, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.new_element, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, eqvclass.new_equivalence, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.new_equivalence, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.partition_id, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, eqvclass.partition_ids, 2, 0, will_not_throw).
+:- pragma exceptions(function, eqvclass.partition_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.partition_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, eqvclass.partition_list_to_eqvclass, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.partition_list_to_eqvclass, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, eqvclass.partition_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.partition_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, eqvclass.partition_set_to_eqvclass, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.partition_set_to_eqvclass, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.partitions, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, eqvclass.remove_equivalent_elements, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.remove_equivalent_elements, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, eqvclass.same_eqvclass, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, eqvclass.same_eqvclass_list, 2, 0, may_throw(type_exception)).
