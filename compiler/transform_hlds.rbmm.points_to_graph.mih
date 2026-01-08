@@ -1,0 +1,439 @@
+/*
+** Automatically generated from `rbmm.points_to_graph.m'
+** by the Mercury compiler,
+** version rotd-2026-01-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.rbmm.points_to_graph.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__rbmm__points_to_graph
+#define MR_HEADER_GUARD_transform_hlds__rbmm__points_to_graph
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__RBMM__POINTS_TO_GRAPH_DECL_GUARD
+#define TRANSFORM_HLDS__RBMM__POINTS_TO_GRAPH_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.rbmm.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_content_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edges_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_content_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_nodes_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_outedges_0;
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_112_116_103_95_101_100_103_101_95_99_111_110_116_101_110_116_95_115_101_116_95_108_97_98_101_108_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__edge_operator_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_add_node_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_edge_content_set_label_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_equal_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_is_allocated_node_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_node_content_set_is_allocated_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_node_content_set_merged_from_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_node_content_set_node_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_node_content_set_region_name_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_node_content_set_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_path_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Cont param_5,
+  void * param_6);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_path_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Cont param_5,
+  void * param_6);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_set_node_content_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph__unify_operator_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_f_0(void);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_edge_content_get_label_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_get_edges_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_get_next_node_id_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_get_node_content_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_get_nodes_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_get_nodes_as_list_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_get_outedges_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_lookup_list_endnodes_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_lookup_map_outedges_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_lookup_node_is_allocated_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_lookup_node_type_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_lookup_node_vars_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_node_content_get_is_allocated_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_node_content_get_merged_from_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_node_content_get_node_type_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_node_content_get_region_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_node_content_get_vars_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_graph__rptg_successors_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph____Compare____rpt_graph_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph____Compare____rptg_edge_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph____Compare____rptg_edge_content_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph____Compare____rptg_edge_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph____Compare____rptg_edges_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph____Compare____rptg_node_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph____Compare____rptg_node_content_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph____Compare____rptg_nodes_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_graph____Compare____rptg_outedges_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph____Unify____rpt_graph_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph____Unify____rptg_edge_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph____Unify____rptg_edge_content_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph____Unify____rptg_edge_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph____Unify____rptg_edges_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph____Unify____rptg_node_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph____Unify____rptg_node_content_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph____Unify____rptg_nodes_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_graph____Unify____rptg_outedges_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__rbmm__points_to_graph__init(void);
+void mercury__transform_hlds__rbmm__points_to_graph__init_type_tables(void);
+void mercury__transform_hlds__rbmm__points_to_graph__init_debugger(void);
+const char *mercury__transform_hlds__rbmm__points_to_graph__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.rbmm.points_to_graph
+
+// :- end_interface transform_hlds.rbmm.points_to_graph.

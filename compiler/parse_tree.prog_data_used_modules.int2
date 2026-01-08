@@ -1,0 +1,10 @@
+:- module parse_tree.prog_data_used_modules.
+:- interface.
+:- type item_visibility
+    --->    visibility_public 
+    ;       visibility_private .
+:- type used_modules
+    --->    used_modules(
+                 (parse_tree.prog_data_used_modules).int_used_modules :: set_tree234.set_tree234(mdbcomp.sym_name.module_name),
+                 (parse_tree.prog_data_used_modules).imp_used_modules :: set_tree234.set_tree234(mdbcomp.sym_name.module_name)
+            ).
