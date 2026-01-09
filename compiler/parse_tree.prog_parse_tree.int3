@@ -1,0 +1,88 @@
+:- module parse_tree.prog_parse_tree.
+:- interface.
+:- type ancestor_int_spec.
+:- type aug_compilation_unit.
+:- type aug_make_int_unit.
+:- type direct_int1_spec.
+:- type direct_int3_spec.
+:- type implicit_import_or_use
+	where	type_is_abstract_enum(2).
+:- type import_and_or_use_map.
+:- type import_locn
+	where	type_is_abstract_enum(3).
+:- type include_module_info.
+:- type include_module_map.
+:- type indirect_int2_spec.
+:- type indirect_int3_spec.
+:- type int_for_opt_spec.
+:- type int_import_map.
+:- type int_include_module_info
+	where	type_is_abstract_subtype(include_module_info/0).
+:- type int_include_module_map.
+:- type int_module_section
+	where	type_is_abstract_subtype(module_section/0).
+:- type int_section_import
+	where	type_is_abstract_subtype(section_import_and_or_use/0).
+:- type maybe_implicit_import_and_or_use.
+:- type maybe_version_numbers.
+:- type module_component.
+:- type module_names_contexts.
+:- type module_section
+	where	type_is_abstract_enum(1).
+:- type parse_tree_int0.
+:- type parse_tree_int1.
+:- type parse_tree_int2.
+:- type parse_tree_int3.
+:- type parse_tree_module_src.
+:- type parse_tree_plain_opt.
+:- type parse_tree_src.
+:- type parse_tree_trans_opt.
+:- type read_why_int0
+	where	type_is_abstract_enum(1).
+:- type read_why_int1
+	where	type_is_abstract_enum(3).
+:- type read_why_int2
+	where	type_is_abstract_enum(2).
+:- type read_why_int3
+	where	type_is_abstract_enum(4).
+:- type section_import_and_or_use.
+:- type section_import_and_or_use_map.
+:- type section_use
+	where	type_is_abstract_subtype(section_import_and_or_use/0).
+:- type section_use_map.
+:- type type_repn_spec.
+:- type_representation(ancestor_int_spec, is_word_aligned_ptr).
+:- type_representation(aug_compilation_unit, is_word_aligned_ptr).
+:- type_representation(aug_make_int_unit, is_word_aligned_ptr).
+:- type_representation(direct_int1_spec, is_word_aligned_ptr).
+:- type_representation(direct_int3_spec, is_word_aligned_ptr).
+:- type_representation(implicit_import_or_use, du_repn(enum("implicit_int_import", "implicit_int_use", ["implicit_imp_use"],  no_c_j_cs))).
+:- type_representation(import_and_or_use_map, is_eqv_to(map(module_name, parse_tree.prog_parse_tree.maybe_implicit_import_and_or_use))).
+:- type_representation(import_locn, du_repn(enum("import_locn_implementation", "import_locn_interface", ["import_locn_import_by_ancestor", "import_locn_ancestor_int0_interface", "import_locn_ancestor_int0_implementation"],  no_c_j_cs))).
+:- type_representation(include_module_info, is_word_aligned_ptr).
+:- type_representation(include_module_map, is_eqv_to(map(module_name, parse_tree.prog_parse_tree.include_module_info))).
+:- type_representation(indirect_int2_spec, is_word_aligned_ptr).
+:- type_representation(indirect_int3_spec, is_word_aligned_ptr).
+:- type_representation(int_import_map, is_eqv_to(map(module_name, parse_tree.prog_parse_tree.int_section_import))).
+:- type_representation(int_include_module_info, is_subtype_of((parse_tree.prog_parse_tree).include_module_info/0)).
+:- type_representation(int_include_module_map, is_eqv_to(map(module_name, parse_tree.prog_parse_tree.int_include_module_info))).
+:- type_representation(int_module_section, is_subtype_of((parse_tree.prog_parse_tree).module_section/0)).
+:- type_representation(int_section_import, is_subtype_of((parse_tree.prog_parse_tree).section_import_and_or_use/0)).
+:- type_representation(module_names_contexts, is_eqv_to(one_or_more_map(module_name, prog_context))).
+:- type_representation(module_section, du_repn(enum("ms_interface", "ms_implementation", [],  no_c_j_cs))).
+:- type_representation(parse_tree_int0, is_word_aligned_ptr).
+:- type_representation(parse_tree_int1, is_word_aligned_ptr).
+:- type_representation(parse_tree_int2, is_word_aligned_ptr).
+:- type_representation(parse_tree_int3, is_word_aligned_ptr).
+:- type_representation(parse_tree_module_src, is_word_aligned_ptr).
+:- type_representation(parse_tree_plain_opt, is_word_aligned_ptr).
+:- type_representation(parse_tree_src, is_word_aligned_ptr).
+:- type_representation(parse_tree_trans_opt, is_word_aligned_ptr).
+:- type_representation(read_why_int0, du_repn(enum("rwi0_section", "rwi0_opt", [],  no_c_j_cs))).
+:- type_representation(read_why_int1, du_repn(enum("rwi1_int_import", "rwi1_int_use", ["rwi1_imp_import", "rwi1_imp_use", "rwi1_int_use_imp_import", "rwi1_opt", "rwi1_type_repn"],  no_c_j_cs))).
+:- type_representation(read_why_int2, du_repn(enum("rwi2_int_use", "rwi2_imp_use", ["rwi2_abstract", "rwi2_opt"],  no_c_j_cs))).
+:- type_representation(read_why_int3, du_repn(enum("rwi3_direct_ancestor_import", "rwi3_direct_int_import", ["rwi3_direct_imp_import", "rwi3_direct_ancestor_use", "rwi3_direct_int_use", "rwi3_direct_imp_use", "rwi3_direct_int_use_imp_import", "rwi3_indirect_int_use", "rwi3_indirect_imp_use"],  no_c_j_cs))).
+:- type_representation(section_import_and_or_use_map, is_eqv_to(map(module_name, parse_tree.prog_parse_tree.section_import_and_or_use))).
+:- type_representation(section_use, is_subtype_of((parse_tree.prog_parse_tree).section_import_and_or_use/0)).
+:- type_representation(section_use_map, is_eqv_to(map(module_name, parse_tree.prog_parse_tree.section_use))).
+:- type_representation(type_repn_spec, du_repn(notag("type_repn_spec_int1", parse_tree_int1,  no_c_j_cs))).

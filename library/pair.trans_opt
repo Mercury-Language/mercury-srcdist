@@ -1,0 +1,13 @@
+:- module pair.
+
+:- pragma termination_info(pair.fst(builtin.in) = builtin.out, finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(pair.fst(builtin.in, builtin.out), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(pair.pair(builtin.in, builtin.in) = builtin.out, finite(2, [no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(pair.snd(builtin.in) = builtin.out, finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(pair.snd(builtin.in, builtin.out), finite(-2, [no, no, yes, no]), cannot_loop).
+
+:- pragma exceptions(function, pair.fst, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, pair.fst, 2, 0, will_not_throw).
+:- pragma exceptions(function, pair.pair, 2, 0, will_not_throw).
+:- pragma exceptions(function, pair.snd, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, pair.snd, 2, 0, will_not_throw).

@@ -1,0 +1,122 @@
+/*
+** Automatically generated from `lines_builder.m'
+** by the Mercury compiler,
+** version rotd-2026-01-09
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.lines_builder.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__lines_builder
+#define MR_HEADER_GUARD_libs__lines_builder
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__LINES_BUILDER_DECL_GUARD
+#define LIBS__LINES_BUILDER_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__lines_builder__libs__lines_builder__type_ctor_info_lines_builder_0;
+
+void MR_CALL 
+libs__lines_builder__append_char_3_p_0(
+  MR_Char param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__lines_builder__append_string_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__lines_builder__append_strings_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__lines_builder__append_strings_sep_4_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+libs__lines_builder__current_context_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+libs__lines_builder__format_4_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+libs__lines_builder__total_num_code_points_is_at_most_2_p_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+libs__lines_builder__init_2_f_0(
+  MR_String param_1,
+  MR_Integer param_2);
+
+MR_String MR_CALL 
+libs__lines_builder__to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+libs__lines_builder__total_num_code_points_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__lines_builder____Compare____lines_builder_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__lines_builder____Unify____lines_builder_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__lines_builder__init(void);
+void mercury__libs__lines_builder__init_type_tables(void);
+void mercury__libs__lines_builder__init_debugger(void);
+const char *mercury__libs__lines_builder__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.lines_builder
+
+// :- end_interface libs.lines_builder.
