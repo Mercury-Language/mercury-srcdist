@@ -1,0 +1,4 @@
+:- module transform_hlds.intermod_order_pred_info.
+:- interface.
+:- type order_pred_info.
+:- type_representation(order_pred_info, is_word_aligned_ptr).

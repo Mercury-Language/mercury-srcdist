@@ -1,0 +1,5 @@
+:- module ll_backend.exprn_aux.
+:- interface.
+:- type transform_lval(T).
+:- abstract_inst((transform_lval)).
+:- type_representation(transform_lval(V_1), is_eqv_to(pred(lval, lval, V_1, V_1))).

@@ -1,0 +1,13 @@
+:- module check_hlds.typeclasses.
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module check_hlds.type_assign.
+:- use_module check_hlds.typecheck_info.
+:- use_module hlds.hlds_class.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.prog_data.
+:- pred perform_context_reduction(parse_tree.prog_data.prog_context, check_hlds.type_assign.type_assign_set, check_hlds.type_assign.type_assign_set, check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.typecheck_info).
+:- mode perform_context_reduction(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred reduce_context_by_rule_application(hlds.hlds_class.class_table, hlds.hlds_class.instance_table, hlds.hlds_pred.external_type_params, parse_tree.prog_data.tsubst, parse_tree.prog_data.tsubst, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, hlds.hlds_class.constraint_proof_map, hlds.hlds_class.constraint_proof_map, hlds.hlds_class.constraint_map, hlds.hlds_class.constraint_map, hlds.hlds_class.hlds_constraint_db, hlds.hlds_class.hlds_constraint_db).
+:- mode reduce_context_by_rule_application(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
