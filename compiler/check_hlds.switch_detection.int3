@@ -1,0 +1,4 @@
+:- module check_hlds.switch_detection.
+:- interface.
+:- type switch_detect_info.
+:- type_representation(switch_detect_info, is_word_aligned_ptr).
