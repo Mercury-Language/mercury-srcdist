@@ -1,0 +1,148 @@
+/*
+** Automatically generated from `parse_module.m'
+** by the Mercury compiler,
+** version rotd-2026-01-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.parse_module.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__parse_module
+#define MR_HEADER_GUARD_parse_tree__parse_module
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PARSE_MODULE_DECL_GUARD
+#define PARSE_TREE__PARSE_MODULE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_module__parse_tree__parse_module__type_ctor_info_make_dummy_parse_tree_1;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_module__parse_tree__parse_module__type_ctor_info_may_change_source_file_name_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_module__parse_tree__parse_module__type_ctor_info_maybe_lookahead_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_module__parse_tree__parse_module__type_ctor_info_maybe_module_decl_present_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_module__parse_tree__parse_module__type_ctor_info_maybe_module_header_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_module__parse_tree__parse_module__type_ctor_info_read_iom_result_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_module__parse_tree__parse_module__type_ctor_info_read_parse_tree_1;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_module__parse_tree__parse_module__type_ctor_info_version_number_result_0;
+
+void MR_CALL 
+parse_tree__parse_module__parse_int0_file_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+parse_tree__parse_module__parse_int1_file_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+parse_tree__parse_module__parse_int2_file_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+parse_tree__parse_module__parse_int3_file_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+parse_tree__parse_module__parse_plain_opt_file_6_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__parse_module__parse_src_file_7_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+parse_tree__parse_module__parse_trans_opt_file_6_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__parse_module__peek_at_file_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void mercury__parse_tree__parse_module__init(void);
+void mercury__parse_tree__parse_module__init_type_tables(void);
+void mercury__parse_tree__parse_module__init_debugger(void);
+const char *mercury__parse_tree__parse_module__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.parse_module
+
+// :- end_interface parse_tree.parse_module.

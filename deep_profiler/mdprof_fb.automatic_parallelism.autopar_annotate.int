@@ -1,0 +1,10 @@
+:- module (mdprof_fb.automatic_parallelism).autopar_annotate.
+:- interface.
+:- use_module mdbcomp.
+:- use_module program_representation_utils.
+:- use_module set.
+:- use_module mdbcomp.goal_path.
+:- use_module mdbcomp.program_representation.
+:- use_module (mdprof_fb.automatic_parallelism).autopar_types.
+:- pred goal_annotate_with_instmap(mdbcomp.program_representation.goal_rep(mdbcomp.goal_path.goal_id), program_representation_utils.seen_duplicate_instantiation, set.set(mdbcomp.program_representation.var_rep), set.set(mdbcomp.program_representation.var_rep), program_representation_utils.inst_map, program_representation_utils.inst_map, mdbcomp.goal_path.goal_attr_array(mdprof_fb.automatic_parallelism.autopar_types.inst_map_info), mdbcomp.goal_path.goal_attr_array(mdprof_fb.automatic_parallelism.autopar_types.inst_map_info)).
+:- mode goal_annotate_with_instmap(builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, (mdbcomp.goal_path).gaa_di, (mdbcomp.goal_path).gaa_uo) is det.

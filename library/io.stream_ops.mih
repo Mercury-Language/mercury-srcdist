@@ -1,0 +1,221 @@
+/*
+** Automatically generated from `io.stream_ops.m'
+** by the Mercury compiler,
+** version rotd-2026-01-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module io.stream_ops.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_io__stream_ops
+#define MR_HEADER_GUARD_io__stream_ops
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef IO__STREAM_OPS_DECL_GUARD
+#define IO__STREAM_OPS_DECL_GUARD
+#include "io.mih"
+
+
+#if defined(MR_WIN32)
+  #include "mercury_string.h" // For MR_utf8_to_wide.
+#endif
+
+extern MercuryFile      mercury_stdin;
+extern MercuryFile      mercury_stdout;
+extern MercuryFile      mercury_stderr;
+extern MercuryFile      mercury_stdin_binary;
+extern MercuryFile      mercury_stdout_binary;
+
+extern MR_Unsigned      mercury_current_text_input_index;
+extern MR_Unsigned      mercury_current_text_output_index;
+extern MR_Unsigned      mercury_current_binary_input_index;
+extern MR_Unsigned      mercury_current_binary_output_index;
+
+// A counter used to generate unique stream ids.
+extern int              ML_next_stream_id;
+
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock  ML_io_next_stream_id_lock;
+#endif
+
+MercuryFilePtr          mercury_current_text_input(void);
+MercuryFilePtr          mercury_current_text_output(void);
+MercuryFilePtr          mercury_current_binary_input(void);
+MercuryFilePtr          mercury_current_binary_output(void);
+int                     mercury_next_stream_id(void);
+MercuryFilePtr          mercury_open(const char *filename,
+                             const char *openmode,
+                             MR_AllocSiteInfoPtr alloc_id);
+int                     mercury_close(MercuryFilePtr mf);
+
+
+#endif
+
+
+
+void MR_CALL 
+mercury__io__stream_ops__binary_input_stream_2_3_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__io__stream_ops__binary_output_stream_2_3_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__io__stream_ops__binary_stream_offset_2_5_p_0(
+  MR_Box param_1,
+  int64_t * param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__stream_ops__close_stream_4_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__io__stream_ops__do_open_binary_7_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Integer * param_3,
+  MR_Box * param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__io__stream_ops__do_open_text_7_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Integer * param_3,
+  MR_Box * param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__io__stream_ops__flush_binary_output_2_4_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__io__stream_ops__flush_text_output_2_4_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__io__stream_ops__get_input_line_number_2_4_p_0(
+  MR_Box param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+mercury__io__stream_ops__get_output_line_number_2_4_p_0(
+  MR_Box param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+mercury__io__stream_ops__input_stream_2_3_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__io__stream_ops__output_stream_2_3_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__io__stream_ops__seek_binary_2_6_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  int64_t param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__io__stream_ops__set_binary_input_stream_2_4_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__io__stream_ops__set_binary_output_stream_2_4_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__io__stream_ops__set_input_line_number_2_4_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__io__stream_ops__set_input_stream_2_4_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__io__stream_ops__set_output_line_number_2_4_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__io__stream_ops__set_output_stream_2_4_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__io__stream_ops__stderr_stream_2_3_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__io__stream_ops__stdin_binary_stream_2_3_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__io__stream_ops__stdin_stream_2_3_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__io__stream_ops__stdout_binary_stream_2_3_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__io__stream_ops__stdout_stream_2_3_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__io__stream_ops__whence_to_int_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_Box MR_CALL 
+mercury__io__stream_ops__stderr_stream_2_0_f_0(void);
+
+MR_Box MR_CALL 
+mercury__io__stream_ops__stdin_stream_2_0_f_0(void);
+
+MR_Box MR_CALL 
+mercury__io__stream_ops__stdout_stream_2_0_f_0(void);
+
+void mercury__io__stream_ops__init(void);
+void mercury__io__stream_ops__init_type_tables(void);
+void mercury__io__stream_ops__init_debugger(void);
+const char *mercury__io__stream_ops__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_io.stream_ops
+
+// :- end_interface io.stream_ops.

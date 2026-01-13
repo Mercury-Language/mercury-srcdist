@@ -1,0 +1,19 @@
+:- module hlds.mark_tail_calls.
+:- interface.
+:- type found_any_rec_calls
+	where	type_is_abstract_enum(1).
+:- type maybe_warn_non_tail_mutual_rec
+	where	type_is_abstract_enum(1).
+:- type maybe_warn_non_tail_self_rec
+	where	type_is_abstract_enum(1).
+:- type nontail_rec_call_reason
+	where	type_is_abstract_enum(2).
+:- type nontail_rec_obviousness
+	where	type_is_abstract_enum(1).
+:- type warn_non_tail_rec_params.
+:- type_representation(found_any_rec_calls, du_repn(enum("not_found_any_rec_calls", "found_any_rec_calls", [],  no_c_j_cs))).
+:- type_representation(maybe_warn_non_tail_mutual_rec, du_repn(enum("do_not_warn_non_tail_mutual_rec", "warn_non_tail_mutual_rec", [],  no_c_j_cs))).
+:- type_representation(maybe_warn_non_tail_self_rec, du_repn(enum("do_not_warn_non_tail_self_rec", "warn_non_tail_self_rec", [],  no_c_j_cs))).
+:- type_representation(nontail_rec_call_reason, du_repn(enum("ntrcr_program", "ntrcr_mlds_in_scc_not_in_tscc", ["ntrcr_mlds_in_tscc_stack_ref", "ntrcr_mlds_model_non_in_cont_func"],  no_c_j_cs))).
+:- type_representation(nontail_rec_obviousness, du_repn(enum("non_obvious_nontail_rec", "obvious_nontail_rec", [],  no_c_j_cs))).
+:- type_representation(warn_non_tail_rec_params, is_word_aligned_ptr).

@@ -1,0 +1,14 @@
+module(2, "diet.m",
+	diet,
+	{},
+	{bool, builtin, enum, list, private_builtin},
+	{int, maybe, require, string, uint},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

@@ -1,0 +1,29 @@
+:- module check_hlds.switch_candidates.
+:- interface.
+:- type candidate_switch
+    --->    candidate_switch(
+                 (check_hlds.switch_candidates).cs_var :: parse_tree.prog_data.prog_var,
+                 (check_hlds.switch_candidates).cs_cases :: list.list(hlds.hlds_goal.case),
+                 (check_hlds.switch_candidates).cs_unreachable_case_goals :: list.list(hlds.hlds_goal.hlds_goal),
+                 (check_hlds.switch_candidates).cs_left_over_disjuncts :: list.list(hlds.hlds_goal.hlds_goal),
+                 (check_hlds.switch_candidates).cs_rank :: check_hlds.switch_candidates.candidate_switch_rank,
+                 (check_hlds.switch_candidates).cs_can_fail :: parse_tree.prog_data.can_fail
+            ).
+:- type candidate_switch_rank
+    --->    some_leftover_can_fail(
+                 int
+            )
+    ;       some_leftover_cannot_fail(
+                 int
+            )
+    ;       no_leftover_twoplus_cases_finite_can_fail 
+    ;       no_leftover_one_case 
+    ;       no_leftover_twoplus_cases_infinite_can_fail 
+    ;       no_leftover_twoplus_cases_finite_cannot_fail 
+    ;       all_disjuncts_are_unreachable 
+    ;       no_leftover_twoplus_cases_explicitly_selected .
+:- type maybe_required_switch_var
+    --->    nrsv 
+    ;       rsv(
+                 parse_tree.prog_data.prog_var
+            ).
