@@ -1,0 +1,4 @@
+:- module check_hlds.switch_detection.
+:- interface.
+:- type switch_detect_info.
+:- type_representation(switch_detect_info, du_repn(notag("switch_detect_info", module_info,  no_c_j_cs))).
