@@ -1,0 +1,10 @@
+:- module (parse_tree.module_qual).mq_info.
+:- interface.
+:- type maybe_should_report_errors
+    --->    should_not_report_errors 
+    ;       should_report_errors .
+:- type maybe_suppress_found_undef
+    --->    do_not_suppress_found_undef 
+    ;       suppress_found_undef .
+:- type mq_info.
+:- type partial_qualifier_info.
