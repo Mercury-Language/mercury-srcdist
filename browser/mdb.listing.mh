@@ -1,0 +1,42 @@
+// Automatically generated from `listing.m'
+// by the Mercury compiler,
+// version rotd-2026-01-19
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MDB__LISTING_MH
+#define MDB__LISTING_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MDB__LISTING_DECL_GUARD
+#define MDB__LISTING_DECL_GUARD
+
+#endif
+MR_Word ML_LISTING_new_list_path(void);
+MR_Word ML_LISTING_get_list_path(MR_Word);
+void ML_LISTING_set_list_path(MR_Word, MR_Word, MR_Word *);
+void ML_LISTING_clear_list_path(MR_Word, MR_Word *);
+void ML_LISTING_push_list_path(MR_String, MR_Word, MR_Word *);
+void ML_LISTING_pop_list_path(MR_Word, MR_Word *);
+void ML_LISTING_list_file(FILE *, FILE *, MR_String, MR_Integer, MR_Integer, MR_Integer, MR_Word);
+void ML_LISTING_list_file_with_command(FILE *, FILE *, MR_String, MR_String, MR_Integer, MR_Integer, MR_Integer, MR_Word);
+MR_Word ML_LISTING_listing_type(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__LISTING_MH */

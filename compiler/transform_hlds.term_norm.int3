@@ -1,0 +1,4 @@
+:- module transform_hlds.term_norm.
+:- interface.
+:- type functor_info.
+:- type_representation(weight_table, is_eqv_to(map(pair(type_ctor, cons_id), weight_info))).
