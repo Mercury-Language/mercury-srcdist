@@ -1,0 +1,16 @@
+:- module transform_hlds.intermod_decide.
+:- interface.
+:- use_module hlds.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module hlds.hlds_data.
+:- use_module hlds.hlds_module.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- use_module transform_hlds.intermod_info.
+:- pred decide_what_to_opt_export(hlds.hlds_module.module_info, transform_hlds.intermod_info.intermod_info).
+:- mode decide_what_to_opt_export(builtin.in, builtin.out) is det.
+:- pred is_du_type_with_direct_arg_ctors(hlds.hlds_data.hlds_type_body).
+:- mode is_du_type_with_direct_arg_ctors(builtin.in) is semidet.
+:- pred should_opt_export_type_defn(mdbcomp.sym_name.module_name, parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn).
+:- mode should_opt_export_type_defn(builtin.in, builtin.in, builtin.in) is semidet.
