@@ -1,0 +1,159 @@
+/*
+** Automatically generated from `typecheck_error_type_assign.m'
+** by the Mercury compiler,
+** version rotd-2026-01-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.typecheck_error_type_assign.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__typecheck_error_type_assign
+#define MR_HEADER_GUARD_check_hlds__typecheck_error_type_assign
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__TYPECHECK_ERROR_TYPE_ASSIGN_DECL_GUARD
+#define CHECK_HLDS__TYPECHECK_ERROR_TYPE_ASSIGN_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_type_assign__check_hlds__typecheck_error_type_assign__type_ctor_info_actual_expected_types_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_type_assign__check_hlds__typecheck_error_type_assign__type_ctor_info_arg_type_stuff_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_type_assign__check_hlds__typecheck_error_type_assign__type_ctor_info_type_stuff_0;
+
+void MR_CALL 
+check_hlds__typecheck_error_type_assign__acc_transformed_type_stuffs_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+check_hlds__typecheck_error_type_assign__arg_type_assign_set_msg_to_verbose_component_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__typecheck_error_type_assign__get_all_transformed_type_stuffs_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__typecheck_error_type_assign__get_all_type_stuffs_remove_dups_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__typecheck_error_type_assign__get_arg_type_stuffs_4_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__typecheck_error_type_assign__type_assign_set_msg_to_verbose_component_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_error_type_assign__arg_type_stuff_to_actual_expected_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_error_type_assign__type_stuff_to_actual_expected_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_error_type_assign__typestuff_to_pieces_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_error_type_assign__typestuff_to_type_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+check_hlds__typecheck_error_type_assign____Compare____actual_expected_types_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__typecheck_error_type_assign____Compare____arg_type_stuff_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__typecheck_error_type_assign____Compare____type_stuff_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_error_type_assign____Unify____actual_expected_types_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_error_type_assign____Unify____arg_type_stuff_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_error_type_assign____Unify____type_stuff_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__typecheck_error_type_assign__init(void);
+void mercury__check_hlds__typecheck_error_type_assign__init_type_tables(void);
+void mercury__check_hlds__typecheck_error_type_assign__init_debugger(void);
+const char *mercury__check_hlds__typecheck_error_type_assign__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.typecheck_error_type_assign
+
+// :- end_interface check_hlds.typecheck_error_type_assign.
