@@ -1,0 +1,164 @@
+/*
+** Automatically generated from `hlds_proc_util.m'
+** by the Mercury compiler,
+** version rotd-2026-01-23
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_proc_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_proc_util
+#define MR_HEADER_GUARD_hlds__hlds_proc_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_PROC_UTIL_DECL_GUARD
+#define HLDS__HLDS_PROC_UTIL_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_proc_util__hlds__hlds_proc_util__type_ctor_info_can_proc_succeed_0;
+
+void MR_CALL 
+hlds__hlds_proc_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_108_111_110_101_95_112_114_111_99_95_105_100_95_95_91_50_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+hlds__hlds_proc_util__can_proc_info_ever_succeed_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_proc_util__clone_proc_id_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+hlds__hlds_proc_util__ensure_all_headvars_are_named_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_proc_util__proc_info_arg_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_proc_util__proc_info_arglives_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_proc_util__proc_info_create_var_from_type_6_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__hlds_proc_util__proc_info_create_vars_from_types_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__hlds_proc_util__proc_info_declared_argmodes_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_proc_util__proc_info_get_initial_instmap_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_proc_util__proc_info_has_io_state_pair_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+hlds__hlds_proc_util__proc_info_has_io_state_pair_from_details_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6);
+
+void MR_CALL 
+hlds__hlds_proc_util__proc_info_head_modes_constraint_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_proc_util__proc_info_instantiated_head_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_proc_util__proc_info_interface_determinism_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_proc_util__proc_info_uninstantiated_head_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_proc_util____Compare____can_proc_succeed_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_proc_util____Unify____can_proc_succeed_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__hlds_proc_util__init(void);
+void mercury__hlds__hlds_proc_util__init_type_tables(void);
+void mercury__hlds__hlds_proc_util__init_debugger(void);
+const char *mercury__hlds__hlds_proc_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.hlds_proc_util
+
+// :- end_interface hlds.hlds_proc_util.

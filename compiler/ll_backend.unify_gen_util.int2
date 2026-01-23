@@ -1,0 +1,14 @@
+:- module ll_backend.unify_gen_util.
+:- interface.
+:- type arg_and_width(Arg)
+    --->    arg_and_width(
+                 Arg,
+                 parse_tree.prog_data.arg_pos_width
+            ).
+:- type assign_dir
+    --->    assign_left 
+    ;       assign_right 
+    ;       assign_unused .
+:- type maybe_zero_const
+    --->    is_not_zero_const 
+    ;       is_zero_const .

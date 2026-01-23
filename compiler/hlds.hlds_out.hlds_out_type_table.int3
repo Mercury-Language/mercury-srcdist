@@ -1,0 +1,2 @@
+:- module (hlds.hlds_out).hlds_out_type_table.
+:- interface.
