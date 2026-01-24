@@ -1,0 +1,41 @@
+:- module stm_builtin.
+
+:- pragma termination_info(stm_builtin.atomic_transaction(builtin.in((pred(builtin.out, builtin.di, builtin.uo) is det)), builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stm_builtin.new_stm_var(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.new_stm_var_atomic(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.or_else(builtin.in((pred(builtin.out, builtin.di, builtin.uo) is det)), builtin.in((pred(builtin.out, builtin.di, builtin.uo) is det)), builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stm_builtin.read_stm_var(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.retry(builtin.ui), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.stm_block(builtin.ui), finite(0, [no]), cannot_loop).
+:- pragma termination_info(stm_builtin.stm_commit(builtin.ui), finite(0, [no]), cannot_loop).
+:- pragma termination_info(stm_builtin.stm_create_nested_transaction_log(builtin.ui, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.stm_create_transaction_log(builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.stm_discard_transaction_log(builtin.di), finite(0, [no]), cannot_loop).
+:- pragma termination_info(stm_builtin.stm_from_inner_to_outer(builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.stm_from_outer_to_inner(builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((stm_builtin.stm_lock), finite(0, []), cannot_loop).
+:- pragma termination_info(stm_builtin.stm_merge_nested_logs(builtin.di, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((stm_builtin.stm_unlock), finite(0, []), cannot_loop).
+:- pragma termination_info(stm_builtin.stm_validate(builtin.ui, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.unsafe_write_stm_var(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.write_stm_var(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, stm_builtin.atomic_transaction, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stm_builtin.new_stm_var, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.new_stm_var_atomic, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.(or_else), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stm_builtin.read_stm_var, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.retry, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stm_builtin.stm_block, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.stm_commit, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.stm_create_nested_transaction_log, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.stm_create_transaction_log, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.stm_discard_transaction_log, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.stm_from_inner_to_outer, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.stm_from_outer_to_inner, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.stm_lock, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.stm_merge_nested_logs, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.stm_unlock, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.stm_validate, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.unsafe_write_stm_var, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, stm_builtin.write_stm_var, 4, 0, will_not_throw).
