@@ -1,0 +1,2 @@
+:- module check_hlds.introduce_exists_casts.
+:- interface.

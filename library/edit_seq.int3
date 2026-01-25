@@ -1,0 +1,13 @@
+:- module edit_seq.
+:- interface.
+:- type change_hunk(T).
+:- type diff(T).
+:- type diff_seq(T).
+:- type edit(T).
+:- type edit_params.
+:- type edit_seq(T).
+:- type_representation(diff_cord(V_1), is_eqv_to(cord(edit_seq.diff(V_1)))).
+:- type_representation(diff_seq(V_1), is_eqv_to(list(edit_seq.diff(V_1)))).
+:- type_representation(dynprog_table(V_1), is_eqv_to(map(uint, map(uint, dynprog_entry(V_1))))).
+:- type_representation(edit_params, is_word_aligned_ptr).
+:- type_representation(edit_seq(V_1), is_eqv_to(list(edit_seq.edit(V_1)))).

@@ -1,0 +1,41 @@
+:- module backend_libs.link_target_code.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module backend_libs.compile_target_code.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- type linked_target_type
+    --->    executable 
+    ;       static_library 
+    ;       shared_library 
+    ;       csharp_executable 
+    ;       csharp_library 
+    ;       java_executable 
+    ;       java_archive .
+:- type shared_library_support
+    --->    shared_libraries_not_supported 
+    ;       shared_libraries_supported .
+:- pred are_shared_libraries_supported(libs.globals.globals, backend_libs.link_target_code.shared_library_support).
+:- mode are_shared_libraries_supported(builtin.in, builtin.out) is det.
+:- pred get_linked_target_type_for_c(libs.globals.globals, backend_libs.link_target_code.linked_target_type).
+:- mode get_linked_target_type_for_c(builtin.in, builtin.out(bound(executable ; shared_library))) is det.
+:- pred get_object_code_type(libs.globals.globals, backend_libs.link_target_code.linked_target_type, backend_libs.compile_target_code.pic).
+:- mode get_object_code_type(builtin.in, builtin.in, builtin.out) is det.
+:- pred link_files_into_executable_or_library_for_c_cs_java(io.text_output_stream, libs.globals.globals, backend_libs.link_target_code.linked_target_type, mdbcomp.sym_name.module_name, list.list(string), list.list(parse_tree.error_spec.error_spec), libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode link_files_into_executable_or_library_for_c_cs_java(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred link_modules_into_executable_or_shared_library_for_c(io.text_output_stream, libs.globals.globals, list.list(mdbcomp.sym_name.module_name), list.list(string), list.list(parse_tree.error_spec.error_spec), libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode link_modules_into_executable_or_shared_library_for_c(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred linked_target_file_name_full_curdir(libs.globals.globals, mdbcomp.sym_name.module_name, backend_libs.link_target_code.linked_target_type, libs.file_util.file_name, libs.file_util.file_name, io.io, io.io).
+:- mode linked_target_file_name_full_curdir(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred output_library_link_flags_for_c(libs.globals.globals, io.text_output_stream, list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode output_library_link_flags_for_c(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred post_link_maybe_make_symlink_or_copy(libs.globals.globals, io.text_output_stream, libs.file_util.file_name, libs.file_util.file_name, mdbcomp.sym_name.module_name, backend_libs.link_target_code.linked_target_type, libs.maybe_util.maybe_succeeded, bool.bool, io.io, io.io).
+:- mode post_link_maybe_make_symlink_or_copy(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
