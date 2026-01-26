@@ -1,0 +1,18 @@
+:- module dense_bitset.
+:- interface.
+:- use_module array.
+:- type dense_bitset == array.array(int).
+:- pred delete(int, dense_bitset.dense_bitset, dense_bitset.dense_bitset).
+:- mode delete(builtin.in, array.array_di, array.array_uo) is det.
+:- pred foldl(pred(int, T, T), dense_bitset.dense_bitset, T, T).
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), array.array_ui, builtin.in, builtin.out) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), array.array_ui, builtin.di, builtin.uo) is det.
+:- mode foldl(builtin.in((pred(builtin.in, array.array_di, array.array_uo) is det)), array.array_ui, array.array_di, array.array_uo) is det.
+:- func init = dense_bitset.dense_bitset.
+:- mode init = array.array_uo is det.
+:- pred insert(int, dense_bitset.dense_bitset, dense_bitset.dense_bitset).
+:- mode insert(builtin.in, array.array_di, array.array_uo) is det.
+:- pred member(int, dense_bitset.dense_bitset).
+:- mode member(builtin.in, array.array_ui) is semidet.
+:- pred union(dense_bitset.dense_bitset, dense_bitset.dense_bitset, dense_bitset.dense_bitset).
+:- mode union(array.array_di, array.array_di, array.array_uo) is det.

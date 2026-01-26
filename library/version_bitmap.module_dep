@@ -1,0 +1,14 @@
+module(2, "version_bitmap.m",
+	version_bitmap,
+	{},
+	{bool, builtin, private_builtin},
+	{int, require, version_array},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
