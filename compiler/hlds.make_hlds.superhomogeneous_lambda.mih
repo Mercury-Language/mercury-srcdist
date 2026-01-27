@@ -1,0 +1,91 @@
+/*
+** Automatically generated from `superhomogeneous_lambda.m'
+** by the Mercury compiler,
+** version rotd-2026-01-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_hlds.superhomogeneous_lambda.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__superhomogeneous_lambda
+#define MR_HEADER_GUARD_hlds__make_hlds__superhomogeneous_lambda
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__SUPERHOMOGENEOUS_LAMBDA_DECL_GUARD
+#define HLDS__MAKE_HLDS__SUPERHOMOGENEOUS_LAMBDA_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous_lambda__hlds__make_hlds__superhomogeneous_lambda__type_ctor_info_lambda_arg_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous_lambda__hlds__make_hlds__superhomogeneous_lambda__type_ctor_info_lambda_arg_kind_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous_lambda__hlds__make_hlds__superhomogeneous_lambda__type_ctor_info_lambda_arg_mode_presence_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous_lambda__hlds__make_hlds__superhomogeneous_lambda__type_ctor_info_lambda_body_kind_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous_lambda__hlds__make_hlds__superhomogeneous_lambda__type_ctor_info_lambda_head_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous_lambda__hlds__make_hlds__superhomogeneous_lambda__type_ctor_info_maybe_dcg_vars_0;
+
+void MR_CALL 
+hlds__make_hlds__superhomogeneous_lambda__parse_lambda_expr_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word * param_11);
+
+void MR_CALL 
+hlds__make_hlds__superhomogeneous_lambda____Compare____lambda_body_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous_lambda____Unify____lambda_body_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__make_hlds__superhomogeneous_lambda__init(void);
+void mercury__hlds__make_hlds__superhomogeneous_lambda__init_type_tables(void);
+void mercury__hlds__make_hlds__superhomogeneous_lambda__init_debugger(void);
+const char *mercury__hlds__make_hlds__superhomogeneous_lambda__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.make_hlds.superhomogeneous_lambda
+
+// :- end_interface hlds.make_hlds.superhomogeneous_lambda.

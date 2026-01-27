@@ -1,0 +1,51 @@
+:- module output_prof_info.
+:- interface.
+:- type child
+    --->    child(
+                 string,
+                 int,
+                 float,
+                 float,
+                 int,
+                 int
+            ).
+:- type output_prof
+    --->    output_prof(
+                 string,
+                 int,
+                 float,
+                 float,
+                 float,
+                 float,
+                 int,
+                 int,
+                 list.list(output_prof_info.parent),
+                 list.list(output_prof_info.child),
+                 list.list(output_prof_info.parent),
+                 list.list(output_prof_info.child)
+            )
+    ;       output_cycle_prof(
+                 string,
+                 int,
+                 float,
+                 float,
+                 float,
+                 int,
+                 int,
+                 list.list(output_prof_info.parent),
+                 list.list(output_prof_info.child)
+            ).
+:- type parent
+    --->    parent(
+                 string,
+                 int,
+                 float,
+                 float,
+                 int
+            ).
+:- type profiler_output
+    --->    profiler_output(
+                 map.map(string, output_prof_info.output_prof),
+                 list.list(string),
+                 list.list(string)
+            ).
