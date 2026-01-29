@@ -1,0 +1,41 @@
+:- module edit_seq.
+:- interface.
+:- use_module list.
+:- type change_hunk(T)
+    --->    change_hunk(
+                 edit_seq.ch_seq_a_start :: uint,
+                 edit_seq.ch_seq_a_length :: uint,
+                 edit_seq.ch_seq_b_start :: uint,
+                 edit_seq.ch_seq_b_length :: uint,
+                 edit_seq.ch_diff :: edit_seq.diff_seq(T)
+            ).
+:- type diff(T)
+    --->    unchanged(
+                 T
+            )
+    ;       deleted(
+                 T
+            )
+    ;       inserted(
+                 T
+            ).
+:- type diff_seq(T) == list.list(edit_seq.diff(T)).
+:- type edit(T)
+    --->    delete(
+                 uint
+            )
+    ;       insert(
+                 uint,
+                 T
+            )
+    ;       replace(
+                 uint,
+                 T
+            ).
+:- type edit_params
+    --->    edit_params(
+                 edit_seq.cost_of_delete :: uint,
+                 edit_seq.cost_of_insert :: uint,
+                 edit_seq.cost_of_replace :: uint
+            ).
+:- type edit_seq(T) == list.list(edit_seq.edit(T)).

@@ -1,0 +1,78 @@
+/*
+** Automatically generated from `inst_util.m'
+** by the Mercury compiler,
+** version rotd-2026-01-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.inst_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__inst_util
+#define MR_HEADER_GUARD_hlds__inst_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__INST_UTIL_DECL_GUARD
+#define HLDS__INST_UTIL_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+void MR_CALL 
+hlds__inst_util__get_cons_id_arg_types_for_bound_functor_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__inst_util__get_cons_id_arg_types_for_inst_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__inst_util__get_higher_order_arg_types_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+hlds__inst_util__pred_inst_info_default_func_mode_1_f_0(
+  MR_Integer param_1);
+
+void mercury__hlds__inst_util__init(void);
+void mercury__hlds__inst_util__init_type_tables(void);
+void mercury__hlds__inst_util__init_debugger(void);
+const char *mercury__hlds__inst_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.inst_util
+
+// :- end_interface hlds.inst_util.

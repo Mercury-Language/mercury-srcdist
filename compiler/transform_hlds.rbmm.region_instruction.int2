@@ -1,0 +1,27 @@
+:- module (transform_hlds.rbmm).region_instruction.
+:- interface.
+:- use_module map.
+:- use_module hlds.hlds_pred.
+:- use_module transform_hlds.smm_common.
+:- type instrs_before_after
+    --->    instrs_before_after(
+                 ((transform_hlds.rbmm).region_instruction).instrs_before :: list.list(transform_hlds.rbmm.region_instruction.region_instr),
+                 ((transform_hlds.rbmm).region_instruction).instrs_after :: list.list(transform_hlds.rbmm.region_instruction.region_instr)
+            ).
+:- type region_instr
+    --->    create_region(
+                 string
+            )
+    ;       remove_region(
+                 string
+            )
+    ;       rename_region(
+                 string,
+                 string
+            ).
+:- type region_instr_proc == map.map(transform_hlds.smm_common.program_point, transform_hlds.rbmm.region_instruction.instrs_before_after).
+:- type region_instr_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_instruction.region_instr_proc).
+:- type region_instr_type
+    --->    create_region_instr 
+    ;       remove_region_instr 
+    ;       renaming_region_instr .
