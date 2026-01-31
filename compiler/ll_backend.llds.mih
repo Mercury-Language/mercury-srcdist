@@ -1,0 +1,1201 @@
+/*
+** Automatically generated from `llds.m'
+** by the Mercury compiler,
+** version rotd-2026-01-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.llds.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__llds
+#define MR_HEADER_GUARD_ll_backend__llds
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__LLDS_DECL_GUARD
+#define LL_BACKEND__LLDS_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_add_region_ops_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_add_trail_ops_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_alloc_site_id_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_allow_lco_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_c_code_live_lvals_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_c_file_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_c_global_var_ref_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_c_procedure_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_call_model_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_can_branch_away_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_cell_arg_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_code_addr_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_common_cell_arg_group_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_common_cell_type_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_common_cell_value_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_comp_gen_c_module_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_completeness_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_const_struct_map_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_data_id_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_double_stack_type_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_embedded_stack_frame_id_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_entry_label_type_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_exprn_opts_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_foreign_proc_component_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_foreign_proc_decl_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_foreign_proc_input_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_foreign_proc_output_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_foreign_proc_type_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_have_asm_labels_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_have_non_local_gotos_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_have_static_code_addresses_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_have_static_ground_cells_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_have_static_ground_floats_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_have_static_ground_int64s_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_have_unboxed_floats_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_have_unboxed_int64s_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_ho_call_variant_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_instr_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_int_least_type_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_layout_locn_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_layout_slot_id_kind_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_live_value_type_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_liveinfo_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_llds_code_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_llds_inst_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_llds_proc_id_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_llds_reuse_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_llds_type_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_lval_or_any_reg_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_main_stack_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_may_alter_rtti_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_maybe_auto_comments_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_mem_ref_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_nondet_frame_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_nondet_tail_call_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_region_fill_frame_op_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_region_ite_kind_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_region_set_fixed_op_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_region_stack_id_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_region_use_frame_op_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_removed_at_start_of_else_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_reset_trail_reason_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_rval_const_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_scalar_common_data_array_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_stack_incr_kind_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_tabling_info_struct_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_temp_frame_type_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_type_num_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_typed_rval_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_use_float_registers_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds__ll_backend__llds__type_ctor_info_vector_common_data_array_0;
+
+void MR_CALL 
+ll_backend__llds__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_108_108_95_98_97_99_107_101_110_100_95_95_108_108_100_115_95_95_108_97_121_111_117_116_95_115_108_111_116_95_105_100_95_107_105_110_100_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+ll_backend__llds__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_108_108_95_98_97_99_107_101_110_100_95_95_108_108_100_115_95_95_108_108_100_115_95_105_110_115_116_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+ll_backend__llds__binop_return_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__llds__break_up_local_label_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+ll_backend__llds__build_typed_rvals_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__llds__const_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__llds__lval_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__llds__register_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__llds__rval_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__llds__unop_arg_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__llds__unop_return_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_Word MR_CALL 
+ll_backend__llds__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_107_101_121_95_97_98_115_95_108_111_99_110_95_116_111_95_108_118_97_108_95_95_91_49_44_32_50_93_95_48_2_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_107_101_121_95_115_116_97_99_107_95_115_108_111_116_95_116_111_95_108_118_97_108_95_95_91_49_44_32_50_93_95_48_2_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__abs_locn_to_lval_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__abs_locn_to_lval_or_any_reg_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__code_model_to_main_stack_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__first_nonfixed_embedded_slot_addr_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+ll_backend__llds__get_asm_labels_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__get_defining_module_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__get_det_stack_float_width_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__get_float_registers_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__get_nonlocal_gotos_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__get_proc_label_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__get_static_code_addresses_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__get_static_ground_cells_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__get_static_ground_floats_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__get_static_ground_int64s_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__get_unboxed_floats_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__get_unboxed_int64s_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__key_abs_locn_to_lval_2_f_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+ll_backend__llds__key_stack_slot_to_lval_2_f_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3);
+
+MR_String MR_CALL 
+ll_backend__llds__region_stack_id_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__stack_slot_num_to_lval_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+ll_backend__llds__stack_slot_num_to_lval_ref_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+ll_backend__llds__stack_slot_to_lval_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__typed_rvals_project_rvals_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__llds__typed_rvals_project_types_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ll_backend__llds____Compare____add_region_ops_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____add_trail_ops_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____alloc_site_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____allow_lco_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____c_code_live_lvals_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____c_file_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____c_global_var_ref_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____c_procedure_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____call_model_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____can_branch_away_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____cell_arg_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____code_addr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____common_cell_arg_group_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____common_cell_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____common_cell_value_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____comp_gen_c_module_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____completeness_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____const_struct_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____data_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____double_stack_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____embedded_stack_frame_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____entry_label_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____exprn_opts_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____foreign_proc_component_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____foreign_proc_decl_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____foreign_proc_input_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____foreign_proc_output_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____foreign_proc_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____have_asm_labels_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____have_non_local_gotos_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____have_static_code_addresses_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____have_static_ground_cells_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____have_static_ground_floats_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____have_static_ground_int64s_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____have_unboxed_floats_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____have_unboxed_int64s_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____ho_call_variant_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____instr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____instruction_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____int_least_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____label_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____layout_locn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____layout_slot_id_kind_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+ll_backend__llds____Compare____live_value_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____liveinfo_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____llds_code_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____llds_inst_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+ll_backend__llds____Compare____llds_proc_id_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____llds_reuse_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____llds_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____lval_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____lval_or_any_reg_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____main_stack_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____may_alter_rtti_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____maybe_auto_comments_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____mem_ref_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____nondet_frame_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____nondet_tail_call_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____region_fill_frame_op_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____region_ite_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____region_set_fixed_op_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____region_stack_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____region_use_frame_op_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____removed_at_start_of_else_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____reset_trail_reason_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____rval_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____rval_const_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____scalar_common_data_array_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____stack_incr_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____tabling_info_struct_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____temp_frame_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____type_num_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____typed_rval_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____use_float_registers_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Compare____vector_common_data_array_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__llds____Index____instr_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+ll_backend__llds____Index____lval_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+ll_backend__llds____Index____rval_const_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____add_region_ops_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____add_trail_ops_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____alloc_site_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____allow_lco_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____c_code_live_lvals_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____c_file_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____c_global_var_ref_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____c_procedure_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____call_model_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____can_branch_away_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____cell_arg_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____code_addr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____common_cell_arg_group_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____common_cell_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____common_cell_value_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____comp_gen_c_module_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____completeness_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____const_struct_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____data_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____double_stack_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____embedded_stack_frame_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____entry_label_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____exprn_opts_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____foreign_proc_component_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____foreign_proc_decl_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____foreign_proc_input_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____foreign_proc_output_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____foreign_proc_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____have_asm_labels_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____have_non_local_gotos_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____have_static_code_addresses_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____have_static_ground_cells_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____have_static_ground_floats_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____have_static_ground_int64s_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____have_unboxed_floats_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____have_unboxed_int64s_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____ho_call_variant_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____instr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____instruction_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____int_least_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____label_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____layout_locn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____layout_slot_id_kind_0_0(void);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____live_value_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____liveinfo_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____llds_code_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____llds_inst_0_0(void);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____llds_proc_id_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____llds_reuse_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____llds_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____lval_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____lval_or_any_reg_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____main_stack_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____may_alter_rtti_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____maybe_auto_comments_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____mem_ref_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____nondet_frame_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____nondet_tail_call_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____region_fill_frame_op_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____region_ite_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____region_set_fixed_op_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____region_stack_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____region_use_frame_op_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____removed_at_start_of_else_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____reset_trail_reason_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____rval_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____rval_const_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____scalar_common_data_array_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____stack_incr_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____tabling_info_struct_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____temp_frame_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____type_num_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____typed_rval_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____use_float_registers_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__llds____Unify____vector_common_data_array_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__llds__init(void);
+void mercury__ll_backend__llds__init_type_tables(void);
+void mercury__ll_backend__llds__init_debugger(void);
+const char *mercury__ll_backend__llds__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.llds
+
+// :- end_interface ll_backend.llds.
