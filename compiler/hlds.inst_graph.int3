@@ -1,0 +1,9 @@
+:- module hlds.inst_graph.
+:- interface.
+:- type inst_graph.
+:- type inst_graph_info.
+:- type maybe_parent.
+:- type node.
+:- type_representation(inst_graph, is_eqv_to(map(prog_var, hlds.inst_graph.node))).
+:- type_representation(inst_graph_info, is_word_aligned_ptr).
+:- type_representation(node, is_word_aligned_ptr).

@@ -1,0 +1,14 @@
+:- module check_hlds.switch_detection.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- type switch_detect_info.
+:- pred detect_switches_in_module(io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode detect_switches_in_module(builtin.in, builtin.in, builtin.out) is det.
+:- pred detect_switches_in_proc(check_hlds.switch_detection.switch_detect_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode detect_switches_in_proc(builtin.in, builtin.in, builtin.out) is det.
+:- func init_switch_detect_info(hlds.hlds_module.module_info) = check_hlds.switch_detection.switch_detect_info.
+:- pred record_switch_search_depth_results(io.io, io.io).
+:- mode record_switch_search_depth_results(builtin.di, builtin.uo) is det.

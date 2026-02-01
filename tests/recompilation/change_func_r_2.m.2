@@ -1,0 +1,21 @@
+%---------------------------------------------------------------------------%
+% vim: ts=4 sw=4 et ft=mercury
+%---------------------------------------------------------------------------%
+
+:- module change_func_r_2.
+
+:- interface.
+
+:- func changed_func(string) = string is semidet.
+
+:- func changed_func_2(string) = string is det.
+:- pragma terminates(changed_func_2/1).
+
+:- implementation.
+
+:- import_module std_util.
+
+changed_func(X) = X :-
+    semidet_succeed.
+
+changed_func_2(X) = X.

@@ -1,0 +1,23 @@
+:- module parse_tree.var_db.
+:- interface.
+:- type var_db
+    --->    var_db_varset_vartypes(
+                 parse_tree.vartypes.prog_var_set_types
+            )
+    ;       var_db_var_table(
+                 parse_tree.var_table.var_table
+            ).
+:- type var_name_source
+    --->    vns_varset(
+                 parse_tree.prog_data.prog_varset
+            )
+    ;       vns_var_table(
+                 parse_tree.var_table.var_table
+            ).
+:- type var_type_source
+    --->    vts_vartypes(
+                 parse_tree.vartypes.vartypes
+            )
+    ;       vts_var_table(
+                 parse_tree.var_table.var_table
+            ).
