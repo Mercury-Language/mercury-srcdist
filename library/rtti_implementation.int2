@@ -1,0 +1,30 @@
+:- module rtti_implementation.
+:- interface.
+:- type pseudo_type_info.
+:- type type_ctor_info.
+:- type type_info.
+:- implementation.
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- type pseudo_type_info
+    --->    pseudo_type_info(
+                 builtin.c_pointer
+            ).
+:- pragma foreign_type(java, pseudo_type_info, "jmercury.runtime.PseudoTypeInfo").
+:- pragma foreign_type(csharp, pseudo_type_info, "runtime.PseudoTypeInfo").
+:- type type_ctor_info
+    --->    type_ctor_info(
+                 builtin.c_pointer
+            ).
+:- pragma foreign_type(java, type_ctor_info, "jmercury.runtime.TypeCtorInfo_Struct").
+:- pragma foreign_type(csharp, type_ctor_info, "runtime.TypeCtorInfo_Struct").
+:- type type_info
+    --->    type_info(
+                 builtin.c_pointer
+            ).
+:- pragma foreign_type(java, type_info, "jmercury.runtime.TypeInfo_Struct").
+:- pragma foreign_type(csharp, type_info, "runtime.TypeInfo_Struct").
+:- type unify_or_compare_pred
+    --->    unify_or_compare_pred .
+:- pragma foreign_type(java, unify_or_compare_pred, "jmercury.runtime.MethodPtr").
+:- pragma foreign_type(csharp, unify_or_compare_pred, "object").

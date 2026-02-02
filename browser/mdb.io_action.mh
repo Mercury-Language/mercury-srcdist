@@ -1,0 +1,31 @@
+// Automatically generated from `io_action.m'
+// by the Mercury compiler,
+// version rotd-2026-02-02
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MDB__IO_ACTION_MH
+#define MDB__IO_ACTION_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+MR_Word MR_IO_ACTION_make_no_io_action(void);
+MR_Word MR_IO_ACTION_make_yes_io_action(MR_String, MR_Word, MR_Word);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__IO_ACTION_MH */
