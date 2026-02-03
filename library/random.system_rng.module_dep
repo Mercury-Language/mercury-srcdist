@@ -1,0 +1,14 @@
+module(2, "random.system_rng.m",
+	random.system_rng,
+	{random},
+	{builtin, maybe, private_builtin},
+	{bool, exception, string, string.format, string.parse_util},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - random.system_rng, "C#" - random.system_rng, "Java" - random.system_rng},
+	no_foreign_export,
+	no_main,
+	{}
+).
