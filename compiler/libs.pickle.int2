@@ -1,0 +1,17 @@
+:- module libs.pickle.
+:- interface.
+:- use_module io.
+:- use_module type_desc.
+:- use_module univ.
+:- type pickler_pred == pred(io.binary_output_stream, libs.pickle.picklers, univ.univ, io.io, io.io).
+:- type picklers.
+:- type unpickle_handle.
+:- type unpickle_state.
+:- type unpickler_pred == pred(libs.pickle.unpicklers, libs.pickle.unpickle_handle, type_desc.type_desc, univ.univ, libs.pickle.unpickle_state, libs.pickle.unpickle_state).
+:- type unpicklers.
+:- inst pickler_pred == (pred(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det).
+:- inst unpickler_pred == (pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det).
+:- implementation.
+:- use_module bitmap.
+:- type unpickle_handle == bitmap.bitmap.
+:- type unpickle_state == int.

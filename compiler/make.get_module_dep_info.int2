@@ -1,0 +1,2 @@
+:- module make.get_module_dep_info.
+:- interface.
