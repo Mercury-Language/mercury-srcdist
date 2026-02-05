@@ -1,0 +1,14 @@
+module(2, "multi_map.m",
+	multi_map,
+	{},
+	{assoc_list, builtin, list, map, private_builtin, set},
+	{cord, pair, require, uint},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

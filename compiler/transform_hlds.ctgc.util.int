@@ -1,0 +1,39 @@
+:- module (transform_hlds.ctgc).util.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.set_of_var.
+:- use_module parse_tree.var_table.
+:- func get_type_substitution(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.tvarset, hlds.hlds_pred.external_type_params) = parse_tree.prog_data.tsubst.
+:- func get_variable_renaming(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, list.list(parse_tree.prog_data.prog_var)) = parse_tree.prog_data.prog_var_renaming.
+:- func goal_info_get_lbu(hlds.hlds_goal.hlds_goal_info) = parse_tree.set_of_var.set_of_progvar.
+:- func goal_info_get_lfu(hlds.hlds_goal.hlds_goal_info) = parse_tree.set_of_var.set_of_progvar.
+:- func goal_info_get_maybe_lbu(hlds.hlds_goal.hlds_goal_info) = maybe.maybe(parse_tree.set_of_var.set_of_progvar).
+:- func goal_info_get_maybe_lfu(hlds.hlds_goal.hlds_goal_info) = maybe.maybe(parse_tree.set_of_var.set_of_progvar).
+:- func goal_info_get_maybe_reuse(hlds.hlds_goal.hlds_goal_info) = maybe.maybe(hlds.hlds_goal.reuse_description).
+:- func goal_info_get_reuse(hlds.hlds_goal.hlds_goal_info) = hlds.hlds_goal.reuse_description.
+:- pred goal_info_set_lbu(parse_tree.set_of_var.set_of_progvar, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_lbu(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_info_set_lfu(parse_tree.set_of_var.set_of_progvar, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_lfu(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_info_set_reuse(hlds.hlds_goal.reuse_description, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_reuse(builtin.in, builtin.in, builtin.out) is det.
+:- pred pred_requires_analysis(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id).
+:- mode pred_requires_analysis(builtin.in, builtin.in) is semidet.
+:- pred pred_requires_no_analysis(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id).
+:- mode pred_requires_no_analysis(builtin.in, builtin.in) is semidet.
+:- pred some_preds_require_no_analysis(hlds.hlds_module.module_info, set.set(hlds.hlds_pred.pred_proc_id)).
+:- mode some_preds_require_no_analysis(builtin.in, builtin.in) is semidet.
+:- pred top_cell_may_be_reusable(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode top_cell_may_be_reusable(builtin.in, builtin.in) is semidet.
+:- pred type_needs_sharing_analysis(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode type_needs_sharing_analysis(builtin.in, builtin.in) is semidet.
+:- pred var_needs_sharing_analysis(hlds.hlds_module.module_info, parse_tree.var_table.var_table, parse_tree.prog_data.prog_var).
+:- mode var_needs_sharing_analysis(builtin.in, builtin.in, builtin.in) is semidet.

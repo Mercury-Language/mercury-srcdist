@@ -1,0 +1,28 @@
+:- module check_hlds.scout_disjunctions.
+:- interface.
+:- type all_arms_summary_map.
+:- type disjunct_id.
+:- type disjunct_id_info.
+:- type disjunct_info.
+:- type disjunct_info_map.
+:- type disjunction_id.
+:- type disjunction_info.
+:- type disjunction_info_map.
+:- type is_sub_disj_needed
+	where	type_is_abstract_enum(1).
+:- type switchable_cons_id
+	where	type_is_abstract_subtype(cons_id/0).
+:- type var_all_arms_summary.
+:- type_representation(all_arms_summary_map, is_eqv_to(map(prog_var, check_hlds.scout_disjunctions.var_all_arms_summary))).
+:- type_representation(disjunct_id, du_repn(notag("disjunct_id", goal_id,  no_c_j_cs))).
+:- type_representation(disjunct_id_info, is_word_aligned_ptr).
+:- type_representation(disjunct_info, is_word_aligned_ptr).
+:- type_representation(disjunct_info_map, is_eqv_to(map(check_hlds.scout_disjunctions.disjunct_id, check_hlds.scout_disjunctions.disjunct_info))).
+:- type_representation(disjunction_id, du_repn(notag("disjunction_id", goal_id,  no_c_j_cs))).
+:- type_representation(disjunction_info, is_word_aligned_ptr).
+:- type_representation(disjunction_info_map, is_eqv_to(map(check_hlds.scout_disjunctions.disjunction_id, check_hlds.scout_disjunctions.disjunction_info))).
+:- type_representation(in_zone_deconstruct_map, is_eqv_to(map(prog_var, deconstruct_info))).
+:- type_representation(is_sub_disj_needed, du_repn(enum("sub_disj_is_not_needed", "sub_disj_is_needed", [],  no_c_j_cs))).
+:- type_representation(one_arm_summary_map, is_eqv_to(map(prog_var, var_one_arm_summary))).
+:- type_representation(switchable_cons_id, is_subtype_of(cons_id/0)).
+:- type_representation(var_all_arms_summary, is_word_aligned_ptr).
