@@ -1,0 +1,2 @@
+:- module mdb.debugger_interface.
+:- interface.

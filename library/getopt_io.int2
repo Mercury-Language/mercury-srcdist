@@ -1,0 +1,257 @@
+:- module getopt_io.
+:- interface.
+:- use_module bool.
+:- use_module char.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module set.
+:- type long_option(OptionType) == pred(string, OptionType).
+:- type maybe_option_error(OptionType)
+    --->    no_option_error 
+    ;       found_option_error(
+                 getopt_io.option_error(OptionType)
+            ).
+:- type maybe_option_table(OptionType)
+    --->    ok(
+                 getopt_io.option_table(OptionType)
+            )
+    ;       error(
+                 string
+            ).
+:- type maybe_option_table_se(OptionType)
+    --->    ok(
+                 getopt_io.option_table(OptionType)
+            )
+    ;       error(
+                 getopt_io.option_error(OptionType)
+            ).
+:- type option_data
+    --->    bool(
+                 bool.bool
+            )
+    ;       int(
+                 int
+            )
+    ;       string(
+                 string
+            )
+    ;       maybe_int(
+                 maybe.maybe(int)
+            )
+    ;       maybe_string(
+                 maybe.maybe(string)
+            )
+    ;       accumulating(
+                 list.list(string)
+            )
+    ;       special 
+    ;       bool_special 
+    ;       int_special 
+    ;       string_special 
+    ;       maybe_string_special 
+    ;       file_special .
+:- type option_default_value(OptionType) == pred(OptionType, getopt_io.option_data).
+:- type option_default_value_map(OptionType) == map.map(OptionType, getopt_io.option_data).
+:- type option_error(OptionType)
+    --->    unrecognized_option(
+                 string
+            )
+    ;       option_error(
+                 OptionType,
+                 string,
+                 getopt_io.option_error_reason
+            ).
+:- type option_error_reason
+    --->    unknown_type 
+    ;       requires_argument 
+    ;       does_not_allow_argument(
+                 string
+            )
+    ;       cannot_negate 
+    ;       special_handler_failed 
+    ;       special_handler_missing 
+    ;       special_handler_error(
+                 string
+            )
+    ;       requires_numeric_argument(
+                 string
+            )
+    ;       file_special_but_no_io(
+                 string
+            )
+    ;       file_special_cannot_open(
+                 string,
+                 io.error
+            )
+    ;       file_special_cannot_read(
+                 string,
+                 io.error
+            )
+    ;       file_special_contains_non_option_args(
+                 string
+            )
+    ;       file_special_circular_inclusion(
+                 string
+            ).
+:- type option_ops(OptionType)
+    --->    option_ops(
+                 getopt_io.short_option(OptionType),
+                 getopt_io.long_option(OptionType),
+                 getopt_io.option_default_value(OptionType)
+            )
+    ;       option_ops(
+                 getopt_io.short_option(OptionType),
+                 getopt_io.long_option(OptionType),
+                 getopt_io.option_default_value(OptionType),
+                 getopt_io.special_handler(OptionType)
+            )
+    ;       option_ops_multi(
+                 getopt_io.short_option(OptionType),
+                 getopt_io.long_option(OptionType),
+                 getopt_io.option_default_value(OptionType)
+            )
+    ;       option_ops_multi(
+                 getopt_io.short_option(OptionType),
+                 getopt_io.long_option(OptionType),
+                 getopt_io.option_default_value(OptionType),
+                 getopt_io.special_handler(OptionType)
+            )
+    ;       option_ops_default_map(
+                 getopt_io.short_option(OptionType),
+                 getopt_io.long_option(OptionType),
+                 getopt_io.option_default_value_map(OptionType)
+            )
+    ;       option_ops_default_map(
+                 getopt_io.short_option(OptionType),
+                 getopt_io.long_option(OptionType),
+                 getopt_io.option_default_value_map(OptionType),
+                 getopt_io.special_handler(OptionType)
+            ).
+:- type option_ops_track(OptionType)
+    --->    option_ops_track(
+                 getopt_io.short_option(OptionType),
+                 getopt_io.long_option(OptionType),
+                 getopt_io.special_handler_track(OptionType)
+            ).
+:- type option_ops_userdata(OptionType, UserDataType)
+    --->    option_ops_userdata(
+                 getopt_io.short_option(OptionType),
+                 getopt_io.long_option(OptionType),
+                 getopt_io.user_data_handler(OptionType, UserDataType)
+            ).
+:- type option_table(OptionType) == map.map(OptionType, getopt_io.option_data).
+:- type option_value(OptionType)
+    --->    ov_bool(
+                 OptionType,
+                 string,
+                 bool.bool
+            )
+    ;       ov_int(
+                 OptionType,
+                 string,
+                 int
+            )
+    ;       ov_string(
+                 OptionType,
+                 string,
+                 string
+            )
+    ;       ov_maybe_int(
+                 OptionType,
+                 string,
+                 maybe.maybe(int)
+            )
+    ;       ov_maybe_string(
+                 OptionType,
+                 string,
+                 maybe.maybe(string)
+            )
+    ;       ov_accumulating(
+                 OptionType,
+                 string,
+                 string
+            )
+    ;       ov_accumulating_reset(
+                 OptionType,
+                 string
+            )
+    ;       ov_special(
+                 OptionType,
+                 string
+            )
+    ;       ov_bool_special(
+                 OptionType,
+                 string,
+                 bool.bool
+            )
+    ;       ov_int_special(
+                 OptionType,
+                 string,
+                 int
+            )
+    ;       ov_string_special(
+                 OptionType,
+                 string,
+                 string
+            )
+    ;       ov_maybe_string_special(
+                 OptionType,
+                 string,
+                 maybe.maybe(string)
+            )
+    ;       ov_file_special(
+                 OptionType,
+                 string,
+                 string
+            ).
+:- type short_option(OptionType) == pred(char.char, OptionType).
+:- type special_data
+    --->    none 
+    ;       bool(
+                 bool.bool
+            )
+    ;       int(
+                 int
+            )
+    ;       string(
+                 string
+            )
+    ;       maybe_string(
+                 maybe.maybe(string)
+            ).
+:- type special_handler(OptionType) == pred(OptionType, getopt_io.special_data, getopt_io.option_table(OptionType), getopt_io.maybe_option_table(OptionType)).
+:- type special_handler_track(OptionType) == pred(OptionType, getopt_io.special_data, getopt_io.option_table(OptionType), getopt_io.maybe_option_table(OptionType), set.set(OptionType)).
+:- type user_data_handler(OptionType, UserDataType) == pred(OptionType, getopt_io.special_data, getopt_io.option_table(OptionType), getopt_io.maybe_option_table(OptionType), UserDataType, UserDataType).
+:- inst long_option == (pred(builtin.in, builtin.out) is semidet).
+:- inst non_file_special for getopt_io.option_value/1
+    --->    ov_accumulating(ground, ground, ground)
+    ;       ov_accumulating_reset(ground, ground)
+    ;       ov_bool(ground, ground, ground)
+    ;       ov_bool_special(ground, ground, ground)
+    ;       ov_int(ground, ground, ground)
+    ;       ov_int_special(ground, ground, ground)
+    ;       ov_maybe_int(ground, ground, ground)
+    ;       ov_maybe_string(ground, ground, ground)
+    ;       ov_maybe_string_special(ground, ground, ground)
+    ;       ov_special(ground, ground)
+    ;       ov_string(ground, ground, ground)
+    ;       ov_string_special(ground, ground, ground).
+:- inst option_default_value_multi == (pred(builtin.out, builtin.out) is multi).
+:- inst option_default_value_nondet == (pred(builtin.out, builtin.out) is nondet).
+:- inst option_ops for getopt_io.option_ops/1
+    --->    option_ops(getopt_io.short_option, getopt_io.long_option, getopt_io.option_default_value_nondet)
+    ;       option_ops(getopt_io.short_option, getopt_io.long_option, getopt_io.option_default_value_nondet, getopt_io.special_handler)
+    ;       option_ops_default_map(getopt_io.short_option, getopt_io.long_option, ground)
+    ;       option_ops_default_map(getopt_io.short_option, getopt_io.long_option, ground, getopt_io.special_handler)
+    ;       option_ops_multi(getopt_io.short_option, getopt_io.long_option, getopt_io.option_default_value_multi)
+    ;       option_ops_multi(getopt_io.short_option, getopt_io.long_option, getopt_io.option_default_value_multi, getopt_io.special_handler).
+:- inst option_ops_track for getopt_io.option_ops_track/1
+    --->    option_ops_track(getopt_io.short_option, getopt_io.long_option, getopt_io.special_handler_track).
+:- inst option_ops_userdata for getopt_io.option_ops_userdata/2
+    --->    option_ops_userdata(getopt_io.short_option, getopt_io.long_option, getopt_io.user_data_handler).
+:- inst short_option == (pred(builtin.in, builtin.out) is semidet).
+:- inst special_handler == (pred(builtin.in, builtin.in, builtin.in, builtin.out) is semidet).
+:- inst special_handler_track == (pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is semidet).
+:- inst user_data_handler == (pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet).

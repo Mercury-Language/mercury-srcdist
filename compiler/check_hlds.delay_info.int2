@@ -1,0 +1,3 @@
+:- module check_hlds.delay_info.
+:- interface.
+:- type delay_info.

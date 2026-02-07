@@ -1,0 +1,4 @@
+:- module parse_tree.error_sort.
+:- interface.
+:- type error_msg_group.
+:- type_representation(error_msg_group, is_word_aligned_ptr).
