@@ -1,0 +1,2 @@
+:- module uint32.
+:- interface.

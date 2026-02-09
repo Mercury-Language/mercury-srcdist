@@ -1,0 +1,15 @@
+:- module ml_backend.mlds_to_cs_class.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module libs.indent.
+:- use_module ml_backend.mlds.
+:- use_module ml_backend.mlds_to_cs_util.
+:- pred output_class_defn_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, libs.indent.indent, ml_backend.mlds.mlds_class_defn, io.io, io.io).
+:- mode output_class_defn_for_csharp(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred output_enum_class_defn_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, libs.indent.indent, ml_backend.mlds.mlds_enum_class_defn, io.io, io.io).
+:- mode output_enum_class_defn_for_csharp(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred output_env_defn_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, libs.indent.indent, ml_backend.mlds.mlds_env_defn, io.io, io.io).
+:- mode output_env_defn_for_csharp(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred output_struct_defn_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, libs.indent.indent, ml_backend.mlds.mlds_struct_defn, io.io, io.io).
+:- mode output_struct_defn_for_csharp(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
