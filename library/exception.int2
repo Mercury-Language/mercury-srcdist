@@ -1,0 +1,31 @@
+:- module exception.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module stm_builtin.
+:- use_module store.
+:- use_module univ.
+:- type domain_error
+    --->    domain_error(
+                 string
+            ).
+:- type exception_result(T)
+    --->    succeeded(
+                 T
+            )
+    ;       failed 
+    ;       exception(
+                 univ.univ
+            ).
+:- type near_stack_limits
+    --->    near_stack_limits .
+:- type software_error
+    --->    software_error(
+                 string
+            ).
+:- inst ([]) for list.list/1 == bound([]).
+:- inst cannot_fail for exception.exception_result/1
+    --->    exception(ground)
+    ;       succeeded(ground).
+:- inst nil_or_singleton_list for list.list/1 == bound([] ; '[|]'(ground, exception.[])).
