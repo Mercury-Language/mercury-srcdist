@@ -1,0 +1,94 @@
+/*
+** Automatically generated from `dense_switch.m'
+** by the Mercury compiler,
+** version rotd-2026-02-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.dense_switch.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__dense_switch
+#define MR_HEADER_GUARD_ll_backend__dense_switch
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__DENSE_SWITCH_DECL_GUARD
+#define LL_BACKEND__DENSE_SWITCH_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__dense_switch__ll_backend__dense_switch__type_ctor_info_dense_switch_info_0;
+
+void MR_CALL 
+ll_backend__dense_switch__generate_dense_switch_13_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Word * param_10,
+  MR_Word param_11,
+  MR_Word * param_12,
+  MR_Word param_13);
+
+MR_bool MR_CALL 
+ll_backend__dense_switch__tagged_case_list_is_dense_switch_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+ll_backend__dense_switch____Compare____dense_switch_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__dense_switch____Unify____dense_switch_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__dense_switch__init(void);
+void mercury__ll_backend__dense_switch__init_type_tables(void);
+void mercury__ll_backend__dense_switch__init_debugger(void);
+const char *mercury__ll_backend__dense_switch__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.dense_switch
+
+// :- end_interface ll_backend.dense_switch.

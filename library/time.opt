@@ -1,0 +1,101 @@
+:- module time.
+:- use_module bool.
+:- use_module builtin.
+:- use_module exception.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module stream.
+:- use_module string.
+:- use_module string.format.
+:- use_module string.parse_util.
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", io.stream_ops).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("C#", time).
+:- pragma foreign_import_module("C#", io.stream_ops).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("Java", io.stream_ops).
+
+:- type time_t
+    --->    time_t(
+                 time.time_t_rep
+            ).
+:- type time_t_rep
+    --->    time_t_rep(
+                 builtin.c_pointer
+            ).
+:- pragma foreign_type(c, time_t_rep, "time_t")
+    where
+        comparison is time.compare_time_t_reps.
+:- pragma foreign_type(java, time_t_rep, "java.time.Instant")
+    where
+        comparison is time.compare_time_t_reps.
+:- pragma foreign_type(csharp, time_t_rep, "System.DateTime")
+    where
+        comparison is time.compare_time_t_reps.
+
+:- pred time.compare_time_t_reps(builtin.comparison_result, time.time_t_rep, time.time_t_rep).
+:- mode compare_time_t_reps(builtin.uo, builtin.in, builtin.in) is det.
+:- pred time.target_difftime(time.time_t_rep, time.time_t_rep, float).
+:- mode target_difftime(builtin.in, builtin.in, builtin.out) is det.
+
+:- pragma foreign_proc("C",
+    time.clocks_per_sec = (Ret :: builtin.out),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail],
+"
+    Ret = (MR_Integer) CLOCKS_PER_SEC;
+").
+
+time.difftime(time.time_t(V_4), time.time_t(V_5)) = V_6 :-
+    time.target_difftime(V_4, V_5, V_6).
+
+:- pragma foreign_proc("C",
+    time.target_difftime(T1 :: builtin.in, T0 :: builtin.in, Diff :: builtin.out),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail],
+"
+    Diff = (MR_Float) difftime(T1, T0);
+").
+
+:- pragma termination_info(time.asctime(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info((time.clk_tck) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(time.clock(builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((time.clocks_per_sec) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(time.compare_time_t_reps(builtin.uo, builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(time.difftime(builtin.in, builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(time.gmtime(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(time.localtime(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(time.mktime(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(time.target_difftime(builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(time.time(builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(time.times(builtin.out, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+
+:- pragma exceptions(function, time.asctime, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, time.clk_tck, 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, time.clock, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, time.clocks_per_sec, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, time.compare_time_t_reps, 3, 0, will_not_throw).
+:- pragma exceptions(function, time.difftime, 2, 0, will_not_throw).
+:- pragma exceptions(function, time.gmtime, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, time.localtime, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, time.mktime, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, time.target_difftime, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, time.time, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, time.times, 4, 0, may_throw(user_exception)).
