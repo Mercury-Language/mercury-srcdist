@@ -1,0 +1,136 @@
+/*
+** Automatically generated from `random.sfc16.m'
+** by the Mercury compiler,
+** version rotd-2026-02-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module random.sfc16.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_random__sfc16
+#define MR_HEADER_GUARD_random__sfc16
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RANDOM__SFC16_DECL_GUARD
+#define RANDOM__SFC16_DECL_GUARD
+#include "random.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__random__sfc16__random__sfc16__type_ctor_info_random_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_random__random__arity1__random__sfc16__random__arity0__[9];
+
+void MR_CALL 
+mercury__random__sfc16__ClassMethod_for_random__random____random__sfc16__random__arity0______random__generate_uint16_3_3_p_0(
+  uint16_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc16__ClassMethod_for_random__random____random__sfc16__random__arity0______random__generate_uint32_3_3_p_0(
+  uint32_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc16__ClassMethod_for_random__random____random__sfc16__random__arity0______random__generate_uint64_3_3_p_0(
+  uint64_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc16__ClassMethod_for_random__random____random__sfc16__random__arity0______random__generate_uint8_3_3_p_0(
+  uint8_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc16__generate_uint16_3_p_0(
+  uint16_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc16__generate_uint32_3_p_0(
+  uint32_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc16__generate_uint64_3_p_0(
+  uint64_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc16__generate_uint8_3_p_0(
+  uint8_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc16__skip_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+mercury__random__sfc16__init_0_f_0(void);
+
+uint64_t MR_CALL 
+mercury__random__sfc16__pack_uint64_4_f_0(
+  uint16_t param_1,
+  uint16_t param_2,
+  uint16_t param_3,
+  uint16_t param_4);
+
+MR_Word MR_CALL 
+mercury__random__sfc16__seed_1_f_0(
+  uint64_t param_1);
+
+void MR_CALL 
+mercury__random__sfc16____Compare____random_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__random__sfc16____Unify____random_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__random__sfc16__init(void);
+void mercury__random__sfc16__init_type_tables(void);
+void mercury__random__sfc16__init_debugger(void);
+const char *mercury__random__sfc16__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_random.sfc16
+
+// :- end_interface random.sfc16.

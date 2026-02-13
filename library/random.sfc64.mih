@@ -1,0 +1,202 @@
+/*
+** Automatically generated from `random.sfc64.m'
+** by the Mercury compiler,
+** version rotd-2026-02-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module random.sfc64.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_random__sfc64
+#define MR_HEADER_GUARD_random__sfc64
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RANDOM__SFC64_DECL_GUARD
+#define RANDOM__SFC64_DECL_GUARD
+#include "random.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__random__sfc64__random__sfc64__type_ctor_info_params_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__random__sfc64__random__sfc64__type_ctor_info_ustate_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_random__urandom__arity2__random__sfc64__params__arity0__random__sfc64__ustate__arity0__[9];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_random__urandom_dup__arity1__random__sfc64__ustate__arity0__[6];
+
+void MR_CALL 
+mercury__random__sfc64__ClassMethod_for_random__urandom____random__sfc64__params__arity0__random__sfc64__ustate__arity0______random__generate_uint16_4_4_p_0(
+  uint16_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__ClassMethod_for_random__urandom____random__sfc64__params__arity0__random__sfc64__ustate__arity0______random__generate_uint32_4_4_p_0(
+  uint32_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__ClassMethod_for_random__urandom____random__sfc64__params__arity0__random__sfc64__ustate__arity0______random__generate_uint64_4_4_p_0(
+  uint64_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__ClassMethod_for_random__urandom____random__sfc64__params__arity0__random__sfc64__ustate__arity0______random__generate_uint8_4_4_p_0(
+  uint8_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__ClassMethod_for_random__urandom_dup____random__sfc64__ustate__arity0______random__urandom_dup_3_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_114_97_110_100_111_109_95_95_115_102_99_54_52_95_95_112_97_114_97_109_115_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__random__sfc64__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_117_105_110_116_49_54_95_95_91_49_93_95_48_4_p_0(
+  uint16_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_117_105_110_116_51_50_95_95_91_49_93_95_48_4_p_0(
+  uint32_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_117_105_110_116_54_52_95_95_91_49_93_95_48_4_p_0(
+  uint64_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_117_105_110_116_56_95_95_91_49_93_95_48_4_p_0(
+  uint8_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__generate_uint16_3_p_0(
+  uint16_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__generate_uint16_4_p_0(
+  uint16_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__generate_uint32_3_p_0(
+  uint32_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__generate_uint32_4_p_0(
+  uint32_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__generate_uint64_3_p_0(
+  uint64_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__generate_uint64_4_p_0(
+  uint64_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__generate_uint8_3_p_0(
+  uint8_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__generate_uint8_4_p_0(
+  uint8_t * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64__init_2_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__random__sfc64__seed_5_p_0(
+  uint64_t param_1,
+  uint64_t param_2,
+  uint64_t param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__random__sfc64__urandom_dup_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__random__sfc64____Compare____params_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__random__sfc64____Compare____ustate_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__random__sfc64____Unify____params_0_0(void);
+
+MR_bool MR_CALL 
+mercury__random__sfc64____Unify____ustate_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__random__sfc64__init(void);
+void mercury__random__sfc64__init_type_tables(void);
+void mercury__random__sfc64__init_debugger(void);
+const char *mercury__random__sfc64__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_random.sfc64
+
+// :- end_interface random.sfc64.

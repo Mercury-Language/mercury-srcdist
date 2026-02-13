@@ -1,0 +1,10 @@
+:- module (hlds.make_hlds).superhomogeneous_util.
+:- interface.
+:- type arg_context.
+:- type expansion.
+:- type maybe_fgti_var_size.
+:- type unify_var_term.
+:- type unify_var_term_num_context.
+:- type_representation(expansion, is_word_aligned_ptr).
+:- type_representation(unify_var_term, is_word_aligned_ptr).
+:- type_representation(unify_var_term_num_context, is_word_aligned_ptr).
