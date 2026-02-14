@@ -1,0 +1,155 @@
+/*
+** Automatically generated from `ml_lookup_switch.m'
+** by the Mercury compiler,
+** version rotd-2026-02-14
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.ml_lookup_switch.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_lookup_switch
+#define MR_HEADER_GUARD_ml_backend__ml_lookup_switch
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_LOOKUP_SWITCH_DECL_GUARD
+#define ML_BACKEND__ML_LOOKUP_SWITCH_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_lookup_switch__ml_backend__ml_lookup_switch__type_ctor_info_ml_lookup_switch_info_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_lookup_switch__ml_backend__ml_lookup_switch__type_ctor_info_ml_several_soln_lookup_vars_0;
+
+void MR_CALL 
+ml_backend__ml_lookup_switch__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_108_95_105_115_95_108_111_111_107_117_112_95_115_119_105_116_99_104_95_95_91_52_93_95_48_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ml_backend__ml_lookup_switch__make_several_soln_lookup_vars_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ml_backend__ml_lookup_switch__ml_case_id_soln_consts_to_tag_soln_consts_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+ml_backend__ml_lookup_switch__ml_gen_int_max_32_lookup_switch_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Word * param_11);
+
+void MR_CALL 
+ml_backend__ml_lookup_switch__ml_gen_several_soln_lookup_code_17_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word * param_14,
+  MR_Word * param_15,
+  MR_Word param_16,
+  MR_Word * param_17);
+
+void MR_CALL 
+ml_backend__ml_lookup_switch__ml_is_lookup_switch_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_Word MR_CALL 
+ml_backend__ml_lookup_switch__ml_construct_later_soln_row_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_lookup_switch__ml_default_value_for_type_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ml_backend__ml_lookup_switch____Compare____ml_lookup_switch_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__ml_lookup_switch____Compare____ml_several_soln_lookup_vars_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ml_backend__ml_lookup_switch____Unify____ml_lookup_switch_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_lookup_switch____Unify____ml_several_soln_lookup_vars_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ml_backend__ml_lookup_switch__init(void);
+void mercury__ml_backend__ml_lookup_switch__init_type_tables(void);
+void mercury__ml_backend__ml_lookup_switch__init_debugger(void);
+const char *mercury__ml_backend__ml_lookup_switch__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.ml_lookup_switch
+
+// :- end_interface ml_backend.ml_lookup_switch.

@@ -1,0 +1,270 @@
+/*
+** Automatically generated from `hlds_out_util.m'
+** by the Mercury compiler,
+** version rotd-2026-02-14
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_out.hlds_out_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_out__hlds_out_util
+#define MR_HEADER_GUARD_hlds__hlds_out__hlds_out_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_OUT__HLDS_OUT_UTIL_DECL_GUARD
+#define HLDS__HLDS_OUT__HLDS_OUT_UTIL_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.hlds_out.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_out__hlds_out_util__hlds__hlds_out__hlds_out_util__type_ctor_info_hlds_dump_options_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_out__hlds_out_util__hlds__hlds_out__hlds_out_util__type_ctor_info_hlds_out_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_out__hlds_out_util__hlds__hlds_out__hlds_out_util__type_ctor_info_maybe_qualify_cons_id_0;
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__format_constraint_proof_map_6_p_0(
+  MR_Unsigned param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__format_intlist_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__maybe_format_context_comment_5_p_0(
+  MR_Unsigned param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__maybe_output_context_comment_6_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_String param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_constraint_proof_map_7_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_intlist_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__cast_type_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__cons_id_and_vars_or_arity_to_string_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__context_to_brief_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_out__hlds_out_util__empty_dump_options_0_f_0(void);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__functor_cons_id_to_string_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__functor_to_string_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__functor_to_string_maybe_needs_quotes_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+hlds__hlds_out__hlds_out_util__init_hlds_out_info_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__inst_import_status_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__instance_import_status_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__mode_import_status_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__pred_id_to_dev_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__pred_id_to_user_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__pred_import_status_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__pred_proc_id_pair_to_dev_string_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__pred_proc_id_pair_to_user_string_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__pred_proc_id_to_dev_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__pred_proc_id_to_user_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__qualified_functor_to_string_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__qualified_functor_with_term_args_to_string_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__type_import_status_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__typeclass_import_status_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__var_mode_to_string_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__var_modes_to_string_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_util____Compare____hlds_dump_options_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_util____Compare____hlds_out_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_util____Compare____maybe_qualify_cons_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_out__hlds_out_util____Unify____hlds_dump_options_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_out__hlds_out_util____Unify____hlds_out_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_out__hlds_out_util____Unify____maybe_qualify_cons_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__hlds_out__hlds_out_util__init(void);
+void mercury__hlds__hlds_out__hlds_out_util__init_type_tables(void);
+void mercury__hlds__hlds_out__hlds_out_util__init_debugger(void);
+const char *mercury__hlds__hlds_out__hlds_out_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.hlds_out.hlds_out_util
+
+// :- end_interface hlds.hlds_out.hlds_out_util.

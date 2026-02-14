@@ -1,0 +1,4 @@
+:- module mode_robdd.implications.
+:- interface.
+:- type_representation(bin_clause(V_1), is_eqv_to({literal(V_1), literal(V_1)})).
+:- type_representation(mklit(V_1), is_eqv_to(((func var(V_1)) = literal(V_1)))).
