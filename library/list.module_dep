@@ -1,0 +1,14 @@
+module(2, "list.m",
+	list,
+	{},
+	{builtin, pretty_printer, private_builtin, term},
+	{int, require, set_tree234, string, uint},
+	{},
+	{},
+	{},
+	{},
+	{"C#" - list, "Java" - list},
+	no_foreign_export,
+	no_main,
+	{}
+).

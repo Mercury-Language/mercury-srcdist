@@ -1,0 +1,52 @@
+register --quiet
+context none
+echo on
+break info.last
+c
+delete *
+f
+dd -d 3 -n 7 -s divide_and_query
+info
+n
+info
+n
+info
+q
+
+f
+dd -d 3 -n 7
+n
+info
+b 2
+mark
+info
+mode binary
+info
+n
+info
+b 1
+cd 1
+mark
+info
+q
+break q
+c
+delete *
+f
+dd -d 3 -n 7
+b 3
+cd 1/1
+mark
+info
+q
+
+f
+dd -d 3 -n 7
+b 4
+mark
+info
+n
+n
+info
+q
+quit -y

@@ -1,0 +1,6 @@
+:- module parse_tree.d_file_deps.
+:- interface.
+:- type avail_module_sets.
+:- type dep_graphs.
+:- type_representation(avail_module_sets, is_word_aligned_ptr).
+:- type_representation(dep_graphs, is_word_aligned_ptr).

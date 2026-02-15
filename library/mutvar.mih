@@ -1,0 +1,101 @@
+/*
+** Automatically generated from `mutvar.m'
+** by the Mercury compiler,
+** version rotd-2026-02-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mutvar.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mutvar
+#define MR_HEADER_GUARD_mutvar
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MUTVAR_DECL_GUARD
+#define MUTVAR_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__mutvar__mutvar__type_ctor_info_mutvar_1;
+
+void MR_CALL 
+mercury__mutvar__clear_mutvar_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__mutvar__get_mutvar_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__mutvar__new_mutvar_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__mutvar__new_mutvar_2_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__mutvar__new_mutvar0_1_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__mutvar__set_mutvar_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__mutvar____Compare____mutvar_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__mutvar____Unify____mutvar_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__mutvar__init(void);
+void mercury__mutvar__init_type_tables(void);
+void mercury__mutvar__init_debugger(void);
+const char *mercury__mutvar__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mutvar
+
+// :- end_interface mutvar.

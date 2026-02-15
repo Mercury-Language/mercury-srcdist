@@ -1,0 +1,25 @@
+:- module check_hlds.typecheck_error_builtin.
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module check_hlds.type_assign.
+:- use_module check_hlds.typecheck_info.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- pred acc_builtin_type(parse_tree.prog_data.mer_type, set.set(parse_tree.prog_data.builtin_type), set.set(parse_tree.prog_data.builtin_type)).
+:- mode acc_builtin_type(builtin.in, builtin.in, builtin.out) is det.
+:- pred acc_builtin_types_in_cons_type_infos(list.list(check_hlds.type_assign.cons_type_info), set.set(parse_tree.prog_data.builtin_type), set.set(parse_tree.prog_data.builtin_type)).
+:- mode acc_builtin_types_in_cons_type_infos(builtin.in, builtin.in, builtin.out) is det.
+:- pred acc_builtin_types_of_var(list.list(check_hlds.type_assign.type_assign), parse_tree.prog_data.prog_var, set.set(parse_tree.prog_data.builtin_type), set.set(parse_tree.prog_data.builtin_type)).
+:- mode acc_builtin_types_of_var(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred is_int_func_op(parse_tree.prog_data.cons_id).
+:- mode is_int_func_op(builtin.in) is semidet.
+:- pred is_int_pred_op(mdbcomp.sym_name.sym_name, parse_tree.prog_data.pred_form_arity).
+:- mode is_int_pred_op(builtin.in, builtin.in) is semidet.
+:- func nosuffix_integer_pieces = list.list(parse_tree.error_spec.format_piece).
+:- func report_any_invisible_int_types(check_hlds.typecheck_info.type_error_clause_context, set.set(parse_tree.prog_data.builtin_type)) = list.list(parse_tree.error_spec.format_piece).
+:- pred type_needs_int_constant_suffix(parse_tree.prog_data.mer_type).
+:- mode type_needs_int_constant_suffix(builtin.in) is semidet.
