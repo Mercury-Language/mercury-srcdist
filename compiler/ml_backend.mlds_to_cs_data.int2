@@ -1,0 +1,5 @@
+:- module ml_backend.mlds_to_cs_data.
+:- interface.
+:- type maybe_for_call
+    --->    is_not_for_call 
+    ;       is_for_call .

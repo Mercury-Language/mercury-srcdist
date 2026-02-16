@@ -1,0 +1,3 @@
+:- module parse_tree.equiv_type.
+:- interface.
+:- type_representation(circ_types, is_eqv_to(set(type_ctor))).

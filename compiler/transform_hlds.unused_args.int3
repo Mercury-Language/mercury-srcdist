@@ -1,0 +1,33 @@
+:- module transform_hlds.unused_args.
+:- interface.
+:- import_module analysis.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module analysis.framework.
+:- import_module hlds.hlds_module.
+:- import_module parse_tree.error_spec.
+:- import_module parse_tree.prog_item.
+:- type maybe_gather_pragma_unused_args
+	where	type_is_abstract_enum(1).
+:- type maybe_record_analysis_unused_args
+	where	type_is_abstract_enum(1).
+:- type unused_args_answer.
+:- type unused_args_call.
+:- type unused_args_func_info.
+:- instance analysis(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_call, transform_hlds.unused_args.unused_args_answer).
+:- instance answer_pattern(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_answer).
+:- instance call_pattern(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_call).
+:- instance partial_order(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_answer).
+:- instance partial_order(transform_hlds.unused_args.unused_args_func_info, transform_hlds.unused_args.unused_args_call).
+:- instance to_term(transform_hlds.unused_args.unused_args_answer).
+:- instance to_term(transform_hlds.unused_args.unused_args_call).
+:- type_representation(global_var_usage_map, is_eqv_to(map(pred_proc_id, local_var_usage_map))).
+:- type_representation(local_var_usage_map, is_eqv_to(map(prog_var, usage_info))).
+:- type_representation(maybe_gather_pragma_unused_args, du_repn(enum("do_not_gather_pragma_unused_args", "do_gather_pragma_unused_args", [],  no_c_j_cs))).
+:- type_representation(maybe_record_analysis_unused_args, du_repn(enum("do_not_record_analysis_unused_args", "do_record_analysis_unused_args", [],  no_c_j_cs))).
+:- type_representation(new_proc_map, is_eqv_to(map(pred_proc_id, new_proc_info))).
+:- type_representation(unused_args_answer, du_repn(notag("unused_args_answer", list(int),  no_c_j_cs))).
+:- type_representation(unused_args_call, du_repn(direct_dummy("unused_args_call",  no_c_j_cs))).
+:- type_representation(unused_args_func_info, du_repn(notag("unused_args_func_info", pred_form_arity,  no_c_j_cs))).
