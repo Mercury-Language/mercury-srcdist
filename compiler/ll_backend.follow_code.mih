@@ -1,0 +1,68 @@
+/*
+** Automatically generated from `follow_code.m'
+** by the Mercury compiler,
+** version rotd-2026-02-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.follow_code.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__follow_code
+#define MR_HEADER_GUARD_ll_backend__follow_code
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__FOLLOW_CODE_DECL_GUARD
+#define LL_BACKEND__FOLLOW_CODE_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+void MR_CALL 
+ll_backend__follow_code__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_118_101_95_102_111_108_108_111_119_95_99_111_100_101_95_105_110_95_112_114_111_99_95_95_91_49_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__follow_code__move_follow_code_in_proc_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void mercury__ll_backend__follow_code__init(void);
+void mercury__ll_backend__follow_code__init_type_tables(void);
+void mercury__ll_backend__follow_code__init_debugger(void);
+const char *mercury__ll_backend__follow_code__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.follow_code
+
+// :- end_interface ll_backend.follow_code.

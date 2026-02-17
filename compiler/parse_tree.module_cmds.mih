@@ -1,0 +1,173 @@
+/*
+** Automatically generated from `module_cmds.m'
+** by the Mercury compiler,
+** version rotd-2026-02-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.module_cmds.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__module_cmds
+#define MR_HEADER_GUARD_parse_tree__module_cmds
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__MODULE_CMDS_DECL_GUARD
+#define PARSE_TREE__MODULE_CMDS_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_cmds__parse_tree__module_cmds__type_ctor_info_dot_tmp_copy_result_0;
+
+void MR_CALL 
+parse_tree__module_cmds__copy_dot_tmp_to_base_file_report_any_error_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__module_cmds__copy_dot_tmp_to_base_file_return_changed_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__copy_dot_tmp_to_base_file_return_succeeded_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__create_java_shell_script_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__create_launcher_batch_file_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__module_cmds__create_launcher_shell_script_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__module_cmds__definitely_make_symlink_5_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_cmds__get_env_classpath_3_p_0(
+  MR_String * param_1);
+
+void MR_CALL 
+parse_tree__module_cmds__get_mercury_std_libs_for_java_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_cmds__list_class_files_for_jar_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__list_class_files_for_jar_mmake_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__module_cmds__make_symlink_or_copy_file_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__module_cmds__maybe_make_symlink_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__maybe_set_exit_status_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__module_cmds__touch_file_datestamp_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_cmds__touch_module_ext_datestamp_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__module_cmds____Compare____dot_tmp_copy_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__module_cmds____Unify____dot_tmp_copy_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__module_cmds__init(void);
+void mercury__parse_tree__module_cmds__init_type_tables(void);
+void mercury__parse_tree__module_cmds__init_debugger(void);
+const char *mercury__parse_tree__module_cmds__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.module_cmds
+
+// :- end_interface parse_tree.module_cmds.
