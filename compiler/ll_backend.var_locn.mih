@@ -1,0 +1,381 @@
+/*
+** Automatically generated from `var_locn.m'
+** by the Mercury compiler,
+** version rotd-2026-02-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.var_locn.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__var_locn
+#define MR_HEADER_GUARD_ll_backend__var_locn
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__VAR_LOCN_DECL_GUARD
+#define LL_BACKEND__VAR_LOCN_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__var_locn__ll_backend__var_locn__type_ctor_info_dead_or_alive_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__var_locn__ll_backend__var_locn__type_ctor_info_dep_search_lval_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__var_locn__ll_backend__var_locn__type_ctor_info_loc_var_map_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__var_locn__ll_backend__var_locn__type_ctor_info_maybe_first_death_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__var_locn__ll_backend__var_locn__type_ctor_info_store_var_if_required_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__var_locn__ll_backend__var_locn__type_ctor_info_var_avail_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__var_locn__ll_backend__var_locn__type_ctor_info_var_locn_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__var_locn__ll_backend__var_locn__type_ctor_info_var_state_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__var_locn__ll_backend__var_locn__type_ctor_info_var_state_map_0;
+
+void MR_CALL 
+ll_backend__var_locn__init_var_locn_state_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+ll_backend__var_locn__reinit_var_locn_state_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_acquire_reg_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_acquire_reg_prefer_given_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_acquire_reg_require_given_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_acquire_reg_start_at_given_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_assign_cell_to_var_15_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word * param_11,
+  MR_Word param_12,
+  MR_Word * param_13,
+  MR_Word param_14,
+  MR_Word * param_15);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_assign_const_to_var_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_assign_expr_to_var_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_assign_field_lval_expr_to_var_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_assign_lval_to_var_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_assign_var_to_var_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_check_and_set_magic_var_location_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_clear_r1_3_p_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_clobber_all_regs_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_clobber_reg_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_clobber_regs_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_get_follow_var_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_get_next_non_reserved_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_get_stack_slots_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_get_var_locations_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_lock_regs_5_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+ll_backend__var_locn__var_locn_lval_in_use_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_materialize_vars_in_lval_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_materialize_vars_in_rval_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_max_reg_in_use_3_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_place_var_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_place_vars_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_produce_var_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_produce_var_in_reg_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_produce_var_in_reg_or_stack_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_reassign_mkword_hole_var_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_reassign_tagword_var_6_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_release_reg_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_save_cell_fields_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_set_follow_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_set_magic_var_location_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_unlock_regs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__var_locn__var_locn_var_becomes_dead_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__var_locn____Compare____maybe_first_death_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__var_locn____Compare____var_locn_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__var_locn____Unify____maybe_first_death_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__var_locn____Unify____var_locn_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__var_locn__init(void);
+void mercury__ll_backend__var_locn__init_type_tables(void);
+void mercury__ll_backend__var_locn__init_debugger(void);
+const char *mercury__ll_backend__var_locn__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.var_locn
+
+// :- end_interface ll_backend.var_locn.

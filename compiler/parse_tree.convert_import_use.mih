@@ -1,0 +1,258 @@
+/*
+** Automatically generated from `convert_import_use.m'
+** by the Mercury compiler,
+** version rotd-2026-02-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.convert_import_use.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__convert_import_use
+#define MR_HEADER_GUARD_parse_tree__convert_import_use
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__CONVERT_IMPORT_USE_DECL_GUARD
+#define PARSE_TREE__CONVERT_IMPORT_USE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__convert_import_use__parse_tree__convert_import_use__type_ctor_info_imp_import_context_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__convert_import_use__parse_tree__convert_import_use__type_ctor_info_imp_use_context_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__convert_import_use__parse_tree__convert_import_use__type_ctor_info_import_use_file_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__convert_import_use__parse_tree__convert_import_use__type_ctor_info_import_use_line_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__convert_import_use__parse_tree__convert_import_use__type_ctor_info_int_import_context_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__convert_import_use__parse_tree__convert_import_use__type_ctor_info_int_use_context_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__convert_import_use__parse_tree__convert_import_use__type_ctor_info_maybe_include_implicit_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__convert_import_use__parse_tree__convert_import_use__type_ctor_info_module_name_context_0;
+
+void MR_CALL 
+parse_tree__convert_import_use__acc_avails_with_contexts_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__convert_import_use__accumulate_imports_uses_maps_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__convert_import_use__avail_imports_uses_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__convert_import_use__avail_is_import_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+parse_tree__convert_import_use__avail_is_use_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__convert_import_use__classify_int_imp_import_use_modules_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+parse_tree__convert_import_use__classify_int_imp_use_modules_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__convert_import_use__get_imports_uses_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+parse_tree__convert_import_use__get_uses_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__convert_import_use__import_and_or_use_map_section_to_maybe_implicit_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__convert_import_use__import_and_or_use_map_to_explicit_int_imp_import_use_maps_6_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__convert_import_use__import_and_or_use_map_to_item_avails_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__convert_import_use__import_and_or_use_map_to_module_name_contexts_6_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__convert_import_use__section_import_and_or_use_map_to_item_avails_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__convert_import_use__section_use_map_to_item_avails_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_String MR_CALL 
+parse_tree__convert_import_use__import_or_use_decl_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__convert_import_use__use_map_to_item_avails_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__convert_import_use____Compare____imp_import_context_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__convert_import_use____Compare____imp_use_context_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__convert_import_use____Compare____int_import_context_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__convert_import_use____Compare____int_use_context_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__convert_import_use____Compare____maybe_include_implicit_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__convert_import_use____Compare____module_name_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__convert_import_use____Unify____imp_import_context_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__convert_import_use____Unify____imp_use_context_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__convert_import_use____Unify____int_import_context_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__convert_import_use____Unify____int_use_context_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__convert_import_use____Unify____maybe_include_implicit_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__convert_import_use____Unify____module_name_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__convert_import_use__init(void);
+void mercury__parse_tree__convert_import_use__init_type_tables(void);
+void mercury__parse_tree__convert_import_use__init_debugger(void);
+const char *mercury__parse_tree__convert_import_use__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.convert_import_use
+
+// :- end_interface parse_tree.convert_import_use.
