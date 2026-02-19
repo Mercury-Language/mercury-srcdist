@@ -1,0 +1,12 @@
+:- module (check_hlds.simplify).parse_string_format.
+:- interface.
+:- type abstract_poly_type.
+:- type compiler_format_maybe_prec.
+:- type compiler_format_maybe_width.
+:- type compiler_format_spec.
+:- type int_size
+	where	type_is_abstract_enum(3).
+:- type uint_size
+	where	type_is_abstract_enum(3).
+:- type_representation(int_size, du_repn(enum("int_size_word", "int_size_8", ["int_size_16", "int_size_32", "int_size_64"],  no_c_j_cs))).
+:- type_representation(uint_size, du_repn(enum("uint_size_word", "uint_size_8", ["uint_size_16", "uint_size_32", "uint_size_64"],  no_c_j_cs))).
