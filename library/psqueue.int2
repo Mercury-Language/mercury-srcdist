@@ -1,0 +1,3 @@
+:- module psqueue.
+:- interface.
+:- type psqueue(P, K).
