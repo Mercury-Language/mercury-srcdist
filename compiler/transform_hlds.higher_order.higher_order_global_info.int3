@@ -1,0 +1,38 @@
+:- module (transform_hlds.higher_order).higher_order_global_info.
+:- interface.
+:- type goal_size_map.
+:- type higher_order_arg.
+:- type higher_order_global_info.
+:- type ho_params.
+:- type ho_request.
+:- type ho_request_kind
+	where	type_is_abstract_enum(1).
+:- type is_arg_const
+	where	type_is_abstract_enum(1).
+:- type known_const.
+:- type known_var_map.
+:- type match.
+:- type match_completeness.
+:- type must_recompute
+	where	type_is_abstract_enum(1).
+:- type new_pred.
+:- type new_pred_map.
+:- type parent_version_info.
+:- type version_info.
+:- type version_info_map.
+:- type_representation(goal_size_map, is_eqv_to(map(pred_id, int))).
+:- type_representation(higher_order_arg, is_word_aligned_ptr).
+:- type_representation(higher_order_global_info, is_word_aligned_ptr).
+:- type_representation(ho_params, is_word_aligned_ptr).
+:- type_representation(ho_request, is_word_aligned_ptr).
+:- type_representation(ho_request_kind, du_repn(enum("non_user_type_spec", "user_type_spec", [],  no_c_j_cs))).
+:- type_representation(is_arg_const, du_repn(enum("arg_is_not_const", "arg_is_const", [],  no_c_j_cs))).
+:- type_representation(known_const, is_word_aligned_ptr).
+:- type_representation(known_var_map, is_eqv_to(map(prog_var, transform_hlds.higher_order.higher_order_global_info.known_const))).
+:- type_representation(match, is_word_aligned_ptr).
+:- type_representation(must_recompute, du_repn(enum("must_recompute", "need_not_recompute", [],  no_c_j_cs))).
+:- type_representation(new_pred, is_word_aligned_ptr).
+:- type_representation(new_pred_map, is_eqv_to(map(pred_proc_id, set(transform_hlds.higher_order.higher_order_global_info.new_pred)))).
+:- type_representation(parent_version_info, is_word_aligned_ptr).
+:- type_representation(version_info, is_word_aligned_ptr).
+:- type_representation(version_info_map, is_eqv_to(map(pred_proc_id, transform_hlds.higher_order.higher_order_global_info.version_info))).
