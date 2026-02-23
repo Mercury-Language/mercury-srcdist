@@ -1,0 +1,3 @@
+:- module bimap.
+:- interface.
+:- type bimap(K, V).

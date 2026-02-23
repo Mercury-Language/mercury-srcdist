@@ -1,0 +1,9 @@
+:- module io.call_system.
+
+:- pragma termination_info((io.call_system).call_system(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((io.call_system).call_system_return_signal(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info((io.call_system).decode_system_command_exit_code(builtin.in) = builtin.out, infinite, cannot_loop).
+
+:- pragma exceptions(predicate, (io.call_system).call_system, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.call_system).call_system_return_signal, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (io.call_system).decode_system_command_exit_code, 1, 0, will_not_throw).
