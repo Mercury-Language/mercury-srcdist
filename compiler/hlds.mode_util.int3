@@ -1,0 +1,3 @@
+:- module hlds.mode_util.
+:- interface.
+:- type_representation(inst_expansions, is_eqv_to(set_tree234(inst_name))).
