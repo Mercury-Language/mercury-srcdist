@@ -1,0 +1,12 @@
+:- module check_hlds.typecheck_msgs.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module set_tree234.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.error_spec.
+:- pred construct_type_inference_messages(hlds.hlds_module.module_info, set_tree234.set_tree234(hlds.hlds_pred.pred_id), list.list(hlds.hlds_pred.pred_id), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode construct_type_inference_messages(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func typecheck_report_max_iterations_exceeded(int) = parse_tree.error_spec.error_spec.
