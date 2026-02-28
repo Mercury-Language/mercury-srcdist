@@ -1,0 +1,12 @@
+:- module transform_hlds.unused_args_optimize.
+:- interface.
+:- use_module map.
+:- use_module hlds.hlds_pred.
+:- type new_proc_info
+    --->    new_proc_info(
+                 hlds.hlds_pred.pred_id,
+                 hlds.hlds_pred.proc_id,
+                 mdbcomp.sym_name.sym_name,
+                 list.list(int)
+            ).
+:- type new_proc_map == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.unused_args_optimize.new_proc_info).
