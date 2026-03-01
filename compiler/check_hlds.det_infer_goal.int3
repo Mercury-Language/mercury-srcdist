@@ -1,0 +1,5 @@
+:- module check_hlds.det_infer_goal.
+:- interface.
+:- type soln_context
+	where	type_is_abstract_enum(1).
+:- type_representation(soln_context, du_repn(enum("all_solns", "first_soln", [],  no_c_j_cs))).

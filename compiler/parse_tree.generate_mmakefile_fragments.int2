@@ -1,0 +1,47 @@
+:- module parse_tree.generate_mmakefile_fragments.
+:- interface.
+:- type all_mih_deps
+    --->    all_mih_deps(
+                 set.set(mdbcomp.sym_name.module_name)
+            ).
+:- type d_file_deps
+    --->    d_file_deps(
+                 (parse_tree.generate_mmakefile_fragments).dfd_direct_deps :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.generate_mmakefile_fragments).dfd_indirect_deps :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.generate_mmakefile_fragments).dfd_own_fim_deps :: parse_tree.generate_mmakefile_fragments.module_own_fim_deps,
+                 (parse_tree.generate_mmakefile_fragments).dfd_intermod_fim_deps :: parse_tree.generate_mmakefile_fragments.intermod_only_fim_deps,
+                 (parse_tree.generate_mmakefile_fragments).dfd_all_mih_deps :: parse_tree.generate_mmakefile_fragments.all_mih_deps,
+                 (parse_tree.generate_mmakefile_fragments).dfd_trans_opt :: parse_tree.generate_mmakefile_fragments.maybe_include_trans_opt_rule,
+                 (parse_tree.generate_mmakefile_fragments).dfd_trans_opt_deps :: parse_tree.generate_mmakefile_fragments.maybe_trans_opt_deps
+            ).
+:- type intermod_deps
+    --->    no_intermod_deps 
+    ;       intermod_deps(
+                 (parse_tree.generate_mmakefile_fragments).ofd_plain_opt_modules :: list.list(mdbcomp.sym_name.module_name),
+                 (parse_tree.generate_mmakefile_fragments).ofd_trans_opt_modules :: maybe.maybe(list.list(mdbcomp.sym_name.module_name))
+            ).
+:- type intermod_only_fim_deps
+    --->    intermod_only_fim_deps(
+                 set.set(mdbcomp.sym_name.module_name)
+            ).
+:- type maybe_include_trans_opt_rule
+    --->    do_not_include_trans_opt_rule 
+    ;       include_trans_opt_rule(
+                 parse_tree.generate_mmakefile_fragments.trans_opt_rule_info
+            ).
+:- type maybe_trans_opt_deps
+    --->    no_trans_opt_deps 
+    ;       trans_opt_deps(
+                 set.set(mdbcomp.sym_name.module_name)
+            ).
+:- type module_own_fim_deps
+    --->    module_own_fim_deps(
+                 set.set(mdbcomp.sym_name.module_name)
+            ).
+:- type trans_opt_rule_info
+    --->    trans_opt_deps_from_order(
+                 set.set(mdbcomp.sym_name.module_name)
+            )
+    ;       trans_opt_deps_from_d_file(
+                 set.set(mdbcomp.sym_name.module_name)
+            ).

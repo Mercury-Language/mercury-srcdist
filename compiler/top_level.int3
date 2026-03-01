@@ -1,0 +1,3 @@
+:- module top_level.
+:- interface.
+:- include_module top_level.mercury_compile_main.
