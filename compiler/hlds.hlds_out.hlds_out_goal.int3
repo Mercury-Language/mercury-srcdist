@@ -1,0 +1,4 @@
+:- module (hlds.hlds_out).hlds_out_goal.
+:- interface.
+:- type hlds_out_info_goal.
+:- type_representation(hlds_out_info_goal, is_word_aligned_ptr).

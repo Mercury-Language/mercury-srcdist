@@ -1,0 +1,5 @@
+:- module mdprof_report_feedback.
+:- interface.
+:- use_module io.
+:- pred main(io.io, io.io).
+:- mode main(builtin.di, builtin.uo) is det.

@@ -1,0 +1,12 @@
+:- module bit_buffer.write.
+:- interface.
+:- type io_write_buffer.
+:- type write_buffer.
+:- type write_buffer(Stream, State).
+:- abstract_inst((uniq_write_buffer)).
+:- abstract_mode((write_buffer_di)).
+:- abstract_mode((write_buffer_ui)).
+:- abstract_mode((write_buffer_uo)).
+:- type_representation(io_write_buffer, is_eqv_to(bit_buffer.write.write_buffer(io.binary_output_stream, io.state))).
+:- type_representation(write_buffer, is_eqv_to(bit_buffer.write.write_buffer(error_stream, error_state))).
+:- type_representation(write_buffer(V_1, V_2), du_repn(notag("write_buffer", bit_buffer(V_1, V_2),  no_c_j_cs))).

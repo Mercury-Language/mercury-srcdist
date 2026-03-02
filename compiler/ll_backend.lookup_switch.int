@@ -1,0 +1,55 @@
+:- module ll_backend.lookup_switch.
+:- interface.
+:- use_module backend_libs.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module backend_libs.lookup_switch_util.
+:- use_module hlds.hlds_data.
+:- use_module hlds.hlds_goal.
+:- use_module ll_backend.code_info.
+:- use_module ll_backend.code_loc_dep.
+:- use_module ll_backend.llds.
+:- use_module ll_backend.lookup_util.
+:- use_module parse_tree.prog_data.
+:- type case_kind
+    --->    kind_zero_solns 
+    ;       kind_one_soln 
+    ;       kind_several_solns .
+:- type lookup_switch_info(Key)
+    --->    lookup_switch_info(
+                 (ll_backend.lookup_switch).lsi_key_to_case_map :: map.map(Key, hlds.hlds_goal.case_id),
+                 (ll_backend.lookup_switch).lsi_cases :: backend_libs.lookup_switch_util.case_consts(hlds.hlds_goal.case_id, ll_backend.llds.rval, backend_libs.lookup_switch_util.case_consts_several_llds),
+                 (ll_backend.lookup_switch).lsi_out_variables :: list.list(parse_tree.prog_data.prog_var),
+                 (ll_backend.lookup_switch).lsi_out_types :: list.list(ll_backend.llds.llds_type),
+                 (ll_backend.lookup_switch).lsi_end_branch_info :: ll_backend.lookup_util.end_branch_info,
+                 (ll_backend.lookup_switch).lsi_branch_end :: ll_backend.code_loc_dep.branch_end,
+                 (ll_backend.lookup_switch).lsi_code_info :: ll_backend.code_info.code_info,
+                 (ll_backend.lookup_switch).lsi_code_loc_dep :: ll_backend.code_loc_dep.code_loc_dep
+            ).
+:- type main_table_row_select
+    --->    main_row_number_reg(
+                 ll_backend.llds.rval,
+                 list.list(ll_backend.llds.llds_type)
+            )
+    ;       main_row_start_offset_reg(
+                 ll_backend.llds.rval
+            ).
+:- pred acquire_and_setup_lookup_base_reg(ll_backend.llds.data_id, ll_backend.lookup_util.end_branch_info, ll_backend.lookup_switch.main_table_row_select, ll_backend.llds.lval, ll_backend.llds.llds_code, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode acquire_and_setup_lookup_base_reg(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred append_goto_end(ll_backend.llds.label, ll_backend.llds.llds_code, ll_backend.llds.llds_code).
+:- mode append_goto_end(builtin.in, builtin.in, builtin.out) is det.
+:- func default_value_for_type(ll_backend.llds.llds_type) = ll_backend.llds.rval.
+:- pred generate_int_lookup_switch(ll_backend.llds.rval, ll_backend.lookup_switch.lookup_switch_info(int), ll_backend.llds.label, int, int, backend_libs.lookup_switch_util.need_bit_vec_check, backend_libs.lookup_switch_util.need_range_check, ll_backend.code_loc_dep.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info).
+:- mode generate_int_lookup_switch(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred generate_multi_soln_table_lookup_code(backend_libs.lookup_switch_util.case_consts_several_llds, pair.pair(int, ll_backend.lookup_switch.case_kind), list.list(pair.pair(int, ll_backend.lookup_switch.case_kind)), int, list.list(parse_tree.prog_data.prog_var), ll_backend.llds.label, ll_backend.llds.lval, ll_backend.llds.rval, ll_backend.lookup_util.end_branch_info, ll_backend.llds.llds_code, ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_multi_soln_table_lookup_code(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in) is det.
+:- pred generate_single_soln_table_lookup_code_no_vars(ll_backend.lookup_util.end_branch_info, ll_backend.llds.llds_code, ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_single_soln_table_lookup_code_no_vars(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in) is det.
+:- pred generate_single_soln_table_lookup_code_some_vars(ll_backend.llds.data_id, ll_backend.lookup_switch.main_table_row_select, int, list.list(parse_tree.prog_data.prog_var), ll_backend.lookup_util.end_branch_info, ll_backend.llds.llds_code, ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_single_soln_table_lookup_code_some_vars(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.in) is det.
+:- pred is_lookup_switch(((func hlds.hlds_data.cons_tag) = Key), list.list(hlds.hlds_goal.tagged_case), hlds.hlds_goal.hlds_goal_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, maybe.maybe(ll_backend.lookup_switch.lookup_switch_info(Key))).
+:- mode is_lookup_switch(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
