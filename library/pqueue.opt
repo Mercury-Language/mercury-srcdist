@@ -1,0 +1,119 @@
+:- module pqueue.
+:- use_module assoc_list.
+:- use_module builtin.
+:- use_module int.
+:- use_module list.
+:- use_module pair.
+:- use_module private_builtin.
+:- use_module require.
+
+:- type pqueue(K, V)
+    --->    empty 
+    ;       pqueue(
+                 int,
+                 K,
+                 V,
+                 pqueue.pqueue(K, V),
+                 pqueue.pqueue(K, V)
+            ).
+
+:- pred pqueue.remove_2(pqueue.pqueue(K, V), pqueue.pqueue(K, V), pqueue.pqueue(K, V)).
+:- mode remove_2(builtin.in, builtin.in, builtin.out) is det.
+
+pqueue.assoc_list_to_pqueue(V_3) = V_4 :-
+    pqueue.assoc_list_to_pqueue(V_3, V_4).
+
+pqueue.det_peek_key(V_3) = V_4 :-
+    pqueue.det_peek(V_3, V_4, V_5).
+
+pqueue.det_peek_value(V_3) = V_4 :-
+    pqueue.det_peek(V_3, V_5, V_4).
+
+pqueue.from_assoc_list(V_3) = V_4 :-
+    pqueue.assoc_list_to_pqueue(V_3, V_4).
+
+pqueue.init = V_2 :-
+    pqueue.init(V_2).
+
+pqueue.init(pqueue.empty).
+
+pqueue.insert(V_8, V_6, V_7) = V_9 :-
+    pqueue.insert(V_6, V_7, V_8, V_9).
+
+pqueue.is_empty(pqueue.empty).
+
+pqueue.length(pqueue.empty) = 0.
+pqueue.length(pqueue.pqueue(V_3, V_4, V_5, V_6, V_7)) = V_2 :-
+    V_2 = int.(V_3 + V_8),
+    V_8 = 1 : int.
+
+pqueue.map_values(V_4, pqueue.empty, pqueue.empty).
+pqueue.map_values(V_5, V_6, V_7) :-
+    V_6 = pqueue.pqueue(V_8, V_9, V_10, V_11, V_12) : pqueue.pqueue(K_3, V1_1),
+    pqueue.map_values(V_5, V_11, V_13),
+    pqueue.map_values(V_5, V_12, V_14),
+    V_7 = pqueue.pqueue(V_8, V_9, V_15, V_13, V_14) : pqueue.pqueue(K_3, V2_2),
+    V_15 = apply(V_5, V_10).
+
+pqueue.merge(V_4, V_5) = V_6 :-
+    pqueue.merge(V_4, V_5, V_6).
+
+pqueue.peek(pqueue.pqueue(V_4, V_5, V_6, V_7, V_8), V_5, V_6).
+
+pqueue.peek_key(pqueue.pqueue(V_3, V_4, V_5, V_6, V_7), V_4).
+
+pqueue.peek_value(pqueue.pqueue(V_3, V_4, V_5, V_6, V_7), V_5).
+
+pqueue.remove(V_5, V_6, pqueue.pqueue(V_7, V_5, V_6, V_8, V_9), V_10) :-
+    pqueue.remove_2(V_8, V_9, V_10).
+
+pqueue.to_assoc_list(V_3) = V_4 :-
+    pqueue.to_assoc_list(V_3, V_4).
+
+:- pragma termination_info(pqueue.assoc_list_to_pqueue(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(pqueue.assoc_list_to_pqueue(builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pqueue.det_peek(builtin.in, builtin.out, builtin.out), finite(-5, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(pqueue.det_peek_key(builtin.in) = builtin.out, finite(-5, [no, no, yes, no]), can_loop).
+:- pragma termination_info(pqueue.det_peek_value(builtin.in) = builtin.out, finite(-5, [no, no, yes, no]), can_loop).
+:- pragma termination_info(pqueue.det_remove(builtin.out, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(pqueue.from_assoc_list(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info((pqueue.init) = builtin.out, finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(pqueue.init(builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(pqueue.insert(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(pqueue.insert(builtin.in, builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pqueue.is_empty(builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(pqueue.length(builtin.in) = builtin.out, finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(pqueue.map_values(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(pqueue.merge(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(pqueue.merge(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(pqueue.peek(builtin.in, builtin.out, builtin.out), finite(-5, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(pqueue.peek_key(builtin.in, builtin.out), finite(-5, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(pqueue.peek_value(builtin.in, builtin.out), finite(-5, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(pqueue.remove(builtin.out, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(pqueue.remove_2(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(pqueue.to_assoc_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(pqueue.to_assoc_list(builtin.in, builtin.out), infinite, can_loop).
+
+:- pragma exceptions(function, pqueue.assoc_list_to_pqueue, 1, 0, conditional).
+:- pragma exceptions(predicate, pqueue.assoc_list_to_pqueue, 2, 0, conditional).
+:- pragma exceptions(predicate, pqueue.det_peek, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, pqueue.det_peek_key, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, pqueue.det_peek_value, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, pqueue.det_remove, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, pqueue.from_assoc_list, 1, 0, conditional).
+:- pragma exceptions(function, pqueue.init, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, pqueue.init, 1, 0, will_not_throw).
+:- pragma exceptions(function, pqueue.insert, 3, 0, conditional).
+:- pragma exceptions(predicate, pqueue.insert, 4, 0, conditional).
+:- pragma exceptions(predicate, pqueue.is_empty, 1, 0, will_not_throw).
+:- pragma exceptions(function, pqueue.length, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, pqueue.map_values, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, pqueue.merge, 2, 0, conditional).
+:- pragma exceptions(predicate, pqueue.merge, 3, 0, conditional).
+:- pragma exceptions(predicate, pqueue.peek, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, pqueue.peek_key, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, pqueue.peek_value, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, pqueue.remove, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, pqueue.remove_2, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, pqueue.to_assoc_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, pqueue.to_assoc_list, 2, 0, may_throw(user_exception)).
