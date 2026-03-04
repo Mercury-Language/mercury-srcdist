@@ -1,0 +1,1897 @@
+NEWS since Mercury 22.01
+========================
+
+Changes that may break compatibility
+------------------------------------
+
+* The predicates `read_term/3`, `read_term/4`, `read_term_with_op_table/4`,
+  `read_term_with_op_table/5` have been removed from the `term_io` module
+  of the Mercury standard library.
+
+* The order of two arguments in the predicates `write_variable/4`,
+  `write_variable/5`, `write_variable_with_op_table/4`, and
+  `write_variable_with_op_table/5` in the `term_io` module
+  has been swapped.
+
+* The `io` module is being reorganized. Some predicates have been marked
+  as obsolete, while other predicates that had been marked as obsolete
+  before the release of Mercury 22.01 have been removed.
+
+* The old random number generator in the `random` module has been removed.
+
+* The system of operator priorities in the `ops` module has been inverted.
+  Previously, given two operators of different priorities, the one that
+  bound more tightly was the one with the lower numerical priority.
+  Now, operators with higher numerical priorities bind more tightly.
+  There are other changes as well, such as priorities no longer being
+  interchangeable with other integers, some types and function symbols
+  being renamed, and an updated `op_table` type class with a somewhat
+  different list of methods.
+
+  The old contents of the `ops` module is still available as
+  `extras/old_library_modules/old_ops`.
+
+* The `mercury_term_parser` module now expects the operator table to be
+  specified using the updated `op_table` type class in the new `ops` module.
+
+  The old contents of the `mercury_term_parser` module is still available as
+  `extras/old_library_modules/old_mercury_term_parser`.
+
+* The `enum/1` typeclass has been modified by having its `from_int` method
+  changed from a semidet function of arity one (plus the return value)
+  to a semidet predicate of arity two.
+
+* The `sparse_bitset`, `fat_sparse_bitset` and `tree_bitset` modules
+  now require the items in those sets to be instances of the `uenum` typeclass,
+  not the `enum` typeclass.
+
+* The `digraph_key` type in the `digraph` module is now an instance of
+  the `uenum` typeclass, not the `enum` typeclass.
+
+* Six predicates in the `injection` module, `det_insert/4`, `det_set/4`,
+  `det_update/4`, `insert/4`, `set/4` and `update/4`, have had the order
+  of their arguments changed.
+
+* Two predicates in the `bt_array` module, `resize/4` and `shrink/4`,
+  have had the order of their arguments changed.
+
+* One predicate in the `ranges` module, `nondet_member/2`, has had the order of
+  its arguments changed.
+
+* The character sequences `<<u` and `>>u` are now recognized as single tokens.
+  (They are the names of new versions of the left and right shift operators
+  that expect the shift amount to be specified by an unsigned integer;
+  previously, shift amounts were always specified by signed integers.)
+  This means that existing code in which a `<<` or `>>` operator was followed
+  immediately, without an intervening space, by a `u` character, will now
+  be parsed differently.
+
+* The compiler no longer accepts `:` as the module name separator in backquoted
+  operators. (Mercury switched to using `.` as the module name separator
+  around 2003.)
+
+* The compiler now ignores comments when warning about unused arguments
+  in `foreign_proc` pragmas. Warnings can no longer be suppressed by
+  mentioning a variable in a comment; use a leading underscore to mark
+  intentionally unused variables. This change also prevents spurious
+  warnings about `return` statements caused by the word `return`
+  appearing only in comments.
+
+* We have dropped support for the x86 (32-bit) version of Cygwin.
+
+* We have dropped support for versions of MSVC before version 19.3
+  (Visual Studio 2022).
+
+* The `--use-subdirs` and `--use-grade-subdirs` options now cause `.mh` files
+  to be placed in a `Mercury/mhs` subdirectory instead of the current
+  directory. This reduces clutter in the current directory, but may require
+  additional options to be passed to the C compiler in order for it to find
+  those header files.
+
+* We have changed the meaning of `mmc --make name.cs`.
+
+  The `mmc --make` target `name.cs` now means "build the .cs file
+  of the named module". To build all the .c files of a program, which was
+  the previous meaning of that target, use the target `program.all_cs`.
+
+* Some (undocumented) mmake variables in compiler-generated `.dv` files
+  have been renamed:
+
+        program.cs          -> program.all_cs
+        program.os          -> program.all_os
+        program.pic_os      -> program.all_pic_os
+        program.javas       -> program.all_javas
+        program.css         -> program.all_css
+
+        program.all_mhs     -> program.mhs_to_clean
+        program.all_mihs    -> program.mihs_to_clean
+        program.all_int0s   -> program.int3s_to_clean
+
+* We have replaced the `--no-warn-only-one-format-string-error` compiler
+  option with the new option named `--warn-all-format-string-errors`.
+
+* We have disabled support for concurrency in non-parallel low-level C grades.
+  It was never useful for anything other than trivial programs.
+
+Changes to the Mercury standard library
+---------------------------------------
+
+### Changes to the `array` module
+
+* The following predicates and functions have been added:
+
+    - pred `semidet_least_index/2`
+    - pred `semidet_greatest_index/2`
+    - func `uinit/2`
+    - pred `uinit/3`
+    - func `ugenerate/3`
+    - pred `ugenerate_foldl/5`
+    - pred `ugenerate_foldl2/7`
+    - func `ulookup/2`
+    - pred `ulookup/3`
+    - pred `semidet_ulookup/3`
+    - pred `unsafe_ulookup/3`
+    - func `uelem/2`
+    - func `unsafe_uelem/2`
+    - func `uset/3`
+    - pred `uset/4`
+    - pred `semidet_uset/4`
+    - pred `unsafe_uset/4`
+    - func `uelem :=/3`
+    - func `unsafe_uelem :=/3`
+    - pred `uswap/4`
+    - pred `unsafe_uswap/4`
+    - func `umin/1`
+    - pred `umin/2`
+    - func `umax/1`
+    - pred `umax/2`
+    - pred `ubounds/3`
+    - func `usize/1`
+    - pred `usize/2`
+    - pred `in_ubounds/2`
+    - func `uresize/3`
+    - pred `uresize/4`
+    - func `ushrink/2`
+    - pred `ushrink/3`
+    - pred `fill_urange/5`
+
+* The following predicates have been removed:
+
+    - pred `random_permutation/4`
+      (replacement: `random.shuffle_array/4` or `random.shuffle_array/5`)
+
+    - pred `sort_fix_2014/0`
+      (no replacement needed)
+
+* The following function has been marked obsolete:
+
+    - func `array_to_doc/1` (replacement: `pretty_printer.array_to_doc/1`)
+
+### Changes to the `bag` module
+
+* The following predicates and functions have been added:
+
+    - func `ucount/1`
+    - func `ucount_unique/1`
+    - func `ucount_value/2`
+    - pred `ucount_value/3`
+
+### Changes to the `benchmarking` module
+
+* The following predicates have been added:
+
+    - pred `full_memory_stats_are_available/0`
+    - pred `report_stats/3`
+    - pred `report_stats/4`
+    - pred `report_standard_stats/2`
+    - pred `report_standard_stats/3`
+    - pred `report_full_memory_stats/2`
+    - pred `report_full_memory_stats/3`
+    - pred `report_tabling_statistics/2`
+    - pred `report_tabling_statistics/3`
+
+* The following predicates have been marked obsolete:
+
+    - pred `report_stats/0`
+    - pred `report_full_memory_stats/0`
+
+### Changes to the `bitmap` module
+
+* The following predicates have been added:
+
+    - pred `num_bytes/2`
+    - pred `from_string/2`
+    - pred `read_bitmap/6`
+    - pred `read_bitmap/7`
+    - pred `read_bitmap_range/8`
+    - pred `read_bitmap_range/9`
+    - pred `write_bitmap/3`
+    - pred `write_bitmap/4`
+    - pred `write_bitmap_range/5`
+    - pred `write_bitmap_range/6`
+
+### Changes to the `bt_array` module
+
+* The following predicates have had the order of their arguments changed:
+
+    - pred `resize/4`
+    - pred `shrink/4`
+
+### Changes to the `builtin` module
+
+* The following obsolete predicate and function have been removed:
+
+    - func `promise_only_solution/1`
+    - pred `promise_only_solution_io/4`
+
+### Changes to the `char` module
+
+* The following type has had its typeclass memberships changed:
+
+    - The type `character` is now an instance of the new `uenum` typeclass.
+
+* The following predicate and functions have been added:
+
+    - func `to_uint/1`
+    - pred `from_uint/2`
+    - func `det_from_uint/1`
+
+* The following function has been marked obsolete:
+
+    - func `char_to_doc/1`   (replacement: `pretty_printer.char_to_doc/1`)
+
+### Changes to the `construct` module
+
+* The following predicates have been added:
+
+    - pred `num_functors/2`
+    - pred `get_functor_ordinal/3`
+    - pred `get_functor_lex/3`
+    - pred `construct/4`
+
+### Changes to the `cord` module
+
+* The following predicates have been added:
+
+    - pred `is_non_empty/1`
+    - pred `foldr2/6`
+    - pred `foldr3/8`
+    - pred `head/2`
+    - pred `is_singleton/2`
+    - pred `cons_list/2`
+    - pred `snoc_list/2`
+
+### Changes to the `counter` module
+
+* The following type has been added:
+
+    - type `ucounter/0`
+
+* The following predicate and function have been added:
+
+    - func `uinit/1`
+    - pred `uinit/2`
+    - pred `uallocate/1`
+
+### Changes to the `diet` module
+
+* The following functions and predicates have been added:
+
+    - func `from_sorted_list/1`
+    - pred `nondet_member/2`
+    - func `ucount/1`
+
+* The following obsolete predicate has been removed:
+
+    - pred `empty/1`
+
+### Changes to the `digraph` module
+
+* The following type has had its typeclass memberships changed:
+
+    - The `digraph_key(T)` type is now an instance of the `uenum` typeclass,
+      and is no longer an instance of the `enum` typeclass.
+
+* The following predicates and functions have been added:
+
+    - func `symmetric_closure/1`            (synonym for `sc/1`)
+    - func `transitive_closure/1`           (synonym for `tc/1`)
+    - func `reflexive_transitive_closure/1` (synonym for `rtc/1`)
+    - pred `reachable_vertices_from/3`
+
+* We have improved the implementations of transitive closure and reflexive
+  transitive closure.
+
+### New `edit_distance` module
+
+* This new module defines operations that, when given a query sequence
+  and a set of candidate sequences, finds out which candidate sequence
+  is closest to the query sequence, in terms of the configurable `distances`
+  added by operations such as inserting or replacing elements in sequences.
+
+### Changes to the `edit_seq` module
+
+* This module deals with many integers, including row numbers, column numbers,
+  and operation costs, that cannot be negative. To ensure that this restriction
+  is enforced automatically, we have changed the types of all these integers
+  from `int` to `uint`.
+
+### Changes to the `enum` module
+
+* The following typeclass has been modified:
+
+    - The `enum/1` typeclass has had its `from_int` method changed from a
+      semidet function of arity one (plus the return value) to a semidet
+      predicate of arity two.
+
+* The following typeclass has been added:
+
+    - typeclass `uenum/1`
+
+* The following functions have been added:
+
+    - func `from_int/1`                 (replaces class method; born obsolete)
+    - func `det_from_uint/1`
+
+### Changes to the `fat_sparse_bitset` module
+
+* The following type has had its typeclass memberships changed:
+
+    - The `fat_sparse_bitset(T)` type now requires `T` to be an instance of the
+     `uenum` typeclass, replacing the earlier requirement that it be
+     a member of the `enum` typeclass.
+
+* The documentation of the following predicates and functions have been
+  clarified:
+
+    - func `sorted_list_to_set/1`
+    - pred `sorted_list_to_set/2`
+
+* The following functions and predicates have been added:
+
+    - func `from_list/1`
+    - func `from_sorted_list/1`
+    - func `ucount/1`
+    - pred `nondet_member/1`
+
+* The following obsolete predicate has been removed:
+
+    - pred `empty/1`
+
+### New `fatter_sparse_bitset` module
+
+* This new module defines a more compact version of the data structure
+  defined by the `fat_sparse_bitset` module, and implements the same set of
+  operations on this data structure.
+
+### Changes to the `float` module
+
+* The following function has been marked obsolete:
+
+    - func `float_to_doc/1`     (replacement: `pretty_printer.float_to_doc/1`)
+
+### Changes to the `getopt` module
+
+* The following predicates have been added:
+
+    - pred `recognize_options/8`
+    - pred `recognize_all_options/8`
+
+* The following predicate has been marked obsolete:
+
+    - pred `record_arguments/8` (replacement: `getopt.recognize_options/8`)
+
+### Changes to the `hash_table` module
+
+* The following predicate has been added:
+
+    - pred `lookup/3`
+
+* The following obsolete predicates have been removed:
+
+    - pred `char_hash/2`
+    - pred `float_hash/2`
+    - pred `generic_hash/2`
+    - pred `int_hash/2`
+    - pred `string_hash/2`
+    - pred `uint_hash/2`
+
+### Changes to the `injection` module
+
+* The following predicates have had the order of their arguments changed:
+
+    - pred `det_insert/4`
+    - pred `det_set/4`
+    - pred `det_update/4`
+    - pred `insert/4`
+    - pred `set/4`
+    - pred `update/4`
+
+### Changes to the `int` module
+
+* The following type has had its typeclass memberships changed:
+
+    - The type `int` is now an instance of the new `uenum` typeclass.
+
+* The following predicates and functions have been added:
+
+    - func `<<u/2`
+    - func `>>u/2`
+    - func `unchecked_left_ushift/2`
+    - func `unchecked_right_ushift/2`
+    - func `ubits_per_int/0`
+    - pred `ubits_per_int/1`
+
+* The following function has been marked obsolete:
+
+    - func `int_to_doc/1`    (replacement: `pretty_printer.int_to_doc/1`)
+
+### Changes to the `int8` module
+
+* The following functions have been added:
+
+    - func `<<u/2`
+    - func `>>u/2`
+    - func `unchecked_left_ushift/2`
+    - func `unchecked_right_ushift/2`
+
+* The following function has been marked obsolete:
+
+    - func `int8_to_doc/1`   (replacement: `pretty_printer.int8_to_doc/1`)
+
+### Changes to the `int16` module
+
+* The following functions have been added:
+
+    - func `<<u/2`
+    - func `>>u/2`
+    - func `unchecked_left_ushift/2`
+    - func `unchecked_right_ushift/2`
+
+* The following function has been marked obsolete:
+
+    - func `int16_to_doc/1`  (replacement: `pretty_printer.int16_to_doc/1`)
+
+### Changes to the `int32` module
+
+* The following functions have been added:
+
+    - func `<<u/2`
+    - func `>>u/2`
+    - func `clamp/3`
+    - func `unchecked_left_ushift/2`
+    - func `unchecked_right_ushift/2`
+
+* The following function has been marked obsolete:
+
+    - func `int32_to_doc/1`  (replacement: `pretty_printer.int32_to_doc/1`)
+
+### Changes to the `int64` module
+
+* The following functions have been added:
+
+    - func `<<u/2`
+    - func `>>u/2`
+    - func `unchecked_left_ushift/2`
+    - func `unchecked_right_ushift/2`
+
+* The following function has been marked obsolete:
+
+    - func `int64_to_doc/1`  (replacement: `pretty_printer.int64_to_doc/1`)
+
+### Changes to the `io` module
+
+* The following predicates and functions have been added:
+
+    - pred `make_io_error_from_system_error/5`
+    - pred `make_io_error_from_windows_error/5`
+    - pred `get_errno_error/2`
+    - pred `get_exception_object_error/2`
+    - pred `get_system_error/2`
+    - pred `get_system_error_name/2`
+    - pred `get_windows_error/2`
+    - func `init_posn/0`
+    - pred `read_file_as_string_wf/3`
+    - pred `read_file_as_string_wf/4`
+    - pred `read_file_as_string_and_num_code_units_wf/3`
+    - pred `read_file_as_string_and_num_code_units_wf/4`
+    - pred `read_named_file_as_string_wf/4`
+    - pred `read_named_file_as_lines_wf/4`
+    - pred `system_error_is_success/1`
+    - pred `write_binary_string_utf8/3`
+    - pred `write_binary_string_utf8/4`
+    - pred `write_prefixed_lines/4`
+    - pred `write_prefixed_lines/5`
+
+* The following obsolete predicates have been removed:
+
+    - pred `see/3`                  (replacement: `prolog.see/3`)
+    - pred `see_binary/3`           (replacement: `prolog.see_binary/3`)
+    - pred `seen/2`                 (replacement: `prolog.seen/2`)
+    - pred `seen_binary/2`          (replacement: `prolog.seen_binary/2`)
+    - pred `tell/4`                 (replacement: `prolog.tell/4`)
+    - pred `tell_binary/4`          (replacement: `prolog.tell_binary/4`)
+    - pred `told/2`                 (replacement: `prolog.told/2`)
+    - pred `told_binary/2`          (replacement: `prolog.told_binary/2`)
+
+* The following predicates have been marked obsolete:
+
+    - pred `read_bitmap/6`          (replacement: `bitmap.read_bitmap/6`)
+    - pred `read_bitmap/7`          (replacement: `bitmap.read_bitmap/7`)
+    - pred `read_bitmap/8`          (replacement: `bitmap.read_bitmap_range/8`)
+    - pred `read_bitmap/9`          (replacement: `bitmap.read_bitmap_range/9`)
+    - pred `write_bitmap/3`         (replacement: `bitmap.write_bitmap/3`)
+    - pred `write_bitmap/4`         (replacement: `bitmap.write_bitmap/4`)
+    - pred `write_bitmap/5`         (replacement: `bitmap.write_bitmap_range/5`)
+    - pred `write_bitmap/6`         (replacement: `bitmap.write_bitmap_range/6`)
+
+    - pred `report_stats/3`
+            (replacement: `benchmarking.report_stats/3`)
+    - pred `report_stats/4`
+            (replacement: `benchmarking.report_stats/4`)
+    - pred `report_standard_stats/2`
+            (replacement: `benchmarking.report_standard_stats/2`)
+    - pred `report_standard_stats/3`
+            (replacement: `benchmarking.report_standard_stats/3`)
+    - pred `report_full_memory_stats/2`
+            (replacement: `benchmarking.report_full_memory_stats/2`)
+    - pred `report_full_memory_stats/3`
+            (replacement: `benchmarking.report_full_memory_stats/3`)
+    - pred `report_tabling_statistics/2`
+            (replacement: `benchmarking.report_tabling_statistics/2`)
+    - pred `report_tabling_statistics/3`
+            (replacement: `benchmarking.report_tabling_statistics/3`)
+
+    - pred `remove_file/4`
+            (replacement: `io.file.remove_file/4`)
+    - pred `remove_file_recursively/4`
+            (replacement: `io.file.remove_file_recursively/4`)
+    - pred `rename_file/5`
+            (replacement: `io.file.rename_file/5`)
+    - pred `have_symlinks/0`
+            (replacement: `io.file.have_symlinks/0`)
+    - pred `make_symlink/5`
+            (replacement: `io.file.make_symlink/5`)
+    - pred `read_symlink/4`
+            (replacement: `io.file.read_symlink/4`)
+    - pred `check_file_accessibility/5`
+            (replacement: `io.file.check_file_accessibility/5`)
+    - pred `file_type/5`
+            (replacement: `io.file.file_type/5`)
+    - pred `file_modification_time/4`
+            (replacement: `io.file.file_modification_time/4`)
+    - pred `make_temp_file/3`
+            (replacement: `io.file.make_temp_file/3`)
+    - pred `make_temp_file/6`
+            (replacement: `io.file.make_temp_file/6`)
+    - pred `make_temp_directory/3`
+            (replacement: `io.file.make_temp_directory/3`)
+    - pred `make_temp_directory/6`
+            (replacement: `io.file.make_temp_directory/6`)
+    - pred `have_make_temp_directory/0`
+            (replacement: `io.file.have_make_temp_directory/0`)
+    - pred `get_temp_directory/3`
+            (replacement: `io.file.get_temp_directory/3`)
+
+    - pred `get_environment_var/4`
+            (replacement: `io.environment.get_environment_var/4`)
+    - pred `set_environment_var/5`
+            (replacement: `io.environment.set_environment_var/5`)
+    - pred `set_environment_var/4`
+            (replacement: `io.environment.set_environment_var/4`)
+    - pred `have_set_environment_var/0`
+            (replacement: `io.environment.have_set_environment_var/0`)
+    - pred `get_environment_var_map/3`
+            (replacement: `io.environment.get_environment_var_map/3`)
+
+    - pred `call_system/4`
+            (replacement: `io.call_system.call_system/4`)
+    - pred `call_system_return_signal/4`
+            (replacement: `io.call_system.call_system_return_signal/4`)
+
+    - pred `get_globals/3`          (replacement: a user-defined mutable)
+    - pred `set_globals/3`          (replacement: a user-defined mutable)
+    - pred `update_globals/3`       (replacement: a user-defined mutable)
+
+    - pred `input_stream_foldl/5`
+           (replacement: `stream.input_stream_fold/6`)
+    - pred `input_stream_fold/6`
+           (replacement: `stream.input_stream_fold/6`)
+    - pred `input_stream_foldl_io/4`
+           (replacement: `stream.input_stream_fold_state/5`)
+    - pred `input_stream_foldl_io/5`
+           (replacement: `stream.input_stream_fold_state/5`)
+    - pred `input_stream_foldl2_io/5`
+           (replacement: `stream.input_stream_foldl_state/6`)
+    - pred `input_stream_foldl2_io/6`
+           (replacement: `stream.input_stream_fold_state/6`)
+    - pred `input_stream_foldl2_io_maybe_stop/5`
+           (replacement: `stream.input_stream_fold2_state_maybe_stop/6`)
+    - pred `binary_input_stream_foldl/5`
+           (replacement: `stream.input_stream_fold/6`)
+    - pred `binary_input_stream_foldl/6`
+           (replacement: `stream.input_stream_fold/6`)
+    - pred `binary_input_stream_foldl_io/4`
+           (replacement: `stream.input_stream_fold_state/5`)
+    - pred `binary_input_stream_foldl2_io/5`
+           (replacement: `stream.input_stream_fold2_state/6`)
+    - pred `binary_input_stream_foldl2_io/6`
+           (replacement: `stream.input_stream_fold2_state/6`)
+    - pred `binary_input_stream_foldl2_io_maybe_stop/5`
+           (replacement: `stream.input_stream_fold2_state_maybe_stop/6`)
+    - pred `binary_input_stream_foldl2_io_maybe_stop/6`
+           (replacement: `stream.input_stream_fold2_state_maybe_stop/6`)
+
+### New `io.call_system` module
+
+* This new module has these predicates and functions:
+
+    - pred `call_system/4`
+    - pred `call_system_return_signal/4`
+    - func `decode_system_command_exit_code/1`
+
+### New `io.environment` module
+
+* This new module has these predicates:
+
+    - pred `get_environment_var/4`
+    - pred `set_environment_var/5`
+    - pred `set_environment_var/4`
+    - pred `have_set_environment_var/0`
+    - pred `get_environment_var_map/3`
+
+### New `io.file` module
+
+* This new module has these predicates:
+
+    - pred `remove_file/4`
+    - pred `remove_file_recursively/4`
+    - pred `rename_file/5`
+    - pred `have_symlinks/0`
+    - pred `make_symlink/5`
+    - pred `read_symlink/4`
+    - pred `check_file_accessibility/5`
+    - pred `file_type/5`
+    - pred `file_modification_time/4`
+    - pred `make_temp_file/3`
+    - pred `make_temp_file/6`
+    - pred `make_temp_directory/3`
+    - pred `make_temp_directory/6`
+    - pred `have_make_temp_directory/0`
+    - pred `get_temp_directory/3`
+
+### Changes to the `library` module
+
+* The following functions have been added:
+
+    - func `architecture/0`
+    - func `mercury_version/0`
+    - func `package_version/0`
+
+### Changes to the `list` module
+
+* The following predicates and functions have been added:
+
+    - pred `chunk_foldl/5`
+    - pred `chunk_foldl2/7`
+    - pred `chunk_foldl3/9`
+    - pred `chunk_foldl4/11`
+    - pred `gap_foldl/5`
+    - pred `head/2`
+    - pred `tail/2`
+    - pred `det_head/2`
+    - pred `det_tail/2`
+    - func `inst_preserving_condense/1`
+    - func `intersect/2`
+    - pred `intersect/3`
+    - func `intersect_lists/1`
+    - pred `intersect_lists/2`
+    - pred `intersperse/3`
+    - pred `intersperse_list/3`
+    - pred `intersperse_list_last/4`
+    - pred `is_non_empty/1`
+    - pred `is_singleton/2`
+    - pred `last_gap_foldl/6`
+    - func `map_corresponding4/5`
+    - pred `map_corresponding4/6`
+    - func `merge_lists/1`
+    - func `merge_lists/2`
+    - pred `merge_lists/2`
+    - pred `merge_lists/3`
+    - func `merge_lists_and_remove_dups/1`
+    - func `merge_lists_and_remove_dups/2`
+    - pred `merge_lists_and_remove_dups/2`
+    - pred `merge_lists_and_remove_dups/3`
+    - pred `nondet_member/2`
+    - pred `remove_prefix/3`
+    - func `take_while_not/2`
+    - pred `take_while_not/3`
+    - pred `take_while_not/4`
+    - func `ulength/1`
+    - pred `ulength/2`
+
+* The following function has been marked obsolete:
+
+    - func `list_to_doc/1`  (replacement: `pretty_printer.list_to_doc/1`)
+
+### Changes to the `map` module
+
+* The following predicates and functions have been added:
+
+    - pred `is_non_empty/1`
+    - pred `max_key/2`
+    - pred `min_key/2`
+    - pred `compose_maps/3`
+    - pred `sorted_keys_match/2`
+    - func `ucount/1`
+    - pred `ucount/2`
+
+* We have added `cc_multi` versions of many of the higher-order predicates in
+  this module.
+
+### Changes to the `mercury_term_lexer` module
+
+* The representation type of the tokens returned has been tightened.
+  Previously, the documented type of tokens contained two function symbols
+  that were needed only by the implementation of the lexer, and could
+  never be returned in the generated token lists. The new definition
+  differs from the old one only in the fact that it omits these two
+  function symbols.
+
+### Changes to the `multi_map` module
+
+* The following predicates and functions have been added:
+
+    - func `all_ucount/1`
+    - pred `all_ucount/2`
+    - func `get_values_for_key/2`
+    - func `ucount/1`
+    - pred `ucount/2`
+
+### Changes to the `one_or_more` module
+
+* The following predicates and functions have been added:
+
+    - pred `is_non_empty/1`
+    - pred `nondet_member/2`
+    - func `ulength/1`
+    - pred `ulength/2`
+
+* The following function has been marked obsolete:
+
+    - func `one_or_more_to_doc/1`
+                        (replacement: `pretty_printer.one_or_more_to_doc/1`)
+
+### Changes to the `one_or_more_map` module
+
+* The following predicates and functions have been added:
+
+    - func `all_ucount/1`
+    - pred `all_ucount/2`
+    - func `get_values_for_key/2`
+    - func `reverse_add/3`
+    - pred `reverse_add/4`
+    - func `ucount/1`
+    - pred `ucount/2`
+
+### Changes to the `ops` module
+
+* The representation of operator priorities has been changed. Priorities
+  used to be represented as signed integers between 0 and 1200, with
+  higher numbers representing operators that bind less tightly.
+  Priorities are now represented using unsigned integers between 0u and 1500u,
+  with higher numbers representing operators that bind more tightly.
+  To guard against priorities being unintentionally confused with
+  other kinds of numbers, they are now wrapped in the `prio` function symbol.
+
+* The representation of the set of operators that a string may represent
+  has been changed. Operator tables used to map each operator string
+  (such as "-") to a list of operator descriptions, each of which could be
+  infix, binary prefix, prefix or postfix. This allowed a table entry
+  to declare an operator string to be e.g. an infix operator using
+  two separate entries, with different priorities. Operator tables now map
+  each operator string to a structure which has
+
+  - one slot for a description of an infix operator,
+  - one slot for a description of a binary prefix operator,
+  - one slot for a description of a unary prefix operator, and
+  - one slot for a description of a unary postfix operator.
+
+  Besides making some nonsensical entries that could exist in old op tables
+  unrepresentable, the new op table also allows users of operator information
+  to test more simply and quickly whether an operator string represents
+  e.g. a prefix operator.
+
+* The `assoc` type has been renamed to `arg_prio_gt_or_ge`, which
+  reflects its semantics. Its function symbols `x` and `y` have been
+  renamed to `arg_gt` and `arg_ge` respectively.
+
+* The list of methods in the `op_table` type class has been changed.
+
+ - The method `max_priority/1` has been replaced by the method
+   `loosest_op_priority/1`.
+
+ - The method `lookup_op/2` has been renamed to `is_op/2`.
+
+ - The new method `universal_priority/1` has been added. It is intended to
+   replace uses of `max_priority + 1` to denote a context that accept terms
+   using any operator, regardless of its priority.
+
+ - The new method `tightest_op_priority/1` has been added. It is intended to
+   replace uses of the integer constant `0` as a priority.
+
+ - The new method `comma_priority/1` has been added. It is intended to denote
+   the priority of the comma character, which separates term arguments,
+   when used as an operator.
+
+ - The argument types of the `lookup_op_infos/2` method have been changed.
+
+* The following predicates and functions have been added:
+
+    - func `decrement_priority/1`
+    - func `increment_priority/1`
+    - func `mercury_op_table_arg_priority/0`
+    - func `mercury_op_table_comma_priority/0`
+    - func `mercury_op_table_loosest_op_priority/0`
+    - func `mercury_op_table_tightest_op_priority/0`
+    - func `mercury_op_table_universal_priority/0`
+    - pred `mercury_op_table_binary_prefix_op/5`
+    - pred `mercury_op_table_infix_op/5`
+    - pred `mercury_op_table_lookup_operator_term/3`
+    - pred `mercury_op_table_postfix_op/4`
+    - pred `mercury_op_table_prefix_op/4`
+    - pred `mercury_op_table_search_binary_prefix_op/4`
+    - pred `mercury_op_table_search_infix_op/4`
+    - pred `mercury_op_table_search_op/1`
+    - pred `mercury_op_table_search_op_infos/3`
+    - pred `mercury_op_table_search_postfix_op/3`
+    - pred `mercury_op_table_search_prefix_op/3`
+    - func `min_priority_for_arg/2`
+    - pred `priority_ge/2`
+    - pred `priority_gt/2`
+    - pred `priority_le/2`
+    - pred `priority_lt/2`
+
+* The following predicates have been renamed:
+
+    - pred `mercury_op_table_prefix_op/5` to    `op_infos_prefix_op/5`
+    - pred `mercury_op_table_binary_prefix_op/5` to
+                                                `op_infos_binary_prefix_op/5`
+    - pred `mercury_op_table_infix_op/5` to     `op_infos_infix_op/5`
+    - pred `mercury_op_table_postfix_op/5` to   `op_infos_postfix_op/5`
+
+### Changes to the `pqueue` module
+
+* The following predicate has been added:
+
+    - pred `map_values/3`
+
+### Changes to the `pretty_printer` module
+
+* The following predicates and functions have been added:
+
+    - func `array_to_doc/1`
+    - func `char_to_doc/1`
+    - func `float_to_doc/1`
+    - func `get_formatter_map_entry_types/1`
+    - func `int_to_doc/1`
+    - func `int8_to_doc/1`
+    - func `int16_to_doc/1`
+    - func `int32_to_doc/1`
+    - func `int64_to_doc/1`
+    - func `list_to_doc/1`
+    - func `one_or_more_to_doc/1`
+    - func `string_to_doc/1`
+    - func `tree234_to_doc/1`
+    - func `uint_to_doc/1`
+    - func `uint8_to_doc/1`
+    - func `uint16_to_doc/1`
+    - func `uint32_to_doc/1`
+    - func `uint64_to_doc/1`
+    - func `version_array_to_doc/1`
+    - pred `write_doc_formatted/3`
+    - pred `write_doc_formatted/4`
+
+### Changes to the `prolog` module
+
+* The following predicate has been deleted:
+
+    - pred `is/2`
+
+### New `ra_list` module
+
+* This new module contains operations on random access lists.
+
+### Changes to the `random` module
+
+* The old random number generator has been removed. It has been replaced by the
+  new type class random number generation framework defined in this module.
+  As a result, the following predicates have been removed:
+
+    - pred `init/2`
+    - pred `random/3`
+    - pred `random/5`
+    - pred `randmax/3`
+    - pred `randcount/3`
+    - pred `permutation/4`
+            (replacement: `random.shuffle_list/4` or `random.shuffle_list/5`)
+
+### Changes to the `ranges` module
+
+* The following predicate has had the order of its arguments changed:
+
+    - pred `nondet_member/2`
+
+* The following predicates and functions have been added:
+
+    - func `make_singleton_set/1`
+    - pred `is_singleton/2`
+    - pred `contains/2`
+    - func `count/1`
+    - pred `delete/3`
+    - pred `delete_list/3`
+    - pred `difference/3`
+    - func `intersect/2`
+    - pred `intersect/3`
+    - pred `insert_list/3`
+    - func `list_to_ranges/1`
+    - pred `list_to_ranges/2`
+    - pred `nondet_range_member/3`
+    - pred `restrict_min/3`
+    - pred `restrict_max/3`
+    - pred `restrict_range/4`
+    - pred `search_range/4`
+    - func `set_to_ranges/1`
+    - pred `set_to_ranges/2`
+    - func `ucount/1`
+    - pred `union/3`
+
+* The following function and predicate have been marked obsolete:
+
+    - func `intersection/2` (replacement: `intersect/2`)
+    - pred `range_member/3` (replacement: `nondet_range_member`/3)
+
+### Changes to the `rbtree` module
+
+* The following predicates and functions have been added:
+
+    - func `foldr/3`
+    - pred `foldr/4`
+    - pred `foldr2/6`
+    - pred `foldr_values/4`
+    - func `ucount/1`
+    - pred `ucount/2`
+
+### Changes to the `set` module
+
+* The following predicates and functions have been added:
+
+    - pred `map2_fold/6`
+    - pred `nondet_member/2`
+    - func `ucount/1`
+    - pred `ucount/2`
+
+* The following obsolete predicates and function have been removed:
+
+    - pred `empty/1`
+    - pred `non_empty/1`
+    - func `set/1`
+
+### Changes to the `set_bbbtree` module
+
+* The following predicates and functions have been added:
+
+    - pred `nondet_member/2`
+    - func `ucount/1`
+    - pred `ucount/2`
+
+* The following obsolete predicates have been removed:
+
+    - pred `empty/1`
+    - pred `non_empty/1`
+    - pred `nondet_member/2`
+
+### Changes to the `set_ctree234` module
+
+* The following predicates and functions have been added:
+
+    - func `from_sorted_list/1`
+    - pred `nondet_member/2`
+    - pred `power_intersect/2`
+    - func `ucount/1`
+
+* The following predicate has been marked obsolete:
+
+    - pred `one_member/2` (replacement: `nondet_member/2`)
+
+* The following obsolete predicates have been removed:
+
+    - pred `empty/1`
+    - pred `non_empty/1`
+
+### Changes to the `set_ordlist` module
+
+* The following predicates and functions have been added:
+
+    - pred `nondet_member/2`
+    - func `ucount/1`
+    - pred `ucount/2`
+
+* The following obsolete predicates have been removed:
+
+    - pred `empty/1`
+    - pred `non_empty/1`
+
+### Changes to the `set_tree234` module
+
+* The following predicates and functions have been added:
+
+    - func `from_sorted_list/1`
+    - pred `nondet_member/2`
+    - func `ucount/1`
+
+* The following obsolete predicates have been removed:
+
+    - pred `empty/1`
+    - pred `non_empty/1`
+
+### Changes to the `set_unordlist` module
+
+* We have changed the behaviour of the `(out, in) is nondet` mode of the
+  predicate `member/2` so that it does not return any element of the set more
+  than once.
+
+* The following predicates and functions have been added:
+
+    - pred `nondet_member/2`
+    - func `ucount/1`
+    - pred `ucount/2`
+
+* The following obsolete predicates have been removed:
+
+    - pred `empty/1`
+    - pred `non_empty/1`
+
+### Changes to the `sparse_bitset` module
+
+* The following type has had its typeclass memberships changed:
+
+    - The `sparse_bitset(T)` type now requires `T` to be an instance of the
+      `uenum` typeclass, replacing the earlier requirement that it be
+      a member of the `enum` typeclass.
+
+* The following predicates and functions have been added:
+
+    - func `from_list/1`
+    - func `from_sorted_list/1`
+    - pred `nondet_member/2`
+    - func `ucount/1`
+
+* The following obsolete predicate has been removed:
+
+    - pred `empty/1`
+
+* The documentation of the following predicates and functions have been
+  clarified:
+
+    - func `sorted_list_to_set/1`
+    - pred `sorted_list_to_set/2`
+
+### Changes to the `std_util` module
+
+* We have changed the behaviour of `pow/3` so that it throws an exception
+  if it is called with a negative integer as its second argument.
+
+### Changes to the `string` module
+
+* The following predicates and functions have been added:
+
+    - func `add_prefix/2`
+    - func `between_code_points/3`
+    - pred `between_code_points/4`
+    - pred `check_well_formedness/2`
+    - pred `code_point_offset/3`
+    - pred `code_point_offset/4`
+    - pred `contains_match/2`
+    - func `count_code_points/1`
+    - pred `count_code_points/2`
+    - pred `find_first_char/3`
+    - pred `find_first_char_start/4`
+    - pred `find_last_char/3`
+    - func `internal_string_encoding/0`
+    - func `left_by_code_point/2`
+    - pred `left_by_code_point/3`
+    - func `right_by_code_point/2`
+    - pred `right_by_code_point/3`
+    - pred `split_by_code_point/3`
+    - pred `split_by_code_point/4`
+    - pred `replace_all_sv/4`
+    - pred `unsafe_find_first_char_start/4`
+
+* The following obsolete modes have been removed from the following predicates:
+
+    - pred `to_char_list(uo, in)`
+    - pred `to_rev_char_list(in, out)`
+    - pred `append(out, out, in)`
+    - pred `prefix(in, out)`
+    - pred `suffix(in, out)`
+
+* The following predicates and functions have been marked obsolete:
+
+    - func `string_to_doc/1`
+                            (replacement: `pretty_printer.string_to_doc/1`)
+    - func `between_codepoints/3`    (replacement: `between_code_points/3`)
+    - pred `between_codepoints/4`    (replacement: `between_code_points/4`)
+    - pred `codepoint_offset/3`      (replacement: `code_point_offset/3`)
+    - pred `codepoint_offset/4`      (replacement: `code_point_offset/4`)
+    - func `count_codepoints/1`      (replacement: `count_code_points/1`)
+    - pred `count_codepoints/2`      (replacement: `count_code_points/2`)
+    - func `left_by_codepoint/2`     (replacement: `left_by_code_point/2`)
+    - pred `left_by_codepoint/3`     (replacement: `left_by_code_point/3`)
+    - func `right_by_codepoint/2`    (replacement: `right_by_code_point/2`)
+    - pred `right_by_codepoint/3`    (replacement: `right_by_code_point/3`)
+    - pred `split_by_codepoint/3`    (replacement: `split_by_code_point/3`)
+    - pred `split_by_codepoint/4`    (replacement: `split_by_code_point/4`)
+
+* The semantics of the `format_table_max` function has been changed.
+  Previously, the function's documentation was silent on how the returned
+  string would be constructed if some columns contained strings that exceeded
+  that column's maximum width. What it actually did was to split the line
+  at the end of the too-long columns, continuing the row in the next line
+  at the expected initial column. Since splitting the line is probably not
+  what users of this function expect, we have now changed this function
+  to never break a row into more than one line. We have also documented
+  this behavior.
+
+### Changes to the `string.builder` module
+
+* The following predicates and functions have been added:
+
+    - pred `append_char/3`
+    - pred `append_string/3`
+    - pred `append_strings/3`
+    - pred `append_strings_sep/4`
+    - pred `format/4`
+    - func `total_num_code_points/1`
+    - pred `total_num_code_points_is_at_most/2`
+
+### Changes to the `term` module
+
+* The following type has had its typeclass memberships changed:
+
+    - The type `var/1` is now an instance of the new `uenum` typeclass.
+
+* The following predicates have been marked obsolete:
+
+    - pred `generic_term/1`
+            (replacement: `with_type` annotations on expressions)
+
+    - pred `decimal_term_to_int/2`
+            (replacement: `term_int.decimal_term_to_int/2`)
+    - pred `term_to_int/2`
+            (replacement: `term_int.term_to_int/2`)
+    - pred `term_to_int8/2`
+            (replacement: `term_int.term_to_int8/2`)
+    - pred `term_to_int16/2`
+            (replacement: `term_int.term_to_int16/2`)
+    - pred `term_to_int32/2`
+            (replacement: `term_int.term_to_int32/2`)
+    - pred `term_to_int64/2`
+            (replacement: `term_int.term_to_int64/2`)
+    - pred `term_to_uint/2`
+            (replacement: `term_int.term_to_uint/2`)
+    - pred `term_to_uint8/2`
+            (replacement: `term_int.term_to_uint8/2`)
+    - pred `term_to_uint16/2`
+            (replacement: `term_int.term_to_uint16/2`)
+    - pred `term_to_uint32/2`
+            (replacement: `term_int.term_to_uint32/2`)
+    - pred `term_to_uint64/2`
+            (replacement: `term_int.term_to_uint64/2`)
+    - func `int_to_decimal_term/2`
+            (replacement: `term_int.int_to_decimal_term/2`)
+    - func `int8_to_decimal_term/2`
+            (replacement: `term_int.int8_to_decimal_term/2`)
+    - func `int16_to_decimal_term/2`
+            (replacement: `term_int.int16_to_decimal_term/2`)
+    - func `int32_to_decimal_term/2`
+            (replacement: `term_int.int32_to_decimal_term/2`)
+    - func `int64_to_decimal_term/2`
+            (replacement: `term_int.int64_to_decimal_term/2`)
+    - func `uint_to_decimal_term/2`
+            (replacement: `term_int.uint_to_decimal_term/2`)
+    - func `uint8_to_decimal_term/2`
+            (replacement: `term_int.uint8_to_decimal_term/2`)
+    - func `uint16_to_decimal_term/2`
+            (replacement: `term_int.uint16_to_decimal_term/2`)
+    - func `uint32_to_decimal_term/2`
+            (replacement: `term_int.uint32_to_decimal_term/2`)
+    - func `uint64_to_decimal_term/2`
+            (replacement: `term_int.uint64_to_decimal_term/2`)
+
+    - pred `occurs/3`
+            (replacement: `term_subst.var_occurs_in_subst_term/2`)
+    - pred `occurs_list/3`
+            (replacement: `term_subst.var_occurs_in_subst_terms/2`)
+    - pred `is_ground/1`
+            (replacement: `term_subst.term_is_ground/1`)
+    - pred `is_ground_in_bindings/2`
+            (replacement: `term_subst.term_is_ground_in_bindings/2`)
+    - pred `rename_var_in_term/4`
+            (replacement: `term_subst.rename_var_in_term/4`)
+    - pred `rename_var_in_terms/4`
+            (replacement: `term_subst.rename_var_in_terms/4`)
+    - pred `apply_renaming_in_var/3`
+            (replacement: `term_subst.apply_renaming_in_var/3`)
+    - pred `apply_renaming_in_vars/3`
+            (replacement: `term_subst.apply_renaming_in_vars/3`)
+    - pred `apply_renaming_in_term/3`
+            (replacement: `term_subst.apply_renaming_in_term/3`)
+    - pred `apply_renaming_in_terms/3`
+            (replacement: `term_subst.apply_renaming_in_terms/3`)
+    - pred `substitute_var_in_term/4`
+            (replacement: `term_subst.substitute_var_in_term/4`)
+    - pred `substitute_var_in_terms/4`
+            (replacement: `term_subst.substitute_var_in_terms/4`)
+    - pred `substitute_corresponding_in_term/3`
+            (replacement: `term_subst.substitute_corresponding_in_term/3`)
+    - pred `substitute_corresponding_in_terms/3`
+            (replacement: `term_subst.substitute_corresponding_in_terms/3`)
+    - pred `apply_substitution_in_term/3`
+            (replacement: `term_subst.apply_substitution_in_term/3`)
+    - pred `apply_substitution_in_terms/3`
+            (replacement: `term_subst.apply_substitution_in_terms/3`)
+    - pred `apply_rec_substitution_in_term/3`
+            (replacement: `term_subst.apply_rec_substitution_in_term/3`)
+    - pred `apply_rec_substitution_in_terms/3`
+            (replacement: `term_subst.apply_rec_substitution_in_terms/3`)
+    - func `term_list_to_var_list/2`
+            (replacement: `term_subst.term_list_to_var_list/1`)
+    - pred `term_list_to_var_list/2`
+            (replacement: `term_subst.term_list_to_var_list/2`)
+    - func `var_list_to_term_list/2`
+            (replacement: `term_subst.var_list_to_term_list/1`)
+    - pred `var_list_to_term_list/2`
+            (replacement: `term_subst.var_list_to_term_list/2`)
+
+    - pred `unify_term/4`
+            (replacement: `term_unify.unify_terms/4`)
+    - pred `unify_term_list/4`
+            (replacement: `term_unify.unify_term_lists/4`)
+    - pred `unify_term_dont_bind/5`
+            (replacement: `term_unify.unify_terms_dont_bind/5`)
+    - pred `unify_term_list_dont_bind/5`
+            (replacement: `term_unify.unify_term_lists_dont_bind/5`)
+    - pred `list_subsumes/3`
+            (replacement: `term_unify.first_term_list_subsumes_second/3`)
+
+    - func `vars/1`
+            (replacement: `term_vars.vars_in_term/1`)
+    - pred `vars/2`
+            (replacement: `term_vars.vars_in_term/2`)
+    - func `vars_2/2`
+            (replacement: `term_vars.vars_in_term_acc/3`)
+    - pred `vars_2/3`
+            (replacement: `term_vars.vars_in_term_acc/3`)
+    - func `vars_list/1`
+            (replacement: `term_vars.vars_in_terms/1`)
+    - pred `vars_list/2`
+            (replacement: `term_vars.vars_in_terms/2`)
+    - pred `contains_var/2`
+            (replacement: `term_vars.term_contains_var/2`)
+    - pred `contains_var_list/2`
+            (replacement: `term_vars.terms_contain_var/2`)
+
+    - func `context_init/2`
+            (replacement: `term_context.context_init/2`)
+    - pred `context_init/3`
+            (replacement: `term_context.context_init/2`)
+    - func `context_init/0`
+            (replacement: `term_context.dummy_context/0`)
+    - pred `context_init/1`
+            (replacement: `term_context.dummy_context/0`)
+    - func `dummy_context_init/0`
+            (replacement: `term_context.dummy_context/0`)
+    - pred `is_dummy_context/1`
+            (replacement: `term_context.is_dummy_context/1`)
+    - func `context_file/1`
+            (replacement: `term_context.context_file/1`)
+    - pred `context_file/2`
+            (replacement: `term_context.context_file/1`)
+    - func `context_line/1`
+            (replacement: `term_context.context_line/1`)
+    - pred `context_line/2`
+            (replacement: `term_context.context_line/1`)
+
+### New `term_context` module
+
+* This new module defines the `term_context` type, and contains predicates
+  and functions that operate on that type.
+
+### New `term_int` module
+
+* This new module contains predicates that recognize terms that contain
+  integers, and functions that construct such terms.
+
+### Changes to the `term_io` module
+
+* The following predicates and functions have been added:
+
+    - func `constant_to_string/2`
+    - func `escaped_char_to_string/2`
+    - func `quoted_char_to_string/2`
+    - pred `format_constant/4`
+    - pred `format_escaped_char/4`
+    - pred `format_escaped_string/4`
+    - pred `format_quoted_atom/4`
+    - pred `format_quoted_char/4`
+    - pred `format_quoted_string/4`
+    - pred `format_term/5`
+    - pred `format_term_nl/5`
+    - pred `format_term_with_op_table/6`
+    - pred `format_term_nl_with_op_table/6`
+    - pred `format_variable/5`
+    - pred `format_variable_with_op_table/6`
+    - func `term_to_string/2`
+    - func `term_nl_to_string/2`
+    - func `term_with_op_table_to_string/3`
+    - func `term_nl_with_op_table_to_string/3`
+    - func `variable_to_string/2`
+    - func `variable_with_op_table_to_string/3`
+    - pred `write_quoted_atom/3`
+    - pred `write_quoted_atom/4`
+    - pred `write_quoted_char/3`
+    - pred `write_quoted_char/4`
+    - pred `write_quoted_string/3`
+    - pred `write_quoted_string/4`
+
+* The order of the arguments of the following predicates has been changed:
+
+    - pred `write_variable/4`
+    - pred `write_variable/5`
+    - pred `write_variable_with_op_table/4`
+    - pred `write_variable_with_op_table/5`
+
+* The following predicates have been removed:
+
+    - pred `read_term/3`
+            (replacement: `mercury_term_parser.read_term/3`)
+    - pred `read_term/4`
+            (replacement: `mercury_term_parser.read_term/4`)
+    - pred `read_term_with_op_table/4`
+            (replacement: `mercury_term_parser.read_term_with_op_table/4`)
+    - pred `read_term_with_op_table/5`
+            (replacement: `mercury_term_parser.read_term_with_op_table/5`)
+
+### New `term_subst` module
+
+* This new module contains predicates that perform substitutions
+  of various kinds on terms.
+
+### New `term_unify` module
+
+* This new module contains predicates that perform unifications.
+
+### New `term_vars` module
+
+* This new module contains predicates and functions that find
+  variables in terms.
+
+### Changes to the `thread` module
+
+* The following predicates have been added:
+
+    - pred `spawn_native_joinable/5`
+    - pred `join_thread/4`
+
+### Changes to the `tree_bitset` module
+
+* The following predicates and functions have been added:
+
+    - func `from_list/1`
+    - func `from_sorted_list/1`
+    - pred `nondet_member/2`
+    - pred `remove_leq/3`
+    - pred `remove_gt/3`
+    - func `ucount/1`
+
+* The documentation of the following predicates and functions have been
+  clarified:
+
+    - func `sorted_list_to_set/1`
+    - pred `sorted_list_to_set/2`
+
+### Changes to the `tree234` module
+
+* The following predicates and functions have been added:
+
+    - pred `is_non_empty/1`
+    - pred `max_key/2`
+    - pred `min_key/2`
+    - pred `sorted_keys_match/2`
+    - func `ucount/1`
+    - pred `ucount/2`
+
+* The following function has been marked obsolete:
+
+    - func `tree234_to_doc/1`
+                            (replacement: `pretty_printer.tree234_to_doc/1`)
+
+* We have added `cc_multi` versions of many of the higher-order predicates in
+  this module.
+
+### Changes to the `tree_bitset` module
+
+* The following predicates and functions have been added:
+
+    - func `ucount/1`
+    - pred `ucount/2`
+
+* The following obsolete predicate has been removed:
+
+    - pred `empty/1`
+
+### Changes to the `type_desc` module
+
+* The following predicates have been added:
+
+    - pred `make_type/3`
+    - pred `pseudo_type_ctor/2`
+    - pred `pseudo_type_args/2`
+
+### Changes to the `uint` module
+
+* The following type has had its typeclass memberships changed:
+
+    - The type `uint` is now an instance of the new `uenum` typeclass.
+
+* The following functions have been added:
+
+    - func `<<u/2`
+    - func `>>u/2`
+    - func `unchecked_left_ushift/2`
+    - func `unchecked_right_ushift/2`
+    - func `ubits_per_uint/0`
+
+* The following function has been marked obsolete:
+
+    - func `uint_to_doc/1`   (replacement: `pretty_printer.uint_to_doc/1`)
+
+### Changes to the `uint8` module
+
+* The following functions have been added:
+
+    - func `<<u/2`
+    - func `>>u/2`
+    - func `unchecked_left_ushift/2`
+    - func `unchecked_right_ushift/2`
+
+* The following function has been marked obsolete:
+
+    - func `uint8_to_doc/1`  (replacement: `pretty_printer.uint8_to_doc/1`)
+
+### Changes to the `uint16` module
+
+* The following functions have been added:
+
+    - func `<<u/2`
+    - func `>>u/2`
+    - func `unchecked_left_ushift/2`
+    - func `unchecked_right_ushift/2`
+
+* The following function has been marked obsolete:
+
+    - func `uint16_to_doc/1` (replacement: `pretty_printer.uint16_to_doc/1`)
+
+### Changes to the `uint32` module
+
+* The following functions have been added:
+
+    - func `<<u/2`
+    - func `>>u/2`
+    - func `unchecked_left_ushift/2`
+    - func `unchecked_right_ushift/2`
+
+* The following function has been marked obsolete:
+
+    - func `uint32_to_doc/1` (replacement: `pretty_printer.uint32_to_doc/1`)
+
+### Changes to the `uint64` module
+
+* The following functions have been added:
+
+    - func `<<u/2`
+    - func `>>u/2`
+    - func `unchecked_left_ushift/2`
+    - func `unchecked_right_ushift/2`
+
+* The following function has been marked obsolete:
+
+    - func `uint64_to_doc/1` (replacement: `pretty_printer.uint64_to_doc`/1)
+
+### Changes to the `version_array` module
+
+* The following predicates and functions have been added:
+
+    - func `uinit/2`
+    - func `unsafe_uinit/2`
+    - pred `lookup/3`
+    - func `ulookup/2`
+    - pred `ulookup/3`
+    - pred `uset/4`
+    - func `uelem/2`
+    - func `uelem :=/3`
+    - func `usize/1`
+    - func `uresize/3`
+    - pred `uresize/4`
+
+* The following function has been marked obsolete:
+
+    - func `version_array_to_doc/1`
+                       (replacement: `pretty_printer.version_array_to_doc/1`)
+
+### Changes to the `version_array2d` module
+
+* The following predicates and functions have been added:
+
+    - func `uinit/3`
+    - pred `ubounds/3`
+    - pred `in_ubounds/3`
+    - pred `lookup/4`
+    - func `ulookup/3`
+    - pred `ulookup/4`
+    - pred `uset/5`
+    - func `uelem/3`
+    - func `uelem :=/4`
+    - func `usize/1`
+    - func `uresize/4`
+    - pred `uresize/5`
+
+### Changes to the `version_bitmap` module
+
+* The following predicates have been added:
+
+    - pred `get_bit/3`
+    - pred `set_bit/4`
+
+### Changes to the `version_hash_table` module
+
+* The following predicate has been added:
+
+    - pred `lookup/3`
+
+* The following obsolete predicates have been removed:
+
+    - pred `char_hash/2`
+    - pred `float_hash/2`
+    - pred `generic_hash/2`
+    - pred `int_hash/2`
+    - pred `string_hash/2`
+    - pred `uint_hash/2`
+
+Changes to the Mercury language
+-------------------------------
+
+* The new pragma `format_call` can now be used to ask the compiler
+  to perform the same checks on calls to a named predicate or function
+  as the compiler performs on calls to `string.format`, `io.format` and
+  `stream.string_writer.format`. These checks test whether the format string
+  matches the provided list of values.
+
+* You can now disable another two kinds of warning with a `disable_warning`
+  scope.
+
+  First, code such as
+
+      disable_warning [unknown_format_calls] (
+          ...
+      )
+
+  will disable warnings about any calls in the scope to `string.format`,
+  `io.format` and/or `stream.string_writer.format` for which the compiler
+  cannot tell whether there are any mismatches between the format string
+  and the supplied values, even if the module is compiled with
+  `--warn-unknown-format-calls`.
+
+  Second, code such as
+
+      disable_warning [warn_repeated_singleton_vars] (
+          ...
+      )
+
+  will disable warnings in the scope about variables whose names start with
+  an underscore, indicating that they should be singleton variables, but
+  which nevertheless occur more than once.
+
+* Floating point number literals may now contain an underscore
+  between the digits forming the fraction part and the `e` or `E` that
+  introduces the exponent part.
+
+* You can now use the escape sequence `'\e'` to refer to the ESC (escape)
+  character, just as you can use `'\n'` to refer to the newline character.
+
+Changes to the Mercury compiler
+-------------------------------
+
+* We now enforce a (previously unstated) requirement that existentially
+  quantified type variables and existential class constraints in a subtype
+  definition are listed in the same order as in the supertype definition.
+
+* We have fixed a bug where the compiler generated incorrect code in
+  C# and Java grades when a subtype type definition did not repeat the field
+  names of its base type.
+
+* The compiler now ignores comments when warning about unused arguments
+  in `foreign_proc` pragmas. Warnings can no longer be suppressed by
+  mentioning a variable in a comment; use a leading underscore to mark
+  intentionally unused variables. This change also prevents spurious
+  warnings about `return` statements caused by the word `return`
+  appearing only in comments.
+
+* We have improved the typechecking and modechecking of type conversion
+  expressions.
+
+* We have fixed a bug where `--warn-unused-imports` did not warn about
+  unused modules that are also imported by an ancestor of the current module.
+
+* The compiler now uses colors in error messages to draw programmers' attention
+  to the most relevant parts of diagnostics. Users can change the color scheme
+  using the new option `--color-scheme` or using the new environment variable
+  `MERCURY_COLOR_SCHEME`. They can also disable the use of color entirely
+  using the new option `--no-color-diagnostics` or by setting the `NO_COLOR`
+  environment variable. For the details, please see the new `Diagnostic output`
+  chapter of the Mercury Users' guide.
+
+* We have added a new option `--warn-ambiguous-pragmas`
+  that tells the compiler to generate warnings for pragmas that specify
+  a name/arity pair, when there is both a predicate and a function
+  with that name and arity, and the pragma does not specify which one
+  it is for.
+
+* We have added a new option `--warn-redundant-coerce`,
+  that tells the compiler to generate warnings for type conversions
+  from one type to the same type. This option is enabled by default.
+
+* We have added a new option `--warn-repeated-singleton-variables`,
+  which may be shortened to `--warn-repeated-singleton-vars`,
+  that tells the compiler to generate warnings for variables whose name
+  starts with an underscore, indicating that they should be singletons,
+  that nevertheless occur more than once. Until now, warnings about
+  such variables were controlled by the  `--warn-singleton-variables` option.
+  This option is enabled by default.
+
+* We have added the option `--error-files-in-subdir` to place `.err` files
+  under the `Mercury` subdirectory when using `mmc --make`.
+
+* We have raised the default value of `--output-compile-error-lines` to 100.
+
+* We have added a new option `--reverse-error-order` that tells the compiler
+  to output error messages for higher line numbers before error messages
+  for lower line numbers.
+
+* We have added a new option `--show-local-call-tree`
+  that tells the compiler to output a representation of the call tree
+  of the predicates and functions of the module as ordered by a depth-first
+  left-to-right traversal of the bodies of the first (i.e. main) procedures
+  of those predicates and functions. This can suggest a good order
+  for the positions of those predicates and functions in the source code.
+
+* We have added a new option `--show-pred-movability`. If a user specifies
+  this option one or more times, each time with the name of a predicate or
+  function as the option's argument, then the compiler will generate a report
+  about the effect of moving the named predicates and/or functions to a new
+  module. This report will list all the other predicates and/or functions
+  that should be moved with them, and will warn about any unwanted coupling
+  the move would create between the old module and the new.
+
+* We have added a new option `--warn-can-fail-function`. If the user specifies
+  this option, the compiler will generate a warning for every function
+  whose primary mode (which means the mode in which all its arguments
+  are input) can fail without generating a return value.
+
+  This option is for people who prefer that all functions be total,
+  and that functions that compute a value only in some circumstances
+  (i.e. partial functions) be expressed as predicates instead.
+
+* We have added a new option `--warn-unsorted-import-blocks`. If the user
+  specifies this option, the compiler will generate a warning if any line
+  contains `import_module` or `use_module` declarations for more than one
+  module, or if a block of such declarations on consecutive lines
+  are not sorted on module name.
+
+  The discipline enforced by this option can standardize the appearance
+  of the sections of Mercury modules containing these declarations, make
+  diffs of changes to these sections easier to read, and spare programmers
+  from having to decide on a case-by-case basis exactly where they want
+  to add a new `import_module` or `use_module` declaration.
+
+* We have added two new options, `--warn-unneeded-initial-statevars`,
+  and `--warn-unneeded-initial-statevars-lambda`, which report, for
+  clause heads and lambda expressions respectively, when an argument
+  of the form !.SV in their argument list is never updated. In most cases,
+  changing such arguments into non-statevars will improve the code
+  by avoiding giving readers of the code a false expectation of an update.
+  (An exception is when a !.SV argument is not updated in one clause,
+  but is updated in another clause.) Both options are on by default.
+
+* We have added two new options, `--warn-unneeded-final-statevars`,
+  and `--warn-unneeded-final-statevars-lambda`, which report, for
+  clause heads and lambda expressions respectively, when an argument
+  of the form !:SV in their argument list is guaranteed to be unified
+  with the !.SV argument in the same argument list. In the absence of
+  constraints that require keeping the predicate signature unchanged
+  (e.g. to allow the predicate to be passed to a higher order construct),
+  the !:SV argument should be deleted, and if the only use of the !.SV
+  argument was to set the value of the !:SV argument, then the !.SV
+  argument should be deleted too. Both options are on by default.
+
+* We have made `--warn-non-contiguous-clauses` the default.
+
+* We have added a new option, `--allow-non-contiguity-for`, which modifies
+  the operation of two existing options, `--warn-non-contiguous-clauses` and
+  `--warn-non-contiguous-foreign-procs`. If either of those two options
+  is specified, the compiler will normally generate a warning if there is
+  a gap in the list of clauses for a given predicate. The new option allows
+  programmers to relax this requirement selectively. An option such as
+  `--allow-non-contiguity-for p1,f2,p3` tells the compiler to allow
+  the clauses of the named predicates and/or functions to be intermingled
+  with each other, but not with the clauses of any other predicates
+  or functions. This option may be given more than once.
+
+* We have added a new option, `--warn-too-private-instances`, which
+  asks the compiler to generate warnings for instances that are private
+  to the module containing them, even though both the typeclass they are for
+  and all the type constructors occurring in their argument vector
+  are visible outside that module.
+
+* We have replaced the `--no-warn-only-one-format-string-error` compiler option
+  with the new option named `--warn-all-format-string-errors`.
+
+* We have renamed the `--generate-module-order` compiler option
+  to `--also-output-module-order`, and changed the extension of the file
+  to which it writes its output: it is now `.module_order`.
+
+* The deprecated option `--trail-segments` has been deleted, and the grade
+  component `trseg` is no longer accepted as a synonym for `tr`.
+
+* The new options `--java-runtime-flags` and `--quoted-java-runtime-flag`
+  can be used to set flags for the Java interpreter in the launcher shell
+  scripts or batch files generated by the compiler when creating executables
+  in the `java` grade.
+
+* `--javac-flags` is now accepted as a synonym for `--java-flags`. Also,
+  `--javac-flag` is now accepted as a synonym for `--java-flag`.
+
+* We have changed the preferred name of several options that each specify
+  a flag to be passed to a command after quoting. The new names are
+  the following:
+
+      --quoted-cflag              (old name: --cflag)    
+      --quoted-gcc-flag           (old name: --gcc-flag)    
+      --quoted-clang-flag         (old name: --clang-flag)    
+      --quoted-msvc-flag          (old name: --msvc-flag)    
+      --quoted-javac-flag         (old name: --javac-flag)    
+      --quoted-java-flag          (old name: --java-flag)    
+      --quoted-java-runtime-flag  (old name: --java-runtime-flag)    
+      --quoted-csharp-flag        (old name: --csharp-flag)    
+      --quoted-ld-flag            (old name: --ld-flag)    
+      --quoted-ld-libflag         (old name: --ld-libflag)    
+
+  The compiler still accepts the old names, but we intend to remove them
+  after the next stable release.
+
+* We have changed the preferred name of the `--warn-interface-imports option`
+  to `--warn-unused-interface-imports`, which is more descriptive.
+
+  The compiler still accepts the old name, but we intend to remove it
+  after the next stable release.
+
+* On macOS systems, the configure script now uses the value of the
+  `MACOSX_DEPLOYMENT_TARGET` environment variable as the default value for the
+  deployment target, if set.
+
+* The `--no-ansi-c` option has been deprecated and will be removed in a future
+  release. The option has not had any effect for a long time.
+
+* We have deleted the `--java-object-file-extension` option, which has
+  only ever had one useful value, which is the default value, ".class".
+
+* We have deleted the `--generate-bytecode` option, which has never been
+  useful, because the bytecode interpreter it generated code for was never
+  complete enough to be usable.
+
+* The `--install-command-dir-option` option has been deprecated and will be
+  removed in a future release. This option has not had any effect for a long
+  time.
+
+* We have added more options to selectively turn off warnings that were
+  previously not under such control. These options are the following.
+
+      --no-warn-cannot-table
+      --no-warn-disj-fills-partial-inst
+      --no-warn-duplicate-abstract-instances
+      --no-warn-exported-insts-for-private-type
+      --no-warn-missing-descendant-modules
+      --no-warn-missing-state-var-init
+      --no-warn-moved-trace-goal
+      --no-warn-no-auto-parallelisation
+      --no-warn-no-recursion
+      --no-warn-nonexported-pragma
+      --no-warn-requested-by-code
+      --no-warn-requested-by-option
+      --no-warn-subtype-ctor-order
+      --no-warn-typecheck-ambiguity-limit
+      --no-warn-unknown-warning-name
+      --no-warn-unneeded-purity-indicator
+      --no-warn-unneeded-purity-pragma
+      --no-warn-unneeded-purity-pred-decl
+
+* We have renamed three existing options:
+
+      --inform-ite-instead-of-switch       to --warn-ite-instead-of-switch
+      --inform-incomplete-switch           to --warn-incomplete-switch
+      --inform-incomplete-switch-threshold to --warn-incomplete-switch-threshold
+
+  These options will still be available under their old names at least until
+  the next release.
+
+* We have added the new option `--no-warn-redundant-code`, which tells
+  the compiler not to generate warnings about redundant elements in
+  Mercury code, such as duplicate imports of the same module. These warnings
+  were previously controlled by the `--no-warn-simple-code` option.
+
+Changes to the Mercury debugger
+-------------------------------
+
+* The `dump` command has a new option: `dump -p Var` will dump the value
+  of the given variable in a prettyprinted form.
+
+* The `dump` command can now also dump only the selected part
+  of a given variable.
+
+* The `stack` command now identifies cliques by drawing boxes next to them
+  on the left hand side of the screen.
+
+Changes to the Mercury deep profiler
+------------------------------------
+
+* Programs that have been compiled in a deep profiling grade will now,
+  by default, put profiling data in files whose names contain both the name
+  of the program being profiled, and the date and time of the profiling run.
+  The file names will have the form `<prog>_on_<date>_at_<time>.data` and
+  `<prog>_on_<date>_at_<time>.procrep`.
+
+  To get the old behaviour, pass the runtime option `--deep-std-name` via the
+  `MERCURY_OPTIONS` environment variable. This will put the profiling data
+  in files named `Deep.data` and `Deep.procrep`.
+
+Changes to the Mercury implementation
+-------------------------------------
+
+* We have upgraded the bundled Boehm GC to v8.2.8 and libatomic_ops to v7.8.2.
+
+Portability improvements
+------------------------
+
+* We now support using the 64-bit (i.e. x64) version of Microsoft Visual C++
+  as a C compiler with Mercury.
+  See [README.MS-VisualC.md](Documentation/README.MS-VisualC.md) for further
+  details.
+
+* We have updated the script `tools/configure_cross` to support
+  cross-compiling using clang.
+
+Changes to the extras distribution
+----------------------------------
+
+* We have deleted the `old_term_parser` library.
+
+Other changes
+-------------
+
+* We have added a new option, `--with-pkgversion`, to the configure script.
+  This option lets you specify an identifying string that will be included in
+  the version information displayed by programs in the Mercury system.
+
+
+For news about earlier versions, see the Documentation/NEWS_* files.

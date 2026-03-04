@@ -1,0 +1,77 @@
+/*
+** Automatically generated from `equiv_type_parse_tree.m'
+** by the Mercury compiler,
+** version rotd-2026-03-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.equiv_type_parse_tree.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__equiv_type_parse_tree
+#define MR_HEADER_GUARD_parse_tree__equiv_type_parse_tree
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__EQUIV_TYPE_PARSE_TREE_DECL_GUARD
+#define PARSE_TREE__EQUIV_TYPE_PARSE_TREE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__equiv_type_parse_tree__parse_tree__equiv_type_parse_tree__type_ctor_info_equiv_params_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__equiv_type_parse_tree__parse_tree__equiv_type_parse_tree__type_ctor_info_pred_or_func_decl_type_0;
+
+void MR_CALL 
+parse_tree__equiv_type_parse_tree__expand_eqv_types_insts_9_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+parse_tree__equiv_type_parse_tree__replace_in_type_repn_eqv_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void mercury__parse_tree__equiv_type_parse_tree__init(void);
+void mercury__parse_tree__equiv_type_parse_tree__init_type_tables(void);
+void mercury__parse_tree__equiv_type_parse_tree__init_debugger(void);
+const char *mercury__parse_tree__equiv_type_parse_tree__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.equiv_type_parse_tree
+
+// :- end_interface parse_tree.equiv_type_parse_tree.

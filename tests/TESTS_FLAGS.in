@@ -1,0 +1,2 @@
+@BOOTSTRAP_MC_ARGS@
+--no-libgrade-install-check
