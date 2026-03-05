@@ -1,0 +1,74 @@
+/*
+** Automatically generated from `jumpopt.m'
+** by the Mercury compiler,
+** version rotd-2026-03-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.jumpopt.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__jumpopt
+#define MR_HEADER_GUARD_ll_backend__jumpopt
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__JUMPOPT_DECL_GUARD
+#define LL_BACKEND__JUMPOPT_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__jumpopt__ll_backend__jumpopt__type_ctor_info_jump_opt_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__jumpopt__ll_backend__jumpopt__type_ctor_info_maybe_check_nondet_tailcalls_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__jumpopt__ll_backend__jumpopt__type_ctor_info_new_remain_0;
+
+void MR_CALL 
+ll_backend__jumpopt__optimize_jumps_in_proc_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Word param_10,
+  MR_Word * param_11,
+  MR_Word * param_12);
+
+void mercury__ll_backend__jumpopt__init(void);
+void mercury__ll_backend__jumpopt__init_type_tables(void);
+void mercury__ll_backend__jumpopt__init_debugger(void);
+const char *mercury__ll_backend__jumpopt__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.jumpopt
+
+// :- end_interface ll_backend.jumpopt.

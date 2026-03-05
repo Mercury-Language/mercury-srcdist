@@ -1,0 +1,96 @@
+/*
+** Automatically generated from `make.clean.m'
+** by the Mercury compiler,
+** version rotd-2026-03-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.clean.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__clean
+#define MR_HEADER_GUARD_make__clean
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__CLEAN_DECL_GUARD
+#define MAKE__CLEAN_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+void MR_CALL 
+make__clean__make_main_module_realclean_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+make__clean__make_module_clean_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+make__clean__make_module_realclean_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+make__clean__maybe_make_grade_clean_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+make__clean__remove_init_files_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void mercury__make__clean__init(void);
+void mercury__make__clean__init_type_tables(void);
+void mercury__make__clean__init_debugger(void);
+const char *mercury__make__clean__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.clean
+
+// :- end_interface make.clean.

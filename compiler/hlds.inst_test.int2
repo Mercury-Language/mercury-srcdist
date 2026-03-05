@@ -1,0 +1,2 @@
+:- module hlds.inst_test.
+:- interface.

@@ -1,0 +1,4 @@
+:- module (transform_hlds.ctgc).livedata.
+:- interface.
+:- type livedata.
+:- type nodes_are_not_live_result.
