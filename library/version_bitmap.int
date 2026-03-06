@@ -1,0 +1,40 @@
+:- module version_bitmap.
+:- interface.
+:- use_module bool.
+:- type version_bitmap.
+:- func bit(int, version_bitmap.version_bitmap) = bool.bool.
+:- func 'bit :='(int, version_bitmap.version_bitmap, bool.bool) = version_bitmap.version_bitmap.
+:- pred clear(int, version_bitmap.version_bitmap, version_bitmap.version_bitmap).
+:- mode clear(builtin.in, builtin.in, builtin.out) is det.
+:- func clear(version_bitmap.version_bitmap, int) = version_bitmap.version_bitmap.
+:- func complement(version_bitmap.version_bitmap) = version_bitmap.version_bitmap.
+:- func copy(version_bitmap.version_bitmap) = version_bitmap.version_bitmap.
+:- func difference(version_bitmap.version_bitmap, version_bitmap.version_bitmap) = version_bitmap.version_bitmap.
+:- pred flip(int, version_bitmap.version_bitmap, version_bitmap.version_bitmap).
+:- mode flip(builtin.in, builtin.in, builtin.out) is det.
+:- func flip(version_bitmap.version_bitmap, int) = version_bitmap.version_bitmap.
+:- pred get_bit(version_bitmap.version_bitmap, int, bool.bool).
+:- mode get_bit(builtin.in, builtin.in, builtin.out) is det.
+:- func init(int, bool.bool) = version_bitmap.version_bitmap.
+:- func intersect(version_bitmap.version_bitmap, version_bitmap.version_bitmap) = version_bitmap.version_bitmap.
+:- pred is_clear(version_bitmap.version_bitmap, int).
+:- mode is_clear(builtin.in, builtin.in) is semidet.
+:- pred is_set(version_bitmap.version_bitmap, int).
+:- mode is_set(builtin.in, builtin.in) is semidet.
+:- func num_bits(version_bitmap.version_bitmap) = int.
+:- pred resize(int, bool.bool, version_bitmap.version_bitmap, version_bitmap.version_bitmap).
+:- mode resize(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func resize(version_bitmap.version_bitmap, int, bool.bool) = version_bitmap.version_bitmap.
+:- pred set(int, version_bitmap.version_bitmap, version_bitmap.version_bitmap).
+:- mode set(builtin.in, builtin.in, builtin.out) is det.
+:- func set(version_bitmap.version_bitmap, int) = version_bitmap.version_bitmap.
+:- pred set_bit(int, bool.bool, version_bitmap.version_bitmap, version_bitmap.version_bitmap).
+:- mode set_bit(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func union(version_bitmap.version_bitmap, version_bitmap.version_bitmap) = version_bitmap.version_bitmap.
+:- pred unsafe_rewind(version_bitmap.version_bitmap, version_bitmap.version_bitmap).
+:- mode unsafe_rewind(builtin.in, builtin.out) is det.
+:- func unsafe_rewind(version_bitmap.version_bitmap) = version_bitmap.version_bitmap.
+:- func xor(version_bitmap.version_bitmap, version_bitmap.version_bitmap) = version_bitmap.version_bitmap.
+:- implementation.
+:- use_module version_array.
+:- type version_bitmap == version_array.version_array(int).
