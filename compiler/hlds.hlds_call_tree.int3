@@ -1,0 +1,5 @@
+:- module hlds.hlds_call_tree.
+:- interface.
+:- type call_tree_info.
+:- type_representation(call_tree_info, is_word_aligned_ptr).
+:- type_representation(pred_callees_map, is_eqv_to(map(pred_id, pred_callees))).
