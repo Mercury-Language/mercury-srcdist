@@ -1,0 +1,3 @@
+:- module check_hlds.unused_imports.
+:- interface.
+:- type_representation(unused_avail_map, is_eqv_to(one_or_more_map(unused_avail_msg_kind, unused_avail))).

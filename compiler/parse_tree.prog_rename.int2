@@ -1,0 +1,14 @@
+:- module parse_tree.prog_rename.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module set.
+:- use_module term.
+:- use_module parse_tree.set_of_var.
+:- type must_rename
+    --->    must_rename 
+    ;       need_not_rename .
+:- inst must_rename for (parse_tree.prog_rename).must_rename/0
+    --->    must_rename.
+:- inst need_not_rename for (parse_tree.prog_rename).must_rename/0
+    --->    need_not_rename.

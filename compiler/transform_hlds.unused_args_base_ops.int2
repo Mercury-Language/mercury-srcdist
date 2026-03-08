@@ -1,0 +1,17 @@
+:- module transform_hlds.unused_args_base_ops.
+:- interface.
+:- use_module map.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.prog_data.
+:- type arg_var_in_proc
+    --->    arg_var_in_proc(
+                 hlds.hlds_pred.pred_proc_id,
+                 parse_tree.prog_data.prog_var
+            ).
+:- type global_var_usage_map == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.unused_args_base_ops.local_var_usage_map).
+:- type local_var_usage_map == map.map(parse_tree.prog_data.prog_var, transform_hlds.unused_args_base_ops.required_by).
+:- type required_by
+    --->    required_by(
+                 set.set(parse_tree.prog_data.prog_var),
+                 set.set(transform_hlds.unused_args_base_ops.arg_var_in_proc)
+            ).
