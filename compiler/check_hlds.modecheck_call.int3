@@ -1,0 +1,3 @@
+:- module check_hlds.modecheck_call.
+:- interface.
+:- abstract_inst((generic_call_higher_order)).
