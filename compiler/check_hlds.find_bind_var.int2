@@ -1,0 +1,14 @@
+:- module check_hlds.find_bind_var.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module parse_tree.prog_data.
+:- type found_deconstruct
+    --->    did_find_deconstruct 
+    ;       did_not_find_deconstruct .
+:- type process_unify(Result, Info) == pred(parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal_expr, hlds.hlds_goal.hlds_goal_info, list.list(hlds.hlds_goal.hlds_goal), Result, Result, Info, Info).
+:- inst goal_expr_deconstruct for (hlds.hlds_goal).hlds_goal_expr/0
+    --->    unify(ground, ground, ground, (hlds.hlds_goal).unification_deconstruct, ground).
+:- inst process_unify == (pred(builtin.in, builtin.in((check_hlds.find_bind_var).goal_expr_deconstruct), builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det).

@@ -1,0 +1,4 @@
+:- module hlds.headvar_names.
+:- interface.
+:- type maybe_look_for_unneeded_statevars.
+:- type_representation(var_name_info_map, is_eqv_to(map(prog_var, var_name_info))).
