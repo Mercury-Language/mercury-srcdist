@@ -1,0 +1,3 @@
+:- module (transform_hlds.rbmm).points_to_analysis.
+:- interface.
+:- type_representation(rpta_fixpoint_table, is_eqv_to(fixpoint_table(pred_proc_id, rpta_info))).
