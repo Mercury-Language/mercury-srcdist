@@ -1,0 +1,125 @@
+/*
+** Automatically generated from `frameopt.m'
+** by the Mercury compiler,
+** version rotd-2026-03-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.frameopt.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__frameopt
+#define MR_HEADER_GUARD_ll_backend__frameopt
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__FRAMEOPT_DECL_GUARD
+#define LL_BACKEND__FRAMEOPT_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_type_2;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_can_transform_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_entry_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_exit_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_frame_block_map_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_exit_par_map_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_map_2;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_maybe_dummy_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_nondet_entry_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_nondet_exit_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_ord_needs_frame_map_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_pre_exit_dummy_label_map_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_pred_map_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_prop_queue_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_rev_map_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_setup_par_map_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_ll_backend__frameopt__block_entry_exit__arity2__ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0__[11];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_ll_backend__frameopt__block_entry_exit__arity2__ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0__[11];
+
+extern const MR_TypeClassDeclStruct ll_backend__frameopt__ll_backend__frameopt__type_class_decl_block_entry_exit_2;
+
+void MR_CALL 
+ll_backend__frameopt__frameopt_keep_nondet_frame_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+ll_backend__frameopt__frameopt_main_det_stack_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+ll_backend__frameopt__frameopt_main_nondet_stack_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void mercury__ll_backend__frameopt__init(void);
+void mercury__ll_backend__frameopt__init_type_tables(void);
+void mercury__ll_backend__frameopt__init_debugger(void);
+const char *mercury__ll_backend__frameopt__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.frameopt
+
+// :- end_interface ll_backend.frameopt.

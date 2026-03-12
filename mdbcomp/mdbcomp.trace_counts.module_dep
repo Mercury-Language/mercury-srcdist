@@ -1,0 +1,14 @@
+module(2, "trace_counts.m",
+	mdbcomp.trace_counts,
+	{mdbcomp},
+	{builtin, list, map, private_builtin, mdbcomp.goal_path, mdbcomp.prim_data, mdbcomp.sym_name},
+	{int, set},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

@@ -1,0 +1,48 @@
+:- module parse_tree.parse_error.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module set.
+:- use_module parse_tree.error_spec.
+:- type fatal_read_module_error
+    --->    frme_could_not_find_file 
+    ;       frme_could_not_open_file 
+    ;       frme_could_not_read_file 
+    ;       frme_bad_submodule_start 
+    ;       frme_bad_module_end .
+:- type nonfatal_read_module_error
+    --->    rme_unexpected_module_name 
+    ;       rme_no_module_decl_at_start 
+    ;       rme_no_section_decl_at_start 
+    ;       rme_end_module_not_at_end_of_src 
+    ;       rme_unexpected_term_in_int_or_opt 
+    ;       rme_could_not_read_term 
+    ;       rme_could_not_parse_item 
+    ;       rme_cannot_find_modify_time 
+    ;       rme_nec .
+:- type read_module_errors
+    --->    read_module_errors(
+                 (parse_tree.parse_error).rm_fatal_errors :: set.set(parse_tree.parse_error.fatal_read_module_error),
+                 (parse_tree.parse_error).rm_fatal_error_specs :: list.list(parse_tree.error_spec.error_spec),
+                 (parse_tree.parse_error).rm_nonfatal_errors :: set.set(parse_tree.parse_error.nonfatal_read_module_error),
+                 (parse_tree.parse_error).rm_nonfatal_error_specs :: list.list(parse_tree.error_spec.error_spec),
+                 (parse_tree.parse_error).rm_warning_specs :: list.list(parse_tree.error_spec.error_spec)
+            ).
+:- pred add_any_nec_errors(list.list(parse_tree.error_spec.error_spec), parse_tree.parse_error.read_module_errors, parse_tree.parse_error.read_module_errors).
+:- mode add_any_nec_errors(builtin.in, builtin.in, builtin.out) is det.
+:- pred add_fatal_error(parse_tree.parse_error.fatal_read_module_error, list.list(parse_tree.error_spec.error_spec), parse_tree.parse_error.read_module_errors, parse_tree.parse_error.read_module_errors).
+:- mode add_fatal_error(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred add_nonfatal_error(parse_tree.parse_error.nonfatal_read_module_error, list.list(parse_tree.error_spec.error_spec), parse_tree.parse_error.read_module_errors, parse_tree.parse_error.read_module_errors).
+:- mode add_nonfatal_error(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred add_warning(list.list(parse_tree.error_spec.error_spec), parse_tree.parse_error.read_module_errors, parse_tree.parse_error.read_module_errors).
+:- mode add_warning(builtin.in, builtin.in, builtin.out) is det.
+:- func get_read_module_specs(parse_tree.parse_error.read_module_errors) = list.list(parse_tree.error_spec.error_spec).
+:- func init_read_module_errors = parse_tree.parse_error.read_module_errors.
+:- pred io_error_to_error_spec(parse_tree.error_spec.spec_phase, string, parse_tree.error_spec.error_spec, io.io, io.io).
+:- mode io_error_to_error_spec(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred io_error_to_read_module_errors(parse_tree.parse_error.fatal_read_module_error, parse_tree.error_spec.spec_phase, string, parse_tree.parse_error.read_module_errors, io.io, io.io).
+:- mode io_error_to_read_module_errors(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred there_are_no_errors(parse_tree.parse_error.read_module_errors).
+:- mode there_are_no_errors(builtin.in) is semidet.
+:- pred there_are_some_errors(parse_tree.parse_error.read_module_errors).
+:- mode there_are_some_errors(builtin.in) is semidet.
