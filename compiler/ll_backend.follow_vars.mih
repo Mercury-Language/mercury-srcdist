@@ -1,0 +1,73 @@
+/*
+** Automatically generated from `follow_vars.m'
+** by the Mercury compiler,
+** version rotd-2026-03-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.follow_vars.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__follow_vars
+#define MR_HEADER_GUARD_ll_backend__follow_vars
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__FOLLOW_VARS_DECL_GUARD
+#define LL_BACKEND__FOLLOW_VARS_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+void MR_CALL 
+ll_backend__follow_vars__find_final_follow_vars_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+ll_backend__follow_vars__find_follow_vars_in_goal_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Integer param_7,
+  MR_Integer * param_8,
+  MR_Integer param_9,
+  MR_Integer * param_10);
+
+void mercury__ll_backend__follow_vars__init(void);
+void mercury__ll_backend__follow_vars__init_type_tables(void);
+void mercury__ll_backend__follow_vars__init_debugger(void);
+const char *mercury__ll_backend__follow_vars__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.follow_vars
+
+// :- end_interface ll_backend.follow_vars.

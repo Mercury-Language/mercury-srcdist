@@ -1,0 +1,29 @@
+:- module parse_tree.prog_data_used_modules.
+:- interface.
+:- use_module mdbcomp.
+:- use_module set_tree234.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- type item_visibility
+    --->    visibility_public 
+    ;       visibility_private .
+:- type used_eqv_modules
+    --->    used_eqv_modules(
+                 (parse_tree.prog_data_used_modules).int_eqv_type_ctors :: set_tree234.set_tree234(parse_tree.prog_data.type_ctor),
+                 (parse_tree.prog_data_used_modules).imp_eqv_type_ctors :: set_tree234.set_tree234(parse_tree.prog_data.type_ctor),
+                 (parse_tree.prog_data_used_modules).all_used_modules :: parse_tree.prog_data_used_modules.used_modules
+            ).
+:- type used_modules
+    --->    used_modules(
+                 (parse_tree.prog_data_used_modules).int_used_modules :: set_tree234.set_tree234(mdbcomp.sym_name.module_name),
+                 (parse_tree.prog_data_used_modules).imp_used_modules :: set_tree234.set_tree234(mdbcomp.sym_name.module_name)
+            ).
+:- pred record_expanded_eqv_type_ctor(parse_tree.prog_data_used_modules.item_visibility, parse_tree.prog_data.type_ctor, parse_tree.prog_data_used_modules.used_eqv_modules, parse_tree.prog_data_used_modules.used_eqv_modules).
+:- mode record_expanded_eqv_type_ctor(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred record_format_modules_as_used(parse_tree.prog_data_used_modules.used_modules, parse_tree.prog_data_used_modules.used_modules).
+:- mode record_format_modules_as_used(builtin.in, builtin.out) is det.
+:- pred record_module_and_ancestors_as_used(parse_tree.prog_data_used_modules.item_visibility, mdbcomp.sym_name.sym_name, parse_tree.prog_data_used_modules.used_modules, parse_tree.prog_data_used_modules.used_modules).
+:- mode record_module_and_ancestors_as_used(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred record_sym_name_module_as_used(parse_tree.prog_data_used_modules.item_visibility, mdbcomp.sym_name.sym_name, parse_tree.prog_data_used_modules.used_modules, parse_tree.prog_data_used_modules.used_modules).
+:- mode record_sym_name_module_as_used(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func used_eqv_modules_init = parse_tree.prog_data_used_modules.used_eqv_modules.

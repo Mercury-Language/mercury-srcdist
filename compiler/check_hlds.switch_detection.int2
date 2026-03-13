@@ -1,0 +1,3 @@
+:- module check_hlds.switch_detection.
+:- interface.
+:- type switch_detect_info.

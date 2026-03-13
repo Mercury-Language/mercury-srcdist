@@ -1,0 +1,11 @@
+:- module check_hlds.polymorphism_clause.
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module check_hlds.polymorphism_info.
+:- use_module hlds.hlds_args.
+:- use_module hlds.hlds_clauses.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.prog_data.
+:- pred polymorphism_process_clause_info(hlds.hlds_pred.pred_info, hlds.hlds_args.poly_arg_vector(parse_tree.prog_data.mer_mode), hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode polymorphism_process_clause_info(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
