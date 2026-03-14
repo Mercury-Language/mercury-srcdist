@@ -1,0 +1,5 @@
+:- module hlds.make_hlds_error.
+:- interface.
+:- type does_pragma_allow_modes
+    --->    pragma_does_not_allow_modes 
+    ;       pragma_allows_modes .

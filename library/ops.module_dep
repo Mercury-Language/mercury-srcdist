@@ -1,0 +1,14 @@
+module(2, "ops.m",
+	ops,
+	{},
+	{builtin, private_builtin},
+	{require, uint},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

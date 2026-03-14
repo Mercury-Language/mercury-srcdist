@@ -1,0 +1,13 @@
+:- module backend_libs.link_target_code.
+:- interface.
+:- type linked_target_type
+    --->    executable 
+    ;       static_library 
+    ;       shared_library 
+    ;       csharp_executable 
+    ;       csharp_library 
+    ;       java_executable 
+    ;       java_archive .
+:- type shared_library_support
+    --->    shared_libraries_not_supported 
+    ;       shared_libraries_supported .

@@ -1,0 +1,44 @@
+string__replace("", "a", "bc", Result) 
+	FAIL!
+string__replace("aaa bbbb ccccc aaa", "aab", "**", Result) 
+	FAIL!
+string__replace("aaa bbbb ccccc aaa", "aaaa", "**", Result) 
+	FAIL!
+string__replace("aaa bbbb ccccc aaa", "", "**", Result) 
+	"**aaa bbbb ccccc aaa"
+string__replace("aßξ啕ßξ啕𐀀.", "", "**", Result) 
+	"**aßξ啕ßξ啕𐀀."
+string__replace("[0x9f][0x98][0x80]😀", "", "**", Result) 
+	"**[0x9f][0x98][0x80]😀"
+string__replace("aaa bbbb ccccc aaa", "aaa", "", Result) 
+	" bbbb ccccc aaa"
+string__replace("aaa bbbb ccccc aaa", "cc", "**", Result) 
+	"aaa bbbb **ccc aaa"
+string__replace("aßξ啕ßξ啕𐀀.", "ßξ", "**", Result) 
+	"a**啕ßξ啕𐀀."
+string__replace("aßξ啕ßξ啕𐀀.", "ßξ", "★★", Result) 
+	"a★★啕ßξ啕𐀀."
+string__replace("aßξ啕ßξ啕𐀀.", "啕ßξ", "***", Result) 
+	"aßξ***啕𐀀."
+string__replace_all("", "a", "bc", Result) 
+	""
+string__replace_all("aaa bbbb ccccc aaa", "aab", "**", Result) 
+	"aaa bbbb ccccc aaa"
+string__replace_all("aaa bbbb ccccc aaa", "aaaa", "**", Result) 
+	"aaa bbbb ccccc aaa"
+string__replace_all("aaa bbbb ccccc aaa", "", "**", Result) 
+	"**a**a**a** **b**b**b**b** **c**c**c**c**c** **a**a**a**"
+string__replace_all("aßξ啕ßξ啕𐀀.", "", "**", Result) 
+	"**a**ß**ξ**啕**ß**ξ**啕**𐀀**.**"
+string__replace_all("[0x9f][0x98][0x80]😀", "", "**", Result) 
+	"**[0x9f]**[0x98]**[0x80]**😀**"
+string__replace_all("aaa bbbb ccccc aaa", "aaa", "", Result) 
+	" bbbb ccccc "
+string__replace_all("aaa bbbb ccccc aaa", "cc", "**", Result) 
+	"aaa bbbb ****c aaa"
+string__replace_all("aßξ啕ßξ啕𐀀.", "ßξ", "**", Result) 
+	"a**啕**啕𐀀."
+string__replace_all("aßξ啕ßξ啕𐀀.", "ßξ", "★★", Result) 
+	"a★★啕★★啕𐀀."
+string__replace_all("aßξ啕ßξ啕𐀀.", "啕ßξ", "***", Result) 
+	"aßξ***啕𐀀."
