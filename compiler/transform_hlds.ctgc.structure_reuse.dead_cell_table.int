@@ -1,0 +1,21 @@
+:- module ((transform_hlds.ctgc).structure_reuse).dead_cell_table.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module map.
+:- use_module transform_hlds.smm_common.
+:- use_module ((transform_hlds.ctgc).structure_reuse).domain.
+:- type dead_cell_table == map.map(transform_hlds.smm_common.program_point, transform_hlds.ctgc.structure_reuse.domain.reuse_condition).
+:- func dead_cell_table_init = transform_hlds.ctgc.structure_reuse.dead_cell_table.dead_cell_table.
+:- pred dead_cell_table_is_empty(transform_hlds.ctgc.structure_reuse.dead_cell_table.dead_cell_table).
+:- mode dead_cell_table_is_empty(builtin.in) is semidet.
+:- pred dead_cell_table_maybe_dump(io.text_output_stream, bool.bool, transform_hlds.ctgc.structure_reuse.dead_cell_table.dead_cell_table, io.io, io.io).
+:- mode dead_cell_table_maybe_dump(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred dead_cell_table_remove(transform_hlds.smm_common.program_point, transform_hlds.ctgc.structure_reuse.dead_cell_table.dead_cell_table, transform_hlds.ctgc.structure_reuse.dead_cell_table.dead_cell_table).
+:- mode dead_cell_table_remove(builtin.in, builtin.in, builtin.out) is det.
+:- pred dead_cell_table_remove_conditionals(transform_hlds.ctgc.structure_reuse.dead_cell_table.dead_cell_table, transform_hlds.ctgc.structure_reuse.dead_cell_table.dead_cell_table).
+:- mode dead_cell_table_remove_conditionals(builtin.in, builtin.out) is det.
+:- pred dead_cell_table_search(transform_hlds.smm_common.program_point, transform_hlds.ctgc.structure_reuse.dead_cell_table.dead_cell_table, transform_hlds.ctgc.structure_reuse.domain.reuse_condition).
+:- mode dead_cell_table_search(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred dead_cell_table_set(transform_hlds.smm_common.program_point, transform_hlds.ctgc.structure_reuse.domain.reuse_condition, transform_hlds.ctgc.structure_reuse.dead_cell_table.dead_cell_table, transform_hlds.ctgc.structure_reuse.dead_cell_table.dead_cell_table).
+:- mode dead_cell_table_set(builtin.in, builtin.in, builtin.in, builtin.out) is det.
