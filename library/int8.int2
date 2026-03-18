@@ -1,0 +1,2 @@
+:- module int8.
+:- interface.
