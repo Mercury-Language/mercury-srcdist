@@ -1,0 +1,2 @@
+:- module mdprof_test.
+:- interface.
