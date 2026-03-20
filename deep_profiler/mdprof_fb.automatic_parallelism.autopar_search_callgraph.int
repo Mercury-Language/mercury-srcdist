@@ -1,0 +1,11 @@
+:- module (mdprof_fb.automatic_parallelism).autopar_search_callgraph.
+:- interface.
+:- use_module cord.
+:- use_module mdbcomp.
+:- use_module message.
+:- use_module profile.
+:- use_module mdbcomp.feedback.
+:- use_module (mdbcomp.feedback).automatic_parallelism.
+:- use_module (mdbcomp.feedback).feedback_info.
+:- pred candidate_parallel_conjunctions(mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_params, profile.deep, cord.cord(message.message), mdbcomp.feedback.feedback_info.feedback_info, mdbcomp.feedback.feedback_info.feedback_info).
+:- mode candidate_parallel_conjunctions(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

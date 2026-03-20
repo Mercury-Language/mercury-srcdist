@@ -1,0 +1,16 @@
+:- module parse_tree.prog_data_used_modules.
+:- interface.
+:- type item_visibility
+    --->    visibility_public 
+    ;       visibility_private .
+:- type used_eqv_modules
+    --->    used_eqv_modules(
+                 (parse_tree.prog_data_used_modules).int_eqv_type_ctors :: set_tree234.set_tree234(parse_tree.prog_data.type_ctor),
+                 (parse_tree.prog_data_used_modules).imp_eqv_type_ctors :: set_tree234.set_tree234(parse_tree.prog_data.type_ctor),
+                 (parse_tree.prog_data_used_modules).all_used_modules :: parse_tree.prog_data_used_modules.used_modules
+            ).
+:- type used_modules
+    --->    used_modules(
+                 (parse_tree.prog_data_used_modules).int_used_modules :: set_tree234.set_tree234(mdbcomp.sym_name.module_name),
+                 (parse_tree.prog_data_used_modules).imp_used_modules :: set_tree234.set_tree234(mdbcomp.sym_name.module_name)
+            ).

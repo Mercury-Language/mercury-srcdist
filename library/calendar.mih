@@ -1,0 +1,771 @@
+/*
+** Automatically generated from `calendar.m'
+** by the Mercury compiler,
+** version rotd-2026-03-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module calendar.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_calendar
+#define MR_HEADER_GUARD_calendar
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CALENDAR_DECL_GUARD
+#define CALENDAR_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_date_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_date_time_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_day_of_month_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_day_of_week_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_days_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_duration_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_hour_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_hours_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_microsecond_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_microseconds_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_minute_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_minutes_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_month_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_months_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_order_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_second_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_seconds_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_year_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__calendar__calendar__type_ctor_info_years_0;
+
+void MR_CALL 
+mercury__calendar__add_duration_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__calendar__current_local_time_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__calendar__current_utc_time_3_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+mercury__calendar__date_from_string_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mercury__calendar__duration_from_string_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mercury__calendar__duration_leq_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__calendar__foldl2_days_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__calendar__foldl2_days_7_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__calendar__foldl2_days_7_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__calendar__foldl2_days_7_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__calendar__foldl2_days_7_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__calendar__foldl2_days_7_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__calendar__foldl3_days_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__calendar__foldl3_days_9_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__calendar__foldl3_days_9_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__calendar__foldl3_days_9_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__calendar__foldl3_days_9_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__calendar__foldl3_days_9_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__calendar__foldl_days_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__calendar__foldl_days_5_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__calendar__foldl_days_5_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__calendar__foldl_days_5_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__calendar__foldl_days_5_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__calendar__foldl_days_5_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__calendar__init_date_8_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Word * param_8);
+
+MR_bool MR_CALL 
+mercury__calendar__int0_to_month_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__calendar__int0_to_month_2_p_1(
+  MR_Integer * param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__calendar__int_to_month_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__calendar__int_to_month_2_p_1(
+  MR_Integer * param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__calendar__is_leap_year_1_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__calendar__local_time_offset_3_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+mercury__calendar__same_date_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__calendar__unpack_date_8_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Integer * param_7,
+  MR_Integer * param_8);
+
+void MR_CALL 
+mercury__calendar__unpack_duration_8_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Integer * param_7,
+  MR_Integer * param_8);
+
+MR_Word MR_CALL 
+mercury__calendar__compute_day_of_week_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mercury__calendar__date_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__day_duration_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+mercury__calendar__day_of_month_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__day_of_week_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__days_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__days_in_month_2_f_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__calendar__det_date_from_string_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__det_day_of_week_from_mod_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__det_duration_from_string_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__det_init_date_7_f_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7);
+
+MR_Word MR_CALL 
+mercury__calendar__det_int0_to_month_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__det_int_to_month_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__duration_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+mercury__calendar__duration_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__hour_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__hours_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__init_duration_7_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7);
+
+MR_Integer MR_CALL 
+mercury__calendar__julian_day_number_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__max_day_in_month_for_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__calendar__microsecond_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__microseconds_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__minute_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__minutes_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__month_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__month_to_int_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__month_to_int0_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__months_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__negate_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__second_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__seconds_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__test_dates_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__calendar__tm_to_date_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__unix_epoch_0_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__calendar__year_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__calendar__years_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__calendar__zero_duration_0_f_0(void);
+
+void MR_CALL 
+mercury__calendar____Compare____date_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____date_time_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____day_of_month_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____day_of_week_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____days_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____duration_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____hour_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____hours_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____microsecond_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____microseconds_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____minute_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____minutes_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____month_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____months_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____order_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____second_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____seconds_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____year_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__calendar____Compare____years_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____date_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____date_time_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____day_of_month_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____day_of_week_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____days_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____duration_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____hour_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____hours_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____microsecond_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____microseconds_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____minute_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____minutes_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____month_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____months_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____order_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____second_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____seconds_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____year_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__calendar____Unify____years_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void mercury__calendar__init(void);
+void mercury__calendar__init_type_tables(void);
+void mercury__calendar__init_debugger(void);
+const char *mercury__calendar__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_calendar
+
+// :- end_interface calendar.
