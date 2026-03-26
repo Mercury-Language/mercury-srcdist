@@ -1,0 +1,7 @@
+:- module mdb.term_to_html.
+:- interface.
+:- use_module io.
+:- use_module maybe.
+:- use_module mdb.browser_term.
+:- pred write_html_doc(io.text_output_stream, mdb.browser_term.browser_term, string, maybe.maybe_error, io.io, io.io).
+:- mode write_html_doc(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi.

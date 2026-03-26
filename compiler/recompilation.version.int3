@@ -1,0 +1,5 @@
+:- module recompilation.version.
+:- interface.
+:- type_representation(gathered_item_multi_map_in, is_eqv_to(multi_map(recomp_item_name, pair(module_section, item)))).
+:- type_representation(gathered_item_multi_map_na, is_eqv_to(multi_map(name_arity, pair(module_section, item)))).
+:- type_representation(maybe_pred_or_func_id, is_eqv_to(pair(maybe(pred_or_func), sym_name_arity))).
