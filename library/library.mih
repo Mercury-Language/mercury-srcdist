@@ -1,0 +1,95 @@
+/*
+** Automatically generated from `library.m'
+** by the Mercury compiler,
+** version rotd-2026-03-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module library.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_library
+#define MR_HEADER_GUARD_library
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBRARY_DECL_GUARD
+#define LIBRARY_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__library__library__type_ctor_info_doc_or_undoc_0;
+
+MR_bool MR_CALL 
+mercury__library__mercury_std_library_module_1_p_0(
+  MR_String param_1);
+
+MR_bool MR_CALL 
+mercury__library__stdlib_module_doc_undoc_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__library__stdlib_module_doc_undoc_2_p_1(
+  MR_String * param_1,
+  MR_Word * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+void MR_CALL 
+mercury__library__version_2_p_0(
+  MR_String * param_1,
+  MR_String * param_2);
+
+MR_String MR_CALL 
+mercury__library__architecture_0_f_0(void);
+
+MR_String MR_CALL 
+mercury__library__mercury_version_0_f_0(void);
+
+MR_String MR_CALL 
+mercury__library__package_version_0_f_0(void);
+
+void MR_CALL 
+mercury__library____Compare____doc_or_undoc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__library____Unify____doc_or_undoc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__library__init(void);
+void mercury__library__init_type_tables(void);
+void mercury__library__init_debugger(void);
+const char *mercury__library__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_library
+
+// :- end_interface library.
