@@ -1,0 +1,15 @@
+:- module (hlds.make_hlds).add_pragma_util.
+:- interface.
+:- type add_marker_pred_info.
+:- type lookup_failure_handling
+	where	type_is_abstract_enum(2).
+:- type matching_pred_ids_result.
+:- type maybe_require_one_match
+	where	type_is_abstract_enum(1).
+:- type pragma_status_class
+	where	type_is_abstract_enum(1).
+:- abstract_inst((add_marker_pred_info)).
+:- type_representation(add_marker_pred_info, is_eqv_to(pred(pred_info, pred_info))).
+:- type_representation(lookup_failure_handling, du_repn(enum("lfh_ignore", "lfh_user_error", ["lfh_internal_error"],  no_c_j_cs))).
+:- type_representation(maybe_require_one_match, du_repn(enum("do_not_require_one_match", "require_one_match", [],  no_c_j_cs))).
+:- type_representation(pragma_status_class, du_repn(enum("psc_decl", "psc_impl", [],  no_c_j_cs))).
