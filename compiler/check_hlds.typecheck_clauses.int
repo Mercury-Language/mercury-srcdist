@@ -1,0 +1,11 @@
+:- module check_hlds.typecheck_clauses.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module check_hlds.type_assign.
+:- use_module check_hlds.typecheck_info.
+:- use_module hlds.hlds_clauses.
+:- use_module parse_tree.prog_data.
+:- pred typecheck_clauses(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_type), list.list(hlds.hlds_clauses.clause), list.list(hlds.hlds_clauses.clause), check_hlds.type_assign.type_assign_set, check_hlds.type_assign.type_assign_set, check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.typecheck_info).
+:- mode typecheck_clauses(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

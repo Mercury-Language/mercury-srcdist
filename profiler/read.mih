@@ -1,0 +1,92 @@
+/*
+** Automatically generated from `read.m'
+** by the Mercury compiler,
+** version rotd-2026-03-30
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module read.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_read
+#define MR_HEADER_GUARD_read
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef READ_DECL_GUARD
+#define READ_DECL_GUARD
+
+#endif
+
+
+
+void MR_CALL 
+read__maybe_read_label_addr_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+read__maybe_read_label_name_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+read__read_float_4_p_0(
+  MR_Word param_1,
+  MR_Float * param_2);
+
+void MR_CALL 
+read__read_int_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+read__read_label_addr_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+read__read_label_name_4_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+read__read_string_4_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+read__read_what_to_profile_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void mercury__read__init(void);
+void mercury__read__init_type_tables(void);
+void mercury__read__init_debugger(void);
+const char *mercury__read__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_read
+
+// :- end_interface read.
