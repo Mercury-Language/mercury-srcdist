@@ -1,0 +1,17 @@
+:- module pair.
+:- interface.
+:- type pair(T) == pair.pair(T, T).
+:- type pair(T1, T2)
+    --->    -(
+                 T1,
+                 T2
+            ).
+:- inst pair(I) == pair.pair(I, I).
+:- inst pair(I1, I2) for pair.pair/2 == bound(-(I1, I2)).
+:- pred fst(pair.pair(T1, T2), T1).
+:- mode fst(builtin.in, builtin.out) is det.
+:- func fst(pair.pair(T1, T2)) = T1.
+:- func pair(T1, T2) = pair.pair(T1, T2).
+:- pred snd(pair.pair(T1, T2), T2).
+:- mode snd(builtin.in, builtin.out) is det.
+:- func snd(pair.pair(T1, T2)) = T2.

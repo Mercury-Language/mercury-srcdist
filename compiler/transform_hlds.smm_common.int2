@@ -1,0 +1,7 @@
+:- module transform_hlds.smm_common.
+:- interface.
+:- type program_point
+    --->    pp(
+                 (transform_hlds.smm_common).pp_context :: term.context,
+                 (transform_hlds.smm_common).pp_id :: mdbcomp.goal_path.reverse_goal_path
+            ).

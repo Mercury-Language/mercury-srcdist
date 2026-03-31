@@ -1,0 +1,13 @@
+:- module check_hlds.modecheck_call.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module check_hlds.mode_info.
+:- use_module check_hlds.modecheck_util.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.prog_data.
+:- inst generic_call_higher_order for (hlds.hlds_goal).generic_call/0
+    --->    higher_order(ground, ground, ground, ground, ground).

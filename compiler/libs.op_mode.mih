@@ -1,0 +1,186 @@
+/*
+** Automatically generated from `op_mode.m'
+** by the Mercury compiler,
+** version rotd-2026-03-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.op_mode.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__op_mode
+#define MR_HEADER_GUARD_libs__op_mode
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__OP_MODE_DECL_GUARD
+#define LIBS__OP_MODE_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__op_mode__libs__op_mode__type_ctor_info_maybe_make_ints_0;
+
+extern const MR_TypeCtorInfo_Struct libs__op_mode__libs__op_mode__type_ctor_info_op_mode_0;
+
+extern const MR_TypeCtorInfo_Struct libs__op_mode__libs__op_mode__type_ctor_info_op_mode_args_0;
+
+extern const MR_TypeCtorInfo_Struct libs__op_mode__libs__op_mode__type_ctor_info_op_mode_augment_0;
+
+extern const MR_TypeCtorInfo_Struct libs__op_mode__libs__op_mode__type_ctor_info_op_mode_codegen_0;
+
+extern const MR_TypeCtorInfo_Struct libs__op_mode__libs__op_mode__type_ctor_info_op_mode_front_and_middle_0;
+
+extern const MR_TypeCtorInfo_Struct libs__op_mode__libs__op_mode__type_ctor_info_op_mode_interface_file_0;
+
+extern const MR_TypeCtorInfo_Struct libs__op_mode__libs__op_mode__type_ctor_info_op_mode_invoked_by_mmc_make_0;
+
+extern const MR_TypeCtorInfo_Struct libs__op_mode__libs__op_mode__type_ctor_info_op_mode_query_0;
+
+void MR_CALL 
+libs__op_mode__decide_op_mode_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_String MR_CALL 
+libs__op_mode__op_mode_to_option_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+libs__op_mode____Compare____maybe_make_ints_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__op_mode____Compare____op_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__op_mode____Compare____op_mode_args_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__op_mode____Compare____op_mode_augment_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__op_mode____Compare____op_mode_codegen_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__op_mode____Compare____op_mode_front_and_middle_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__op_mode____Compare____op_mode_interface_file_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__op_mode____Compare____op_mode_invoked_by_mmc_make_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__op_mode____Compare____op_mode_query_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__op_mode____Index____op_mode_query_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+libs__op_mode____Unify____maybe_make_ints_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__op_mode____Unify____op_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__op_mode____Unify____op_mode_args_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__op_mode____Unify____op_mode_augment_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__op_mode____Unify____op_mode_codegen_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__op_mode____Unify____op_mode_front_and_middle_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__op_mode____Unify____op_mode_interface_file_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__op_mode____Unify____op_mode_invoked_by_mmc_make_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__op_mode____Unify____op_mode_query_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__op_mode__init(void);
+void mercury__libs__op_mode__init_type_tables(void);
+void mercury__libs__op_mode__init_debugger(void);
+const char *mercury__libs__op_mode__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.op_mode
+
+// :- end_interface libs.op_mode.

@@ -1,0 +1,9 @@
+:- module (hlds.hlds_out).hlds_out_util.
+:- interface.
+:- type hlds_dump_options.
+:- type hlds_out_info.
+:- type maybe_qualify_cons_id
+	where	type_is_abstract_enum(1).
+:- type_representation(hlds_dump_options, is_word_aligned_ptr).
+:- type_representation(hlds_out_info, is_word_aligned_ptr).
+:- type_representation(maybe_qualify_cons_id, du_repn(enum("qualify_cons_id", "do_not_qualify_cons_id", [],  no_c_j_cs))).
