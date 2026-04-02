@@ -1,0 +1,34 @@
+:- module bit_buffer.write.
+:- interface.
+:- use_module io.
+:- type io_write_buffer == bit_buffer.write.write_buffer(io.binary_output_stream, io.state).
+:- type write_buffer == bit_buffer.write.write_buffer(bit_buffer.error_stream, bit_buffer.error_state).
+:- type write_buffer(Stream, State).
+:- inst uniq_write_buffer == ground.
+:- mode (write_buffer_di) == builtin.in((bit_buffer.write).uniq_write_buffer).
+:- mode (write_buffer_ui) == builtin.in((bit_buffer.write).uniq_write_buffer).
+:- mode (write_buffer_uo) == builtin.out((bit_buffer.write).uniq_write_buffer).
+:- pred finalize(bit_buffer.write.write_buffer(Stream, State), Stream, State) <= (stream.writer(Stream, bitmap.slice, State)).
+:- mode finalize((bit_buffer.write).write_buffer_di, builtin.out, builtin.uo) is det.
+:- func finalize_to_bitmap(bit_buffer.write.write_buffer) = bitmap.bitmap.
+:- mode finalize_to_bitmap((bit_buffer.write).write_buffer_di) = bitmap.bitmap_uo is det.
+:- pred flush(bit_buffer.write.write_buffer(Stream, State), bit_buffer.write.write_buffer(Stream, State)) <= (stream.writer(Stream, bitmap.slice, State)).
+:- mode flush((bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo) is det.
+:- func new(bitmap.num_bytes, Stream, State) = bit_buffer.write.write_buffer(Stream, State) <= (stream.writer(Stream, bitmap.byte_index, State)).
+:- mode new(builtin.in, builtin.in, builtin.di) = (bit_buffer.write).write_buffer_uo is det.
+:- func new_bitmap_builder(bitmap.num_bytes) = bit_buffer.write.write_buffer.
+:- mode new_bitmap_builder(builtin.in) = builtin.out is det.
+:- func num_bits_to_byte_boundary(bit_buffer.write.write_buffer(V_1, V_2)) = bitmap.num_bits.
+:- mode num_bits_to_byte_boundary((bit_buffer.write).write_buffer_ui) = builtin.out is det.
+:- func num_buffered_bits(bit_buffer.write.write_buffer(V_1, V_2)) = bitmap.num_bits.
+:- mode num_buffered_bits((bit_buffer.write).write_buffer_ui) = builtin.out is det.
+:- pred put_bit(bool.bool, bit_buffer.write.write_buffer(Stream, State), bit_buffer.write.write_buffer(Stream, State)) <= (stream.writer(Stream, bitmap.slice, State)).
+:- mode put_bit(builtin.in, (bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo) is det.
+:- pred put_bitmap(bitmap.bitmap, bit_buffer.write.write_buffer(Stream, State), bit_buffer.write.write_buffer(Stream, State)) <= (stream.writer(Stream, bitmap.slice, State)).
+:- mode put_bitmap(bitmap.bitmap_ui, (bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo) is det.
+:- pred put_bitmap(bitmap.bitmap, bitmap.bit_index, bitmap.num_bits, bit_buffer.write.write_buffer(Stream, State), bit_buffer.write.write_buffer(Stream, State)) <= (stream.writer(Stream, bitmap.slice, State)).
+:- mode put_bitmap(bitmap.bitmap_ui, builtin.in, builtin.in, (bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo) is det.
+:- pred put_bits(bitmap.word, bitmap.num_bits, bit_buffer.write.write_buffer(Stream, State), bit_buffer.write.write_buffer(Stream, State)) <= (stream.writer(Stream, bitmap.slice, State)).
+:- mode put_bits(builtin.in, builtin.in, (bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo) is det.
+:- pred put_byte(bitmap.word, bit_buffer.write.write_buffer(Stream, State), bit_buffer.write.write_buffer(Stream, State)) <= (stream.writer(Stream, bitmap.slice, State)).
+:- mode put_byte(builtin.in, (bit_buffer.write).write_buffer_di, (bit_buffer.write).write_buffer_uo) is det.
