@@ -1,0 +1,14 @@
+module(2, "bt_array.m",
+	bt_array,
+	{},
+	{builtin, list, private_builtin},
+	{int, ra_list, require},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
