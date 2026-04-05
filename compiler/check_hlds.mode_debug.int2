@@ -1,0 +1,15 @@
+:- module check_hlds.mode_debug.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module check_hlds.mode_info.
+:- use_module hlds.hlds_goal.
+:- use_module mdbcomp.sym_name.
+:- type mode_checkpoint_port
+    --->    enter 
+    ;       exit 
+    ;       wakeup .
+:- inst non_wakeup_port for (check_hlds.mode_debug).mode_checkpoint_port/0
+    --->    enter
+    ;       exit.

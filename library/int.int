@@ -1,0 +1,188 @@
+:- module int.
+:- interface.
+:- use_module array.
+:- use_module enum.
+:- use_module pretty_printer.
+:- instance (enum.enum(int)).
+:- instance (enum.uenum(int)).
+:- func '*'(int, int) = int.
+:- mode '*'(builtin.in, builtin.in) = builtin.uo is det.
+:- func '+'(int) = int.
+:- mode '+'(builtin.in) = builtin.uo is det.
+:- func '+'(int, int) = int.
+:- mode '+'(builtin.in, builtin.in) = builtin.uo is det.
+:- mode '+'(builtin.uo, builtin.in) = builtin.in is det.
+:- mode '+'(builtin.in, builtin.uo) = builtin.in is det.
+:- func '-'(int) = int.
+:- mode '-'(builtin.in) = builtin.uo is det.
+:- func '-'(int, int) = int.
+:- mode '-'(builtin.in, builtin.in) = builtin.uo is det.
+:- mode '-'(builtin.uo, builtin.in) = builtin.in is det.
+:- mode '-'(builtin.in, builtin.uo) = builtin.in is det.
+:- func '/'(int, int) = int.
+:- mode '/'(builtin.in, builtin.in) = builtin.uo is det.
+:- func '//'(int, int) = int.
+:- mode '//'(builtin.in, builtin.in) = builtin.uo is det.
+:- func '/\\'(int, int) = int.
+:- mode '/\\'(builtin.in, builtin.in) = builtin.uo is det.
+:- pred '<'(int, int).
+:- mode '<'(builtin.in, builtin.in) is semidet.
+:- func '<<'(int, int) = int.
+:- mode '<<'(builtin.in, builtin.in) = builtin.uo is det.
+:- func '<<u'(int, uint) = int.
+:- mode '<<u'(builtin.in, builtin.in) = builtin.uo is det.
+:- pred '=<'(int, int).
+:- mode '=<'(builtin.in, builtin.in) is semidet.
+:- pred '>'(int, int).
+:- mode '>'(builtin.in, builtin.in) is semidet.
+:- pred '>='(int, int).
+:- mode '>='(builtin.in, builtin.in) is semidet.
+:- func '>>'(int, int) = int.
+:- mode '>>'(builtin.in, builtin.in) = builtin.uo is det.
+:- func '>>u'(int, uint) = int.
+:- mode '>>u'(builtin.in, builtin.in) = builtin.uo is det.
+:- func '\\'(int) = int.
+:- mode '\\'(builtin.in) = builtin.uo is det.
+:- func '\\/'(int, int) = int.
+:- mode '\\/'(builtin.in, builtin.in) = builtin.uo is det.
+:- pred abs(int, int).
+:- mode abs(builtin.in, builtin.out) is det.
+:- func abs(int) = int.
+:- pred all_true_in_range((pred int), int, int).
+:- mode all_true_in_range(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in) is semidet.
+:- pred bits_per_int(int).
+:- mode bits_per_int(builtin.out) is det.
+:- func bits_per_int = int.
+:- func clamp(int, int, int) = int.
+:- func div(int, int) = int.
+:- mode div(builtin.in, builtin.in) = builtin.uo is det.
+:- pred even(int).
+:- mode even(builtin.in) is semidet.
+:- func floor_to_multiple_of_bits_per_int(int) = int.
+:- pred fold_down(pred(int, T, T), int, int, T, T).
+:- mode fold_down(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- mode fold_down(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode fold_down(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- mode fold_down(builtin.in((pred(builtin.in, array.array_di, array.array_uo) is det)), builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- mode fold_down(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- mode fold_down(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode fold_down(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.di, builtin.uo) is semidet.
+:- mode fold_down(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.out) is nondet.
+:- mode fold_down(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is nondet)), builtin.in, builtin.in, builtin.mdi, builtin.muo) is nondet.
+:- mode fold_down(builtin.in((pred(builtin.in, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.in, builtin.out) is cc_multi.
+:- mode fold_down(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.di, builtin.uo) is cc_multi.
+:- func fold_down((func(int, T) = T), int, int, T) = T.
+:- pred fold_down2(pred(int, T, T, U, U), int, int, T, T, U, U).
+:- mode fold_down2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode fold_down2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode fold_down2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode fold_down2(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det.
+:- mode fold_down2(builtin.in((pred(builtin.in, builtin.in, builtin.out, array.array_di, array.array_uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, array.array_di, array.array_uo) is det.
+:- mode fold_down2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode fold_down2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- mode fold_down2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet.
+:- mode fold_down2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is nondet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is nondet.
+:- pred fold_down3(pred(int, T, T, U, U, V, V), int, int, T, T, U, U, V, V).
+:- mode fold_down3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode fold_down3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode fold_down3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode fold_down3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo, builtin.di, builtin.uo) is det.
+:- mode fold_down3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, array.array_di, array.array_uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, array.array_di, array.array_uo) is det.
+:- mode fold_down3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode fold_down3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode fold_down3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- mode fold_down3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is nondet.
+:- mode fold_down3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is nondet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is nondet.
+:- pred fold_up(pred(int, T, T), int, int, T, T).
+:- mode fold_up(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- mode fold_up(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode fold_up(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- mode fold_up(builtin.in((pred(builtin.in, array.array_di, array.array_uo) is det)), builtin.in, builtin.in, array.array_di, array.array_uo) is det.
+:- mode fold_up(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- mode fold_up(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode fold_up(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.di, builtin.uo) is semidet.
+:- mode fold_up(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.out) is nondet.
+:- mode fold_up(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is nondet)), builtin.in, builtin.in, builtin.mdi, builtin.muo) is nondet.
+:- mode fold_up(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.di, builtin.uo) is cc_multi.
+:- mode fold_up(builtin.in((pred(builtin.in, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.in, builtin.out) is cc_multi.
+:- func fold_up((func(int, T) = T), int, int, T) = T.
+:- pred fold_up2(pred(int, T, T, U, U), int, int, T, T, U, U).
+:- mode fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode fold_up2(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det.
+:- mode fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, array.array_di, array.array_uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, array.array_di, array.array_uo) is det.
+:- mode fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- mode fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet.
+:- mode fold_up2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is nondet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is nondet.
+:- pred fold_up3(pred(int, T, T, U, U, V, V), int, int, T, T, U, U, V, V).
+:- mode fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo, builtin.di, builtin.uo) is det.
+:- mode fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, array.array_di, array.array_uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, array.array_di, array.array_uo) is det.
+:- mode fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- mode fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is nondet.
+:- mode fold_up3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is nondet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is nondet.
+:- pred hash(int, int).
+:- mode hash(builtin.in, builtin.out) is det.
+:- func hash(int) = int.
+:- func int_to_doc(int) = pretty_printer.doc.
+:- pred log2(int, int).
+:- mode log2(builtin.in, builtin.out) is det.
+:- func log2(int) = int.
+:- pred max(int, int, int).
+:- mode max(builtin.in, builtin.in, builtin.out) is det.
+:- func max(int, int) = int.
+:- pred max_int(int).
+:- mode max_int(builtin.out) is det.
+:- func max_int = int.
+:- pred min(int, int, int).
+:- mode min(builtin.in, builtin.in, builtin.out) is det.
+:- func min(int, int) = int.
+:- pred min_int(int).
+:- mode min_int(builtin.out) is det.
+:- func min_int = int.
+:- func minus(int, int) = int.
+:- func mod(int, int) = int.
+:- mode mod(builtin.in, builtin.in) = builtin.uo is det.
+:- func nabs(int) = int.
+:- pred nondet_int_in_range(int, int, int).
+:- mode nondet_int_in_range(builtin.in, builtin.in, builtin.out) is nondet.
+:- pred odd(int).
+:- mode odd(builtin.in) is semidet.
+:- func plus(int, int) = int.
+:- pred pow(int, int, int).
+:- mode pow(builtin.in, builtin.in, builtin.out) is det.
+:- func pow(int, int) = int.
+:- func quot_bits_per_int(int) = int.
+:- func rem(int, int) = int.
+:- mode rem(builtin.in, builtin.in) = builtin.uo is det.
+:- func rem_bits_per_int(int) = int.
+:- func times(int, int) = int.
+:- func times_bits_per_int(int) = int.
+:- pred ubits_per_int(uint).
+:- mode ubits_per_int(builtin.out) is det.
+:- func ubits_per_int = uint.
+:- func unchecked_abs(int) = int.
+:- func unchecked_left_shift(int, int) = int.
+:- mode unchecked_left_shift(builtin.in, builtin.in) = builtin.uo is det.
+:- func unchecked_left_ushift(int, uint) = int.
+:- mode unchecked_left_ushift(builtin.in, builtin.in) = builtin.uo is det.
+:- func unchecked_quotient(int, int) = int.
+:- mode unchecked_quotient(builtin.in, builtin.in) = builtin.uo is det.
+:- func unchecked_rem(int, int) = int.
+:- mode unchecked_rem(builtin.in, builtin.in) = builtin.uo is det.
+:- func unchecked_right_shift(int, int) = int.
+:- mode unchecked_right_shift(builtin.in, builtin.in) = builtin.uo is det.
+:- func unchecked_right_ushift(int, uint) = int.
+:- mode unchecked_right_ushift(builtin.in, builtin.in) = builtin.uo is det.
+:- func xor(int, int) = int.
+:- mode xor(builtin.in, builtin.in) = builtin.uo is det.
+:- mode xor(builtin.in, builtin.uo) = builtin.in is det.
+:- mode xor(builtin.uo, builtin.in) = builtin.in is det.
+:- pragma obsolete(func(int.int_to_doc/1), [pretty_printer.int_to_doc/1]).
