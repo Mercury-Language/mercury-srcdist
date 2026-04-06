@@ -1,0 +1,62 @@
+       1:      1  1 CALL pred tabled_read.main/2-0 (det) tabled_read.m:17
+mdb> echo on
+Command echo enabled.
+mdb> register --quiet
+mdb> context none
+Contexts will not be printed.
+mdb> table_io
+io tabling has not yet started
+mdb> break tabled_read__test
+ 0: + stop  interface pred tabled_read.test/5-0 (det)
+mdb> table_io start
+io tabling started
+mdb> continue
+       8:      4  3 CALL pred tabled_read.test/5-0 (det)
+mdb> finish -n
+      57:      4  3 EXIT pred tabled_read.test/5-0 (det)
+mdb> print *
+       Stream (arg 1)         	c_pointer(0xXXXX)
+       SoFar (arg 2)          	0
+       N (arg 3)              	123
+       DCG_2 (arg 5)          	state(c_pointer(0xXXXX))
+mdb> retry
+Retry across I/O operations is not always safe.
+Are you sure you want to do it? y
+       8:      4  3 CALL pred tabled_read.test/5-0 (det)
+mdb> print *
+       Stream (arg 1)         	c_pointer(0xXXXX)
+       SoFar (arg 2)          	0
+       DCG_0 (arg 4)          	state(c_pointer(0xXXXX))
+mdb> finish -n
+      57:      4  3 EXIT pred tabled_read.test/5-0 (det)
+mdb> print *
+       Stream (arg 1)         	c_pointer(0xXXXX)
+       SoFar (arg 2)          	0
+       N (arg 3)              	123
+       DCG_2 (arg 5)          	state(c_pointer(0xXXXX))
+mdb> table_io end
+io tabling ended
+mdb> continue
+123
+456
+     110:     45  3 CALL pred tabled_read.test/5-0 (det)
+mdb> finish -n
+     155:     45  3 EXIT pred tabled_read.test/5-0 (det)
+mdb> print *
+       Stream (arg 1)         	c_pointer(0xXXXX)
+       SoFar (arg 2)          	0
+       N (arg 3)              	789
+       DCG_2 (arg 5)          	state(c_pointer(0xXXXX))
+mdb> retry
+Retry across I/O operations is not always safe.
+Are you sure you want to do it? y
+     110:     45  3 CALL pred tabled_read.test/5-0 (det)
+mdb> finish -n
+     143:     45  3 EXIT pred tabled_read.test/5-0 (det)
+mdb> print *
+       Stream (arg 1)         	c_pointer(0xXXXX)
+       SoFar (arg 2)          	0
+       N (arg 3)              	42
+       DCG_2 (arg 5)          	state(c_pointer(0xXXXX))
+mdb> continue -S
+42

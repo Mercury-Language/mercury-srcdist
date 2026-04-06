@@ -1,0 +1,52 @@
+/*
+** Automatically generated from `make.m'
+** by the Mercury compiler,
+** version rotd-2026-04-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make
+#define MR_HEADER_GUARD_make
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE_DECL_GUARD
+#define MAKE_DECL_GUARD
+
+#endif
+
+
+
+void mercury__make__init(void);
+void mercury__make__init_type_tables(void);
+void mercury__make__init_debugger(void);
+const char *mercury__make__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make
+
+// :- end_interface make.

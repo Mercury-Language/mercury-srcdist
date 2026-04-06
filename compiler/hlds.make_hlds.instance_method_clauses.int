@@ -1,0 +1,16 @@
+:- module (hlds.make_hlds).instance_method_clauses.
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module term.
+:- use_module hlds.hlds_clauses.
+:- use_module hlds.hlds_markers.
+:- use_module hlds.hlds_module.
+:- use_module hlds.status.
+:- use_module mdbcomp.prim_data.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module (hlds.make_hlds).qual_info.
+:- pred produce_instance_method_clauses(parse_tree.prog_data.instance_proc_def, mdbcomp.prim_data.pred_or_func, list.list(parse_tree.prog_data.mer_type), hlds.hlds_markers.pred_markers, term.context, hlds.status.instance_status, hlds.hlds_clauses.clauses_info, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode produce_instance_method_clauses(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

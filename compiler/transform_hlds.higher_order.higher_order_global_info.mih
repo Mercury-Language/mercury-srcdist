@@ -1,0 +1,391 @@
+/*
+** Automatically generated from `higher_order.higher_order_global_info.m'
+** by the Mercury compiler,
+** version rotd-2026-04-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.higher_order.higher_order_global_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__higher_order__higher_order_global_info
+#define MR_HEADER_GUARD_transform_hlds__higher_order__higher_order_global_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__HIGHER_ORDER__HIGHER_ORDER_GLOBAL_INFO_DECL_GUARD
+#define TRANSFORM_HLDS__HIGHER_ORDER__HIGHER_ORDER_GLOBAL_INFO_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.higher_order.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_goal_size_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_higher_order_arg_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_higher_order_global_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_ho_params_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_ho_request_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_ho_request_kind_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_is_arg_const_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_known_const_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_known_var_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_match_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_match_completeness_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_match_is_full_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_must_recompute_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_new_pred_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_new_pred_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_parent_version_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_version_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__higher_order__higher_order_global_info__transform_hlds__higher_order__higher_order_global_info__type_ctor_info_version_info_map_0;
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__all_higher_order_args_are_constant_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__get_extra_arguments_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__hogi_add_goal_size_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__hogi_add_version_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__hogi_allocate_id_3_p_0(
+  MR_Integer * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__hogi_set_module_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__hogi_set_new_pred_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__hogi_set_version_info_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__remove_const_higher_order_args_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__version_matches_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__both_constants_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__higher_order_arg_depth_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__higher_order_arg_size_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__higher_order_max_args_depth_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__higher_order_max_args_size_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__hogi_get_goal_size_map_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__hogi_get_module_info_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__hogi_get_new_pred_map_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__hogi_get_params_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__hogi_get_version_info_map_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__init_higher_order_global_info_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+transform_hlds__higher_order__higher_order_global_info__mode_to_unify_mode_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____goal_size_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____higher_order_arg_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____higher_order_global_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____ho_params_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____ho_request_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____ho_request_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____is_arg_const_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____known_const_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____known_var_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____match_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____match_completeness_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____must_recompute_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____new_pred_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____new_pred_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____parent_version_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____version_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Compare____version_info_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____goal_size_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____higher_order_arg_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____higher_order_global_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____ho_params_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____ho_request_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____ho_request_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____is_arg_const_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____known_const_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____known_var_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____match_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____match_completeness_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____must_recompute_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____new_pred_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____new_pred_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____parent_version_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____version_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__higher_order__higher_order_global_info____Unify____version_info_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__higher_order__higher_order_global_info__init(void);
+void mercury__transform_hlds__higher_order__higher_order_global_info__init_type_tables(void);
+void mercury__transform_hlds__higher_order__higher_order_global_info__init_debugger(void);
+const char *mercury__transform_hlds__higher_order__higher_order_global_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.higher_order.higher_order_global_info
+
+// :- end_interface transform_hlds.higher_order.higher_order_global_info.

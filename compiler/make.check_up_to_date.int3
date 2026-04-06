@@ -1,0 +1,11 @@
+:- module make.check_up_to_date.
+:- interface.
+:- type lhs_result.
+:- type make_lhs_files.
+:- type maybe_oldest_lhs_file.
+:- type should_rebuild_lhs
+	where	type_is_abstract_enum(1).
+:- type target_status_result.
+:- type_representation(make_lhs_files, is_word_aligned_ptr).
+:- type_representation(should_rebuild_lhs, du_repn(enum("all_lhs_files_up_to_date", "some_lhs_file_needs_rebuilding", [],  no_c_j_cs))).
+:- type_representation(target_status_result, is_word_aligned_ptr).
