@@ -1,0 +1,6 @@
+:- module mdbcomp.write_trace_counts.
+:- interface.
+:- use_module io.
+:- use_module mdbcomp.trace_counts.
+:- pred write_trace_counts_to_file(mdbcomp.trace_counts.trace_count_file_type, mdbcomp.trace_counts.trace_counts, string, io.res, io.io, io.io).
+:- mode write_trace_counts_to_file(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.

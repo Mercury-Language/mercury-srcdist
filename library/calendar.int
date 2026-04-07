@@ -1,0 +1,138 @@
+:- module calendar.
+:- interface.
+:- use_module io.
+:- type date == calendar.date_time.
+:- type date_time.
+:- type day_of_month == int.
+:- type day_of_week
+    --->    monday 
+    ;       tuesday 
+    ;       wednesday 
+    ;       thursday 
+    ;       friday 
+    ;       saturday 
+    ;       sunday .
+:- type days == int.
+:- type duration.
+:- type hour == int.
+:- type hours == int.
+:- type microsecond == int.
+:- type microseconds == int.
+:- type minute == int.
+:- type minutes == int.
+:- type month
+    --->    january 
+    ;       february 
+    ;       march 
+    ;       april 
+    ;       may 
+    ;       june 
+    ;       july 
+    ;       august 
+    ;       september 
+    ;       october 
+    ;       november 
+    ;       december .
+:- type months == int.
+:- type second == int.
+:- type seconds == int.
+:- type year == int.
+:- type years == int.
+:- pred add_duration(calendar.duration, calendar.date_time, calendar.date_time).
+:- mode add_duration(builtin.in, builtin.in, builtin.out) is det.
+:- pred current_local_time(calendar.date_time, io.io, io.io).
+:- mode current_local_time(builtin.out, builtin.di, builtin.uo) is det.
+:- pred current_utc_time(calendar.date_time, io.io, io.io).
+:- mode current_utc_time(builtin.out, builtin.di, builtin.uo) is det.
+:- pred date_from_string(string, calendar.date_time).
+:- mode date_from_string(builtin.in, builtin.out) is semidet.
+:- pred date_time_from_string(string, calendar.date_time).
+:- mode date_time_from_string(builtin.in, builtin.out) is semidet.
+:- func date_time_to_string(calendar.date_time) = string.
+:- func date_to_string(calendar.date_time) = string.
+:- func day_duration(calendar.date_time, calendar.date_time) = calendar.duration.
+:- func day_of_month(calendar.date_time) = calendar.day_of_month.
+:- func day_of_week(calendar.date_time) = calendar.day_of_week.
+:- func days(calendar.duration) = calendar.days.
+:- func days_in_month(calendar.year, calendar.month) = int.
+:- func det_date_from_string(string) = calendar.date_time.
+:- func det_date_time_from_string(string) = calendar.date_time.
+:- func det_duration_from_string(string) = calendar.duration.
+:- func det_init_date(calendar.year, calendar.month, calendar.day_of_month, calendar.hour, calendar.minute, calendar.second, calendar.microsecond) = calendar.date_time.
+:- func det_init_date_time(calendar.year, calendar.month, calendar.day_of_month, calendar.hour, calendar.minute, calendar.second, calendar.microsecond) = calendar.date_time.
+:- func det_int0_to_month(int) = calendar.month.
+:- func det_int_to_month(int) = calendar.month.
+:- func duration(calendar.date_time, calendar.date_time) = calendar.duration.
+:- pred duration_from_string(string, calendar.duration).
+:- mode duration_from_string(builtin.in, builtin.out) is semidet.
+:- pred duration_leq(calendar.duration, calendar.duration).
+:- mode duration_leq(builtin.in, builtin.in) is semidet.
+:- func duration_to_string(calendar.duration) = string.
+:- pred foldl2_days(pred(calendar.date_time, A, A, B, B), calendar.date_time, calendar.date_time, A, A, B, B).
+:- mode foldl2_days(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl2_days(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl2_days(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl2_days(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl2_days(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl2_days(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldl3_days(pred(calendar.date_time, A, A, B, B, C, C), calendar.date_time, calendar.date_time, A, A, B, B, C, C).
+:- mode foldl3_days(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl3_days(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl3_days(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl3_days(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl3_days(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl3_days(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldl_days(pred(calendar.date_time, A, A), calendar.date_time, calendar.date_time, A, A).
+:- mode foldl_days(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- mode foldl_days(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode foldl_days(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldl_days(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldl_days(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl_days(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.di, builtin.uo) is semidet.
+:- func hour(calendar.date_time) = calendar.hour.
+:- func hours(calendar.duration) = calendar.hours.
+:- pred init_date(calendar.year, calendar.month, calendar.day_of_month, calendar.hour, calendar.minute, calendar.second, calendar.microsecond, calendar.date_time).
+:- mode init_date(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred init_date_time(calendar.year, calendar.month, calendar.day_of_month, calendar.hour, calendar.minute, calendar.second, calendar.microsecond, calendar.date_time).
+:- mode init_date_time(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- func init_duration(calendar.years, calendar.months, calendar.days, calendar.hours, calendar.minutes, calendar.seconds, calendar.microseconds) = calendar.duration.
+:- pred int0_to_month(int, calendar.month).
+:- mode int0_to_month(builtin.in, builtin.out) is semidet.
+:- mode int0_to_month(builtin.out, builtin.in) is det.
+:- pred int_to_month(int, calendar.month).
+:- mode int_to_month(builtin.in, builtin.out) is semidet.
+:- mode int_to_month(builtin.out, builtin.in) is det.
+:- pred is_leap_year(calendar.year).
+:- mode is_leap_year(builtin.in) is semidet.
+:- func julian_day_number(calendar.date_time) = int.
+:- pred local_time_offset(calendar.duration, io.io, io.io).
+:- mode local_time_offset(builtin.out, builtin.di, builtin.uo) is det.
+:- func microsecond(calendar.date_time) = calendar.microsecond.
+:- func microseconds(calendar.duration) = calendar.microseconds.
+:- func minute(calendar.date_time) = calendar.minute.
+:- func minutes(calendar.duration) = calendar.minutes.
+:- func month(calendar.date_time) = calendar.month.
+:- func month_to_int(calendar.month) = int.
+:- func month_to_int0(calendar.month) = int.
+:- func months(calendar.duration) = calendar.months.
+:- func negate(calendar.duration) = calendar.duration.
+:- pred same_date(calendar.date_time, calendar.date_time).
+:- mode same_date(builtin.in, builtin.in) is semidet.
+:- func second(calendar.date_time) = calendar.second.
+:- func seconds(calendar.duration) = calendar.seconds.
+:- func unix_epoch = calendar.date_time.
+:- pred unpack_date(calendar.date_time, calendar.year, calendar.month, calendar.day_of_month, calendar.hour, calendar.minute, calendar.second, calendar.microsecond).
+:- mode unpack_date(builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred unpack_date_time(calendar.date_time, calendar.year, calendar.month, calendar.day_of_month, calendar.hour, calendar.minute, calendar.second, calendar.microsecond).
+:- mode unpack_date_time(builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred unpack_duration(calendar.duration, calendar.years, calendar.months, calendar.days, calendar.hours, calendar.minutes, calendar.seconds, calendar.microseconds).
+:- mode unpack_duration(builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- func year(calendar.date_time) = calendar.year.
+:- func years(calendar.duration) = calendar.years.
+:- func zero_duration = calendar.duration.
+:- pragma obsolete(pred(calendar.date_from_string/2), [date_time_from_string/2]).
+:- pragma obsolete(pred(calendar.init_date/8), [init_date_time/8]).
+:- pragma obsolete(pred(calendar.unpack_date/8), [unpack_date_time/8]).
+:- pragma obsolete(func(calendar.date_to_string/1), [date_time_to_string/1]).
+:- pragma obsolete(func(calendar.det_date_from_string/1), [det_date_time_from_string/1]).
+:- pragma obsolete(func(calendar.det_init_date/7), [det_init_date_time/7]).

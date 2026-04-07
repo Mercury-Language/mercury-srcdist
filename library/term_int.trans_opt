@@ -1,0 +1,45 @@
+:- module term_int.
+
+:- pragma termination_info(term_int.decimal_term_to_int(builtin.in, builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(term_int.int16_to_decimal_term(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_int.int32_to_decimal_term(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_int.int64_to_decimal_term(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_int.int8_to_decimal_term(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_int.int_to_decimal_term(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_int.term_to_int(builtin.in, builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(term_int.term_to_int16(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_int.term_to_int32(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_int.term_to_int64(builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(term_int.term_to_int8(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_int.term_to_uint(builtin.in, builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(term_int.term_to_uint16(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_int.term_to_uint32(builtin.in, builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(term_int.term_to_uint64(builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(term_int.term_to_uint8(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(term_int.uint16_to_decimal_term(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_int.uint32_to_decimal_term(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_int.uint64_to_decimal_term(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_int.uint8_to_decimal_term(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(term_int.uint_to_decimal_term(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+
+:- pragma exceptions(predicate, term_int.decimal_term_to_int, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, term_int.int16_to_decimal_term, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, term_int.int32_to_decimal_term, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, term_int.int64_to_decimal_term, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, term_int.int8_to_decimal_term, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, term_int.int_to_decimal_term, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_int.term_to_int, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_int.term_to_int16, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_int.term_to_int32, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_int.term_to_int64, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, term_int.term_to_int8, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_int.term_to_uint, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, term_int.term_to_uint16, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, term_int.term_to_uint32, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, term_int.term_to_uint64, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, term_int.term_to_uint8, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, term_int.uint16_to_decimal_term, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, term_int.uint32_to_decimal_term, 2, 0, will_not_throw).
+:- pragma exceptions(function, term_int.uint64_to_decimal_term, 2, 0, will_not_throw).
+:- pragma exceptions(function, term_int.uint8_to_decimal_term, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, term_int.uint_to_decimal_term, 2, 0, will_not_throw).
