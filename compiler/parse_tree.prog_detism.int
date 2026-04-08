@@ -1,0 +1,39 @@
+:- module parse_tree.prog_detism.
+:- interface.
+:- use_module maybe.
+:- use_module parse_tree.prog_data.
+:- type det_comparison
+    --->    first_detism_tighter_than 
+    ;       first_detism_same_as 
+    ;       first_detism_looser_than 
+    ;       first_detism_incomparable .
+:- type det_component_comparison
+    --->    first_tighter_than 
+    ;       first_same_as 
+    ;       first_looser_than .
+:- pred compare_canfails(parse_tree.prog_data.can_fail, parse_tree.prog_data.can_fail, parse_tree.prog_detism.det_component_comparison).
+:- mode compare_canfails(builtin.in, builtin.in, builtin.out) is det.
+:- pred compare_determinisms(parse_tree.prog_data.determinism, parse_tree.prog_data.determinism, parse_tree.prog_detism.det_comparison).
+:- mode compare_determinisms(builtin.in, builtin.in, builtin.out) is det.
+:- pred compare_solncounts(parse_tree.prog_data.soln_count, parse_tree.prog_data.soln_count, parse_tree.prog_detism.det_component_comparison).
+:- mode compare_solncounts(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_conjunction_canfail(parse_tree.prog_data.can_fail, parse_tree.prog_data.can_fail, parse_tree.prog_data.can_fail).
+:- mode det_conjunction_canfail(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_conjunction_detism(parse_tree.prog_data.determinism, parse_tree.prog_data.determinism, parse_tree.prog_data.determinism).
+:- mode det_conjunction_detism(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_conjunction_maxsoln(parse_tree.prog_data.soln_count, parse_tree.prog_data.soln_count, parse_tree.prog_data.soln_count).
+:- mode det_conjunction_maxsoln(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_disjunction_canfail(parse_tree.prog_data.can_fail, parse_tree.prog_data.can_fail, parse_tree.prog_data.can_fail).
+:- mode det_disjunction_canfail(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_disjunction_maxsoln(parse_tree.prog_data.soln_count, parse_tree.prog_data.soln_count, parse_tree.prog_data.soln_count).
+:- mode det_disjunction_maxsoln(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_negation_det(parse_tree.prog_data.determinism, maybe.maybe(parse_tree.prog_data.determinism)).
+:- mode det_negation_det(builtin.in, builtin.out) is det.
+:- pred det_par_conjunction_detism(parse_tree.prog_data.determinism, parse_tree.prog_data.determinism, parse_tree.prog_data.determinism).
+:- mode det_par_conjunction_detism(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_switch_canfail(parse_tree.prog_data.can_fail, parse_tree.prog_data.can_fail, parse_tree.prog_data.can_fail).
+:- mode det_switch_canfail(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_switch_detism(parse_tree.prog_data.determinism, parse_tree.prog_data.determinism, parse_tree.prog_data.determinism).
+:- mode det_switch_detism(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_switch_maxsoln(parse_tree.prog_data.soln_count, parse_tree.prog_data.soln_count, parse_tree.prog_data.soln_count).
+:- mode det_switch_maxsoln(builtin.in, builtin.in, builtin.out) is det.

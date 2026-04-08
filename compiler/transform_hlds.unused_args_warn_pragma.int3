@@ -1,0 +1,13 @@
+:- module transform_hlds.unused_args_warn_pragma.
+:- interface.
+:- type maybe_gather_pragma_unused_args
+	where	type_is_abstract_enum(1).
+:- type maybe_record_analysis_unused_args
+	where	type_is_abstract_enum(1).
+:- type maybe_warn_unused_args
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_gather_pragma_unused_args, du_repn(enum("do_not_gather_pragma_unused_args", "do_gather_pragma_unused_args", [],  no_c_j_cs))).
+:- type_representation(maybe_record_analysis_unused_args, du_repn(enum("do_not_record_analysis_unused_args", "do_record_analysis_unused_args", [],  no_c_j_cs))).
+:- type_representation(maybe_warn_unused_args, du_repn(enum("do_not_warn_unused_args", "do_warn_unused_args", [],  no_c_j_cs))).
+:- type_representation(unused_proc_args, is_eqv_to(one_or_more(unused_proc_arg))).
+:- type_representation(warn_unused_pred_args_map, is_eqv_to(map(pred_id, warn_unused_pred_args))).

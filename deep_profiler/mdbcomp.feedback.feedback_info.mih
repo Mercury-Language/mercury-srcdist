@@ -1,0 +1,179 @@
+/*
+** Automatically generated from `feedback.feedback_info.m'
+** by the Mercury compiler,
+** version rotd-2026-04-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdbcomp.feedback.feedback_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdbcomp__feedback__feedback_info
+#define MR_HEADER_GUARD_mdbcomp__feedback__feedback_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDBCOMP__FEEDBACK__FEEDBACK_INFO_DECL_GUARD
+#define MDBCOMP__FEEDBACK__FEEDBACK_INFO_DECL_GUARD
+#include "mdbcomp.mih"
+#include "mdbcomp.feedback.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__feedback_info__mdbcomp__feedback__feedback_info__type_ctor_info_feedback_component_wrapper_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__feedback_info__mdbcomp__feedback__feedback_info__type_ctor_info_feedback_info_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__feedback_info__mdbcomp__feedback__feedback_info__type_ctor_info_feedback_info_candidate_parallel_conjunctions_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__feedback_info__mdbcomp__feedback__feedback_info__type_ctor_info_feedback_read_error_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__feedback_info__mdbcomp__feedback__feedback_info__type_ctor_info_feedback_read_result_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__feedback_info__mdbcomp__feedback__feedback_info__type_ctor_info_feedback_write_result_0;
+
+void MR_CALL 
+mdbcomp__feedback__feedback_info__add_feedback_candidate_parallel_conjunctions_4_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdbcomp__feedback__feedback_info__feedback_read_error_message_string_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mdbcomp__feedback__feedback_info__get_all_feedback_info_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdbcomp__feedback__feedback_info__read_feedback_file_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdbcomp__feedback__feedback_info__read_or_create_feedback_file_5_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdbcomp__feedback__feedback_info__replace_feedback_candidate_parallel_conjunctions_4_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdbcomp__feedback__feedback_info__write_feedback_file_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+mdbcomp__feedback__feedback_info__get_feedback_candidate_parallel_conjunctions_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mdbcomp__feedback__feedback_info__get_feedback_profiled_program_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdbcomp__feedback__feedback_info__init_feedback_info_1_f_0(
+  MR_String param_1);
+
+void MR_CALL 
+mdbcomp__feedback__feedback_info____Compare____feedback_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__feedback_info____Compare____feedback_info_candidate_parallel_conjunctions_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__feedback_info____Compare____feedback_read_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__feedback_info____Compare____feedback_read_result_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__feedback__feedback_info____Compare____feedback_write_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__feedback_info____Unify____feedback_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__feedback_info____Unify____feedback_info_candidate_parallel_conjunctions_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__feedback_info____Unify____feedback_read_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__feedback_info____Unify____feedback_read_result_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__feedback_info____Unify____feedback_write_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdbcomp__feedback__feedback_info__init(void);
+void mercury__mdbcomp__feedback__feedback_info__init_type_tables(void);
+void mercury__mdbcomp__feedback__feedback_info__init_debugger(void);
+const char *mercury__mdbcomp__feedback__feedback_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdbcomp.feedback.feedback_info
+
+// :- end_interface mdbcomp.feedback.feedback_info.

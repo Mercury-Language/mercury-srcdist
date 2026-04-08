@@ -1,0 +1,7 @@
+:- module parse_tree.module_deps_graph.
+:- interface.
+:- type deps_graph.
+:- type lookup_module_dep_info_func.
+:- type_representation(deps_graph, is_eqv_to(digraph(module_name))).
+:- type_representation(deps_graph_key, is_eqv_to(digraph_key(module_name))).
+:- type_representation(lookup_module_dep_info_func, is_eqv_to(((func module_name) = module_dep_info))).

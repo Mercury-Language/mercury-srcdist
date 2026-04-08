@@ -1,0 +1,69 @@
+/*
+** Automatically generated from `opt_deps_spec.m'
+** by the Mercury compiler,
+** version rotd-2026-04-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.opt_deps_spec.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__opt_deps_spec
+#define MR_HEADER_GUARD_parse_tree__opt_deps_spec
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__OPT_DEPS_SPEC_DECL_GUARD
+#define PARSE_TREE__OPT_DEPS_SPEC_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__opt_deps_spec__parse_tree__opt_deps_spec__type_ctor_info_allow_or_disallow_trans_opt_deps_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__opt_deps_spec__parse_tree__opt_deps_spec__type_ctor_info_trans_opt_deps_spec_0;
+
+void MR_CALL 
+parse_tree__opt_deps_spec__compute_opt_trans_opt_deps_graph_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void mercury__parse_tree__opt_deps_spec__init(void);
+void mercury__parse_tree__opt_deps_spec__init_type_tables(void);
+void mercury__parse_tree__opt_deps_spec__init_debugger(void);
+const char *mercury__parse_tree__opt_deps_spec__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.opt_deps_spec
+
+// :- end_interface parse_tree.opt_deps_spec.
