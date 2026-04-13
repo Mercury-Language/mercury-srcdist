@@ -1,0 +1,14 @@
+module(2, "cord.m",
+	cord,
+	{},
+	{builtin, list, private_builtin},
+	{int, uint},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

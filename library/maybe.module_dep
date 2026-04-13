@@ -1,0 +1,14 @@
+module(2, "maybe.m",
+	maybe,
+	{},
+	{builtin, list, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
