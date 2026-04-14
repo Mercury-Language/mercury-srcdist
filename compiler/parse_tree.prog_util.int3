@@ -1,0 +1,9 @@
+:- module parse_tree.prog_util.
+:- interface.
+:- type maybe_set_default_func
+	where	type_is_abstract_enum(1).
+:- type strip_what_module_names
+	where	type_is_abstract_enum(1).
+:- abstract_inst((switchable_cons_id)).
+:- type_representation(maybe_set_default_func, du_repn(enum("do_not_set_default_func", "set_default_func", [],  no_c_j_cs))).
+:- type_representation(strip_what_module_names, du_repn(enum("strip_builtin_module_name", "strip_all_module_names", [],  no_c_j_cs))).
