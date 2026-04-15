@@ -1,0 +1,14 @@
+module(2, "edit_seq.m",
+	edit_seq,
+	{},
+	{builtin, list, private_builtin},
+	{cord, map, require, uint},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

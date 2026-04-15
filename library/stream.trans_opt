@@ -1,0 +1,51 @@
+:- module stream.
+
+:- pragma termination_info(stream.bulk_get(builtin.in, builtin.in, builtin.in, stream.bulk_get_di, stream.bulk_get_uo, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.error_message(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(stream.flush(builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.get(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.get_line(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.ignore_whitespace(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold2_state(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold2_state(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold2_state_maybe_stop(builtin.in, builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold2_state_maybe_stop(builtin.in, builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold_state(builtin.in, builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold_state(builtin.in, builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.name(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.put(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.put_list(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.put_list(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.put_list(builtin.in, builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.seek(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.seek64(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.set_line(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.unboxed_get(builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(stream.unget(builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+
+:- pragma exceptions(predicate, stream.bulk_get, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(function, stream.error_message, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.flush, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.get, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.get_line, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.ignore_whitespace, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.input_stream_fold, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.input_stream_fold, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.input_stream_fold2_state, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.input_stream_fold2_state, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.input_stream_fold2_state_maybe_stop, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.input_stream_fold2_state_maybe_stop, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.input_stream_fold_state, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.input_stream_fold_state, 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.name, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.put, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.put_list, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.put_list, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.put_list, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.seek, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.seek64, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.set_line, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.unboxed_get, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, stream.unget, 4, 0, may_throw(user_exception)).

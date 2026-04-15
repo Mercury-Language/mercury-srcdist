@@ -1,0 +1,147 @@
+/*
+** Automatically generated from `thread.semaphore.m'
+** by the Mercury compiler,
+** version rotd-2026-04-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module thread.semaphore.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_thread__semaphore
+#define MR_HEADER_GUARD_thread__semaphore
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef THREAD__SEMAPHORE_DECL_GUARD
+#define THREAD__SEMAPHORE_DECL_GUARD
+#include "thread.mih"
+
+    #include <stdio.h>
+    #include "mercury_context.h"
+    #include "mercury_thread.h"
+
+    typedef struct ML_SEMAPHORE_STRUCT {
+        MR_Integer  count;
+#ifndef MR_HIGHLEVEL_CODE
+        MR_Context  *suspended_head;
+        MR_Context  *suspended_tail;
+#else
+  #ifdef MR_THREAD_SAFE
+        MercuryCond cond;
+  #endif
+#endif
+#ifdef MR_THREAD_SAFE
+        MercuryLock lock;
+#endif
+    } ML_Semaphore;
+
+
+extern void
+ML_finalize_semaphore(void *obj, void *cd);
+
+
+/*
+INIT mercury_sys_init_semaphore_modules
+*/
+
+#ifndef MR_HIGHLEVEL_CODE
+    MR_define_extern_entry(mercury__thread__semaphore__nop);
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__semaphore__thread__semaphore__type_ctor_info_semaphore_0;
+
+void MR_CALL 
+mercury__thread__semaphore__impure_init_1_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__thread__semaphore__impure_init_2_p_0(
+  MR_Integer param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__thread__semaphore__impure_signal_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__thread__semaphore__impure_try_wait_2_p_0(
+  MR_Box param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__thread__semaphore__impure_wait_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__thread__semaphore__init_3_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__thread__semaphore__init_4_p_0(
+  MR_Integer param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__thread__semaphore__signal_3_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__thread__semaphore__try_wait_4_p_0(
+  MR_Box param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__thread__semaphore__wait_3_p_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mercury__thread__semaphore__impure_init_1_f_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__thread__semaphore____Compare____semaphore_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__thread__semaphore____Unify____semaphore_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void mercury__thread__semaphore__init(void);
+void mercury__thread__semaphore__init_type_tables(void);
+void mercury__thread__semaphore__init_debugger(void);
+const char *mercury__thread__semaphore__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_thread.semaphore
+
+// :- end_interface thread.semaphore.

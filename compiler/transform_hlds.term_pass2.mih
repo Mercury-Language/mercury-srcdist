@@ -1,0 +1,73 @@
+/*
+** Automatically generated from `term_pass2.m'
+** by the Mercury compiler,
+** version rotd-2026-04-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.term_pass2.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__term_pass2
+#define MR_HEADER_GUARD_transform_hlds__term_pass2
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__TERM_PASS2_DECL_GUARD
+#define TRANSFORM_HLDS__TERM_PASS2_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_pass2__transform_hlds__term_pass2__type_ctor_info_call_weight_dst_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_pass2__transform_hlds__term_pass2__type_ctor_info_call_weight_edge_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_pass2__transform_hlds__term_pass2__type_ctor_info_call_weight_graph_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_pass2__transform_hlds__term_pass2__type_ctor_info_call_weight_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_pass2__transform_hlds__term_pass2__type_ctor_info_fixpoint_dir_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_pass2__transform_hlds__term_pass2__type_ctor_info_term_pass2_result_0;
+
+void MR_CALL 
+transform_hlds__term_pass2__prove_termination_in_scc_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word * param_5);
+
+void mercury__transform_hlds__term_pass2__init(void);
+void mercury__transform_hlds__term_pass2__init_type_tables(void);
+void mercury__transform_hlds__term_pass2__init_debugger(void);
+const char *mercury__transform_hlds__term_pass2__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.term_pass2
+
+// :- end_interface transform_hlds.term_pass2.
