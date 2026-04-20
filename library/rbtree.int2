@@ -1,0 +1,3 @@
+:- module rbtree.
+:- interface.
+:- type rbtree(K, V).

@@ -1,0 +1,9 @@
+:- module parse_tree.error_type_util.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- type maybe_add_quotes
+    --->    do_not_add_quotes 
+    ;       add_quotes .
+:- func type_to_pieces(parse_tree.prog_data.tvarset, parse_tree.prog_data.inst_varset, parse_tree.prog_data.var_name_print, parse_tree.error_type_util.maybe_add_quotes, list.list(parse_tree.prog_data.tvar), parse_tree.prog_data.mer_type) = list.list(parse_tree.error_spec.format_piece).

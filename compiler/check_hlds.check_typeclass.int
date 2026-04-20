@@ -1,0 +1,15 @@
+:- module check_hlds.check_typeclass.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.make_hlds.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module (hlds.make_hlds).qual_info.
+:- pred check_typeclasses(io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.error_spec)).
+:- mode check_typeclasses(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.out) is det.
+:- pred constraints_are_identical(list.list(parse_tree.prog_data.tvar), parse_tree.prog_data.tvarset, list.list(parse_tree.prog_data.prog_constraint), list.list(parse_tree.prog_data.tvar), parse_tree.prog_data.tvarset, list.list(parse_tree.prog_data.prog_constraint)).
+:- mode constraints_are_identical(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in) is semidet.

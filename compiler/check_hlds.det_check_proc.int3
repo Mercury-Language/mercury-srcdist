@@ -1,0 +1,2 @@
+:- module check_hlds.det_check_proc.
+:- interface.

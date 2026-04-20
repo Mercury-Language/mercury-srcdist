@@ -1,0 +1,66 @@
+:- module check_hlds.typecheck_error_util.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module check_hlds.type_assign.
+:- use_module check_hlds.typecheck_info.
+:- use_module hlds.hlds_error_util.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- type arg_vector_kind
+    --->    arg_vector_clause_head 
+    ;       arg_vector_plain_call_pred_id(
+                 hlds.hlds_pred.pred_id
+            )
+    ;       arg_vector_plain_pred_call(
+                 parse_tree.prog_data.sym_name_pred_form_arity
+            )
+    ;       arg_vector_generic_call(
+                 hlds.hlds_goal.generic_call
+            )
+    ;       arg_vector_foreign_proc_call(
+                 hlds.hlds_pred.pred_id
+            )
+    ;       arg_vector_event(
+                 string
+            ).
+:- type type_error_goal_context
+    --->    type_error_in_var_vector(
+                 (check_hlds.typecheck_error_util).teiav_kind :: check_hlds.typecheck_error_util.var_vector_kind,
+                 (check_hlds.typecheck_error_util).teiav_arg_num :: int
+            )
+    ;       type_error_in_unify(
+                 (check_hlds.typecheck_error_util).teiu_unify_context :: hlds.hlds_goal.unify_context
+            )
+    ;       type_error_in_atomic_inner .
+:- type var_vector_kind
+    --->    var_vector_args(
+                 check_hlds.typecheck_error_util.arg_vector_kind
+            )
+    ;       var_vector_cond_quant 
+    ;       var_vector_exist_quant 
+    ;       var_vector_promise_solutions 
+    ;       var_vector_switch_complete 
+    ;       var_vector_switch_arm_detism 
+    ;       var_vector_loop_control 
+    ;       var_vector_try_io 
+    ;       var_vector_atomic_output 
+    ;       var_vector_atomic_outer .
+:- func arg_vector_kind_to_pieces(check_hlds.typecheck_info.type_error_clause_context, check_hlds.typecheck_error_util.arg_vector_kind) = list.list(parse_tree.error_spec.format_piece).
+:- func argument_name_to_pieces_lc(parse_tree.prog_data.prog_varset, hlds.hlds_error_util.last_context_word, parse_tree.prog_data.prog_var) = list.list(parse_tree.error_spec.format_piece).
+:- func argument_name_to_pieces_uc(parse_tree.prog_data.prog_varset, hlds.hlds_error_util.last_context_word, parse_tree.prog_data.prog_var) = list.list(parse_tree.error_spec.format_piece).
+:- func describe_args_type_assign_source(hlds.hlds_module.module_info, check_hlds.type_assign.args_type_assign_source) = list.list(parse_tree.error_spec.format_piece).
+:- func describe_cons_type_info_source(hlds.hlds_module.module_info, maybe.maybe(parse_tree.error_spec.color_name), list.list(parse_tree.error_spec.format_piece), check_hlds.type_assign.cons_type_info_source) = list.list(parse_tree.error_spec.format_piece).
+:- pred get_inst_varset(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.inst_varset).
+:- mode get_inst_varset(builtin.in, builtin.out) is det.
+:- func goal_context_to_pieces(check_hlds.typecheck_info.type_error_clause_context, check_hlds.typecheck_error_util.type_error_goal_context) = list.list(parse_tree.error_spec.format_piece).
+:- pred identical_types(parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type).
+:- mode identical_types(builtin.in, builtin.in) is semidet.
+:- func in_clause_for_pieces(check_hlds.typecheck_info.type_error_clause_context) = list.list(parse_tree.error_spec.format_piece).
+:- func last_context_word_to_string_lc(hlds.hlds_error_util.last_context_word) = list.list(parse_tree.error_spec.format_piece).
+:- func last_context_word_to_string_uc(hlds.hlds_error_util.last_context_word) = list.list(parse_tree.error_spec.format_piece).
