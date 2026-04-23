@@ -1,0 +1,3 @@
+:- module ll_backend.dense_switch.
+:- interface.
+:- type dense_switch_info.

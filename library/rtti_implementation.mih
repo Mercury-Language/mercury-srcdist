@@ -1,0 +1,675 @@
+/*
+** Automatically generated from `rtti_implementation.m'
+** by the Mercury compiler,
+** version rotd-2026-04-23
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module rtti_implementation.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_rtti_implementation
+#define MR_HEADER_GUARD_rtti_implementation
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RTTI_IMPLEMENTATION_DECL_GUARD
+#define RTTI_IMPLEMENTATION_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_arg_names_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_arg_types_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_du_functor_desc_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_enum_functor_desc_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_exist_info_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_foreign_enum_functor_desc_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_notag_functor_desc_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_pseudo_type_info_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_ptag_entry_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_sectag_locn_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_type_ctor_info_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_type_ctor_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_type_functors_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_type_info_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_type_layout_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_typeclass_info_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_typeinfo_locn_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__rtti_implementation__rtti_implementation__type_ctor_info_unify_or_compare_pred_0;
+
+void MR_CALL 
+mercury__rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_117_110_105_102_121_95_111_114_95_99_111_109_112_97_114_101_95_112_114_101_100_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_54_93_95_49_9_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_String * param_6,
+  MR_Integer * param_7,
+  MR_Integer * param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+mercury__rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_54_93_95_50_9_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_String * param_6,
+  MR_Integer * param_7,
+  MR_Integer * param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+mercury__rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_49_6_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String * param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_50_6_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String * param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_105_99_95_99_111_109_112_97_114_101_95_95_91_51_44_32_52_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_118_95_110_97_109_101_100_95_97_114_103_95_50_95_95_91_52_44_32_54_93_95_48_7_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_118_95_110_97_109_101_100_95_97_114_103_95_50_95_95_91_52_44_32_54_93_95_49_7_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_118_95_110_97_109_101_100_95_97_114_103_95_50_95_95_91_52_44_32_54_93_95_50_7_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_118_95_110_97_109_101_100_95_97_114_103_95_95_91_51_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_118_95_110_97_109_101_100_95_97_114_103_95_95_91_51_93_95_49_4_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_118_95_110_97_109_101_100_95_97_114_103_95_95_91_51_93_95_50_4_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__rtti_implementation__compare_type_infos_3_p_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation__deconstruct_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__rtti_implementation__deconstruct_6_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__rtti_implementation__deconstruct_6_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__rtti_implementation__deconstruct_6_p_3(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__rtti_implementation__deconstruct_2_9_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_String * param_7,
+  MR_Integer * param_8,
+  MR_Integer * param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+mercury__rtti_implementation__deconstruct_2_9_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_String * param_7,
+  MR_Integer * param_8,
+  MR_Integer * param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+mercury__rtti_implementation__deconstruct_2_9_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_String * param_7,
+  MR_Integer * param_8,
+  MR_Integer * param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+mercury__rtti_implementation__deconstruct_2_9_p_3(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_String * param_7,
+  MR_Integer * param_8,
+  MR_Integer * param_9,
+  MR_Word * param_10);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__functor_number_cc_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__rtti_implementation__generic_compare_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__generic_unify_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__get_functor_impl_6_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_String * param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__is_exist_pseudo_type_info_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__is_univ_pseudo_type_info_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__pseudo_type_ctor_and_args_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__rtti_implementation__type_ctor_and_args_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__rtti_implementation__type_ctor_name_and_arity_4_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_String * param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__type_ctor_search_functor_number_map_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__type_info_get_functor_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_String * param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__type_info_get_functor_lex_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__type_info_get_functor_ordinal_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__type_info_get_functor_with_names_6_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_String * param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__type_info_num_functors_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__univ_named_arg_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__univ_named_arg_4_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__univ_named_arg_4_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__rtti_implementation__univ_named_arg_2_7_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_String param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+mercury__rtti_implementation__univ_named_arg_2_7_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_String param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+mercury__rtti_implementation__univ_named_arg_2_7_p_2(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_String param_7,
+  MR_Word * param_8);
+
+MR_Word MR_CALL 
+mercury__rtti_implementation__collapse_equivalences_1_f_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation__construct_3_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+mercury__rtti_implementation__construct_tuple_2_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_Word MR_CALL 
+mercury__rtti_implementation__get_type_ctor_info_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__rtti_implementation__get_type_ctor_rep_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__rtti_implementation__get_type_info_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__rtti_implementation__type_ctor_arity_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mercury__rtti_implementation__type_ctor_module_name_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mercury__rtti_implementation__type_ctor_name_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____arg_names_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____arg_types_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____du_functor_desc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____enum_functor_desc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____exist_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____foreign_enum_functor_desc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____notag_functor_desc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____pseudo_type_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____ptag_entry_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____sectag_locn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____type_ctor_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____type_ctor_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____type_functors_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____type_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____type_layout_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____typeclass_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____typeinfo_locn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__rtti_implementation____Compare____unify_or_compare_pred_0_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____arg_names_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____arg_types_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____du_functor_desc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____enum_functor_desc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____exist_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____foreign_enum_functor_desc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____notag_functor_desc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____pseudo_type_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____ptag_entry_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____sectag_locn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____type_ctor_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____type_ctor_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____type_functors_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____type_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____type_layout_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____typeclass_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____typeinfo_locn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__rtti_implementation____Unify____unify_or_compare_pred_0_0(void);
+
+void mercury__rtti_implementation__init(void);
+void mercury__rtti_implementation__init_type_tables(void);
+void mercury__rtti_implementation__init_debugger(void);
+const char *mercury__rtti_implementation__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_rtti_implementation
+
+// :- end_interface rtti_implementation.

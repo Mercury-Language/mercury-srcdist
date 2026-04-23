@@ -1,0 +1,867 @@
+/*
+** Automatically generated from `file_names.m'
+** by the Mercury compiler,
+** version rotd-2026-04-23
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.file_names.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__file_names
+#define MR_HEADER_GUARD_parse_tree__file_names
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__FILE_NAMES_DECL_GUARD
+#define PARSE_TREE__FILE_NAMES_DECL_GUARD
+#include "parse_tree.mih"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word parse_tree__file_names__mutable_variable_made_dirs;
+#else
+    extern MR_Word parse_tree__file_names__mutable_variable_made_dirs;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock parse_tree__file_names__mutable_variable_made_dirs_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word parse_tree__file_names__mutable_variable_translations;
+#else
+    extern MR_Word parse_tree__file_names__mutable_variable_translations;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock parse_tree__file_names__mutable_variable_translations_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word parse_tree__file_names__mutable_variable_no_mkdirs;
+#else
+    extern MR_Word parse_tree__file_names__mutable_variable_no_mkdirs;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock parse_tree__file_names__mutable_variable_no_mkdirs_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word parse_tree__file_names__mutable_variable_mkdirs;
+#else
+    extern MR_Word parse_tree__file_names__mutable_variable_mkdirs;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock parse_tree__file_names__mutable_variable_mkdirs_lock;
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_count_sum_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_cur_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_cur_gas_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_cur_gs_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_cur_ngs_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_cur_ngs_gas_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_cur_ngs_gs_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_cur_ngs_gs_err_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_cur_ngs_gs_java_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_cur_ngs_gs_max_cur_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_cur_ngs_gs_max_ngs_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_ext_cur_pgs_max_cur_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_maybe_create_dirs_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_maybe_for_search_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_maybe_search_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_record_key_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_record_value_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_search_which_dirs_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__file_names__parse_tree__file_names__type_ctor_info_search_which_tail_dirs_0;
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_102_105_108_101_95_110_97_109_101_115_95_95_101_120_116_95_99_117_114_95_110_103_115_95_103_115_95_101_114_114_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_102_105_108_101_95_110_97_109_101_115_95_95_101_120_116_95_99_117_114_95_110_103_115_95_103_115_95_109_97_120_95_99_117_114_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_102_105_108_101_95_110_97_109_101_115_95_95_101_120_116_95_99_117_114_95_112_103_115_95_109_97_120_95_99_117_114_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_101_120_116_95_99_117_114_95_110_103_115_95_103_115_95_109_97_120_95_99_117_114_95_101_120_116_101_110_115_105_111_110_95_100_105_114_95_95_91_49_93_95_48_3_p_0(
+  MR_String * param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_101_120_116_95_99_117_114_95_112_103_115_95_109_97_120_95_99_117_114_95_101_120_116_101_110_115_105_111_110_95_100_105_114_95_95_91_49_93_95_48_3_p_0(
+  MR_String * param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_97_99_116_95_116_97_98_108_101_95_102_105_108_101_95_110_97_109_101_95_95_91_50_93_95_48_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String * param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_97_99_116_95_116_97_98_108_101_95_102_105_108_101_95_110_97_109_101_95_114_101_116_117_114_110_95_100_105_114_115_95_95_91_50_93_95_48_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_String * param_6,
+  MR_String * param_7);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_102_105_108_101_95_110_97_109_101_95_95_91_50_93_95_48_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_102_105_108_101_95_110_97_109_101_95_99_114_101_97_116_101_95_100_105_114_115_95_95_91_50_93_95_48_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_102_105_108_101_95_110_97_109_101_95_99_117_114_100_105_114_95_95_91_50_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_102_105_108_101_95_110_97_109_101_95_102_117_108_108_95_99_117_114_100_105_114_95_95_91_50_93_95_48_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_String * param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_102_105_108_101_95_110_97_109_101_95_102_117_108_108_95_99_117_114_100_105_114_95_99_114_101_97_116_101_95_100_105_114_115_95_95_91_50_93_95_48_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String * param_4,
+  MR_String * param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_102_105_108_101_95_110_97_109_101_95_114_101_116_117_114_110_95_100_105_114_115_95_95_91_50_93_95_48_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_String * param_6,
+  MR_String * param_7);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_108_105_98_95_102_105_108_101_95_110_97_109_101_95_95_91_50_93_95_48_7_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_108_105_98_95_102_105_108_101_95_110_97_109_101_95_99_114_101_97_116_101_95_100_105_114_115_95_95_91_50_93_95_48_9_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_108_105_98_95_102_105_108_101_95_110_97_109_101_95_102_117_108_108_95_99_117_114_100_105_114_95_95_91_50_93_95_48_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_String * param_6,
+  MR_String * param_7);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_108_105_98_95_102_105_108_101_95_110_97_109_101_95_102_117_108_108_95_99_117_114_100_105_114_95_99_114_101_97_116_101_95_100_105_114_115_95_95_91_50_93_95_48_10_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_String * param_6,
+  MR_String * param_7);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_108_105_98_95_102_105_108_101_95_110_97_109_101_95_114_101_116_117_114_110_95_100_105_114_115_95_95_91_50_93_95_48_9_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_String * param_7,
+  MR_String * param_8);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_115_101_97_114_99_104_95_102_105_108_101_95_110_97_109_101_95_95_91_50_44_32_53_93_95_50_8_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_String * param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_115_101_97_114_99_104_95_102_105_108_101_95_110_97_109_101_95_95_91_50_44_32_53_93_95_51_8_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_String * param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_115_101_97_114_99_104_95_102_105_108_101_95_110_97_109_101_95_95_91_50_93_95_48_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_String * param_6,
+  MR_String * param_7);
+
+void MR_CALL 
+parse_tree__file_names__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_115_101_97_114_99_104_95_102_105_108_101_95_110_97_109_101_95_95_91_50_93_95_49_8_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_String * param_6,
+  MR_String * param_7);
+
+void MR_CALL 
+parse_tree__file_names__analysis_cache_dir_name_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__file_names__create_any_dirs_on_path_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__file_names__ext_cur_gas_extension_dir_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+parse_tree__file_names__ext_cur_gs_extension_dir_4_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_String * param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+parse_tree__file_names__ext_cur_ngs_extension_dir_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__file_names__ext_cur_ngs_gs_extension_dir_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__file_names__ext_cur_ngs_gs_max_cur_extension_dir_3_p_0(
+  MR_String * param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+parse_tree__file_names__ext_cur_ngs_gs_max_ngs_extension_dir_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__file_names__ext_cur_pgs_max_cur_extension_dir_3_p_0(
+  MR_String * param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+parse_tree__file_names__ext_to_dir_path_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__file_names__ext_to_dir_path_extstr_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+parse_tree__file_names__fact_table_file_name_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_String * param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+parse_tree__file_names__fact_table_file_name_return_dirs_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_String * param_7,
+  MR_String * param_8);
+
+void MR_CALL 
+parse_tree__file_names__file_name_to_module_name_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__file_names__get_java_dir_path_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__file_names__make_all_proposed_dir_names_gas_5_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__file_names__make_all_proposed_dir_names_gs_4_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__file_names__make_all_proposed_dir_names_ngs_3_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__file_names__make_include_file_path_3_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__file_names__make_selected_proposed_dir_name_gas_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_String param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+parse_tree__file_names__make_selected_proposed_dir_name_gs_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+parse_tree__file_names__make_selected_proposed_dir_name_ngs_4_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+parse_tree__file_names__maybe_create_any_dirs_on_path_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names__mercury_std_library_module_name_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_cur_dir_file_name_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_file_name_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_file_name_create_dirs_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_file_name_curdir_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_file_name_full_curdir_7_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_String * param_6,
+  MR_String * param_7);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_file_name_full_curdir_create_dirs_9_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_String * param_6,
+  MR_String * param_7);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_file_name_return_dirs_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_String * param_7,
+  MR_String * param_8);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_file_name_stem_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_lib_file_name_7_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_String * param_6,
+  MR_String * param_7);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_lib_file_name_create_dirs_9_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_String * param_6,
+  MR_String * param_7);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_lib_file_name_full_curdir_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_String * param_6,
+  MR_String * param_7,
+  MR_String * param_8);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_lib_file_name_full_curdir_create_dirs_10_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_String * param_6,
+  MR_String * param_7,
+  MR_String * param_8);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_lib_file_name_return_dirs_9_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7,
+  MR_String * param_8,
+  MR_String * param_9);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_make_var_name_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_search_file_name_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_String * param_7,
+  MR_String * param_8);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_search_file_name_8_p_1(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_String * param_7,
+  MR_String * param_8);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_search_file_name_8_p_2(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_String * param_7,
+  MR_String * param_8);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_search_file_name_8_p_3(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_String * param_7,
+  MR_String * param_8);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_source_file_name_4_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_target_file_name_create_dirs_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__file_names__module_name_to_target_timestamp_file_name_create_dirs_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__file_names__write_translations_record_if_any_3_p_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__file_names__extension_to_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__file_names__glue_dir_names_base_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+parse_tree__file_names__maybe_search_to_maybe_for_search_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__file_names__module_name_to_base_file_name_no_ext_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__file_names__module_name_to_base_file_name_no_ext_java_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__file_names__module_name_to_base_file_name_no_ext_non_java_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__file_names__qualify_mercury_std_library_module_name_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__file_names____Compare____ext_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____ext_cur_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____ext_cur_gas_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____ext_cur_gs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____ext_cur_ngs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____ext_cur_ngs_gas_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____ext_cur_ngs_gs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____ext_cur_ngs_gs_err_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+parse_tree__file_names____Compare____ext_cur_ngs_gs_java_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____ext_cur_ngs_gs_max_cur_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+parse_tree__file_names____Compare____ext_cur_ngs_gs_max_ngs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____ext_cur_pgs_max_cur_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+parse_tree__file_names____Compare____maybe_create_dirs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____maybe_for_search_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____maybe_search_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____search_which_dirs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__file_names____Compare____search_which_tail_dirs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____ext_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____ext_cur_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____ext_cur_gas_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____ext_cur_gs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____ext_cur_ngs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____ext_cur_ngs_gas_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____ext_cur_ngs_gs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____ext_cur_ngs_gs_err_0_0(void);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____ext_cur_ngs_gs_java_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____ext_cur_ngs_gs_max_cur_0_0(void);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____ext_cur_ngs_gs_max_ngs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____ext_cur_pgs_max_cur_0_0(void);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____maybe_create_dirs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____maybe_for_search_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____maybe_search_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____search_which_dirs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__file_names____Unify____search_which_tail_dirs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__file_names__init(void);
+void mercury__parse_tree__file_names__init_type_tables(void);
+void mercury__parse_tree__file_names__init_debugger(void);
+void mercury__parse_tree__file_names__required_init(void);
+const char *mercury__parse_tree__file_names__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.file_names
+
+// :- end_interface parse_tree.file_names.
