@@ -1,0 +1,76 @@
+/*
+** Automatically generated from `introduce_parallelism.m'
+** by the Mercury compiler,
+** version rotd-2026-04-25
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.implicit_parallelism.introduce_parallelism.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__implicit_parallelism__introduce_parallelism
+#define MR_HEADER_GUARD_transform_hlds__implicit_parallelism__introduce_parallelism
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__IMPLICIT_PARALLELISM__INTRODUCE_PARALLELISM_DECL_GUARD
+#define TRANSFORM_HLDS__IMPLICIT_PARALLELISM__INTRODUCE_PARALLELISM_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.implicit_parallelism.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_candidate_par_conjunction_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_find_first_goal_result_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_introduced_parallelism_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_module_candidate_par_conjs_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_par_conjunction_and_remaining_goals_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_parallelism_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_seq_conj_0;
+
+void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__apply_implicit_parallelism_transformation_3_p_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void mercury__transform_hlds__implicit_parallelism__introduce_parallelism__init(void);
+void mercury__transform_hlds__implicit_parallelism__introduce_parallelism__init_type_tables(void);
+void mercury__transform_hlds__implicit_parallelism__introduce_parallelism__init_debugger(void);
+const char *mercury__transform_hlds__implicit_parallelism__introduce_parallelism__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.implicit_parallelism.introduce_parallelism
+
+// :- end_interface transform_hlds.implicit_parallelism.introduce_parallelism.

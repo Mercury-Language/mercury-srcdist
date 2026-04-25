@@ -1,0 +1,403 @@
+:- module fat_sparse_bitset.
+
+:- pragma termination_info(fat_sparse_bitset.all_true(builtin.in((pred(builtin.in) is semidet)), builtin.in), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.all_true_bits(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.in), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.all_true_node(builtin.in((pred(builtin.in) is semidet)), builtin.in), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.contains(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.contains_search_nodes(builtin.in, builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.count(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.delete(builtin.in, builtin.in) = builtin.out, finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.delete(builtin.in, builtin.in, builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.delete_list(builtin.in, builtin.in) = builtin.out, finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.delete_list(builtin.in, builtin.in, builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.difference(builtin.in, builtin.in) = builtin.out, finite(0, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.difference(builtin.in, builtin.in, builtin.out), finite(0, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.difference_loop(builtin.in, builtin.in, builtin.out), finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.divide(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.divide_bits(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.divide_by_set(builtin.in, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.divide_nodes(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.divide_nodes_by_set(builtin.in, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldl_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.do_foldr_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.equal(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.filter(builtin.in((pred(builtin.in) is semidet)), builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.filter(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_high_to_low(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_high_to_low(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_low_to_high(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_low_to_high(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold2_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_high_to_low(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_high_to_low(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_high_to_low(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_high_to_low(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_high_to_low(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_high_to_low(builtin.in((pred(builtin.in, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_low_to_high(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_low_to_high(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_low_to_high(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_low_to_high(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_low_to_high(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.fold_bits_low_to_high(builtin.in((pred(builtin.in, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl(builtin.in((pred(builtin.in, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldl2(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr(builtin.in((pred(builtin.in, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is nondet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2(builtin.in((pred(builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.di, builtin.uo, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is cc_multi)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is cc_multi)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.from_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.from_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.from_sorted_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info((fat_sparse_bitset.init) = builtin.out, finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.init(builtin.out), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.insert(builtin.in, builtin.in) = builtin.out, finite(3, [no, yes, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.insert(builtin.in, builtin.in, builtin.out), finite(3, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.insert_list(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.insert_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.insert_loop(builtin.in, builtin.in, builtin.in, builtin.out), finite(3, [yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.insert_new(builtin.in, builtin.in, builtin.out), finite(3, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.insert_new_loop(builtin.in, builtin.in, builtin.in, builtin.out), finite(3, [yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.intersect(builtin.in, builtin.in) = builtin.out, finite(0, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.intersect(builtin.in, builtin.in, builtin.out), finite(0, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.intersect_list(builtin.in) = builtin.out, finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.intersect_list(builtin.in, builtin.out), finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.intersect_list_pass(builtin.in, builtin.in, builtin.out, builtin.out), finite(0, [no, yes, yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.intersect_list_passes(builtin.in, builtin.in, builtin.out), finite(0, [no, yes, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.intersect_loop(builtin.in, builtin.in, builtin.out), finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.is_empty(builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.is_non_empty(builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.is_singleton(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.list_to_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.list_to_set(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.list_to_set_get_runs(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.make_bitset_cons(builtin.in, builtin.in, builtin.in) = builtin.out, finite(3, [yes, yes, yes, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.make_singleton_set(builtin.in) = builtin.out, finite(4, [no, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.mask(builtin.in) = builtin.out, finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.member(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.member(builtin.out, builtin.in), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.nondet_member(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.offset_and_bit_to_set_for_index(builtin.in, builtin.out, builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.remove(builtin.in, builtin.in, builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_gt(builtin.in, builtin.in) = builtin.out, finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_gt(builtin.in, builtin.in, builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_gt_loop(builtin.in, builtin.in, builtin.in, builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_least(builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_leq(builtin.in, builtin.in) = builtin.out, finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_leq(builtin.in, builtin.in, builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_leq_loop(builtin.in, builtin.in, builtin.in, builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.remove_list(builtin.in, builtin.in, builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.singleton_set(builtin.out, builtin.in), finite(4, [no, no, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.sorted_list_to_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.sorted_list_to_set(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.subset(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.superset(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.to_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.to_sorted_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.to_sorted_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.ucount(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(fat_sparse_bitset.union(builtin.in, builtin.in) = builtin.out, finite(-1, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.union(builtin.in, builtin.in, builtin.out), finite(-1, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.union_list(builtin.in) = builtin.out, finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.union_list(builtin.in, builtin.out), finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.union_list_pass(builtin.in, builtin.in, builtin.out, builtin.out), finite(0, [no, yes, yes, no, no]), cannot_loop).
+:- pragma termination_info(fat_sparse_bitset.union_list_passes(builtin.in, builtin.in, builtin.out), finite(0, [no, yes, yes, no]), can_loop).
+:- pragma termination_info(fat_sparse_bitset.union_loop(builtin.in, builtin.in, builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+
+:- pragma exceptions(predicate, fat_sparse_bitset.all_true, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.all_true_bits, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.all_true_node, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.contains, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.contains_search_nodes, 3, 0, will_not_throw).
+:- pragma exceptions(function, fat_sparse_bitset.count, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.delete, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.delete, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.delete_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.delete_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.difference, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.difference, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.difference_loop, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.divide, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.divide_bits, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.divide_by_set, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.divide_nodes, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.divide_nodes_by_set, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl2_pred, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl2_pred, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl2_pred, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl2_pred, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl2_pred, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl2_pred, 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl2_pred, 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl2_pred, 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl2_pred, 6, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl2_pred, 6, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl2_pred, 6, 10, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl_pred, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl_pred, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl_pred, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl_pred, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl_pred, 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl_pred, 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl_pred, 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl_pred, 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldl_pred, 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr2_pred, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr2_pred, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr2_pred, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr2_pred, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr2_pred, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr2_pred, 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr2_pred, 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr2_pred, 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr2_pred, 6, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr2_pred, 6, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr2_pred, 6, 10, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr_pred, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr_pred, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr_pred, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr_pred, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr_pred, 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr_pred, 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr_pred, 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr_pred, 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.do_foldr_pred, 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.equal, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.filter, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.filter, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_high_to_low, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_high_to_low, 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_high_to_low, 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_high_to_low, 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_high_to_low, 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_high_to_low, 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_high_to_low, 8, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_high_to_low, 8, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_high_to_low, 8, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_high_to_low, 8, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_high_to_low, 8, 10, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_low_to_high, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_low_to_high, 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_low_to_high, 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_low_to_high, 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_low_to_high, 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_low_to_high, 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_low_to_high, 8, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_low_to_high, 8, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_low_to_high, 8, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_low_to_high, 8, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold2_bits_low_to_high, 8, 10, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_high_to_low, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_high_to_low, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_high_to_low, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_high_to_low, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_high_to_low, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_high_to_low, 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_high_to_low, 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_high_to_low, 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_high_to_low, 6, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_low_to_high, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_low_to_high, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_low_to_high, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_low_to_high, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_low_to_high, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_low_to_high, 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_low_to_high, 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_low_to_high, 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.fold_bits_low_to_high, 6, 8, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.foldl, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl, 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl, 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl, 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl, 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl, 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl2, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl2, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl2, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl2, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl2, 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl2, 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl2, 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl2, 6, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl2, 6, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldl2, 6, 10, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.foldr, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr, 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr, 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr, 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr, 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr, 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr2, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr2, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr2, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr2, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr2, 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr2, 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr2, 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr2, 6, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr2, 6, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.foldr2, 6, 10, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.from_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.from_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.from_sorted_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.init, 0, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.init, 1, 0, will_not_throw).
+:- pragma exceptions(function, fat_sparse_bitset.insert, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.insert, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.insert_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.insert_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.insert_loop, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.insert_new, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.insert_new_loop, 4, 0, will_not_throw).
+:- pragma exceptions(function, fat_sparse_bitset.intersect, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.intersect, 3, 0, will_not_throw).
+:- pragma exceptions(function, fat_sparse_bitset.intersect_list, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.intersect_list, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.intersect_list_pass, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.intersect_list_passes, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.intersect_loop, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.is_empty, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.is_non_empty, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.is_singleton, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.list_to_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.list_to_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.list_to_set_get_runs, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.make_bitset_cons, 3, 0, will_not_throw).
+:- pragma exceptions(function, fat_sparse_bitset.make_singleton_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.mask, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.member, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.member, 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.nondet_member, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.offset_and_bit_to_set_for_index, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.remove, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.remove_gt, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.remove_gt, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.remove_gt_loop, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.remove_least, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.remove_leq, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.remove_leq, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.remove_leq_loop, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.remove_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.singleton_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.sorted_list_to_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.sorted_list_to_set, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.subset, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.superset, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.to_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.to_sorted_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, fat_sparse_bitset.to_sorted_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.ucount, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, fat_sparse_bitset.union, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.union, 3, 0, will_not_throw).
+:- pragma exceptions(function, fat_sparse_bitset.union_list, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.union_list, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.union_list_pass, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.union_list_passes, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, fat_sparse_bitset.union_loop, 3, 0, will_not_throw).

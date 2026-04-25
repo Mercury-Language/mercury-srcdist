@@ -1,0 +1,22 @@
+:- module (hlds.make_hlds).add_solver.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item.
+:- type solver_aux_pred_info
+    --->    solver_aux_pred_info(
+                 mdbcomp.sym_name.sym_name,
+                 list.list(parse_tree.prog_data.type_param),
+                 parse_tree.prog_data.tvarset,
+                 parse_tree.prog_data.solver_type_details,
+                 parse_tree.prog_data.prog_context
+            ).
+:- pred get_solver_type_aux_pred_decls(hlds.make_hlds.add_solver.solver_aux_pred_info, list.list(parse_tree.prog_item.item_pred_decl_info)).
+:- mode get_solver_type_aux_pred_decls(builtin.in, builtin.out) is det.
+:- pred get_solver_type_aux_pred_defns(libs.globals.compilation_target, hlds.make_hlds.add_solver.solver_aux_pred_info, list.list(parse_tree.prog_item.item_foreign_proc_info)).
+:- mode get_solver_type_aux_pred_defns(builtin.in, builtin.in, builtin.out) is det.
