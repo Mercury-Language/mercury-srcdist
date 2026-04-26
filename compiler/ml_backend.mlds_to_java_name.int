@@ -1,0 +1,17 @@
+:- module ml_backend.mlds_to_java_name.
+:- interface.
+:- use_module parse_tree.
+:- use_module ml_backend.mlds.
+:- use_module ml_backend.mlds_to_java_util.
+:- use_module parse_tree.prog_data.
+:- func field_var_name_to_string_for_java(ml_backend.mlds.mlds_field_var_name) = string.
+:- func function_name_to_string_for_java(ml_backend.mlds.mlds_function_name) = string.
+:- func global_var_name_to_string_for_java(ml_backend.mlds.mlds_global_var_name) = string.
+:- func local_var_name_to_string_for_java(ml_backend.mlds.mlds_local_var_name) = string.
+:- func maybe_qualified_function_name_to_string_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.qual_function_name) = string.
+:- func maybe_qualified_global_var_name_to_string_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.qual_global_var_name) = string.
+:- func proc_label_to_string_for_java(ml_backend.mlds.mlds_proc_label) = string.
+:- func qual_class_name_to_string_for_java(ml_backend.mlds.qual_class_name, parse_tree.prog_data.arity) = string.
+:- func qual_nrt_name_to_string_for_java(ml_backend.mlds.mlds_module_name, string, parse_tree.prog_data.arity) = string.
+:- func qualifier_to_string_for_java(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_qual_kind) = string.
+:- func unqual_class_name_to_string_for_java(ml_backend.mlds.mlds_class_name, parse_tree.prog_data.arity) = string.

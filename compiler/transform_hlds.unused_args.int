@@ -1,0 +1,12 @@
+:- module transform_hlds.unused_args.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_item.
+:- use_module transform_hlds.unused_args_warn_pragma.
+:- pred unused_args_process_module(transform_hlds.unused_args_warn_pragma.maybe_gather_pragma_unused_args, transform_hlds.unused_args_warn_pragma.maybe_record_analysis_unused_args, list.list(parse_tree.error_spec.error_spec), set.set(parse_tree.prog_item.gen_pragma_unused_args_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode unused_args_process_module(builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
