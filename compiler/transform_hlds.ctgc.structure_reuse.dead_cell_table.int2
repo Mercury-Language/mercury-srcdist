@@ -1,0 +1,6 @@
+:- module ((transform_hlds.ctgc).structure_reuse).dead_cell_table.
+:- interface.
+:- use_module map.
+:- use_module transform_hlds.smm_common.
+:- use_module ((transform_hlds.ctgc).structure_reuse).domain.
+:- type dead_cell_table == map.map(transform_hlds.smm_common.program_point, transform_hlds.ctgc.structure_reuse.domain.reuse_condition).

@@ -1,0 +1,69 @@
+:- module mdbcomp.trace_counts.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.goal_path.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- type all_or_nonzero
+    --->    user_all 
+    ;       user_nonzero .
+:- type base_count_file_type
+    --->    base_count_file_type(
+                 mdbcomp.trace_counts.all_or_nonzero,
+                 string
+            ).
+:- type line_no_and_count
+    --->    line_no_and_count(
+                 (mdbcomp.trace_counts).line_number :: int,
+                 (mdbcomp.trace_counts).exec_count :: int,
+                 (mdbcomp.trace_counts).num_tests :: int
+            ).
+:- type path_port
+    --->    port_only(
+                 mdbcomp.prim_data.trace_port
+            )
+    ;       path_only(
+                 mdbcomp.goal_path.reverse_goal_path
+            )
+    ;       port_and_path(
+                 mdbcomp.prim_data.trace_port,
+                 mdbcomp.goal_path.reverse_goal_path
+            ).
+:- type proc_label_in_context
+    --->    proc_label_in_context(
+                 (mdbcomp.trace_counts).context_module_symname :: mdbcomp.sym_name.sym_name,
+                 (mdbcomp.trace_counts).context_filename :: string,
+                 (mdbcomp.trace_counts).proc_label :: mdbcomp.prim_data.proc_label
+            ).
+:- type proc_trace_counts == map.map(mdbcomp.trace_counts.path_port, mdbcomp.trace_counts.line_no_and_count).
+:- type trace_count_file_type
+    --->    single_file(
+                 mdbcomp.trace_counts.base_count_file_type
+            )
+    ;       union_file(
+                 int,
+                 list.list(mdbcomp.trace_counts.trace_count_file_type)
+            )
+    ;       diff_file(
+                 mdbcomp.trace_counts.trace_count_file_type,
+                 mdbcomp.trace_counts.trace_count_file_type
+            ).
+:- type trace_counts == map.map(mdbcomp.trace_counts.proc_label_in_context, mdbcomp.trace_counts.proc_trace_counts).
+:- inst union_file for (mdbcomp.trace_counts).trace_count_file_type/0
+    --->    union_file(ground, ground).
+:- func calc_num_tests(list.list(mdbcomp.trace_counts.trace_count_file_type)) = int.
+:- pred diff_trace_counts(mdbcomp.trace_counts.trace_counts, mdbcomp.trace_counts.trace_counts, mdbcomp.trace_counts.trace_counts).
+:- mode diff_trace_counts(builtin.in, builtin.in, builtin.out) is det.
+:- func make_path_port(mdbcomp.goal_path.reverse_goal_path, mdbcomp.prim_data.trace_port) = mdbcomp.trace_counts.path_port.
+:- func num_tests_for_file_type(mdbcomp.trace_counts.trace_count_file_type) = int.
+:- pred restrict_trace_counts_to_module(mdbcomp.sym_name.module_name, mdbcomp.trace_counts.trace_counts, mdbcomp.trace_counts.trace_counts).
+:- mode restrict_trace_counts_to_module(builtin.in, builtin.in, builtin.out) is det.
+:- func sum_trace_count_file_type(mdbcomp.trace_counts.trace_count_file_type, mdbcomp.trace_counts.trace_count_file_type) = mdbcomp.trace_counts.trace_count_file_type.
+:- mode sum_trace_count_file_type(builtin.in((mdbcomp.trace_counts).union_file), builtin.in) = builtin.out((mdbcomp.trace_counts).union_file) is det.
+:- mode sum_trace_count_file_type(builtin.in, builtin.in) = builtin.out is det.
+:- pred sum_trace_counts(mdbcomp.trace_counts.trace_counts, mdbcomp.trace_counts.trace_counts, mdbcomp.trace_counts.trace_counts).
+:- mode sum_trace_counts(builtin.in, builtin.in, builtin.out) is det.
+:- pred summarize_trace_counts_list(list.list(mdbcomp.trace_counts.trace_counts), mdbcomp.trace_counts.trace_counts).
+:- mode summarize_trace_counts_list(builtin.in, builtin.out) is det.
+:- func trace_count_file_id = string.

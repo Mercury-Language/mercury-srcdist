@@ -1,0 +1,21 @@
+:- module parse_tree.build_eqv_maps.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_parse_tree.
+:- type eqv_inst_body
+    --->    eqv_inst_body(
+                 list.list(parse_tree.prog_data.inst_var),
+                 parse_tree.prog_data.mer_inst
+            ).
+:- type eqv_type_body
+    --->    eqv_type_body(
+                 parse_tree.prog_data.tvarset,
+                 list.list(parse_tree.prog_data.type_param),
+                 parse_tree.prog_data.mer_type
+            ).
+:- type inst_eqv_map == map.map(parse_tree.prog_data.inst_ctor, parse_tree.build_eqv_maps.eqv_inst_body).
+:- type type_eqv_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.build_eqv_maps.eqv_type_body).
+:- pred build_eqv_maps_in_aug_comp_unit(parse_tree.prog_parse_tree.aug_compilation_unit, parse_tree.build_eqv_maps.type_eqv_map, parse_tree.build_eqv_maps.inst_eqv_map).
+:- mode build_eqv_maps_in_aug_comp_unit(builtin.in, builtin.out, builtin.out) is det.

@@ -1,0 +1,5 @@
+:- module parse_tree.error_util.
+:- interface.
+:- type error_spec_accumulator.
+:- type maybe_written_spec.
+:- type_representation(error_spec_accumulator, is_eqv_to(maybe(pair(set(error_spec))))).

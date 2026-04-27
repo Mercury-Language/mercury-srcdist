@@ -1,0 +1,35 @@
+:- module parse_tree.parse_pragma_foreign.
+:- interface.
+:- use_module cord.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module term.
+:- use_module varset.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.maybe_error.
+:- use_module parse_tree.parse_types.
+:- use_module parse_tree.prog_data.
+:- pred parse_foreign_type_assertions(cord.cord(parse_tree.error_spec.format_piece), varset.varset, term.term, set.set(parse_tree.prog_data.foreign_type_assertion), set.set(parse_tree.prog_data.foreign_type_assertion), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode parse_foreign_type_assertions(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred parse_pragma_foreign_code(varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_foreign_code(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_pragma_foreign_decl(varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_foreign_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_pragma_foreign_enum(mdbcomp.sym_name.module_name, varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_foreign_enum(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_pragma_foreign_export(varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_foreign_export(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_pragma_foreign_export_enum(varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_foreign_export_enum(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_pragma_foreign_import_module(varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_foreign_import_module(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_pragma_foreign_proc(mdbcomp.sym_name.module_name, varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_foreign_proc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_pragma_foreign_type(mdbcomp.sym_name.module_name, varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.prog_data.maybe_canonical), parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_foreign_type(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred term_to_foreign_language(term.term, libs.globals.foreign_language).
+:- mode term_to_foreign_language(builtin.in, builtin.out) is semidet.

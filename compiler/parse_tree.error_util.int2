@@ -1,0 +1,16 @@
+:- module parse_tree.error_util.
+:- interface.
+:- use_module maybe.
+:- use_module parse_tree.error_spec.
+:- type error_spec_accumulator.
+:- type maybe_written_spec
+    --->    to_be_written_spec(
+                 parse_tree.error_spec.error_spec
+            )
+    ;       already_written_spec(
+                 parse_tree.error_spec.std_error_spec
+            ).
+:- implementation.
+:- use_module pair.
+:- use_module set.
+:- type error_spec_accumulator == maybe.maybe(pair.pair(set.set(parse_tree.error_spec.error_spec))).
