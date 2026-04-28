@@ -1,0 +1,5 @@
+:- module (hlds.make_hlds).superhomogeneous_lambda.
+:- interface.
+:- type lambda_body_kind
+	where	type_is_abstract_enum(1).
+:- type_representation(lambda_body_kind, du_repn(enum("lambda_body_ordinary", "lambda_body_dcg", [],  no_c_j_cs))).
