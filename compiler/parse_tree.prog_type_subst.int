@@ -1,0 +1,48 @@
+:- module parse_tree.prog_type_subst.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.prog_data.
+:- pred apply_rec_subst_to_prog_constraint(parse_tree.prog_data.tsubst, parse_tree.prog_data.prog_constraint, parse_tree.prog_data.prog_constraint).
+:- mode apply_rec_subst_to_prog_constraint(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_rec_subst_to_prog_constraints(parse_tree.prog_data.tsubst, list.list(parse_tree.prog_data.prog_constraint), list.list(parse_tree.prog_data.prog_constraint)).
+:- mode apply_rec_subst_to_prog_constraints(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_rec_subst_to_tvar(parse_tree.prog_data.tvar_kind_map, parse_tree.prog_data.tsubst, parse_tree.prog_data.tvar, parse_tree.prog_data.mer_type).
+:- mode apply_rec_subst_to_tvar(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_rec_subst_to_tvars(parse_tree.prog_data.tvar_kind_map, parse_tree.prog_data.tsubst, list.list(parse_tree.prog_data.tvar), list.list(parse_tree.prog_data.mer_type)).
+:- mode apply_rec_subst_to_tvars(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_rec_subst_to_type(parse_tree.prog_data.tsubst, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type).
+:- mode apply_rec_subst_to_type(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_rec_subst_to_types(parse_tree.prog_data.tsubst, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_type)).
+:- mode apply_rec_subst_to_types(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_rec_subst_to_univ_exist_constraints(parse_tree.prog_data.tsubst, parse_tree.prog_data.univ_exist_constraints, parse_tree.prog_data.univ_exist_constraints).
+:- mode apply_rec_subst_to_univ_exist_constraints(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_prog_constraint(parse_tree.prog_data.tvar_renaming, parse_tree.prog_data.prog_constraint, parse_tree.prog_data.prog_constraint).
+:- mode apply_renaming_to_prog_constraint(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_prog_constraints(parse_tree.prog_data.tvar_renaming, list.list(parse_tree.prog_data.prog_constraint), list.list(parse_tree.prog_data.prog_constraint)).
+:- mode apply_renaming_to_prog_constraints(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_tvar(parse_tree.prog_data.tvar_renaming, parse_tree.prog_data.tvar, parse_tree.prog_data.tvar).
+:- mode apply_renaming_to_tvar(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_tvar_kind_map(parse_tree.prog_data.tvar_renaming, parse_tree.prog_data.tvar_kind_map, parse_tree.prog_data.tvar_kind_map).
+:- mode apply_renaming_to_tvar_kind_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_tvars(parse_tree.prog_data.tvar_renaming, list.list(parse_tree.prog_data.tvar), list.list(parse_tree.prog_data.tvar)).
+:- mode apply_renaming_to_tvars(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_type(parse_tree.prog_data.tvar_renaming, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type).
+:- mode apply_renaming_to_type(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_types(parse_tree.prog_data.tvar_renaming, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_type)).
+:- mode apply_renaming_to_types(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_univ_exist_constraints(parse_tree.prog_data.tvar_renaming, parse_tree.prog_data.univ_exist_constraints, parse_tree.prog_data.univ_exist_constraints).
+:- mode apply_renaming_to_univ_exist_constraints(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_subst_to_prog_constraint(parse_tree.prog_data.tsubst, parse_tree.prog_data.prog_constraint, parse_tree.prog_data.prog_constraint).
+:- mode apply_subst_to_prog_constraint(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_subst_to_prog_constraints(parse_tree.prog_data.tsubst, list.list(parse_tree.prog_data.prog_constraint), list.list(parse_tree.prog_data.prog_constraint)).
+:- mode apply_subst_to_prog_constraints(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_subst_to_tvar(parse_tree.prog_data.tvar_kind_map, parse_tree.prog_data.tsubst, parse_tree.prog_data.tvar, parse_tree.prog_data.mer_type).
+:- mode apply_subst_to_tvar(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_subst_to_tvars(parse_tree.prog_data.tvar_kind_map, parse_tree.prog_data.tsubst, list.list(parse_tree.prog_data.tvar), list.list(parse_tree.prog_data.mer_type)).
+:- mode apply_subst_to_tvars(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_subst_to_type(parse_tree.prog_data.tsubst, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type).
+:- mode apply_subst_to_type(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_subst_to_types(parse_tree.prog_data.tsubst, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_type)).
+:- mode apply_subst_to_types(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_subst_to_univ_exist_constraints(parse_tree.prog_data.tsubst, parse_tree.prog_data.univ_exist_constraints, parse_tree.prog_data.univ_exist_constraints).
+:- mode apply_subst_to_univ_exist_constraints(builtin.in, builtin.in, builtin.out) is det.
