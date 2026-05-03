@@ -1,0 +1,2 @@
+:- module hlds.add_special_pred.
+:- interface.
