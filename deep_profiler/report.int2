@@ -1,0 +1,437 @@
+:- module report.
+:- interface.
+:- use_module coverage.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module measurement_units.
+:- use_module profile.
+:- use_module query.
+:- use_module set.
+:- use_module unit.
+:- use_module var_use_analysis.
+:- use_module mdbcomp.goal_path.
+:- use_module mdbcomp.program_representation.
+:- type ancestor_desc
+    --->    ancestor_desc(
+                 report.ad_caller_clique_ptr :: profile.clique_ptr,
+                 report.ad_callee_clique_ptr :: profile.clique_ptr,
+                 report.ad_callee_pdesc :: report.proc_desc,
+                 report.ad_call_site_desc :: report.call_site_desc
+            ).
+:- type call_site_desc
+    --->    call_site_desc(
+                 report.csdesc_css_ptr :: profile.call_site_static_ptr,
+                 report.csdesc_container :: profile.proc_static_ptr,
+                 report.csdesc_file_name :: string,
+                 report.csdesc_line_number :: int,
+                 report.csdesc_caller_module_name :: string,
+                 report.csdesc_caller_uq_refined_name :: string,
+                 report.csdesc_caller_q_refined_name :: string,
+                 report.csdesc_slot_number :: int,
+                 report.csdesc_goal_path :: mdbcomp.goal_path.reverse_goal_path,
+                 report.csdesc_maybe_callee :: maybe.maybe(report.proc_desc)
+            ).
+:- type call_site_dynamic_dump_info
+    --->    call_site_dynamic_dump_info(
+                 report.csddi_csdptr :: profile.call_site_dynamic_ptr,
+                 report.csddi_caller_pdptr :: profile.proc_dynamic_ptr,
+                 report.csddi_callee_pdptr :: profile.proc_dynamic_ptr,
+                 report.csddi_own_perf :: report.perf_row_data(report.call_site_desc)
+            ).
+:- type call_site_dynamic_var_use_info
+    --->    call_site_dynamic_var_use_info(
+                 report.csdvui_total_cost :: float,
+                 report.csdvui_var_uses :: list.list(report.var_use_and_name)
+            ).
+:- type call_site_perf
+    --->    call_site_perf(
+                 report.csf_kind :: profile.call_site_kind_and_info(report.normal_callee_id),
+                 report.csf_summary_perf :: report.perf_row_data(report.call_site_desc),
+                 report.csf_sub_callees :: list.list(report.perf_row_data(report.proc_desc))
+            ).
+:- type call_site_static_dump_info
+    --->    call_site_static_dump_info(
+                 report.cssdi_cssptr :: profile.call_site_static_ptr,
+                 report.cssdi_containing_psptr :: profile.proc_static_ptr,
+                 report.cssdi_slot_number :: int,
+                 report.cssdi_file_name :: string,
+                 report.cssdi_line_number :: int,
+                 report.cssdi_goal_path :: mdbcomp.goal_path.reverse_goal_path,
+                 report.cssdi_callee :: profile.call_site_kind_and_callee
+            ).
+:- type callers_counts
+    --->    callers_counts(
+                 report.cc_static :: int,
+                 report.cc_dynamic :: int
+            ).
+:- type clique_call_site_report
+    --->    clique_call_site_report(
+                 report.ccsr_call_site_summary :: report.perf_row_data(report.call_site_desc),
+                 report.ccsr_kind_and_callee :: profile.call_site_kind_and_callee(report.proc_desc),
+                 report.ccsr_callee_perfs :: list.list(report.perf_row_data(report.clique_desc))
+            ).
+:- type clique_desc
+    --->    clique_desc(
+                 report.cdesc_clique_ptr :: profile.clique_ptr,
+                 report.cdesc_entry_member :: report.proc_desc,
+                 report.cdesc_other_members :: list.list(report.proc_desc)
+            ).
+:- type clique_dump_info
+    --->    clique_dump_info(
+                 report.cdi_clique_desc :: report.clique_desc,
+                 report.cdi_caller_csd_ptr :: profile.call_site_dynamic_ptr,
+                 report.cdi_member_pdptrs :: list.list(profile.proc_dynamic_ptr)
+            ).
+:- type clique_proc_dynamic_report
+    --->    clique_proc_dynamic_report(
+                 report.cpdr_proc_summary :: report.perf_row_data(report.proc_desc),
+                 report.cpdr_call_sites :: list.list(report.clique_call_site_report)
+            ).
+:- type clique_proc_report
+    --->    clique_proc_report(
+                 report.cpr_proc_summary :: report.perf_row_data(report.proc_desc),
+                 report.cpr_first_proc_dynamic :: report.clique_proc_dynamic_report,
+                 report.cpr_other_proc_dynamics :: list.list(report.clique_proc_dynamic_report)
+            ).
+:- type clique_recursion_report
+    --->    clique_recursion_report(
+                 report.crr_clique_ptr :: profile.clique_ptr,
+                 report.crr_recursion_type :: report.recursion_type,
+                 report.crr_num_procs :: int
+            ).
+:- type clique_report
+    --->    clique_report(
+                 report.cr_clique_ptr :: profile.clique_ptr,
+                 report.cr_ancestor_call_sites :: list.list(report.perf_row_data(report.ancestor_desc)),
+                 report.cr_clique_procs :: list.list(report.clique_proc_report)
+            ).
+:- type data_struct_name
+    --->    data_struct_name(
+                 string
+            ).
+:- type deep_report
+    --->    report_message(
+                 report.message_report
+            )
+    ;       report_menu(
+                 maybe.maybe_error(report.menu_report)
+            )
+    ;       report_clique(
+                 maybe.maybe_error(report.clique_report)
+            )
+    ;       report_clique_recursion_costs(
+                 maybe.maybe_error(report.clique_recursion_report)
+            )
+    ;       report_recursion_types_frequency(
+                 maybe.maybe_error(report.recursion_types_frequency_report)
+            )
+    ;       report_program_modules(
+                 maybe.maybe_error(report.program_modules_report)
+            )
+    ;       report_module(
+                 maybe.maybe_error(report.module_report)
+            )
+    ;       report_module_getter_setters(
+                 maybe.maybe_error(report.module_getter_setters_report)
+            )
+    ;       report_module_rep(
+                 maybe.maybe_error(report.module_rep_report)
+            )
+    ;       report_top_procs(
+                 maybe.maybe_error(report.top_procs_report)
+            )
+    ;       report_proc(
+                 maybe.maybe_error(report.proc_report)
+            )
+    ;       report_procrep_coverage(
+                 maybe.maybe_error(report.procrep_coverage_info)
+            )
+    ;       report_proc_callers(
+                 maybe.maybe_error(report.proc_callers_report)
+            )
+    ;       report_proc_static_dump(
+                 maybe.maybe_error(report.proc_static_dump_info)
+            )
+    ;       report_proc_dynamic_dump(
+                 maybe.maybe_error(report.proc_dynamic_dump_info)
+            )
+    ;       report_call_site_static_dump(
+                 maybe.maybe_error(report.call_site_static_dump_info)
+            )
+    ;       report_call_site_dynamic_dump(
+                 maybe.maybe_error(report.call_site_dynamic_dump_info)
+            )
+    ;       report_clique_dump(
+                 maybe.maybe_error(report.clique_dump_info)
+            )
+    ;       report_call_site_dynamic_var_use(
+                 maybe.maybe_error(report.call_site_dynamic_var_use_info)
+            ).
+:- type field_name
+    --->    field_name(
+                 string
+            ).
+:- type getter_or_setter
+    --->    getter 
+    ;       setter .
+:- type gs_ds_map == report.gs_ds_map(report.gs_field_info).
+:- type gs_ds_map(T) == map.map(report.data_struct_name, report.gs_field_map(T)).
+:- type gs_field_info == report.gs_field_info(report.perf_row_data(report.proc_desc), report.perf_row_data(unit.unit)).
+:- type gs_field_info(I, S)
+    --->    gs_field_both(
+                 report.gsf_both_getter :: I,
+                 report.gsf_both_setter :: I,
+                 report.gsf_both_summary :: S
+            )
+    ;       gs_field_getter(
+                 report.gsf_getter :: I
+            )
+    ;       gs_field_setter(
+                 report.gsf_setter :: I
+            ).
+:- type gs_field_map == report.gs_field_map(report.gs_field_info).
+:- type gs_field_map(T) == map.map(report.field_name, T).
+:- type inheritable_perf
+    --->    inheritable_perf(
+                 report.perf_row_ticks :: int,
+                 report.perf_row_time :: measurement_units.time,
+                 report.perf_row_time_percent :: measurement_units.percent,
+                 report.perf_row_time_percall :: measurement_units.time,
+                 report.perf_row_callseqs :: int,
+                 report.perf_row_callseqs_percent :: measurement_units.percent,
+                 report.perf_row_callseqs_percall :: float,
+                 report.perf_row_allocs :: int,
+                 report.perf_row_allocs_percent :: measurement_units.percent,
+                 report.perf_row_allocs_percall :: float,
+                 report.perf_row_mem :: measurement_units.memory,
+                 report.perf_row_mem_percent :: measurement_units.percent,
+                 report.perf_row_mem_percall :: measurement_units.memory
+            ).
+:- type maybe_have_module_rep
+    --->    do_not_have_module_rep 
+    ;       have_module_rep .
+:- type menu_report
+    --->    menu_report(
+                 report.menu_program_name :: string,
+                 report.menu_quanta_per_sec :: int,
+                 report.menu_user_quanta :: int,
+                 report.menu_inst_quanta :: int,
+                 report.menu_num_callseqs :: int,
+                 report.menu_num_csd :: int,
+                 report.menu_num_css :: int,
+                 report.menu_num_pd :: int,
+                 report.menu_num_ps :: int,
+                 report.menu_num_clique :: int
+            ).
+:- type message_report
+    --->    message_report(
+                 string
+            ).
+:- type module_active
+    --->    module_active(
+                 report.ma_module_name :: string,
+                 report.ma_is_active :: report.module_is_active
+            ).
+:- type module_getter_setters_report
+    --->    module_getter_setters_report(
+                 report.mgsr_module_name :: string,
+                 report.mgsr_procs :: report.gs_ds_map
+            ).
+:- type module_is_active
+    --->    module_is_active 
+    ;       module_is_not_active .
+:- type module_rep_report
+    --->    module_rep_report(
+                 report.mrr_module_name :: string,
+                 report.mrr_report :: string
+            ).
+:- type module_report
+    --->    module_report(
+                 report.mr_module_name :: string,
+                 report.mr_have_module_rep :: report.maybe_have_module_rep,
+                 report.mr_procs :: list.list(report.perf_row_data(report.proc_active))
+            ).
+:- type normal_callee_id
+    --->    normal_callee_id(
+                 report.nci_callee_desc :: report.proc_desc,
+                 report.nci_type_subst :: string
+            ).
+:- type perf_row_data(T)
+    --->    perf_row_data(
+                 report.perf_row_subject :: T,
+                 report.perf_row_calls :: int,
+                 report.perf_row_exits :: int,
+                 report.perf_row_fails :: int,
+                 report.perf_row_redos :: int,
+                 report.perf_row_excps :: int,
+                 report.perf_row_bytes_per_word :: int,
+                 report.perf_row_self :: report.inheritable_perf,
+                 report.perf_row_maybe_total :: maybe.maybe(report.inheritable_perf)
+            ).
+:- type proc_active
+    --->    proc_active(
+                 report.pa_proc_desc :: report.proc_desc,
+                 report.pa_is_active :: report.proc_is_active
+            ).
+:- type proc_callers
+    --->    proc_caller_call_sites(
+                 report.pc_caller_call_sites :: list.list(report.perf_row_data(report.call_site_desc))
+            )
+    ;       proc_caller_procedures(
+                 report.pc_caller_procedures :: list.list(report.perf_row_data(report.proc_desc))
+            )
+    ;       proc_caller_modules(
+                 report.pc_caller_modules :: list.list(report.perf_row_data(string))
+            )
+    ;       proc_caller_cliques(
+                 report.pc_caller_cliques :: list.list(report.perf_row_data(report.clique_desc))
+            ).
+:- type proc_callers_report
+    --->    proc_callers_report(
+                 report.pc_proc_desc :: report.proc_desc,
+                 report.pc_callers :: report.proc_callers,
+                 report.pc_batch_number :: int,
+                 report.pc_callers_per_batch :: int,
+                 report.pc_contour_exclusion :: query.contour_exclusion,
+                 report.pc_contour_warn_message :: maybe.maybe(string)
+            ).
+:- type proc_desc
+    --->    proc_desc(
+                 report.pdesc_ps_ptr :: profile.proc_static_ptr,
+                 report.pdesc_file_name :: string,
+                 report.pdesc_line_number :: int,
+                 report.pdesc_module_name :: string,
+                 report.pdesc_uq_refined_name :: string,
+                 report.pdesc_q_refined_name :: string
+            ).
+:- type proc_dynamic_dump_info
+    --->    proc_dynamic_dump_info(
+                 report.pddi_pdptr :: profile.proc_dynamic_ptr,
+                 report.pddi_psptr :: profile.proc_static_ptr,
+                 report.pddi_ps_raw_name :: string,
+                 report.pddi_ps_module_name :: string,
+                 report.pddi_ps_uq_refined_name :: string,
+                 report.pddi_ps_q_refined_name :: string,
+                 report.pddi_call_sites :: list.list(profile.call_site_array_slot),
+                 report.pddi_coverage_points :: maybe.maybe(list.list(coverage.coverage_point))
+            ).
+:- type proc_is_active
+    --->    proc_is_active 
+    ;       proc_is_not_active .
+:- type proc_report
+    --->    proc_report(
+                 report.proc_callers_summary :: report.perf_row_data(report.callers_counts),
+                 report.proc_summary :: report.perf_row_data(report.proc_desc),
+                 report.proc_call_site_summaries :: list.list(report.call_site_perf)
+            ).
+:- type proc_static_dump_info
+    --->    proc_static_dump_info(
+                 report.psdi_psptr :: profile.proc_static_ptr,
+                 report.psdi_raw_name :: string,
+                 report.psdi_uq_refined_name :: string,
+                 report.psdi_q_refined_name :: string,
+                 report.psdi_filename :: string,
+                 report.psdi_linenumber :: int,
+                 report.psdi_num_call_sites :: int,
+                 report.psdi_num_coverage_points :: int
+            ).
+:- type procrep_coverage_info
+    --->    procrep_coverage_info(
+                 report.prci_proc :: profile.proc_static_ptr,
+                 report.prci_proc_rep :: mdbcomp.program_representation.proc_rep(mdbcomp.goal_path.goal_id),
+                 report.prci_coverage_array :: mdbcomp.goal_path.goal_attr_array(coverage.coverage_info)
+            ).
+:- type program_modules_report
+    --->    program_modules_report(
+                 report.program_modules :: list.list(report.perf_row_data(report.module_active))
+            ).
+:- type recursion_level_report
+    --->    recursion_level_report(
+                 report.rlr_level :: int,
+                 report.rlr_calls :: int,
+                 report.rlr_prob :: measurement_units.probability,
+                 report.rlr_non_rec_calls_cost :: float,
+                 report.rlr_rec_calls_ex_chld_cost :: float
+            ).
+:- type recursion_type
+    --->    rt_not_recursive 
+    ;       rt_single(
+                 report.rts_base :: report.recursion_level_report,
+                 report.rts_recursive :: report.recursion_level_report,
+                 report.rts_avg_max_depth :: float,
+                 report.rts_avg_rec_cost :: float,
+                 report.rts_any_rec_cost :: ((func int) = float)
+            )
+    ;       rt_divide_and_conquer(
+                 report.rtdsc_base :: report.recursion_level_report,
+                 report.rtdsc_recursive :: report.recursion_level_report
+            )
+    ;       rt_mutual_recursion(
+                 report.rtml_num_procs :: int
+            )
+    ;       rt_other(
+                 report.rto_all_levels :: list.list(report.recursion_level_report)
+            )
+    ;       rt_errors(
+                 report.rte_errors :: list.list(string)
+            ).
+:- type recursion_type_freq_data
+    --->    recursion_type_freq_data(
+                 report.rtfd_freq :: int,
+                 report.rtfd_percent :: measurement_units.percent,
+                 report.rtfd_maybe_summary :: maybe.maybe(report.perf_row_data(unit.unit)),
+                 report.rtfd_entry_procs :: report.recursion_type_proc_map
+            ).
+:- type recursion_type_histogram == map.map(report.recursion_type_simple, report.recursion_type_freq_data).
+:- type recursion_type_proc_freq_data
+    --->    recursion_type_proc_freq_data(
+                 report.rtpfd_freq :: int,
+                 report.rtpfd_percent :: measurement_units.percent,
+                 report.rtpfd_summary :: report.perf_row_data(report.proc_desc)
+            ).
+:- type recursion_type_proc_map == map.map(profile.proc_static_ptr, report.recursion_type_proc_freq_data).
+:- type recursion_type_simple
+    --->    rts_not_recursive 
+    ;       rts_single 
+    ;       rts_divide_and_conquer 
+    ;       rts_mutual_recursion(
+                 report.rtsmr_num_procs :: int
+            )
+    ;       rts_other(
+                 report.rtso_levels :: set.set(int)
+            )
+    ;       rts_error(
+                 report.rtse_error :: string
+            )
+    ;       rts_total_error_instances .
+:- type recursion_types_frequency_report
+    --->    recursion_types_frequency_report(
+                 report.rtfr_histogram :: report.recursion_type_histogram
+            ).
+:- type report_ordering
+    --->    report_ordering(
+                 report.display_limit :: query.display_limit,
+                 report.cost_kind :: query.cost_kind,
+                 report.incl_desc :: query.include_descendants,
+                 report.scope :: query.measurement_scope
+            ).
+:- type top_procs_report
+    --->    top_procs_report(
+                 report.tp_ordering :: report.report_ordering,
+                 report.tp_top_procs :: list.list(report.perf_row_data(report.proc_desc))
+            ).
+:- type var_use_and_name
+    --->    var_use_and_name(
+                 report.vun_var_name :: string,
+                 report.vun_use :: var_use_analysis.var_use_info
+            ).
+:- inst recursion_type_known_costs for report.recursion_type/0
+    --->    rt_not_recursive
+    ;       rt_single(ground, ground, ground, ground, ground).
+:- inst recursion_type_unknown_costs for report.recursion_type/0
+    --->    rt_divide_and_conquer(ground, ground)
+    ;       rt_errors(ground)
+    ;       rt_mutual_recursion(ground)
+    ;       rt_other(ground).

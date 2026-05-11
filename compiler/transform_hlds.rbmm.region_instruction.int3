@@ -1,0 +1,12 @@
+:- module (transform_hlds.rbmm).region_instruction.
+:- interface.
+:- type instrs_before_after.
+:- type region_instr.
+:- type region_instr_proc.
+:- type region_instr_table.
+:- type region_instr_type
+	where	type_is_abstract_enum(2).
+:- type_representation(instrs_before_after, is_word_aligned_ptr).
+:- type_representation(region_instr_proc, is_eqv_to(map(program_point, transform_hlds.rbmm.region_instruction.instrs_before_after))).
+:- type_representation(region_instr_table, is_eqv_to(map(pred_proc_id, transform_hlds.rbmm.region_instruction.region_instr_proc))).
+:- type_representation(region_instr_type, du_repn(enum("create_region_instr", "remove_region_instr", ["renaming_region_instr"],  no_c_j_cs))).
