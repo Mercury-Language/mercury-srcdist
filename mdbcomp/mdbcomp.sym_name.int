@@ -1,0 +1,58 @@
+:- module mdbcomp.sym_name.
+:- interface.
+:- use_module list.
+:- use_module set.
+:- use_module term.
+:- type module_name == mdbcomp.sym_name.sym_name.
+:- type sym_name
+    --->    unqualified(
+                 string
+            )
+    ;       qualified(
+                 mdbcomp.sym_name.sym_name,
+                 string
+            ).
+:- func add_outermost_qualifier(string, mdbcomp.sym_name.sym_name) = mdbcomp.sym_name.sym_name.
+:- pred add_sym_name_suffix(mdbcomp.sym_name.sym_name, string, mdbcomp.sym_name.sym_name).
+:- mode add_sym_name_suffix(builtin.in, builtin.in, builtin.out) is det.
+:- pred det_list_to_sym_name(list.list(string), mdbcomp.sym_name.sym_name).
+:- mode det_list_to_sym_name(builtin.in, builtin.out) is det.
+:- pred det_sym_name_get_module_name(mdbcomp.sym_name.sym_name, mdbcomp.sym_name.module_name).
+:- mode det_sym_name_get_module_name(builtin.in, builtin.out) is det.
+:- pred det_sym_name_get_module_name_and_name(mdbcomp.sym_name.sym_name, mdbcomp.sym_name.module_name, string).
+:- mode det_sym_name_get_module_name_and_name(builtin.in, builtin.out, builtin.out) is det.
+:- func get_ancestors(mdbcomp.sym_name.module_name) = list.list(mdbcomp.sym_name.module_name).
+:- func get_ancestors_set(mdbcomp.sym_name.module_name) = set.set(mdbcomp.sym_name.module_name).
+:- pred is_same_module_or_submodule(mdbcomp.sym_name.module_name, mdbcomp.sym_name.module_name).
+:- mode is_same_module_or_submodule(builtin.in, builtin.in) is semidet.
+:- pred list_to_sym_name(list.list(string), mdbcomp.sym_name.sym_name).
+:- mode list_to_sym_name(builtin.in, builtin.out) is semidet.
+:- func outermost_qualifier(mdbcomp.sym_name.sym_name) = string.
+:- pred partial_sym_name_is_part_of_full(mdbcomp.sym_name.sym_name, mdbcomp.sym_name.sym_name).
+:- mode partial_sym_name_is_part_of_full(builtin.in, builtin.in) is semidet.
+:- pred partial_sym_name_matches_full(mdbcomp.sym_name.sym_name, mdbcomp.sym_name.sym_name).
+:- mode partial_sym_name_matches_full(builtin.in, builtin.in) is semidet.
+:- pred remove_sym_name_prefix(mdbcomp.sym_name.sym_name, string, mdbcomp.sym_name.sym_name).
+:- mode remove_sym_name_prefix(builtin.in, builtin.in, builtin.out) is semidet.
+:- mode remove_sym_name_prefix(builtin.out, builtin.in, builtin.in) is det.
+:- pred remove_sym_name_suffix(mdbcomp.sym_name.sym_name, string, mdbcomp.sym_name.sym_name).
+:- mode remove_sym_name_suffix(builtin.in, builtin.in, builtin.out) is semidet.
+:- func string_to_sym_name(string) = mdbcomp.sym_name.sym_name.
+:- func string_to_sym_name_sep(string, string) = mdbcomp.sym_name.sym_name.
+:- pred strip_outermost_qualifier(mdbcomp.sym_name.sym_name, string, mdbcomp.sym_name.sym_name).
+:- mode strip_outermost_qualifier(builtin.in, builtin.out, builtin.out) is semidet.
+:- pred sym_name_get_module_name(mdbcomp.sym_name.sym_name, mdbcomp.sym_name.module_name).
+:- mode sym_name_get_module_name(builtin.in, builtin.out) is semidet.
+:- pred sym_name_get_module_name_default(mdbcomp.sym_name.sym_name, mdbcomp.sym_name.module_name, mdbcomp.sym_name.module_name).
+:- mode sym_name_get_module_name_default(builtin.in, builtin.in, builtin.out) is det.
+:- pred sym_name_get_module_name_default_name(mdbcomp.sym_name.sym_name, mdbcomp.sym_name.module_name, mdbcomp.sym_name.module_name, string).
+:- mode sym_name_get_module_name_default_name(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- func sym_name_to_list(mdbcomp.sym_name.sym_name) = list.list(string).
+:- pred sym_name_to_qualifier_list_and_name(mdbcomp.sym_name.sym_name, list.list(string), string).
+:- mode sym_name_to_qualifier_list_and_name(builtin.in, builtin.out, builtin.out) is det.
+:- func sym_name_to_string(mdbcomp.sym_name.sym_name) = string.
+:- func sym_name_to_string_sep(mdbcomp.sym_name.sym_name, string) = string.
+:- pred sym_name_to_term(term.context, mdbcomp.sym_name.sym_name, list.list(term.term(T)), term.term(T)).
+:- mode sym_name_to_term(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func transform_sym_base_name(((func string) = string), mdbcomp.sym_name.sym_name) = mdbcomp.sym_name.sym_name.
+:- func unqualify_name(mdbcomp.sym_name.sym_name) = string.
