@@ -1,0 +1,196 @@
+/*
+** Automatically generated from `io.primitives_read.m'
+** by the Mercury compiler,
+** version rotd-2026-05-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module io.primitives_read.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_io__primitives_read
+#define MR_HEADER_GUARD_io__primitives_read
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef IO__PRIMITIVES_READ_DECL_GUARD
+#define IO__PRIMITIVES_READ_DECL_GUARD
+#include "io.mih"
+
+#ifdef MR_HAVE_UNISTD_H
+    #include <unistd.h>
+#endif
+
+#include "mercury_types.h"            // for MR_Integer
+#include "mercury_int.h"              // for MR_*_reverse_bytes
+
+#include <inttypes.h>
+
+#ifdef MR_WIN32
+    // This is for SSIZE_T.
+  #include "mercury_windows.h"
+#endif
+
+#if defined(MR_MSVC)
+    typedef SSIZE_T     ML_ssize_t;
+#else
+    typedef ssize_t     ML_ssize_t;
+#endif
+
+int     mercury_get_byte(MercuryFilePtr mf);
+
+///////////////////////////////////////////////////////////////////////////
+//
+// The C implementation of reading multibyte integers from binary streams.
+//
+
+// ML_N_BIT_UINT_T(n) expands to the name of an n-bit unsigned integer type
+// in C, if N is 8, 16, 32 or 64.
+//
+#define ML_N_BIT_INT_T(n)     MR_PASTE3(uint, n, _t)
+
+// ML_REVERSE_BYTES_FUNC(n) expands to the name a function exported by the
+// Mercury runtime that can be used to reverse the bytes in an n-bit
+// unsigned integer, if N is 16, 32 or 64.
+//
+#define ML_REVERSE_BYTES_FUNC(n)     MR_PASTE3(MR_uint, n, _reverse_bytes)
+
+// ML_build_uintN(int n, MR_Word byte_order, unsigned char *buffer,
+//     uintN_t value):
+//
+// Build an n-bit unsigned integer using the bytes stored in the array
+// 'buffer'. The order of the bytes in the buffer is given by 'byte_order'.
+// The result is assigned to the lvalue 'value'.
+//
+// We have two definitions of this macro, one for big-endian machines
+// and one for little-endian machines.
+//
+#if defined(MR_BIG_ENDIAN)
+#define ML_build_uintN(n, byte_order, buffer, value)                     do {                                                                     if (byte_order == ML_LITTLE_ENDIAN) {                                    value = ML_REVERSE_BYTES_FUNC(n)(                                        *((ML_N_BIT_INT_T(n) *) buffer));                            } else {                                                                 value = *((ML_N_BIT_INT_T(n) *) buffer);                         }                                                                } while (0)
+#else
+#define ML_build_uintN(n, byte_order, buffer, value)                     do {                                                                     if (byte_order == ML_LITTLE_ENDIAN) {                                    value = *((ML_N_BIT_INT_T(n) *) buffer);                         } else {                                                                 value = ML_REVERSE_BYTES_FUNC(n)(                                        *((ML_N_BIT_INT_T(n) *) buffer));                            }                                                                } while (0)
+#endif
+
+// ML_do_read_binary_uintN(int nbytes, int nbits, MR_Word stream,
+//     MR_Word byte_order, MR_Word result_code, MR_Word result_error,
+//     MR_Word result_incomplete, MR_Word result_value):
+//
+// This macro implements the do_read_binary_uint{16 32,64}/8 predicates.
+// It expands to code for reading an 'nbits'-bit ('nbytes'-byte) unsigned
+// integer from the binary stream 'stream', with the bytes in the stream
+// being in 'byte_order' order.
+//
+// The result is returned as follows:
+//
+// 'result_code' is set to the status code (maybe_incomplete_result_code/0)
+// for the read.
+// 'result_error' is the errno if an I/O error occurs, and zero otherwise.
+// 'result_incomplete' is the list of bytes read so far for an incomplete
+// read, and the empty list otherwise.
+// 'result_value' is the value of the integer read on a successful read
+// and zero otherwise.
+//
+#define ML_do_read_binary_uintN(nbytes, nbits, stream, byte_order,                  result_code, result_error, result_incomplete, result_value)               do {                                                                             unsigned char buffer[nbytes];                                                size_t nread = MR_READ(*stream, buffer, nbytes);                             result_incomplete = MR_list_empty();                                                                                                                      if (nread < nbytes) {                                                            result_value = 0;                                                            if (MR_FERROR(*stream)) {                                                        result_code = ML_MIRC_ERROR,                                                 result_error = errno;                                                    } else if (nread > 0) {                                                          int i;                                                                       result_code = ML_MIRC_INCOMPLETE;                                            for (i = nread - 1; i >= 0; i--) {                                               result_incomplete =                                                              MR_list_cons(buffer[i], result_incomplete);                          }                                                                            result_error = 0;                                                        } else {                                                                         result_code = ML_MIRC_EOF;                                                   result_error = 0;                                                        }                                                                        } else {                                                                         result_code = ML_MIRC_OK;                                                    ML_build_uintN(nbits, byte_order, buffer, result_value);                     result_error = 0;                                                        }                                                                        } while (0)
+
+
+#endif
+
+
+
+void MR_CALL 
+mercury__io__primitives_read__do_read_binary_uint16_8_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Box * param_4,
+  MR_Word * param_5,
+  uint16_t * param_6);
+
+void MR_CALL 
+mercury__io__primitives_read__do_read_binary_uint32_8_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Box * param_4,
+  MR_Word * param_5,
+  uint32_t * param_6);
+
+void MR_CALL 
+mercury__io__primitives_read__do_read_binary_uint64_8_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Box * param_4,
+  MR_Word * param_5,
+  uint64_t * param_6);
+
+void MR_CALL 
+mercury__io__primitives_read__putback_char_2_5_p_0(
+  MR_Box param_1,
+  MR_Char param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__io__primitives_read__putback_uint8_2_5_p_0(
+  MR_Box param_1,
+  uint8_t param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__io__primitives_read__read_byte_val_6_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box * param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__io__primitives_read__read_byte_val_2_6_p_0(
+  MR_Box param_1,
+  MR_Word * param_2,
+  MR_Box * param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__io__primitives_read__read_char_code_6_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box * param_3,
+  MR_Char * param_4);
+
+void MR_CALL 
+mercury__io__primitives_read__read_char_code_2_6_p_0(
+  MR_Box param_1,
+  MR_Word * param_2,
+  MR_Box * param_3,
+  MR_Char * param_4);
+
+void mercury__io__primitives_read__init(void);
+void mercury__io__primitives_read__init_type_tables(void);
+void mercury__io__primitives_read__init_debugger(void);
+const char *mercury__io__primitives_read__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_io.primitives_read
+
+// :- end_interface io.primitives_read.

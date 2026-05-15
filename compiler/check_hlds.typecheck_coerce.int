@@ -1,0 +1,11 @@
+:- module check_hlds.typecheck_coerce.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module check_hlds.type_assign.
+:- use_module check_hlds.typecheck_info.
+:- use_module parse_tree.prog_data.
+:- pred typecheck_coerce(check_hlds.typecheck_info.typecheck_info, parse_tree.prog_data.prog_context, list.list(parse_tree.prog_data.prog_var), check_hlds.type_assign.type_assign_set, check_hlds.type_assign.type_assign_set).
+:- mode typecheck_coerce(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred typecheck_prune_coerce_constraints(check_hlds.typecheck_info.typecheck_info, check_hlds.type_assign.type_assign_set, check_hlds.type_assign.type_assign_set).
+:- mode typecheck_prune_coerce_constraints(builtin.in, builtin.in, builtin.out) is det.
