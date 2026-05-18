@@ -1,0 +1,4 @@
+:- module transform_hlds.ssdebug.
+:- interface.
+:- abstract_inst((shallow_or_deep)).
+:- type_representation(proxy_map, is_eqv_to(map(pred_id, maybe(pred_id)))).
