@@ -1,0 +1,5 @@
+:- module (hlds.make_hlds).superhomogeneous_lambda.
+:- interface.
+:- type lambda_body_kind
+    --->    lambda_body_ordinary 
+    ;       lambda_body_dcg .

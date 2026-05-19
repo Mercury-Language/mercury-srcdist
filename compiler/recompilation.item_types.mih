@@ -1,0 +1,214 @@
+/*
+** Automatically generated from `recompilation.item_types.m'
+** by the Mercury compiler,
+** version rotd-2026-05-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module recompilation.item_types.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_recompilation__item_types
+#define MR_HEADER_GUARD_recompilation__item_types
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RECOMPILATION__ITEM_TYPES_DECL_GUARD
+#define RECOMPILATION__ITEM_TYPES_DECL_GUARD
+#include "recompilation.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct recompilation__item_types__recompilation__item_types__type_ctor_info_module_item_version_numbers_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__item_types__recompilation__item_types__type_ctor_info_module_item_version_numbers_map_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__item_types__recompilation__item_types__type_ctor_info_name_arity_version_map_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__item_types__recompilation__item_types__type_ctor_info_recomp_item_id_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__item_types__recompilation__item_types__type_ctor_info_recomp_item_name_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__item_types__recompilation__item_types__type_ctor_info_recomp_item_name_version_map_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__item_types__recompilation__item_types__type_ctor_info_recomp_item_type_0;
+
+extern const MR_TypeCtorInfo_Struct recompilation__item_types__recompilation__item_types__type_ctor_info_version_number_0;
+
+MR_bool MR_CALL 
+recompilation__item_types__parse_timestamp_term_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+recompilation__item_types__parse_version_number_term_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+recompilation__item_types__string_to_recomp_item_type_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+recompilation__item_types__string_to_recomp_item_type_2_p_1(
+  MR_String * param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+recompilation__item_types__init_module_item_version_numbers_0_f_0(void);
+
+MR_Word MR_CALL 
+recompilation__item_types__inst_ctor_to_recomp_item_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+recompilation__item_types__mode_ctor_to_recomp_item_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+recompilation__item_types__pred_or_func_to_recomp_item_type_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+recompilation__item_types__recomp_item_name_to_inst_ctor_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+recompilation__item_types__recomp_item_name_to_mode_ctor_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+recompilation__item_types__recomp_item_name_to_type_ctor_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+recompilation__item_types__type_ctor_to_recomp_item_name_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+recompilation__item_types__version_number_to_string_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+recompilation__item_types____Compare____module_item_version_numbers_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__item_types____Compare____module_item_version_numbers_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__item_types____Compare____name_arity_version_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__item_types____Compare____recomp_item_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__item_types____Compare____recomp_item_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__item_types____Compare____recomp_item_name_version_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__item_types____Compare____recomp_item_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+recompilation__item_types____Compare____version_number_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+recompilation__item_types____Unify____module_item_version_numbers_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__item_types____Unify____module_item_version_numbers_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__item_types____Unify____name_arity_version_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__item_types____Unify____recomp_item_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__item_types____Unify____recomp_item_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__item_types____Unify____recomp_item_name_version_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__item_types____Unify____recomp_item_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+recompilation__item_types____Unify____version_number_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__recompilation__item_types__init(void);
+void mercury__recompilation__item_types__init_type_tables(void);
+void mercury__recompilation__item_types__init_debugger(void);
+const char *mercury__recompilation__item_types__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_recompilation.item_types
+
+// :- end_interface recompilation.item_types.

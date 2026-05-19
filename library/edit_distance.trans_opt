@@ -1,0 +1,15 @@
+:- module edit_distance.
+
+:- pragma termination_info(edit_distance.find_best_close_enough_seqs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(edit_distance.find_best_close_enough_strings(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(edit_distance.find_closest_seqs(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(edit_distance.find_closest_strings(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(edit_distance.find_edit_distance(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(edit_distance.find_edit_distance_up_to_ceiling(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, edit_distance.find_best_close_enough_seqs, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, edit_distance.find_best_close_enough_strings, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, edit_distance.find_closest_seqs, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, edit_distance.find_closest_strings, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, edit_distance.find_edit_distance, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, edit_distance.find_edit_distance_up_to_ceiling, 5, 0, may_throw(user_exception)).
