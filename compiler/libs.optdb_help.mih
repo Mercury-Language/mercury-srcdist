@@ -1,0 +1,128 @@
+/*
+** Automatically generated from `optdb_help.m'
+** by the Mercury compiler,
+** version rotd-2026-05-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.optdb_help.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__optdb_help
+#define MR_HEADER_GUARD_libs__optdb_help
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__OPTDB_HELP_DECL_GUARD
+#define LIBS__OPTDB_HELP_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__optdb_help__libs__optdb_help__type_ctor_info_arg_align_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optdb_help__libs__optdb_help__type_ctor_info_help_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optdb_help__libs__optdb_help__type_ctor_info_help_piece_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optdb_help__libs__optdb_help__type_ctor_info_help_public_or_private_0;
+
+extern const MR_TypeCtorInfo_Struct libs__optdb_help__libs__optdb_help__type_ctor_info_help_text_0;
+
+void MR_CALL 
+libs__optdb_help____Compare____arg_align_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optdb_help____Compare____help_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optdb_help____Compare____help_piece_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optdb_help____Compare____help_public_or_private_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optdb_help____Compare____help_text_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__optdb_help____Index____help_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+libs__optdb_help____Index____help_piece_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+libs__optdb_help____Unify____arg_align_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optdb_help____Unify____help_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optdb_help____Unify____help_piece_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optdb_help____Unify____help_public_or_private_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__optdb_help____Unify____help_text_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__optdb_help__init(void);
+void mercury__libs__optdb_help__init_type_tables(void);
+void mercury__libs__optdb_help__init_debugger(void);
+const char *mercury__libs__optdb_help__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.optdb_help
+
+// :- end_interface libs.optdb_help.
