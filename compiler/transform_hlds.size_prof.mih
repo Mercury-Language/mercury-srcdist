@@ -1,0 +1,88 @@
+/*
+** Automatically generated from `size_prof.m'
+** by the Mercury compiler,
+** version rotd-2026-05-25
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.size_prof.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__size_prof
+#define MR_HEADER_GUARD_transform_hlds__size_prof
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__SIZE_PROF_DECL_GUARD
+#define TRANSFORM_HLDS__SIZE_PROF_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_construct_transform_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_known_size_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_rev_type_ctor_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_rev_type_info_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_size_prof_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_type_ctor_map_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__size_prof__transform_hlds__size_prof__type_ctor_info_type_info_map_0;
+
+void MR_CALL 
+transform_hlds__size_prof__size_prof_process_proc_msg_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+transform_hlds__size_prof____Compare____construct_transform_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__size_prof____Unify____construct_transform_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__size_prof__init(void);
+void mercury__transform_hlds__size_prof__init_type_tables(void);
+void mercury__transform_hlds__size_prof__init_debugger(void);
+const char *mercury__transform_hlds__size_prof__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.size_prof
+
+// :- end_interface transform_hlds.size_prof.

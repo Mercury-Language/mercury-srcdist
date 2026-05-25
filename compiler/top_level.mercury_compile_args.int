@@ -1,0 +1,25 @@
+:- module top_level.mercury_compile_args.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module make.
+:- use_module one_or_more.
+:- use_module parse_tree.
+:- use_module libs.globals.
+:- use_module libs.options.
+:- use_module make.options_file.
+:- use_module parse_tree.error_spec.
+:- type arg_processing_result
+    --->    apr_failure(
+                 libs.options.option_table,
+                 one_or_more.one_or_more(parse_tree.error_spec.error_spec)
+            )
+    ;       apr_success(
+                 (top_level.mercury_compile_args).aprs_globals :: libs.globals.globals,
+                 (top_level.mercury_compile_args).aprs_arg_pack :: make.options_file.compiler_arg_pack
+            ).
+:- pred get_args_representing_env_vars(list.list(string), io.io, io.io).
+:- mode get_args_representing_env_vars(builtin.out, builtin.di, builtin.uo) is det.
+:- pred setup_all_args(io.text_output_stream, list.list(string), top_level.mercury_compile_args.arg_processing_result, io.io, io.io).
+:- mode setup_all_args(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.

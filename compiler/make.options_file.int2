@@ -1,0 +1,16 @@
+:- module make.options_file.
+:- interface.
+:- type compiler_arg_pack
+    --->    compiler_arg_pack(
+                 (make.options_file).cap_eov :: make.options_file.env_optfile_variables,
+                 (make.options_file).cap_env_var_args :: list.list(string),
+                 (make.options_file).cap_option_args :: list.list(string),
+                 (make.options_file).cap_nonoption_args :: list.list(string)
+            ).
+:- type compiler_params
+    --->    compiler_params(
+                 (make.options_file).cp_eov :: make.options_file.env_optfile_variables,
+                 (make.options_file).cp_env_var_args :: list.list(string),
+                 (make.options_file).cp_option_args :: list.list(string)
+            ).
+:- type env_optfile_variables.

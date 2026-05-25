@@ -1,0 +1,39 @@
+:- module pqueue.
+:- interface.
+:- use_module assoc_list.
+:- type pqueue(K, V).
+:- pred assoc_list_to_pqueue(assoc_list.assoc_list(K, V), pqueue.pqueue(K, V)).
+:- mode assoc_list_to_pqueue(builtin.in, builtin.out) is det.
+:- func assoc_list_to_pqueue(assoc_list.assoc_list(K, V)) = pqueue.pqueue(K, V).
+:- pred det_peek(pqueue.pqueue(K, V), K, V).
+:- mode det_peek(builtin.in, builtin.out, builtin.out) is det.
+:- func det_peek_key(pqueue.pqueue(K, V)) = K.
+:- func det_peek_value(pqueue.pqueue(K, V)) = V.
+:- pred det_remove(K, V, pqueue.pqueue(K, V), pqueue.pqueue(K, V)).
+:- mode det_remove(builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- func from_assoc_list(assoc_list.assoc_list(K, V)) = pqueue.pqueue(K, V).
+:- pred init(pqueue.pqueue(K, V)).
+:- mode init(builtin.out) is det.
+:- func init = pqueue.pqueue(K, V).
+:- pred insert(K, V, pqueue.pqueue(K, V), pqueue.pqueue(K, V)).
+:- mode insert(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func insert(pqueue.pqueue(K, V), K, V) = pqueue.pqueue(K, V).
+:- pred is_empty(pqueue.pqueue(K, V)).
+:- mode is_empty(builtin.in) is semidet.
+:- func length(pqueue.pqueue(K, V)) = int.
+:- pred map_values(((func V1) = V2), pqueue.pqueue(K, V1), pqueue.pqueue(K, V2)).
+:- mode map_values(builtin.in, builtin.in, builtin.out) is det.
+:- pred merge(pqueue.pqueue(K, V), pqueue.pqueue(K, V), pqueue.pqueue(K, V)).
+:- mode merge(builtin.in, builtin.in, builtin.out) is det.
+:- func merge(pqueue.pqueue(K, V), pqueue.pqueue(K, V)) = pqueue.pqueue(K, V).
+:- pred peek(pqueue.pqueue(K, V), K, V).
+:- mode peek(builtin.in, builtin.out, builtin.out) is semidet.
+:- pred peek_key(pqueue.pqueue(K, V), K).
+:- mode peek_key(builtin.in, builtin.out) is semidet.
+:- pred peek_value(pqueue.pqueue(K, V), V).
+:- mode peek_value(builtin.in, builtin.out) is semidet.
+:- pred remove(K, V, pqueue.pqueue(K, V), pqueue.pqueue(K, V)).
+:- mode remove(builtin.out, builtin.out, builtin.in, builtin.out) is semidet.
+:- pred to_assoc_list(pqueue.pqueue(K, V), assoc_list.assoc_list(K, V)).
+:- mode to_assoc_list(builtin.in, builtin.out) is det.
+:- func to_assoc_list(pqueue.pqueue(K, V)) = assoc_list.assoc_list(K, V).
