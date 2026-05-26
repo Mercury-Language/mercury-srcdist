@@ -1,0 +1,18 @@
+:- module (libs.mmakefiles).
+:- interface.
+:- type is_mmake_rule_phony
+	where	type_is_abstract_enum(1).
+:- type mmake_action.
+:- type mmake_condition.
+:- type mmake_entry.
+:- type mmake_file_name.
+:- type mmake_file_name_group.
+:- type mmake_fragment.
+:- type mmake_grade_component.
+:- type mmakefile.
+:- type_representation(is_mmake_rule_phony, du_repn(enum("mmake_rule_is_not_phony", "mmake_rule_is_phony", [],  no_c_j_cs))).
+:- type_representation(mmake_action, is_eqv_to(string)).
+:- type_representation(mmake_file_name, is_eqv_to(string)).
+:- type_representation(mmake_file_name_group, is_word_aligned_ptr).
+:- type_representation(mmake_grade_component, is_eqv_to(string)).
+:- type_representation(mmakefile, is_eqv_to(cord(libs.mmakefiles.mmake_fragment))).

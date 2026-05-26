@@ -1,0 +1,11 @@
+:- module (string.to_string).
+:- interface.
+:- use_module deconstruct.
+:- use_module ops.
+:- func string_impl(T) = string.
+:- func string_ops_impl(ops.table, T) = string.
+:- pred string_ops_noncanon_impl(deconstruct.noncanon_handling, ops.table, T, string).
+:- mode string_ops_noncanon_impl(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode string_ops_noncanon_impl(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode string_ops_noncanon_impl(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode string_ops_noncanon_impl((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
