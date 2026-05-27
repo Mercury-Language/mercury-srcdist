@@ -1,0 +1,13 @@
+:- module (thread.closeable_channel).
+
+:- pragma termination_info((thread.closeable_channel).close((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.closeable_channel).init((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.closeable_channel).put((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.closeable_channel).take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.closeable_channel).try_take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, ((thread.closeable_channel).close), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.closeable_channel).init), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.closeable_channel).put), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.closeable_channel).take), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.closeable_channel).try_take), 4, 0, will_not_throw).

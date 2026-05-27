@@ -1,0 +1,1208 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = hard_coded
+MAYBE_J1 =
+
+#-----------------------------------------------------------------------------#
+
+ORDINARY_PROGS = \
+	abstract_eqv \
+	address_of_builtins \
+	agg \
+	array_all_tf \
+	array_append \
+	array_copy \
+	array_gen \
+	array_primitives \
+	array_sort \
+	array_test \
+	array_test2 \
+	array_unify_compare \
+	bag_various \
+	bidirectional \
+	bigtest \
+	bimap_set_bug \
+	binary_stdin \
+	binary_stdout \
+	bit_twiddle_int16 \
+	bit_twiddle_int32 \
+	bit_twiddle_int64 \
+	bit_twiddle_int8 \
+	bit_twiddle_uint16 \
+	bit_twiddle_uint32 \
+	bit_twiddle_uint64 \
+	bit_twiddle_uint8 \
+	boyer \
+	brace \
+	bug103 \
+	bug160 \
+	bug240 \
+	bug300 \
+	bug383 \
+	bug392 \
+	bug452 \
+	bug455_mod_a \
+	bug513 \
+	bug548 \
+	bug557 \
+	bug_pack_bits \
+	bulk_compare_packed \
+	c89_neg_int \
+	c_write_string \
+	calendar_test \
+	cc_and_non_cc_test \
+	cc_multi_bug \
+	cc_nondet_disj \
+	change_hunk_test \
+	char_not_surrogate \
+	char_signed \
+	char_unicode \
+	checked_nondet_tailcall \
+	checked_nondet_tailcall_noinline \
+	closeable_channel_test \
+	closure_extension \
+	coerce_opt \
+	common_type_cast \
+	compare_spec \
+	comparison \
+	complicated_unify_bug \
+	conditional_trace_scope \
+	constant_prop_1 \
+	constraint \
+	constraint_order \
+	construct_bug \
+	construct_mangle \
+	construct_packed \
+	construct_test \
+	construct_test_exist \
+	contains_char \
+	contravariance_bug \
+	contravariance_poly \
+	curry \
+	curry2 \
+	cut_test \
+	cycles \
+	cycles2 \
+	deconstruct_arg \
+	deep_copy \
+	deep_copy_bug \
+	deep_copy_exist \
+	deforest_cc_bug \
+	delay_partial_test \
+	delay_partial_test2 \
+	dense_lookup_switch \
+	dense_lookup_switch2 \
+	dense_lookup_switch3 \
+	dense_lookup_switch4 \
+	dense_lookup_switch_non \
+	dense_lookup_switch_non2 \
+	det_in_semidet_cntxt \
+	digraph_tc \
+	dir_fold \
+	direct_arg_partial_inst \
+	direct_arg_partial_inst2 \
+	direct_arg_tags \
+	direct_arg_tags_2 \
+	disjs_in_switch \
+	division_test \
+	dos \
+	dst_test \
+	dummy_no_tag \
+	dummy_type_construct \
+	dup_vars_in_trace_scopes_only \
+	dupcall_impurity \
+	dupcall_types_bug \
+	edit_seq_test \
+	ee_dummy \
+	ee_valid_test \
+	elim_local_var_char \
+	elim_special_pred \
+	equality_pred_which_requires_boxing \
+	eqv_type_bug \
+	eqvclass_bug \
+	erroneous_liveness \
+	error_func \
+	exist_cons_ho_arg \
+	existential_bound_tvar \
+	existential_float \
+	existential_reordering \
+	existential_reordering_class \
+	existential_type_switch_opt \
+	existential_types_test \
+	expand \
+	export_test \
+	failure_unify \
+	field_syntax \
+	finalise_decl \
+	finalize_to_bitmap \
+	float_conv \
+	float_field \
+	float_ground_term \
+	float_map \
+	float_reg \
+	float_rounding_bug \
+	fold_days \
+	follow_code_bug \
+	follow_code_bug_2 \
+	foreign_and_mercury \
+	foreign_code_before_proc \
+	foreign_enum_rtti \
+	foreign_enum_switch \
+	foreign_import_module \
+	foreign_name_mutable \
+	foreign_type \
+	foreign_type2 \
+	foreign_type3 \
+	frameopt_pragma_redirect \
+	free_free_mode \
+	from_ground_term_bug \
+	from_int_int16 \
+	from_int_int32 \
+	from_int_int64 \
+	from_int_int8 \
+	from_int_uint16 \
+	from_int_uint32 \
+	from_int_uint64 \
+	from_int_uint8 \
+	from_uint_uint16 \
+	from_uint_uint32 \
+	from_uint_uint64 \
+	from_uint_uint8 \
+	func_and_pred \
+	func_ctor_ambig \
+	func_test \
+	functor_ho_inst \
+	functor_ho_inst_2 \
+	functor_ho_inst_excp \
+	functor_ho_inst_excp_2 \
+	functor_ho_inst_float_reg \
+	getopt_maybe_option \
+	getopt_test \
+	gh72 \
+	gh72a \
+	gh72b \
+	ground_dd \
+	ground_terms \
+	hash_bug \
+	hash_init_bug \
+	hash_table_delete \
+	heap_ref_mask_tag \
+	higher_order_func_test \
+	higher_order_syntax \
+	higher_order_syntax2 \
+	higher_order_type_manip \
+	ho_float_reg \
+	ho_func_default_inst \
+	ho_func_reg \
+	ho_order \
+	ho_order2 \
+	ho_solns \
+	ho_univ_to_type \
+	if_then_else_expr_state_var \
+	impl_def_lex \
+	impl_def_lex_string \
+	implication \
+	impossible_unify \
+	impure_foreign \
+	impure_init_and_final \
+	impure_prune \
+	initialise_decl \
+	inst_alias \
+	int16_from_bytes \
+	int32_from_bytes \
+	int32_int16_casts \
+	int32_int8_casts \
+	int64_from_bytes \
+	int_fold_up_down \
+	int_impl_imports \
+	int_range_ops \
+	integer_int16_conv \
+	integer_int32_conv \
+	integer_int64_conv \
+	integer_int8_conv \
+	integer_test \
+	integer_uint16_conv \
+	integer_uint32_conv \
+	integer_uint64_conv \
+	integer_uint8_conv \
+	integer_uint_conv \
+	intermod_c_code \
+	intermod_foreign_type \
+	intermod_may_export_body \
+	intermod_multimode_main \
+	intermod_poly_mode \
+	intermod_pragma_clause \
+	intermod_type_qual \
+	intermod_unused_args \
+	java_rtti_bug \
+	join_list \
+	lco_double \
+	lco_mday_bug_1 \
+	lco_mday_bug_2 \
+	lco_no_inline \
+	lco_pack_args \
+	lco_pack_args_2 \
+	lco_pack_args_3 \
+	lexer_bigint \
+	lexer_ints \
+	lexer_zero \
+	list_series_int \
+	list_split_take_drop \
+	local_args \
+	lookup_disj \
+	lookup_switch_simple \
+	lookup_switch_simple_bitvec \
+	lookup_switch_simple_cond \
+	lookup_switch_simple_non \
+	lookup_switch_simple_opt \
+	loop_inv_test \
+	loop_inv_test1 \
+	loop_inv_test3 \
+	loop_inv_test4 \
+	map_fold \
+	map_select_test \
+	mapped_module \
+	merge_and_remove_dups \
+	mode_check_clauses \
+	mode_choice \
+	multi_arm_switch \
+	multi_arm_switch_2 \
+	multi_map_test \
+	multimode \
+	multimode_addr \
+	mutable_init_impure \
+	mutable_init_order \
+	myset_test \
+	name_mangling \
+	no_fully_strict \
+	no_inline \
+	no_inline_builtins \
+	no_warn_singleton \
+	nonascii \
+	nondet_copy_out \
+	nondet_ctrl_vn \
+	nondet_lambda \
+	nullary_ho_func \
+	oisu_check_main \
+	one_member \
+	only_failing_goal_is_tail_rec \
+	opt_dup_bug \
+	opt_format \
+	opt_format_sign_extend \
+	pack_args \
+	pack_args_copy \
+	pack_args_float \
+	pack_args_intermod1 \
+	pack_int32 \
+	packed_arg_partial_inst \
+	parse_number_from_io \
+	parse_number_from_string \
+	partial_inst_float \
+	ppc_bug \
+	pprint_test \
+	pprint_test2 \
+	pragma_c_code \
+	pragma_export \
+	pragma_foreign_export \
+	pragma_inline \
+	pretty_printing \
+	prince_frameopt \
+	print_bigint \
+	print_date \
+	print_stream \
+	profdeep_seg_fault \
+	promise_equiv_with_svars \
+	promise_equivalent_clauses \
+	promise_equivalent_solutions_test \
+	promise_eqv_solns_typeclasses \
+	psqueue_test \
+	pure_mutable \
+	putback_binary_int8 \
+	putback_binary_uint8 \
+	puzzle_detism_bug \
+	qual_adv_test \
+	qual_basic_test \
+	qual_is_test \
+	quantifier \
+	quantifier2 \
+	quoting_bug_test \
+	random_permutation \
+	random_simple \
+	rational_test \
+	read_binary_int16 \
+	read_binary_int32 \
+	read_binary_int64 \
+	read_binary_uint16 \
+	read_binary_uint32 \
+	read_binary_uint64 \
+	read_bitmap_size \
+	read_min_int \
+	recursive_main \
+	redoip_clobber \
+	remove_file \
+	reorder_di \
+	require_scopes \
+	rev_arith \
+	reverse_arith \
+	rnd \
+	rtree_test \
+	rtti_strings \
+	sectag_bits \
+	seek_test \
+	semi_disj \
+	semi_tail_call_in_nonlast_disjunct \
+	setjmp_test \
+	simplify_multi_arm_switch \
+	singleton_dups \
+	solve_quadratic \
+	space \
+	spawn_native \
+	special_char \
+	stable_sort \
+	static_no_tag \
+	static_term_bug \
+	stdlib_init \
+	stream_format \
+	stream_ignore_ws \
+	stream_put_bug \
+	stream_putback \
+	stream_putback_binary \
+	stream_string_writer_types \
+	stream_test \
+	string_alignment \
+	string_alignment_bug \
+	string_all_match \
+	string_append_iii \
+	string_append_ioi \
+	string_append_ooi \
+	string_append_ooi_ilseq \
+	string_builder_test \
+	string_case \
+	string_char_list_ilseq \
+	string_class \
+	string_code_unit \
+	string_codepoint \
+	string_codepoint_offset_ilseq \
+	string_compare_substrings \
+	string_contains_char \
+	string_count_codepoints_ilseq \
+	string_first_char \
+	string_fold_ilseq \
+	string_from_char_list_ilseq \
+	string_from_code_unit_list \
+	string_index_ilseq \
+	string_index_next_ilseq \
+	string_loop \
+	string_not_surrogate \
+	string_presuffix \
+	string_prev_index_ilseq \
+	string_set_char \
+	string_set_char_ilseq \
+	string_split \
+	string_split_2 \
+	string_string \
+	string_strip \
+	string_sub_string_search \
+	string_substring \
+	string_suffix_bug \
+	string_switch \
+	string_switch2 \
+	string_switch3 \
+	string_to_float_overflow \
+	string_various \
+	string_well_formed \
+	string_well_formed_utf8 \
+	subtype_abstract \
+	subtype_order \
+	subtype_pack \
+	subtype_rtti \
+	subtype_user_compare \
+	sv_nested_closures \
+	sv_record_update \
+	switch_detect \
+	system_sort \
+	tag_switch_dup_label \
+	tail_rec_scc \
+	tautological_compare \
+	term_io_test \
+	term_to_univ_test \
+	test234_sorted_insert \
+	test_bag \
+	test_char_digits \
+	test_cord \
+	test_cord2 \
+	test_imported_no_tag \
+	test_infinity \
+	test_int_hash \
+	test_keys_and_values \
+	test_map_filter \
+	test_one_or_more \
+	test_one_or_more_chunk \
+	test_pretty_printer \
+	test_pretty_printer_defaults \
+	test_semaphore \
+	test_tree_bitset \
+	test_yield \
+	thread_commit \
+	thread_sbrk \
+	tim_qual1 \
+	time_test \
+	trace_goal_1 \
+	trace_goal_2 \
+	trace_goal_3 \
+	trace_goal_4 \
+	trace_goal_opt \
+	transform_value \
+	transitive_inst_type \
+	trigraphs \
+	tuple_test \
+	tuple_test2 \
+	type_ctor_desc \
+	type_ctor_desc_manip \
+	type_info_const_inst \
+	type_info_order \
+	type_qual \
+	type_spec_ho_term \
+	type_spec_modes \
+	type_to_term \
+	type_to_term_bug \
+	uc_export_enum \
+	uint16_from_bytes \
+	uint16_switch_test \
+	uint16_to_string \
+	uint16_uint8_casts \
+	uint32_from_bytes \
+	uint32_switch_test \
+	uint32_to_string \
+	uint32_to_uint64 \
+	uint32_uint16_casts \
+	uint32_uint8_casts \
+	uint64_from_bytes \
+	uint64_ground_term \
+	uint64_string_conv \
+	uint64_switch_test \
+	uint64_to_string \
+	uint64_uint8_casts \
+	uint8_switch_test \
+	uint8_to_string \
+	uint_string_conv \
+	uint_switch_test \
+	unicode_test \
+	unify_existq_cons \
+	unify_expression \
+	unify_typeinfo_bug \
+	uniq_duplicate_call \
+	unsigned_lt_le \
+	unsorted_agg2 \
+	unused_float_box_test \
+	unusual_name_mutable \
+	uo_regression1 \
+	user_compare \
+	user_defined_equality2 \
+	utf8_io \
+	value_enum \
+	word_aligned_pointer \
+	words_separator \
+	write \
+	write_array \
+	write_binary_int8 \
+	write_binary_multibyte_int \
+	write_binary_uint8 \
+	write_float_special \
+	write_reg1 \
+	write_reg2 \
+	write_xml \
+	xmlable_test \
+	zinc_pack_bug
+
+# --transitive-intermodule-optimization is incompatible with mmc --make.
+ifneq ($(MMAKE_USE_MMC_MAKE),yes)
+ORDINARY_PROGS += \
+	trans_intermod_user_equality
+endif
+
+# Solver types only work in C grades.
+#
+# Additionally, solver_default_eq_cmp does not yet work in deep profiling
+# grades because deep profiling cannot yet handle exceptions being caught and
+# this test does that.
+#
+ifeq "$(filter csharp% java%,$(GRADE))" ""
+	ifeq "$(findstring profdeep,$(GRADE))" ""
+		SOLVER_PROGS_2 = \
+			solver_default_eq_cmp
+	else
+		SOLVER_PROGS_2 =
+	endif
+	SOLVER_PROGS = \
+		$(SOLVER_PROGS_2) \
+		any_call_hoist_bug \
+		any_free_unify \
+		solver_build_call
+else
+	SOLVER_PROGS =
+endif
+
+# Foreign enum pragmas only (currently) work in the C and C# grades.
+ifeq "$(filter java%,$(GRADE))" ""
+	FOREIGN_ENUM_PROGS = \
+		exported_foreign_enum \
+		foreign_enum_dummy \
+		foreign_enum_mod1
+else
+	FOREIGN_ENUM_PROGS =
+endif
+
+RANDOM_PROGS = \
+	random1 \
+	random2 \
+	random3 \
+	random_shuffle \
+	random_shuffle2
+
+# Some tests only link in trailing grades.
+ifeq "$(filter tr%,$(GRADE))" ""
+	TRAILED_PROGS =
+else
+	TRAILED_PROGS = \
+		mutable_decl
+endif
+
+# Some tests are intended to test the handling of stack segments,
+# and would generate stack overflows in grades that don't use stack segments.
+ifeq "$(filter stseg%,$(GRADE))" ""
+	STACK_SEGMENT_PROGS =
+else
+	STACK_SEGMENT_PROGS = \
+		bug314
+endif
+
+MUTABLE_PROGS = \
+	float_gv
+
+TRACE_GOAL_ENV_PROGS = \
+	trace_goal_env_1 \
+	trace_goal_env_2 \
+	trace_goal_env_3
+
+# Compile-time garbage collection is currently incompatible with debugging
+# grades.
+# The programs listed in CTGC_PROGS_2 do not currently work in non-C grades.
+#
+ifeq "$(findstring debug,$(GRADE))" ""
+	ifeq "$(filter csharp% java%,$(GRADE))" ""
+		CTGC_PROGS_2 = \
+			bad_direct_reuse \
+			bad_indirect_reuse2 \
+			pack_args_reuse \
+			reuse_array \
+			reuse_double \
+			reuse_ho \
+			uncond_reuse
+	else
+		CTGC_PROGS_2 =
+	endif
+	CTGC_PROGS = \
+		$(CTGC_PROGS_2) \
+		bad_indirect_reuse2b \
+		bad_indirect_reuse3 \
+		sharing_comb \
+		uncond_reuse_bad
+else
+	CTGC_PROGS =
+endif
+
+# Programs that deal with large amounts of data need tail recursion. Don't
+# execute them in grades that do not allow tail recursion, since their failures
+# would be spurious.
+
+ifeq "$(findstring debug,$(GRADE))$(findstring deep,$(GRADE))" ""
+	BIG_DATA_PROGS = \
+		big_array_from_list \
+		hash_table_test \
+		lco_reorder \
+		version_hash_table_test2
+else
+	BIG_DATA_PROGS =
+endif
+
+# Tests of the Java foreign language interface only work in Java grades.
+#
+ifeq "$(filter java%,$(GRADE))" ""
+	JAVA_PROGS =
+else
+	JAVA_PROGS = \
+		java_print_foreign  \
+		java_test \
+		test_java_foreign_primitive
+endif
+
+# Tests of the C# foreign language interface only work in the C# grades.
+
+ifeq "$(filter csharp%,$(GRADE))" ""
+	CSHARP_PROGS =
+else
+	CSHARP_PROGS = \
+		csharp_print_foreign
+endif
+
+# Fact tables currently work only in the C grades.
+# The foreign_type_assertion test is currently meaningful only in C grades.
+# Tests of the C foreign language interface only work in C grades.
+# Runtime options are specific to the C backend.
+ifeq "$(filter csharp% java%,$(GRADE))" ""
+	C_ONLY_PROGS = \
+		factt \
+		factt_sort_test \
+		foreign_type_assertion \
+		runtime_opt \
+		target_mlobjs \
+		weak_ptr
+else
+	C_ONLY_PROGS =
+endif
+
+# constant_prop_2 fails in hl*prof* grades, due to a complicated phase
+# ordering problem. The first simplify pass eliminates a call to
+# private_builtin.typed_unify, but does not yet simplify the if-then-else
+# which contains it; then at the end of that pass determinism analysis
+# is rerun, and the condition is inferred to be det. Then dead proc
+# elimination is run, and it does not eliminate link_error, since there
+# is still a call to it. The second simplify pass notices that the
+# condition is det, and simplifies the if-then-else, deleting the else part,
+# so link_error is now dead. But dead proc elimination doesn't get run
+# again, so we go ahead and emit a declaration for link_error, and in
+# MLDS profiling grades also a reference, which causes the test case to fail.
+
+# constant_prop_2 relies on deleting all references to an external predicate,
+# but the appearance of the call in the caller puts a reference to its proc
+# layout structure into the call sites array of its caller, even if the call
+# is never made. We could fix this by skipping over call sites in unreachable
+# code, but doing so would require duplicating, in deep_profiling.m, the code
+# used by simplify.m to eliminate the unreachable code. Since the only profit
+# would be to pass unrealistic test cases like constant_prop_2, this is not
+# worth doing.
+#
+# constant_prop_loop_inv is a cut_down version of constant_prop_2.
+
+ifeq "$(findstring hl,$(GRADE))$(findstring prof,$(GRADE))" "hlprof"
+	PROF_PROGS =
+else
+  ifeq "$(findstring profdeep,$(GRADE))" ""
+	PROF_PROGS = \
+		constant_prop_2 \
+		constant_prop_loop_inv
+  else
+	PROF_PROGS =
+  endif
+endif
+
+# These tests require the implementation to support closure layouts
+CLOSURE_LAYOUT_PROGS = \
+	copy_pred \
+	copy_pred_2
+
+# We do not pass the following tests at all:
+#
+# XXX export_test2
+#     Fails in hl* grades. I think this never passed.
+#
+# XXX float_consistency:
+#     floats in Mercury aren't consistent -- see the comments at the
+#     top of library/float.m.
+#
+# XXX loop_inv_test0, loop_inv_test2:
+#     These test cases test some more sophisticated cases of loop invariant
+#     optimization which our current loop_inv pass is not capable of
+#     optimizing.
+#
+# XXX var_not_found -- mode error in automatically generated unification
+#     predicate. This test uses partially instantiated modes,
+#     which are not yet fully supported.
+#
+# XXX needs_init doesn't work yet in profiling grades.
+#
+# XXX compare_rep_array doesn't work because MR_COMPARE_BY_RTTI is
+#     not yet implemented for arrays.
+#
+# XXX we fail some of the commented-out tests in write_binary
+#
+# XXX bug441
+# XXX test_generic_ref
+
+# The following tests are passed only in some grades.
+
+# The following tests do not work in the the .profdeep grades.
+# All of them, aside from backend_external and backjump_test, don't work
+# because deep profiling cannot yet handle exceptions being caught and
+# these test cases do that.
+#
+# backend_external fails because the predicates whose implementation
+# is handwritten in C do not have the necessary proc_statics etc,
+# defined.
+#
+# backjump_test fails because deep profiler cannot yet handle backjumps.
+# tl_backjump_test fails because the deep profiler cannot yet handle
+# backjumps and threads.
+#
+# Additionally, The programs listed in NON_PROFDEEP_PROGS_2 don't
+# work in non-C grades, either because they contain C code or
+# they use backjumping, which is NI for the non-C grades.
+#
+ifeq "$(findstring profdeep,$(GRADE))" ""
+	ifeq "$(filter csharp% java%,$(GRADE))" ""
+		NON_PROFDEEP_PROGS_2 = \
+			backend_external \
+			backend_external_func \
+			backend_external_pred \
+			backjump_test \
+			tl_backjump_test
+	else
+		NON_PROFDEEP_PROGS_2 =
+	endif
+	NON_PROFDEEP_PROGS = \
+		$(NON_PROFDEEP_PROGS_2) \
+		array_fetch_items \
+		array_fill \
+		array_resize \
+		array_shrink \
+		array_swap \
+		array2d_from_array \
+		allow_stubs \
+		arith_int16 \
+		arith_int32 \
+		arith_int64 \
+		arith_int8 \
+		arith_uint16 \
+		arith_uint32 \
+		arith_uint64 \
+		arith_uint8 \
+		bit_access_uint16 \
+		bit_access_uint32 \
+		bit_access_uint64 \
+		bit_access_uint8 \
+		bitmap_bytes \
+		bitmap_empty \
+		bitmap_test \
+		bitwise_int \
+		bitwise_int16 \
+		bitwise_int32 \
+		bitwise_int64 \
+		bitwise_int8 \
+		bitwise_uint16 \
+		bitwise_uint32 \
+		bitwise_uint64 \
+		bitwise_uint8 \
+		bit_buffer_test \
+		char_to_string \
+		cmp_int16 \
+		cmp_int32 \
+		cmp_int64 \
+		cmp_int8 \
+		cmp_uint16 \
+		cmp_uint32 \
+		cmp_uint64 \
+		cmp_uint8 \
+		dir_test \
+		final_excp \
+		ho_array_ops \
+		int8_static_data \
+		init_excp \
+		intermod_try_goal \
+		io_globals_deadlock \
+		map_merge_test \
+		mutable_excp \
+		null_char \
+		rotate_uint16 \
+		rotate_uint32 \
+		rotate_uint64 \
+		rotate_uint8 \
+		shift_test \
+		string_append_pieces \
+		string_first_char_ilseq \
+		take_split_upto \
+		test_array2d \
+		test_injection \
+		try_syntax_1 \
+		try_syntax_2 \
+		try_syntax_3 \
+		try_syntax_4 \
+		try_syntax_5 \
+		try_syntax_6 \
+		try_syntax_7 \
+		uint_arith \
+		uint_bitwise \
+		user_defined_equality \
+		version_array_test \
+		version_hash_table_delete \
+		version_hash_table_test \
+		write_binary
+else
+	NON_PROFDEEP_PROGS =
+endif
+
+# compare_representation does not work in the MLDS grades (e.g. hlc.gc),
+# because comparison of closures gives "Sorry, not implemented" when
+# MR_HIGHLEVEL_CODE is set. Likewise for closure_arg_comparison.
+#
+# factt_non and fact_table_test_? do not work in the MLDS grades because
+# the code for nondet fact tables assumes that we are using the LLDS back-end.
+# Also, fact tables and deep profiling do not (yet) mix.
+#
+# type_tables does not work in the MLDS grades because the test itself
+# is a quick hack that assumes the use of the LLDS backend; it should
+# be replaced by a test that exercises functionality enabled by type tables.
+# However, this must wait for the implementation of that functionality.
+
+ifeq "$(filter hl% csharp% java%,$(GRADE))" ""
+	ifeq "$(findstring profdeep,$(GRADE))" ""
+		BACKEND_PROGS_2 = \
+			factt_non \
+			fact_table_test_1 \
+			fact_table_test_2
+	else
+		BACKEND_PROGS_2 =
+	endif
+
+	BACKEND_PROGS = \
+		$(BACKEND_PROGS_2) \
+		no_refs_to_deleted_labels \
+		closure_arg_comparison \
+		compare_representation \
+		compare_rep_usereq \
+		stable_foreign \
+		type_tables
+else
+	BACKEND_PROGS =
+endif
+
+# string_hash tests features of the Mercury C runtime.
+# It requires too much memory to be used in non-GC grades.
+ifeq "$(filter csharp% java%,$(GRADE))$(findstring gc,$(GRADE))" "gc"
+	C_AND_GC_ONLY_PROGS = string_hash
+else
+	C_AND_GC_ONLY_PROGS =
+endif
+
+# Static linking doesn't work on Solaris in debug grades
+# ('-ldl' doesn't work with static linking).
+#
+# Static linking (against the system libraries) doesn't
+# work on MacOS X because the static versions of the
+# libraries are not installed by default.
+#
+STATIC_LINK_PROGS =
+ifneq "$(findstring apple-darwin,$(FULLARCH))" "apple-darwin"
+  ifneq "$(findstring solaris,$(FULLARCH))" "solaris"
+	# The `parse' test also links with the debug libraries,
+	# so it only works in LLDS grades.
+	ifeq "$(filter hl% csharp% java%,$(GRADE))" ""
+		STATIC_LINK_PROGS = parse
+	endif
+  endif
+endif
+
+# Concurrency tests are only supported in C grades with a "par" grade
+# component or java or csharp grades.
+ifeq "$(findstring par,$(GRADE))" "par"
+	CONC_PROGS = thread_barrier_test
+else
+  ifeq "$(filter csharp% java%,$(GRADE))" ""
+	CONC_PROGS =
+  else
+	CONC_PROGS = thread_barrier_test
+  endif
+endif
+
+# Setting environment variables is not supported in Java grades.
+ifeq "$(filter java%,$(GRADE))" ""
+	# The setenv test case also calls list.length on a list
+	# that has a million elements. Since deep profiling prevents
+	# tail recursion optimization, this runs out of stack.
+	ifeq "$(findstring profdeep,$(GRADE))" ""
+		SETENV_PROGS = \
+			setenv
+	else
+		SETENV_PROGS =
+	endif
+else
+	SETENV_PROGS =
+endif
+
+PROGS = \
+	$(ORDINARY_PROGS) \
+	$(PROF_PROGS) \
+	$(CLOSURE_LAYOUT_PROGS) \
+	$(NON_PROFDEEP_PROGS) \
+	$(BACKEND_PROGS) \
+	$(C_AND_GC_ONLY_PROGS) \
+	$(STATIC_LINK_PROGS) \
+	$(C_ONLY_PROGS) \
+	$(JAVA_PROGS) \
+	$(CSHARP_PROGS) \
+	$(SOLVER_PROGS) \
+	$(FOREIGN_ENUM_PROGS) \
+	$(RANDOM_PROGS) \
+	$(TRAILED_PROGS) \
+	$(STACK_SEGMENT_PROGS) \
+	$(MUTABLE_PROGS) \
+	$(TRACE_GOAL_ENV_PROGS) \
+	$(CTGC_PROGS) \
+	$(BIG_DATA_PROGS) \
+	$(CONC_PROGS) \
+	$(SETENV_PROGS)
+
+#-----------------------------------------------------------------------------#
+
+TESTS = $(sort $(PROGS))
+include ../Mmake.common
+
+# Module-specific options should go in Mercury.options so they can be found
+# by `mmc --make'.
+include Mercury.options
+
+%.runtest: %.res ;
+
+mapped_module.depend: Mercury.modules
+
+#-----------------------------------------------------------------------------#
+
+# For term_io_test, we want to run it once using the supplied input file.
+# But we want to check that the output parses the same as the input did,
+# so we also run it with the .exp file as the input.
+
+term_io_test.fix_out: term_io_test term_io_test.exp
+	./term_io_test < term_io_test.exp > $@ 2>&1 || \
+		{ grep . $@ /dev/null; exit 1; }
+
+term_io_test.res: term_io_test.out term_io_test.fix_out
+	@echo "Comparing term_io_test.{,fix_}out with term_io_test.exp,"
+	@echo "	results in $@"
+	@-rm -f $@ term_io_test.res
+	@{ diff $(DIFF_OPTS) term_io_test.exp term_io_test.out > $@ && \
+		echo "term_io_test.out matched term_io_test.exp"; } && \
+	{ diff $(DIFF_OPTS) term_io_test.exp term_io_test.fix_out >> $@ && \
+		echo "term_io_test.fix_out matched term_io_test.exp"; } || \
+	{ echo "** term_io_test.{,fix_}out did not match the expected output"; \
+		cat $@; \
+		exit 1; }
+
+nonascii.out:	nonascii.data
+
+nonascii.data:	nonascii_gen$(EXT_FOR_EXE)
+	./nonascii_gen > nonascii.data
+
+ifeq ($(USING_MICROSOFT_CL_COMPILER),yes)
+nonascii_gen$(EXT_FOR_EXE): nonascii_gen.c
+	cl -nologo -Fenonascii_gen$(EXT_FOR_EXE) nonascii_gen.c
+else
+nonascii_gen$(EXT_FOR_EXE): nonascii_gen.c
+	$(CC) nonascii_gen.c -o nonascii_gen
+endif
+
+stream_test.out: stream_test
+	./stream_test < stream_test.data > stream_test.out
+
+stream_ignore_ws.out: stream_ignore_ws
+	./stream_ignore_ws < stream_ignore_ws.data > stream_ignore_ws.out
+
+# The trace_goal_env_1 and trace_goal_env_2 test cases differ from each other
+# only in that the latter is executed with the TRACE_ABC environment variable
+# set.
+trace_goal_env_1.out:	trace_goal_env_1
+	./trace_goal_env_1 > trace_goal_env_1.out
+
+trace_goal_env_2.out:	trace_goal_env_2
+	TRACE_ABC=set ./trace_goal_env_2 > trace_goal_env_2.out
+
+# no_fully_strict is expected to fail (it calls error/1).
+# We also need to pipe the output through sed to avoid hard-coding
+# dependencies on particular line numbers in the standard library source code.
+# We filter lines matching "at mercury" in order to avoid the stack trace
+# caused by the uncaught exception in the C# grade (on Mono). Ditto for lines
+# containing "jmercury" in the Java grade.
+no_fully_strict.out: no_fully_strict
+	if ./no_fully_strict > $@.tmp 2>&1; then \
+		grep . $@.tmp; \
+		exit 1; \
+	else \
+		sed	-e 's/exception.m:[0-9]*/exception.m:NNNN/g' \
+			-e 's/require.m:[0-9]*/require.m:NNNN/g' \
+			-e '/at\ mercury/d' \
+			-e '/jmercury/d' < $@.tmp > $@; \
+		rm -f $@.tmp; \
+	fi
+
+# final_excp.out is expected to fail (it calls throw/1).
+#
+final_excp.out: final_excp
+	if MERCURY_SUPPRESS_STACK_TRACE=yes ./final_excp > $@.tmp 2>&1; then \
+		grep  . $@.tmp; \
+		exit 1; \
+	else \
+		mv $@.tmp $@; \
+	fi
+
+# init_excp.out is expected to fail (it calls throw/1).
+# We need to filter the output for the C# and Java backends in order to remove
+# the stack trace in those grades.   Because the exception is thrown from
+# an initialiser rather than from main/2 we don't have any control over
+# whether the stack trace is printed or not.
+#
+init_excp.out: init_excp
+	if MERCURY_SUPPRESS_STACK_TRACE=yes ./init_excp > $@.tmp 2>&1; then \
+		grep  . $@.tmp; \
+		exit 1; \
+	else \
+		grep -v "at\ j\?mercury\|System\|\-\-\-" $@.tmp > $@; \
+		rm -f $@.tmp; \
+	fi
+
+# functor_ho_inst_excp.out is expected to throw an exception or cause
+# a runtime abort
+functor_ho_inst_excp.out: functor_ho_inst_excp
+	if MERCURY_SUPPRESS_STACK_TRACE=yes ./functor_ho_inst_excp \
+			> $@.tmp 2>&1; \
+	then \
+		grep  . $@.tmp; \
+		exit 1; \
+	else \
+		mv $@.tmp $@; \
+	fi
+
+# functor_ho_inst_excp_2.out is expected to throw an exception or cause
+# a runtime abort
+functor_ho_inst_excp_2.out: functor_ho_inst_excp_2
+	if MERCURY_SUPPRESS_STACK_TRACE=yes ./functor_ho_inst_excp_2 \
+			> $@.tmp 2>&1; \
+	then \
+		grep  . $@.tmp; \
+		exit 1; \
+	else \
+		mv $@.tmp $@; \
+	fi
+
+# mutable_excp.out is expected to fail (it calls throw/1).
+#
+mutable_excp.out: mutable_excp
+	if MERCURY_SUPPRESS_STACK_TRACE=yes ./mutable_excp > $@.tmp 2>&1; then \
+		grep  . $@.tmp; \
+		exit 1; \
+	else \
+		mv $@.tmp $@; \
+	fi
+
+# try_syntax_3.out is expected to fail (it calls throw/1).
+#
+try_syntax_3.out: try_syntax_3
+	if MERCURY_SUPPRESS_STACK_TRACE=yes ./try_syntax_3 > $@.tmp 2>&1; \
+	then \
+		grep  . $@.tmp; \
+		exit 1; \
+	else \
+		mv $@.tmp $@; \
+	fi
+
+# For the constant_prop_1 test case, we test that constant propagation
+# has been achieved by grepping the generated target code for particular
+# patterns that will only arise if the Mercury compiler did the intended
+# constant propagation.
+constant_prop_1.c: constant_prop_1.c_date
+	grep foobar $@
+	grep 1234 $@
+	grep '5678\.0' $@
+	grep 2468U $@
+constant_prop_1.java: constant_prop_1.java_date
+	grep foobar $@
+	grep 1234 $@
+	grep '5678\.0' $@
+	grep 2468 $@
+
+# Force intermod_unused_args2.m to be compiled and analysed before
+# intermod_unused_args.m.
+intermod_unused_args.c: intermod_unused_args2.c
+
+# The runtime_opt test needs to be run a number of different times with the
+# MERCURY_OPTIONS environment variable set to a different value each time.
+# The options to try are in runtime_opt.inp, one per line. The .out file
+# is created by concatenating all of the outputs from each run.
+runtime_opt.out: runtime_opt runtime_opt.inp
+	( \
+		cat runtime_opt.inp | while read option; do \
+			echo "Option \`$$option':"; \
+			MERCURY_OPTIONS="$$option" ./runtime_opt 2>&1 || true; \
+			echo ""; \
+		done \
+	) > runtime_opt.out 2>&1
+
+# The test checks the output from multiple threads and since that output
+# may be interleaved arbitrarily we need to filter it so that all the output
+# from each thread appears sequentially in a block.
+tl_backjump_test.out: tl_backjump_test
+	if ./tl_backjump_test > $@.tmp 2>&1; then \
+		grep "^(TID: #2" $@.tmp > $@; \
+		grep "^(TID: #3" $@.tmp >> $@; \
+		grep "^spawn"    $@.tmp >> $@; \
+		rm -f $@.tmp; \
+	else \
+		grep . $@.tmp; \
+		exit 1; \
+	fi
+
+# weak_ptr's output is extremely volatile, it depends on Boehm GC's behaviour
+# which can vary depending on many different things. All we can hope to do
+# is check that it doesn't crash.
+
+weak_ptr.out: weak_ptr
+	./weak_ptr > weak_ptr.discarded_output
+	echo "Output is not part of test, see Mmakefile" > $@
+
+#-----------------------------------------------------------------------------#
+
+dir_test.out: prepare_for_dir_test
+
+prepare_for_dir_test:
+	rm -rf test_dir unwritable
+	touch unwritable
+	chmod -w unwritable
+
+dir_test.clean: clean_dir_test
+
+.PHONY: clean_dir_test
+clean_dir_test:
+	rm -rf test_dir unwritable
+
+#-----------------------------------------------------------------------------#
+
+# dst_test checks various predicates associated with Daylight Savings.
+# Since all the test data is based on Melbourne's DST conventions, the
+# timezone environment variable TZ must be set accordingly.
+
+dst_test.out: dst_test
+	TZ="Australia/Melbourne" ./$< > $@ 2>&1 || \
+		{ grep . $@ /dev/null; exit 1; }
+
+#-----------------------------------------------------------------------------#
+
+clean_local: clean_hard_coded
+
+clean_hard_coded:
+	rm -f target_mlobjs_c.o
+	rm -f bitmap_test_output bitmap_test_output2 weak_ptr.discarded_output
+
+realclean_local: realclean_hard_coded
+
+realclean_hard_coded:
+	rm -f Mercury.modules
+	rm -f nonascii_gen$(EXT_FOR_EXE)
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: Mercury.modules
+Mercury.modules:
+	$(MC) -f $(ALL_MCFLAGS) source_file_map.m
+
+#-----------------------------------------------------------------------------#

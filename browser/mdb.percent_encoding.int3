@@ -1,0 +1,2 @@
+:- module (mdb.percent_encoding).
+:- interface.

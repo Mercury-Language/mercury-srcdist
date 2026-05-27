@@ -1,0 +1,11 @@
+:- module (ml_backend.mlds_to_cs_export).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module (ml_backend.mlds).
+:- use_module (ml_backend.mlds_to_cs_util).
+:- use_module (ml_backend.mlds_to_target_util).
+:- pred output_exported_enums_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, ml_backend.mlds_to_target_util.indent, list.list(ml_backend.mlds.mlds_exported_enum), io.io, io.io).
+:- mode output_exported_enums_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_exports_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, ml_backend.mlds_to_target_util.indent, list.list(ml_backend.mlds.mlds_pragma_export), io.io, io.io).
+:- mode output_exports_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

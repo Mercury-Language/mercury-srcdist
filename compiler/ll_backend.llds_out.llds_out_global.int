@@ -1,0 +1,22 @@
+:- module ((ll_backend.llds_out).llds_out_global).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module (hlds.hlds_module).
+:- use_module (ll_backend.llds).
+:- use_module ((ll_backend.llds_out).llds_out_util).
+:- pred output_complexity_arg_info_arrays(io.text_output_stream, list.list(hlds.hlds_module.complexity_proc_info), io.io, io.io).
+:- mode output_complexity_arg_info_arrays((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_init_complexity_proc_list(io.text_output_stream, list.list(hlds.hlds_module.complexity_proc_info), io.io, io.io).
+:- mode output_init_complexity_proc_list((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_scalar_common_data_decl(io.text_output_stream, ll_backend.llds.scalar_common_data_array, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_scalar_common_data_decl((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_scalar_common_data_defn(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.scalar_common_data_array, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_scalar_common_data_defn((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_tabling_info_struct(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.tabling_info_struct, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_tabling_info_struct((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_vector_common_data_decl(io.text_output_stream, ll_backend.llds.vector_common_data_array, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_vector_common_data_decl((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_vector_common_data_defn(ll_backend.llds_out.llds_out_util.llds_out_info, io.text_output_stream, ll_backend.llds.vector_common_data_array, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_vector_common_data_defn((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
