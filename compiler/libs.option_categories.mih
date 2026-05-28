@@ -1,0 +1,78 @@
+/*
+** Automatically generated from `option_categories.m'
+** by the Mercury compiler,
+** version rotd-2026-05-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.option_categories.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__option_categories
+#define MR_HEADER_GUARD_libs__option_categories
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__OPTION_CATEGORIES_DECL_GUARD
+#define LIBS__OPTION_CATEGORIES_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__option_categories__libs__option_categories__type_ctor_info_option_category_0;
+
+void MR_CALL 
+libs__option_categories__option_categories_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+libs__option_categories__option_categories_2_p_1(
+  MR_Word * param_1,
+  MR_Integer * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+void MR_CALL 
+libs__option_categories____Compare____option_category_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__option_categories____Unify____option_category_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__option_categories__init(void);
+void mercury__libs__option_categories__init_type_tables(void);
+void mercury__libs__option_categories__init_debugger(void);
+const char *mercury__libs__option_categories__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.option_categories
+
+// :- end_interface libs.option_categories.

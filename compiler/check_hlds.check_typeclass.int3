@@ -1,0 +1,5 @@
+:- module check_hlds.check_typeclass.
+:- interface.
+:- type_representation(instance_too_private_map, is_eqv_to(one_or_more_map(list(mer_type), instance_too_private_info))).
+:- type_representation(type_vector, is_eqv_to(list(mer_type))).
+:- type_representation(type_vector_instances_map, is_eqv_to(map(type_vector, type_vector_instances))).

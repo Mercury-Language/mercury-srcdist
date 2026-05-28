@@ -1,0 +1,20 @@
+:- module parse_tree.source_file_map.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.maybe_error.
+:- func default_source_file_name(mdbcomp.sym_name.module_name) = libs.file_util.file_name.
+:- pred have_source_file_map(parse_tree.maybe_error.maybe_found, io.io, io.io).
+:- mode have_source_file_map(builtin.out, builtin.di, builtin.uo) is det.
+:- pred lookup_module_source_file(mdbcomp.sym_name.module_name, libs.file_util.file_name, io.io, io.io).
+:- mode lookup_module_source_file(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred lookup_source_file_maybe_module(libs.file_util.file_name, maybe.maybe(mdbcomp.sym_name.module_name), io.io, io.io).
+:- mode lookup_source_file_maybe_module(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred write_source_file_map(io.text_output_stream, libs.globals.globals, list.list(string), io.io, io.io).
+:- mode write_source_file_map(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.

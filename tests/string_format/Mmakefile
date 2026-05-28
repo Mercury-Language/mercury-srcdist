@@ -1,0 +1,126 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = string_format
+# We execute the tests in this directory one at a time because all the tests
+# use the same library, string_format_lib.m. We *could* create a separate
+# copy of this library for each test case, updated automatically if a master
+# copy is changed, which would allow us to execute the tests in parallel.
+# However, there is no point, because the tests in this directory are
+# fast enough even with -j1.
+MAYBE_J1 = -j1
+
+#-----------------------------------------------------------------------------#
+
+# Any program added here should also be added to the `.cvsignore' file.
+
+STRING_FORMAT_PROGS = \
+	string_format_c \
+	string_format_d \
+	string_format_e \
+	string_format_f \
+	string_format_g \
+	string_format_int64_d \
+	string_format_int64_o \
+	string_format_int64_u \
+	string_format_int64_x \
+	string_format_o \
+	string_format_s \
+	string_format_u \
+	string_format_uint_o \
+	string_format_uint_u \
+	string_format_uint_x \
+	string_format_uint64_o \
+	string_format_uint64_u \
+	string_format_uint64_x \
+	string_format_x
+
+# The tests don't work in the *.agc grades, because I (petdr) think
+# they take too long to finish, and the CPU time limit is breached.
+# NOTE The above assertion was added in 2002. CPU speeds have improved
+# since then, but since we have also stopped working on, and caring about,
+# .agc grades, there is no point in testing whether the assertion
+# is still true.
+ifneq "$(findstring .agc,$(GRADE))" ""
+	PROGS =
+else
+	PROGS = $(STRING_FORMAT_PROGS)
+endif
+
+TESTS = $(sort $(PROGS))
+include ../Mmake.common
+
+# Module-specific options should go in Mercury.options so they can be found
+# by `mmc --make'.
+include Mercury.options
+
+%.runtest: %.res ;
+
+# This rule is adapted from the rule in ../../Mmake.common. The difference
+# is that if the test fails, then, due to the large size of the output files,
+# we display only their last 20 lines.
+%.out: %
+	{ [ -f $*.inp ] && cat $*.inp; } | ./$< > $@ 2>&1 || \
+		{ grep . $@ /dev/null | tail -n 20; exit 1; }
+
+# This rule is adapted from the rule in ../../Mmake.common. The only
+# differences are that
+#
+# - due to the large sizes of the output files, we write only the first
+#   50 lines to stdout, and that
+#
+# - due to the now-deleted IL backends using a different ordering for
+#   lexical comparisons than the C backend, we sort both the output and
+#   the expected output before the comparison. (The reason for sorting
+#   the expected output as well as the actual output is to allow for
+#   different behaviour in different versions of sort.)
+%.res: %.exp %.out
+	@echo "Comparing $*.sorted_out with $*.sorted_exp*,"
+	@echo "	results in $@"
+	@-rm -f $@ $*.res[1-5]
+	@sort $*.out > $*.sorted_out
+	@sort $*.exp > $*.sorted_exp
+	@{ diff $(DIFF_OPTS) $*.sorted_exp $*.sorted_out > $*.res1 && \
+		echo "Matched $*.sorted_exp" && \
+		cp $*.res1 $@; } || \
+	{ test -f $*.exp2 && \
+		sort $*.exp2 > $*.sorted_exp2  &&\
+		diff $(DIFF_OPTS) $*.sorted_exp2 $*.sorted_out > $*.res2 && \
+		echo "Matched $*.sorted_exp2" && \
+		cp $*.res2 $@; } || \
+	{ test -f $*.exp3 && \
+		sort $*.exp3 > $*.sorted_exp3 && \
+		diff $(DIFF_OPTS) $*.sorted_exp3 $*.sorted_out > $*.res3 && \
+		echo "Matched $*.sorted_exp3" && \
+		cp $*.res3 $@; } || \
+	{ test -f $*.exp4 && \
+		sort $*.exp4 > $*.sorted_exp4 && \
+		diff $(DIFF_OPTS) $*.sorted_exp4 $*.sorted_out > $*.res4 && \
+		echo "Matched $*.sorted_exp4" && \
+		cp $*.res4 $@; } || \
+	{ test -f $*.exp5 && \
+		sort $*.exp5 > $*.sorted_exp5 && \
+		diff $(DIFF_OPTS) $*.sorted_exp5 $*.sorted_out > $*.res5 && \
+		echo "Matched $*.sorted_exp5" && \
+		cp $*.res5 $@; } || \
+	{ shortest=`wc -l $*.res[1-5] | grep -v total | sort -n | \
+		head -1 | awk '{ print $$2; }' `; \
+		echo "** $*.sorted_out did not match the expected output"; \
+		echo "** (closest match was $$shortest)"; \
+		echo "** The diff is located in $@"; \
+		cp $$shortest $@; \
+		cat $$shortest | head -n 50; \
+		exit 1; }
+
+#-----------------------------------------------------------------------------#
+
+realclean_local: clean_sorted_files
+clean_local: clean_sorted_files
+
+clean_sorted_files:
+	rm -f *.sorted_out *.sorted_exp*
+
+#-----------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------#

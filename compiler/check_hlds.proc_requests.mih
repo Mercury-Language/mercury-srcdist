@@ -1,0 +1,138 @@
+/*
+** Automatically generated from `proc_requests.m'
+** by the Mercury compiler,
+** version rotd-2026-05-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.proc_requests.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__proc_requests
+#define MR_HEADER_GUARD_check_hlds__proc_requests
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__PROC_REQUESTS_DECL_GUARD
+#define CHECK_HLDS__PROC_REQUESTS_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__proc_requests__check_hlds__proc_requests__type_ctor_info_proc_requests_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__proc_requests__check_hlds__proc_requests__type_ctor_info_req_queue_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__proc_requests__check_hlds__proc_requests__type_ctor_info_unify_proc_id_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__proc_requests__check_hlds__proc_requests__type_ctor_info_unify_req_map_0;
+
+void MR_CALL 
+check_hlds__proc_requests__get_req_queue_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__proc_requests__init_requests_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+check_hlds__proc_requests__lookup_mode_num_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer * param_5);
+
+void MR_CALL 
+check_hlds__proc_requests__request_proc_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+check_hlds__proc_requests__request_unify_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+check_hlds__proc_requests__set_req_queue_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__proc_requests____Compare____proc_requests_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__proc_requests____Compare____req_queue_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__proc_requests____Compare____unify_proc_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__proc_requests____Unify____proc_requests_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__proc_requests____Unify____req_queue_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__proc_requests____Unify____unify_proc_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__proc_requests__init(void);
+void mercury__check_hlds__proc_requests__init_type_tables(void);
+void mercury__check_hlds__proc_requests__init_debugger(void);
+const char *mercury__check_hlds__proc_requests__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.proc_requests
+
+// :- end_interface check_hlds.proc_requests.
