@@ -1,0 +1,189 @@
+/*
+** Automatically generated from `parse_sym_name.m'
+** by the Mercury compiler,
+** version rotd-2026-05-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.parse_sym_name.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__parse_sym_name
+#define MR_HEADER_GUARD_parse_tree__parse_sym_name
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PARSE_SYM_NAME_DECL_GUARD
+#define PARSE_TREE__PARSE_SYM_NAME_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_sym_name__parse_tree__parse_sym_name__type_ctor_info_maybe_functor_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_sym_name__parse_tree__parse_sym_name__type_ctor_info_maybe_functor_1;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_sym_name__parse_tree__parse_sym_name__type_ctor_info_sym_name_maybe_arity_0;
+
+void MR_CALL 
+parse_tree__parse_sym_name__implicitly_qualify_sym_name_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__parse_sym_name__parse_implicitly_qualified_sym_name_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__parse_sym_name__parse_implicitly_qualified_sym_name_and_args_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__parse_sym_name__parse_implicitly_qualified_sym_name_and_no_args_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__parse_sym_name__parse_sym_name_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__parse_sym_name__parse_sym_name_and_args_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__parse_sym_name__parse_sym_name_and_no_args_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__parse_sym_name__parse_sym_name_maybe_arity_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__parse_sym_name__try_parse_sym_name_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__parse_sym_name__try_parse_sym_name_and_args_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__parse_sym_name__try_parse_sym_name_and_args_from_f_args_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+parse_tree__parse_sym_name__try_parse_sym_name_and_no_args_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__parse_sym_name__try_to_implicitly_qualify_sym_name_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__parse_sym_name____Compare____maybe_functor_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__parse_sym_name____Compare____maybe_functor_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+parse_tree__parse_sym_name____Compare____sym_name_maybe_arity_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__parse_sym_name____Unify____maybe_functor_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__parse_sym_name____Unify____maybe_functor_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__parse_sym_name____Unify____sym_name_maybe_arity_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__parse_sym_name__init(void);
+void mercury__parse_tree__parse_sym_name__init_type_tables(void);
+void mercury__parse_tree__parse_sym_name__init_debugger(void);
+const char *mercury__parse_tree__parse_sym_name__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.parse_sym_name
+
+// :- end_interface parse_tree.parse_sym_name.

@@ -1,0 +1,18 @@
+:- module ll_backend.dense_switch.
+:- interface.
+:- use_module backend_libs.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module backend_libs.switch_util.
+:- use_module hlds.code_model.
+:- use_module hlds.hlds_goal.
+:- use_module ll_backend.code_info.
+:- use_module ll_backend.code_loc_dep.
+:- use_module ll_backend.llds.
+:- use_module parse_tree.prog_data.
+:- type dense_switch_info.
+:- pred generate_dense_switch(list.list(hlds.hlds_goal.tagged_case), ll_backend.llds.rval, string, hlds.code_model.code_model, hlds.hlds_goal.hlds_goal_info, ll_backend.dense_switch.dense_switch_info, ll_backend.llds.label, ll_backend.code_loc_dep.branch_end, ll_backend.code_loc_dep.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_dense_switch(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in) is det.
+:- pred tagged_case_list_is_dense_switch(ll_backend.code_info.code_info, parse_tree.prog_data.mer_type, list.list(hlds.hlds_goal.tagged_case), backend_libs.switch_util.int_switch_info, uint, parse_tree.prog_data.can_fail, ll_backend.dense_switch.dense_switch_info).
+:- mode tagged_case_list_is_dense_switch(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
