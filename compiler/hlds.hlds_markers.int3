@@ -1,0 +1,10 @@
+:- module hlds.hlds_markers.
+:- interface.
+:- type goal_feature
+	where	type_is_abstract_enum(5).
+:- type pred_marker
+	where	type_is_abstract_enum(5).
+:- type pred_markers.
+:- type_representation(goal_feature, du_repn(enum("feature_was_clause", "feature_from_head", ["feature_constraint", "feature_not_impure_for_determinism", "feature_stack_opt", "feature_tuple_opt", "feature_call_table_gen", "feature_preserve_backtrack_into", "feature_save_deep_excp_vars", "feature_hide_debug_event", "feature_deep_self_tail_rec_call", "feature_debug_self_tail_rec_call", "feature_self_or_mutual_tail_rec_call", "feature_obvious_nontail_rec_call", "feature_keep_constant_binding", "feature_do_not_warn_singleton", "feature_state_var_copy", "feature_duplicated_for_switch", "feature_mode_check_clauses_goal", "feature_will_not_modify_trail", "feature_will_not_call_mm_tabled", "feature_contains_trace", "feature_pretest_equality", "feature_pretest_equality_condition", "feature_lambda_undetermined_mode", "feature_contains_stm_inner_outer", "feature_do_not_tailcall", "feature_do_not_warn_implicit_stream", "feature_lifted_by_cse", "feature_lambda_from_try"],  no_c_j_cs))).
+:- type_representation(pred_marker, du_repn(enum("marker_stub", "marker_builtin_stub", ["marker_infer_type", "marker_infer_modes", "marker_no_pred_decl", "marker_no_detism_warning", "marker_user_marked_inline", "marker_heuristic_inline", "marker_user_marked_no_inline", "marker_mmc_marked_no_inline", "marker_consider_used", "marker_req_sw_arms_type_order", "marker_class_method", "marker_class_instance_method", "marker_named_class_instance_method", "marker_is_impure", "marker_is_semipure", "marker_promised_pure", "marker_promised_semipure", "marker_promised_equivalent_clauses", "marker_terminates", "marker_does_not_terminate", "marker_check_termination", "marker_calls_are_fully_qualified", "marker_mode_check_clauses", "marker_mutable_access_pred", "marker_has_require_scope", "marker_has_incomplete_switch", "marker_has_format_call", "marker_has_rhs_lambda", "marker_fact_table_semantic_errors"],  no_c_j_cs))).
+:- type_representation(pred_markers, is_eqv_to(set(hlds.hlds_markers.pred_marker))).
