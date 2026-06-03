@@ -1,0 +1,1449 @@
+%---------------------------------------------------------------------------%
+% vim: ft=mercury ts=4 sw=4 et
+%---------------------------------------------------------------------------%
+% Copyright (C) 2009-2010 The University of Melbourne.
+% Copyright (C) 2013-2019, 2026 The Mercury team.
+% This file is distributed under the terms specified in COPYING.LIB.
+%---------------------------------------------------------------------------%
+%
+% File: calendar.m.
+% Main authors: maclarty
+% Stability: high.
+%
+% This module provides a representation of points in time,
+% a representation of durations (differences between two points in time),
+% and operations on those representations.
+%
+% This module identifies points in time by a date specifying a day,
+% and a time within that day. It uses dates from the proleptic Gregorian
+% calendar, which is a version of the Gregorian calendar that has been
+% extended backward in time to dates before its introduction in 1582.
+% (https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar contains
+% a detailed description.) This is the calendar that is currently used
+% by most of the world.
+%
+% This module allows times to be represented at microsecond resolution,
+% though of course not all sources of time information are that precise.
+%
+%---------------------------------------------------------------------------%
+%---------------------------------------------------------------------------%
+
+:- module calendar.
+:- interface.
+
+:- import_module io.
+
+%---------------------------------------------------------------------------%
+
+    % A point on the proleptic Gregorian calendar, to the nearest microsecond.
+    % A date carries no time zone information; it is the responsibility
+    % of code that creates and uses dates to ensure that any two
+    % dates passed to the same operation refer to the same time zone.
+    % To convert between local time and UTC, see local_time_offset/3.
+    %
+:- type date.
+
+    % A more meaningful name for the above.
+    %
+:- type date_time == date.
+
+    % Date components.
+    %
+:- type year == int.         % Year 0 is 1 BC, -1 is 2 BC, etc.
+:- type day_of_month == int. % 1..31 depending on the month and year
+:- type hour == int.         % 0..23
+:- type minute == int.       % 0..59
+:- type second == int.       % 0..61 (60 and 61 are for leap seconds)
+:- type microsecond == int.  % 0..999999
+
+:- type month
+    --->    january
+    ;       february
+    ;       march
+    ;       april
+    ;       may
+    ;       june
+    ;       july
+    ;       august
+    ;       september
+    ;       october
+    ;       november
+    ;       december.
+
+:- type day_of_week
+    --->    monday
+    ;       tuesday
+    ;       wednesday
+    ;       thursday
+    ;       friday
+    ;       saturday
+    ;       sunday.
+
+%---------------------%
+
+    % Functions to retrieve the components of a date.
+    %
+:- func year(date) = year.
+:- func month(date) = month.
+:- func day_of_month(date) = day_of_month.
+:- func day_of_week(date) = day_of_week.
+:- func hour(date) = hour.
+:- func minute(date) = minute.
+:- func second(date) = second.
+:- func microsecond(date) = microsecond.
+
+    % int_to_month(Int, Month):
+    % Int is the number of Month where months are numbered from 1-12.
+    %
+:- pred int_to_month(int, month).
+:- mode int_to_month(in, out) is semidet.
+:- mode int_to_month(out, in) is det.
+
+    % det_int_to_month(Int) returns the month corresponding to Int.
+    % Throws an exception if Int is not in 1-12.
+    %
+:- func det_int_to_month(int) = month.
+
+    % int0_to_month(Int, Month):
+    % Int is the number of Month where months are numbered from 0-11.
+    %
+:- pred int0_to_month(int, month).
+:- mode int0_to_month(in, out) is semidet.
+:- mode int0_to_month(out, in) is det.
+
+    % det_int0_to_month(Int) returns the month corresponding to Int.
+    % Throws an exception if Int is not in 0-11.
+    %
+:- func det_int0_to_month(int) = month.
+
+    % month_to_int(Month) returns the number of Month where months are
+    % numbered from 1-12.
+    %
+:- func month_to_int(month) = int.
+
+    % month_to_int0(Month) returns the number of Month where months are
+    % numbered from 0-11.
+    %
+:- func month_to_int0(month) = int.
+
+%---------------------%
+
+    % init_date(Year, Month, Day, Hour, Minute, Second, MicroSecond, Date):
+    %
+    % Initialise a new date from the given components. Fails if any of the
+    % following conditions are not met:
+    %
+    %   - Day is in the range 1 .. N,
+    %     where N is the number of days in Month of Year
+    %
+    %   - Hour is in the range 0 .. 23
+    %
+    %   - Minute is in the range 0 .. 59
+    %
+    %   - Second is in the range 0 .. 60
+    %     (to account for one positive leap second being added to a day)
+    %
+    %   - MicroSecond is in the range 0 .. 999,999
+    %
+    % This predicate accepts all values for Year.
+    %
+:- pred init_date(year::in, month::in, day_of_month::in, hour::in,
+    minute::in, second::in, microsecond::in, date::out) is semidet.
+
+    % Same as above, but throws an exception if the date is invalid.
+    %
+:- func det_init_date(year, month, day_of_month, hour, minute, second,
+    microsecond) = date.
+
+    % Retrieve all the components of a date.
+    %
+:- pred unpack_date(date::in,
+    year::out, month::out, day_of_month::out, hour::out, minute::out,
+    second::out, microsecond::out) is det.
+
+%---------------------%
+
+    % Convert a string of the form "[-]YYYY-MM-DD HH:MM:SS.mmmmmm" to a date.
+    %
+    % The year must have at least four digits. This requirement comes from
+    % the ISO standard 8601, and its main intention is to prevent repeats of
+    % the Y2K problem (see https://en.wikipedia.org/wiki/Year_2000_problem).
+    % It also prevents possible confusion between the year part of the
+    % date, and the month or the day parts.
+    %
+    % Since some simulation programs may want to handle dates in the far
+    % future, the predicate accepts years with more than four digits.
+    %
+    % The microseconds component (.mmmmmm) is optional. If present,
+    % it may have between one and six digits.
+    %
+    % This predicate fails if the string does not conform to the above format,
+    % or if any date or time component is outside its valid range.
+    %
+:- pred date_from_string(string::in, date::out) is semidet.
+
+    % Same as above, but throws an exception if the string is not a valid date.
+    %
+:- func det_date_from_string(string) = date.
+
+    % Convert a date to a string of the form "YYYY-MM-DD HH:MM:SS.mmmmmm".
+    % If the microseconds component of the date is zero, then omit the
+    % ".mmmmmm" part.
+    %
+:- func date_to_string(date) = string.
+
+%---------------------%
+
+    % current_local_time(Now, !IO):
+    %
+    % Return the current local time as a date. The microseconds component
+    % of the returned date is always zero, as the underlying system call
+    % has only second-level resolution. The time zone used is the system local
+    % time zone.
+    %
+:- pred current_local_time(date::out, io::di, io::uo) is det.
+
+    % current_utc_time(Now, !IO):
+    %
+    % Return the current UTC time as a date. The microseconds component of
+    % the returned date is always zero, as the underlying system call has
+    % only second-level resolution.
+    %
+:- pred current_utc_time(date::out, io::di, io::uo) is det.
+
+    % julian_day_number(Date) = JDN:
+    %
+    % Return the Julian day number for Date on the proleptic Gregorian
+    % calendar. The Julian day number is the integer number of days since
+    % the start of the Julian period (noon on 1 January, 4713 BC in the
+    % proleptic Julian calendar). The time-of-day components of Date are
+    % ignored; the result is the Julian day number for the date at noon.
+    %
+:- func julian_day_number(date) = int.
+
+    % Return the Unix epoch, 1970-01-01 00:00:00.
+    %
+:- func unix_epoch = date.
+
+    % same_date(A, B):
+    %
+    % Succeed if-and-only-if A and B refer to the exact same day.
+    % Their time components are ignored. A and B should refer to
+    % the same time zone; comparing dates in different time zones
+    % may give incorrect results, because the same point in time can
+    % fall on different days in different time zones.
+    %
+:- pred same_date(date::in, date::in) is semidet.
+
+%---------------------------------------------------------------------------%
+%
+% Durations.
+%
+
+    % A period of time measured in years, months, days, hours, minutes,
+    % seconds and microseconds.
+    %
+    % A duration may be positive (moving a date forward in time) or negative
+    % (moving a date backward in time). All non-zero components must share the
+    % same sign; a duration with a mix of positive and negative components
+    % cannot be constructed.
+    %
+    % Years and months are context-dependent units whose length in absolute
+    % time varies with the dates they are applied to. A year is treated as
+    % 12 months, and a month is 28-31 days depending on the calendar month
+    % and year. In contrast, days and smaller units are fixed-length:
+    % 1 day = 86,400 seconds (leap seconds are ignored; see below).
+    %
+    % When adding a year or month component causes the day to fall outside
+    % the target month, it is clamped to the last day of that month.
+    % This applies equally to positive and negative durations. For example:
+    %
+    %   - Adding  1 month  to January 31  gives February 28 (29 in a leap year)
+    %   - Adding  1 year   to February 29, 2020 gives February 28, 2021
+    %   - Adding -1 month  to March 31    gives February 28 (29 in a leap year)
+    %   - Adding -1 year   to February 29, 2020 gives February 28, 2019
+    %
+    % Note on leap seconds: although individual dates can represent times
+    % with leap seconds (second 60), durations ignore them. A day is
+    % always treated as exactly 86,400 seconds, even though UTC days
+    % containing leap seconds are 86,399 or 86,401 seconds long.
+    %
+    % Durations are stored internally using four components only: months, days,
+    % seconds and microseconds. When a duration is constructed by
+    % init_duration/7, the seven input components are normalised into these
+    % four.
+    %
+    %   - Years are converted to months and added to the months component.
+    %   - Microseconds are divided into whole seconds (which are carried over)
+    %     and a microseconds remainder.
+    %   - Hours, minutes, seconds, and any carried seconds are combined into a
+    %     total number of seconds.
+    %   - Whole days in that seconds total are carried into the days component,
+    %     and the remainder becomes the seconds component.
+    %
+    % Days are never folded into months (a month does not have a fixed number
+    % of days), and months are never folded into years during normalisation.
+    % As a result, the duration component access functions may return values
+    % that differ from the init_duration/7 arguments. For example:
+    %
+    %   - init_duration(1, 18, 0, 0, 0, 0, 0) => years = 2, months = 6
+    %   - init_duration(0, 0, 0, 25, 0, 0, 0) => days = 1, hours = 1
+    %
+:- type duration.
+
+    % Duration components.
+    %
+:- type years == int.
+:- type months == int.
+:- type days == int.
+:- type hours == int.
+:- type minutes == int.
+:- type seconds == int.
+:- type microseconds == int.
+
+    % Functions to retrieve the components of a duration.
+    %
+    % Years and months are derived from the single combined months total
+    % in the duration:
+    %
+    %   The years function returns total months // 12
+    %   The months function returns total months rem 12
+    %
+    % Hours, minutes and seconds are derived from the single combined seconds
+    % total in the duration:
+    %
+    %   The hours function returns total seconds // 3600
+    %   The minutes function returns total seconds rem 3600 // 60
+    %   The seconds function returns total seconds rem 60
+    %
+    % Days and microseconds are each derived from their own component
+    % and returned directly.
+    %
+    %   The days function returns total days
+    %   The microseconds function returns total microseconds
+    %
+    % For positive durations:
+    %   months/1 returns       a value in the range 0 .. 11
+    %   days/1 returns         a value in the range 0 .. max_int
+    %   hours/1 returns        a value in the range 0 .. 23
+    %   minutes/1 returns      a value in the range 0 .. 59
+    %   seconds/1 returns      a value in the range 0 .. 59
+    %   microseconds/1 returns a value in the range 0 .. 999,999
+    %
+    % For negative durations:
+    %   months/1 returns       a value in the range -11 .. 0
+    %   days/1 returns         a value in the range min_int .. 0
+    %   hours/1 returns        a value in the range -23 .. 0
+    %   minutes/1 returns      a value in the range -59 .. 0
+    %   seconds/1 returns      a value in the range -59 .. 0
+    %   microseconds/1 returns a value in the range -999,999 .. 0
+    %
+:- func years(duration) = years.
+:- func months(duration) = months.
+:- func days(duration) = days.
+:- func hours(duration) = hours.
+:- func minutes(duration) = minutes.
+:- func seconds(duration) = seconds.
+:- func microseconds(duration) = microseconds.
+
+    % init_duration(Years, Months, Days, Hours, Minutes, Seconds,
+    %   MicroSeconds) = Duration:
+    %
+    % Create a new duration from the given components.
+    % All non-zero components must have the same sign (they must be entirely
+    % positive or entirely negative). This function throws an exception if
+    % two non-zero components have different signs.
+    %
+    % For example, all of the following are valid:
+    %
+    %  - init_duration(1, 2, 15, 0, 0, 0, 0)    (all positive or zero)
+    %  - init_duration(0, 0, -3, -12, 0, 0, 0)  (all negative or zero)
+    %  - init_duration(0, 0, 0, 0, 0, 0, 0)     (all zero)
+    %
+    % But the following contain non-zero components with mixed signs and will
+    % throw an exception:
+    %
+    %  - init_duration(0, 1, -5, 0, 0, 0, 0)
+    %  - init_duration(0, 0, 0, 2, -30, 0, 0)
+    %
+    % If you need a fixed absolute time period that is independent of calendar
+    % context, then use only the days, hours, minutes, seconds and microseconds
+    % components.
+    %
+:- func init_duration(years, months, days, hours, minutes, seconds,
+    microseconds) = duration.
+
+    % Retrieve all the components of a duration.
+    %
+:- pred unpack_duration(duration::in, years::out, months::out,
+    days::out, hours::out, minutes::out, seconds::out, microseconds::out)
+    is det.
+
+    % Return the zero length duration.
+    %
+:- func zero_duration = duration.
+
+    % Negate a duration.
+    %
+:- func negate(duration) = duration.
+
+%---------------------%
+
+    % Parse a duration string.
+    %
+    % The string should have the form "[-]PnYnMnDTnHnMnS" where each "n" is a
+    % non-negative integer representing the number of years (Y), months (M),
+    % days (D), hours (H), minutes (M) or seconds (S). The units must follow
+    % the numbers, not precede them. The duration string always starts with
+    % either 'P' or '-P', and the 'T' separates the date and time components
+    % of the duration. A component may be omitted if it is zero, and
+    % the 'T' separator is not required if all the time components are zero.
+    %
+    % The seconds component may include a fraction component using a period.
+    % This fraction component cannot include more than six digits, since
+    % the maximum resolution of a duration is a microsecond.
+    %
+    % Fail if the string does not conform to the above format, or if the
+    % fractional part of the seconds component has more than six digits.
+    %
+    % For example, the duration 1 year, 18 months, 100 days, 10 hours, 15
+    % minutes, 90 seconds and 300 microseconds can be written as:
+    %
+    %   P1Y18M100DT10H15M90.0003S
+    %
+    % while a negative duration of 1 month and 2 days can be written as:
+    %
+    %   -P1M2D
+    %
+    % Note that this predicate normalises its input, so that (for example)
+    % duration_to_string(det_duration_from_string("P1Y18M100DT10H15M90.0003S"))
+    % will return "P2Y6M100DT10H16M30.0003S".
+    %
+:- pred duration_from_string(string::in, duration::out) is semidet.
+
+    % Same as above, but throw an exception if the duration string is invalid.
+    %
+:- func det_duration_from_string(string) = duration.
+
+    % Convert a duration to a string using the same representation
+    % parsed by duration_from_string.
+    %
+:- func duration_to_string(duration) = string.
+
+%---------------------%
+
+    % add_duration(Duration, Date0, Date):
+    %
+    % Add Duration to Date0 to yield Date, clamping the day to the end
+    % of the month if the month or year component of the duration causes it to
+    % fall out of range.
+    % (See the documentation of the type duration/0 for the clamping rules.)
+    %
+:- pred add_duration(duration::in, date::in, date::out) is det.
+
+    % duration_leq(DurationA, DurationB):
+    %
+    % Succeed if-and-only-if DurationA is less than or equal to DurationB.
+    % This relation is a partial order: some pairs of durations are
+    % incomparable, because their relative size depends on the date they
+    % are applied to (e.g. 1 month vs. 30 days may compare differently
+    % in different months).
+    %
+    % DurationA is considered less than or equal to DurationB if adding
+    % DurationA to each of the following dates yields a result no later
+    % than adding DurationB to the same date. These dates are chosen to
+    % exercise all possible combinations of leap-year and variable
+    % month-length boundaries:
+    %
+    %    1696-09-01 00:00:00
+    %    1697-02-01 00:00:00
+    %    1903-03-01 00:00:00
+    %    1903-07-01 00:00:00
+    %
+    % The predicate fails if DurationA is greater than DurationB for any
+    % of the above dates, including the case where the two durations are
+    % incomparable (i.e. DurationA yields an earlier result for some test
+    % dates but a later result for others).
+    %
+:- pred duration_leq(duration::in, duration::in) is semidet.
+
+    % local_time_offset(Offset, !IO):
+    %
+    % Offset is the difference between local and UTC time, that is, the
+    % value of duration_between(UTC, Local), where Local and UTC are the local
+    % and UTC representations of the same point in time. Offset reflects the
+    % system's current daylight saving state at the time of the call.
+    %
+    % To convert UTC time to local time, add Offset to UTC using
+    % add_duration/3. To convert local time to UTC, negate Offset using
+    % negate/1, and add the result to the local time.
+    %
+:- pred local_time_offset(duration::out, io::di, io::uo) is det.
+
+    % duration(DateA, DateB) = Duration:
+    %
+    % Return the duration from DateA to DateB using a greedy algorithm
+    % that maximises each component in this order: years, months, days, hours,
+    % minutes, seconds, microseconds. The result is positive if DateB is
+    % after DateA and negative if DateB is before DateA. Leap
+    % seconds are ignored.
+    %
+    % The dates should be in the same time zone and daylight saving phase;
+    % to find the duration between dates in different time zones or daylight
+    % saving phases, first convert them both to UTC.
+    %
+    % Note that due to month-end clamping, duration/2 is not always the
+    % inverse of add_duration/3. For example, the duration from 2001-01-31
+    % to 2001-02-28 is 1 month, but adding -1 month to 2001-02-28 yields
+    % 2001-01-28, not 2001-01-31.
+    %
+:- func duration(date, date) = duration.
+
+    % day_duration(DateA, DateB) = Duration:
+    %
+    % Return the duration from DateA to DateB, expressed using only
+    % fixed-length units: days, hours, minutes, seconds and microseconds.
+    % The years and months components of the returned duration are always
+    % zero. The result is positive if DateB is after DateA and
+    % negative if DateB is before DateA. Leap seconds are ignored.
+    %
+    % The dates should be in the same time zone and daylight saving phase;
+    % to find the duration between dates in different time zones or daylight
+    % saving phases, first convert them both to UTC.
+    %
+:- func day_duration(date, date) = duration.
+
+%---------------------------------------------------------------------------%
+%
+% Folds over ranges of dates.
+%
+
+    % foldl_days(Pred, Start, End, !Acc):
+    %
+    % Call Pred for each date in the range Start to End (inclusive),
+    % passing an accumulator. Each date in the range is generated by
+    % adding a duration of one day to the previous date using
+    % add_duration/3.
+    %
+:- pred foldl_days(pred(date, A, A), date, date, A, A).
+:- mode foldl_days(pred(in, in, out) is det, in, in, in, out) is det.
+:- mode foldl_days(pred(in, mdi, muo) is det, in, in, mdi, muo) is det.
+:- mode foldl_days(pred(in, di, uo) is det, in, in, di, uo) is det.
+:- mode foldl_days(pred(in, in, out) is semidet, in, in, in, out) is semidet.
+:- mode foldl_days(pred(in, mdi, muo) is semidet, in, in, mdi, muo) is semidet.
+:- mode foldl_days(pred(in, di, uo) is semidet, in, in, di, uo) is semidet.
+
+    % foldl2_days(Pred, Start, End, !Acc1, !Acc2):
+    %
+    % As above, but with two accumulators.
+    %
+:- pred foldl2_days(pred(date, A, A, B, B), date, date, A, A, B, B).
+:- mode foldl2_days(pred(in, in, out, in, out) is det, in, in, in, out,
+    in, out) is det.
+:- mode foldl2_days(pred(in, in, out, mdi, muo) is det, in, in, in, out,
+    mdi, muo) is det.
+:- mode foldl2_days(pred(in, in, out, di, uo) is det, in, in, in, out,
+    di, uo) is det.
+:- mode foldl2_days(pred(in, in, out, in, out) is semidet, in, in, in, out,
+    in, out) is semidet.
+:- mode foldl2_days(pred(in, in, out, mdi, muo) is semidet, in, in, in, out,
+    mdi, muo) is semidet.
+:- mode foldl2_days(pred(in, in, out, di, uo) is semidet, in, in, in, out,
+    di, uo) is semidet.
+
+    % foldl3_days(Pred, Start, End, !Acc1, !Acc2, !Acc3):
+    %
+    % As above, but with three accumulators.
+    %
+:- pred foldl3_days(pred(date, A, A, B, B, C, C), date, date,
+    A, A, B, B, C, C).
+:- mode foldl3_days(pred(in, in, out, in, out, in, out) is det, in, in,
+    in, out, in, out, in, out) is det.
+:- mode foldl3_days(pred(in, in, out, in, out, mdi, muo) is det, in, in,
+    in, out, in, out, mdi, muo) is det.
+:- mode foldl3_days(pred(in, in, out, in, out, di, uo) is det, in, in,
+    in, out, in, out, di, uo) is det.
+:- mode foldl3_days(pred(in, in, out, in, out, in, out) is semidet, in, in,
+    in, out, in, out, in, out) is semidet.
+:- mode foldl3_days(pred(in, in, out, in, out, mdi, muo) is semidet, in, in,
+    in, out, in, out, mdi, muo) is semidet.
+:- mode foldl3_days(pred(in, in, out, in, out, di, uo) is semidet, in, in,
+    in, out, in, out, di, uo) is semidet.
+
+%---------------------------------------------------------------------------%
+%---------------------------------------------------------------------------%
+
+:- implementation.
+
+:- import_module char.
+:- import_module int.
+:- import_module list.
+:- import_module require.
+:- import_module string.
+:- import_module time.
+
+%---------------------------------------------------------------------------%
+
+:- type date
+    --->    date(
+                dt_year             :: int,
+                dt_month            :: int,
+                dt_day              :: int,
+                dt_hour             :: int,
+                dt_minute           :: int,
+                dt_second           :: int,
+                dt_microsecond      :: int
+            ).
+
+:- type duration
+    --->    duration(
+                dur_months          :: int,
+                dur_days            :: int,
+                dur_seconds         :: int,
+                dur_microseconds    :: int
+            ).
+
+%---------------------------------------------------------------------------%
+
+year(Date) = Date ^ dt_year.
+month(Date) = det_int_to_month(Date ^ dt_month).
+day_of_month(Date) = Date ^ dt_day.
+day_of_week(Date) = compute_day_of_week(Date).
+hour(Date) = Date ^ dt_hour.
+minute(Date) = Date ^ dt_minute.
+second(Date) = Date ^ dt_second.
+microsecond(Date) = Date ^ dt_microsecond.
+
+:- func compute_day_of_week(date) = day_of_week.
+
+compute_day_of_week(Date) = DayOfWeek :-
+    % We compute the day of the week by working out the Julian day modulo 7.
+    JDN = julian_day_number(Date),
+    Mod = JDN mod 7,
+    DayOfWeek = det_day_of_week_from_mod(Mod).
+
+:- func det_day_of_week_from_mod(int) = day_of_week.
+
+det_day_of_week_from_mod(Mod) = DayOfWeek :-
+    ( if day_of_week_num(DayOfWeek0, Mod) then
+        DayOfWeek = DayOfWeek0
+    else
+        unexpected($pred, "invalid mod: " ++ int_to_string(Mod))
+    ).
+
+:- pred day_of_week_num(day_of_week, int).
+:- mode day_of_week_num(in, out) is det.
+:- mode day_of_week_num(out, in) is semidet.
+
+day_of_week_num(monday, 0).
+day_of_week_num(tuesday, 1).
+day_of_week_num(wednesday, 2).
+day_of_week_num(thursday, 3).
+day_of_week_num(friday, 4).
+day_of_week_num(saturday, 5).
+day_of_week_num(sunday, 6).
+
+int_to_month(1, january).
+int_to_month(2, february).
+int_to_month(3, march).
+int_to_month(4, april).
+int_to_month(5, may).
+int_to_month(6, june).
+int_to_month(7, july).
+int_to_month(8, august).
+int_to_month(9, september).
+int_to_month(10, october).
+int_to_month(11, november).
+int_to_month(12, december).
+
+det_int_to_month(Int) =
+    ( if int_to_month(Int, Month) then
+        Month
+    else
+        unexpected($pred, "invalid month: " ++ int_to_string(Int))
+    ).
+
+int0_to_month(Int, Month) :-
+    int_to_month(Int + 1, Month).
+
+det_int0_to_month(Int) =
+    ( if int0_to_month(Int, Month) then
+        Month
+    else
+        unexpected($pred, "invalid month: " ++ int_to_string(Int))
+    ).
+
+month_to_int(Month) = Int :-
+    int_to_month(Int, Month).
+
+month_to_int0(Month) = Int :-
+    int0_to_month(Int, Month).
+
+%---------------------------------------------------------------------------%
+
+init_date(Year, Month, Day, Hour, Minute, Second, MicroSecond, Date) :-
+    Day >= 1,
+    Day =< max_day_in_month_for(Year, month_to_int(Month)),
+    Hour >= 0,
+    Hour < 24,
+    Minute >= 0,
+    Minute < 60,
+    Second >= 0,
+    Second < 62,
+    MicroSecond >= 0,
+    MicroSecond < 1000000,
+    Date = date(Year, month_to_int(Month), Day, Hour, Minute, Second,
+        MicroSecond).
+
+det_init_date(Year, Month, Day, Hour, Minute, Second, MicroSecond)
+        = Date :-
+    ( if
+        init_date(Year, Month, Day, Hour, Minute, Second, MicroSecond, Date0)
+    then
+        Date = Date0
+    else
+        Msg = string.format("invalid date: %i-%i-%i %i:%i:%i",
+            [i(Year), i(month_to_int(Month)), i(Day), i(Hour),
+            i(Minute), i(Second)]),
+        unexpected($pred, Msg)
+    ).
+
+unpack_date(date(Year, Month, Day, Hour, Minute, Second, MicroSecond),
+    Year, det_int_to_month(Month), Day, Hour, Minute, Second, MicroSecond).
+
+%---------------------------------------------------------------------------%
+
+date_from_string(Str, Date) :-
+    some [!Chars] (
+        !:Chars = string.to_char_list(Str),
+        ( if read_char((-), !.Chars, Rest1) then
+            !:Chars = Rest1,
+            read_int_and_num_chars(Year0, YearChars, !Chars),
+            Year = -Year0
+        else
+            read_int_and_num_chars(Year, YearChars, !Chars)
+        ),
+        YearChars >= 4,
+        read_char((-), !Chars),
+        read_int_and_num_chars(Month, 2, !Chars),
+        Month >= 1,
+        Month =< 12,
+        read_char((-), !Chars),
+        read_int_and_num_chars(Day, 2, !Chars),
+        Day >= 1,
+        Day =< max_day_in_month_for(Year, Month),
+        read_char(' ', !Chars),
+        read_int_and_num_chars(Hour, 2, !Chars),
+        Hour >= 0,
+        Hour =< 23,
+        read_char((:), !Chars),
+        read_int_and_num_chars(Minute, 2, !Chars),
+        Minute >= 0,
+        Minute =< 59,
+        read_char((:), !Chars),
+        read_int_and_num_chars(Second, 2, !Chars),
+        Second < 62,
+        read_microseconds(MicroSecond, !Chars),
+        !.Chars = [],
+        Date = date(Year, Month, Day, Hour, Minute, Second, MicroSecond)
+    ).
+
+det_date_from_string(Str) = Date :-
+    ( if date_from_string(Str, Date0) then
+        Date = Date0
+    else
+        unexpected($pred, "invalid date: " ++ Str)
+    ).
+
+date_to_string(Date) = Str :-
+    unpack_date(Date, Year0, Month, Day, Hour, Minute, Second, MicroSecond),
+    ( if Year0 < 0 then
+        SignStr = "-",
+        Year = -Year0
+    else
+        SignStr = "",
+        Year = Year0
+    ),
+    MicroSecondStr = microsecond_string(MicroSecond),
+    Str = string.format("%s%04d-%02d-%02d %02d:%02d:%02d%s",
+        [s(SignStr), i(Year), i(month_to_int(Month)), i(Day),
+        i(Hour), i(Minute), i(Second), s(MicroSecondStr)]).
+
+%---------------------------------------------------------------------------%
+
+current_local_time(Now, !IO) :-
+    time.time(TimeT, !IO),
+    time.localtime(TimeT, TM, !IO),
+    Now = tm_to_date(TM).
+
+current_utc_time(Now, !IO) :-
+    time.time(TimeT, !IO),
+    TM = time.gmtime(TimeT),
+    Now = tm_to_date(TM).
+
+:- func tm_to_date(time.tm) = date.
+
+tm_to_date(TM) = Date :-
+    TM = tm(TMYear, TMMonth, TMDay, TMHour, TMMinute, TMSecond, _, _, _),
+    Year = 1900 + TMYear,
+    Month = TMMonth + 1,
+    Day = TMDay,
+    Hour = TMHour,
+    Minute = TMMinute,
+    Second = TMSecond,
+    Date = date(Year, Month, Day, Hour, Minute, Second, 0).
+
+julian_day_number(date(Year, Month, Day, _, _, _, _)) = JDN :-
+    % The algorithm is described at
+    % http://en.wikipedia.org/wiki/Julian_day.
+    A = (14 - Month) div 12,
+    Y = Year + 4800 - A,
+    M = Month + 12 * A - 3,
+    JDN = Day + ( 153 * M + 2 ) div 5 + 365 * Y + Y div 4 - Y div 100 +
+        Y div 400 - 32045.
+
+unix_epoch = date(1970, 1, 1, 0, 0, 0, 0).
+
+same_date(A, B) :-
+    A = date(Year, Month, Day, _, _, _, _),
+    B = date(Year, Month, Day, _, _, _, _).
+
+%---------------------------------------------------------------------------%
+%---------------------------------------------------------------------------%
+
+years(Dur) = Dur ^ dur_months // 12.
+months(Dur) = Dur ^ dur_months rem 12.
+days(Dur) = Dur ^ dur_days.
+hours(Dur) = Dur ^ dur_seconds // 3600.
+minutes(Dur) = (Dur ^ dur_seconds rem 3600) // 60.
+seconds(Dur) = Dur ^ dur_seconds rem 60.
+microseconds(Dur) = Dur ^ dur_microseconds.
+
+init_duration(Years0, Months0, Days0, Hours0, Minutes0, Seconds0,
+        MicroSeconds0) = Dur :-
+    ( if
+        (
+            Years0 >= 0,
+            Months0 >= 0,
+            Days0 >= 0,
+            Hours0 >= 0,
+            Minutes0 >= 0,
+            Seconds0 >= 0,
+            MicroSeconds0 >= 0
+        ;
+            Years0 =< 0,
+            Months0 =< 0,
+            Days0 =< 0,
+            Hours0 =< 0,
+            Minutes0 =< 0,
+            Seconds0 =< 0,
+            MicroSeconds0 =< 0
+        )
+    then
+        Months = Years0 * 12 + Months0,
+        Seconds1 = Seconds0 + MicroSeconds0 // microseconds_per_second,
+        MicroSeconds = MicroSeconds0 rem microseconds_per_second,
+        Seconds2 = Seconds1 + Minutes0 * 60 + Hours0 * 3600,
+        Days = Days0 + Seconds2 // seconds_per_day,
+        Seconds = Seconds2 rem seconds_per_day,
+        Dur = duration(Months, Days, Seconds, MicroSeconds)
+    else
+        unexpected($pred, "some components negative and some positive")
+    ).
+
+:- func seconds_per_day = int.
+
+seconds_per_day = 86400.
+
+:- func microseconds_per_second = int.
+
+microseconds_per_second = 1000000.
+
+unpack_duration(Duration,
+    years(Duration), months(Duration), days(Duration), hours(Duration),
+    minutes(Duration), seconds(Duration), microseconds(Duration)).
+
+zero_duration = duration(0, 0, 0, 0).
+
+negate(duration(Months, Days, Seconds, MicroSeconds)) =
+    duration(-Months, -Days, -Seconds, -MicroSeconds).
+
+%---------------------------------------------------------------------------%
+
+duration_from_string(Str, Duration) :-
+    some [!Chars] (
+        !:Chars = string.to_char_list(Str),
+        read_sign(Sign, !Chars),
+        read_char('P', !Chars),
+        read_years(Years, !Chars),
+        read_months(Months, !Chars),
+        read_days(Days, !Chars),
+        ( if read_char('T', !.Chars, TimePart) then
+            TimePart = [_ | _],
+            read_hours(Hours, TimePart, !:Chars),
+            read_minutes(Minutes, !Chars),
+            read_seconds_and_microseconds(Seconds, MicroSeconds, !Chars),
+            !.Chars = [],
+            Duration = init_duration(Sign * Years, Sign * Months,
+                Sign * Days, Sign * Hours, Sign * Minutes, Sign * Seconds,
+                Sign * MicroSeconds)
+        else
+            !.Chars = [],
+            Duration = init_duration(Sign * Years, Sign * Months, Sign * Days,
+                0, 0, 0, 0)
+        )
+    ).
+
+det_duration_from_string(Str) = Duration :-
+    ( if duration_from_string(Str, Duration0) then
+        Duration = Duration0
+    else
+        unexpected($pred, "invalid duration: " ++ Str)
+    ).
+
+%---------------------------------------------------------------------------%
+
+duration_to_string(duration(Months, Days, Seconds, MicroSeconds) @ Duration)
+        = Str :-
+    ( if
+        Months = 0,
+        Days = 0,
+        Seconds = 0,
+        MicroSeconds = 0
+    then
+        % At least one component must appear in the string.
+        % The choice of days is arbitrary.
+        Str = "P0D"
+    else
+        ( if
+            Months >= 0,
+            Days >= 0,
+            Seconds >= 0,
+            MicroSeconds >= 0
+        then
+            Sign = 1,
+            SignStr = ""
+        else if
+            Months =< 0,
+            Days =< 0,
+            Seconds =< 0,
+            MicroSeconds =< 0
+        then
+            Sign = -1,
+            SignStr = "-"
+        else
+            unexpected($pred, "duration components have mixed signs")
+        ),
+        ( if
+            Seconds = 0,
+            MicroSeconds = 0
+        then
+            TimePart = []
+        else
+            TimePart = ["T",
+                string_if_nonzero(Sign * hours(Duration), "H"),
+                string_if_nonzero(Sign * minutes(Duration), "M"),
+                seconds_duration_string(Sign * seconds(Duration),
+                    Sign * microseconds(Duration))
+            ]
+        ),
+        Str = string.append_list([
+            SignStr, "P",
+            string_if_nonzero(Sign * years(Duration), "Y"),
+            string_if_nonzero(Sign * months(Duration), "M"),
+            string_if_nonzero(Sign * days(Duration), "D")] ++ TimePart)
+    ).
+
+:- func string_if_nonzero(int, string) = string.
+
+string_if_nonzero(X, Suffix) =
+    ( if X = 0 then
+        ""
+    else
+        int_to_string(X) ++ Suffix
+    ).
+
+:- func seconds_duration_string(seconds, microseconds) = string.
+
+seconds_duration_string(Seconds, MicroSeconds) = Str :-
+    ( if Seconds = 0, MicroSeconds = 0 then
+        Str = ""
+    else
+        Str = string.from_int(Seconds) ++
+            microsecond_string(MicroSeconds) ++ "S"
+    ).
+
+:- func microsecond_string(microseconds) = string.
+
+microsecond_string(MicroSeconds) = Str :-
+    ( if MicroSeconds > 0 then
+        Str = rstrip_pred(unify('0'),
+            string.format(".%06d", [i(MicroSeconds)]))
+    else
+        Str = ""
+    ).
+
+%---------------------------------------------------------------------------%
+%
+% Adding durations to date times.
+%
+% The following is a fairly direct translation of the algorithm at
+% http://www.w3.org/TR/xmlschema-2/#adding-durations-to-dateTimes.
+%
+
+add_duration(D, S, !:E) :-
+    some [!Temp, !Carry] (
+        % Months
+        !:Temp = S ^ dt_month + D ^ dur_months,
+        EMonth = modulo(!.Temp, 1, 13),
+        !:Carry = fquotient(!.Temp, 1, 13),
+        % Years
+        EYear = S ^ dt_year + !.Carry,
+        % Microseconds
+        !:Temp = S ^ dt_microsecond + D ^ dur_microseconds,
+        EMicrosecond = modulo(!.Temp, microseconds_per_second),
+        !:Carry = div(!.Temp, microseconds_per_second),
+        % Seconds
+        !:Temp = S ^ dt_second + D ^ dur_seconds + !.Carry,
+        ESecond = modulo(!.Temp, 60),
+        !:Carry = div(!.Temp, 60),
+        % Minutes
+        !:Temp = S ^ dt_minute + !.Carry,
+        EMinute = int.mod(!.Temp, 60),
+        !:Carry = int.div(!.Temp, 60),
+        % Hours
+        !:Temp = S ^ dt_hour + !.Carry,
+        EHour = int.mod(!.Temp, 24),
+        !:Carry = int.div(!.Temp, 24),
+        % Days
+        MaxDaysInMonth = max_day_in_month_for(EYear, EMonth),
+        ( if S ^ dt_day > MaxDaysInMonth then
+            TempDays = MaxDaysInMonth
+        else if S ^ dt_day < 1 then
+            TempDays = 1
+        else
+            TempDays = S ^ dt_day
+        ),
+        EDay = TempDays + D ^ dur_days + !.Carry,
+        !:E = date(EYear, EMonth, EDay, EHour, EMinute, ESecond, EMicrosecond),
+        add_duration_loop(D, S, !E)
+    ).
+
+:- pred add_duration_loop(duration::in, date::in, date::in, date::out) is det.
+
+add_duration_loop(D, S, !E) :-
+    ( if !.E ^ dt_day < 1 then
+        !E ^ dt_day := !.E ^ dt_day +
+            max_day_in_month_for(!.E ^ dt_year, !.E ^ dt_month - 1),
+        Carry = -1,
+        Temp = !.E ^ dt_month + Carry,
+        !E ^ dt_month := modulo(Temp, 1, 13),
+        !E ^ dt_year := !.E ^ dt_year + fquotient(Temp, 1, 13),
+        disable_warning [suspicious_recursion] (
+            add_duration_loop(D, S, !E)
+        )
+    else if
+        MaxDaysInMonth = max_day_in_month_for(!.E ^ dt_year, !.E ^ dt_month),
+        !.E ^ dt_day > MaxDaysInMonth
+    then
+        !E ^ dt_day := !.E ^ dt_day - MaxDaysInMonth,
+        Carry = 1,
+        Temp = !.E ^ dt_month + Carry,
+        !E ^ dt_month := modulo(Temp, 1, 13),
+        !E ^ dt_year := !.E ^ dt_year + fquotient(Temp, 1, 13),
+        disable_warning [suspicious_recursion] (
+            add_duration_loop(D, S, !E)
+        )
+    else
+        true
+    ).
+
+:- func fquotient(int, int, int) = int.
+
+fquotient(A, Low, High) = int.div(A - Low, High - Low).
+
+:- func modulo(int, int) = int.
+
+modulo(A, B) = A - div(A, B) * B.
+
+:- func modulo(int, int, int) = int.
+
+modulo(A, Low, High) = modulo(A - Low, High - Low) + Low.
+
+:- func max_day_in_month_for(int, int) = int.
+
+max_day_in_month_for(YearValue, MonthValue) = Max :-
+    M = int.mod(MonthValue - 1, 12) + 1,
+    Y = YearValue + int.div(MonthValue - 1, 12),
+    ( if
+        (
+            ( M = 1 ; M = 3 ; M = 5 ; M = 7 ; M = 8 ; M = 10 ; M = 12 ),
+            Max0 = 31
+        ;
+            ( M = 4 ; M = 6 ; M = 9 ; M = 11 ),
+            Max0 = 30
+        ;
+            M = 2,
+            ( if ( Y mod 400 = 0 ; ( Y mod 100 \= 0, Y mod 4 = 0 ) ) then
+                Max0 = 29
+            else
+                Max0 = 28
+            )
+        )
+    then
+        Max = Max0
+    else
+        % This should never happen.
+        unexpected($pred, "unexpected value for M: " ++ string(M))
+    ).
+
+%---------------------------------------------------------------------------%
+
+duration_leq(DurA, DurB) :-
+    % Partial relation on durations. This algorithm is described at
+    % http://www.w3.org/TR/xmlschema-2/#duration.
+    list.all_true(
+        ( pred(TestDate::in) is semidet :-
+            add_duration(DurA, TestDate, DateA),
+            add_duration(DurB, TestDate, DateB),
+            compare(CompRes, DateA, DateB),
+            ( CompRes = (<) ; CompRes = (=) )
+        ), test_dates).
+
+    % Returns dates used to compare durations.
+    %
+:- func test_dates = list(date).
+
+test_dates = [
+    date(1696, 9, 1, 0, 0, 0, 0),
+    date(1697, 2, 1, 0, 0, 0, 0),
+    date(1903, 3, 1, 0, 0, 0, 0),
+    date(1903, 7, 1, 0, 0, 0, 0)
+].
+
+local_time_offset(TZ, !IO) :-
+    time.time(TimeT, !IO),
+    time.localtime(TimeT, LocalTM, !IO),
+    GMTM = time.gmtime(TimeT),
+    LocalTime = tm_to_date(LocalTM),
+    GMTime = tm_to_date(GMTM),
+    TZ = duration(GMTime, LocalTime).
+
+%---------------------------------------------------------------------------%
+%
+% Computing the duration between two dates.
+%
+
+duration(DateA, DateB) = Duration :-
+    compare(CompResult, DateB, DateA),
+    (
+        CompResult = (<),
+        greedy_subtract_descending(ascending, DateA, DateB, Duration0),
+        Duration = negate(Duration0)
+    ;
+        CompResult = (=),
+        Duration = zero_duration
+    ;
+        CompResult = (>),
+        greedy_subtract_descending(descending, DateB, DateA, Duration)
+    ).
+
+:- type order
+    --->    ascending
+    ;       descending.
+
+    % This predicate has the precondition that DateA < DateB. OriginalOrder is
+    % the original order of the date arguments (descending means that in the
+    % original call DateA < DateB, while ascending means that in the original
+    % call DateA > DateB). This is needed to correctly compute the days
+    % component of the resulting duration. The calculation is different
+    % depending on the original order, because we want the invariant:
+    %   add_duration(duration(DateA, DateB), DateA, DateB)
+    % to hold, and in the case where DateA > DateB, Duration will be negative.
+    %
+:- pred greedy_subtract_descending(order::in, date::in, date::in,
+    duration::out) is det.
+
+greedy_subtract_descending(OriginalOrder, DateA, DateB, Duration) :-
+    some [!Borrow] (
+        MicroSecondA = DateA ^ dt_microsecond,
+        MicroSecondB = DateB ^ dt_microsecond,
+        subtract_ints_with_borrow(microseconds_per_second, MicroSecondA,
+            MicroSecondB, MicroSeconds, !:Borrow),
+        SecondA = DateA ^ dt_second - !.Borrow,
+        SecondB = DateB ^ dt_second,
+        subtract_ints_with_borrow(60, SecondA, SecondB, Seconds, !:Borrow),
+        MinuteA = DateA ^ dt_minute - !.Borrow,
+        MinuteB = DateB ^ dt_minute,
+        subtract_ints_with_borrow(60, MinuteA, MinuteB, Minutes, !:Borrow),
+        HourA = DateA ^ dt_hour - !.Borrow,
+        HourB = DateB ^ dt_hour,
+        subtract_ints_with_borrow(24, HourA, HourB, Hours, !:Borrow),
+        (
+            OriginalOrder = descending,
+            add_duration(duration(0, -1, 0, 0), DateA, DateAMinus1Month),
+            DaysToBorrow = max_day_in_month_for(DateAMinus1Month ^ dt_year,
+                DateAMinus1Month ^ dt_month),
+            DateAEndOfMonth = max_day_in_month_for(DateA ^ dt_year,
+                DateA ^ dt_month),
+            DayA = DateA ^ dt_day - !.Borrow,
+            DayB = int.min(DateB ^ dt_day, DateAEndOfMonth)
+        ;
+            OriginalOrder = ascending,
+            DaysToBorrow = max_day_in_month_for(DateB ^ dt_year,
+                DateB ^ dt_month),
+            DateBEndOfMonth = max_day_in_month_for(DateB ^ dt_year,
+                DateB ^ dt_month),
+            DayA = int.min(DateA ^ dt_day - !.Borrow, DateBEndOfMonth),
+            DayB = DateB ^ dt_day
+        ),
+        subtract_ints_with_borrow(DaysToBorrow, DayA, DayB, Days, !:Borrow),
+        MonthA = DateA ^ dt_month - !.Borrow,
+        MonthB = DateB ^ dt_month,
+        subtract_ints_with_borrow(12, MonthA, MonthB, Months, !:Borrow),
+        YearA = DateA ^ dt_year - !.Borrow,
+        YearB = DateB ^ dt_year,
+        ( if YearA >= YearB then
+            Years = YearA - YearB
+        else
+            % If this happens, then DateA < DateB, which violates
+            % a precondition of this predicate.
+            unexpected($pred, "left over years")
+        ),
+        Duration = init_duration(Years, Months, Days, Hours, Minutes, Seconds,
+            MicroSeconds)
+    ).
+
+    % subtract_ints_with_borrow(BorrowAmount, Val1, Val2, Val, Borrow):
+    % Subtract Val2 from Val1, possibly borrowing BorrowAmount if Val1 < Val2.
+    % If an amount is borrowed, then Borrow is set to 1, otherwise it is set
+    % to 0.
+    %
+:- pred subtract_ints_with_borrow(int::in, int::in, int::in, int::out,
+    int::out) is det.
+
+subtract_ints_with_borrow(BorrowVal, Val1, Val2, Diff, Borrow) :-
+    ( if Val1 >= Val2 then
+        Borrow = 0,
+        Diff = Val1 - Val2
+    else
+        Borrow = 1,
+        Diff = BorrowVal + Val1 - Val2
+    ).
+
+day_duration(DateA, DateB) = Duration :-
+    builtin.compare(CompResult, DateB, DateA),
+    (
+        CompResult = (<),
+        Duration0 = do_day_duration(DateB, DateA),
+        Duration = negate(Duration0)
+    ;
+        CompResult = (=),
+        Duration = zero_duration
+    ;
+        CompResult = (>),
+        Duration = do_day_duration(DateA, DateB)
+    ).
+
+:- func do_day_duration(date, date) = duration.
+
+do_day_duration(DateA, DateB) = Duration :-
+    some [!Borrow] (
+        MicroSecond1 = DateB ^ dt_microsecond,
+        MicroSecond2 = DateA ^ dt_microsecond,
+        subtract_ints_with_borrow(microseconds_per_second,
+            MicroSecond1, MicroSecond2, MicroSeconds, !:Borrow),
+        Second1 = DateB ^ dt_second - !.Borrow,
+        Second2 = DateA ^ dt_second,
+        subtract_ints_with_borrow(60, Second1, Second2, Seconds, !:Borrow),
+        Minute1 = DateB ^ dt_minute - !.Borrow,
+        Minute2 = DateA ^ dt_minute,
+        subtract_ints_with_borrow(60, Minute1, Minute2, Minutes, !:Borrow),
+        Hour1 = DateB ^ dt_hour - !.Borrow,
+        Hour2 = DateA ^ dt_hour,
+        subtract_ints_with_borrow(24, Hour1, Hour2, Hours, !:Borrow),
+        JDN1 = julian_day_number(DateB),
+        JDN2 = julian_day_number(DateA),
+        Days = JDN1 - !.Borrow - JDN2,
+        Duration = init_duration(0, 0, Days, Hours, Minutes, Seconds,
+            MicroSeconds)
+    ).
+
+%---------------------------------------------------------------------------%
+
+foldl_days(Pred, !.Curr, End, !Acc) :-
+    compare(Res, !.Curr, End),
+    (
+        ( Res = (<)
+        ; Res = (=)
+        ),
+        Pred(!.Curr, !Acc),
+        add_duration(init_duration(0, 0, 1, 0, 0, 0, 0), !Curr),
+        disable_warning [suspicious_recursion] (
+            foldl_days(Pred, !.Curr, End, !Acc)
+        )
+    ;
+        Res = (>)
+    ).
+
+foldl2_days(Pred, !.Curr, End, !Acc1, !Acc2) :-
+    compare(Res, !.Curr, End),
+    (
+        ( Res = (<)
+        ; Res = (=)
+        ),
+        Pred(!.Curr, !Acc1, !Acc2),
+        add_duration(init_duration(0, 0, 1, 0, 0, 0, 0), !Curr),
+        disable_warning [suspicious_recursion] (
+            foldl2_days(Pred, !.Curr, End, !Acc1, !Acc2)
+        )
+    ;
+        Res = (>)
+    ).
+
+foldl3_days(Pred, !.Curr, End, !Acc1, !Acc2, !Acc3) :-
+    compare(Res, !.Curr, End),
+    (
+        ( Res = (<)
+        ; Res = (=)
+        ),
+        Pred(!.Curr, !Acc1, !Acc2, !Acc3),
+        add_duration(init_duration(0, 0, 1, 0, 0, 0, 0), !Curr),
+        disable_warning [suspicious_recursion] (
+            foldl3_days(Pred, !.Curr, End, !Acc1, !Acc2, !Acc3)
+        )
+    ;
+        Res = (>)
+    ).
+
+%---------------------------------------------------------------------------%
+%
+% Parsing predicates.
+%
+
+:- pred read_microseconds(microseconds::out, list(char)::in, list(char)::out)
+    is det.
+
+read_microseconds(MicroSeconds, !Chars) :-
+    ( if
+        read_char((.), !.Chars, Chars1),
+        read_int_and_num_chars(Fraction, FractionDigits, Chars1, !:Chars),
+        FractionDigits > 0,
+        FractionDigits < 7
+    then
+        MicroSeconds = int.pow(10, 6 - FractionDigits) * Fraction
+    else
+        MicroSeconds = 0
+    ).
+
+:- pred read_int_and_num_chars(int::out, int::out,
+    list(char)::in, list(char)::out) is det.
+
+read_int_and_num_chars(Val, N, !Chars) :-
+    read_int_and_num_chars_2(0, Val, 0, N, !Chars).
+
+:- pred read_int_and_num_chars_2(int::in, int::out, int::in, int::out,
+    list(char)::in, list(char)::out) is det.
+
+read_int_and_num_chars_2(!Val, !N, !Chars) :-
+    ( if
+        !.Chars = [Char | Rest],
+        decimal_digit_to_int(Char, Digit)
+    then
+        !:Val = !.Val * 10 + Digit,
+        read_int_and_num_chars_2(!Val, !.N + 1, !:N, Rest, !:Chars)
+    else
+        true
+    ).
+
+:- pred read_sign(int::out, list(char)::in, list(char)::out) is det.
+
+read_sign(Sign, !Chars) :-
+    ( if !.Chars = [(-) | Rest] then
+        !:Chars = Rest,
+        Sign = -1
+    else
+        Sign = 1
+    ).
+
+:- pred read_char(char::out, list(char)::in, list(char)::out) is semidet.
+
+read_char(Char, [Char | Rest], Rest).
+
+:- pred read_years(int::out, list(char)::in, list(char)::out) is det.
+
+read_years(Years, !Chars) :-
+    read_int_and_char_or_zero(Years, 'Y', !Chars).
+
+:- pred read_months(int::out, list(char)::in, list(char)::out) is det.
+
+read_months(Months, !Chars) :-
+    read_int_and_char_or_zero(Months, 'M', !Chars).
+
+:- pred read_days(int::out, list(char)::in, list(char)::out) is det.
+
+read_days(Days, !Chars) :-
+    read_int_and_char_or_zero(Days, 'D', !Chars).
+
+:- pred read_hours(int::out, list(char)::in, list(char)::out) is det.
+
+read_hours(Hours, !Chars) :-
+    read_int_and_char_or_zero(Hours, 'H', !Chars).
+
+:- pred read_minutes(int::out, list(char)::in, list(char)::out) is det.
+
+read_minutes(Minutes, !Chars) :-
+    read_int_and_char_or_zero(Minutes, 'M', !Chars).
+
+:- pred read_seconds_and_microseconds(seconds::out, microseconds::out,
+    list(char)::in, list(char)::out) is det.
+
+read_seconds_and_microseconds(Seconds, MicroSeconds, !Chars) :-
+    ( if
+        read_int(Seconds0, !.Chars, Chars1),
+        read_microseconds(MicroSeconds0, Chars1, Chars2),
+        read_char('S', Chars2, Chars3)
+    then
+        !:Chars = Chars3,
+        Seconds = Seconds0,
+        MicroSeconds = MicroSeconds0
+    else
+        Seconds = 0,
+        MicroSeconds = 0
+    ).
+
+:- pred read_int_and_char_or_zero(int::out, char::in,
+    list(char)::in, list(char)::out) is det.
+
+read_int_and_char_or_zero(Int, Char, !Chars) :-
+    ( if
+        read_int(Int0, !.Chars, Chars1),
+        Chars1 = [Char | Rest]
+    then
+        !:Chars = Rest,
+        Int = Int0
+    else
+        Int = 0
+    ).
+
+:- pred read_int(int::out, list(char)::in, list(char)::out) is det.
+
+read_int(Val, !Chars) :-
+    read_int_2(0, Val, !Chars).
+
+:- pred read_int_2(int::in, int::out, list(char)::in, list(char)::out) is det.
+
+read_int_2(!Val, !Chars) :-
+    ( if
+        !.Chars = [Char | Rest],
+        decimal_digit_to_int(Char, Digit)
+    then
+        !:Val = !.Val * 10 + Digit,
+        read_int_2(!Val, Rest, !:Chars)
+    else
+        true
+    ).
+
+%---------------------------------------------------------------------------%
+:- end_module calendar.
+%---------------------------------------------------------------------------%

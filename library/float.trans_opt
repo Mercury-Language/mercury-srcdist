@@ -1,0 +1,101 @@
+:- module float.
+
+:- pragma termination_info(float.'*'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(float.'+'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(float.'+'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(float.'-'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(float.'-'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(float.'/'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(float.'<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(float.'=<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(float.'>'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(float.'>='((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(float.abs((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(float.cast_from_int32((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.cast_from_int64((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.cast_from_uint32((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.cast_from_uint64((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.ceiling_to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((float.epsilon) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.float((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.float32_bits_string((builtin.in)) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(float.float64_bits_string((builtin.in)) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((float.float_domain_checks), finite(0, []), cannot_loop).
+:- pragma termination_info(float.float_to_doc((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.floor_to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.from_int16((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.from_int8((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.from_uint16((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.from_uint8((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.hash((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.hash((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((float.infinity) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.is_finite((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(float.is_inf((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(float.is_infinite((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(float.is_nan((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(float.is_nan_or_inf((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(float.is_nan_or_infinite((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(float.is_zero((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info((float.mantissa_digits) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((float.max) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.max((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info((float.max_exponent) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((float.min) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.min((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info((float.min_exponent) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.pow((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info((float.radix) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.round_to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.truncate_to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.unchecked_quotient((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+
+:- pragma exceptions(function, (float.(*)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.(+)), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.(+)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.(-)), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.(-)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.(/)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (float.(<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.(=<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.(>)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.(>=)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.abs), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.cast_from_int32), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.cast_from_int64), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.cast_from_uint32), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.cast_from_uint64), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.ceiling_to_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.epsilon), 0, 0, will_not_throw).
+:- pragma exceptions(function, (float.float), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.float32_bits_string), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.float64_bits_string), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.float_domain_checks), 0, 0, will_not_throw).
+:- pragma exceptions(function, (float.float_to_doc), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.floor_to_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.from_int16), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.from_int8), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.from_uint16), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.from_uint8), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.hash), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.hash), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.infinity), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.is_finite), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.is_inf), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.is_infinite), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.is_nan), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.is_nan_or_inf), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.is_nan_or_infinite), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.is_zero), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.mantissa_digits), 0, 0, will_not_throw).
+:- pragma exceptions(function, (float.max), 0, 0, will_not_throw).
+:- pragma exceptions(function, (float.max), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.max_exponent), 0, 0, will_not_throw).
+:- pragma exceptions(function, (float.min), 0, 0, will_not_throw).
+:- pragma exceptions(function, (float.min), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.min_exponent), 0, 0, will_not_throw).
+:- pragma exceptions(function, (float.pow), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (float.radix), 0, 0, will_not_throw).
+:- pragma exceptions(function, (float.round_to_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.truncate_to_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.unchecked_quotient), 2, 0, will_not_throw).

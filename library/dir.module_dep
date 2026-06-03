@@ -1,0 +1,14 @@
+module(2, "dir.m",
+	dir,
+	{},
+	{bool, builtin, io, list, private_builtin},
+	{char, exception, int, maybe, require, std_util, string, unit},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - dir, "C#" - dir, "Java" - dir},
+	no_foreign_export,
+	no_main,
+	{}
+).
