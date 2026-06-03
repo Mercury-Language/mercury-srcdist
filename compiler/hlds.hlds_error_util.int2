@@ -1,0 +1,14 @@
+:- module hlds.hlds_error_util.
+:- interface.
+:- type last_context_word
+    --->    lcw_none 
+    ;       lcw_call 
+    ;       lcw_result 
+    ;       lcw_argument 
+    ;       lcw_element .
+:- type maybe_print_ho_var_name
+    --->    do_not_print_ho_var_name 
+    ;       print_ho_var_name .
+:- type should_module_qualify
+    --->    should_module_qualify 
+    ;       should_not_module_qualify .
