@@ -1,0 +1,142 @@
+/*
+** Automatically generated from `switch_case.m'
+** by the Mercury compiler,
+** version rotd-2026-06-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.switch_case.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__switch_case
+#define MR_HEADER_GUARD_ll_backend__switch_case
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__SWITCH_CASE_DECL_GUARD
+#define LL_BACKEND__SWITCH_CASE_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__switch_case__ll_backend__switch_case__type_ctor_info_case_code_included_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__switch_case__ll_backend__switch_case__type_ctor_info_case_label_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__switch_case__ll_backend__switch_case__type_ctor_info_case_label_map_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__switch_case__ll_backend__switch_case__type_ctor_info_represent_params_0;
+
+void MR_CALL 
+ll_backend__switch_case__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_112_114_101_115_101_110_116_95_116_97_103_103_101_100_95_99_97_115_101_95_102_111_114_95_108_108_100_115_95_95_91_49_48_93_95_48_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+ll_backend__switch_case__add_not_yet_included_cases_3_p_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__switch_case__generate_case_code_or_jump_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__switch_case__represent_tagged_case_for_llds_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+ll_backend__switch_case____Compare____case_code_included_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__switch_case____Compare____case_label_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__switch_case____Compare____case_label_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__switch_case____Compare____represent_params_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__switch_case____Unify____case_code_included_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__switch_case____Unify____case_label_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__switch_case____Unify____case_label_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__switch_case____Unify____represent_params_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__switch_case__init(void);
+void mercury__ll_backend__switch_case__init_type_tables(void);
+void mercury__ll_backend__switch_case__init_debugger(void);
+const char *mercury__ll_backend__switch_case__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.switch_case
+
+// :- end_interface ll_backend.switch_case.

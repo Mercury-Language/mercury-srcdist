@@ -1,0 +1,23 @@
+:- module transform_hlds.unused_args_optimize.
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module mdbcomp.sym_name.
+:- use_module transform_hlds.unused_args_base_ops.
+:- type new_proc_info
+    --->    new_proc_info(
+                 hlds.hlds_pred.pred_id,
+                 hlds.hlds_pred.proc_id,
+                 mdbcomp.sym_name.sym_name,
+                 list.list(int)
+            ).
+:- type new_proc_map == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.unused_args_optimize.new_proc_info).
+:- pred make_imported_unused_args_pred_info(hlds.hlds_pred.pred_proc_id, list.list(int), transform_hlds.unused_args_optimize.new_proc_map, transform_hlds.unused_args_optimize.new_proc_map, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode make_imported_unused_args_pred_info(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred optimize_unused_args(bool.bool, hlds.hlds_module.proc_to_unused_args_map, transform_hlds.unused_args_base_ops.global_var_usage_map, list.list(hlds.hlds_pred.pred_proc_id), transform_hlds.unused_args_optimize.new_proc_map, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode optimize_unused_args(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

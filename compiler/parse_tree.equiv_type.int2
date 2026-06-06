@@ -1,0 +1,10 @@
+:- module parse_tree.equiv_type.
+:- interface.
+:- use_module set.
+:- use_module parse_tree.prog_data.
+:- type circ_types == set.set(parse_tree.prog_data.type_ctor).
+:- type maybe_record_sym_name_use
+    --->    do_not_record_sym_name_use 
+    ;       record_sym_name_use(
+                 parse_tree.prog_data_used_modules.item_visibility
+            ).

@@ -1,0 +1,66 @@
+:- module hlds.inst_mode_type_prop.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- type tprop_args
+    --->    ta_pred(
+                 hlds.hlds_pred.pred_info
+            )
+    ;       ta_lambda(
+                 mdbcomp.prim_data.pred_or_func,
+                 parse_tree.prog_data.pred_form_arity,
+                 parse_tree.prog_data.prog_context
+            )
+    ;       ta_bound_functor(
+                 parse_tree.prog_data.cons_id,
+                 hlds.inst_mode_type_prop.tprop_context
+            )
+    ;       ta_tuple_inst(
+                 hlds.inst_mode_type_prop.tprop_context
+            )
+    ;       ta_ho_inst(
+                 mdbcomp.prim_data.pred_or_func,
+                 parse_tree.prog_data.pred_form_arity,
+                 hlds.inst_mode_type_prop.tprop_context
+            ).
+:- type tprop_cache == map.map(parse_tree.prog_data.mer_type, map.map(mdbcomp.sym_name.sym_name, map.map(list.list(parse_tree.prog_data.mer_inst), hlds.inst_mode_type_prop.tprop_cache_result))).
+:- type tprop_cache_result
+    --->    tprop_cache_result_ok 
+    ;       tprop_cache_result_error(
+                 parse_tree.prog_data.inst_ctor,
+                 parse_tree.prog_data.type_ctor,
+                 parse_tree.prog_data.type_ctor
+            ).
+:- type tprop_context
+    --->    tprop_arg_list_slot(
+                 hlds.inst_mode_type_prop.tprop_args,
+                 int
+            )
+    ;       tprop_inst_name_expansion(
+                 parse_tree.prog_data.sym_name_arity,
+                 hlds.inst_mode_type_prop.tprop_context
+            ).
+:- type tprop_info
+    --->    tprop_info(
+                 hlds.hlds_module.module_info,
+                 parse_tree.prog_data.tvarset,
+                 parse_tree.prog_data.inst_varset
+            ).
+:- pred propagate_checked_type_into_mode(hlds.inst_mode_type_prop.tprop_info, hlds.inst_mode_type_prop.tprop_context, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_mode, hlds.inst_mode_type_prop.tprop_cache, hlds.inst_mode_type_prop.tprop_cache, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode propagate_checked_type_into_mode(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred propagate_checked_types_into_modes(hlds.inst_mode_type_prop.tprop_info, hlds.inst_mode_type_prop.tprop_args, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_mode), hlds.inst_mode_type_prop.tprop_cache, hlds.inst_mode_type_prop.tprop_cache, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode propagate_checked_types_into_modes(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred propagate_unchecked_type_into_bound_functor(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode propagate_unchecked_type_into_bound_functor(builtin.in, builtin.in, builtin.in((parse_tree.prog_data).mer_inst_is_bound), builtin.out) is det.
+:- pred propagate_unchecked_type_into_inst(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode propagate_unchecked_type_into_inst(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- implementation.
+:- typeclass tprop_record(Info, Context, Args, Errors) <= ((Info -> Context, Args, Errors), (Context -> Info, Args, Errors), (Args -> Info, Context, Errors)).
