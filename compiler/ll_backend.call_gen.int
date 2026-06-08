@@ -1,0 +1,30 @@
+:- module (ll_backend.call_gen).
+:- interface.
+:- use_module assoc_list.
+:- use_module hlds.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.code_model).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_pred).
+:- use_module (libs.globals).
+:- use_module (ll_backend.code_info).
+:- use_module (ll_backend.code_loc_dep).
+:- use_module (ll_backend.llds).
+:- use_module (parse_tree.prog_data).
+:- type known_call_variant
+    --->    ho_call_known_num 
+    ;       ho_call_unknown .
+:- pred generate_builtin(hlds.code_model.code_model, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_builtin((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_call(hlds.code_model.code_model, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_generic_call(hlds.code_model.code_model, hlds.hlds_goal.generic_call, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.arg_reg_type_info, parse_tree.prog_data.determinism, hlds.hlds_goal.hlds_goal_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_generic_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generic_call_info(libs.globals.globals, hlds.hlds_goal.generic_call, int, int, ll_backend.llds.code_addr, assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info), int, ll_backend.call_gen.known_call_variant).
+:- mode generic_call_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred input_arg_locs(assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info), assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_loc)).
+:- mode input_arg_locs((builtin.in), (builtin.out)) is det.
+:- pred output_arg_locs(assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info), assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_loc)).
+:- mode output_arg_locs((builtin.in), (builtin.out)) is det.

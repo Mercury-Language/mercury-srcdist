@@ -1,0 +1,25 @@
+:- module (check_hlds.polymorphism_info).
+:- interface.
+:- type cache_maps.
+:- type const_or_var_arg.
+:- type const_struct_var_map.
+:- type int_const_map.
+:- type maybe_must_requantify
+	where	type_is_abstract_enum(1).
+:- type maybe_selected_pred
+	where	type_is_abstract_enum(1).
+:- type poly_info.
+:- type type_info_var_map.
+:- type typeclass_info_map.
+:- type typeclass_info_map_entry.
+:- type var_maps.
+:- type_representation(cache_maps, is_word_aligned_ptr).
+:- type_representation(const_struct_var_map, is_eqv_to(map(const_struct_arg, prog_var))).
+:- type_representation(int_const_map, is_eqv_to(map(int, prog_var))).
+:- type_representation(maybe_must_requantify, du_repn(enum("no_must_requantify", "must_requantify", [],  no_c_j_cs))).
+:- type_representation(maybe_selected_pred, du_repn(enum("is_not_selected_pred", "is_selected_pred", [],  no_c_j_cs))).
+:- type_representation(poly_info, is_word_aligned_ptr).
+:- type_representation(type_info_var_map, is_eqv_to(map(type_ctor, map(list(mer_type), pair(prog_var, maybe(const_struct_arg)))))).
+:- type_representation(typeclass_info_map, is_eqv_to(map(class_name, map(list(mer_type), check_hlds.polymorphism_info.typeclass_info_map_entry)))).
+:- type_representation(typeclass_info_map_entry, is_word_aligned_ptr).
+:- type_representation(var_maps, is_word_aligned_ptr).
