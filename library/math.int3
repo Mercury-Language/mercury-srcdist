@@ -1,0 +1,3 @@
+:- module math.
+:- interface.
+:- type quadratic_roots.

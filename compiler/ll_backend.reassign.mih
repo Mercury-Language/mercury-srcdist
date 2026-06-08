@@ -1,0 +1,62 @@
+/*
+** Automatically generated from `reassign.m'
+** by the Mercury compiler,
+** version rotd-2026-06-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.reassign.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__reassign
+#define MR_HEADER_GUARD_ll_backend__reassign
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__REASSIGN_DECL_GUARD
+#define LL_BACKEND__REASSIGN_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__reassign__ll_backend__reassign__type_ctor_info_dependent_lval_map_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__reassign__ll_backend__reassign__type_ctor_info_known_contents_0;
+
+void MR_CALL 
+ll_backend__reassign__remove_reassign_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void mercury__ll_backend__reassign__init(void);
+void mercury__ll_backend__reassign__init_type_tables(void);
+void mercury__ll_backend__reassign__init_debugger(void);
+const char *mercury__ll_backend__reassign__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.reassign
+
+// :- end_interface ll_backend.reassign.
