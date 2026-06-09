@@ -1,0 +1,15 @@
+:- module parse_tree.generate_mmakefile_fragments.
+:- interface.
+:- type all_mih_deps.
+:- type d_file_deps.
+:- type intermod_deps.
+:- type intermod_only_fim_deps.
+:- type maybe_include_trans_opt_rule.
+:- type maybe_trans_opt_deps.
+:- type module_own_fim_deps.
+:- type trans_opt_rule_info.
+:- type_representation(all_mih_deps, du_repn(notag("all_mih_deps", set(module_name),  no_c_j_cs))).
+:- type_representation(d_file_deps, is_word_aligned_ptr).
+:- type_representation(intermod_only_fim_deps, du_repn(notag("intermod_only_fim_deps", set(module_name),  no_c_j_cs))).
+:- type_representation(maybe_mmake_var, is_eqv_to(pair(list(string), string))).
+:- type_representation(module_own_fim_deps, du_repn(notag("module_own_fim_deps", set(module_name),  no_c_j_cs))).

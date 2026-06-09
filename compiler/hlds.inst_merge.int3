@@ -1,0 +1,2 @@
+:- module hlds.inst_merge.
+:- interface.
