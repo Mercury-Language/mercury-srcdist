@@ -1,0 +1,24 @@
+:- module parse_tree.error_sort.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module libs.globals.
+:- use_module libs.options.
+:- use_module parse_tree.error_spec.
+:- type error_msg_group
+    --->    error_msg_group(
+                 parse_tree.error_spec.error_msg,
+                 list.list(parse_tree.error_spec.error_msg)
+            ).
+:- func flatten_error_msg_group(parse_tree.error_sort.error_msg_group) = list.list(parse_tree.error_spec.error_msg).
+:- func flatten_error_msg_groups(list.list(parse_tree.error_sort.error_msg_group)) = list.list(parse_tree.error_spec.error_msg).
+:- pred sort_error_msg_groups(list.list(parse_tree.error_sort.error_msg_group), list.list(parse_tree.error_sort.error_msg_group)).
+:- mode sort_error_msg_groups(builtin.in, builtin.out) is det.
+:- pred sort_error_msgs(list.list(parse_tree.error_spec.error_msg), list.list(parse_tree.error_spec.error_msg)).
+:- mode sort_error_msgs(builtin.in, builtin.out) is det.
+:- pred sort_std_error_specs(libs.globals.globals, list.list(parse_tree.error_spec.std_error_spec), list.list(parse_tree.error_spec.std_error_spec)).
+:- mode sort_std_error_specs(builtin.in, builtin.in, builtin.out) is det.
+:- pred sort_std_error_specs_opt_table(libs.options.option_table, list.list(parse_tree.error_spec.std_error_spec), list.list(parse_tree.error_spec.std_error_spec)).
+:- mode sort_std_error_specs_opt_table(builtin.in, builtin.in, builtin.out) is det.
+:- pred standardize_error_specs(list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.std_error_spec)).
+:- mode standardize_error_specs(builtin.in, builtin.out) is det.

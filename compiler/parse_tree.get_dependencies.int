@@ -1,0 +1,74 @@
+:- module parse_tree.get_dependencies.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_foreign.
+:- use_module parse_tree.prog_item.
+:- use_module parse_tree.prog_parse_tree.
+:- type implicit_avail_needs
+    --->    implicit_avail_needs(
+                 (parse_tree.get_dependencies).ian_tabling :: parse_tree.get_dependencies.maybe_need_tabling,
+                 (parse_tree.get_dependencies).ian_tabling_statistics :: parse_tree.get_dependencies.maybe_need_tabling_statistics,
+                 (parse_tree.get_dependencies).ian_stm :: parse_tree.get_dependencies.maybe_need_stm,
+                 (parse_tree.get_dependencies).ian_exception :: parse_tree.get_dependencies.maybe_need_exception,
+                 (parse_tree.get_dependencies).ian_string_format :: parse_tree.get_dependencies.maybe_need_string_format,
+                 (parse_tree.get_dependencies).ian_stream_format :: parse_tree.get_dependencies.maybe_need_stream_format,
+                 (parse_tree.get_dependencies).ian_io :: parse_tree.get_dependencies.maybe_need_io
+            ).
+:- type maybe_need_exception
+    --->    do_not_need_exception 
+    ;       do_need_exception .
+:- type maybe_need_io
+    --->    do_not_need_io 
+    ;       do_need_io .
+:- type maybe_need_stm
+    --->    do_not_need_stm 
+    ;       do_need_stm .
+:- type maybe_need_stream_format
+    --->    do_not_need_stream_format 
+    ;       do_need_stream_format .
+:- type maybe_need_string_format
+    --->    do_not_need_string_format 
+    ;       do_need_string_format .
+:- type maybe_need_tabling
+    --->    do_not_need_tabling 
+    ;       do_need_tabling .
+:- type maybe_need_tabling_statistics
+    --->    do_not_need_tabling_statistics 
+    ;       do_need_tabling_statistics .
+:- pred acc_implicit_avail_needs_in_clause(parse_tree.prog_item.item_clause_info, parse_tree.get_dependencies.implicit_avail_needs, parse_tree.get_dependencies.implicit_avail_needs).
+:- mode acc_implicit_avail_needs_in_clause(builtin.in, builtin.in, builtin.out) is det.
+:- pred acc_implicit_avail_needs_in_goal(parse_tree.prog_item.goal, parse_tree.get_dependencies.implicit_avail_needs, parse_tree.get_dependencies.implicit_avail_needs).
+:- mode acc_implicit_avail_needs_in_goal(builtin.in, builtin.in, builtin.out) is det.
+:- pred acc_implicit_avail_needs_in_instance(parse_tree.prog_item.item_instance_info, parse_tree.get_dependencies.implicit_avail_needs, parse_tree.get_dependencies.implicit_avail_needs).
+:- mode acc_implicit_avail_needs_in_instance(builtin.in, builtin.in, builtin.out) is det.
+:- pred acc_implicit_avail_needs_in_instance_method(parse_tree.prog_data.instance_method, parse_tree.get_dependencies.implicit_avail_needs, parse_tree.get_dependencies.implicit_avail_needs).
+:- mode acc_implicit_avail_needs_in_instance_method(builtin.in, builtin.in, builtin.out) is det.
+:- pred acc_implicit_avail_needs_in_mutable(parse_tree.prog_item.item_mutable_info, parse_tree.get_dependencies.implicit_avail_needs, parse_tree.get_dependencies.implicit_avail_needs).
+:- mode acc_implicit_avail_needs_in_mutable(builtin.in, builtin.in, builtin.out) is det.
+:- pred combine_implicit_needs(list.list(parse_tree.get_dependencies.implicit_avail_needs), parse_tree.get_dependencies.implicit_avail_needs).
+:- mode combine_implicit_needs(builtin.in, builtin.out) is det.
+:- pred compute_implicit_avail_needs(libs.globals.globals, parse_tree.get_dependencies.implicit_avail_needs, set.set(mdbcomp.sym_name.module_name)).
+:- mode compute_implicit_avail_needs(builtin.in, builtin.in, builtin.out) is det.
+:- pred extend_import_and_or_use_map_with_implicits(libs.globals.globals, parse_tree.get_dependencies.implicit_avail_needs, parse_tree.get_dependencies.implicit_avail_needs, parse_tree.prog_parse_tree.import_and_or_use_map, parse_tree.prog_parse_tree.import_and_or_use_map).
+:- mode extend_import_and_or_use_map_with_implicits(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred get_explicit_and_implicit_avail_needs_in_parse_tree_plain_opt(parse_tree.prog_parse_tree.parse_tree_plain_opt, set.set(mdbcomp.sym_name.module_name), parse_tree.get_dependencies.implicit_avail_needs).
+:- mode get_explicit_and_implicit_avail_needs_in_parse_tree_plain_opt(builtin.in, builtin.out, builtin.out) is det.
+:- pred get_fact_tables(parse_tree.prog_parse_tree.parse_tree_module_src, set.set(string)).
+:- mode get_fact_tables(builtin.in, builtin.out) is det.
+:- pred get_fim_specs(parse_tree.prog_parse_tree.parse_tree_module_src, set.set(parse_tree.prog_data_foreign.fim_spec)).
+:- mode get_fim_specs(builtin.in, builtin.out) is det.
+:- pred get_foreign_code_langs(parse_tree.prog_parse_tree.parse_tree_module_src, set.set(libs.globals.foreign_language)).
+:- mode get_foreign_code_langs(builtin.in, builtin.out) is det.
+:- pred get_foreign_export_langs(parse_tree.prog_parse_tree.parse_tree_module_src, set.set(libs.globals.foreign_language)).
+:- mode get_foreign_export_langs(builtin.in, builtin.out) is det.
+:- pred get_foreign_include_file_infos(parse_tree.prog_parse_tree.parse_tree_module_src, set.set(parse_tree.prog_data_foreign.foreign_include_file_info)).
+:- mode get_foreign_include_file_infos(builtin.in, builtin.out) is det.
+:- pred get_implicit_avail_needs_in_aug_compilation_unit(libs.globals.globals, parse_tree.prog_parse_tree.aug_compilation_unit, set.set(mdbcomp.sym_name.module_name)).
+:- mode get_implicit_avail_needs_in_aug_compilation_unit(builtin.in, builtin.in, builtin.out) is det.
+:- func init_implicit_avail_needs = parse_tree.get_dependencies.implicit_avail_needs.
