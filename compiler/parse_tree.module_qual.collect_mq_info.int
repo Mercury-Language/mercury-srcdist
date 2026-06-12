@@ -1,0 +1,21 @@
+:- module (parse_tree.module_qual).collect_mq_info.
+:- interface.
+:- use_module parse_tree.prog_parse_tree.
+:- use_module (parse_tree.module_qual).mq_info.
+:- type int3_role
+    --->    int3_as_src 
+    ;       int3_as_direct_int(
+                 parse_tree.prog_parse_tree.read_why_int3
+            ).
+:- pred collect_mq_info_in_ancestor_int_spec(parse_tree.prog_parse_tree.ancestor_int_spec, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode collect_mq_info_in_ancestor_int_spec(builtin.in, builtin.in, builtin.out) is det.
+:- pred collect_mq_info_in_direct_int1_spec(parse_tree.prog_parse_tree.direct_int1_spec, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode collect_mq_info_in_direct_int1_spec(builtin.in, builtin.in, builtin.out) is det.
+:- pred collect_mq_info_in_direct_int3_spec(parse_tree.prog_parse_tree.direct_int3_spec, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode collect_mq_info_in_direct_int3_spec(builtin.in, builtin.in, builtin.out) is det.
+:- pred collect_mq_info_in_parse_tree_int0(parse_tree.prog_parse_tree.read_why_int0, parse_tree.prog_parse_tree.parse_tree_int0, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode collect_mq_info_in_parse_tree_int0(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred collect_mq_info_in_parse_tree_int3(parse_tree.module_qual.collect_mq_info.int3_role, parse_tree.prog_parse_tree.parse_tree_int3, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode collect_mq_info_in_parse_tree_int3(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred collect_mq_info_in_parse_tree_module_src(parse_tree.prog_parse_tree.parse_tree_module_src, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode collect_mq_info_in_parse_tree_module_src(builtin.in, builtin.in, builtin.out) is det.
