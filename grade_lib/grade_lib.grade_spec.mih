@@ -1,0 +1,165 @@
+/*
+** Automatically generated from `grade_spec.m'
+** by the Mercury compiler,
+** version 22.01.9-beta-2026-06-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module grade_lib.grade_spec.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_grade_lib__grade_spec
+#define MR_HEADER_GUARD_grade_lib__grade_spec
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef GRADE_LIB__GRADE_SPEC_DECL_GUARD
+#define GRADE_LIB__GRADE_SPEC_DECL_GUARD
+#include "grade_lib.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_spec__grade_lib__grade_spec__type_ctor_info_if_spec_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_spec__grade_lib__grade_spec__type_ctor_info_implication_spec_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_spec__grade_lib__grade_spec__type_ctor_info_requirement_spec_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_spec__grade_lib__grade_spec__type_ctor_info_solver_var_id_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_spec__grade_lib__grade_spec__type_ctor_info_solver_var_spec_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_spec__grade_lib__grade_spec__type_ctor_info_solver_var_value_id_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_spec__grade_lib__grade_spec__type_ctor_info_specs_version_0;
+
+extern const MR_TypeCtorInfo_Struct grade_lib__grade_spec__grade_lib__grade_spec__type_ctor_info_then_spec_0;
+
+MR_Word MR_CALL 
+grade_lib__grade_spec__init_requirement_specs_0_f_0(void);
+
+MR_Word MR_CALL 
+grade_lib__grade_spec__init_solver_var_specs_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+grade_lib__grade_spec____Compare____if_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_spec____Compare____implication_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_spec____Compare____requirement_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_spec____Compare____solver_var_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_spec____Compare____solver_var_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_spec____Compare____solver_var_value_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_spec____Compare____specs_version_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+grade_lib__grade_spec____Compare____then_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+grade_lib__grade_spec____Unify____if_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_spec____Unify____implication_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_spec____Unify____requirement_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_spec____Unify____solver_var_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_spec____Unify____solver_var_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_spec____Unify____solver_var_value_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_spec____Unify____specs_version_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+grade_lib__grade_spec____Unify____then_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__grade_lib__grade_spec__init(void);
+void mercury__grade_lib__grade_spec__init_type_tables(void);
+void mercury__grade_lib__grade_spec__init_debugger(void);
+const char *mercury__grade_lib__grade_spec__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_grade_lib.grade_spec
+
+// :- end_interface grade_lib.grade_spec.

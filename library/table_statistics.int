@@ -1,0 +1,50 @@
+:- module table_statistics.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- pragma foreign_import_module("C", table_statistics).
+:- type proc_table_statistics
+    --->    proc_table_statistics((table_statistics.call_table_stats) :: table_statistics.table_stats_curr_prev, (table_statistics.maybe_answer_table_stats) :: maybe.maybe(table_statistics.table_stats_curr_prev)).
+:- type table_stats
+    --->    table_stats((table_statistics.num_lookups) :: int, (table_statistics.num_lookups_is_dupl) :: int, (table_statistics.step_statistics) :: list.list(table_statistics.table_step_stats)).
+:- type table_stats_curr_prev
+    --->    table_stats_curr_prev((table_statistics.current_stats) :: table_statistics.table_stats, (table_statistics.stats_at_last_call) :: table_statistics.table_stats).
+:- type table_step_kind
+    --->    table_step_dummy 
+    ;       table_step_int 
+    ;       table_step_char 
+    ;       table_step_string 
+    ;       table_step_float 
+    ;       table_step_enum 
+    ;       table_step_foreign_enum 
+    ;       table_step_general 
+    ;       table_step_general_addr 
+    ;       table_step_general_poly 
+    ;       table_step_general_poly_addr 
+    ;       table_step_typeinfo 
+    ;       table_step_typeclassinfo 
+    ;       table_step_promise_implied 
+    ;       table_step_int8 
+    ;       table_step_uint8 
+    ;       table_step_int16 
+    ;       table_step_uint16 
+    ;       table_step_int32 
+    ;       table_step_uint32 
+    ;       table_step_int64 
+    ;       table_step_uint64 .
+:- type table_step_stat_details
+    --->    step_stats_none 
+    ;       step_stats_start((table_statistics.start_num_node_allocs) :: int, (table_statistics.start_num_node_bytes) :: int)
+    ;       step_stats_enum((table_statistics.enum_num_node_allocs) :: int, (table_statistics.enum_num_node_bytes) :: int)
+    ;       step_stats_hash((table_statistics.hash_num_table_allocs) :: int, (table_statistics.hash_num_table_bytes) :: int, (table_statistics.hash_num_link_chunk_allocs) :: int, (table_statistics.hash_num_link_chunk_bytes) :: int, (table_statistics.hash_num_num_key_compares_not_dupl) :: int, (table_statistics.hash_num_num_key_compares_dupl) :: int, (table_statistics.hash_num_resizes) :: int, (table_statistics.hash_resizes_num_old_entries) :: int, (table_statistics.hash_resizes_num_new_entries) :: int)
+    ;       step_stats_du((table_statistics.du_num_node_allocs) :: int, (table_statistics.du_num_node_bytes) :: int, (table_statistics.du_num_arg_lookups) :: int, (table_statistics.du_num_exist_lookups) :: int, (table_statistics.du_enum_num_node_allocs) :: int, (table_statistics.du_enum_num_node_bytes) :: int, (table_statistics.du_hash_num_table_allocs) :: int, (table_statistics.du_hash_num_table_bytes) :: int, (table_statistics.du_hash_num_link_chunk_allocs) :: int, (table_statistics.du_hash_num_link_chunk_bytes) :: int, (table_statistics.du_hash_num_num_key_compares_not_dupl) :: int, (table_statistics.du_hash_num_num_key_compares_dupl) :: int, (table_statistics.du_hash_num_resizes) :: int, (table_statistics.du_hash_resizes_num_old_entries) :: int, (table_statistics.du_hash_resizes_num_new_entries) :: int)
+    ;       step_stats_poly((table_statistics.poly_du_num_node_allocs) :: int, (table_statistics.poly_du_num_node_bytes) :: int, (table_statistics.poly_du_num_arg_lookups) :: int, (table_statistics.poly_du_num_exist_lookups) :: int, (table_statistics.poly_enum_num_node_allocs) :: int, (table_statistics.poly_enum_num_node_bytes) :: int, (table_statistics.poly_hash_num_table_allocs) :: int, (table_statistics.poly_hash_num_table_bytes) :: int, (table_statistics.poly_hash_num_link_chunk_allocs) :: int, (table_statistics.poly_hash_num_link_chunk_bytes) :: int, (table_statistics.poly_hash_num_num_key_compares_not_dupl) :: int, (table_statistics.poly_hash_num_num_key_compares_dupl) :: int, (table_statistics.poly_hash_num_resizes) :: int, (table_statistics.poly_hash_resizes_num_old_entries) :: int, (table_statistics.poly_hash_resizes_num_new_entries) :: int).
+:- type table_step_stats
+    --->    table_step_stats((table_statistics.table_step_var_name) :: string, (table_statistics.table_step_num_lookups) :: int, (table_statistics.table_step_num_lookups_is_dupl) :: int, (table_statistics.table_step_detail) :: table_statistics.table_step_stat_details).
+:- func dummy_proc_table_statistics = table_statistics.proc_table_statistics.
+:- func table_stats_difference(table_statistics.table_stats, table_statistics.table_stats) = table_statistics.table_stats.
+:- pred write_table_stats(table_statistics.table_stats, io.io, io.io).
+:- mode write_table_stats((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_table_stats(io.text_output_stream, table_statistics.table_stats, io.io, io.io).
+:- mode write_table_stats((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
