@@ -1,0 +1,43 @@
+:- module transform_hlds.unused_args_base_ops.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.prog_data.
+:- type arg_var_in_proc
+    --->    arg_var_in_proc(
+                 hlds.hlds_pred.pred_proc_id,
+                 parse_tree.prog_data.prog_var
+            ).
+:- type global_var_usage_map == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.unused_args_base_ops.local_var_usage_map).
+:- type local_var_usage_map == map.map(parse_tree.prog_data.prog_var, transform_hlds.unused_args_base_ops.required_by).
+:- type required_by
+    --->    required_by(
+                 set.set(parse_tree.prog_data.prog_var),
+                 set.set(transform_hlds.unused_args_base_ops.arg_var_in_proc)
+            ).
+:- pred local_var_is_required_by_local_vars(parse_tree.prog_data.prog_var, list.list(parse_tree.prog_data.prog_var), transform_hlds.unused_args_base_ops.local_var_usage_map, transform_hlds.unused_args_base_ops.local_var_usage_map).
+:- mode local_var_is_required_by_local_vars(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred local_var_is_required_by_proc_arg(parse_tree.prog_data.prog_var, transform_hlds.unused_args_base_ops.arg_var_in_proc, transform_hlds.unused_args_base_ops.local_var_usage_map, transform_hlds.unused_args_base_ops.local_var_usage_map).
+:- mode local_var_is_required_by_proc_arg(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred local_var_is_used(transform_hlds.unused_args_base_ops.local_var_usage_map, parse_tree.prog_data.prog_var).
+:- mode local_var_is_used(builtin.in, builtin.in) is semidet.
+:- pred local_vars_are_required_by_local_var(list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var, transform_hlds.unused_args_base_ops.local_var_usage_map, transform_hlds.unused_args_base_ops.local_var_usage_map).
+:- mode local_vars_are_required_by_local_var(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred local_vars_are_required_by_proc_arg(list.list(parse_tree.prog_data.prog_var), transform_hlds.unused_args_base_ops.arg_var_in_proc, transform_hlds.unused_args_base_ops.local_var_usage_map, transform_hlds.unused_args_base_ops.local_var_usage_map).
+:- mode local_vars_are_required_by_proc_arg(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred proc_arg_var_is_used(transform_hlds.unused_args_base_ops.global_var_usage_map, hlds.hlds_pred.pred_proc_id, parse_tree.prog_data.prog_var).
+:- mode proc_arg_var_is_used(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred record_var_as_used(parse_tree.prog_data.prog_var, transform_hlds.unused_args_base_ops.local_var_usage_map, transform_hlds.unused_args_base_ops.local_var_usage_map).
+:- mode record_var_as_used(builtin.in, builtin.in, builtin.out) is det.
+:- pred record_vars_as_used(list.list(parse_tree.prog_data.prog_var), transform_hlds.unused_args_base_ops.local_var_usage_map, transform_hlds.unused_args_base_ops.local_var_usage_map).
+:- mode record_vars_as_used(builtin.in, builtin.in, builtin.out) is det.
+:- pred remove_specified_positions(list.list(int), list.list(T), list.list(T)).
+:- mode remove_specified_positions(builtin.in, builtin.in, builtin.out) is det.
+:- pred write_global_var_usage_map(io.text_output_stream, hlds.hlds_module.module_info, transform_hlds.unused_args_base_ops.global_var_usage_map, io.io, io.io).
+:- mode write_global_var_usage_map(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
