@@ -1,0 +1,23 @@
+:- module (transform_hlds.rbmm).points_to_info.
+:- interface.
+:- use_module hlds.
+:- use_module map.
+:- use_module hlds.hlds_pred.
+:- use_module transform_hlds.smm_common.
+:- use_module (transform_hlds.rbmm).points_to_graph.
+:- type rpt_alpha_mapping == map.map(transform_hlds.smm_common.program_point, transform_hlds.rbmm.points_to_info.rpt_call_alpha_mapping).
+:- type rpt_call_alpha_mapping == map.map(transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_node).
+:- type rpta_info
+    --->    rpta_info(
+                 transform_hlds.rbmm.points_to_graph.rpt_graph,
+                 transform_hlds.rbmm.points_to_info.rpt_alpha_mapping
+            ).
+:- type rpta_info_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.points_to_info.rpta_info).
+:- pred rpta_info_equal(transform_hlds.rbmm.points_to_info.rpta_info, transform_hlds.rbmm.points_to_info.rpta_info).
+:- mode rpta_info_equal(builtin.in, builtin.in) is semidet.
+:- func rpta_info_init(hlds.hlds_pred.proc_info) = transform_hlds.rbmm.points_to_info.rpta_info.
+:- func rpta_info_table_init = transform_hlds.rbmm.points_to_info.rpta_info_table.
+:- pred rpta_info_table_search_rpta_info(transform_hlds.rbmm.points_to_info.rpta_info_table, hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.points_to_info.rpta_info).
+:- mode rpta_info_table_search_rpta_info(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred rpta_info_table_set_rpta_info(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.points_to_info.rpta_info, transform_hlds.rbmm.points_to_info.rpta_info_table, transform_hlds.rbmm.points_to_info.rpta_info_table).
+:- mode rpta_info_table_set_rpta_info(builtin.in, builtin.in, builtin.in, builtin.out) is det.

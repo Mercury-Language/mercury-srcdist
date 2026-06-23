@@ -1,0 +1,39 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = analysis_external
+MAYBE_J1 = -j1
+
+# Delete options which are incompatible with --intermodule-analysis.
+# These are currently set for nightly tests.
+override EXTRA_MCFLAGS := $(patsubst --intermodule-opt%,,$(EXTRA_MCFLAGS))
+override EXTRA_MCFLAGS := $(patsubst --transitive-%,,$(EXTRA_MCFLAGS))
+
+#-----------------------------------------------------------------------------#
+
+ifdef WORKSPACE_HAS_SUBDIRS
+PROGS = \
+	ext_1 \
+	ext_2
+else
+PROGS = 
+endif
+
+TESTS = $(sort $(PROGS:%=%-nodepend))
+
+include ../Mmake.common
+
+ext_1.runtest:
+	MC=$(MC) ./ext_1_runtest.sh
+
+ext_2.runtest:
+	MC=$(MC) ./ext_2_runtest.sh
+
+realclean_local: realclean_analysis_external
+
+realclean_analysis_external:
+	$(RM) -r Mercury
+
+#-----------------------------------------------------------------------------#
