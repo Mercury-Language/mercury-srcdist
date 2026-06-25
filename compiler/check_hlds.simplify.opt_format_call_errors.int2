@@ -1,0 +1,5 @@
+:- module (check_hlds.simplify).opt_format_call_errors.
+:- interface.
+:- type maybe_warn_unknown_format
+    --->    do_not_warn_unknown_format 
+    ;       warn_unknown_format .
