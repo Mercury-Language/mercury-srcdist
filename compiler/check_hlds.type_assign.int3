@@ -1,0 +1,15 @@
+:- module (check_hlds.type_assign).
+:- interface.
+:- type args_type_assign.
+:- type args_type_assign_set.
+:- type coerce_constraint.
+:- type coerce_constraint_status
+	where	type_is_abstract_enum(1).
+:- type type_assign.
+:- type type_assign_set.
+:- type_representation(args_type_assign, is_word_aligned_ptr).
+:- type_representation(args_type_assign_set, is_eqv_to(list(check_hlds.type_assign.args_type_assign))).
+:- type_representation(coerce_constraint, is_word_aligned_ptr).
+:- type_representation(coerce_constraint_status, du_repn(enum("need_to_check", "unsatisfiable", [],  no_c_j_cs))).
+:- type_representation(type_assign, is_word_aligned_ptr).
+:- type_representation(type_assign_set, is_eqv_to(list(check_hlds.type_assign.type_assign))).

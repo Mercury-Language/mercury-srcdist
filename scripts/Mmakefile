@@ -1,0 +1,228 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1996-2009, 2011 The University of Melbourne.
+# Copyright (C) 2013, 2015, 2017-2018, 2020, 2022-2023 The Mercury team.
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# Mmake - Mmake file for the Mercury scripts
+
+MAIN_TARGET=all
+
+MERCURY_DIR=..
+include $(MERCURY_DIR)/Mmake.common
+
+#-----------------------------------------------------------------------------#
+
+NONCONF_SCRIPTS = \
+	mprof_merge_runs \
+	mtc \
+	vpath_find
+
+CONF_SCRIPTS = \
+	c2init \
+	canonical_grade \
+	mdb \
+	mdb.bat \
+	mdprof \
+	mercury \
+	mercury.bat \
+	mercury_config \
+	mercury_update_interface \
+	mgnuc \
+	mkfifo_using_mknod \
+	ml \
+	mmake \
+	mmc \
+	mprof \
+	mprof.bat \
+	mtags \
+	prepare_install_dir
+
+SCRIPTS = $(NONCONF_SCRIPTS) $(CONF_SCRIPTS)
+
+CONF_FILES = \
+	Mercury.config.bootstrap \
+	Mercury.config \
+	Mmake.vars \
+	parse_ml_options.sh-subr
+
+CONF_DEBUG_SCRIPTS = \
+	mdbrc
+
+DEBUGGER_SCRIPTS = \
+	$(CONF_DEBUG_SCRIPTS) \
+	mdb_open \
+	mdb_grep \
+	mdb_track \
+	mdb_term_browser.js \
+	mdb_term_browser.css \
+	jquery.slim.js \
+	jstree.js \
+	jstree.style.css \
+	32px.png \
+	40px.png \
+	throbber.gif
+
+EMACS_SCRIPTS = gud.el
+
+JAVA_WRAPPER_SCRIPTS = \
+	mercury_compile	\
+	mfilterjavac
+
+CSHARP_WRAPPER_SCRIPTS = \
+	mercury_compile
+
+#-----------------------------------------------------------------------------#
+
+# .SUFFIXES: .in
+
+# We test membership of CONF_SCRIPTS and CONF_FILES, because testing $(@D)
+# (the directory part of $*) does the wrong thing for Mercury.config.
+# Not testing anything would make this rule apply even to ../Mmake.common.
+# The grep is there to ensure that there were no mispelt autoconf variable
+# names.
+
+%::	%.in $(MERCURY_DIR)/config.status
+	@for file in $(CONF_SCRIPTS) ; do \
+		if test "$*" = "$$file" ; then \
+			$(MERCURY_DIR)/config.status --file=$* ; \
+			if grep -n '[^$$]@' $@ > /dev/null; \
+			then false; \
+			else true; \
+			fi ; \
+			chmod a+x $* ; \
+		fi \
+	done
+	@for file in $(CONF_FILES) $(CONF_DEBUG_SCRIPTS) ; do \
+		if test "$*" = "$$file" ; then \
+			$(MERCURY_DIR)/config.status --file=$* ; \
+			if grep -n '[^$$]@' $@ > /dev/null; \
+			then false; \
+			else true; \
+			fi \
+		fi \
+	done
+
+# To allow a change to the debugger and/or to its documentation to be
+# matched by changes in the expected output files in the debugger and
+# declarative_debugger test directories, we must give the tests in those
+# directories access to mdb_doc and mdbrc files in the current workspace,
+# *not* in the installed system.
+test_mdbrc: mdbrc.in mdbrc
+	@echo making test_mdbrc
+	@ABS_MERCURY_DIR=`(cd $(MERCURY_DIR); /bin/pwd)` ; \
+	ABS_MERCURY_DIR=`$(FIX_PATH_FOR_WINDOWS) $${ABS_MERCURY_DIR}` ; \
+	sed \
+		-e "s,@DEFAULT_MERCURY_DEBUGGER_DOC@,$${ABS_MERCURY_DIR}/doc/mdb_doc," \
+		-e "s,@DEFAULT_MERCURY_DEBUGGER_INIT_DIR@,$${ABS_MERCURY_DIR}/scripts," \
+		-e '/^web_/d' \
+	< mdbrc.in > test_mdbrc
+	@egrep '^web_' < mdbrc >> test_mdbrc
+	@if grep '@' test_mdbrc; then \
+		echo "unhandled configuration variable in test_mdbrc"; \
+		exit 1; \
+	fi
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: all
+all: $(CONF_FILES) $(SCRIPTS) $(DEBUGGER_SCRIPTS) $(EMACS_SCRIPTS) test_mdbrc
+
+#-----------------------------------------------------------------------------#
+
+parse_ml_options.sh-subr mgnuc canonical_grade: init_grade_options.sh-subr
+parse_ml_options.sh-subr mgnuc canonical_grade: parse_grade_options.sh-subr
+parse_ml_options.sh-subr mgnuc canonical_grade: final_grade_options.sh-subr
+ml c2init: parse_ml_options.sh-subr
+ml c2init canonical_grade: canonical_grade.sh-subr
+mercury_config: ../configure.help
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: install
+install: install_mmake install_scripts install_config \
+	install_debugger_scripts install_emacs_scripts
+
+.PHONY: install_dirs
+install_dirs:
+	[ -d $(INSTALL_BINDIR) ] || mkdir -p $(INSTALL_BINDIR)
+	[ -d $(INSTALL_LIBDIR)/mmake ] || mkdir -p $(INSTALL_LIBDIR)/mmake
+	[ -d $(INSTALL_LIBDIR)/mdb ] || mkdir -p $(INSTALL_LIBDIR)/mdb
+	[ -d $(INSTALL_CONF_DIR) ] || mkdir -p $(INSTALL_CONF_DIR)
+	[ -d $(INSTALL_ELISP_DIR) ] || mkdir -p $(INSTALL_ELISP_DIR)
+	[ -d $(INSTALL_RECONF_DIR)/scripts ] || \
+		mkdir -p $(INSTALL_RECONF_DIR)/scripts
+
+.PHONY: install_mmake
+install_mmake: Mmake.vars Mmake.rules install_dirs
+	rm -f $(INSTALL_LIBDIR)/mmake/Mmake.vars
+	cp `vpath_find Mmake.vars Mmake.rules` $(INSTALL_LIBDIR)/mmake
+
+.PHONY: install_scripts
+install_scripts: $(SCRIPTS) install_dirs
+	# We move the installed `mmake' script before (re)installing it
+	# to avoid overwriting the script while it is running
+	# (just removing it doesn't work very well on win32, which will
+	# deny you permission to write the file while mmake is running).
+	-mv $(INSTALL_BINDIR)/mmake $(INSTALL_BINDIR)/mmake.old
+	cp $(SCRIPTS) $(INSTALL_BINDIR)
+	-for file in $(SCRIPTS); do \
+		chmod u+w $(INSTALL_BINDIR)/$$file ;\
+	done
+	cp *.in *.sh-subr $(SCRIPTS) $(INSTALL_RECONF_DIR)/scripts
+	-rm -f $(INSTALL_BINDIR)/mmake.old
+ifeq ($(findstring java,$(GRADE)),java)
+	for file in $(JAVA_WRAPPER_SCRIPTS); do \
+		cp $$file.sh-java $(INSTALL_MERC_BIN_DIR)/$$file ;\
+	done
+endif
+ifeq ($(findstring csharp,$(GRADE)),csharp)
+	for file in $(CSHARP_WRAPPER_SCRIPTS); do \
+		cp $$file.sh-csharp $(INSTALL_MERC_BIN_DIR)/$$file ;\
+	done
+endif
+
+.PHONY: install_config
+install_config: Mercury.config install_dirs
+	rm -f $(INSTALL_CONF_DIR)/Mercury.config
+	cp `vpath_find Mercury.config` $(INSTALL_CONF_DIR)
+
+.PHONY: install_debugger_scripts
+install_debugger_scripts: $(DEBUGGER_SCRIPTS) install_dirs
+	# Reportedly old versions of Mercury used to install mdbrc
+	# as read-only. If that is the case, then we need to make sure
+	# that it gets made writable before we install the new version.
+	-chmod u+w $(INSTALL_LIBDIR)/mdb/*
+	cp $(DEBUGGER_SCRIPTS) $(INSTALL_LIBDIR)/mdb
+
+.PHONY: install_emacs_scripts
+install_emacs_scripts: $(EMACS_SCRIPTS) install_dirs
+	cp $(EMACS_SCRIPTS) $(INSTALL_ELISP_DIR)
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: uninstall
+uninstall:
+	-rm -r $(INSTALL_LIBDIR)/mmake
+	-cd $(INSTALL_BINDIR) && rm $(SCRIPTS)
+	-cd $(INSTALL_LIBDIR)/mdb && rm $(DEBUGGER_SCRIPTS)
+	# The reason why we don't uninstall $(EMACS_SCRIPTS) specifically here
+	# is that the uninstall rule in the top-level Mmakefile does an "rm -r"
+	# on $(INSTALL_LIBDIR), and the directory into which $(EMACS_SCRIPTS)
+	# is installed, $(INSTALL_ELISP_DIR), is configured to be a
+	# subdirectory of $(INSTALL_LIBDIR).
+
+#-----------------------------------------------------------------------------#
+
+realclean_local: clean_scripts
+
+.PHONY: clean_scripts
+clean_scripts:
+	for file in *.in; do rm -f `basename $$file .in`; done
+	rm -f test_mdbrc
+	rm -f config.log
+
+#-----------------------------------------------------------------------------#

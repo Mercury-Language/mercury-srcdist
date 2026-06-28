@@ -1,0 +1,65 @@
+:- module (parse_tree.prog_ctgc).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module term.
+:- use_module varset.
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_pragma).
+:- pred dump_structure_reuse_domain(io.text_output_stream, parse_tree.prog_data.prog_varset, parse_tree.prog_data.tvarset, parse_tree.prog_data_pragma.structure_reuse_domain, io.io, io.io).
+:- mode dump_structure_reuse_domain((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred dump_structure_sharing_domain(io.text_output_stream, parse_tree.prog_data.prog_varset, parse_tree.prog_data.tvarset, parse_tree.prog_data_pragma.structure_sharing_domain, io.io, io.io).
+:- mode dump_structure_sharing_domain((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func parse_datastruct(term.term(T)) = parse_tree.prog_data_pragma.datastruct.
+:- func parse_selector(term.term(T)) = parse_tree.prog_data_pragma.selector.
+:- func parse_structure_reuse_condition(term.term(T)) = parse_tree.prog_data_pragma.structure_reuse_condition.
+:- func parse_structure_reuse_conditions(term.term(T)) = parse_tree.prog_data_pragma.structure_reuse_conditions.
+:- func parse_structure_reuse_domain(term.term(T)) = parse_tree.prog_data_pragma.structure_reuse_domain.
+:- func parse_structure_sharing(term.term(T)) = parse_tree.prog_data_pragma.structure_sharing.
+:- func parse_structure_sharing_domain(term.term(T)) = parse_tree.prog_data_pragma.structure_sharing_domain.
+:- func parse_structure_sharing_pair(term.term(T)) = parse_tree.prog_data_pragma.structure_sharing_pair.
+:- func parse_unit_selector(term.term(T)) = parse_tree.prog_data_pragma.unit_selector.
+:- pred parse_user_annotated_sharing(varset.varset, term.term, parse_tree.prog_data_pragma.user_annotated_sharing).
+:- mode parse_user_annotated_sharing((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred print_datastruct(io.text_output_stream, parse_tree.prog_data.prog_varset, parse_tree.prog_data.tvarset, parse_tree.prog_data_pragma.datastruct, io.io, io.io).
+:- mode print_datastruct((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print_datastructs(io.text_output_stream, parse_tree.prog_data.prog_varset, parse_tree.prog_data.tvarset, list.list(parse_tree.prog_data_pragma.datastruct), io.io, io.io).
+:- mode print_datastructs((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print_interface_maybe_structure_reuse_domain(io.text_output_stream, parse_tree.prog_data.prog_varset, parse_tree.prog_data.tvarset, maybe.maybe(parse_tree.prog_data_pragma.structure_reuse_domain), io.io, io.io).
+:- mode print_interface_maybe_structure_reuse_domain((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print_interface_structure_sharing_domain(io.text_output_stream, parse_tree.prog_data.prog_varset, parse_tree.prog_data.tvarset, maybe.maybe(parse_tree.prog_data_pragma.structure_sharing_domain), io.io, io.io).
+:- mode print_interface_structure_sharing_domain((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print_selector(io.text_output_stream, parse_tree.prog_data.tvarset, parse_tree.prog_data_pragma.selector, io.io, io.io).
+:- mode print_selector((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print_structure_sharing(io.text_output_stream, parse_tree.prog_data.prog_varset, parse_tree.prog_data.tvarset, maybe.maybe(int), string, string, string, parse_tree.prog_data_pragma.structure_sharing, io.io, io.io).
+:- mode print_structure_sharing((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print_structure_sharing_as_list(io.text_output_stream, parse_tree.prog_data.prog_varset, parse_tree.prog_data.tvarset, parse_tree.prog_data_pragma.structure_sharing, io.io, io.io).
+:- mode print_structure_sharing_as_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print_structure_sharing_domain(io.text_output_stream, parse_tree.prog_data.prog_varset, parse_tree.prog_data.tvarset, bool.bool, maybe.maybe(int), parse_tree.prog_data_pragma.structure_sharing_domain, io.io, io.io).
+:- mode print_structure_sharing_domain((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print_structure_sharing_pair(io.text_output_stream, parse_tree.prog_data.prog_varset, parse_tree.prog_data.tvarset, parse_tree.prog_data_pragma.structure_sharing_pair, io.io, io.io).
+:- mode print_structure_sharing_pair((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred rename_datastruct(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var), parse_tree.prog_data.tsubst, parse_tree.prog_data_pragma.datastruct, parse_tree.prog_data_pragma.datastruct).
+:- mode rename_datastruct((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func rename_datastruct(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var), parse_tree.prog_data.tsubst, parse_tree.prog_data_pragma.datastruct) = parse_tree.prog_data_pragma.datastruct.
+:- pred rename_selector(parse_tree.prog_data.tsubst, parse_tree.prog_data_pragma.selector, parse_tree.prog_data_pragma.selector).
+:- mode rename_selector((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_structure_reuse_condition(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var), parse_tree.prog_data.tsubst, parse_tree.prog_data_pragma.structure_reuse_condition, parse_tree.prog_data_pragma.structure_reuse_condition).
+:- mode rename_structure_reuse_condition((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_structure_reuse_conditions(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var), parse_tree.prog_data.tsubst, parse_tree.prog_data_pragma.structure_reuse_conditions, parse_tree.prog_data_pragma.structure_reuse_conditions).
+:- mode rename_structure_reuse_conditions((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_structure_reuse_domain(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var), parse_tree.prog_data.tsubst, parse_tree.prog_data_pragma.structure_reuse_domain, parse_tree.prog_data_pragma.structure_reuse_domain).
+:- mode rename_structure_reuse_domain((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_structure_sharing(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var), parse_tree.prog_data.tsubst, parse_tree.prog_data_pragma.structure_sharing, parse_tree.prog_data_pragma.structure_sharing).
+:- mode rename_structure_sharing((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_structure_sharing_domain(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var), parse_tree.prog_data.tsubst, parse_tree.prog_data_pragma.structure_sharing_domain, parse_tree.prog_data_pragma.structure_sharing_domain).
+:- mode rename_structure_sharing_domain((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_structure_sharing_pair(map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var), parse_tree.prog_data.tsubst, parse_tree.prog_data_pragma.structure_sharing_pair, parse_tree.prog_data_pragma.structure_sharing_pair).
+:- mode rename_structure_sharing_pair((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_unit_selector(parse_tree.prog_data.tsubst, parse_tree.prog_data_pragma.unit_selector, parse_tree.prog_data_pragma.unit_selector).
+:- mode rename_unit_selector((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_user_annotated_sharing(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data_pragma.user_annotated_sharing, parse_tree.prog_data_pragma.user_annotated_sharing).
+:- mode rename_user_annotated_sharing((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
