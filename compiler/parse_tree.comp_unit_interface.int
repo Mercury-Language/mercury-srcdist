@@ -1,0 +1,61 @@
+:- module parse_tree.comp_unit_interface.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module libs.timestamp.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.module_baggage.
+:- use_module parse_tree.prog_parse_tree.
+:- use_module parse_tree.read_modules.
+:- type generate_int0_result
+    --->    gpti0_ok(
+                 parse_tree.prog_parse_tree.parse_tree_int0,
+                 maybe.maybe(libs.timestamp.timestamp),
+                 libs.file_util.file_name,
+                 list.list(parse_tree.error_spec.error_spec)
+            )
+    ;       gpti0_error(
+                 mdbcomp.sym_name.module_name,
+                 list.list(parse_tree.error_spec.format_piece),
+                 list.list(parse_tree.error_spec.error_spec)
+            ).
+:- type generate_int12_result
+    --->    gpti12_ok(
+                 parse_tree.prog_parse_tree.parse_tree_int1,
+                 parse_tree.prog_parse_tree.parse_tree_int2,
+                 maybe.maybe(libs.timestamp.timestamp),
+                 libs.file_util.file_name,
+                 libs.file_util.file_name,
+                 list.list(parse_tree.error_spec.error_spec)
+            )
+    ;       gpti12_error(
+                 mdbcomp.sym_name.module_name,
+                 list.list(parse_tree.error_spec.format_piece),
+                 list.list(parse_tree.error_spec.error_spec)
+            ).
+:- type generate_int3_result
+    --->    gpti3_ok(
+                 parse_tree.prog_parse_tree.parse_tree_int3,
+                 libs.file_util.file_name,
+                 list.list(parse_tree.error_spec.error_spec)
+            )
+    ;       gpti3_error(
+                 mdbcomp.sym_name.module_name,
+                 list.list(parse_tree.error_spec.format_piece),
+                 list.list(parse_tree.error_spec.error_spec)
+            ).
+:- type maybe_add_to_hptm
+    --->    do_not_add_new_to_hptm 
+    ;       do_add_new_to_hptm .
+:- pred generate_parse_tree_int0(io.text_output_stream, libs.globals.globals, parse_tree.comp_unit_interface.maybe_add_to_hptm, parse_tree.module_baggage.burdened_module, parse_tree.comp_unit_interface.generate_int0_result, parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, io.io, io.io).
+:- mode generate_parse_tree_int0(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_parse_tree_int12(io.text_output_stream, libs.globals.globals, parse_tree.comp_unit_interface.maybe_add_to_hptm, parse_tree.module_baggage.burdened_module, parse_tree.comp_unit_interface.generate_int12_result, parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, io.io, io.io).
+:- mode generate_parse_tree_int12(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred generate_parse_tree_int3(libs.globals.globals, parse_tree.comp_unit_interface.maybe_add_to_hptm, parse_tree.module_baggage.burdened_module, parse_tree.comp_unit_interface.generate_int3_result, parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, io.io, io.io).
+:- mode generate_parse_tree_int3(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
