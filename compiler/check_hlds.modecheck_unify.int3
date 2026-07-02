@@ -1,0 +1,2 @@
+:- module check_hlds.modecheck_unify.
+:- interface.

@@ -1,0 +1,71 @@
+/*
+** Automatically generated from `check_field_access_functions.m'
+** by the Mercury compiler,
+** version rotd-2026-07-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_hlds.check_field_access_functions.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__check_field_access_functions
+#define MR_HEADER_GUARD_hlds__make_hlds__check_field_access_functions
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__CHECK_FIELD_ACCESS_FUNCTIONS_DECL_GUARD
+#define HLDS__MAKE_HLDS__CHECK_FIELD_ACCESS_FUNCTIONS_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+void MR_CALL 
+hlds__make_hlds__check_field_access_functions__check_preds_if_field_access_function_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_hlds__check_field_access_functions__maybe_check_field_access_function_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void mercury__hlds__make_hlds__check_field_access_functions__init(void);
+void mercury__hlds__make_hlds__check_field_access_functions__init_type_tables(void);
+void mercury__hlds__make_hlds__check_field_access_functions__init_debugger(void);
+const char *mercury__hlds__make_hlds__check_field_access_functions__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.make_hlds.check_field_access_functions
+
+// :- end_interface hlds.make_hlds.check_field_access_functions.

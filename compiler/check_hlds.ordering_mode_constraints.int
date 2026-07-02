@@ -1,0 +1,33 @@
+:- module check_hlds.ordering_mode_constraints.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module check_hlds.build_mode_constraints.
+:- use_module check_hlds.prop_mode_constraints.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module mdbcomp.goal_path.
+:- type conjunct_id == int.
+:- type mode_ordering_constraint
+    --->    lt(
+                 (check_hlds.ordering_mode_constraints).first :: check_hlds.ordering_mode_constraints.conjunct_id,
+                 (check_hlds.ordering_mode_constraints).second :: check_hlds.ordering_mode_constraints.conjunct_id
+            ).
+:- type mode_ordering_constraints == list.list(check_hlds.ordering_mode_constraints.mode_ordering_constraint).
+:- type ordering_constraints_info
+    --->    ordering_constraints_info(
+                 (check_hlds.ordering_mode_constraints).oci_containing_map :: mdbcomp.goal_path.containing_goal_map,
+                 (check_hlds.ordering_mode_constraints).oci_num_conjuncts :: int,
+                 (check_hlds.ordering_mode_constraints).oci_constraints :: set.set(check_hlds.ordering_mode_constraints.mode_ordering_constraint)
+            ).
+:- pred add_lt_constraint(check_hlds.ordering_mode_constraints.conjunct_id, check_hlds.ordering_mode_constraints.conjunct_id, check_hlds.ordering_mode_constraints.ordering_constraints_info, check_hlds.ordering_mode_constraints.ordering_constraints_info).
+:- mode add_lt_constraint(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred add_ordering_constraint(check_hlds.ordering_mode_constraints.mode_ordering_constraint, check_hlds.ordering_mode_constraints.ordering_constraints_info, check_hlds.ordering_mode_constraints.ordering_constraints_info).
+:- mode add_ordering_constraint(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred dump_goal_paths(io.text_output_stream, hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_id), io.io, io.io).
+:- mode dump_goal_paths(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred mode_reordering(check_hlds.prop_mode_constraints.pred_constraints_map, check_hlds.build_mode_constraints.mc_var_map, list.list(list.list(hlds.hlds_pred.pred_id)), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode mode_reordering(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
