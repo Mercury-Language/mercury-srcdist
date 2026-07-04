@@ -1,0 +1,58 @@
+:- module check_hlds.scout_disjunctions.
+:- interface.
+:- use_module char.
+:- use_module hlds.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module one_or_more.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module mdbcomp.goal_path.
+:- use_module parse_tree.prog_data.
+:- type all_arms_summary_map == map.map(parse_tree.prog_data.prog_var, check_hlds.scout_disjunctions.var_all_arms_summary).
+:- type disjunct_id
+    --->    disjunct_id(
+                 mdbcomp.goal_path.goal_id
+            ).
+:- type disjunct_id_info.
+:- type disjunct_info.
+:- type disjunct_info_map == map.map(check_hlds.scout_disjunctions.disjunct_id, check_hlds.scout_disjunctions.disjunct_info).
+:- type disjunction_id
+    --->    disjunction_id(
+                 mdbcomp.goal_path.goal_id
+            ).
+:- type disjunction_info
+    --->    disjunction_info(
+                 (check_hlds.scout_disjunctions).dni_arms :: one_or_more.one_or_more(check_hlds.scout_disjunctions.disjunct_id_info),
+                 (check_hlds.scout_disjunctions).dni_summary_map :: check_hlds.scout_disjunctions.all_arms_summary_map
+            ).
+:- type disjunction_info_map == map.map(check_hlds.scout_disjunctions.disjunction_id, check_hlds.scout_disjunctions.disjunction_info).
+:- type is_sub_disj_needed
+    --->    sub_disj_is_not_needed 
+    ;       sub_disj_is_needed .
+:- type switchable_cons_id =< parse_tree.prog_data.cons_id
+    --->    du_data_ctor(
+                 parse_tree.prog_data.du_ctor
+            )
+    ;       some_int_const(
+                 parse_tree.prog_data.some_int_const
+            )
+    ;       float_const(
+                 float
+            )
+    ;       char_const(
+                 char.char
+            )
+    ;       string_const(
+                 string
+            ).
+:- type var_all_arms_summary
+    --->    var_all_arms_summary(
+                 set.set(check_hlds.scout_disjunctions.switchable_cons_id),
+                 check_hlds.scout_disjunctions.is_sub_disj_needed
+            ).
+:- pred scout_disjunctions_in_proc(hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, check_hlds.scout_disjunctions.disjunction_info_map).
+:- mode scout_disjunctions_in_proc(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- func switchable_cons_id_to_cons_id(check_hlds.scout_disjunctions.switchable_cons_id) = parse_tree.prog_data.cons_id.

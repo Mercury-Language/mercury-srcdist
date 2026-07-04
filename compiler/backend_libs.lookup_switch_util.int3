@@ -1,0 +1,12 @@
+:- module backend_libs.lookup_switch_util.
+:- interface.
+:- type case_consts(Key, Rval, SeveralInfo).
+:- type case_consts_several_llds.
+:- type need_bit_vec_check
+	where	type_is_abstract_enum(2).
+:- type need_range_check
+	where	type_is_abstract_enum(1).
+:- type soln_consts(Rval).
+:- type_representation(case_consts_several_llds, is_word_aligned_ptr).
+:- type_representation(need_bit_vec_check, du_repn(enum("do_not_need_bit_vec_check_no_gaps", "do_not_need_bit_vec_check_with_gaps", ["need_bit_vec_check"],  no_c_j_cs))).
+:- type_representation(need_range_check, du_repn(enum("do_not_need_range_check", "need_range_check", [],  no_c_j_cs))).

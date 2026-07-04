@@ -1,0 +1,41 @@
+:- module backend_libs.link_target_util.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module libs.
+:- use_module mdbcomp.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- use_module mdbcomp.sym_name.
+:- type linked_target_type
+    --->    executable 
+    ;       static_library 
+    ;       shared_library 
+    ;       csharp_executable 
+    ;       csharp_library 
+    ;       java_executable 
+    ;       java_archive .
+:- inst c_exe_or_shared_lib for (backend_libs.link_target_util).linked_target_type/0
+    --->    executable
+    ;       shared_library.
+:- inst c_linked_target_type for (backend_libs.link_target_util).linked_target_type/0
+    --->    executable
+    ;       shared_library
+    ;       static_library.
+:- inst csharp_linked_target_type for (backend_libs.link_target_util).linked_target_type/0
+    --->    csharp_executable
+    ;       csharp_library.
+:- inst java_linked_target_type for (backend_libs.link_target_util).linked_target_type/0
+    --->    java_archive
+    ;       java_executable.
+:- pred linked_target_file_name_full_curdir(libs.globals.globals, mdbcomp.sym_name.module_name, backend_libs.link_target_util.linked_target_type, libs.file_util.file_name, libs.file_util.file_name, io.io, io.io).
+:- mode linked_target_file_name_full_curdir(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred post_link_maybe_make_symlink(io.text_output_stream, libs.globals.globals, backend_libs.link_target_util.linked_target_type, mdbcomp.sym_name.module_name, libs.file_util.file_name, libs.file_util.file_name, libs.maybe_util.maybe_succeeded, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode post_link_maybe_make_symlink(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred post_link_maybe_make_symlink_or_copy(io.text_output_stream, libs.globals.globals, backend_libs.link_target_util.linked_target_type, mdbcomp.sym_name.module_name, libs.file_util.file_name, libs.file_util.file_name, libs.maybe_util.maybe_succeeded, bool.bool, io.io, io.io).
+:- mode post_link_maybe_make_symlink_or_copy(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred post_link_msg(io.text_output_stream, libs.globals.globals, io.io, io.io).
+:- mode post_link_msg(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred pre_link_msg(io.text_output_stream, libs.globals.globals, io.io, io.io).
+:- mode pre_link_msg(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
