@@ -1,0 +1,38 @@
+:- module parse_tree.parse_inst_mode_name.
+:- interface.
+:- use_module cord.
+:- use_module list.
+:- use_module term.
+:- use_module varset.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.maybe_error.
+:- use_module parse_tree.prog_data.
+:- type allow_constrained_inst_var
+    --->    allow_constrained_inst_var 
+    ;       no_allow_constrained_inst_var(
+                 parse_tree.parse_inst_mode_name.why_no_constrained_inst_var
+            ).
+:- type why_no_constrained_inst_var
+    --->    wnciv_constraint_rhs 
+    ;       wnciv_inst_defn_lhs 
+    ;       wnciv_eqv_inst_defn_rhs 
+    ;       wnciv_mode_defn_rhs 
+    ;       wnciv_type_and_mode 
+    ;       wnciv_solver_type_inst 
+    ;       wnciv_mutable_inst .
+:- pred is_known_inst_name(string).
+:- mode is_known_inst_name(builtin.in) is semidet.
+:- pred is_known_mode_name(string).
+:- mode is_known_mode_name(builtin.in) is semidet.
+:- pred parse_determinism(varset.varset, term.term, parse_tree.maybe_error.maybe1(parse_tree.prog_data.determinism)).
+:- mode parse_determinism(builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_inst(parse_tree.parse_inst_mode_name.allow_constrained_inst_var, varset.varset, cord.cord(parse_tree.error_spec.format_piece), term.term, parse_tree.maybe_error.maybe1(parse_tree.prog_data.mer_inst)).
+:- mode parse_inst(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_insts(parse_tree.parse_inst_mode_name.allow_constrained_inst_var, varset.varset, cord.cord(parse_tree.error_spec.format_piece), list.list(term.term), parse_tree.maybe_error.maybe1(list.list(parse_tree.prog_data.mer_inst))).
+:- mode parse_insts(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_mode(parse_tree.parse_inst_mode_name.allow_constrained_inst_var, varset.varset, cord.cord(parse_tree.error_spec.format_piece), term.term, parse_tree.maybe_error.maybe1(parse_tree.prog_data.mer_mode)).
+:- mode parse_mode(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_modes(parse_tree.parse_inst_mode_name.allow_constrained_inst_var, varset.varset, cord.cord(parse_tree.error_spec.format_piece), list.list(term.term), parse_tree.maybe_error.maybe1(list.list(parse_tree.prog_data.mer_mode))).
+:- mode parse_modes(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred standard_det(string, parse_tree.prog_data.determinism).
+:- mode standard_det(builtin.in, builtin.out) is semidet.

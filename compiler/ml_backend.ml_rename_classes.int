@@ -1,0 +1,17 @@
+:- module ml_backend.ml_rename_classes.
+:- interface.
+:- use_module map.
+:- use_module ml_backend.mlds.
+:- type class_name_renaming
+    --->    class_name_renaming(
+                 (ml_backend.ml_rename_classes).cnr_module :: ml_backend.mlds.mlds_module_name,
+                 (ml_backend.ml_rename_classes).cnr_renaming :: map.map(ml_backend.mlds.mlds_class_name, ml_backend.mlds.mlds_class_name)
+            ).
+:- pred rename_class_names_in_class_defn(ml_backend.ml_rename_classes.class_name_renaming, ml_backend.mlds.mlds_class_defn, ml_backend.mlds.mlds_class_defn).
+:- mode rename_class_names_in_class_defn(builtin.in, builtin.in, builtin.out) is det.
+:- pred rename_class_names_in_env_defn(ml_backend.ml_rename_classes.class_name_renaming, ml_backend.mlds.mlds_env_defn, ml_backend.mlds.mlds_env_defn).
+:- mode rename_class_names_in_env_defn(builtin.in, builtin.in, builtin.out) is det.
+:- pred rename_class_names_in_function_defn(ml_backend.ml_rename_classes.class_name_renaming, ml_backend.mlds.mlds_function_defn, ml_backend.mlds.mlds_function_defn).
+:- mode rename_class_names_in_function_defn(builtin.in, builtin.in, builtin.out) is det.
+:- pred rename_class_names_in_global_var_defn(ml_backend.ml_rename_classes.class_name_renaming, ml_backend.mlds.mlds_global_var_defn, ml_backend.mlds.mlds_global_var_defn).
+:- mode rename_class_names_in_global_var_defn(builtin.in, builtin.in, builtin.out) is det.
