@@ -1,0 +1,79 @@
+/*
+** Automatically generated from `inst_check.m'
+** by the Mercury compiler,
+** version rotd-2026-07-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.inst_check.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__inst_check
+#define MR_HEADER_GUARD_check_hlds__inst_check
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__INST_CHECK_DECL_GUARD
+#define CHECK_HLDS__INST_CHECK_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_check__check_hlds__inst_check__type_ctor_info_cons_mismatch_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_check__check_hlds__inst_check__type_ctor_info_for_type_kind_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_check__check_hlds__inst_check__type_ctor_info_functor_name_and_arity_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_check__check_hlds__inst_check__type_ctor_info_functors_to_types_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_check__check_hlds__inst_check__type_ctor_info_mismatch_from_type_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_check__check_hlds__inst_check__type_ctor_info_near_miss_cons_mismatch_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_check__check_hlds__inst_check__type_ctor_info_type_ctor_and_defn_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_check__check_hlds__inst_check__type_ctor_info_type_defn_or_builtin_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_check__check_hlds__inst_check__type_ctor_info_typeable_functors_0;
+
+void MR_CALL 
+check_hlds__inst_check__check_insts_have_matching_types_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void mercury__check_hlds__inst_check__init(void);
+void mercury__check_hlds__inst_check__init_type_tables(void);
+void mercury__check_hlds__inst_check__init_debugger(void);
+const char *mercury__check_hlds__inst_check__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.inst_check
+
+// :- end_interface check_hlds.inst_check.

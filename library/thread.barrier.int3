@@ -1,0 +1,4 @@
+:- module thread.barrier.
+:- interface.
+:- type barrier.
+:- type_representation(barrier, is_word_aligned_ptr).

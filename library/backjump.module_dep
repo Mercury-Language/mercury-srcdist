@@ -1,0 +1,14 @@
+module(2, "backjump.m",
+	backjump,
+	{},
+	{builtin, private_builtin},
+	{io, list, string, string.format, string.parse_util},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - backjump, "C#" - backjump, "Java" - backjump},
+	contains_foreign_export,
+	no_main,
+	{}
+).
