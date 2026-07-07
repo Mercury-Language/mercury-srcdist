@@ -1,0 +1,25 @@
+:- module check_hlds.unify_proc.
+:- interface.
+:- use_module hlds.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module hlds.hlds_clauses.
+:- use_module hlds.hlds_data.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.status.
+:- use_module mdbcomp.prim_data.
+:- use_module parse_tree.prog_data.
+:- type spec_pred_defn_info
+    --->    spec_pred_defn_info(
+                 (check_hlds.unify_proc).spdi_spec_pred_id :: mdbcomp.prim_data.special_pred_id,
+                 (check_hlds.unify_proc).spdi_pred_id :: hlds.hlds_pred.pred_id,
+                 (check_hlds.unify_proc).spdi_tvarset :: parse_tree.prog_data.tvarset,
+                 (check_hlds.unify_proc).spdi_type :: parse_tree.prog_data.mer_type,
+                 (check_hlds.unify_proc).spdi_type_ctor :: parse_tree.prog_data.type_ctor,
+                 (check_hlds.unify_proc).spdi_type_body :: hlds.hlds_data.hlds_type_body,
+                 (check_hlds.unify_proc).spdi_orig_status :: hlds.status.type_status,
+                 (check_hlds.unify_proc).spdi_context :: parse_tree.prog_data.prog_context
+            ).
+:- pred generate_clauses_for_special_pred(check_hlds.unify_proc.spec_pred_defn_info, hlds.hlds_clauses.clauses_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode generate_clauses_for_special_pred(builtin.in, builtin.out, builtin.in, builtin.out) is det.

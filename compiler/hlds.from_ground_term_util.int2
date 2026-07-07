@@ -1,0 +1,23 @@
+:- module hlds.from_ground_term_util.
+:- interface.
+:- use_module map.
+:- use_module parse_tree.prog_data.
+:- type fgt_build_info.
+:- type fgt_build_info_map == map.map(parse_tree.prog_data.prog_var, hlds.from_ground_term_util.fgt_build_info).
+:- type fgt_invariants_status
+    --->    fgt_invariants_kept 
+    ;       fgt_invariants_broken .
+:- type fgt_marked_goal
+    --->    fgt_kept_goal(
+                 hlds.hlds_goal.hlds_goal,
+                 parse_tree.prog_data.prog_var,
+                 list.list(parse_tree.prog_data.prog_var)
+            )
+    ;       fgt_broken_goal(
+                 hlds.hlds_goal.hlds_goal,
+                 parse_tree.prog_data.prog_var,
+                 list.list(parse_tree.prog_data.prog_var)
+            ).
+:- type goal_order
+    --->    construct_bottom_up 
+    ;       deconstruct_top_down .
