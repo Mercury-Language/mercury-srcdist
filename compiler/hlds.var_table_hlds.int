@@ -1,0 +1,23 @@
+:- module hlds.var_table_hlds.
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_table.
+:- use_module parse_tree.vartypes.
+:- pred corresponding_vars_types_to_var_table(hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_type), parse_tree.var_table.var_table).
+:- mode corresponding_vars_types_to_var_table(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred create_fresh_named_var(hlds.hlds_module.module_info, string, parse_tree.prog_data.mer_type, parse_tree.prog_data.prog_var, parse_tree.var_table.var_table, parse_tree.var_table.var_table).
+:- mode create_fresh_named_var(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred create_fresh_var(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.prog_var, parse_tree.var_table.var_table, parse_tree.var_table.var_table).
+:- mode create_fresh_var(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred create_fresh_vars(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.prog_var), parse_tree.var_table.var_table, parse_tree.var_table.var_table).
+:- mode create_fresh_vars(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred make_var_table(hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, parse_tree.vartypes.vartypes, parse_tree.var_table.var_table).
+:- mode make_var_table(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred split_var_table(parse_tree.var_table.var_table, parse_tree.prog_data.prog_varset, parse_tree.vartypes.vartypes).
+:- mode split_var_table(builtin.in, builtin.out, builtin.out) is det.
+:- pred vars_types_to_var_table(hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, assoc_list.assoc_list(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type), parse_tree.var_table.var_table).
+:- mode vars_types_to_var_table(builtin.in, builtin.in, builtin.in, builtin.out) is det.

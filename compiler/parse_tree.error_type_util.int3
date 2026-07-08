@@ -1,0 +1,5 @@
+:- module parse_tree.error_type_util.
+:- interface.
+:- type maybe_add_quotes
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_add_quotes, du_repn(enum("do_not_add_quotes", "add_quotes", [],  no_c_j_cs))).

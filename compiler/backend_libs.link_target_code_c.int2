@@ -1,0 +1,5 @@
+:- module backend_libs.link_target_code_c.
+:- interface.
+:- type shared_library_support
+    --->    shared_libraries_not_supported 
+    ;       shared_libraries_supported .

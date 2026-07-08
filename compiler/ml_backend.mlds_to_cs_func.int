@@ -1,0 +1,12 @@
+:- module ml_backend.mlds_to_cs_func.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module libs.indent.
+:- use_module ml_backend.mlds.
+:- use_module ml_backend.mlds_to_cs_util.
+:- use_module ml_backend.mlds_to_target_util.
+:- pred output_function_defn_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, libs.indent.indent, ml_backend.mlds_to_target_util.output_aux, ml_backend.mlds.mlds_function_defn, io.io, io.io).
+:- mode output_function_defn_for_csharp(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- func params_to_string_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, libs.indent.indent, list.list(ml_backend.mlds.mlds_argument)) = string.

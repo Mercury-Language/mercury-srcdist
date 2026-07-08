@@ -1,0 +1,430 @@
+:- module io.primitives_write.
+:- use_module array.
+:- use_module benchmarking.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module dir.
+:- use_module exception.
+:- use_module int.
+:- use_module int16.
+:- use_module int32.
+:- use_module int64.
+:- use_module int8.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mercury_term_parser.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module rtti_implementation.
+:- use_module stream.
+:- use_module string.
+:- use_module table_builtin.
+:- use_module term.
+:- use_module term_conversion.
+:- use_module term_subst.
+:- use_module time.
+:- use_module type_desc.
+:- use_module uint16.
+:- use_module uint32.
+:- use_module uint64.
+:- use_module uint8.
+:- use_module univ.
+:- use_module io.call_system.
+:- use_module io.environment.
+:- use_module io.error_util.
+:- use_module io.file.
+:- use_module io.primitives_read.
+:- use_module io.primitives_write.
+:- use_module io.stream_db.
+:- use_module io.stream_ops.
+:- use_module io.text_read.
+:- use_module stream.string_writer.
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", io.primitives_read).
+:- pragma foreign_import_module("C", io.primitives_write).
+:- pragma foreign_import_module("C", io.stream_ops).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("C#", io.primitives_write).
+:- pragma foreign_import_module("C#", io.stream_ops).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Java", io.primitives_write).
+:- pragma foreign_import_module("Java", io.stream_ops).
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_binary_string_utf8(Stream :: builtin.in, String :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail],
+"
+    size_t len = strlen(String);
+    if (MR_WRITE(*Stream, (unsigned char *) String, len) != len) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_binary_uint16(Stream :: builtin.in, U16 :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail],
+"
+    if (MR_WRITE(*Stream, (unsigned char *) (&U16), 2) != 2) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_binary_uint16_be(Stream :: builtin.in, U16 :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail],
+"
+    #if defined(MR_LITTLE_ENDIAN)
+        U16 = MR_uint16_reverse_bytes(U16);
+    #endif
+    if (MR_WRITE(*Stream, (unsigned char *) (&U16), 2) != 2) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_binary_uint16_le(Stream :: builtin.in, U16 :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail],
+"
+    #if defined(MR_BIG_ENDIAN)
+        U16 = MR_uint16_reverse_bytes(U16);
+    #endif
+    if (MR_WRITE(*Stream, (unsigned char *) (&U16), 2) != 2) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_binary_uint32(Stream :: builtin.in, U32 :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail],
+"
+    if (MR_WRITE(*Stream, (unsigned char *) (&U32), 4) != 4) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_binary_uint32_be(Stream :: builtin.in, U32 :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail],
+"
+    #if defined(MR_LITTLE_ENDIAN)
+        U32 = MR_uint32_reverse_bytes(U32);
+    #endif
+    if (MR_WRITE(*Stream, (unsigned char *) (&U32), 4) != 4) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_binary_uint32_le(Stream :: builtin.in, U32 :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail],
+"
+    #if defined(MR_BIG_ENDIAN)
+        U32 = MR_uint32_reverse_bytes(U32);
+    #endif
+    if (MR_WRITE(*Stream, (unsigned char *) (&U32), 4) != 4) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_binary_uint64(Stream :: builtin.in, U64 :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail],
+"
+    if (MR_WRITE(*Stream, (unsigned char *) (&U64), 8) != 8) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_binary_uint64_be(Stream :: builtin.in, U64 :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail],
+"
+    #if defined(MR_LITTLE_ENDIAN)
+        U64 = MR_uint64_reverse_bytes(U64);
+    #endif
+    if (MR_WRITE(*Stream, (unsigned char *) (&U64), 8) != 8) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_binary_uint64_le(Stream :: builtin.in, U64 :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail],
+"
+    #if defined(MR_BIG_ENDIAN)
+        U64 = MR_uint64_reverse_bytes(U64);
+    #endif
+    if (MR_WRITE(*Stream, (unsigned char *) (&U64), 8) != 8) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_byte(Stream :: builtin.in, Byte :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    // Call putc with a strictly non-negative byte-sized integer.
+    if (MR_PUTCH(*Stream, (int) ((unsigned char) Byte)) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_char(Stream :: builtin.in, Character :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    Error = 0;
+    if (Character <= 0x7f) {
+        if (MR_PUTCH(*Stream, Character) < 0) {
+            Error = errno;
+        } else if (Character == \'\\n\') {
+            MR_line_number(*Stream)++;
+        }
+    } else {
+        char    buf[5];
+        size_t  len;
+        len = MR_utf8_encode(buf, Character);
+        // XXX ILSEQ Error if len==0
+        for (size_t i = 0; i < len; i++) {
+            if (MR_PUTCH(*Stream, buf[i]) < 0) {
+                Error = errno;
+                break;
+            }
+        }
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_float(Stream :: builtin.in, Val :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    char buf[MR_SPRINTF_FLOAT_BUF_SIZE];
+    MR_sprintf_float(buf, Val);
+    if (ML_fprintf(Stream, \"%s\", buf) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_int(Stream :: builtin.in, Val :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    if (ML_fprintf(Stream, \"%\" MR_INTEGER_LENGTH_MODIFIER \"d\", Val) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_int16(Stream :: builtin.in, Val :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    if (ML_fprintf(Stream, \"%\" PRId16, Val) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_int32(Stream :: builtin.in, Val :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    if (ML_fprintf(Stream, \"%\" PRId32, Val) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_int64(Stream :: builtin.in, Val :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    if (ML_fprintf(Stream, \"%\" PRId64, Val) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_int8(Stream :: builtin.in, Val :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    if (ML_fprintf(Stream, \"%\" PRId8, Val) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_string(Stream :: builtin.in, Message :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    const char *s = Message;
+    if (ML_fprintf(Stream, \"%s\", s) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+        while (*s) {
+            if (*s++ == \'\\n\') {
+                MR_line_number(*Stream)++;
+            }
+        }
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_uint(Stream :: builtin.in, Val :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    if (ML_fprintf(Stream, \"%\" MR_INTEGER_LENGTH_MODIFIER \"u\", Val) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_uint16(Stream :: builtin.in, Val :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    if (ML_fprintf(Stream, \"%\" PRIu16, Val) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_uint32(Stream :: builtin.in, Val :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    if (ML_fprintf(Stream, \"%\" PRIu32, Val) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_uint64(Stream :: builtin.in, Val :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    if (ML_fprintf(Stream, \"%\" PRIu64, Val) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C",
+    (io.primitives_write).do_write_uint8(Stream :: builtin.in, Val :: builtin.in, Error :: builtin.out, _IO0 :: builtin.di, _IO :: builtin.uo),
+    [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness],
+"
+    if (ML_fprintf(Stream, \"%\" PRIu8, Val) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma termination_info((io.primitives_write).do_write_binary_string_utf8(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint16(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint16_be(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint16_le(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint32(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint32_be(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint32_le(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint64(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint64_be(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint64_le(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_byte(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_char(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_float(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_int(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_int16(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_int32(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_int64(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_int8(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_string(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_uint(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_uint16(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_uint32(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_uint64(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_uint8(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_string_utf8, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint16, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint16_be, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint16_le, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint32, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint32_be, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint32_le, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint64, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint64_be, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint64_le, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_byte, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_char, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_float, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_int, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_int16, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_int32, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_int64, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_int8, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_string, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_uint, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_uint16, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_uint32, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_uint64, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_uint8, 5, 0, will_not_throw).
