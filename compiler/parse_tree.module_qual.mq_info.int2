@@ -1,0 +1,13 @@
+:- module (parse_tree.module_qual).mq_info.
+:- interface.
+:- use_module one_or_more_map.
+:- use_module parse_tree.error_spec.
+:- type is_undef_blocking
+    --->    undef_is_blocking 
+    ;       undef_is_not_blocking .
+:- type maybe_should_report_errors
+    --->    should_not_report_errors 
+    ;       should_report_errors .
+:- type mq_info.
+:- type partial_qualifier_info.
+:- type undef_specs(T) == one_or_more_map.one_or_more_map(T, parse_tree.error_spec.error_spec).

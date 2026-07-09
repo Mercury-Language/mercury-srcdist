@@ -1,0 +1,9 @@
+:- module parse_tree.check_module_interface.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module libs.globals.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_parse_tree.
+:- pred check_module_interface_for_no_exports(libs.globals.globals, parse_tree.prog_parse_tree.parse_tree_module_src, list.list(parse_tree.error_spec.error_spec)).
+:- mode check_module_interface_for_no_exports(builtin.in, builtin.in, builtin.out) is det.

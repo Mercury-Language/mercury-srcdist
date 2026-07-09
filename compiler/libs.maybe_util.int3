@@ -1,0 +1,17 @@
+:- module libs.maybe_util.
+:- interface.
+:- type is_first
+	where	type_is_abstract_enum(1).
+:- type is_last
+	where	type_is_abstract_enum(1).
+:- type maybe_changed
+	where	type_is_abstract_enum(1).
+:- type maybe_succeeded
+	where	type_is_abstract_enum(1).
+:- type need_to_requantify
+	where	type_is_abstract_enum(1).
+:- type_representation(is_first, du_repn(enum("is_first", "is_not_first", [],  no_c_j_cs))).
+:- type_representation(is_last, du_repn(enum("is_last", "is_not_last", [],  no_c_j_cs))).
+:- type_representation(maybe_changed, du_repn(enum("unchanged", "changed", [],  no_c_j_cs))).
+:- type_representation(maybe_succeeded, du_repn(enum("did_not_succeed", "succeeded", [],  no_c_j_cs))).
+:- type_representation(need_to_requantify, du_repn(enum("need_to_requantify", "do_not_need_to_requantify", [],  no_c_j_cs))).
