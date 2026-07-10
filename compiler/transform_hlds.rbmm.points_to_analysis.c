@@ -1,0 +1,3621 @@
+/*
+** Automatically generated from `rbmm.points_to_analysis.m'
+** by the Mercury compiler,
+** version rotd-2026-07-10
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.rbmm.points_to_analysis.
+// :- implementation.
+
+/*
+INIT mercury__transform_hlds__rbmm__points_to_analysis__init
+ENDINIT
+*/
+
+#include "transform_hlds.rbmm.points_to_analysis.mih"
+
+
+#include "analysis.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "hlds.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "multi_map.mih"
+#include "one_or_more.mih"
+#include "one_or_more_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "term_context.mih"
+#include "time.mih"
+#include "transform_hlds.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "analysis.framework.mih"
+#include "analysis.operations.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.goal_mode.mih"
+#include "hlds.goal_path.mih"
+#include "hlds.hlds_class.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_cons.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_inst_mode.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_markers.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_promise.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_name.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.file_util.mih"
+#include "libs.globals.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.d_file_deps.mih"
+#include "parse_tree.error_spec.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_parse_tree.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.set_of_var.mih"
+#include "parse_tree.var_db.mih"
+#include "parse_tree.var_table.mih"
+#include "recompilation.record_uses.mih"
+#include "transform_hlds.ctgc.mih"
+#include "transform_hlds.rbmm.mih"
+#include "transform_hlds.smm_common.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_util.mih"
+#include "parse_tree.module_qual.mq_info.mih"
+#include "transform_hlds.ctgc.fixpoint_table.mih"
+#include "transform_hlds.rbmm.points_to_graph.mih"
+#include "transform_hlds.rbmm.points_to_info.mih"
+
+
+
+struct transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0_s {
+  MR_Word transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__NY_2;
+  MR_Word transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__STATE_VARIABLE_Graph_0_3;
+  MR_bool transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__succeeded;
+  MR_Word transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__NZ_10;
+  jmp_buf transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__commit_0;
+};
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__points_to_analysis__set_ordlist__pti_set_ordlist_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__points_to_analysis__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__points_to_analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0;
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__points_to_analysis__transform_hlds__ctgc__fixpoint_table__ti_fixpoint_table_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0;
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_analysis__IntroducedFrom__pred__rpta_fixpoint_table_new_rpta_info__1043__1_2_p_0(
+  MR_Word LambdaHeadVar__1_13,
+  MR_Word LambdaHeadVar__2_14);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis____Compare____rpta_fixpoint_table_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_analysis____Unify____rpta_fixpoint_table_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_analysis__wrapped_init_2_f_0(
+  MR_Word InfoTable_4,
+  MR_Word PPId_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__update_rpta_info_in_rpta_info_table_4_p_0(
+  MR_Word FPTable_5,
+  MR_Word PPId_6,
+  MR_Word STATE_VARIABLE_InfoTable_0_9,
+  MR_Word * STATE_VARIABLE_InfoTable_10);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0(
+  MR_Word ModuleInfo_8,
+  MR_Word InfoTable_9,
+  MR_Word Case_10,
+  MR_Word STATE_VARIABLE_FPtable_0_16,
+  MR_Word * STATE_VARIABLE_FPtable_17,
+  MR_Word STATE_VARIABLE_RptaInfo_0_18,
+  MR_Word * STATE_VARIABLE_RptaInfo_19);
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0(
+  MR_Word ModuleInfo_6,
+  MR_Word InfoTable_7,
+  MR_Word PPId_8,
+  MR_Word STATE_VARIABLE_FPTable_0_16,
+  MR_Word * STATE_VARIABLE_FPTable_17);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(
+  MR_Word ModuleInfo_8,
+  MR_Word InfoTable_9,
+  MR_Word Goal_10,
+  MR_Word STATE_VARIABLE_FPtable_0_15,
+  MR_Word * STATE_VARIABLE_FPtable_16,
+  MR_Word STATE_VARIABLE_RptaInfo_0_17,
+  MR_Word * STATE_VARIABLE_RptaInfo_18);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__apply_rules_6_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word CallSite_2,
+  MR_Word Processed_3,
+  MR_Word CalleeRptaInfo_4,
+  MR_Word STATE_VARIABLE_CallerRptaInfo_0_5,
+  MR_Word * STATE_VARIABLE_CallerRptaInfo_6);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__apply_rules_outedges_6_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word CallerNode_2,
+  MR_Word CallSite_3,
+  MR_Word CalleeRptaInfo_4,
+  MR_Word HeadVar__5_5,
+  MR_Word * HeadVar__6_6);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__rule_8_6_p_0(
+  MR_Word Edge_7,
+  MR_Word CallSite_8,
+  MR_Word CalleeRptaInfo_9,
+  MR_Word CallerNode_10,
+  MR_Word HeadVar__5_5,
+  MR_Word * HeadVar__6_6);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__alpha_mapping_at_call_site_7_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word CalleeGraph_3,
+  MR_Word STATE_VARIABLE_CallerGraph_0_4,
+  MR_Word * STATE_VARIABLE_CallerGraph_5,
+  MR_Word STATE_VARIABLE_AlphaMap_0_6,
+  MR_Word * STATE_VARIABLE_AlphaMap_7);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__lookup_rpta_info_6_p_0(
+  MR_Word PPId_7,
+  MR_Word InfoTable_8,
+  MR_Word STATE_VARIABLE_FPtable_0_14,
+  MR_Word * STATE_VARIABLE_FPtable_15,
+  MR_Word * RptaInfo_10,
+  MR_Word * Init_11);
+
+static MR_Box MR_CALL 
+transform_hlds__rbmm__points_to_analysis__run_with_dependency_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__run_with_dependency_4_p_0(
+  MR_Word ModuleInfo_5,
+  MR_Word SCC_6,
+  MR_Word STATE_VARIABLE_InfoTable_0_10,
+  MR_Word * STATE_VARIABLE_InfoTable_11);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__run_with_dependency_until_fixpoint_5_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__run_with_dependency_until_fixpoint_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__run_with_dependency_until_fixpoint_5_p_0(
+  MR_Word SCC_6,
+  MR_Word FPTable0_7,
+  MR_Word ModuleInfo_8,
+  MR_Word STATE_VARIABLE_InfoTable_0_12,
+  MR_Word * STATE_VARIABLE_InfoTable_13);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__process_cons_and_decons_7_p_0(
+  MR_Word LVar_8,
+  MR_Word ConsId_9,
+  MR_Word RVar_10,
+  MR_Integer STATE_VARIABLE_Component_0_18,
+  MR_Integer * STATE_VARIABLE_Component_19,
+  MR_Word STATE_VARIABLE_Graph_0_20,
+  MR_Word * STATE_VARIABLE_Graph_21);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__rule_3_3_p_0(
+  MR_Word Node_4,
+  MR_Word STATE_VARIABLE_Graph_0_12,
+  MR_Word * STATE_VARIABLE_Graph_13);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_1(
+  void * env_ptr_arg);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_2(
+  void * env_ptr_arg);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word NY_2,
+  MR_Word STATE_VARIABLE_Graph_0_3,
+  MR_Word * STATE_VARIABLE_Graph_4,
+  MR_Word * HeadVar__5_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__merge_nodes_reached_by_same_labelled_edge_5_p_0(
+  MR_Word Sel_1,
+  MR_Word M_2,
+  MR_Word HeadVar__3_3,
+  MR_Word STATE_VARIABLE_Graph_0_4,
+  MR_Word * STATE_VARIABLE_Graph_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0(
+  MR_Word Case_4,
+  MR_Word STATE_VARIABLE_RptaInfo_0_9,
+  MR_Word * STATE_VARIABLE_RptaInfo_10);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_proc_5_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_proc_5_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_proc_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_proc_5_p_0(
+  MR_Word ModuleInfo_6,
+  MR_Word PredId_7,
+  MR_Integer ProcId_8,
+  MR_Word STATE_VARIABLE_InfoTable_0_15,
+  MR_Word * STATE_VARIABLE_InfoTable_16);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(
+  MR_Word Goal_4,
+  MR_Word STATE_VARIABLE_RptaInfo_0_8,
+  MR_Word * STATE_VARIABLE_RptaInfo_9);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_unification_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_unification_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_unification_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word * HeadVar__3_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__merge_nodes_reached_by_same_labelled_edges_6_p_0(
+  MR_Word Edge_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3,
+  MR_Word STATE_VARIABLE_Graph_0_4,
+  MR_Word * STATE_VARIABLE_Graph_5,
+  MR_Word * HeadVar__6_6);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__rule_1_3_p_0(
+  MR_Word Node_4,
+  MR_Word STATE_VARIABLE_Graph_0_11,
+  MR_Word * STATE_VARIABLE_Graph_12);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_pred_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_pred_4_p_0(
+  MR_Word ModuleInfo_5,
+  MR_Word PredId_6,
+  MR_Word STATE_VARIABLE_InfoTable_0_10,
+  MR_Word * STATE_VARIABLE_InfoTable_11);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__region_points_to_analysis_2_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__region_points_to_analysis_2_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_analysis____Unify____rpta_fixpoint_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis____Compare____rpta_fixpoint_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_1[13][3];
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_2[3][2];
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_3[3][7];
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_4[2][8];
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_5[3][10];
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_6[3][6];
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_7[1][5];
+
+
+
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_1[13][3] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+  /* row   1 */
+  {
+    ((MR_Box) (&transform_hlds__ctgc__fixpoint_table__transform_hlds__ctgc__fixpoint_table__type_ctor_info_fixpoint_table_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+  /* row   2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0))
+  },
+  /* row   3 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_6[0])),
+    ((MR_Box) (transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   4 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_6[0])),
+    ((MR_Box) (transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   5 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_6[1])),
+    ((MR_Box) (transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0_3)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   6 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_6[0])),
+    ((MR_Box) (transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_proc_5_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   7 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_6[0])),
+    ((MR_Box) (transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_proc_5_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   8 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_6[1])),
+    ((MR_Box) (transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_proc_5_p_0_3)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   9 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_6[0])),
+    ((MR_Box) (transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row  10 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_6[0])),
+    ((MR_Box) (transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row  11 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_6[1])),
+    ((MR_Box) (transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0_3)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row  12 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_7[0])),
+    ((MR_Box) (transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0_4)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_2[3][2] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row   1 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0))
+  },
+  /* row   2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data_pragma__parse_tree__prog_data_pragma__type_ctor_info_unit_selector_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_3[3][7] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__set_ordlist__pti_set_ordlist_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+  /* row   2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_4[2][8] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_5[3][10] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 7)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 7)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+  /* row   2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 7)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_6[3][6] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+  /* row   2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__points_to_analysis_scalar_common_7[1][5] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0))
+  },
+};
+
+
+
+#include "array.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "io.stream_ops.mh"
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__points_to_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0),
+    (MR_PseudoTypeInfo) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__points_to_analysis__set_ordlist__pti_set_ordlist_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  { (MR_PseudoTypeInfo) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__points_to_analysis__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__points_to_analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0 = {
+  &transform_hlds__ctgc__fixpoint_table__transform_hlds__ctgc__fixpoint_table__type_ctor_info_fixpoint_table_2,
+  {
+    (MR_PseudoTypeInfo) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0),
+    (MR_PseudoTypeInfo) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__points_to_analysis__transform_hlds__ctgc__fixpoint_table__ti_fixpoint_table_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0 = {
+  &transform_hlds__ctgc__fixpoint_table__transform_hlds__ctgc__fixpoint_table__type_ctor_info_fixpoint_table_2,
+  {
+    (MR_TypeInfo) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0),
+    (MR_TypeInfo) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)
+  }
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__points_to_analysis__transform_hlds__rbmm__points_to_analysis__type_ctor_info_rpta_fixpoint_table_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__rbmm__points_to_analysis____Unify____rpta_fixpoint_table_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__points_to_analysis____Compare____rpta_fixpoint_table_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.points_to_analysis",
+  (MR_String) "rpta_fixpoint_table",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&transform_hlds__rbmm__points_to_analysis__transform_hlds__ctgc__fixpoint_table__ti_fixpoint_table_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_analysis__IntroducedFrom__pred__rpta_fixpoint_table_new_rpta_info__1043__1_2_p_0(
+  MR_Word LambdaHeadVar__1_13,
+  MR_Word LambdaHeadVar__2_14)
+{
+  MR_bool succeeded;
+
+  succeeded = transform_hlds__rbmm__points_to_info__rpta_info_equal_2_p_0(LambdaHeadVar__2_14, LambdaHeadVar__1_13);
+  return succeeded;
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis____Compare____rpta_fixpoint_table_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  mercury__builtin__compare_3_p_0((MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[1]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+}
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_analysis____Unify____rpta_fixpoint_table_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[1]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+  return succeeded;
+}
+
+static MR_Word MR_CALL 
+transform_hlds__rbmm__points_to_analysis__wrapped_init_2_f_0(
+  MR_Word InfoTable_4,
+  MR_Word PPId_5)
+{
+  MR_bool succeeded;
+  MR_Word Entry_6;
+  MR_Word Entry0_7;
+
+  succeeded = transform_hlds__rbmm__points_to_info__rpta_info_table_search_rpta_info_3_p_0(InfoTable_4, PPId_5, &Entry0_7);
+  if (succeeded)
+    Entry_6 = Entry0_7;
+  else
+    mercury__require__unexpected_2_p_0((MR_String) "function \140transform_hlds.rbmm.points_to_analysis.wrapped_init\'/2", (MR_String) "no rpta_info");
+  return Entry_6;
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__update_rpta_info_in_rpta_info_table_4_p_0(
+  MR_Word FPTable_5,
+  MR_Word PPId_6,
+  MR_Word STATE_VARIABLE_InfoTable_0_9,
+  MR_Word * STATE_VARIABLE_InfoTable_10)
+{
+  MR_Word RptaInfo_8;
+  MR_Box conv0_RptaInfo_8;
+
+  conv0_RptaInfo_8 = transform_hlds__ctgc__fixpoint_table__get_from_fixpoint_table_final_2_f_0((MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), ((MR_Box) (PPId_6)), FPTable_5);
+  RptaInfo_8 = ((MR_Word) (conv0_RptaInfo_8));
+  transform_hlds__rbmm__points_to_info__rpta_info_table_set_rpta_info_4_p_0(PPId_6, RptaInfo_8, STATE_VARIABLE_InfoTable_0_9, STATE_VARIABLE_InfoTable_10);
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv9_STATE_VARIABLE_FPtable_17;
+  MR_Word conv8_STATE_VARIABLE_RptaInfo_19;
+
+  transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv9_STATE_VARIABLE_FPtable_17, ((MR_Word) (wrapper_arg_4)), &conv8_STATE_VARIABLE_RptaInfo_19);
+  *wrapper_arg_3 = ((MR_Box) (conv9_STATE_VARIABLE_FPtable_17));
+  *wrapper_arg_5 = ((MR_Box) (conv8_STATE_VARIABLE_RptaInfo_19));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv5_STATE_VARIABLE_FPtable_16;
+  MR_Word conv4_STATE_VARIABLE_RptaInfo_18;
+
+  transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv5_STATE_VARIABLE_FPtable_16, ((MR_Word) (wrapper_arg_4)), &conv4_STATE_VARIABLE_RptaInfo_18);
+  *wrapper_arg_3 = ((MR_Box) (conv5_STATE_VARIABLE_FPtable_16));
+  *wrapper_arg_5 = ((MR_Box) (conv4_STATE_VARIABLE_RptaInfo_18));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv1_STATE_VARIABLE_FPtable_16;
+  MR_Word conv0_STATE_VARIABLE_RptaInfo_18;
+
+  transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv1_STATE_VARIABLE_FPtable_16, ((MR_Word) (wrapper_arg_4)), &conv0_STATE_VARIABLE_RptaInfo_18);
+  *wrapper_arg_3 = ((MR_Box) (conv1_STATE_VARIABLE_FPtable_16));
+  *wrapper_arg_5 = ((MR_Box) (conv0_STATE_VARIABLE_RptaInfo_18));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0(
+  MR_Word ModuleInfo_8,
+  MR_Word InfoTable_9,
+  MR_Word Case_10,
+  MR_Word STATE_VARIABLE_FPtable_0_16,
+  MR_Word * STATE_VARIABLE_FPtable_17,
+  MR_Word STATE_VARIABLE_RptaInfo_0_18,
+  MR_Word * STATE_VARIABLE_RptaInfo_19)
+{
+  MR_Word Goal_15 = ((MR_Word) ((MR_hl_field(0, Case_10, 2))));
+  MR_Word GoalExpr_20 = ((MR_Word) ((MR_hl_field(0, Goal_15, 0))));
+  MR_Word GoalInfo_21 = ((MR_Word) ((MR_hl_field(0, Goal_15, 1))));
+
+  switch (MR_tag((MR_Word) GoalExpr_20)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word Goal_56 = (MR_Word) ((MR_Word) (GoalExpr_20));
+
+        transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(ModuleInfo_8, InfoTable_9, Goal_56, STATE_VARIABLE_FPtable_0_16, STATE_VARIABLE_FPtable_17, STATE_VARIABLE_RptaInfo_0_18, STATE_VARIABLE_RptaInfo_19);
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        *STATE_VARIABLE_RptaInfo_19 = STATE_VARIABLE_RptaInfo_0_18;
+        *STATE_VARIABLE_FPtable_17 = STATE_VARIABLE_FPtable_0_16;
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Word PredId_25 = ((MR_Word) ((MR_hl_field(2, GoalExpr_20, 0))));
+        MR_Integer ProcId_26 = ((MR_Integer) ((MR_hl_field(2, GoalExpr_20, 1))));
+        MR_Word ActualParams_27 = ((MR_Word) ((MR_hl_field(2, GoalExpr_20, 2))));
+        MR_Word CalleePPId_31;
+        MR_Word CalleeRptaInfo_32;
+        MR_Word IsInit_33;
+
+        {
+          CalleePPId_31 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, CalleePPId_31, 0) = ((MR_Box) (PredId_25));
+          MR_hl_field(0, CalleePPId_31, 1) = ((MR_Box) (ProcId_26));
+        }
+        transform_hlds__rbmm__points_to_analysis__lookup_rpta_info_6_p_0(CalleePPId_31, InfoTable_9, STATE_VARIABLE_FPtable_0_16, STATE_VARIABLE_FPtable_17, &CalleeRptaInfo_32, &IsInit_33);
+        switch (IsInit_33) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word CallSite_34;
+              MR_Word CalleeGraph_35;
+              MR_Word CalleeProcInfo_37;
+              MR_Word FormalParams_38;
+              MR_Word CallerGraph0_39;
+              MR_Word CallerAlphaMappings0_40;
+              MR_Word CallerGraph_41;
+              MR_Word CallerAlphaMappingAtCallSite_42;
+              MR_Word CallerAlphaMappings_43;
+              MR_Word CallerRptaInfo1_44;
+              MR_Word FormalNodes_45;
+              MR_Word Var_46;
+
+              CallSite_34 = transform_hlds__smm_common__program_point_init_1_f_0(GoalInfo_21);
+              CalleeGraph_35 = ((MR_Word) ((MR_hl_field(0, CalleeRptaInfo_32, 0))));
+              hlds__hlds_module__module_info_proc_info_3_p_0(ModuleInfo_8, CalleePPId_31, &CalleeProcInfo_37);
+              hlds__hlds_pred__proc_info_get_headvars_2_p_0(CalleeProcInfo_37, &FormalParams_38);
+              CallerGraph0_39 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_RptaInfo_0_18, 0))));
+              CallerAlphaMappings0_40 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_RptaInfo_0_18, 1))));
+              Var_46 = mercury__map__init_0_f_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0));
+              transform_hlds__rbmm__points_to_analysis__alpha_mapping_at_call_site_7_p_0(FormalParams_38, ActualParams_27, CalleeGraph_35, CallerGraph0_39, &CallerGraph_41, Var_46, &CallerAlphaMappingAtCallSite_42);
+              mercury__map__set_4_p_0((MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]), ((MR_Box) (CallSite_34)), ((MR_Box) (CallerAlphaMappingAtCallSite_42)), CallerAlphaMappings0_40, &CallerAlphaMappings_43);
+              {
+                CallerRptaInfo1_44 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, CallerRptaInfo1_44, 0) = ((MR_Box) (CallerGraph_41));
+                MR_hl_field(0, CallerRptaInfo1_44, 1) = ((MR_Box) (CallerAlphaMappings_43));
+              }
+              mercury__map__keys_2_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), CallerAlphaMappingAtCallSite_42, &FormalNodes_45);
+              transform_hlds__rbmm__points_to_analysis__apply_rules_6_p_0(FormalNodes_45, CallSite_34, (MR_Word) ((MR_Unsigned) 0U), CalleeRptaInfo_32, CallerRptaInfo1_44, STATE_VARIABLE_RptaInfo_19);
+            }
+            break;
+          case (MR_Integer) 1:
+            *STATE_VARIABLE_RptaInfo_19 = STATE_VARIABLE_RptaInfo_0_18;
+            break;
+        }
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) ((MR_hl_field(3, GoalExpr_20, 0))))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            mercury__require__sorry_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.inter_analyse_goal_expr\'/8", (MR_String) "generic_call not handled");
+            return;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            mercury__require__sorry_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.inter_analyse_goal_expr\'/8", (MR_String) "foreign code");
+            return;
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Goals_23 = ((MR_Word) ((MR_hl_field(3, GoalExpr_20, 2))));
+            MR_Word Var_24;
+            MR_Box conv3_STATE_VARIABLE_FPtable_17;
+            MR_Box conv2_STATE_VARIABLE_RptaInfo_19;
+
+            {
+              Var_24 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(0, Var_24, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_5[1]));
+              MR_hl_field(0, Var_24, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0_1));
+              MR_hl_field(0, Var_24, 2) = ((MR_Box) ((MR_Integer) 2));
+              MR_hl_field(0, Var_24, 3) = ((MR_Box) (ModuleInfo_8));
+              MR_hl_field(0, Var_24, 4) = ((MR_Box) (InfoTable_9));
+            }
+            mercury__list__foldl2_6_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[1]), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), Var_24, Goals_23, ((MR_Box) (STATE_VARIABLE_FPtable_0_16)), &conv3_STATE_VARIABLE_FPtable_17, ((MR_Box) (STATE_VARIABLE_RptaInfo_0_18)), &conv2_STATE_VARIABLE_RptaInfo_19);
+            *STATE_VARIABLE_FPtable_17 = ((MR_Word) (conv3_STATE_VARIABLE_FPtable_17));
+            *STATE_VARIABLE_RptaInfo_19 = ((MR_Word) (conv2_STATE_VARIABLE_RptaInfo_19));
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word Disjs_54 = ((MR_Word) ((MR_hl_field(3, GoalExpr_20, 1))));
+            MR_Word Var_55;
+            MR_Box conv7_STATE_VARIABLE_FPtable_17;
+            MR_Box conv6_STATE_VARIABLE_RptaInfo_19;
+
+            {
+              Var_55 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(0, Var_55, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_5[1]));
+              MR_hl_field(0, Var_55, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0_2));
+              MR_hl_field(0, Var_55, 2) = ((MR_Box) ((MR_Integer) 2));
+              MR_hl_field(0, Var_55, 3) = ((MR_Box) (ModuleInfo_8));
+              MR_hl_field(0, Var_55, 4) = ((MR_Box) (InfoTable_9));
+            }
+            mercury__list__foldl2_6_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[1]), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), Var_55, Disjs_54, ((MR_Box) (STATE_VARIABLE_FPtable_0_16)), &conv7_STATE_VARIABLE_FPtable_17, ((MR_Box) (STATE_VARIABLE_RptaInfo_0_18)), &conv6_STATE_VARIABLE_RptaInfo_19);
+            *STATE_VARIABLE_FPtable_17 = ((MR_Word) (conv7_STATE_VARIABLE_FPtable_17));
+            *STATE_VARIABLE_RptaInfo_19 = ((MR_Word) (conv6_STATE_VARIABLE_RptaInfo_19));
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            MR_Word Cases_52 = ((MR_Word) ((MR_hl_field(3, GoalExpr_20, 3))));
+            MR_Word Var_53;
+            MR_Box conv11_STATE_VARIABLE_FPtable_17;
+            MR_Box conv10_STATE_VARIABLE_RptaInfo_19;
+
+            {
+              Var_53 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(0, Var_53, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_5[2]));
+              MR_hl_field(0, Var_53, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0_3));
+              MR_hl_field(0, Var_53, 2) = ((MR_Box) ((MR_Integer) 2));
+              MR_hl_field(0, Var_53, 3) = ((MR_Box) (ModuleInfo_8));
+              MR_hl_field(0, Var_53, 4) = ((MR_Box) (InfoTable_9));
+            }
+            mercury__list__foldl2_6_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[1]), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), Var_53, Cases_52, ((MR_Box) (STATE_VARIABLE_FPtable_0_16)), &conv11_STATE_VARIABLE_FPtable_17, ((MR_Box) (STATE_VARIABLE_RptaInfo_0_18)), &conv10_STATE_VARIABLE_RptaInfo_19);
+            *STATE_VARIABLE_FPtable_17 = ((MR_Word) (conv11_STATE_VARIABLE_FPtable_17));
+            *STATE_VARIABLE_RptaInfo_19 = ((MR_Word) (conv10_STATE_VARIABLE_RptaInfo_19));
+          }
+          break;
+        case (MR_Integer) 5:
+          {
+            MR_Word Goal_58 = ((MR_Word) ((MR_hl_field(3, GoalExpr_20, 2))));
+
+            transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(ModuleInfo_8, InfoTable_9, Goal_58, STATE_VARIABLE_FPtable_0_16, STATE_VARIABLE_FPtable_17, STATE_VARIABLE_RptaInfo_0_18, STATE_VARIABLE_RptaInfo_19);
+          }
+          break;
+        case (MR_Integer) 6:
+          {
+            MR_Word If_60 = ((MR_Word) ((MR_hl_field(3, GoalExpr_20, 2))));
+            MR_Word Then_61 = ((MR_Word) ((MR_hl_field(3, GoalExpr_20, 3))));
+            MR_Word Else_62 = ((MR_Word) ((MR_hl_field(3, GoalExpr_20, 4))));
+            MR_Word STATE_VARIABLE_FPTable_1_63;
+            MR_Word STATE_VARIABLE_RptaInfo_1_64;
+            MR_Word STATE_VARIABLE_FPTable_2_65;
+            MR_Word STATE_VARIABLE_RptaInfo_2_66;
+
+            transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(ModuleInfo_8, InfoTable_9, If_60, STATE_VARIABLE_FPtable_0_16, &STATE_VARIABLE_FPTable_1_63, STATE_VARIABLE_RptaInfo_0_18, &STATE_VARIABLE_RptaInfo_1_64);
+            transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(ModuleInfo_8, InfoTable_9, Then_61, STATE_VARIABLE_FPTable_1_63, &STATE_VARIABLE_FPTable_2_65, STATE_VARIABLE_RptaInfo_1_64, &STATE_VARIABLE_RptaInfo_2_66);
+            transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(ModuleInfo_8, InfoTable_9, Else_62, STATE_VARIABLE_FPTable_2_65, STATE_VARIABLE_FPtable_17, STATE_VARIABLE_RptaInfo_2_66, STATE_VARIABLE_RptaInfo_19);
+          }
+          break;
+        case (MR_Integer) 7:
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.inter_analyse_goal_expr\'/8", (MR_String) "shorthand");
+            return;
+          }
+          break;
+      }
+      break;
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = transform_hlds__rbmm__points_to_analysis__IntroducedFrom__pred__rpta_fixpoint_table_new_rpta_info__1043__1_2_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv10_STATE_VARIABLE_FPtable_17;
+  MR_Word conv9_STATE_VARIABLE_RptaInfo_19;
+
+  transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv10_STATE_VARIABLE_FPtable_17, ((MR_Word) (wrapper_arg_4)), &conv9_STATE_VARIABLE_RptaInfo_19);
+  *wrapper_arg_3 = ((MR_Box) (conv10_STATE_VARIABLE_FPtable_17));
+  *wrapper_arg_5 = ((MR_Box) (conv9_STATE_VARIABLE_RptaInfo_19));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv6_STATE_VARIABLE_FPtable_16;
+  MR_Word conv5_STATE_VARIABLE_RptaInfo_18;
+
+  transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv6_STATE_VARIABLE_FPtable_16, ((MR_Word) (wrapper_arg_4)), &conv5_STATE_VARIABLE_RptaInfo_18);
+  *wrapper_arg_3 = ((MR_Box) (conv6_STATE_VARIABLE_FPtable_16));
+  *wrapper_arg_5 = ((MR_Box) (conv5_STATE_VARIABLE_RptaInfo_18));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv2_STATE_VARIABLE_FPtable_16;
+  MR_Word conv1_STATE_VARIABLE_RptaInfo_18;
+
+  transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv2_STATE_VARIABLE_FPtable_16, ((MR_Word) (wrapper_arg_4)), &conv1_STATE_VARIABLE_RptaInfo_18);
+  *wrapper_arg_3 = ((MR_Box) (conv2_STATE_VARIABLE_FPtable_16));
+  *wrapper_arg_5 = ((MR_Box) (conv1_STATE_VARIABLE_RptaInfo_18));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0(
+  MR_Word ModuleInfo_6,
+  MR_Word InfoTable_7,
+  MR_Word PPId_8,
+  MR_Word STATE_VARIABLE_FPTable_0_16,
+  MR_Word * STATE_VARIABLE_FPTable_17)
+{
+  MR_bool succeeded;
+  MR_Word ProcRptaInfo0_10;
+  MR_Word ProcInfo0_12;
+  MR_Word ProcInfo_13;
+  MR_Word Goal_14;
+  MR_Word ProcRptaInfo_15;
+  MR_Word STATE_VARIABLE_FPTable_1_18;
+  MR_Word STATE_VARIABLE_FPTable_2_19;
+  MR_Word GoalExpr_29;
+  MR_Word GoalInfo_30;
+  MR_Word RptaInfo0_20;
+  MR_Word FPtable1_21;
+  MR_Box conv0_RptaInfo0_20;
+
+  succeeded = transform_hlds__ctgc__fixpoint_table__get_from_fixpoint_table_4_p_0((MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), ((MR_Box) (PPId_8)), &conv0_RptaInfo0_20, STATE_VARIABLE_FPTable_0_16, &FPtable1_21);
+  if (succeeded)
+  {
+    RptaInfo0_20 = ((MR_Word) (conv0_RptaInfo0_20));
+    succeeded = MR_TRUE;
+  }
+  if (succeeded)
+  {
+    ProcRptaInfo0_10 = RptaInfo0_20;
+    STATE_VARIABLE_FPTable_1_18 = FPtable1_21;
+  }
+  else
+  {
+    MR_Word RptaInfo0_24;
+
+    succeeded = transform_hlds__rbmm__points_to_info__rpta_info_table_search_rpta_info_3_p_0(InfoTable_7, PPId_8, &RptaInfo0_24);
+    if (succeeded)
+      ProcRptaInfo0_10 = RptaInfo0_24;
+    else
+    {
+      MR_Word Var_22;
+      MR_Word Var_23;
+
+      Var_22 = transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_f_0();
+      Var_23 = mercury__map__init_0_f_0((MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]));
+      {
+        ProcRptaInfo0_10 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, ProcRptaInfo0_10, 0) = ((MR_Box) (Var_22));
+        MR_hl_field(0, ProcRptaInfo0_10, 1) = ((MR_Box) (Var_23));
+      }
+    }
+    STATE_VARIABLE_FPTable_1_18 = STATE_VARIABLE_FPTable_0_16;
+  }
+  hlds__hlds_module__module_info_proc_info_3_p_0(ModuleInfo_6, PPId_8, &ProcInfo0_12);
+  hlds__goal_path__fill_goal_path_slots_in_proc_3_p_0(ModuleInfo_6, ProcInfo0_12, &ProcInfo_13);
+  hlds__hlds_pred__proc_info_get_goal_2_p_0(ProcInfo_13, &Goal_14);
+  GoalExpr_29 = ((MR_Word) ((MR_hl_field(0, Goal_14, 0))));
+  GoalInfo_30 = ((MR_Word) ((MR_hl_field(0, Goal_14, 1))));
+  switch (MR_tag((MR_Word) GoalExpr_29)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word Goal_65 = (MR_Word) ((MR_Word) (GoalExpr_29));
+
+        transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(ModuleInfo_6, InfoTable_7, Goal_65, STATE_VARIABLE_FPTable_1_18, &STATE_VARIABLE_FPTable_2_19, ProcRptaInfo0_10, &ProcRptaInfo_15);
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        ProcRptaInfo_15 = ProcRptaInfo0_10;
+        STATE_VARIABLE_FPTable_2_19 = STATE_VARIABLE_FPTable_1_18;
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Word PredId_34 = ((MR_Word) ((MR_hl_field(2, GoalExpr_29, 0))));
+        MR_Integer ProcId_35 = ((MR_Integer) ((MR_hl_field(2, GoalExpr_29, 1))));
+        MR_Word ActualParams_36 = ((MR_Word) ((MR_hl_field(2, GoalExpr_29, 2))));
+        MR_Word CalleePPId_40;
+        MR_Word CalleeRptaInfo_41;
+        MR_Word IsInit_42;
+
+        {
+          CalleePPId_40 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, CalleePPId_40, 0) = ((MR_Box) (PredId_34));
+          MR_hl_field(0, CalleePPId_40, 1) = ((MR_Box) (ProcId_35));
+        }
+        transform_hlds__rbmm__points_to_analysis__lookup_rpta_info_6_p_0(CalleePPId_40, InfoTable_7, STATE_VARIABLE_FPTable_1_18, &STATE_VARIABLE_FPTable_2_19, &CalleeRptaInfo_41, &IsInit_42);
+        switch (IsInit_42) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word CallSite_43;
+              MR_Word CalleeGraph_44;
+              MR_Word CalleeProcInfo_46;
+              MR_Word FormalParams_47;
+              MR_Word CallerGraph0_48;
+              MR_Word CallerAlphaMappings0_49;
+              MR_Word CallerGraph_50;
+              MR_Word CallerAlphaMappingAtCallSite_51;
+              MR_Word CallerAlphaMappings_52;
+              MR_Word CallerRptaInfo1_53;
+              MR_Word FormalNodes_54;
+              MR_Word Var_55;
+
+              CallSite_43 = transform_hlds__smm_common__program_point_init_1_f_0(GoalInfo_30);
+              CalleeGraph_44 = ((MR_Word) ((MR_hl_field(0, CalleeRptaInfo_41, 0))));
+              hlds__hlds_module__module_info_proc_info_3_p_0(ModuleInfo_6, CalleePPId_40, &CalleeProcInfo_46);
+              hlds__hlds_pred__proc_info_get_headvars_2_p_0(CalleeProcInfo_46, &FormalParams_47);
+              CallerGraph0_48 = ((MR_Word) ((MR_hl_field(0, ProcRptaInfo0_10, 0))));
+              CallerAlphaMappings0_49 = ((MR_Word) ((MR_hl_field(0, ProcRptaInfo0_10, 1))));
+              Var_55 = mercury__map__init_0_f_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0));
+              transform_hlds__rbmm__points_to_analysis__alpha_mapping_at_call_site_7_p_0(FormalParams_47, ActualParams_36, CalleeGraph_44, CallerGraph0_48, &CallerGraph_50, Var_55, &CallerAlphaMappingAtCallSite_51);
+              mercury__map__set_4_p_0((MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]), ((MR_Box) (CallSite_43)), ((MR_Box) (CallerAlphaMappingAtCallSite_51)), CallerAlphaMappings0_49, &CallerAlphaMappings_52);
+              {
+                CallerRptaInfo1_53 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, CallerRptaInfo1_53, 0) = ((MR_Box) (CallerGraph_50));
+                MR_hl_field(0, CallerRptaInfo1_53, 1) = ((MR_Box) (CallerAlphaMappings_52));
+              }
+              mercury__map__keys_2_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), CallerAlphaMappingAtCallSite_51, &FormalNodes_54);
+              transform_hlds__rbmm__points_to_analysis__apply_rules_6_p_0(FormalNodes_54, CallSite_43, (MR_Word) ((MR_Unsigned) 0U), CalleeRptaInfo_41, CallerRptaInfo1_53, &ProcRptaInfo_15);
+            }
+            break;
+          case (MR_Integer) 1:
+            ProcRptaInfo_15 = ProcRptaInfo0_10;
+            break;
+        }
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) ((MR_hl_field(3, GoalExpr_29, 0))))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            mercury__require__sorry_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.inter_analyse_goal_expr\'/8", (MR_String) "generic_call not handled");
+            return;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            mercury__require__sorry_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.inter_analyse_goal_expr\'/8", (MR_String) "foreign code");
+            return;
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Goals_32 = ((MR_Word) ((MR_hl_field(3, GoalExpr_29, 2))));
+            MR_Word Var_33;
+            MR_Box conv4_STATE_VARIABLE_FPTable_2_19;
+            MR_Box conv3_ProcRptaInfo_15;
+
+            {
+              Var_33 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(0, Var_33, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_5[1]));
+              MR_hl_field(0, Var_33, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0_1));
+              MR_hl_field(0, Var_33, 2) = ((MR_Box) ((MR_Integer) 2));
+              MR_hl_field(0, Var_33, 3) = ((MR_Box) (ModuleInfo_6));
+              MR_hl_field(0, Var_33, 4) = ((MR_Box) (InfoTable_7));
+            }
+            mercury__list__foldl2_6_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[1]), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), Var_33, Goals_32, ((MR_Box) (STATE_VARIABLE_FPTable_1_18)), &conv4_STATE_VARIABLE_FPTable_2_19, ((MR_Box) (ProcRptaInfo0_10)), &conv3_ProcRptaInfo_15);
+            STATE_VARIABLE_FPTable_2_19 = ((MR_Word) (conv4_STATE_VARIABLE_FPTable_2_19));
+            ProcRptaInfo_15 = ((MR_Word) (conv3_ProcRptaInfo_15));
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word Disjs_63 = ((MR_Word) ((MR_hl_field(3, GoalExpr_29, 1))));
+            MR_Word Var_64;
+            MR_Box conv8_STATE_VARIABLE_FPTable_2_19;
+            MR_Box conv7_ProcRptaInfo_15;
+
+            {
+              Var_64 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(0, Var_64, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_5[1]));
+              MR_hl_field(0, Var_64, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0_2));
+              MR_hl_field(0, Var_64, 2) = ((MR_Box) ((MR_Integer) 2));
+              MR_hl_field(0, Var_64, 3) = ((MR_Box) (ModuleInfo_6));
+              MR_hl_field(0, Var_64, 4) = ((MR_Box) (InfoTable_7));
+            }
+            mercury__list__foldl2_6_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[1]), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), Var_64, Disjs_63, ((MR_Box) (STATE_VARIABLE_FPTable_1_18)), &conv8_STATE_VARIABLE_FPTable_2_19, ((MR_Box) (ProcRptaInfo0_10)), &conv7_ProcRptaInfo_15);
+            STATE_VARIABLE_FPTable_2_19 = ((MR_Word) (conv8_STATE_VARIABLE_FPTable_2_19));
+            ProcRptaInfo_15 = ((MR_Word) (conv7_ProcRptaInfo_15));
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            MR_Word Cases_61 = ((MR_Word) ((MR_hl_field(3, GoalExpr_29, 3))));
+            MR_Word Var_62;
+            MR_Box conv12_STATE_VARIABLE_FPTable_2_19;
+            MR_Box conv11_ProcRptaInfo_15;
+
+            {
+              Var_62 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(0, Var_62, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_5[2]));
+              MR_hl_field(0, Var_62, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0_3));
+              MR_hl_field(0, Var_62, 2) = ((MR_Box) ((MR_Integer) 2));
+              MR_hl_field(0, Var_62, 3) = ((MR_Box) (ModuleInfo_6));
+              MR_hl_field(0, Var_62, 4) = ((MR_Box) (InfoTable_7));
+            }
+            mercury__list__foldl2_6_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[1]), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), Var_62, Cases_61, ((MR_Box) (STATE_VARIABLE_FPTable_1_18)), &conv12_STATE_VARIABLE_FPTable_2_19, ((MR_Box) (ProcRptaInfo0_10)), &conv11_ProcRptaInfo_15);
+            STATE_VARIABLE_FPTable_2_19 = ((MR_Word) (conv12_STATE_VARIABLE_FPTable_2_19));
+            ProcRptaInfo_15 = ((MR_Word) (conv11_ProcRptaInfo_15));
+          }
+          break;
+        case (MR_Integer) 5:
+          {
+            MR_Word Goal_67 = ((MR_Word) ((MR_hl_field(3, GoalExpr_29, 2))));
+
+            transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(ModuleInfo_6, InfoTable_7, Goal_67, STATE_VARIABLE_FPTable_1_18, &STATE_VARIABLE_FPTable_2_19, ProcRptaInfo0_10, &ProcRptaInfo_15);
+          }
+          break;
+        case (MR_Integer) 6:
+          {
+            MR_Word If_69 = ((MR_Word) ((MR_hl_field(3, GoalExpr_29, 2))));
+            MR_Word Then_70 = ((MR_Word) ((MR_hl_field(3, GoalExpr_29, 3))));
+            MR_Word Else_71 = ((MR_Word) ((MR_hl_field(3, GoalExpr_29, 4))));
+            MR_Word STATE_VARIABLE_FPTable_1_72;
+            MR_Word STATE_VARIABLE_RptaInfo_1_73;
+            MR_Word STATE_VARIABLE_FPTable_2_74;
+            MR_Word STATE_VARIABLE_RptaInfo_2_75;
+
+            transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(ModuleInfo_6, InfoTable_7, If_69, STATE_VARIABLE_FPTable_1_18, &STATE_VARIABLE_FPTable_1_72, ProcRptaInfo0_10, &STATE_VARIABLE_RptaInfo_1_73);
+            transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(ModuleInfo_6, InfoTable_7, Then_70, STATE_VARIABLE_FPTable_1_72, &STATE_VARIABLE_FPTable_2_74, STATE_VARIABLE_RptaInfo_1_73, &STATE_VARIABLE_RptaInfo_2_75);
+            transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(ModuleInfo_6, InfoTable_7, Else_71, STATE_VARIABLE_FPTable_2_74, &STATE_VARIABLE_FPTable_2_19, STATE_VARIABLE_RptaInfo_2_75, &ProcRptaInfo_15);
+          }
+          break;
+        case (MR_Integer) 7:
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.inter_analyse_goal_expr\'/8", (MR_String) "shorthand");
+            return;
+          }
+          break;
+      }
+      break;
+  }
+  transform_hlds__ctgc__fixpoint_table__add_to_fixpoint_table_5_p_0((MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), (MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[12]), ((MR_Box) (PPId_8)), ((MR_Box) (ProcRptaInfo_15)), STATE_VARIABLE_FPTable_2_19, STATE_VARIABLE_FPTable_17);
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv9_STATE_VARIABLE_FPtable_17;
+  MR_Word conv8_STATE_VARIABLE_RptaInfo_19;
+
+  transform_hlds__rbmm__points_to_analysis__inter_analyse_case_7_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv9_STATE_VARIABLE_FPtable_17, ((MR_Word) (wrapper_arg_4)), &conv8_STATE_VARIABLE_RptaInfo_19);
+  *wrapper_arg_3 = ((MR_Box) (conv9_STATE_VARIABLE_FPtable_17));
+  *wrapper_arg_5 = ((MR_Box) (conv8_STATE_VARIABLE_RptaInfo_19));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv5_STATE_VARIABLE_FPtable_16;
+  MR_Word conv4_STATE_VARIABLE_RptaInfo_18;
+
+  transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv5_STATE_VARIABLE_FPtable_16, ((MR_Word) (wrapper_arg_4)), &conv4_STATE_VARIABLE_RptaInfo_18);
+  *wrapper_arg_3 = ((MR_Box) (conv5_STATE_VARIABLE_FPtable_16));
+  *wrapper_arg_5 = ((MR_Box) (conv4_STATE_VARIABLE_RptaInfo_18));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv1_STATE_VARIABLE_FPtable_16;
+  MR_Word conv0_STATE_VARIABLE_RptaInfo_18;
+
+  transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv1_STATE_VARIABLE_FPtable_16, ((MR_Word) (wrapper_arg_4)), &conv0_STATE_VARIABLE_RptaInfo_18);
+  *wrapper_arg_3 = ((MR_Box) (conv1_STATE_VARIABLE_FPtable_16));
+  *wrapper_arg_5 = ((MR_Box) (conv0_STATE_VARIABLE_RptaInfo_18));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(
+  MR_Word ModuleInfo_8,
+  MR_Word InfoTable_9,
+  MR_Word Goal_10,
+  MR_Word STATE_VARIABLE_FPtable_0_15,
+  MR_Word * STATE_VARIABLE_FPtable_16,
+  MR_Word STATE_VARIABLE_RptaInfo_0_17,
+  MR_Word * STATE_VARIABLE_RptaInfo_18)
+{
+  while (MR_TRUE)
+  {
+    MR_Word GoalExpr_13 = ((MR_Word) ((MR_hl_field(0, Goal_10, 0))));
+    MR_Word GoalInfo_14 = ((MR_Word) ((MR_hl_field(0, Goal_10, 1))));
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    switch (MR_tag((MR_Word) GoalExpr_13)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word Goal_53 = (MR_Word) ((MR_Word) (GoalExpr_13));
+          MR_Word next_value_of_Goal_10 = Goal_53;
+
+          // direct tailcall eliminated
+          ;
+          Goal_10 = next_value_of_Goal_10;
+          continue;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          *STATE_VARIABLE_RptaInfo_18 = STATE_VARIABLE_RptaInfo_0_17;
+          *STATE_VARIABLE_FPtable_16 = STATE_VARIABLE_FPtable_0_15;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word PredId_22 = ((MR_Word) ((MR_hl_field(2, GoalExpr_13, 0))));
+          MR_Integer ProcId_23 = ((MR_Integer) ((MR_hl_field(2, GoalExpr_13, 1))));
+          MR_Word ActualParams_24 = ((MR_Word) ((MR_hl_field(2, GoalExpr_13, 2))));
+          MR_Word CalleePPId_28;
+          MR_Word CalleeRptaInfo_29;
+          MR_Word IsInit_30;
+
+          {
+            CalleePPId_28 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, CalleePPId_28, 0) = ((MR_Box) (PredId_22));
+            MR_hl_field(0, CalleePPId_28, 1) = ((MR_Box) (ProcId_23));
+          }
+          transform_hlds__rbmm__points_to_analysis__lookup_rpta_info_6_p_0(CalleePPId_28, InfoTable_9, STATE_VARIABLE_FPtable_0_15, STATE_VARIABLE_FPtable_16, &CalleeRptaInfo_29, &IsInit_30);
+          switch (IsInit_30) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word CallSite_31;
+                MR_Word CalleeGraph_32;
+                MR_Word CalleeProcInfo_34;
+                MR_Word FormalParams_35;
+                MR_Word CallerGraph0_36;
+                MR_Word CallerAlphaMappings0_37;
+                MR_Word CallerGraph_38;
+                MR_Word CallerAlphaMappingAtCallSite_39;
+                MR_Word CallerAlphaMappings_40;
+                MR_Word CallerRptaInfo1_41;
+                MR_Word FormalNodes_42;
+                MR_Word Var_43;
+
+                CallSite_31 = transform_hlds__smm_common__program_point_init_1_f_0(GoalInfo_14);
+                CalleeGraph_32 = ((MR_Word) ((MR_hl_field(0, CalleeRptaInfo_29, 0))));
+                hlds__hlds_module__module_info_proc_info_3_p_0(ModuleInfo_8, CalleePPId_28, &CalleeProcInfo_34);
+                hlds__hlds_pred__proc_info_get_headvars_2_p_0(CalleeProcInfo_34, &FormalParams_35);
+                CallerGraph0_36 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_RptaInfo_0_17, 0))));
+                CallerAlphaMappings0_37 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_RptaInfo_0_17, 1))));
+                Var_43 = mercury__map__init_0_f_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0));
+                transform_hlds__rbmm__points_to_analysis__alpha_mapping_at_call_site_7_p_0(FormalParams_35, ActualParams_24, CalleeGraph_32, CallerGraph0_36, &CallerGraph_38, Var_43, &CallerAlphaMappingAtCallSite_39);
+                mercury__map__set_4_p_0((MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]), ((MR_Box) (CallSite_31)), ((MR_Box) (CallerAlphaMappingAtCallSite_39)), CallerAlphaMappings0_37, &CallerAlphaMappings_40);
+                {
+                  CallerRptaInfo1_41 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(0, CallerRptaInfo1_41, 0) = ((MR_Box) (CallerGraph_38));
+                  MR_hl_field(0, CallerRptaInfo1_41, 1) = ((MR_Box) (CallerAlphaMappings_40));
+                }
+                mercury__map__keys_2_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), CallerAlphaMappingAtCallSite_39, &FormalNodes_42);
+                transform_hlds__rbmm__points_to_analysis__apply_rules_6_p_0(FormalNodes_42, CallSite_31, (MR_Word) ((MR_Unsigned) 0U), CalleeRptaInfo_29, CallerRptaInfo1_41, STATE_VARIABLE_RptaInfo_18);
+              }
+              break;
+            case (MR_Integer) 1:
+              *STATE_VARIABLE_RptaInfo_18 = STATE_VARIABLE_RptaInfo_0_17;
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, GoalExpr_13, 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              mercury__require__sorry_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.inter_analyse_goal_expr\'/8", (MR_String) "generic_call not handled");
+              return;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              mercury__require__sorry_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.inter_analyse_goal_expr\'/8", (MR_String) "foreign code");
+              return;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word Goals_20 = ((MR_Word) ((MR_hl_field(3, GoalExpr_13, 2))));
+              MR_Word Var_21;
+              MR_Box conv3_STATE_VARIABLE_FPtable_16;
+              MR_Box conv2_STATE_VARIABLE_RptaInfo_18;
+
+              {
+                Var_21 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_21, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_5[1]));
+                MR_hl_field(0, Var_21, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0_1));
+                MR_hl_field(0, Var_21, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(0, Var_21, 3) = ((MR_Box) (ModuleInfo_8));
+                MR_hl_field(0, Var_21, 4) = ((MR_Box) (InfoTable_9));
+              }
+              mercury__list__foldl2_6_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[1]), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), Var_21, Goals_20, ((MR_Box) (STATE_VARIABLE_FPtable_0_15)), &conv3_STATE_VARIABLE_FPtable_16, ((MR_Box) (STATE_VARIABLE_RptaInfo_0_17)), &conv2_STATE_VARIABLE_RptaInfo_18);
+              *STATE_VARIABLE_FPtable_16 = ((MR_Word) (conv3_STATE_VARIABLE_FPtable_16));
+              *STATE_VARIABLE_RptaInfo_18 = ((MR_Word) (conv2_STATE_VARIABLE_RptaInfo_18));
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word Disjs_51 = ((MR_Word) ((MR_hl_field(3, GoalExpr_13, 1))));
+              MR_Word Var_52;
+              MR_Box conv7_STATE_VARIABLE_FPtable_16;
+              MR_Box conv6_STATE_VARIABLE_RptaInfo_18;
+
+              {
+                Var_52 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_52, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_5[1]));
+                MR_hl_field(0, Var_52, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0_2));
+                MR_hl_field(0, Var_52, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(0, Var_52, 3) = ((MR_Box) (ModuleInfo_8));
+                MR_hl_field(0, Var_52, 4) = ((MR_Box) (InfoTable_9));
+              }
+              mercury__list__foldl2_6_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[1]), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), Var_52, Disjs_51, ((MR_Box) (STATE_VARIABLE_FPtable_0_15)), &conv7_STATE_VARIABLE_FPtable_16, ((MR_Box) (STATE_VARIABLE_RptaInfo_0_17)), &conv6_STATE_VARIABLE_RptaInfo_18);
+              *STATE_VARIABLE_FPtable_16 = ((MR_Word) (conv7_STATE_VARIABLE_FPtable_16));
+              *STATE_VARIABLE_RptaInfo_18 = ((MR_Word) (conv6_STATE_VARIABLE_RptaInfo_18));
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Word Cases_49 = ((MR_Word) ((MR_hl_field(3, GoalExpr_13, 3))));
+              MR_Word Var_50;
+              MR_Box conv11_STATE_VARIABLE_FPtable_16;
+              MR_Box conv10_STATE_VARIABLE_RptaInfo_18;
+
+              {
+                Var_50 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_50, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_5[2]));
+                MR_hl_field(0, Var_50, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0_3));
+                MR_hl_field(0, Var_50, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(0, Var_50, 3) = ((MR_Box) (ModuleInfo_8));
+                MR_hl_field(0, Var_50, 4) = ((MR_Box) (InfoTable_9));
+              }
+              mercury__list__foldl2_6_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[1]), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), Var_50, Cases_49, ((MR_Box) (STATE_VARIABLE_FPtable_0_15)), &conv11_STATE_VARIABLE_FPtable_16, ((MR_Box) (STATE_VARIABLE_RptaInfo_0_17)), &conv10_STATE_VARIABLE_RptaInfo_18);
+              *STATE_VARIABLE_FPtable_16 = ((MR_Word) (conv11_STATE_VARIABLE_FPtable_16));
+              *STATE_VARIABLE_RptaInfo_18 = ((MR_Word) (conv10_STATE_VARIABLE_RptaInfo_18));
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word Goal_55 = ((MR_Word) ((MR_hl_field(3, GoalExpr_13, 2))));
+              MR_Word next_value_of_Goal_10 = Goal_55;
+
+              // direct tailcall eliminated
+              ;
+              Goal_10 = next_value_of_Goal_10;
+              continue;
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Word If_57 = ((MR_Word) ((MR_hl_field(3, GoalExpr_13, 2))));
+              MR_Word Then_58 = ((MR_Word) ((MR_hl_field(3, GoalExpr_13, 3))));
+              MR_Word Else_59 = ((MR_Word) ((MR_hl_field(3, GoalExpr_13, 4))));
+              MR_Word STATE_VARIABLE_FPTable_1_60;
+              MR_Word STATE_VARIABLE_RptaInfo_1_61;
+              MR_Word STATE_VARIABLE_FPTable_2_62;
+              MR_Word STATE_VARIABLE_RptaInfo_2_63;
+              MR_Word next_value_of_Goal_10;
+              MR_Word next_value_of_STATE_VARIABLE_FPtable_0_15;
+              MR_Word next_value_of_STATE_VARIABLE_RptaInfo_0_17;
+
+              transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(ModuleInfo_8, InfoTable_9, If_57, STATE_VARIABLE_FPtable_0_15, &STATE_VARIABLE_FPTable_1_60, STATE_VARIABLE_RptaInfo_0_17, &STATE_VARIABLE_RptaInfo_1_61);
+              transform_hlds__rbmm__points_to_analysis__inter_analyse_goal_7_p_0(ModuleInfo_8, InfoTable_9, Then_58, STATE_VARIABLE_FPTable_1_60, &STATE_VARIABLE_FPTable_2_62, STATE_VARIABLE_RptaInfo_1_61, &STATE_VARIABLE_RptaInfo_2_63);
+              // direct tailcall eliminated
+              ;
+              next_value_of_Goal_10 = Else_59;
+              next_value_of_STATE_VARIABLE_FPtable_0_15 = STATE_VARIABLE_FPTable_2_62;
+              next_value_of_STATE_VARIABLE_RptaInfo_0_17 = STATE_VARIABLE_RptaInfo_2_63;
+              Goal_10 = next_value_of_Goal_10;
+              STATE_VARIABLE_FPtable_0_15 = next_value_of_STATE_VARIABLE_FPtable_0_15;
+              STATE_VARIABLE_RptaInfo_0_17 = next_value_of_STATE_VARIABLE_RptaInfo_0_17;
+              continue;
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.inter_analyse_goal_expr\'/8", (MR_String) "shorthand");
+              return;
+            }
+            break;
+        }
+        break;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__apply_rules_6_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word CallSite_2,
+  MR_Word Processed_3,
+  MR_Word CalleeRptaInfo_4,
+  MR_Word STATE_VARIABLE_CallerRptaInfo_0_5,
+  MR_Word * STATE_VARIABLE_CallerRptaInfo_6)
+{
+  while (MR_TRUE)
+  {
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+      *STATE_VARIABLE_CallerRptaInfo_6 = STATE_VARIABLE_CallerRptaInfo_0_5;
+    else
+    {
+      MR_Word CalleeNode_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 0))));
+      MR_Word CalleeNodes0_14 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 1))));
+      MR_Word CallerAlphaMapping0_20 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_CallerRptaInfo_0_5, 1))));
+      MR_Word AlphaAtCallSite_21;
+      MR_Word CallerNode_22;
+      MR_Word CalleeGraph_23;
+      MR_Word SuccessorsCalleeNode_25;
+      MR_Word SsList_26;
+      MR_Word ToBeProcessed_27;
+      MR_Word CalleeNodes_28;
+      MR_Word STATE_VARIABLE_CallerRptaInfo_1_31;
+      MR_Word Var_32;
+      MR_Word CalleeGraph_36;
+      MR_Word CalleeNodeOutEdges_38;
+      MR_Box conv0_AlphaAtCallSite_21;
+      MR_Box conv1_CallerNode_22;
+      MR_Word next_value_of_HeadVar__1_1;
+      MR_Word next_value_of_Processed_3;
+      MR_Word next_value_of_STATE_VARIABLE_CallerRptaInfo_0_5;
+
+      mercury__map__lookup_3_p_0((MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]), CallerAlphaMapping0_20, ((MR_Box) (CallSite_2)), &conv0_AlphaAtCallSite_21);
+      AlphaAtCallSite_21 = ((MR_Word) (conv0_AlphaAtCallSite_21));
+      mercury__map__lookup_3_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), AlphaAtCallSite_21, ((MR_Box) (CalleeNode_13)), &conv1_CallerNode_22);
+      CallerNode_22 = ((MR_Word) (conv1_CallerNode_22));
+      CalleeGraph_36 = ((MR_Word) ((MR_hl_field(0, CalleeRptaInfo_4, 0))));
+      CalleeNodeOutEdges_38 = transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_f_0(CalleeGraph_36, CalleeNode_13);
+      transform_hlds__rbmm__points_to_analysis__apply_rules_outedges_6_p_0(CalleeNodeOutEdges_38, CallerNode_22, CallSite_2, CalleeRptaInfo_4, STATE_VARIABLE_CallerRptaInfo_0_5, &STATE_VARIABLE_CallerRptaInfo_1_31);
+      CalleeGraph_23 = ((MR_Word) ((MR_hl_field(0, CalleeRptaInfo_4, 0))));
+      SuccessorsCalleeNode_25 = transform_hlds__rbmm__points_to_graph__rptg_successors_2_f_0(CalleeGraph_23, CalleeNode_13);
+      mercury__set__to_sorted_list_2_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), SuccessorsCalleeNode_25, &SsList_26);
+      mercury__list__delete_elems_3_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), SsList_26, Processed_3, &ToBeProcessed_27);
+      CalleeNodes_28 = mercury__list__f_43_43_2_f_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), ToBeProcessed_27, CalleeNodes0_14);
+      {
+        Var_32 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_32, 0) = ((MR_Box) (CalleeNode_13));
+        MR_hl_field(1, Var_32, 1) = ((MR_Box) (Processed_3));
+      }
+      // direct tailcall eliminated
+      ;
+      next_value_of_HeadVar__1_1 = CalleeNodes_28;
+      next_value_of_Processed_3 = Var_32;
+      next_value_of_STATE_VARIABLE_CallerRptaInfo_0_5 = STATE_VARIABLE_CallerRptaInfo_1_31;
+      HeadVar__1_1 = next_value_of_HeadVar__1_1;
+      Processed_3 = next_value_of_Processed_3;
+      STATE_VARIABLE_CallerRptaInfo_0_5 = next_value_of_STATE_VARIABLE_CallerRptaInfo_0_5;
+      continue;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__apply_rules_outedges_6_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word CallerNode_2,
+  MR_Word CallSite_3,
+  MR_Word CalleeRptaInfo_4,
+  MR_Word HeadVar__5_5,
+  MR_Word * HeadVar__6_6)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+      *HeadVar__6_6 = HeadVar__5_5;
+    else
+    {
+      MR_Word Edge_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 0))));
+      MR_Word Edges_14 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 1))));
+      MR_Word STATE_VARIABLE_CallerRptaInfo_3_23;
+      MR_Word STATE_VARIABLE_CallerRptaInfo_4_24;
+      MR_Word CalleeGraph_26 = ((MR_Word) ((MR_hl_field(0, CalleeRptaInfo_4, 0))));
+      MR_Word CalleeM_29;
+      MR_Word Label_30;
+      MR_Word RealCallerNode_31;
+      MR_Word STATE_VARIABLE_CallerGraph_0_36 = ((MR_Word) ((MR_hl_field(0, HeadVar__5_5, 0))));
+      MR_Word CalleeGraph_45;
+      MR_Word CalleeM_48;
+      MR_Word Label_49;
+      MR_Word RealCallerNode_50;
+      MR_Word STATE_VARIABLE_CallerGraph_0_55;
+      MR_Word STATE_VARIABLE_CallerAlphaMapping_0_56 = ((MR_Word) ((MR_hl_field(0, HeadVar__5_5, 1))));
+      MR_Word CallerAlphaMapping_64;
+      MR_Word CalleeGraph_65;
+      MR_Word CalleeM_68;
+      MR_Word Label_69;
+      MR_Word RealCallerNode_70;
+      MR_Word STATE_VARIABLE_CallerGraph_0_75;
+      MR_Word STATE_VARIABLE_CallerGraph_76;
+      MR_Word _CalleeNode_28;
+      MR_Word CallerMPrime_32;
+      MR_Word RealCallerM_35;
+      MR_Word TypeCtorInfo_26_39;
+      MR_Word TypeInfo_27_40;
+      MR_Word TypeCtorInfo_28_41;
+      MR_Word AlphaAtCallSite_33;
+      MR_Word CallerM_34;
+      MR_Box conv0_AlphaAtCallSite_33;
+      MR_Box conv1_CallerM_34;
+      MR_Integer Var_43;
+      MR_Integer Var_44;
+      MR_Word _CalleeNode_47;
+      MR_Word CallerM_51;
+      MR_Word _CalleeNode_67;
+      MR_Word Var_71;
+      MR_Word next_value_of_HeadVar__1_1;
+      MR_Word next_value_of_HeadVar__5_5;
+
+      transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_p_0(CalleeGraph_26, Edge_13, &_CalleeNode_28, &CalleeM_29, &Label_30);
+      transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_p_0(STATE_VARIABLE_CallerGraph_0_36, CallerNode_2, &RealCallerNode_31);
+      succeeded = transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_p_0(RealCallerNode_31, Label_30, STATE_VARIABLE_CallerGraph_0_36, &CallerMPrime_32);
+      if (succeeded)
+      {
+        TypeCtorInfo_26_39 = (MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0);
+        TypeInfo_27_40 = (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]);
+        succeeded = mercury__map__search_3_p_0(TypeCtorInfo_26_39, TypeInfo_27_40, STATE_VARIABLE_CallerAlphaMapping_0_56, ((MR_Box) (CallSite_3)), &conv0_AlphaAtCallSite_33);
+        if (succeeded)
+        {
+          AlphaAtCallSite_33 = ((MR_Word) (conv0_AlphaAtCallSite_33));
+          succeeded = MR_TRUE;
+        }
+        if (succeeded)
+        {
+          TypeCtorInfo_28_41 = (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0);
+          succeeded = mercury__map__search_3_p_0(TypeCtorInfo_28_41, TypeCtorInfo_28_41, AlphaAtCallSite_33, ((MR_Box) (CalleeM_29)), &conv1_CallerM_34);
+          if (succeeded)
+          {
+            CallerM_34 = ((MR_Word) (conv1_CallerM_34));
+            succeeded = MR_TRUE;
+          }
+          if (succeeded)
+          {
+            transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_p_0(STATE_VARIABLE_CallerGraph_0_36, CallerM_34, &RealCallerM_35);
+            Var_43 = (MR_Integer) (CallerMPrime_32);
+            Var_44 = (MR_Integer) (RealCallerM_35);
+            succeeded = (Var_43 != Var_44);
+          }
+        }
+      }
+      if (succeeded)
+      {
+        MR_Word STATE_VARIABLE_CallerGraph_1_38;
+
+        transform_hlds__rbmm__points_to_graph__unify_operator_4_p_0(RealCallerM_35, CallerMPrime_32, STATE_VARIABLE_CallerGraph_0_36, &STATE_VARIABLE_CallerGraph_1_38);
+        transform_hlds__rbmm__points_to_analysis__rule_1_3_p_0(RealCallerM_35, STATE_VARIABLE_CallerGraph_1_38, &STATE_VARIABLE_CallerGraph_0_55);
+      }
+      else
+        STATE_VARIABLE_CallerGraph_0_55 = STATE_VARIABLE_CallerGraph_0_36;
+      CalleeGraph_45 = ((MR_Word) ((MR_hl_field(0, CalleeRptaInfo_4, 0))));
+      transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_p_0(CalleeGraph_45, Edge_13, &_CalleeNode_47, &CalleeM_48, &Label_49);
+      transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_p_0(STATE_VARIABLE_CallerGraph_0_55, CallerNode_2, &RealCallerNode_50);
+      succeeded = transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_p_0(RealCallerNode_50, Label_49, STATE_VARIABLE_CallerGraph_0_55, &CallerM_51);
+      if (succeeded)
+      {
+        MR_Word AlphaAtCallSite0_52;
+        MR_Box conv2_AlphaAtCallSite0_52;
+        MR_Box conv3_Var_53;
+
+        mercury__map__lookup_3_p_0((MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]), STATE_VARIABLE_CallerAlphaMapping_0_56, ((MR_Box) (CallSite_3)), &conv2_AlphaAtCallSite0_52);
+        AlphaAtCallSite0_52 = ((MR_Word) (conv2_AlphaAtCallSite0_52));
+        succeeded = mercury__map__search_3_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), AlphaAtCallSite0_52, ((MR_Box) (CalleeM_48)), &conv3_Var_53);
+        if (succeeded)
+          succeeded = MR_TRUE;
+        if (succeeded)
+        {
+          CallerAlphaMapping_64 = STATE_VARIABLE_CallerAlphaMapping_0_56;
+          STATE_VARIABLE_CallerGraph_0_75 = STATE_VARIABLE_CallerGraph_0_55;
+        }
+        else
+        {
+          MR_Word AlphaAtCallSite1_54;
+
+          mercury__map__set_4_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), ((MR_Box) (CalleeM_48)), ((MR_Box) (CallerM_51)), AlphaAtCallSite0_52, &AlphaAtCallSite1_54);
+          mercury__map__set_4_p_0((MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]), ((MR_Box) (CallSite_3)), ((MR_Box) (AlphaAtCallSite1_54)), STATE_VARIABLE_CallerAlphaMapping_0_56, &CallerAlphaMapping_64);
+          succeeded = transform_hlds__rbmm__points_to_graph__rptg_is_allocated_node_2_p_0(CalleeGraph_45, CalleeM_48);
+          if (succeeded)
+            transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_p_0(CallerM_51, (MR_Integer) 1, STATE_VARIABLE_CallerGraph_0_55, &STATE_VARIABLE_CallerGraph_0_75);
+          else
+            STATE_VARIABLE_CallerGraph_0_75 = STATE_VARIABLE_CallerGraph_0_55;
+        }
+      }
+      else
+      {
+        CallerAlphaMapping_64 = STATE_VARIABLE_CallerAlphaMapping_0_56;
+        STATE_VARIABLE_CallerGraph_0_75 = STATE_VARIABLE_CallerGraph_0_55;
+      }
+      CalleeGraph_65 = ((MR_Word) ((MR_hl_field(0, CalleeRptaInfo_4, 0))));
+      transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_p_0(CalleeGraph_65, Edge_13, &_CalleeNode_67, &CalleeM_68, &Label_69);
+      transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_p_0(STATE_VARIABLE_CallerGraph_0_75, CallerNode_2, &RealCallerNode_70);
+      succeeded = transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_p_0(RealCallerNode_70, Label_69, STATE_VARIABLE_CallerGraph_0_75, &Var_71);
+      if (succeeded)
+        STATE_VARIABLE_CallerGraph_76 = STATE_VARIABLE_CallerGraph_0_75;
+      else
+      {
+        MR_Word CallerM_73;
+        MR_Word AlphaAtCallSite_72;
+        MR_Box conv4_AlphaAtCallSite_72;
+        MR_Box conv5_CallerM_73;
+
+        mercury__map__lookup_3_p_0((MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]), CallerAlphaMapping_64, ((MR_Box) (CallSite_3)), &conv4_AlphaAtCallSite_72);
+        AlphaAtCallSite_72 = ((MR_Word) (conv4_AlphaAtCallSite_72));
+        succeeded = mercury__map__search_3_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), AlphaAtCallSite_72, ((MR_Box) (CalleeM_68)), &conv5_CallerM_73);
+        if (succeeded)
+        {
+          CallerM_73 = ((MR_Word) (conv5_CallerM_73));
+          succeeded = MR_TRUE;
+        }
+        if (succeeded)
+        {
+          MR_Word RealCallerM_74;
+          MR_Word STATE_VARIABLE_CallerGraph_1_77;
+
+          transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_p_0(STATE_VARIABLE_CallerGraph_0_75, CallerM_73, &RealCallerM_74);
+          transform_hlds__rbmm__points_to_graph__edge_operator_5_p_0(RealCallerNode_70, RealCallerM_74, Label_69, STATE_VARIABLE_CallerGraph_0_75, &STATE_VARIABLE_CallerGraph_1_77);
+          transform_hlds__rbmm__points_to_analysis__rule_3_3_p_0(RealCallerM_74, STATE_VARIABLE_CallerGraph_1_77, &STATE_VARIABLE_CallerGraph_76);
+        }
+        else
+          STATE_VARIABLE_CallerGraph_76 = STATE_VARIABLE_CallerGraph_0_75;
+      }
+      {
+        STATE_VARIABLE_CallerRptaInfo_3_23 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, STATE_VARIABLE_CallerRptaInfo_3_23, 0) = ((MR_Box) (STATE_VARIABLE_CallerGraph_76));
+        MR_hl_field(0, STATE_VARIABLE_CallerRptaInfo_3_23, 1) = ((MR_Box) (CallerAlphaMapping_64));
+      }
+      transform_hlds__rbmm__points_to_analysis__rule_8_6_p_0(Edge_13, CallSite_3, CalleeRptaInfo_4, CallerNode_2, STATE_VARIABLE_CallerRptaInfo_3_23, &STATE_VARIABLE_CallerRptaInfo_4_24);
+      // direct tailcall eliminated
+      ;
+      next_value_of_HeadVar__1_1 = Edges_14;
+      next_value_of_HeadVar__5_5 = STATE_VARIABLE_CallerRptaInfo_4_24;
+      HeadVar__1_1 = next_value_of_HeadVar__1_1;
+      HeadVar__5_5 = next_value_of_HeadVar__5_5;
+      continue;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__rule_8_6_p_0(
+  MR_Word Edge_7,
+  MR_Word CallSite_8,
+  MR_Word CalleeRptaInfo_9,
+  MR_Word CallerNode_10,
+  MR_Word HeadVar__5_5,
+  MR_Word * HeadVar__6_6)
+{
+  MR_bool succeeded;
+  MR_Word CalleeGraph_13 = ((MR_Word) ((MR_hl_field(0, CalleeRptaInfo_9, 0))));
+  MR_Word CalleeM_16;
+  MR_Word Label_17;
+  MR_Word RealCallerNode_18;
+  MR_Word STATE_VARIABLE_CallerGraph_0_27 = ((MR_Word) ((MR_hl_field(0, HeadVar__5_5, 0))));
+  MR_Word STATE_VARIABLE_CallerAlphaMapping_0_28 = ((MR_Word) ((MR_hl_field(0, HeadVar__5_5, 1))));
+  MR_Word STATE_VARIABLE_CallerGraph_29;
+  MR_Word STATE_VARIABLE_CallerAlphaMapping_30;
+  MR_Word _CalleeNode_15;
+  MR_Word Var_19;
+
+  transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_p_0(CalleeGraph_13, Edge_7, &_CalleeNode_15, &CalleeM_16, &Label_17);
+  transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_p_0(STATE_VARIABLE_CallerGraph_0_27, CallerNode_10, &RealCallerNode_18);
+  succeeded = transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_p_0(RealCallerNode_18, Label_17, STATE_VARIABLE_CallerGraph_0_27, &Var_19);
+  if (succeeded)
+  {
+    STATE_VARIABLE_CallerAlphaMapping_30 = STATE_VARIABLE_CallerAlphaMapping_0_28;
+    STATE_VARIABLE_CallerGraph_29 = STATE_VARIABLE_CallerGraph_0_27;
+  }
+  else
+  {
+    MR_Word AlphaAtCallSite0_20;
+    MR_Box conv0_AlphaAtCallSite0_20;
+    MR_Box conv1_Var_21;
+
+    mercury__map__lookup_3_p_0((MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]), STATE_VARIABLE_CallerAlphaMapping_0_28, ((MR_Box) (CallSite_8)), &conv0_AlphaAtCallSite0_20);
+    AlphaAtCallSite0_20 = ((MR_Word) (conv0_AlphaAtCallSite0_20));
+    succeeded = mercury__map__search_3_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), AlphaAtCallSite0_20, ((MR_Box) (CalleeM_16)), &conv1_Var_21);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    if (succeeded)
+    {
+      STATE_VARIABLE_CallerAlphaMapping_30 = STATE_VARIABLE_CallerAlphaMapping_0_28;
+      STATE_VARIABLE_CallerGraph_29 = STATE_VARIABLE_CallerGraph_0_27;
+    }
+    else
+    {
+      MR_Integer CallerNextNodeId_22;
+      MR_String RegName_23;
+      MR_Word CallerMContent_24;
+      MR_Word CallerM_25;
+      MR_Word AlphaAtCallSite_26;
+      MR_String Var_32;
+      MR_Word Var_33;
+      MR_Word Var_34;
+      MR_Word Var_35;
+      MR_Word Var_36;
+      MR_Word STATE_VARIABLE_CallerGraph_1_37;
+      MR_Word STATE_VARIABLE_CallerGraph_2_38;
+      MR_Word AlphaAtCallSite0_41;
+      MR_Box conv2_AlphaAtCallSite0_41;
+
+      CallerNextNodeId_22 = transform_hlds__rbmm__points_to_graph__rptg_get_next_node_id_1_f_0(STATE_VARIABLE_CallerGraph_0_27);
+      Var_32 = mercury__string__int_to_string_1_f_0(CallerNextNodeId_22);
+      mercury__string__append_3_p_2((MR_String) "R", Var_32, &RegName_23);
+      Var_33 = mercury__set__init_0_f_0((MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_2[0]));
+      Var_34 = mercury__set__init_0_f_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0));
+      Var_35 = transform_hlds__rbmm__points_to_graph__rptg_lookup_node_type_2_f_0(CalleeGraph_13, CalleeM_16);
+      Var_36 = transform_hlds__rbmm__points_to_graph__rptg_lookup_node_is_allocated_2_f_0(CalleeGraph_13, CalleeM_16);
+      {
+        CallerMContent_24 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, CallerMContent_24, 0) = ((MR_Box) (Var_33));
+        MR_hl_field(0, CallerMContent_24, 1) = ((MR_Box) (RegName_23));
+        MR_hl_field(0, CallerMContent_24, 2) = ((MR_Box) (Var_34));
+        MR_hl_field(0, CallerMContent_24, 3) = ((MR_Box) (Var_35));
+        MR_hl_field(0, CallerMContent_24, 4) = (MR_Box) ((MR_Unsigned) (Var_36));
+      }
+      transform_hlds__rbmm__points_to_graph__rptg_add_node_4_p_0(CallerMContent_24, &CallerM_25, STATE_VARIABLE_CallerGraph_0_27, &STATE_VARIABLE_CallerGraph_1_37);
+      transform_hlds__rbmm__points_to_graph__edge_operator_5_p_0(RealCallerNode_18, CallerM_25, Label_17, STATE_VARIABLE_CallerGraph_1_37, &STATE_VARIABLE_CallerGraph_2_38);
+      mercury__map__lookup_3_p_0((MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]), STATE_VARIABLE_CallerAlphaMapping_0_28, ((MR_Box) (CallSite_8)), &conv2_AlphaAtCallSite0_41);
+      AlphaAtCallSite0_41 = ((MR_Word) (conv2_AlphaAtCallSite0_41));
+      mercury__map__set_4_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), ((MR_Box) (CalleeM_16)), ((MR_Box) (CallerM_25)), AlphaAtCallSite0_41, &AlphaAtCallSite_26);
+      mercury__map__set_4_p_0((MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]), ((MR_Box) (CallSite_8)), ((MR_Box) (AlphaAtCallSite_26)), STATE_VARIABLE_CallerAlphaMapping_0_28, &STATE_VARIABLE_CallerAlphaMapping_30);
+      transform_hlds__rbmm__points_to_analysis__rule_3_3_p_0(CallerM_25, STATE_VARIABLE_CallerGraph_2_38, &STATE_VARIABLE_CallerGraph_29);
+    }
+  }
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    *HeadVar__6_6 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (STATE_VARIABLE_CallerGraph_29));
+    MR_hl_field(0, base, 1) = ((MR_Box) (STATE_VARIABLE_CallerAlphaMapping_30));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__alpha_mapping_at_call_site_7_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word CalleeGraph_3,
+  MR_Word STATE_VARIABLE_CallerGraph_0_4,
+  MR_Word * STATE_VARIABLE_CallerGraph_5,
+  MR_Word STATE_VARIABLE_AlphaMap_0_6,
+  MR_Word * STATE_VARIABLE_AlphaMap_7)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+      if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        *STATE_VARIABLE_AlphaMap_7 = STATE_VARIABLE_AlphaMap_0_6;
+        *STATE_VARIABLE_CallerGraph_5 = STATE_VARIABLE_CallerGraph_0_4;
+      }
+      else
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.alpha_mapping_at_call_site\'/7", (MR_String) "mismatched lists");
+          return;
+        }
+    else
+    {
+      MR_Word Var_53 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 1))));
+      MR_Word Var_54 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 0))));
+
+      if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.alpha_mapping_at_call_site\'/7", (MR_String) "mismatched lists");
+          return;
+        }
+      else
+      {
+        MR_Word Yi_35 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 0))));
+        MR_Word Ys_36 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 1))));
+        MR_Word N_Xi_40;
+        MR_Word N_Yi_41;
+        MR_Word STATE_VARIABLE_CallerGraph_2_48;
+        MR_Word STATE_VARIABLE_AlphaMap_1_49;
+        MR_Word N_Y_42;
+        MR_Box conv0_N_Y_42;
+        MR_Word next_value_of_HeadVar__1_1;
+        MR_Word next_value_of_HeadVar__2_2;
+        MR_Word next_value_of_STATE_VARIABLE_CallerGraph_0_4;
+        MR_Word next_value_of_STATE_VARIABLE_AlphaMap_0_6;
+
+        transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_p_0(CalleeGraph_3, Var_54, &N_Xi_40);
+        transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_p_0(STATE_VARIABLE_CallerGraph_0_4, Yi_35, &N_Yi_41);
+        succeeded = mercury__map__search_3_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), STATE_VARIABLE_AlphaMap_0_6, ((MR_Box) (N_Xi_40)), &conv0_N_Y_42);
+        if (succeeded)
+        {
+          N_Y_42 = ((MR_Word) (conv0_N_Y_42));
+          succeeded = MR_TRUE;
+        }
+        if (succeeded)
+        {
+          MR_Integer Var_56 = (MR_Integer) (N_Y_42);
+          MR_Integer Var_57 = (MR_Integer) (N_Yi_41);
+
+          succeeded = (Var_56 == Var_57);
+          if (succeeded)
+            STATE_VARIABLE_CallerGraph_2_48 = STATE_VARIABLE_CallerGraph_0_4;
+          else
+          {
+            MR_Word STATE_VARIABLE_CallerGraph_1_47;
+
+            transform_hlds__rbmm__points_to_graph__unify_operator_4_p_0(N_Y_42, N_Yi_41, STATE_VARIABLE_CallerGraph_0_4, &STATE_VARIABLE_CallerGraph_1_47);
+            transform_hlds__rbmm__points_to_analysis__rule_1_3_p_0(N_Y_42, STATE_VARIABLE_CallerGraph_1_47, &STATE_VARIABLE_CallerGraph_2_48);
+          }
+          STATE_VARIABLE_AlphaMap_1_49 = STATE_VARIABLE_AlphaMap_0_6;
+        }
+        else
+        {
+          mercury__map__set_4_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), ((MR_Box) (N_Xi_40)), ((MR_Box) (N_Yi_41)), STATE_VARIABLE_AlphaMap_0_6, &STATE_VARIABLE_AlphaMap_1_49);
+          succeeded = transform_hlds__rbmm__points_to_graph__rptg_is_allocated_node_2_p_0(CalleeGraph_3, N_Xi_40);
+          if (succeeded)
+            transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_p_0(N_Yi_41, (MR_Integer) 1, STATE_VARIABLE_CallerGraph_0_4, &STATE_VARIABLE_CallerGraph_2_48);
+          else
+            STATE_VARIABLE_CallerGraph_2_48 = STATE_VARIABLE_CallerGraph_0_4;
+        }
+        // direct tailcall eliminated
+        ;
+        next_value_of_HeadVar__1_1 = Var_53;
+        next_value_of_HeadVar__2_2 = Ys_36;
+        next_value_of_STATE_VARIABLE_CallerGraph_0_4 = STATE_VARIABLE_CallerGraph_2_48;
+        next_value_of_STATE_VARIABLE_AlphaMap_0_6 = STATE_VARIABLE_AlphaMap_1_49;
+        HeadVar__1_1 = next_value_of_HeadVar__1_1;
+        HeadVar__2_2 = next_value_of_HeadVar__2_2;
+        STATE_VARIABLE_CallerGraph_0_4 = next_value_of_STATE_VARIABLE_CallerGraph_0_4;
+        STATE_VARIABLE_AlphaMap_0_6 = next_value_of_STATE_VARIABLE_AlphaMap_0_6;
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__lookup_rpta_info_6_p_0(
+  MR_Word PPId_7,
+  MR_Word InfoTable_8,
+  MR_Word STATE_VARIABLE_FPtable_0_14,
+  MR_Word * STATE_VARIABLE_FPtable_15,
+  MR_Word * RptaInfo_10,
+  MR_Word * Init_11)
+{
+  MR_bool succeeded;
+  MR_Word RptaInfo0_12;
+  MR_Word FPtable1_13;
+  MR_Box conv0_RptaInfo0_12;
+
+  succeeded = transform_hlds__ctgc__fixpoint_table__get_from_fixpoint_table_4_p_0((MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), ((MR_Box) (PPId_7)), &conv0_RptaInfo0_12, STATE_VARIABLE_FPtable_0_14, &FPtable1_13);
+  if (succeeded)
+  {
+    RptaInfo0_12 = ((MR_Word) (conv0_RptaInfo0_12));
+    succeeded = MR_TRUE;
+  }
+  if (succeeded)
+  {
+    *RptaInfo_10 = RptaInfo0_12;
+    *STATE_VARIABLE_FPtable_15 = FPtable1_13;
+    *Init_11 = (MR_Integer) 0;
+  }
+  else
+  {
+    MR_Word RptaInfo0_19;
+
+    succeeded = transform_hlds__rbmm__points_to_info__rpta_info_table_search_rpta_info_3_p_0(InfoTable_8, PPId_7, &RptaInfo0_19);
+    if (succeeded)
+    {
+      *RptaInfo_10 = RptaInfo0_19;
+      *Init_11 = (MR_Integer) 0;
+    }
+    else
+    {
+      MR_Word Var_17;
+      MR_Word Var_18;
+
+      Var_17 = transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_f_0();
+      Var_18 = mercury__map__init_0_f_0((MR_Word) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[2]));
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        *RptaInfo_10 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (Var_17));
+        MR_hl_field(0, base, 1) = ((MR_Box) (Var_18));
+      }
+      *Init_11 = (MR_Integer) 1;
+    }
+    *STATE_VARIABLE_FPtable_15 = STATE_VARIABLE_FPtable_0_14;
+  }
+}
+
+static MR_Box MR_CALL 
+transform_hlds__rbmm__points_to_analysis__run_with_dependency_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_Word conv0_Entry_6;
+
+  conv0_Entry_6 = transform_hlds__rbmm__points_to_analysis__wrapped_init_2_f_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_Entry_6));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__run_with_dependency_4_p_0(
+  MR_Word ModuleInfo_5,
+  MR_Word SCC_6,
+  MR_Word STATE_VARIABLE_InfoTable_0_10,
+  MR_Word * STATE_VARIABLE_InfoTable_11)
+{
+  MR_bool succeeded;
+  MR_Word SCCProcs_8;
+
+  mercury__set__to_sorted_list_2_p_0((MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0), SCC_6, &SCCProcs_8);
+  succeeded = transform_hlds__smm_common__some_are_special_preds_2_p_0(SCCProcs_8, ModuleInfo_5);
+  if (succeeded)
+    *STATE_VARIABLE_InfoTable_11 = STATE_VARIABLE_InfoTable_0_10;
+  else
+  {
+    MR_Word FPTable_9;
+    MR_Word Var_13;
+
+    {
+      Var_13 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_13, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_6[2]));
+      MR_hl_field(0, Var_13, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__run_with_dependency_4_p_0_1));
+      MR_hl_field(0, Var_13, 2) = ((MR_Box) ((MR_Integer) 1));
+      MR_hl_field(0, Var_13, 3) = ((MR_Box) (STATE_VARIABLE_InfoTable_0_10));
+    }
+    FPTable_9 = transform_hlds__ctgc__fixpoint_table__init_fixpoint_table_2_f_0((MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), Var_13, SCCProcs_8);
+    transform_hlds__rbmm__points_to_analysis__run_with_dependency_until_fixpoint_5_p_0(SCC_6, FPTable_9, ModuleInfo_5, STATE_VARIABLE_InfoTable_0_10, STATE_VARIABLE_InfoTable_11);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__run_with_dependency_until_fixpoint_5_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv2_STATE_VARIABLE_InfoTable_10;
+
+  transform_hlds__rbmm__points_to_analysis__update_rpta_info_in_rpta_info_table_4_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv2_STATE_VARIABLE_InfoTable_10);
+  *wrapper_arg_3 = ((MR_Box) (conv2_STATE_VARIABLE_InfoTable_10));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__run_with_dependency_until_fixpoint_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_STATE_VARIABLE_FPTable_17;
+
+  transform_hlds__rbmm__points_to_analysis__inter_analyse_proc_5_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_FPTable_17);
+  *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_FPTable_17));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__run_with_dependency_until_fixpoint_5_p_0(
+  MR_Word SCC_6,
+  MR_Word FPTable0_7,
+  MR_Word ModuleInfo_8,
+  MR_Word STATE_VARIABLE_InfoTable_0_12,
+  MR_Word * STATE_VARIABLE_InfoTable_13)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded;
+    MR_Word FPTable1_10;
+    MR_Word Var_14;
+    MR_Box conv1_FPTable1_10;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    {
+      Var_14 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_14, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_4[1]));
+      MR_hl_field(0, Var_14, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__run_with_dependency_until_fixpoint_5_p_0_1));
+      MR_hl_field(0, Var_14, 2) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(0, Var_14, 3) = ((MR_Box) (ModuleInfo_8));
+      MR_hl_field(0, Var_14, 4) = ((MR_Box) (STATE_VARIABLE_InfoTable_0_12));
+    }
+    mercury__set__foldl_4_p_0((MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[1]), Var_14, SCC_6, ((MR_Box) (FPTable0_7)), &conv1_FPTable1_10);
+    FPTable1_10 = ((MR_Word) (conv1_FPTable1_10));
+    succeeded = transform_hlds__ctgc__fixpoint_table__fixpoint_reached_1_p_0((MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), FPTable1_10);
+    if (succeeded)
+    {
+      MR_Word Var_15;
+      MR_Box conv3_STATE_VARIABLE_InfoTable_13;
+
+      {
+        Var_15 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_15, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_3[2]));
+        MR_hl_field(0, Var_15, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__run_with_dependency_until_fixpoint_5_p_0_2));
+        MR_hl_field(0, Var_15, 2) = ((MR_Box) ((MR_Integer) 1));
+        MR_hl_field(0, Var_15, 3) = ((MR_Box) (FPTable1_10));
+      }
+      mercury__set__foldl_4_p_0((MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[0]), Var_15, SCC_6, ((MR_Box) (STATE_VARIABLE_InfoTable_0_12)), &conv3_STATE_VARIABLE_InfoTable_13);
+      *STATE_VARIABLE_InfoTable_13 = ((MR_Word) (conv3_STATE_VARIABLE_InfoTable_13));
+    }
+    else
+    {
+      MR_Word FPTable_11;
+      MR_Word next_value_of_FPTable0_7;
+
+      transform_hlds__ctgc__fixpoint_table__new_run_2_p_0((MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), FPTable1_10, &FPTable_11);
+      // direct tailcall eliminated
+      ;
+      next_value_of_FPTable0_7 = FPTable_11;
+      FPTable0_7 = next_value_of_FPTable0_7;
+      continue;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__process_cons_and_decons_7_p_0(
+  MR_Word LVar_8,
+  MR_Word ConsId_9,
+  MR_Word RVar_10,
+  MR_Integer STATE_VARIABLE_Component_0_18,
+  MR_Integer * STATE_VARIABLE_Component_19,
+  MR_Word STATE_VARIABLE_Graph_0_20,
+  MR_Word * STATE_VARIABLE_Graph_21)
+{
+  MR_bool succeeded;
+  MR_Word LNode_13;
+  MR_Word RNode_14;
+  MR_Word Sel_15;
+  MR_Word EdgeLabel_16;
+  MR_Word Var_22;
+
+  transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_p_0(STATE_VARIABLE_Graph_0_20, LVar_8, &LNode_13);
+  transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_p_0(STATE_VARIABLE_Graph_0_20, RVar_10, &RNode_14);
+  {
+    Var_22 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_22, 0) = ((MR_Box) (ConsId_9));
+    MR_hl_field(0, Var_22, 1) = ((MR_Box) (STATE_VARIABLE_Component_0_18));
+  }
+  {
+    Sel_15 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Sel_15, 0) = ((MR_Box) (Var_22));
+    MR_hl_field(1, Sel_15, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  EdgeLabel_16 = (MR_Word) (Sel_15);
+  succeeded = transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_p_0(LNode_13, EdgeLabel_16, RNode_14, STATE_VARIABLE_Graph_0_20);
+  if (succeeded)
+    *STATE_VARIABLE_Graph_21 = STATE_VARIABLE_Graph_0_20;
+  else
+  {
+    MR_Word RVarNode_17;
+    MR_Word STATE_VARIABLE_Graph_1_24;
+    MR_Word STATE_VARIABLE_Graph_2_25;
+    MR_Word N_29;
+    MR_Word M_30;
+    MR_Word OutEdgeList_32;
+
+    transform_hlds__rbmm__points_to_graph__edge_operator_5_p_0(LNode_13, RNode_14, EdgeLabel_16, STATE_VARIABLE_Graph_0_20, &STATE_VARIABLE_Graph_1_24);
+    transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_p_0(STATE_VARIABLE_Graph_1_24, LNode_13, &N_29);
+    transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_p_0(STATE_VARIABLE_Graph_1_24, RNode_14, &M_30);
+    OutEdgeList_32 = transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_f_0(STATE_VARIABLE_Graph_1_24, N_29);
+    transform_hlds__rbmm__points_to_analysis__merge_nodes_reached_by_same_labelled_edge_5_p_0(Sel_15, M_30, OutEdgeList_32, STATE_VARIABLE_Graph_1_24, &STATE_VARIABLE_Graph_2_25);
+    transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_p_0(STATE_VARIABLE_Graph_2_25, RVar_10, &RVarNode_17);
+    transform_hlds__rbmm__points_to_analysis__rule_3_3_p_0(RVarNode_17, STATE_VARIABLE_Graph_2_25, STATE_VARIABLE_Graph_21);
+  }
+  *STATE_VARIABLE_Component_19 = (MR_Integer) ((MR_Unsigned) STATE_VARIABLE_Component_0_18 + (MR_Unsigned) 1);
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__rule_3_3_p_0(
+  MR_Word Node_4,
+  MR_Word STATE_VARIABLE_Graph_0_12,
+  MR_Word * STATE_VARIABLE_Graph_13)
+{
+  while (MR_TRUE)
+  {
+    MR_Word NodeMap_6;
+    MR_Word Nodes_7;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    NodeMap_6 = transform_hlds__rbmm__points_to_graph__rptg_get_nodes_1_f_0(STATE_VARIABLE_Graph_0_12);
+    mercury__map__keys_2_p_0((MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_content_0), NodeMap_6, &Nodes_7);
+    if ((Nodes_7 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.rule_3\'/3", (MR_String) "impossible having no node in graph");
+        return;
+      }
+    else
+    {
+      MR_Word NY_10;
+      MR_Word Happened_11;
+      MR_Word STATE_VARIABLE_Graph_1_14;
+
+      transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_p_0(STATE_VARIABLE_Graph_0_12, Node_4, &NY_10);
+      transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0(Nodes_7, NY_10, STATE_VARIABLE_Graph_0_12, &STATE_VARIABLE_Graph_1_14, &Happened_11);
+      switch (Happened_11) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          *STATE_VARIABLE_Graph_13 = STATE_VARIABLE_Graph_1_14;
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word next_value_of_STATE_VARIABLE_Graph_0_12 = STATE_VARIABLE_Graph_1_14;
+
+            // direct tailcall eliminated
+            ;
+            STATE_VARIABLE_Graph_0_12 = next_value_of_STATE_VARIABLE_Graph_0_12;
+            continue;
+          }
+          break;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_1(
+  void * env_ptr_arg)
+{
+  struct transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0_s * env_ptr = (struct transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0_s *) (env_ptr_arg);
+
+  MR_builtin_longjmp((env_ptr)->transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__commit_0, 1);
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_2(
+  void * env_ptr_arg)
+{
+  struct transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0_s * env_ptr = (struct transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0_s *) (env_ptr_arg);
+
+  if (MR_builtin_setjmp((env_ptr)->transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__commit_0) == 0)
+    {
+      {
+        MR_Word Var_19;
+
+        transform_hlds__rbmm__points_to_graph__rptg_path_4_p_0((env_ptr)->transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__STATE_VARIABLE_Graph_0_3, (env_ptr)->transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__NZ_10, (env_ptr)->transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__NY_2, &Var_19, transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_1, env_ptr);
+      }
+      (env_ptr)->transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__succeeded = MR_FALSE;
+    }
+  else
+    (env_ptr)->transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__succeeded = MR_TRUE;
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word NY_2,
+  MR_Word STATE_VARIABLE_Graph_0_3,
+  MR_Word * STATE_VARIABLE_Graph_4,
+  MR_Word * HeadVar__5_5)
+{
+  struct transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0_s env;
+
+  (env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__NY_2 = NY_2;
+  (env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__STATE_VARIABLE_Graph_0_3 = STATE_VARIABLE_Graph_0_3;
+  while (MR_TRUE)
+  {
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      *HeadVar__5_5 = (MR_Integer) 0;
+      *STATE_VARIABLE_Graph_4 = (env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__STATE_VARIABLE_Graph_0_3;
+    }
+    else
+    {
+      MR_Word NZs_11;
+      MR_Word NZ1_15;
+      MR_Word NZType_20;
+      MR_Integer Var_22;
+      MR_Integer Var_23;
+
+      (env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__NZ_10 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 0))));
+      NZs_11 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 1))));
+      transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_2(&env);
+      if ((env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__succeeded)
+      {
+        NZType_20 = transform_hlds__rbmm__points_to_graph__rptg_lookup_node_type_2_f_0((env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__STATE_VARIABLE_Graph_0_3, (env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__NZ_10);
+        (env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__succeeded = transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_p_0((env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__STATE_VARIABLE_Graph_0_3, (env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__NY_2, NZType_20, &NZ1_15);
+        if ((env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__succeeded)
+        {
+          Var_22 = (MR_Integer) ((env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__NZ_10);
+          Var_23 = (MR_Integer) (NZ1_15);
+          (env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__succeeded = (Var_22 != Var_23);
+        }
+      }
+      if ((env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__succeeded)
+      {
+        MR_Word STATE_VARIABLE_Graph_1_18;
+
+        transform_hlds__rbmm__points_to_graph__unify_operator_4_p_0((env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__NZ_10, NZ1_15, (env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__STATE_VARIABLE_Graph_0_3, &STATE_VARIABLE_Graph_1_18);
+        transform_hlds__rbmm__points_to_analysis__rule_1_3_p_0((env).transform_hlds__rbmm__points_to_analysis__rule_3_2_5_p_0_env_0__NZ_10, STATE_VARIABLE_Graph_1_18, STATE_VARIABLE_Graph_4);
+        *HeadVar__5_5 = (MR_Integer) 1;
+      }
+      else
+      {
+        MR_Word next_value_of_HeadVar__1_1 = NZs_11;
+
+        // direct tailcall eliminated
+        ;
+        HeadVar__1_1 = next_value_of_HeadVar__1_1;
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__merge_nodes_reached_by_same_labelled_edge_5_p_0(
+  MR_Word Sel_1,
+  MR_Word M_2,
+  MR_Word HeadVar__3_3,
+  MR_Word STATE_VARIABLE_Graph_0_4,
+  MR_Word * STATE_VARIABLE_Graph_5)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+      *STATE_VARIABLE_Graph_5 = STATE_VARIABLE_Graph_0_4;
+    else
+    {
+      MR_Word Ed_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 0))));
+      MR_Word Eds_14 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 1))));
+      MR_Word MPrime_17;
+      MR_Word EdgeContent_18;
+      MR_Word Var_16;
+      MR_Word Selector_19;
+      MR_Integer Var_25;
+      MR_Integer Var_26;
+
+      transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_p_0(STATE_VARIABLE_Graph_0_4, Ed_13, &Var_16, &MPrime_17, &EdgeContent_18);
+      Selector_19 = (MR_Word) (EdgeContent_18);
+      succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_2[2]), ((MR_Box) (Selector_19)), ((MR_Box) (Sel_1)));
+      if (succeeded)
+      {
+        Var_25 = (MR_Integer) (MPrime_17);
+        Var_26 = (MR_Integer) (M_2);
+        succeeded = (Var_25 != Var_26);
+      }
+      if (succeeded)
+      {
+        MR_Word STATE_VARIABLE_Graph_1_22;
+
+        transform_hlds__rbmm__points_to_graph__unify_operator_4_p_0(M_2, MPrime_17, STATE_VARIABLE_Graph_0_4, &STATE_VARIABLE_Graph_1_22);
+        transform_hlds__rbmm__points_to_analysis__rule_1_3_p_0(M_2, STATE_VARIABLE_Graph_1_22, STATE_VARIABLE_Graph_5);
+      }
+      else
+      {
+        MR_Word next_value_of_HeadVar__3_3 = Eds_14;
+
+        // direct tailcall eliminated
+        ;
+        HeadVar__3_3 = next_value_of_HeadVar__3_3;
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv4_STATE_VARIABLE_RptaInfo_10;
+
+  transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv4_STATE_VARIABLE_RptaInfo_10);
+  *wrapper_arg_3 = ((MR_Box) (conv4_STATE_VARIABLE_RptaInfo_10));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv2_STATE_VARIABLE_RptaInfo_9;
+
+  transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv2_STATE_VARIABLE_RptaInfo_9);
+  *wrapper_arg_3 = ((MR_Box) (conv2_STATE_VARIABLE_RptaInfo_9));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_STATE_VARIABLE_RptaInfo_9;
+
+  transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_RptaInfo_9);
+  *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_RptaInfo_9));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0(
+  MR_Word Case_4,
+  MR_Word STATE_VARIABLE_RptaInfo_0_9,
+  MR_Word * STATE_VARIABLE_RptaInfo_10)
+{
+  MR_Word Goal_8 = ((MR_Word) ((MR_hl_field(0, Case_4, 2))));
+  MR_Word GoalExpr_11 = ((MR_Word) ((MR_hl_field(0, Goal_8, 0))));
+
+  switch (MR_tag((MR_Word) GoalExpr_11)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word Goal_22 = (MR_Word) ((MR_Word) (GoalExpr_11));
+
+        transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(Goal_22, STATE_VARIABLE_RptaInfo_0_9, STATE_VARIABLE_RptaInfo_10);
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word Unification_26 = ((MR_Word) ((MR_hl_field(1, GoalExpr_11, 3))));
+
+        transform_hlds__rbmm__points_to_analysis__intra_analyse_unification_3_p_0(Unification_26, STATE_VARIABLE_RptaInfo_0_9, STATE_VARIABLE_RptaInfo_10);
+      }
+      break;
+    case (MR_Integer) 2:
+      *STATE_VARIABLE_RptaInfo_10 = STATE_VARIABLE_RptaInfo_0_9;
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) ((MR_hl_field(3, GoalExpr_11, 0))))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          *STATE_VARIABLE_RptaInfo_10 = STATE_VARIABLE_RptaInfo_0_9;
+          break;
+        case (MR_Integer) 1:
+          *STATE_VARIABLE_RptaInfo_10 = STATE_VARIABLE_RptaInfo_0_9;
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Goals_14 = ((MR_Word) ((MR_hl_field(3, GoalExpr_11, 2))));
+            MR_Box conv1_STATE_VARIABLE_RptaInfo_10;
+
+            mercury__list__foldl_4_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[9]), Goals_14, ((MR_Box) (STATE_VARIABLE_RptaInfo_0_9)), &conv1_STATE_VARIABLE_RptaInfo_10);
+            *STATE_VARIABLE_RptaInfo_10 = ((MR_Word) (conv1_STATE_VARIABLE_RptaInfo_10));
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word Goals_20 = ((MR_Word) ((MR_hl_field(3, GoalExpr_11, 1))));
+            MR_Box conv3_STATE_VARIABLE_RptaInfo_10;
+
+            mercury__list__foldl_4_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[10]), Goals_20, ((MR_Box) (STATE_VARIABLE_RptaInfo_0_9)), &conv3_STATE_VARIABLE_RptaInfo_10);
+            *STATE_VARIABLE_RptaInfo_10 = ((MR_Word) (conv3_STATE_VARIABLE_RptaInfo_10));
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            MR_Word Cases_18 = ((MR_Word) ((MR_hl_field(3, GoalExpr_11, 3))));
+            MR_Box conv5_STATE_VARIABLE_RptaInfo_10;
+
+            mercury__list__foldl_4_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[11]), Cases_18, ((MR_Box) (STATE_VARIABLE_RptaInfo_0_9)), &conv5_STATE_VARIABLE_RptaInfo_10);
+            *STATE_VARIABLE_RptaInfo_10 = ((MR_Word) (conv5_STATE_VARIABLE_RptaInfo_10));
+          }
+          break;
+        case (MR_Integer) 5:
+          {
+            MR_Word Goal_29 = ((MR_Word) ((MR_hl_field(3, GoalExpr_11, 2))));
+
+            transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(Goal_29, STATE_VARIABLE_RptaInfo_0_9, STATE_VARIABLE_RptaInfo_10);
+          }
+          break;
+        case (MR_Integer) 6:
+          {
+            MR_Word If_31 = ((MR_Word) ((MR_hl_field(3, GoalExpr_11, 2))));
+            MR_Word Then_32 = ((MR_Word) ((MR_hl_field(3, GoalExpr_11, 3))));
+            MR_Word Else_33 = ((MR_Word) ((MR_hl_field(3, GoalExpr_11, 4))));
+            MR_Word STATE_VARIABLE_RptaInfo_1_34;
+            MR_Word STATE_VARIABLE_RptaInfo_2_35;
+
+            transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(If_31, STATE_VARIABLE_RptaInfo_0_9, &STATE_VARIABLE_RptaInfo_1_34);
+            transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(Then_32, STATE_VARIABLE_RptaInfo_1_34, &STATE_VARIABLE_RptaInfo_2_35);
+            transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(Else_33, STATE_VARIABLE_RptaInfo_2_35, STATE_VARIABLE_RptaInfo_10);
+          }
+          break;
+        case (MR_Integer) 7:
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.intra_analyse_goal_expr\'/3", (MR_String) "shorthand");
+            return;
+          }
+          break;
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_proc_5_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv4_STATE_VARIABLE_RptaInfo_10;
+
+  transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv4_STATE_VARIABLE_RptaInfo_10);
+  *wrapper_arg_3 = ((MR_Box) (conv4_STATE_VARIABLE_RptaInfo_10));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_proc_5_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv2_STATE_VARIABLE_RptaInfo_9;
+
+  transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv2_STATE_VARIABLE_RptaInfo_9);
+  *wrapper_arg_3 = ((MR_Box) (conv2_STATE_VARIABLE_RptaInfo_9));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_proc_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_STATE_VARIABLE_RptaInfo_9;
+
+  transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_RptaInfo_9);
+  *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_RptaInfo_9));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_proc_5_p_0(
+  MR_Word ModuleInfo_6,
+  MR_Word PredId_7,
+  MR_Integer ProcId_8,
+  MR_Word STATE_VARIABLE_InfoTable_0_15,
+  MR_Word * STATE_VARIABLE_InfoTable_16)
+{
+  MR_bool succeeded;
+  MR_Word PPId_10;
+  MR_Word Var_17;
+
+  {
+    PPId_10 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, PPId_10, 0) = ((MR_Box) (PredId_7));
+    MR_hl_field(0, PPId_10, 1) = ((MR_Box) (ProcId_8));
+  }
+  {
+    Var_17 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_17, 0) = ((MR_Box) (PPId_10));
+    MR_hl_field(1, Var_17, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  succeeded = transform_hlds__smm_common__some_are_special_preds_2_p_0(Var_17, ModuleInfo_6);
+  if (succeeded)
+    *STATE_VARIABLE_InfoTable_16 = STATE_VARIABLE_InfoTable_0_15;
+  else
+  {
+    MR_Word ProcInfo_11;
+    MR_Word RptaInfo0_12;
+    MR_Word Goal_13;
+    MR_Word RptaInfo_14;
+    MR_Word GoalExpr_19;
+
+    hlds__hlds_module__module_info_proc_info_3_p_0(ModuleInfo_6, PPId_10, &ProcInfo_11);
+    RptaInfo0_12 = transform_hlds__rbmm__points_to_info__rpta_info_init_1_f_0(ProcInfo_11);
+    hlds__hlds_pred__proc_info_get_goal_2_p_0(ProcInfo_11, &Goal_13);
+    GoalExpr_19 = ((MR_Word) ((MR_hl_field(0, Goal_13, 0))));
+    switch (MR_tag((MR_Word) GoalExpr_19)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word Goal_30 = (MR_Word) ((MR_Word) (GoalExpr_19));
+
+          transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(Goal_30, RptaInfo0_12, &RptaInfo_14);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word Unification_34 = ((MR_Word) ((MR_hl_field(1, GoalExpr_19, 3))));
+
+          transform_hlds__rbmm__points_to_analysis__intra_analyse_unification_3_p_0(Unification_34, RptaInfo0_12, &RptaInfo_14);
+        }
+        break;
+      case (MR_Integer) 2:
+        RptaInfo_14 = RptaInfo0_12;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, GoalExpr_19, 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            RptaInfo_14 = RptaInfo0_12;
+            break;
+          case (MR_Integer) 1:
+            RptaInfo_14 = RptaInfo0_12;
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word Goals_22 = ((MR_Word) ((MR_hl_field(3, GoalExpr_19, 2))));
+              MR_Box conv1_RptaInfo_14;
+
+              mercury__list__foldl_4_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[6]), Goals_22, ((MR_Box) (RptaInfo0_12)), &conv1_RptaInfo_14);
+              RptaInfo_14 = ((MR_Word) (conv1_RptaInfo_14));
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word Goals_28 = ((MR_Word) ((MR_hl_field(3, GoalExpr_19, 1))));
+              MR_Box conv3_RptaInfo_14;
+
+              mercury__list__foldl_4_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[7]), Goals_28, ((MR_Box) (RptaInfo0_12)), &conv3_RptaInfo_14);
+              RptaInfo_14 = ((MR_Word) (conv3_RptaInfo_14));
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Word Cases_26 = ((MR_Word) ((MR_hl_field(3, GoalExpr_19, 3))));
+              MR_Box conv5_RptaInfo_14;
+
+              mercury__list__foldl_4_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[8]), Cases_26, ((MR_Box) (RptaInfo0_12)), &conv5_RptaInfo_14);
+              RptaInfo_14 = ((MR_Word) (conv5_RptaInfo_14));
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word Goal_37 = ((MR_Word) ((MR_hl_field(3, GoalExpr_19, 2))));
+
+              transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(Goal_37, RptaInfo0_12, &RptaInfo_14);
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Word If_39 = ((MR_Word) ((MR_hl_field(3, GoalExpr_19, 2))));
+              MR_Word Then_40 = ((MR_Word) ((MR_hl_field(3, GoalExpr_19, 3))));
+              MR_Word Else_41 = ((MR_Word) ((MR_hl_field(3, GoalExpr_19, 4))));
+              MR_Word STATE_VARIABLE_RptaInfo_1_42;
+              MR_Word STATE_VARIABLE_RptaInfo_2_43;
+
+              transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(If_39, RptaInfo0_12, &STATE_VARIABLE_RptaInfo_1_42);
+              transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(Then_40, STATE_VARIABLE_RptaInfo_1_42, &STATE_VARIABLE_RptaInfo_2_43);
+              transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(Else_41, STATE_VARIABLE_RptaInfo_2_43, &RptaInfo_14);
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.intra_analyse_goal_expr\'/3", (MR_String) "shorthand");
+              return;
+            }
+            break;
+        }
+        break;
+    }
+    transform_hlds__rbmm__points_to_info__rpta_info_table_set_rpta_info_4_p_0(PPId_10, RptaInfo_14, STATE_VARIABLE_InfoTable_0_15, STATE_VARIABLE_InfoTable_16);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv4_STATE_VARIABLE_RptaInfo_10;
+
+  transform_hlds__rbmm__points_to_analysis__intra_analyse_case_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv4_STATE_VARIABLE_RptaInfo_10);
+  *wrapper_arg_3 = ((MR_Box) (conv4_STATE_VARIABLE_RptaInfo_10));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv2_STATE_VARIABLE_RptaInfo_9;
+
+  transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv2_STATE_VARIABLE_RptaInfo_9);
+  *wrapper_arg_3 = ((MR_Box) (conv2_STATE_VARIABLE_RptaInfo_9));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_STATE_VARIABLE_RptaInfo_9;
+
+  transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_RptaInfo_9);
+  *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_RptaInfo_9));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(
+  MR_Word Goal_4,
+  MR_Word STATE_VARIABLE_RptaInfo_0_8,
+  MR_Word * STATE_VARIABLE_RptaInfo_9)
+{
+  while (MR_TRUE)
+  {
+    MR_Word GoalExpr_6 = ((MR_Word) ((MR_hl_field(0, Goal_4, 0))));
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    switch (MR_tag((MR_Word) GoalExpr_6)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word Goal_19 = (MR_Word) ((MR_Word) (GoalExpr_6));
+          MR_Word next_value_of_Goal_4 = Goal_19;
+
+          // direct tailcall eliminated
+          ;
+          Goal_4 = next_value_of_Goal_4;
+          continue;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word Unification_23 = ((MR_Word) ((MR_hl_field(1, GoalExpr_6, 3))));
+
+          transform_hlds__rbmm__points_to_analysis__intra_analyse_unification_3_p_0(Unification_23, STATE_VARIABLE_RptaInfo_0_8, STATE_VARIABLE_RptaInfo_9);
+        }
+        break;
+      case (MR_Integer) 2:
+        *STATE_VARIABLE_RptaInfo_9 = STATE_VARIABLE_RptaInfo_0_8;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, GoalExpr_6, 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *STATE_VARIABLE_RptaInfo_9 = STATE_VARIABLE_RptaInfo_0_8;
+            break;
+          case (MR_Integer) 1:
+            *STATE_VARIABLE_RptaInfo_9 = STATE_VARIABLE_RptaInfo_0_8;
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word Goals_11 = ((MR_Word) ((MR_hl_field(3, GoalExpr_6, 2))));
+              MR_Box conv1_STATE_VARIABLE_RptaInfo_9;
+
+              mercury__list__foldl_4_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[3]), Goals_11, ((MR_Box) (STATE_VARIABLE_RptaInfo_0_8)), &conv1_STATE_VARIABLE_RptaInfo_9);
+              *STATE_VARIABLE_RptaInfo_9 = ((MR_Word) (conv1_STATE_VARIABLE_RptaInfo_9));
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word Goals_17 = ((MR_Word) ((MR_hl_field(3, GoalExpr_6, 1))));
+              MR_Box conv3_STATE_VARIABLE_RptaInfo_9;
+
+              mercury__list__foldl_4_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[4]), Goals_17, ((MR_Box) (STATE_VARIABLE_RptaInfo_0_8)), &conv3_STATE_VARIABLE_RptaInfo_9);
+              *STATE_VARIABLE_RptaInfo_9 = ((MR_Word) (conv3_STATE_VARIABLE_RptaInfo_9));
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Word Cases_15 = ((MR_Word) ((MR_hl_field(3, GoalExpr_6, 3))));
+              MR_Box conv5_STATE_VARIABLE_RptaInfo_9;
+
+              mercury__list__foldl_4_p_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0), (MR_Word) (&transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[5]), Cases_15, ((MR_Box) (STATE_VARIABLE_RptaInfo_0_8)), &conv5_STATE_VARIABLE_RptaInfo_9);
+              *STATE_VARIABLE_RptaInfo_9 = ((MR_Word) (conv5_STATE_VARIABLE_RptaInfo_9));
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word Goal_26 = ((MR_Word) ((MR_hl_field(3, GoalExpr_6, 2))));
+              MR_Word next_value_of_Goal_4 = Goal_26;
+
+              // direct tailcall eliminated
+              ;
+              Goal_4 = next_value_of_Goal_4;
+              continue;
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Word If_28 = ((MR_Word) ((MR_hl_field(3, GoalExpr_6, 2))));
+              MR_Word Then_29 = ((MR_Word) ((MR_hl_field(3, GoalExpr_6, 3))));
+              MR_Word Else_30 = ((MR_Word) ((MR_hl_field(3, GoalExpr_6, 4))));
+              MR_Word STATE_VARIABLE_RptaInfo_1_31;
+              MR_Word STATE_VARIABLE_RptaInfo_2_32;
+              MR_Word next_value_of_Goal_4;
+              MR_Word next_value_of_STATE_VARIABLE_RptaInfo_0_8;
+
+              transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(If_28, STATE_VARIABLE_RptaInfo_0_8, &STATE_VARIABLE_RptaInfo_1_31);
+              transform_hlds__rbmm__points_to_analysis__intra_analyse_goal_3_p_0(Then_29, STATE_VARIABLE_RptaInfo_1_31, &STATE_VARIABLE_RptaInfo_2_32);
+              // direct tailcall eliminated
+              ;
+              next_value_of_Goal_4 = Else_30;
+              next_value_of_STATE_VARIABLE_RptaInfo_0_8 = STATE_VARIABLE_RptaInfo_2_32;
+              Goal_4 = next_value_of_Goal_4;
+              STATE_VARIABLE_RptaInfo_0_8 = next_value_of_STATE_VARIABLE_RptaInfo_0_8;
+              continue;
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.intra_analyse_goal_expr\'/3", (MR_String) "shorthand");
+              return;
+            }
+            break;
+        }
+        break;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_unification_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+  MR_Integer conv5_STATE_VARIABLE_Component_19;
+  MR_Word conv4_STATE_VARIABLE_Graph_21;
+
+  transform_hlds__rbmm__points_to_analysis__process_cons_and_decons_7_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Integer) (wrapper_arg_2)), &conv5_STATE_VARIABLE_Component_19, ((MR_Word) (wrapper_arg_4)), &conv4_STATE_VARIABLE_Graph_21);
+  *wrapper_arg_3 = ((MR_Box) (conv5_STATE_VARIABLE_Component_19));
+  *wrapper_arg_5 = ((MR_Box) (conv4_STATE_VARIABLE_Graph_21));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_unification_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+  MR_Integer conv1_STATE_VARIABLE_Component_19;
+  MR_Word conv0_STATE_VARIABLE_Graph_21;
+
+  transform_hlds__rbmm__points_to_analysis__process_cons_and_decons_7_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), ((MR_Integer) (wrapper_arg_2)), &conv1_STATE_VARIABLE_Component_19, ((MR_Word) (wrapper_arg_4)), &conv0_STATE_VARIABLE_Graph_21);
+  *wrapper_arg_3 = ((MR_Box) (conv1_STATE_VARIABLE_Component_19));
+  *wrapper_arg_5 = ((MR_Box) (conv0_STATE_VARIABLE_Graph_21));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_analyse_unification_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word * HeadVar__3_3)
+{
+  MR_bool succeeded;
+
+  switch (MR_tag((MR_Word) HeadVar__1_1)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word LVar_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 0))));
+        MR_Word ConsId_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 1))));
+        MR_Word RVars_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 2))));
+        MR_Word AlphaMapping_12 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 1))));
+        MR_Word LNode_13;
+        MR_Word LNodeContent0_14;
+        MR_Word A_15;
+        MR_String B_16;
+        MR_Word C_17;
+        MR_Word D_18;
+        MR_Word LNodeContent_20;
+        MR_Word STATE_VARIABLE_Graph_0_22 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 0))));
+        MR_Word STATE_VARIABLE_Graph_23;
+        MR_Word STATE_VARIABLE_Graph_1_25;
+        MR_Word Var_26;
+        MR_Box conv3_Var_21;
+        MR_Box conv2_STATE_VARIABLE_Graph_23;
+
+        transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_p_0(STATE_VARIABLE_Graph_0_22, LVar_4, &LNode_13);
+        LNodeContent0_14 = transform_hlds__rbmm__points_to_graph__rptg_get_node_content_2_f_0(STATE_VARIABLE_Graph_0_22, LNode_13);
+        A_15 = ((MR_Word) ((MR_hl_field(0, LNodeContent0_14, 0))));
+        B_16 = ((MR_String) ((MR_hl_field(0, LNodeContent0_14, 1))));
+        C_17 = ((MR_Word) ((MR_hl_field(0, LNodeContent0_14, 2))));
+        D_18 = ((MR_Word) ((MR_hl_field(0, LNodeContent0_14, 3))));
+        {
+          LNodeContent_20 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, LNodeContent_20, 0) = ((MR_Box) (A_15));
+          MR_hl_field(0, LNodeContent_20, 1) = ((MR_Box) (B_16));
+          MR_hl_field(0, LNodeContent_20, 2) = ((MR_Box) (C_17));
+          MR_hl_field(0, LNodeContent_20, 3) = ((MR_Box) (D_18));
+          MR_hl_field(0, LNodeContent_20, 4) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 1));
+        }
+        transform_hlds__rbmm__points_to_graph__rptg_set_node_content_4_p_0(LNode_13, LNodeContent_20, STATE_VARIABLE_Graph_0_22, &STATE_VARIABLE_Graph_1_25);
+        {
+          Var_26 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_26, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_5[0]));
+          MR_hl_field(0, Var_26, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__intra_analyse_unification_3_p_0_1));
+          MR_hl_field(0, Var_26, 2) = ((MR_Box) ((MR_Integer) 2));
+          MR_hl_field(0, Var_26, 3) = ((MR_Box) (LVar_4));
+          MR_hl_field(0, Var_26, 4) = ((MR_Box) (ConsId_5));
+        }
+        mercury__list__foldl2_6_p_0((MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_2[0]), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_int_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0), Var_26, RVars_6, ((MR_Box) ((MR_Integer) 1)), &conv3_Var_21, ((MR_Box) (STATE_VARIABLE_Graph_1_25)), &conv2_STATE_VARIABLE_Graph_23);
+        STATE_VARIABLE_Graph_23 = ((MR_Word) (conv2_STATE_VARIABLE_Graph_23));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          *HeadVar__3_3 = base;
+          MR_hl_field(0, base, 0) = ((MR_Box) (STATE_VARIABLE_Graph_23));
+          MR_hl_field(0, base, 1) = ((MR_Box) (AlphaMapping_12));
+        }
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word LVar_29 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 0))));
+        MR_Word ConsId_30 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 1))));
+        MR_Word RVars_31 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 2))));
+        MR_Word AlphaMapping_36 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 1))));
+        MR_Word STATE_VARIABLE_Graph_0_38 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 0))));
+        MR_Word STATE_VARIABLE_Graph_39;
+        MR_Word Var_40;
+        MR_Box conv7_Var_37;
+        MR_Box conv6_STATE_VARIABLE_Graph_39;
+
+        {
+          Var_40 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_40, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_5[0]));
+          MR_hl_field(0, Var_40, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__intra_analyse_unification_3_p_0_2));
+          MR_hl_field(0, Var_40, 2) = ((MR_Box) ((MR_Integer) 2));
+          MR_hl_field(0, Var_40, 3) = ((MR_Box) (LVar_29));
+          MR_hl_field(0, Var_40, 4) = ((MR_Box) (ConsId_30));
+        }
+        mercury__list__foldl2_6_p_0((MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_2[0]), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_int_0), (MR_Word) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0), Var_40, RVars_31, ((MR_Box) ((MR_Integer) 1)), &conv7_Var_37, ((MR_Box) (STATE_VARIABLE_Graph_0_38)), &conv6_STATE_VARIABLE_Graph_39);
+        STATE_VARIABLE_Graph_39 = ((MR_Word) (conv6_STATE_VARIABLE_Graph_39));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          *HeadVar__3_3 = base;
+          MR_hl_field(0, base, 0) = ((MR_Box) (STATE_VARIABLE_Graph_39));
+          MR_hl_field(0, base, 1) = ((MR_Box) (AlphaMapping_36));
+        }
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Word ToVar_43 = ((MR_Word) ((MR_hl_field(2, HeadVar__1_1, 0))));
+        MR_Word FromVar_44 = ((MR_Word) ((MR_hl_field(2, HeadVar__1_1, 1))));
+        MR_Word AlphaMapping_46 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 1))));
+        MR_Word ToNode_47;
+        MR_Word FromNode_48;
+        MR_Word STATE_VARIABLE_Graph_0_49 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 0))));
+        MR_Word STATE_VARIABLE_Graph_50;
+        MR_Integer Var_82;
+        MR_Integer Var_83;
+
+        transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_p_0(STATE_VARIABLE_Graph_0_49, ToVar_43, &ToNode_47);
+        transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_p_0(STATE_VARIABLE_Graph_0_49, FromVar_44, &FromNode_48);
+        Var_82 = (MR_Integer) (ToNode_47);
+        Var_83 = (MR_Integer) (FromNode_48);
+        succeeded = (Var_82 == Var_83);
+        if (succeeded)
+          STATE_VARIABLE_Graph_50 = STATE_VARIABLE_Graph_0_49;
+        else
+        {
+          MR_Word STATE_VARIABLE_Graph_1_51;
+
+          transform_hlds__rbmm__points_to_graph__unify_operator_4_p_0(ToNode_47, FromNode_48, STATE_VARIABLE_Graph_0_49, &STATE_VARIABLE_Graph_1_51);
+          transform_hlds__rbmm__points_to_analysis__rule_1_3_p_0(ToNode_47, STATE_VARIABLE_Graph_1_51, &STATE_VARIABLE_Graph_50);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          *HeadVar__3_3 = base;
+          MR_hl_field(0, base, 0) = ((MR_Box) (STATE_VARIABLE_Graph_50));
+          MR_hl_field(0, base, 1) = ((MR_Box) (AlphaMapping_46));
+        }
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, 0))))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          *HeadVar__3_3 = HeadVar__2_2;
+          break;
+        case (MR_Integer) 1:
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140transform_hlds.rbmm.points_to_analysis.intra_analyse_unification\'/3", (MR_String) "complicated_unify");
+            return;
+          }
+          break;
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__merge_nodes_reached_by_same_labelled_edges_6_p_0(
+  MR_Word Edge_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3,
+  MR_Word STATE_VARIABLE_Graph_0_4,
+  MR_Word * STATE_VARIABLE_Graph_5,
+  MR_Word * HeadVar__6_6)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+      if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        *HeadVar__6_6 = (MR_Integer) 0;
+        *STATE_VARIABLE_Graph_5 = STATE_VARIABLE_Graph_0_4;
+      }
+      else
+      {
+        MR_Word E_12 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 0))));
+        MR_Word Es_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 1))));
+        MR_Word next_value_of_Edge_1 = E_12;
+        MR_Word next_value_of_HeadVar__2_2 = Es_13;
+        MR_Word next_value_of_HeadVar__3_3 = Es_13;
+
+        // direct tailcall eliminated
+        ;
+        Edge_1 = next_value_of_Edge_1;
+        HeadVar__2_2 = next_value_of_HeadVar__2_2;
+        HeadVar__3_3 = next_value_of_HeadVar__3_3;
+        continue;
+      }
+    else
+    {
+      MR_Word Ed_21 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 0))));
+      MR_Word Eds_22 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 1))));
+      MR_Word End_27;
+      MR_Word EdgeContent_28;
+      MR_Word E_30;
+      MR_Word EdC_31;
+      MR_Word _Start_26;
+      MR_Word _S_29;
+
+      transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_p_0(STATE_VARIABLE_Graph_0_4, Edge_1, &_Start_26, &End_27, &EdgeContent_28);
+      transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_p_0(STATE_VARIABLE_Graph_0_4, Ed_21, &_S_29, &E_30, &EdC_31);
+      succeeded = transform_hlds__rbmm__points_to_graph____Unify____rptg_edge_content_0_0(EdgeContent_28, EdC_31);
+      if (succeeded)
+      {
+        MR_Word Graph1_32;
+
+        transform_hlds__rbmm__points_to_graph__unify_operator_4_p_0(End_27, E_30, STATE_VARIABLE_Graph_0_4, &Graph1_32);
+        transform_hlds__rbmm__points_to_analysis__rule_1_3_p_0(End_27, Graph1_32, STATE_VARIABLE_Graph_5);
+        *HeadVar__6_6 = (MR_Integer) 1;
+      }
+      else
+      {
+        MR_Word next_value_of_HeadVar__2_2 = Eds_22;
+
+        // direct tailcall eliminated
+        ;
+        HeadVar__2_2 = next_value_of_HeadVar__2_2;
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__rule_1_3_p_0(
+  MR_Word Node_4,
+  MR_Word STATE_VARIABLE_Graph_0_11,
+  MR_Word * STATE_VARIABLE_Graph_12)
+{
+  while (MR_TRUE)
+  {
+    MR_Word UnifiedNode_6;
+    MR_Word OutEdgesOfUnifiedNode_7;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_p_0(STATE_VARIABLE_Graph_0_11, Node_4, &UnifiedNode_6);
+    OutEdgesOfUnifiedNode_7 = transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_f_0(STATE_VARIABLE_Graph_0_11, UnifiedNode_6);
+    if ((OutEdgesOfUnifiedNode_7 == (MR_Word) ((MR_Unsigned) 0U)))
+      *STATE_VARIABLE_Graph_12 = STATE_VARIABLE_Graph_0_11;
+    else
+    {
+      MR_Word E_8 = ((MR_Word) ((MR_hl_field(1, OutEdgesOfUnifiedNode_7, 0))));
+      MR_Word Es_9 = ((MR_Word) ((MR_hl_field(1, OutEdgesOfUnifiedNode_7, 1))));
+      MR_Word Happened_10;
+      MR_Word STATE_VARIABLE_Graph_1_14;
+
+      transform_hlds__rbmm__points_to_analysis__merge_nodes_reached_by_same_labelled_edges_6_p_0(E_8, Es_9, Es_9, STATE_VARIABLE_Graph_0_11, &STATE_VARIABLE_Graph_1_14, &Happened_10);
+      switch (Happened_10) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          *STATE_VARIABLE_Graph_12 = STATE_VARIABLE_Graph_1_14;
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word next_value_of_Node_4 = UnifiedNode_6;
+            MR_Word next_value_of_STATE_VARIABLE_Graph_0_11 = STATE_VARIABLE_Graph_1_14;
+
+            // direct tailcall eliminated
+            ;
+            Node_4 = next_value_of_Node_4;
+            STATE_VARIABLE_Graph_0_11 = next_value_of_STATE_VARIABLE_Graph_0_11;
+            continue;
+          }
+          break;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_pred_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_STATE_VARIABLE_InfoTable_16;
+
+  transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_proc_5_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Integer) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_InfoTable_16);
+  *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_InfoTable_16));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_pred_4_p_0(
+  MR_Word ModuleInfo_5,
+  MR_Word PredId_6,
+  MR_Word STATE_VARIABLE_InfoTable_0_10,
+  MR_Word * STATE_VARIABLE_InfoTable_11)
+{
+  MR_Word PredInfo_8;
+  MR_Word ProcIds_9;
+  MR_Word Var_12;
+  MR_Box conv1_STATE_VARIABLE_InfoTable_11;
+
+  hlds__hlds_module__module_info_pred_info_3_p_0(ModuleInfo_5, PredId_6, &PredInfo_8);
+  ProcIds_9 = hlds__hlds_pred__pred_info_will_codegen_proc_ids_1_f_0(PredInfo_8);
+  {
+    Var_12 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_12, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_4[0]));
+    MR_hl_field(0, Var_12, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_pred_4_p_0_1));
+    MR_hl_field(0, Var_12, 2) = ((MR_Box) ((MR_Integer) 2));
+    MR_hl_field(0, Var_12, 3) = ((MR_Box) (ModuleInfo_5));
+    MR_hl_field(0, Var_12, 4) = ((MR_Box) (PredId_6));
+  }
+  mercury__list__foldl_4_p_0((MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[0]), Var_12, ProcIds_9, ((MR_Box) (STATE_VARIABLE_InfoTable_0_10)), &conv1_STATE_VARIABLE_InfoTable_11);
+  *STATE_VARIABLE_InfoTable_11 = ((MR_Word) (conv1_STATE_VARIABLE_InfoTable_11));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__region_points_to_analysis_2_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv2_STATE_VARIABLE_InfoTable_11;
+
+  transform_hlds__rbmm__points_to_analysis__run_with_dependency_4_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv2_STATE_VARIABLE_InfoTable_11);
+  *wrapper_arg_3 = ((MR_Box) (conv2_STATE_VARIABLE_InfoTable_11));
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__region_points_to_analysis_2_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_STATE_VARIABLE_InfoTable_11;
+
+  transform_hlds__rbmm__points_to_analysis__intra_proc_rpta_pred_4_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_InfoTable_11);
+  *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_InfoTable_11));
+}
+
+void MR_CALL 
+transform_hlds__rbmm__points_to_analysis__region_points_to_analysis_2_p_0(
+  MR_Word ModuleInfo_3,
+  MR_Word * STATE_VARIABLE_InfoTable_5)
+{
+  MR_Word STATE_VARIABLE_InfoTable_1_6;
+  MR_Word STATE_VARIABLE_InfoTable_2_7;
+  MR_Word PredIds_8;
+  MR_Word Var_9;
+  MR_Word ModuleInfo_12;
+  MR_Word DepInfo_13;
+  MR_Word BottomUpSCCs_14;
+  MR_Word Var_16;
+  MR_Box conv1_STATE_VARIABLE_InfoTable_2_7;
+  MR_Box conv3_STATE_VARIABLE_InfoTable_5;
+
+  STATE_VARIABLE_InfoTable_1_6 = transform_hlds__rbmm__points_to_info__rpta_info_table_init_0_f_0();
+  hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(ModuleInfo_3, &PredIds_8);
+  {
+    Var_9 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_9, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_3[0]));
+    MR_hl_field(0, Var_9, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__region_points_to_analysis_2_p_0_1));
+    MR_hl_field(0, Var_9, 2) = ((MR_Box) ((MR_Integer) 1));
+    MR_hl_field(0, Var_9, 3) = ((MR_Box) (ModuleInfo_3));
+  }
+  mercury__list__foldl_4_p_0((MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[0]), Var_9, PredIds_8, ((MR_Box) (STATE_VARIABLE_InfoTable_1_6)), &conv1_STATE_VARIABLE_InfoTable_2_7);
+  STATE_VARIABLE_InfoTable_2_7 = ((MR_Word) (conv1_STATE_VARIABLE_InfoTable_2_7));
+  hlds__hlds_dependency_graph__module_info_ensure_dependency_info_3_p_0(ModuleInfo_3, &ModuleInfo_12, &DepInfo_13);
+  BottomUpSCCs_14 = libs__dependency_graph__dependency_info_get_bottom_up_sccs_1_f_0((MR_Word) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0), DepInfo_13);
+  {
+    Var_16 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_16, 0) = ((MR_Box) (&transform_hlds__rbmm__points_to_analysis_scalar_common_3[1]));
+    MR_hl_field(0, Var_16, 1) = ((MR_Box) (transform_hlds__rbmm__points_to_analysis__region_points_to_analysis_2_p_0_2));
+    MR_hl_field(0, Var_16, 2) = ((MR_Box) ((MR_Integer) 1));
+    MR_hl_field(0, Var_16, 3) = ((MR_Box) (ModuleInfo_12));
+  }
+  mercury__list__foldl_4_p_0((MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_2[1]), (MR_Word) (&transform_hlds__rbmm__points_to_analysis_scalar_common_1[0]), Var_16, BottomUpSCCs_14, ((MR_Box) (STATE_VARIABLE_InfoTable_2_7)), &conv3_STATE_VARIABLE_InfoTable_5);
+  *STATE_VARIABLE_InfoTable_5 = ((MR_Word) (conv3_STATE_VARIABLE_InfoTable_5));
+}
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__points_to_analysis____Unify____rpta_fixpoint_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = transform_hlds__rbmm__points_to_analysis____Unify____rpta_fixpoint_table_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__points_to_analysis____Compare____rpta_fixpoint_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  transform_hlds__rbmm__points_to_analysis____Compare____rpta_fixpoint_table_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+void mercury__transform_hlds__rbmm__points_to_analysis__init(void)
+{
+}
+
+void mercury__transform_hlds__rbmm__points_to_analysis__init_type_tables(void)
+{
+  static MR_bool initialised = MR_FALSE;
+  if (initialised) return;
+  initialised = MR_TRUE;
+
+  MR_register_type_ctor_info(&transform_hlds__rbmm__points_to_analysis__transform_hlds__rbmm__points_to_analysis__type_ctor_info_rpta_fixpoint_table_0);
+}
+
+void mercury__transform_hlds__rbmm__points_to_analysis__init_debugger(void)
+{
+  MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__transform_hlds__rbmm__points_to_analysis__grade_check(void)
+{
+  return &MR_GRADE_VAR;
+}
+
+// :- end_module transform_hlds.rbmm.points_to_analysis.

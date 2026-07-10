@@ -1,0 +1,245 @@
+/*
+** Automatically generated from `program_representation_utils.m'
+** by the Mercury compiler,
+** version rotd-2026-07-10
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module program_representation_utils.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_program_representation_utils
+#define MR_HEADER_GUARD_program_representation_utils
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PROGRAM_REPRESENTATION_UTILS_DECL_GUARD
+#define PROGRAM_REPRESENTATION_UTILS_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct program_representation_utils__program_representation_utils__type_ctor_info_atomic_goal_is_call_0;
+
+extern const MR_TypeCtorInfo_Struct program_representation_utils__program_representation_utils__type_ctor_info_inst_map_0;
+
+extern const MR_TypeCtorInfo_Struct program_representation_utils__program_representation_utils__type_ctor_info_inst_map_delta_0;
+
+extern const MR_TypeCtorInfo_Struct program_representation_utils__program_representation_utils__type_ctor_info_print_goal_info_2;
+
+extern const MR_TypeCtorInfo_Struct program_representation_utils__program_representation_utils__type_ctor_info_seen_duplicate_instantiation_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_program_representation_utils__goal_annotation__arity1__unit__unit__arity0__[6];
+
+extern const MR_TypeClassDeclStruct program_representation_utils__program_representation_utils__type_class_decl_goal_annotation_1;
+
+void MR_CALL 
+program_representation_utils__atomic_goal_get_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+program_representation_utils__atomic_goal_is_call_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+program_representation_utils__calc_inst_map_delta_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+program_representation_utils__empty_inst_map_delta_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+program_representation_utils__inst_map_delta_get_var_set_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+program_representation_utils__inst_map_get_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+program_representation_utils__inst_map_get_var_deps_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+program_representation_utils__inst_map_ground_vars_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+program_representation_utils__label_goals_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+program_representation_utils__print_goal_annotation_to_strings_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+program_representation_utils__print_goal_to_strings_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+program_representation_utils__print_module_to_strings_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+program_representation_utils__print_proc_label_to_string_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+program_representation_utils__print_proc_to_strings_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+program_representation_utils__print_proc_to_strings_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+program_representation_utils__progrep_search_proc_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+program_representation_utils__empty_inst_map_delta_0_f_0(void);
+
+MR_Word MR_CALL 
+program_representation_utils__initial_inst_map_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+program_representation_utils__merge_inst_map_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+program_representation_utils__merge_seen_duplicate_instantiation_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+program_representation_utils____Compare____atomic_goal_is_call_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+program_representation_utils____Compare____inst_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+program_representation_utils____Compare____inst_map_delta_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+program_representation_utils____Compare____print_goal_info_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+program_representation_utils____Compare____seen_duplicate_instantiation_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+program_representation_utils____Unify____atomic_goal_is_call_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+program_representation_utils____Unify____inst_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+program_representation_utils____Unify____inst_map_delta_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+program_representation_utils____Unify____print_goal_info_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+program_representation_utils____Unify____seen_duplicate_instantiation_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__program_representation_utils__init(void);
+void mercury__program_representation_utils__init_type_tables(void);
+void mercury__program_representation_utils__init_debugger(void);
+const char *mercury__program_representation_utils__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_program_representation_utils
+
+// :- end_interface program_representation_utils.
