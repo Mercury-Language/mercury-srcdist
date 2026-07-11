@@ -1,0 +1,3 @@
+:- module set_ordlist.
+:- interface.
+:- type set_ordlist(_T).

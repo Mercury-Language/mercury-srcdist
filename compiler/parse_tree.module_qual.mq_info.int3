@@ -1,0 +1,14 @@
+:- module (parse_tree.module_qual).mq_info.
+:- interface.
+:- type is_undef_blocking
+	where	type_is_abstract_enum(1).
+:- type maybe_should_report_errors
+	where	type_is_abstract_enum(1).
+:- type mq_info.
+:- type partial_qualifier_info.
+:- type undef_specs(T).
+:- type_representation(is_undef_blocking, du_repn(enum("undef_is_blocking", "undef_is_not_blocking", [],  no_c_j_cs))).
+:- type_representation(maybe_should_report_errors, du_repn(enum("should_not_report_errors", "should_report_errors", [],  no_c_j_cs))).
+:- type_representation(mq_info, is_word_aligned_ptr).
+:- type_representation(partial_qualifier_info, du_repn(notag("partial_qualifier_info", module_id_set,  no_c_j_cs))).
+:- type_representation(undef_specs(V_1), is_eqv_to(one_or_more_map(V_1, error_spec))).

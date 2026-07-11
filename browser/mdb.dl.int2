@@ -1,0 +1,21 @@
+:- module mdb.dl.
+:- interface.
+:- type dl_result
+    --->    dl_ok 
+    ;       dl_error(
+                 string
+            ).
+:- type dl_result(T)
+    --->    dl_ok(
+                 T
+            )
+    ;       dl_error(
+                 string
+            ).
+:- type handle.
+:- type link_mode
+    --->    lazy 
+    ;       now .
+:- type scope
+    --->    scope_local 
+    ;       scope_global .

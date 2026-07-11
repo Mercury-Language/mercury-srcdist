@@ -1,0 +1,29 @@
+:- module top_level.mercury_compile_make_hlds.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.make_hlds.
+:- use_module hlds.passes_aux.
+:- use_module libs.globals.
+:- use_module libs.op_mode.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.error_util.
+:- use_module parse_tree.module_baggage.
+:- use_module parse_tree.prog_parse_tree.
+:- use_module parse_tree.read_modules.
+:- use_module (hlds.make_hlds).qual_info.
+:- type make_hlds_result
+    --->    make_hlds_result(
+                 (top_level.mercury_compile_make_hlds).mhr_invalid_types :: list.list(parse_tree.error_spec.error_spec),
+                 (top_level.mercury_compile_make_hlds).mhr_invalid_insts_modes :: list.list(parse_tree.error_spec.error_spec),
+                 (top_level.mercury_compile_make_hlds).mhr_opt_blocking :: list.list(parse_tree.error_spec.error_spec),
+                 (top_level.mercury_compile_make_hlds).mhr_expansion :: list.list(parse_tree.error_spec.error_spec),
+                 (top_level.mercury_compile_make_hlds).mhr_event_set :: list.list(parse_tree.error_spec.error_spec)
+            ).
+:- pred make_hlds_pass(io.text_output_stream, io.text_output_stream, libs.globals.globals, libs.op_mode.op_mode_augment, libs.op_mode.op_mode_invoked_by_mmc_make, parse_tree.module_baggage.module_baggage, parse_tree.prog_parse_tree.aug_compilation_unit, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, maybe.maybe(parse_tree.module_baggage.module_timestamp_map), top_level.mercury_compile_make_hlds.make_hlds_result, hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, parse_tree.read_modules.have_parse_tree_maps, parse_tree.read_modules.have_parse_tree_maps, parse_tree.error_util.maybe_written_specs, parse_tree.error_util.maybe_written_specs, io.io, io.io).
+:- mode make_hlds_pass(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.

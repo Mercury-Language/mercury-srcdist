@@ -1,0 +1,61 @@
+:- module (hlds.make_hlds).qual_info.
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module recompilation.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.status.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.build_eqv_maps.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.module_qual.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.vartypes.
+:- use_module recompilation.record_uses.
+:- use_module (parse_tree.module_qual).mq_info.
+:- type qual_info.
+:- pred apply_to_recompilation_info(pred(recompilation.record_uses.recompilation_info, recompilation.record_uses.recompilation_info), hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info).
+:- mode apply_to_recompilation_info(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.out) is det.
+:- pred construct_and_record_pred_or_func_call(hlds.hlds_pred.pred_id, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info).
+:- mode construct_and_record_pred_or_func_call(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred construct_pred_or_func_call(hlds.hlds_pred.pred_id, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal).
+:- mode construct_pred_or_func_call(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred init_qual_info(parse_tree.module_qual.mq_info.mq_info, parse_tree.build_eqv_maps.type_eqv_map, hlds.make_hlds.qual_info.qual_info).
+:- mode init_qual_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred make_atomic_unification(parse_tree.prog_data.prog_var, hlds.hlds_goal.unify_rhs, parse_tree.prog_data.prog_context, hlds.hlds_goal.unify_main_context, list.list(hlds.hlds_goal.unify_sub_context), hlds.hlds_goal.hlds_goal, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info).
+:- mode make_atomic_unification(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred make_atomic_unification(parse_tree.prog_data.prog_var, hlds.hlds_goal.unify_rhs, parse_tree.prog_data.prog_context, hlds.hlds_goal.unify_main_context, list.list(hlds.hlds_goal.unify_sub_context), parse_tree.prog_data.purity, hlds.hlds_goal.hlds_goal, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info).
+:- mode make_atomic_unification(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred process_type_qualification(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, parse_tree.prog_data.tvarset, parse_tree.prog_data.prog_context, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode process_type_qualification(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred qual_info_get_explicit_var_types(hlds.make_hlds.qual_info.qual_info, parse_tree.vartypes.vartypes).
+:- mode qual_info_get_explicit_var_types(builtin.in, builtin.out) is det.
+:- pred qual_info_get_found_syntax_error(hlds.make_hlds.qual_info.qual_info, bool.bool).
+:- mode qual_info_get_found_syntax_error(builtin.in, builtin.out) is det.
+:- pred qual_info_get_found_trace_goal(hlds.make_hlds.qual_info.qual_info, bool.bool).
+:- mode qual_info_get_found_trace_goal(builtin.in, builtin.out) is det.
+:- pred qual_info_get_maybe_opt_imported(hlds.make_hlds.qual_info.qual_info, hlds.status.maybe_opt_imported).
+:- mode qual_info_get_maybe_opt_imported(builtin.in, builtin.out) is det.
+:- pred qual_info_get_mq_info(hlds.make_hlds.qual_info.qual_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode qual_info_get_mq_info(builtin.in, builtin.out) is det.
+:- pred qual_info_get_tvarset(hlds.make_hlds.qual_info.qual_info, parse_tree.prog_data.tvarset).
+:- mode qual_info_get_tvarset(builtin.in, builtin.out) is det.
+:- pred qual_info_set_explicit_var_types(parse_tree.vartypes.vartypes, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info).
+:- mode qual_info_set_explicit_var_types(builtin.in, builtin.in, builtin.out) is det.
+:- pred qual_info_set_found_syntax_error(bool.bool, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info).
+:- mode qual_info_set_found_syntax_error(builtin.in, builtin.in, builtin.out) is det.
+:- pred qual_info_set_found_trace_goal(bool.bool, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info).
+:- mode qual_info_set_found_trace_goal(builtin.in, builtin.in, builtin.out) is det.
+:- pred qual_info_set_mq_info(parse_tree.module_qual.mq_info.mq_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info).
+:- mode qual_info_set_mq_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred record_called_pred_or_func(mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.sym_name, parse_tree.prog_data.user_arity, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info).
+:- mode record_called_pred_or_func(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred set_module_recompilation_info(hlds.make_hlds.qual_info.qual_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode set_module_recompilation_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred update_qual_info(parse_tree.prog_data.tvar_name_map, parse_tree.prog_data.tvarset, parse_tree.vartypes.vartypes, hlds.status.maybe_opt_imported, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info).
+:- mode update_qual_info(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
