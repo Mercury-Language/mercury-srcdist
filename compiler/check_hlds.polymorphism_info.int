@@ -1,0 +1,148 @@
+:- module check_hlds.polymorphism_info.
+:- interface.
+:- use_module assoc_list.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module hlds.const_struct.
+:- use_module hlds.hlds_class.
+:- use_module hlds.hlds_clauses.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.hlds_rtti.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_table.
+:- type cache_maps
+    --->    cache_maps(
+                 (check_hlds.polymorphism_info).cm_snapshot_num :: int,
+                 (check_hlds.polymorphism_info).cm_type_info_var_map :: check_hlds.polymorphism_info.type_info_var_map,
+                 (check_hlds.polymorphism_info).cm_typeclass_info_map :: check_hlds.polymorphism_info.typeclass_info_map,
+                 (check_hlds.polymorphism_info).cm_int_const_map :: check_hlds.polymorphism_info.int_const_map,
+                 (check_hlds.polymorphism_info).cm_const_struct_var_map :: check_hlds.polymorphism_info.const_struct_var_map
+            ).
+:- type const_or_var_arg
+    --->    cova_const(
+                 hlds.const_struct.const_struct_arg
+            )
+    ;       cova_var(
+                 parse_tree.prog_data.prog_var
+            ).
+:- type const_struct_var_map == map.map(hlds.const_struct.const_struct_arg, parse_tree.prog_data.prog_var).
+:- type int_const_map == map.map(int, parse_tree.prog_data.prog_var).
+:- type maybe_must_requantify
+    --->    no_must_requantify 
+    ;       must_requantify .
+:- type maybe_selected_pred
+    --->    is_not_selected_pred 
+    ;       is_selected_pred .
+:- type poly_info.
+:- type type_info_var_map == map.map(parse_tree.prog_data.type_ctor, map.map(list.list(parse_tree.prog_data.mer_type), pair.pair(parse_tree.prog_data.prog_var, maybe.maybe(hlds.const_struct.const_struct_arg)))).
+:- type typeclass_info_map == map.map(parse_tree.prog_data.class_name, map.map(list.list(parse_tree.prog_data.mer_type), check_hlds.polymorphism_info.typeclass_info_map_entry)).
+:- type typeclass_info_map_entry
+    --->    typeclass_info_map_entry(
+                 parse_tree.prog_data.cons_id,
+                 map.map(list.list(check_hlds.polymorphism_info.const_or_var_arg), pair.pair(parse_tree.prog_data.prog_var, maybe.maybe(hlds.const_struct.const_struct_arg)))
+            ).
+:- type var_maps
+    --->    var_maps(
+                 (check_hlds.polymorphism_info).vm_snapshot_num :: int,
+                 (check_hlds.polymorphism_info).vm_var_table :: parse_tree.var_table.var_table,
+                 (check_hlds.polymorphism_info).vm_rtti_varmaps :: hlds.hlds_rtti.rtti_varmaps,
+                 (check_hlds.polymorphism_info).vm_cache_maps :: check_hlds.polymorphism_info.cache_maps
+            ).
+:- pred all_are_const_struct_args(assoc_list.assoc_list(parse_tree.prog_data.prog_var, maybe.maybe(hlds.const_struct.const_struct_arg)), list.list(hlds.const_struct.const_struct_arg)).
+:- mode all_are_const_struct_args(builtin.in, builtin.out) is semidet.
+:- pred create_poly_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, check_hlds.polymorphism_info.poly_info).
+:- mode create_poly_info(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred empty_cache_maps(check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode empty_cache_maps(builtin.in, builtin.out) is det.
+:- pred get_cache_maps_snapshot(string, check_hlds.polymorphism_info.cache_maps, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode get_cache_maps_snapshot(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred get_inst_of_const_struct_arg(hlds.const_struct.const_struct_db, hlds.const_struct.const_struct_arg, parse_tree.prog_data.mer_inst).
+:- mode get_inst_of_const_struct_arg(builtin.in, builtin.in, builtin.out) is det.
+:- pred get_poly_const(int, parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode get_poly_const(builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred get_var_maps_snapshot(string, check_hlds.polymorphism_info.var_maps, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode get_var_maps_snapshot(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred init_poly_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_clauses.clauses_info, check_hlds.polymorphism_info.poly_info).
+:- mode init_poly_info(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred poly_info_extract(check_hlds.polymorphism_info.poly_info, list.list(parse_tree.error_spec.error_spec), hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info).
+:- mode poly_info_extract(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.out) is det.
+:- pred poly_info_get_const_struct_db(check_hlds.polymorphism_info.poly_info, hlds.const_struct.const_struct_db).
+:- mode poly_info_get_const_struct_db(builtin.in, builtin.out) is det.
+:- pred poly_info_get_const_struct_var_map(check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.const_struct_var_map).
+:- mode poly_info_get_const_struct_var_map(builtin.in, builtin.out) is det.
+:- pred poly_info_get_constraint_map(check_hlds.polymorphism_info.poly_info, hlds.hlds_class.constraint_map).
+:- mode poly_info_get_constraint_map(builtin.in, builtin.out) is det.
+:- pred poly_info_get_debug_stream(check_hlds.polymorphism_info.poly_info, io.text_output_stream, io.io, io.io).
+:- mode poly_info_get_debug_stream(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred poly_info_get_defined_where(check_hlds.polymorphism_info.poly_info, hlds.const_struct.defined_where).
+:- mode poly_info_get_defined_where(builtin.in, builtin.out) is det.
+:- pred poly_info_get_errors(check_hlds.polymorphism_info.poly_info, list.list(parse_tree.error_spec.error_spec)).
+:- mode poly_info_get_errors(builtin.in, builtin.out) is det.
+:- pred poly_info_get_indent_level(int, io.io, io.io).
+:- mode poly_info_get_indent_level(builtin.out, builtin.di, builtin.uo) is det.
+:- pred poly_info_get_int_const_map(check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.int_const_map).
+:- mode poly_info_get_int_const_map(builtin.in, builtin.out) is det.
+:- pred poly_info_get_module_info(check_hlds.polymorphism_info.poly_info, hlds.hlds_module.module_info).
+:- mode poly_info_get_module_info(builtin.in, builtin.out) is det.
+:- pred poly_info_get_must_requantify(check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.maybe_must_requantify).
+:- mode poly_info_get_must_requantify(builtin.in, builtin.out) is det.
+:- pred poly_info_get_num_reuses(check_hlds.polymorphism_info.poly_info, int).
+:- mode poly_info_get_num_reuses(builtin.in, builtin.out) is det.
+:- pred poly_info_get_proof_map(check_hlds.polymorphism_info.poly_info, hlds.hlds_class.constraint_proof_map).
+:- mode poly_info_get_proof_map(builtin.in, builtin.out) is det.
+:- pred poly_info_get_rtti_varmaps(check_hlds.polymorphism_info.poly_info, hlds.hlds_rtti.rtti_varmaps).
+:- mode poly_info_get_rtti_varmaps(builtin.in, builtin.out) is det.
+:- pred poly_info_get_selected_pred(check_hlds.polymorphism_info.maybe_selected_pred, io.io, io.io).
+:- mode poly_info_get_selected_pred(builtin.out, builtin.di, builtin.uo) is det.
+:- pred poly_info_get_tvar_kind_map(check_hlds.polymorphism_info.poly_info, parse_tree.prog_data.tvar_kind_map).
+:- mode poly_info_get_tvar_kind_map(builtin.in, builtin.out) is det.
+:- pred poly_info_get_type_info_var_map(check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.type_info_var_map).
+:- mode poly_info_get_type_info_var_map(builtin.in, builtin.out) is det.
+:- pred poly_info_get_typeclass_info_map(check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.typeclass_info_map).
+:- mode poly_info_get_typeclass_info_map(builtin.in, builtin.out) is det.
+:- pred poly_info_get_typevarset(check_hlds.polymorphism_info.poly_info, parse_tree.prog_data.tvarset).
+:- mode poly_info_get_typevarset(builtin.in, builtin.out) is det.
+:- pred poly_info_get_var_table(check_hlds.polymorphism_info.poly_info, parse_tree.var_table.var_table).
+:- mode poly_info_get_var_table(builtin.in, builtin.out) is det.
+:- pred poly_info_set_const_struct_db(hlds.const_struct.const_struct_db, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_const_struct_db(builtin.in, builtin.in, builtin.out) is det.
+:- pred poly_info_set_const_struct_var_map(check_hlds.polymorphism_info.const_struct_var_map, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_const_struct_var_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred poly_info_set_errors(list.list(parse_tree.error_spec.error_spec), check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_errors(builtin.in, builtin.in, builtin.out) is det.
+:- pred poly_info_set_indent_level(int, io.io, io.io).
+:- mode poly_info_set_indent_level(builtin.in, builtin.di, builtin.uo) is det.
+:- pred poly_info_set_int_const_map(check_hlds.polymorphism_info.int_const_map, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_int_const_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred poly_info_set_must_requantify(check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_must_requantify(builtin.in, builtin.out) is det.
+:- pred poly_info_set_num_reuses(int, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_num_reuses(builtin.in, builtin.in, builtin.out) is det.
+:- pred poly_info_set_proof_map(hlds.hlds_class.constraint_proof_map, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_proof_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred poly_info_set_rtti_varmaps(hlds.hlds_rtti.rtti_varmaps, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_rtti_varmaps(builtin.in, builtin.in, builtin.out) is det.
+:- pred poly_info_set_selected_pred(check_hlds.polymorphism_info.maybe_selected_pred, io.io, io.io).
+:- mode poly_info_set_selected_pred(builtin.in, builtin.di, builtin.uo) is det.
+:- pred poly_info_set_type_info_var_map(check_hlds.polymorphism_info.type_info_var_map, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_type_info_var_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred poly_info_set_typeclass_info_map(check_hlds.polymorphism_info.typeclass_info_map, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_typeclass_info_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred poly_info_set_typevarset(parse_tree.prog_data.tvarset, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_typevarset(builtin.in, builtin.in, builtin.out) is det.
+:- pred poly_info_set_var_table(parse_tree.var_table.var_table, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_var_table(builtin.in, builtin.in, builtin.out) is det.
+:- pred poly_info_set_var_table_rtti(parse_tree.var_table.var_table, hlds.hlds_rtti.rtti_varmaps, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode poly_info_set_var_table_rtti(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred set_cache_maps_snapshot(string, check_hlds.polymorphism_info.cache_maps, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode set_cache_maps_snapshot(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred set_var_maps_snapshot(string, check_hlds.polymorphism_info.var_maps, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode set_var_maps_snapshot(builtin.in, builtin.in, builtin.in, builtin.out) is det.

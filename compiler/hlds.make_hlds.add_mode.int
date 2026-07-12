@@ -1,0 +1,17 @@
+:- module (hlds.make_hlds).add_mode.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.status.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_item.
+:- use_module (hlds.make_hlds).make_hlds_types.
+:- pred check_inst_defns(hlds.hlds_module.module_info, hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.item_inst_defn_info), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode check_inst_defns(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred check_mode_defns(hlds.hlds_module.module_info, hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.item_mode_defn_info), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode check_mode_defns(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred module_add_inst_defn(hlds.status.inst_status, parse_tree.prog_item.item_inst_defn_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode module_add_inst_defn(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred module_add_mode_defn(hlds.status.mode_status, parse_tree.prog_item.item_mode_defn_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode module_add_mode_defn(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

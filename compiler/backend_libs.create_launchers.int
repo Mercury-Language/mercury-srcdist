@@ -1,0 +1,12 @@
+:- module backend_libs.create_launchers.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module mdbcomp.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- use_module mdbcomp.sym_name.
+:- pred create_java_shell_script(io.text_output_stream, libs.globals.globals, mdbcomp.sym_name.module_name, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode create_java_shell_script(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred create_shell_script_as_executable(io.text_output_stream, libs.globals.globals, mdbcomp.sym_name.module_name, string, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode create_shell_script_as_executable(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.

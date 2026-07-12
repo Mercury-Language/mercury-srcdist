@@ -1,0 +1,106 @@
+:- module (parse_tree.module_qual).mq_info.
+:- interface.
+:- use_module bool.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module one_or_more_map.
+:- use_module recompilation.
+:- use_module set_tree234.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_parse_tree.
+:- use_module recompilation.record_uses.
+:- use_module (parse_tree.module_qual).id_set.
+:- type is_undef_blocking
+    --->    undef_is_blocking 
+    ;       undef_is_not_blocking .
+:- type maybe_should_report_errors
+    --->    should_not_report_errors 
+    ;       should_report_errors .
+:- type mq_info.
+:- type partial_qualifier_info.
+:- type undef_specs(T) == one_or_more_map.one_or_more_map(T, parse_tree.error_spec.error_spec).
+:- pred get_error_specs_in_mq_info(parse_tree.module_qual.mq_info.mq_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode get_error_specs_in_mq_info(builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred get_partial_qualifiers(parse_tree.module_qual.id_set.mq_in_interface, mdbcomp.sym_name.module_name, parse_tree.module_qual.mq_info.partial_qualifier_info, list.list(mdbcomp.sym_name.module_name)).
+:- mode get_partial_qualifiers(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred init_mq_info(libs.globals.globals, mdbcomp.sym_name.module_name, parse_tree.module_qual.mq_info.maybe_should_report_errors, parse_tree.module_qual.mq_info.mq_info).
+:- mode init_mq_info(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_get_as_yet_unused_interface_modules(parse_tree.module_qual.mq_info.mq_info, parse_tree.prog_parse_tree.module_names_contexts).
+:- mode mq_info_get_as_yet_unused_interface_modules(builtin.in, builtin.out) is det.
+:- pred mq_info_get_classes(parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.id_set.class_id_set).
+:- mode mq_info_get_classes(builtin.in, builtin.out) is det.
+:- pred mq_info_get_exported_instances_flag(parse_tree.module_qual.mq_info.mq_info, bool.bool).
+:- mode mq_info_get_exported_instances_flag(builtin.in, builtin.out) is det.
+:- pred mq_info_get_imported_instance_modules(parse_tree.module_qual.mq_info.mq_info, set_tree234.set_tree234(mdbcomp.sym_name.module_name)).
+:- mode mq_info_get_imported_instance_modules(builtin.in, builtin.out) is det.
+:- pred mq_info_get_imported_modules(parse_tree.module_qual.mq_info.mq_info, set_tree234.set_tree234(mdbcomp.sym_name.module_name)).
+:- mode mq_info_get_imported_modules(builtin.in, builtin.out) is det.
+:- pred mq_info_get_insts(parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.id_set.inst_id_set).
+:- mode mq_info_get_insts(builtin.in, builtin.out) is det.
+:- pred mq_info_get_is_undef_blocking(parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.is_undef_blocking).
+:- mode mq_info_get_is_undef_blocking(builtin.in, builtin.out) is det.
+:- pred mq_info_get_modes(parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.id_set.mode_id_set).
+:- mode mq_info_get_modes(builtin.in, builtin.out) is det.
+:- pred mq_info_get_modules(parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.id_set.module_id_set).
+:- mode mq_info_get_modules(builtin.in, builtin.out) is det.
+:- pred mq_info_get_nonblocking_undef_specs(parse_tree.module_qual.mq_info.mq_info, list.list(parse_tree.error_spec.error_spec)).
+:- mode mq_info_get_nonblocking_undef_specs(builtin.in, builtin.out) is det.
+:- pred mq_info_get_partial_qualifier_info(parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.partial_qualifier_info).
+:- mode mq_info_get_partial_qualifier_info(builtin.in, builtin.out) is det.
+:- pred mq_info_get_recompilation_info(parse_tree.module_qual.mq_info.mq_info, maybe.maybe(recompilation.record_uses.recompilation_info)).
+:- mode mq_info_get_recompilation_info(builtin.in, builtin.out) is det.
+:- pred mq_info_get_should_report_errors(parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.maybe_should_report_errors).
+:- mode mq_info_get_should_report_errors(builtin.in, builtin.out) is det.
+:- pred mq_info_get_this_module(parse_tree.module_qual.mq_info.mq_info, mdbcomp.sym_name.module_name).
+:- mode mq_info_get_this_module(builtin.in, builtin.out) is det.
+:- pred mq_info_get_types(parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.id_set.type_id_set).
+:- mode mq_info_get_types(builtin.in, builtin.out) is det.
+:- pred mq_info_get_undef_insts(parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.undef_specs(parse_tree.prog_data.inst_ctor)).
+:- mode mq_info_get_undef_insts(builtin.in, builtin.out) is det.
+:- pred mq_info_get_undef_modes(parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.undef_specs(parse_tree.prog_data.mode_ctor)).
+:- mode mq_info_get_undef_modes(builtin.in, builtin.out) is det.
+:- pred mq_info_get_undef_typeclasses(parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.undef_specs(parse_tree.prog_data.sym_name_arity)).
+:- mode mq_info_get_undef_typeclasses(builtin.in, builtin.out) is det.
+:- pred mq_info_get_undef_types(parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.undef_specs(parse_tree.prog_data.type_ctor)).
+:- mode mq_info_get_undef_types(builtin.in, builtin.out) is det.
+:- pred mq_info_set_as_yet_unused_interface_modules(parse_tree.prog_parse_tree.module_names_contexts, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_as_yet_unused_interface_modules(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_classes(parse_tree.module_qual.id_set.class_id_set, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_classes(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_exported_instances_flag(bool.bool, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_exported_instances_flag(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_imported_instance_modules(set_tree234.set_tree234(mdbcomp.sym_name.module_name), parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_imported_instance_modules(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_imported_modules(set_tree234.set_tree234(mdbcomp.sym_name.module_name), parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_imported_modules(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_insts(parse_tree.module_qual.id_set.inst_id_set, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_insts(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_is_undef_blocking(parse_tree.module_qual.mq_info.is_undef_blocking, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_is_undef_blocking(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_modes(parse_tree.module_qual.id_set.mode_id_set, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_modes(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_module_used(parse_tree.module_qual.id_set.mq_in_interface, mdbcomp.sym_name.module_name, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_module_used(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_modules(parse_tree.module_qual.id_set.module_id_set, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_modules(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_nonblocking_undef_specs(list.list(parse_tree.error_spec.error_spec), parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_nonblocking_undef_specs(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_recompilation_info(maybe.maybe(recompilation.record_uses.recompilation_info), parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_recompilation_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_types(parse_tree.module_qual.id_set.type_id_set, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_types(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_undef_insts(parse_tree.module_qual.mq_info.undef_specs(parse_tree.prog_data.inst_ctor), parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_undef_insts(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_undef_modes(parse_tree.module_qual.mq_info.undef_specs(parse_tree.prog_data.mode_ctor), parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_undef_modes(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_undef_typeclasses(parse_tree.module_qual.mq_info.undef_specs(parse_tree.prog_data.sym_name_arity), parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_undef_typeclasses(builtin.in, builtin.in, builtin.out) is det.
+:- pred mq_info_set_undef_types(parse_tree.module_qual.mq_info.undef_specs(parse_tree.prog_data.type_ctor), parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode mq_info_set_undef_types(builtin.in, builtin.in, builtin.out) is det.
+:- pred update_recompilation_info(pred(recompilation.record_uses.recompilation_info, recompilation.record_uses.recompilation_info), parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode update_recompilation_info(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.out) is det.

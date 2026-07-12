@@ -1,0 +1,5 @@
+:- module libs.compiler_util.
+:- interface.
+:- type warning_or_error
+    --->    we_warning 
+    ;       we_error .

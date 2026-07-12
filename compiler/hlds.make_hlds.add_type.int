@@ -1,0 +1,14 @@
+:- module (hlds.make_hlds).add_type.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_data.
+:- use_module hlds.hlds_module.
+:- use_module hlds.status.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item.
+:- pred add_du_ctors_check_subtype_check_foreign_type(hlds.hlds_data.type_table, parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_du_ctors_check_subtype_check_foreign_type(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred module_add_type_defn(hlds.status.type_status, parse_tree.prog_data.need_qualifier, parse_tree.prog_item.item_type_defn_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode module_add_type_defn(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

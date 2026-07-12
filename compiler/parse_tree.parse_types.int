@@ -1,0 +1,55 @@
+:- module parse_tree.parse_types.
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module one_or_more.
+:- use_module recompilation.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item.
+:- use_module parse_tree.prog_parse_tree.
+:- use_module recompilation.item_types.
+:- type item_or_marker
+    --->    iom_item(
+                 parse_tree.prog_item.item
+            )
+    ;       iom_item_and_error_specs(
+                 parse_tree.prog_item.item,
+                 one_or_more.one_or_more(parse_tree.error_spec.error_spec)
+            )
+    ;       iom_marker_include(
+                 one_or_more.one_or_more(parse_tree.prog_item.item_include)
+            )
+    ;       iom_marker_avail(
+                 one_or_more.one_or_more(parse_tree.prog_item.item_avail)
+            )
+    ;       iom_marker_fim(
+                 parse_tree.prog_item.item_fim
+            )
+    ;       iom_marker_version_numbers(
+                 recompilation.item_types.module_item_version_numbers
+            )
+    ;       iom_marker_src_file(
+                 string
+            )
+    ;       iom_marker_module_start(
+                 mdbcomp.sym_name.module_name,
+                 parse_tree.prog_data.prog_context,
+                 parse_tree.prog_data.item_seq_num
+            )
+    ;       iom_marker_module_end(
+                 mdbcomp.sym_name.module_name,
+                 parse_tree.prog_data.prog_context,
+                 parse_tree.prog_data.item_seq_num
+            )
+    ;       iom_marker_section(
+                 parse_tree.prog_parse_tree.module_section,
+                 parse_tree.prog_data.prog_context,
+                 parse_tree.prog_data.item_seq_num
+            )
+    ;       iom_handled_no_error 
+    ;       iom_handled_error(
+                 one_or_more.one_or_more(parse_tree.error_spec.error_spec)
+            ).
+:- func iom_desc_pieces(parse_tree.parse_types.item_or_marker) = list.list(parse_tree.error_spec.format_piece).

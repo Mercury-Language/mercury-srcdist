@@ -1,0 +1,2 @@
+:- module make.library_install.
+:- interface.
