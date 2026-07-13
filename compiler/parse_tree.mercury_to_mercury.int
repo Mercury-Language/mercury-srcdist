@@ -1,0 +1,86 @@
+:- module (parse_tree.mercury_to_mercury).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module varset.
+:- use_module (libs.globals).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.parse_tree_out_term).
+:- use_module (parse_tree.prog_data).
+:- type maybe_exist_constraints
+    --->    no_exist_constraints 
+    ;       have_exist_constraints_print_paren(list.list(parse_tree.prog_data.prog_constraint)).
+:- type needs_brackets
+    --->    needs_brackets 
+    ;       does_not_need_brackets .
+:- func mercury_bracketed_sym_name_arity_to_string(parse_tree.prog_data.sym_name_arity) = string.
+:- func mercury_bracketed_sym_name_to_string(mdbcomp.sym_name.sym_name) = string.
+:- func mercury_bracketed_sym_name_to_string_ngt(parse_tree.parse_tree_out_term.needs_quotes, mdbcomp.sym_name.sym_name) = string.
+:- func mercury_cons_id_to_string(parse_tree.parse_tree_out_info.output_lang, parse_tree.mercury_to_mercury.needs_brackets, parse_tree.prog_data.cons_id) = string.
+:- func mercury_constraint_to_string(parse_tree.prog_data.tvarset, parse_tree.prog_data.prog_constraint) = string.
+:- func mercury_det_to_string(parse_tree.prog_data.determinism) = string.
+:- func mercury_foreign_language_to_string(libs.globals.foreign_language) = string.
+:- pred mercury_format_bracketed_sym_name(mdbcomp.sym_name.sym_name, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_bracketed_sym_name((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_bracketed_sym_name_arity(parse_tree.prog_data.sym_name_arity, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_bracketed_sym_name_arity((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_bracketed_sym_name_ngt(parse_tree.parse_tree_out_term.needs_quotes, mdbcomp.sym_name.sym_name, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_bracketed_sym_name_ngt((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_class_context(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, list.list(parse_tree.prog_data.prog_constraint), parse_tree.mercury_to_mercury.maybe_exist_constraints, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_class_context((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_cons_id(parse_tree.parse_tree_out_info.output_lang, parse_tree.mercury_to_mercury.needs_brackets, parse_tree.prog_data.cons_id, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_cons_id((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_constraint(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.prog_constraint, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_constraint((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_det(parse_tree.prog_data.determinism, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_det((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_foreign_language_string(libs.globals.foreign_language, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_foreign_language_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_prog_constraint_list(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, string, list.list(parse_tree.prog_data.prog_constraint), S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_prog_constraint_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_quantifier(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.existq_tvars, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_quantifier((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_sym_name(mdbcomp.sym_name.sym_name, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_sym_name((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_sym_name_arity(parse_tree.prog_data.sym_name_arity, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_sym_name_arity((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_sym_name_ngt(parse_tree.parse_tree_out_term.needs_quotes, mdbcomp.sym_name.sym_name, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_sym_name_ngt((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_tabs(int, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_tabs((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_type(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.mer_type, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_bracketed_sym_name(mdbcomp.sym_name.sym_name, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_bracketed_sym_name((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_bracketed_sym_name_ngt(parse_tree.parse_tree_out_term.needs_quotes, mdbcomp.sym_name.sym_name, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_bracketed_sym_name_ngt((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_class_context(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, list.list(parse_tree.prog_data.prog_constraint), parse_tree.mercury_to_mercury.maybe_exist_constraints, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_class_context((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_cons_id(parse_tree.parse_tree_out_info.output_lang, parse_tree.mercury_to_mercury.needs_brackets, parse_tree.prog_data.cons_id, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_cons_id((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_constraint(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.prog_constraint, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_constraint((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_det(parse_tree.prog_data.determinism, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_det((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_foreign_language_string(libs.globals.foreign_language, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_foreign_language_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_newline(int, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_newline((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_quantifier(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.existq_tvars, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_quantifier((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_state_vars(varset.varset(T), parse_tree.prog_data.var_name_print, list.list(term.var(T)), io.text_output_stream, io.io, io.io).
+:- mode mercury_output_state_vars((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_sym_name(mdbcomp.sym_name.sym_name, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_sym_name((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_type(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.mer_type, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func mercury_prog_constraint_list_to_string(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, string, list.list(parse_tree.prog_data.prog_constraint)) = string.
+:- func mercury_quantifier_to_string(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.existq_tvars) = string.
+:- func mercury_sym_name_arity_to_string(parse_tree.prog_data.sym_name_arity) = string.
+:- func mercury_sym_name_to_string(mdbcomp.sym_name.sym_name) = string.
+:- func mercury_type_list_to_string(parse_tree.prog_data.tvarset, list.list(parse_tree.prog_data.mer_type)) = string.
+:- func mercury_type_to_string(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.mer_type) = string.

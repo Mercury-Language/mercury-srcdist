@@ -1,0 +1,117 @@
+/*
+** Automatically generated from `lazy.m'
+** by the Mercury compiler,
+** version 22.01.9-beta-2026-07-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module lazy.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_lazy
+#define MR_HEADER_GUARD_lazy
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LAZY_DECL_GUARD
+#define LAZY_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__lazy__lazy__type_ctor_info_lazy_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__lazy__lazy__type_ctor_info_lazy_state_1;
+
+void MR_CALL 
+mercury__lazy__compare_values_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__lazy__equal_values_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__lazy__read_if_val_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+MR_Word MR_CALL 
+mercury__lazy__delay_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Box MR_CALL 
+mercury__lazy__force_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__lazy__val_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__lazy____Compare____lazy_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__lazy____Compare____lazy_state_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__lazy____Unify____lazy_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__lazy____Unify____lazy_state_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__lazy__init(void);
+void mercury__lazy__init_type_tables(void);
+void mercury__lazy__init_debugger(void);
+const char *mercury__lazy__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_lazy
+
+// :- end_interface lazy.
