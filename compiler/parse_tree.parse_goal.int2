@@ -1,0 +1,7 @@
+:- module parse_tree.parse_goal.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.maybe_error.
+:- use_module parse_tree.prog_item.
+:- type goal_result == parse_tree.maybe_error.maybe2(parse_tree.prog_item.goal, list.list(parse_tree.error_spec.warning_spec)).

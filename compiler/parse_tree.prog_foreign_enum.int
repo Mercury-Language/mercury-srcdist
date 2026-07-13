@@ -1,0 +1,15 @@
+:- module parse_tree.prog_foreign_enum.
+:- interface.
+:- use_module assoc_list.
+:- use_module bimap.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module set_tree234.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- type for_fe_or_fee
+    --->    for_foreign_enum 
+    ;       for_foreign_export_enum .
+:- pred build_ctor_name_to_foreign_name_map(parse_tree.prog_foreign_enum.for_fe_or_fee, parse_tree.prog_data.prog_context, list.list(parse_tree.error_spec.format_piece), mdbcomp.sym_name.module_name, set_tree234.set_tree234(string), assoc_list.assoc_list(mdbcomp.sym_name.sym_name, string), bimap.bimap(string, string), list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode build_ctor_name_to_foreign_name_map(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

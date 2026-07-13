@@ -1,0 +1,49 @@
+:- module parse_tree.error_util.
+:- interface.
+:- use_module bool.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module libs.globals.
+:- use_module libs.options.
+:- use_module parse_tree.error_spec.
+:- type diag_spec_accumulator.
+:- type maybe_written_specs
+    --->    maybe_written_specs(
+                 (parse_tree.error_util).to_be_written :: list.list(parse_tree.error_spec.diag_spec),
+                 (parse_tree.error_util).already_written :: list.list(parse_tree.error_spec.diag_spec)
+            ).
+:- pred accumulate_diag_specs_for_proc(list.list(parse_tree.error_spec.diag_spec), parse_tree.error_util.diag_spec_accumulator, parse_tree.error_util.diag_spec_accumulator).
+:- mode accumulate_diag_specs_for_proc(builtin.in, builtin.in, builtin.out) is det.
+:- func actual_spec_severity(libs.globals.globals, parse_tree.error_spec.diag_spec) = maybe.maybe(parse_tree.error_spec.actual_severity).
+:- pred actual_spec_severity_is_error(libs.globals.globals, parse_tree.error_spec.diag_spec).
+:- mode actual_spec_severity_is_error(builtin.in, builtin.in) is semidet.
+:- func actual_spec_severity_opt_table(libs.options.option_table, parse_tree.error_spec.diag_spec) = maybe.maybe(parse_tree.error_spec.actual_severity).
+:- pred add_to_be_written_specs(list.list(parse_tree.error_spec.diag_spec), parse_tree.error_util.maybe_written_specs, parse_tree.error_util.maybe_written_specs).
+:- mode add_to_be_written_specs(builtin.in, builtin.in, builtin.out) is det.
+:- pred construct_sorted_line_pieces((func(list.list(parse_tree.error_spec.format_piece), T) = list.list(parse_tree.error_spec.format_piece)), list.list(T), list.list(parse_tree.error_spec.format_piece)).
+:- mode construct_sorted_line_pieces(builtin.in, builtin.in, builtin.out) is det.
+:- func contains_errors(libs.globals.globals, list.list(parse_tree.error_spec.diag_spec)) = bool.bool.
+:- func contains_errors_and_or_warnings(libs.globals.globals, list.list(parse_tree.error_spec.diag_spec)) = bool.bool.
+:- func contains_errors_and_or_warnings_opt_table(libs.options.option_table, list.list(parse_tree.error_spec.diag_spec)) = bool.bool.
+:- func contains_errors_option_table(libs.options.option_table, list.list(parse_tree.error_spec.diag_spec)) = bool.bool.
+:- func contains_errors_or_warnings_treated_as_errors(libs.globals.globals, list.list(parse_tree.error_spec.diag_spec)) = bool.bool.
+:- func contains_errors_or_warnings_treated_as_errors_opt_table(libs.options.option_table, list.list(parse_tree.error_spec.diag_spec)) = bool.bool.
+:- func diag_spec_accumulator_to_list(parse_tree.error_util.diag_spec_accumulator) = list.list(parse_tree.error_spec.diag_spec).
+:- pred does_spec_print_anything(libs.globals.globals, parse_tree.error_spec.diag_spec).
+:- mode does_spec_print_anything(builtin.in, builtin.in) is semidet.
+:- pred filter_interface_generation_specs(libs.globals.globals, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode filter_interface_generation_specs(builtin.in, builtin.in, builtin.out) is det.
+:- func init_diag_spec_accumulator = parse_tree.error_util.diag_spec_accumulator.
+:- func init_maybe_written_specs = parse_tree.error_util.maybe_written_specs.
+:- func maybe_written_specs_to_specs(parse_tree.error_util.maybe_written_specs) = list.list(parse_tree.error_spec.diag_spec).
+:- pred severity_to_maybe_actual_severity(libs.options.option_table, parse_tree.error_spec.spec_severity, maybe.maybe(parse_tree.error_spec.actual_severity)).
+:- mode severity_to_maybe_actual_severity(builtin.in, builtin.in, builtin.out) is det.
+:- func start_each_msg_with_blank_line(list.list(parse_tree.error_spec.diag_msg)) = list.list(parse_tree.error_spec.diag_msg).
+:- func worst_severity(parse_tree.error_spec.actual_severity, parse_tree.error_spec.actual_severity) = parse_tree.error_spec.actual_severity.
+:- func worst_severity_in_specs(libs.globals.globals, list.list(parse_tree.error_spec.diag_spec)) = maybe.maybe(parse_tree.error_spec.actual_severity).
+:- func worst_severity_in_specs_opt_table(libs.options.option_table, list.list(parse_tree.error_spec.diag_spec)) = maybe.maybe(parse_tree.error_spec.actual_severity).
+:- implementation.
+:- use_module pair.
+:- use_module set.
+:- type diag_spec_accumulator == maybe.maybe(pair.pair(set.set(parse_tree.error_spec.diag_spec))).

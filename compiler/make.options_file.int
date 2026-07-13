@@ -1,0 +1,46 @@
+:- module make.options_file.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module libs.file_util.
+:- use_module libs.options.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.maybe_error.
+:- type compiler_arg_pack
+    --->    compiler_arg_pack(
+                 (make.options_file).cap_eov :: make.options_file.env_optfile_variables,
+                 (make.options_file).cap_env_var_args :: list.list(string),
+                 (make.options_file).cap_option_args :: list.list(string),
+                 (make.options_file).cap_nonoption_args :: list.list(string)
+            ).
+:- type compiler_params
+    --->    compiler_params(
+                 (make.options_file).cp_eov :: make.options_file.env_optfile_variables,
+                 (make.options_file).cp_env_var_args :: list.list(string),
+                 (make.options_file).cp_option_args :: list.list(string)
+            ).
+:- type env_optfile_variables.
+:- pred dump_options_file(io.text_output_stream, libs.file_util.file_name, make.options_file.env_optfile_variables, io.io, io.io).
+:- mode dump_options_file(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- func env_optfile_variables_init(io.environment_var_map) = make.options_file.env_optfile_variables.
+:- pred lookup_default_options(make.options_file.env_optfile_variables, parse_tree.maybe_error.maybe1(list.list(string))).
+:- mode lookup_default_options(builtin.in, builtin.out) is det.
+:- pred lookup_main_target(make.options_file.env_optfile_variables, parse_tree.maybe_error.maybe1(list.list(string))).
+:- mode lookup_main_target(builtin.in, builtin.out) is det.
+:- pred lookup_mercury_stdlib_dir(make.options_file.env_optfile_variables, parse_tree.maybe_error.maybe1(list.list(string))).
+:- mode lookup_mercury_stdlib_dir(builtin.in, builtin.out) is det.
+:- pred lookup_mmc_module_options(make.options_file.env_optfile_variables, mdbcomp.sym_name.module_name, parse_tree.maybe_error.maybe1(list.list(string))).
+:- mode lookup_mmc_module_options(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_mmc_options(make.options_file.env_optfile_variables, parse_tree.maybe_error.maybe1(list.list(string))).
+:- mode lookup_mmc_options(builtin.in, builtin.out) is det.
+:- pred read_args_file(io.text_output_stream, libs.file_util.file_name, maybe.maybe(list.list(string)), list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec), io.io, io.io).
+:- mode read_args_file(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred read_named_options_file(io.text_output_stream, libs.file_util.file_name, make.options_file.env_optfile_variables, make.options_file.env_optfile_variables, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec), io.io, io.io).
+:- mode read_named_options_file(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred read_options_files_named_in_options_file_option(io.text_output_stream, libs.options.option_table, make.options_file.env_optfile_variables, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec), io.io, io.io).
+:- mode read_options_files_named_in_options_file_option(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.

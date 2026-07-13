@@ -1,0 +1,14 @@
+:- module (hlds.make_hlds).add_foreign_proc.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.status.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_item.
+:- use_module (hlds.make_hlds).make_hlds_types.
+:- pred add_foreign_proc(io.text_output_stream, hlds.status.item_mercury_status, hlds.status.pred_status, parse_tree.prog_item.item_foreign_proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode add_foreign_proc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_foreign_procs(io.text_output_stream, hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.item_foreign_proc_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode add_foreign_procs(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

@@ -1,0 +1,14 @@
+module(2, "version_array.m",
+	version_array,
+	{},
+	{builtin, list, pretty_printer, private_builtin},
+	{exception, int, string, uint, string.format, string.parse_util},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - version_array, "C#" - version_array, "Java" - version_array},
+	no_foreign_export,
+	no_main,
+	{}
+).

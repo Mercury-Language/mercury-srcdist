@@ -1,0 +1,130 @@
+/*
+** Automatically generated from `switch_candidates.m'
+** by the Mercury compiler,
+** version rotd-2026-07-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.switch_candidates.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__switch_candidates
+#define MR_HEADER_GUARD_check_hlds__switch_candidates
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__SWITCH_CANDIDATES_DECL_GUARD
+#define CHECK_HLDS__SWITCH_CANDIDATES_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_candidates__check_hlds__switch_candidates__type_ctor_info_candidate_switch_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_candidates__check_hlds__switch_candidates__type_ctor_info_candidate_switch_rank_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_candidates__check_hlds__switch_candidates__type_ctor_info_cases_missing_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_candidates__check_hlds__switch_candidates__type_ctor_info_maybe_candidate_switch_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_candidates__check_hlds__switch_candidates__type_ctor_info_maybe_required_switch_var_0;
+
+void MR_CALL 
+check_hlds__switch_candidates__categorize_candidate_switch_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+MR_bool MR_CALL 
+check_hlds__switch_candidates__is_candidate_switch_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+check_hlds__switch_candidates__record_candidate_switch_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__switch_candidates____Compare____candidate_switch_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__switch_candidates____Compare____candidate_switch_rank_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__switch_candidates____Compare____maybe_candidate_switch_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__switch_candidates____Compare____maybe_required_switch_var_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__switch_candidates____Unify____candidate_switch_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__switch_candidates____Unify____candidate_switch_rank_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__switch_candidates____Unify____maybe_candidate_switch_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__switch_candidates____Unify____maybe_required_switch_var_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__switch_candidates__init(void);
+void mercury__check_hlds__switch_candidates__init_type_tables(void);
+void mercury__check_hlds__switch_candidates__init_debugger(void);
+const char *mercury__check_hlds__switch_candidates__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.switch_candidates
+
+// :- end_interface check_hlds.switch_candidates.

@@ -1,0 +1,25 @@
+:- module hlds.add_foreign_enum.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module hlds.hlds_data.
+:- use_module hlds.hlds_module.
+:- use_module hlds.status.
+:- use_module libs.globals.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item.
+:- type du_ctor_to_tag_map == map.map(parse_tree.prog_data.du_ctor, hlds.hlds_data.cons_tag).
+:- type type_ctor_foreign_enums
+    --->    type_ctor_foreign_enums(
+                 (hlds.add_foreign_enum).tcfe_lang_contexts :: map.map(libs.globals.foreign_language, parse_tree.prog_data.prog_context),
+                 (hlds.add_foreign_enum).tcfe_tag_values :: maybe.maybe({hlds.add_foreign_enum.du_ctor_to_tag_map, libs.globals.foreign_language})
+            ).
+:- type type_ctor_to_foreign_enums_map == map.map(parse_tree.prog_data.type_ctor, hlds.add_foreign_enum.type_ctor_foreign_enums).
+:- pred add_pragma_foreign_enum(hlds.hlds_module.module_info, {hlds.status.item_mercury_status, parse_tree.prog_item.item_foreign_enum_info}, hlds.add_foreign_enum.type_ctor_to_foreign_enums_map, hlds.add_foreign_enum.type_ctor_to_foreign_enums_map, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode add_pragma_foreign_enum(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_pragma_foreign_export_enum(parse_tree.prog_item.item_foreign_export_enum_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode add_pragma_foreign_export_enum(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

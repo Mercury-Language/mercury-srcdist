@@ -1,0 +1,34 @@
+:- module backend_libs.tag_switch_util.
+:- interface.
+:- type empty_ptag_list
+	where	type_is_abstract_subtype(list/1).
+:- type is_switch_complete
+	where	type_is_abstract_enum(1).
+:- type ptag_case_group(CaseRep).
+:- type sectag_case(CaseRep).
+:- type sectag_case_list(CaseRep).
+:- type sectag_case_map(CaseRep).
+:- type sectag_goal_list(CaseRep).
+:- type sectag_goal_map(CaseRep).
+:- type shared_ptag_info(CaseRep).
+:- type shared_sectag_locn
+	where	type_is_abstract_subtype(sectag_locn/0).
+:- type single_ptag_case(CaseRep)
+	where	type_is_abstract_subtype(ptag_case_group/1).
+:- type whole_ptag_info(CaseRep)
+	where	type_is_abstract_subtype(whole_ptags_info/1).
+:- type whole_ptags_info(CaseRep).
+:- type_representation(empty_ptag_list, is_subtype_of(list/1)).
+:- type_representation(is_switch_complete, du_repn(enum("incomplete_switch", "complete_switch", [],  no_c_j_cs))).
+:- type_representation(ptag_case_map(V_1), is_eqv_to(map(ptag, ptag_case(V_1)))).
+:- type_representation(ptag_sectag_map, is_eqv_to(map(ptag, ptag_sectag_info))).
+:- type_representation(sectag_case(V_1), is_eqv_to(pair(V_1, one_or_more(uint)))).
+:- type_representation(sectag_case_cord_map(V_1), is_eqv_to(map(V_1, cord(uint)))).
+:- type_representation(sectag_case_list(V_1), is_eqv_to(assoc_list(V_1, one_or_more(uint)))).
+:- type_representation(sectag_case_map(V_1), is_eqv_to(map(V_1, one_or_more(uint)))).
+:- type_representation(sectag_goal_list(V_1), is_eqv_to(assoc_list(uint, V_1))).
+:- type_representation(sectag_goal_map(V_1), is_eqv_to(map(uint, V_1))).
+:- type_representation(shared_sectag_locn, is_subtype_of(sectag_locn/0)).
+:- type_representation(single_ptag_case(V_1), is_subtype_of((backend_libs.tag_switch_util).ptag_case_group/1)).
+:- type_representation(whole_ptag_info(V_1), is_subtype_of((backend_libs.tag_switch_util).whole_ptags_info/1)).
+:- type_representation(whole_ptags_map(V_1), is_eqv_to(map(V_1, backend_libs.tag_switch_util.whole_ptags_info(V_1)))).

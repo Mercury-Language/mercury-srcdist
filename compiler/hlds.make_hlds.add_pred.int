@@ -1,0 +1,29 @@
+:- module (hlds.make_hlds).add_pred.
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module hlds.hlds_clauses.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.pred_name.
+:- use_module hlds.status.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item.
+:- type part_of_predmode
+    --->    not_part_of_predmode 
+    ;       part_of_predmode .
+:- pred add_implicit_pred_decl(mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.module_name, string, parse_tree.prog_data.pred_form_arity, hlds.status.pred_status, parse_tree.prog_data.prog_context, hlds.pred_name.pred_origin, hlds.hlds_pred.goal_type, hlds.hlds_clauses.clauses_info, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode add_implicit_pred_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_implicit_pred_decl_report_error(mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.module_name, string, parse_tree.prog_data.pred_form_arity, hlds.status.pred_status, parse_tree.prog_data.maybe_class_method, parse_tree.prog_data.prog_context, hlds.pred_name.pred_origin, list.list(parse_tree.error_spec.format_piece), hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode add_implicit_pred_decl_report_error(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred module_add_mode_decl(hlds.make_hlds.add_pred.part_of_predmode, parse_tree.prog_data.maybe_class_method, hlds.status.item_mercury_status, hlds.status.pred_status, parse_tree.prog_item.item_mode_decl_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode module_add_mode_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred module_add_pred_decl(hlds.status.item_mercury_status, hlds.status.pred_status, parse_tree.prog_data.need_qualifier, parse_tree.prog_item.item_pred_decl_info, maybe.maybe(pair.pair(hlds.hlds_pred.pred_id, maybe.maybe(hlds.hlds_pred.proc_id))), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode module_add_pred_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func report_mode_decl_after_predmode(parse_tree.prog_data.pred_pf_name_arity, parse_tree.prog_data.prog_context) = parse_tree.error_spec.diag_spec.

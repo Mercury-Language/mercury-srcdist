@@ -1,0 +1,43 @@
+:- module parse_tree.d_file_deps.
+:- interface.
+:- use_module digraph.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.deps_map.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.generate_mmakefile_fragments.
+:- use_module parse_tree.make_module_file_names.
+:- use_module parse_tree.module_baggage.
+:- use_module parse_tree.prog_parse_tree.
+:- type avail_module_sets
+    --->    avail_module_sets(
+                 (parse_tree.d_file_deps).am_ancestors :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).am_direct_imports :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).am_indirect_imports :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).am_imports_in_ancestors :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).am_int_for_opt_imports :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).am_implicit_imports :: set.set(mdbcomp.sym_name.module_name)
+            ).
+:- type dep_graphs
+    --->    dep_graphs(
+                 (parse_tree.d_file_deps).int_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).imp_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).indirect_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).indirect_opt_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).trans_opt_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).trans_opt_order :: list.list(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).all_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name)
+            ).
+:- pred compute_dep_graphs_gendep(io.text_output_stream, libs.globals.globals, mdbcomp.sym_name.module_name, parse_tree.deps_map.deps_map, parse_tree.d_file_deps.dep_graphs, list.list(parse_tree.module_baggage.burdened_module), list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec), io.io, io.io).
+:- mode compute_dep_graphs_gendep(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred construct_d_file_deps_gendep(libs.globals.globals, parse_tree.d_file_deps.dep_graphs, parse_tree.module_baggage.module_baggage, parse_tree.prog_parse_tree.parse_tree_module_src, parse_tree.generate_mmakefile_fragments.d_file_deps).
+:- mode construct_d_file_deps_gendep(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred construct_d_file_deps_hlds(libs.globals.globals, parse_tree.module_baggage.burdened_aug_comp_unit, parse_tree.d_file_deps.avail_module_sets, parse_tree.generate_mmakefile_fragments.maybe_include_trans_opt_rule, parse_tree.generate_mmakefile_fragments.d_file_deps).
+:- mode construct_d_file_deps_hlds(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred construct_intermod_deps(libs.globals.globals, parse_tree.prog_parse_tree.parse_tree_module_src, parse_tree.generate_mmakefile_fragments.d_file_deps, parse_tree.generate_mmakefile_fragments.intermod_deps, parse_tree.make_module_file_names.module_file_name_cache, parse_tree.make_module_file_names.module_file_name_cache, io.io, io.io).
+:- mode construct_intermod_deps(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
