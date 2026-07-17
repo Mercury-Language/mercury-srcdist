@@ -1,0 +1,109 @@
+/*
+** Automatically generated from `switch_detection.m'
+** by the Mercury compiler,
+** version rotd-2026-07-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.switch_detection.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__switch_detection
+#define MR_HEADER_GUARD_check_hlds__switch_detection
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__SWITCH_DETECTION_DECL_GUARD
+#define CHECK_HLDS__SWITCH_DETECTION_DECL_GUARD
+#include "check_hlds.mih"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word check_hlds__switch_detection__mutable_variable_ham_map;
+#else
+    extern MR_Word check_hlds__switch_detection__mutable_variable_ham_map;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock check_hlds__switch_detection__mutable_variable_ham_map_lock;
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_case_arm_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cases_table_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_state_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_hit_and_miss_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_hit_and_miss_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_local_switch_detect_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_switch_detect_info_0;
+
+void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_module_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_proc_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__switch_detection__record_switch_search_depth_results_2_p_0(void);
+
+MR_Word MR_CALL 
+check_hlds__switch_detection__init_switch_detect_info_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+check_hlds__switch_detection____Compare____switch_detect_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____switch_detect_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__switch_detection__init(void);
+void mercury__check_hlds__switch_detection__init_type_tables(void);
+void mercury__check_hlds__switch_detection__init_debugger(void);
+void mercury__check_hlds__switch_detection__required_init(void);
+const char *mercury__check_hlds__switch_detection__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.switch_detection
+
+// :- end_interface check_hlds.switch_detection.

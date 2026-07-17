@@ -1,0 +1,61 @@
+:- module parse_tree.parse_type_name.
+:- interface.
+:- use_module cord.
+:- use_module list.
+:- use_module term.
+:- use_module varset.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.maybe_error.
+:- use_module parse_tree.prog_data.
+:- type allow_ho_inst_info
+    --->    allow_ho_inst_info 
+    ;       no_allow_ho_inst_info(
+                 parse_tree.parse_type_name.why_no_ho_inst_info
+            ).
+:- type arg_context_func == ((func int) = cord.cord(parse_tree.error_spec.format_piece)).
+:- type maybe_constrain_inst_vars
+    --->    do_not_constrain_inst_vars 
+    ;       constrain_some_inst_vars(
+                 parse_tree.prog_data.inst_var_sub
+            ).
+:- type maybe_require_tm_mode
+    --->    do_not_require_tm_mode 
+    ;       require_tm_mode .
+:- type type_and_maybe_mode
+    --->    type_only(
+                 parse_tree.prog_data.mer_type
+            )
+    ;       type_and_mode(
+                 parse_tree.prog_data.mer_type,
+                 parse_tree.prog_data.mer_mode
+            ).
+:- type why_no_ho_inst_info
+    --->    wnhii_type_ctor_arg 
+    ;       wnhii_tuple_arg 
+    ;       wnhii_pred_arg 
+    ;       wnhii_func_arg 
+    ;       wnhii_func_return_arg 
+    ;       wnhii_type_qual 
+    ;       wnhii_supertype 
+    ;       wnhii_solver_type_defn 
+    ;       wnhii_class_constraint 
+    ;       wnhii_user_struct_sharing 
+    ;       wnhii_ctgc_type_selector 
+    ;       wnhii_pragma_struct_sharing 
+    ;       wnhii_pragma_struct_reuse 
+    ;       wnhii_pragma_type_spec_constr 
+    ;       wnhii_pragma_type_spec .
+:- pred is_known_type_name(string).
+:- mode is_known_type_name(builtin.in) is semidet.
+:- pred maybe_parse_type(parse_tree.parse_type_name.allow_ho_inst_info, term.term, parse_tree.prog_data.mer_type).
+:- mode maybe_parse_type(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred maybe_parse_types(parse_tree.parse_type_name.allow_ho_inst_info, list.list(term.term), list.list(parse_tree.prog_data.mer_type)).
+:- mode maybe_parse_types(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred parse_type(parse_tree.parse_type_name.allow_ho_inst_info, varset.varset, cord.cord(parse_tree.error_spec.format_piece), term.term, parse_tree.maybe_error.maybe1(parse_tree.prog_data.mer_type)).
+:- mode parse_type(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_type_and_maybe_mode(parse_tree.parse_type_name.maybe_constrain_inst_vars, parse_tree.parse_type_name.maybe_require_tm_mode, parse_tree.parse_type_name.why_no_ho_inst_info, varset.varset, cord.cord(parse_tree.error_spec.format_piece), term.term, parse_tree.maybe_error.maybe1(parse_tree.parse_type_name.type_and_maybe_mode)).
+:- mode parse_type_and_maybe_mode(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_types(parse_tree.parse_type_name.allow_ho_inst_info, varset.varset, cord.cord(parse_tree.error_spec.format_piece), list.list(term.term), parse_tree.maybe_error.maybe1(list.list(parse_tree.prog_data.mer_type))).
+:- mode parse_types(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parse_types_and_maybe_modes(parse_tree.parse_type_name.maybe_constrain_inst_vars, parse_tree.parse_type_name.maybe_require_tm_mode, parse_tree.parse_type_name.why_no_ho_inst_info, varset.varset, parse_tree.parse_type_name.arg_context_func, list.list(term.term), int, list.list(parse_tree.parse_type_name.type_and_maybe_mode), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode parse_types_and_maybe_modes(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
