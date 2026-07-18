@@ -1,0 +1,26 @@
+:- module make.
+:- interface.
+:- include_module make.build.
+:- include_module make.get_module_dep_info.
+:- include_module make.module_dep_file.
+:- include_module make.options_file.
+:- include_module make.prereqs_cache.
+:- include_module make.top_level.
+:- implementation.
+:- include_module make.analysis.
+:- include_module make.check_up_to_date.
+:- include_module make.clean.
+:- include_module make.file_names.
+:- include_module make.find_local_modules.
+:- include_module make.hash.
+:- include_module make.index_set.
+:- include_module make.int_opt.
+:- include_module make.library_install.
+:- include_module make.make_info.
+:- include_module make.module_target.
+:- include_module make.order.
+:- include_module make.prereqs.
+:- include_module make.program_target.
+:- include_module make.timestamp.
+:- include_module make.track_flags.
+:- include_module make.util.

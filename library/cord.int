@@ -1,0 +1,116 @@
+:- module cord.
+:- interface.
+:- use_module list.
+:- type cord(T).
+:- func '++'(cord.cord(T), cord.cord(T)) = cord.cord(T).
+:- func condense(cord.cord(cord.cord(T))) = cord.cord(T).
+:- pred cons(T, cord.cord(T), cord.cord(T)).
+:- mode cons(builtin.in, builtin.in, builtin.out) is det.
+:- func cons(T, cord.cord(T)) = cord.cord(T).
+:- pred cons_list(list.list(T), cord.cord(T), cord.cord(T)).
+:- mode cons_list(builtin.in, builtin.in, builtin.out) is det.
+:- func cons_list(list.list(T), cord.cord(T)) = cord.cord(T).
+:- func cord_list_to_cord(list.list(cord.cord(T))) = cord.cord(T).
+:- func cord_list_to_list(list.list(cord.cord(T))) = list.list(T).
+:- func empty = cord.cord(T).
+:- pred equal(cord.cord(T), cord.cord(T)).
+:- mode equal(builtin.in, builtin.in) is semidet.
+:- pred filter((pred T), cord.cord(T), cord.cord(T)).
+:- mode filter(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out) is det.
+:- pred filter((pred T), cord.cord(T), cord.cord(T), cord.cord(T)).
+:- mode filter(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out) is det.
+:- pred find_first_match((pred T), cord.cord(T), T).
+:- mode find_first_match(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out) is semidet.
+:- func foldl((func(T, A) = A), cord.cord(T), A) = A.
+:- pred foldl2(pred(T, A, A, B, B), cord.cord(T), A, A, B, B).
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldl3(pred(T, A, A, B, B, C, C), cord.cord(T), A, A, B, B, C, C).
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldl_pred(pred(T, A, A), cord.cord(T), A, A).
+:- mode foldl_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode foldl_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode foldl_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldl_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldl_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- func foldr((func(T, A) = A), cord.cord(T), A) = A.
+:- pred foldr2(pred(T, A, A, B, B), cord.cord(T), A, A, B, B).
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldr2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldr3(pred(T, A, A, B, B, C, C), cord.cord(T), A, A, B, B, C, C).
+:- mode foldr3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldr3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldr3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldr3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldr3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldr3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred foldr_pred(pred(T, A, A), cord.cord(T), A, A).
+:- mode foldr_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode foldr_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode foldr_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldr_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldr_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode foldr_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- func from_list(list.list(T)) = cord.cord(T).
+:- pred get_first(cord.cord(T), T).
+:- mode get_first(builtin.in, builtin.out) is semidet.
+:- pred get_last(cord.cord(T), T).
+:- mode get_last(builtin.in, builtin.out) is semidet.
+:- pred head(cord.cord(T), T).
+:- mode head(builtin.in, builtin.out) is semidet.
+:- pred head_tail(cord.cord(T), T, cord.cord(T)).
+:- mode head_tail(builtin.in, builtin.out, builtin.out) is semidet.
+:- func init = cord.cord(T).
+:- pred is_empty(cord.cord(T)).
+:- mode is_empty(builtin.in) is semidet.
+:- pred is_non_empty(cord.cord(T)).
+:- mode is_non_empty(builtin.in) is semidet.
+:- pred is_singleton(cord.cord(T), T).
+:- mode is_singleton(builtin.in, builtin.out) is semidet.
+:- func length(cord.cord(T)) = int.
+:- func list(cord.cord(T)) = list.list(T).
+:- func map(((func T) = U), cord.cord(T)) = cord.cord(U).
+:- pred map_foldl(pred(T1, T2, A, A), cord.cord(T1), cord.cord(T2), A, A).
+:- mode map_foldl(builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode map_foldl(builtin.in((pred(builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode map_foldl(builtin.in((pred(builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode map_foldl(builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode map_foldl(builtin.in((pred(builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode map_foldl(builtin.in((pred(builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred map_foldl2(pred(T1, T2, A, A, B, B), cord.cord(T1), cord.cord(T2), A, A, B, B).
+:- mode map_foldl2(builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred map_foldl3(pred(T1, T2, A, A, B, B, C, C), cord.cord(T1), cord.cord(T2), A, A, B, B, C, C).
+:- mode map_foldl3(builtin.in((pred(builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred map_pred(pred(T, U), cord.cord(T), cord.cord(U)).
+:- mode map_pred(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.out) is det.
+:- pred member(T, cord.cord(T)).
+:- mode member(builtin.out, builtin.in) is nondet.
+:- func rev_cord_list_to_cord(list.list(cord.cord(T))) = cord.cord(T).
+:- func rev_cord_list_to_list(list.list(cord.cord(T))) = list.list(T).
+:- func rev_list(cord.cord(T)) = list.list(T).
+:- func singleton(T) = cord.cord(T).
+:- pred snoc(T, cord.cord(T), cord.cord(T)).
+:- mode snoc(builtin.in, builtin.in, builtin.out) is det.
+:- func snoc(cord.cord(T), T) = cord.cord(T).
+:- pred snoc_list(list.list(T), cord.cord(T), cord.cord(T)).
+:- mode snoc_list(builtin.in, builtin.in, builtin.out) is det.
+:- func snoc_list(cord.cord(T), list.list(T)) = cord.cord(T).
+:- pred split_last(cord.cord(T), cord.cord(T), T).
+:- mode split_last(builtin.in, builtin.out, builtin.out) is semidet.
+:- func to_list(cord.cord(T)) = list.list(T).
+:- func to_rev_list(cord.cord(T)) = list.list(T).
+:- func ulength(cord.cord(T)) = uint.
