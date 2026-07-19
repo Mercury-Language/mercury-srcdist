@@ -1,0 +1,24 @@
+:- module (hlds.make_hlds).make_hlds_warn.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.quantification.
+:- use_module libs.globals.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_foreign.
+:- use_module parse_tree.prog_item.
+:- type maybe_seen_quant
+    --->    have_not_seen_quant 
+    ;       have_seen_quant .
+:- pred add_quant_warnings(hlds.hlds_module.module_info, parse_tree.prog_data.pf_sym_name_arity, parse_tree.prog_data.prog_varset, list.list(hlds.quantification.quant_warning), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec)).
+:- mode add_quant_warnings(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred check_promise_ex_decl(list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.promise_type, parse_tree.prog_item.goal, parse_tree.prog_data.prog_context, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode check_promise_ex_decl(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred warn_singletons_in_clause_body(hlds.hlds_module.module_info, parse_tree.prog_data.pf_sym_name_arity, parse_tree.prog_data.prog_varset, hlds.hlds_goal.hlds_goal, hlds.make_hlds.make_hlds_warn.maybe_seen_quant, list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec)).
+:- mode warn_singletons_in_clause_body(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred warn_suspicious_foreign_code(libs.globals.foreign_language, parse_tree.prog_data_foreign.foreign_literal_or_include, parse_tree.prog_data.prog_context, list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec)).
+:- mode warn_suspicious_foreign_code(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

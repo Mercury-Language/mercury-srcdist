@@ -1,0 +1,3 @@
+:- module thread.channel.
+:- interface.
+:- type channel(T).

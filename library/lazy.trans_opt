@@ -1,0 +1,15 @@
+:- module lazy.
+
+:- pragma termination_info(lazy.compare_values(builtin.uo, builtin.in, builtin.in), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(lazy.delay(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(lazy.equal_values(builtin.in, builtin.in), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(lazy.force(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(lazy.read_if_val(builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(lazy.val(builtin.in) = builtin.out, infinite, cannot_loop).
+
+:- pragma exceptions(predicate, lazy.compare_values, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, lazy.delay, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, lazy.equal_values, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, lazy.force, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, lazy.read_if_val, 2, 0, will_not_throw).
+:- pragma exceptions(function, lazy.val, 1, 0, will_not_throw).

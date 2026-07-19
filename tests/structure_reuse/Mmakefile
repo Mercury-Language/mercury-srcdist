@@ -1,0 +1,50 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = structure_reuse
+MAYBE_J1 =
+
+STRUCTURE_REUSE_PROGS = \
+	if_then_else		\
+	internal_alias		\
+	interpret
+
+# We currently don't do any testing in some grades on this directory.
+ifneq "$(filter java% csharp%,$(GRADE))" ""
+	PROGS=
+else
+	PROGS=$(STRUCTURE_REUSE_PROGS)
+endif
+
+TESTS = $(PROGS)
+
+include ../Mmake.common
+
+# Module-specific options should go in Mercury.options so they
+# can be found by `mmc --make'.
+include Mercury.options
+
+%.runtest: %.res ;
+
+#-----------------------------------------------------------------------------#
+
+ACC_FLAGS = --structure-reuse -d structure_reuse --dump-hlds-options sr
+
+# Optimizations to turn off/on.
+OPT_FLAGS = --no-static-ground-terms
+
+# Ensure that the accumulator introduction flags are passed
+# after EXTRA_MCFLAGS, so that we can override things set in EXTRA_MCFLAGS.
+# ALL_MCDFLAGS += $(ACC_FLAGS)
+# ALL_MCGFLAGS += $(OPT_FLAGS) $(ACC_FLAGS)
+EXTRA_MCFLAGS += $(OPT_FLAGS) $(ACC_FLAGS)
+
+realclean_local: clean_hlds_dump
+
+clean_hlds_dump:
+	-rm -f *hlds_dump*
+	-rm -f *.profile
+
+#-----------------------------------------------------------------------------#
