@@ -1,0 +1,4 @@
+:- module test_bitset.
+:- interface.
+:- type bitset_error(T).
+:- type test_bitset(T).
