@@ -1,0 +1,11 @@
+:- module math.
+:- interface.
+:- type quadratic_roots
+    --->    no_roots 
+    ;       one_root(
+                 float
+            )
+    ;       two_roots(
+                 float,
+                 float
+            ).

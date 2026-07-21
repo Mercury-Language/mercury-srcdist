@@ -1,0 +1,14 @@
+module(2, "random.sfc64.m",
+	random.sfc64,
+	{random},
+	{builtin, private_builtin},
+	{array, int, uint16, uint32, uint64},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
