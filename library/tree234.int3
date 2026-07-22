@@ -1,0 +1,13 @@
+:- module tree234.
+:- interface.
+:- type maybe_reduced_height
+	where	type_is_abstract_enum(1).
+:- type tree234(K, V).
+:- type tree234_lazy_list(K, V).
+:- abstract_inst((uniq_tree234(K, V))).
+:- abstract_inst((uniq_tree234_gg)).
+:- abstract_mode((di_tree234)).
+:- abstract_mode((di_tree234(K, V))).
+:- abstract_mode((uo_tree234)).
+:- abstract_mode((uo_tree234(K, V))).
+:- type_representation(maybe_reduced_height, du_repn(enum("did_not_reduce_height", "reduced_height", [],  no_c_j_cs))).

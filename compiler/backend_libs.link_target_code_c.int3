@@ -1,0 +1,5 @@
+:- module backend_libs.link_target_code_c.
+:- interface.
+:- type shared_library_support
+	where	type_is_abstract_enum(1).
+:- type_representation(shared_library_support, du_repn(enum("shared_libraries_not_supported", "shared_libraries_supported", [],  no_c_j_cs))).

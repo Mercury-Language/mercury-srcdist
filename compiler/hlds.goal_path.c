@@ -1,0 +1,1881 @@
+/*
+** Automatically generated from `goal_path.m'
+** by the Mercury compiler,
+** version rotd-2026-07-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.goal_path.
+// :- implementation.
+
+/*
+INIT mercury__hlds__goal_path__init
+ENDINIT
+*/
+
+#include "hlds.goal_path.mih"
+
+
+#include "analysis.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "cord.mih"
+#include "counter.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "hlds.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "multi_map.mih"
+#include "one_or_more.mih"
+#include "one_or_more_map.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "term.mih"
+#include "term_context.mih"
+#include "transform_hlds.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "analysis.framework.mih"
+#include "analysis.operations.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.goal_mode.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_class.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_cons.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_inst_mode.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_markers.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_promise.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_name.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.type_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.file_util.mih"
+#include "libs.globals.mih"
+#include "libs.polyhedron.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.d_file_deps.mih"
+#include "parse_tree.error_spec.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_parse_tree.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.prog_util.mih"
+#include "parse_tree.set_of_var.mih"
+#include "parse_tree.var_db.mih"
+#include "parse_tree.var_table.mih"
+#include "parse_tree.vartypes.mih"
+#include "recompilation.record_uses.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_util.mih"
+#include "parse_tree.module_qual.mq_info.mih"
+
+
+
+
+static const MR_FA_TypeInfo_Struct2 hlds__goal_path__pair__ti_pair_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__goal_path__list__pti_list_1__plain_pair__ti_pair_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__goal_path__list__ti_list_1pair__ti_pair_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0;
+
+static const MR_PseudoTypeInfo hlds__goal_path__hlds__goal_path__field_types_slot_info_0_0[2];
+
+static const MR_ConstString hlds__goal_path__hlds__goal_path__field_names_slot_info_0_0[2];
+
+static const MR_DuFunctorDesc hlds__goal_path__hlds__goal_path__du_functor_desc_slot_info_0_0;
+
+static const MR_DuFunctorDescPtr hlds__goal_path__hlds__goal_path__du_stag_ordered_slot_info_0_0[1];
+
+static const MR_DuPtagLayout hlds__goal_path__hlds__goal_path__du_ptag_ordered_slot_info_0[1];
+
+static const MR_DuFunctorDescPtr hlds__goal_path__hlds__goal_path__du_name_ordered_slot_info_0[1];
+
+static const MR_Integer hlds__goal_path__hlds__goal_path__functor_number_map_slot_info_0[1];
+
+static void MR_CALL 
+hlds__goal_path____Compare____slot_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__goal_path____Unify____slot_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+hlds__goal_path____Compare____containing_goal_list_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__goal_path____Unify____containing_goal_list_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_clause_9_p_0(
+  MR_Word SlotInfo_10,
+  MR_Word Clause0_11,
+  MR_Word * Clause_12,
+  MR_Integer CurClauseNum_13,
+  MR_Integer * NextClauseNum_14,
+  MR_Word STATE_VARIABLE_GoalNumCounter_0_20,
+  MR_Word * STATE_VARIABLE_GoalNumCounter_21,
+  MR_Word STATE_VARIABLE_ContainingGoalList_0_22,
+  MR_Word * STATE_VARIABLE_ContainingGoalList_23);
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_orelses_5_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word ParentRevGoalPath_2,
+  MR_Integer LastOrElseNum_3,
+  MR_Word HeadVar__4_4,
+  MR_Word * HeadVar__5_5);
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_cases_6_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word ParentRevGoalPath_2,
+  MR_Integer LastArmNum_3,
+  MR_Word MaybeNumFunctors_4,
+  MR_Word HeadVar__5_5,
+  MR_Word * HeadVar__6_6);
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_disjuncts_5_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word ParentRevGoalPath_2,
+  MR_Integer LastDisjunctNum_3,
+  MR_Word HeadVar__4_4,
+  MR_Word * HeadVar__5_5);
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_conjuncts_5_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word ParentRevGoalPath_2,
+  MR_Integer LastConjunctNum_3,
+  MR_Word HeadVar__4_4,
+  MR_Word * HeadVar__5_5);
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(
+  MR_Word SlotInfo_5,
+  MR_Word RevGoalPath_6,
+  MR_Word Goal0_7,
+  MR_Word * Goal_8);
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_orelses_9_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word GoalId_2,
+  MR_Integer LastOrElseNum_3,
+  MR_Word STATE_VARIABLE_GoalNumCounter_0_4,
+  MR_Word * STATE_VARIABLE_GoalNumCounter_5,
+  MR_Word STATE_VARIABLE_ContainingGoalList_0_6,
+  MR_Word * STATE_VARIABLE_ContainingGoalList_7,
+  MR_Word HeadVar__8_8,
+  MR_Word * HeadVar__9_9);
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_cases_10_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word GoalId_2,
+  MR_Integer LastArmNum_3,
+  MR_Word MaybeNumFunctors_4,
+  MR_Word STATE_VARIABLE_GoalNumCounter_0_5,
+  MR_Word * STATE_VARIABLE_GoalNumCounter_6,
+  MR_Word STATE_VARIABLE_ContainingGoalList_0_7,
+  MR_Word * STATE_VARIABLE_ContainingGoalList_8,
+  MR_Word HeadVar__9_9,
+  MR_Word * HeadVar__10_10);
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_disjuncts_9_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word GoalId_2,
+  MR_Integer LastDisjunctNum_3,
+  MR_Word STATE_VARIABLE_GoalNumCounter_0_4,
+  MR_Word * STATE_VARIABLE_GoalNumCounter_5,
+  MR_Word STATE_VARIABLE_ContainingGoalList_0_6,
+  MR_Word * STATE_VARIABLE_ContainingGoalList_7,
+  MR_Word HeadVar__8_8,
+  MR_Word * HeadVar__9_9);
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_conjuncts_9_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word GoalId_2,
+  MR_Integer LastConjunctNum_3,
+  MR_Word STATE_VARIABLE_GoalNumCounter_0_4,
+  MR_Word * STATE_VARIABLE_GoalNumCounter_5,
+  MR_Word STATE_VARIABLE_ContainingGoalList_0_6,
+  MR_Word * STATE_VARIABLE_ContainingGoalList_7,
+  MR_Word HeadVar__8_8,
+  MR_Word * HeadVar__9_9);
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(
+  MR_Word SlotInfo_9,
+  MR_Word ContainingGoal_10,
+  MR_Word STATE_VARIABLE_GoalNumCounter_0_99,
+  MR_Word * STATE_VARIABLE_GoalNumCounter_100,
+  MR_Word STATE_VARIABLE_ContainingGoalList_0_101,
+  MR_Word * STATE_VARIABLE_ContainingGoalList_102,
+  MR_Word Goal0_13,
+  MR_Word * Goal_14);
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_clauses_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4,
+  MR_Box wrapper_arg_5,
+  MR_Box * wrapper_arg_6,
+  MR_Box wrapper_arg_7,
+  MR_Box * wrapper_arg_8);
+
+static MR_bool MR_CALL 
+hlds__goal_path____Unify____containing_goal_list_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__goal_path____Compare____containing_goal_list_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__goal_path____Unify____slot_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__goal_path____Compare____slot_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box hlds__goal_path_scalar_common_1[1][3];
+
+static /* final */ const MR_Box hlds__goal_path_scalar_common_2[1][2];
+
+static /* final */ const MR_Box hlds__goal_path_scalar_common_3[1][12];
+
+
+
+
+static /* final */ const MR_Box hlds__goal_path_scalar_common_1[1][3] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_containing_goal_0))
+  },
+};
+
+static /* final */ const MR_Box hlds__goal_path_scalar_common_2[1][2] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__goal_path_scalar_common_1[0]))
+  },
+};
+
+static /* final */ const MR_Box hlds__goal_path_scalar_common_3[1][12] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 9)),
+    ((MR_Box) (&hlds__goal_path__hlds__goal_path__type_ctor_info_slot_info_0)),
+    ((MR_Box) (&hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_0)),
+    ((MR_Box) (&hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__counter__counter__type_ctor_info_ucounter_0)),
+    ((MR_Box) (&mercury__counter__counter__type_ctor_info_ucounter_0)),
+    ((MR_Box) (&hlds__goal_path__list__pti_list_1__plain_pair__ti_pair_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0)),
+    ((MR_Box) (&hlds__goal_path__list__pti_list_1__plain_pair__ti_pair_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0))
+  },
+};
+
+
+
+#include "array.mh"
+
+
+static const MR_FA_TypeInfo_Struct2 hlds__goal_path__pair__ti_pair_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0),
+    (MR_TypeInfo) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_containing_goal_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__goal_path__list__pti_list_1__plain_pair__ti_pair_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_PseudoTypeInfo) (&hlds__goal_path__pair__ti_pair_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__goal_path__list__ti_list_1pair__ti_pair_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&hlds__goal_path__pair__ti_pair_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0) }
+};
+
+const MR_TypeCtorInfo_Struct hlds__goal_path__hlds__goal_path__type_ctor_info_containing_goal_list_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (hlds__goal_path____Unify____containing_goal_list_0_0_10001)),
+  ((MR_Box) (hlds__goal_path____Compare____containing_goal_list_0_0_10001)),
+  (MR_String) "hlds.goal_path",
+  (MR_String) "containing_goal_list",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&hlds__goal_path__list__ti_list_1pair__ti_pair_2mdbcomp__goal_path__type_ctor_info_goal_id_0mdbcomp__goal_path__type_ctor_info_containing_goal_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static const MR_PseudoTypeInfo hlds__goal_path__hlds__goal_path__field_types_slot_info_0_0[2] = {
+  (MR_PseudoTypeInfo) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0),
+  (MR_PseudoTypeInfo) (&parse_tree__var_table__parse_tree__var_table__type_ctor_info_var_table_0)
+};
+
+static const MR_ConstString hlds__goal_path__hlds__goal_path__field_names_slot_info_0_0[2] = {
+  (MR_String) "slot_info_module_info",
+  (MR_String) "slot_info_var_table"
+};
+
+static const MR_DuFunctorDesc hlds__goal_path__hlds__goal_path__du_functor_desc_slot_info_0_0 = {
+  (MR_String) "slot_info",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__goal_path__hlds__goal_path__field_types_slot_info_0_0,
+  hlds__goal_path__hlds__goal_path__field_names_slot_info_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__goal_path__hlds__goal_path__du_stag_ordered_slot_info_0_0[1] = { &hlds__goal_path__hlds__goal_path__du_functor_desc_slot_info_0_0 };
+
+static const MR_DuPtagLayout hlds__goal_path__hlds__goal_path__du_ptag_ordered_slot_info_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__goal_path__hlds__goal_path__du_stag_ordered_slot_info_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__goal_path__hlds__goal_path__du_name_ordered_slot_info_0[1] = { &hlds__goal_path__hlds__goal_path__du_functor_desc_slot_info_0_0 };
+
+static const MR_Integer hlds__goal_path__hlds__goal_path__functor_number_map_slot_info_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__goal_path__hlds__goal_path__type_ctor_info_slot_info_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__goal_path____Unify____slot_info_0_0_10001)),
+  ((MR_Box) (hlds__goal_path____Compare____slot_info_0_0_10001)),
+  (MR_String) "hlds.goal_path",
+  (MR_String) "slot_info",
+  { hlds__goal_path__hlds__goal_path__du_name_ordered_slot_info_0 },
+  { hlds__goal_path__hlds__goal_path__du_ptag_ordered_slot_info_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__goal_path__hlds__goal_path__functor_number_map_slot_info_0,
+
+};
+
+static void MR_CALL 
+hlds__goal_path____Compare____slot_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_9 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_10 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_9 == CastY_10);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 0))));
+    MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, 0))));
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 1))));
+    MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, 1))));
+    MR_Word SubResult1_6;
+
+    hlds__hlds_module____Compare____module_info_0_0(&SubResult1_6, ArgX1_4, ArgY1_5);
+    succeeded = (SubResult1_6 != (MR_Integer) 0);
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+      parse_tree__var_table____Compare____var_table_0_0(HeadVar__1_1, ArgX2_7, ArgY2_8);
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__goal_path____Unify____slot_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_7 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_8 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_7 == CastY_8);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 0))));
+    MR_Word ArgY1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 0))));
+    MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 1))));
+    MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 1))));
+
+    succeeded = hlds__hlds_module____Unify____module_info_0_0(ArgX1_3, ArgY1_4);
+    if (succeeded)
+      succeeded = parse_tree__var_table____Unify____var_table_0_0(ArgX2_5, ArgY2_6);
+  }
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__goal_path____Compare____containing_goal_list_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  mercury__builtin__compare_3_p_0((MR_Word) (&hlds__goal_path_scalar_common_2[0]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+}
+
+static MR_bool MR_CALL 
+hlds__goal_path____Unify____containing_goal_list_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__goal_path_scalar_common_2[0]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_clause_9_p_0(
+  MR_Word SlotInfo_10,
+  MR_Word Clause0_11,
+  MR_Word * Clause_12,
+  MR_Integer CurClauseNum_13,
+  MR_Integer * NextClauseNum_14,
+  MR_Word STATE_VARIABLE_GoalNumCounter_0_20,
+  MR_Word * STATE_VARIABLE_GoalNumCounter_21,
+  MR_Word STATE_VARIABLE_ContainingGoalList_0_22,
+  MR_Word * STATE_VARIABLE_ContainingGoalList_23)
+{
+  MR_Word Goal0_17;
+  MR_Word ContainingGoal_18;
+  MR_Word Goal_19;
+  MR_Word Var_24;
+  MR_Word Var_25;
+  MR_Word Var_27;
+  MR_Word Var_29;
+  MR_Word Var_30;
+  MR_Word Var_31;
+  MR_Word Var_32;
+  MR_Word Var_33;
+
+  Goal0_17 = hlds__hlds_clauses__clause_body_1_f_0(Clause0_11);
+  Var_24 = mdbcomp__goal_path__whole_body_goal_id_0_f_0();
+  {
+    Var_25 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(2, Var_25, 0) = ((MR_Box) (CurClauseNum_13));
+  }
+  {
+    ContainingGoal_18 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, ContainingGoal_18, 0) = ((MR_Box) (Var_24));
+    MR_hl_field(1, ContainingGoal_18, 1) = ((MR_Box) (Var_25));
+  }
+  *NextClauseNum_14 = (MR_Integer) ((MR_Unsigned) CurClauseNum_13 + (MR_Unsigned) 1);
+  hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_10, ContainingGoal_18, STATE_VARIABLE_GoalNumCounter_0_20, STATE_VARIABLE_GoalNumCounter_21, STATE_VARIABLE_ContainingGoalList_0_22, STATE_VARIABLE_ContainingGoalList_23, Goal0_17, &Goal_19);
+  Var_27 = ((MR_Word) ((MR_hl_field(0, Clause0_11, 0))));
+  Var_29 = ((MR_Word) ((MR_hl_field(0, Clause0_11, 2))));
+  Var_30 = ((MR_Word) ((MR_hl_field(0, Clause0_11, 3))));
+  Var_31 = ((MR_Word) ((MR_hl_field(0, Clause0_11, 4))));
+  Var_32 = ((MR_Word) ((MR_hl_field(0, Clause0_11, 5))));
+  Var_33 = ((MR_Unsigned) ((MR_hl_field(0, Clause0_11, 6))) & (MR_Integer) 1);
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+    *Clause_12 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (Var_27));
+    MR_hl_field(0, base, 1) = ((MR_Box) (Goal_19));
+    MR_hl_field(0, base, 2) = ((MR_Box) (Var_29));
+    MR_hl_field(0, base, 3) = ((MR_Box) (Var_30));
+    MR_hl_field(0, base, 4) = ((MR_Box) (Var_31));
+    MR_hl_field(0, base, 5) = ((MR_Box) (Var_32));
+    MR_hl_field(0, base, 6) = (MR_Box) ((MR_Unsigned) (Var_33));
+  }
+}
+
+void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_proc_3_p_0(
+  MR_Word ModuleInfo_4,
+  MR_Word STATE_VARIABLE_ProcInfo_0_10,
+  MR_Word * STATE_VARIABLE_ProcInfo_11)
+{
+  MR_Word VarTable_6;
+  MR_Word SlotInfo_7;
+  MR_Word Goal0_8;
+  MR_Word Goal_9;
+
+  hlds__hlds_pred__proc_info_get_var_table_2_p_0(STATE_VARIABLE_ProcInfo_0_10, &VarTable_6);
+  {
+    SlotInfo_7 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, SlotInfo_7, 0) = ((MR_Box) (ModuleInfo_4));
+    MR_hl_field(0, SlotInfo_7, 1) = ((MR_Box) (VarTable_6));
+  }
+  hlds__hlds_pred__proc_info_get_goal_2_p_0(STATE_VARIABLE_ProcInfo_0_10, &Goal0_8);
+  hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_7, (MR_Word) ((MR_Unsigned) 0U), Goal0_8, &Goal_9);
+  hlds__hlds_pred__proc_info_set_goal_3_p_0(Goal_9, STATE_VARIABLE_ProcInfo_0_10, STATE_VARIABLE_ProcInfo_11);
+}
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_orelses_5_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word ParentRevGoalPath_2,
+  MR_Integer LastOrElseNum_3,
+  MR_Word HeadVar__4_4,
+  MR_Word * HeadVar__5_5)
+{
+  if ((HeadVar__4_4 == (MR_Word) ((MR_Unsigned) 0U)))
+    *HeadVar__5_5 = (MR_Word) ((MR_Unsigned) 0U);
+  else
+  {
+    MR_Word Goal0_12 = ((MR_Word) ((MR_hl_field(1, HeadVar__4_4, 0))));
+    MR_Word Goals0_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__4_4, 1))));
+    MR_Word Goal_14;
+    MR_Word Goals_15;
+    MR_Integer CurOrElseNum_16 = (MR_Integer) ((MR_Unsigned) LastOrElseNum_3 + (MR_Unsigned) 1);
+    MR_Word RevGoalPath_17;
+    MR_Word Var_19;
+
+    {
+      Var_19 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(3, Var_19, 0) = ((MR_Box) ((MR_Unsigned) 2U));
+      MR_hl_field(3, Var_19, 1) = ((MR_Box) (CurOrElseNum_16));
+    }
+    {
+      RevGoalPath_17 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, RevGoalPath_17, 0) = ((MR_Box) (ParentRevGoalPath_2));
+      MR_hl_field(1, RevGoalPath_17, 1) = ((MR_Box) (Var_19));
+    }
+    hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_1, RevGoalPath_17, Goal0_12, &Goal_14);
+    hlds__goal_path__fill_goal_path_slots_in_orelses_5_p_0(SlotInfo_1, ParentRevGoalPath_2, CurOrElseNum_16, Goals0_13, &Goals_15);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *HeadVar__5_5 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (Goal_14));
+      MR_hl_field(1, base, 1) = ((MR_Box) (Goals_15));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_cases_6_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word ParentRevGoalPath_2,
+  MR_Integer LastArmNum_3,
+  MR_Word MaybeNumFunctors_4,
+  MR_Word HeadVar__5_5,
+  MR_Word * HeadVar__6_6)
+{
+  if ((HeadVar__5_5 == (MR_Word) ((MR_Unsigned) 0U)))
+    *HeadVar__6_6 = (MR_Word) ((MR_Unsigned) 0U);
+  else
+  {
+    MR_Word Case0_15 = ((MR_Word) ((MR_hl_field(1, HeadVar__5_5, 0))));
+    MR_Word Cases0_16 = ((MR_Word) ((MR_hl_field(1, HeadVar__5_5, 1))));
+    MR_Word Case_17;
+    MR_Word Cases_18;
+    MR_Word MainConsId_19 = ((MR_Word) ((MR_hl_field(0, Case0_15, 0))));
+    MR_Word OtherConsIds_20 = ((MR_Word) ((MR_hl_field(0, Case0_15, 1))));
+    MR_Word Goal0_21 = ((MR_Word) ((MR_hl_field(0, Case0_15, 2))));
+    MR_Integer CurArmNum_22 = (MR_Integer) ((MR_Unsigned) LastArmNum_3 + (MR_Unsigned) 1);
+    MR_Word RevGoalPath_23;
+    MR_Word Goal_24;
+    MR_Word Var_26;
+
+    {
+      Var_26 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(3, Var_26, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(3, Var_26, 1) = ((MR_Box) (CurArmNum_22));
+      MR_hl_field(3, Var_26, 2) = ((MR_Box) (MaybeNumFunctors_4));
+    }
+    {
+      RevGoalPath_23 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, RevGoalPath_23, 0) = ((MR_Box) (ParentRevGoalPath_2));
+      MR_hl_field(1, RevGoalPath_23, 1) = ((MR_Box) (Var_26));
+    }
+    hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_1, RevGoalPath_23, Goal0_21, &Goal_24);
+    {
+      Case_17 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Case_17, 0) = ((MR_Box) (MainConsId_19));
+      MR_hl_field(0, Case_17, 1) = ((MR_Box) (OtherConsIds_20));
+      MR_hl_field(0, Case_17, 2) = ((MR_Box) (Goal_24));
+    }
+    hlds__goal_path__fill_goal_path_slots_in_cases_6_p_0(SlotInfo_1, ParentRevGoalPath_2, CurArmNum_22, MaybeNumFunctors_4, Cases0_16, &Cases_18);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *HeadVar__6_6 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (Case_17));
+      MR_hl_field(1, base, 1) = ((MR_Box) (Cases_18));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_disjuncts_5_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word ParentRevGoalPath_2,
+  MR_Integer LastDisjunctNum_3,
+  MR_Word HeadVar__4_4,
+  MR_Word * HeadVar__5_5)
+{
+  if ((HeadVar__4_4 == (MR_Word) ((MR_Unsigned) 0U)))
+    *HeadVar__5_5 = (MR_Word) ((MR_Unsigned) 0U);
+  else
+  {
+    MR_Word Goal0_12 = ((MR_Word) ((MR_hl_field(1, HeadVar__4_4, 0))));
+    MR_Word Goals0_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__4_4, 1))));
+    MR_Word Goal_14;
+    MR_Word Goals_15;
+    MR_Integer CurDisjunctNum_16 = (MR_Integer) ((MR_Unsigned) LastDisjunctNum_3 + (MR_Unsigned) 1);
+    MR_Word RevGoalPath_17;
+    MR_Word Var_19;
+
+    {
+      Var_19 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(2, Var_19, 0) = ((MR_Box) (CurDisjunctNum_16));
+    }
+    {
+      RevGoalPath_17 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, RevGoalPath_17, 0) = ((MR_Box) (ParentRevGoalPath_2));
+      MR_hl_field(1, RevGoalPath_17, 1) = ((MR_Box) (Var_19));
+    }
+    hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_1, RevGoalPath_17, Goal0_12, &Goal_14);
+    hlds__goal_path__fill_goal_path_slots_in_disjuncts_5_p_0(SlotInfo_1, ParentRevGoalPath_2, CurDisjunctNum_16, Goals0_13, &Goals_15);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *HeadVar__5_5 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (Goal_14));
+      MR_hl_field(1, base, 1) = ((MR_Box) (Goals_15));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_conjuncts_5_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word ParentRevGoalPath_2,
+  MR_Integer LastConjunctNum_3,
+  MR_Word HeadVar__4_4,
+  MR_Word * HeadVar__5_5)
+{
+  if ((HeadVar__4_4 == (MR_Word) ((MR_Unsigned) 0U)))
+    *HeadVar__5_5 = (MR_Word) ((MR_Unsigned) 0U);
+  else
+  {
+    MR_Word Goal0_12 = ((MR_Word) ((MR_hl_field(1, HeadVar__4_4, 0))));
+    MR_Word Goals0_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__4_4, 1))));
+    MR_Word Goal_14;
+    MR_Word Goals_15;
+    MR_Integer CurConjunctNum_16 = (MR_Integer) ((MR_Unsigned) LastConjunctNum_3 + (MR_Unsigned) 1);
+    MR_Word RevGoalPath_17;
+    MR_Word Var_19;
+
+    {
+      Var_19 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_19, 0) = ((MR_Box) (CurConjunctNum_16));
+    }
+    {
+      RevGoalPath_17 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, RevGoalPath_17, 0) = ((MR_Box) (ParentRevGoalPath_2));
+      MR_hl_field(1, RevGoalPath_17, 1) = ((MR_Box) (Var_19));
+    }
+    hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_1, RevGoalPath_17, Goal0_12, &Goal_14);
+    hlds__goal_path__fill_goal_path_slots_in_conjuncts_5_p_0(SlotInfo_1, ParentRevGoalPath_2, CurConjunctNum_16, Goals0_13, &Goals_15);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *HeadVar__5_5 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (Goal_14));
+      MR_hl_field(1, base, 1) = ((MR_Box) (Goals_15));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(
+  MR_Word SlotInfo_5,
+  MR_Word RevGoalPath_6,
+  MR_Word Goal0_7,
+  MR_Word * Goal_8)
+{
+  MR_bool succeeded;
+  MR_Word GoalExpr0_9 = ((MR_Word) ((MR_hl_field(0, Goal0_7, 0))));
+  MR_Word GoalInfo0_10 = ((MR_Word) ((MR_hl_field(0, Goal0_7, 1))));
+  MR_Word GoalInfo_11;
+  MR_Word GoalExpr_15;
+
+  hlds__hlds_goal__goal_info_set_reverse_goal_path_3_p_0(RevGoalPath_6, GoalInfo0_10, &GoalInfo_11);
+  switch (MR_tag((MR_Word) GoalExpr0_9)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word SubGoal0_25 = (MR_Word) ((MR_Word) (GoalExpr0_9));
+        MR_Word SubRevGoalPath_26;
+        MR_Word SubGoal_27;
+
+        {
+          SubRevGoalPath_26 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, SubRevGoalPath_26, 0) = ((MR_Box) (RevGoalPath_6));
+          MR_hl_field(1, SubRevGoalPath_26, 1) = ((MR_Box) ((MR_Unsigned) 12U));
+        }
+        hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_5, SubRevGoalPath_26, SubGoal0_25, &SubGoal_27);
+        GoalExpr_15 = (MR_Word) ((MR_Word) (SubGoal_27));
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word LHS_44 = ((MR_Word) ((MR_hl_field(1, GoalExpr0_9, 0))));
+        MR_Word RHS0_45 = ((MR_Word) ((MR_hl_field(1, GoalExpr0_9, 1))));
+        MR_Word Mode_46 = ((MR_Word) ((MR_hl_field(1, GoalExpr0_9, 2))));
+        MR_Word Kind_47 = ((MR_Word) ((MR_hl_field(1, GoalExpr0_9, 3))));
+        MR_Word Context_48 = ((MR_Word) ((MR_hl_field(1, GoalExpr0_9, 4))));
+        MR_Word RHS_57;
+
+        switch (MR_tag((MR_Word) RHS0_45)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+            RHS_57 = RHS0_45;
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word LambdaNonLocals_52 = ((MR_Word) ((MR_hl_field(2, RHS0_45, 1))));
+              MR_Word ArgVarsModes_53 = ((MR_Word) ((MR_hl_field(2, RHS0_45, 2))));
+              MR_Word Detism_54 = ((MR_Unsigned) ((MR_hl_field(2, RHS0_45, 3))) & (MR_Integer) 7);
+              MR_Word LambdaGoal0_55 = ((MR_Word) ((MR_hl_field(2, RHS0_45, 4))));
+              MR_Word LambdaGoal_56;
+              MR_Unsigned packed_word_3 = (MR_Unsigned) ((MR_hl_field(2, RHS0_45, 0)));
+
+              hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_5, RevGoalPath_6, LambdaGoal0_55, &LambdaGoal_56);
+              {
+                RHS_57 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(2, RHS_57, 0) = (MR_Box) (packed_word_3);
+                MR_hl_field(2, RHS_57, 1) = ((MR_Box) (LambdaNonLocals_52));
+                MR_hl_field(2, RHS_57, 2) = ((MR_Box) (ArgVarsModes_53));
+                MR_hl_field(2, RHS_57, 3) = (MR_Box) ((MR_Unsigned) (Detism_54));
+                MR_hl_field(2, RHS_57, 4) = ((MR_Box) (LambdaGoal_56));
+              }
+            }
+            break;
+        }
+        {
+          GoalExpr_15 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, GoalExpr_15, 0) = ((MR_Box) (LHS_44));
+          MR_hl_field(1, GoalExpr_15, 1) = ((MR_Box) (RHS_57));
+          MR_hl_field(1, GoalExpr_15, 2) = ((MR_Box) (Mode_46));
+          MR_hl_field(1, GoalExpr_15, 3) = ((MR_Box) (Kind_47));
+          MR_hl_field(1, GoalExpr_15, 4) = ((MR_Box) (Context_48));
+        }
+      }
+      break;
+    case (MR_Integer) 2:
+      GoalExpr_15 = GoalExpr0_9;
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) ((MR_hl_field(3, GoalExpr0_9, 0))))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+        case (MR_Integer) 1:
+          GoalExpr_15 = GoalExpr0_9;
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word ConjType_12 = ((MR_Unsigned) ((MR_hl_field(3, GoalExpr0_9, 1))) & (MR_Integer) 1);
+            MR_Word Goals0_13 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_9, 2))));
+            MR_Word Goals_14;
+
+            hlds__goal_path__fill_goal_path_slots_in_conjuncts_5_p_0(SlotInfo_5, RevGoalPath_6, (MR_Integer) 0, Goals0_13, &Goals_14);
+            {
+              GoalExpr_15 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, GoalExpr_15, 0) = ((MR_Box) ((MR_Unsigned) 2U));
+              MR_hl_field(3, GoalExpr_15, 1) = (MR_Box) ((MR_Unsigned) (ConjType_12));
+              MR_hl_field(3, GoalExpr_15, 2) = ((MR_Box) (Goals_14));
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word Goals0_109 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_9, 1))));
+            MR_Word Goals_110;
+
+            hlds__goal_path__fill_goal_path_slots_in_disjuncts_5_p_0(SlotInfo_5, RevGoalPath_6, (MR_Integer) 0, Goals0_109, &Goals_110);
+            {
+              GoalExpr_15 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, GoalExpr_15, 0) = ((MR_Box) ((MR_Unsigned) 3U));
+              MR_hl_field(3, GoalExpr_15, 1) = ((MR_Box) (Goals_110));
+            }
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            MR_Word Var_16 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_9, 1))));
+            MR_Word CanFail_17 = ((MR_Unsigned) ((MR_hl_field(3, GoalExpr0_9, 2))) & (MR_Integer) 1);
+            MR_Word Cases0_18 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_9, 3))));
+            MR_Word VarTable_19 = ((MR_Word) ((MR_hl_field(0, SlotInfo_5, 1))));
+            MR_Word ModuleInfo_20 = ((MR_Word) ((MR_hl_field(0, SlotInfo_5, 0))));
+            MR_Word Type_21;
+            MR_Word MaybeNumFunctors_23;
+            MR_Word Cases_24;
+            MR_Integer NumFunctors_22;
+
+            parse_tree__var_table__lookup_var_type_3_p_0(VarTable_19, Var_16, &Type_21);
+            succeeded = hlds__type_util__switch_type_num_functors_3_p_0(ModuleInfo_20, Type_21, &NumFunctors_22);
+            if (succeeded)
+              {
+                MaybeNumFunctors_23 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(1, MaybeNumFunctors_23, 0) = ((MR_Box) (NumFunctors_22));
+              }
+            else
+              MaybeNumFunctors_23 = (MR_Word) ((MR_Unsigned) 0U);
+            hlds__goal_path__fill_goal_path_slots_in_cases_6_p_0(SlotInfo_5, RevGoalPath_6, (MR_Integer) 0, MaybeNumFunctors_23, Cases0_18, &Cases_24);
+            {
+              GoalExpr_15 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, GoalExpr_15, 0) = ((MR_Box) ((MR_Unsigned) 4U));
+              MR_hl_field(3, GoalExpr_15, 1) = ((MR_Box) (Var_16));
+              MR_hl_field(3, GoalExpr_15, 2) = (MR_Box) ((MR_Unsigned) (CanFail_17));
+              MR_hl_field(3, GoalExpr_15, 3) = ((MR_Box) (Cases_24));
+            }
+          }
+          break;
+        case (MR_Integer) 5:
+          {
+            MR_Word Reason_28 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_9, 1))));
+            MR_Word InnerInfo_30;
+            MR_Word OuterDetism_31;
+            MR_Word InnerDetism_32;
+            MR_Word MaybeCut_33;
+            MR_Word Var_100;
+            MR_Word SubGoal0_111 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_9, 2))));
+            MR_Word SubRevGoalPath_112;
+            MR_Word SubGoal_113;
+
+            InnerInfo_30 = ((MR_Word) ((MR_hl_field(0, SubGoal0_111, 1))));
+            OuterDetism_31 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(GoalInfo_11);
+            InnerDetism_32 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(InnerInfo_30);
+            succeeded = (InnerDetism_32 == OuterDetism_31);
+            if (succeeded)
+              MaybeCut_33 = (MR_Integer) 1;
+            else
+              MaybeCut_33 = (MR_Integer) 0;
+            {
+              Var_100 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, Var_100, 0) = ((MR_Box) ((MR_Unsigned) 1U));
+              MR_hl_field(3, Var_100, 1) = (MR_Box) ((MR_Unsigned) (MaybeCut_33));
+            }
+            {
+              SubRevGoalPath_112 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, SubRevGoalPath_112, 0) = ((MR_Box) (RevGoalPath_6));
+              MR_hl_field(1, SubRevGoalPath_112, 1) = ((MR_Box) (Var_100));
+            }
+            hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_5, SubRevGoalPath_112, SubGoal0_111, &SubGoal_113);
+            {
+              GoalExpr_15 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, GoalExpr_15, 0) = ((MR_Box) ((MR_Unsigned) 5U));
+              MR_hl_field(3, GoalExpr_15, 1) = ((MR_Box) (Reason_28));
+              MR_hl_field(3, GoalExpr_15, 2) = ((MR_Box) (SubGoal_113));
+            }
+          }
+          break;
+        case (MR_Integer) 6:
+          {
+            MR_Word Vars_34 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_9, 1))));
+            MR_Word Cond0_35 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_9, 2))));
+            MR_Word Then0_36 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_9, 3))));
+            MR_Word Else0_37 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_9, 4))));
+            MR_Word RevPathCond_38;
+            MR_Word RevPathThen_39;
+            MR_Word RevPathElse_40;
+            MR_Word Cond_41;
+            MR_Word Then_42;
+            MR_Word Else_43;
+
+            {
+              RevPathCond_38 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, RevPathCond_38, 0) = ((MR_Box) (RevGoalPath_6));
+              MR_hl_field(1, RevPathCond_38, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+            }
+            {
+              RevPathThen_39 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, RevPathThen_39, 0) = ((MR_Box) (RevGoalPath_6));
+              MR_hl_field(1, RevPathThen_39, 1) = ((MR_Box) ((MR_Unsigned) 4U));
+            }
+            {
+              RevPathElse_40 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, RevPathElse_40, 0) = ((MR_Box) (RevGoalPath_6));
+              MR_hl_field(1, RevPathElse_40, 1) = ((MR_Box) ((MR_Unsigned) 8U));
+            }
+            hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_5, RevPathCond_38, Cond0_35, &Cond_41);
+            hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_5, RevPathThen_39, Then0_36, &Then_42);
+            hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_5, RevPathElse_40, Else0_37, &Else_43);
+            {
+              GoalExpr_15 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, GoalExpr_15, 0) = ((MR_Box) ((MR_Unsigned) 6U));
+              MR_hl_field(3, GoalExpr_15, 1) = ((MR_Box) (Vars_34));
+              MR_hl_field(3, GoalExpr_15, 2) = ((MR_Box) (Cond_41));
+              MR_hl_field(3, GoalExpr_15, 3) = ((MR_Box) (Then_42));
+              MR_hl_field(3, GoalExpr_15, 4) = ((MR_Box) (Else_43));
+            }
+          }
+          break;
+        case (MR_Integer) 7:
+          {
+            MR_Word ShortHand0_80 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_9, 1))));
+            MR_Word ShortHand_91;
+
+            switch (MR_tag((MR_Word) ShortHand0_80)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  mercury__require__unexpected_2_p_0((MR_String) "predicate \140hlds.goal_path.fill_goal_path_slots_in_goal\'/4", (MR_String) "bi_implication");
+                  return;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word GoalType_81 = ((MR_Unsigned) ((MR_hl_field(1, ShortHand0_80, 0))) & (MR_Integer) 3);
+                  MR_Word Outer_82 = ((MR_Word) ((MR_hl_field(1, ShortHand0_80, 1))));
+                  MR_Word Inner_83 = ((MR_Word) ((MR_hl_field(1, ShortHand0_80, 2))));
+                  MR_Word MaybeOutputVars_84 = ((MR_Word) ((MR_hl_field(1, ShortHand0_80, 3))));
+                  MR_Word MainGoal0_85 = ((MR_Word) ((MR_hl_field(1, ShortHand0_80, 4))));
+                  MR_Word OrElseGoals0_86 = ((MR_Word) ((MR_hl_field(1, ShortHand0_80, 5))));
+                  MR_Word OrElseInners_87 = ((MR_Word) ((MR_hl_field(1, ShortHand0_80, 6))));
+                  MR_Word RevPathMain_88;
+                  MR_Word MainGoal_89;
+                  MR_Word OrElseGoals_90;
+
+                  {
+                    RevPathMain_88 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, RevPathMain_88, 0) = ((MR_Box) (RevGoalPath_6));
+                    MR_hl_field(1, RevPathMain_88, 1) = ((MR_Box) ((MR_Unsigned) 24U));
+                  }
+                  hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_5, RevPathMain_88, MainGoal0_85, &MainGoal_89);
+                  hlds__goal_path__fill_goal_path_slots_in_orelses_5_p_0(SlotInfo_5, RevGoalPath_6, (MR_Integer) 0, OrElseGoals0_86, &OrElseGoals_90);
+                  {
+                    ShortHand_91 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, ShortHand_91, 0) = (MR_Box) ((MR_Unsigned) (GoalType_81));
+                    MR_hl_field(1, ShortHand_91, 1) = ((MR_Box) (Outer_82));
+                    MR_hl_field(1, ShortHand_91, 2) = ((MR_Box) (Inner_83));
+                    MR_hl_field(1, ShortHand_91, 3) = ((MR_Box) (MaybeOutputVars_84));
+                    MR_hl_field(1, ShortHand_91, 4) = ((MR_Box) (MainGoal_89));
+                    MR_hl_field(1, ShortHand_91, 5) = ((MR_Box) (OrElseGoals_90));
+                    MR_hl_field(1, ShortHand_91, 6) = ((MR_Box) (OrElseInners_87));
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word MaybeIO_92 = ((MR_Word) ((MR_hl_field(2, ShortHand0_80, 0))));
+                  MR_Word ResultVar_93 = ((MR_Word) ((MR_hl_field(2, ShortHand0_80, 1))));
+                  MR_Word SubGoal0_114 = ((MR_Word) ((MR_hl_field(2, ShortHand0_80, 2))));
+                  MR_Word SubRevGoalPath_115;
+                  MR_Word SubGoal_116;
+
+                  {
+                    SubRevGoalPath_115 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, SubRevGoalPath_115, 0) = ((MR_Box) (RevGoalPath_6));
+                    MR_hl_field(1, SubRevGoalPath_115, 1) = ((MR_Box) ((MR_Unsigned) 20U));
+                  }
+                  hlds__goal_path__fill_goal_path_slots_in_goal_4_p_0(SlotInfo_5, SubRevGoalPath_115, SubGoal0_114, &SubGoal_116);
+                  {
+                    ShortHand_91 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(2, ShortHand_91, 0) = ((MR_Box) (MaybeIO_92));
+                    MR_hl_field(2, ShortHand_91, 1) = ((MR_Box) (ResultVar_93));
+                    MR_hl_field(2, ShortHand_91, 2) = ((MR_Box) (SubGoal_116));
+                  }
+                }
+                break;
+            }
+            {
+              GoalExpr_15 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, GoalExpr_15, 0) = ((MR_Box) ((MR_Unsigned) 7U));
+              MR_hl_field(3, GoalExpr_15, 1) = ((MR_Box) (ShortHand_91));
+            }
+          }
+          break;
+      }
+      break;
+  }
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    *Goal_8 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (GoalExpr_15));
+    MR_hl_field(0, base, 1) = ((MR_Box) (GoalInfo_11));
+  }
+}
+
+void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_proc_4_p_0(
+  MR_Word ModuleInfo_5,
+  MR_Word * ContainingGoalMap_6,
+  MR_Word STATE_VARIABLE_ProcInfo_0_11,
+  MR_Word * STATE_VARIABLE_ProcInfo_12)
+{
+  MR_Word VarTable_8;
+  MR_Word Goal0_9;
+  MR_Word Goal_10;
+
+  hlds__hlds_pred__proc_info_get_var_table_2_p_0(STATE_VARIABLE_ProcInfo_0_11, &VarTable_8);
+  hlds__hlds_pred__proc_info_get_goal_2_p_0(STATE_VARIABLE_ProcInfo_0_11, &Goal0_9);
+  hlds__goal_path__fill_goal_id_slots_in_proc_body_5_p_0(ModuleInfo_5, VarTable_8, ContainingGoalMap_6, Goal0_9, &Goal_10);
+  hlds__hlds_pred__proc_info_set_goal_3_p_0(Goal_10, STATE_VARIABLE_ProcInfo_0_11, STATE_VARIABLE_ProcInfo_12);
+}
+
+void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_proc_body_5_p_0(
+  MR_Word ModuleInfo_6,
+  MR_Word VarTable_7,
+  MR_Word * ContainingGoalMap_8,
+  MR_Word Goal0_9,
+  MR_Word * Goal_10)
+{
+  MR_Word SlotInfo_11;
+  MR_Word ContainingGoalList_13;
+  MR_Word Var_15;
+  MR_Word Var_12;
+
+  {
+    SlotInfo_11 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, SlotInfo_11, 0) = ((MR_Box) (ModuleInfo_6));
+    MR_hl_field(0, SlotInfo_11, 1) = ((MR_Box) (VarTable_7));
+  }
+  Var_15 = mercury__counter__uinit_1_f_0((MR_Unsigned) 1U);
+  hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_11, (MR_Word) ((MR_Unsigned) 0U), Var_15, &Var_12, (MR_Word) ((MR_Unsigned) 0U), &ContainingGoalList_13, Goal0_9, Goal_10);
+  mercury__map__from_rev_sorted_assoc_list_2_p_0((MR_Word) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0), (MR_Word) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_containing_goal_0), ContainingGoalList_13, ContainingGoalMap_8);
+}
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_orelses_9_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word GoalId_2,
+  MR_Integer LastOrElseNum_3,
+  MR_Word STATE_VARIABLE_GoalNumCounter_0_4,
+  MR_Word * STATE_VARIABLE_GoalNumCounter_5,
+  MR_Word STATE_VARIABLE_ContainingGoalList_0_6,
+  MR_Word * STATE_VARIABLE_ContainingGoalList_7,
+  MR_Word HeadVar__8_8,
+  MR_Word * HeadVar__9_9)
+{
+  if ((HeadVar__8_8 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *HeadVar__9_9 = (MR_Word) ((MR_Unsigned) 0U);
+    *STATE_VARIABLE_ContainingGoalList_7 = STATE_VARIABLE_ContainingGoalList_0_6;
+    *STATE_VARIABLE_GoalNumCounter_5 = STATE_VARIABLE_GoalNumCounter_0_4;
+  }
+  else
+  {
+    MR_Word Goal0_24 = ((MR_Word) ((MR_hl_field(1, HeadVar__8_8, 0))));
+    MR_Word Goals0_25 = ((MR_Word) ((MR_hl_field(1, HeadVar__8_8, 1))));
+    MR_Word Goal_26;
+    MR_Word Goals_27;
+    MR_Integer CurOrElseNum_28 = (MR_Integer) ((MR_Unsigned) LastOrElseNum_3 + (MR_Unsigned) 1);
+    MR_Word ContainingGoal_29;
+    MR_Word Var_35;
+    MR_Word STATE_VARIABLE_GoalNumCounter_1_36;
+    MR_Word STATE_VARIABLE_ContainingGoalList_1_37;
+
+    {
+      Var_35 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(3, Var_35, 0) = ((MR_Box) ((MR_Unsigned) 2U));
+      MR_hl_field(3, Var_35, 1) = ((MR_Box) (CurOrElseNum_28));
+    }
+    {
+      ContainingGoal_29 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, ContainingGoal_29, 0) = ((MR_Box) (GoalId_2));
+      MR_hl_field(1, ContainingGoal_29, 1) = ((MR_Box) (Var_35));
+    }
+    hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_1, ContainingGoal_29, STATE_VARIABLE_GoalNumCounter_0_4, &STATE_VARIABLE_GoalNumCounter_1_36, STATE_VARIABLE_ContainingGoalList_0_6, &STATE_VARIABLE_ContainingGoalList_1_37, Goal0_24, &Goal_26);
+    hlds__goal_path__fill_goal_id_slots_in_orelses_9_p_0(SlotInfo_1, GoalId_2, CurOrElseNum_28, STATE_VARIABLE_GoalNumCounter_1_36, STATE_VARIABLE_GoalNumCounter_5, STATE_VARIABLE_ContainingGoalList_1_37, STATE_VARIABLE_ContainingGoalList_7, Goals0_25, &Goals_27);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *HeadVar__9_9 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (Goal_26));
+      MR_hl_field(1, base, 1) = ((MR_Box) (Goals_27));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_cases_10_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word GoalId_2,
+  MR_Integer LastArmNum_3,
+  MR_Word MaybeNumFunctors_4,
+  MR_Word STATE_VARIABLE_GoalNumCounter_0_5,
+  MR_Word * STATE_VARIABLE_GoalNumCounter_6,
+  MR_Word STATE_VARIABLE_ContainingGoalList_0_7,
+  MR_Word * STATE_VARIABLE_ContainingGoalList_8,
+  MR_Word HeadVar__9_9,
+  MR_Word * HeadVar__10_10)
+{
+  if ((HeadVar__9_9 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *HeadVar__10_10 = (MR_Word) ((MR_Unsigned) 0U);
+    *STATE_VARIABLE_ContainingGoalList_8 = STATE_VARIABLE_ContainingGoalList_0_7;
+    *STATE_VARIABLE_GoalNumCounter_6 = STATE_VARIABLE_GoalNumCounter_0_5;
+  }
+  else
+  {
+    MR_Word Case0_27 = ((MR_Word) ((MR_hl_field(1, HeadVar__9_9, 0))));
+    MR_Word Cases0_28 = ((MR_Word) ((MR_hl_field(1, HeadVar__9_9, 1))));
+    MR_Word Case_29;
+    MR_Word Cases_30;
+    MR_Word MainConsId_31 = ((MR_Word) ((MR_hl_field(0, Case0_27, 0))));
+    MR_Word OtherConsIds_32 = ((MR_Word) ((MR_hl_field(0, Case0_27, 1))));
+    MR_Word Goal0_33 = ((MR_Word) ((MR_hl_field(0, Case0_27, 2))));
+    MR_Integer CurArmNum_34 = (MR_Integer) ((MR_Unsigned) LastArmNum_3 + (MR_Unsigned) 1);
+    MR_Word ContainingGoal_35;
+    MR_Word Goal_36;
+    MR_Word Var_42;
+    MR_Word STATE_VARIABLE_GoalNumCounter_1_43;
+    MR_Word STATE_VARIABLE_ContainingGoalList_1_44;
+
+    {
+      Var_42 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(3, Var_42, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(3, Var_42, 1) = ((MR_Box) (CurArmNum_34));
+      MR_hl_field(3, Var_42, 2) = ((MR_Box) (MaybeNumFunctors_4));
+    }
+    {
+      ContainingGoal_35 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, ContainingGoal_35, 0) = ((MR_Box) (GoalId_2));
+      MR_hl_field(1, ContainingGoal_35, 1) = ((MR_Box) (Var_42));
+    }
+    hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_1, ContainingGoal_35, STATE_VARIABLE_GoalNumCounter_0_5, &STATE_VARIABLE_GoalNumCounter_1_43, STATE_VARIABLE_ContainingGoalList_0_7, &STATE_VARIABLE_ContainingGoalList_1_44, Goal0_33, &Goal_36);
+    {
+      Case_29 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Case_29, 0) = ((MR_Box) (MainConsId_31));
+      MR_hl_field(0, Case_29, 1) = ((MR_Box) (OtherConsIds_32));
+      MR_hl_field(0, Case_29, 2) = ((MR_Box) (Goal_36));
+    }
+    hlds__goal_path__fill_goal_id_slots_in_cases_10_p_0(SlotInfo_1, GoalId_2, CurArmNum_34, MaybeNumFunctors_4, STATE_VARIABLE_GoalNumCounter_1_43, STATE_VARIABLE_GoalNumCounter_6, STATE_VARIABLE_ContainingGoalList_1_44, STATE_VARIABLE_ContainingGoalList_8, Cases0_28, &Cases_30);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *HeadVar__10_10 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (Case_29));
+      MR_hl_field(1, base, 1) = ((MR_Box) (Cases_30));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_disjuncts_9_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word GoalId_2,
+  MR_Integer LastDisjunctNum_3,
+  MR_Word STATE_VARIABLE_GoalNumCounter_0_4,
+  MR_Word * STATE_VARIABLE_GoalNumCounter_5,
+  MR_Word STATE_VARIABLE_ContainingGoalList_0_6,
+  MR_Word * STATE_VARIABLE_ContainingGoalList_7,
+  MR_Word HeadVar__8_8,
+  MR_Word * HeadVar__9_9)
+{
+  if ((HeadVar__8_8 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *HeadVar__9_9 = (MR_Word) ((MR_Unsigned) 0U);
+    *STATE_VARIABLE_ContainingGoalList_7 = STATE_VARIABLE_ContainingGoalList_0_6;
+    *STATE_VARIABLE_GoalNumCounter_5 = STATE_VARIABLE_GoalNumCounter_0_4;
+  }
+  else
+  {
+    MR_Word Goal0_24 = ((MR_Word) ((MR_hl_field(1, HeadVar__8_8, 0))));
+    MR_Word Goals0_25 = ((MR_Word) ((MR_hl_field(1, HeadVar__8_8, 1))));
+    MR_Word Goal_26;
+    MR_Word Goals_27;
+    MR_Integer CurDisjunctNum_28 = (MR_Integer) ((MR_Unsigned) LastDisjunctNum_3 + (MR_Unsigned) 1);
+    MR_Word ContainingGoal_29;
+    MR_Word Var_35;
+    MR_Word STATE_VARIABLE_GoalNumCounter_1_36;
+    MR_Word STATE_VARIABLE_ContainingGoalList_1_37;
+
+    {
+      Var_35 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(2, Var_35, 0) = ((MR_Box) (CurDisjunctNum_28));
+    }
+    {
+      ContainingGoal_29 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, ContainingGoal_29, 0) = ((MR_Box) (GoalId_2));
+      MR_hl_field(1, ContainingGoal_29, 1) = ((MR_Box) (Var_35));
+    }
+    hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_1, ContainingGoal_29, STATE_VARIABLE_GoalNumCounter_0_4, &STATE_VARIABLE_GoalNumCounter_1_36, STATE_VARIABLE_ContainingGoalList_0_6, &STATE_VARIABLE_ContainingGoalList_1_37, Goal0_24, &Goal_26);
+    hlds__goal_path__fill_goal_id_slots_in_disjuncts_9_p_0(SlotInfo_1, GoalId_2, CurDisjunctNum_28, STATE_VARIABLE_GoalNumCounter_1_36, STATE_VARIABLE_GoalNumCounter_5, STATE_VARIABLE_ContainingGoalList_1_37, STATE_VARIABLE_ContainingGoalList_7, Goals0_25, &Goals_27);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *HeadVar__9_9 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (Goal_26));
+      MR_hl_field(1, base, 1) = ((MR_Box) (Goals_27));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_conjuncts_9_p_0(
+  MR_Word SlotInfo_1,
+  MR_Word GoalId_2,
+  MR_Integer LastConjunctNum_3,
+  MR_Word STATE_VARIABLE_GoalNumCounter_0_4,
+  MR_Word * STATE_VARIABLE_GoalNumCounter_5,
+  MR_Word STATE_VARIABLE_ContainingGoalList_0_6,
+  MR_Word * STATE_VARIABLE_ContainingGoalList_7,
+  MR_Word HeadVar__8_8,
+  MR_Word * HeadVar__9_9)
+{
+  if ((HeadVar__8_8 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *HeadVar__9_9 = (MR_Word) ((MR_Unsigned) 0U);
+    *STATE_VARIABLE_ContainingGoalList_7 = STATE_VARIABLE_ContainingGoalList_0_6;
+    *STATE_VARIABLE_GoalNumCounter_5 = STATE_VARIABLE_GoalNumCounter_0_4;
+  }
+  else
+  {
+    MR_Word Goal0_24 = ((MR_Word) ((MR_hl_field(1, HeadVar__8_8, 0))));
+    MR_Word Goals0_25 = ((MR_Word) ((MR_hl_field(1, HeadVar__8_8, 1))));
+    MR_Word Goal_26;
+    MR_Word Goals_27;
+    MR_Integer CurConjunctNum_28 = (MR_Integer) ((MR_Unsigned) LastConjunctNum_3 + (MR_Unsigned) 1);
+    MR_Word ContainingGoal_29;
+    MR_Word Var_35;
+    MR_Word STATE_VARIABLE_GoalNumCounter_1_36;
+    MR_Word STATE_VARIABLE_ContainingGoalList_1_37;
+
+    {
+      Var_35 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_35, 0) = ((MR_Box) (CurConjunctNum_28));
+    }
+    {
+      ContainingGoal_29 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, ContainingGoal_29, 0) = ((MR_Box) (GoalId_2));
+      MR_hl_field(1, ContainingGoal_29, 1) = ((MR_Box) (Var_35));
+    }
+    hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_1, ContainingGoal_29, STATE_VARIABLE_GoalNumCounter_0_4, &STATE_VARIABLE_GoalNumCounter_1_36, STATE_VARIABLE_ContainingGoalList_0_6, &STATE_VARIABLE_ContainingGoalList_1_37, Goal0_24, &Goal_26);
+    hlds__goal_path__fill_goal_id_slots_in_conjuncts_9_p_0(SlotInfo_1, GoalId_2, CurConjunctNum_28, STATE_VARIABLE_GoalNumCounter_1_36, STATE_VARIABLE_GoalNumCounter_5, STATE_VARIABLE_ContainingGoalList_1_37, STATE_VARIABLE_ContainingGoalList_7, Goals0_25, &Goals_27);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *HeadVar__9_9 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (Goal_26));
+      MR_hl_field(1, base, 1) = ((MR_Box) (Goals_27));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(
+  MR_Word SlotInfo_9,
+  MR_Word ContainingGoal_10,
+  MR_Word STATE_VARIABLE_GoalNumCounter_0_99,
+  MR_Word * STATE_VARIABLE_GoalNumCounter_100,
+  MR_Word STATE_VARIABLE_ContainingGoalList_0_101,
+  MR_Word * STATE_VARIABLE_ContainingGoalList_102,
+  MR_Word Goal0_13,
+  MR_Word * Goal_14)
+{
+  MR_bool succeeded;
+  MR_Word GoalExpr0_15 = ((MR_Word) ((MR_hl_field(0, Goal0_13, 0))));
+  MR_Word GoalInfo0_16 = ((MR_Word) ((MR_hl_field(0, Goal0_13, 1))));
+  MR_Unsigned GoalNum_17;
+  MR_Word GoalId_18;
+  MR_Word GoalInfo_19;
+  MR_Word GoalExpr_38;
+  MR_Word STATE_VARIABLE_GoalNumCounter_1_103;
+  MR_Word STATE_VARIABLE_ContainingGoalList_1_104;
+  MR_Word Var_105;
+
+  mercury__counter__uallocate_3_p_0(&GoalNum_17, STATE_VARIABLE_GoalNumCounter_0_99, &STATE_VARIABLE_GoalNumCounter_1_103);
+  GoalId_18 = (MR_Word) (GoalNum_17);
+  hlds__hlds_goal__goal_info_set_goal_id_3_p_0(GoalId_18, GoalInfo0_16, &GoalInfo_19);
+  {
+    Var_105 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_105, 0) = ((MR_Box) (GoalId_18));
+    MR_hl_field(0, Var_105, 1) = ((MR_Box) (ContainingGoal_10));
+  }
+  {
+    STATE_VARIABLE_ContainingGoalList_1_104 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, STATE_VARIABLE_ContainingGoalList_1_104, 0) = ((MR_Box) (Var_105));
+    MR_hl_field(1, STATE_VARIABLE_ContainingGoalList_1_104, 1) = ((MR_Box) (STATE_VARIABLE_ContainingGoalList_0_101));
+  }
+  switch (MR_tag((MR_Word) GoalExpr0_15)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word SubGoal0_69 = (MR_Word) ((MR_Word) (GoalExpr0_15));
+        MR_Word SubGoal_70;
+        MR_Word Var_119;
+
+        {
+          Var_119 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_119, 0) = ((MR_Box) (GoalId_18));
+          MR_hl_field(1, Var_119, 1) = ((MR_Box) ((MR_Unsigned) 12U));
+        }
+        hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_9, Var_119, STATE_VARIABLE_GoalNumCounter_1_103, STATE_VARIABLE_GoalNumCounter_100, STATE_VARIABLE_ContainingGoalList_1_104, STATE_VARIABLE_ContainingGoalList_102, SubGoal0_69, &SubGoal_70);
+        GoalExpr_38 = (MR_Word) ((MR_Word) (SubGoal_70));
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word LHS_39 = ((MR_Word) ((MR_hl_field(1, GoalExpr0_15, 0))));
+        MR_Word RHS0_40 = ((MR_Word) ((MR_hl_field(1, GoalExpr0_15, 1))));
+        MR_Word Mode_41 = ((MR_Word) ((MR_hl_field(1, GoalExpr0_15, 2))));
+        MR_Word Kind_42 = ((MR_Word) ((MR_hl_field(1, GoalExpr0_15, 3))));
+        MR_Word Context_43 = ((MR_Word) ((MR_hl_field(1, GoalExpr0_15, 4))));
+
+        switch (MR_tag((MR_Word) RHS0_40)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+            {
+              GoalExpr_38 = GoalExpr0_15;
+              *STATE_VARIABLE_GoalNumCounter_100 = STATE_VARIABLE_GoalNumCounter_1_103;
+              *STATE_VARIABLE_ContainingGoalList_102 = STATE_VARIABLE_ContainingGoalList_1_104;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word NonLocals_47 = ((MR_Word) ((MR_hl_field(2, RHS0_40, 1))));
+              MR_Word ArgVarsModes_48 = ((MR_Word) ((MR_hl_field(2, RHS0_40, 2))));
+              MR_Word Detism_49 = ((MR_Unsigned) ((MR_hl_field(2, RHS0_40, 3))) & (MR_Integer) 7);
+              MR_Word LambdaGoal0_50 = ((MR_Word) ((MR_hl_field(2, RHS0_40, 4))));
+              MR_Word LambdaGoal_51;
+              MR_Word RHS_52;
+              MR_Word Var_106;
+              MR_Unsigned packed_word_3 = (MR_Unsigned) ((MR_hl_field(2, RHS0_40, 0)));
+
+              {
+                Var_106 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(1, Var_106, 0) = ((MR_Box) (GoalId_18));
+                MR_hl_field(1, Var_106, 1) = ((MR_Box) ((MR_Unsigned) 16U));
+              }
+              hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_9, Var_106, STATE_VARIABLE_GoalNumCounter_1_103, STATE_VARIABLE_GoalNumCounter_100, STATE_VARIABLE_ContainingGoalList_1_104, STATE_VARIABLE_ContainingGoalList_102, LambdaGoal0_50, &LambdaGoal_51);
+              {
+                RHS_52 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(2, RHS_52, 0) = (MR_Box) (packed_word_3);
+                MR_hl_field(2, RHS_52, 1) = ((MR_Box) (NonLocals_47));
+                MR_hl_field(2, RHS_52, 2) = ((MR_Box) (ArgVarsModes_48));
+                MR_hl_field(2, RHS_52, 3) = (MR_Box) ((MR_Unsigned) (Detism_49));
+                MR_hl_field(2, RHS_52, 4) = ((MR_Box) (LambdaGoal_51));
+              }
+              {
+                GoalExpr_38 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(1, GoalExpr_38, 0) = ((MR_Box) (LHS_39));
+                MR_hl_field(1, GoalExpr_38, 1) = ((MR_Box) (RHS_52));
+                MR_hl_field(1, GoalExpr_38, 2) = ((MR_Box) (Mode_41));
+                MR_hl_field(1, GoalExpr_38, 3) = ((MR_Box) (Kind_42));
+                MR_hl_field(1, GoalExpr_38, 4) = ((MR_Box) (Context_43));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        GoalExpr_38 = GoalExpr0_15;
+        *STATE_VARIABLE_GoalNumCounter_100 = STATE_VARIABLE_GoalNumCounter_1_103;
+        *STATE_VARIABLE_ContainingGoalList_102 = STATE_VARIABLE_ContainingGoalList_1_104;
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) ((MR_hl_field(3, GoalExpr0_15, 0))))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+        case (MR_Integer) 1:
+          {
+            GoalExpr_38 = GoalExpr0_15;
+            *STATE_VARIABLE_GoalNumCounter_100 = STATE_VARIABLE_GoalNumCounter_1_103;
+            *STATE_VARIABLE_ContainingGoalList_102 = STATE_VARIABLE_ContainingGoalList_1_104;
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word ConjType_57 = ((MR_Unsigned) ((MR_hl_field(3, GoalExpr0_15, 1))) & (MR_Integer) 1);
+            MR_Word Goals0_58 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_15, 2))));
+            MR_Word Goals_59;
+
+            hlds__goal_path__fill_goal_id_slots_in_conjuncts_9_p_0(SlotInfo_9, GoalId_18, (MR_Integer) 0, STATE_VARIABLE_GoalNumCounter_1_103, STATE_VARIABLE_GoalNumCounter_100, STATE_VARIABLE_ContainingGoalList_1_104, STATE_VARIABLE_ContainingGoalList_102, Goals0_58, &Goals_59);
+            {
+              GoalExpr_38 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, GoalExpr_38, 0) = ((MR_Box) ((MR_Unsigned) 2U));
+              MR_hl_field(3, GoalExpr_38, 1) = (MR_Box) ((MR_Unsigned) (ConjType_57));
+              MR_hl_field(3, GoalExpr_38, 2) = ((MR_Box) (Goals_59));
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word Goals0_152 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_15, 1))));
+            MR_Word Goals_153;
+
+            hlds__goal_path__fill_goal_id_slots_in_disjuncts_9_p_0(SlotInfo_9, GoalId_18, (MR_Integer) 0, STATE_VARIABLE_GoalNumCounter_1_103, STATE_VARIABLE_GoalNumCounter_100, STATE_VARIABLE_ContainingGoalList_1_104, STATE_VARIABLE_ContainingGoalList_102, Goals0_152, &Goals_153);
+            {
+              GoalExpr_38 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, GoalExpr_38, 0) = ((MR_Box) ((MR_Unsigned) 3U));
+              MR_hl_field(3, GoalExpr_38, 1) = ((MR_Box) (Goals_153));
+            }
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            MR_Word Var_60 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_15, 1))));
+            MR_Word CanFail_61 = ((MR_Unsigned) ((MR_hl_field(3, GoalExpr0_15, 2))) & (MR_Integer) 1);
+            MR_Word Cases0_62 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_15, 3))));
+            MR_Word VarTable_63 = ((MR_Word) ((MR_hl_field(0, SlotInfo_9, 1))));
+            MR_Word ModuleInfo_64 = ((MR_Word) ((MR_hl_field(0, SlotInfo_9, 0))));
+            MR_Word Type_65;
+            MR_Word MaybeNumFunctors_67;
+            MR_Word Cases_68;
+            MR_Integer NumFunctors_66;
+
+            parse_tree__var_table__lookup_var_type_3_p_0(VarTable_63, Var_60, &Type_65);
+            succeeded = hlds__type_util__switch_type_num_functors_3_p_0(ModuleInfo_64, Type_65, &NumFunctors_66);
+            if (succeeded)
+              {
+                MaybeNumFunctors_67 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(1, MaybeNumFunctors_67, 0) = ((MR_Box) (NumFunctors_66));
+              }
+            else
+              MaybeNumFunctors_67 = (MR_Word) ((MR_Unsigned) 0U);
+            hlds__goal_path__fill_goal_id_slots_in_cases_10_p_0(SlotInfo_9, GoalId_18, (MR_Integer) 0, MaybeNumFunctors_67, STATE_VARIABLE_GoalNumCounter_1_103, STATE_VARIABLE_GoalNumCounter_100, STATE_VARIABLE_ContainingGoalList_1_104, STATE_VARIABLE_ContainingGoalList_102, Cases0_62, &Cases_68);
+            {
+              GoalExpr_38 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, GoalExpr_38, 0) = ((MR_Box) ((MR_Unsigned) 4U));
+              MR_hl_field(3, GoalExpr_38, 1) = ((MR_Box) (Var_60));
+              MR_hl_field(3, GoalExpr_38, 2) = (MR_Box) ((MR_Unsigned) (CanFail_61));
+              MR_hl_field(3, GoalExpr_38, 3) = ((MR_Box) (Cases_68));
+            }
+          }
+          break;
+        case (MR_Integer) 5:
+          {
+            MR_Word Reason_71 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_15, 1))));
+            MR_Word InnerInfo_73;
+            MR_Word OuterDetism_74;
+            MR_Word InnerDetism_75;
+            MR_Word MaybeCut_76;
+            MR_Word Var_123;
+            MR_Word Var_126;
+            MR_Word SubGoal0_154 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_15, 2))));
+            MR_Word SubGoal_155;
+
+            InnerInfo_73 = ((MR_Word) ((MR_hl_field(0, SubGoal0_154, 1))));
+            OuterDetism_74 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(GoalInfo_19);
+            InnerDetism_75 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(InnerInfo_73);
+            succeeded = (InnerDetism_75 == OuterDetism_74);
+            if (succeeded)
+              MaybeCut_76 = (MR_Integer) 1;
+            else
+              MaybeCut_76 = (MR_Integer) 0;
+            {
+              Var_126 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, Var_126, 0) = ((MR_Box) ((MR_Unsigned) 1U));
+              MR_hl_field(3, Var_126, 1) = (MR_Box) ((MR_Unsigned) (MaybeCut_76));
+            }
+            {
+              Var_123 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, Var_123, 0) = ((MR_Box) (GoalId_18));
+              MR_hl_field(1, Var_123, 1) = ((MR_Box) (Var_126));
+            }
+            hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_9, Var_123, STATE_VARIABLE_GoalNumCounter_1_103, STATE_VARIABLE_GoalNumCounter_100, STATE_VARIABLE_ContainingGoalList_1_104, STATE_VARIABLE_ContainingGoalList_102, SubGoal0_154, &SubGoal_155);
+            {
+              GoalExpr_38 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, GoalExpr_38, 0) = ((MR_Box) ((MR_Unsigned) 5U));
+              MR_hl_field(3, GoalExpr_38, 1) = ((MR_Box) (Reason_71));
+              MR_hl_field(3, GoalExpr_38, 2) = ((MR_Box) (SubGoal_155));
+            }
+          }
+          break;
+        case (MR_Integer) 6:
+          {
+            MR_Word Vars_77 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_15, 1))));
+            MR_Word Cond0_78 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_15, 2))));
+            MR_Word Then0_79 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_15, 3))));
+            MR_Word Else0_80 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_15, 4))));
+            MR_Word Cond_81;
+            MR_Word Then_82;
+            MR_Word Else_83;
+            MR_Word Var_127;
+            MR_Word STATE_VARIABLE_GoalNumCounter_8_128;
+            MR_Word STATE_VARIABLE_ContainingGoalList_8_129;
+            MR_Word Var_131;
+            MR_Word STATE_VARIABLE_GoalNumCounter_9_132;
+            MR_Word STATE_VARIABLE_ContainingGoalList_9_133;
+            MR_Word Var_135;
+
+            {
+              Var_127 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, Var_127, 0) = ((MR_Box) (GoalId_18));
+              MR_hl_field(1, Var_127, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+            }
+            hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_9, Var_127, STATE_VARIABLE_GoalNumCounter_1_103, &STATE_VARIABLE_GoalNumCounter_8_128, STATE_VARIABLE_ContainingGoalList_1_104, &STATE_VARIABLE_ContainingGoalList_8_129, Cond0_78, &Cond_81);
+            {
+              Var_131 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, Var_131, 0) = ((MR_Box) (GoalId_18));
+              MR_hl_field(1, Var_131, 1) = ((MR_Box) ((MR_Unsigned) 4U));
+            }
+            hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_9, Var_131, STATE_VARIABLE_GoalNumCounter_8_128, &STATE_VARIABLE_GoalNumCounter_9_132, STATE_VARIABLE_ContainingGoalList_8_129, &STATE_VARIABLE_ContainingGoalList_9_133, Then0_79, &Then_82);
+            {
+              Var_135 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, Var_135, 0) = ((MR_Box) (GoalId_18));
+              MR_hl_field(1, Var_135, 1) = ((MR_Box) ((MR_Unsigned) 8U));
+            }
+            hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_9, Var_135, STATE_VARIABLE_GoalNumCounter_9_132, STATE_VARIABLE_GoalNumCounter_100, STATE_VARIABLE_ContainingGoalList_9_133, STATE_VARIABLE_ContainingGoalList_102, Else0_80, &Else_83);
+            {
+              GoalExpr_38 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, GoalExpr_38, 0) = ((MR_Box) ((MR_Unsigned) 6U));
+              MR_hl_field(3, GoalExpr_38, 1) = ((MR_Box) (Vars_77));
+              MR_hl_field(3, GoalExpr_38, 2) = ((MR_Box) (Cond_81));
+              MR_hl_field(3, GoalExpr_38, 3) = ((MR_Box) (Then_82));
+              MR_hl_field(3, GoalExpr_38, 4) = ((MR_Box) (Else_83));
+            }
+          }
+          break;
+        case (MR_Integer) 7:
+          {
+            MR_Word ShortHand0_84 = ((MR_Word) ((MR_hl_field(3, GoalExpr0_15, 1))));
+            MR_Word ShortHand_94;
+
+            switch (MR_tag((MR_Word) ShortHand0_84)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  mercury__require__unexpected_2_p_0((MR_String) "predicate \140hlds.goal_path.fill_goal_id_slots_in_goal\'/8", (MR_String) "bi_implication");
+                  return;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word GoalType_85 = ((MR_Unsigned) ((MR_hl_field(1, ShortHand0_84, 0))) & (MR_Integer) 3);
+                  MR_Word Outer_86 = ((MR_Word) ((MR_hl_field(1, ShortHand0_84, 1))));
+                  MR_Word Inner_87 = ((MR_Word) ((MR_hl_field(1, ShortHand0_84, 2))));
+                  MR_Word MaybeOutputVars_88 = ((MR_Word) ((MR_hl_field(1, ShortHand0_84, 3))));
+                  MR_Word MainGoal0_89 = ((MR_Word) ((MR_hl_field(1, ShortHand0_84, 4))));
+                  MR_Word OrElseGoals0_90 = ((MR_Word) ((MR_hl_field(1, ShortHand0_84, 5))));
+                  MR_Word OrElseInners_91 = ((MR_Word) ((MR_hl_field(1, ShortHand0_84, 6))));
+                  MR_Word MainGoal_92;
+                  MR_Word OrElseGoals_93;
+                  MR_Word Var_139;
+                  MR_Word STATE_VARIABLE_GoalNumCounter_11_140;
+                  MR_Word STATE_VARIABLE_ContainingGoalList_11_141;
+
+                  {
+                    Var_139 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_139, 0) = ((MR_Box) (GoalId_18));
+                    MR_hl_field(1, Var_139, 1) = ((MR_Box) ((MR_Unsigned) 24U));
+                  }
+                  hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_9, Var_139, STATE_VARIABLE_GoalNumCounter_1_103, &STATE_VARIABLE_GoalNumCounter_11_140, STATE_VARIABLE_ContainingGoalList_1_104, &STATE_VARIABLE_ContainingGoalList_11_141, MainGoal0_89, &MainGoal_92);
+                  hlds__goal_path__fill_goal_id_slots_in_orelses_9_p_0(SlotInfo_9, GoalId_18, (MR_Integer) 0, STATE_VARIABLE_GoalNumCounter_11_140, STATE_VARIABLE_GoalNumCounter_100, STATE_VARIABLE_ContainingGoalList_11_141, STATE_VARIABLE_ContainingGoalList_102, OrElseGoals0_90, &OrElseGoals_93);
+                  {
+                    ShortHand_94 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, ShortHand_94, 0) = (MR_Box) ((MR_Unsigned) (GoalType_85));
+                    MR_hl_field(1, ShortHand_94, 1) = ((MR_Box) (Outer_86));
+                    MR_hl_field(1, ShortHand_94, 2) = ((MR_Box) (Inner_87));
+                    MR_hl_field(1, ShortHand_94, 3) = ((MR_Box) (MaybeOutputVars_88));
+                    MR_hl_field(1, ShortHand_94, 4) = ((MR_Box) (MainGoal_92));
+                    MR_hl_field(1, ShortHand_94, 5) = ((MR_Box) (OrElseGoals_93));
+                    MR_hl_field(1, ShortHand_94, 6) = ((MR_Box) (OrElseInners_91));
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word MaybeIO_95 = ((MR_Word) ((MR_hl_field(2, ShortHand0_84, 0))));
+                  MR_Word ResultVar_96 = ((MR_Word) ((MR_hl_field(2, ShortHand0_84, 1))));
+                  MR_Word Var_146;
+                  MR_Word SubGoal0_156 = ((MR_Word) ((MR_hl_field(2, ShortHand0_84, 2))));
+                  MR_Word SubGoal_157;
+
+                  {
+                    Var_146 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_146, 0) = ((MR_Box) (GoalId_18));
+                    MR_hl_field(1, Var_146, 1) = ((MR_Box) ((MR_Unsigned) 20U));
+                  }
+                  hlds__goal_path__fill_goal_id_slots_in_goal_8_p_0(SlotInfo_9, Var_146, STATE_VARIABLE_GoalNumCounter_1_103, STATE_VARIABLE_GoalNumCounter_100, STATE_VARIABLE_ContainingGoalList_1_104, STATE_VARIABLE_ContainingGoalList_102, SubGoal0_156, &SubGoal_157);
+                  {
+                    ShortHand_94 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(2, ShortHand_94, 0) = ((MR_Box) (MaybeIO_95));
+                    MR_hl_field(2, ShortHand_94, 1) = ((MR_Box) (ResultVar_96));
+                    MR_hl_field(2, ShortHand_94, 2) = ((MR_Box) (SubGoal_157));
+                  }
+                }
+                break;
+            }
+            {
+              GoalExpr_38 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, GoalExpr_38, 0) = ((MR_Box) ((MR_Unsigned) 7U));
+              MR_hl_field(3, GoalExpr_38, 1) = ((MR_Box) (ShortHand_94));
+            }
+          }
+          break;
+      }
+      break;
+  }
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    *Goal_14 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (GoalExpr_38));
+    MR_hl_field(0, base, 1) = ((MR_Box) (GoalInfo_19));
+  }
+}
+
+static void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_clauses_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box * wrapper_arg_4,
+  MR_Box wrapper_arg_5,
+  MR_Box * wrapper_arg_6,
+  MR_Box wrapper_arg_7,
+  MR_Box * wrapper_arg_8)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv3_Clause_12;
+  MR_Integer conv2_NextClauseNum_14;
+  MR_Word conv1_STATE_VARIABLE_GoalNumCounter_21;
+  MR_Word conv0_STATE_VARIABLE_ContainingGoalList_23;
+
+  hlds__goal_path__fill_goal_id_slots_in_clause_9_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)), &conv3_Clause_12, ((MR_Integer) (wrapper_arg_3)), &conv2_NextClauseNum_14, ((MR_Word) (wrapper_arg_5)), &conv1_STATE_VARIABLE_GoalNumCounter_21, ((MR_Word) (wrapper_arg_7)), &conv0_STATE_VARIABLE_ContainingGoalList_23);
+  *wrapper_arg_2 = ((MR_Box) (conv3_Clause_12));
+  *wrapper_arg_4 = ((MR_Box) (conv2_NextClauseNum_14));
+  *wrapper_arg_6 = ((MR_Box) (conv1_STATE_VARIABLE_GoalNumCounter_21));
+  *wrapper_arg_8 = ((MR_Box) (conv0_STATE_VARIABLE_ContainingGoalList_23));
+}
+
+void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_clauses_4_p_0(
+  MR_Word ModuleInfo_5,
+  MR_Word * ContainingGoalMap_6,
+  MR_Word ClausesInfo0_7,
+  MR_Word * ClausesInfo_8)
+{
+  MR_Word ClausesRep0_9;
+  MR_Word ItemNumbers_10;
+  MR_Word Clauses0_11;
+  MR_Word VarTable_12;
+  MR_Word SlotInfo_13;
+  MR_Word Clauses_14;
+  MR_Word ContainingGoalList_17;
+  MR_Word ClausesRep_18;
+  MR_Word Var_19;
+  MR_Word Var_21;
+  MR_Box conv6_Var_15;
+  MR_Box conv5_Var_16;
+  MR_Box conv4_ContainingGoalList_17;
+
+  hlds__hlds_clauses__clauses_info_get_clauses_rep_3_p_0(ClausesInfo0_7, &ClausesRep0_9, &ItemNumbers_10);
+  hlds__hlds_clauses__get_clause_list_for_replacement_2_p_0(ClausesRep0_9, &Clauses0_11);
+  hlds__hlds_clauses__clauses_info_get_var_table_2_p_0(ClausesInfo0_7, &VarTable_12);
+  {
+    SlotInfo_13 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, SlotInfo_13, 0) = ((MR_Box) (ModuleInfo_5));
+    MR_hl_field(0, SlotInfo_13, 1) = ((MR_Box) (VarTable_12));
+  }
+  {
+    Var_19 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_19, 0) = ((MR_Box) (&hlds__goal_path_scalar_common_3[0]));
+    MR_hl_field(0, Var_19, 1) = ((MR_Box) (hlds__goal_path__fill_goal_id_slots_in_clauses_4_p_0_1));
+    MR_hl_field(0, Var_19, 2) = ((MR_Box) ((MR_Integer) 1));
+    MR_hl_field(0, Var_19, 3) = ((MR_Box) (SlotInfo_13));
+  }
+  Var_21 = mercury__counter__uinit_1_f_0((MR_Unsigned) 2U);
+  mercury__list__map_foldl3_9_p_1((MR_Word) (&hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_0), (MR_Word) (&hlds__hlds_clauses__hlds__hlds_clauses__type_ctor_info_clause_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_int_0), (MR_Word) (&mercury__counter__counter__type_ctor_info_ucounter_0), (MR_Word) (&hlds__goal_path_scalar_common_2[0]), Var_19, Clauses0_11, &Clauses_14, ((MR_Box) ((MR_Integer) 1)), &conv6_Var_15, ((MR_Box) (Var_21)), &conv5_Var_16, ((MR_Box) ((MR_Unsigned) 0U)), &conv4_ContainingGoalList_17);
+  ContainingGoalList_17 = ((MR_Word) (conv4_ContainingGoalList_17));
+  mercury__map__from_rev_sorted_assoc_list_2_p_0((MR_Word) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0), (MR_Word) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_containing_goal_0), ContainingGoalList_17, ContainingGoalMap_6);
+  hlds__hlds_clauses__set_clause_list_2_p_0(Clauses_14, &ClausesRep_18);
+  hlds__hlds_clauses__clauses_info_set_clauses_rep_4_p_0(ClausesRep_18, ItemNumbers_10, ClausesInfo0_7, ClausesInfo_8);
+}
+
+static MR_bool MR_CALL 
+hlds__goal_path____Unify____containing_goal_list_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__goal_path____Unify____containing_goal_list_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__goal_path____Compare____containing_goal_list_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__goal_path____Compare____containing_goal_list_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__goal_path____Unify____slot_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__goal_path____Unify____slot_info_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__goal_path____Compare____slot_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__goal_path____Compare____slot_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+void mercury__hlds__goal_path__init(void)
+{
+}
+
+void mercury__hlds__goal_path__init_type_tables(void)
+{
+  static MR_bool initialised = MR_FALSE;
+  if (initialised) return;
+  initialised = MR_TRUE;
+
+  MR_register_type_ctor_info(&hlds__goal_path__hlds__goal_path__type_ctor_info_containing_goal_list_0);
+  MR_register_type_ctor_info(&hlds__goal_path__hlds__goal_path__type_ctor_info_slot_info_0);
+}
+
+void mercury__hlds__goal_path__init_debugger(void)
+{
+  MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__hlds__goal_path__grade_check(void)
+{
+  return &MR_GRADE_VAR;
+}
+
+// :- end_module hlds.goal_path.
