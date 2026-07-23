@@ -1,0 +1,17 @@
+:- module check_hlds.typecheck_error_wrong_type.
+:- interface.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module check_hlds.type_assign.
+:- use_module check_hlds.typecheck_error_type_assign.
+:- use_module check_hlds.typecheck_error_util.
+:- use_module check_hlds.typecheck_info.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- type spec_and_maybe_actual_expected
+    --->    spec_and_maybe_actual_expected(
+                 parse_tree.error_spec.diag_spec,
+                 maybe.maybe(check_hlds.typecheck_error_type_assign.actual_expected_types)
+            ).
+:- func report_error_var_has_wrong_type(check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_error_util.type_error_goal_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, check_hlds.type_assign.type_assign_set) = check_hlds.typecheck_error_wrong_type.spec_and_maybe_actual_expected.
+:- func report_error_var_has_wrong_type_arg(check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_error_util.type_error_goal_context, parse_tree.prog_data.prog_context, int, parse_tree.prog_data.prog_var, check_hlds.type_assign.args_type_assign_set) = parse_tree.error_spec.diag_spec.
