@@ -1,0 +1,10 @@
+:- module recompilation.usage.
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.module_baggage.
+:- use_module recompilation.record_uses.
+:- use_module recompilation.used_file.
+:- pred construct_used_file_contents(hlds.hlds_module.module_info, recompilation.record_uses.recompilation_info, parse_tree.module_baggage.maybe_top_module, parse_tree.module_baggage.module_timestamp_map, recompilation.used_file.used_file_contents).
+:- mode construct_used_file_contents(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

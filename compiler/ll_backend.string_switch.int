@@ -1,0 +1,24 @@
+:- module ll_backend.string_switch.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.code_model.
+:- use_module hlds.hlds_goal.
+:- use_module ll_backend.code_info.
+:- use_module ll_backend.code_loc_dep.
+:- use_module ll_backend.llds.
+:- use_module ll_backend.lookup_switch.
+:- use_module parse_tree.prog_data.
+:- pred generate_string_binary_jump_switch(ll_backend.llds.rval, string, list.list(hlds.hlds_goal.tagged_case), hlds.code_model.code_model, parse_tree.prog_data.can_fail, hlds.hlds_goal.hlds_goal_info, ll_backend.llds.label, ll_backend.code_loc_dep.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_string_binary_jump_switch(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in) is det.
+:- pred generate_string_binary_lookup_switch(ll_backend.llds.rval, ll_backend.lookup_switch.lookup_switch_info(string), parse_tree.prog_data.can_fail, ll_backend.llds.label, ll_backend.code_loc_dep.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info).
+:- mode generate_string_binary_lookup_switch(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred generate_string_hash_jump_switch(ll_backend.llds.rval, string, list.list(hlds.hlds_goal.tagged_case), hlds.code_model.code_model, parse_tree.prog_data.can_fail, hlds.hlds_goal.hlds_goal_info, ll_backend.llds.label, ll_backend.code_loc_dep.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_string_hash_jump_switch(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in) is det.
+:- pred generate_string_hash_lookup_switch(ll_backend.llds.rval, ll_backend.lookup_switch.lookup_switch_info(string), parse_tree.prog_data.can_fail, ll_backend.llds.label, ll_backend.code_loc_dep.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info).
+:- mode generate_string_hash_lookup_switch(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred generate_string_trie_jump_switch(ll_backend.llds.rval, string, list.list(hlds.hlds_goal.tagged_case), hlds.code_model.code_model, parse_tree.prog_data.can_fail, hlds.hlds_goal.hlds_goal_info, ll_backend.llds.label, ll_backend.code_loc_dep.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_string_trie_jump_switch(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in) is det.
+:- pred generate_string_trie_lookup_switch(ll_backend.llds.rval, ll_backend.lookup_switch.lookup_switch_info(string), parse_tree.prog_data.can_fail, ll_backend.llds.label, ll_backend.code_loc_dep.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info).
+:- mode generate_string_trie_lookup_switch(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
