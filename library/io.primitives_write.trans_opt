@@ -1,0 +1,51 @@
+:- module io.primitives_write.
+
+:- pragma termination_info((io.primitives_write).do_write_binary_string_utf8(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint16(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint16_be(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint16_le(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint32(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint32_be(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint32_le(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint64(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint64_be(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_binary_uint64_le(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_byte(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_char(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_float(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_int(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_int16(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_int32(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_int64(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_int8(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_string(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_uint(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_uint16(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_uint32(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_uint64(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((io.primitives_write).do_write_uint8(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_string_utf8, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint16, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint16_be, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint16_le, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint32, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint32_be, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint32_le, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint64, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint64_be, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_binary_uint64_le, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_byte, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_char, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_float, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_int, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_int16, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_int32, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_int64, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_int8, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_string, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_uint, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_uint16, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_uint32, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_uint64, 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.primitives_write).do_write_uint8, 5, 0, will_not_throw).

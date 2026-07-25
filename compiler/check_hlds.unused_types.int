@@ -1,0 +1,8 @@
+:- module check_hlds.unused_types.
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_util.
+:- pred maybe_warn_about_unused_types(hlds.hlds_module.module_info, parse_tree.error_util.maybe_written_specs, parse_tree.error_util.maybe_written_specs).
+:- mode maybe_warn_about_unused_types(builtin.in, builtin.in, builtin.out) is det.
