@@ -1,0 +1,9 @@
+:- module hlds.du_type_layout.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- pred decide_type_repns(hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.info_spec), io.io, io.io).
+:- mode decide_type_repns(builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.

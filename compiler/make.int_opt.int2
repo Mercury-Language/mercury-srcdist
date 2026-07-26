@@ -1,0 +1,7 @@
+:- module make.int_opt.
+:- interface.
+:- type build_what
+    --->    build_int3s 
+    ;       build_int3s_int0s 
+    ;       build_all_ints 
+    ;       build_all_ints_opts .

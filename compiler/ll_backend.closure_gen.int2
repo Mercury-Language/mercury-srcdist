@@ -1,0 +1,2 @@
+:- module ll_backend.closure_gen.
+:- interface.
