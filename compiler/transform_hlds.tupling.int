@@ -1,0 +1,13 @@
+:- module transform_hlds.tupling.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- pred tuple_arguments(io.text_output_stream, list.list(parse_tree.error_spec.diag_spec), hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode tuple_arguments(builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- implementation.
+:- type opt_tuple_alloc
+    --->    opt_tuple_alloc .

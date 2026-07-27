@@ -1,0 +1,25 @@
+:- module (hlds.make_hlds).add_pragma_util.
+:- interface.
+:- use_module hlds.hlds_pred.
+:- type add_marker_pred_info == pred(hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- type lookup_failure_handling
+    --->    lfh_ignore 
+    ;       lfh_user_error 
+    ;       lfh_internal_error .
+:- type matching_pred_ids_result
+    --->    mpids_ok(
+                 hlds.hlds_pred.pred_id,
+                 list.list(hlds.hlds_pred.pred_id),
+                 list.list(parse_tree.error_spec.warn_spec)
+            )
+    ;       mpids_error(
+                 one_or_more.one_or_more(parse_tree.error_spec.err_spec),
+                 list.list(parse_tree.error_spec.warn_spec)
+            ).
+:- type maybe_require_one_match
+    --->    do_not_require_one_match 
+    ;       require_one_match .
+:- type pragma_status_class
+    --->    psc_decl 
+    ;       psc_impl .
+:- inst add_marker_pred_info == (pred(builtin.in, builtin.out) is det).

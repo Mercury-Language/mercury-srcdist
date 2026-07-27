@@ -1,0 +1,8 @@
+:- module check_hlds.modecheck_coerce.
+:- interface.
+:- use_module parse_tree.
+:- use_module check_hlds.mode_info.
+:- use_module check_hlds.modecheck_util.
+:- use_module parse_tree.prog_data.
+:- pred modecheck_coerce(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_mode, parse_tree.prog_data.determinism, check_hlds.modecheck_util.extra_goals, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_coerce(builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out) is det.
