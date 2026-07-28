@@ -1,0 +1,205 @@
+/*
+** Automatically generated from `declarative_analyser.m'
+** by the Mercury compiler,
+** version rotd-2026-07-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.declarative_analyser.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__declarative_analyser
+#define MR_HEADER_GUARD_mdb__declarative_analyser
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__DECLARATIVE_ANALYSER_DECL_GUARD
+#define MDB__DECLARATIVE_ANALYSER_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_analyser__mdb__declarative_analyser__type_ctor_info_analyser_response_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_analyser__mdb__declarative_analyser__type_ctor_info_analyser_state_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_analyser__mdb__declarative_analyser__type_ctor_info_analysis_type_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_analyser__mdb__declarative_analyser__type_ctor_info_explicit_tree_type_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_analyser__mdb__declarative_analyser__type_ctor_info_reason_for_question_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_analyser__mdb__declarative_analyser__type_ctor_info_search_mode_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_analyser__mdb__declarative_analyser__type_ctor_info_search_response_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_analyser__mdb__declarative_analyser__type_ctor_info_suspect_and_reason_0;
+
+void MR_CALL 
+mdb__declarative_analyser__analyser_state_init_1_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdb__declarative_analyser__change_search_mode_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mdb__declarative_analyser__continue_analysis_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mdb__declarative_analyser__debug_analyser_state_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_analyser__reask_last_question_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdb__declarative_analyser__reset_analyser_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdb__declarative_analyser__revise_analysis_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mdb__declarative_analyser__set_analyser_fallback_search_mode_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mdb__declarative_analyser__show_info_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdb__declarative_analyser__start_or_resume_analysis_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+MR_Word MR_CALL 
+mdb__declarative_analyser__divide_and_query_search_mode_0_f_0(void);
+
+MR_Word MR_CALL 
+mdb__declarative_analyser__suspicion_divide_and_query_search_mode_0_f_0(void);
+
+MR_Word MR_CALL 
+mdb__declarative_analyser__top_down_search_mode_0_f_0(void);
+
+void MR_CALL 
+mdb__declarative_analyser____Compare____analyser_response_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdb__declarative_analyser____Compare____analyser_state_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdb__declarative_analyser____Compare____analysis_type_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdb__declarative_analyser____Compare____search_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_analyser____Unify____analyser_response_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_analyser____Unify____analyser_state_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_analyser____Unify____analysis_type_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_analyser____Unify____search_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdb__declarative_analyser__init(void);
+void mercury__mdb__declarative_analyser__init_type_tables(void);
+void mercury__mdb__declarative_analyser__init_debugger(void);
+const char *mercury__mdb__declarative_analyser__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.declarative_analyser
+
+// :- end_interface mdb.declarative_analyser.

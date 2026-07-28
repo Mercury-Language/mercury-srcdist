@@ -1,0 +1,14 @@
+module(2, "bit_buffer.write.m",
+	bit_buffer.write,
+	{bit_buffer},
+	{bool, builtin, io, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

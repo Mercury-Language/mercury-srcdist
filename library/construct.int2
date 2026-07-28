@@ -1,0 +1,4 @@
+:- module construct.
+:- interface.
+:- type functor_number_lex == int.
+:- type functor_number_ordinal == int.

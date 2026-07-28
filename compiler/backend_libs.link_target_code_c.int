@@ -1,0 +1,32 @@
+:- module backend_libs.link_target_code_c.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module backend_libs.compile_target_code.
+:- use_module backend_libs.link_target_util.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- type shared_library_support
+    --->    shared_libraries_not_supported 
+    ;       shared_libraries_supported .
+:- pred are_shared_libraries_supported(libs.globals.globals, backend_libs.link_target_code_c.shared_library_support).
+:- mode are_shared_libraries_supported(builtin.in, builtin.out) is det.
+:- pred create_exe_or_shared_lib_for_c(io.text_output_stream, libs.globals.globals, backend_libs.link_target_util.linked_target_type, mdbcomp.sym_name.module_name, libs.file_util.file_name, list.list(string), list.list(parse_tree.error_spec.diag_spec), libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode create_exe_or_shared_lib_for_c(builtin.in, builtin.in, builtin.in((backend_libs.link_target_util).c_exe_or_shared_lib), builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred create_static_lib_for_c(io.text_output_stream, libs.globals.globals, libs.file_util.file_name, bool.bool, list.list(libs.file_util.file_name), libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode create_static_lib_for_c(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred get_library_link_flags_for_c(libs.globals.globals, list.list(parse_tree.error_spec.diag_spec), string, io.io, io.io).
+:- mode get_library_link_flags_for_c(builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred get_linked_target_type_for_c(libs.globals.globals, backend_libs.link_target_util.linked_target_type).
+:- mode get_linked_target_type_for_c(builtin.in, builtin.out((backend_libs.link_target_util).c_exe_or_shared_lib)) is det.
+:- pred get_object_code_type(libs.globals.globals, backend_libs.link_target_util.linked_target_type, backend_libs.compile_target_code.pic).
+:- mode get_object_code_type(builtin.in, builtin.in, builtin.out) is det.
+:- pred link_modules_into_executable_or_shared_library_for_c(io.text_output_stream, libs.globals.globals, list.list(mdbcomp.sym_name.module_name), list.list(string), list.list(parse_tree.error_spec.diag_spec), libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode link_modules_into_executable_or_shared_library_for_c(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.

@@ -1,0 +1,11 @@
+:- module (hlds.make_hlds).add_pragma_type_spec_constr.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_item.
+:- use_module (hlds.make_hlds).qual_info.
+:- pred add_pragma_type_spec_constr(io.text_output_stream, parse_tree.prog_item.decl_pragma_type_spec_constr_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.info_spec), list.list(parse_tree.error_spec.info_spec)).
+:- mode add_pragma_type_spec_constr(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
