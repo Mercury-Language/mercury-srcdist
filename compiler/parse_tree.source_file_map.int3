@@ -1,0 +1,3 @@
+:- module parse_tree.source_file_map.
+:- interface.
+:- type_representation(source_file_map, is_eqv_to(bimap(module_name, file_name))).

@@ -1,0 +1,9 @@
+:- module transform_hlds.exception_analysis.
+:- interface.
+:- use_module analysis.framework.
+:- use_module analysis.operations.
+:- type exception_analysis_answer.
+:- instance ((analysis.framework).analysis(analysis.operations.no_func_info, analysis.operations.any_call, transform_hlds.exception_analysis.exception_analysis_answer)).
+:- instance ((analysis.framework).answer_pattern(analysis.operations.no_func_info, transform_hlds.exception_analysis.exception_analysis_answer)).
+:- instance ((analysis.framework).partial_order(analysis.operations.no_func_info, transform_hlds.exception_analysis.exception_analysis_answer)).
+:- instance ((analysis.framework).to_term(transform_hlds.exception_analysis.exception_analysis_answer)).
