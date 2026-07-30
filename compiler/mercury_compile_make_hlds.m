@@ -1,0 +1,755 @@
+%---------------------------------------------------------------------------%
+% vim: ts=4 sw=4 et ft=mercury
+%---------------------------------------------------------------------------%
+% Copyright (C) 2022-2026 The Mercury Team.
+% This file may only be copied under the terms of the GNU General
+% Public License - see the file COPYING in the Mercury distribution.
+%---------------------------------------------------------------------------%
+%
+% File: mercury_compile_make_hlds.m.
+%
+% This module manages the parts of the compiler that build the HLDS
+% and, if needed, write out updated .d files.
+%
+%---------------------------------------------------------------------------%
+
+:- module top_level.mercury_compile_make_hlds.
+:- interface.
+
+:- import_module hlds.
+:- import_module hlds.hlds_module.
+:- import_module hlds.make_hlds.
+:- import_module hlds.make_hlds.qual_info.
+:- import_module hlds.passes_aux.
+:- import_module libs.
+:- import_module libs.globals.
+:- import_module libs.op_mode.
+:- import_module parse_tree.
+:- import_module parse_tree.error_spec.
+:- import_module parse_tree.error_util.
+:- import_module parse_tree.module_baggage.
+:- import_module parse_tree.prog_parse_tree.
+:- import_module parse_tree.read_modules.
+
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+
+%---------------------------------------------------------------------------%
+
+:- type make_hlds_result
+    --->    make_hlds_result(
+                mhr_invalid_types       :: list(err_spec),
+                mhr_invalid_insts_modes :: list(err_spec),
+                mhr_opt_blocking        :: list(err_spec),
+                mhr_expansion           :: list(err_spec),
+                mhr_event_set           :: list(err_spec)
+            ).
+
+    % make_hlds_pass(ProgressStream, ErrorStream, Globals,
+    %   OpModeAugment, InvokedByMMCMake, Baggage0, AugCompUnit0,
+    %   HLDS0, QualInfo, MaybeTimestampMap, Result,
+    %   !DumpInfo, !HaveReadModuleMaps, !MaybeWrittenSpecs, !IO):
+    %
+    % Every diag_spec in MakeHLDSResults will also appear in
+    % !:MaybeWrittenSpecs. They are also returned separately in order
+    % to allow our caller to test for the presence of specific *kinds*
+    % of errors.
+    %
+:- pred make_hlds_pass(io.text_output_stream::in, io.text_output_stream::in,
+    globals::in, op_mode_augment::in, op_mode_invoked_by_mmc_make::in,
+    module_baggage::in, aug_compilation_unit::in,
+    module_info::out, qual_info::out, maybe(module_timestamp_map)::out,
+    make_hlds_result::out, dump_info::in, dump_info::out,
+    have_parse_tree_maps::in, have_parse_tree_maps::out,
+    maybe_written_specs::in, maybe_written_specs::out, io::di, io::uo) is det.
+
+%---------------------------------------------------------------------------%
+%---------------------------------------------------------------------------%
+
+:- implementation.
+
+:- import_module hlds.hlds_defns.
+:- import_module hlds.make_hlds.make_hlds_passes.
+:- import_module libs.file_util.
+:- import_module libs.options.
+:- import_module make.
+:- import_module make.module_dep_file.
+:- import_module mdbcomp.
+:- import_module mdbcomp.sym_name.
+:- import_module parse_tree.build_eqv_maps.
+:- import_module parse_tree.equiv_type_parse_tree.
+:- import_module parse_tree.file_names.
+:- import_module parse_tree.generate_mmakefile_fragments.
+:- import_module parse_tree.grab_modules.
+:- import_module parse_tree.module_qual.
+:- import_module parse_tree.module_qual.mq_info.
+:- import_module parse_tree.module_qual.qualify_items.
+:- import_module parse_tree.parse_error.
+:- import_module parse_tree.prog_data.
+:- import_module parse_tree.prog_data_event.
+:- import_module parse_tree.prog_data_used_modules.
+:- import_module parse_tree.prog_event.
+:- import_module parse_tree.write_deps_file.
+:- import_module parse_tree.write_error_spec.
+:- import_module recompilation.
+
+:- import_module bool.
+:- import_module char.
+:- import_module library.
+:- import_module map.
+:- import_module set.
+:- import_module set_tree234.
+:- import_module solutions.
+:- import_module string.
+
+%---------------------------------------------------------------------------%
+%---------------------------------------------------------------------------%
+
+make_hlds_pass(ProgressStream, ErrorStream, Globals,
+        OpModeAugment, InvokedByMMCMake, Baggage0, AugCompUnit0,
+        !:HLDS, QualInfo, MaybeTimestampMap, Result,
+        !DumpInfo, !HaveReadModuleMaps, !MaybeWrittenSpecs, !IO) :-
+    globals.lookup_bool_option(Globals, statistics, Stats),
+    globals.lookup_bool_option(Globals, verbose, Verbose),
+    ParseTreeModuleSrc0 = AugCompUnit0 ^ acu_module_src,
+    maybe_warn_about_stdlib_shadowing(Globals, ParseTreeModuleSrc0,
+        !MaybeWrittenSpecs),
+    ModuleName = ParseTreeModuleSrc0 ^ ptms_module_name,
+
+    should_we_write_d_file(OpModeAugment, InvokedByMMCMake, WriteDFile),
+    maybe_read_trans_opt_deps(ProgressStream, Globals, ModuleName,
+        WriteDFile, MaybeDFileTransOptDeps, !IO),
+    maybe_grab_plain_and_trans_opt_files(ProgressStream, Globals,
+        OpModeAugment, Verbose, MaybeDFileTransOptDeps, OptBlockingSpecs,
+        Baggage0, Baggage1, AugCompUnit0, AugCompUnit1,
+        !HaveReadModuleMaps, !MaybeWrittenSpecs, !IO),
+    add_to_be_written_err_specs(OptBlockingSpecs, !MaybeWrittenSpecs),
+    MaybeTimestampMap = Baggage1 ^ mb_maybe_timestamp_map,
+
+    get_read_module_specs(Baggage1 ^ mb_errors,
+        BaggageErrSpecs, BaggageWarnSpecs),
+    add_to_be_written_err_specs(BaggageErrSpecs, !MaybeWrittenSpecs),
+    add_to_be_written_warn_specs(BaggageWarnSpecs, !MaybeWrittenSpecs),
+
+    % We must read in EventSpecMap0 before
+    % - the call to module_qualify_aug_comp_unit, since that call
+    %   module qualifies EventSpecMap0's contents, returning EventSpecMap1;
+    % - and the call to expand_eqv_types_insts, which expands equivalences
+    %   in EventSpecMap1, returning EventSpecMap.
+    globals.lookup_string_option(Globals, event_set_file_name,
+        EventSetFileName),
+    maybe_read_event_set(EventSetFileName,
+        EventSetName, EventSpecMap0, EventSetSpecs, !IO),
+    add_to_be_written_err_specs(EventSetSpecs, !MaybeWrittenSpecs),
+
+    maybe_write_not_yet_written_specs(ErrorStream, Globals, Verbose,
+        !MaybeWrittenSpecs, !IO),
+    maybe_write_string(ProgressStream, Verbose,
+        "% Module qualifying items...\n", !IO),
+    maybe_flush_output(ProgressStream, Verbose, !IO),
+    module_qualify_aug_comp_unit(Globals, AugCompUnit1, AugCompUnit2,
+        EventSpecMap0, EventSpecMap1, EventSetFileName,
+        MQInfo0, UnusedImports, UnusedImportsSpecsMap),
+    map.values(UnusedImportsSpecsMap, UnusedImportsSpecs),
+    add_to_be_written_warn_specs(UnusedImportsSpecs, !MaybeWrittenSpecs),
+    maybe_write_not_yet_written_specs(ErrorStream, Globals, Verbose,
+        !MaybeWrittenSpecs, !IO),
+    maybe_write_string(ProgressStream, Verbose, "% done.\n", !IO),
+    maybe_report_stats(ProgressStream, Stats, !IO),
+
+    mq_info_get_recompilation_info(MQInfo0, RecompInfo0),
+    maybe_write_string(ProgressStream, Verbose,
+        "% Expanding equivalence types and insts...\n", !IO),
+    maybe_flush_output(ProgressStream, Verbose, !IO),
+    expand_eqv_types_insts(AugCompUnit2, AugCompUnit,
+        EventSpecMap1, EventSpecMap, TypeEqvMap, UsedEqvModules,
+        RecompInfo0, RecompInfo, ExpandSpecs),
+    add_to_be_written_err_specs(ExpandSpecs, !MaybeWrittenSpecs),
+    maybe_write_not_yet_written_specs(ErrorStream, Globals, Verbose,
+        !MaybeWrittenSpecs, !IO),
+    maybe_write_string(ProgressStream, Verbose, "% done.\n", !IO),
+    maybe_report_stats(ProgressStream, Stats, !IO),
+    mq_info_set_recompilation_info(RecompInfo, MQInfo0, MQInfo),
+
+    maybe_write_not_yet_written_specs(ErrorStream, Globals, Verbose,
+        !MaybeWrittenSpecs, !IO),
+    maybe_write_string(ProgressStream, Verbose,
+        "% Converting parse tree to hlds...\n", !IO),
+    module_name_to_cur_dir_file_name(ext_cur_user_hlds_dump,
+        ModuleName, DumpBaseFileName),
+    parse_tree_to_hlds(ProgressStream, AugCompUnit, Globals, DumpBaseFileName,
+        MQInfo, TypeEqvMap, UsedEqvModules, UnusedImports, QualInfo, !:HLDS,
+        InvalidTypeSpecs, InvalidInstModeSpecs,
+        MakeErrSpecs, MakeWarnSpecs, MakeInfoSpecs),
+    add_to_be_written_err_specs(InvalidTypeSpecs, !MaybeWrittenSpecs),
+    add_to_be_written_err_specs(InvalidInstModeSpecs, !MaybeWrittenSpecs),
+    add_to_be_written_err_specs(MakeErrSpecs, !MaybeWrittenSpecs),
+    add_to_be_written_warn_specs(MakeWarnSpecs, !MaybeWrittenSpecs),
+    add_to_be_written_info_specs(MakeInfoSpecs, !MaybeWrittenSpecs),
+
+    % Now that we have both EventSpecMap and an initial HLDS,
+    % we can put the former into the latter.
+    EventSet = event_set(EventSetName, EventSpecMap),
+    module_info_set_event_set(EventSet, !HLDS),
+
+    Result = make_hlds_result(InvalidTypeSpecs, InvalidInstModeSpecs,
+        OptBlockingSpecs, ExpandSpecs, EventSetSpecs),
+
+    maybe_write_not_yet_written_specs(ErrorStream, Globals, Verbose,
+        !MaybeWrittenSpecs, !IO),
+    maybe_write_string(ProgressStream, Verbose, "% done.\n", !IO),
+    maybe_report_stats(ProgressStream, Stats, !IO),
+
+    maybe_write_definitions(ProgressStream,
+        Verbose, Stats, !.HLDS, !IO),
+    maybe_write_definition_line_counts(ProgressStream,
+        Verbose, Stats, !.HLDS, !IO),
+    maybe_write_definition_extents(ProgressStream,
+        Verbose, Stats, !.HLDS, !IO),
+
+    maybe_dump_hlds(ProgressStream, !.HLDS, 1, "initial", !DumpInfo, !IO),
+    maybe_write_d_file(ProgressStream, Globals, Baggage0, AugCompUnit,
+        !.HLDS, WriteDFile, MaybeDFileTransOptDeps, !IO).
+
+%---------------------------------------------------------------------------%
+
+:- pred maybe_grab_plain_and_trans_opt_files(io.text_output_stream::in,
+    globals::in, op_mode_augment::in,
+    bool::in, maybe(list(module_name))::in, list(err_spec)::out,
+    module_baggage::in, module_baggage::out,
+    aug_compilation_unit::in, aug_compilation_unit::out,
+    have_parse_tree_maps::in, have_parse_tree_maps::out,
+    maybe_written_specs::in, maybe_written_specs::out, io::di, io::uo) is det.
+
+maybe_grab_plain_and_trans_opt_files(ProgressStream, Globals, OpModeAugment,
+        Verbose, MaybeDFileTransOptDeps, BlockingSpecs, !Baggage,
+        !AugCompUnit, !HaveReadModuleMaps, !MaybeWrittenSpecs, !IO) :-
+    globals.lookup_bool_option(Globals, intermodule_optimization, IntermodOpt),
+    globals.lookup_bool_option(Globals, use_opt_files, UseOptInt),
+    globals.lookup_bool_option(Globals, transitive_optimization, TransOpt),
+    globals.lookup_bool_option(Globals, intermodule_analysis,
+        IntermodAnalysis),
+    ( if
+        ( UseOptInt = yes
+        ; IntermodOpt = yes
+        ; IntermodAnalysis = yes
+        ),
+        OpModeAugment \= opmau_make_plain_opt
+    then
+        maybe_write_string(ProgressStream, Verbose,
+            "% Reading .opt files...\n", !IO),
+        maybe_flush_output(ProgressStream, Verbose, !IO),
+        grab_plain_opt_and_int_for_opt_files(ProgressStream, Globals,
+            PlainOptBlockingSpecs,
+            !Baggage, !AugCompUnit, !HaveReadModuleMaps, !IO),
+        maybe_write_string(ProgressStream, Verbose, "% done.\n", !IO)
+    else
+        PlainOptBlockingSpecs = []
+    ),
+    (
+        OpModeAugment = opmau_make_trans_opt,
+        (
+            MaybeDFileTransOptDeps = yes(DFileTransOptDeps),
+            % When creating the trans_opt file, only import the
+            % trans_opt files which are listed as dependencies of the
+            % trans_opt_deps rule in the `.d' file.
+            grab_trans_opt_files(ProgressStream, Globals, DFileTransOptDeps,
+                TransOptBlockingSpecs,
+                !Baggage, !AugCompUnit, !HaveReadModuleMaps, !IO)
+        ;
+            MaybeDFileTransOptDeps = no,
+            TransOptBlockingSpecs = [],
+            ParseTreeModuleSrc = !.AugCompUnit ^ acu_module_src,
+            ModuleName = ParseTreeModuleSrc ^ ptms_module_name,
+            globals.lookup_bool_option(Globals, warn_missing_trans_opt_deps,
+                WarnNoTransOptDeps),
+            (
+                WarnNoTransOptDeps = yes,
+                Pieces = [words("Warning: cannot read trans-opt dependencies"),
+                    words("for module"), qual_sym_name(ModuleName),
+                    suffix("."), nl,
+                    words("You need to remake the dependencies."), nl],
+                Severity = severity_warning(warn_missing_trans_opt_deps),
+                Spec = no_ctxt_spec($pred, Severity, phase_read_files, Pieces),
+                add_to_be_written_specs([Spec], !MaybeWrittenSpecs)
+            ;
+                WarnNoTransOptDeps = no
+            )
+        )
+    ;
+        OpModeAugment = opmau_make_plain_opt,
+        % If we are making the `.opt' file, then we cannot read any
+        % `.trans_opt' files, since `.opt' files aren't allowed to depend on
+        % `.trans_opt' files.
+        TransOptBlockingSpecs = []
+    ;
+        ( OpModeAugment = opmau_make_analysis_registry
+        ; OpModeAugment = opmau_make_xml_documentation
+        ; OpModeAugment = opmau_typecheck_only
+        ; OpModeAugment = opmau_front_and_middle(_)
+        ),
+        (
+            TransOpt = yes,
+            % If transitive optimization is enabled, but we are not creating
+            % the .opt or .trans opt file, then import the trans_opt files
+            % for all the modules that are imported (or used), and for all
+            % ancestor modules.
+            ParseTreeModuleSrc = !.AugCompUnit ^ acu_module_src,
+            ModuleName = ParseTreeModuleSrc ^ ptms_module_name,
+            Ancestors = get_ancestors_set(ModuleName),
+            Deps0 = map.keys_as_set(ParseTreeModuleSrc ^ ptms_import_use_map),
+            % Some builtin modules can implicitly depend on themselves.
+            % (For example, we consider every module to depend on both
+            % builtin.m and private_builtin.m, so they "depend" on themselves.)
+            % For those, we don't want to read in their .trans_opt file,
+            % since we already have their .m file.
+            set.delete(ModuleName, Deps0, Deps),
+            TransOptFilesSet = set.union_list([Ancestors, Deps]),
+            set.to_sorted_list(TransOptFilesSet, TransOptFiles),
+            grab_trans_opt_files(ProgressStream, Globals, TransOptFiles,
+                TransOptBlockingSpecs,
+                !Baggage, !AugCompUnit, !HaveReadModuleMaps, !IO)
+        ;
+            TransOpt = no,
+            TransOptBlockingSpecs = []
+        )
+    ),
+    BlockingSpecs = PlainOptBlockingSpecs ++ TransOptBlockingSpecs.
+
+%---------------------------------------------------------------------------%
+
+:- pred maybe_read_trans_opt_deps(io.text_output_stream::in, globals::in,
+    module_name::in, maybe_write_d_file::in, maybe(list(module_name))::out,
+    io::di, io::uo) is det.
+
+maybe_read_trans_opt_deps(ProgressStream, Globals, ModuleName,
+        WriteDFile, MaybeDFileTransOptDeps, !IO) :-
+    (
+        WriteDFile = do_not_write_d_file,
+        MaybeDFileTransOptDeps = no
+    ;
+        WriteDFile = write_d_file,
+        % We need the MaybeDFileTransOptDeps when creating the .trans_opt file.
+        % However, we *also* need the MaybeDFileTransOptDeps when writing out
+        % .d files. In the absence of MaybeDFileTransOptDeps, we will write out
+        % a .d file that does not include the trans_opt_deps mmake rule,
+        % which will require an "mmake depend" before the next rebuild.
+        maybe_read_d_file_for_trans_opt_deps(ProgressStream, Globals,
+            ModuleName, MaybeDFileTransOptDeps, !IO)
+    ).
+
+    % maybe_read_d_file_for_trans_opt_deps(ProgressStream, ErrorStream,
+    %   Globals, ModuleName, MaybeDFileTransOptDeps, !IO):
+    %
+    % If transitive intermodule optimization has been enabled, then read
+    % <ModuleName>.d to find the modules which <ModuleName>.trans_opt may
+    % depend on. Otherwise return `no'.
+    %
+:- pred maybe_read_d_file_for_trans_opt_deps(io.text_output_stream::in,
+    globals::in, module_name::in, maybe(list(module_name))::out,
+    io::di, io::uo) is det.
+
+maybe_read_d_file_for_trans_opt_deps(ProgressStream, Globals,
+        ModuleName, MaybeDFileTransOptDeps, !IO) :-
+    globals.lookup_bool_option(Globals, transitive_optimization, TransOpt),
+    (
+        TransOpt = yes,
+        globals.lookup_bool_option(Globals, verbose, Verbose),
+        % XXX LEGACY
+        module_name_to_file_name(Globals, $pred, ext_cur_ngs(ext_cur_ngs_mf_d),
+            ModuleName, DFileName, _DFileNameProposed),
+        (
+            Verbose = yes,
+            io.format(ProgressStream,
+                "%% Reading auto-dependency file `%s'...",
+                [s(DFileName)], !IO)
+        ;
+            Verbose = no
+        ),
+        maybe_flush_output(ProgressStream, Verbose, !IO),
+        io.open_input(DFileName, DFileOpenResult, !IO),
+        (
+            DFileOpenResult = ok(DFileInStream),
+            % XXX LEGACY
+            module_name_to_file_name(Globals, $pred,
+                ext_cur_ngs_gs(ext_cur_ngs_gs_opt_date_trans), ModuleName,
+                TransOptDateFileName, _TransOptDateFileNameProposed),
+            SearchPattern = TransOptDateFileName ++ " :",
+            read_d_file_find_start(DFileInStream, SearchPattern,
+                FindResult, !IO),
+            (
+                FindResult = yes,
+                read_d_file_get_modules(DFileInStream, TransOptDeps, !IO),
+                MaybeDFileTransOptDeps = yes(TransOptDeps)
+            ;
+                FindResult = no,
+                % error reading .d file
+                MaybeDFileTransOptDeps = no
+            ),
+            io.close_input(DFileInStream, !IO),
+            maybe_write_string(ProgressStream, Verbose, " done.\n", !IO)
+        ;
+            DFileOpenResult = error(IOError),
+            maybe_write_string(ProgressStream, Verbose, " failed.\n", !IO),
+            maybe_flush_output(ProgressStream, Verbose, !IO),
+            report_cannot_open_file_for_input(ProgressStream, Globals,
+                DFileName, IOError, !IO),
+            MaybeDFileTransOptDeps = no
+        )
+    ;
+        TransOpt = no,
+        MaybeDFileTransOptDeps = no
+    ).
+
+    % Read lines from the dependency file (module.d) until one is found
+    % which begins with SearchPattern.
+    %
+:- pred read_d_file_find_start(io.text_input_stream::in, string::in,
+    bool::out, io::di, io::uo) is det.
+
+read_d_file_find_start(InStream, SearchPattern, Success, !IO) :-
+    io.read_line_as_string(InStream, Result, !IO),
+    (
+        Result = ok(Line),
+        ( if string.prefix(Line, SearchPattern) then
+            % Have found the start.
+            Success = yes
+        else
+            read_d_file_find_start(InStream, SearchPattern, Success, !IO)
+        )
+    ;
+        ( Result = error(_)
+        ; Result = eof
+        ),
+        Success = no
+    ).
+
+    % Read lines until one is found which does not contain whitespace
+    % followed by a word which ends in .trans_opt. Remove the .trans_opt
+    % ending from all the words which are read in and return the resulting
+    % list of modules.
+    %
+:- pred read_d_file_get_modules(io.text_input_stream::in,
+    list(module_name)::out, io::di, io::uo) is det.
+
+read_d_file_get_modules(InStream, TransOptDeps, !IO) :-
+    io.read_line(InStream, Result, !IO),
+    ( if
+        Result = ok(CharList0),
+        % Remove any whitespace from the beginning of the line,
+        % then take all characters until another whitespace occurs.
+        list.drop_while(char.is_whitespace, CharList0, CharList1),
+        list.take_while_not(char.is_whitespace, CharList1, CharList),
+        string.from_char_list(CharList, FileName0),
+        string.remove_suffix(FileName0, ".trans_opt", FileName)
+    then
+        ( if string.append("Mercury/trans_opts/", BaseFileName, FileName) then
+            ModuleFileName = BaseFileName
+        else
+            ModuleFileName = FileName
+        ),
+        file_name_to_module_name(ModuleFileName, Module),
+        read_d_file_get_modules(InStream, TransOptDeps0, !IO),
+        TransOptDeps = [Module | TransOptDeps0]
+    else
+        TransOptDeps = []
+    ).
+
+%---------------------------------------------------------------------------%
+
+:- type maybe_write_d_file
+    --->    do_not_write_d_file
+    ;       write_d_file.
+
+:- pred should_we_write_d_file(op_mode_augment::in,
+    op_mode_invoked_by_mmc_make::in, maybe_write_d_file::out) is det.
+
+should_we_write_d_file(OpModeAugment, InvokedByMMCMake, WriteDFile) :-
+    (
+        ( OpModeAugment = opmau_typecheck_only
+        ; OpModeAugment = opmau_front_and_middle(opfam_errorcheck_only)
+        ),
+        % If we are only typechecking or error checking, then we should not
+        % modify any files; this includes writing to .d files.
+        WriteDFile = do_not_write_d_file
+    ;
+        OpModeAugment = opmau_make_plain_opt,
+        % Don't write the `.d' file when making the `.opt' file because
+        % we can't work out the full transitive implementation dependencies.
+        WriteDFile = do_not_write_d_file
+    ;
+        (
+            OpModeAugment = opmau_make_trans_opt
+        ;
+            OpModeAugment = opmau_make_analysis_registry
+            % XXX We should insist on do_not_write_d_file for these.
+        ;
+            OpModeAugment = opmau_make_xml_documentation
+            % XXX We should insist on do_not_write_d_file for these.
+        ;
+            OpModeAugment = opmau_front_and_middle(OpModeFAM),
+            ( OpModeFAM = opfam_target_code_only
+            ; OpModeFAM = opfam_target_and_object_code_only
+            ; OpModeFAM = opfam_target_object_and_executable
+            )
+        ),
+        (
+            InvokedByMMCMake = op_mode_invoked_by_mmc_make,
+            WriteDFile = do_not_write_d_file
+        ;
+            InvokedByMMCMake = op_mode_not_invoked_by_mmc_make,
+            WriteDFile = write_d_file
+        )
+    ).
+
+:- pred maybe_write_d_file(io.text_output_stream::in, globals::in,
+    module_baggage::in, aug_compilation_unit::in, module_info::in,
+    maybe_write_d_file::in, maybe(list(module_name))::in,
+    io::di, io::uo) is det.
+
+maybe_write_d_file(ProgressStream, Globals, Baggage0, AugCompUnit,
+        HLDS0, WriteDFile, MaybeDFileTransOptDeps, !IO) :-
+    (
+        WriteDFile = do_not_write_d_file
+    ;
+        WriteDFile = write_d_file,
+        % The original Baggage0 will do just fine for
+        % generate_and_write_d_file_hlds, since it accesses only the parts
+        % of Baggage0 that identify the properties of the source file
+        % containing the module.
+        BurdenedAugCompUnit = burdened_aug_comp_unit(Baggage0, AugCompUnit),
+        module_info_get_and_check_avail_module_sets(HLDS0, AvailModuleSets),
+        (
+            MaybeDFileTransOptDeps = yes(DFileTransOptDepsList),
+            set.list_to_set(DFileTransOptDepsList, DFileTransOptDeps),
+            TransOptRuleInfo = trans_opt_deps_from_d_file(DFileTransOptDeps),
+            MaybeInclTransOptRule = include_trans_opt_rule(TransOptRuleInfo)
+        ;
+            MaybeDFileTransOptDeps = no,
+            MaybeInclTransOptRule = do_not_include_trans_opt_rule
+        ),
+        generate_and_write_d_file_hlds(ProgressStream, Globals,
+            BurdenedAugCompUnit, AvailModuleSets, MaybeInclTransOptRule, !IO),
+        globals.lookup_bool_option(Globals,
+            generate_mmc_make_module_dependencies, OutputMMCMakeDeps),
+        (
+            OutputMMCMakeDeps = yes,
+            ParseTreeModuleSrc = AugCompUnit ^ acu_module_src,
+            BurdenedModule0 = burdened_module(Baggage0, ParseTreeModuleSrc),
+            make.module_dep_file.write_module_dep_file(ProgressStream, Globals,
+                BurdenedModule0, !IO)
+        ;
+            OutputMMCMakeDeps = no
+        )
+    ).
+
+%---------------------------------------------------------------------------%
+
+:- pred maybe_warn_about_stdlib_shadowing(globals::in,
+    parse_tree_module_src::in,
+    maybe_written_specs::in, maybe_written_specs::out) is det.
+
+maybe_warn_about_stdlib_shadowing(Globals, ParseTreeModuleSrc,
+        !MaybeWrittenSpecs) :-
+    globals.lookup_bool_option(Globals, warn_stdlib_shadowing, WarnShadowing),
+    (
+        WarnShadowing = no
+    ;
+        WarnShadowing = yes,
+        ModuleName = ParseTreeModuleSrc ^ ptms_module_name,
+        ModuleNameStr = sym_name_to_string(ModuleName),
+        ( if
+            stdlib_module_doc_undoc(ModuleNameStr, DocUndoc)
+        then
+            Pieces0 = [words("Warning: this module,"),
+                qual_sym_name(ModuleName), suffix(","),
+                words("has the same name"),
+                words("as a module in the Mercury standard library."),
+                words("A third module cannot import both,"),
+                words("and you will likely have problems where"),
+                words("a third module will want to import one"),
+                words("but will get the other."), nl],
+            maybe_mention_undoc(DocUndoc, Pieces0, Pieces),
+            Context = ParseTreeModuleSrc ^ ptms_module_name_context,
+            Severity = severity_warning(warn_stdlib_shadowing),
+            Spec = spec($pred, Severity, phase_read_files, Context, Pieces),
+            add_to_be_written_specs([Spec], !MaybeWrittenSpecs)
+        else if
+            GetStdlibModules =
+                ( pred(LibModuleName::out) is multi :-
+                    library.stdlib_module_doc_undoc(LibModuleNameStr,
+                        _DocUndoc),
+                    LibModuleName = string_to_sym_name(LibModuleNameStr)
+                ),
+            solutions.solutions(GetStdlibModules, LibModuleNames),
+            IsShadowed =
+                ( pred(LibModuleName::in) is semidet :-
+                    partial_sym_name_is_part_of_full(LibModuleName, ModuleName)
+                ),
+            list.find_first_match(IsShadowed, LibModuleNames,
+                ShadowedLibModuleName),
+            ShadowedLibModuleNameStr =
+                sym_name_to_string(ShadowedLibModuleName),
+            stdlib_module_doc_undoc(ShadowedLibModuleNameStr, DocUndoc)
+        then
+            Pieces0 = [words("Warning: the name of this module,"),
+                qual_sym_name(ModuleName), suffix(","),
+                words("contains the name of a module,"),
+                qual_sym_name(ShadowedLibModuleName), suffix(","),
+                words("in the Mercury standard library."),
+                words("A reference to the standard library in a third module"),
+                words("will therefore be a (not fully qualified) reference"),
+                words("to this module, which means that"),
+                words("you will likely have problems where,"),
+                words("especially in the absence of needed"),
+                decl("import_module"), words("declarations,"),
+                words("a reference intended to refer to"),
+                words("the standard library module"),
+                words("will be taken as a reference to this module,"),
+                words("and vice versa."), nl],
+            maybe_mention_undoc(DocUndoc, Pieces0, Pieces),
+            Context = ParseTreeModuleSrc ^ ptms_module_name_context,
+            Severity = severity_warning(warn_stdlib_shadowing),
+            Spec = spec($pred, Severity, phase_read_files, Context, Pieces),
+            add_to_be_written_specs([Spec], !MaybeWrittenSpecs)
+        else
+            true
+        )
+    ).
+
+:- pred maybe_mention_undoc(doc_or_undoc::in,
+    list(format_piece)::in, list(format_piece)::out) is det.
+
+maybe_mention_undoc(DocUndoc, Pieces0, Pieces) :-
+    (
+        DocUndoc = doc,
+        Pieces = Pieces0
+    ;
+        DocUndoc = undoc,
+        Pieces = Pieces0 ++
+            [words("The Mercury standard library module in question"),
+            words("is part of the Mercury implementation,"),
+            words("and is not publicly documented."), nl]
+    ).
+
+%---------------------------------------------------------------------------%
+
+:- pred maybe_read_event_set(string::in,
+    string::out, event_spec_map::out, list(err_spec)::out,
+    io::di, io::uo) is det.
+
+maybe_read_event_set(EventSetFileName, EventSetName, EventSpecMap,
+        EventSetSpecs, !IO) :-
+    ( if EventSetFileName = "" then
+        EventSetName = "",
+        EventSpecMap = map.init,
+        EventSetSpecs = []
+    else
+        read_event_set(EventSetFileName, EventSetName0, EventSpecMap0,
+            EventSetSpecs, !IO),
+        (
+            EventSetSpecs = [],
+            EventSetName = EventSetName0,
+            EventSpecMap = EventSpecMap0
+        ;
+            EventSetSpecs = [_ | _],
+            EventSetName = "",
+            EventSpecMap = map.init
+        )
+    ).
+
+%---------------------------------------------------------------------------%
+
+:- pred maybe_write_definitions(io.text_output_stream::in,
+    bool::in, bool::in, module_info::in, io::di, io::uo) is det.
+
+maybe_write_definitions(ProgressStream, Verbose, Stats, HLDS, !IO) :-
+    module_info_get_globals(HLDS, Globals),
+    globals.lookup_bool_option(Globals, show_definitions, ShowDefns),
+    (
+        ShowDefns = yes,
+        maybe_write_string(ProgressStream, Verbose,
+            "% Writing definitions...", !IO),
+        module_info_get_name(HLDS, ModuleName),
+        module_name_to_cur_dir_file_name(ext_cur_user_defns,
+            ModuleName, DefnsFileName),
+        io.open_output(DefnsFileName, DefnsOpenResult, !IO),
+        (
+            DefnsOpenResult = ok(DefnsFileStream),
+            write_hlds_defns(DefnsFileStream, HLDS, !IO),
+            io.close_output(DefnsFileStream, !IO),
+            maybe_write_string(ProgressStream, Verbose, " done.\n", !IO)
+        ;
+            DefnsOpenResult = error(IOError),
+            report_cannot_open_file_for_output(ProgressStream, Globals,
+                DefnsFileName, IOError, !IO)
+        ),
+        maybe_report_stats(ProgressStream, Stats, !IO)
+    ;
+        ShowDefns = no
+    ).
+
+:- pred maybe_write_definition_line_counts(io.text_output_stream::in,
+    bool::in, bool::in, module_info::in, io::di, io::uo) is det.
+
+maybe_write_definition_line_counts(ProgressStream, Verbose, Stats,
+        HLDS, !IO) :-
+    module_info_get_globals(HLDS, Globals),
+    globals.lookup_bool_option(Globals, show_definition_line_counts,
+        LineCounts),
+    (
+        LineCounts = yes,
+        maybe_write_string(ProgressStream, Verbose,
+            "% Writing definition line counts...", !IO),
+        module_info_get_name(HLDS, ModuleName),
+        module_name_to_cur_dir_file_name(ext_cur_user_defn_lc,
+            ModuleName, LcFileName),
+        io.open_output(LcFileName, LcOpenResult, !IO),
+        (
+            LcOpenResult = ok(LcFileStream),
+            write_hlds_defn_line_counts(LcFileStream, HLDS, !IO),
+            io.close_output(LcFileStream, !IO),
+            maybe_write_string(ProgressStream, Verbose, " done.\n", !IO)
+        ;
+            LcOpenResult = error(IOError),
+            report_cannot_open_file_for_output(ProgressStream, Globals,
+                LcFileName, IOError, !IO)
+        ),
+        maybe_report_stats(ProgressStream, Stats, !IO)
+    ;
+        LineCounts = no
+    ).
+
+:- pred maybe_write_definition_extents(io.text_output_stream::in,
+    bool::in, bool::in, module_info::in, io::di, io::uo) is det.
+
+maybe_write_definition_extents(ProgressStream, Verbose, Stats, HLDS, !IO) :-
+    module_info_get_globals(HLDS, Globals),
+    globals.lookup_bool_option(Globals, show_definition_extents, Extents),
+    (
+        Extents = yes,
+        maybe_write_string(ProgressStream, Verbose,
+            "% Writing definition extents...", !IO),
+        module_info_get_name(HLDS, ModuleName),
+        module_name_to_cur_dir_file_name(ext_cur_user_defn_ext, ModuleName,
+            DefnFileName),
+        io.open_output(DefnFileName, DefnOpenResult, !IO),
+        (
+            DefnOpenResult = ok(DefnFileStream),
+            write_hlds_defn_extents(DefnFileStream, HLDS, !IO),
+            io.close_output(DefnFileStream, !IO),
+            maybe_write_string(ProgressStream, Verbose, " done.\n", !IO)
+        ;
+            DefnOpenResult = error(IOError),
+            report_cannot_open_file_for_output(ProgressStream, Globals,
+                DefnFileName, IOError, !IO)
+        ),
+        maybe_report_stats(ProgressStream, Stats, !IO)
+    ;
+        Extents = no
+    ).
+
+%---------------------------------------------------------------------------%
+:- end_module top_level.mercury_compile_make_hlds.
+%---------------------------------------------------------------------------%

@@ -1,0 +1,16 @@
+:- module check_hlds.ordering_mode_constraints.
+:- interface.
+:- use_module list.
+:- type conjunct_id == int.
+:- type mode_ordering_constraint
+    --->    lt(
+                 (check_hlds.ordering_mode_constraints).first :: check_hlds.ordering_mode_constraints.conjunct_id,
+                 (check_hlds.ordering_mode_constraints).second :: check_hlds.ordering_mode_constraints.conjunct_id
+            ).
+:- type mode_ordering_constraints == list.list(check_hlds.ordering_mode_constraints.mode_ordering_constraint).
+:- type ordering_constraints_info
+    --->    ordering_constraints_info(
+                 (check_hlds.ordering_mode_constraints).oci_containing_map :: mdbcomp.goal_path.containing_goal_map,
+                 (check_hlds.ordering_mode_constraints).oci_num_conjuncts :: int,
+                 (check_hlds.ordering_mode_constraints).oci_constraints :: set.set(check_hlds.ordering_mode_constraints.mode_ordering_constraint)
+            ).

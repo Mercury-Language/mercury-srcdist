@@ -1,0 +1,18 @@
+:- module (check_hlds.simplify).opt_format_call_errors.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module string.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module string.parse_util.
+:- type maybe_warn_unknown_format
+    --->    do_not_warn_unknown_format 
+    ;       warn_unknown_format .
+:- func report_format_mismatch(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, maybe.maybe({int, int, int}), string.parse_util.string_format_error, list.list(string.parse_util.string_format_error), parse_tree.prog_data.prog_context) = list.list(parse_tree.error_spec.diag_spec).
+:- func report_unknown_format_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, check_hlds.simplify.opt_format_call_errors.maybe_warn_unknown_format, parse_tree.prog_data.prog_context) = list.list(parse_tree.error_spec.diag_spec).
+:- func report_unknown_format_values(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, check_hlds.simplify.opt_format_call_errors.maybe_warn_unknown_format, parse_tree.prog_data.prog_context) = list.list(parse_tree.error_spec.diag_spec).
