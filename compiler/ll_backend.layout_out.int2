@@ -1,0 +1,8 @@
+:- module ll_backend.layout_out.
+:- interface.
+:- type being_defined
+    --->    not_being_defined 
+    ;       being_defined .
+:- type use_layout_macro
+    --->    do_not_use_layout_macro 
+    ;       use_layout_macro .

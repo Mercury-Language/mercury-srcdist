@@ -1,0 +1,8 @@
+:- module hlds.goal_contains.
+:- interface.
+:- use_module bool.
+:- use_module hlds.hlds_goal.
+:- pred goal_contains_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode goal_contains_goal(builtin.in, builtin.out) is multi.
+:- pred goal_contains_reconstruction(hlds.hlds_goal.hlds_goal, bool.bool).
+:- mode goal_contains_reconstruction(builtin.in, builtin.out) is det.

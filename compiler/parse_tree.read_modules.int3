@@ -1,0 +1,34 @@
+:- module parse_tree.read_modules.
+:- interface.
+:- type have_module(PT).
+:- type have_parse_tree_int0_map.
+:- type have_parse_tree_int1_map.
+:- type have_parse_tree_int2_map.
+:- type have_parse_tree_int3_map.
+:- type have_parse_tree_key(Kind).
+:- type have_parse_tree_map(PT).
+:- type have_parse_tree_maps.
+:- type have_parse_tree_msrc_map.
+:- type have_parse_tree_plain_opt_map.
+:- type have_parse_tree_read
+	where	type_is_abstract_subtype(have_parse_tree_source/0).
+:- type have_parse_tree_source.
+:- type have_parse_tree_src_map.
+:- type have_parse_tree_trans_opt_map.
+:- type have_read_module(PT)
+	where	type_is_abstract_subtype(have_module/1).
+:- type read_reason_msg
+	where	type_is_abstract_enum(2).
+:- type_representation(have_parse_tree_int0_map, is_eqv_to(parse_tree.read_modules.have_parse_tree_map(parse_tree_int0))).
+:- type_representation(have_parse_tree_int1_map, is_eqv_to(parse_tree.read_modules.have_parse_tree_map(parse_tree_int1))).
+:- type_representation(have_parse_tree_int2_map, is_eqv_to(parse_tree.read_modules.have_parse_tree_map(parse_tree_int2))).
+:- type_representation(have_parse_tree_int3_map, is_eqv_to(parse_tree.read_modules.have_parse_tree_map(parse_tree_int3))).
+:- type_representation(have_parse_tree_map(V_1), is_eqv_to(map(module_name, parse_tree.read_modules.have_module(V_1)))).
+:- type_representation(have_parse_tree_maps, is_word_aligned_ptr).
+:- type_representation(have_parse_tree_msrc_map, is_eqv_to(map(module_name, parse_tree_module_src))).
+:- type_representation(have_parse_tree_plain_opt_map, is_eqv_to(parse_tree.read_modules.have_parse_tree_map(parse_tree_plain_opt))).
+:- type_representation(have_parse_tree_read, is_subtype_of((parse_tree.read_modules).have_parse_tree_source/0)).
+:- type_representation(have_parse_tree_src_map, is_eqv_to(parse_tree.read_modules.have_parse_tree_map(parse_tree_src))).
+:- type_representation(have_parse_tree_trans_opt_map, is_eqv_to(parse_tree.read_modules.have_parse_tree_map(parse_tree_trans_opt))).
+:- type_representation(have_read_module(V_1), is_subtype_of((parse_tree.read_modules).have_module/1)).
+:- type_representation(read_reason_msg, du_repn(enum("rrm_file", "rrm_std", ["rrm_old", "rrm_get_deps"],  no_c_j_cs))).

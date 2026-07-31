@@ -1,0 +1,8 @@
+:- module hlds.introduced_call_table.
+:- interface.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module mdbcomp.prim_data.
+:- use_module parse_tree.prog_data.
+:- pred may_introduce_calls_to(mdbcomp.prim_data.pred_or_func, string, string, parse_tree.prog_data.pred_form_arity).
+:- mode may_introduce_calls_to(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.

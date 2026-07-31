@@ -1,0 +1,433 @@
+/*
+** Automatically generated from `status.m'
+** by the Mercury compiler,
+** version rotd-2026-07-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.status.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__status
+#define MR_HEADER_GUARD_hlds__status
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__STATUS_DECL_GUARD
+#define HLDS__STATUS_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_inst_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_instance_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_instmode_export_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_instmode_import_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_item_export_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_item_import_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_item_mercury_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_maybe_opt_imported_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_mode_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_new_instmode_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_old_import_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_pred_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_type_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__status__hlds__status__type_ctor_info_typeclass_status_0;
+
+void MR_CALL 
+hlds__status__instance_combine_status_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__status__instance_make_status_abstract_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__status__item_mercury_status_to_inst_status_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__status__item_mercury_status_to_instance_status_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__status__item_mercury_status_to_mode_status_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__status__item_mercury_status_to_pred_status_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__status__item_mercury_status_to_type_status_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__status__item_mercury_status_to_typeclass_status_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__status__pred_combine_status_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__status__pred_make_status_abstract_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__status__type_combine_status_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__status__type_make_status_abstract_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__status__typeclass_combine_status_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__status__typeclass_make_status_abstract_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_Word MR_CALL 
+hlds__status__inst_status_defined_in_impl_section_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__inst_status_defined_in_this_module_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__inst_status_is_exported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__inst_status_is_exported_to_non_submodules_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__inst_status_is_imported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__instance_status_defined_in_impl_section_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__instance_status_defined_in_this_module_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__instance_status_is_exported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__instance_status_is_exported_to_non_submodules_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__instance_status_is_imported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__mode_status_defined_in_impl_section_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__mode_status_defined_in_this_module_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__mode_status_is_exported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__mode_status_is_exported_to_non_submodules_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__mode_status_is_imported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__old_status_is_exported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__pred_status_defined_in_impl_section_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__pred_status_defined_in_this_module_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__pred_status_is_exported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__pred_status_is_exported_to_non_submodules_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__pred_status_is_imported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__type_status_defined_in_impl_section_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__type_status_defined_in_this_module_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__type_status_is_exported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__type_status_is_exported_to_non_submodules_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__type_status_is_imported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__typeclass_status_defined_in_impl_section_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__typeclass_status_defined_in_this_module_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__typeclass_status_is_exported_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__typeclass_status_is_exported_to_non_submodules_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__status__typeclass_status_is_imported_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__status____Compare____inst_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____instance_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____instmode_export_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____instmode_import_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____item_export_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____item_import_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____item_mercury_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____maybe_opt_imported_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____mode_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____new_instmode_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____old_import_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____pred_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____type_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__status____Compare____typeclass_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__status____Unify____inst_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____instance_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____instmode_export_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____instmode_import_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____item_export_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____item_import_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____item_mercury_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____maybe_opt_imported_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____mode_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____new_instmode_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____old_import_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____pred_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____type_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__status____Unify____typeclass_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__status__init(void);
+void mercury__hlds__status__init_type_tables(void);
+void mercury__hlds__status__init_debugger(void);
+const char *mercury__hlds__status__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.status
+
+// :- end_interface hlds.status.

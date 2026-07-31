@@ -1,0 +1,2 @@
+:- module mtc_diff.
+:- interface.
