@@ -1,0 +1,95 @@
+document_category 100 concepts
+concepts   - The concepts on which the Mercury debugger is based.
+             The concepts for which documentation is available are
+             `break_points', `strict_commands', `print_level',
+             `default_print_level', `current_environment', `held_variables'
+             `procedure_specification' and `decl_debug'.
+
+end
+document_category 150 queries
+queries    - Commands for invoking goals interactively.
+             The commands for queries are
+             `query', `cc_query', and `io_query'.
+
+end
+document_category 200 forward
+forward    - Commands that move execution forward.
+             The forward commands are `step', `goto', `next', `finish',
+             `exception', `return', `user, `forward',
+	     `mindepth', `maxdepth' and `continue'.
+
+end
+document_category 300 backward
+backward   - Commands that move execution backward.
+             The backward commands are `retry' and `track'.
+
+end
+document_category 400 browsing
+browsing   - Commands that let users explore the state of the computation.
+             The browsing commands are `vars', `held_vars', `print', `browse',
+             `stack', `up', `down', `level', `current', `view', `hold',
+             `diff', `dump', `grep', `list' and `open'.
+
+end
+document_category 500 breakpoint
+breakpoint - Commands that let users set and control breakpoints.
+             The breakpoint commands are `break', `break_print', `condition',
+	     `disable', `enable', `delete', `modules', `procedures' and
+	     `register'.
+
+end
+document_category 600 io_tabling
+io_tabling - Commands that let users control the tabling of I/O actions.
+             The only such command is `table_io'.
+
+end
+document_category 700 parameter
+parameter  - Commands that let users access debugger parameters.
+             The parameter commands are `mmc_options', `printlevel', `scroll',
+             `stack_default_limit', `goal_paths' `scope', `echo', 
+             `context', `user_event_context', `list_context_lines',
+	     `list_path', `push_list_dir', `pop_list_dir', `fail_trace_counts',
+	     `pass_trace_counts', `max_io_actions', `format', `format_param',
+	     `alias' and `unalias'.
+
+end
+document_category 800 help
+help       - Commands that let users access and control the help system.
+             The help commands are `document_category', `document' and `help'.
+             For help on the `help' command, type `help help help'.
+
+end
+document_category 850 mdb_dd
+mdb_dd     - mdb commands related to declarative debugging.  These are `dd', 
+             `trust', `trusted' and `untrust'.
+
+end
+document_category 860 decl
+decl       - Commands available from within the declarative debugger.  These 
+             are `yes', `no', `inadmissible', `trust', `skip', `browse',
+             `print', `set', `help', `info', `ask', `mark', `pd' and `quit'.
+
+end
+document_category 900 misc
+misc       - Commands that are of interest to most users but do not fit into
+             other categories. The misc commands are `source', `save', `shell'
+             and `quit'.
+
+end
+document_category 1000 exp
+exp        - Commands that let users collect and inspect experimental
+             data about the behavior of the program. The exp commands are
+             `histogram_all', `histogram_exp', and `clear_histogram'.
+
+end
+document_category 1100 developer
+developer  - Commands that are intended to be of use only to developers
+             of the Mercury implementation. The developer commands are
+             `flag', `subgoal', `consumer', `gen_stack', `cut_stack,
+             `pneg_stack', `mm_stacks', `nondet_stack', `stack_regs',
+             `all_regs', `debug_vars', `stats', `print_optionals',
+             `unhide_events', `table', `type_ctor', `class_decl',
+             `all_type_ctors', `all_class_decls', `all_procedures' and
+             `ambiguity'.
+
+end

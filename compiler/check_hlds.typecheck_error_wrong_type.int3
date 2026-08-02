@@ -1,0 +1,4 @@
+:- module check_hlds.typecheck_error_wrong_type.
+:- interface.
+:- type spec_and_maybe_actual_expected.
+:- type_representation(spec_and_maybe_actual_expected, is_word_aligned_ptr).

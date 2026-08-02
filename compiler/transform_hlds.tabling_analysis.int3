@@ -1,0 +1,13 @@
+:- module transform_hlds.tabling_analysis.
+:- interface.
+:- import_module analysis.
+:- import_module hlds.
+:- import_module analysis.framework.
+:- import_module analysis.operations.
+:- import_module hlds.hlds_module.
+:- type mm_tabling_analysis_answer.
+:- instance analysis(no_func_info, any_call, transform_hlds.tabling_analysis.mm_tabling_analysis_answer).
+:- instance answer_pattern(no_func_info, transform_hlds.tabling_analysis.mm_tabling_analysis_answer).
+:- instance partial_order(no_func_info, transform_hlds.tabling_analysis.mm_tabling_analysis_answer).
+:- instance to_term(transform_hlds.tabling_analysis.mm_tabling_analysis_answer).
+:- type_representation(mm_tabling_analysis_answer, du_repn(notag("mm_tabling_analysis_answer", mm_tabling_status,  no_c_j_cs))).

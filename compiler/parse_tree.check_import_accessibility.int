@@ -1,0 +1,14 @@
+:- module parse_tree.check_import_accessibility.
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_parse_tree.
+:- type import_accessibility_info.
+:- pred aug_comp_unit_get_import_accessibility_info(parse_tree.prog_parse_tree.aug_compilation_unit, parse_tree.check_import_accessibility.import_accessibility_info).
+:- mode aug_comp_unit_get_import_accessibility_info(builtin.in, builtin.out) is det.
+:- pred aug_make_int_unit_get_import_accessibility_info(parse_tree.prog_parse_tree.aug_make_int_unit, parse_tree.check_import_accessibility.import_accessibility_info).
+:- mode aug_make_int_unit_get_import_accessibility_info(builtin.in, builtin.out) is det.
+:- pred check_import_accessibility(parse_tree.prog_parse_tree.parse_tree_module_src, parse_tree.check_import_accessibility.import_accessibility_info, list.list(mdbcomp.sym_name.module_name), list.list(mdbcomp.sym_name.module_name), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode check_import_accessibility(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is det.

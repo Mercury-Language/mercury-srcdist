@@ -1,0 +1,7 @@
+:- module check_hlds.typecheck_error_wrong_type.
+:- interface.
+:- type spec_and_maybe_actual_expected
+    --->    spec_and_maybe_actual_expected(
+                 parse_tree.error_spec.diag_spec,
+                 maybe.maybe(check_hlds.typecheck_error_type_assign.actual_expected_types)
+            ).

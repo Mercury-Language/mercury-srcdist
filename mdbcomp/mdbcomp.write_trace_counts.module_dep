@@ -1,0 +1,14 @@
+module(2, "write_trace_counts.m",
+	mdbcomp.write_trace_counts,
+	{mdbcomp},
+	{builtin, io, private_builtin, mdbcomp.trace_counts},
+	{list, map, require, string, term_io, mdbcomp.goal_path, mdbcomp.prim_data, mdbcomp.sym_name, string.format, string.parse_util},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
