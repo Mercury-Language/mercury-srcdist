@@ -1,0 +1,221 @@
+/*
+** Automatically generated from `scout_disjunctions.m'
+** by the Mercury compiler,
+** version rotd-2026-08-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.scout_disjunctions.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__scout_disjunctions
+#define MR_HEADER_GUARD_check_hlds__scout_disjunctions
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__SCOUT_DISJUNCTIONS_DECL_GUARD
+#define CHECK_HLDS__SCOUT_DISJUNCTIONS_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_all_arms_summary_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_deconstruct_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_disjunct_id_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_disjunct_id_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_disjunct_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_disjunct_info_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_disjunction_id_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_disjunction_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_disjunction_info_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_in_zone_deconstruct_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_is_sub_disj_needed_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_maybe_in_zone_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_one_arm_summary_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_scout_disj_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_subst_db_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_switchable_cons_id_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_var_all_arms_summary_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__scout_disjunctions__check_hlds__scout_disjunctions__type_ctor_info_var_one_arm_summary_0;
+
+void MR_CALL 
+check_hlds__scout_disjunctions__scout_disjunctions_in_proc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+check_hlds__scout_disjunctions__switchable_cons_id_to_cons_id_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+check_hlds__scout_disjunctions____Compare____all_arms_summary_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__scout_disjunctions____Compare____disjunct_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__scout_disjunctions____Compare____disjunct_id_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__scout_disjunctions____Compare____disjunct_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__scout_disjunctions____Compare____disjunct_info_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__scout_disjunctions____Compare____disjunction_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__scout_disjunctions____Compare____disjunction_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__scout_disjunctions____Compare____disjunction_info_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__scout_disjunctions____Compare____is_sub_disj_needed_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__scout_disjunctions____Compare____switchable_cons_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__scout_disjunctions____Compare____var_all_arms_summary_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__scout_disjunctions____Unify____all_arms_summary_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__scout_disjunctions____Unify____disjunct_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__scout_disjunctions____Unify____disjunct_id_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__scout_disjunctions____Unify____disjunct_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__scout_disjunctions____Unify____disjunct_info_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__scout_disjunctions____Unify____disjunction_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__scout_disjunctions____Unify____disjunction_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__scout_disjunctions____Unify____disjunction_info_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__scout_disjunctions____Unify____is_sub_disj_needed_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__scout_disjunctions____Unify____switchable_cons_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__scout_disjunctions____Unify____var_all_arms_summary_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__scout_disjunctions__init(void);
+void mercury__check_hlds__scout_disjunctions__init_type_tables(void);
+void mercury__check_hlds__scout_disjunctions__init_debugger(void);
+const char *mercury__check_hlds__scout_disjunctions__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.scout_disjunctions
+
+// :- end_interface check_hlds.scout_disjunctions.

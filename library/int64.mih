@@ -1,0 +1,357 @@
+/*
+** Automatically generated from `int64.m'
+** by the Mercury compiler,
+** version rotd-2026-08-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module int64.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_int64
+#define MR_HEADER_GUARD_int64
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef INT64_DECL_GUARD
+#define INT64_DECL_GUARD
+
+#endif
+
+
+
+MR_bool MR_CALL 
+mercury__int64__f_less_than_2_p_0(
+  int64_t param_1,
+  int64_t param_2);
+
+MR_bool MR_CALL 
+mercury__int64__f_less_or_equal_2_p_0(
+  int64_t param_1,
+  int64_t param_2);
+
+MR_bool MR_CALL 
+mercury__int64__f_greater_than_2_p_0(
+  int64_t param_1,
+  int64_t param_2);
+
+MR_bool MR_CALL 
+mercury__int64__f_greater_or_equal_2_p_0(
+  int64_t param_1,
+  int64_t param_2);
+
+MR_bool MR_CALL 
+mercury__int64__even_1_p_0(
+  int64_t param_1);
+
+MR_bool MR_CALL 
+mercury__int64__odd_1_p_0(
+  int64_t param_1);
+
+MR_bool MR_CALL 
+mercury__int64__to_int_2_p_0(
+  int64_t param_1,
+  MR_Integer * param_2);
+
+int64_t MR_CALL 
+mercury__int64__f_times_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__f_plus_1_f_0(
+  int64_t param_1);
+
+int64_t MR_CALL 
+mercury__int64__f_plus_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+void MR_CALL 
+mercury__int64__f_plus_2_f_1(
+  int64_t * param_1,
+  int64_t param_2,
+  int64_t param_3);
+
+void MR_CALL 
+mercury__int64__f_plus_2_f_2(
+  int64_t param_1,
+  int64_t * param_2,
+  int64_t param_3);
+
+int64_t MR_CALL 
+mercury__int64__f_minus_1_f_0(
+  int64_t param_1);
+
+int64_t MR_CALL 
+mercury__int64__f_minus_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+void MR_CALL 
+mercury__int64__f_minus_2_f_1(
+  int64_t * param_1,
+  int64_t param_2,
+  int64_t param_3);
+
+void MR_CALL 
+mercury__int64__f_minus_2_f_2(
+  int64_t param_1,
+  int64_t * param_2,
+  int64_t param_3);
+
+int64_t MR_CALL 
+mercury__int64__f_slash_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__f_47_47_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__f_47_92_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__f_60_60_2_f_0(
+  int64_t param_1,
+  MR_Integer param_2);
+
+int64_t MR_CALL 
+mercury__int64__f_60_60_117_2_f_0(
+  int64_t param_1,
+  MR_Unsigned param_2);
+
+int64_t MR_CALL 
+mercury__int64__f_62_62_2_f_0(
+  int64_t param_1,
+  MR_Integer param_2);
+
+int64_t MR_CALL 
+mercury__int64__f_62_62_117_2_f_0(
+  int64_t param_1,
+  MR_Unsigned param_2);
+
+int64_t MR_CALL 
+mercury__int64__f_92_1_f_0(
+  int64_t param_1);
+
+int64_t MR_CALL 
+mercury__int64__f_92_47_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__abs_1_f_0(
+  int64_t param_1);
+
+int64_t MR_CALL 
+mercury__int64__cast_from_int_1_f_0(
+  MR_Integer param_1);
+
+int64_t MR_CALL 
+mercury__int64__cast_from_uint64_1_f_0(
+  uint64_t param_1);
+
+MR_Integer MR_CALL 
+mercury__int64__cast_to_int_1_f_0(
+  int64_t param_1);
+
+int64_t MR_CALL 
+mercury__int64__clamp_3_f_0(
+  int64_t param_1,
+  int64_t param_2,
+  int64_t param_3);
+
+MR_Integer MR_CALL 
+mercury__int64__det_to_int_1_f_0(
+  int64_t param_1);
+
+int64_t MR_CALL 
+mercury__int64__div_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__from_bytes_be_8_f_0(
+  uint8_t param_1,
+  uint8_t param_2,
+  uint8_t param_3,
+  uint8_t param_4,
+  uint8_t param_5,
+  uint8_t param_6,
+  uint8_t param_7,
+  uint8_t param_8);
+
+int64_t MR_CALL 
+mercury__int64__from_bytes_le_8_f_0(
+  uint8_t param_1,
+  uint8_t param_2,
+  uint8_t param_3,
+  uint8_t param_4,
+  uint8_t param_5,
+  uint8_t param_6,
+  uint8_t param_7,
+  uint8_t param_8);
+
+int64_t MR_CALL 
+mercury__int64__from_int_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mercury__int64__int64_to_doc_1_f_0(
+  int64_t param_1);
+
+int64_t MR_CALL 
+mercury__int64__max_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__max_int64_0_f_0(void);
+
+int64_t MR_CALL 
+mercury__int64__min_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__min_int64_0_f_0(void);
+
+int64_t MR_CALL 
+mercury__int64__minus_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__mod_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__nabs_1_f_0(
+  int64_t param_1);
+
+MR_Integer MR_CALL 
+mercury__int64__num_leading_zeros_1_f_0(
+  int64_t param_1);
+
+MR_Integer MR_CALL 
+mercury__int64__num_ones_1_f_0(
+  int64_t param_1);
+
+MR_Integer MR_CALL 
+mercury__int64__num_trailing_zeros_1_f_0(
+  int64_t param_1);
+
+MR_Integer MR_CALL 
+mercury__int64__num_zeros_1_f_0(
+  int64_t param_1);
+
+int64_t MR_CALL 
+mercury__int64__plus_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__rem_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__reverse_bits_1_f_0(
+  int64_t param_1);
+
+int64_t MR_CALL 
+mercury__int64__reverse_bytes_1_f_0(
+  int64_t param_1);
+
+int64_t MR_CALL 
+mercury__int64__times_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__unchecked_abs_1_f_0(
+  int64_t param_1);
+
+int64_t MR_CALL 
+mercury__int64__unchecked_left_shift_2_f_0(
+  int64_t param_1,
+  MR_Integer param_2);
+
+int64_t MR_CALL 
+mercury__int64__unchecked_left_ushift_2_f_0(
+  int64_t param_1,
+  MR_Unsigned param_2);
+
+int64_t MR_CALL 
+mercury__int64__unchecked_quotient_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__unchecked_rem_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+int64_t MR_CALL 
+mercury__int64__unchecked_right_shift_2_f_0(
+  int64_t param_1,
+  MR_Integer param_2);
+
+int64_t MR_CALL 
+mercury__int64__unchecked_right_ushift_2_f_0(
+  int64_t param_1,
+  MR_Unsigned param_2);
+
+int64_t MR_CALL 
+mercury__int64__xor_2_f_0(
+  int64_t param_1,
+  int64_t param_2);
+
+void MR_CALL 
+mercury__int64__xor_2_f_1(
+  int64_t param_1,
+  int64_t * param_2,
+  int64_t param_3);
+
+void MR_CALL 
+mercury__int64__xor_2_f_2(
+  int64_t * param_1,
+  int64_t param_2,
+  int64_t param_3);
+
+void mercury__int64__init(void);
+void mercury__int64__init_type_tables(void);
+void mercury__int64__init_debugger(void);
+const char *mercury__int64__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_int64
+
+// :- end_interface int64.

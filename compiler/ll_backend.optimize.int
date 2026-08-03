@@ -1,0 +1,14 @@
+:- module ll_backend.optimize.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module libs.globals.
+:- use_module ll_backend.global_data.
+:- use_module ll_backend.llds.
+:- use_module mdbcomp.sym_name.
+:- pred optimize_proc(io.text_output_stream, libs.globals.globals, mdbcomp.sym_name.module_name, ll_backend.global_data.global_data, ll_backend.llds.c_procedure, ll_backend.llds.c_procedure).
+:- mode optimize_proc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred optimize_procs(io.text_output_stream, libs.globals.globals, mdbcomp.sym_name.module_name, ll_backend.global_data.global_data, list.list(ll_backend.llds.c_procedure), list.list(ll_backend.llds.c_procedure)).
+:- mode optimize_procs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

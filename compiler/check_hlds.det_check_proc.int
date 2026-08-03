@@ -1,0 +1,15 @@
+:- module check_hlds.det_check_proc.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.error_spec.
+:- pred check_determinism_of_imported_procs(io.text_output_stream, hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_proc_id), list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode check_determinism_of_imported_procs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred check_determinism_of_proc(io.text_output_stream, hlds.hlds_pred.pred_proc_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode check_determinism_of_proc(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred check_determinism_of_procs(io.text_output_stream, list.list(hlds.hlds_pred.pred_proc_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode check_determinism_of_procs(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

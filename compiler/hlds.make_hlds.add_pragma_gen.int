@@ -1,0 +1,15 @@
+:- module (hlds.make_hlds).add_pragma_gen.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_item.
+:- pred add_gen_pragma_exceptions(parse_tree.prog_item.gen_pragma_exceptions_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode add_gen_pragma_exceptions(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_gen_pragma_mm_tabling(parse_tree.prog_item.gen_pragma_mm_tabling_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode add_gen_pragma_mm_tabling(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_gen_pragma_trailing(parse_tree.prog_item.gen_pragma_trailing_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode add_gen_pragma_trailing(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_gen_pragma_unused_args(parse_tree.prog_item.gen_pragma_unused_args_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode add_gen_pragma_unused_args(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

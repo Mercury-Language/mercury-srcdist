@@ -1,0 +1,21 @@
+:- module parse_tree.d_file_deps.
+:- interface.
+:- type avail_module_sets
+    --->    avail_module_sets(
+                 (parse_tree.d_file_deps).am_ancestors :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).am_direct_imports :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).am_indirect_imports :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).am_imports_in_ancestors :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).am_int_for_opt_imports :: set.set(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).am_implicit_imports :: set.set(mdbcomp.sym_name.module_name)
+            ).
+:- type dep_graphs
+    --->    dep_graphs(
+                 (parse_tree.d_file_deps).int_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).imp_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).indirect_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).indirect_opt_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).trans_opt_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).trans_opt_order :: list.list(mdbcomp.sym_name.module_name),
+                 (parse_tree.d_file_deps).all_deps_graph :: digraph.digraph(mdbcomp.sym_name.module_name)
+            ).
