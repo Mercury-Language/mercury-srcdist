@@ -1,0 +1,163 @@
+:- module hlds.hlds_clauses.
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module term.
+:- use_module hlds.hlds_args.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.hlds_rtti.
+:- use_module mdbcomp.prim_data.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_table.
+:- use_module parse_tree.vartypes.
+:- type clause
+    --->    clause(
+                 (hlds.hlds_clauses).clause_applicable_procs :: hlds.hlds_clauses.clause_applicable_modes,
+                 (hlds.hlds_clauses).clause_body :: hlds.hlds_goal.hlds_goal,
+                 (hlds.hlds_clauses).clause_lang :: hlds.hlds_pred.implementation_language,
+                 (hlds.hlds_clauses).clause_context :: parse_tree.prog_data.prog_context,
+                 (hlds.hlds_clauses).clause_statevar_warnings :: list.list(parse_tree.error_spec.warn_spec),
+                 (hlds.hlds_clauses).clause_unused_svar_arg_map :: hlds.hlds_clauses.unused_statevar_arg_map,
+                 (hlds.hlds_clauses).clause_maybe_fact :: hlds.hlds_clauses.is_clause_a_fact
+            ).
+:- type clause_applicable_modes
+    --->    all_modes 
+    ;       selected_modes(
+                 list.list(hlds.hlds_pred.proc_id)
+            )
+    ;       unify_in_in_modes 
+    ;       unify_non_in_in_modes .
+:- type clause_init_types
+    --->    cit_no_types(
+                 parse_tree.prog_data.pred_form_arity
+            )
+    ;       cit_types(
+                 list.list(parse_tree.prog_data.mer_type)
+            ).
+:- type clause_item_number_region
+    --->    clause_item_number_region(
+                 (hlds.hlds_clauses).cnr_lower_item_number :: int,
+                 (hlds.hlds_clauses).cnr_upper_item_number :: int,
+                 (hlds.hlds_clauses).cnr_lower_item_context :: term.context,
+                 (hlds.hlds_clauses).cnr_upper_item_context :: term.context
+            ).
+:- type clause_item_number_type
+    --->    item_is_clause 
+    ;       item_is_foreign_proc .
+:- type clause_item_number_types
+    --->    only_clauses 
+    ;       clauses_and_foreign_procs .
+:- type clause_item_numbers.
+:- type clauses_info
+    --->    clauses_info(
+                 (hlds.hlds_clauses).cli_varset :: parse_tree.prog_data.prog_varset,
+                 (hlds.hlds_clauses).cli_explicit_vartypes :: parse_tree.vartypes.vartypes,
+                 (hlds.hlds_clauses).cli_var_table :: parse_tree.var_table.var_table,
+                 (hlds.hlds_clauses).cli_rtti_varmaps :: hlds.hlds_rtti.rtti_varmaps,
+                 (hlds.hlds_clauses).cli_tvar_name_map :: parse_tree.prog_data.tvar_name_map,
+                 (hlds.hlds_clauses).cli_arg_vector :: hlds.hlds_args.proc_arg_vector(parse_tree.prog_data.prog_var),
+                 (hlds.hlds_clauses).cli_rep :: hlds.hlds_clauses.clauses_rep,
+                 (hlds.hlds_clauses).cli_item_numbers :: hlds.hlds_clauses.clause_item_numbers,
+                 (hlds.hlds_clauses).cli_have_foreign_clauses :: hlds.hlds_clauses.maybe_foreign_lang_clauses,
+                 (hlds.hlds_clauses).cli_had_syntax_errors :: hlds.hlds_clauses.maybe_clause_syntax_errors
+            ).
+:- type clauses_rep.
+:- type init_or_final_arg
+    --->    init_arg_only 
+    ;       init_and_final_arg(
+                 uint
+            )
+    ;       final_arg_only .
+:- type is_clause_a_fact
+    --->    clause_is_not_a_fact 
+    ;       clause_is_a_fact .
+:- type maybe_clause_syntax_errors
+    --->    no_clause_syntax_errors 
+    ;       some_clause_syntax_errors .
+:- type maybe_foreign_lang_clauses
+    --->    no_foreign_lang_clauses 
+    ;       some_foreign_lang_clauses .
+:- type regions_with_gaps
+    --->    regions_with_gaps(
+                 (hlds.hlds_clauses).rwg_first_region :: hlds.hlds_clauses.clause_item_number_region,
+                 (hlds.hlds_clauses).rwg_second_region :: hlds.hlds_clauses.clause_item_number_region,
+                 (hlds.hlds_clauses).rwg_laterd_regions :: list.list(hlds.hlds_clauses.clause_item_number_region)
+            ).
+:- type statevar_arg_desc
+    --->    statevar_arg_desc(
+                 hlds.hlds_clauses.init_or_final_arg,
+                 string
+            ).
+:- type unused_statevar_arg_map == map.map(uint, hlds.hlds_clauses.statevar_arg_desc).
+:- pred add_clause(hlds.hlds_clauses.clause, hlds.hlds_clauses.clauses_rep, hlds.hlds_clauses.clauses_rep).
+:- mode add_clause(builtin.in, builtin.in, builtin.out) is det.
+:- pred add_clause_item_number(parse_tree.prog_data.item_seq_num, term.context, hlds.hlds_clauses.clause_item_number_type, hlds.hlds_clauses.clause_item_numbers, hlds.hlds_clauses.clause_item_numbers).
+:- mode add_clause_item_number(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func clause_body(hlds.hlds_clauses.clause) = hlds.hlds_goal.hlds_goal.
+:- pred clause_item_number_regions(hlds.hlds_clauses.clause_item_numbers, hlds.hlds_clauses.clause_item_number_types, list.list(hlds.hlds_clauses.clause_item_number_region)).
+:- mode clause_item_number_regions(builtin.in, builtin.in, builtin.out) is det.
+:- func clause_list_is_empty(hlds.hlds_clauses.clauses_rep) = bool.bool.
+:- pred clauses_are_non_contiguous(hlds.hlds_clauses.clause_item_numbers, hlds.hlds_clauses.clause_item_number_types, hlds.hlds_clauses.regions_with_gaps).
+:- mode clauses_are_non_contiguous(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred clauses_info_clauses(list.list(hlds.hlds_clauses.clause), hlds.hlds_clauses.clause_item_numbers, hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info).
+:- mode clauses_info_clauses(builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred clauses_info_get_arg_vector(hlds.hlds_clauses.clauses_info, hlds.hlds_args.proc_arg_vector(parse_tree.prog_data.prog_var)).
+:- mode clauses_info_get_arg_vector(builtin.in, builtin.out) is det.
+:- pred clauses_info_get_clauses_rep(hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_rep, hlds.hlds_clauses.clause_item_numbers).
+:- mode clauses_info_get_clauses_rep(builtin.in, builtin.out, builtin.out) is det.
+:- pred clauses_info_get_explicit_vartypes(hlds.hlds_clauses.clauses_info, parse_tree.vartypes.vartypes).
+:- mode clauses_info_get_explicit_vartypes(builtin.in, builtin.out) is det.
+:- pred clauses_info_get_had_syntax_errors(hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.maybe_clause_syntax_errors).
+:- mode clauses_info_get_had_syntax_errors(builtin.in, builtin.out) is det.
+:- pred clauses_info_get_have_foreign_clauses(hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.maybe_foreign_lang_clauses).
+:- mode clauses_info_get_have_foreign_clauses(builtin.in, builtin.out) is det.
+:- pred clauses_info_get_headvar_list(hlds.hlds_clauses.clauses_info, list.list(parse_tree.prog_data.prog_var)).
+:- mode clauses_info_get_headvar_list(builtin.in, builtin.out) is det.
+:- pred clauses_info_get_rtti_varmaps(hlds.hlds_clauses.clauses_info, hlds.hlds_rtti.rtti_varmaps).
+:- mode clauses_info_get_rtti_varmaps(builtin.in, builtin.out) is det.
+:- pred clauses_info_get_tvar_name_map(hlds.hlds_clauses.clauses_info, parse_tree.prog_data.tvar_name_map).
+:- mode clauses_info_get_tvar_name_map(builtin.in, builtin.out) is det.
+:- pred clauses_info_get_var_table(hlds.hlds_clauses.clauses_info, parse_tree.var_table.var_table).
+:- mode clauses_info_get_var_table(builtin.in, builtin.out) is det.
+:- pred clauses_info_get_varset(hlds.hlds_clauses.clauses_info, parse_tree.prog_data.prog_varset).
+:- mode clauses_info_get_varset(builtin.in, builtin.out) is det.
+:- pred clauses_info_init(mdbcomp.prim_data.pred_or_func, hlds.hlds_clauses.clause_init_types, hlds.hlds_clauses.clause_item_numbers, hlds.hlds_clauses.clauses_info).
+:- mode clauses_info_init(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred clauses_info_init_for_assertion(list.list(parse_tree.prog_data.prog_var), hlds.hlds_clauses.clauses_info).
+:- mode clauses_info_init_for_assertion(builtin.in, builtin.out) is det.
+:- pred clauses_info_set_arg_vector(hlds.hlds_args.proc_arg_vector(parse_tree.prog_data.prog_var), hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info).
+:- mode clauses_info_set_arg_vector(builtin.in, builtin.in, builtin.out) is det.
+:- pred clauses_info_set_clauses_rep(hlds.hlds_clauses.clauses_rep, hlds.hlds_clauses.clause_item_numbers, hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info).
+:- mode clauses_info_set_clauses_rep(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred clauses_info_set_explicit_vartypes(parse_tree.vartypes.vartypes, hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info).
+:- mode clauses_info_set_explicit_vartypes(builtin.in, builtin.in, builtin.out) is det.
+:- pred clauses_info_set_have_foreign_clauses(hlds.hlds_clauses.maybe_foreign_lang_clauses, hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info).
+:- mode clauses_info_set_have_foreign_clauses(builtin.in, builtin.in, builtin.out) is det.
+:- pred clauses_info_set_rtti_varmaps(hlds.hlds_rtti.rtti_varmaps, hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info).
+:- mode clauses_info_set_rtti_varmaps(builtin.in, builtin.in, builtin.out) is det.
+:- pred clauses_info_set_tvar_name_map(parse_tree.prog_data.tvar_name_map, hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info).
+:- mode clauses_info_set_tvar_name_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred clauses_info_set_var_table(parse_tree.var_table.var_table, hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info).
+:- mode clauses_info_set_var_table(builtin.in, builtin.in, builtin.out) is det.
+:- pred clauses_info_set_varset(parse_tree.prog_data.prog_varset, hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info).
+:- mode clauses_info_set_varset(builtin.in, builtin.in, builtin.out) is det.
+:- pred get_clause_list(list.list(hlds.hlds_clauses.clause), hlds.hlds_clauses.clauses_rep, hlds.hlds_clauses.clauses_rep).
+:- mode get_clause_list(builtin.out, builtin.in, builtin.out) is det.
+:- pred get_clause_list_for_replacement(hlds.hlds_clauses.clauses_rep, list.list(hlds.hlds_clauses.clause)).
+:- mode get_clause_list_for_replacement(builtin.in, builtin.out) is det.
+:- pred get_clause_list_maybe_repeated(hlds.hlds_clauses.clauses_rep, list.list(hlds.hlds_clauses.clause)).
+:- mode get_clause_list_maybe_repeated(builtin.in, builtin.out) is det.
+:- pred get_first_clause(hlds.hlds_clauses.clauses_rep, hlds.hlds_clauses.clause).
+:- mode get_first_clause(builtin.in, builtin.out) is semidet.
+:- func init_clause_item_numbers_comp_gen = hlds.hlds_clauses.clause_item_numbers.
+:- func init_clause_item_numbers_user = hlds.hlds_clauses.clause_item_numbers.
+:- func init_clauses_rep = hlds.hlds_clauses.clauses_rep.
+:- func init_unused_statevar_arg_map = hlds.hlds_clauses.unused_statevar_arg_map.
+:- func num_clauses_in_clauses_rep(hlds.hlds_clauses.clauses_rep) = int.
+:- pred set_clause_list(list.list(hlds.hlds_clauses.clause), hlds.hlds_clauses.clauses_rep).
+:- mode set_clause_list(builtin.in, builtin.out) is det.

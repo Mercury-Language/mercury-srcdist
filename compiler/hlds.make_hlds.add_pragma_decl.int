@@ -1,0 +1,26 @@
+:- module (hlds.make_hlds).add_pragma_decl.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_item.
+:- use_module (hlds.make_hlds).make_hlds_types.
+:- use_module (hlds.make_hlds).qual_info.
+:- pred add_decl_markers(hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.item_decl_marker_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec)).
+:- mode add_decl_markers(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_decl_pragmas(io.text_output_stream, hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.item_decl_pragma_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.info_spec), list.list(parse_tree.error_spec.info_spec)).
+:- mode add_decl_pragmas(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_decl_pragmas_reuse(list.list(parse_tree.prog_item.decl_pragma_struct_reuse_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode add_decl_pragmas_reuse(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_decl_pragmas_sharing(list.list(parse_tree.prog_item.decl_pragma_struct_sharing_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode add_decl_pragmas_sharing(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_decl_pragmas_termination(list.list(parse_tree.prog_item.decl_pragma_termination_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode add_decl_pragmas_termination(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_decl_pragmas_termination2(list.list(parse_tree.prog_item.decl_pragma_termination2_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode add_decl_pragmas_termination2(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_decl_pragmas_type_spec(list.list(parse_tree.prog_item.decl_pragma_type_spec_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec)).
+:- mode add_decl_pragmas_type_spec(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred add_decl_pragmas_type_spec_constr(io.text_output_stream, list.list(parse_tree.prog_item.decl_pragma_type_spec_constr_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.info_spec), list.list(parse_tree.error_spec.info_spec)).
+:- mode add_decl_pragmas_type_spec_constr(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

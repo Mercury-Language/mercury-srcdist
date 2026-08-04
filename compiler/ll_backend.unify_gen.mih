@@ -1,0 +1,64 @@
+/*
+** Automatically generated from `unify_gen.m'
+** by the Mercury compiler,
+** version rotd-2026-08-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.unify_gen.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__unify_gen
+#define MR_HEADER_GUARD_ll_backend__unify_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__UNIFY_GEN_DECL_GUARD
+#define LL_BACKEND__UNIFY_GEN_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+void MR_CALL 
+ll_backend__unify_gen__generate_unification_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void mercury__ll_backend__unify_gen__init(void);
+void mercury__ll_backend__unify_gen__init_type_tables(void);
+void mercury__ll_backend__unify_gen__init_debugger(void);
+const char *mercury__ll_backend__unify_gen__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.unify_gen
+
+// :- end_interface ll_backend.unify_gen.
