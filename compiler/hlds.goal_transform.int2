@@ -1,0 +1,13 @@
+:- module hlds.goal_transform.
+:- interface.
+:- type attach_in_from_ground_term
+    --->    attach_in_from_ground_term 
+    ;       do_not_attach_in_from_ground_term .
+:- type maybe_transformed_goal
+    --->    ok(
+                 hlds.hlds_goal.hlds_goal
+            )
+    ;       error(
+                 string
+            )
+    ;       goal_not_found .

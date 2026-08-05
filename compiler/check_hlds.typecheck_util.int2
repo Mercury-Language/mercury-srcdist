@@ -1,0 +1,16 @@
+:- module check_hlds.typecheck_util.
+:- interface.
+:- type du_type_info
+    --->    du_type_info(
+                 parse_tree.prog_data.type_ctor,
+                 list.list(parse_tree.prog_data.mer_type),
+                 hlds.hlds_data.hlds_type_defn,
+                 hlds.hlds_data.type_body_du
+            ).
+:- type maybe_du_type
+    --->    is_du_type(
+                 check_hlds.typecheck_util.du_type_info
+            )
+    ;       is_not_du_type(
+                 string
+            ).

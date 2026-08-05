@@ -1,0 +1,7 @@
+:- module (parse_tree.module_qual).collect_mq_info.
+:- interface.
+:- type int3_role
+    --->    int3_as_src 
+    ;       int3_as_direct_int(
+                 parse_tree.prog_parse_tree.read_why_int3
+            ).
