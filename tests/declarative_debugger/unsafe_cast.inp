@@ -1,0 +1,9 @@
+echo on
+context none
+
+f
+dd -d 3 -n 7
+b 1
+mark
+yes
+c

@@ -1,0 +1,2 @@
+:- module hlds.implementation_defined_literals.
+:- interface.

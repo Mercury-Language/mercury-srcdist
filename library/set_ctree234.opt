@@ -1,0 +1,870 @@
+:- module set_ctree234.
+:- use_module bool.
+:- use_module builtin.
+:- use_module cord.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module term.
+:- use_module uint.
+:- use_module string.format.
+:- use_module string.parse_util.
+
+:- type maybe_reduced_height
+    --->    did_not_reduce_height 
+    ;       reduced_height .
+:- type set_ctree234(T)
+    --->    ct(
+                 int,
+                 set_ctree234.set_tree234(T)
+            ).
+:- type set_tree234(T)
+    --->    empty 
+    ;       two(
+                 T,
+                 set_ctree234.set_tree234(T),
+                 set_ctree234.set_tree234(T)
+            )
+    ;       three(
+                 T,
+                 T,
+                 set_ctree234.set_tree234(T),
+                 set_ctree234.set_tree234(T),
+                 set_ctree234.set_tree234(T)
+            )
+    ;       four(
+                 T,
+                 T,
+                 T,
+                 set_ctree234.set_tree234(T),
+                 set_ctree234.set_tree234(T),
+                 set_ctree234.set_tree234(T),
+                 set_ctree234.set_tree234(T)
+            ).
+
+:- inst four(E, T) for set_ctree234.set_tree234/1
+    --->    four(E, E, E, T, T, T, T).
+:- inst three(E, T) for set_ctree234.set_tree234/1
+    --->    three(E, E, T, T, T).
+:- inst two(E, T) for set_ctree234.set_tree234/1
+    --->    two(E, T, T).
+
+:- mode (in_four) == builtin.in(set_ctree234.four(ground, ground)).
+:- mode (in_three) == builtin.in(set_ctree234.three(ground, ground)).
+:- mode (in_two) == builtin.in(set_ctree234.two(ground, ground)).
+:- mode (out_two) == builtin.out(set_ctree234.two(ground, ground)).
+
+:- pred set_ctree234.all_true_tree((pred T), set_ctree234.set_tree234(T)).
+:- mode all_true_tree(builtin.in((pred(builtin.in) is semidet)), builtin.in) is semidet.
+:- pred set_ctree234.do_contains(set_ctree234.set_tree234(T), T).
+:- mode do_contains(builtin.in, builtin.in) is semidet.
+:- pragma inline(pred(set_ctree234.do_contains/2)).
+:- pred set_ctree234.do_delete(T, int, set_ctree234.set_tree234(T), set_ctree234.set_tree234(T), set_ctree234.maybe_reduced_height).
+:- mode do_delete(builtin.in, builtin.out, builtin.in, builtin.out, builtin.out) is det.
+:- pragma type_spec(pred(set_ctree234.do_delete/5), T = term.var(Anon1)).
+:- pred set_ctree234.do_delete_list(list.list(T), int, int, set_ctree234.set_tree234(T), set_ctree234.set_tree234(T)).
+:- mode do_delete_list(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred set_ctree234.do_difference(set_ctree234.set_tree234(T), int, int, set_ctree234.set_tree234(T), set_ctree234.set_tree234(T)).
+:- mode do_difference(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pragma type_spec(pred(set_ctree234.do_difference/5), T = term.var(Anon1)).
+:- pred set_ctree234.do_divide((pred T), set_ctree234.set_tree234(T), list.list(T), list.list(T), list.list(T), list.list(T)).
+:- mode do_divide(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pragma type_spec(pred(set_ctree234.do_divide/6), T = term.var(Anon1)).
+:- pred set_ctree234.do_fold2_pred(pred(T, A, A, B, B), set_ctree234.set_tree234(T), A, A, B, B).
+:- mode do_fold2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode do_fold2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode do_fold2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode do_fold2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode do_fold2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode do_fold2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred set_ctree234.do_fold3_pred(pred(T, A, A, B, B, C, C), set_ctree234.set_tree234(T), A, A, B, B, C, C).
+:- mode do_fold3_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode do_fold3_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode do_fold3_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode do_fold3_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode do_fold3_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode do_fold3_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred set_ctree234.do_fold4_pred(pred(T, A, A, B, B, C, C, D, D), set_ctree234.set_tree234(T), A, A, B, B, C, C, D, D).
+:- mode do_fold4_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode do_fold4_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode do_fold4_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode do_fold4_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode do_fold4_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode do_fold4_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred set_ctree234.do_fold5_pred(pred(T, A, A, B, B, C, C, D, D, E, E), set_ctree234.set_tree234(T), A, A, B, B, C, C, D, D, E, E).
+:- mode do_fold5_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode do_fold5_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode do_fold5_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode do_fold5_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode do_fold5_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode do_fold5_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred set_ctree234.do_fold6_pred(pred(T, A, A, B, B, C, C, D, D, E, E, F, F), set_ctree234.set_tree234(T), A, A, B, B, C, C, D, D, E, E, F, F).
+:- mode do_fold6_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode do_fold6_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode do_fold6_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode do_fold6_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode do_fold6_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode do_fold6_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred set_ctree234.do_fold_func((func(T, A) = A), set_ctree234.set_tree234(T), A, A).
+:- mode do_fold_func(builtin.in((func(builtin.in, builtin.in) = builtin.out is det)), builtin.in, builtin.in, builtin.out) is det.
+:- pred set_ctree234.do_fold_pred(pred(T, A, A), set_ctree234.set_tree234(T), A, A).
+:- mode do_fold_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode do_fold_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode do_fold_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode do_fold_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode do_fold_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode do_fold_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- pred set_ctree234.do_insert(T, int, set_ctree234.set_tree234(T), set_ctree234.set_tree234(T)).
+:- mode do_insert(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pragma type_spec(pred(set_ctree234.do_insert/4), T = term.var(Anon1)).
+:- pred set_ctree234.do_insert_list(list.list(T), int, int, set_ctree234.set_tree234(T), set_ctree234.set_tree234(T)).
+:- mode do_insert_list(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pragma type_spec(pred(set_ctree234.do_insert_list/5), T = term.var(Anon1)).
+:- pred set_ctree234.do_insert_new(T, set_ctree234.set_tree234(T), set_ctree234.set_tree234(T)).
+:- mode do_insert_new(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred set_ctree234.do_is_member(set_ctree234.set_tree234(T), T, bool.bool).
+:- mode do_is_member(builtin.in, builtin.in, builtin.out) is det.
+:- pragma type_spec(pred(set_ctree234.do_is_member/3), T = term.var(Anon1)).
+:- pred set_ctree234.do_list_to_set(list.list(T), int, int, set_ctree234.set_tree234(T), set_ctree234.set_tree234(T)).
+:- mode do_list_to_set(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pragma type_spec(pred(set_ctree234.do_list_to_set/5), T = term.var(Anon1)).
+:- pred set_ctree234.do_one_member(set_ctree234.set_tree234(T), T).
+:- mode do_one_member(builtin.in, builtin.out) is nondet.
+:- pred set_ctree234.do_remove(T, set_ctree234.set_tree234(T), set_ctree234.set_tree234(T), set_ctree234.maybe_reduced_height).
+:- mode do_remove(builtin.in, builtin.in, builtin.out, builtin.out) is semidet.
+:- pragma type_spec(pred(set_ctree234.do_remove/4), T = term.var(Anon1)).
+:- pred set_ctree234.do_remove_least(set_ctree234.set_tree234(T), T, set_ctree234.set_tree234(T), set_ctree234.maybe_reduced_height).
+:- mode do_remove_least(builtin.in, builtin.out, builtin.out, builtin.out) is semidet.
+:- pragma type_spec(pred(set_ctree234.do_remove_least/4), T = term.var(Anon1)).
+:- pred set_ctree234.do_remove_list(list.list(T), int, int, set_ctree234.set_tree234(T), set_ctree234.set_tree234(T)).
+:- mode do_remove_list(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- pred set_ctree234.do_subset(set_ctree234.set_tree234(T), set_ctree234.set_tree234(T)).
+:- mode do_subset(builtin.in, builtin.in) is semidet.
+:- pragma type_spec(pred(set_ctree234.do_subset/2), T = term.var(Anon1)).
+:- pred set_ctree234.do_to_sorted_list(set_ctree234.set_tree234(T), list.list(T), list.list(T)).
+:- mode do_to_sorted_list(builtin.in, builtin.in, builtin.out) is det.
+:- pragma type_spec(pred(set_ctree234.do_to_sorted_list/3), T = term.var(Anon1)).
+:- pred set_ctree234.do_union(set_ctree234.set_tree234(T), int, int, set_ctree234.set_tree234(T), set_ctree234.set_tree234(T)).
+:- mode do_union(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pragma type_spec(pred(set_ctree234.do_union/5), T = term.var(Anon1)).
+:- pred set_ctree234.do_verify_depths(set_ctree234.set_tree234(T), int, list.list(int), list.list(int)).
+:- mode do_verify_depths(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred set_ctree234.filter_map_func(((func T1) = T2), set_ctree234.set_tree234(T1), list.list(T2), list.list(T2)).
+:- mode filter_map_func(builtin.in((func(builtin.in) = builtin.out is semidet)), builtin.in, builtin.in, builtin.out) is det.
+:- pred set_ctree234.filter_map_pred(pred(T1, T2), set_ctree234.set_tree234(T1), list.list(T2), list.list(T2)).
+:- mode filter_map_pred(builtin.in((pred(builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is det.
+:- pred set_ctree234.map_func(((func T1) = T2), set_ctree234.set_tree234(T1), list.list(T2), list.list(T2)).
+:- mode map_func(builtin.in((func(builtin.in) = builtin.out is det)), builtin.in, builtin.in, builtin.out) is det.
+:- pred set_ctree234.map_pred(pred(T1, T2), set_ctree234.set_tree234(T1), list.list(T2), list.list(T2)).
+:- mode map_pred(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- pred set_ctree234.sets_to_sorted_lists(list.list(set_ctree234.set_ctree234(T)), list.list(list.list(T))).
+:- mode sets_to_sorted_lists(builtin.in, builtin.out) is det.
+
+set_ctree234.all_true(V_3, set_ctree234.ct(V_4, V_5)) :-
+    set_ctree234.all_true_tree(V_3, V_5).
+
+set_ctree234.all_true_tree(V_3, V_4) :-
+    ( % disjunction
+      V_4 = set_ctree234.empty : set_ctree234.set_tree234(T_1)
+    ;
+      V_4 = set_ctree234.two(V_5, V_6, V_7) : set_ctree234.set_tree234(T_1),
+      set_ctree234.all_true_tree(V_3, V_6),
+      call(V_3, V_5),
+      set_ctree234.all_true_tree(V_3, V_7)
+    ;
+      V_4 = set_ctree234.three(V_12, V_8, V_13, V_14, V_9) : set_ctree234.set_tree234(T_1),
+      set_ctree234.all_true_tree(V_3, V_13),
+      call(V_3, V_12),
+      set_ctree234.all_true_tree(V_3, V_14),
+      call(V_3, V_8),
+      set_ctree234.all_true_tree(V_3, V_9)
+    ;
+      V_4 = set_ctree234.four(V_15, V_18, V_10, V_16, V_17, V_19, V_11) : set_ctree234.set_tree234(T_1),
+      set_ctree234.all_true_tree(V_3, V_16),
+      call(V_3, V_15),
+      set_ctree234.all_true_tree(V_3, V_17),
+      call(V_3, V_18),
+      set_ctree234.all_true_tree(V_3, V_19),
+      call(V_3, V_10),
+      set_ctree234.all_true_tree(V_3, V_11)
+    ).
+
+set_ctree234.contains(set_ctree234.ct(V_3, V_4), V_5) :-
+    set_ctree234.do_contains(V_4, V_5).
+
+set_ctree234.delete(V_4, V_5) = V_6 :-
+    set_ctree234.delete(V_4, V_5, V_6).
+
+set_ctree234.delete(V_4, set_ctree234.ct(V_5, V_6), set_ctree234.ct(V_7, V_8)) :-
+    set_ctree234.do_delete(V_4, V_9, V_6, V_8, V_10),
+    V_7 = int.(V_5 - V_9).
+
+set_ctree234.delete_list(V_4, V_5) = V_6 :-
+    set_ctree234.delete_list(V_4, V_5, V_6).
+
+set_ctree234.delete_list(V_4, set_ctree234.ct(V_5, V_6), set_ctree234.ct(V_7, V_8)) :-
+    set_ctree234.do_delete_list(V_4, V_5, V_7, V_6, V_8).
+
+set_ctree234.difference(V_4, V_5) = V_6 :-
+    set_ctree234.difference(V_4, V_5, V_6).
+
+set_ctree234.difference(set_ctree234.ct(V_4, V_5), set_ctree234.ct(V_6, V_7), set_ctree234.ct(V_8, V_9)) :-
+    set_ctree234.do_difference(V_7, V_4, V_8, V_5, V_9).
+
+set_ctree234.divide(V_5, set_ctree234.ct(V_6, V_7), V_8, V_9) :-
+    V_12 = list.[] : list.list(T_1),
+    V_13 = list.[] : list.list(T_1),
+    set_ctree234.do_divide(V_5, V_7, V_12, V_10, V_13, V_11),
+    V_8 = set_ctree234.rev_sorted_list_to_set(V_10),
+    V_9 = set_ctree234.rev_sorted_list_to_set(V_11).
+
+set_ctree234.divide_by_set(V_5, V_6, V_7, V_8) :-
+    V_9 = set_ctree234.contains(V_5) : (pred T_1),
+    set_ctree234.divide(V_9, V_6, V_7, V_8).
+
+:- pragma inline(pred(set_ctree234.do_contains/2)).
+set_ctree234.do_contains(V_3, V_4) :-
+    V_5 = bool.yes : bool.bool,
+    set_ctree234.do_is_member(V_3, V_4, V_5).
+
+set_ctree234.do_fold2_pred(V_7, set_ctree234.empty, V_10, V_11, V_12, V_13) :-
+    V_13 = V_12,
+    V_11 = V_10.
+set_ctree234.do_fold2_pred(V_14, set_ctree234.two(V_15, V_16, V_17), V_20, V_21, V_22, V_23) :-
+    set_ctree234.do_fold2_pred(V_14, V_16, V_20, V_24, V_22, V_25),
+    call(V_14, V_15, V_24, V_26, V_25, V_27),
+    set_ctree234.do_fold2_pred(V_14, V_17, V_26, V_21, V_27, V_23).
+set_ctree234.do_fold2_pred(V_30, set_ctree234.three(V_31, V_32, V_33, V_34, V_35), V_38, V_39, V_40, V_41) :-
+    set_ctree234.do_fold2_pred(V_30, V_33, V_38, V_42, V_40, V_43),
+    call(V_30, V_31, V_42, V_44, V_43, V_45),
+    set_ctree234.do_fold2_pred(V_30, V_34, V_44, V_46, V_45, V_47),
+    call(V_30, V_32, V_46, V_48, V_47, V_49),
+    set_ctree234.do_fold2_pred(V_30, V_35, V_48, V_39, V_49, V_41).
+set_ctree234.do_fold2_pred(V_52, set_ctree234.four(V_53, V_54, V_55, V_56, V_57, V_58, V_59), V_62, V_63, V_64, V_65) :-
+    set_ctree234.do_fold2_pred(V_52, V_56, V_62, V_66, V_64, V_67),
+    call(V_52, V_53, V_66, V_68, V_67, V_69),
+    set_ctree234.do_fold2_pred(V_52, V_57, V_68, V_70, V_69, V_71),
+    call(V_52, V_54, V_70, V_72, V_71, V_73),
+    set_ctree234.do_fold2_pred(V_52, V_58, V_72, V_74, V_73, V_75),
+    call(V_52, V_55, V_74, V_76, V_75, V_77),
+    set_ctree234.do_fold2_pred(V_52, V_59, V_76, V_63, V_77, V_65).
+
+set_ctree234.do_fold_func(V_5, set_ctree234.empty, V_7, V_8) :-
+    V_8 = V_7.
+set_ctree234.do_fold_func(V_9, set_ctree234.two(V_10, V_11, V_12), V_14, V_15) :-
+    set_ctree234.do_fold_func(V_9, V_11, V_14, V_16),
+    V_17 = apply(V_9, V_10, V_16),
+    set_ctree234.do_fold_func(V_9, V_12, V_17, V_15).
+set_ctree234.do_fold_func(V_19, set_ctree234.three(V_20, V_21, V_22, V_23, V_24), V_26, V_27) :-
+    set_ctree234.do_fold_func(V_19, V_22, V_26, V_28),
+    V_29 = apply(V_19, V_20, V_28),
+    set_ctree234.do_fold_func(V_19, V_23, V_29, V_30),
+    V_31 = apply(V_19, V_21, V_30),
+    set_ctree234.do_fold_func(V_19, V_24, V_31, V_27).
+set_ctree234.do_fold_func(V_33, set_ctree234.four(V_34, V_35, V_36, V_37, V_38, V_39, V_40), V_42, V_43) :-
+    set_ctree234.do_fold_func(V_33, V_37, V_42, V_44),
+    V_45 = apply(V_33, V_34, V_44),
+    set_ctree234.do_fold_func(V_33, V_38, V_45, V_46),
+    V_47 = apply(V_33, V_35, V_46),
+    set_ctree234.do_fold_func(V_33, V_39, V_47, V_48),
+    V_49 = apply(V_33, V_36, V_48),
+    set_ctree234.do_fold_func(V_33, V_40, V_49, V_43).
+
+set_ctree234.do_fold_pred(V_5, set_ctree234.empty, V_7, V_8) :-
+    V_8 = V_7.
+set_ctree234.do_fold_pred(V_9, set_ctree234.two(V_10, V_11, V_12), V_14, V_15) :-
+    set_ctree234.do_fold_pred(V_9, V_11, V_14, V_16),
+    call(V_9, V_10, V_16, V_17),
+    set_ctree234.do_fold_pred(V_9, V_12, V_17, V_15).
+set_ctree234.do_fold_pred(V_19, set_ctree234.three(V_20, V_21, V_22, V_23, V_24), V_26, V_27) :-
+    set_ctree234.do_fold_pred(V_19, V_22, V_26, V_28),
+    call(V_19, V_20, V_28, V_29),
+    set_ctree234.do_fold_pred(V_19, V_23, V_29, V_30),
+    call(V_19, V_21, V_30, V_31),
+    set_ctree234.do_fold_pred(V_19, V_24, V_31, V_27).
+set_ctree234.do_fold_pred(V_33, set_ctree234.four(V_34, V_35, V_36, V_37, V_38, V_39, V_40), V_42, V_43) :-
+    set_ctree234.do_fold_pred(V_33, V_37, V_42, V_44),
+    call(V_33, V_34, V_44, V_45),
+    set_ctree234.do_fold_pred(V_33, V_38, V_45, V_46),
+    call(V_33, V_35, V_46, V_47),
+    set_ctree234.do_fold_pred(V_33, V_39, V_47, V_48),
+    call(V_33, V_36, V_48, V_49),
+    set_ctree234.do_fold_pred(V_33, V_40, V_49, V_43).
+
+set_ctree234.filter(V_4, V_5, V_6) :-
+    set_ctree234.divide(V_4, V_5, V_6, V_7).
+
+set_ctree234.filter(V_5, V_6, V_7, V_8) :-
+    set_ctree234.divide(V_5, V_6, V_7, V_8).
+
+set_ctree234.filter_map(V_4, set_ctree234.ct(V_5, V_6)) = V_7 :-
+    V_9 = list.[] : list.list(T2_2),
+    set_ctree234.filter_map_func(V_4, V_6, V_9, V_8),
+    V_7 = set_ctree234.list_to_set(V_8).
+
+set_ctree234.filter_map(V_4, set_ctree234.ct(V_5, V_6), V_7) :-
+    V_9 = list.[] : list.list(T2_2),
+    set_ctree234.filter_map_pred(V_4, V_6, V_9, V_8),
+    V_7 = set_ctree234.list_to_set(V_8).
+
+set_ctree234.fold(V_5, set_ctree234.ct(V_6, V_7), V_8) = V_9 :-
+    set_ctree234.do_fold_func(V_5, V_7, V_8, V_9).
+
+set_ctree234.fold(V_5, set_ctree234.ct(V_6, V_7), V_9, V_10) :-
+    set_ctree234.do_fold_pred(V_5, V_7, V_9, V_10).
+
+set_ctree234.fold2(V_7, set_ctree234.ct(V_8, V_9), V_12, V_13, V_14, V_15) :-
+    set_ctree234.do_fold2_pred(V_7, V_9, V_12, V_13, V_14, V_15).
+
+set_ctree234.fold3(V_9, set_ctree234.ct(V_10, V_11), V_15, V_16, V_17, V_18, V_19, V_20) :-
+    set_ctree234.do_fold3_pred(V_9, V_11, V_15, V_16, V_17, V_18, V_19, V_20).
+
+set_ctree234.fold4(V_11, set_ctree234.ct(V_12, V_13), V_18, V_19, V_20, V_21, V_22, V_23, V_24, V_25) :-
+    set_ctree234.do_fold4_pred(V_11, V_13, V_18, V_19, V_20, V_21, V_22, V_23, V_24, V_25).
+
+set_ctree234.fold5(V_13, set_ctree234.ct(V_14, V_15), V_21, V_22, V_23, V_24, V_25, V_26, V_27, V_28, V_29, V_30) :-
+    set_ctree234.do_fold5_pred(V_13, V_15, V_21, V_22, V_23, V_24, V_25, V_26, V_27, V_28, V_29, V_30).
+
+set_ctree234.fold6(V_15, set_ctree234.ct(V_16, V_17), V_24, V_25, V_26, V_27, V_28, V_29, V_30, V_31, V_32, V_33, V_34, V_35) :-
+    set_ctree234.do_fold6_pred(V_15, V_17, V_24, V_25, V_26, V_27, V_28, V_29, V_30, V_31, V_32, V_33, V_34, V_35).
+
+set_ctree234.from_list(V_3) = V_2 :-
+    V_2 = set_ctree234.list_to_set(V_3).
+
+set_ctree234.from_sorted_list(V_3) = V_2 :-
+    V_2 = set_ctree234.sorted_list_to_set(V_3).
+
+set_ctree234.init = set_ctree234.ct(V_2, V_3) :-
+    V_2 = 0 : int,
+    V_3 = set_ctree234.empty : set_ctree234.set_tree234(T_1).
+
+set_ctree234.insert(V_4, V_5) = V_6 :-
+    set_ctree234.insert(V_4, V_5, V_6).
+
+set_ctree234.insert(V_4, set_ctree234.ct(V_5, V_6), set_ctree234.ct(V_7, V_8)) :-
+    set_ctree234.do_insert(V_4, V_9, V_6, V_8),
+    V_7 = int.(V_5 + V_9).
+
+set_ctree234.insert_list(V_4, V_5) = V_6 :-
+    set_ctree234.insert_list(V_4, V_5, V_6).
+
+set_ctree234.insert_list(V_4, set_ctree234.ct(V_5, V_6), set_ctree234.ct(V_7, V_8)) :-
+    set_ctree234.do_insert_list(V_4, V_5, V_7, V_6, V_8).
+
+set_ctree234.insert_new(V_4, set_ctree234.ct(V_5, V_6), set_ctree234.ct(V_7, V_8)) :-
+    set_ctree234.do_insert_new(V_4, V_6, V_8),
+    V_7 = int.(V_5 + V_9),
+    V_9 = 1 : int.
+
+set_ctree234.intersect(V_4, V_5) = V_6 :-
+    set_ctree234.intersect(V_4, V_5, V_6).
+
+set_ctree234.intersect_list(V_3) = V_4 :-
+    set_ctree234.sets_to_sorted_lists(V_3, V_5),
+    list.intersect_lists(V_5, V_6),
+    V_4 = set_ctree234.sorted_list_to_set(V_6).
+
+set_ctree234.is_empty(set_ctree234.ct(V_3, V_2)) :-
+    V_3 = 0 : int.
+
+set_ctree234.is_member(set_ctree234.ct(V_4, V_5), V_6) = V_7 :-
+    set_ctree234.do_is_member(V_5, V_6, V_7).
+
+set_ctree234.is_member(set_ctree234.ct(V_4, V_5), V_6, V_7) :-
+    set_ctree234.do_is_member(V_5, V_6, V_7).
+
+set_ctree234.is_non_empty(set_ctree234.ct(V_2, V_3)) :-
+    not (
+      V_2 = 0 : int
+    ).
+
+set_ctree234.is_singleton(set_ctree234.ct(V_4, V_5), V_3) :-
+    V_4 = 1 : int,
+    V_5 = set_ctree234.two(V_3, V_6, V_7) : set_ctree234.set_tree234(T_1),
+    V_6 = set_ctree234.empty : set_ctree234.set_tree234(T_1),
+    V_7 = set_ctree234.empty : set_ctree234.set_tree234(T_1).
+
+set_ctree234.list_to_set(V_3) = set_ctree234.ct(V_4, V_5) :-
+    V_6 = 0 : int,
+    V_7 = set_ctree234.empty : set_ctree234.set_tree234(T_1),
+    set_ctree234.do_list_to_set(V_3, V_6, V_4, V_7, V_5).
+
+set_ctree234.make_singleton_set(V_3) = set_ctree234.ct(V_4, V_5) :-
+    V_4 = 1 : int,
+    V_5 = set_ctree234.two(V_3, V_6, V_7) : set_ctree234.set_tree234(T_1),
+    V_6 = set_ctree234.empty : set_ctree234.set_tree234(T_1),
+    V_7 = set_ctree234.empty : set_ctree234.set_tree234(T_1).
+
+set_ctree234.map(V_4, set_ctree234.ct(V_5, V_6)) = V_7 :-
+    V_9 = list.[] : list.list(T2_2),
+    set_ctree234.map_func(V_4, V_6, V_9, V_8),
+    V_7 = set_ctree234.list_to_set(V_8).
+
+set_ctree234.map(V_4, set_ctree234.ct(V_5, V_6), V_7) :-
+    V_9 = list.[] : list.list(T2_2),
+    set_ctree234.map_pred(V_4, V_6, V_9, V_8),
+    V_7 = set_ctree234.list_to_set(V_8).
+
+set_ctree234.map_func(V_5, set_ctree234.empty, V_7, V_8) :-
+    V_8 = V_7.
+set_ctree234.map_func(V_9, V_10, V_16, V_17) :-
+    V_10 = set_ctree234.two(V_12, V_13, V_14) : set_ctree234.set_tree234(T1_1),
+    set_ctree234.map_func(V_9, V_13, V_16, V_18),
+    V_15 = apply(V_9, V_12),
+    V_19 = list.[V_15 | V_18] : list.list(T2_2),
+    set_ctree234.map_func(V_9, V_14, V_19, V_17).
+set_ctree234.map_func(V_21, V_22, V_31, V_32) :-
+    V_22 = set_ctree234.three(V_24, V_25, V_26, V_27, V_28) : set_ctree234.set_tree234(T1_1),
+    set_ctree234.map_func(V_21, V_26, V_31, V_33),
+    V_29 = apply(V_21, V_24),
+    V_34 = list.[V_29 | V_33] : list.list(T2_2),
+    set_ctree234.map_func(V_21, V_27, V_34, V_35),
+    V_30 = apply(V_21, V_25),
+    V_36 = list.[V_30 | V_35] : list.list(T2_2),
+    set_ctree234.map_func(V_21, V_28, V_36, V_32).
+set_ctree234.map_func(V_38, V_39, V_51, V_52) :-
+    V_39 = set_ctree234.four(V_41, V_42, V_43, V_44, V_45, V_46, V_47) : set_ctree234.set_tree234(T1_1),
+    set_ctree234.map_func(V_38, V_44, V_51, V_53),
+    V_48 = apply(V_38, V_41),
+    V_54 = list.[V_48 | V_53] : list.list(T2_2),
+    set_ctree234.map_func(V_38, V_45, V_54, V_55),
+    V_49 = apply(V_38, V_42),
+    V_56 = list.[V_49 | V_55] : list.list(T2_2),
+    set_ctree234.map_func(V_38, V_46, V_56, V_57),
+    V_50 = apply(V_38, V_43),
+    V_58 = list.[V_50 | V_57] : list.list(T2_2),
+    set_ctree234.map_func(V_38, V_47, V_58, V_52).
+
+set_ctree234.map_pred(V_5, set_ctree234.empty, V_7, V_8) :-
+    V_8 = V_7.
+set_ctree234.map_pred(V_9, V_10, V_16, V_17) :-
+    V_10 = set_ctree234.two(V_12, V_13, V_14) : set_ctree234.set_tree234(T1_1),
+    set_ctree234.map_pred(V_9, V_13, V_16, V_18),
+    call(V_9, V_12, V_15),
+    V_19 = list.[V_15 | V_18] : list.list(T2_2),
+    set_ctree234.map_pred(V_9, V_14, V_19, V_17).
+set_ctree234.map_pred(V_21, V_22, V_31, V_32) :-
+    V_22 = set_ctree234.three(V_24, V_25, V_26, V_27, V_28) : set_ctree234.set_tree234(T1_1),
+    set_ctree234.map_pred(V_21, V_26, V_31, V_33),
+    call(V_21, V_24, V_29),
+    V_34 = list.[V_29 | V_33] : list.list(T2_2),
+    set_ctree234.map_pred(V_21, V_27, V_34, V_35),
+    call(V_21, V_25, V_30),
+    V_36 = list.[V_30 | V_35] : list.list(T2_2),
+    set_ctree234.map_pred(V_21, V_28, V_36, V_32).
+set_ctree234.map_pred(V_38, V_39, V_51, V_52) :-
+    V_39 = set_ctree234.four(V_41, V_42, V_43, V_44, V_45, V_46, V_47) : set_ctree234.set_tree234(T1_1),
+    set_ctree234.map_pred(V_38, V_44, V_51, V_53),
+    call(V_38, V_41, V_48),
+    V_54 = list.[V_48 | V_53] : list.list(T2_2),
+    set_ctree234.map_pred(V_38, V_45, V_54, V_55),
+    call(V_38, V_42, V_49),
+    V_56 = list.[V_49 | V_55] : list.list(T2_2),
+    set_ctree234.map_pred(V_38, V_46, V_56, V_57),
+    call(V_38, V_43, V_50),
+    V_58 = list.[V_50 | V_57] : list.list(T2_2),
+    set_ctree234.map_pred(V_38, V_47, V_58, V_52).
+
+set_ctree234.nondet_member(set_ctree234.ct(V_3, V_4), V_5) :-
+    set_ctree234.do_one_member(V_4, V_5).
+
+set_ctree234.one_member(set_ctree234.ct(V_3, V_4), V_5) :-
+    set_ctree234.do_one_member(V_4, V_5).
+
+set_ctree234.power_intersect(V_3) = V_4 :-
+    set_ctree234.power_intersect(V_3, V_4).
+
+set_ctree234.power_intersect(V_3, V_4) :-
+    V_4 = set_ctree234.intersect_list(V_5),
+    V_5 = set_ctree234.to_sorted_list(V_3).
+
+set_ctree234.power_union(V_3) = V_4 :-
+    set_ctree234.power_union(V_3, V_4).
+
+set_ctree234.power_union(V_3, V_4) :-
+    V_5 = set_ctree234.to_sorted_list(V_3),
+    set_ctree234.sets_to_sorted_lists(V_5, V_6),
+    list.merge_lists_and_remove_dups(V_6, V_7),
+    V_4 = set_ctree234.sorted_list_to_set(V_7).
+
+set_ctree234.remove(V_4, set_ctree234.ct(V_5, V_6), set_ctree234.ct(V_7, V_8)) :-
+    set_ctree234.do_remove(V_4, V_6, V_8, V_9),
+    V_7 = int.(V_5 - V_10),
+    V_10 = 1 : int.
+
+set_ctree234.remove_least(V_4, set_ctree234.ct(V_5, V_6), set_ctree234.ct(V_7, V_8)) :-
+    set_ctree234.do_remove_least(V_6, V_4, V_8, V_9),
+    V_7 = int.(V_5 - V_10),
+    V_10 = 1 : int.
+
+set_ctree234.remove_list(V_4, set_ctree234.ct(V_5, V_6), set_ctree234.ct(V_7, V_8)) :-
+    set_ctree234.do_remove_list(V_4, V_5, V_7, V_6, V_8).
+
+set_ctree234.singleton_set(V_3, set_ctree234.ct(V_4, V_5)) :-
+    V_4 = 1 : int,
+    V_5 = set_ctree234.two(V_3, V_6, V_7) : set_ctree234.set_tree234(T_1),
+    V_6 = set_ctree234.empty : set_ctree234.set_tree234(T_1),
+    V_7 = set_ctree234.empty : set_ctree234.set_tree234(T_1).
+
+set_ctree234.subset(set_ctree234.ct(V_3, V_4), set_ctree234.ct(V_5, V_6)) :-
+    int.(V_3 =< V_5),
+    set_ctree234.do_subset(V_4, V_6).
+
+set_ctree234.superset(V_3, V_4) :-
+    set_ctree234.subset(V_4, V_3).
+
+set_ctree234.to_sorted_list(set_ctree234.ct(V_3, V_4)) = V_5 :-
+    V_6 = list.[] : list.list(T_1),
+    set_ctree234.do_to_sorted_list(V_4, V_6, V_5).
+
+set_ctree234.union(V_4, V_5) = V_6 :-
+    set_ctree234.union(V_4, V_5, V_6).
+
+set_ctree234.union(set_ctree234.ct(V_4, V_5), set_ctree234.ct(V_6, V_7), set_ctree234.ct(V_8, V_9)) :-
+    ( if
+      int.(V_4 < V_6)
+    then
+      set_ctree234.do_union(V_5, V_6, V_8, V_7, V_9)
+    else
+      set_ctree234.do_union(V_7, V_4, V_8, V_5, V_9)
+    ).
+
+set_ctree234.union_list(V_3) = V_4 :-
+    set_ctree234.union_list(V_3, V_4).
+
+set_ctree234.union_list(V_3, V_4) :-
+    set_ctree234.sets_to_sorted_lists(V_3, V_5),
+    list.merge_lists_and_remove_dups(V_5, V_6),
+    V_4 = set_ctree234.sorted_list_to_set(V_6).
+
+set_ctree234.verify_depths(set_ctree234.ct(V_3, V_4), V_5) :-
+    V_6 = 0 : int,
+    V_7 = list.[] : list.list(int),
+    set_ctree234.do_verify_depths(V_4, V_6, V_7, V_5).
+
+:- pragma termination_info(set_ctree234.all_true(builtin.in((pred(builtin.in) is semidet)), builtin.in), infinite, can_loop).
+:- pragma termination_info(set_ctree234.all_true_tree(builtin.in((pred(builtin.in) is semidet)), builtin.in), infinite, can_loop).
+:- pragma termination_info(set_ctree234.contains(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.count(builtin.in) = builtin.out, finite(-2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.delete(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.delete(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.delete_list(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.delete_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.det_remove(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.det_remove_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.difference(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.difference(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.divide(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.divide_by_set(builtin.in, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_contains(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.do_delete(builtin.in, builtin.out, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_delete_list(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_difference(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_divide(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold2_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold3_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold3_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold3_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold3_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold3_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold3_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold4_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold4_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold4_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold4_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold4_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold4_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold5_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold5_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold5_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold5_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold5_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold5_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold6_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold6_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold6_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold6_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold6_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold6_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold_func(builtin.in((func(builtin.in, builtin.in) = builtin.out is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold_pred(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold_pred(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_fold_pred(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_insert(builtin.in, builtin.out, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(set_ctree234.do_insert_list(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_insert_new(builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(set_ctree234.do_is_member(builtin.in, builtin.in, builtin.out), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.do_list_to_set(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_one_member(builtin.in, builtin.out), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.do_remove(builtin.in, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_remove_least(builtin.in, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_remove_list(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_subset(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.do_to_sorted_list(builtin.in, builtin.in, builtin.out), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.do_union(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.do_verify_depths(builtin.in, builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.equal(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.filter(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.filter(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.filter_map(builtin.in((func(builtin.in) = builtin.out is semidet)), builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.filter_map(builtin.in((pred(builtin.in, builtin.out) is semidet)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.filter_map_func(builtin.in((func(builtin.in) = builtin.out is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.filter_map_pred(builtin.in((pred(builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold(builtin.in, builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold(builtin.in((pred(builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold(builtin.in((pred(builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold(builtin.in((pred(builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold(builtin.in((pred(builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold2(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold3(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold4(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold5(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.mdi, builtin.muo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.fold6(builtin.in((pred(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(set_ctree234.from_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.from_sorted_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info((set_ctree234.init) = builtin.out, finite(2, [no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.insert(builtin.in, builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(set_ctree234.insert(builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(set_ctree234.insert_list(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.insert_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.insert_new(builtin.in, builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(set_ctree234.intersect(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.intersect(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.intersect_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.intersection_and_differences(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.is_empty(builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.is_member(builtin.in, builtin.in) = builtin.out, finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.is_member(builtin.in, builtin.in, builtin.out), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.is_non_empty(builtin.in), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.is_singleton(builtin.in, builtin.out), finite(-5, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.list_to_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.make_singleton_set(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(set_ctree234.map(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.map(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.map_func(builtin.in((func(builtin.in) = builtin.out is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.map_pred(builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.member(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.member(builtin.out, builtin.in), finite(-5, [no, no, yes]), cannot_loop).
+:- pragma termination_info(set_ctree234.nondet_member(builtin.in, builtin.out), finite(-5, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.one_member(builtin.in, builtin.out), finite(-5, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.power_intersect(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.power_intersect(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.power_union(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.power_union(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.remove(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.remove_least(builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.remove_list(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.rev_sorted_list_to_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.sets_to_sorted_lists(builtin.in, builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.singleton_set(builtin.in, builtin.out), infinite, cannot_loop).
+:- pragma termination_info(set_ctree234.singleton_set(builtin.out, builtin.in), finite(-5, [no, no, yes]), cannot_loop).
+:- pragma termination_info(set_ctree234.sorted_list_to_set(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.subset(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.superset(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.to_sorted_list(builtin.in) = builtin.out, finite(-2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(set_ctree234.ucount(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.union(builtin.in, builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.union(builtin.in, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.union_list(builtin.in) = builtin.out, infinite, can_loop).
+:- pragma termination_info(set_ctree234.union_list(builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(set_ctree234.verify_depths(builtin.in, builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, set_ctree234.all_true, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.all_true_tree, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.contains, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, set_ctree234.count, 1, 0, will_not_throw).
+:- pragma exceptions(function, set_ctree234.delete, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.delete, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, set_ctree234.delete_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.delete_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.det_remove, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.det_remove_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, set_ctree234.difference, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.difference, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.divide, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.divide_by_set, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_contains, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_delete, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_delete_list, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_difference, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_divide, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold2_pred, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold2_pred, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold2_pred, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold2_pred, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold2_pred, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold2_pred, 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold3_pred, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold3_pred, 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold3_pred, 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold3_pred, 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold3_pred, 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold3_pred, 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold4_pred, 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold4_pred, 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold4_pred, 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold4_pred, 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold4_pred, 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold4_pred, 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold5_pred, 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold5_pred, 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold5_pred, 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold5_pred, 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold5_pred, 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold5_pred, 12, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold6_pred, 14, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold6_pred, 14, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold6_pred, 14, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold6_pred, 14, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold6_pred, 14, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold6_pred, 14, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold_func, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold_pred, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold_pred, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold_pred, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold_pred, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold_pred, 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_fold_pred, 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_insert, 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_insert_list, 5, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_insert_new, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_is_member, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_list_to_set, 5, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_one_member, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, set_ctree234.do_remove, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_remove_least, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_remove_list, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_subset, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_to_sorted_list, 3, 0, will_not_throw).
+:- pragma exceptions(predicate, set_ctree234.do_union, 5, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.do_verify_depths, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.equal, 2, 0, conditional).
+:- pragma exceptions(predicate, set_ctree234.filter, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.filter, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, set_ctree234.filter_map, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.filter_map, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.filter_map_func, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.filter_map_pred, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, set_ctree234.fold, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold, 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold, 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold, 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold, 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold, 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold2, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold2, 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold2, 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold2, 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold2, 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold2, 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold3, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold3, 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold3, 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold3, 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold3, 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold3, 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold4, 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold4, 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold4, 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold4, 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold4, 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold4, 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold5, 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold5, 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold5, 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold5, 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold5, 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold5, 12, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold6, 14, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold6, 14, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold6, 14, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold6, 14, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold6, 14, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.fold6, 14, 5, may_throw(user_exception)).
+:- pragma exceptions(function, set_ctree234.from_list, 1, 0, may_throw(type_exception)).
+:- pragma exceptions(function, set_ctree234.from_sorted_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, set_ctree234.init, 0, 0, will_not_throw).
+:- pragma exceptions(function, set_ctree234.insert, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.insert, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, set_ctree234.insert_list, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.insert_list, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.insert_new, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, set_ctree234.intersect, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.intersect, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, set_ctree234.intersect_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.intersection_and_differences, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.is_empty, 1, 0, will_not_throw).
+:- pragma exceptions(function, set_ctree234.is_member, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.is_member, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.is_non_empty, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, set_ctree234.is_singleton, 2, 0, will_not_throw).
+:- pragma exceptions(function, set_ctree234.list_to_set, 1, 0, may_throw(type_exception)).
+:- pragma exceptions(function, set_ctree234.make_singleton_set, 1, 0, will_not_throw).
+:- pragma exceptions(function, set_ctree234.map, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.map, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.map_func, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.map_pred, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.member, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.member, 2, 1, will_not_throw).
+:- pragma exceptions(predicate, set_ctree234.nondet_member, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, set_ctree234.one_member, 2, 0, will_not_throw).
+:- pragma exceptions(function, set_ctree234.power_intersect, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.power_intersect, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, set_ctree234.power_union, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.power_union, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.remove, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.remove_least, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.remove_list, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, set_ctree234.rev_sorted_list_to_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.sets_to_sorted_lists, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, set_ctree234.singleton_set, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, set_ctree234.singleton_set, 2, 1, will_not_throw).
+:- pragma exceptions(function, set_ctree234.sorted_list_to_set, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.subset, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.superset, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, set_ctree234.to_sorted_list, 1, 0, will_not_throw).
+:- pragma exceptions(function, set_ctree234.ucount, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, set_ctree234.union, 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, set_ctree234.union, 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, set_ctree234.union_list, 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.union_list, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, set_ctree234.verify_depths, 2, 0, may_throw(user_exception)).
