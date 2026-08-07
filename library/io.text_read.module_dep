@@ -1,0 +1,14 @@
+module(2, "io.text_read.m",
+	io.text_read,
+	{io},
+	{bitmap, builtin, char, list, private_builtin},
+	{array, int, int64, io.primitives_read},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - io.primitives_read, "C" - io.text_read, "C#" - io.text_read, "Java" - io.text_read},
+	no_foreign_export,
+	no_main,
+	{}
+).

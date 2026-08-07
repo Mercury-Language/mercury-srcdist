@@ -1,0 +1,77 @@
+/*
+** Automatically generated from `typeclasses.m'
+** by the Mercury compiler,
+** version rotd-2026-08-07
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.typeclasses.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__typeclasses
+#define MR_HEADER_GUARD_check_hlds__typeclasses
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__TYPECLASSES_DECL_GUARD
+#define CHECK_HLDS__TYPECLASSES_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+void MR_CALL 
+check_hlds__typeclasses__perform_context_reduction_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__typeclasses__reduce_context_by_rule_application_13_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Word param_10,
+  MR_Word * param_11,
+  MR_Word param_12,
+  MR_Word * param_13);
+
+void mercury__check_hlds__typeclasses__init(void);
+void mercury__check_hlds__typeclasses__init_type_tables(void);
+void mercury__check_hlds__typeclasses__init_debugger(void);
+const char *mercury__check_hlds__typeclasses__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.typeclasses
+
+// :- end_interface check_hlds.typeclasses.

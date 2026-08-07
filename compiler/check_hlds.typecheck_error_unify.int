@@ -1,0 +1,16 @@
+:- module check_hlds.typecheck_error_unify.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module check_hlds.type_assign.
+:- use_module check_hlds.typecheck_info.
+:- use_module hlds.hlds_goal.
+:- use_module mdbcomp.prim_data.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- func report_error_unify_var_functor_args(check_hlds.typecheck_info.typecheck_info, hlds.hlds_goal.unify_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, list.list(check_hlds.type_assign.cons_type_info), parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), check_hlds.type_assign.args_type_assign_set) = parse_tree.error_spec.diag_spec.
+:- func report_error_unify_var_functor_result(check_hlds.typecheck_info.typecheck_info, hlds.hlds_goal.unify_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, list.list(check_hlds.type_assign.cons_type_info), parse_tree.prog_data.cons_id, int, check_hlds.type_assign.type_assign_set) = parse_tree.error_spec.diag_spec.
+:- func report_error_unify_var_lambda(check_hlds.typecheck_info.typecheck_info, hlds.hlds_goal.unify_context, parse_tree.prog_data.prog_context, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.prog_var, list.list(parse_tree.prog_data.prog_var), check_hlds.type_assign.type_assign_set) = parse_tree.error_spec.diag_spec.
+:- func report_error_unify_var_var(check_hlds.typecheck_info.typecheck_info, hlds.hlds_goal.unify_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, check_hlds.type_assign.type_assign_set) = parse_tree.error_spec.diag_spec.

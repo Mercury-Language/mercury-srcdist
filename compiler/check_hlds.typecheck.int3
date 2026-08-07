@@ -1,0 +1,3 @@
+:- module check_hlds.typecheck.
+:- interface.
+:- type number_of_iterations.

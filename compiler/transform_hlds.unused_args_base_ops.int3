@@ -1,0 +1,10 @@
+:- module transform_hlds.unused_args_base_ops.
+:- interface.
+:- type arg_var_in_proc.
+:- type global_var_usage_map.
+:- type local_var_usage_map.
+:- type required_by.
+:- type_representation(arg_var_in_proc, is_word_aligned_ptr).
+:- type_representation(global_var_usage_map, is_eqv_to(map(pred_proc_id, transform_hlds.unused_args_base_ops.local_var_usage_map))).
+:- type_representation(local_var_usage_map, is_eqv_to(map(prog_var, transform_hlds.unused_args_base_ops.required_by))).
+:- type_representation(required_by, is_word_aligned_ptr).

@@ -1,0 +1,46 @@
+// Automatically generated from `table_builtin.m'
+// by the Mercury compiler,
+// version rotd-2026-08-07
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef TABLE_BUILTIN_MH
+#define TABLE_BUILTIN_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef TABLE_BUILTIN_DECL_GUARD
+#define TABLE_BUILTIN_DECL_GUARD
+
+    #include "mercury_tabling.h"      // for MR_copy_table_steps
+    #include "mercury_trace_base.h"   // for MR_io_tabling_*
+
+
+
+#include "mercury_misc.h"         // for MR_fatal_error()
+#include "mercury_type_info.h"    // for MR_TypeCtorInfo_Struct
+#include "mercury_tabling.h"      // for MR_TrieNode, etc.
+
+MR_DECLARE_TYPE_CTOR_INFO_STRUCT(MR_TYPE_CTOR_INFO_NAME(io, state, 0));
+
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* TABLE_BUILTIN_MH */
