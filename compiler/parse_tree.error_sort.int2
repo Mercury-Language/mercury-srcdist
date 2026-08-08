@@ -1,0 +1,7 @@
+:- module parse_tree.error_sort.
+:- interface.
+:- type diag_msg_group
+    --->    diag_msg_group(
+                 parse_tree.error_spec.diag_msg,
+                 list.list(parse_tree.error_spec.diag_msg)
+            ).

@@ -1,0 +1,133 @@
+// Automatically generated from `exception.m'
+// by the Mercury compiler,
+// version rotd-2026-08-08
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef EXCEPTION_MH
+#define EXCEPTION_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef EXCEPTION_DECL_GUARD
+#define EXCEPTION_DECL_GUARD
+
+// protect against multiple inclusion
+#ifndef ML_HLC_EXCEPTION_GUARD
+#define ML_HLC_EXCEPTION_GUARD
+
+  #ifdef MR_HIGHLEVEL_CODE
+
+    #define MR_CONT_PARAMS      MR_Cont cont, void *cont_env
+    #define MR_CONT_PARAM_TYPES MR_Cont, void *
+    #define MR_CONT_ARGS        cont, cont_env
+
+    // det
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_0(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    // semidet
+    MR_bool MR_CALL
+    mercury__exception__builtin_catch_3_p_1(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    // cc_multi
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_2(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    // cc_nondet
+    MR_bool MR_CALL
+    mercury__exception__builtin_catch_3_p_3(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    // multi
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_4(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output,
+        MR_CONT_PARAMS);
+
+    // nondet
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_5(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output,
+        MR_CONT_PARAMS);
+
+    // det ==> model_det
+    #define mercury__exception__builtin_catch_3_p_0         mercury__exception__builtin_catch_model_det
+
+    // semidet ==> model_semi
+    #define mercury__exception__builtin_catch_3_p_1         mercury__exception__builtin_catch_model_semi
+
+    // cc_multi ==> model_det
+    #define mercury__exception__builtin_catch_3_p_2         mercury__exception__builtin_catch_model_det
+
+    // cc_nondet ==> model_semi
+    #define mercury__exception__builtin_catch_3_p_3         mercury__exception__builtin_catch_model_semi
+
+    // multi ==> model_non
+    #define mercury__exception__builtin_catch_3_p_4         mercury__exception__builtin_catch_model_non
+
+    // nondet ==> model_non
+    #define mercury__exception__builtin_catch_3_p_5         mercury__exception__builtin_catch_model_non
+
+    void MR_CALL mercury__exception__builtin_throw_1_p_0(MR_Univ exception);
+
+    void MR_CALL mercury__exception__builtin_catch_model_det(
+        MR_Mercury_Type_Info type_info, MR_Pred pred,
+        MR_Pred handler_pred, MR_Box *output);
+    MR_bool MR_CALL mercury__exception__builtin_catch_model_semi(
+        MR_Mercury_Type_Info type_info, MR_Pred pred,
+        MR_Pred handler_pred, MR_Box *output);
+    void MR_CALL mercury__exception__builtin_catch_model_non(
+        MR_Mercury_Type_Info type_info, MR_Pred pred,
+        MR_Pred handler_pred, MR_Box *output,
+        MR_CONT_PARAMS);
+
+  #else  // MR_HIGHLEVEL_CODE
+    #ifdef MR_DEEP_PROFILING
+      #include "mercury_profiling_builtin.h"
+      #include "profiling_builtin.mh"
+    #endif
+  #endif // MR_HIGHLEVEL_CODE
+
+#endif // ML_HLC_EXCEPTION_GUARD
+
+
+#ifndef MR_HIGHLEVEL_CODE
+    #include <assert.h>
+    #include <stdio.h>
+    #include "mercury_deep_copy.h"
+    #include "mercury_trace_base.h"
+    #include "mercury_stack_trace.h"
+    #include "mercury_layout_util.h"
+    #include "mercury_deep_profiling_hand.h"
+
+    MR_DECLARE_TYPE_CTOR_INFO_STRUCT(mercury_data_univ__type_ctor_info_univ_0);
+#endif
+
+
+#endif
+void ML_call_goal_det(MR_Word, MR_Word, MR_Word *);
+void ML_call_handler_det(MR_Word, MR_Word, MR_Word, MR_Word *);
+void ML_report_uncaught_exception(MR_Word);
+void mercury__exception__user_init_pred_210_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* EXCEPTION_MH */

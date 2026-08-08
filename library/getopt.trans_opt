@@ -1,0 +1,87 @@
+:- module getopt.
+
+:- pragma termination_info(getopt.'ClassMethod_for_getopt__read_file_contents____io__state__arity0______getopt__read_file_contents_4'(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt.'ClassMethod_for_getopt__read_file_contents____unit__unit__arity0______getopt__read_file_contents_4'(builtin.in, builtin.out, builtin.di, builtin.uo), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(getopt.convert_to_maybe_option_table(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(getopt.do_read_file_contents(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt.expand_file_specials(builtin.in(getopt.short_option), builtin.in(getopt.long_option), builtin.in, builtin.in, builtin.out, builtin.out(list.list_skel(getopt.non_file_special)), builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt.expand_file_specials_check(builtin.in(getopt.short_option), builtin.in(getopt.long_option), builtin.in, builtin.in, builtin.in, builtin.out, builtin.out(list.list_skel(getopt.non_file_special)), builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt.expand_file_specials_loop(builtin.in(getopt.short_option), builtin.in(getopt.long_option), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in(getopt.go_cord_skel(getopt.non_file_special)), builtin.out(getopt.go_cord_skel(getopt.non_file_special)), builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt.go_cord_to_list(builtin.in(getopt.go_cord_skel((V_2 =< ground)))) = builtin.out(list.list_skel((V_2 =< ground))), finite(1, [no, yes, no]), can_loop).
+:- pragma termination_info(getopt.init_option_table(builtin.in((pred(builtin.out, builtin.out) is nondet)), builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.init_option_table_multi(builtin.in((pred(builtin.out, builtin.out) is multi)), builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.lookup_accumulating_option(builtin.in, builtin.in) = builtin.out, finite(-5, [no, yes, no, no]), can_loop).
+:- pragma termination_info(getopt.lookup_accumulating_option(builtin.in, builtin.in, builtin.out), finite(-5, [no, yes, no, no]), can_loop).
+:- pragma termination_info(getopt.lookup_bool_option(builtin.in, builtin.in) = builtin.out, finite(-5, [no, yes, no, no]), can_loop).
+:- pragma termination_info(getopt.lookup_bool_option(builtin.in, builtin.in, builtin.out), finite(-5, [no, yes, no, no]), can_loop).
+:- pragma termination_info(getopt.lookup_int_option(builtin.in, builtin.in) = builtin.out, finite(-5, [no, yes, no, no]), can_loop).
+:- pragma termination_info(getopt.lookup_int_option(builtin.in, builtin.in, builtin.out), finite(-5, [no, yes, no, no]), can_loop).
+:- pragma termination_info(getopt.lookup_maybe_int_option(builtin.in, builtin.in) = builtin.out, finite(-5, [no, yes, no, no]), can_loop).
+:- pragma termination_info(getopt.lookup_maybe_int_option(builtin.in, builtin.in, builtin.out), finite(-5, [no, yes, no, no]), can_loop).
+:- pragma termination_info(getopt.lookup_maybe_string_option(builtin.in, builtin.in) = builtin.out, finite(-5, [no, yes, no, no]), can_loop).
+:- pragma termination_info(getopt.lookup_maybe_string_option(builtin.in, builtin.in, builtin.out), finite(-5, [no, yes, no, no]), can_loop).
+:- pragma termination_info(getopt.lookup_string_option(builtin.in, builtin.in) = builtin.out, finite(-5, [no, yes, no, no]), can_loop).
+:- pragma termination_info(getopt.lookup_string_option(builtin.in, builtin.in, builtin.out), finite(-5, [no, yes, no, no]), can_loop).
+:- pragma termination_info(getopt.option_error_to_string(builtin.in) = builtin.out, infinite, cannot_loop).
+:- pragma termination_info(getopt.option_ops_to_internal_and_option_table(builtin.in(getopt.option_ops), builtin.out(getopt.short_option), builtin.out(getopt.long_option), builtin.out(getopt.option_ops_special), builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.process_arguments(builtin.in(getopt.short_option), builtin.in(getopt.long_option), builtin.in(getopt.option_ops_special), builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt.process_option_values(builtin.in(getopt.option_ops_special), builtin.in(list.list_skel(getopt.non_file_special)), builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.process_options(builtin.in(getopt.option_ops), builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.process_options(builtin.in(getopt.option_ops), builtin.in, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.process_options_io(builtin.in(getopt.option_ops), builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt.process_options_io(builtin.in(getopt.option_ops), builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt.process_options_track(builtin.in(getopt.option_ops_track), builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.process_options_track_io(builtin.in(getopt.option_ops_track), builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt.process_options_userdata(builtin.in(getopt.option_ops_userdata), builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.process_options_userdata_io(builtin.in(getopt.option_ops_userdata), builtin.in, builtin.out, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt.read_file_contents(builtin.in, builtin.out, builtin.di, builtin.uo), infinite, can_loop).
+:- pragma termination_info(getopt.read_file_contents_no_io(builtin.in, builtin.out, builtin.di, builtin.uo), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(getopt.recognize_all_options(builtin.in(getopt.short_option), builtin.in(getopt.long_option), builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.recognize_options(builtin.in(getopt.short_option), builtin.in(getopt.long_option), builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.recognize_options_loop(builtin.in(getopt.short_option), builtin.in(getopt.long_option), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.record_all_arguments_loop(builtin.in(getopt.short_option), builtin.in(getopt.long_option), builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.record_arguments(builtin.in(getopt.short_option), builtin.in(getopt.long_option), builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out), infinite, can_loop).
+:- pragma termination_info(getopt.return_maybe_option_error(builtin.in, builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(getopt.return_option_table_if_ok(builtin.in, builtin.in, builtin.out), finite(1, [no, yes, yes, no]), cannot_loop).
+
+:- pragma exceptions(function, getopt.convert_to_maybe_option_table, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, getopt.do_read_file_contents, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.expand_file_specials, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.expand_file_specials_check, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.expand_file_specials_loop, 10, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt.go_cord_to_list, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, getopt.init_option_table, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.init_option_table_multi, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt.lookup_accumulating_option, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.lookup_accumulating_option, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt.lookup_bool_option, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.lookup_bool_option, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt.lookup_int_option, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.lookup_int_option, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt.lookup_maybe_int_option, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.lookup_maybe_int_option, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt.lookup_maybe_string_option, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.lookup_maybe_string_option, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt.lookup_string_option, 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.lookup_string_option, 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, getopt.option_error_to_string, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, getopt.option_ops_to_internal_and_option_table, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.process_arguments, 15, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.process_option_values, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.process_options, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.process_options, 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.process_options_io, 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.process_options_io, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.process_options_track, 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.process_options_track_io, 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.process_options_userdata, 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.process_options_userdata_io, 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.read_file_contents, 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.read_file_contents_no_io, 4, 0, will_not_throw).
+:- pragma exceptions(predicate, getopt.recognize_all_options, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.recognize_options, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.recognize_options_loop, 11, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.record_all_arguments_loop, 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.record_arguments, 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, getopt.return_maybe_option_error, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, getopt.return_option_table_if_ok, 3, 0, will_not_throw).
