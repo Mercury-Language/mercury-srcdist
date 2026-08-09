@@ -1,0 +1,11 @@
+:- module transform_hlds.unused_args_warn_pragma.
+:- interface.
+:- type maybe_gather_pragma_unused_args
+    --->    do_not_gather_pragma_unused_args 
+    ;       do_gather_pragma_unused_args .
+:- type maybe_record_analysis_unused_args
+    --->    do_not_record_analysis_unused_args 
+    ;       do_record_analysis_unused_args .
+:- type maybe_warn_unused_args
+    --->    do_not_warn_unused_args 
+    ;       do_warn_unused_args .

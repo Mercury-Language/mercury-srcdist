@@ -1,0 +1,112 @@
+/*
+** Automatically generated from `make.analysis.m'
+** by the Mercury compiler,
+** version rotd-2026-08-09
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.analysis.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__analysis
+#define MR_HEADER_GUARD_make__analysis
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__ANALYSIS_DECL_GUARD
+#define MAKE__ANALYSIS_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct make__analysis__make__analysis__type_ctor_info_build2_0;
+
+extern const MR_TypeCtorInfo_Struct make__analysis__make__analysis__type_ctor_info_build3_0;
+
+extern const MR_TypeCtorInfo_Struct make__analysis__make__analysis__type_ctor_info_maybe_use_analysis_cache_dir_0;
+
+void MR_CALL 
+make__analysis__build_analysis_files_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+make__analysis__maybe_with_analysis_cache_dir_2_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+make__analysis__maybe_with_analysis_cache_dir_3_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+make__analysis____Compare____build2_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__analysis____Compare____build3_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+make__analysis____Unify____build2_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__analysis____Unify____build3_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__make__analysis__init(void);
+void mercury__make__analysis__init_type_tables(void);
+void mercury__make__analysis__init_debugger(void);
+const char *mercury__make__analysis__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.analysis
+
+// :- end_interface make.analysis.

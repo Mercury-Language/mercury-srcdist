@@ -1,0 +1,16 @@
+:- module check_hlds.typecheck.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_clauses.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- type number_of_iterations
+    --->    within_iteration_limit 
+    ;       exceeded_iteration_limit(
+                 parse_tree.error_spec.diag_spec
+            ).
+:- pred typecheck_module(io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.diag_spec), hlds.hlds_clauses.maybe_clause_syntax_errors, check_hlds.typecheck.number_of_iterations).
+:- mode typecheck_module(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is det.

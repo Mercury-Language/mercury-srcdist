@@ -1,0 +1,106 @@
+:- module int32.
+:- interface.
+:- use_module pretty_printer.
+:- func '*'(int32, int32) = int32.
+:- mode '*'(builtin.in, builtin.in) = builtin.uo is det.
+:- func '+'(int32) = int32.
+:- mode '+'(builtin.in) = builtin.uo is det.
+:- func '+'(int32, int32) = int32.
+:- mode '+'(builtin.in, builtin.in) = builtin.uo is det.
+:- mode '+'(builtin.uo, builtin.in) = builtin.in is det.
+:- mode '+'(builtin.in, builtin.uo) = builtin.in is det.
+:- func '-'(int32) = int32.
+:- mode '-'(builtin.in) = builtin.uo is det.
+:- func '-'(int32, int32) = int32.
+:- mode '-'(builtin.in, builtin.in) = builtin.uo is det.
+:- mode '-'(builtin.uo, builtin.in) = builtin.in is det.
+:- mode '-'(builtin.in, builtin.uo) = builtin.in is det.
+:- func '/'(int32, int32) = int32.
+:- mode '/'(builtin.in, builtin.in) = builtin.uo is det.
+:- func '//'(int32, int32) = int32.
+:- mode '//'(builtin.in, builtin.in) = builtin.uo is det.
+:- func '/\\'(int32, int32) = int32.
+:- mode '/\\'(builtin.in, builtin.in) = builtin.uo is det.
+:- pred '<'(int32, int32).
+:- mode '<'(builtin.in, builtin.in) is semidet.
+:- func '<<'(int32, int) = int32.
+:- mode '<<'(builtin.in, builtin.in) = builtin.uo is det.
+:- func '<<u'(int32, uint) = int32.
+:- mode '<<u'(builtin.in, builtin.in) = builtin.uo is det.
+:- pred '=<'(int32, int32).
+:- mode '=<'(builtin.in, builtin.in) is semidet.
+:- pred '>'(int32, int32).
+:- mode '>'(builtin.in, builtin.in) is semidet.
+:- pred '>='(int32, int32).
+:- mode '>='(builtin.in, builtin.in) is semidet.
+:- func '>>'(int32, int) = int32.
+:- mode '>>'(builtin.in, builtin.in) = builtin.uo is det.
+:- func '>>u'(int32, uint) = int32.
+:- mode '>>u'(builtin.in, builtin.in) = builtin.uo is det.
+:- func '\\'(int32) = int32.
+:- mode '\\'(builtin.in) = builtin.uo is det.
+:- func '\\/'(int32, int32) = int32.
+:- mode '\\/'(builtin.in, builtin.in) = builtin.uo is det.
+:- func abs(int32) = int32.
+:- func cast_from_int(int) = int32.
+:- func cast_from_int16(int16) = int32.
+:- func cast_from_int64(int64) = int32.
+:- func cast_from_int8(int8) = int32.
+:- func cast_from_uint32(uint32) = int32.
+:- func cast_to_int(int32) = int.
+:- func cast_to_int16(int32) = int16.
+:- func cast_to_int64(int32) = int64.
+:- func cast_to_int8(int32) = int8.
+:- func clamp(int32, int32, int32) = int32.
+:- func det_from_int(int) = int32.
+:- func det_from_int64(int64) = int32.
+:- func div(int32, int32) = int32.
+:- mode div(builtin.in, builtin.in) = builtin.uo is det.
+:- pred even(int32).
+:- mode even(builtin.in) is semidet.
+:- func from_bytes_be(uint8, uint8, uint8, uint8) = int32.
+:- func from_bytes_le(uint8, uint8, uint8, uint8) = int32.
+:- pred from_int(int, int32).
+:- mode from_int(builtin.in, builtin.out) is semidet.
+:- pred from_int64(int64, int32).
+:- mode from_int64(builtin.in, builtin.out) is semidet.
+:- func int32_to_doc(int32) = pretty_printer.doc.
+:- func max(int32, int32) = int32.
+:- func max_int32 = int32.
+:- func min(int32, int32) = int32.
+:- func min_int32 = int32.
+:- func minus(int32, int32) = int32.
+:- func mod(int32, int32) = int32.
+:- mode mod(builtin.in, builtin.in) = builtin.uo is det.
+:- func nabs(int32) = int32.
+:- func num_leading_zeros(int32) = int.
+:- func num_ones(int32) = int.
+:- func num_trailing_zeros(int32) = int.
+:- func num_zeros(int32) = int.
+:- pred odd(int32).
+:- mode odd(builtin.in) is semidet.
+:- func plus(int32, int32) = int32.
+:- func rem(int32, int32) = int32.
+:- mode rem(builtin.in, builtin.in) = builtin.uo is det.
+:- func reverse_bits(int32) = int32.
+:- func reverse_bytes(int32) = int32.
+:- func times(int32, int32) = int32.
+:- func to_int(int32) = int.
+:- func unchecked_abs(int32) = int32.
+:- func unchecked_left_shift(int32, int) = int32.
+:- mode unchecked_left_shift(builtin.in, builtin.in) = builtin.uo is det.
+:- func unchecked_left_ushift(int32, uint) = int32.
+:- mode unchecked_left_ushift(builtin.in, builtin.in) = builtin.uo is det.
+:- func unchecked_quotient(int32, int32) = int32.
+:- mode unchecked_quotient(builtin.in, builtin.in) = builtin.uo is det.
+:- func unchecked_rem(int32, int32) = int32.
+:- mode unchecked_rem(builtin.in, builtin.in) = builtin.uo is det.
+:- func unchecked_right_shift(int32, int) = int32.
+:- mode unchecked_right_shift(builtin.in, builtin.in) = builtin.uo is det.
+:- func unchecked_right_ushift(int32, uint) = int32.
+:- mode unchecked_right_ushift(builtin.in, builtin.in) = builtin.uo is det.
+:- func xor(int32, int32) = int32.
+:- mode xor(builtin.in, builtin.in) = builtin.uo is det.
+:- mode xor(builtin.in, builtin.uo) = builtin.in is det.
+:- mode xor(builtin.uo, builtin.in) = builtin.in is det.
+:- pragma obsolete(func(int32.int32_to_doc/1), [pretty_printer.int32_to_doc/1]).

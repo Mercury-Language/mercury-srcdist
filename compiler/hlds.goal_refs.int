@@ -1,0 +1,26 @@
+:- module hlds.goal_refs.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_pred.
+:- use_module parse_tree.prog_data.
+:- pred goal_calls(hlds.hlds_goal.hlds_goal, hlds.hlds_pred.pred_proc_id).
+:- mode goal_calls(builtin.in, builtin.in) is semidet.
+:- mode goal_calls(builtin.in, builtin.out) is nondet.
+:- pred goal_calls_pred_id(hlds.hlds_goal.hlds_goal, hlds.hlds_pred.pred_id).
+:- mode goal_calls_pred_id(builtin.in, builtin.in) is semidet.
+:- mode goal_calls_pred_id(builtin.in, builtin.out) is nondet.
+:- func goal_calls_proc_in_set(hlds.hlds_goal.hlds_goal, set.set(hlds.hlds_pred.pred_proc_id)) = set.set(hlds.hlds_pred.pred_proc_id).
+:- func goal_list_calls_proc_in_set(list.list(hlds.hlds_goal.hlds_goal), set.set(hlds.hlds_pred.pred_proc_id)) = set.set(hlds.hlds_pred.pred_proc_id).
+:- func goal_proc_refs(hlds.hlds_goal.hlds_goal) = set.set(hlds.hlds_pred.pred_proc_id).
+:- func goals_proc_refs(list.list(hlds.hlds_goal.hlds_goal)) = set.set(hlds.hlds_pred.pred_proc_id).
+:- pred pred_ids_args_called_from_goal(hlds.hlds_goal.hlds_goal, list.list({hlds.hlds_pred.pred_id, list.list(parse_tree.prog_data.prog_var)})).
+:- mode pred_ids_args_called_from_goal(builtin.in, builtin.out) is det.
+:- pred pred_ids_called_from_goal(hlds.hlds_goal.hlds_goal, list.list(hlds.hlds_pred.pred_id)).
+:- mode pred_ids_called_from_goal(builtin.in, builtin.out) is det.
+:- pred pred_ids_called_from_goals(list.list(hlds.hlds_goal.hlds_goal), list.list(hlds.hlds_pred.pred_id)).
+:- mode pred_ids_called_from_goals(builtin.in, builtin.out) is det.
+:- pred pred_proc_ids_called_from_goal(hlds.hlds_goal.hlds_goal, list.list(hlds.hlds_pred.pred_proc_id)).
+:- mode pred_proc_ids_called_from_goal(builtin.in, builtin.out) is det.

@@ -1,0 +1,6 @@
+:- module transform_hlds.unused_args_optimize.
+:- interface.
+:- type new_proc_info.
+:- type new_proc_map.
+:- type_representation(new_proc_info, is_word_aligned_ptr).
+:- type_representation(new_proc_map, is_eqv_to(map(pred_proc_id, transform_hlds.unused_args_optimize.new_proc_info))).
