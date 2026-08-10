@@ -1,0 +1,29 @@
+:- module hlds.make_hlds_error.
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.status.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item_pred_proc_id.
+:- type does_pragma_allow_modes
+    --->    pragma_does_not_allow_modes 
+    ;       pragma_allows_modes .
+:- pred maybe_report_undefined_pred_error(hlds.hlds_module.module_info, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.sym_name, parse_tree.prog_data.pred_form_arity, hlds.status.pred_status, parse_tree.prog_data.maybe_class_method, parse_tree.prog_data.prog_context, list.list(parse_tree.error_spec.format_piece), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode maybe_report_undefined_pred_error(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred maybe_warn_about_pfumm_unknown(hlds.hlds_module.module_info, string, parse_tree.prog_item_pred_proc_id.pred_func_or_unknown_maybe_modes, mdbcomp.sym_name.sym_name, parse_tree.prog_data.prog_context, list.list(parse_tree.error_spec.warn_spec)).
+:- mode maybe_warn_about_pfumm_unknown(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred report_multiply_defined(string, mdbcomp.sym_name.sym_name, parse_tree.prog_data.user_arity, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_context, list.list(parse_tree.error_spec.format_piece), parse_tree.error_spec.err_spec).
+:- mode report_multiply_defined(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred report_undeclared_mode_error(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_info, parse_tree.prog_data.prog_varset, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.error_spec.format_piece), parse_tree.prog_data.prog_context, parse_tree.error_spec.err_spec).
+:- mode report_undeclared_mode_error(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred report_undefined_pred_or_func_error(maybe.maybe(mdbcomp.prim_data.pred_or_func), mdbcomp.sym_name.sym_name, parse_tree.prog_data.user_arity, list.list(parse_tree.prog_data.user_arity), parse_tree.prog_data.prog_context, list.list(parse_tree.error_spec.format_piece), parse_tree.error_spec.err_spec).
+:- mode report_undefined_pred_or_func_error(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred warn_about_pfu_unknown(hlds.hlds_module.module_info, string, hlds.make_hlds_error.does_pragma_allow_modes, mdbcomp.sym_name.sym_name, parse_tree.prog_data.user_arity, parse_tree.prog_data.prog_context, list.list(parse_tree.error_spec.warn_spec)).
+:- mode warn_about_pfu_unknown(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

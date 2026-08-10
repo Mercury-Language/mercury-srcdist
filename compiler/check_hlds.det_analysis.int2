@@ -1,0 +1,8 @@
+:- module check_hlds.det_analysis.
+:- interface.
+:- type options_to_restore.
+:- implementation.
+:- use_module assoc_list.
+:- use_module getopt.
+:- use_module libs.options.
+:- type options_to_restore == assoc_list.assoc_list(libs.options.option, getopt.option_data).

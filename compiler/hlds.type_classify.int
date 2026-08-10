@@ -1,0 +1,19 @@
+:- module hlds.type_classify.
+:- interface.
+:- use_module parse_tree.
+:- use_module hlds.hlds_data.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_type.
+:- func classify_type(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type) = parse_tree.prog_type.type_ctor_category.
+:- func classify_type_ctor(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor) = parse_tree.prog_type.type_ctor_category.
+:- pred classify_type_ctor_if_special(parse_tree.prog_data.type_ctor, parse_tree.prog_type.type_ctor_category).
+:- mode classify_type_ctor_if_special(builtin.in, builtin.out) is semidet.
+:- func classify_type_defn_body(hlds.hlds_data.hlds_type_body) = parse_tree.prog_type.type_ctor_category.
+:- pred type_ctor_is_atomic(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor).
+:- mode type_ctor_is_atomic(builtin.in, builtin.in) is semidet.
+:- pred type_is_atomic(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode type_is_atomic(builtin.in, builtin.in) is semidet.
+:- func type_may_use_atomic_alloc(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type) = hlds.hlds_data.may_use_atomic_alloc.
+:- pred update_type_may_use_atomic_alloc(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, hlds.hlds_data.may_use_atomic_alloc, hlds.hlds_data.may_use_atomic_alloc).
+:- mode update_type_may_use_atomic_alloc(builtin.in, builtin.in, builtin.in, builtin.out) is det.

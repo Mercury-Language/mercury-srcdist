@@ -1,0 +1,36 @@
+:- module parse_tree.prog_data_rare.
+:- interface.
+:- type mm_tabling_status
+    --->    mm_tabled_may_call 
+    ;       mm_tabled_will_not_call 
+    ;       mm_tabled_conditional .
+:- type mutable_pred_kind
+    --->    mutable_pred_std_get 
+    ;       mutable_pred_std_set 
+    ;       mutable_pred_io_get 
+    ;       mutable_pred_io_set 
+    ;       mutable_pred_constant_get 
+    ;       mutable_pred_constant_secret_set 
+    ;       mutable_pred_unsafe_get 
+    ;       mutable_pred_unsafe_set 
+    ;       mutable_pred_lock 
+    ;       mutable_pred_unlock 
+    ;       mutable_pred_pre_init 
+    ;       mutable_pred_init .
+:- type promise_type
+    --->    promise_type_exclusive 
+    ;       promise_type_exhaustive 
+    ;       promise_type_exclusive_exhaustive 
+    ;       promise_type_true .
+:- type solver_type_pred_kind
+    --->    solver_type_to_ground_pred 
+    ;       solver_type_to_any_pred 
+    ;       solver_type_from_ground_pred 
+    ;       solver_type_from_any_pred .
+:- type tabling_aux_pred_kind
+    --->    tabling_aux_pred_stats 
+    ;       tabling_aux_pred_reset .
+:- type trailing_status
+    --->    trail_may_modify 
+    ;       trail_will_not_modify 
+    ;       trail_conditional .

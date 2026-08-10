@@ -1,0 +1,45 @@
+      E1:     C1 CALL pred multi_parameter.main/2-0 (det) multi_parameter.m:31
+mdb> echo on
+Command echo enabled.
+mdb> context nextline
+Contexts will be printed on the next line.
+mdb> 
+      E2:     C2 CALL pred multi_parameter.foo/2-0 (det)
+                         multi_parameter.m:40 (from multi_parameter.m:32)
+mdb> print *
+       X (arg 1)              	'z'
+mdb> 
+      E3:     C3 CALL pred multi_parameter.a/2-0 (det)
+                         multi_parameter.m:23 (from multi_parameter.m:41)
+mdb> print *
+       HeadVar__1             	'z'
+mdb> 
+      E4:     C4 CALL pred multi_parameter.ClassMethod_for_multi_parameter__m____character__arity0__int__arity0______multi_parameter__a_2/2-0 (det)
+                         multi_parameter.m:28 (from multi_parameter.m:23)
+mdb> print *
+       HeadVar__1             	'z'
+mdb> 
+      E5:     C4 EXIT pred multi_parameter.ClassMethod_for_multi_parameter__m____character__arity0__int__arity0______multi_parameter__a_2/2-0 (det)
+                         multi_parameter.m:28 (from multi_parameter.m:23)
+mdb> print *
+       HeadVar__1             	'z'
+       HeadVar__2             	122
+mdb> 
+      E6:     C3 EXIT pred multi_parameter.a/2-0 (det)
+                         multi_parameter.m:23 (from multi_parameter.m:41)
+mdb> print *
+       HeadVar__1             	'z'
+       HeadVar__2             	122
+mdb> 
+      E7:     C2 EXIT pred multi_parameter.foo/2-0 (det)
+                         multi_parameter.m:40 (from multi_parameter.m:32)
+mdb> print *
+       X (arg 1)              	'z'
+       Y (arg 2)              	122
+mdb> 
+122
+      E8:     C1 EXIT pred multi_parameter.main/2-0 (det)
+                         multi_parameter.m:31
+mdb> print *
+mdb: there are no live variables.
+mdb> continue -S

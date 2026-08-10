@@ -1,0 +1,17 @@
+:- module make.int_opt.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- use_module make.make_info.
+:- use_module mdbcomp.sym_name.
+:- type build_what
+    --->    build_int3s 
+    ;       build_int3s_int0s 
+    ;       build_all_ints 
+    ;       build_all_ints_opts .
+:- pred build_int_opt_files(io.text_output_stream, libs.globals.globals, make.int_opt.build_what, list.list(mdbcomp.sym_name.module_name), libs.maybe_util.maybe_succeeded, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode build_int_opt_files(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
