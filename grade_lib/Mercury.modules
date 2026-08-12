@@ -1,0 +1,7 @@
+grade_lib.grade_setup	grade_setup.m
+grade_lib.grade_solver	grade_solver.m
+grade_lib.grade_spec	grade_spec.m
+grade_lib.grade_state	grade_state.m
+grade_lib.grade_string	grade_string.m
+grade_lib.grade_structure	grade_structure.m
+grade_lib.grade_vars	grade_vars.m

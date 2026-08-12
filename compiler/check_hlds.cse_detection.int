@@ -1,0 +1,10 @@
+:- module check_hlds.cse_detection.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- pred detect_cse_in_module(io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode detect_cse_in_module(builtin.in, builtin.in, builtin.out) is det.
+:- pred detect_cse_in_queued_proc(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode detect_cse_in_queued_proc(builtin.in, builtin.in, builtin.in, builtin.out) is det.

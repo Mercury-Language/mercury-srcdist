@@ -1,0 +1,4 @@
+:- module parse_tree.parse_goal_util.
+:- interface.
+:- type goal_result.
+:- type_representation(goal_result, is_eqv_to(parse_result1(goal))).

@@ -1,0 +1,25 @@
+:- module parse_tree.prog_item_pred_proc_id.
+:- interface.
+:- type compiler_origin.
+:- type item_compiler_attributes.
+:- type item_maybe_attrs.
+:- type modes_or_arity.
+:- type pred_func_or_unknown
+	where	type_is_abstract_enum(2).
+:- type pred_func_or_unknown_maybe_modes.
+:- type pred_func_or_unknown_pf
+	where	type_is_abstract_subtype(pred_func_or_unknown/0).
+:- type pred_or_proc_pfumm_name.
+:- type pred_pfu_name_arity.
+:- type pred_pfu_name_arity_pf
+	where	type_is_abstract_subtype(pred_pfu_name_arity/0).
+:- type proc_pf_name_arity_mn.
+:- type proc_pf_name_modes.
+:- type_representation(item_compiler_attributes, du_repn(notag("item_compiler_attributes", compiler_origin,  no_c_j_cs))).
+:- type_representation(pred_func_or_unknown, du_repn(enum("pfu_predicate", "pfu_function", ["pfu_unknown"],  no_c_j_cs))).
+:- type_representation(pred_func_or_unknown_pf, is_subtype_of((parse_tree.prog_item_pred_proc_id).pred_func_or_unknown/0)).
+:- type_representation(pred_or_proc_pfumm_name, is_word_aligned_ptr).
+:- type_representation(pred_pfu_name_arity, is_word_aligned_ptr).
+:- type_representation(pred_pfu_name_arity_pf, is_subtype_of((parse_tree.prog_item_pred_proc_id).pred_pfu_name_arity/0)).
+:- type_representation(proc_pf_name_arity_mn, is_word_aligned_ptr).
+:- type_representation(proc_pf_name_modes, is_word_aligned_ptr).

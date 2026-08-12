@@ -1,0 +1,17 @@
+:- module check_hlds.style_checks.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- type maybe_want_style_warnings
+    --->    do_not_want_style_warnings 
+    ;       want_style_warnings(
+                 check_hlds.style_checks.warnings_we_want
+            ).
+:- type warnings_we_want.
+:- pred do_we_want_style_warnings(hlds.hlds_module.module_info, check_hlds.style_checks.maybe_want_style_warnings, list.list(parse_tree.error_spec.diag_spec)).
+:- mode do_we_want_style_warnings(builtin.in, builtin.out, builtin.out) is det.
+:- pred generate_any_style_warnings(hlds.hlds_module.module_info, check_hlds.style_checks.warnings_we_want, list.list(parse_tree.error_spec.diag_spec)).
+:- mode generate_any_style_warnings(builtin.in, builtin.in, builtin.out) is det.
