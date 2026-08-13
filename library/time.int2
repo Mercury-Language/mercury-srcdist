@@ -1,0 +1,30 @@
+:- module time.
+:- interface.
+:- type clock_t.
+:- type dst
+    --->    standard_time 
+    ;       daylight_time .
+:- type time_error
+    --->    time_error(
+                 string
+            ).
+:- type time_t.
+:- type tm
+    --->    tm(
+                 time.tm_year :: int,
+                 time.tm_mon :: int,
+                 time.tm_mday :: int,
+                 time.tm_hour :: int,
+                 time.tm_min :: int,
+                 time.tm_sec :: int,
+                 time.tm_yday :: int,
+                 time.tm_wday :: int,
+                 time.tm_dst :: maybe.maybe(time.dst)
+            ).
+:- type tms
+    --->    tms(
+                 time.clock_t,
+                 time.clock_t,
+                 time.clock_t,
+                 time.clock_t
+            ).
