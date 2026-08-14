@@ -1,0 +1,8 @@
+:- module libs.system_cmds.
+:- interface.
+:- type command_verbosity
+	where	type_is_abstract_enum(1).
+:- type quote_char
+	where	type_is_abstract_enum(1).
+:- type_representation(command_verbosity, du_repn(enum("cmd_verbose", "cmd_verbose_commands", [],  no_c_j_cs))).
+:- type_representation(quote_char, du_repn(enum("forward", "double", [],  no_c_j_cs))).

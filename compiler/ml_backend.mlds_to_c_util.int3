@@ -1,0 +1,10 @@
+:- module ml_backend.mlds_to_c_util.
+:- interface.
+:- type decl_or_defn
+	where	type_is_abstract_enum(1).
+:- type mlds_to_c_opts.
+:- type target_or_dump
+	where	type_is_abstract_enum(1).
+:- type_representation(decl_or_defn, du_repn(enum("forward_decl", "definition", [],  no_c_j_cs))).
+:- type_representation(mlds_to_c_opts, is_word_aligned_ptr).
+:- type_representation(target_or_dump, du_repn(enum("tod_target", "tod_dump", [],  no_c_j_cs))).
