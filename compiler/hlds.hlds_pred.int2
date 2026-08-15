@@ -1,0 +1,322 @@
+:- module hlds.hlds_pred.
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module map.
+:- use_module pair.
+:- use_module set.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.set_of_var.
+:- type arg_info
+    --->    arg_info(
+                 hlds.hlds_pred.arg_loc,
+                 hlds.hlds_pred.top_functor_mode
+            ).
+:- type arg_loc
+    --->    reg(
+                 hlds.hlds_llds.reg_type,
+                 int
+            ).
+:- type arg_modes_map == pair.pair(map.map(parse_tree.prog_data.prog_var, bool.bool)).
+:- type call_id
+    --->    plain_call_id(
+                 parse_tree.prog_data.pf_sym_name_pred_form_arity
+            )
+    ;       generic_call_id(
+                 parse_tree.var_db.var_name_source,
+                 hlds.hlds_goal.generic_call
+            ).
+:- type call_site_static_data
+    --->    normal_call(
+                 (hlds.hlds_pred).normal_callee :: hlds.hlds_rtti.rtti_proc_label,
+                 (hlds.hlds_pred).normal_type_subst :: string,
+                 (hlds.hlds_pred).normal_file_name :: string,
+                 (hlds.hlds_pred).normal_line_number :: int,
+                 (hlds.hlds_pred).normal_goal_path :: mdbcomp.goal_path.forward_goal_path
+            )
+    ;       special_call(
+                 (hlds.hlds_pred).special_file_name :: string,
+                 (hlds.hlds_pred).special_line_number :: int,
+                 (hlds.hlds_pred).special_goal_path :: mdbcomp.goal_path.forward_goal_path
+            )
+    ;       higher_order_call(
+                 (hlds.hlds_pred).higher_order_file_name :: string,
+                 (hlds.hlds_pred).ho_line_number :: int,
+                 (hlds.hlds_pred).ho_goal_path :: mdbcomp.goal_path.forward_goal_path
+            )
+    ;       method_call(
+                 (hlds.hlds_pred).method_file_name :: string,
+                 (hlds.hlds_pred).method_line_number :: int,
+                 (hlds.hlds_pred).method_goal_path :: mdbcomp.goal_path.forward_goal_path
+            )
+    ;       callback(
+                 (hlds.hlds_pred).callback_file_name :: string,
+                 (hlds.hlds_pred).callback_line_number :: int,
+                 (hlds.hlds_pred).callback_goal_path :: mdbcomp.goal_path.forward_goal_path
+            ).
+:- type can_process
+    --->    cannot_process_yet 
+    ;       can_process_now .
+:- type cur_user_decl_info
+    --->    cur_user_decl_info(
+                 hlds.hlds_pred.decl_section,
+                 hlds.hlds_pred.maybe_predmode_decl,
+                 parse_tree.prog_data.item_seq_num
+            ).
+:- type decl_section
+    --->    decl_interface 
+    ;       decl_implementation .
+:- type deep_original_body
+    --->    deep_original_body(
+                 (hlds.hlds_pred).dob_body :: hlds.hlds_goal.hlds_goal,
+                 (hlds.hlds_pred).dob_head_vars :: list.list(parse_tree.prog_data.prog_var),
+                 (hlds.hlds_pred).dob_instmap :: hlds.instmap.instmap,
+                 (hlds.hlds_pred).dob_var_table :: parse_tree.var_table.var_table,
+                 (hlds.hlds_pred).dob_detism :: parse_tree.prog_data.determinism
+            ).
+:- type deep_profile_proc_info
+    --->    deep_profile_proc_info(
+                 (hlds.hlds_pred).deep_rec :: maybe.maybe(hlds.hlds_pred.deep_recursion_info),
+                 (hlds.hlds_pred).deep_layout :: maybe.maybe(hlds.hlds_pred.hlds_deep_layout),
+                 (hlds.hlds_pred).deep_orig_body :: hlds.hlds_pred.deep_original_body
+            ).
+:- type deep_profile_role
+    --->    deep_prof_inner_proc(
+                 (hlds.hlds_pred).dpip_outer_proc :: hlds.hlds_pred.pred_proc_id
+            )
+    ;       deep_prof_outer_proc(
+                 (hlds.hlds_pred).dpop_inner_proc :: hlds.hlds_pred.pred_proc_id
+            ).
+:- type deep_recursion_info
+    --->    deep_recursion_info(
+                 (hlds.hlds_pred).dri_role :: hlds.hlds_pred.deep_profile_role,
+                 (hlds.hlds_pred).dri_visible_scc :: list.list(hlds.hlds_pred.visible_scc_data)
+            ).
+:- type detism_decl
+    --->    detism_decl_explicit 
+    ;       detism_decl_implicit 
+    ;       detism_decl_none .
+:- type external_type_params == list.list(parse_tree.prog_data.tvar).
+:- type format_call_info
+    --->    format_call_info(
+                 parse_tree.prog_data.prog_context,
+                 one_or_more.one_or_more(parse_tree.prog_data_pragma.format_string_values)
+            ).
+:- type generic_call_id
+    --->    gcid_higher_order(
+                 parse_tree.prog_data.purity,
+                 mdbcomp.prim_data.pred_or_func,
+                 parse_tree.prog_data.pred_form_arity
+            )
+    ;       gcid_class_method(
+                 parse_tree.prog_data.class_id,
+                 parse_tree.prog_data.pf_sym_name_pred_form_arity
+            )
+    ;       gcid_event_call(
+                 string
+            )
+    ;       gcid_cast(
+                 hlds.hlds_goal.cast_kind
+            ).
+:- type goal_type
+    --->    goal_not_for_promise(
+                 hlds.hlds_pred.np_goal_type
+            )
+    ;       goal_for_promise(
+                 parse_tree.prog_data_rare.promise_type
+            ).
+:- type has_mutual_tail_rec_call
+    --->    has_mutual_tail_rec_call 
+    ;       has_no_mutual_tail_rec_call .
+:- type has_parallel_conj
+    --->    has_parallel_conj 
+    ;       has_no_parallel_conj .
+:- type has_self_tail_rec_call
+    --->    has_self_tail_rec_call 
+    ;       has_no_self_tail_rec_call .
+:- type has_tail_rec_call
+    --->    has_tail_rec_call(
+                 hlds.hlds_pred.has_self_tail_rec_call,
+                 hlds.hlds_pred.has_mutual_tail_rec_call
+            ).
+:- type has_user_event
+    --->    has_user_event 
+    ;       has_no_user_event .
+:- type hlds_deep_excp_vars
+    --->    hlds_deep_excp_vars(
+                 (hlds.hlds_pred).top_csd :: parse_tree.prog_data.prog_var,
+                 (hlds.hlds_pred).middle_csd :: parse_tree.prog_data.prog_var,
+                 (hlds.hlds_pred).old_outermost :: maybe.maybe(parse_tree.prog_data.prog_var)
+            ).
+:- type hlds_deep_layout
+    --->    hlds_deep_layout(
+                 (hlds.hlds_pred).deep_layout_static :: hlds.hlds_pred.hlds_proc_static,
+                 (hlds.hlds_pred).deep_layout_excp :: hlds.hlds_pred.hlds_deep_excp_vars
+            ).
+:- type hlds_proc_static
+    --->    hlds_proc_static(
+                 (hlds.hlds_pred).proc_static_file_name :: string,
+                 (hlds.hlds_pred).proc_static_line_number :: int,
+                 (hlds.hlds_pred).proc_is_in_interface :: bool.bool,
+                 (hlds.hlds_pred).call_site_statics :: list.list(hlds.hlds_pred.call_site_static_data),
+                 (hlds.hlds_pred).coverage_points :: list.list(mdbcomp.program_representation.coverage_point_info)
+            ).
+:- type implementation_language
+    --->    impl_lang_mercury 
+    ;       impl_lang_foreign(
+                 libs.globals.foreign_language
+            ).
+:- type is_address_taken
+    --->    address_is_taken 
+    ;       address_is_not_taken .
+:- type liveness_info == parse_tree.set_of_var.set_of_progvar.
+:- type maybe_predmode_decl
+    --->    no_predmode_decl 
+    ;       predmode_decl .
+:- type needs_maxfr_slot
+    --->    needs_maxfr_slot 
+    ;       does_not_need_maxfr_slot .
+:- type np_goal_type
+    --->    np_goal_type_none 
+    ;       np_goal_type_clause 
+    ;       np_goal_type_foreign 
+    ;       np_goal_type_clause_and_foreign .
+:- type oisu_pred_kind_for
+    --->    oisu_creator_for(
+                 parse_tree.prog_data.type_ctor
+            )
+    ;       oisu_mutator_for(
+                 parse_tree.prog_data.type_ctor
+            )
+    ;       oisu_destructor_for(
+                 parse_tree.prog_data.type_ctor
+            ).
+:- type pred_id.
+:- type pred_info.
+:- type pred_proc_id
+    --->    proc(
+                 hlds.hlds_pred.pred_id,
+                 hlds.hlds_pred.proc_id
+            ).
+:- type proc_exception_info
+    --->    proc_exception_info(
+                 (hlds.hlds_pred).proc_exception_status :: parse_tree.prog_data_pragma.exception_status,
+                 (hlds.hlds_pred).proc_maybe_excep_analysis_status :: maybe.maybe(analysis.framework.analysis_status)
+            ).
+:- type proc_foreign_exports
+    --->    no_foreign_exports 
+    ;       has_foreign_exports .
+:- type proc_id.
+:- type proc_info.
+:- type proc_mm_tabling_info
+    --->    proc_mm_tabling_info(
+                 (hlds.hlds_pred).proc_mm_status :: parse_tree.prog_data_rare.mm_tabling_status,
+                 (hlds.hlds_pred).proc_mm_analysis_status :: maybe.maybe(analysis.framework.analysis_status)
+            ).
+:- type proc_table == map.map(hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_info).
+:- type proc_table_io_info
+    --->    proc_table_io_info(
+                 maybe.maybe(hlds.hlds_pred.table_arg_infos)
+            ).
+:- type proc_table_struct_info
+    --->    proc_table_struct_info(
+                 (hlds.hlds_pred).ptsi_proc_label :: hlds.hlds_rtti.rtti_proc_label,
+                 (hlds.hlds_pred).ptsi_tvarset :: parse_tree.prog_data.tvarset,
+                 (hlds.hlds_pred).ptsi_context :: parse_tree.prog_data.prog_context,
+                 (hlds.hlds_pred).ptsi_num_inputs :: int,
+                 (hlds.hlds_pred).ptsi_num_outputs :: int,
+                 (hlds.hlds_pred).ptsi_input_steps :: list.list(hlds.hlds_pred.table_step_desc),
+                 (hlds.hlds_pred).ptsi_maybe_output_steps :: maybe.maybe(list.list(hlds.hlds_pred.table_step_desc)),
+                 (hlds.hlds_pred).ptsi_gen_arg_infos :: hlds.hlds_pred.table_arg_infos,
+                 (hlds.hlds_pred).ptsi_eval_method :: parse_tree.prog_data_pragma.tabled_eval_method
+            ).
+:- type proc_trailing_info
+    --->    proc_trailing_info(
+                 (hlds.hlds_pred).proc_trailing_status :: parse_tree.prog_data_rare.trailing_status,
+                 (hlds.hlds_pred).proc_maybe_trail_analysis_status :: maybe.maybe(analysis.framework.analysis_status)
+            ).
+:- type scc == set.set(hlds.hlds_pred.pred_proc_id).
+:- type special_proc_return
+    --->    generator_return(
+                 (hlds.hlds_pred).generator_rval :: string,
+                 (hlds.hlds_pred).return_debug :: string
+            ).
+:- type structure_reuse_domain_and_status
+    --->    structure_reuse_domain_and_status(
+                 parse_tree.prog_data_pragma.structure_reuse_domain,
+                 analysis.framework.analysis_status
+            ).
+:- type structure_reuse_info.
+:- type structure_sharing_domain_and_status
+    --->    structure_sharing_domain_and_status(
+                 parse_tree.prog_data_pragma.structure_sharing_domain,
+                 analysis.framework.analysis_status
+            ).
+:- type structure_sharing_info.
+:- type table_arg_info
+    --->    table_arg_info(
+                 (hlds.hlds_pred).orig_var_num :: int,
+                 (hlds.hlds_pred).orig_var_name :: string,
+                 (hlds.hlds_pred).slot_num :: int,
+                 (hlds.hlds_pred).arg_type :: parse_tree.prog_data.mer_type
+            ).
+:- type table_arg_infos
+    --->    table_arg_infos(
+                 list.list(hlds.hlds_pred.table_arg_info),
+                 map.map(parse_tree.prog_data.tvar, hlds.hlds_pred.table_locn)
+            ).
+:- type table_is_poly
+    --->    table_is_mono 
+    ;       table_is_poly .
+:- type table_locn
+    --->    table_locn_direct(
+                 int
+            )
+    ;       table_locn_indirect(
+                 int,
+                 int
+            ).
+:- type table_step_desc
+    --->    table_step_desc(
+                 (hlds.hlds_pred).tsd_var_name :: string,
+                 (hlds.hlds_pred).tsd_step :: hlds.hlds_pred.table_trie_step
+            ).
+:- type table_trie_step
+    --->    table_trie_step_dummy 
+    ;       table_trie_step_int(
+                 parse_tree.prog_data.int_type
+            )
+    ;       table_trie_step_char 
+    ;       table_trie_step_string 
+    ;       table_trie_step_float 
+    ;       table_trie_step_enum(
+                 int
+            )
+    ;       table_trie_step_foreign_enum 
+    ;       table_trie_step_general(
+                 parse_tree.prog_data.mer_type,
+                 hlds.hlds_pred.table_is_poly,
+                 hlds.hlds_pred.table_value_or_addr
+            )
+    ;       table_trie_step_typeinfo 
+    ;       table_trie_step_typeclassinfo 
+    ;       table_trie_step_promise_implied .
+:- type table_value_or_addr
+    --->    table_value 
+    ;       table_addr .
+:- type top_functor_mode
+    --->    top_in 
+    ;       top_out 
+    ;       top_unused .
+:- type untuple_proc_info
+    --->    untuple_proc_info(
+                 map.map(parse_tree.prog_data.prog_var, list.list(parse_tree.prog_data.prog_var))
+            ).
+:- type visible_scc_data
+    --->    visible_scc_data(
+                 (hlds.hlds_pred).vis_outer_proc :: hlds.hlds_pred.pred_proc_id,
+                 (hlds.hlds_pred).vis_inner_proc :: hlds.hlds_pred.pred_proc_id,
+                 (hlds.hlds_pred).rec_call_sites :: list.list(int)
+            ).
+:- implementation.
+:- type proc_id == int.

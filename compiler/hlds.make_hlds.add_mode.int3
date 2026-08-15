@@ -1,0 +1,3 @@
+:- module (hlds.make_hlds).add_mode.
+:- interface.
+:- type_representation(expansions, is_eqv_to(map(sym_name_arity, prog_context))).

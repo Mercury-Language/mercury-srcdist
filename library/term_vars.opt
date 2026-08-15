@@ -1,0 +1,48 @@
+:- module term_vars.
+:- use_module builtin.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module term.
+
+:- pred term_vars.vars_in_terms_acc(list.list(term.term(T)), list.list(term.var(T)), list.list(term.var(T))).
+:- mode vars_in_terms_acc(builtin.in, builtin.in, builtin.out) is det.
+
+term_vars.term_contains_var(term.variable(V_3, V_4), V_3).
+term_vars.term_contains_var(term.functor(V_5, V_6, V_7), V_8) :-
+    term_vars.terms_contain_var(V_6, V_8).
+
+term_vars.vars_in_term(V_3) = V_4 :-
+    term_vars.vars_in_term(V_3, V_4).
+
+term_vars.vars_in_term(V_3, V_4) :-
+    V_5 = list.[] : list.list(term.var(T_1)),
+    term_vars.vars_in_term_acc(V_3, V_5, V_4).
+
+term_vars.vars_in_terms(V_3) = V_4 :-
+    term_vars.vars_in_terms(V_3, V_4).
+
+term_vars.vars_in_terms(V_3, V_4) :-
+    V_5 = list.[] : list.list(term.var(T_1)),
+    term_vars.vars_in_terms_acc(V_3, V_5, V_4).
+
+:- pragma termination_info(term_vars.term_contains_var(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(term_vars.term_contains_var(builtin.in, builtin.out), finite(-2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.terms_contain_var(builtin.in, builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(term_vars.terms_contain_var(builtin.in, builtin.out), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.vars_in_term(builtin.in) = builtin.out, finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.vars_in_term(builtin.in, builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.vars_in_term_acc(builtin.in, builtin.in, builtin.out), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.vars_in_terms(builtin.in) = builtin.out, finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.vars_in_terms(builtin.in, builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term_vars.vars_in_terms_acc(builtin.in, builtin.in, builtin.out), finite(0, [no, yes, yes, no]), cannot_loop).
+
+:- pragma exceptions(predicate, term_vars.term_contains_var, 2, 0, conditional).
+:- pragma exceptions(predicate, term_vars.term_contains_var, 2, 1, will_not_throw).
+:- pragma exceptions(predicate, term_vars.terms_contain_var, 2, 0, conditional).
+:- pragma exceptions(predicate, term_vars.terms_contain_var, 2, 1, will_not_throw).
+:- pragma exceptions(function, term_vars.vars_in_term, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, term_vars.vars_in_term, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, term_vars.vars_in_term_acc, 3, 0, will_not_throw).
+:- pragma exceptions(function, term_vars.vars_in_terms, 1, 0, will_not_throw).
+:- pragma exceptions(predicate, term_vars.vars_in_terms, 2, 0, will_not_throw).
+:- pragma exceptions(predicate, term_vars.vars_in_terms_acc, 3, 0, will_not_throw).

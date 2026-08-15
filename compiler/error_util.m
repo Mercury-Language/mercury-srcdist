@@ -1,0 +1,599 @@
+%---------------------------------------------------------------------------%
+% vim: ft=mercury ts=4 sw=4 et
+%---------------------------------------------------------------------------%
+% Copyright (C) 1997-2012 The University of Melbourne.
+% Copyright (C) 2014-2026 The Mercury team.
+% This file may only be copied under the terms of the GNU General
+% Public License - see the file COPYING in the Mercury distribution.
+%---------------------------------------------------------------------------%
+%
+% File: error_util.m.
+% Main author: zs.
+%
+% This module contains utility predicates and functions operating on
+% diag_specs.
+%
+%---------------------------------------------------------------------------%
+
+:- module parse_tree.error_util.
+:- interface.
+
+:- import_module libs.
+:- import_module libs.globals.
+:- import_module libs.options.
+:- import_module parse_tree.error_spec.
+
+:- import_module bool.
+:- import_module list.
+:- import_module maybe.
+
+%---------------------------------------------------------------------------%
+
+    % Would trying to print the given spec result in any output?
+    % The answer can be "no" if all parts of the diag_spec are
+    % under a condition that happens to be false.
+    %
+:- pred does_spec_print_anything(globals::in, diag_spec::in) is semidet.
+
+%---------------------------------------------------------------------------%
+
+    % Return the worst of two actual severities.
+    %
+:- func worst_severity(actual_severity, actual_severity)
+    = actual_severity.
+
+    % Compute the actual severity of an diag_spec
+    % (if it actually prints anything).
+    %
+:- func actual_spec_severity(globals, diag_spec) = maybe(actual_severity).
+:- func actual_spec_severity_opt_table(option_table, diag_spec) =
+    maybe(actual_severity).
+:- pred severity_to_maybe_actual_severity(option_table::in,
+    spec_severity::in, maybe(actual_severity)::out) is det.
+
+    % Succeeds if and only if the given diag_spec has a severity,
+    % and it is severity_error.
+    %
+:- pred actual_spec_severity_is_error(globals::in, diag_spec::in) is semidet.
+
+%---------------------------------------------------------------------------%
+
+    % Compute the worst actual severity (if any) occurring in a list of
+    % diag_specs.
+    %
+:- func worst_severity_in_specs(globals, list(diag_spec))
+    = maybe(actual_severity).
+:- func worst_severity_in_specs_opt_table(option_table, list(diag_spec))
+    = maybe(actual_severity).
+
+    % Return `yes' if the given list contains diag_specs whose actual severity
+    % is actual_severity_error.
+    %
+:- func contains_errors(globals, list(diag_spec)) = bool.
+:- func contains_errors_option_table(option_table, list(diag_spec)) = bool.
+
+    % Return `yes' if the given list contains diag_specs whose actual severity
+    % is actual_severity_error or actual_severity_warning.
+    %
+:- func contains_errors_and_or_warnings(globals, list(diag_spec)) = bool.
+:- func contains_errors_and_or_warnings_opt_table(option_table,
+    list(diag_spec)) = bool.
+
+    % If --halt-at-warn is not set, then return `yes' if the given list
+    % contains diag_specs whose actual severity is actual_severity_error.
+    %
+    % If --halt-at-warn is set, then return `yes' if the given list
+    % contains diag_specs whose actual severity is either
+    % actual_severity_error or actual_severity_warning.
+    %
+:- func contains_errors_or_warnings_treated_as_errors(globals,
+    list(diag_spec)) = bool.
+:- func contains_errors_or_warnings_treated_as_errors_opt_table(option_table,
+    list(diag_spec)) = bool.
+
+%---------------------------------------------------------------------------%
+
+    % Sometimes we want to both
+    %
+    % - print an diag_spec just after it is generated, and
+    % - also return it to inform decisions about the presence of errors.
+    %
+    % To prevent the caller from writing out a duplicate copy of an
+    % diag_spec, we can move it to the already_written field. This
+    %
+    % - preserves its severity (for decisions),
+    % - preserves its text (which may be helpful when debugging
+    %   the code that makes one of those decisions),
+    % - but which write_error_spec.m knows to ignore.
+    %
+:- type maybe_written_specs
+    --->    maybe_written_specs(
+                to_be_written       :: list(diag_spec),
+                already_written     :: list(diag_spec)
+            ).
+
+:- func init_maybe_written_specs = maybe_written_specs.
+
+:- pred add_to_be_written_specs(list(diag_spec)::in,
+    maybe_written_specs::in, maybe_written_specs::out) is det.
+:- pred add_to_be_written_err_specs(list(err_spec)::in,
+    maybe_written_specs::in, maybe_written_specs::out) is det.
+:- pred add_to_be_written_warn_specs(list(warn_spec)::in,
+    maybe_written_specs::in, maybe_written_specs::out) is det.
+:- pred add_to_be_written_info_specs(list(info_spec)::in,
+    maybe_written_specs::in, maybe_written_specs::out) is det.
+
+:- func maybe_written_specs_to_specs(maybe_written_specs) = list(diag_spec).
+
+%---------------------------------------------------------------------------%
+
+    % Given a function that constructs lists of format pieces when given
+    % an item and a suffix, return a list of format pieces which
+    %
+    % - contains the output of the function for all the items in the list,
+    % - with these outputs being in a sorted order (sorted on format_pieces),
+    % - with the output for all items ending with a comma and a newline,
+    % - with the exception of the last output, which has a period, not a comma.
+    %
+:- pred construct_sorted_line_pieces(
+    func(list(format_piece), T) = list(format_piece)::in,
+    list(T)::in, list(format_piece)::out) is det.
+
+%---------------------------------------------------------------------------%
+
+:- func start_each_msg_with_blank_line(list(diag_msg)) = list(diag_msg).
+
+%---------------------------------------------------------------------------%
+
+    % Delete all the given diag_specs, which are supposed to have been
+    % gathered during the process that generates the contents of an interface
+    % file, if halt_at_invalid_interface is not set.
+    %
+    % Even if it is set, delete any conditional error specs whose conditions
+    % are false.
+    %
+:- pred filter_interface_generation_specs(globals::in,
+    list(diag_spec)::in, list(diag_spec)::out) is det.
+
+%---------------------------------------------------------------------------%
+%
+% The diag_spec_accumulator type can be used to accumulate errors for
+% multiple modes of a predicate. accumulate_diag_specs_for_proc will
+% eliminate warnings that should only be reported if they occur in every mode,
+% but don't occur in every mode.
+
+:- type diag_spec_accumulator.
+
+:- func init_diag_spec_accumulator = diag_spec_accumulator.
+
+:- pred accumulate_diag_specs_for_proc(list(diag_spec)::in,
+    diag_spec_accumulator::in, diag_spec_accumulator::out) is det.
+
+:- func diag_spec_accumulator_to_list(diag_spec_accumulator) =
+    list(diag_spec).
+
+%---------------------------------------------------------------------------%
+%---------------------------------------------------------------------------%
+
+:- implementation.
+
+:- import_module getopt.
+:- import_module map.
+:- import_module pair.
+:- import_module require.
+:- import_module set.
+:- import_module string.
+:- import_module term_context.
+
+%---------------------------------------------------------------------------%
+
+does_spec_print_anything(_Globals, Spec) :-
+    does_spec_print_anything_2(Spec) = yes.
+
+:- func does_spec_print_anything_2(diag_spec) = bool.
+
+does_spec_print_anything_2(Spec) = Prints :-
+    (
+        ( Spec = spec(_, _, _, _, _)
+        ; Spec = no_ctxt_spec(_, _, _, _)
+        ),
+        Prints = yes
+    ;
+        Spec = gen_spec(_, _, _, Msgs),
+        PrintsList = list.map(does_msg_print_anything, Msgs),
+        bool.or_list(PrintsList, Prints)
+    ).
+
+:- func does_msg_print_anything(diag_msg) = bool.
+
+does_msg_print_anything(Msg) = Prints :-
+    (
+        ( Msg = msg(_, _)
+        ; Msg = no_ctxt_msg(_)
+        ),
+        Prints = yes
+    ;
+        Msg = blank_msg(_),
+        Prints = no
+    ;
+        ( Msg = simple_msg(_, MsgComponents)
+        ; Msg = gen_msg(_, _, _, MsgComponents)
+        ),
+        (
+            MsgComponents = [],
+            unexpected($pred, "MsgComponents = []")
+        ;
+            MsgComponents = [_ | _],
+            Prints = yes
+        )
+    ).
+
+%---------------------------------------------------------------------------%
+
+worst_severity(actual_severity_error, actual_severity_error) =
+    actual_severity_error.
+worst_severity(actual_severity_error, actual_severity_warning) =
+    actual_severity_error.
+worst_severity(actual_severity_error, actual_severity_informational) =
+    actual_severity_error.
+worst_severity(actual_severity_warning, actual_severity_error) =
+    actual_severity_error.
+worst_severity(actual_severity_warning, actual_severity_warning) =
+    actual_severity_warning.
+worst_severity(actual_severity_warning, actual_severity_informational) =
+    actual_severity_warning.
+worst_severity(actual_severity_informational, actual_severity_error) =
+    actual_severity_error.
+worst_severity(actual_severity_informational, actual_severity_warning) =
+    actual_severity_warning.
+worst_severity(actual_severity_informational, actual_severity_informational) =
+    actual_severity_informational.
+
+%---------------------%
+
+actual_spec_severity(Globals, Spec) = MaybeSeverity :-
+    globals.get_options(Globals, OptionTable),
+    MaybeSeverity = actual_spec_severity_opt_table(OptionTable, Spec).
+
+actual_spec_severity_opt_table(OptionTable, Spec) = MaybeActualSeverity :-
+    ( Spec = gen_spec(_, Severity, _, _)
+    ; Spec = spec(_, Severity, _, _, _)
+    ; Spec = no_ctxt_spec(_, Severity, _, _)
+    ),
+    severity_to_maybe_actual_severity(OptionTable,
+        Severity, MaybeActualSeverity).
+
+severity_to_maybe_actual_severity(OptionTable, Severity,
+        MaybeActualSeverity) :-
+    (
+        Severity = severity_error,
+        MaybeActualSeverity = yes(actual_severity_error)
+    ;
+        Severity = severity_warning(Option),
+        getopt.lookup_bool_option(OptionTable, Option, OptionValue),
+        (
+            OptionValue = yes,
+            MaybeActualSeverity = yes(actual_severity_warning)
+        ;
+            OptionValue = no,
+            MaybeActualSeverity = no
+        )
+    ;
+        Severity = severity_informational(Option),
+        map.lookup(OptionTable, Option, OptionData),
+        (
+            OptionData = bool(OptionValue),
+            (
+                OptionValue = yes,
+                MaybeActualSeverity = yes(actual_severity_informational)
+            ;
+                OptionValue = no,
+                MaybeActualSeverity = no
+            )
+        ;
+            OptionData = accumulating(OptionValue),
+            % Some informational options, such as show_pred_movability,
+            % are accumulating options, not bool options.
+            (
+                OptionValue = [_ | _],
+                MaybeActualSeverity = yes(actual_severity_informational)
+            ;
+                OptionValue = [],
+                MaybeActualSeverity = no
+            )
+        ;
+            ( OptionData = int(_)
+            ; OptionData = string(_)
+            ; OptionData = maybe_int(_)
+            ; OptionData = maybe_string(_)
+            ; OptionData = special
+            ; OptionData = bool_special
+            ; OptionData = int_special
+            ; OptionData = string_special
+            ; OptionData = maybe_string_special
+            ; OptionData = file_special
+            ),
+            string.format("%s is not a bool or accumulating option",
+                [s(string(Option))], Msg),
+            unexpected($pred, Msg)
+        )
+    ).
+
+actual_spec_severity_is_error(Globals, Spec) :-
+    actual_spec_severity(Globals, Spec) = yes(actual_severity_error).
+
+%---------------------%
+
+worst_severity_in_specs(Globals, Specs) = MaybeWorst :-
+    globals.get_options(Globals, OptionTable),
+    worst_severity_in_specs_loop(OptionTable, Specs, no, MaybeWorst).
+
+worst_severity_in_specs_opt_table(OptionTable, Specs) = MaybeWorst :-
+    worst_severity_in_specs_loop(OptionTable, Specs, no, MaybeWorst).
+
+:- pred worst_severity_in_specs_loop(option_table::in, list(diag_spec)::in,
+    maybe(actual_severity)::in, maybe(actual_severity)::out) is det.
+
+worst_severity_in_specs_loop(_OptionTable, [], !MaybeWorst).
+worst_severity_in_specs_loop(OptionTable, [Spec | Specs], !MaybeWorst) :-
+    MaybeThis = actual_spec_severity_opt_table(OptionTable, Spec),
+    (
+        !.MaybeWorst = no,
+        !:MaybeWorst = MaybeThis
+    ;
+        !.MaybeWorst = yes(Worst),
+        (
+            MaybeThis = no
+        ;
+            MaybeThis = yes(This),
+            !:MaybeWorst = yes(worst_severity(Worst, This))
+        )
+    ),
+    worst_severity_in_specs_loop(OptionTable, Specs, !MaybeWorst).
+
+%---------------------%
+
+contains_errors(Globals, Specs) = Errors :-
+    globals.get_options(Globals, OptionTable),
+    Errors = contains_errors_option_table(OptionTable, Specs).
+
+contains_errors_option_table(OptionTable, Specs) = Errors :-
+    MaybeWorstActual = worst_severity_in_specs_opt_table(OptionTable, Specs),
+    (
+        MaybeWorstActual = no,
+        Errors = no
+    ;
+        MaybeWorstActual = yes(WorstActual),
+        (
+            WorstActual = actual_severity_error,
+            Errors = yes
+        ;
+            ( WorstActual = actual_severity_warning
+            ; WorstActual = actual_severity_informational
+            ),
+            Errors = no
+        )
+    ).
+
+%---------------------%
+
+contains_errors_and_or_warnings(Globals, Specs) = ErrorsOrWarnings :-
+    globals.get_options(Globals, OptionTable),
+    ErrorsOrWarnings =
+        contains_errors_and_or_warnings_opt_table(OptionTable, Specs).
+
+contains_errors_and_or_warnings_opt_table(OptionTable, Specs) =
+        ErrorsOrWarnings :-
+    MaybeWorstActual = worst_severity_in_specs_opt_table(OptionTable, Specs),
+    (
+        MaybeWorstActual = no,
+        ErrorsOrWarnings = no
+    ;
+        MaybeWorstActual = yes(WorstActual),
+        (
+            ( WorstActual = actual_severity_error
+            ; WorstActual = actual_severity_warning
+            ),
+            ErrorsOrWarnings = yes
+        ;
+            WorstActual = actual_severity_informational,
+            ErrorsOrWarnings = no
+        )
+    ).
+
+%---------------------%
+
+contains_errors_or_warnings_treated_as_errors(Globals, Specs) = Halt :-
+    globals.get_options(Globals, OptionTable),
+    Halt = contains_errors_or_warnings_treated_as_errors_opt_table(OptionTable,
+        Specs).
+
+contains_errors_or_warnings_treated_as_errors_opt_table(OptionTable, Specs)
+        = Halt :-
+    MaybeWorstActual = worst_severity_in_specs_opt_table(OptionTable, Specs),
+    (
+        MaybeWorstActual = no,
+        Halt = no
+    ;
+        MaybeWorstActual = yes(WorstActual),
+        (
+            WorstActual = actual_severity_error,
+            Halt = yes
+        ;
+            WorstActual = actual_severity_warning,
+            getopt.lookup_bool_option(OptionTable, halt_at_warn, HaltAtWarn),
+            (
+                HaltAtWarn = yes,
+                Halt = yes
+            ;
+                HaltAtWarn = no,
+                Halt = no
+            )
+        ;
+            WorstActual = actual_severity_informational,
+            Halt = no
+        )
+    ).
+
+%---------------------------------------------------------------------------%
+
+init_maybe_written_specs = maybe_written_specs([], []).
+
+add_to_be_written_specs(Specs, !MaybeWrittenSpecs) :-
+    !.MaybeWrittenSpecs = maybe_written_specs(ToBeWritten0, AlreadyWritten),
+    ToBeWritten = Specs ++ ToBeWritten0,
+    !:MaybeWrittenSpecs = maybe_written_specs(ToBeWritten, AlreadyWritten).
+
+add_to_be_written_err_specs(Specs, !MaybeWrittenSpecs) :-
+    !.MaybeWrittenSpecs = maybe_written_specs(ToBeWritten0, AlreadyWritten),
+    ToBeWritten = coerce(Specs) ++ ToBeWritten0,
+    !:MaybeWrittenSpecs = maybe_written_specs(ToBeWritten, AlreadyWritten).
+
+add_to_be_written_warn_specs(Specs, !MaybeWrittenSpecs) :-
+    !.MaybeWrittenSpecs = maybe_written_specs(ToBeWritten0, AlreadyWritten),
+    ToBeWritten = coerce(Specs) ++ ToBeWritten0,
+    !:MaybeWrittenSpecs = maybe_written_specs(ToBeWritten, AlreadyWritten).
+
+add_to_be_written_info_specs(Specs, !MaybeWrittenSpecs) :-
+    !.MaybeWrittenSpecs = maybe_written_specs(ToBeWritten0, AlreadyWritten),
+    ToBeWritten = coerce(Specs) ++ ToBeWritten0,
+    !:MaybeWrittenSpecs = maybe_written_specs(ToBeWritten, AlreadyWritten).
+
+maybe_written_specs_to_specs(MaybeWrittenSpecs) = Specs :-
+    MaybeWrittenSpecs = maybe_written_specs(ToBeWritten, AlreadyWritten),
+    Specs = ToBeWritten ++ AlreadyWritten.
+
+%---------------------------------------------------------------------------%
+
+construct_sorted_line_pieces(MakeItemPiecesFunc, Items, Pieces) :-
+    (
+        Items = [],
+        Pieces = []
+    ;
+        Items = [_ | _],
+        % We want the output piece lists to be sorted, and we want to
+        % - add a comma after the pieces of all items but the last, and
+        % - add a period after the pieces of the last item.
+        % Since the pieces we construct for each item are far from guaranteed
+        % to be in the same order as the items, we cannot identify which
+        % item's pieces should be last by looking at only Items.
+        list.map(construct_sorted_line_pieces_pair(MakeItemPiecesFunc),
+            Items, ItemPiecesPairs),
+        list.sort(ItemPiecesPairs, SortedItemPiecesPairs),
+        list.det_split_last(SortedItemPiecesPairs, NonLastPiecesPairs,
+            _LastPieces - LastItem),
+        list.map(pair.fst, NonLastPiecesPairs, NonLastPiecesList),
+        list.condense(NonLastPiecesList, NonLastPieces),
+        LastPieces = MakeItemPiecesFunc([suffix("."), nl], LastItem),
+        Pieces = NonLastPieces ++ LastPieces
+    ).
+
+:- pred construct_sorted_line_pieces_pair(
+    func(list(format_piece), T) = list(format_piece)::in,
+    T::in, pair(list(format_piece), T)::out) is det.
+
+construct_sorted_line_pieces_pair(MakeItemPiecesFunc, Item,
+        ItemPieces - Item) :-
+    ItemPieces = MakeItemPiecesFunc([suffix(","), nl], Item).
+
+%---------------------------------------------------------------------------%
+
+start_each_msg_with_blank_line([]) = [].
+start_each_msg_with_blank_line([HeadMsg0 | TailMsgs0]) = Msgs :-
+    extract_msg_maybe_context(HeadMsg0, MaybeContext),
+    TailMsgs = start_each_msg_with_blank_line(TailMsgs0),
+    Msgs = [blank_msg(MaybeContext), HeadMsg0 | TailMsgs].
+
+%---------------------------------------------------------------------------%
+
+filter_interface_generation_specs(Globals, Specs, SpecsToPrint) :-
+    globals.lookup_bool_option(Globals,
+        halt_at_invalid_interface, HaltInvalidInterface),
+    (
+        HaltInvalidInterface = yes,
+        list.filter(does_spec_print_anything(Globals), Specs, SpecsToPrint)
+    ;
+        HaltInvalidInterface = no,
+        SpecsToPrint = []
+    ).
+
+%---------------------------------------------------------------------------%
+
+:- type diag_spec_accumulator == maybe(pair(set(diag_spec))).
+
+init_diag_spec_accumulator = no.
+
+accumulate_diag_specs_for_proc(ProcSpecs, !MaybeSpecs) :-
+    list.filter(
+        ( pred(Spec::in) is semidet :-
+            Phase = project_spec_phase(Spec),
+            ModeReportControl = get_maybe_mode_report_control(Phase),
+            ModeReportControl = yes(report_only_if_in_all_modes)
+        ), ProcSpecs, ProcAllModeSpecs, ProcAnyModeSpecs),
+    ProcAnyModeSpecSet = set.list_to_set(ProcAnyModeSpecs),
+    ProcAllModeSpecSet = set.list_to_set(ProcAllModeSpecs),
+    (
+        !.MaybeSpecs = yes(AnyModeSpecSet0 - AllModeSpecSet0),
+        set.union(AnyModeSpecSet0, ProcAnyModeSpecSet, AnyModeSpecSet),
+        set.intersect(AllModeSpecSet0, ProcAllModeSpecSet, AllModeSpecSet),
+        !:MaybeSpecs = yes(AnyModeSpecSet - AllModeSpecSet)
+    ;
+        !.MaybeSpecs = no,
+        !:MaybeSpecs = yes(ProcAnyModeSpecSet - ProcAllModeSpecSet)
+    ).
+
+:- func project_spec_phase(diag_spec) = spec_phase.
+
+project_spec_phase(Spec) = Phase :-
+    (
+        Spec = gen_spec(_, _, Phase, _)
+    ;
+        Spec = spec(_, _, Phase, _, _)
+    ;
+        Spec = no_ctxt_spec(_, _, Phase, _)
+    ).
+
+diag_spec_accumulator_to_list(no) = [].
+diag_spec_accumulator_to_list(yes(AnyModeSpecSet - AllModeSpecSet)) =
+    set.to_sorted_list(set.union(AnyModeSpecSet, AllModeSpecSet)).
+
+:- func get_maybe_mode_report_control(spec_phase) =
+    maybe(mode_report_control).
+
+get_maybe_mode_report_control(phase_options) = no.
+get_maybe_mode_report_control(phase_check_libs) = no.
+get_maybe_mode_report_control(phase_make_target) = no.
+get_maybe_mode_report_control(phase_make_int) = no.
+get_maybe_mode_report_control(phase_find_files(_, _)) = no.
+get_maybe_mode_report_control(phase_read_files) = no.
+get_maybe_mode_report_control(phase_write_files) = no.
+get_maybe_mode_report_control(phase_module_name) = no.
+get_maybe_mode_report_control(phase_t2pt) = no.
+get_maybe_mode_report_control(phase_tim_check) = no.
+get_maybe_mode_report_control(phase_tim_check_invalid_type) = no.
+get_maybe_mode_report_control(phase_tim_check_invalid_inst_mode) = no.
+get_maybe_mode_report_control(phase_type_repn) = no.
+get_maybe_mode_report_control(phase_pt2h) = no.
+get_maybe_mode_report_control(phase_expand_types) = no.
+get_maybe_mode_report_control(phase_type_check) = no.
+get_maybe_mode_report_control(phase_inst_check) = no.
+get_maybe_mode_report_control(phase_input_spec) = no.
+get_maybe_mode_report_control(phase_polymorphism) = no.
+get_maybe_mode_report_control(phase_mode_check(Control)) = yes(Control).
+get_maybe_mode_report_control(phase_purity_check) = no.
+get_maybe_mode_report_control(phase_detism_check) = no.
+get_maybe_mode_report_control(phase_fact_table_check) = no.
+get_maybe_mode_report_control(phase_oisu_check) = no.
+get_maybe_mode_report_control(phase_simplify(Control)) = yes(Control).
+get_maybe_mode_report_control(phase_direct_arg_in_out) = no.
+get_maybe_mode_report_control(phase_style) = no.
+get_maybe_mode_report_control(phase_dead_code) = no.
+get_maybe_mode_report_control(phase_termination_analysis) = no.
+get_maybe_mode_report_control(phase_accumulator_intro) = no.
+get_maybe_mode_report_control(phase_auto_parallelism) = no.
+get_maybe_mode_report_control(phase_interface_gen) = no.
+get_maybe_mode_report_control(phase_code_gen) = no.
+
+%---------------------------------------------------------------------------%
+:- end_module parse_tree.error_util.
+%---------------------------------------------------------------------------%
