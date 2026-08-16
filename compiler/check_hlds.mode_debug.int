@@ -1,0 +1,21 @@
+:- module check_hlds.mode_debug.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module check_hlds.mode_info.
+:- use_module hlds.hlds_goal.
+:- use_module mdbcomp.sym_name.
+:- type mode_checkpoint_port
+    --->    enter 
+    ;       exit 
+    ;       wakeup .
+:- inst non_wakeup_port for (check_hlds.mode_debug).mode_checkpoint_port/0
+    --->    enter
+    ;       exit.
+:- pred mode_checkpoint(check_hlds.mode_debug.mode_checkpoint_port, string, hlds.hlds_goal.hlds_goal_info, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_checkpoint(builtin.in((check_hlds.mode_debug).non_wakeup_port), builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred mode_checkpoint_sn(check_hlds.mode_debug.mode_checkpoint_port, string, mdbcomp.sym_name.sym_name, hlds.hlds_goal.hlds_goal_info, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_checkpoint_sn(builtin.in((check_hlds.mode_debug).non_wakeup_port), builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred mode_checkpoint_wakeups(hlds.hlds_goal.hlds_goal, list.list(hlds.hlds_goal.hlds_goal), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_checkpoint_wakeups(builtin.in, builtin.in, builtin.in, builtin.out) is det.

@@ -1,0 +1,94 @@
+/*
+** Automatically generated from `type_classify.m'
+** by the Mercury compiler,
+** version rotd-2026-08-16
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.type_classify.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__type_classify
+#define MR_HEADER_GUARD_hlds__type_classify
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__TYPE_CLASSIFY_DECL_GUARD
+#define HLDS__TYPE_CLASSIFY_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+MR_bool MR_CALL 
+hlds__type_classify__classify_type_ctor_if_special_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+hlds__type_classify__type_ctor_is_atomic_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__type_classify__type_is_atomic_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+hlds__type_classify__update_type_may_use_atomic_alloc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+hlds__type_classify__classify_type_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+hlds__type_classify__classify_type_ctor_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+hlds__type_classify__classify_type_defn_body_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__type_classify__type_may_use_atomic_alloc_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__type_classify__init(void);
+void mercury__hlds__type_classify__init_type_tables(void);
+void mercury__hlds__type_classify__init_debugger(void);
+const char *mercury__hlds__type_classify__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.type_classify
+
+// :- end_interface hlds.type_classify.

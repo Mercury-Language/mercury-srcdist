@@ -1,0 +1,47 @@
+:- module parse_tree.equiv_type.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module one_or_more.
+:- use_module recompilation.
+:- use_module set.
+:- use_module libs.maybe_util.
+:- use_module parse_tree.build_eqv_maps.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_used_modules.
+:- use_module recompilation.record_uses.
+:- type circ_types == set.set(parse_tree.prog_data.type_ctor).
+:- type maybe_record_sym_name_use
+    --->    do_not_record_sym_name_use 
+    ;       record_sym_name_use(
+                 parse_tree.prog_data_used_modules.item_visibility
+            ).
+:- pred replace_in_ctors(parse_tree.build_eqv_maps.type_eqv_map, one_or_more.one_or_more(parse_tree.prog_data.constructor), one_or_more.one_or_more(parse_tree.prog_data.constructor), parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps).
+:- mode replace_in_ctors(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_ctors_location(parse_tree.build_eqv_maps.type_eqv_map, parse_tree.equiv_type.maybe_record_sym_name_use, one_or_more.one_or_more(parse_tree.prog_data.constructor), one_or_more.one_or_more(parse_tree.prog_data.constructor), parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps, parse_tree.prog_data_used_modules.used_eqv_modules, parse_tree.prog_data_used_modules.used_eqv_modules).
+:- mode replace_in_ctors_location(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_inst(parse_tree.build_eqv_maps.inst_eqv_map, parse_tree.equiv_type.maybe_record_sym_name_use, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps, parse_tree.prog_data_used_modules.used_eqv_modules, parse_tree.prog_data_used_modules.used_eqv_modules).
+:- mode replace_in_inst(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_prog_constraints(parse_tree.build_eqv_maps.type_eqv_map, list.list(parse_tree.prog_data.prog_constraint), list.list(parse_tree.prog_data.prog_constraint), parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps).
+:- mode replace_in_prog_constraints(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_prog_constraints_location(parse_tree.build_eqv_maps.type_eqv_map, parse_tree.equiv_type.maybe_record_sym_name_use, list.list(parse_tree.prog_data.prog_constraint), list.list(parse_tree.prog_data.prog_constraint), parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps, parse_tree.prog_data_used_modules.used_eqv_modules, parse_tree.prog_data_used_modules.used_eqv_modules).
+:- mode replace_in_prog_constraints_location(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_type(parse_tree.build_eqv_maps.type_eqv_map, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type, libs.maybe_util.maybe_changed, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps).
+:- mode replace_in_type(builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_type_list(parse_tree.build_eqv_maps.type_eqv_map, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_type), libs.maybe_util.maybe_changed, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps).
+:- mode replace_in_type_list(builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_type_list_location(parse_tree.build_eqv_maps.type_eqv_map, parse_tree.equiv_type.maybe_record_sym_name_use, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_type), libs.maybe_util.maybe_changed, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps, parse_tree.prog_data_used_modules.used_eqv_modules, parse_tree.prog_data_used_modules.used_eqv_modules).
+:- mode replace_in_type_list_location(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_type_list_location_circ(parse_tree.build_eqv_maps.type_eqv_map, parse_tree.equiv_type.maybe_record_sym_name_use, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_type), libs.maybe_util.maybe_changed, parse_tree.equiv_type.circ_types, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps, parse_tree.prog_data_used_modules.used_eqv_modules, parse_tree.prog_data_used_modules.used_eqv_modules).
+:- mode replace_in_type_list_location_circ(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_type_maybe_record_use(parse_tree.build_eqv_maps.type_eqv_map, parse_tree.equiv_type.maybe_record_sym_name_use, list.list(parse_tree.prog_data.type_ctor), parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type, libs.maybe_util.maybe_changed, parse_tree.equiv_type.circ_types, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps, parse_tree.prog_data_used_modules.used_eqv_modules, parse_tree.prog_data_used_modules.used_eqv_modules).
+:- mode replace_in_type_maybe_record_use(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_type_maybe_record_use_ignore_circ(parse_tree.build_eqv_maps.type_eqv_map, parse_tree.equiv_type.maybe_record_sym_name_use, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type, libs.maybe_util.maybe_changed, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps, parse_tree.prog_data_used_modules.used_eqv_modules, parse_tree.prog_data_used_modules.used_eqv_modules).
+:- mode replace_in_type_maybe_record_use_ignore_circ(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_type_report_circular_eqvs(parse_tree.build_eqv_maps.type_eqv_map, parse_tree.prog_data.tvarset, parse_tree.prog_data.prog_context, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type, libs.maybe_util.maybe_changed, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode replace_in_type_report_circular_eqvs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_univ_exist_constraints(parse_tree.build_eqv_maps.type_eqv_map, parse_tree.prog_data.univ_exist_constraints, parse_tree.prog_data.univ_exist_constraints, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps).
+:- mode replace_in_univ_exist_constraints(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred replace_in_univ_exist_constraints_location(parse_tree.build_eqv_maps.type_eqv_map, parse_tree.equiv_type.maybe_record_sym_name_use, parse_tree.prog_data.univ_exist_constraints, parse_tree.prog_data.univ_exist_constraints, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, recompilation.record_uses.item_recomp_deps, recompilation.record_uses.item_recomp_deps, parse_tree.prog_data_used_modules.used_eqv_modules, parse_tree.prog_data_used_modules.used_eqv_modules).
+:- mode replace_in_univ_exist_constraints_location(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

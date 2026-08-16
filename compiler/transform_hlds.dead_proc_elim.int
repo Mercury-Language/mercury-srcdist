@@ -1,0 +1,79 @@
+:- module transform_hlds.dead_proc_elim.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module set_ctree234.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data_rare.
+:- type eliminated_how
+    --->    elim_deleted_proc 
+    ;       elim_deleted_goal .
+:- type eliminated_map == map.map(hlds.hlds_pred.pred_id, transform_hlds.dead_proc_elim.eliminated_what).
+:- type eliminated_what
+    --->    elim_whole_pred(
+                 transform_hlds.dead_proc_elim.eliminated_how
+            )
+    ;       elim_procs(
+                 set.set(hlds.hlds_pred.proc_id)
+            ).
+:- type entity
+    --->    entity_proc(
+                 hlds.hlds_pred.pred_proc_id
+            )
+    ;       entity_table_struct(
+                 hlds.hlds_pred.pred_proc_id
+            )
+    ;       entity_type_ctor(
+                 mdbcomp.sym_name.module_name,
+                 string,
+                 int
+            )
+    ;       entity_const_struct(
+                 int
+            )
+    ;       entity_mutable(
+                 mdbcomp.sym_name.module_name,
+                 string,
+                 parse_tree.prog_data_rare.mutable_pred_kind
+            ).
+:- type maybe_elim_opt_imported
+    --->    elim_opt_imported 
+    ;       do_not_elim_opt_imported .
+:- type maybe_needed
+    --->    not_eliminable(
+                 set_ctree234.set_ctree234(transform_hlds.dead_proc_elim.needed_reason)
+            )
+    ;       maybe_eliminable(
+                 (transform_hlds.dead_proc_elim).num_references :: int
+            ).
+:- type needed_map == map.map(transform_hlds.dead_proc_elim.entity, transform_hlds.dead_proc_elim.maybe_needed).
+:- type needed_reason
+    --->    nr_exported 
+    ;       nr_foreign_exported 
+    ;       nr_initial_final 
+    ;       nr_type_ctor 
+    ;       nr_const_struct 
+    ;       nr_class_interface_proc 
+    ;       nr_used_by(
+                 transform_hlds.dead_proc_elim.entity
+            ).
+:- pred dead_pred_elim(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode dead_pred_elim(builtin.in, builtin.out) is det.
+:- pred dead_proc_analyze(hlds.hlds_module.module_info, transform_hlds.dead_proc_elim.needed_map).
+:- mode dead_proc_analyze(builtin.in, builtin.out) is det.
+:- pred dead_proc_elim(transform_hlds.dead_proc_elim.maybe_elim_opt_imported, transform_hlds.dead_proc_elim.needed_map, transform_hlds.dead_proc_elim.eliminated_map, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode dead_proc_elim(builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred dead_proc_warn(hlds.hlds_module.module_info, list.list(parse_tree.error_spec.diag_spec)).
+:- mode dead_proc_warn(builtin.in, builtin.out) is det.
+:- pred output_elimination_msgs(io.text_output_stream, hlds.hlds_module.module_info, transform_hlds.dead_proc_elim.eliminated_map, io.io, io.io).
+:- mode output_elimination_msgs(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred output_needed_map(io.text_output_stream, hlds.hlds_module.module_info, transform_hlds.dead_proc_elim.needed_map, io.io, io.io).
+:- mode output_needed_map(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
