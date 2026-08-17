@@ -1,0 +1,8 @@
+:- module hlds.goal_reorder.
+:- interface.
+:- type can_reorder_goals
+    --->    cannot_reorder_goals 
+    ;       can_reorder_goals .
+:- type reorder_maintains_termination
+    --->    reorder_maintains_termination 
+    ;       reorder_does_not_maintain_termination .

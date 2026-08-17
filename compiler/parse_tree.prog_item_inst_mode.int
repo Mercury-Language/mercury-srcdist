@@ -1,0 +1,87 @@
+:- module parse_tree.prog_item_inst_mode.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- type inst_ctor_checked_defn
+    --->    checked_defn_inst(
+                 parse_tree.prog_item_inst_mode.std_inst_defn,
+                 parse_tree.prog_item_inst_mode.src_defns_inst
+            ).
+:- type inst_ctor_checked_map == map.map(parse_tree.prog_data.inst_ctor, parse_tree.prog_item_inst_mode.inst_ctor_checked_defn).
+:- type item_inst_defn_info == parse_tree.prog_item_inst_mode.item_inst_defn_info_general(parse_tree.prog_item_inst_mode.maybe_abstract_inst_defn).
+:- type item_inst_defn_info_abstract == parse_tree.prog_item_inst_mode.item_inst_defn_info_general(parse_tree.prog_item_inst_mode.no_inst_defn).
+:- type item_inst_defn_info_eqv == parse_tree.prog_item_inst_mode.item_inst_defn_info_general(parse_tree.prog_data.inst_defn).
+:- type item_inst_defn_info_general(T)
+    --->    item_inst_defn_info(
+                 (parse_tree.prog_item_inst_mode).id_inst_name :: mdbcomp.sym_name.sym_name,
+                 (parse_tree.prog_item_inst_mode).id_inst_args :: list.list(parse_tree.prog_data.inst_var),
+                 (parse_tree.prog_item_inst_mode).id_maybe_for_type :: maybe.maybe(parse_tree.prog_data.type_ctor),
+                 (parse_tree.prog_item_inst_mode).id_inst_defn :: T,
+                 (parse_tree.prog_item_inst_mode).id_varset :: parse_tree.prog_data.inst_varset,
+                 (parse_tree.prog_item_inst_mode).id_context :: parse_tree.prog_data.prog_context,
+                 (parse_tree.prog_item_inst_mode).id_seq_num :: parse_tree.prog_data.item_seq_num
+            ).
+:- type item_mode_defn_info == parse_tree.prog_item_inst_mode.item_mode_defn_info_general(parse_tree.prog_item_inst_mode.maybe_abstract_mode_defn).
+:- type item_mode_defn_info_abstract == parse_tree.prog_item_inst_mode.item_mode_defn_info_general(parse_tree.prog_item_inst_mode.no_mode_defn).
+:- type item_mode_defn_info_eqv == parse_tree.prog_item_inst_mode.item_mode_defn_info_general(parse_tree.prog_data.mode_defn).
+:- type item_mode_defn_info_general(T)
+    --->    item_mode_defn_info(
+                 (parse_tree.prog_item_inst_mode).md_mode_name :: mdbcomp.sym_name.sym_name,
+                 (parse_tree.prog_item_inst_mode).md_mode_args :: list.list(parse_tree.prog_data.inst_var),
+                 (parse_tree.prog_item_inst_mode).md_mode_defn :: T,
+                 (parse_tree.prog_item_inst_mode).md_varset :: parse_tree.prog_data.inst_varset,
+                 (parse_tree.prog_item_inst_mode).md_context :: parse_tree.prog_data.prog_context,
+                 (parse_tree.prog_item_inst_mode).md_seq_num :: parse_tree.prog_data.item_seq_num
+            ).
+:- type maybe_abstract_inst_defn
+    --->    abstract_inst_defn 
+    ;       nonabstract_inst_defn(
+                 parse_tree.prog_data.inst_defn
+            ).
+:- type maybe_abstract_mode_defn
+    --->    abstract_mode_defn 
+    ;       nonabstract_mode_defn(
+                 parse_tree.prog_data.mode_defn
+            ).
+:- type mode_ctor_checked_defn
+    --->    checked_defn_mode(
+                 parse_tree.prog_item_inst_mode.std_mode_defn,
+                 parse_tree.prog_item_inst_mode.src_defns_mode
+            ).
+:- type mode_ctor_checked_map == map.map(parse_tree.prog_data.mode_ctor, parse_tree.prog_item_inst_mode.mode_ctor_checked_defn).
+:- type no_inst_defn
+    --->    no_inst_defn .
+:- type no_mode_defn
+    --->    no_mode_defn .
+:- type src_defns_inst
+    --->    src_defns_inst(
+                 maybe.maybe(parse_tree.prog_item_inst_mode.item_inst_defn_info),
+                 maybe.maybe(parse_tree.prog_item_inst_mode.item_inst_defn_info)
+            ).
+:- type src_defns_mode
+    --->    src_defns_mode(
+                 maybe.maybe(parse_tree.prog_item_inst_mode.item_mode_defn_info),
+                 maybe.maybe(parse_tree.prog_item_inst_mode.item_mode_defn_info)
+            ).
+:- type std_inst_defn
+    --->    std_inst_defn(
+                 parse_tree.prog_item_inst_mode.std_inst_status,
+                 parse_tree.prog_item_inst_mode.item_inst_defn_info
+            ).
+:- type std_inst_status
+    --->    std_inst_exported 
+    ;       std_inst_abstract_exported 
+    ;       std_inst_all_private .
+:- type std_mode_defn
+    --->    std_mode_defn(
+                 parse_tree.prog_item_inst_mode.std_mode_status,
+                 parse_tree.prog_item_inst_mode.item_mode_defn_info
+            ).
+:- type std_mode_status
+    --->    std_mode_exported 
+    ;       std_mode_abstract_exported 
+    ;       std_mode_all_private .
