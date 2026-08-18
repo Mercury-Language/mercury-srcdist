@@ -1,0 +1,21 @@
+:- module analysis.operations.
+:- interface.
+:- use_module analysis.framework.
+:- type analysis_info.
+:- type analysis_request
+    --->    some [FuncInfo, Call] (analysis_request(
+                 (analysis.operations).req_call :: Call,
+                 (analysis.operations).req_caller :: mdbcomp.sym_name.module_name
+            ) => ((analysis.framework).call_pattern(FuncInfo, Call))).
+:- type any_call
+    --->    any_call .
+:- type imdg_arc
+    --->    some [FuncInfo, Call] (imdg_arc(
+                 (analysis.operations).imdg_call :: Call,
+                 (analysis.operations).imdg_caller :: mdbcomp.sym_name.module_name
+            ) => ((analysis.framework).call_pattern(FuncInfo, Call))).
+:- type no_func_info
+    --->    no_func_info .
+:- instance ((analysis.framework).call_pattern(analysis.operations.no_func_info, analysis.operations.any_call)).
+:- instance ((analysis.framework).partial_order(analysis.operations.no_func_info, analysis.operations.any_call)).
+:- instance ((analysis.framework).to_term(analysis.operations.any_call)).

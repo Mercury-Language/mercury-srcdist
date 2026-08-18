@@ -1,0 +1,10 @@
+:- module var_value_names.
+:- interface.
+:- use_module grade_lib.
+:- use_module grade_lib.grade_spec.
+:- pred solver_var_name(string, grade_lib.grade_spec.solver_var_id).
+:- mode solver_var_name(builtin.in, builtin.out) is semidet.
+:- mode solver_var_name(builtin.out, builtin.in) is det.
+:- pred solver_var_value_name(string, grade_lib.grade_spec.solver_var_value_id).
+:- mode solver_var_value_name(builtin.in, builtin.out) is semidet.
+:- mode solver_var_value_name(builtin.out, builtin.in) is det.

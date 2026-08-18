@@ -1,0 +1,12 @@
+:- module (check_hlds.simplify).opt_format_call.
+:- interface.
+:- type maybe_generate_implicit_stream_warnings
+	where	type_is_abstract_enum(1).
+:- type_representation(conj_maps, is_eqv_to(map(conj_id, conj_map))).
+:- type_representation(conj_pred_map, is_eqv_to(map(conj_id, conj_id))).
+:- type_representation(fc_eqv_map, is_eqv_to(map(prog_var, prog_var))).
+:- type_representation(fc_goal_id_map, is_eqv_to(map(goal_id, fc_opt_goal_info))).
+:- type_representation(list_element_map, is_eqv_to(map(prog_var, abstract_poly_type))).
+:- type_representation(list_skeleton_map, is_eqv_to(map(prog_var, list_skeleton_state))).
+:- type_representation(maybe_generate_implicit_stream_warnings, du_repn(enum("do_not_generate_implicit_stream_warnings", "generate_implicit_stream_warnings", [],  no_c_j_cs))).
+:- type_representation(string_map, is_eqv_to(map(prog_var, string_state))).

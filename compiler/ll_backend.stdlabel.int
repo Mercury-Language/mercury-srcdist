@@ -1,0 +1,7 @@
+:- module ll_backend.stdlabel.
+:- interface.
+:- use_module counter.
+:- use_module list.
+:- use_module ll_backend.llds.
+:- pred standardize_labels(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), counter.counter, counter.counter).
+:- mode standardize_labels(builtin.in, builtin.out, builtin.in, builtin.out) is det.
