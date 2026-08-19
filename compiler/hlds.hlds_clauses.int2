@@ -1,0 +1,82 @@
+:- module hlds.hlds_clauses.
+:- interface.
+:- use_module map.
+:- type clause
+    --->    clause(
+                 (hlds.hlds_clauses).clause_applicable_procs :: hlds.hlds_clauses.clause_applicable_modes,
+                 (hlds.hlds_clauses).clause_body :: hlds.hlds_goal.hlds_goal,
+                 (hlds.hlds_clauses).clause_lang :: hlds.pred_info_types.implementation_language,
+                 (hlds.hlds_clauses).clause_context :: parse_tree.prog_data.prog_context,
+                 (hlds.hlds_clauses).clause_statevar_warnings :: list.list(parse_tree.error_spec.warn_spec),
+                 (hlds.hlds_clauses).clause_unused_svar_arg_map :: hlds.hlds_clauses.unused_statevar_arg_map,
+                 (hlds.hlds_clauses).clause_maybe_fact :: hlds.hlds_clauses.is_clause_a_fact
+            ).
+:- type clause_applicable_modes
+    --->    all_modes 
+    ;       selected_modes(
+                 list.list(hlds.pred_proc_id.proc_id)
+            )
+    ;       unify_in_in_modes 
+    ;       unify_non_in_in_modes .
+:- type clause_init_types
+    --->    cit_no_types(
+                 parse_tree.prog_data.pred_form_arity
+            )
+    ;       cit_types(
+                 list.list(parse_tree.prog_data.mer_type)
+            ).
+:- type clause_item_number_region
+    --->    clause_item_number_region(
+                 (hlds.hlds_clauses).cnr_lower_item_number :: int,
+                 (hlds.hlds_clauses).cnr_upper_item_number :: int,
+                 (hlds.hlds_clauses).cnr_lower_item_context :: term.context,
+                 (hlds.hlds_clauses).cnr_upper_item_context :: term.context
+            ).
+:- type clause_item_number_type
+    --->    item_is_clause 
+    ;       item_is_foreign_proc .
+:- type clause_item_number_types
+    --->    only_clauses 
+    ;       clauses_and_foreign_procs .
+:- type clause_item_numbers.
+:- type clauses_info
+    --->    clauses_info(
+                 (hlds.hlds_clauses).cli_varset :: parse_tree.prog_data.prog_varset,
+                 (hlds.hlds_clauses).cli_explicit_vartypes :: parse_tree.vartypes.vartypes,
+                 (hlds.hlds_clauses).cli_var_table :: parse_tree.var_table.var_table,
+                 (hlds.hlds_clauses).cli_rtti_varmaps :: hlds.hlds_rtti.rtti_varmaps,
+                 (hlds.hlds_clauses).cli_tvar_name_map :: parse_tree.prog_data.tvar_name_map,
+                 (hlds.hlds_clauses).cli_arg_vector :: hlds.hlds_args.proc_arg_vector(parse_tree.prog_data.prog_var),
+                 (hlds.hlds_clauses).cli_rep :: hlds.hlds_clauses.clauses_rep,
+                 (hlds.hlds_clauses).cli_item_numbers :: hlds.hlds_clauses.clause_item_numbers,
+                 (hlds.hlds_clauses).cli_have_foreign_clauses :: hlds.hlds_clauses.maybe_foreign_lang_clauses,
+                 (hlds.hlds_clauses).cli_had_syntax_errors :: hlds.hlds_clauses.maybe_clause_syntax_errors
+            ).
+:- type clauses_rep.
+:- type init_or_final_arg
+    --->    init_arg_only 
+    ;       init_and_final_arg(
+                 uint
+            )
+    ;       final_arg_only .
+:- type is_clause_a_fact
+    --->    clause_is_not_a_fact 
+    ;       clause_is_a_fact .
+:- type maybe_clause_syntax_errors
+    --->    no_clause_syntax_errors 
+    ;       some_clause_syntax_errors .
+:- type maybe_foreign_lang_clauses
+    --->    no_foreign_lang_clauses 
+    ;       some_foreign_lang_clauses .
+:- type regions_with_gaps
+    --->    regions_with_gaps(
+                 (hlds.hlds_clauses).rwg_first_region :: hlds.hlds_clauses.clause_item_number_region,
+                 (hlds.hlds_clauses).rwg_second_region :: hlds.hlds_clauses.clause_item_number_region,
+                 (hlds.hlds_clauses).rwg_laterd_regions :: list.list(hlds.hlds_clauses.clause_item_number_region)
+            ).
+:- type statevar_arg_desc
+    --->    statevar_arg_desc(
+                 hlds.hlds_clauses.init_or_final_arg,
+                 string
+            ).
+:- type unused_statevar_arg_map == map.map(uint, hlds.hlds_clauses.statevar_arg_desc).

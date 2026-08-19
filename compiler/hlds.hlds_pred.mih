@@ -1,0 +1,782 @@
+/*
+** Automatically generated from `hlds_pred.m'
+** by the Mercury compiler,
+** version rotd-2026-08-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_pred.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_pred
+#define MR_HEADER_GUARD_hlds__hlds_pred
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_PRED_DECL_GUARD
+#define HLDS__HLDS_PRED_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_external_type_params_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_sub_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_table_0;
+
+void MR_CALL 
+hlds__hlds_pred__add_new_proc_14_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word * param_13,
+  MR_Integer * param_14);
+
+void MR_CALL 
+hlds__hlds_pred__body_should_use_typeinfo_liveness_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__construct_field_access_function_name_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__define_new_pred_19_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word * param_13,
+  MR_Word param_14,
+  MR_Word * param_15,
+  MR_Word param_16,
+  MR_Word * param_17,
+  MR_Word param_18,
+  MR_Word * param_19);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__is_field_access_function_name_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__is_unify_index_or_compare_pred_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__is_unify_pred_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__hlds_pred__next_proc_id_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_create_32_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Integer param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word param_19,
+  MR_Word param_20,
+  MR_Word param_21,
+  MR_Word param_22,
+  MR_Word param_23,
+  MR_Word param_24,
+  MR_Word param_25,
+  MR_Word param_26,
+  MR_Word param_27,
+  MR_Word param_28,
+  MR_Word param_29,
+  MR_Word param_30,
+  MR_Word param_31,
+  MR_Word * param_32);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_create_17_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Integer * param_16,
+  MR_Word * param_17);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_defn_has_clause_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_defn_has_foreign_proc_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_arg_modes_maps_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_arg_types_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_arg_types_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_assertions_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_class_context_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_clauses_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_constraint_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_constraint_proof_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_context_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_cur_user_decl_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_exist_quant_tvars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_existq_tvar_binding_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_external_type_params_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_format_call_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_goal_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_inst_graph_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_instance_method_arg_types_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_is_pred_or_func_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_markers_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_module_name_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_name_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_obsolete_in_favour_of_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_orig_arity_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_origin_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_pf_sym_name_pred_form_arity_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_polymorphism_added_args_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_proc_table_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_promised_purity_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_purity_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_status_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_sym_name_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_tvar_kind_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_typevarset_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_univ_quant_tvars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_unproven_body_constraints_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_get_var_name_remap_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_infer_modes_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_init_19_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Word param_12,
+  MR_Word param_13,
+  MR_Word param_14,
+  MR_Word param_15,
+  MR_Word param_16,
+  MR_Word param_17,
+  MR_Word param_18,
+  MR_Word * param_19);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_is_builtin_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_is_exported_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_is_exported_to_submodules_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_is_field_access_function_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_is_imported_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_is_imported_not_external_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_is_opt_exported_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_is_promise_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_is_pseudo_exported_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_is_pseudo_imported_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_mark_as_external_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_proc_info_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_remove_proc_id_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_requested_inlining_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__pred_info_requested_no_inlining_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_arg_modes_maps_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_arg_types_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_assertions_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_class_context_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_clauses_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_constraint_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_constraint_proof_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_existq_tvar_binding_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_external_type_params_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_format_call_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_goal_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_inst_graph_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_instance_method_arg_types_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_is_pred_or_func_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_markers_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_module_name_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_name_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_obsolete_in_favour_of_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_orig_arity_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_origin_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_polymorphism_added_args_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_proc_info_4_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_proc_table_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_status_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_tvar_kind_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_typevarset_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_unproven_body_constraints_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_set_var_name_remap_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_info_update_goal_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_pred__pred_prepare_to_clone_32_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_String * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Word * param_7,
+  MR_Word * param_8,
+  MR_Word * param_9,
+  MR_Word * param_10,
+  MR_Word * param_11,
+  MR_Word * param_12,
+  MR_Integer * param_13,
+  MR_Word * param_14,
+  MR_Word * param_15,
+  MR_Word * param_16,
+  MR_Word * param_17,
+  MR_Word * param_18,
+  MR_Word * param_19,
+  MR_Word * param_20,
+  MR_Word * param_21,
+  MR_Word * param_22,
+  MR_Word * param_23,
+  MR_Word * param_24,
+  MR_Word * param_25,
+  MR_Word * param_26,
+  MR_Word * param_27,
+  MR_Word * param_28,
+  MR_Word * param_29,
+  MR_Word * param_30,
+  MR_Word * param_31,
+  MR_Word * param_32);
+
+void MR_CALL 
+hlds__hlds_pred__proc_interface_should_use_typeinfo_liveness_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+hlds__hlds_pred__procedure_is_exported_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_Word MR_CALL 
+hlds__hlds_pred__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_98_117_105_108_116_105_110_95_115_116_97_116_101_95_95_91_52_93_95_48_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__hlds_pred__builtin_state_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4);
+
+MR_Word MR_CALL 
+hlds__hlds_pred__calls_are_fully_qualified_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_pred__pred_info_all_exported_proc_ids_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_pred__pred_info_all_proc_ids_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_pred__pred_info_module_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+hlds__hlds_pred__pred_info_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_pred__pred_info_pred_form_arity_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_pred__pred_info_user_arity_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_pred__pred_info_will_codegen_proc_ids_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__hlds_pred____Compare____external_type_params_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_pred____Compare____pred_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_pred____Compare____proc_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_pred____Unify____external_type_params_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_pred____Unify____pred_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_pred____Unify____proc_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__hlds_pred__init(void);
+void mercury__hlds__hlds_pred__init_type_tables(void);
+void mercury__hlds__hlds_pred__init_debugger(void);
+const char *mercury__hlds__hlds_pred__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.hlds_pred
+
+// :- end_interface hlds.hlds_pred.

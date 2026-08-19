@@ -1,0 +1,142 @@
+/*
+** Automatically generated from `prog_type_test.m'
+** by the Mercury compiler,
+** version rotd-2026-08-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_type_test.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_type_test
+#define MR_HEADER_GUARD_parse_tree__prog_type_test
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_TYPE_TEST_DECL_GUARD
+#define PARSE_TREE__PROG_TYPE_TEST_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_type_test__parse_tree__prog_type_test__type_ctor_info_non_kinded_type_0;
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_ctor_is_array_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_ctor_is_bitmap_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_ctor_is_higher_order_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_ctor_is_tuple_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_has_variable_arity_ctor_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_is_ground_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_is_ground_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_is_higher_order_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_is_higher_order_details_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__prog_type_test__type_is_higher_order_details_det_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_is_io_state_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_is_nonground_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_is_nonvar_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_is_tuple_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test__type_is_var_1_p_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_type_test__strip_kind_annotation_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__prog_type_test____Compare____non_kinded_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_type_test____Unify____non_kinded_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__prog_type_test__init(void);
+void mercury__parse_tree__prog_type_test__init_type_tables(void);
+void mercury__parse_tree__prog_type_test__init_debugger(void);
+const char *mercury__parse_tree__prog_type_test__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.prog_type_test
+
+// :- end_interface parse_tree.prog_type_test.

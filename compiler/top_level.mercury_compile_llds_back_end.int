@@ -1,0 +1,28 @@
+:- module top_level.mercury_compile_llds_back_end.
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module ll_backend.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.passes_aux.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- use_module ll_backend.global_data.
+:- use_module ll_backend.llds.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_util.
+:- pred fact_table_file_to_obj(io.text_output_stream, libs.globals.globals, string, string, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode fact_table_file_to_obj(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred hlds_to_llds(io.text_output_stream, io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info, ll_backend.global_data.global_data, list.list(ll_backend.llds.c_procedure), hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, parse_tree.error_util.maybe_written_specs, parse_tree.error_util.maybe_written_specs, io.io, io.io).
+:- mode hlds_to_llds(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred llds_c_to_obj(io.text_output_stream, libs.globals.globals, mdbcomp.sym_name.module_name, libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode llds_c_to_obj(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred llds_to_c(io.text_output_stream, hlds.hlds_module.module_info, ll_backend.global_data.global_data, list.list(ll_backend.llds.c_procedure), libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode llds_to_c(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred map_args_to_regs(io.text_output_stream, bool.bool, bool.bool, hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode map_args_to_regs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.

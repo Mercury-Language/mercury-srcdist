@@ -1,0 +1,86 @@
+/*
+** Automatically generated from `typecheck_error_wrong_type.m'
+** by the Mercury compiler,
+** version rotd-2026-08-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.typecheck_error_wrong_type.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__typecheck_error_wrong_type
+#define MR_HEADER_GUARD_check_hlds__typecheck_error_wrong_type
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__TYPECHECK_ERROR_WRONG_TYPE_DECL_GUARD
+#define CHECK_HLDS__TYPECHECK_ERROR_WRONG_TYPE_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_wrong_type__check_hlds__typecheck_error_wrong_type__type_ctor_info_maybe_print_expectation_source_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_error_wrong_type__check_hlds__typecheck_error_wrong_type__type_ctor_info_spec_and_maybe_actual_expected_0;
+
+MR_Word MR_CALL 
+check_hlds__typecheck_error_wrong_type__report_error_var_has_wrong_type_6_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_error_wrong_type__report_error_var_has_wrong_type_arg_6_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+check_hlds__typecheck_error_wrong_type____Compare____spec_and_maybe_actual_expected_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_error_wrong_type____Unify____spec_and_maybe_actual_expected_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__typecheck_error_wrong_type__init(void);
+void mercury__check_hlds__typecheck_error_wrong_type__init_type_tables(void);
+void mercury__check_hlds__typecheck_error_wrong_type__init_debugger(void);
+const char *mercury__check_hlds__typecheck_error_wrong_type__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.typecheck_error_wrong_type
+
+// :- end_interface check_hlds.typecheck_error_wrong_type.

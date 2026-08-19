@@ -1,0 +1,84 @@
+:- module parse_tree.prog_item.
+:- interface.
+:- type avail_import_info.
+:- type avail_use_info.
+:- type catch_any_expr.
+:- type catch_expr.
+:- type class_decl.
+:- type class_mode_info.
+:- type class_pred_or_func_info.
+:- type contains_foreign_code.
+:- type contains_foreign_export
+	where	type_is_abstract_enum(1).
+:- type goal.
+:- type import_or_use
+	where	type_is_abstract_enum(1).
+:- type item.
+:- type item_abstract_instance_info
+	where	type_is_abstract_subtype(item_instance_info/0).
+:- type item_abstract_int3_typeclass_info
+	where	type_is_abstract_subtype(item_typeclass_info/0).
+:- type item_abstract_typeclass_info
+	where	type_is_abstract_subtype(item_typeclass_info/0).
+:- type item_avail.
+:- type item_clause_info.
+:- type item_fim.
+:- type item_finalise_info.
+:- type item_foreign_export_enum_info.
+:- type item_foreign_proc_info.
+:- type item_include.
+:- type item_initialise_info.
+:- type item_instance_info.
+:- type item_mode_decl_info.
+:- type item_mutable_info.
+:- type item_pred_decl_info.
+:- type item_promise_info.
+:- type item_typeclass_info.
+:- type mutable_attach_to_io_state
+	where	type_is_abstract_enum(1).
+:- type mutable_constant
+	where	type_is_abstract_enum(1).
+:- type mutable_maybe_constant.
+:- type mutable_maybe_thread_local.
+:- type mutable_thread_local
+	where	type_is_abstract_enum(1).
+:- type mutable_trailed
+	where	type_is_abstract_enum(1).
+:- type mutable_var_attributes.
+:- type plain_or_dot_var.
+:- type quant_type
+	where	type_is_abstract_enum(1).
+:- type quant_vars_kind
+	where	type_is_abstract_enum(1).
+:- type types_and_maybe_modes.
+:- type_representation(avail_import_info, is_word_aligned_ptr).
+:- type_representation(avail_use_info, is_word_aligned_ptr).
+:- type_representation(catch_any_expr, is_word_aligned_ptr).
+:- type_representation(catch_expr, is_word_aligned_ptr).
+:- type_representation(class_mode_info, is_word_aligned_ptr).
+:- type_representation(class_pred_or_func_info, is_word_aligned_ptr).
+:- type_representation(contains_foreign_export, du_repn(enum("contains_foreign_export", "contains_no_foreign_export", [],  no_c_j_cs))).
+:- type_representation(import_or_use, du_repn(enum("import_decl", "use_decl", [],  no_c_j_cs))).
+:- type_representation(item_abstract_instance_info, is_subtype_of((parse_tree.prog_item).item_instance_info/0)).
+:- type_representation(item_abstract_int3_typeclass_info, is_subtype_of((parse_tree.prog_item).item_typeclass_info/0)).
+:- type_representation(item_abstract_typeclass_info, is_subtype_of((parse_tree.prog_item).item_typeclass_info/0)).
+:- type_representation(item_clause_info, is_word_aligned_ptr).
+:- type_representation(item_fim, is_word_aligned_ptr).
+:- type_representation(item_finalise_info, is_word_aligned_ptr).
+:- type_representation(item_foreign_export_enum_info, is_word_aligned_ptr).
+:- type_representation(item_foreign_proc_info, is_word_aligned_ptr).
+:- type_representation(item_include, is_word_aligned_ptr).
+:- type_representation(item_initialise_info, is_word_aligned_ptr).
+:- type_representation(item_instance_info, is_word_aligned_ptr).
+:- type_representation(item_mode_decl_info, is_word_aligned_ptr).
+:- type_representation(item_mutable_info, is_word_aligned_ptr).
+:- type_representation(item_pred_decl_info, is_word_aligned_ptr).
+:- type_representation(item_promise_info, is_word_aligned_ptr).
+:- type_representation(item_typeclass_info, is_word_aligned_ptr).
+:- type_representation(mutable_attach_to_io_state, du_repn(enum("mutable_do_not_attach_to_io_state", "mutable_attach_to_io_state", [],  no_c_j_cs))).
+:- type_representation(mutable_constant, du_repn(enum("mutable_not_constant", "mutable_constant", [],  no_c_j_cs))).
+:- type_representation(mutable_thread_local, du_repn(enum("mutable_not_thread_local", "mutable_thread_local", [],  no_c_j_cs))).
+:- type_representation(mutable_trailed, du_repn(enum("mutable_untrailed", "mutable_trailed", [],  no_c_j_cs))).
+:- type_representation(mutable_var_attributes, is_word_aligned_ptr).
+:- type_representation(quant_type, du_repn(enum("quant_some", "quant_all", [],  no_c_j_cs))).
+:- type_representation(quant_vars_kind, du_repn(enum("quant_ordinary_vars", "quant_state_vars", [],  no_c_j_cs))).

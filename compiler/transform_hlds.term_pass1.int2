@@ -1,0 +1,10 @@
+:- module transform_hlds.term_pass1.
+:- interface.
+:- type arg_size_result
+    --->    arg_size_ok(
+                 list.list(pair.pair(hlds.pred_proc_id.pred_proc_id, int)),
+                 transform_hlds.term_util.used_args
+            )
+    ;       arg_size_error(
+                 list.list(transform_hlds.term_errors.term_error)
+            ).

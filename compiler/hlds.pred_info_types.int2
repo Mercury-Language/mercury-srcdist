@@ -1,0 +1,57 @@
+:- module hlds.pred_info_types.
+:- interface.
+:- use_module bool.
+:- use_module map.
+:- use_module pair.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.set_of_var.
+:- type arg_info
+    --->    arg_info(
+                 hlds.pred_info_types.arg_loc,
+                 hlds.pred_info_types.top_functor_mode
+            ).
+:- type arg_loc
+    --->    reg(
+                 hlds.hlds_llds.reg_type,
+                 int
+            ).
+:- type arg_modes_map == pair.pair(map.map(parse_tree.prog_data.prog_var, bool.bool)).
+:- type cur_user_decl_info
+    --->    cur_user_decl_info(
+                 hlds.pred_info_types.decl_section,
+                 hlds.pred_info_types.maybe_predmode_decl,
+                 parse_tree.prog_data.item_seq_num
+            ).
+:- type decl_section
+    --->    decl_interface 
+    ;       decl_implementation .
+:- type format_call_info
+    --->    format_call_info(
+                 parse_tree.prog_data.prog_context,
+                 one_or_more.one_or_more(parse_tree.prog_data_pragma.format_string_values)
+            ).
+:- type goal_type
+    --->    goal_not_for_promise(
+                 hlds.pred_info_types.np_goal_type
+            )
+    ;       goal_for_promise(
+                 parse_tree.prog_data_rare.promise_type
+            ).
+:- type implementation_language
+    --->    impl_lang_mercury 
+    ;       impl_lang_foreign(
+                 libs.globals.foreign_language
+            ).
+:- type liveness_info == parse_tree.set_of_var.set_of_progvar.
+:- type maybe_predmode_decl
+    --->    no_predmode_decl 
+    ;       predmode_decl .
+:- type np_goal_type
+    --->    np_goal_type_none 
+    ;       np_goal_type_clause 
+    ;       np_goal_type_foreign 
+    ;       np_goal_type_clause_and_foreign .
+:- type top_functor_mode
+    --->    top_in 
+    ;       top_out 
+    ;       top_unused .

@@ -1,0 +1,26 @@
+:- module backend_libs.switch_util.
+:- interface.
+:- type int_switch_info
+    --->    int_switch_info(
+                 (backend_libs.switch_util).isi_orig_type :: parse_tree.prog_data.int_type,
+                 (backend_libs.switch_util).isi_num_values_in_range :: uint,
+                 (backend_libs.switch_util).isi_num_values_in_cases :: uint,
+                 (backend_libs.switch_util).isi_limits :: backend_libs.switch_util.int_switch_limits
+            ).
+:- type int_switch_limits
+    --->    int_switch_limits(
+                 (backend_libs.switch_util).isl_min_value :: int32,
+                 (backend_libs.switch_util).isl_max_value :: int32
+            ).
+:- type maybe_int_switch_info
+    --->    not_int_switch 
+    ;       int_switch(
+                 backend_libs.switch_util.int_switch_info
+            ).
+:- type switch_category
+    --->    ite_chain_switch 
+    ;       int_max_32_switch 
+    ;       int_64_switch 
+    ;       string_switch 
+    ;       float_switch 
+    ;       tag_switch .

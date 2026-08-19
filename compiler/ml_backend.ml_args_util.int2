@@ -1,0 +1,46 @@
+:- module ml_backend.ml_args_util.
+:- interface.
+:- use_module assoc_list.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module hlds.code_model.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_rtti.
+:- use_module hlds.pred_info_types.
+:- use_module hlds.pred_proc_id.
+:- use_module mdbcomp.prim_data.
+:- use_module ml_backend.ml_gen_info.
+:- use_module ml_backend.mlds.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_table.
+:- type copy_out_when
+    --->    copy_out_never 
+    ;       copy_out_only_last_arg 
+    ;       copy_out_always .
+:- type ml_call_arg
+    --->    arg_not_for_closure_wrapper(
+                 parse_tree.prog_data.prog_var
+            )
+    ;       arg_for_closure_wrapper(
+                 ml_backend.mlds.mlds_local_var_name,
+                 ml_backend.mlds.mlds_lval,
+                 parse_tree.prog_data.mer_type
+            ).
+:- type var_mvar_type_mode
+    --->    var_mvar_type_mode(
+                 parse_tree.prog_data.prog_var,
+                 ml_backend.mlds.mlds_local_var_name,
+                 parse_tree.prog_data.mer_type,
+                 hlds.pred_info_types.top_functor_mode
+            ).
+:- type what_params
+    --->    input_params_only 
+    ;       input_and_output_params .
+:- inst fcw for (ml_backend.ml_args_util).ml_call_arg/0
+    --->    arg_for_closure_wrapper(ground, ground, ground).
+:- inst not_fcw for (ml_backend.ml_args_util).ml_call_arg/0
+    --->    arg_not_for_closure_wrapper(ground).

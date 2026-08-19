@@ -1,0 +1,48 @@
+:- module hlds.hlds_proc_util.
+:- interface.
+:- use_module check_hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module check_hlds.mode_constraint_robdd.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.hlds_proc.
+:- use_module hlds.instmap.
+:- use_module hlds.pred_info_types.
+:- use_module hlds.pred_proc_id.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_type.
+:- use_module parse_tree.var_table.
+:- type can_proc_succeed
+    --->    proc_can_maybe_succeed 
+    ;       proc_cannot_succeed .
+:- pred can_proc_info_ever_succeed(hlds.hlds_proc.proc_info, hlds.hlds_proc_util.can_proc_succeed).
+:- mode can_proc_info_ever_succeed(builtin.in, builtin.out) is det.
+:- pred clone_proc_id(hlds.hlds_pred.proc_table, hlds.pred_proc_id.proc_id, hlds.pred_proc_id.proc_id).
+:- mode clone_proc_id(builtin.in, builtin.in, builtin.out) is det.
+:- pred ensure_all_headvars_are_named(hlds.hlds_proc.proc_info, hlds.hlds_proc.proc_info).
+:- mode ensure_all_headvars_are_named(builtin.in, builtin.out) is det.
+:- pred proc_info_arg_info(hlds.hlds_proc.proc_info, list.list(hlds.pred_info_types.arg_info)).
+:- mode proc_info_arg_info(builtin.in, builtin.out) is det.
+:- pred proc_info_arglives(hlds.hlds_module.module_info, hlds.hlds_proc.proc_info, list.list(parse_tree.prog_data.is_live)).
+:- mode proc_info_arglives(builtin.in, builtin.in, builtin.out) is det.
+:- pred proc_info_create_var_from_type(string, parse_tree.prog_data.mer_type, parse_tree.prog_type.is_dummy_type, parse_tree.prog_data.prog_var, hlds.hlds_proc.proc_info, hlds.hlds_proc.proc_info).
+:- mode proc_info_create_var_from_type(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred proc_info_create_vars_from_types(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.prog_var), hlds.hlds_proc.proc_info, hlds.hlds_proc.proc_info).
+:- mode proc_info_create_vars_from_types(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred proc_info_declared_argmodes(hlds.hlds_proc.proc_info, list.list(parse_tree.prog_data.mer_mode)).
+:- mode proc_info_declared_argmodes(builtin.in, builtin.out) is det.
+:- pred proc_info_get_initial_instmap(hlds.hlds_module.module_info, hlds.hlds_proc.proc_info, hlds.instmap.instmap).
+:- mode proc_info_get_initial_instmap(builtin.in, builtin.in, builtin.out) is det.
+:- pred proc_info_has_io_state_pair(hlds.hlds_module.module_info, hlds.hlds_proc.proc_info, int, int).
+:- mode proc_info_has_io_state_pair(builtin.in, builtin.in, builtin.out, builtin.out) is semidet.
+:- pred proc_info_has_io_state_pair_from_details(hlds.hlds_module.module_info, parse_tree.var_table.var_table, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), int, int).
+:- mode proc_info_has_io_state_pair_from_details(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is semidet.
+:- pred proc_info_head_modes_constraint(hlds.hlds_proc.proc_info, check_hlds.mode_constraint_robdd.mode_constraint).
+:- mode proc_info_head_modes_constraint(builtin.in, builtin.out) is det.
+:- pred proc_info_instantiated_head_vars(hlds.hlds_module.module_info, hlds.hlds_proc.proc_info, list.list(parse_tree.prog_data.prog_var)).
+:- mode proc_info_instantiated_head_vars(builtin.in, builtin.in, builtin.out) is det.
+:- pred proc_info_interface_determinism(hlds.hlds_proc.proc_info, parse_tree.prog_data.determinism).
+:- mode proc_info_interface_determinism(builtin.in, builtin.out) is det.
+:- pred proc_info_uninstantiated_head_vars(hlds.hlds_module.module_info, hlds.hlds_proc.proc_info, list.list(parse_tree.prog_data.prog_var)).
+:- mode proc_info_uninstantiated_head_vars(builtin.in, builtin.in, builtin.out) is det.

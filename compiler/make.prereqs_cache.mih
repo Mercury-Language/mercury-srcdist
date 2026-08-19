@@ -1,0 +1,274 @@
+/*
+** Automatically generated from `make.prereqs_cache.m'
+** by the Mercury compiler,
+** version rotd-2026-08-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.prereqs_cache.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__prereqs_cache
+#define MR_HEADER_GUARD_make__prereqs_cache
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__PREREQS_CACHE_DECL_GUARD
+#define MAKE__PREREQS_CACHE_DECL_GUARD
+#include "make.mih"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word make__prereqs_cache__mutable_variable_prereqs_cache_stats;
+#else
+    extern MR_Word make__prereqs_cache__mutable_variable_prereqs_cache_stats;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock make__prereqs_cache__mutable_variable_prereqs_cache_stats_lock;
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct make__prereqs_cache__make__prereqs_cache__type_ctor_info_module_prereqs_result_0;
+
+extern const MR_TypeCtorInfo_Struct make__prereqs_cache__make__prereqs_cache__type_ctor_info_module_to_module_set_cache_0;
+
+extern const MR_TypeCtorInfo_Struct make__prereqs_cache__make__prereqs_cache__type_ctor_info_module_to_target_id_set_cache_0;
+
+extern const MR_TypeCtorInfo_Struct make__prereqs_cache__make__prereqs_cache__type_ctor_info_prereqs_cache_stats_0;
+
+extern const MR_TypeCtorInfo_Struct make__prereqs_cache__make__prereqs_cache__type_ctor_info_prereqs_result_1;
+
+extern const MR_TypeCtorInfo_Struct make__prereqs_cache__make__prereqs_cache__type_ctor_info_process_modules_where_0;
+
+extern const MR_TypeCtorInfo_Struct make__prereqs_cache__make__prereqs_cache__type_ctor_info_target_id_prereqs_result_0;
+
+extern const MR_TypeCtorInfo_Struct make__prereqs_cache__make__prereqs_cache__type_ctor_info_trans_prereqs_cache_0;
+
+extern const MR_TypeCtorInfo_Struct make__prereqs_cache__make__prereqs_cache__type_ctor_info_trans_prereqs_key_0;
+
+extern const MR_TypeCtorInfo_Struct make__prereqs_cache__make__prereqs_cache__type_ctor_info_transitive_dependencies_type_0;
+
+void MR_CALL 
+make__prereqs_cache__add_to_anc0_dir1_indir2_intermod_cache_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__prereqs_cache__add_to_direct_imports_intermod_cache_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__prereqs_cache__add_to_direct_imports_non_intermod_cache_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__prereqs_cache__add_to_foreign_imports_non_intermod_trans_cache_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__prereqs_cache__add_to_indirect_imports_intermod_cache_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__prereqs_cache__add_to_trans_prereqs_cache_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__prereqs_cache__record_make_prereqs_cache_stats_2_p_0(void);
+
+MR_bool MR_CALL 
+make__prereqs_cache__search_anc0_dir1_indir2_intermod_cache_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+make__prereqs_cache__search_direct_imports_intermod_cache_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+make__prereqs_cache__search_direct_imports_non_intermod_cache_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+make__prereqs_cache__search_foreign_imports_non_intermod_trans_cache_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+make__prereqs_cache__search_indirect_imports_intermod_cache_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+make__prereqs_cache__search_trans_prereqs_cache_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+make__prereqs_cache__init_module_to_module_set_cache_0_f_0(void);
+
+MR_Word MR_CALL 
+make__prereqs_cache__init_module_to_target_id_set_cache_0_f_0(void);
+
+MR_Word MR_CALL 
+make__prereqs_cache__init_trans_prereqs_cache_0_f_0(void);
+
+void MR_CALL 
+make__prereqs_cache____Compare____module_prereqs_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__prereqs_cache____Compare____module_to_module_set_cache_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__prereqs_cache____Compare____module_to_target_id_set_cache_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__prereqs_cache____Compare____prereqs_result_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+make__prereqs_cache____Compare____process_modules_where_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__prereqs_cache____Compare____target_id_prereqs_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__prereqs_cache____Compare____trans_prereqs_cache_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__prereqs_cache____Compare____trans_prereqs_key_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__prereqs_cache____Compare____transitive_dependencies_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+make__prereqs_cache____Unify____module_prereqs_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__prereqs_cache____Unify____module_to_module_set_cache_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__prereqs_cache____Unify____module_to_target_id_set_cache_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__prereqs_cache____Unify____prereqs_result_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+make__prereqs_cache____Unify____process_modules_where_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__prereqs_cache____Unify____target_id_prereqs_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__prereqs_cache____Unify____trans_prereqs_cache_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__prereqs_cache____Unify____trans_prereqs_key_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__prereqs_cache____Unify____transitive_dependencies_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__make__prereqs_cache__init(void);
+void mercury__make__prereqs_cache__init_type_tables(void);
+void mercury__make__prereqs_cache__init_debugger(void);
+void mercury__make__prereqs_cache__required_init(void);
+const char *mercury__make__prereqs_cache__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.prereqs_cache
+
+// :- end_interface make.prereqs_cache.

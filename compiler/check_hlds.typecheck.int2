@@ -1,0 +1,7 @@
+:- module check_hlds.typecheck.
+:- interface.
+:- type number_of_iterations
+    --->    within_iteration_limit 
+    ;       exceeded_iteration_limit(
+                 parse_tree.error_spec.diag_spec
+            ).

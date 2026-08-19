@@ -1,0 +1,9 @@
+:- module hlds.inst_mode_type_prop.
+:- interface.
+:- type tprop_args.
+:- type tprop_cache.
+:- type tprop_cache_result.
+:- type tprop_context.
+:- type tprop_info.
+:- type_representation(tprop_cache, is_eqv_to(map(mer_type, map(sym_name, map(list(mer_inst), hlds.inst_mode_type_prop.tprop_cache_result))))).
+:- type_representation(tprop_info, is_word_aligned_ptr).
