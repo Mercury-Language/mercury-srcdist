@@ -1,0 +1,18 @@
+:- module parse_tree.parse_tree_out_type_repn.
+:- interface.
+:- use_module io.
+:- use_module string.
+:- use_module parse_tree.parse_tree_out_info.
+:- use_module parse_tree.parse_tree_output.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item_type.
+:- use_module string.builder.
+:- func fill_kind_size_to_string(parse_tree.prog_item_type.fill_kind_size) = string.
+:- func foreign_type_assertion_to_string(parse_tree.prog_data.foreign_type_assertion) = string.
+:- pred mercury_format_item_type_repn(parse_tree.parse_tree_out_info.merc_out_info, S, parse_tree.prog_item_type.item_type_repn_info, U, U) <= ((parse_tree.parse_tree_output).pt_output(S, U)).
+:- mode mercury_format_item_type_repn(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pragma type_spec_constrained_preds([    (parse_tree.parse_tree_output).pt_output(Stream, State)
+], apply_to_superclasses, [
+    subst([Stream = io.text_output_stream, State = io.state]),
+    subst([Stream = string.builder.handle, State = string.builder.state])
+]).

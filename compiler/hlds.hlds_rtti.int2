@@ -1,0 +1,39 @@
+:- module hlds.hlds_rtti.
+:- interface.
+:- type prog_var_name == string.
+:- type rtti_proc_label
+    --->    rtti_proc_label(
+                 (hlds.hlds_rtti).rpl_pred_or_func :: mdbcomp.prim_data.pred_or_func,
+                 (hlds.hlds_rtti).rpl_this_module :: mdbcomp.sym_name.module_name,
+                 (hlds.hlds_rtti).rpl_proc_module :: mdbcomp.sym_name.module_name,
+                 (hlds.hlds_rtti).rpl_proc_name :: string,
+                 (hlds.hlds_rtti).rpl_proc_arity :: parse_tree.prog_data.pred_form_arity,
+                 (hlds.hlds_rtti).rpl_proc_arg_types :: list.list(parse_tree.prog_data.mer_type),
+                 (hlds.hlds_rtti).rpl_pred_id :: hlds.pred_proc_id.pred_id,
+                 (hlds.hlds_rtti).rpl_proc_id :: hlds.pred_proc_id.proc_id,
+                 (hlds.hlds_rtti).rpl_proc_headvars :: assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_rtti.prog_var_name),
+                 (hlds.hlds_rtti).rpl_proc_top_modes :: list.list(hlds.pred_info_types.top_functor_mode),
+                 (hlds.hlds_rtti).rpl_proc_interface_detism :: parse_tree.prog_data.determinism,
+                 (hlds.hlds_rtti).rpl_pred_is_imported :: bool.bool,
+                 (hlds.hlds_rtti).rpl_pred_is_pseudo_imported :: bool.bool,
+                 (hlds.hlds_rtti).rpl_pred_info_origin :: hlds.pred_name.pred_origin,
+                 (hlds.hlds_rtti).rpl_proc_is_exported :: bool.bool,
+                 (hlds.hlds_rtti).rpl_proc_is_imported :: bool.bool
+            ).
+:- type rtti_var_info
+    --->    type_info_var(
+                 parse_tree.prog_data.mer_type
+            )
+    ;       typeclass_info_var(
+                 parse_tree.prog_data.prog_constraint
+            )
+    ;       non_rtti_var .
+:- type rtti_varmaps.
+:- type type_info_locn
+    --->    type_info(
+                 parse_tree.prog_data.prog_var
+            )
+    ;       typeclass_info(
+                 parse_tree.prog_data.prog_var,
+                 int
+            ).

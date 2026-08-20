@@ -1,0 +1,6 @@
+:- module parse_tree.error_util.
+:- interface.
+:- type diag_spec_accumulator.
+:- type maybe_written_specs.
+:- type_representation(diag_spec_accumulator, is_eqv_to(maybe(pair(set(diag_spec))))).
+:- type_representation(maybe_written_specs, is_word_aligned_ptr).

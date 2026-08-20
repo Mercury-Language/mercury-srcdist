@@ -1,0 +1,8 @@
+:- module (transform_hlds.ctgc).livedata.
+:- interface.
+:- type livedata.
+:- type nodes_are_not_live_result
+    --->    nodes_all_live 
+    ;       nodes_are_live(
+                 list.list(parse_tree.prog_data_pragma.datastruct)
+            ).

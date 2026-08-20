@@ -1,0 +1,39 @@
+:- module hlds.pred_proc_id.
+:- interface.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module parse_tree.prog_data.
+:- type pred_id.
+:- type pred_proc_id
+    --->    proc(
+                 hlds.pred_proc_id.pred_id,
+                 hlds.pred_proc_id.proc_id
+            ).
+:- type proc_id.
+:- type scc == set.set(hlds.pred_proc_id.pred_proc_id).
+:- pred in_in_unification_proc_id(hlds.pred_proc_id.proc_id).
+:- mode in_in_unification_proc_id(builtin.out) is det.
+:- func initial_pred_id = hlds.pred_proc_id.pred_id.
+:- func initial_proc_id = hlds.pred_proc_id.proc_id.
+:- func invalid_pred_id = hlds.pred_proc_id.pred_id.
+:- func invalid_proc_id = hlds.pred_proc_id.proc_id.
+:- pred next_pred_id(hlds.pred_proc_id.pred_id, hlds.pred_proc_id.pred_id).
+:- mode next_pred_id(builtin.in, builtin.out) is det.
+:- pred pred_id_to_int(hlds.pred_proc_id.pred_id, int).
+:- mode pred_id_to_int(builtin.in, builtin.out) is det.
+:- mode pred_id_to_int(builtin.out, builtin.in) is det.
+:- func pred_id_to_int(hlds.pred_proc_id.pred_id) = int.
+:- func pred_proc_id_project_pred_id(hlds.pred_proc_id.pred_proc_id) = hlds.pred_proc_id.pred_id.
+:- func pred_proc_id_project_proc_id(hlds.pred_proc_id.pred_proc_id) = hlds.pred_proc_id.proc_id.
+:- pred proc_id_to_int(hlds.pred_proc_id.proc_id, int).
+:- mode proc_id_to_int(builtin.in, builtin.out) is det.
+:- mode proc_id_to_int(builtin.out, builtin.in) is det.
+:- func proc_id_to_int(hlds.pred_proc_id.proc_id) = int.
+:- func shroud_pred_id(hlds.pred_proc_id.pred_id) = parse_tree.prog_data.shrouded_pred_id.
+:- func shroud_pred_proc_id(hlds.pred_proc_id.pred_proc_id) = parse_tree.prog_data.shrouded_pred_proc_id.
+:- func shroud_proc_id(hlds.pred_proc_id.proc_id) = parse_tree.prog_data.shrouded_proc_id.
+:- func unshroud_pred_id(parse_tree.prog_data.shrouded_pred_id) = hlds.pred_proc_id.pred_id.
+:- func unshroud_pred_proc_id(parse_tree.prog_data.shrouded_pred_proc_id) = hlds.pred_proc_id.pred_proc_id.
+:- func unshroud_proc_id(parse_tree.prog_data.shrouded_proc_id) = hlds.pred_proc_id.proc_id.
+:- implementation.
+:- type proc_id == int.

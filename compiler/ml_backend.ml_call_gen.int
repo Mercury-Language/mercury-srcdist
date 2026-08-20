@@ -1,0 +1,24 @@
+:- module ml_backend.ml_call_gen.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.code_model.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_markers.
+:- use_module hlds.mark_tail_calls.
+:- use_module hlds.pred_proc_id.
+:- use_module ml_backend.ml_args_util.
+:- use_module ml_backend.ml_gen_info.
+:- use_module ml_backend.mlds.
+:- use_module parse_tree.prog_data.
+:- pred ml_gen_builtin(hlds.pred_proc_id.pred_id, hlds.pred_proc_id.proc_id, list.list(parse_tree.prog_data.prog_var), hlds.code_model.code_model, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_function_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_builtin(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred ml_gen_generic_call(hlds.hlds_goal.generic_call, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.determinism, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_function_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_generic_call(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred ml_gen_plain_call(hlds.pred_proc_id.pred_id, hlds.pred_proc_id.proc_id, hlds.code_model.code_model, hlds.hlds_goal.hlds_goal_info, list.list(parse_tree.prog_data.prog_var), list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_function_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_plain_call(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred ml_gen_plain_non_tail_call(hlds.pred_proc_id.pred_proc_id, hlds.code_model.code_model, parse_tree.prog_data.prog_context, list.list(ml_backend.ml_args_util.ml_call_arg), hlds.mark_tail_calls.nontail_rec_call_reason, set.set(hlds.hlds_markers.goal_feature), list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_function_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_plain_non_tail_call(builtin.in, builtin.in, builtin.in, builtin.in(list.list_skel((ml_backend.ml_args_util).not_fcw)), builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- mode ml_gen_plain_non_tail_call(builtin.in, builtin.in, builtin.in, builtin.in(list.list_skel((ml_backend.ml_args_util).fcw)), builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.in, builtin.out) is det.

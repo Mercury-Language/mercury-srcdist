@@ -1,0 +1,20 @@
+:- module transform_hlds.unused_args_warn_pragma.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_item_pragma.
+:- type maybe_gather_pragma_unused_args
+    --->    do_not_gather_pragma_unused_args 
+    ;       do_gather_pragma_unused_args .
+:- type maybe_record_analysis_unused_args
+    --->    do_not_record_analysis_unused_args 
+    ;       do_record_analysis_unused_args .
+:- type maybe_warn_unused_args
+    --->    do_not_warn_unused_args 
+    ;       do_warn_unused_args .
+:- pred gather_warnings_and_pragmas(hlds.hlds_module.module_info, hlds.hlds_module.proc_to_unused_args_map, transform_hlds.unused_args_warn_pragma.maybe_warn_unused_args, transform_hlds.unused_args_warn_pragma.maybe_gather_pragma_unused_args, list.list(parse_tree.error_spec.diag_spec), set.set(parse_tree.prog_item_pragma.gen_pragma_unused_args_info)).
+:- mode gather_warnings_and_pragmas(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
