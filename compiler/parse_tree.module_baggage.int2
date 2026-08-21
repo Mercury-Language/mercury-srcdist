@@ -1,0 +1,65 @@
+:- module parse_tree.module_baggage.
+:- interface.
+:- use_module map.
+:- use_module mdbcomp.sym_name.
+:- type burdened_aug_comp_unit
+    --->    burdened_aug_comp_unit(
+                 (parse_tree.module_baggage).bacu_baggage :: parse_tree.module_baggage.module_baggage,
+                 (parse_tree.module_baggage).bacu_acu :: parse_tree.prog_parse_tree.aug_compilation_unit
+            ).
+:- type burdened_module
+    --->    burdened_module(
+                 (parse_tree.module_baggage).bm_baggage :: parse_tree.module_baggage.module_baggage,
+                 (parse_tree.module_baggage).bm_module :: parse_tree.prog_parse_tree.parse_tree_module_src
+            ).
+:- type grabbed_file
+    --->    gf_src(
+                 parse_tree.prog_parse_tree.parse_tree_module_src
+            )
+    ;       gf_int0(
+                 parse_tree.prog_parse_tree.parse_tree_int0,
+                 parse_tree.prog_parse_tree.read_why_int0
+            )
+    ;       gf_int1(
+                 parse_tree.prog_parse_tree.parse_tree_int1,
+                 parse_tree.prog_parse_tree.read_why_int1
+            )
+    ;       gf_int2(
+                 parse_tree.prog_parse_tree.parse_tree_int2,
+                 parse_tree.prog_parse_tree.read_why_int2
+            )
+    ;       gf_int3(
+                 parse_tree.prog_parse_tree.parse_tree_int3,
+                 parse_tree.prog_parse_tree.read_why_int3
+            ).
+:- type grabbed_file_map == map.map(mdbcomp.sym_name.module_name, parse_tree.module_baggage.grabbed_file).
+:- type maybe_top_module
+    --->    top_module(
+                 set.set(mdbcomp.sym_name.module_name)
+            )
+    ;       not_top_module .
+:- type module_baggage
+    --->    module_baggage(
+                 (parse_tree.module_baggage).mb_source_file_name :: libs.file_util.file_name,
+                 (parse_tree.module_baggage).mb_source_file_dir :: libs.file_util.dir_name,
+                 (parse_tree.module_baggage).mb_source_file_top_module_name :: mdbcomp.sym_name.module_name,
+                 (parse_tree.module_baggage).mb_maybe_top_module :: parse_tree.module_baggage.maybe_top_module,
+                 (parse_tree.module_baggage).mb_maybe_timestamp :: maybe.maybe(libs.timestamp.timestamp),
+                 (parse_tree.module_baggage).mb_maybe_timestamp_map :: maybe.maybe(parse_tree.module_baggage.module_timestamp_map),
+                 (parse_tree.module_baggage).mb_grabbed_file_map :: parse_tree.module_baggage.grabbed_file_map,
+                 (parse_tree.module_baggage).mb_errors :: parse_tree.parse_error.read_module_errors
+            ).
+:- type module_timestamp
+    --->    module_timestamp(
+                 (parse_tree.module_baggage).mts_file_kind :: parse_tree.file_kind.file_kind,
+                 (parse_tree.module_baggage).mts_timestamp :: libs.timestamp.timestamp,
+                 (parse_tree.module_baggage).mts_avail_kind :: parse_tree.module_baggage.recomp_avail
+            ).
+:- type module_timestamp_map == map.map(mdbcomp.sym_name.module_name, parse_tree.module_baggage.module_timestamp).
+:- type recomp_avail
+    --->    recomp_avail_src 
+    ;       recomp_avail_int_import 
+    ;       recomp_avail_imp_import 
+    ;       recomp_avail_int_use 
+    ;       recomp_avail_imp_use 
+    ;       recomp_avail_int_use_imp_import .

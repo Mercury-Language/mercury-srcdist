@@ -1,0 +1,17 @@
+:- module parse_tree.parse_goal_util.
+:- interface.
+:- use_module cord.
+:- use_module term.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.maybe_error.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item.
+:- type goal_result == parse_tree.maybe_error.parse_result1(parse_tree.prog_item.goal).
+:- pred apply_purity_marker_to_maybe_goal(term.term, parse_tree.prog_data.purity, parse_tree.maybe_error.parse_result1(parse_tree.prog_item.goal), parse_tree.maybe_error.parse_result1(parse_tree.prog_item.goal)).
+:- mode apply_purity_marker_to_maybe_goal(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func should_have_no_args(cord.cord(parse_tree.error_spec.format_piece), term.context, string) = parse_tree.error_spec.err_spec.
+:- func should_have_one_call_prefix(cord.cord(parse_tree.error_spec.format_piece), term.context, string) = parse_tree.error_spec.err_spec.
+:- func should_have_one_goal_prefix(cord.cord(parse_tree.error_spec.format_piece), term.context, string) = parse_tree.error_spec.err_spec.
+:- func should_have_one_x_one_goal_prefix(cord.cord(parse_tree.error_spec.format_piece), term.context, string, string) = parse_tree.error_spec.err_spec.
+:- func should_have_two_goals_infix(cord.cord(parse_tree.error_spec.format_piece), term.context, string) = parse_tree.error_spec.err_spec.
+:- func should_have_two_terms_infix(cord.cord(parse_tree.error_spec.format_piece), term.context, string) = parse_tree.error_spec.err_spec.

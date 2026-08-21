@@ -1,0 +1,30 @@
+:- module check_hlds.proc_requests.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module queue.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.pred_proc_id.
+:- use_module parse_tree.prog_data.
+:- type proc_requests.
+:- type req_queue == queue.queue(hlds.pred_proc_id.pred_proc_id).
+:- type unify_proc_id
+    --->    unify_proc_id(
+                 parse_tree.prog_data.type_ctor,
+                 hlds.hlds_goal.unify_mode
+            ).
+:- pred get_req_queue(check_hlds.proc_requests.proc_requests, check_hlds.proc_requests.req_queue).
+:- mode get_req_queue(builtin.in, builtin.out) is det.
+:- pred init_requests(check_hlds.proc_requests.proc_requests).
+:- mode init_requests(builtin.out) is det.
+:- pred lookup_mode_num(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor, hlds.hlds_goal.unify_mode, parse_tree.prog_data.determinism, hlds.pred_proc_id.proc_id).
+:- mode lookup_mode_num(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred request_proc(hlds.pred_proc_id.pred_id, list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.inst_varset, maybe.maybe(list.list(parse_tree.prog_data.is_live)), maybe.maybe(parse_tree.prog_data.determinism), parse_tree.prog_data.prog_context, hlds.pred_proc_id.proc_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode request_proc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred request_unify(check_hlds.proc_requests.unify_proc_id, parse_tree.prog_data.inst_varset, parse_tree.prog_data.determinism, parse_tree.prog_data.prog_context, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode request_unify(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred set_req_queue(check_hlds.proc_requests.req_queue, check_hlds.proc_requests.proc_requests, check_hlds.proc_requests.proc_requests).
+:- mode set_req_queue(builtin.in, builtin.in, builtin.out) is det.

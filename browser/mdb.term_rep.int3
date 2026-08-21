@@ -1,0 +1,4 @@
+:- module mdb.term_rep.
+:- interface.
+:- type term_rep.
+:- type_representation(term_rep, is_word_aligned_ptr).

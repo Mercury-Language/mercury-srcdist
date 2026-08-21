@@ -1,0 +1,16 @@
+:- module check_hlds.det_check_goal.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module check_hlds.det_check_switch.
+:- use_module check_hlds.det_util.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.instmap.
+:- use_module parse_tree.error_sort.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- pred det_diagnose_conj(hlds.instmap.instmap, list.list(check_hlds.det_check_switch.switch_context), parse_tree.prog_data.determinism, list.list(hlds.hlds_goal.hlds_goal), list.list(parse_tree.error_sort.diag_msg_group), check_hlds.det_util.det_info, check_hlds.det_util.det_info).
+:- mode det_diagnose_conj(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred det_diagnose_goal_get_msgs(hlds.instmap.instmap, parse_tree.prog_data.determinism, hlds.hlds_goal.hlds_goal, list.list(parse_tree.error_spec.diag_msg), check_hlds.det_util.det_info, check_hlds.det_util.det_info).
+:- mode det_diagnose_goal_get_msgs(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

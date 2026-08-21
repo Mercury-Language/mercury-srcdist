@@ -1,0 +1,6539 @@
+/*
+** Automatically generated from `parse_class.m'
+** by the Mercury compiler,
+** version rotd-2026-08-21
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.parse_class.
+// :- implementation.
+
+/*
+INIT mercury__parse_tree__parse_class__init
+ENDINIT
+*/
+
+#include "parse_tree.parse_class.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "edit_seq.mih"
+#include "enum.mih"
+#include "getopt.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "one_or_more.mih"
+#include "one_or_more_map.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "term_context.mih"
+#include "term_int.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "libs.file_util.mih"
+#include "libs.globals.mih"
+#include "libs.options.mih"
+#include "libs.timestamp.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.sym_name.mih"
+#include "parse_tree.error_spec.mih"
+#include "parse_tree.file_names.mih"
+#include "parse_tree.find_module.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.parse_inst_mode_name.mih"
+#include "parse_tree.parse_item.mih"
+#include "parse_tree.parse_sym_name.mih"
+#include "parse_tree.parse_tree_out_info.mih"
+#include "parse_tree.parse_tree_out_inst.mih"
+#include "parse_tree.parse_tree_out_term.mih"
+#include "parse_tree.parse_tree_out_type.mih"
+#include "parse_tree.parse_tree_output.mih"
+#include "parse_tree.parse_type_name.mih"
+#include "parse_tree.parse_types.mih"
+#include "parse_tree.parse_util.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_rare.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_item_inst_mode.mih"
+#include "parse_tree.prog_item_pragma.mih"
+#include "parse_tree.prog_item_pred_proc_id.mih"
+#include "parse_tree.prog_item_type.mih"
+#include "parse_tree.prog_parse_tree.mih"
+#include "parse_tree.prog_type_scan.mih"
+#include "parse_tree.prog_type_test.mih"
+#include "parse_tree.prog_util.mih"
+#include "parse_tree.var_db.mih"
+#include "parse_tree.var_table.mih"
+#include "recompilation.item_types.mih"
+#include "string.builder.mih"
+
+
+
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__term__pti_term_1__plain_term__type_ctor_info_generic_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__term__pti_term_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__varset__pti_varset_1__plain_term__type_ctor_info_generic_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0;
+
+static const MR_VA_TypeInfo_Struct2 parse_tree__parse_class____vti_tuple_2one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0;
+
+static const MR_FA_PseudoTypeInfo_Struct3 parse_tree__parse_class__parse_tree__maybe_error__pti_maybe2_3__plain_parse_tree__prog_item__type_ctor_info_class_decl_0__plain_list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0__plain___vti_tuple_2one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__list__pti_list_1__plain_parse_tree__error_spec__type_ctor_info_warn_spec_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__set_ordlist__pti_set_ordlist_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 parse_tree__parse_class__parse_tree__maybe_error__pti_maybe1_2__plain_parse_tree__prog_data__type_ctor_info_instance_method_0__plain___vti_tuple_2one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__list__ti_list_1parse_tree__prog_data__type_ctor_info_var_or_ground_type_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+static const MR_PseudoTypeInfo parse_tree__parse_class__parse_tree__parse_class__field_types_arbitrary_constraint_0_0[4];
+
+static const MR_DuFunctorDesc parse_tree__parse_class__parse_tree__parse_class__du_functor_desc_arbitrary_constraint_0_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0;
+
+static const MR_PseudoTypeInfo parse_tree__parse_class__parse_tree__parse_class__field_types_arbitrary_constraint_0_1[3];
+
+static const MR_DuFunctorDesc parse_tree__parse_class__parse_tree__parse_class__du_functor_desc_arbitrary_constraint_0_1;
+
+static const MR_PseudoTypeInfo parse_tree__parse_class__parse_tree__parse_class__field_types_arbitrary_constraint_0_2[2];
+
+static const MR_DuFunctorDesc parse_tree__parse_class__parse_tree__parse_class__du_functor_desc_arbitrary_constraint_0_2;
+
+static const MR_DuFunctorDescPtr parse_tree__parse_class__parse_tree__parse_class__du_stag_ordered_arbitrary_constraint_0_0[1];
+
+static const MR_DuFunctorDescPtr parse_tree__parse_class__parse_tree__parse_class__du_stag_ordered_arbitrary_constraint_0_1[1];
+
+static const MR_DuFunctorDescPtr parse_tree__parse_class__parse_tree__parse_class__du_stag_ordered_arbitrary_constraint_0_2[1];
+
+static const MR_DuPtagLayout parse_tree__parse_class__parse_tree__parse_class__du_ptag_ordered_arbitrary_constraint_0[3];
+
+static const MR_DuFunctorDescPtr parse_tree__parse_class__parse_tree__parse_class__du_name_ordered_arbitrary_constraint_0[3];
+
+static const MR_Integer parse_tree__parse_class__parse_tree__parse_class__functor_number_map_arbitrary_constraint_0[3];
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__one_or_more__ti_one_or_more_1parse_tree__parse_class__type_ctor_info_arbitrary_constraint_0;
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__list__ti_list_1parse_tree__prog_data__type_ctor_info_prog_constraint_0;
+
+static const MR_FA_TypeInfo_Struct2 parse_tree__parse_class__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0parse_tree__prog_data__type_ctor_info_mer_inst_0;
+
+static const MR_FA_TypeInfo_Struct3 parse_tree__parse_class__parse_tree__maybe_error__ti_maybe2_3list__ti_list_1parse_tree__prog_data__type_ctor_info_prog_constraint_0tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0parse_tree__prog_data__type_ctor_info_mer_inst_0one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0;
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__IntroducedFrom__pred__find_errors_m1__1205__1_2_p_0(
+  MR_Word WarnSpecs_7,
+  MR_Word HeadVar__2_16);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__IntroducedFrom__pred__find_errors_pr2__1166__1_2_p_0(
+  MR_Word WarnSpecs_7,
+  MR_Word HeadVar__2_16);
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__IntroducedFrom__func__parse_fundep__1091__1_2_f_0(
+  MR_Word TVarSet_17,
+  MR_Word HeadVar__2_85);
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__IntroducedFrom__func__check_tvars_in_instance_constraint__647__1_2_f_0(
+  MR_Word TVarSet_12,
+  MR_Word HeadVar__2_61);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__IntroducedFrom__pred__check_tvars_in_instance_constraint__643__1_2_p_0(
+  MR_Word TypesVars_17,
+  MR_Word HeadVar__2_56);
+
+static void MR_CALL 
+parse_tree__parse_class__IntroducedFrom__pred__parse_unconstrained_class__411__1_2_p_0(
+  MR_Word HeadVar__1_67,
+  MR_Word * HeadVar__2_68);
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__IntroducedFrom__func__parse_constrained_class__251__1_2_f_0(
+  MR_Word ClassTVarSet_44,
+  MR_Word HeadVar__2_196);
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__IntroducedFrom__func__parse_constrained_class__248__1_2_f_0(
+  MR_Word ClassTVarSet_44,
+  MR_Word HeadVar__2_193);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__IntroducedFrom__pred__parse_constrained_class__206__1_2_p_0(
+  MR_Word Params_26,
+  MR_Word HeadVar__2_188);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__IntroducedFrom__pred__parse_constrained_class__204__1_2_p_0(
+  MR_Word Params_26,
+  MR_Word HeadVar__2_186);
+
+static void MR_CALL 
+parse_tree__parse_class____Compare____arbitrary_constraints_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class____Unify____arbitrary_constraints_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+parse_tree__parse_class____Compare____arbitrary_constraint_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class____Unify____arbitrary_constraint_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__get_simple_constraint_2_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word * Constraint_3);
+
+static void MR_CALL 
+parse_tree__parse_class__term_to_instance_method_4_p_0(
+  MR_Word _ModuleName_5,
+  MR_Word VarSet_6,
+  MR_Word MethodTerm_7,
+  MR_Word * MaybeInstanceMethod_8);
+
+static void MR_CALL 
+parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_101_114_109_95_116_111_95_105_110_115_116_97_110_99_101_95_109_101_116_104_111_100_95_95_91_49_93_95_48_4_p_0(
+  MR_Word VarSet_6,
+  MR_Word MethodTerm_7,
+  MR_Word * MaybeInstanceMethod_8);
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__report_unexpected_method_term_2_f_0(
+  MR_Word VarSet_4,
+  MR_Word MethodTerm_5);
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__tvars_in_fundep_1_f_0(
+  MR_Word HeadVar__1_1);
+
+static void MR_CALL 
+parse_tree__parse_class__collect_class_and_inst_constraints_4_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word * HeadVar__2_2,
+  MR_Word * HeadVar__3_3,
+  MR_Word * HeadVar__4_4);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_non_empty_instance_8_p_0(
+  MR_Word ModuleName_9,
+  MR_Word VarSet_10,
+  MR_Word TVarSet_11,
+  MR_Word NameTerm_12,
+  MR_Word MethodsTerm_13,
+  MR_Word Context_14,
+  MR_Word SeqNum_15,
+  MR_Word * MaybeItemInstanceInfo_16);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__parse_instance_methods_4_p_0_2(
+  MR_Box closure_arg);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_instance_methods_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_instance_methods_4_p_0(
+  MR_Word ModuleName_5,
+  MR_Word VarSet_6,
+  MR_Word MethodsTerm_7,
+  MR_Word * Result_8);
+
+static void MR_CALL 
+parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_109_49_95_108_111_111_112_95_95_91_49_93_95_48_7_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_Results_0_2,
+  MR_Word * STATE_VARIABLE_Results_3,
+  MR_Word STATE_VARIABLE_ErrSpecs_0_4,
+  MR_Word * STATE_VARIABLE_ErrSpecs_5,
+  MR_Word STATE_VARIABLE_WarnSpecs_0_6,
+  MR_Word * STATE_VARIABLE_WarnSpecs_7);
+
+static MR_Box MR_CALL 
+parse_tree__parse_class__check_tvars_in_instance_constraint_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__check_tvars_in_instance_constraint_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+parse_tree__parse_class__check_tvars_in_instance_constraint_3_p_0(
+  MR_Word ItemInstanceInfo_4,
+  MR_Word NameTerm_5,
+  MR_Word * MaybeSpec_6);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_instance_name_6_p_0(
+  MR_Word ModuleName_7,
+  MR_Word TVarSet_8,
+  MR_Word ArgTerm_9,
+  MR_Word Context_10,
+  MR_Word SeqNum_11,
+  MR_Word * MaybeItemInstanceInfo_12);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__parse_derived_instance_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_derived_instance_7_p_0(
+  MR_Word ModuleName_8,
+  MR_Word TVarSet_9,
+  MR_Word NameTerm_10,
+  MR_Word ConstraintsTerm_11,
+  MR_Word Context_12,
+  MR_Word SeqNum_13,
+  MR_Word * MaybeItemInstanceInfo_14);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__parse_non_empty_class_7_p_0_2(
+  MR_Box closure_arg);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_non_empty_class_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_non_empty_class_7_p_0(
+  MR_Word ModuleName_8,
+  MR_Word VarSet_9,
+  MR_Word NameTerm_10,
+  MR_Word MethodsTerm_11,
+  MR_Word Context_12,
+  MR_Word SeqNum_13,
+  MR_Word * MaybeItemTypeClassInfo_14);
+
+static void MR_CALL 
+parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_112_114_50_95_108_111_111_112_95_95_91_49_93_95_48_7_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_Results_0_2,
+  MR_Word * STATE_VARIABLE_Results_3,
+  MR_Word STATE_VARIABLE_ErrSpecs_0_4,
+  MR_Word * STATE_VARIABLE_ErrSpecs_5,
+  MR_Word STATE_VARIABLE_WarnSpecs_0_6,
+  MR_Word * STATE_VARIABLE_WarnSpecs_7);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_class_head_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_class_head_6_p_0(
+  MR_Word ModuleName_7,
+  MR_Word VarSet_8,
+  MR_Word ArgTerm_9,
+  MR_Word Context_10,
+  MR_Word SeqNum_11,
+  MR_Word * MaybeItemTypeClassInfo_12);
+
+static MR_Box MR_CALL 
+parse_tree__parse_class__parse_constrained_class_7_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+parse_tree__parse_class__parse_constrained_class_7_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__parse_constrained_class_7_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__parse_constrained_class_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_constrained_class_7_p_0(
+  MR_Word ModuleName_8,
+  MR_Word VarSet_9,
+  MR_Word NameTerm_10,
+  MR_Word ConstraintsTerm_11,
+  MR_Word Context_12,
+  MR_Word SeqNum_13,
+  MR_Word * MaybeItemTypeClass_14);
+
+static void MR_CALL 
+parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_115_117_112_101_114_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(
+  MR_Word VarSet_6,
+  MR_Word ConstraintsTerm_7,
+  MR_Word * Result_8);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_arbitrary_constraint_list_4_p_0(
+  MR_Word VarSet_5,
+  MR_Word HeadTerm_6,
+  MR_Word TailTerms_7,
+  MR_Word * Result_8);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_arbitrary_constraint_3_p_0(
+  MR_Word VarSet_4,
+  MR_Word ConstraintTerm_5,
+  MR_Word * Result_6);
+
+static void MR_CALL 
+parse_tree__parse_class__classify_types_as_var_ground_or_neither_4_p_0(
+  MR_Word TVarSet_1,
+  MR_Word HeadVar__2_2,
+  MR_Word * HeadVar__3_3,
+  MR_Word * HeadVar__4_4);
+
+static MR_Box MR_CALL 
+parse_tree__parse_class__parse_fundep_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__parse_fundep_3_p_0(
+  MR_Word VarSet_4,
+  MR_Word Term_5,
+  MR_Word * Result_6);
+
+static MR_Box MR_CALL 
+parse_tree__parse_class__collect_superclass_constraints_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+parse_tree__parse_class__collect_superclass_constraints_5_p_0(
+  MR_Word VarSet_1,
+  MR_Word HeadVar__2_2,
+  MR_Word * HeadVar__3_3,
+  MR_Word * HeadVar__4_4,
+  MR_Word * HeadVar__5_5);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_unconstrained_class_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__parse_class__parse_unconstrained_class_6_p_0(
+  MR_Word ModuleName_7,
+  MR_Word TVarSet_8,
+  MR_Word NameTerm_9,
+  MR_Word Context_10,
+  MR_Word SeqNum_11,
+  MR_Word * MaybeTypeClassInfo_12);
+
+static MR_Box MR_CALL 
+parse_tree__parse_class__tvars_in_fundeps_1_f_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__tvars_in_fundeps_1_f_0(
+  MR_Word FunDeps_3);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class____Unify____arbitrary_constraint_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__parse_class____Compare____arbitrary_constraint_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class____Unify____arbitrary_constraints_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__parse_class____Compare____arbitrary_constraints_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__parse_class____Unify____maybe_class_and_inst_constraints_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__parse_class____Compare____maybe_class_and_inst_constraints_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_1[168][2];
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_2[3][4];
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_3[7][3];
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_4[2][1];
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_5[6][5];
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_6[3][7];
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_7[1][6];
+
+
+
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_1[168][2] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_class_decl_0))
+  },
+  /* row   1 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row   2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_1[1]))
+  },
+  /* row   3 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0))
+  },
+  /* row   4 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_term_1)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_generic_0))
+  },
+  /* row   5 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_term_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row   6 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_warn_spec_0))
+  },
+  /* row   7 */
+  {
+    ((MR_Box) (&mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1)),
+    ((MR_Box) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0))
+  },
+  /* row   8 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0))
+  },
+  /* row   9 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_instance_method_0))
+  },
+  /* row  10 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_term_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row  11 */
+  {
+    ((MR_Box) (&mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1)),
+    ((MR_Box) (&parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_arbitrary_constraint_0))
+  },
+  /* row  12 */
+  {
+    ((MR_Box) (&mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1)),
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_1[1]))
+  },
+  /* row  13 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_var_or_ground_type_0))
+  },
+  /* row  14 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0))
+  },
+  /* row  15 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "declaration"))
+  },
+  /* row  16 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[15]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  17 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 35U)),
+    ((MR_Box) ((MR_String) "typeclass"))
+  },
+  /* row  18 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[17]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[16])))
+  },
+  /* row  19 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: a"))
+  },
+  /* row  20 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[19]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[18])))
+  },
+  /* row  21 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "should have the form"))
+  },
+  /* row  22 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[21]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  23 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 39U)),
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row  24 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[23]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  25 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_String) ":- typeclass tcname(T1, ... Tn)"))
+  },
+  /* row  26 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[25]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  27 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "optionally followed by"))
+  },
+  /* row  28 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[27]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[24])))
+  },
+  /* row  29 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 39U)),
+    ((MR_Box) ((MR_Integer) -1))
+  },
+  /* row  30 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[29]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[28])))
+  },
+  /* row  31 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 8U)),
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row  32 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[31]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  33 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_String) "where [method_signature_1, ... method_signature_m]"))
+  },
+  /* row  34 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[33]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[32])))
+  },
+  /* row  35 */
+  {
+    ((MR_Box) ((MR_Unsigned) 12U)),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  36 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 35U)),
+    ((MR_Box) ((MR_String) "instance"))
+  },
+  /* row  37 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[36]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[16])))
+  },
+  /* row  38 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: an"))
+  },
+  /* row  39 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[38]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[37])))
+  },
+  /* row  40 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_String) ":- instance tcname(type1, ... typen)"))
+  },
+  /* row  41 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[40]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  42 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_String) "where [method_spec_1, ... method_spec_m]"))
+  },
+  /* row  43 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[42]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[32])))
+  },
+  /* row  44 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[29]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  45 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Sorry, not implemented: constraints"))
+  },
+  /* row  46 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[45]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  47 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error:"))
+  },
+  /* row  48 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[47]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  49 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "functional dependencies"))
+  },
+  /* row  50 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[49]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  51 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "are only allowed"))
+  },
+  /* row  52 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[51]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  53 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "in typeclass declarations."))
+  },
+  /* row  54 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[53]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  55 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "in the superclass constraint"))
+  },
+  /* row  56 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[55]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  57 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "in superclass constraints"))
+  },
+  /* row  58 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[57]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  59 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "in the functional dependency"))
+  },
+  /* row  60 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[59]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  61 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "in functional dependencies"))
+  },
+  /* row  62 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[61]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  63 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: type variable"))
+  },
+  /* row  64 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[63]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  65 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "is"))
+  },
+  /* row  66 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[65]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  67 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "not a parameter"))
+  },
+  /* row  68 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[67]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  69 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: type variables"))
+  },
+  /* row  70 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[69]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  71 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "are"))
+  },
+  /* row  72 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[71]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  73 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "not parameters"))
+  },
+  /* row  74 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[73]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  75 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "and"))
+  },
+  /* row  76 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[75]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  77 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "of type class"))
+  },
+  /* row  78 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[77]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  79 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: a class declaration"))
+  },
+  /* row  80 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[79]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  81 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "may not contain"))
+  },
+  /* row  82 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[81]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  83 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "an inst constraint such as"))
+  },
+  /* row  84 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[83]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  85 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "The type"))
+  },
+  /* row  86 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[85]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  87 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "is neither."))
+  },
+  /* row  88 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[87]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  89 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "The types"))
+  },
+  /* row  90 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[89]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  91 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "are neither."))
+  },
+  /* row  92 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[91]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  93 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "which in this case is"))
+  },
+  /* row  94 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[93]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  95 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "all the argument types of the superclass,"))
+  },
+  /* row  96 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[95]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[94])))
+  },
+  /* row  97 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: in a superclass constraint,"))
+  },
+  /* row  98 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[97]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[96])))
+  },
+  /* row  99 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 8U)),
+    ((MR_Box) ((MR_String) ","))
+  },
+  /* row 100 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[99]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 101 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "must be either type variables or ground types."))
+  },
+  /* row 102 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[101]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 103 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "In typeclass declaration:"))
+  },
+  /* row 104 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: typeclass declarations"))
+  },
+  /* row 105 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[104]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 106 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "class parameter."))
+  },
+  /* row 107 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[106]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 108 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "require at least one"))
+  },
+  /* row 109 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[108]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[107])))
+  },
+  /* row 110 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: expected a"))
+  },
+  /* row 111 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[110]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 112 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "list of class methods,"))
+  },
+  /* row 113 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[112]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 114 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "got"))
+  },
+  /* row 115 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[114]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 116 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: constraints on instance declarations"))
+  },
+  /* row 117 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[116]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 118 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "In instance declaration:"))
+  },
+  /* row 119 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "unbound type variable"))
+  },
+  /* row 120 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[119]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 121 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "unbound type variables"))
+  },
+  /* row 122 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[121]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 123 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "in constraints on instance declaration."))
+  },
+  /* row 124 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[123]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])))
+  },
+  /* row 125 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "list of instance methods."))
+  },
+  /* row 126 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[125]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 127 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: expected"))
+  },
+  /* row 128 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[127]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[24])))
+  },
+  /* row 129 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_String) "pred(<Name> / <Arity>) is <InstanceMethod>"))
+  },
+  /* row 130 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[129]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[100])))
+  },
+  /* row 131 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[114]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[24])))
+  },
+  /* row 132 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[29]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[131])))
+  },
+  /* row 133 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_String) "func(<Name> / <Arity>) is <InstanceMethod>"))
+  },
+  /* row 134 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[133]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[100])))
+  },
+  /* row 135 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_String) "pred(<Name> / <Arity>) is <InstanceName>"))
+  },
+  /* row 136 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[135]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 137 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "or"))
+  },
+  /* row 138 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[137]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[24])))
+  },
+  /* row 139 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[29]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[138])))
+  },
+  /* row 140 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_String) "func(<Name> / <Arity>) is <InstanceName>"))
+  },
+  /* row 141 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[140]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[100])))
+  },
+  /* row 142 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: expected clause or"))
+  },
+  /* row 143 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[142]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[24])))
+  },
+  /* row 144 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "type variables and ground types."))
+  },
+  /* row 145 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[144]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 146 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "may only constrain"))
+  },
+  /* row 147 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[146]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[145])))
+  },
+  /* row 148 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: a non-variable inst such as"))
+  },
+  /* row 149 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[148]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 150 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "of an inst constraint."))
+  },
+  /* row 151 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[150]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 152 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "may not be the subject"))
+  },
+  /* row 153 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[152]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[151])))
+  },
+  /* row 154 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "of an inst constraint:"))
+  },
+  /* row 155 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[154]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 156 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "In the constraining inst"))
+  },
+  /* row 157 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[156]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[155])))
+  },
+  /* row 158 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "In class constraint:"))
+  },
+  /* row 159 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "typeclass or inst constraint,"))
+  },
+  /* row 160 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[159]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 161 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "Error: type"))
+  },
+  /* row 162 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "in"))
+  },
+  /* row 163 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[162]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 164 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) "both the domain and the range"))
+  },
+  /* row 165 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[164]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 166 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 9U)),
+    ((MR_Box) ((MR_String) " of the same functional dependency."))
+  },
+  /* row 167 */
+  {
+    ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[166]))),
+    ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_2[3][4] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_1[7])),
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_1[6]))
+  },
+  /* row   1 */
+  {
+    ((MR_Box) (&parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe2_3)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_class_decl_0)),
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_1[6])),
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_2[0]))
+  },
+  /* row   2 */
+  {
+    ((MR_Box) (&parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe2_3)),
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_1[8])),
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_3[1])),
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_1[7]))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_3[7][3] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe1_2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_instance_method_0)),
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_2[0]))
+  },
+  /* row   1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_1[3])),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0))
+  },
+  /* row   2 */
+  {
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_5[0])),
+    ((MR_Box) (parse_tree__parse_class__tvars_in_fundeps_1_f_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   3 */
+  {
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_5[1])),
+    ((MR_Box) (parse_tree__parse_class__parse_unconstrained_class_6_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   4 */
+  {
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_5[1])),
+    ((MR_Box) (parse_tree__parse_class__parse_class_head_6_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   5 */
+  {
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_5[4])),
+    ((MR_Box) (parse_tree__parse_class__parse_derived_instance_7_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   6 */
+  {
+    ((MR_Box) (&parse_tree__parse_class_scalar_common_5[4])),
+    ((MR_Box) (parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_4[2][1] = {
+  /* row   0 */
+  { (MR_Box) ((MR_Unsigned) 8U) },
+  /* row   1 */
+  { (MR_Box) ((MR_Unsigned) 0U) },
+};
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_5[6][5] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_fundep_0)),
+    ((MR_Box) (&parse_tree__parse_class__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__parse_class__term__pti_term_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&parse_tree__parse_class__term__pti_term_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row   2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__parse_class__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0)),
+    ((MR_Box) (&parse_tree__parse_class__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row   3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__parse_class__list__pti_list_1__plain_parse_tree__error_spec__type_ctor_info_warn_spec_0)),
+    ((MR_Box) (&parse_tree__parse_class__list__pti_list_1__plain_parse_tree__error_spec__type_ctor_info_warn_spec_0))
+  },
+  /* row   4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_arbitrary_constraint_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0))
+  },
+  /* row   5 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__parse_class__set_ordlist__pti_set_ordlist_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0)),
+    ((MR_Box) (&parse_tree__parse_class__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_6[3][7] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&parse_tree__parse_class__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_var_name_print_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&parse_tree__parse_class__varset__pti_varset_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&parse_tree__parse_class__term__pti_term_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&parse_tree__parse_class__parse_tree__maybe_error__pti_maybe2_3__plain_parse_tree__prog_item__type_ctor_info_class_decl_0__plain_list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0__plain___vti_tuple_2one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0))
+  },
+  /* row   2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&parse_tree__parse_class__varset__pti_varset_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&parse_tree__parse_class__term__pti_term_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&parse_tree__parse_class__parse_tree__maybe_error__pti_maybe1_2__plain_parse_tree__prog_data__type_ctor_info_instance_method_0__plain___vti_tuple_2one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0))
+  },
+};
+
+static /* final */ const MR_Box parse_tree__parse_class_scalar_common_7[1][6] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__parse_class__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0)),
+    ((MR_Box) (&parse_tree__parse_class__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0)),
+    ((MR_Box) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0))
+  },
+};
+
+
+
+#include "array.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "io.stream_ops.mh"
+
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__list__pti_list_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__parse_class__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__term__pti_term_1__plain_term__type_ctor_info_generic_0 = {
+  &mercury__term__term__type_ctor_info_term_1,
+  { (MR_PseudoTypeInfo) (&mercury__term__term__type_ctor_info_generic_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__term__pti_term_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__term__term__type_ctor_info_term_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__varset__pti_varset_1__plain_term__type_ctor_info_generic_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  { (MR_PseudoTypeInfo) (&mercury__term__term__type_ctor_info_generic_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_warn_spec_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0 = {
+  &mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1,
+  { (MR_TypeInfo) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0) }
+};
+
+static const MR_VA_TypeInfo_Struct2 parse_tree__parse_class____vti_tuple_2one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0 = {
+  &mercury__builtin__builtin__type_ctor_info_tuple_0,
+  (MR_Integer) 2,
+  {
+    (MR_TypeInfo) (&parse_tree__parse_class__one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0),
+    (MR_TypeInfo) (&parse_tree__parse_class__list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct3 parse_tree__parse_class__parse_tree__maybe_error__pti_maybe2_3__plain_parse_tree__prog_item__type_ctor_info_class_decl_0__plain_list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0__plain___vti_tuple_2one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0 = {
+  &parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe2_3,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_class_decl_0),
+    (MR_PseudoTypeInfo) (&parse_tree__parse_class__list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0),
+    (MR_PseudoTypeInfo) (&parse_tree__parse_class____vti_tuple_2one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__list__pti_list_1__plain_parse_tree__error_spec__type_ctor_info_warn_spec_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_warn_spec_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 parse_tree__parse_class__set_ordlist__pti_set_ordlist_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__parse_class__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 parse_tree__parse_class__parse_tree__maybe_error__pti_maybe1_2__plain_parse_tree__prog_data__type_ctor_info_instance_method_0__plain___vti_tuple_2one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0 = {
+  &parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe1_2,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_instance_method_0),
+    (MR_PseudoTypeInfo) (&parse_tree__parse_class____vti_tuple_2one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0list__ti_list_1parse_tree__error_spec__type_ctor_info_warn_spec_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__list__ti_list_1parse_tree__prog_data__type_ctor_info_var_or_ground_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_var_or_ground_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0) }
+};
+
+static const MR_PseudoTypeInfo parse_tree__parse_class__parse_tree__parse_class__field_types_arbitrary_constraint_0_0[4] = {
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0),
+  (MR_PseudoTypeInfo) (&parse_tree__parse_class__list__ti_list_1parse_tree__prog_data__type_ctor_info_var_or_ground_type_0),
+  (MR_PseudoTypeInfo) (&parse_tree__parse_class__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_type_0),
+  (MR_PseudoTypeInfo) (&mercury__term_context__term_context__type_ctor_info_term_context_0)
+};
+
+static const MR_DuFunctorDesc parse_tree__parse_class__parse_tree__parse_class__du_functor_desc_arbitrary_constraint_0_0 = {
+  (MR_String) "ac_type_constraint",
+  INT16_C(4),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  parse_tree__parse_class__parse_tree__parse_class__field_types_arbitrary_constraint_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0) }
+};
+
+static const MR_PseudoTypeInfo parse_tree__parse_class__parse_tree__parse_class__field_types_arbitrary_constraint_0_1[3] = {
+  (MR_PseudoTypeInfo) (&parse_tree__parse_class__term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0),
+  (MR_PseudoTypeInfo) (&mercury__term_context__term_context__type_ctor_info_term_context_0)
+};
+
+static const MR_DuFunctorDesc parse_tree__parse_class__parse_tree__parse_class__du_functor_desc_arbitrary_constraint_0_1 = {
+  (MR_String) "ac_inst_constraint",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  parse_tree__parse_class__parse_tree__parse_class__field_types_arbitrary_constraint_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo parse_tree__parse_class__parse_tree__parse_class__field_types_arbitrary_constraint_0_2[2] = {
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_fundep_0),
+  (MR_PseudoTypeInfo) (&mercury__term_context__term_context__type_ctor_info_term_context_0)
+};
+
+static const MR_DuFunctorDesc parse_tree__parse_class__parse_tree__parse_class__du_functor_desc_arbitrary_constraint_0_2 = {
+  (MR_String) "ac_fundep",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(2),
+  (MR_Integer) -1,
+  INT32_C(2),
+  parse_tree__parse_class__parse_tree__parse_class__field_types_arbitrary_constraint_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr parse_tree__parse_class__parse_tree__parse_class__du_stag_ordered_arbitrary_constraint_0_0[1] = { &parse_tree__parse_class__parse_tree__parse_class__du_functor_desc_arbitrary_constraint_0_0 };
+
+static const MR_DuFunctorDescPtr parse_tree__parse_class__parse_tree__parse_class__du_stag_ordered_arbitrary_constraint_0_1[1] = { &parse_tree__parse_class__parse_tree__parse_class__du_functor_desc_arbitrary_constraint_0_1 };
+
+static const MR_DuFunctorDescPtr parse_tree__parse_class__parse_tree__parse_class__du_stag_ordered_arbitrary_constraint_0_2[1] = { &parse_tree__parse_class__parse_tree__parse_class__du_functor_desc_arbitrary_constraint_0_2 };
+
+static const MR_DuPtagLayout parse_tree__parse_class__parse_tree__parse_class__du_ptag_ordered_arbitrary_constraint_0[3] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__parse_class__parse_tree__parse_class__du_stag_ordered_arbitrary_constraint_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__parse_class__parse_tree__parse_class__du_stag_ordered_arbitrary_constraint_0_1,
+    INT8_C(-1),
+    UINT8_C(1),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    parse_tree__parse_class__parse_tree__parse_class__du_stag_ordered_arbitrary_constraint_0_2,
+    INT8_C(-1),
+    UINT8_C(2),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr parse_tree__parse_class__parse_tree__parse_class__du_name_ordered_arbitrary_constraint_0[3] = {
+  &parse_tree__parse_class__parse_tree__parse_class__du_functor_desc_arbitrary_constraint_0_2,
+  &parse_tree__parse_class__parse_tree__parse_class__du_functor_desc_arbitrary_constraint_0_1,
+  &parse_tree__parse_class__parse_tree__parse_class__du_functor_desc_arbitrary_constraint_0_0
+};
+
+static const MR_Integer parse_tree__parse_class__parse_tree__parse_class__functor_number_map_arbitrary_constraint_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_arbitrary_constraint_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(3),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (parse_tree__parse_class____Unify____arbitrary_constraint_0_0_10001)),
+  ((MR_Box) (parse_tree__parse_class____Compare____arbitrary_constraint_0_0_10001)),
+  (MR_String) "parse_tree.parse_class",
+  (MR_String) "arbitrary_constraint",
+  { parse_tree__parse_class__parse_tree__parse_class__du_name_ordered_arbitrary_constraint_0 },
+  { parse_tree__parse_class__parse_tree__parse_class__du_ptag_ordered_arbitrary_constraint_0 },
+  (MR_Integer) 3,
+  UINT16_C(12),
+  parse_tree__parse_class__parse_tree__parse_class__functor_number_map_arbitrary_constraint_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__one_or_more__ti_one_or_more_1parse_tree__parse_class__type_ctor_info_arbitrary_constraint_0 = {
+  &mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1,
+  { (MR_TypeInfo) (&parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_arbitrary_constraint_0) }
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_arbitrary_constraints_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (parse_tree__parse_class____Unify____arbitrary_constraints_0_0_10001)),
+  ((MR_Box) (parse_tree__parse_class____Compare____arbitrary_constraints_0_0_10001)),
+  (MR_String) "parse_tree.parse_class",
+  (MR_String) "arbitrary_constraints",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&parse_tree__parse_class__one_or_more__ti_one_or_more_1parse_tree__parse_class__type_ctor_info_arbitrary_constraint_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__parse_class__list__ti_list_1parse_tree__prog_data__type_ctor_info_prog_constraint_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0) }
+};
+
+static const MR_FA_TypeInfo_Struct2 parse_tree__parse_class__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0parse_tree__prog_data__type_ctor_info_mer_inst_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) (&parse_tree__parse_class__term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0),
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct3 parse_tree__parse_class__parse_tree__maybe_error__ti_maybe2_3list__ti_list_1parse_tree__prog_data__type_ctor_info_prog_constraint_0tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0parse_tree__prog_data__type_ctor_info_mer_inst_0one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0 = {
+  &parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe2_3,
+  {
+    (MR_TypeInfo) (&parse_tree__parse_class__list__ti_list_1parse_tree__prog_data__type_ctor_info_prog_constraint_0),
+    (MR_TypeInfo) (&parse_tree__parse_class__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0parse_tree__prog_data__type_ctor_info_mer_inst_0),
+    (MR_TypeInfo) (&parse_tree__parse_class__one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0)
+  }
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_maybe_class_and_inst_constraints_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (parse_tree__parse_class____Unify____maybe_class_and_inst_constraints_0_0_10001)),
+  ((MR_Box) (parse_tree__parse_class____Compare____maybe_class_and_inst_constraints_0_0_10001)),
+  (MR_String) "parse_tree.parse_class",
+  (MR_String) "maybe_class_and_inst_constraints",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&parse_tree__parse_class__parse_tree__maybe_error__ti_maybe2_3list__ti_list_1parse_tree__prog_data__type_ctor_info_prog_constraint_0tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_inst_var_type_0parse_tree__prog_data__type_ctor_info_mer_inst_0one_or_more__ti_one_or_more_1parse_tree__error_spec__type_ctor_info_err_spec_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__IntroducedFrom__pred__find_errors_m1__1205__1_2_p_0(
+  MR_Word WarnSpecs_7,
+  MR_Word HeadVar__2_16)
+{
+  MR_bool succeeded;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[6]), ((MR_Box) (WarnSpecs_7)), ((MR_Box) (HeadVar__2_16)));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__IntroducedFrom__pred__find_errors_pr2__1166__1_2_p_0(
+  MR_Word WarnSpecs_7,
+  MR_Word HeadVar__2_16)
+{
+  MR_bool succeeded;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[6]), ((MR_Box) (WarnSpecs_7)), ((MR_Box) (HeadVar__2_16)));
+  return succeeded;
+}
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__IntroducedFrom__func__parse_fundep__1091__1_2_f_0(
+  MR_Word TVarSet_17,
+  MR_Word HeadVar__2_85)
+{
+  MR_Word HeadVar__3_86;
+
+  HeadVar__3_86 = parse_tree__error_spec__var_to_quote_piece_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), TVarSet_17, HeadVar__2_85);
+  return HeadVar__3_86;
+}
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__IntroducedFrom__func__check_tvars_in_instance_constraint__647__1_2_f_0(
+  MR_Word TVarSet_12,
+  MR_Word HeadVar__2_61)
+{
+  MR_Word HeadVar__3_62;
+
+  HeadVar__3_62 = parse_tree__error_spec__var_to_quote_piece_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), TVarSet_12, HeadVar__2_61);
+  return HeadVar__3_62;
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__IntroducedFrom__pred__check_tvars_in_instance_constraint__643__1_2_p_0(
+  MR_Word TypesVars_17,
+  MR_Word HeadVar__2_56)
+{
+  MR_bool succeeded;
+
+  succeeded = mercury__set__contains_2_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), TypesVars_17, ((MR_Box) (HeadVar__2_56)));
+  return succeeded;
+}
+
+static void MR_CALL 
+parse_tree__parse_class__IntroducedFrom__pred__parse_unconstrained_class__411__1_2_p_0(
+  MR_Word HeadVar__1_67,
+  MR_Word * HeadVar__2_68)
+{
+  mercury__term__coerce_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), HeadVar__1_67, HeadVar__2_68);
+}
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__IntroducedFrom__func__parse_constrained_class__251__1_2_f_0(
+  MR_Word ClassTVarSet_44,
+  MR_Word HeadVar__2_196)
+{
+  MR_Word HeadVar__3_197;
+
+  HeadVar__3_197 = parse_tree__error_spec__var_to_quote_piece_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), ClassTVarSet_44, HeadVar__2_196);
+  return HeadVar__3_197;
+}
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__IntroducedFrom__func__parse_constrained_class__248__1_2_f_0(
+  MR_Word ClassTVarSet_44,
+  MR_Word HeadVar__2_193)
+{
+  MR_Word HeadVar__3_194;
+
+  HeadVar__3_194 = parse_tree__error_spec__var_to_quote_piece_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), ClassTVarSet_44, HeadVar__2_193);
+  return HeadVar__3_194;
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__IntroducedFrom__pred__parse_constrained_class__206__1_2_p_0(
+  MR_Word Params_26,
+  MR_Word HeadVar__2_188)
+{
+  MR_bool succeeded;
+
+  succeeded = mercury__list__contains_2_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Params_26, ((MR_Box) (HeadVar__2_188)));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__IntroducedFrom__pred__parse_constrained_class__204__1_2_p_0(
+  MR_Word Params_26,
+  MR_Word HeadVar__2_186)
+{
+  MR_bool succeeded;
+
+  succeeded = mercury__list__contains_2_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Params_26, ((MR_Box) (HeadVar__2_186)));
+  return succeeded;
+}
+
+void MR_CALL 
+parse_tree__parse_class____Compare____maybe_class_and_inst_constraints_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_2[2]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+}
+
+MR_bool MR_CALL 
+parse_tree__parse_class____Unify____maybe_class_and_inst_constraints_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_2[2]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+  return succeeded;
+}
+
+static void MR_CALL 
+parse_tree__parse_class____Compare____arbitrary_constraints_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[11]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class____Unify____arbitrary_constraints_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[11]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+  return succeeded;
+}
+
+static void MR_CALL 
+parse_tree__parse_class____Compare____arbitrary_constraint_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_28 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_29 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_28 == CastY_29);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+    switch (MR_tag((MR_Word) HeadVar__2_2)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_tag((MR_Word) HeadVar__3_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 0))));
+              MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, 0))));
+              MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 1))));
+              MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, 1))));
+              MR_Word ArgX3_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 2))));
+              MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, 2))));
+              MR_Word ArgX4_13 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 3))));
+              MR_Word ArgY4_14 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, 3))));
+              MR_Word SubResult1_6;
+
+              parse_tree__prog_data____Compare____prog_constraint_0_0(&SubResult1_6, ArgX1_4, ArgY1_5);
+              succeeded = (SubResult1_6 != (MR_Integer) 0);
+              if (succeeded)
+                *HeadVar__1_1 = SubResult1_6;
+              else
+              {
+                MR_Word SubResult2_9;
+
+                mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[13]), &SubResult2_9, ((MR_Box) (ArgX2_7)), ((MR_Box) (ArgY2_8)));
+                succeeded = (SubResult2_9 != (MR_Integer) 0);
+                if (succeeded)
+                  *HeadVar__1_1 = SubResult2_9;
+                else
+                {
+                  MR_Word SubResult3_12;
+
+                  mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[14]), &SubResult3_12, ((MR_Box) (ArgX3_10)), ((MR_Box) (ArgY3_11)));
+                  succeeded = (SubResult3_12 != (MR_Integer) 0);
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult3_12;
+                  else
+                    mercury__term_context____Compare____term_context_0_0(HeadVar__1_1, ArgX4_13, ArgY4_14);
+                }
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+            *HeadVar__1_1 = (MR_Integer) 1;
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        switch (MR_tag((MR_Word) HeadVar__3_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *HeadVar__1_1 = (MR_Integer) 2;
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word ArgX1_15 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 0))));
+              MR_Word ArgY1_16 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 0))));
+              MR_Word ArgX2_18 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 1))));
+              MR_Word ArgY2_19 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 1))));
+              MR_Word ArgX3_21 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 2))));
+              MR_Word ArgY3_22 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 2))));
+              MR_Word SubResult1_17;
+
+              mercury__builtin__compare_3_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[3]), &SubResult1_17, ((MR_Box) (ArgX1_15)), ((MR_Box) (ArgY1_16)));
+              succeeded = (SubResult1_17 != (MR_Integer) 0);
+              if (succeeded)
+                *HeadVar__1_1 = SubResult1_17;
+              else
+              {
+                MR_Word SubResult2_20;
+
+                parse_tree__prog_data____Compare____mer_inst_0_0(&SubResult2_20, ArgX2_18, ArgY2_19);
+                succeeded = (SubResult2_20 != (MR_Integer) 0);
+                if (succeeded)
+                  *HeadVar__1_1 = SubResult2_20;
+                else
+                  mercury__term_context____Compare____term_context_0_0(HeadVar__1_1, ArgX3_21, ArgY3_22);
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            *HeadVar__1_1 = (MR_Integer) 1;
+            break;
+        }
+        break;
+      case (MR_Integer) 2:
+        switch (MR_tag((MR_Word) HeadVar__3_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+            *HeadVar__1_1 = (MR_Integer) 2;
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word ArgX1_23 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, 0))));
+              MR_Word ArgY1_24 = ((MR_Word) ((MR_hl_field(2, HeadVar__3_3, 0))));
+              MR_Word ArgX2_26 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, 1))));
+              MR_Word ArgY2_27 = ((MR_Word) ((MR_hl_field(2, HeadVar__3_3, 1))));
+              MR_Word SubResult1_25;
+
+              parse_tree__prog_data____Compare____prog_fundep_0_0(&SubResult1_25, ArgX1_23, ArgY1_24);
+              succeeded = (SubResult1_25 != (MR_Integer) 0);
+              if (succeeded)
+                *HeadVar__1_1 = SubResult1_25;
+              else
+                mercury__term_context____Compare____term_context_0_0(HeadVar__1_1, ArgX2_26, ArgY2_27);
+            }
+            break;
+        }
+        break;
+    }
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class____Unify____arbitrary_constraint_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_21 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_22 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_21 == CastY_22);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+    switch (MR_tag((MR_Word) HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word TypeInfo_29_29;
+          MR_Word TypeInfo_30_30;
+          MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 0))));
+          MR_Word ArgY1_4;
+          MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 1))));
+          MR_Word ArgY2_6;
+          MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 2))));
+          MR_Word ArgY3_8;
+          MR_Word ArgX4_9 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 3))));
+          MR_Word ArgY4_10;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0);
+          if (succeeded)
+          {
+            ArgY1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 0))));
+            ArgY2_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 1))));
+            ArgY3_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 2))));
+            ArgY4_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, 3))));
+            succeeded = parse_tree__prog_data____Unify____prog_constraint_0_0(ArgX1_3, ArgY1_4);
+            if (succeeded)
+            {
+              TypeInfo_29_29 = (MR_Word) (&parse_tree__parse_class_scalar_common_1[13]);
+              succeeded = mercury__builtin__unify_2_p_0(TypeInfo_29_29, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+              if (succeeded)
+              {
+                TypeInfo_30_30 = (MR_Word) (&parse_tree__parse_class_scalar_common_1[14]);
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_30_30, ((MR_Box) (ArgX3_7)), ((MR_Box) (ArgY3_8)));
+                if (succeeded)
+                  succeeded = mercury__term_context____Unify____term_context_0_0(ArgX4_9, ArgY4_10);
+              }
+            }
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word TypeInfo_25_25;
+          MR_Word ArgX1_11 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 0))));
+          MR_Word ArgY1_12;
+          MR_Word ArgX2_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 1))));
+          MR_Word ArgY2_14;
+          MR_Word ArgX3_15 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 2))));
+          MR_Word ArgY3_16;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+          if (succeeded)
+          {
+            ArgY1_12 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 0))));
+            ArgY2_14 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 1))));
+            ArgY3_16 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 2))));
+            TypeInfo_25_25 = (MR_Word) (&parse_tree__parse_class_scalar_common_1[3]);
+            succeeded = mercury__builtin__unify_2_p_0(TypeInfo_25_25, ((MR_Box) (ArgX1_11)), ((MR_Box) (ArgY1_12)));
+            if (succeeded)
+            {
+              succeeded = parse_tree__prog_data____Unify____mer_inst_0_0(ArgX2_13, ArgY2_14);
+              if (succeeded)
+                succeeded = mercury__term_context____Unify____term_context_0_0(ArgX3_15, ArgY3_16);
+            }
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word ArgX1_17 = ((MR_Word) ((MR_hl_field(2, HeadVar__1_1, 0))));
+          MR_Word ArgY1_18;
+          MR_Word ArgX2_19 = ((MR_Word) ((MR_hl_field(2, HeadVar__1_1, 1))));
+          MR_Word ArgY2_20;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 2);
+          if (succeeded)
+          {
+            ArgY1_18 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, 0))));
+            ArgY2_20 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, 1))));
+            succeeded = parse_tree__prog_data____Unify____prog_fundep_0_0(ArgX1_17, ArgY1_18);
+            if (succeeded)
+              succeeded = mercury__term_context____Unify____term_context_0_0(ArgX2_19, ArgY2_20);
+          }
+        }
+        break;
+    }
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__get_simple_constraint_2_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word * Constraint_3)
+{
+  MR_bool succeeded = ((MR_tag((MR_Word) HeadVar__1_1)) == (MR_Integer) 0);
+  MR_Word Var_6;
+
+  if (succeeded)
+  {
+    *Constraint_3 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 0))));
+    Var_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 2))));
+    succeeded = (Var_6 == (MR_Word) ((MR_Unsigned) 0U));
+  }
+  return succeeded;
+}
+
+static void MR_CALL 
+parse_tree__parse_class__term_to_instance_method_4_p_0(
+  MR_Word _ModuleName_5,
+  MR_Word VarSet_6,
+  MR_Word MethodTerm_7,
+  MR_Word * MaybeInstanceMethod_8)
+{
+  parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_101_114_109_95_116_111_95_105_110_115_116_97_110_99_101_95_109_101_116_104_111_100_95_95_91_49_93_95_48_4_p_0(VarSet_6, MethodTerm_7, MaybeInstanceMethod_8);
+}
+
+static void MR_CALL 
+parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_101_114_109_95_116_111_95_105_110_115_116_97_110_99_101_95_109_101_116_104_111_100_95_95_91_49_93_95_48_4_p_0(
+  MR_Word VarSet_6,
+  MR_Word MethodTerm_7,
+  MR_Word * MaybeInstanceMethod_8)
+{
+  MR_bool succeeded = ((MR_tag((MR_Word) MethodTerm_7)) == (MR_Integer) 0);
+  MR_Word ClassMethodTerm_9;
+  MR_Word InstanceMethodTerm_10;
+  MR_Word TermContext_11;
+  MR_Word Var_45;
+  MR_String Var_46;
+  MR_Word Var_47;
+  MR_Word Var_48;
+  MR_Word Var_49;
+
+  if (succeeded)
+  {
+    Var_45 = ((MR_Word) ((MR_hl_field(0, MethodTerm_7, 0))));
+    Var_47 = ((MR_Word) ((MR_hl_field(0, MethodTerm_7, 1))));
+    TermContext_11 = ((MR_Word) ((MR_hl_field(0, MethodTerm_7, 2))));
+    succeeded = ((MR_tag((MR_Word) Var_45)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      Var_46 = ((MR_String) ((MR_hl_field(0, Var_45, 0))));
+      succeeded = (strcmp(Var_46, (MR_String) "is") == 0);
+      if (succeeded)
+      {
+        succeeded = (Var_47 != (MR_Word) ((MR_Unsigned) 0U));
+        if (succeeded)
+        {
+          ClassMethodTerm_9 = ((MR_Word) ((MR_hl_field(1, Var_47, 0))));
+          Var_48 = ((MR_Word) ((MR_hl_field(1, Var_47, 1))));
+          succeeded = (Var_48 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            InstanceMethodTerm_10 = ((MR_Word) ((MR_hl_field(1, Var_48, 0))));
+            Var_49 = ((MR_Word) ((MR_hl_field(1, Var_48, 1))));
+            succeeded = (Var_49 == (MR_Word) ((MR_Unsigned) 0U));
+          }
+        }
+      }
+    }
+  }
+  if (succeeded)
+  {
+    MR_Word PredNameTerm_14;
+    MR_Word ArityTerm_15;
+    MR_Word SlashTerm_12;
+    MR_Word Var_50;
+    MR_String Var_51;
+    MR_Word Var_52;
+    MR_Word Var_53;
+    MR_Word Var_54;
+    MR_String Var_55;
+    MR_Word Var_56;
+    MR_Word Var_57;
+    MR_Word Var_58;
+
+    succeeded = ((MR_tag((MR_Word) ClassMethodTerm_9)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      Var_50 = ((MR_Word) ((MR_hl_field(0, ClassMethodTerm_9, 0))));
+      Var_52 = ((MR_Word) ((MR_hl_field(0, ClassMethodTerm_9, 1))));
+      succeeded = ((MR_tag((MR_Word) Var_50)) == (MR_Integer) 0);
+      if (succeeded)
+      {
+        Var_51 = ((MR_String) ((MR_hl_field(0, Var_50, 0))));
+        succeeded = (strcmp(Var_51, (MR_String) "pred") == 0);
+        if (succeeded)
+        {
+          succeeded = (Var_52 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            SlashTerm_12 = ((MR_Word) ((MR_hl_field(1, Var_52, 0))));
+            Var_53 = ((MR_Word) ((MR_hl_field(1, Var_52, 1))));
+            succeeded = (Var_53 == (MR_Word) ((MR_Unsigned) 0U));
+            if (succeeded)
+            {
+              succeeded = ((MR_tag((MR_Word) SlashTerm_12)) == (MR_Integer) 0);
+              if (succeeded)
+              {
+                Var_54 = ((MR_Word) ((MR_hl_field(0, SlashTerm_12, 0))));
+                Var_56 = ((MR_Word) ((MR_hl_field(0, SlashTerm_12, 1))));
+                succeeded = ((MR_tag((MR_Word) Var_54)) == (MR_Integer) 0);
+                if (succeeded)
+                {
+                  Var_55 = ((MR_String) ((MR_hl_field(0, Var_54, 0))));
+                  succeeded = (strcmp(Var_55, (MR_String) "/") == 0);
+                  if (succeeded)
+                  {
+                    succeeded = (Var_56 != (MR_Word) ((MR_Unsigned) 0U));
+                    if (succeeded)
+                    {
+                      PredNameTerm_14 = ((MR_Word) ((MR_hl_field(1, Var_56, 0))));
+                      Var_57 = ((MR_Word) ((MR_hl_field(1, Var_56, 1))));
+                      succeeded = (Var_57 != (MR_Word) ((MR_Unsigned) 0U));
+                      if (succeeded)
+                      {
+                        ArityTerm_15 = ((MR_Word) ((MR_hl_field(1, Var_57, 0))));
+                        Var_58 = ((MR_Word) ((MR_hl_field(1, Var_57, 1))));
+                        succeeded = (Var_58 == (MR_Word) ((MR_Unsigned) 0U));
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    if (succeeded)
+    {
+      MR_Word PredSymName_17;
+      MR_Integer ArityInt_18;
+      MR_Word InstanceMethodName_19;
+
+      succeeded = parse_tree__parse_sym_name__try_parse_sym_name_and_no_args_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), PredNameTerm_14, &PredSymName_17);
+      if (succeeded)
+      {
+        succeeded = mercury__term_int__decimal_term_to_int_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ArityTerm_15, &ArityInt_18);
+        if (succeeded)
+          succeeded = parse_tree__parse_sym_name__try_parse_sym_name_and_no_args_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), InstanceMethodTerm_10, &InstanceMethodName_19);
+      }
+      if (succeeded)
+      {
+        MR_Word ProcDef_20;
+        MR_Word MethodName_21;
+        MR_Word InstanceMethod_22;
+        MR_Word Var_60;
+
+        {
+          ProcDef_20 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, ProcDef_20, 0) = ((MR_Box) (InstanceMethodName_19));
+        }
+        Var_60 = (MR_Word) (ArityInt_18);
+        {
+          MethodName_21 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, MethodName_21, 0) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 0));
+          MR_hl_field(0, MethodName_21, 1) = ((MR_Box) (PredSymName_17));
+          MR_hl_field(0, MethodName_21, 2) = ((MR_Box) (Var_60));
+        }
+        {
+          InstanceMethod_22 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, InstanceMethod_22, 0) = ((MR_Box) (MethodName_21));
+          MR_hl_field(0, InstanceMethod_22, 1) = ((MR_Box) (ProcDef_20));
+          MR_hl_field(0, InstanceMethod_22, 2) = ((MR_Box) (TermContext_11));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeInstanceMethod_8 = base;
+          MR_hl_field(1, base, 0) = ((MR_Box) (InstanceMethod_22));
+        }
+      }
+      else
+      {
+        MR_String MethodTermStr_23;
+        MR_Word Pieces_24;
+        MR_Word Spec_25;
+        MR_Word Var_68;
+        MR_Word Var_69;
+        MR_Word Var_77;
+        MR_Word Var_88;
+        MR_Word Var_89;
+        MR_Word Var_90;
+        MR_Word Var_91;
+        MR_Word Var_103;
+        MR_Tuple Var_104;
+        MR_Word Var_105;
+
+        MethodTermStr_23 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), VarSet_6, MethodTerm_7);
+        Var_69 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[130])));
+        {
+          Var_91 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(3, Var_91, 0) = ((MR_Box) ((MR_Unsigned) 9U));
+          MR_hl_field(3, Var_91, 1) = ((MR_Box) (MethodTermStr_23));
+        }
+        {
+          Var_90 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_90, 0) = ((MR_Box) (Var_91));
+          MR_hl_field(1, Var_90, 1) = ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[32])));
+        }
+        Var_89 = parse_tree__error_spec__color_as_incorrect_1_f_0(Var_90);
+        Var_88 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_89, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[44])));
+        Var_77 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[132])), Var_88);
+        Var_68 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_69, Var_77);
+        Pieces_24 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[128])), Var_68);
+        Var_103 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), MethodTerm_7);
+        {
+          Spec_25 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Spec_25, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.term_to_instance_method\'/4"));
+          MR_hl_field(0, Spec_25, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(0, Spec_25, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+          MR_hl_field(0, Spec_25, 3) = ((MR_Box) (Var_103));
+          MR_hl_field(0, Spec_25, 4) = ((MR_Box) (Pieces_24));
+        }
+        {
+          Var_105 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_105, 0) = ((MR_Box) (Spec_25));
+          MR_hl_field(0, Var_105, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          Var_104 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_104, 0) = ((MR_Box) (Var_105));
+          MR_hl_field(0, Var_104, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          *MaybeInstanceMethod_8 = base;
+          MR_hl_field(0, base, 0) = ((MR_Box) (Var_104));
+        }
+      }
+    }
+    else
+    {
+      MR_Word FuncNameTerm_27;
+      MR_Word ArityTerm_259;
+      MR_Word Var_108;
+      MR_String Var_109;
+      MR_Word Var_110;
+      MR_Word Var_111;
+      MR_Word Var_112;
+      MR_String Var_113;
+      MR_Word Var_114;
+      MR_Word Var_115;
+      MR_Word Var_116;
+      MR_Word SlashTerm_240;
+
+      succeeded = ((MR_tag((MR_Word) ClassMethodTerm_9)) == (MR_Integer) 0);
+      if (succeeded)
+      {
+        Var_108 = ((MR_Word) ((MR_hl_field(0, ClassMethodTerm_9, 0))));
+        Var_110 = ((MR_Word) ((MR_hl_field(0, ClassMethodTerm_9, 1))));
+        succeeded = ((MR_tag((MR_Word) Var_108)) == (MR_Integer) 0);
+        if (succeeded)
+        {
+          Var_109 = ((MR_String) ((MR_hl_field(0, Var_108, 0))));
+          succeeded = (strcmp(Var_109, (MR_String) "func") == 0);
+          if (succeeded)
+          {
+            succeeded = (Var_110 != (MR_Word) ((MR_Unsigned) 0U));
+            if (succeeded)
+            {
+              SlashTerm_240 = ((MR_Word) ((MR_hl_field(1, Var_110, 0))));
+              Var_111 = ((MR_Word) ((MR_hl_field(1, Var_110, 1))));
+              succeeded = (Var_111 == (MR_Word) ((MR_Unsigned) 0U));
+              if (succeeded)
+              {
+                succeeded = ((MR_tag((MR_Word) SlashTerm_240)) == (MR_Integer) 0);
+                if (succeeded)
+                {
+                  Var_112 = ((MR_Word) ((MR_hl_field(0, SlashTerm_240, 0))));
+                  Var_114 = ((MR_Word) ((MR_hl_field(0, SlashTerm_240, 1))));
+                  succeeded = ((MR_tag((MR_Word) Var_112)) == (MR_Integer) 0);
+                  if (succeeded)
+                  {
+                    Var_113 = ((MR_String) ((MR_hl_field(0, Var_112, 0))));
+                    succeeded = (strcmp(Var_113, (MR_String) "/") == 0);
+                    if (succeeded)
+                    {
+                      succeeded = (Var_114 != (MR_Word) ((MR_Unsigned) 0U));
+                      if (succeeded)
+                      {
+                        FuncNameTerm_27 = ((MR_Word) ((MR_hl_field(1, Var_114, 0))));
+                        Var_115 = ((MR_Word) ((MR_hl_field(1, Var_114, 1))));
+                        succeeded = (Var_115 != (MR_Word) ((MR_Unsigned) 0U));
+                        if (succeeded)
+                        {
+                          ArityTerm_259 = ((MR_Word) ((MR_hl_field(1, Var_115, 0))));
+                          Var_116 = ((MR_Word) ((MR_hl_field(1, Var_115, 1))));
+                          succeeded = (Var_116 == (MR_Word) ((MR_Unsigned) 0U));
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      if (succeeded)
+      {
+        MR_Word FuncSymName_29;
+        MR_Integer ArityInt_247;
+        MR_Word InstanceMethodName_248;
+
+        succeeded = parse_tree__parse_sym_name__try_parse_sym_name_and_no_args_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), FuncNameTerm_27, &FuncSymName_29);
+        if (succeeded)
+        {
+          succeeded = mercury__term_int__decimal_term_to_int_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ArityTerm_259, &ArityInt_247);
+          if (succeeded)
+            succeeded = parse_tree__parse_sym_name__try_parse_sym_name_and_no_args_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), InstanceMethodTerm_10, &InstanceMethodName_248);
+        }
+        if (succeeded)
+        {
+          MR_Word Var_118;
+          MR_Word ProcDef_241;
+          MR_Word MethodName_242;
+          MR_Word InstanceMethod_243;
+
+          {
+            ProcDef_241 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, ProcDef_241, 0) = ((MR_Box) (InstanceMethodName_248));
+          }
+          Var_118 = (MR_Word) (ArityInt_247);
+          {
+            MethodName_242 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, MethodName_242, 0) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 1));
+            MR_hl_field(0, MethodName_242, 1) = ((MR_Box) (FuncSymName_29));
+            MR_hl_field(0, MethodName_242, 2) = ((MR_Box) (Var_118));
+          }
+          {
+            InstanceMethod_243 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, InstanceMethod_243, 0) = ((MR_Box) (MethodName_242));
+            MR_hl_field(0, InstanceMethod_243, 1) = ((MR_Box) (ProcDef_241));
+            MR_hl_field(0, InstanceMethod_243, 2) = ((MR_Box) (TermContext_11));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+            *MaybeInstanceMethod_8 = base;
+            MR_hl_field(1, base, 0) = ((MR_Box) (InstanceMethod_243));
+          }
+        }
+        else
+        {
+          MR_Word Var_126;
+          MR_Word Var_127;
+          MR_Word Var_135;
+          MR_Word Var_146;
+          MR_Word Var_147;
+          MR_Word Var_148;
+          MR_Word Var_149;
+          MR_Word Var_161;
+          MR_Tuple Var_162;
+          MR_Word Var_163;
+          MR_String MethodTermStr_244;
+          MR_Word Pieces_245;
+          MR_Word Spec_246;
+
+          MethodTermStr_244 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), VarSet_6, MethodTerm_7);
+          Var_127 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[134])));
+          {
+            Var_149 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(3, Var_149, 0) = ((MR_Box) ((MR_Unsigned) 9U));
+            MR_hl_field(3, Var_149, 1) = ((MR_Box) (MethodTermStr_244));
+          }
+          {
+            Var_148 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_148, 0) = ((MR_Box) (Var_149));
+            MR_hl_field(1, Var_148, 1) = ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[32])));
+          }
+          Var_147 = parse_tree__error_spec__color_as_incorrect_1_f_0(Var_148);
+          Var_146 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_147, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[44])));
+          Var_135 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[132])), Var_146);
+          Var_126 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_127, Var_135);
+          Pieces_245 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[128])), Var_126);
+          Var_161 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), MethodTerm_7);
+          {
+            Spec_246 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, Spec_246, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.term_to_instance_method\'/4"));
+            MR_hl_field(0, Spec_246, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(0, Spec_246, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+            MR_hl_field(0, Spec_246, 3) = ((MR_Box) (Var_161));
+            MR_hl_field(0, Spec_246, 4) = ((MR_Box) (Pieces_245));
+          }
+          {
+            Var_163 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, Var_163, 0) = ((MR_Box) (Spec_246));
+            MR_hl_field(0, Var_163, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Var_162 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, Var_162, 0) = ((MR_Box) (Var_163));
+            MR_hl_field(0, Var_162, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+            *MaybeInstanceMethod_8 = base;
+            MR_hl_field(0, base, 0) = ((MR_Box) (Var_162));
+          }
+        }
+      }
+      else
+      {
+        MR_Word Var_173;
+        MR_Word Var_174;
+        MR_Word Var_179;
+        MR_Word Var_190;
+        MR_Word Var_191;
+        MR_Word Var_199;
+        MR_Word Var_210;
+        MR_Word Var_211;
+        MR_Word Var_212;
+        MR_Word Var_213;
+        MR_Word Var_225;
+        MR_Tuple Var_226;
+        MR_Word Var_227;
+        MR_String MethodTermStr_255;
+        MR_Word Pieces_256;
+        MR_Word Spec_257;
+
+        MethodTermStr_255 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), VarSet_6, MethodTerm_7);
+        Var_174 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[136])));
+        Var_191 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[141])));
+        {
+          Var_213 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(3, Var_213, 0) = ((MR_Box) ((MR_Unsigned) 9U));
+          MR_hl_field(3, Var_213, 1) = ((MR_Box) (MethodTermStr_255));
+        }
+        {
+          Var_212 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_212, 0) = ((MR_Box) (Var_213));
+          MR_hl_field(1, Var_212, 1) = ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[32])));
+        }
+        Var_211 = parse_tree__error_spec__color_as_incorrect_1_f_0(Var_212);
+        Var_210 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_211, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[44])));
+        Var_199 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[132])), Var_210);
+        Var_190 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_191, Var_199);
+        Var_179 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[139])), Var_190);
+        Var_173 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_174, Var_179);
+        Pieces_256 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[128])), Var_173);
+        Var_225 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), MethodTerm_7);
+        {
+          Spec_257 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Spec_257, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.term_to_instance_method\'/4"));
+          MR_hl_field(0, Spec_257, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(0, Spec_257, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+          MR_hl_field(0, Spec_257, 3) = ((MR_Box) (Var_225));
+          MR_hl_field(0, Spec_257, 4) = ((MR_Box) (Pieces_256));
+        }
+        {
+          Var_227 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_227, 0) = ((MR_Box) (Spec_257));
+          MR_hl_field(0, Var_227, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          Var_226 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_226, 0) = ((MR_Box) (Var_227));
+          MR_hl_field(0, Var_226, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          *MaybeInstanceMethod_8 = base;
+          MR_hl_field(0, base, 0) = ((MR_Box) (Var_226));
+        }
+      }
+    }
+  }
+  else
+  {
+    MR_Word Var_230;
+    MR_String Var_231;
+    MR_Word Var_232;
+    MR_Word Var_233;
+
+    succeeded = ((MR_tag((MR_Word) MethodTerm_7)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      Var_230 = ((MR_Word) ((MR_hl_field(0, MethodTerm_7, 0))));
+      Var_232 = ((MR_Word) ((MR_hl_field(0, MethodTerm_7, 1))));
+      succeeded = ((MR_tag((MR_Word) Var_230)) == (MR_Integer) 0);
+      if (succeeded)
+      {
+        Var_231 = ((MR_String) ((MR_hl_field(0, Var_230, 0))));
+        succeeded = (strcmp(Var_231, (MR_String) ":-") == 0);
+        if (succeeded)
+        {
+          succeeded = (Var_232 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            Var_233 = ((MR_Word) ((MR_hl_field(1, Var_232, 1))));
+            succeeded = (Var_233 == (MR_Word) ((MR_Unsigned) 0U));
+          }
+        }
+      }
+    }
+    if (succeeded)
+    {
+      MR_Tuple Var_234;
+      MR_Word Var_235;
+      MR_Word Spec_268;
+
+      Spec_268 = parse_tree__parse_class__report_unexpected_method_term_2_f_0(VarSet_6, MethodTerm_7);
+      {
+        Var_235 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_235, 0) = ((MR_Box) (Spec_268));
+        MR_hl_field(0, Var_235, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        Var_234 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_234, 0) = ((MR_Box) (Var_235));
+        MR_hl_field(0, Var_234, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        *MaybeInstanceMethod_8 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (Var_234));
+      }
+    }
+    else
+    {
+      MR_Word MaybeClause_32;
+
+      parse_tree__parse_item__parse_clause_term_5_p_0((MR_Word) ((MR_Unsigned) 0U), VarSet_6, MethodTerm_7, (MR_Word) ((MR_Unsigned) 0U), &MaybeClause_32);
+      if (((MR_tag((MR_Word) MaybeClause_32)) == (MR_Integer) 0))
+        *MaybeInstanceMethod_8 = (MR_Word) (MaybeClause_32);
+      else
+      {
+        MR_Word ItemClause_33 = ((MR_Word) ((MR_hl_field(1, MaybeClause_32, 0))));
+        MR_Word PredOrFunc_34 = ((MR_Unsigned) ((MR_hl_field(0, ItemClause_33, 0))) & (MR_Integer) 1);
+        MR_Word MethodSymName_35 = ((MR_Word) ((MR_hl_field(0, ItemClause_33, 1))));
+        MR_Word ArgTerms_36 = ((MR_Word) ((MR_hl_field(0, ItemClause_33, 2))));
+        MR_Word Context_39 = ((MR_Word) ((MR_hl_field(0, ItemClause_33, 5))));
+        MR_Word PredFormArity_41;
+        MR_Word UserArity_42;
+        MR_Word ClauseCord_43;
+        MR_Word ProcDef_269;
+        MR_Word MethodName_270;
+        MR_Word InstanceMethod_271;
+
+        PredFormArity_41 = parse_tree__prog_data__arg_list_arity_1_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[10]), ArgTerms_36);
+        parse_tree__prog_util__user_arity_pred_form_arity_3_p_1(PredOrFunc_34, &UserArity_42, PredFormArity_41);
+        ClauseCord_43 = mercury__cord__singleton_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_clause_info_0), ((MR_Box) (ItemClause_33)));
+        {
+          ProcDef_269 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, ProcDef_269, 0) = ((MR_Box) (ClauseCord_43));
+        }
+        {
+          MethodName_270 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, MethodName_270, 0) = (MR_Box) ((MR_Unsigned) (PredOrFunc_34));
+          MR_hl_field(0, MethodName_270, 1) = ((MR_Box) (MethodSymName_35));
+          MR_hl_field(0, MethodName_270, 2) = ((MR_Box) (UserArity_42));
+        }
+        {
+          InstanceMethod_271 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, InstanceMethod_271, 0) = ((MR_Box) (MethodName_270));
+          MR_hl_field(0, InstanceMethod_271, 1) = ((MR_Box) (ProcDef_269));
+          MR_hl_field(0, InstanceMethod_271, 2) = ((MR_Box) (Context_39));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeInstanceMethod_8 = base;
+          MR_hl_field(1, base, 0) = ((MR_Box) (InstanceMethod_271));
+        }
+      }
+    }
+  }
+}
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__report_unexpected_method_term_2_f_0(
+  MR_Word VarSet_4,
+  MR_Word MethodTerm_5)
+{
+  MR_Word Spec_6;
+  MR_String MethodTermStr_7;
+  MR_Word Pieces_8;
+  MR_Word Var_16;
+  MR_Word Var_17;
+  MR_Word Var_22;
+  MR_Word Var_33;
+  MR_Word Var_34;
+  MR_Word Var_42;
+  MR_Word Var_47;
+  MR_Word Var_48;
+  MR_Word Var_49;
+  MR_Word Var_50;
+  MR_Word Var_61;
+
+  MethodTermStr_7 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), VarSet_4, MethodTerm_5);
+  Var_17 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[136])));
+  Var_34 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[141])));
+  {
+    Var_50 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(3, Var_50, 0) = ((MR_Box) ((MR_Unsigned) 9U));
+    MR_hl_field(3, Var_50, 1) = ((MR_Box) (MethodTermStr_7));
+  }
+  {
+    Var_49 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_49, 0) = ((MR_Box) (Var_50));
+    MR_hl_field(1, Var_49, 1) = ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[32])));
+  }
+  Var_48 = parse_tree__error_spec__color_as_incorrect_1_f_0(Var_49);
+  Var_47 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_48, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+  Var_42 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[115])), Var_47);
+  Var_33 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_34, Var_42);
+  Var_22 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[139])), Var_33);
+  Var_16 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_17, Var_22);
+  Pieces_8 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[143])), Var_16);
+  Var_61 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), MethodTerm_5);
+  {
+    Spec_6 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Spec_6, 0) = ((MR_Box) ((MR_String) "function \140parse_tree.parse_class.report_unexpected_method_term\'/2"));
+    MR_hl_field(0, Spec_6, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    MR_hl_field(0, Spec_6, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+    MR_hl_field(0, Spec_6, 3) = ((MR_Box) (Var_61));
+    MR_hl_field(0, Spec_6, 4) = ((MR_Box) (Pieces_8));
+  }
+  return Spec_6;
+}
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__tvars_in_fundep_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  MR_Word HeadVar__2_2;
+  MR_Word Domain_3 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 0))));
+  MR_Word Range_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, 1))));
+  MR_Word Var_5;
+  MR_Word Var_6;
+
+  Var_5 = mercury__one_or_more__one_or_more_to_list_1_f_1((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Domain_3);
+  Var_6 = mercury__one_or_more__one_or_more_to_list_1_f_1((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Range_4);
+  HeadVar__2_2 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Var_5, Var_6);
+  return HeadVar__2_2;
+}
+
+void MR_CALL 
+parse_tree__parse_class__parse_class_and_inst_constraints_4_p_0(
+  MR_Word _ModuleName_5,
+  MR_Word VarSet_6,
+  MR_Word ConstraintsTerm_7,
+  MR_Word * Result_8)
+{
+  parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_97_110_100_95_105_110_115_116_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(VarSet_6, ConstraintsTerm_7, Result_8);
+}
+
+void MR_CALL 
+parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_97_110_100_95_105_110_115_116_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(
+  MR_Word VarSet_6,
+  MR_Word ConstraintsTerm_7,
+  MR_Word * Result_8)
+{
+  MR_Word Result0_9;
+  MR_Word HeadConstraintTerm_54;
+  MR_Word TailConstraintTerms_55;
+  MR_Word Var_56;
+
+  parse_tree__parse_util__conjunction_to_one_or_more_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ConstraintsTerm_7, &Var_56);
+  HeadConstraintTerm_54 = ((MR_Word) ((MR_hl_field(0, Var_56, 0))));
+  TailConstraintTerms_55 = ((MR_Word) ((MR_hl_field(0, Var_56, 1))));
+  parse_tree__parse_class__parse_arbitrary_constraint_list_4_p_0(VarSet_6, HeadConstraintTerm_54, TailConstraintTerms_55, &Result0_9);
+  if (((MR_tag((MR_Word) Result0_9)) == (MR_Integer) 0))
+  {
+    MR_Word Specs_20 = ((MR_Word) ((MR_hl_field(0, Result0_9, 0))));
+
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      *Result_8 = base;
+      MR_hl_field(0, base, 0) = ((MR_Box) (Specs_20));
+    }
+  }
+  else
+  {
+    MR_Word HeadArbConstraint_10;
+    MR_Word TailArbConstraints_11;
+    MR_Word ArbitraryConstraints_12;
+    MR_Word ProgConstraints_13;
+    MR_Word FunDeps_14;
+    MR_Word InstVarSub_15;
+    MR_Word Var_21 = ((MR_Word) ((MR_hl_field(1, Result0_9, 0))));
+
+    HeadArbConstraint_10 = ((MR_Word) ((MR_hl_field(0, Var_21, 0))));
+    TailArbConstraints_11 = ((MR_Word) ((MR_hl_field(0, Var_21, 1))));
+    {
+      ArbitraryConstraints_12 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, ArbitraryConstraints_12, 0) = ((MR_Box) (HeadArbConstraint_10));
+      MR_hl_field(1, ArbitraryConstraints_12, 1) = ((MR_Box) (TailArbConstraints_11));
+    }
+    parse_tree__parse_class__collect_class_and_inst_constraints_4_p_0(ArbitraryConstraints_12, &ProgConstraints_13, &FunDeps_14, &InstVarSub_15);
+    if ((FunDeps_14 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        *Result_8 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (ProgConstraints_13));
+        MR_hl_field(1, base, 1) = ((MR_Box) (InstVarSub_15));
+      }
+    else
+    {
+      MR_Word Pieces_18;
+      MR_Word Spec_19;
+      MR_Word Var_26;
+      MR_Word Var_27;
+      MR_Word Var_32;
+      MR_Word Var_37;
+      MR_Word Var_38;
+      MR_Word Var_49;
+      MR_Word Var_50;
+
+      Var_27 = parse_tree__error_spec__color_as_subject_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[50])));
+      Var_38 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[54])));
+      Var_37 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_38, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+      Var_32 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[52])), Var_37);
+      Var_26 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_27, Var_32);
+      Pieces_18 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[48])), Var_26);
+      Var_49 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ConstraintsTerm_7);
+      {
+        Spec_19 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Spec_19, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_class_and_inst_constraints\'/4"));
+        MR_hl_field(0, Spec_19, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(0, Spec_19, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+        MR_hl_field(0, Spec_19, 3) = ((MR_Box) (Var_49));
+        MR_hl_field(0, Spec_19, 4) = ((MR_Box) (Pieces_18));
+      }
+      {
+        Var_50 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_50, 0) = ((MR_Box) (Spec_19));
+        MR_hl_field(0, Var_50, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        *Result_8 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (Var_50));
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__parse_class__collect_class_and_inst_constraints_4_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word * HeadVar__2_2,
+  MR_Word * HeadVar__3_3,
+  MR_Word * HeadVar__4_4)
+{
+  if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *HeadVar__2_2 = (MR_Word) ((MR_Unsigned) 0U);
+    *HeadVar__3_3 = (MR_Word) ((MR_Unsigned) 0U);
+    *HeadVar__4_4 = mercury__map__init_0_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[3]), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0));
+  }
+  else
+  {
+    MR_Word Constraint_5 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 0))));
+    MR_Word Constraints_6 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 1))));
+    MR_Word STATE_VARIABLE_ProgConstraints_1_22;
+    MR_Word STATE_VARIABLE_FunDeps_1_23;
+    MR_Word STATE_VARIABLE_InstVarSub_1_24;
+
+    parse_tree__parse_class__collect_class_and_inst_constraints_4_p_0(Constraints_6, &STATE_VARIABLE_ProgConstraints_1_22, &STATE_VARIABLE_FunDeps_1_23, &STATE_VARIABLE_InstVarSub_1_24);
+    switch (MR_tag((MR_Word) Constraint_5)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word ProgConstraint_10 = ((MR_Word) ((MR_hl_field(0, Constraint_5, 0))));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            *HeadVar__2_2 = base;
+            MR_hl_field(1, base, 0) = ((MR_Box) (ProgConstraint_10));
+            MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_ProgConstraints_1_22));
+          }
+          *HeadVar__3_3 = STATE_VARIABLE_FunDeps_1_23;
+          *HeadVar__4_4 = STATE_VARIABLE_InstVarSub_1_24;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word InstVar_14 = ((MR_Word) ((MR_hl_field(1, Constraint_5, 0))));
+          MR_Word Inst_15 = ((MR_Word) ((MR_hl_field(1, Constraint_5, 1))));
+
+          mercury__map__set_4_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[3]), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0), ((MR_Box) (InstVar_14)), ((MR_Box) (Inst_15)), STATE_VARIABLE_InstVarSub_1_24, HeadVar__4_4);
+          *HeadVar__2_2 = STATE_VARIABLE_ProgConstraints_1_22;
+          *HeadVar__3_3 = STATE_VARIABLE_FunDeps_1_23;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word FunDep_17 = ((MR_Word) ((MR_hl_field(2, Constraint_5, 0))));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            *HeadVar__3_3 = base;
+            MR_hl_field(1, base, 0) = ((MR_Box) (FunDep_17));
+            MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_FunDeps_1_23));
+          }
+          *HeadVar__2_2 = STATE_VARIABLE_ProgConstraints_1_22;
+          *HeadVar__4_4 = STATE_VARIABLE_InstVarSub_1_24;
+        }
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+parse_tree__parse_class__parse_class_constraints_4_p_0(
+  MR_Word ModuleName_5,
+  MR_Word VarSet_6,
+  MR_Word ConstraintsTerm_7,
+  MR_Word * Result_8)
+{
+  parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(VarSet_6, ConstraintsTerm_7, Result_8);
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+  MR_Word conv0_Constraint_3;
+
+  succeeded = parse_tree__parse_class__get_simple_constraint_2_p_0(((MR_Word) (wrapper_arg_1)), &conv0_Constraint_3);
+  if (succeeded)
+  {
+    *wrapper_arg_2 = ((MR_Box) (conv0_Constraint_3));
+    succeeded = MR_TRUE;
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(
+  MR_Word VarSet_6,
+  MR_Word ConstraintsTerm_7,
+  MR_Word * Result_8)
+{
+  MR_bool succeeded;
+  MR_Word Result0_13;
+  MR_Word HeadConstraintTerm_37;
+  MR_Word TailConstraintTerms_38;
+  MR_Word Var_39;
+
+  parse_tree__parse_util__conjunction_to_one_or_more_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ConstraintsTerm_7, &Var_39);
+  HeadConstraintTerm_37 = ((MR_Word) ((MR_hl_field(0, Var_39, 0))));
+  TailConstraintTerms_38 = ((MR_Word) ((MR_hl_field(0, Var_39, 1))));
+  parse_tree__parse_class__parse_arbitrary_constraint_list_4_p_0(VarSet_6, HeadConstraintTerm_37, TailConstraintTerms_38, &Result0_13);
+  if (((MR_tag((MR_Word) Result0_13)) == (MR_Integer) 0))
+    *Result_8 = (MR_Word) (Result0_13);
+  else
+  {
+    MR_Word HeadArbConstraint_14;
+    MR_Word TailArbConstraints_15;
+    MR_Word Var_21 = ((MR_Word) ((MR_hl_field(1, Result0_13, 0))));
+    MR_Word HeadConstraint_16;
+    MR_Word TailConstraints_17;
+    MR_Word TypeCtorInfo_42_33;
+    MR_Word TypeCtorInfo_43_34;
+    MR_Word Var_22;
+    MR_Word Var_43;
+
+    HeadArbConstraint_14 = ((MR_Word) ((MR_hl_field(0, Var_21, 0))));
+    TailArbConstraints_15 = ((MR_Word) ((MR_hl_field(0, Var_21, 1))));
+    succeeded = ((MR_tag((MR_Word) HeadArbConstraint_14)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      HeadConstraint_16 = ((MR_Word) ((MR_hl_field(0, HeadArbConstraint_14, 0))));
+      Var_43 = ((MR_Word) ((MR_hl_field(0, HeadArbConstraint_14, 2))));
+      succeeded = (Var_43 == (MR_Word) ((MR_Unsigned) 0U));
+      if (succeeded)
+      {
+        Var_22 = (MR_Word) (&parse_tree__parse_class_scalar_common_3[6]);
+        TypeCtorInfo_42_33 = (MR_Word) (&parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_arbitrary_constraint_0);
+        TypeCtorInfo_43_34 = (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0);
+        succeeded = mercury__list__map_3_p_2(TypeCtorInfo_42_33, TypeCtorInfo_43_34, Var_22, TailArbConstraints_15, &TailConstraints_17);
+      }
+    }
+    if (succeeded)
+    {
+      MR_Word Var_23;
+
+      {
+        Var_23 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_23, 0) = ((MR_Box) (HeadConstraint_16));
+        MR_hl_field(1, Var_23, 1) = ((MR_Box) (TailConstraints_17));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *Result_8 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (Var_23));
+      }
+    }
+    else
+    {
+      MR_Word Context_18;
+      MR_Word Pieces_19;
+      MR_Word Spec_20;
+      MR_Word Var_24;
+      MR_Word Var_25;
+      MR_Word Var_31;
+
+      Context_18 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ConstraintsTerm_7);
+      Var_25 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[147])));
+      Var_24 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_25, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+      Pieces_19 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[46])), Var_24);
+      {
+        Spec_20 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Spec_20, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_simple_class_constraints\'/5"));
+        MR_hl_field(0, Spec_20, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(0, Spec_20, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+        MR_hl_field(0, Spec_20, 3) = ((MR_Box) (Context_18));
+        MR_hl_field(0, Spec_20, 4) = ((MR_Box) (Pieces_19));
+      }
+      {
+        Var_31 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_31, 0) = ((MR_Box) (Spec_20));
+        MR_hl_field(0, Var_31, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        *Result_8 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (Var_31));
+      }
+    }
+  }
+}
+
+void MR_CALL 
+parse_tree__parse_class__parse_instance_item_6_p_0(
+  MR_Word ModuleName_7,
+  MR_Word VarSet_8,
+  MR_Word ArgTerms_9,
+  MR_Word Context_10,
+  MR_Word SeqNum_11,
+  MR_Word * MaybeIOM_12)
+{
+  MR_bool succeeded = (ArgTerms_9 != (MR_Word) ((MR_Unsigned) 0U));
+  MR_Word ArgTerm_13;
+  MR_Word Var_24;
+
+  if (succeeded)
+  {
+    ArgTerm_13 = ((MR_Word) ((MR_hl_field(1, ArgTerms_9, 0))));
+    Var_24 = ((MR_Word) ((MR_hl_field(1, ArgTerms_9, 1))));
+    succeeded = (Var_24 == (MR_Word) ((MR_Unsigned) 0U));
+  }
+  if (succeeded)
+  {
+    MR_Word TVarSet_14;
+    MR_Word NameTerm_15;
+    MR_Word MethodsTerm_16;
+    MR_Word Var_25;
+    MR_String Var_26;
+    MR_Word Var_27;
+    MR_Word Var_28;
+    MR_Word Var_29;
+
+    mercury__varset__coerce_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), VarSet_8, &TVarSet_14);
+    succeeded = ((MR_tag((MR_Word) ArgTerm_13)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      Var_25 = ((MR_Word) ((MR_hl_field(0, ArgTerm_13, 0))));
+      Var_27 = ((MR_Word) ((MR_hl_field(0, ArgTerm_13, 1))));
+      succeeded = ((MR_tag((MR_Word) Var_25)) == (MR_Integer) 0);
+      if (succeeded)
+      {
+        Var_26 = ((MR_String) ((MR_hl_field(0, Var_25, 0))));
+        succeeded = (strcmp(Var_26, (MR_String) "where") == 0);
+        if (succeeded)
+        {
+          succeeded = (Var_27 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            NameTerm_15 = ((MR_Word) ((MR_hl_field(1, Var_27, 0))));
+            Var_28 = ((MR_Word) ((MR_hl_field(1, Var_27, 1))));
+            succeeded = (Var_28 != (MR_Word) ((MR_Unsigned) 0U));
+            if (succeeded)
+            {
+              MethodsTerm_16 = ((MR_Word) ((MR_hl_field(1, Var_28, 0))));
+              Var_29 = ((MR_Word) ((MR_hl_field(1, Var_28, 1))));
+              succeeded = (Var_29 == (MR_Word) ((MR_Unsigned) 0U));
+            }
+          }
+        }
+      }
+    }
+    if (succeeded)
+    {
+      MR_Word MaybeItemInstanceInfo_18;
+
+      parse_tree__parse_class__parse_non_empty_instance_8_p_0(ModuleName_7, VarSet_8, TVarSet_14, NameTerm_15, MethodsTerm_16, Context_10, SeqNum_11, &MaybeItemInstanceInfo_18);
+      if (((MR_tag((MR_Word) MaybeItemInstanceInfo_18)) == (MR_Integer) 0))
+        *MaybeIOM_12 = (MR_Word) (MaybeItemInstanceInfo_18);
+      else
+      {
+        MR_Word ItemInstanceInfo_19 = ((MR_Word) ((MR_hl_field(1, MaybeItemInstanceInfo_18, 0))));
+        MR_Word Var_30;
+        MR_Word Var_31;
+
+        {
+          Var_31 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(3, Var_31, 0) = ((MR_Box) ((MR_Unsigned) 4U));
+          MR_hl_field(3, Var_31, 1) = ((MR_Box) (ItemInstanceInfo_19));
+        }
+        {
+          Var_30 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_30, 0) = ((MR_Box) (Var_31));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeIOM_12 = base;
+          MR_hl_field(1, base, 0) = ((MR_Box) (Var_30));
+        }
+      }
+    }
+    else
+    {
+      MR_Word MaybeItemInstanceInfo_96;
+
+      parse_tree__parse_class__parse_instance_name_6_p_0(ModuleName_7, TVarSet_14, ArgTerm_13, Context_10, SeqNum_11, &MaybeItemInstanceInfo_96);
+      if (((MR_tag((MR_Word) MaybeItemInstanceInfo_96)) == (MR_Integer) 0))
+      {
+        MR_Word OoMErrSpecs_21 = ((MR_Word) ((MR_hl_field(0, MaybeItemInstanceInfo_96, 0))));
+        MR_Tuple Var_34;
+
+        {
+          Var_34 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_34, 0) = ((MR_Box) (OoMErrSpecs_21));
+          MR_hl_field(0, Var_34, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          *MaybeIOM_12 = base;
+          MR_hl_field(0, base, 0) = ((MR_Box) (Var_34));
+        }
+      }
+      else
+      {
+        MR_Word Var_32;
+        MR_Word Var_33;
+        MR_Word ItemInstanceInfo_94 = ((MR_Word) ((MR_hl_field(1, MaybeItemInstanceInfo_96, 0))));
+
+        {
+          Var_33 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(3, Var_33, 0) = ((MR_Box) ((MR_Unsigned) 4U));
+          MR_hl_field(3, Var_33, 1) = ((MR_Box) (ItemInstanceInfo_94));
+        }
+        {
+          Var_32 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_32, 0) = ((MR_Box) (Var_33));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeIOM_12 = base;
+          MR_hl_field(1, base, 0) = ((MR_Box) (Var_32));
+        }
+      }
+    }
+  }
+  else
+  {
+    MR_Word Pieces_22;
+    MR_Word Spec_23;
+    MR_Word Var_46;
+    MR_Word Var_47;
+    MR_Word Var_52;
+    MR_Word Var_57;
+    MR_Word Var_58;
+    MR_Word Var_63;
+    MR_Word Var_74;
+    MR_Word Var_75;
+    MR_Tuple Var_90;
+    MR_Word Var_91;
+
+    Var_47 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[22])));
+    Var_58 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[41])));
+    Var_75 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[43])));
+    Var_74 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_75, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[44])));
+    Var_63 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[30])), Var_74);
+    Var_57 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_58, Var_63);
+    Var_52 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[24])), Var_57);
+    Var_46 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_47, Var_52);
+    Pieces_22 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[39])), Var_46);
+    {
+      Spec_23 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Spec_23, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_instance_item\'/6"));
+      MR_hl_field(0, Spec_23, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(0, Spec_23, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+      MR_hl_field(0, Spec_23, 3) = ((MR_Box) (Context_10));
+      MR_hl_field(0, Spec_23, 4) = ((MR_Box) (Pieces_22));
+    }
+    {
+      Var_91 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_91, 0) = ((MR_Box) (Spec_23));
+      MR_hl_field(0, Var_91, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_90 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_90, 0) = ((MR_Box) (Var_91));
+      MR_hl_field(0, Var_90, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      *MaybeIOM_12 = base;
+      MR_hl_field(0, base, 0) = ((MR_Box) (Var_90));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_non_empty_instance_8_p_0(
+  MR_Word ModuleName_9,
+  MR_Word VarSet_10,
+  MR_Word TVarSet_11,
+  MR_Word NameTerm_12,
+  MR_Word MethodsTerm_13,
+  MR_Word Context_14,
+  MR_Word SeqNum_15,
+  MR_Word * MaybeItemInstanceInfo_16)
+{
+  MR_bool succeeded = ((MR_tag((MR_Word) NameTerm_12)) == (MR_Integer) 0);
+  MR_Word MaybeItemInstanceInfo0_17;
+  MR_Word MaybeInstanceMethods_18;
+  MR_Word NameTerm_57;
+  MR_Word ConstraintsTerm_58;
+  MR_Word Var_60;
+  MR_String Var_61;
+  MR_Word Var_62;
+  MR_Word Var_63;
+  MR_Word Var_64;
+  MR_Word ItemInstanceInfo0_19;
+  MR_Word InstanceMethods_20;
+
+  if (succeeded)
+  {
+    Var_60 = ((MR_Word) ((MR_hl_field(0, NameTerm_12, 0))));
+    Var_62 = ((MR_Word) ((MR_hl_field(0, NameTerm_12, 1))));
+    succeeded = ((MR_tag((MR_Word) Var_60)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      Var_61 = ((MR_String) ((MR_hl_field(0, Var_60, 0))));
+      succeeded = (strcmp(Var_61, (MR_String) "<=") == 0);
+      if (succeeded)
+      {
+        succeeded = (Var_62 != (MR_Word) ((MR_Unsigned) 0U));
+        if (succeeded)
+        {
+          NameTerm_57 = ((MR_Word) ((MR_hl_field(1, Var_62, 0))));
+          Var_63 = ((MR_Word) ((MR_hl_field(1, Var_62, 1))));
+          succeeded = (Var_63 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            ConstraintsTerm_58 = ((MR_Word) ((MR_hl_field(1, Var_63, 0))));
+            Var_64 = ((MR_Word) ((MR_hl_field(1, Var_63, 1))));
+            succeeded = (Var_64 == (MR_Word) ((MR_Unsigned) 0U));
+          }
+        }
+      }
+    }
+  }
+  if (succeeded)
+    parse_tree__parse_class__parse_derived_instance_7_p_0(ModuleName_9, TVarSet_11, NameTerm_57, ConstraintsTerm_58, Context_14, SeqNum_15, &MaybeItemInstanceInfo0_17);
+  else
+  {
+    MR_Word NameContextPieces_65;
+    MR_Word VarSet_66;
+    MR_Word Spec_67;
+
+    NameContextPieces_65 = mercury__cord__singleton_1_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[118]))));
+    mercury__varset__coerce_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), (MR_Word) (&mercury__term__term__type_ctor_info_generic_0), TVarSet_11, &VarSet_66);
+    succeeded = parse_tree__parse_item__is_the_name_a_variable_4_p_0(VarSet_66, (MR_Word) ((MR_Unsigned) 4U), NameTerm_12, &Spec_67);
+    if (succeeded)
+    {
+      MR_Word Var_79;
+
+      {
+        Var_79 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_79, 0) = ((MR_Box) (Spec_67));
+        MR_hl_field(0, Var_79, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        MaybeItemInstanceInfo0_17 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, MaybeItemInstanceInfo0_17, 0) = ((MR_Box) (Var_79));
+      }
+    }
+    else
+    {
+      MR_Word MaybeClassName_68;
+
+      parse_tree__parse_sym_name__parse_sym_name_and_args_4_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), VarSet_66, NameContextPieces_65, NameTerm_12, &MaybeClassName_68);
+      if (((MR_tag((MR_Word) MaybeClassName_68)) == (MR_Integer) 0))
+      {
+        MR_Word Specs_86 = ((MR_Word) ((MR_hl_field(0, MaybeClassName_68, 0))));
+
+        {
+          MaybeItemInstanceInfo0_17 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, MaybeItemInstanceInfo0_17, 0) = ((MR_Box) (Specs_86));
+        }
+      }
+      else
+      {
+        MR_Word ClassName_69 = ((MR_Word) ((MR_hl_field(1, MaybeClassName_68, 0))));
+        MR_Word TypeTerms_70 = ((MR_Word) ((MR_hl_field(1, MaybeClassName_68, 1))));
+        MR_Word MaybeTypes_72;
+
+        parse_tree__parse_type_name__parse_types_5_p_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_4[0])), VarSet_66, NameContextPieces_65, TypeTerms_70, &MaybeTypes_72);
+        if (((MR_tag((MR_Word) MaybeTypes_72)) == (MR_Integer) 0))
+          MaybeItemInstanceInfo0_17 = (MR_Word) (MaybeTypes_72);
+        else
+        {
+          MR_Word Types_73 = ((MR_Word) ((MR_hl_field(1, MaybeTypes_72, 0))));
+          MR_Word ItemInstanceInfo_74;
+
+          {
+            ItemInstanceInfo_74 = (MR_Word) MR_new_object(MR_Word, (9 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, ItemInstanceInfo_74, 0) = ((MR_Box) (ClassName_69));
+            MR_hl_field(0, ItemInstanceInfo_74, 1) = ((MR_Box) (Types_73));
+            MR_hl_field(0, ItemInstanceInfo_74, 2) = ((MR_Box) (Types_73));
+            MR_hl_field(0, ItemInstanceInfo_74, 3) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(0, ItemInstanceInfo_74, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(0, ItemInstanceInfo_74, 5) = ((MR_Box) (TVarSet_11));
+            MR_hl_field(0, ItemInstanceInfo_74, 6) = ((MR_Box) (ModuleName_9));
+            MR_hl_field(0, ItemInstanceInfo_74, 7) = ((MR_Box) (Context_14));
+            MR_hl_field(0, ItemInstanceInfo_74, 8) = ((MR_Box) (SeqNum_15));
+          }
+          {
+            MaybeItemInstanceInfo0_17 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, MaybeItemInstanceInfo0_17, 0) = ((MR_Box) (ItemInstanceInfo_74));
+          }
+        }
+      }
+    }
+  }
+  parse_tree__parse_class__parse_instance_methods_4_p_0(ModuleName_9, VarSet_10, MethodsTerm_13, &MaybeInstanceMethods_18);
+  succeeded = ((MR_tag((MR_Word) MaybeItemInstanceInfo0_17)) == (MR_Integer) 1);
+  if (succeeded)
+  {
+    ItemInstanceInfo0_19 = ((MR_Word) ((MR_hl_field(1, MaybeItemInstanceInfo0_17, 0))));
+    succeeded = ((MR_tag((MR_Word) MaybeInstanceMethods_18)) == (MR_Integer) 1);
+    if (succeeded)
+      InstanceMethods_20 = ((MR_Word) ((MR_hl_field(1, MaybeInstanceMethods_18, 0))));
+  }
+  if (succeeded)
+  {
+    MR_Word ItemInstanceInfo_21;
+    MR_Word MaybeCheckSpec_22;
+    MR_Word Var_29;
+    MR_Word Var_36;
+    MR_Word Var_37;
+    MR_Word Var_38;
+    MR_Word Var_39;
+    MR_Word Var_42;
+    MR_Word Var_43;
+    MR_Word Var_44;
+
+    {
+      Var_29 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_29, 0) = ((MR_Box) (InstanceMethods_20));
+    }
+    Var_36 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_19, 0))));
+    Var_37 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_19, 1))));
+    Var_38 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_19, 2))));
+    Var_39 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_19, 3))));
+    Var_42 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_19, 6))));
+    Var_43 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_19, 7))));
+    Var_44 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_19, 8))));
+    {
+      ItemInstanceInfo_21 = (MR_Word) MR_new_object(MR_Word, (9 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, ItemInstanceInfo_21, 0) = ((MR_Box) (Var_36));
+      MR_hl_field(0, ItemInstanceInfo_21, 1) = ((MR_Box) (Var_37));
+      MR_hl_field(0, ItemInstanceInfo_21, 2) = ((MR_Box) (Var_38));
+      MR_hl_field(0, ItemInstanceInfo_21, 3) = ((MR_Box) (Var_39));
+      MR_hl_field(0, ItemInstanceInfo_21, 4) = ((MR_Box) (Var_29));
+      MR_hl_field(0, ItemInstanceInfo_21, 5) = ((MR_Box) (TVarSet_11));
+      MR_hl_field(0, ItemInstanceInfo_21, 6) = ((MR_Box) (Var_42));
+      MR_hl_field(0, ItemInstanceInfo_21, 7) = ((MR_Box) (Var_43));
+      MR_hl_field(0, ItemInstanceInfo_21, 8) = ((MR_Box) (Var_44));
+    }
+    parse_tree__parse_class__check_tvars_in_instance_constraint_3_p_0(ItemInstanceInfo_21, NameTerm_12, &MaybeCheckSpec_22);
+    if ((MaybeCheckSpec_22 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *MaybeItemInstanceInfo_16 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (ItemInstanceInfo_21));
+      }
+    else
+    {
+      MR_Word Spec_23 = ((MR_Word) ((MR_hl_field(1, MaybeCheckSpec_22, 0))));
+      MR_Tuple Var_30;
+      MR_Word Var_31;
+
+      {
+        Var_31 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_31, 0) = ((MR_Box) (Spec_23));
+        MR_hl_field(0, Var_31, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        Var_30 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_30, 0) = ((MR_Box) (Var_31));
+        MR_hl_field(0, Var_30, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        *MaybeItemInstanceInfo_16 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (Var_30));
+      }
+    }
+  }
+  else
+  {
+    MR_Word InfoErrSpecs_24;
+    MR_Word MethodsErrSpecs_25;
+    MR_Word MethodsWarnSpecs_26;
+    MR_Word OoMErrSpecs_27;
+    MR_Word Var_34;
+    MR_Tuple Var_35;
+
+    InfoErrSpecs_24 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0), MaybeItemInstanceInfo0_17);
+    parse_tree__maybe_error__get_all_errors_warnings1_3_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[9]), MaybeInstanceMethods_18, &MethodsErrSpecs_25, &MethodsWarnSpecs_26);
+    Var_34 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), InfoErrSpecs_24, MethodsErrSpecs_25);
+    mercury__one_or_more__det_list_to_one_or_more_2_p_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), Var_34, &OoMErrSpecs_27);
+    {
+      Var_35 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_35, 0) = ((MR_Box) (OoMErrSpecs_27));
+      MR_hl_field(0, Var_35, 1) = ((MR_Box) (MethodsWarnSpecs_26));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      *MaybeItemInstanceInfo_16 = base;
+      MR_hl_field(0, base, 0) = ((MR_Box) (Var_35));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__parse_instance_methods_4_p_0_2(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = parse_tree__parse_class__IntroducedFrom__pred__find_errors_m1__1205__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))));
+  return succeeded;
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_instance_methods_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_MaybeInstanceMethod_8;
+
+  parse_tree__parse_class__term_to_instance_method_4_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), &conv0_MaybeInstanceMethod_8);
+  *wrapper_arg_2 = ((MR_Box) (conv0_MaybeInstanceMethod_8));
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_instance_methods_4_p_0(
+  MR_Word ModuleName_5,
+  MR_Word VarSet_6,
+  MR_Word MethodsTerm_7,
+  MR_Word * Result_8)
+{
+  MR_bool succeeded;
+  MR_Word MethodList_9;
+
+  succeeded = parse_tree__parse_util__list_term_to_term_list_2_p_0(MethodsTerm_7, &MethodList_9);
+  if (succeeded)
+  {
+    MR_Word Interface_10;
+    MR_Word Var_14;
+    MR_Word Results_56;
+    MR_Word ErrSpecs_57;
+    MR_Word WarnSpecs_58;
+
+    {
+      Var_14 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_14, 0) = ((MR_Box) (&parse_tree__parse_class_scalar_common_6[2]));
+      MR_hl_field(0, Var_14, 1) = ((MR_Box) (parse_tree__parse_class__parse_instance_methods_4_p_0_1));
+      MR_hl_field(0, Var_14, 2) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(0, Var_14, 3) = ((MR_Box) (ModuleName_5));
+      MR_hl_field(0, Var_14, 4) = ((MR_Box) (VarSet_6));
+    }
+    mercury__list__map_3_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[4]), (MR_Word) (&parse_tree__parse_class_scalar_common_3[0]), Var_14, MethodList_9, &Interface_10);
+    parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_109_49_95_108_111_111_112_95_95_91_49_93_95_48_7_p_0(Interface_10, (MR_Word) ((MR_Unsigned) 0U), &Results_56, (MR_Word) ((MR_Unsigned) 0U), &ErrSpecs_57, (MR_Word) ((MR_Unsigned) 0U), &WarnSpecs_58);
+    if ((ErrSpecs_57 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MR_Word Var_64;
+
+      {
+        Var_64 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_64, 0) = ((MR_Box) (&parse_tree__parse_class_scalar_common_5[3]));
+        MR_hl_field(0, Var_64, 1) = ((MR_Box) (parse_tree__parse_class__parse_instance_methods_4_p_0_2));
+        MR_hl_field(0, Var_64, 2) = ((MR_Box) ((MR_Integer) 2));
+        MR_hl_field(0, Var_64, 3) = ((MR_Box) (WarnSpecs_58));
+        MR_hl_field(0, Var_64, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      mercury__require__expect_3_p_0(Var_64, (MR_String) "predicate \140parse_tree.parse_class.find_errors_m1\'/2", (MR_String) "WarnSpecs != []");
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *Result_8 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (Results_56));
+      }
+    }
+    else
+    {
+      MR_Word HeadErrSpec_59 = ((MR_Word) ((MR_hl_field(1, ErrSpecs_57, 0))));
+      MR_Word TailErrSpec_60 = ((MR_Word) ((MR_hl_field(1, ErrSpecs_57, 1))));
+      MR_Tuple Var_68;
+      MR_Word Var_69;
+
+      {
+        Var_69 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_69, 0) = ((MR_Box) (HeadErrSpec_59));
+        MR_hl_field(0, Var_69, 1) = ((MR_Box) (TailErrSpec_60));
+      }
+      {
+        Var_68 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_68, 0) = ((MR_Box) (Var_69));
+        MR_hl_field(0, Var_68, 1) = ((MR_Box) (WarnSpecs_58));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        *Result_8 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (Var_68));
+      }
+    }
+  }
+  else
+  {
+    MR_String MethodsTermStr_11;
+    MR_Word Pieces_12;
+    MR_Word Spec_13;
+    MR_Word Var_19;
+    MR_Word Var_20;
+    MR_Word Var_25;
+    MR_Word Var_30;
+    MR_Word Var_31;
+    MR_Word Var_32;
+    MR_Word Var_33;
+    MR_Word Var_44;
+    MR_Tuple Var_45;
+    MR_Word Var_46;
+
+    MethodsTermStr_11 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), VarSet_6, MethodsTerm_7);
+    Var_20 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[126])));
+    {
+      Var_33 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(3, Var_33, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(3, Var_33, 1) = ((MR_Box) (MethodsTermStr_11));
+    }
+    {
+      Var_32 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_32, 0) = ((MR_Box) (Var_33));
+      MR_hl_field(1, Var_32, 1) = ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[32])));
+    }
+    Var_31 = parse_tree__error_spec__color_as_incorrect_1_f_0(Var_32);
+    Var_30 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_31, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+    Var_25 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[115])), Var_30);
+    Var_19 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_20, Var_25);
+    Pieces_12 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[111])), Var_19);
+    Var_44 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), MethodsTerm_7);
+    {
+      Spec_13 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Spec_13, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_instance_methods\'/4"));
+      MR_hl_field(0, Spec_13, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(0, Spec_13, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+      MR_hl_field(0, Spec_13, 3) = ((MR_Box) (Var_44));
+      MR_hl_field(0, Spec_13, 4) = ((MR_Box) (Pieces_12));
+    }
+    {
+      Var_46 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_46, 0) = ((MR_Box) (Spec_13));
+      MR_hl_field(0, Var_46, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_45 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_45, 0) = ((MR_Box) (Var_46));
+      MR_hl_field(0, Var_45, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      *Result_8 = base;
+      MR_hl_field(0, base, 0) = ((MR_Box) (Var_45));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_109_49_95_108_111_111_112_95_95_91_49_93_95_48_7_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_Results_0_2,
+  MR_Word * STATE_VARIABLE_Results_3,
+  MR_Word STATE_VARIABLE_ErrSpecs_0_4,
+  MR_Word * STATE_VARIABLE_ErrSpecs_5,
+  MR_Word STATE_VARIABLE_WarnSpecs_0_6,
+  MR_Word * STATE_VARIABLE_WarnSpecs_7)
+{
+  if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *STATE_VARIABLE_WarnSpecs_7 = STATE_VARIABLE_WarnSpecs_0_6;
+    *STATE_VARIABLE_ErrSpecs_5 = STATE_VARIABLE_ErrSpecs_0_4;
+    *STATE_VARIABLE_Results_3 = STATE_VARIABLE_Results_0_2;
+  }
+  else
+  {
+    MR_Word X_17 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 0))));
+    MR_Word Xs_18 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 1))));
+    MR_Word STATE_VARIABLE_Results_1_31;
+    MR_Word STATE_VARIABLE_ErrSpecs_1_32;
+    MR_Word STATE_VARIABLE_WarnSpecs_1_33;
+
+    parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_109_49_95_108_111_111_112_95_95_91_49_93_95_48_7_p_0(Xs_18, STATE_VARIABLE_Results_0_2, &STATE_VARIABLE_Results_1_31, STATE_VARIABLE_ErrSpecs_0_4, &STATE_VARIABLE_ErrSpecs_1_32, STATE_VARIABLE_WarnSpecs_0_6, &STATE_VARIABLE_WarnSpecs_1_33);
+    if (((MR_tag((MR_Word) X_17)) == (MR_Integer) 0))
+    {
+      MR_Word CurErrSpecs_23;
+      MR_Word CurWarnSpecs_24;
+      MR_Tuple Var_35 = ((MR_Tuple) ((MR_hl_field(0, X_17, 0))));
+      MR_Word Var_37;
+
+      CurErrSpecs_23 = ((MR_Word) ((MR_hl_field(0, Var_35, 0))));
+      CurWarnSpecs_24 = ((MR_Word) ((MR_hl_field(0, Var_35, 1))));
+      Var_37 = mercury__one_or_more__one_or_more_to_list_1_f_1((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), CurErrSpecs_23);
+      *STATE_VARIABLE_ErrSpecs_5 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), Var_37, STATE_VARIABLE_ErrSpecs_1_32);
+      *STATE_VARIABLE_WarnSpecs_7 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_warn_spec_0), CurWarnSpecs_24, STATE_VARIABLE_WarnSpecs_1_33);
+      *STATE_VARIABLE_Results_3 = STATE_VARIABLE_Results_1_31;
+    }
+    else
+    {
+      MR_Box CurResult_22 = (MR_hl_field(1, X_17, 0));
+
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        *STATE_VARIABLE_Results_3 = base;
+        MR_hl_field(1, base, 0) = CurResult_22;
+        MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_Results_1_31));
+      }
+      *STATE_VARIABLE_ErrSpecs_5 = STATE_VARIABLE_ErrSpecs_1_32;
+      *STATE_VARIABLE_WarnSpecs_7 = STATE_VARIABLE_WarnSpecs_1_33;
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+parse_tree__parse_class__check_tvars_in_instance_constraint_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_Word conv0_HeadVar__3_62;
+
+  conv0_HeadVar__3_62 = parse_tree__parse_class__IntroducedFrom__func__check_tvars_in_instance_constraint__647__1_2_f_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__3_62));
+  return wrapper_arg_2;
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__check_tvars_in_instance_constraint_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = parse_tree__parse_class__IntroducedFrom__pred__check_tvars_in_instance_constraint__643__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)));
+  return succeeded;
+}
+
+static void MR_CALL 
+parse_tree__parse_class__check_tvars_in_instance_constraint_3_p_0(
+  MR_Word ItemInstanceInfo_4,
+  MR_Word NameTerm_5,
+  MR_Word * MaybeSpec_6)
+{
+  MR_bool succeeded;
+  MR_Word Types_8 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo_4, 1))));
+  MR_Word Constraints_10 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo_4, 3))));
+  MR_Word TVarSet_12 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo_4, 5))));
+  MR_Word UnboundTVars_19;
+  MR_Word TVars_16;
+  MR_Word TypesVars_17;
+  MR_Word Var_27;
+  MR_Word _BoundTVars_18;
+
+  parse_tree__prog_type_scan__constraint_list_get_tvars_2_p_0(Constraints_10, &TVars_16);
+  parse_tree__prog_type_scan__set_of_type_vars_in_types_2_p_0(Types_8, &TypesVars_17);
+  {
+    Var_27 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_27, 0) = ((MR_Box) (&parse_tree__parse_class_scalar_common_5[5]));
+    MR_hl_field(0, Var_27, 1) = ((MR_Box) (parse_tree__parse_class__check_tvars_in_instance_constraint_3_p_0_1));
+    MR_hl_field(0, Var_27, 2) = ((MR_Box) ((MR_Integer) 1));
+    MR_hl_field(0, Var_27, 3) = ((MR_Box) (TypesVars_17));
+  }
+  mercury__list__filter_4_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Var_27, TVars_16, &_BoundTVars_18, &UnboundTVars_19);
+  succeeded = (UnboundTVars_19 != (MR_Word) ((MR_Unsigned) 0U));
+  if (succeeded)
+  {
+    MR_Word UnboundTVarPieces_22;
+    MR_Word UnboundTVarsPieces_23;
+    MR_Word UnboundPieces_24;
+    MR_Word Pieces_25;
+    MR_Word Spec_26;
+    MR_Word Var_28;
+    MR_Word Var_43;
+    MR_Word Var_44;
+    MR_Word Var_45;
+    MR_Word Var_55;
+    MR_Integer Var_32;
+
+    {
+      Var_28 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_28, 0) = ((MR_Box) (&parse_tree__parse_class_scalar_common_7[0]));
+      MR_hl_field(0, Var_28, 1) = ((MR_Box) (parse_tree__parse_class__check_tvars_in_instance_constraint_3_p_0_2));
+      MR_hl_field(0, Var_28, 2) = ((MR_Box) ((MR_Integer) 1));
+      MR_hl_field(0, Var_28, 3) = ((MR_Box) (TVarSet_12));
+    }
+    UnboundTVarPieces_22 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), (MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_28, UnboundTVars_19);
+    UnboundTVarsPieces_23 = parse_tree__error_spec__piece_list_to_color_pieces_4_f_0((MR_Integer) 0, (MR_String) "and", (MR_Word) ((MR_Unsigned) 0U), UnboundTVarPieces_22);
+    Var_32 = mercury__list__length_1_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), UnboundTVars_19);
+    succeeded = (Var_32 == (MR_Integer) 1);
+    if (succeeded)
+      UnboundPieces_24 = (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[120]));
+    else
+      UnboundPieces_24 = (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[122]));
+    Var_44 = parse_tree__error_spec__color_as_incorrect_1_f_0(UnboundPieces_24);
+    Var_45 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), UnboundTVarsPieces_23, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[124])));
+    Var_43 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_44, Var_45);
+    Pieces_25 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[48])), Var_43);
+    Var_55 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), NameTerm_5);
+    {
+      Spec_26 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Spec_26, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.check_tvars_in_instance_constraint\'/3"));
+      MR_hl_field(0, Spec_26, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(0, Spec_26, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+      MR_hl_field(0, Spec_26, 3) = ((MR_Box) (Var_55));
+      MR_hl_field(0, Spec_26, 4) = ((MR_Box) (Pieces_25));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      *MaybeSpec_6 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (Spec_26));
+    }
+  }
+  else
+    *MaybeSpec_6 = (MR_Word) ((MR_Unsigned) 0U);
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_instance_name_6_p_0(
+  MR_Word ModuleName_7,
+  MR_Word TVarSet_8,
+  MR_Word ArgTerm_9,
+  MR_Word Context_10,
+  MR_Word SeqNum_11,
+  MR_Word * MaybeItemInstanceInfo_12)
+{
+  MR_bool succeeded = ((MR_tag((MR_Word) ArgTerm_9)) == (MR_Integer) 0);
+  MR_Word NameTerm_13;
+  MR_Word ConstraintsTerm_14;
+  MR_Word Var_16;
+  MR_String Var_17;
+  MR_Word Var_18;
+  MR_Word Var_19;
+  MR_Word Var_20;
+
+  if (succeeded)
+  {
+    Var_16 = ((MR_Word) ((MR_hl_field(0, ArgTerm_9, 0))));
+    Var_18 = ((MR_Word) ((MR_hl_field(0, ArgTerm_9, 1))));
+    succeeded = ((MR_tag((MR_Word) Var_16)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      Var_17 = ((MR_String) ((MR_hl_field(0, Var_16, 0))));
+      succeeded = (strcmp(Var_17, (MR_String) "<=") == 0);
+      if (succeeded)
+      {
+        succeeded = (Var_18 != (MR_Word) ((MR_Unsigned) 0U));
+        if (succeeded)
+        {
+          NameTerm_13 = ((MR_Word) ((MR_hl_field(1, Var_18, 0))));
+          Var_19 = ((MR_Word) ((MR_hl_field(1, Var_18, 1))));
+          succeeded = (Var_19 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            ConstraintsTerm_14 = ((MR_Word) ((MR_hl_field(1, Var_19, 0))));
+            Var_20 = ((MR_Word) ((MR_hl_field(1, Var_19, 1))));
+            succeeded = (Var_20 == (MR_Word) ((MR_Unsigned) 0U));
+          }
+        }
+      }
+    }
+  }
+  if (succeeded)
+    parse_tree__parse_class__parse_derived_instance_7_p_0(ModuleName_7, TVarSet_8, NameTerm_13, ConstraintsTerm_14, Context_10, SeqNum_11, MaybeItemInstanceInfo_12);
+  else
+  {
+    MR_Word NameContextPieces_21;
+    MR_Word VarSet_22;
+    MR_Word Spec_23;
+
+    NameContextPieces_21 = mercury__cord__singleton_1_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[118]))));
+    mercury__varset__coerce_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), (MR_Word) (&mercury__term__term__type_ctor_info_generic_0), TVarSet_8, &VarSet_22);
+    succeeded = parse_tree__parse_item__is_the_name_a_variable_4_p_0(VarSet_22, (MR_Word) ((MR_Unsigned) 4U), ArgTerm_9, &Spec_23);
+    if (succeeded)
+    {
+      MR_Word Var_35;
+
+      {
+        Var_35 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_35, 0) = ((MR_Box) (Spec_23));
+        MR_hl_field(0, Var_35, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        *MaybeItemInstanceInfo_12 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (Var_35));
+      }
+    }
+    else
+    {
+      MR_Word MaybeClassName_24;
+
+      parse_tree__parse_sym_name__parse_sym_name_and_args_4_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), VarSet_22, NameContextPieces_21, ArgTerm_9, &MaybeClassName_24);
+      if (((MR_tag((MR_Word) MaybeClassName_24)) == (MR_Integer) 0))
+      {
+        MR_Word Specs_42 = ((MR_Word) ((MR_hl_field(0, MaybeClassName_24, 0))));
+
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          *MaybeItemInstanceInfo_12 = base;
+          MR_hl_field(0, base, 0) = ((MR_Box) (Specs_42));
+        }
+      }
+      else
+      {
+        MR_Word ClassName_25 = ((MR_Word) ((MR_hl_field(1, MaybeClassName_24, 0))));
+        MR_Word TypeTerms_26 = ((MR_Word) ((MR_hl_field(1, MaybeClassName_24, 1))));
+        MR_Word MaybeTypes_28;
+
+        parse_tree__parse_type_name__parse_types_5_p_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_4[0])), VarSet_22, NameContextPieces_21, TypeTerms_26, &MaybeTypes_28);
+        if (((MR_tag((MR_Word) MaybeTypes_28)) == (MR_Integer) 0))
+          *MaybeItemInstanceInfo_12 = (MR_Word) (MaybeTypes_28);
+        else
+        {
+          MR_Word Types_29 = ((MR_Word) ((MR_hl_field(1, MaybeTypes_28, 0))));
+          MR_Word ItemInstanceInfo_30;
+
+          {
+            ItemInstanceInfo_30 = (MR_Word) MR_new_object(MR_Word, (9 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, ItemInstanceInfo_30, 0) = ((MR_Box) (ClassName_25));
+            MR_hl_field(0, ItemInstanceInfo_30, 1) = ((MR_Box) (Types_29));
+            MR_hl_field(0, ItemInstanceInfo_30, 2) = ((MR_Box) (Types_29));
+            MR_hl_field(0, ItemInstanceInfo_30, 3) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(0, ItemInstanceInfo_30, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(0, ItemInstanceInfo_30, 5) = ((MR_Box) (TVarSet_8));
+            MR_hl_field(0, ItemInstanceInfo_30, 6) = ((MR_Box) (ModuleName_7));
+            MR_hl_field(0, ItemInstanceInfo_30, 7) = ((MR_Box) (Context_10));
+            MR_hl_field(0, ItemInstanceInfo_30, 8) = ((MR_Box) (SeqNum_11));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+            *MaybeItemInstanceInfo_12 = base;
+            MR_hl_field(1, base, 0) = ((MR_Box) (ItemInstanceInfo_30));
+          }
+        }
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__parse_derived_instance_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+  MR_Word conv0_Constraint_3;
+
+  succeeded = parse_tree__parse_class__get_simple_constraint_2_p_0(((MR_Word) (wrapper_arg_1)), &conv0_Constraint_3);
+  if (succeeded)
+  {
+    *wrapper_arg_2 = ((MR_Box) (conv0_Constraint_3));
+    succeeded = MR_TRUE;
+  }
+  return succeeded;
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_derived_instance_7_p_0(
+  MR_Word ModuleName_8,
+  MR_Word TVarSet_9,
+  MR_Word NameTerm_10,
+  MR_Word ConstraintsTerm_11,
+  MR_Word Context_12,
+  MR_Word SeqNum_13,
+  MR_Word * MaybeItemInstanceInfo_14)
+{
+  MR_bool succeeded;
+  MR_Word VarSet_15;
+  MR_Word MaybeItemInstanceInfo0_16;
+  MR_Word MaybeInstanceConstraints_17;
+  MR_Word NameContextPieces_39;
+  MR_Word VarSet_40;
+  MR_Word Result0_68;
+  MR_Word HeadConstraintTerm_92;
+  MR_Word TailConstraintTerms_93;
+  MR_Word Var_94;
+  MR_Word Spec_41;
+  MR_Word ItemInstanceInfo0_18;
+  MR_Word InstanceConstraints_19;
+
+  mercury__varset__coerce_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), (MR_Word) (&mercury__term__term__type_ctor_info_generic_0), TVarSet_9, &VarSet_15);
+  NameContextPieces_39 = mercury__cord__singleton_1_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[118]))));
+  mercury__varset__coerce_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), (MR_Word) (&mercury__term__term__type_ctor_info_generic_0), TVarSet_9, &VarSet_40);
+  succeeded = parse_tree__parse_item__is_the_name_a_variable_4_p_0(VarSet_40, (MR_Word) ((MR_Unsigned) 4U), NameTerm_10, &Spec_41);
+  if (succeeded)
+  {
+    MR_Word Var_53;
+
+    {
+      Var_53 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_53, 0) = ((MR_Box) (Spec_41));
+      MR_hl_field(0, Var_53, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      MaybeItemInstanceInfo0_16 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, MaybeItemInstanceInfo0_16, 0) = ((MR_Box) (Var_53));
+    }
+  }
+  else
+  {
+    MR_Word MaybeClassName_42;
+
+    parse_tree__parse_sym_name__parse_sym_name_and_args_4_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), VarSet_40, NameContextPieces_39, NameTerm_10, &MaybeClassName_42);
+    if (((MR_tag((MR_Word) MaybeClassName_42)) == (MR_Integer) 0))
+    {
+      MR_Word Specs_60 = ((MR_Word) ((MR_hl_field(0, MaybeClassName_42, 0))));
+
+      {
+        MaybeItemInstanceInfo0_16 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, MaybeItemInstanceInfo0_16, 0) = ((MR_Box) (Specs_60));
+      }
+    }
+    else
+    {
+      MR_Word ClassName_43 = ((MR_Word) ((MR_hl_field(1, MaybeClassName_42, 0))));
+      MR_Word TypeTerms_44 = ((MR_Word) ((MR_hl_field(1, MaybeClassName_42, 1))));
+      MR_Word MaybeTypes_46;
+
+      parse_tree__parse_type_name__parse_types_5_p_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_4[0])), VarSet_40, NameContextPieces_39, TypeTerms_44, &MaybeTypes_46);
+      if (((MR_tag((MR_Word) MaybeTypes_46)) == (MR_Integer) 0))
+        MaybeItemInstanceInfo0_16 = (MR_Word) (MaybeTypes_46);
+      else
+      {
+        MR_Word Types_47 = ((MR_Word) ((MR_hl_field(1, MaybeTypes_46, 0))));
+        MR_Word ItemInstanceInfo_48;
+
+        {
+          ItemInstanceInfo_48 = (MR_Word) MR_new_object(MR_Word, (9 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, ItemInstanceInfo_48, 0) = ((MR_Box) (ClassName_43));
+          MR_hl_field(0, ItemInstanceInfo_48, 1) = ((MR_Box) (Types_47));
+          MR_hl_field(0, ItemInstanceInfo_48, 2) = ((MR_Box) (Types_47));
+          MR_hl_field(0, ItemInstanceInfo_48, 3) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(0, ItemInstanceInfo_48, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(0, ItemInstanceInfo_48, 5) = ((MR_Box) (TVarSet_9));
+          MR_hl_field(0, ItemInstanceInfo_48, 6) = ((MR_Box) (ModuleName_8));
+          MR_hl_field(0, ItemInstanceInfo_48, 7) = ((MR_Box) (Context_12));
+          MR_hl_field(0, ItemInstanceInfo_48, 8) = ((MR_Box) (SeqNum_13));
+        }
+        {
+          MaybeItemInstanceInfo0_16 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, MaybeItemInstanceInfo0_16, 0) = ((MR_Box) (ItemInstanceInfo_48));
+        }
+      }
+    }
+  }
+  parse_tree__parse_util__conjunction_to_one_or_more_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ConstraintsTerm_11, &Var_94);
+  HeadConstraintTerm_92 = ((MR_Word) ((MR_hl_field(0, Var_94, 0))));
+  TailConstraintTerms_93 = ((MR_Word) ((MR_hl_field(0, Var_94, 1))));
+  parse_tree__parse_class__parse_arbitrary_constraint_list_4_p_0(VarSet_15, HeadConstraintTerm_92, TailConstraintTerms_93, &Result0_68);
+  if (((MR_tag((MR_Word) Result0_68)) == (MR_Integer) 0))
+    MaybeInstanceConstraints_17 = (MR_Word) (Result0_68);
+  else
+  {
+    MR_Word HeadArbConstraint_69;
+    MR_Word TailArbConstraints_70;
+    MR_Word Var_76 = ((MR_Word) ((MR_hl_field(1, Result0_68, 0))));
+    MR_Word HeadConstraint_71;
+    MR_Word TailConstraints_72;
+    MR_Word TypeCtorInfo_42_88;
+    MR_Word TypeCtorInfo_43_89;
+    MR_Word Var_77;
+    MR_Word Var_98;
+
+    HeadArbConstraint_69 = ((MR_Word) ((MR_hl_field(0, Var_76, 0))));
+    TailArbConstraints_70 = ((MR_Word) ((MR_hl_field(0, Var_76, 1))));
+    succeeded = ((MR_tag((MR_Word) HeadArbConstraint_69)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      HeadConstraint_71 = ((MR_Word) ((MR_hl_field(0, HeadArbConstraint_69, 0))));
+      Var_98 = ((MR_Word) ((MR_hl_field(0, HeadArbConstraint_69, 2))));
+      succeeded = (Var_98 == (MR_Word) ((MR_Unsigned) 0U));
+      if (succeeded)
+      {
+        Var_77 = (MR_Word) (&parse_tree__parse_class_scalar_common_3[5]);
+        TypeCtorInfo_42_88 = (MR_Word) (&parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_arbitrary_constraint_0);
+        TypeCtorInfo_43_89 = (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0);
+        succeeded = mercury__list__map_3_p_2(TypeCtorInfo_42_88, TypeCtorInfo_43_89, Var_77, TailArbConstraints_70, &TailConstraints_72);
+      }
+    }
+    if (succeeded)
+    {
+      MR_Word Var_78;
+
+      {
+        Var_78 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_78, 0) = ((MR_Box) (HeadConstraint_71));
+        MR_hl_field(1, Var_78, 1) = ((MR_Box) (TailConstraints_72));
+      }
+      {
+        MaybeInstanceConstraints_17 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, MaybeInstanceConstraints_17, 0) = ((MR_Box) (Var_78));
+      }
+    }
+    else
+    {
+      MR_Word Context_73;
+      MR_Word Pieces_74;
+      MR_Word Spec_75;
+      MR_Word Var_79;
+      MR_Word Var_80;
+      MR_Word Var_86;
+
+      Context_73 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ConstraintsTerm_11);
+      Var_80 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[147])));
+      Var_79 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_80, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+      Pieces_74 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[117])), Var_79);
+      {
+        Spec_75 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Spec_75, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_simple_class_constraints\'/5"));
+        MR_hl_field(0, Spec_75, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(0, Spec_75, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+        MR_hl_field(0, Spec_75, 3) = ((MR_Box) (Context_73));
+        MR_hl_field(0, Spec_75, 4) = ((MR_Box) (Pieces_74));
+      }
+      {
+        Var_86 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_86, 0) = ((MR_Box) (Spec_75));
+        MR_hl_field(0, Var_86, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        MaybeInstanceConstraints_17 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, MaybeInstanceConstraints_17, 0) = ((MR_Box) (Var_86));
+      }
+    }
+  }
+  succeeded = ((MR_tag((MR_Word) MaybeItemInstanceInfo0_16)) == (MR_Integer) 1);
+  if (succeeded)
+  {
+    ItemInstanceInfo0_18 = ((MR_Word) ((MR_hl_field(1, MaybeItemInstanceInfo0_16, 0))));
+    succeeded = ((MR_tag((MR_Word) MaybeInstanceConstraints_17)) == (MR_Integer) 1);
+    if (succeeded)
+      InstanceConstraints_19 = ((MR_Word) ((MR_hl_field(1, MaybeInstanceConstraints_17, 0))));
+  }
+  if (succeeded)
+  {
+    MR_Word ItemInstanceInfo_20;
+    MR_Word Var_25 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_18, 0))));
+    MR_Word Var_26 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_18, 1))));
+    MR_Word Var_27 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_18, 2))));
+    MR_Word Var_29 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_18, 4))));
+    MR_Word Var_30 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_18, 5))));
+    MR_Word Var_31 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_18, 6))));
+    MR_Word Var_32 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_18, 7))));
+    MR_Word Var_33 = ((MR_Word) ((MR_hl_field(0, ItemInstanceInfo0_18, 8))));
+
+    {
+      ItemInstanceInfo_20 = (MR_Word) MR_new_object(MR_Word, (9 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, ItemInstanceInfo_20, 0) = ((MR_Box) (Var_25));
+      MR_hl_field(0, ItemInstanceInfo_20, 1) = ((MR_Box) (Var_26));
+      MR_hl_field(0, ItemInstanceInfo_20, 2) = ((MR_Box) (Var_27));
+      MR_hl_field(0, ItemInstanceInfo_20, 3) = ((MR_Box) (InstanceConstraints_19));
+      MR_hl_field(0, ItemInstanceInfo_20, 4) = ((MR_Box) (Var_29));
+      MR_hl_field(0, ItemInstanceInfo_20, 5) = ((MR_Box) (Var_30));
+      MR_hl_field(0, ItemInstanceInfo_20, 6) = ((MR_Box) (Var_31));
+      MR_hl_field(0, ItemInstanceInfo_20, 7) = ((MR_Box) (Var_32));
+      MR_hl_field(0, ItemInstanceInfo_20, 8) = ((MR_Box) (Var_33));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      *MaybeItemInstanceInfo_14 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (ItemInstanceInfo_20));
+    }
+  }
+  else
+  {
+    MR_Word Specs_21;
+    MR_Word OoMSpecs_22;
+    MR_Word Var_23;
+    MR_Word Var_24;
+
+    Var_23 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0), MaybeItemInstanceInfo0_16);
+    Var_24 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[8]), MaybeInstanceConstraints_17);
+    Specs_21 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), Var_23, Var_24);
+    mercury__one_or_more__det_list_to_one_or_more_2_p_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), Specs_21, &OoMSpecs_22);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      *MaybeItemInstanceInfo_14 = base;
+      MR_hl_field(0, base, 0) = ((MR_Box) (OoMSpecs_22));
+    }
+  }
+}
+
+void MR_CALL 
+parse_tree__parse_class__parse_typeclass_item_6_p_0(
+  MR_Word ModuleName_7,
+  MR_Word VarSet_8,
+  MR_Word ArgTerms_9,
+  MR_Word Context_10,
+  MR_Word SeqNum_11,
+  MR_Word * MaybeIOM_12)
+{
+  MR_bool succeeded = (ArgTerms_9 != (MR_Word) ((MR_Unsigned) 0U));
+  MR_Word ArgTerm_13;
+  MR_Word Var_23;
+
+  if (succeeded)
+  {
+    ArgTerm_13 = ((MR_Word) ((MR_hl_field(1, ArgTerms_9, 0))));
+    Var_23 = ((MR_Word) ((MR_hl_field(1, ArgTerms_9, 1))));
+    succeeded = (Var_23 == (MR_Word) ((MR_Unsigned) 0U));
+  }
+  if (succeeded)
+  {
+    MR_Word NameTerm_14;
+    MR_Word MethodsTerm_15;
+    MR_Word Var_24;
+    MR_String Var_25;
+    MR_Word Var_26;
+    MR_Word Var_27;
+    MR_Word Var_28;
+
+    succeeded = ((MR_tag((MR_Word) ArgTerm_13)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      Var_24 = ((MR_Word) ((MR_hl_field(0, ArgTerm_13, 0))));
+      Var_26 = ((MR_Word) ((MR_hl_field(0, ArgTerm_13, 1))));
+      succeeded = ((MR_tag((MR_Word) Var_24)) == (MR_Integer) 0);
+      if (succeeded)
+      {
+        Var_25 = ((MR_String) ((MR_hl_field(0, Var_24, 0))));
+        succeeded = (strcmp(Var_25, (MR_String) "where") == 0);
+        if (succeeded)
+        {
+          succeeded = (Var_26 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            NameTerm_14 = ((MR_Word) ((MR_hl_field(1, Var_26, 0))));
+            Var_27 = ((MR_Word) ((MR_hl_field(1, Var_26, 1))));
+            succeeded = (Var_27 != (MR_Word) ((MR_Unsigned) 0U));
+            if (succeeded)
+            {
+              MethodsTerm_15 = ((MR_Word) ((MR_hl_field(1, Var_27, 0))));
+              Var_28 = ((MR_Word) ((MR_hl_field(1, Var_27, 1))));
+              succeeded = (Var_28 == (MR_Word) ((MR_Unsigned) 0U));
+            }
+          }
+        }
+      }
+    }
+    if (succeeded)
+    {
+      MR_Word MaybeItemTypeClassInfo_17;
+
+      parse_tree__parse_class__parse_non_empty_class_7_p_0(ModuleName_7, VarSet_8, NameTerm_14, MethodsTerm_15, Context_10, SeqNum_11, &MaybeItemTypeClassInfo_17);
+      if (((MR_tag((MR_Word) MaybeItemTypeClassInfo_17)) == (MR_Integer) 0))
+        *MaybeIOM_12 = (MR_Word) (MaybeItemTypeClassInfo_17);
+      else
+      {
+        MR_Word ItemTypeClassInfo_18 = ((MR_Word) ((MR_hl_field(1, MaybeItemTypeClassInfo_17, 0))));
+        MR_Word Var_29;
+        MR_Word Var_30;
+
+        {
+          Var_30 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(3, Var_30, 0) = ((MR_Box) ((MR_Unsigned) 3U));
+          MR_hl_field(3, Var_30, 1) = ((MR_Box) (ItemTypeClassInfo_18));
+        }
+        {
+          Var_29 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_29, 0) = ((MR_Box) (Var_30));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeIOM_12 = base;
+          MR_hl_field(1, base, 0) = ((MR_Box) (Var_29));
+        }
+      }
+    }
+    else
+    {
+      MR_Word MaybeItemTypeClassInfo_94;
+
+      parse_tree__parse_class__parse_class_head_6_p_0(ModuleName_7, VarSet_8, ArgTerm_13, Context_10, SeqNum_11, &MaybeItemTypeClassInfo_94);
+      if (((MR_tag((MR_Word) MaybeItemTypeClassInfo_94)) == (MR_Integer) 0))
+      {
+        MR_Word OoMErrSpecs_20 = ((MR_Word) ((MR_hl_field(0, MaybeItemTypeClassInfo_94, 0))));
+        MR_Tuple Var_33;
+
+        {
+          Var_33 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_33, 0) = ((MR_Box) (OoMErrSpecs_20));
+          MR_hl_field(0, Var_33, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          *MaybeIOM_12 = base;
+          MR_hl_field(0, base, 0) = ((MR_Box) (Var_33));
+        }
+      }
+      else
+      {
+        MR_Word Var_31;
+        MR_Word Var_32;
+        MR_Word ItemTypeClassInfo_92 = ((MR_Word) ((MR_hl_field(1, MaybeItemTypeClassInfo_94, 0))));
+
+        {
+          Var_32 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(3, Var_32, 0) = ((MR_Box) ((MR_Unsigned) 3U));
+          MR_hl_field(3, Var_32, 1) = ((MR_Box) (ItemTypeClassInfo_92));
+        }
+        {
+          Var_31 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_31, 0) = ((MR_Box) (Var_32));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeIOM_12 = base;
+          MR_hl_field(1, base, 0) = ((MR_Box) (Var_31));
+        }
+      }
+    }
+  }
+  else
+  {
+    MR_Word Pieces_21;
+    MR_Word Spec_22;
+    MR_Word Var_45;
+    MR_Word Var_46;
+    MR_Word Var_51;
+    MR_Word Var_56;
+    MR_Word Var_57;
+    MR_Word Var_62;
+    MR_Word Var_73;
+    MR_Word Var_74;
+    MR_Tuple Var_88;
+    MR_Word Var_89;
+
+    Var_46 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[22])));
+    Var_57 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[26])));
+    Var_74 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[34])));
+    Var_73 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_74, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+    Var_62 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[30])), Var_73);
+    Var_56 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_57, Var_62);
+    Var_51 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[24])), Var_56);
+    Var_45 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_46, Var_51);
+    Pieces_21 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[20])), Var_45);
+    {
+      Spec_22 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Spec_22, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_typeclass_item\'/6"));
+      MR_hl_field(0, Spec_22, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(0, Spec_22, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+      MR_hl_field(0, Spec_22, 3) = ((MR_Box) (Context_10));
+      MR_hl_field(0, Spec_22, 4) = ((MR_Box) (Pieces_21));
+    }
+    {
+      Var_89 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_89, 0) = ((MR_Box) (Spec_22));
+      MR_hl_field(0, Var_89, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_88 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_88, 0) = ((MR_Box) (Var_89));
+      MR_hl_field(0, Var_88, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      *MaybeIOM_12 = base;
+      MR_hl_field(0, base, 0) = ((MR_Box) (Var_88));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__parse_non_empty_class_7_p_0_2(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = parse_tree__parse_class__IntroducedFrom__pred__find_errors_pr2__1166__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))));
+  return succeeded;
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_non_empty_class_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_HeadVar__4_4;
+
+  parse_tree__parse_item__parse_class_decl_4_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)), &conv0_HeadVar__4_4);
+  *wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__4_4));
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_non_empty_class_7_p_0(
+  MR_Word ModuleName_8,
+  MR_Word VarSet_9,
+  MR_Word NameTerm_10,
+  MR_Word MethodsTerm_11,
+  MR_Word Context_12,
+  MR_Word SeqNum_13,
+  MR_Word * MaybeItemTypeClassInfo_14)
+{
+  MR_bool succeeded;
+  MR_Word MaybeItemTypeClassInfo0_15;
+  MR_Word MaybeClassDecls_16;
+  MR_Word DeclTerms_50;
+  MR_Word ItemTypeClassInfo0_17;
+  MR_Word ClassDecls_18;
+
+  parse_tree__parse_class__parse_class_head_6_p_0(ModuleName_8, VarSet_9, NameTerm_10, Context_12, SeqNum_13, &MaybeItemTypeClassInfo0_15);
+  succeeded = parse_tree__parse_util__list_term_to_term_list_2_p_0(MethodsTerm_11, &DeclTerms_50);
+  if (succeeded)
+  {
+    MR_Word MaybeDecls_51;
+    MR_Word Var_55;
+    MR_Word Results_80;
+    MR_Word ErrSpecs_81;
+    MR_Word WarnSpecs_82;
+
+    {
+      Var_55 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_55, 0) = ((MR_Box) (&parse_tree__parse_class_scalar_common_6[1]));
+      MR_hl_field(0, Var_55, 1) = ((MR_Box) (parse_tree__parse_class__parse_non_empty_class_7_p_0_1));
+      MR_hl_field(0, Var_55, 2) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(0, Var_55, 3) = ((MR_Box) (ModuleName_8));
+      MR_hl_field(0, Var_55, 4) = ((MR_Box) (VarSet_9));
+    }
+    mercury__list__map_3_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[4]), (MR_Word) (&parse_tree__parse_class_scalar_common_2[1]), Var_55, DeclTerms_50, &MaybeDecls_51);
+    parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_112_114_50_95_108_111_111_112_95_95_91_49_93_95_48_7_p_0(MaybeDecls_51, (MR_Word) ((MR_Unsigned) 0U), &Results_80, (MR_Word) ((MR_Unsigned) 0U), &ErrSpecs_81, (MR_Word) ((MR_Unsigned) 0U), &WarnSpecs_82);
+    if ((ErrSpecs_81 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MR_Word Var_88;
+
+      {
+        Var_88 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_88, 0) = ((MR_Box) (&parse_tree__parse_class_scalar_common_5[3]));
+        MR_hl_field(0, Var_88, 1) = ((MR_Box) (parse_tree__parse_class__parse_non_empty_class_7_p_0_2));
+        MR_hl_field(0, Var_88, 2) = ((MR_Box) ((MR_Integer) 2));
+        MR_hl_field(0, Var_88, 3) = ((MR_Box) (WarnSpecs_82));
+        MR_hl_field(0, Var_88, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      mercury__require__expect_3_p_0(Var_88, (MR_String) "predicate \140parse_tree.parse_class.find_errors_pr2\'/2", (MR_String) "WarnSpecs != []");
+      {
+        MaybeClassDecls_16 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, MaybeClassDecls_16, 0) = ((MR_Box) (Results_80));
+      }
+    }
+    else
+    {
+      MR_Word HeadErrSpec_83 = ((MR_Word) ((MR_hl_field(1, ErrSpecs_81, 0))));
+      MR_Word TailErrSpec_84 = ((MR_Word) ((MR_hl_field(1, ErrSpecs_81, 1))));
+      MR_Tuple Var_92;
+      MR_Word Var_93;
+
+      {
+        Var_93 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_93, 0) = ((MR_Box) (HeadErrSpec_83));
+        MR_hl_field(0, Var_93, 1) = ((MR_Box) (TailErrSpec_84));
+      }
+      {
+        Var_92 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_92, 0) = ((MR_Box) (Var_93));
+        MR_hl_field(0, Var_92, 1) = ((MR_Box) (WarnSpecs_82));
+      }
+      {
+        MaybeClassDecls_16 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, MaybeClassDecls_16, 0) = ((MR_Box) (Var_92));
+      }
+    }
+  }
+  else
+  {
+    MR_String DeclsTermStr_52;
+    MR_Word Pieces_53;
+    MR_Word Spec_54;
+    MR_Word Var_57;
+    MR_Word Var_58;
+    MR_Word Var_60;
+    MR_Word Var_62;
+    MR_Word Var_63;
+    MR_Word Var_64;
+    MR_Word Var_65;
+    MR_Word Var_71;
+    MR_Tuple Var_72;
+    MR_Word Var_73;
+
+    DeclsTermStr_52 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), VarSet_9, MethodsTerm_11);
+    Var_58 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[113])));
+    {
+      Var_65 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(3, Var_65, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(3, Var_65, 1) = ((MR_Box) (DeclsTermStr_52));
+    }
+    {
+      Var_64 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_64, 0) = ((MR_Box) (Var_65));
+      MR_hl_field(1, Var_64, 1) = ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[32])));
+    }
+    Var_63 = parse_tree__error_spec__color_as_incorrect_1_f_0(Var_64);
+    Var_62 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_63, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+    Var_60 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[115])), Var_62);
+    Var_57 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_58, Var_60);
+    Pieces_53 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[111])), Var_57);
+    Var_71 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), MethodsTerm_11);
+    {
+      Spec_54 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Spec_54, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_class_decls\'/4"));
+      MR_hl_field(0, Spec_54, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(0, Spec_54, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+      MR_hl_field(0, Spec_54, 3) = ((MR_Box) (Var_71));
+      MR_hl_field(0, Spec_54, 4) = ((MR_Box) (Pieces_53));
+    }
+    {
+      Var_73 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_73, 0) = ((MR_Box) (Spec_54));
+      MR_hl_field(0, Var_73, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Var_72 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_72, 0) = ((MR_Box) (Var_73));
+      MR_hl_field(0, Var_72, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      MaybeClassDecls_16 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, MaybeClassDecls_16, 0) = ((MR_Box) (Var_72));
+    }
+  }
+  succeeded = ((MR_tag((MR_Word) MaybeItemTypeClassInfo0_15)) == (MR_Integer) 1);
+  if (succeeded)
+  {
+    ItemTypeClassInfo0_17 = ((MR_Word) ((MR_hl_field(1, MaybeItemTypeClassInfo0_15, 0))));
+    succeeded = ((MR_tag((MR_Word) MaybeClassDecls_16)) == (MR_Integer) 1);
+    if (succeeded)
+      ClassDecls_18 = ((MR_Word) ((MR_hl_field(1, MaybeClassDecls_16, 0))));
+  }
+  if (succeeded)
+  {
+    MR_Word TVarSet_19;
+    MR_Word ItemTypeClassInfo_20;
+    MR_Word Var_26;
+    MR_Word Var_29;
+    MR_Word Var_30;
+    MR_Word Var_31;
+    MR_Word Var_32;
+    MR_Word Var_35;
+    MR_Word Var_36;
+
+    mercury__varset__coerce_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), VarSet_9, &TVarSet_19);
+    {
+      Var_26 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_26, 0) = ((MR_Box) (ClassDecls_18));
+    }
+    Var_29 = ((MR_Word) ((MR_hl_field(0, ItemTypeClassInfo0_17, 0))));
+    Var_30 = ((MR_Word) ((MR_hl_field(0, ItemTypeClassInfo0_17, 1))));
+    Var_31 = ((MR_Word) ((MR_hl_field(0, ItemTypeClassInfo0_17, 2))));
+    Var_32 = ((MR_Word) ((MR_hl_field(0, ItemTypeClassInfo0_17, 3))));
+    Var_35 = ((MR_Word) ((MR_hl_field(0, ItemTypeClassInfo0_17, 6))));
+    Var_36 = ((MR_Word) ((MR_hl_field(0, ItemTypeClassInfo0_17, 7))));
+    {
+      ItemTypeClassInfo_20 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, ItemTypeClassInfo_20, 0) = ((MR_Box) (Var_29));
+      MR_hl_field(0, ItemTypeClassInfo_20, 1) = ((MR_Box) (Var_30));
+      MR_hl_field(0, ItemTypeClassInfo_20, 2) = ((MR_Box) (Var_31));
+      MR_hl_field(0, ItemTypeClassInfo_20, 3) = ((MR_Box) (Var_32));
+      MR_hl_field(0, ItemTypeClassInfo_20, 4) = ((MR_Box) (Var_26));
+      MR_hl_field(0, ItemTypeClassInfo_20, 5) = ((MR_Box) (TVarSet_19));
+      MR_hl_field(0, ItemTypeClassInfo_20, 6) = ((MR_Box) (Var_35));
+      MR_hl_field(0, ItemTypeClassInfo_20, 7) = ((MR_Box) (Var_36));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      *MaybeItemTypeClassInfo_14 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (ItemTypeClassInfo_20));
+    }
+  }
+  else
+  {
+    MR_Word InfoErrSpecs_21;
+    MR_Word DeclErrSpecs_22;
+    MR_Word DeclWarnSpecs_23;
+    MR_Word OoMErrSpecs_24;
+    MR_Word Var_27;
+    MR_Tuple Var_28;
+
+    InfoErrSpecs_21 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0), MaybeItemTypeClassInfo0_15);
+    parse_tree__maybe_error__get_all_errors_warnings1_3_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[0]), MaybeClassDecls_16, &DeclErrSpecs_22, &DeclWarnSpecs_23);
+    Var_27 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), InfoErrSpecs_21, DeclErrSpecs_22);
+    mercury__one_or_more__det_list_to_one_or_more_2_p_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), Var_27, &OoMErrSpecs_24);
+    {
+      Var_28 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_28, 0) = ((MR_Box) (OoMErrSpecs_24));
+      MR_hl_field(0, Var_28, 1) = ((MR_Box) (DeclWarnSpecs_23));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      *MaybeItemTypeClassInfo_14 = base;
+      MR_hl_field(0, base, 0) = ((MR_Box) (Var_28));
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_112_114_50_95_108_111_111_112_95_95_91_49_93_95_48_7_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_Results_0_2,
+  MR_Word * STATE_VARIABLE_Results_3,
+  MR_Word STATE_VARIABLE_ErrSpecs_0_4,
+  MR_Word * STATE_VARIABLE_ErrSpecs_5,
+  MR_Word STATE_VARIABLE_WarnSpecs_0_6,
+  MR_Word * STATE_VARIABLE_WarnSpecs_7)
+{
+  if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *STATE_VARIABLE_WarnSpecs_7 = STATE_VARIABLE_WarnSpecs_0_6;
+    *STATE_VARIABLE_ErrSpecs_5 = STATE_VARIABLE_ErrSpecs_0_4;
+    *STATE_VARIABLE_Results_3 = STATE_VARIABLE_Results_0_2;
+  }
+  else
+  {
+    MR_Word X_17 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 0))));
+    MR_Word Xs_18 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 1))));
+    MR_Word CurWarnSpecs_23;
+    MR_Word STATE_VARIABLE_Results_1_31;
+    MR_Word STATE_VARIABLE_ErrSpecs_1_32;
+    MR_Word STATE_VARIABLE_WarnSpecs_1_33;
+
+    parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_101_114_114_111_114_115_95_112_114_50_95_108_111_111_112_95_95_91_49_93_95_48_7_p_0(Xs_18, STATE_VARIABLE_Results_0_2, &STATE_VARIABLE_Results_1_31, STATE_VARIABLE_ErrSpecs_0_4, &STATE_VARIABLE_ErrSpecs_1_32, STATE_VARIABLE_WarnSpecs_0_6, &STATE_VARIABLE_WarnSpecs_1_33);
+    if (((MR_tag((MR_Word) X_17)) == (MR_Integer) 0))
+    {
+      MR_Word CurErrSpecs_24;
+      MR_Tuple Var_35 = ((MR_Tuple) ((MR_hl_field(0, X_17, 0))));
+      MR_Word Var_37;
+
+      CurErrSpecs_24 = ((MR_Word) ((MR_hl_field(0, Var_35, 0))));
+      CurWarnSpecs_23 = ((MR_Word) ((MR_hl_field(0, Var_35, 1))));
+      Var_37 = mercury__one_or_more__one_or_more_to_list_1_f_1((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), CurErrSpecs_24);
+      *STATE_VARIABLE_ErrSpecs_5 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), Var_37, STATE_VARIABLE_ErrSpecs_1_32);
+      *STATE_VARIABLE_Results_3 = STATE_VARIABLE_Results_1_31;
+    }
+    else
+    {
+      MR_Box CurResult_22 = (MR_hl_field(1, X_17, 0));
+
+      CurWarnSpecs_23 = ((MR_Word) ((MR_hl_field(1, X_17, 1))));
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        *STATE_VARIABLE_Results_3 = base;
+        MR_hl_field(1, base, 0) = CurResult_22;
+        MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_Results_1_31));
+      }
+      *STATE_VARIABLE_ErrSpecs_5 = STATE_VARIABLE_ErrSpecs_1_32;
+    }
+    *STATE_VARIABLE_WarnSpecs_7 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_warn_spec_0), CurWarnSpecs_23, STATE_VARIABLE_WarnSpecs_1_33);
+  }
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_class_head_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_HeadVar__2_68;
+
+  parse_tree__parse_class__IntroducedFrom__pred__parse_unconstrained_class__411__1_2_p_0(((MR_Word) (wrapper_arg_1)), &conv0_HeadVar__2_68);
+  *wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_68));
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_class_head_6_p_0(
+  MR_Word ModuleName_7,
+  MR_Word VarSet_8,
+  MR_Word ArgTerm_9,
+  MR_Word Context_10,
+  MR_Word SeqNum_11,
+  MR_Word * MaybeItemTypeClassInfo_12)
+{
+  MR_bool succeeded = ((MR_tag((MR_Word) ArgTerm_9)) == (MR_Integer) 0);
+  MR_Word NameTerm_13;
+  MR_Word ConstraintsTerm_14;
+  MR_Word Var_17;
+  MR_String Var_18;
+  MR_Word Var_19;
+  MR_Word Var_20;
+  MR_Word Var_21;
+
+  if (succeeded)
+  {
+    Var_17 = ((MR_Word) ((MR_hl_field(0, ArgTerm_9, 0))));
+    Var_19 = ((MR_Word) ((MR_hl_field(0, ArgTerm_9, 1))));
+    succeeded = ((MR_tag((MR_Word) Var_17)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      Var_18 = ((MR_String) ((MR_hl_field(0, Var_17, 0))));
+      succeeded = (strcmp(Var_18, (MR_String) "<=") == 0);
+      if (succeeded)
+      {
+        succeeded = (Var_19 != (MR_Word) ((MR_Unsigned) 0U));
+        if (succeeded)
+        {
+          NameTerm_13 = ((MR_Word) ((MR_hl_field(1, Var_19, 0))));
+          Var_20 = ((MR_Word) ((MR_hl_field(1, Var_19, 1))));
+          succeeded = (Var_20 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            ConstraintsTerm_14 = ((MR_Word) ((MR_hl_field(1, Var_20, 0))));
+            Var_21 = ((MR_Word) ((MR_hl_field(1, Var_20, 1))));
+            succeeded = (Var_21 == (MR_Word) ((MR_Unsigned) 0U));
+          }
+        }
+      }
+    }
+  }
+  if (succeeded)
+    parse_tree__parse_class__parse_constrained_class_7_p_0(ModuleName_7, VarSet_8, NameTerm_13, ConstraintsTerm_14, Context_10, SeqNum_11, MaybeItemTypeClassInfo_12);
+  else
+  {
+    MR_Word TVarSet_16;
+    MR_Word ContextPieces_24;
+    MR_Word VarSet_25;
+    MR_Word Spec_26;
+
+    mercury__varset__coerce_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), VarSet_8, &TVarSet_16);
+    ContextPieces_24 = mercury__cord__singleton_1_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[103]))));
+    mercury__varset__coerce_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), (MR_Word) (&mercury__term__term__type_ctor_info_generic_0), TVarSet_16, &VarSet_25);
+    succeeded = parse_tree__parse_item__is_the_name_a_variable_4_p_0(VarSet_25, (MR_Word) ((MR_Unsigned) 0U), ArgTerm_9, &Spec_26);
+    if (succeeded)
+    {
+      MR_Word Var_37;
+
+      {
+        Var_37 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_37, 0) = ((MR_Box) (Spec_26));
+        MR_hl_field(0, Var_37, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        *MaybeItemTypeClassInfo_12 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (Var_37));
+      }
+    }
+    else
+    {
+      MR_Word MaybeClassName_27;
+
+      parse_tree__parse_sym_name__parse_implicitly_qualified_sym_name_and_args_5_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ModuleName_7, VarSet_25, ContextPieces_24, ArgTerm_9, &MaybeClassName_27);
+      if (((MR_tag((MR_Word) MaybeClassName_27)) == (MR_Integer) 0))
+      {
+        MR_Word Specs_56 = ((MR_Word) ((MR_hl_field(0, MaybeClassName_27, 0))));
+
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          *MaybeItemTypeClassInfo_12 = base;
+          MR_hl_field(0, base, 0) = ((MR_Box) (Specs_56));
+        }
+      }
+      else
+      {
+        MR_Word ClassName_28 = ((MR_Word) ((MR_hl_field(1, MaybeClassName_27, 0))));
+        MR_Word ArgTerms0_29 = ((MR_Word) ((MR_hl_field(1, MaybeClassName_27, 1))));
+        MR_Word ArgTerms_30;
+
+        mercury__list__map_3_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[4]), (MR_Word) (&parse_tree__parse_class_scalar_common_1[5]), (MR_Word) (&parse_tree__parse_class_scalar_common_3[4]), ArgTerms0_29, &ArgTerms_30);
+        if ((ArgTerms_30 == (MR_Word) ((MR_Unsigned) 0U)))
+        {
+          MR_Word Pieces_31;
+          MR_Word Var_41;
+          MR_Word Var_42;
+          MR_Word Var_48;
+          MR_Word Var_49;
+          MR_Word Spec_55;
+
+          Var_42 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[109])));
+          Var_41 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_42, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+          Pieces_31 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[105])), Var_41);
+          Var_48 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ArgTerm_9);
+          {
+            Spec_55 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, Spec_55, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_unconstrained_class\'/6"));
+            MR_hl_field(0, Spec_55, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(0, Spec_55, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+            MR_hl_field(0, Spec_55, 3) = ((MR_Box) (Var_48));
+            MR_hl_field(0, Spec_55, 4) = ((MR_Box) (Pieces_31));
+          }
+          {
+            Var_49 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, Var_49, 0) = ((MR_Box) (Spec_55));
+            MR_hl_field(0, Var_49, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+            *MaybeItemTypeClassInfo_12 = base;
+            MR_hl_field(0, base, 0) = ((MR_Box) (Var_49));
+          }
+        }
+        else
+        {
+          MR_Word MaybeVars_32;
+
+          parse_tree__parse_util__terms_to_distinct_vars_5_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), TVarSet_16, (MR_String) "a", (MR_String) "typeclass declaration", ArgTerms_30, &MaybeVars_32);
+          if (((MR_tag((MR_Word) MaybeVars_32)) == (MR_Integer) 0))
+            *MaybeItemTypeClassInfo_12 = (MR_Word) (MaybeVars_32);
+          else
+          {
+            MR_Word Vars_33 = ((MR_Word) ((MR_hl_field(1, MaybeVars_32, 0))));
+            MR_Word TypeClassInfo_34;
+
+            {
+              TypeClassInfo_34 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(0, TypeClassInfo_34, 0) = ((MR_Box) (ClassName_28));
+              MR_hl_field(0, TypeClassInfo_34, 1) = ((MR_Box) (Vars_33));
+              MR_hl_field(0, TypeClassInfo_34, 2) = ((MR_Box) ((MR_Unsigned) 0U));
+              MR_hl_field(0, TypeClassInfo_34, 3) = ((MR_Box) ((MR_Unsigned) 0U));
+              MR_hl_field(0, TypeClassInfo_34, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+              MR_hl_field(0, TypeClassInfo_34, 5) = ((MR_Box) (TVarSet_16));
+              MR_hl_field(0, TypeClassInfo_34, 6) = ((MR_Box) (Context_10));
+              MR_hl_field(0, TypeClassInfo_34, 7) = ((MR_Box) (SeqNum_11));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+              *MaybeItemTypeClassInfo_12 = base;
+              MR_hl_field(1, base, 0) = ((MR_Box) (TypeClassInfo_34));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+parse_tree__parse_class__parse_constrained_class_7_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_Word conv1_HeadVar__3_197;
+
+  conv1_HeadVar__3_197 = parse_tree__parse_class__IntroducedFrom__func__parse_constrained_class__251__1_2_f_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv1_HeadVar__3_197));
+  return wrapper_arg_2;
+}
+
+static MR_Box MR_CALL 
+parse_tree__parse_class__parse_constrained_class_7_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_Word conv0_HeadVar__3_194;
+
+  conv0_HeadVar__3_194 = parse_tree__parse_class__IntroducedFrom__func__parse_constrained_class__248__1_2_f_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__3_194));
+  return wrapper_arg_2;
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__parse_constrained_class_7_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = parse_tree__parse_class__IntroducedFrom__pred__parse_constrained_class__206__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__parse_constrained_class_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = parse_tree__parse_class__IntroducedFrom__pred__parse_constrained_class__204__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)));
+  return succeeded;
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_constrained_class_7_p_0(
+  MR_Word ModuleName_8,
+  MR_Word VarSet_9,
+  MR_Word NameTerm_10,
+  MR_Word ConstraintsTerm_11,
+  MR_Word Context_12,
+  MR_Word SeqNum_13,
+  MR_Word * MaybeItemTypeClass_14)
+{
+  MR_bool succeeded;
+  MR_Word TVarSet_15;
+  MR_Word MaybeParsedConstraints_16;
+
+  mercury__varset__coerce_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), VarSet_9, &TVarSet_15);
+  parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_115_117_112_101_114_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(VarSet_9, ConstraintsTerm_11, &MaybeParsedConstraints_16);
+  if (((MR_tag((MR_Word) MaybeParsedConstraints_16)) == (MR_Integer) 0))
+  {
+    MR_Word Specs_62 = ((MR_Word) ((MR_hl_field(0, MaybeParsedConstraints_16, 0))));
+
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      *MaybeItemTypeClass_14 = base;
+      MR_hl_field(0, base, 0) = ((MR_Box) (Specs_62));
+    }
+  }
+  else
+  {
+    MR_Word ConstraintList_17 = ((MR_Word) ((MR_hl_field(1, MaybeParsedConstraints_16, 0))));
+    MR_Word FunDeps_18 = ((MR_Word) ((MR_hl_field(1, MaybeParsedConstraints_16, 1))));
+    MR_Word MaybeItemTypeClass0_19;
+
+    parse_tree__parse_class__parse_unconstrained_class_6_p_0(ModuleName_8, TVarSet_15, NameTerm_10, Context_12, SeqNum_13, &MaybeItemTypeClass0_19);
+    if (((MR_tag((MR_Word) MaybeItemTypeClass0_19)) == (MR_Integer) 0))
+      *MaybeItemTypeClass_14 = MaybeItemTypeClass0_19;
+    else
+    {
+      MR_Word ItemTypeClass0_21 = ((MR_Word) ((MR_hl_field(1, MaybeItemTypeClass0_19, 0))));
+      MR_Word ConstraintVars_22;
+      MR_Word SortedConstraintVars_23;
+      MR_Word FunDepVars_24;
+      MR_Word SortedFunDepVars_25;
+      MR_Word Params_26;
+      MR_Word ConstraintNotInParams_28;
+      MR_Word FunDepNotInParams_30;
+      MR_Word ConstraintErrorContext_33;
+      MR_Word FunDepErrorContext_36;
+      MR_Word NotInParams_37;
+      MR_Word Var_63;
+      MR_Word Var_64;
+      MR_Word Var_199;
+      MR_Word Var_200;
+      MR_Word Var_201;
+      MR_Word Var_202;
+      MR_Word Var_205;
+      MR_Word Var_206;
+      MR_Word _ConstraintInParams_27;
+      MR_Word _FunDepInParams_29;
+
+      parse_tree__prog_type_scan__constraint_list_get_tvars_2_p_0(ConstraintList_17, &ConstraintVars_22);
+      mercury__list__sort_and_remove_dups_2_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), ConstraintVars_22, &SortedConstraintVars_23);
+      FunDepVars_24 = parse_tree__parse_class__tvars_in_fundeps_1_f_0(FunDeps_18);
+      mercury__list__sort_and_remove_dups_2_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), FunDepVars_24, &SortedFunDepVars_25);
+      Params_26 = ((MR_Word) ((MR_hl_field(0, ItemTypeClass0_21, 1))));
+      {
+        Var_63 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_63, 0) = ((MR_Box) (&parse_tree__parse_class_scalar_common_5[2]));
+        MR_hl_field(0, Var_63, 1) = ((MR_Box) (parse_tree__parse_class__parse_constrained_class_7_p_0_1));
+        MR_hl_field(0, Var_63, 2) = ((MR_Box) ((MR_Integer) 1));
+        MR_hl_field(0, Var_63, 3) = ((MR_Box) (Params_26));
+      }
+      mercury__list__filter_4_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Var_63, SortedConstraintVars_23, &_ConstraintInParams_27, &ConstraintNotInParams_28);
+      {
+        Var_64 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_64, 0) = ((MR_Box) (&parse_tree__parse_class_scalar_common_5[2]));
+        MR_hl_field(0, Var_64, 1) = ((MR_Box) (parse_tree__parse_class__parse_constrained_class_7_p_0_2));
+        MR_hl_field(0, Var_64, 2) = ((MR_Box) ((MR_Integer) 1));
+        MR_hl_field(0, Var_64, 3) = ((MR_Box) (Params_26));
+      }
+      mercury__list__filter_4_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Var_64, SortedFunDepVars_25, &_FunDepInParams_29, &FunDepNotInParams_30);
+      if ((ConstraintNotInParams_28 == (MR_Word) ((MR_Unsigned) 0U)))
+        ConstraintErrorContext_33 = (MR_Word) ((MR_Unsigned) 0U);
+      else
+      {
+        MR_Integer Var_65;
+
+        Var_65 = mercury__list__length_1_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0), ConstraintList_17);
+        succeeded = (Var_65 == (MR_Integer) 1);
+        if (succeeded)
+          ConstraintErrorContext_33 = (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[56]));
+        else
+          ConstraintErrorContext_33 = (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[58]));
+      }
+      if ((FunDepNotInParams_30 == (MR_Word) ((MR_Unsigned) 0U)))
+        FunDepErrorContext_36 = (MR_Word) ((MR_Unsigned) 0U);
+      else
+      {
+        MR_Integer Var_72;
+
+        Var_72 = mercury__list__length_1_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_fundep_0), FunDeps_18);
+        succeeded = (Var_72 == (MR_Integer) 1);
+        if (succeeded)
+          FunDepErrorContext_36 = (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[60]));
+        else
+          FunDepErrorContext_36 = (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[62]));
+      }
+      NotInParams_37 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), ConstraintNotInParams_28, FunDepNotInParams_30);
+      Var_206 = ((MR_Word) ((MR_hl_field(0, ItemTypeClass0_21, 0))));
+      Var_205 = ((MR_Word) ((MR_hl_field(0, ItemTypeClass0_21, 1))));
+      Var_202 = ((MR_Word) ((MR_hl_field(0, ItemTypeClass0_21, 4))));
+      Var_201 = ((MR_Word) ((MR_hl_field(0, ItemTypeClass0_21, 5))));
+      Var_200 = ((MR_Word) ((MR_hl_field(0, ItemTypeClass0_21, 6))));
+      Var_199 = ((MR_Word) ((MR_hl_field(0, ItemTypeClass0_21, 7))));
+      if ((NotInParams_37 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        MR_Word ItemTypeClass_38;
+        MR_Word Var_153 = Var_206;
+        MR_Word Var_154 = Var_205;
+        MR_Word Var_157 = Var_202;
+        MR_Word Var_158 = Var_201;
+        MR_Word Var_159 = Var_200;
+        MR_Word Var_160 = Var_199;
+
+        {
+          ItemTypeClass_38 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, ItemTypeClass_38, 0) = ((MR_Box) (Var_153));
+          MR_hl_field(0, ItemTypeClass_38, 1) = ((MR_Box) (Var_154));
+          MR_hl_field(0, ItemTypeClass_38, 2) = ((MR_Box) (ConstraintList_17));
+          MR_hl_field(0, ItemTypeClass_38, 3) = ((MR_Box) (FunDeps_18));
+          MR_hl_field(0, ItemTypeClass_38, 4) = ((MR_Box) (Var_157));
+          MR_hl_field(0, ItemTypeClass_38, 5) = ((MR_Box) (Var_158));
+          MR_hl_field(0, ItemTypeClass_38, 6) = ((MR_Box) (Var_159));
+          MR_hl_field(0, ItemTypeClass_38, 7) = ((MR_Box) (Var_160));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          *MaybeItemTypeClass_14 = base;
+          MR_hl_field(1, base, 0) = ((MR_Box) (ItemTypeClass_38));
+        }
+      }
+      else
+      {
+        MR_Integer ClassArity_42;
+        MR_Word ClassId_43;
+        MR_Word ClassTVarSet_44;
+        MR_Word ConstraintNotInParamsPieces_45;
+        MR_Word FunDepNotInParamsPieces_46;
+        MR_Word ConstraintPieces_47;
+        MR_Word FunDepPieces_48;
+        MR_Word ErrorTypeVarsPieces_49;
+        MR_Word NotParameterPieces_50;
+        MR_Word ConstrFunDepPieces_53;
+        MR_Word Pieces_60;
+        MR_Word Spec_61;
+        MR_Word Var_80;
+        MR_Word Var_81;
+        MR_Word Var_82;
+        MR_Word Var_123;
+        MR_Word Var_124;
+        MR_Word Var_125;
+        MR_Word Var_130;
+        MR_Word Var_131;
+        MR_Word Var_132;
+        MR_Word Var_133;
+        MR_Word Var_144;
+        MR_Integer Var_89;
+
+        Var_80 = parse_tree__prog_data__arg_list_arity_1_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Params_26);
+        ClassArity_42 = (MR_Integer) (Var_80);
+        {
+          ClassId_43 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, ClassId_43, 0) = ((MR_Box) (Var_206));
+          MR_hl_field(0, ClassId_43, 1) = ((MR_Box) (ClassArity_42));
+        }
+        ClassTVarSet_44 = ((MR_Word) ((MR_hl_field(0, ItemTypeClass0_21, 5))));
+        {
+          Var_81 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_81, 0) = ((MR_Box) (&parse_tree__parse_class_scalar_common_7[0]));
+          MR_hl_field(0, Var_81, 1) = ((MR_Box) (parse_tree__parse_class__parse_constrained_class_7_p_0_3));
+          MR_hl_field(0, Var_81, 2) = ((MR_Box) ((MR_Integer) 1));
+          MR_hl_field(0, Var_81, 3) = ((MR_Box) (ClassTVarSet_44));
+        }
+        ConstraintNotInParamsPieces_45 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), (MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_81, ConstraintNotInParams_28);
+        {
+          Var_82 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_82, 0) = ((MR_Box) (&parse_tree__parse_class_scalar_common_7[0]));
+          MR_hl_field(0, Var_82, 1) = ((MR_Box) (parse_tree__parse_class__parse_constrained_class_7_p_0_4));
+          MR_hl_field(0, Var_82, 2) = ((MR_Box) ((MR_Integer) 1));
+          MR_hl_field(0, Var_82, 3) = ((MR_Box) (ClassTVarSet_44));
+        }
+        FunDepNotInParamsPieces_46 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), (MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_82, FunDepNotInParams_30);
+        ConstraintPieces_47 = parse_tree__error_spec__piece_list_to_color_pieces_4_f_0((MR_Integer) 0, (MR_String) "and", (MR_Word) ((MR_Unsigned) 0U), ConstraintNotInParamsPieces_45);
+        FunDepPieces_48 = parse_tree__error_spec__piece_list_to_color_pieces_4_f_0((MR_Integer) 0, (MR_String) "and", (MR_Word) ((MR_Unsigned) 0U), FunDepNotInParamsPieces_46);
+        Var_89 = mercury__list__length_1_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), NotInParams_37);
+        succeeded = (Var_89 == (MR_Integer) 1);
+        if (succeeded)
+        {
+          MR_Word Var_97;
+
+          ErrorTypeVarsPieces_49 = (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[64]));
+          Var_97 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[68])));
+          NotParameterPieces_50 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[66])), Var_97);
+        }
+        else
+        {
+          MR_Word Var_109;
+
+          ErrorTypeVarsPieces_49 = (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[70]));
+          Var_109 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[74])));
+          NotParameterPieces_50 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[72])), Var_109);
+        }
+        if ((ConstraintNotInParams_28 == (MR_Word) ((MR_Unsigned) 0U)))
+          if ((FunDepNotInParams_30 == (MR_Word) ((MR_Unsigned) 0U)))
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140parse_tree.parse_class.parse_constrained_class\'/7", (MR_String) "no NotInParams");
+              return;
+            }
+          else
+            ConstrFunDepPieces_53 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), FunDepPieces_48, FunDepErrorContext_36);
+        else
+        if ((FunDepNotInParams_30 == (MR_Word) ((MR_Unsigned) 0U)))
+          ConstrFunDepPieces_53 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), ConstraintPieces_47, ConstraintErrorContext_33);
+        else
+        {
+          MR_Word Var_116;
+          MR_Word Var_117;
+          MR_Word Var_122;
+
+          Var_122 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), FunDepPieces_48, FunDepErrorContext_36);
+          Var_117 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[76])), Var_122);
+          Var_116 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), ConstraintErrorContext_33, Var_117);
+          ConstrFunDepPieces_53 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), ConstraintPieces_47, Var_116);
+        }
+        {
+          Var_133 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(3, Var_133, 0) = ((MR_Box) ((MR_Unsigned) 27U));
+          MR_hl_field(3, Var_133, 1) = ((MR_Box) (ClassId_43));
+        }
+        {
+          Var_132 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_132, 0) = ((MR_Box) (Var_133));
+          MR_hl_field(1, Var_132, 1) = ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[32])));
+        }
+        Var_131 = parse_tree__error_spec__color_as_subject_1_f_0(Var_132);
+        Var_130 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_131, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+        Var_125 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[78])), Var_130);
+        Var_124 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), NotParameterPieces_50, Var_125);
+        Var_123 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), ConstrFunDepPieces_53, Var_124);
+        Pieces_60 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), ErrorTypeVarsPieces_49, Var_123);
+        {
+          Spec_61 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Spec_61, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_constrained_class\'/7"));
+          MR_hl_field(0, Spec_61, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(0, Spec_61, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+          MR_hl_field(0, Spec_61, 3) = ((MR_Box) (Context_12));
+          MR_hl_field(0, Spec_61, 4) = ((MR_Box) (Pieces_60));
+        }
+        {
+          Var_144 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_144, 0) = ((MR_Box) (Spec_61));
+          MR_hl_field(0, Var_144, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          *MaybeItemTypeClass_14 = base;
+          MR_hl_field(0, base, 0) = ((MR_Box) (Var_144));
+        }
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__parse_class__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_115_117_112_101_114_99_108_97_115_115_95_99_111_110_115_116_114_97_105_110_116_115_95_95_91_49_93_95_48_4_p_0(
+  MR_Word VarSet_6,
+  MR_Word ConstraintsTerm_7,
+  MR_Word * Result_8)
+{
+  MR_Word Result0_9;
+  MR_Word HeadConstraintTerm_21;
+  MR_Word TailConstraintTerms_22;
+  MR_Word Var_23;
+
+  parse_tree__parse_util__conjunction_to_one_or_more_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ConstraintsTerm_7, &Var_23);
+  HeadConstraintTerm_21 = ((MR_Word) ((MR_hl_field(0, Var_23, 0))));
+  TailConstraintTerms_22 = ((MR_Word) ((MR_hl_field(0, Var_23, 1))));
+  parse_tree__parse_class__parse_arbitrary_constraint_list_4_p_0(VarSet_6, HeadConstraintTerm_21, TailConstraintTerms_22, &Result0_9);
+  if (((MR_tag((MR_Word) Result0_9)) == (MR_Integer) 0))
+  {
+    MR_Word Specs_18 = ((MR_Word) ((MR_hl_field(0, Result0_9, 0))));
+
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      *Result_8 = base;
+      MR_hl_field(0, base, 0) = ((MR_Box) (Specs_18));
+    }
+  }
+  else
+  {
+    MR_Word HeadArbConstraint_10;
+    MR_Word TailArbConstraints_11;
+    MR_Word ArbitraryConstraints_12;
+    MR_Word SimpleConstraints_13;
+    MR_Word FunDeps_14;
+    MR_Word BadConstraintSpecs_15;
+    MR_Word Var_19 = ((MR_Word) ((MR_hl_field(1, Result0_9, 0))));
+
+    HeadArbConstraint_10 = ((MR_Word) ((MR_hl_field(0, Var_19, 0))));
+    TailArbConstraints_11 = ((MR_Word) ((MR_hl_field(0, Var_19, 1))));
+    {
+      ArbitraryConstraints_12 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, ArbitraryConstraints_12, 0) = ((MR_Box) (HeadArbConstraint_10));
+      MR_hl_field(1, ArbitraryConstraints_12, 1) = ((MR_Box) (TailArbConstraints_11));
+    }
+    parse_tree__parse_class__collect_superclass_constraints_5_p_0(VarSet_6, ArbitraryConstraints_12, &SimpleConstraints_13, &FunDeps_14, &BadConstraintSpecs_15);
+    if ((BadConstraintSpecs_15 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        *Result_8 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (SimpleConstraints_13));
+        MR_hl_field(1, base, 1) = ((MR_Box) (FunDeps_14));
+      }
+    else
+    {
+      MR_Word HeadSpec_16 = ((MR_Word) ((MR_hl_field(1, BadConstraintSpecs_15, 0))));
+      MR_Word TailSpec_17 = ((MR_Word) ((MR_hl_field(1, BadConstraintSpecs_15, 1))));
+      MR_Word Var_20;
+
+      {
+        Var_20 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_20, 0) = ((MR_Box) (HeadSpec_16));
+        MR_hl_field(0, Var_20, 1) = ((MR_Box) (TailSpec_17));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        *Result_8 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (Var_20));
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_arbitrary_constraint_list_4_p_0(
+  MR_Word VarSet_5,
+  MR_Word HeadTerm_6,
+  MR_Word TailTerms_7,
+  MR_Word * Result_8)
+{
+  MR_bool succeeded;
+  MR_Word HeadResult_9;
+
+  parse_tree__parse_class__parse_arbitrary_constraint_3_p_0(VarSet_5, HeadTerm_6, &HeadResult_9);
+  if ((TailTerms_7 == (MR_Word) ((MR_Unsigned) 0U)))
+    if (((MR_tag((MR_Word) HeadResult_9)) == (MR_Integer) 0))
+      *Result_8 = (MR_Word) (HeadResult_9);
+    else
+    {
+      MR_Word HeadConstraint_10 = ((MR_Word) ((MR_hl_field(1, HeadResult_9, 0))));
+      MR_Word Var_17;
+
+      {
+        Var_17 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_17, 0) = ((MR_Box) (HeadConstraint_10));
+        MR_hl_field(0, Var_17, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *Result_8 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (Var_17));
+      }
+    }
+  else
+  {
+    MR_Word HeadTailTerm_12 = ((MR_Word) ((MR_hl_field(1, TailTerms_7, 0))));
+    MR_Word TailTailTerms_13 = ((MR_Word) ((MR_hl_field(1, TailTerms_7, 1))));
+    MR_Word TailResult_14;
+    MR_Word TailConstraints_15;
+    MR_Word HeadConstraint_23;
+
+    parse_tree__parse_class__parse_arbitrary_constraint_list_4_p_0(VarSet_5, HeadTailTerm_12, TailTailTerms_13, &TailResult_14);
+    succeeded = ((MR_tag((MR_Word) HeadResult_9)) == (MR_Integer) 1);
+    if (succeeded)
+    {
+      HeadConstraint_23 = ((MR_Word) ((MR_hl_field(1, HeadResult_9, 0))));
+      succeeded = ((MR_tag((MR_Word) TailResult_14)) == (MR_Integer) 1);
+      if (succeeded)
+        TailConstraints_15 = ((MR_Word) ((MR_hl_field(1, TailResult_14, 0))));
+    }
+    if (succeeded)
+    {
+      MR_Word Var_19;
+
+      Var_19 = mercury__one_or_more__cons_2_f_0((MR_Word) (&parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_arbitrary_constraint_0), ((MR_Box) (HeadConstraint_23)), TailConstraints_15);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *Result_8 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (Var_19));
+      }
+    }
+    else
+    {
+      MR_Word OoMSpecs_16;
+      MR_Word Var_20;
+      MR_Word Var_21;
+      MR_Word Specs_22;
+
+      Var_20 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) (&parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_arbitrary_constraint_0), HeadResult_9);
+      Var_21 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[11]), TailResult_14);
+      Specs_22 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), Var_20, Var_21);
+      mercury__one_or_more__det_list_to_one_or_more_2_p_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), Specs_22, &OoMSpecs_16);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        *Result_8 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (OoMSpecs_16));
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_arbitrary_constraint_3_p_0(
+  MR_Word VarSet_4,
+  MR_Word ConstraintTerm_5,
+  MR_Word * Result_6)
+{
+  MR_bool succeeded = ((MR_tag((MR_Word) ConstraintTerm_5)) == (MR_Integer) 0);
+  MR_Word LHSTerm_7;
+  MR_Word RHSTerm_8;
+  MR_Word Context_9;
+  MR_Word Var_39;
+  MR_String Var_40;
+  MR_Word Var_41;
+  MR_Word Var_42;
+  MR_Word Var_43;
+
+  if (succeeded)
+  {
+    Var_39 = ((MR_Word) ((MR_hl_field(0, ConstraintTerm_5, 0))));
+    Var_41 = ((MR_Word) ((MR_hl_field(0, ConstraintTerm_5, 1))));
+    Context_9 = ((MR_Word) ((MR_hl_field(0, ConstraintTerm_5, 2))));
+    succeeded = ((MR_tag((MR_Word) Var_39)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      Var_40 = ((MR_String) ((MR_hl_field(0, Var_39, 0))));
+      succeeded = (strcmp(Var_40, (MR_String) "=<") == 0);
+      if (succeeded)
+      {
+        succeeded = (Var_41 != (MR_Word) ((MR_Unsigned) 0U));
+        if (succeeded)
+        {
+          LHSTerm_7 = ((MR_Word) ((MR_hl_field(1, Var_41, 0))));
+          Var_42 = ((MR_Word) ((MR_hl_field(1, Var_41, 1))));
+          succeeded = (Var_42 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            RHSTerm_8 = ((MR_Word) ((MR_hl_field(1, Var_42, 0))));
+            Var_43 = ((MR_Word) ((MR_hl_field(1, Var_42, 1))));
+            succeeded = (Var_43 == (MR_Word) ((MR_Unsigned) 0U));
+          }
+        }
+      }
+    }
+  }
+  if (succeeded)
+  {
+    MR_Word MaybeInstVar_13;
+    MR_Word ContextPieces_20;
+    MR_Word MaybeInst_21;
+    MR_Word InstVar_22;
+    MR_Word Inst_23;
+
+    if (((MR_tag((MR_Word) LHSTerm_7)) == (MR_Integer) 0))
+    {
+      MR_Word LHSContext_16 = ((MR_Word) ((MR_hl_field(0, LHSTerm_7, 2))));
+      MR_String LHSTermStr_17;
+      MR_Word LHSPieces_18;
+      MR_Word LHSSpec_19;
+      MR_Word Var_48;
+      MR_Word Var_49;
+      MR_Word Var_50;
+      MR_Word Var_51;
+      MR_Word Var_53;
+      MR_Word Var_54;
+      MR_Word Var_68;
+
+      LHSTermStr_17 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), VarSet_4, LHSTerm_7);
+      {
+        Var_51 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(3, Var_51, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(3, Var_51, 1) = ((MR_Box) (LHSTermStr_17));
+      }
+      {
+        Var_50 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_50, 0) = ((MR_Box) (Var_51));
+        MR_hl_field(1, Var_50, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      Var_49 = parse_tree__error_spec__color_as_subject_1_f_0(Var_50);
+      Var_54 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[153])));
+      Var_53 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_54, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+      Var_48 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_49, Var_53);
+      LHSPieces_18 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[149])), Var_48);
+      {
+        LHSSpec_19 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, LHSSpec_19, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_arbitrary_constraint\'/3"));
+        MR_hl_field(0, LHSSpec_19, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(0, LHSSpec_19, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+        MR_hl_field(0, LHSSpec_19, 3) = ((MR_Box) (LHSContext_16));
+        MR_hl_field(0, LHSSpec_19, 4) = ((MR_Box) (LHSPieces_18));
+      }
+      {
+        Var_68 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_68, 0) = ((MR_Box) (LHSSpec_19));
+        MR_hl_field(0, Var_68, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        MaybeInstVar_13 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, MaybeInstVar_13, 0) = ((MR_Box) (Var_68));
+      }
+    }
+    else
+    {
+      MR_Word InstVar0_10 = ((MR_Word) ((MR_hl_field(1, LHSTerm_7, 0))));
+      MR_Word InstVar1_12;
+
+      mercury__term__coerce_var_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0), InstVar0_10, &InstVar1_12);
+      {
+        MaybeInstVar_13 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, MaybeInstVar_13, 0) = ((MR_Box) (InstVar1_12));
+      }
+    }
+    ContextPieces_20 = mercury__cord__from_list_1_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[157])));
+    parse_tree__parse_inst_mode_name__parse_inst_5_p_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_4[1])), VarSet_4, ContextPieces_20, RHSTerm_8, &MaybeInst_21);
+    succeeded = ((MR_tag((MR_Word) MaybeInstVar_13)) == (MR_Integer) 1);
+    if (succeeded)
+    {
+      InstVar_22 = ((MR_Word) ((MR_hl_field(1, MaybeInstVar_13, 0))));
+      succeeded = ((MR_tag((MR_Word) MaybeInst_21)) == (MR_Integer) 1);
+      if (succeeded)
+        Inst_23 = ((MR_Word) ((MR_hl_field(1, MaybeInst_21, 0))));
+    }
+    if (succeeded)
+    {
+      MR_Word Var_79;
+
+      {
+        Var_79 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_79, 0) = ((MR_Box) (InstVar_22));
+        MR_hl_field(1, Var_79, 1) = ((MR_Box) (Inst_23));
+        MR_hl_field(1, Var_79, 2) = ((MR_Box) (Context_9));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *Result_6 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (Var_79));
+      }
+    }
+    else
+    {
+      MR_Word Specs_24;
+      MR_Word OoMSpecs_25;
+      MR_Word Var_80;
+      MR_Word Var_81;
+
+      Var_80 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[3]), MaybeInstVar_13);
+      Var_81 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0), MaybeInst_21);
+      Specs_24 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), Var_80, Var_81);
+      mercury__one_or_more__det_list_to_one_or_more_2_p_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), Specs_24, &OoMSpecs_25);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        *Result_6 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (OoMSpecs_25));
+      }
+    }
+  }
+  else
+  {
+    MR_Word Result0_26;
+
+    succeeded = parse_tree__parse_class__parse_fundep_3_p_0(VarSet_4, ConstraintTerm_5, &Result0_26);
+    if (succeeded)
+      *Result_6 = Result0_26;
+    else
+    {
+      MR_Word ClassName_27;
+      MR_Word ArgTerms0_28;
+
+      succeeded = parse_tree__parse_sym_name__try_parse_sym_name_and_args_3_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ConstraintTerm_5, &ClassName_27, &ArgTerms0_28);
+      if (succeeded)
+      {
+        MR_Word ArgsResultContextPieces_29;
+        MR_Word ArgsResult_30;
+
+        ArgsResultContextPieces_29 = mercury__cord__singleton_1_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[158]))));
+        parse_tree__parse_type_name__parse_types_5_p_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_4[0])), VarSet_4, ArgsResultContextPieces_29, ArgTerms0_28, &ArgsResult_30);
+        if (((MR_tag((MR_Word) ArgsResult_30)) == (MR_Integer) 0))
+          *Result_6 = (MR_Word) (ArgsResult_30);
+        else
+        {
+          MR_Word ArgTypes_31 = ((MR_Word) ((MR_hl_field(1, ArgsResult_30, 0))));
+          MR_Word TVarSet_32;
+          MR_Word Constraint_33;
+          MR_Word VoGTypes_34;
+          MR_Word NonVarNonGroundTypes_35;
+          MR_Word Var_86;
+          MR_Word Context_116;
+
+          mercury__varset__coerce_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), VarSet_4, &TVarSet_32);
+          {
+            Constraint_33 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, Constraint_33, 0) = ((MR_Box) (ClassName_27));
+            MR_hl_field(0, Constraint_33, 1) = ((MR_Box) (ArgTypes_31));
+          }
+          parse_tree__parse_class__classify_types_as_var_ground_or_neither_4_p_0(TVarSet_32, ArgTypes_31, &VoGTypes_34, &NonVarNonGroundTypes_35);
+          Context_116 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ConstraintTerm_5);
+          {
+            Var_86 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, Var_86, 0) = ((MR_Box) (Constraint_33));
+            MR_hl_field(0, Var_86, 1) = ((MR_Box) (VoGTypes_34));
+            MR_hl_field(0, Var_86, 2) = ((MR_Box) (NonVarNonGroundTypes_35));
+            MR_hl_field(0, Var_86, 3) = ((MR_Box) (Context_116));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+            *Result_6 = base;
+            MR_hl_field(1, base, 0) = ((MR_Box) (Var_86));
+          }
+        }
+      }
+      else
+      {
+        MR_String ConstraintTermStr_36;
+        MR_Word Pieces_37;
+        MR_Word Spec_38;
+        MR_Word Var_91;
+        MR_Word Var_92;
+        MR_Word Var_97;
+        MR_Word Var_102;
+        MR_Word Var_103;
+        MR_Word Var_104;
+        MR_Word Var_105;
+        MR_Word Var_113;
+        MR_Word Var_114;
+
+        ConstraintTermStr_36 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), VarSet_4, ConstraintTerm_5);
+        Var_92 = parse_tree__error_spec__color_as_correct_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[160])));
+        {
+          Var_105 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(3, Var_105, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(3, Var_105, 1) = ((MR_Box) (ConstraintTermStr_36));
+        }
+        {
+          Var_104 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_104, 0) = ((MR_Box) (Var_105));
+          MR_hl_field(1, Var_104, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        Var_103 = parse_tree__error_spec__color_as_incorrect_1_f_0(Var_104);
+        Var_102 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_103, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+        Var_97 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[115])), Var_102);
+        Var_91 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_92, Var_97);
+        Pieces_37 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[111])), Var_91);
+        Var_113 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ConstraintTerm_5);
+        {
+          Spec_38 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Spec_38, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_arbitrary_constraint\'/3"));
+          MR_hl_field(0, Spec_38, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(0, Spec_38, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+          MR_hl_field(0, Spec_38, 3) = ((MR_Box) (Var_113));
+          MR_hl_field(0, Spec_38, 4) = ((MR_Box) (Pieces_37));
+        }
+        {
+          Var_114 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_114, 0) = ((MR_Box) (Spec_38));
+          MR_hl_field(0, Var_114, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          *Result_6 = base;
+          MR_hl_field(0, base, 0) = ((MR_Box) (Var_114));
+        }
+      }
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__parse_class__classify_types_as_var_ground_or_neither_4_p_0(
+  MR_Word TVarSet_1,
+  MR_Word HeadVar__2_2,
+  MR_Word * HeadVar__3_3,
+  MR_Word * HeadVar__4_4)
+{
+  MR_bool succeeded;
+
+  if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *HeadVar__3_3 = (MR_Word) ((MR_Unsigned) 0U);
+    *HeadVar__4_4 = (MR_Word) ((MR_Unsigned) 0U);
+  }
+  else
+  {
+    MR_Word Type0_7 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 0))));
+    MR_Word Types0_8 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 1))));
+    MR_Word Type1_11;
+    MR_Word Type_12;
+    MR_Word STATE_VARIABLE_VarOrGroundTypes_1_19;
+    MR_Word STATE_VARIABLE_NonVarNonGroundTypes_1_20;
+    MR_Word TVar_13;
+
+    parse_tree__parse_class__classify_types_as_var_ground_or_neither_4_p_0(TVarSet_1, Types0_8, &STATE_VARIABLE_VarOrGroundTypes_1_19, &STATE_VARIABLE_NonVarNonGroundTypes_1_20);
+    Type1_11 = parse_tree__prog_type_test__strip_kind_annotation_1_f_0(Type0_7);
+    Type_12 = (MR_Word) (Type1_11);
+    succeeded = ((MR_tag((MR_Word) Type_12)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      TVar_13 = ((MR_Word) ((MR_hl_field(0, Type_12, 0))));
+      {
+        MR_String TVarName_15;
+        MR_Word Var_22;
+
+        mercury__varset__lookup_name_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), TVarSet_1, TVar_13, &TVarName_15);
+        {
+          Var_22 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_22, 0) = ((MR_Box) (TVar_13));
+          MR_hl_field(0, Var_22, 1) = ((MR_Box) (TVarName_15));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          *HeadVar__3_3 = base;
+          MR_hl_field(1, base, 0) = ((MR_Box) (Var_22));
+          MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_VarOrGroundTypes_1_19));
+        }
+        *HeadVar__4_4 = STATE_VARIABLE_NonVarNonGroundTypes_1_20;
+      }
+    }
+    else
+    {
+      MR_Word GroundType_16;
+
+      succeeded = parse_tree__prog_type_test__type_is_ground_2_p_0(Type_12, &GroundType_16);
+      if (succeeded)
+      {
+        MR_Word Var_24;
+
+        {
+          Var_24 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(1, Var_24, 0) = ((MR_Box) (GroundType_16));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          *HeadVar__3_3 = base;
+          MR_hl_field(1, base, 0) = ((MR_Box) (Var_24));
+          MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_VarOrGroundTypes_1_19));
+        }
+        *HeadVar__4_4 = STATE_VARIABLE_NonVarNonGroundTypes_1_20;
+      }
+      else
+      {
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          *HeadVar__4_4 = base;
+          MR_hl_field(1, base, 0) = ((MR_Box) (Type_12));
+          MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_NonVarNonGroundTypes_1_20));
+        }
+        *HeadVar__3_3 = STATE_VARIABLE_VarOrGroundTypes_1_19;
+      }
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+parse_tree__parse_class__parse_fundep_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_Word conv0_HeadVar__3_86;
+
+  conv0_HeadVar__3_86 = parse_tree__parse_class__IntroducedFrom__func__parse_fundep__1091__1_2_f_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__3_86));
+  return wrapper_arg_2;
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class__parse_fundep_3_p_0(
+  MR_Word VarSet_4,
+  MR_Word Term_5,
+  MR_Word * Result_6)
+{
+  MR_bool succeeded = ((MR_tag((MR_Word) Term_5)) == (MR_Integer) 0);
+  MR_Word TypeCtorInfo_14_94;
+  MR_Word TypeCtorInfo_15_95;
+  MR_Word TypeCtorInfo_14_99;
+  MR_Word TypeCtorInfo_15_100;
+  MR_Word DomainTerm_7;
+  MR_Word RangeTerm_8;
+  MR_Word Context_9;
+  MR_Word MaybeDomain_10;
+  MR_Word MaybeRange_11;
+  MR_Word Var_25;
+  MR_String Var_26;
+  MR_Word Var_27;
+  MR_Word Var_28;
+  MR_Word Var_29;
+  MR_String Var_30;
+  MR_String Var_31;
+  MR_String Var_32;
+  MR_String Var_33;
+  MR_Word VarSet_91;
+  MR_Word TypesTerm_92;
+  MR_Word TypeTerms_93;
+  MR_Word VarSet_96;
+  MR_Word TypesTerm_97;
+  MR_Word TypeTerms_98;
+  MR_Word Domain_12;
+  MR_Word Range_13;
+
+  if (succeeded)
+  {
+    Var_25 = ((MR_Word) ((MR_hl_field(0, Term_5, 0))));
+    Var_27 = ((MR_Word) ((MR_hl_field(0, Term_5, 1))));
+    Context_9 = ((MR_Word) ((MR_hl_field(0, Term_5, 2))));
+    succeeded = ((MR_tag((MR_Word) Var_25)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      Var_26 = ((MR_String) ((MR_hl_field(0, Var_25, 0))));
+      succeeded = (strcmp(Var_26, (MR_String) "->") == 0);
+      if (succeeded)
+      {
+        succeeded = (Var_27 != (MR_Word) ((MR_Unsigned) 0U));
+        if (succeeded)
+        {
+          DomainTerm_7 = ((MR_Word) ((MR_hl_field(1, Var_27, 0))));
+          Var_28 = ((MR_Word) ((MR_hl_field(1, Var_27, 1))));
+          succeeded = (Var_28 != (MR_Word) ((MR_Unsigned) 0U));
+          if (succeeded)
+          {
+            RangeTerm_8 = ((MR_Word) ((MR_hl_field(1, Var_28, 0))));
+            Var_29 = ((MR_Word) ((MR_hl_field(1, Var_28, 1))));
+            succeeded = (Var_29 == (MR_Word) ((MR_Unsigned) 0U));
+            if (succeeded)
+            {
+              Var_30 = (MR_String) "a";
+              Var_31 = (MR_String) "functional dependency domain";
+              TypeCtorInfo_14_94 = (MR_Word) (&mercury__term__term__type_ctor_info_generic_0);
+              TypeCtorInfo_15_95 = (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0);
+              VarSet_91 = mercury__varset__coerce_1_f_0(TypeCtorInfo_14_94, TypeCtorInfo_15_95, VarSet_4);
+              TypesTerm_92 = mercury__term__coerce_1_f_0(TypeCtorInfo_14_94, TypeCtorInfo_15_95, DomainTerm_7);
+              parse_tree__parse_util__conjunction_to_list_2_p_0(TypeCtorInfo_15_95, TypesTerm_92, &TypeTerms_93);
+              parse_tree__parse_util__terms_to_one_or_more_distinct_vars_6_p_0(TypeCtorInfo_15_95, VarSet_91, Var_30, Var_31, TypesTerm_92, TypeTerms_93, &MaybeDomain_10);
+              Var_32 = (MR_String) "a";
+              Var_33 = (MR_String) "functional dependency range";
+              TypeCtorInfo_14_99 = (MR_Word) (&mercury__term__term__type_ctor_info_generic_0);
+              TypeCtorInfo_15_100 = (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0);
+              VarSet_96 = mercury__varset__coerce_1_f_0(TypeCtorInfo_14_99, TypeCtorInfo_15_100, VarSet_4);
+              TypesTerm_97 = mercury__term__coerce_1_f_0(TypeCtorInfo_14_99, TypeCtorInfo_15_100, RangeTerm_8);
+              parse_tree__parse_util__conjunction_to_list_2_p_0(TypeCtorInfo_15_100, TypesTerm_97, &TypeTerms_98);
+              parse_tree__parse_util__terms_to_one_or_more_distinct_vars_6_p_0(TypeCtorInfo_15_100, VarSet_96, Var_32, Var_33, TypesTerm_97, TypeTerms_98, &MaybeRange_11);
+              succeeded = ((MR_tag((MR_Word) MaybeDomain_10)) == (MR_Integer) 1);
+              if (succeeded)
+              {
+                Domain_12 = ((MR_Word) ((MR_hl_field(1, MaybeDomain_10, 0))));
+                succeeded = ((MR_tag((MR_Word) MaybeRange_11)) == (MR_Integer) 1);
+                if (succeeded)
+                  Range_13 = ((MR_Word) ((MR_hl_field(1, MaybeRange_11, 0))));
+              }
+              if (succeeded)
+              {
+                MR_Word DomainSet_14;
+                MR_Word RangeSet_15;
+                MR_Word CommonTypeVarSet_16;
+                MR_Word Var_34;
+                MR_Word Var_35;
+
+                Var_34 = mercury__one_or_more__one_or_more_to_list_1_f_1((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Domain_12);
+                mercury__set__list_to_set_2_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Var_34, &DomainSet_14);
+                Var_35 = mercury__one_or_more__one_or_more_to_list_1_f_1((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Range_13);
+                mercury__set__list_to_set_2_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Var_35, &RangeSet_15);
+                mercury__set__intersect_3_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), DomainSet_14, RangeSet_15, &CommonTypeVarSet_16);
+                succeeded = mercury__set__is_non_empty_1_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), CommonTypeVarSet_16);
+                if (succeeded)
+                {
+                  MR_Word TVarSet_17;
+                  MR_Word CommonTypeVars_18;
+                  MR_Word CommonTypeVarPieces_19;
+                  MR_Word CommonTypeVarsPieces_20;
+                  MR_Word Pieces_21;
+                  MR_Word Spec_22;
+                  MR_Word Var_36;
+                  MR_Word Var_40;
+                  MR_Word Var_43;
+                  MR_Word Var_44;
+                  MR_String Var_45;
+                  MR_Word Var_49;
+                  MR_Word Var_50;
+                  MR_Word Var_51;
+                  MR_Word Var_52;
+                  MR_String Var_53;
+                  MR_Word Var_60;
+                  MR_Word Var_61;
+                  MR_Word Var_75;
+                  MR_Box conv1_Var_45;
+                  MR_Box conv2_Var_53;
+
+                  mercury__varset__coerce_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), VarSet_4, &TVarSet_17);
+                  mercury__set__to_sorted_list_2_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), CommonTypeVarSet_16, &CommonTypeVars_18);
+                  {
+                    Var_36 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(0, Var_36, 0) = ((MR_Box) (&parse_tree__parse_class_scalar_common_7[0]));
+                    MR_hl_field(0, Var_36, 1) = ((MR_Box) (parse_tree__parse_class__parse_fundep_3_p_0_1));
+                    MR_hl_field(0, Var_36, 2) = ((MR_Box) ((MR_Integer) 1));
+                    MR_hl_field(0, Var_36, 3) = ((MR_Box) (TVarSet_17));
+                  }
+                  CommonTypeVarPieces_19 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), (MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_36, CommonTypeVars_18);
+                  CommonTypeVarsPieces_20 = parse_tree__error_spec__piece_list_to_color_pieces_4_f_0((MR_Integer) 0, (MR_String) "and", (MR_Word) ((MR_Unsigned) 0U), CommonTypeVarPieces_19);
+                  conv1_Var_45 = parse_tree__error_spec__choose_number_3_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), CommonTypeVars_18, ((MR_Box) ((MR_String) "variable")), ((MR_Box) ((MR_String) "variables")));
+                  Var_45 = ((MR_String) (conv1_Var_45));
+                  {
+                    Var_44 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(3, Var_44, 0) = ((MR_Box) ((MR_Unsigned) 9U));
+                    MR_hl_field(3, Var_44, 1) = ((MR_Box) (Var_45));
+                  }
+                  {
+                    Var_43 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_43, 0) = ((MR_Box) (Var_44));
+                    MR_hl_field(1, Var_43, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                  }
+                  {
+                    Var_40 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_40, 0) = ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[161])));
+                    MR_hl_field(1, Var_40, 1) = ((MR_Box) (Var_43));
+                  }
+                  conv2_Var_53 = parse_tree__error_spec__choose_number_3_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), CommonTypeVars_18, ((MR_Box) ((MR_String) "occurs")), ((MR_Box) ((MR_String) "occur")));
+                  Var_53 = ((MR_String) (conv2_Var_53));
+                  {
+                    Var_52 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(3, Var_52, 0) = ((MR_Box) ((MR_Unsigned) 9U));
+                    MR_hl_field(3, Var_52, 1) = ((MR_Box) (Var_53));
+                  }
+                  {
+                    Var_51 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_51, 0) = ((MR_Box) (Var_52));
+                    MR_hl_field(1, Var_51, 1) = ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[163])));
+                  }
+                  Var_61 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[165])));
+                  Var_60 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_61, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[167])));
+                  Var_50 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_51, Var_60);
+                  Var_49 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), CommonTypeVarsPieces_20, Var_50);
+                  Pieces_21 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_40, Var_49);
+                  {
+                    Spec_22 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(0, Spec_22, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_fundep\'/3"));
+                    MR_hl_field(0, Spec_22, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                    MR_hl_field(0, Spec_22, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+                    MR_hl_field(0, Spec_22, 3) = ((MR_Box) (Context_9));
+                    MR_hl_field(0, Spec_22, 4) = ((MR_Box) (Pieces_21));
+                  }
+                  {
+                    Var_75 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(0, Var_75, 0) = ((MR_Box) (Spec_22));
+                    MR_hl_field(0, Var_75, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                  }
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+                    *Result_6 = base;
+                    MR_hl_field(0, base, 0) = ((MR_Box) (Var_75));
+                  }
+                }
+                else
+                {
+                  MR_Word Var_77;
+                  MR_Word Var_78;
+
+                  {
+                    Var_78 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(0, Var_78, 0) = ((MR_Box) (Domain_12));
+                    MR_hl_field(0, Var_78, 1) = ((MR_Box) (Range_13));
+                  }
+                  {
+                    Var_77 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(2, Var_77, 0) = ((MR_Box) (Var_78));
+                    MR_hl_field(2, Var_77, 1) = ((MR_Box) (Context_9));
+                  }
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                    *Result_6 = base;
+                    MR_hl_field(1, base, 0) = ((MR_Box) (Var_77));
+                  }
+                }
+              }
+              else
+              {
+                MR_Word Specs_23;
+                MR_Word OoMSpecs_24;
+                MR_Word Var_79;
+                MR_Word Var_80;
+
+                Var_79 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[12]), MaybeDomain_10);
+                Var_80 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[12]), MaybeRange_11);
+                Specs_23 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), Var_79, Var_80);
+                mercury__one_or_more__det_list_to_one_or_more_2_p_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_err_spec_0), Specs_23, &OoMSpecs_24);
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+                  *Result_6 = base;
+                  MR_hl_field(0, base, 0) = ((MR_Box) (OoMSpecs_24));
+                }
+              }
+              succeeded = MR_TRUE;
+            }
+          }
+        }
+      }
+    }
+  }
+  return succeeded;
+}
+
+static MR_Box MR_CALL 
+parse_tree__parse_class__collect_superclass_constraints_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv0_HeadVar__4_4;
+
+  conv0_HeadVar__4_4 = parse_tree__parse_tree_out_type__mercury_type_to_string_3_f_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__4_4));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+parse_tree__parse_class__collect_superclass_constraints_5_p_0(
+  MR_Word VarSet_1,
+  MR_Word HeadVar__2_2,
+  MR_Word * HeadVar__3_3,
+  MR_Word * HeadVar__4_4,
+  MR_Word * HeadVar__5_5)
+{
+  if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *HeadVar__3_3 = (MR_Word) ((MR_Unsigned) 0U);
+    *HeadVar__4_4 = (MR_Word) ((MR_Unsigned) 0U);
+    *HeadVar__5_5 = (MR_Word) ((MR_Unsigned) 0U);
+  }
+  else
+  {
+    MR_Word Constraint_8 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 0))));
+    MR_Word Constraints_9 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 1))));
+    MR_Word STATE_VARIABLE_SimpleConstraints_1_40;
+    MR_Word STATE_VARIABLE_FunDeps_1_41;
+    MR_Word STATE_VARIABLE_Specs_1_42;
+
+    parse_tree__parse_class__collect_superclass_constraints_5_p_0(VarSet_1, Constraints_9, &STATE_VARIABLE_SimpleConstraints_1_40, &STATE_VARIABLE_FunDeps_1_41, &STATE_VARIABLE_Specs_1_42);
+    switch (MR_tag((MR_Word) Constraint_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word TypeConstraint_13 = ((MR_Word) ((MR_hl_field(0, Constraint_8, 0))));
+          MR_Word NonVarNonGroundTypes_15 = ((MR_Word) ((MR_hl_field(0, Constraint_8, 2))));
+          MR_Word Context_16 = ((MR_Word) ((MR_hl_field(0, Constraint_8, 3))));
+
+          if ((NonVarNonGroundTypes_15 == (MR_Word) ((MR_Unsigned) 0U)))
+          {
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              *HeadVar__3_3 = base;
+              MR_hl_field(1, base, 0) = ((MR_Box) (TypeConstraint_13));
+              MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_SimpleConstraints_1_40));
+            }
+            *HeadVar__5_5 = STATE_VARIABLE_Specs_1_42;
+          }
+          else
+          {
+            MR_Word TVarSet_19;
+            MR_Word SuperClassName_20;
+            MR_Word BadTypeStrs_22;
+            MR_Word BadTypesPieces_23;
+            MR_Word BadTypeMsgPieces_25;
+            MR_Word Pieces_29;
+            MR_Word Spec_30;
+            MR_Word Var_44;
+            MR_Word Var_81;
+            MR_Word Var_82;
+            MR_Word Var_83;
+            MR_Word Var_84;
+            MR_Word Var_89;
+            MR_Word Var_147;
+
+            mercury__varset__coerce_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), VarSet_1, &TVarSet_19);
+            SuperClassName_20 = ((MR_Word) ((MR_hl_field(0, TypeConstraint_13, 0))));
+            {
+              Var_44 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(0, Var_44, 0) = ((MR_Box) (&parse_tree__parse_class_scalar_common_6[0]));
+              MR_hl_field(0, Var_44, 1) = ((MR_Box) (parse_tree__parse_class__collect_superclass_constraints_5_p_0_1));
+              MR_hl_field(0, Var_44, 2) = ((MR_Box) ((MR_Integer) 2));
+              MR_hl_field(0, Var_44, 3) = ((MR_Box) (TVarSet_19));
+              MR_hl_field(0, Var_44, 4) = ((MR_Box) ((MR_Integer) 0));
+            }
+            BadTypeStrs_22 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_44, NonVarNonGroundTypes_15);
+            BadTypesPieces_23 = parse_tree__error_spec__quote_list_to_color_pieces_4_f_0((MR_Integer) 0, (MR_String) "and", (MR_Word) ((MR_Unsigned) 0U), BadTypeStrs_22);
+            Var_147 = ((MR_Word) ((MR_hl_field(1, NonVarNonGroundTypes_15, 1))));
+            if ((Var_147 == (MR_Word) ((MR_Unsigned) 0U)))
+            {
+              MR_Word Var_54;
+              MR_Word Var_55;
+
+              Var_55 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[88])));
+              Var_54 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), BadTypesPieces_23, Var_55);
+              BadTypeMsgPieces_25 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[86])), Var_54);
+            }
+            else
+            {
+              MR_Word Var_65;
+              MR_Word Var_66;
+
+              Var_66 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[92])));
+              Var_65 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), BadTypesPieces_23, Var_66);
+              BadTypeMsgPieces_25 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[90])), Var_65);
+            }
+            {
+              Var_84 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, Var_84, 0) = ((MR_Box) ((MR_Unsigned) 12U));
+              MR_hl_field(3, Var_84, 1) = ((MR_Box) (SuperClassName_20));
+            }
+            {
+              Var_83 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, Var_83, 0) = ((MR_Box) (Var_84));
+              MR_hl_field(1, Var_83, 1) = ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[100])));
+            }
+            Var_82 = parse_tree__error_spec__color_as_subject_1_f_0(Var_83);
+            Var_89 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[102])), BadTypeMsgPieces_25);
+            Var_81 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_82, Var_89);
+            Pieces_29 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[98])), Var_81);
+            {
+              Spec_30 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(0, Spec_30, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.collect_superclass_constraints\'/5"));
+              MR_hl_field(0, Spec_30, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+              MR_hl_field(0, Spec_30, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+              MR_hl_field(0, Spec_30, 3) = ((MR_Box) (Context_16));
+              MR_hl_field(0, Spec_30, 4) = ((MR_Box) (Pieces_29));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              *HeadVar__5_5 = base;
+              MR_hl_field(1, base, 0) = ((MR_Box) (Spec_30));
+              MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_1_42));
+            }
+            *HeadVar__3_3 = STATE_VARIABLE_SimpleConstraints_1_40;
+          }
+          *HeadVar__4_4 = STATE_VARIABLE_FunDeps_1_41;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word InstVar_31 = ((MR_Word) ((MR_hl_field(1, Constraint_8, 0))));
+          MR_Word Inst_32 = ((MR_Word) ((MR_hl_field(1, Constraint_8, 1))));
+          MR_Word InstVarSet_33;
+          MR_String InstConstraintStr_34;
+          MR_Word Var_99;
+          MR_Word Var_104;
+          MR_Word Var_105;
+          MR_Word Var_110;
+          MR_Word Var_115;
+          MR_Word Var_116;
+          MR_Word Var_117;
+          MR_Word Var_118;
+          MR_Word Context_131 = ((MR_Word) ((MR_hl_field(1, Constraint_8, 2))));
+          MR_Word Pieces_132;
+          MR_Word Spec_133;
+
+          mercury__varset__coerce_2_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0), VarSet_1, &InstVarSet_33);
+          Var_99 = mercury__set__make_singleton_set_1_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[3]), ((MR_Box) (InstVar_31)));
+          InstConstraintStr_34 = parse_tree__parse_tree_out_inst__mercury_constrained_inst_vars_to_string_4_f_0((MR_Integer) 0, InstVarSet_33, Var_99, Inst_32);
+          Var_105 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[82])));
+          {
+            Var_118 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(3, Var_118, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(3, Var_118, 1) = ((MR_Box) (InstConstraintStr_34));
+          }
+          {
+            Var_117 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_117, 0) = ((MR_Box) (Var_118));
+            MR_hl_field(1, Var_117, 1) = ((MR_Box) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[32])));
+          }
+          Var_116 = parse_tree__error_spec__color_as_subject_1_f_0(Var_117);
+          Var_115 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_116, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+          Var_110 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[84])), Var_115);
+          Var_104 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_105, Var_110);
+          Pieces_132 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[80])), Var_104);
+          {
+            Spec_133 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, Spec_133, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.collect_superclass_constraints\'/5"));
+            MR_hl_field(0, Spec_133, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(0, Spec_133, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+            MR_hl_field(0, Spec_133, 3) = ((MR_Box) (Context_131));
+            MR_hl_field(0, Spec_133, 4) = ((MR_Box) (Pieces_132));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            *HeadVar__5_5 = base;
+            MR_hl_field(1, base, 0) = ((MR_Box) (Spec_133));
+            MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_1_42));
+          }
+          *HeadVar__3_3 = STATE_VARIABLE_SimpleConstraints_1_40;
+          *HeadVar__4_4 = STATE_VARIABLE_FunDeps_1_41;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word FunDep_35 = ((MR_Word) ((MR_hl_field(2, Constraint_8, 0))));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            *HeadVar__4_4 = base;
+            MR_hl_field(1, base, 0) = ((MR_Box) (FunDep_35));
+            MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_FunDeps_1_41));
+          }
+          *HeadVar__3_3 = STATE_VARIABLE_SimpleConstraints_1_40;
+          *HeadVar__5_5 = STATE_VARIABLE_Specs_1_42;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_unconstrained_class_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_HeadVar__2_68;
+
+  parse_tree__parse_class__IntroducedFrom__pred__parse_unconstrained_class__411__1_2_p_0(((MR_Word) (wrapper_arg_1)), &conv0_HeadVar__2_68);
+  *wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_68));
+}
+
+static void MR_CALL 
+parse_tree__parse_class__parse_unconstrained_class_6_p_0(
+  MR_Word ModuleName_7,
+  MR_Word TVarSet_8,
+  MR_Word NameTerm_9,
+  MR_Word Context_10,
+  MR_Word SeqNum_11,
+  MR_Word * MaybeTypeClassInfo_12)
+{
+  MR_bool succeeded;
+  MR_Word ContextPieces_13;
+  MR_Word VarSet_14;
+  MR_Word Spec_15;
+
+  ContextPieces_13 = mercury__cord__singleton_1_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), ((MR_Box) (MR_mkword(3, &parse_tree__parse_class_scalar_common_1[103]))));
+  mercury__varset__coerce_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), (MR_Word) (&mercury__term__term__type_ctor_info_generic_0), TVarSet_8, &VarSet_14);
+  succeeded = parse_tree__parse_item__is_the_name_a_variable_4_p_0(VarSet_14, (MR_Word) ((MR_Unsigned) 0U), NameTerm_9, &Spec_15);
+  if (succeeded)
+  {
+    MR_Word Var_30;
+
+    {
+      Var_30 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_30, 0) = ((MR_Box) (Spec_15));
+      MR_hl_field(0, Var_30, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      *MaybeTypeClassInfo_12 = base;
+      MR_hl_field(0, base, 0) = ((MR_Box) (Var_30));
+    }
+  }
+  else
+  {
+    MR_Word MaybeClassName_16;
+
+    parse_tree__parse_sym_name__parse_implicitly_qualified_sym_name_and_args_5_p_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), ModuleName_7, VarSet_14, ContextPieces_13, NameTerm_9, &MaybeClassName_16);
+    if (((MR_tag((MR_Word) MaybeClassName_16)) == (MR_Integer) 0))
+    {
+      MR_Word Specs_63 = ((MR_Word) ((MR_hl_field(0, MaybeClassName_16, 0))));
+
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        *MaybeTypeClassInfo_12 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (Specs_63));
+      }
+    }
+    else
+    {
+      MR_Word ClassName_17 = ((MR_Word) ((MR_hl_field(1, MaybeClassName_16, 0))));
+      MR_Word ArgTerms0_18 = ((MR_Word) ((MR_hl_field(1, MaybeClassName_16, 1))));
+      MR_Word ArgTerms_19;
+
+      mercury__list__map_3_p_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[4]), (MR_Word) (&parse_tree__parse_class_scalar_common_1[5]), (MR_Word) (&parse_tree__parse_class_scalar_common_3[3]), ArgTerms0_18, &ArgTerms_19);
+      if ((ArgTerms_19 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        MR_Word Pieces_20;
+        MR_Word Var_37;
+        MR_Word Var_38;
+        MR_Word Var_52;
+        MR_Word Var_53;
+        MR_Word Spec_60;
+
+        Var_38 = parse_tree__error_spec__color_as_incorrect_1_f_0((MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[109])));
+        Var_37 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_38, (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[35])));
+        Pieces_20 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), (MR_Word) (MR_mkword(1, &parse_tree__parse_class_scalar_common_1[105])), Var_37);
+        Var_52 = mercury__term__get_term_context_1_f_0((MR_Word) (&mercury__term__term__type_ctor_info_generic_0), NameTerm_9);
+        {
+          Spec_60 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Spec_60, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.parse_class.parse_unconstrained_class\'/6"));
+          MR_hl_field(0, Spec_60, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          MR_hl_field(0, Spec_60, 2) = ((MR_Box) ((MR_Unsigned) 28U));
+          MR_hl_field(0, Spec_60, 3) = ((MR_Box) (Var_52));
+          MR_hl_field(0, Spec_60, 4) = ((MR_Box) (Pieces_20));
+        }
+        {
+          Var_53 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_53, 0) = ((MR_Box) (Spec_60));
+          MR_hl_field(0, Var_53, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+          *MaybeTypeClassInfo_12 = base;
+          MR_hl_field(0, base, 0) = ((MR_Box) (Var_53));
+        }
+      }
+      else
+      {
+        MR_Word MaybeVars_23;
+
+        parse_tree__parse_util__terms_to_distinct_vars_5_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0), TVarSet_8, (MR_String) "a", (MR_String) "typeclass declaration", ArgTerms_19, &MaybeVars_23);
+        if (((MR_tag((MR_Word) MaybeVars_23)) == (MR_Integer) 0))
+          *MaybeTypeClassInfo_12 = (MR_Word) (MaybeVars_23);
+        else
+        {
+          MR_Word Vars_24 = ((MR_Word) ((MR_hl_field(1, MaybeVars_23, 0))));
+          MR_Word TypeClassInfo_25;
+
+          {
+            TypeClassInfo_25 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, TypeClassInfo_25, 0) = ((MR_Box) (ClassName_17));
+            MR_hl_field(0, TypeClassInfo_25, 1) = ((MR_Box) (Vars_24));
+            MR_hl_field(0, TypeClassInfo_25, 2) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(0, TypeClassInfo_25, 3) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(0, TypeClassInfo_25, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(0, TypeClassInfo_25, 5) = ((MR_Box) (TVarSet_8));
+            MR_hl_field(0, TypeClassInfo_25, 6) = ((MR_Box) (Context_10));
+            MR_hl_field(0, TypeClassInfo_25, 7) = ((MR_Box) (SeqNum_11));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+            *MaybeTypeClassInfo_12 = base;
+            MR_hl_field(1, base, 0) = ((MR_Box) (TypeClassInfo_25));
+          }
+        }
+      }
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+parse_tree__parse_class__tvars_in_fundeps_1_f_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_Word conv0_HeadVar__2_2;
+
+  conv0_HeadVar__2_2 = parse_tree__parse_class__tvars_in_fundep_1_f_0(((MR_Word) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+static MR_Word MR_CALL 
+parse_tree__parse_class__tvars_in_fundeps_1_f_0(
+  MR_Word FunDeps_3)
+{
+  MR_Word HeadVar__2_2;
+  MR_Word Var_4;
+
+  Var_4 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_fundep_0), (MR_Word) (&parse_tree__parse_class_scalar_common_1[2]), (MR_Word) (&parse_tree__parse_class_scalar_common_3[2]), FunDeps_3);
+  HeadVar__2_2 = mercury__list__condense_1_f_0((MR_Word) (&parse_tree__parse_class_scalar_common_1[1]), Var_4);
+  return HeadVar__2_2;
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class____Unify____arbitrary_constraint_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = parse_tree__parse_class____Unify____arbitrary_constraint_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+parse_tree__parse_class____Compare____arbitrary_constraint_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  parse_tree__parse_class____Compare____arbitrary_constraint_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class____Unify____arbitrary_constraints_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = parse_tree__parse_class____Unify____arbitrary_constraints_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+parse_tree__parse_class____Compare____arbitrary_constraints_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  parse_tree__parse_class____Compare____arbitrary_constraints_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+parse_tree__parse_class____Unify____maybe_class_and_inst_constraints_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = parse_tree__parse_class____Unify____maybe_class_and_inst_constraints_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+parse_tree__parse_class____Compare____maybe_class_and_inst_constraints_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  parse_tree__parse_class____Compare____maybe_class_and_inst_constraints_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+void mercury__parse_tree__parse_class__init(void)
+{
+}
+
+void mercury__parse_tree__parse_class__init_type_tables(void)
+{
+  static MR_bool initialised = MR_FALSE;
+  if (initialised) return;
+  initialised = MR_TRUE;
+
+  MR_register_type_ctor_info(&parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_arbitrary_constraint_0);
+  MR_register_type_ctor_info(&parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_arbitrary_constraints_0);
+  MR_register_type_ctor_info(&parse_tree__parse_class__parse_tree__parse_class__type_ctor_info_maybe_class_and_inst_constraints_0);
+}
+
+void mercury__parse_tree__parse_class__init_debugger(void)
+{
+  MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__parse_tree__parse_class__grade_check(void)
+{
+  return &MR_GRADE_VAR;
+}
+
+// :- end_module parse_tree.parse_class.

@@ -1,0 +1,405 @@
+:- module parse_tree.prog_item_type.
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module one_or_more.
+:- use_module pair.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item_inst_mode.
+:- type abstract_solver_type_status
+    --->    abstract_solver_type_exported 
+    ;       abstract_solver_type_private .
+:- type c_j_cs_defns == parse_tree.prog_item_type.c_java_csharp(list.list(parse_tree.prog_item_type.item_type_defn_info_foreign)).
+:- type c_j_cs_enum_repn == parse_tree.prog_item_type.c_java_csharp(maybe.maybe(parse_tree.prog_item_type.enum_foreign_repn)).
+:- type c_j_cs_enums == parse_tree.prog_item_type.c_java_csharp(list.list(parse_tree.prog_item_type.item_foreign_enum_info)).
+:- type c_j_cs_maybe_defn == parse_tree.prog_item_type.c_java_csharp(maybe.maybe(parse_tree.prog_item_type.item_type_defn_info_foreign)).
+:- type c_j_cs_maybe_defn_or_enum == parse_tree.prog_item_type.c_java_csharp(maybe.maybe(parse_tree.prog_item_type.foreign_type_or_enum)).
+:- type c_j_cs_maybe_enum == parse_tree.prog_item_type.c_java_csharp(maybe.maybe(parse_tree.prog_item_type.item_foreign_enum_info)).
+:- type c_j_cs_repn == parse_tree.prog_item_type.c_java_csharp(maybe.maybe(parse_tree.prog_item_type.foreign_type_repn)).
+:- type c_java_csharp(T)
+    --->    c_java_csharp(
+                 T,
+                 T,
+                 T
+            ).
+:- type c_repns(T)
+    --->    c_repns_same(
+                 (parse_tree.prog_item_type).c_repn_same :: T
+            )
+    ;       c_repns_64_32(
+                 (parse_tree.prog_item_type).c_repn_all_64 :: T,
+                 (parse_tree.prog_item_type).c_repn_all_32 :: T
+            )
+    ;       c_repns_all(
+                 (parse_tree.prog_item_type).c_repn_64_nospf_noda :: T,
+                 (parse_tree.prog_item_type).c_repn_64_nospf_da :: T,
+                 (parse_tree.prog_item_type).c_repn_32_nospf_noda :: T,
+                 (parse_tree.prog_item_type).c_repn_32_nospf_da :: T,
+                 (parse_tree.prog_item_type).c_repn_32_spf_noda :: T,
+                 (parse_tree.prog_item_type).c_repn_32_spf_da :: T
+            ).
+:- type cell_local_sectag
+    --->    cell_local_sectag(
+                 (parse_tree.prog_item_type).clss_sectag :: uint,
+                 (parse_tree.prog_item_type).clss_sectag_size :: uint8
+            ).
+:- type cell_remote_sectag
+    --->    cell_remote_no_sectag 
+    ;       cell_remote_sectag(
+                 (parse_tree.prog_item_type).crss_sectag :: uint,
+                 (parse_tree.prog_item_type).crss_sectag_size :: parse_tree.prog_item_type.rsectag_word_or_size
+            ).
+:- type checked_foreign_enum
+    --->    checked_foreign_enum(
+                 parse_tree.prog_item_type.item_foreign_enum_info,
+                 one_or_more.one_or_more(string)
+            ).
+:- type constant_repn
+    --->    constant_repn(
+                 (parse_tree.prog_item_type).cr_sectag :: uint,
+                 (parse_tree.prog_item_type).cr_sectag_size :: parse_tree.prog_item_type.lsectag_word_or_size
+            ).
+:- type direct_dummy_repn
+    --->    direct_dummy_repn(
+                 (parse_tree.prog_item_type).dummy_functor_name :: string,
+                 (parse_tree.prog_item_type).dummy_foreign :: parse_tree.prog_item_type.c_j_cs_enum_repn
+            ).
+:- type du_repn
+    --->    dur_direct_dummy(
+                 parse_tree.prog_item_type.direct_dummy_repn
+            )
+    ;       dur_enum(
+                 parse_tree.prog_item_type.enum_repn
+            )
+    ;       dur_notag(
+                 parse_tree.prog_item_type.notag_repn
+            )
+    ;       dur_gen_only_functor(
+                 parse_tree.prog_item_type.gen_du_only_functor_repn
+            )
+    ;       dur_gen_more_functors(
+                 parse_tree.prog_item_type.gen_du_more_functors_repn
+            ).
+:- type enum_foreign_repn
+    --->    enum_foreign_type(
+                 parse_tree.prog_item_type.foreign_type_repn
+            )
+    ;       enum_foreign_enum(
+                 one_or_more.one_or_more(string)
+            ).
+:- type enum_repn
+    --->    enum_repn(
+                 (parse_tree.prog_item_type).enum_functor1 :: string,
+                 (parse_tree.prog_item_type).enum_functor2 :: string,
+                 (parse_tree.prog_item_type).enum_functors3plus :: list.list(string),
+                 (parse_tree.prog_item_type).enum_foreign :: parse_tree.prog_item_type.c_j_cs_enum_repn
+            ).
+:- type fill_kind_size
+    --->    fk_enum(
+                 uint
+            )
+    ;       fk_int8 
+    ;       fk_int16 
+    ;       fk_int32 
+    ;       fk_uint8 
+    ;       fk_uint16 
+    ;       fk_uint32 
+    ;       fk_char21 .
+:- type foreign_type_lang_repn
+    --->    foreign_type_lang_repn(
+                 (parse_tree.prog_item_type).ftlr_lang :: libs.globals.foreign_language,
+                 (parse_tree.prog_item_type).ftlr_foreign_type :: parse_tree.prog_item_type.foreign_type_repn
+            ).
+:- type foreign_type_or_enum
+    --->    foreign_type_or_enum_type(
+                 parse_tree.prog_item_type.item_type_defn_info_foreign
+            )
+    ;       foreign_type_or_enum_enum(
+                 parse_tree.prog_item_type.checked_foreign_enum
+            ).
+:- type foreign_type_repn
+    --->    foreign_type_repn(
+                 (parse_tree.prog_item_type).ftr_foreign_type :: string,
+                 (parse_tree.prog_item_type).ftr_assertions :: parse_tree.prog_data.foreign_type_assertions
+            ).
+:- type gen_du_functor_repn
+    --->    gen_du_constant_functor_repn(
+                 (parse_tree.prog_item_type).gducf_functor :: string,
+                 (parse_tree.prog_item_type).gducf_functor_repn :: parse_tree.prog_item_type.c_repns(parse_tree.prog_item_type.constant_repn)
+            )
+    ;       gen_du_nonconstant_functor_repn(
+                 (parse_tree.prog_item_type).gduncf_functor :: string,
+                 (parse_tree.prog_item_type).gduncf_deref_arg_types :: list.list(parse_tree.prog_data.mer_type),
+                 (parse_tree.prog_item_type).gduncf_functor_repn :: parse_tree.prog_item_type.c_repns(parse_tree.prog_item_type.more_nonconstant_repn)
+            ).
+:- type gen_du_more_functors_repn
+    --->    gen_du_more_functors_repn(
+                 (parse_tree.prog_item_type).more_functor1 :: parse_tree.prog_item_type.gen_du_functor_repn,
+                 (parse_tree.prog_item_type).more_functor2 :: parse_tree.prog_item_type.gen_du_functor_repn,
+                 (parse_tree.prog_item_type).more_functors3plus :: list.list(parse_tree.prog_item_type.gen_du_functor_repn),
+                 (parse_tree.prog_item_type).more_foreign :: parse_tree.prog_item_type.c_j_cs_repn
+            ).
+:- type gen_du_only_functor_repn
+    --->    gen_du_only_functor_repn(
+                 (parse_tree.prog_item_type).only_functor :: string,
+                 (parse_tree.prog_item_type).only_deref_arg_types :: list.list(parse_tree.prog_data.mer_type),
+                 (parse_tree.prog_item_type).only_arg_repns :: parse_tree.prog_item_type.c_repns(parse_tree.prog_item_type.only_nonconstant_repn),
+                 (parse_tree.prog_item_type).only_foreign :: parse_tree.prog_item_type.c_j_cs_repn
+            ).
+:- type inst_ctor_all_defns
+    --->    inst_ctor_all_defns(
+                 (parse_tree.prog_item_type).icad_abstract :: list.list(parse_tree.prog_item_inst_mode.item_inst_defn_info_abstract),
+                 (parse_tree.prog_item_type).icad_eqv :: list.list(parse_tree.prog_item_inst_mode.item_inst_defn_info_eqv)
+            ).
+:- type inst_ctor_defn_map == map.map(parse_tree.prog_data.inst_ctor, parse_tree.prog_item_type.inst_ctor_all_defns).
+:- type item_foreign_enum_info
+    --->    item_foreign_enum_info(
+                 (parse_tree.prog_item_type).fe_language :: libs.globals.foreign_language,
+                 (parse_tree.prog_item_type).fe_type_ctor :: parse_tree.prog_data.type_ctor,
+                 (parse_tree.prog_item_type).fe_values :: one_or_more.one_or_more(pair.pair(mdbcomp.sym_name.sym_name, string)),
+                 (parse_tree.prog_item_type).fe_context :: parse_tree.prog_data.prog_context,
+                 (parse_tree.prog_item_type).fe_seq_num :: parse_tree.prog_data.item_seq_num
+            ).
+:- type item_type_defn_info == parse_tree.prog_item_type.item_type_defn_info_general(parse_tree.prog_data.type_defn).
+:- type item_type_defn_info_abstract == parse_tree.prog_item_type.item_type_defn_info_general(parse_tree.prog_data.type_details_abstract).
+:- type item_type_defn_info_du == parse_tree.prog_item_type.item_type_defn_info_general(parse_tree.prog_data.type_details_du).
+:- type item_type_defn_info_eqv == parse_tree.prog_item_type.item_type_defn_info_general(parse_tree.prog_data.type_details_eqv).
+:- type item_type_defn_info_foreign == parse_tree.prog_item_type.item_type_defn_info_general(parse_tree.prog_data.type_details_foreign_generic).
+:- type item_type_defn_info_general(T)
+    --->    item_type_defn_info(
+                 (parse_tree.prog_item_type).td_ctor_name :: mdbcomp.sym_name.sym_name,
+                 (parse_tree.prog_item_type).td_ctor_args :: list.list(parse_tree.prog_data.type_param),
+                 (parse_tree.prog_item_type).td_ctor_defn :: T,
+                 (parse_tree.prog_item_type).td_tvarset :: parse_tree.prog_data.tvarset,
+                 (parse_tree.prog_item_type).td_context :: parse_tree.prog_data.prog_context,
+                 (parse_tree.prog_item_type).td_seq_num :: parse_tree.prog_data.item_seq_num
+            ).
+:- type item_type_defn_info_solver == parse_tree.prog_item_type.item_type_defn_info_general(parse_tree.prog_data.type_details_solver).
+:- type item_type_defn_info_sub == parse_tree.prog_item_type.item_type_defn_info_general(parse_tree.prog_data.type_details_sub).
+:- type item_type_repn_info == parse_tree.prog_item_type.item_type_repn_info_general(parse_tree.prog_item_type.type_ctor_repn_info).
+:- type item_type_repn_info_eqv == parse_tree.prog_item_type.item_type_repn_info_general(parse_tree.prog_data.mer_type).
+:- type item_type_repn_info_general(T)
+    --->    item_type_repn_info(
+                 (parse_tree.prog_item_type).tr_ctor :: mdbcomp.sym_name.sym_name,
+                 (parse_tree.prog_item_type).tr_ctor_arg_tvars :: list.list(parse_tree.prog_data.tvar),
+                 (parse_tree.prog_item_type).tr_ctor_repn_info :: T,
+                 (parse_tree.prog_item_type).tr_tvarset :: parse_tree.prog_data.tvarset,
+                 (parse_tree.prog_item_type).tr_context :: parse_tree.prog_data.prog_context,
+                 (parse_tree.prog_item_type).tr_seq_num :: parse_tree.prog_data.item_seq_num
+            ).
+:- type item_type_repn_info_subtype == parse_tree.prog_item_type.item_type_repn_info_general(parse_tree.prog_data.type_ctor).
+:- type local_arg_repn
+    --->    local_partial(
+                 (parse_tree.prog_item_type).lp_shift :: uint,
+                 (parse_tree.prog_item_type).lp_fill :: parse_tree.prog_item_type.fill_kind_size
+            )
+    ;       local_none .
+:- type lsectag_word_or_size
+    --->    lsectag_rest_of_word(
+                 uint8
+            )
+    ;       lsectag_part_of_word(
+                 uint8
+            ).
+:- type maybe_only_constants
+    --->    not_only_plain_constants 
+    ;       only_plain_constants(
+                 (parse_tree.prog_item_type).opc_head_name :: string,
+                 (parse_tree.prog_item_type).opc_tail_names :: list.list(string)
+            ).
+:- type mode_ctor_all_defns
+    --->    mode_ctor_all_defns(
+                 (parse_tree.prog_item_type).mcad_abstract :: list.list(parse_tree.prog_item_inst_mode.item_mode_defn_info_abstract),
+                 (parse_tree.prog_item_type).mcad_eqv :: list.list(parse_tree.prog_item_inst_mode.item_mode_defn_info_eqv)
+            ).
+:- type mode_ctor_defn_map == map.map(parse_tree.prog_data.mode_ctor, parse_tree.prog_item_type.mode_ctor_all_defns).
+:- type more_nonconstant_local_cell_repn
+    --->    more_nonconstant_local_cell_repn(
+                 (parse_tree.prog_item_type).mnclcr_sectag :: parse_tree.prog_item_type.cell_local_sectag,
+                 (parse_tree.prog_item_type).mnclcr_arg_repns :: one_or_more.one_or_more(parse_tree.prog_item_type.local_arg_repn)
+            ).
+:- type more_nonconstant_remote_cell_repn
+    --->    more_nonconstant_remote_cell_repn(
+                 (parse_tree.prog_item_type).ncrcr_ptag :: parse_tree.prog_data.ptag,
+                 (parse_tree.prog_item_type).ncrcr_sectag :: parse_tree.prog_item_type.cell_remote_sectag,
+                 (parse_tree.prog_item_type).ncrcr_arg_repns :: one_or_more.one_or_more(parse_tree.prog_item_type.remote_arg_repn)
+            ).
+:- type more_nonconstant_repn
+    --->    mncr_local_cell(
+                 parse_tree.prog_item_type.more_nonconstant_local_cell_repn
+            )
+    ;       mncr_remote_cell(
+                 parse_tree.prog_item_type.more_nonconstant_remote_cell_repn
+            )
+    ;       mncr_direct_arg(
+                 parse_tree.prog_data.ptag
+            ).
+:- type notag_repn
+    --->    notag_repn(
+                 (parse_tree.prog_item_type).notag_functor_name :: string,
+                 (parse_tree.prog_item_type).notag_functor_arg_type :: parse_tree.prog_data.mer_type,
+                 (parse_tree.prog_item_type).notag_foreign :: parse_tree.prog_item_type.c_j_cs_repn
+            ).
+:- type only_nonconstant_local_cell_repn
+    --->    only_nonconstant_local_cell_repn(
+                 (parse_tree.prog_item_type).onclcr_arg_repns :: one_or_more.one_or_more(parse_tree.prog_item_type.local_arg_repn)
+            ).
+:- type only_nonconstant_remote_cell_repn
+    --->    only_nonconstant_remote_cell_repn(
+                 (parse_tree.prog_item_type).ncrcr_arg_repns :: one_or_more.one_or_more(parse_tree.prog_item_type.remote_arg_repn)
+            ).
+:- type only_nonconstant_repn
+    --->    oncr_local_cell(
+                 parse_tree.prog_item_type.only_nonconstant_local_cell_repn
+            )
+    ;       oncr_remote_cell(
+                 parse_tree.prog_item_type.only_nonconstant_remote_cell_repn
+            ).
+:- type remote_arg_repn
+    --->    remote_full(
+                 (parse_tree.prog_item_type).rf_arg_only_offset :: parse_tree.prog_data.arg_only_offset,
+                 (parse_tree.prog_item_type).rf_cell_offset :: parse_tree.prog_data.cell_offset
+            )
+    ;       remote_double(
+                 (parse_tree.prog_item_type).rd_arg_only_offset :: parse_tree.prog_data.arg_only_offset,
+                 (parse_tree.prog_item_type).rd_cell_offset :: parse_tree.prog_data.cell_offset,
+                 (parse_tree.prog_item_type).rd_kind :: parse_tree.prog_data.double_word_kind
+            )
+    ;       remote_partial_first(
+                 (parse_tree.prog_item_type).rpf_arg_only_offset :: parse_tree.prog_data.arg_only_offset,
+                 (parse_tree.prog_item_type).rpf_cell_offset :: parse_tree.prog_data.cell_offset,
+                 (parse_tree.prog_item_type).rpf_shift :: uint8,
+                 (parse_tree.prog_item_type).rpf_fill :: parse_tree.prog_item_type.fill_kind_size
+            )
+    ;       remote_partial_shifted(
+                 (parse_tree.prog_item_type).rps_arg_only_offset :: parse_tree.prog_data.arg_only_offset,
+                 (parse_tree.prog_item_type).rps_cell_offset :: parse_tree.prog_data.cell_offset,
+                 (parse_tree.prog_item_type).rps_shift :: uint8,
+                 (parse_tree.prog_item_type).rps_fill :: parse_tree.prog_item_type.fill_kind_size
+            )
+    ;       remote_none_shifted(
+                 (parse_tree.prog_item_type).rns_arg_only_offset :: parse_tree.prog_data.arg_only_offset,
+                 (parse_tree.prog_item_type).rns_cell_offset :: parse_tree.prog_data.cell_offset
+            )
+    ;       remote_none_nowhere .
+:- type rsectag_word_or_size
+    --->    rsectag_full_word 
+    ;       rsectag_part_of_word(
+                 uint8
+            ).
+:- type solver_type_defn
+    --->    solver_type_abstract(
+                 parse_tree.prog_item_type.abstract_solver_type_status,
+                 parse_tree.prog_item_type.item_type_defn_info_abstract
+            )
+    ;       solver_type_full(
+                 maybe.maybe(parse_tree.prog_item_type.item_type_defn_info_abstract),
+                 parse_tree.prog_item_type.item_type_defn_info_solver
+            ).
+:- type src_defns_solver
+    --->    src_defns_solver(
+                 maybe.maybe(parse_tree.prog_item_type.item_type_defn_info),
+                 maybe.maybe(parse_tree.prog_item_type.item_type_defn_info)
+            ).
+:- type src_defns_std
+    --->    src_defns_std(
+                 list.list(parse_tree.prog_item_type.item_type_defn_info),
+                 list.list(parse_tree.prog_item_type.item_type_defn_info),
+                 list.list(parse_tree.prog_item_type.item_foreign_enum_info)
+            ).
+:- type std_abs_type_status
+    --->    std_abs_type_ft_exported 
+    ;       std_abs_type_abstract_exported 
+    ;       std_abs_type_all_private .
+:- type std_du_type_status
+    --->    std_du_type_mer_ft_exported 
+    ;       std_du_type_mer_exported 
+    ;       std_du_type_abstract_exported 
+    ;       std_du_type_all_private .
+:- type std_eqv_type_status
+    --->    std_eqv_type_mer_exported 
+    ;       std_eqv_type_abstract_exported 
+    ;       std_eqv_type_all_private .
+:- type std_subtype_status
+    --->    std_sub_type_mer_exported 
+    ;       std_sub_type_abstract_exported 
+    ;       std_sub_type_all_private .
+:- type std_type_defn
+    --->    std_mer_type_eqv(
+                 parse_tree.prog_item_type.std_eqv_type_status,
+                 parse_tree.prog_item_type.item_type_defn_info_eqv
+            )
+    ;       std_mer_type_subtype(
+                 parse_tree.prog_item_type.std_subtype_status,
+                 parse_tree.prog_item_type.item_type_defn_info_sub
+            )
+    ;       std_mer_type_du_all_plain_constants(
+                 parse_tree.prog_item_type.std_du_type_status,
+                 parse_tree.prog_item_type.item_type_defn_info_du,
+                 string,
+                 list.list(string),
+                 parse_tree.prog_item_type.c_j_cs_maybe_defn_or_enum
+            )
+    ;       std_mer_type_du_not_all_plain_constants(
+                 parse_tree.prog_item_type.std_du_type_status,
+                 parse_tree.prog_item_type.item_type_defn_info_du,
+                 parse_tree.prog_item_type.c_j_cs_maybe_defn
+            )
+    ;       std_mer_type_abstract(
+                 parse_tree.prog_item_type.std_abs_type_status,
+                 parse_tree.prog_item_type.item_type_defn_info_abstract,
+                 parse_tree.prog_item_type.c_j_cs_maybe_defn
+            ).
+:- type type_ctor_all_defns
+    --->    type_ctor_all_defns(
+                 (parse_tree.prog_item_type).tcad_abstract_solver :: list.list(parse_tree.prog_item_type.item_type_defn_info_abstract),
+                 (parse_tree.prog_item_type).tcad_solver :: list.list(parse_tree.prog_item_type.item_type_defn_info_solver),
+                 (parse_tree.prog_item_type).tcad_abstract_std :: list.list(parse_tree.prog_item_type.item_type_defn_info_abstract),
+                 (parse_tree.prog_item_type).tcad_eqv :: list.list(parse_tree.prog_item_type.item_type_defn_info_eqv),
+                 (parse_tree.prog_item_type).tcad_du :: list.list(parse_tree.prog_item_type.item_type_defn_info_du),
+                 (parse_tree.prog_item_type).tcad_sub :: list.list(parse_tree.prog_item_type.item_type_defn_info_sub),
+                 (parse_tree.prog_item_type).tcad_foreign :: parse_tree.prog_item_type.c_j_cs_defns
+            ).
+:- type type_ctor_checked_defn
+    --->    checked_defn_solver(
+                 parse_tree.prog_item_type.solver_type_defn,
+                 parse_tree.prog_item_type.src_defns_solver
+            )
+    ;       checked_defn_std(
+                 parse_tree.prog_item_type.std_type_defn,
+                 parse_tree.prog_item_type.src_defns_std
+            ).
+:- type type_ctor_checked_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.prog_item_type.type_ctor_checked_defn).
+:- type type_ctor_defn_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.prog_item_type.type_ctor_all_defns).
+:- type type_ctor_foreign_enum_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.prog_item_type.c_j_cs_enums).
+:- type type_ctor_maybe_defn
+    --->    type_ctor_maybe_defn(
+                 (parse_tree.prog_item_type).tcmd_abstract_solver :: maybe.maybe(parse_tree.prog_item_type.item_type_defn_info_abstract),
+                 (parse_tree.prog_item_type).tcmd_solver :: maybe.maybe(parse_tree.prog_item_type.item_type_defn_info_solver),
+                 (parse_tree.prog_item_type).tcmd_abstract_std :: maybe.maybe(parse_tree.prog_item_type.item_type_defn_info_abstract),
+                 (parse_tree.prog_item_type).tcmd_eqv :: maybe.maybe(parse_tree.prog_item_type.item_type_defn_info_eqv),
+                 (parse_tree.prog_item_type).tcmd_du :: maybe.maybe(parse_tree.prog_item_type.item_type_defn_info_du),
+                 (parse_tree.prog_item_type).tcmd_sub :: maybe.maybe(parse_tree.prog_item_type.item_type_defn_info_sub),
+                 (parse_tree.prog_item_type).tcmd_foreign :: parse_tree.prog_item_type.c_j_cs_maybe_defn
+            ).
+:- type type_ctor_repn_info
+    --->    tcrepn_is_word_aligned_ptr 
+    ;       tcrepn_is_eqv_to(
+                 parse_tree.prog_data.mer_type
+            )
+    ;       tcrepn_is_subtype_of(
+                 parse_tree.prog_data.type_ctor
+            )
+    ;       tcrepn_du(
+                 parse_tree.prog_item_type.du_repn
+            )
+    ;       tcrepn_foreign(
+                 parse_tree.prog_item_type.c_j_cs_repn
+            ).
+:- type type_ctor_repn_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.prog_item_type.item_type_repn_info).
+:- func fill_kind_size_num_bits(parse_tree.prog_item_type.fill_kind_size) = uint.

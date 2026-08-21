@@ -1,0 +1,121 @@
+:- module hlds.hlds_module.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module one_or_more_map.
+:- use_module hlds.pred_proc_id.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item_pragma.
+:- type avail_module
+    --->    avail_module(
+                 parse_tree.prog_parse_tree.module_section,
+                 parse_tree.prog_item.import_or_use,
+                 parse_tree.prog_data.prog_context
+            ).
+:- type avail_module_entry
+    --->    avail_module_entry(
+                 parse_tree.prog_parse_tree.module_section,
+                 parse_tree.prog_item.import_or_use,
+                 list.list(hlds.hlds_module.avail_module)
+            ).
+:- type avail_module_map == map.map(mdbcomp.sym_name.module_name, hlds.hlds_module.avail_module_entry).
+:- type complexity_arg_info
+    --->    complexity_arg_info(
+                 (hlds.hlds_module).complexity_arg_name :: maybe.maybe(string),
+                 (hlds.hlds_module).complexity_arg_kind :: hlds.hlds_module.complexity_arg_kind
+            ).
+:- type complexity_arg_kind
+    --->    complexity_input_variable_size 
+    ;       complexity_input_fixed_size 
+    ;       complexity_output .
+:- type complexity_proc_info
+    --->    complexity_proc_info(
+                 (hlds.hlds_module).complexity_proc_num :: int,
+                 (hlds.hlds_module).complexity_proc_name :: string,
+                 (hlds.hlds_module).complexity_proc_args :: list.list(hlds.hlds_module.complexity_arg_info)
+            ).
+:- type complexity_proc_map == map.map(string, int).
+:- type direct_arg_map == map.map(parse_tree.prog_data.type_ctor, list.list(parse_tree.prog_data.sym_name_arity)).
+:- type direct_arg_proc
+    --->    direct_arg_clone_proc(
+                 (hlds.hlds_module).clone_daio_args :: one_or_more.one_or_more(int)
+            )
+    ;       direct_arg_problem_proc(
+                 (hlds.hlds_module).problem_args :: one_or_more.one_or_more(int),
+                 (hlds.hlds_module).no_problem_args :: list.list(int)
+            ).
+:- type direct_arg_proc_map == map.map(hlds.pred_proc_id.pred_proc_id, hlds.hlds_module.direct_arg_proc).
+:- type exported_enum_info
+    --->    exported_enum_info(
+                 (hlds.hlds_module).eei_type_ctor :: parse_tree.prog_data.type_ctor,
+                 (hlds.hlds_module).eei_constants :: list.list(hlds.hlds_data.constructor_repn),
+                 (hlds.hlds_module).eei_language :: libs.globals.foreign_language,
+                 (hlds.hlds_module).eei_name_map :: map.map(string, string),
+                 (hlds.hlds_module).eei_context :: parse_tree.prog_data.prog_context
+            ).
+:- type input_spec_in_module_map == map.map(parse_tree.prog_data.mer_type, hlds.hlds_module.input_spec_info).
+:- type input_spec_info
+    --->    input_spec_info(
+                 parse_tree.prog_item_pragma.replace_or_add_in_mode,
+                 one_or_more.one_or_more(parse_tree.prog_data.mer_inst),
+                 parse_tree.prog_data.prog_context
+            ).
+:- type input_spec_table == map.map(mdbcomp.sym_name.module_name, hlds.hlds_module.input_spec_in_module_map).
+:- type module_info.
+:- type oisu_map == map.map(parse_tree.prog_data.type_ctor, hlds.hlds_module.oisu_preds).
+:- type oisu_preds
+    --->    oisu_preds(
+                 (hlds.hlds_module).op_creators :: list.list(hlds.pred_proc_id.pred_id),
+                 (hlds.hlds_module).op_mutators :: list.list(hlds.pred_proc_id.pred_id),
+                 (hlds.hlds_module).op_destructors :: list.list(hlds.pred_proc_id.pred_id)
+            ).
+:- type pragma_exported_proc
+    --->    pragma_exported_proc(
+                 libs.globals.foreign_language,
+                 hlds.pred_proc_id.pred_id,
+                 hlds.pred_proc_id.proc_id,
+                 string,
+                 parse_tree.prog_data.prog_context
+            ).
+:- type proc_analysis_kind
+    --->    pak_exception 
+    ;       pak_trailing 
+    ;       pak_mm_tabling 
+    ;       pak_termination 
+    ;       pak_termination2 
+    ;       pak_structure_sharing 
+    ;       pak_structure_reuse .
+:- type proc_to_unused_args_map == map.map(hlds.pred_proc_id.pred_proc_id, list.list(int)).
+:- type table_struct_info
+    --->    table_struct_info(
+                 (hlds.hlds_module).table_struct_proc :: hlds.proc_info_types.proc_table_struct_info,
+                 (hlds.hlds_module).table_struct_attrs :: parse_tree.prog_data_pragma.table_attributes
+            ).
+:- type table_struct_map == map.map(hlds.pred_proc_id.pred_proc_id, hlds.hlds_module.table_struct_info).
+:- type type_ctor_gen_info
+    --->    type_ctor_gen_info(
+                 parse_tree.prog_data.type_ctor,
+                 mdbcomp.sym_name.module_name,
+                 string,
+                 int,
+                 hlds.status.type_status,
+                 hlds.hlds_data.hlds_type_defn,
+                 hlds.pred_proc_id.pred_proc_id,
+                 hlds.pred_proc_id.pred_proc_id
+            ).
+:- type type_repn_decision_data
+    --->    type_repn_decision_data(
+                 (hlds.hlds_module).trdd_type_repns :: parse_tree.prog_item_type.type_ctor_repn_map,
+                 (hlds.hlds_module).trdd_direct_arg_map :: hlds.hlds_module.direct_arg_map,
+                 (hlds.hlds_module).trdd_foreign_enums :: list.list({hlds.status.item_mercury_status, parse_tree.prog_item_type.item_foreign_enum_info}),
+                 (hlds.hlds_module).trdd_foreign_exports :: list.list(parse_tree.prog_item.item_foreign_export_enum_info)
+            ).
+:- type type_spec_pragma_map == one_or_more_map.one_or_more_map(hlds.pred_proc_id.pred_id, parse_tree.prog_item_pragma.decl_pragma_type_spec_info).
+:- type type_spec_tables
+    --->    type_spec_tables(
+                 (hlds.hlds_module).user_req_procs :: set.set(hlds.pred_proc_id.pred_proc_id),
+                 (hlds.hlds_module).forcing_preds :: set.set(hlds.pred_proc_id.pred_id),
+                 (hlds.hlds_module).base_to_forcing_map :: multi_map.multi_map(hlds.pred_proc_id.pred_id, hlds.pred_proc_id.pred_id),
+                 (hlds.hlds_module).pragma_map :: hlds.hlds_module.type_spec_pragma_map
+            ).
