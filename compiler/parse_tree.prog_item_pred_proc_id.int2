@@ -1,0 +1,85 @@
+:- module parse_tree.prog_item_pred_proc_id.
+:- interface.
+:- type compiler_origin
+    --->    compiler_origin_initialise 
+    ;       compiler_origin_finalise 
+    ;       compiler_origin_class_method(
+                 (parse_tree.prog_item_pred_proc_id).cm_class_id :: parse_tree.prog_data.class_id,
+                 (parse_tree.prog_item_pred_proc_id).cm_method :: parse_tree.prog_data.pf_sym_name_user_arity
+            )
+    ;       compiler_origin_solver_repn(
+                 (parse_tree.prog_item_pred_proc_id).cosr_type_ctor :: parse_tree.prog_data.type_ctor,
+                 (parse_tree.prog_item_pred_proc_id).cosr_aux_pred_kind :: parse_tree.prog_data_rare.solver_type_pred_kind
+            )
+    ;       compiler_origin_mutable(
+                 (parse_tree.prog_item_pred_proc_id).com_module_name :: mdbcomp.sym_name.module_name,
+                 (parse_tree.prog_item_pred_proc_id).com_mutable_name :: string,
+                 (parse_tree.prog_item_pred_proc_id).com_aux_pred_kind :: parse_tree.prog_data_rare.mutable_pred_kind
+            )
+    ;       compiler_origin_tabling(
+                 (parse_tree.prog_item_pred_proc_id).cot_pred_spec :: parse_tree.prog_data.pf_sym_name_user_arity,
+                 (parse_tree.prog_item_pred_proc_id).cot_aux_pred_kind :: parse_tree.prog_data_rare.tabling_aux_pred_kind
+            ).
+:- type item_compiler_attributes
+    --->    item_compiler_attributes(
+                 parse_tree.prog_item_pred_proc_id.compiler_origin
+            ).
+:- type item_maybe_attrs
+    --->    item_origin_user 
+    ;       item_origin_compiler(
+                 parse_tree.prog_item_pred_proc_id.item_compiler_attributes
+            ).
+:- type modes_or_arity
+    --->    moa_modes(
+                 list.list(parse_tree.prog_data.mer_mode)
+            )
+    ;       moa_arity(
+                 parse_tree.prog_data.user_arity
+            ).
+:- type pred_func_or_unknown
+    --->    pfu_predicate 
+    ;       pfu_function 
+    ;       pfu_unknown .
+:- type pred_func_or_unknown_maybe_modes
+    --->    pfumm_predicate(
+                 parse_tree.prog_item_pred_proc_id.modes_or_arity
+            )
+    ;       pfumm_function(
+                 parse_tree.prog_item_pred_proc_id.modes_or_arity
+            )
+    ;       pfumm_unknown(
+                 parse_tree.prog_data.user_arity
+            ).
+:- type pred_func_or_unknown_pf =< parse_tree.prog_item_pred_proc_id.pred_func_or_unknown
+    --->    pfu_predicate 
+    ;       pfu_function .
+:- type pred_or_proc_pfumm_name
+    --->    pred_or_proc_pfumm_name(
+                 (parse_tree.prog_item_pred_proc_id).ppfummn_pfumm :: parse_tree.prog_item_pred_proc_id.pred_func_or_unknown_maybe_modes,
+                 (parse_tree.prog_item_pred_proc_id).ppfummn_pred_name :: mdbcomp.sym_name.sym_name
+            ).
+:- type pred_pfu_name_arity
+    --->    pred_pfu_name_arity(
+                 (parse_tree.prog_item_pred_proc_id).ppfuna_pfu :: parse_tree.prog_item_pred_proc_id.pred_func_or_unknown,
+                 (parse_tree.prog_item_pred_proc_id).ppfuna_pred_name :: mdbcomp.sym_name.sym_name,
+                 (parse_tree.prog_item_pred_proc_id).ppfuna_arity :: parse_tree.prog_data.user_arity
+            ).
+:- type pred_pfu_name_arity_pf =< parse_tree.prog_item_pred_proc_id.pred_pfu_name_arity
+    --->    pred_pfu_name_arity(
+                 (parse_tree.prog_item_pred_proc_id).ppfuna_pfu :: parse_tree.prog_item_pred_proc_id.pred_func_or_unknown_pf,
+                 (parse_tree.prog_item_pred_proc_id).ppfuna_pred_name :: mdbcomp.sym_name.sym_name,
+                 (parse_tree.prog_item_pred_proc_id).ppfuna_arity :: parse_tree.prog_data.user_arity
+            ).
+:- type proc_pf_name_arity_mn
+    --->    proc_pf_name_arity_mn(
+                 (parse_tree.prog_item_pred_proc_id).ppfnamn_pf :: mdbcomp.prim_data.pred_or_func,
+                 (parse_tree.prog_item_pred_proc_id).ppfnamn_pred_name :: mdbcomp.sym_name.sym_name,
+                 (parse_tree.prog_item_pred_proc_id).ppfnamn_arity :: parse_tree.prog_data.user_arity,
+                 (parse_tree.prog_item_pred_proc_id).ppfnamn_mode_num :: parse_tree.prog_data_pragma.mode_num
+            ).
+:- type proc_pf_name_modes
+    --->    proc_pf_name_modes(
+                 (parse_tree.prog_item_pred_proc_id).ppfnm_pf :: mdbcomp.prim_data.pred_or_func,
+                 (parse_tree.prog_item_pred_proc_id).ppfnm_pred_name :: mdbcomp.sym_name.sym_name,
+                 (parse_tree.prog_item_pred_proc_id).ppfnm_arity :: list.list(parse_tree.prog_data.mer_mode)
+            ).

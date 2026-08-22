@@ -1,0 +1,6 @@
+:- module ll_backend.var_locn.
+:- interface.
+:- type maybe_first_death
+    --->    first_death 
+    ;       maybe_not_first_death .
+:- type var_locn_info.

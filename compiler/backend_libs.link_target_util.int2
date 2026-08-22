@@ -1,0 +1,31 @@
+:- module backend_libs.link_target_util.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module libs.
+:- use_module mdbcomp.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- use_module mdbcomp.sym_name.
+:- type linked_target_type
+    --->    c_executable 
+    ;       c_static_library 
+    ;       c_shared_library 
+    ;       csharp_executable 
+    ;       csharp_library 
+    ;       java_executable 
+    ;       java_archive .
+:- inst c_exe_or_shared_lib for (backend_libs.link_target_util).linked_target_type/0
+    --->    c_executable
+    ;       c_shared_library.
+:- inst c_linked_target_type for (backend_libs.link_target_util).linked_target_type/0
+    --->    c_executable
+    ;       c_shared_library
+    ;       c_static_library.
+:- inst csharp_linked_target_type for (backend_libs.link_target_util).linked_target_type/0
+    --->    csharp_executable
+    ;       csharp_library.
+:- inst java_linked_target_type for (backend_libs.link_target_util).linked_target_type/0
+    --->    java_archive
+    ;       java_executable.

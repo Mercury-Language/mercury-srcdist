@@ -1,0 +1,5308 @@
+/*
+** Automatically generated from `modecheck_coerce.m'
+** by the Mercury compiler,
+** version rotd-2026-08-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.modecheck_coerce.
+// :- implementation.
+
+/*
+INIT mercury__check_hlds__modecheck_coerce__init
+ENDINIT
+*/
+
+#include "check_hlds.modecheck_coerce.mih"
+
+
+#include "analysis.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "counter.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "hlds.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "multi_map.mih"
+#include "one_or_more.mih"
+#include "one_or_more_map.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "term_context.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "analysis.framework.mih"
+#include "analysis.operations.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.inst_abstract_unify.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.modecheck_util.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.goal_mode.mih"
+#include "hlds.hlds_class.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_cons.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_inst_mode.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_markers.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_proc.mih"
+#include "hlds.hlds_promise.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.inst_lookup.mih"
+#include "hlds.inst_test.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_info_types.mih"
+#include "hlds.pred_name.mih"
+#include "hlds.pred_proc_id.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.proc_info_types.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.type_util.mih"
+#include "hlds.var_table_hlds.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.file_util.mih"
+#include "libs.globals.mih"
+#include "libs.maybe_util.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.sym_name.mih"
+#include "parse_tree.builtin_lib_types.mih"
+#include "parse_tree.d_file_deps.mih"
+#include "parse_tree.error_spec.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.parse_tree_out_info.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_item_pragma.mih"
+#include "parse_tree.prog_item_type.mih"
+#include "parse_tree.prog_mode.mih"
+#include "parse_tree.prog_parse_tree.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.prog_type_subst.mih"
+#include "parse_tree.prog_util.mih"
+#include "parse_tree.set_of_var.mih"
+#include "parse_tree.var_db.mih"
+#include "parse_tree.var_table.mih"
+#include "parse_tree.vartypes.mih"
+#include "recompilation.record_uses.mih"
+#include "parse_tree.module_qual.mq_info.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__modecheck_coerce__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__modecheck_coerce__set_ordlist__pti_set_ordlist_1__plain_parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__modecheck_coerce__list__pti_list_1__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0;
+
+static const MR_PseudoTypeInfo check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_types_bound_functor_or_error_0_0[1];
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_bound_functor_or_error_0_0;
+
+static const MR_PseudoTypeInfo check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_types_bound_functor_or_error_0_1[1];
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_bound_functor_or_error_0_1;
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_bound_functor_or_error_0_2;
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_bound_functor_or_error_0_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_bound_functor_or_error_0_1[1];
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_bound_functor_or_error_0_2[1];
+
+static const MR_DuPtagLayout check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_ptag_ordered_bound_functor_or_error_0[3];
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_name_ordered_bound_functor_or_error_0[3];
+
+static const MR_Integer check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__functor_number_map_bound_functor_or_error_0[3];
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__modecheck_coerce__pair__ti_pair_2parse_tree__prog_data__type_ctor_info_inst_name_0parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__set_ordlist__ti_set_ordlist_1pair__ti_pair_2parse_tree__prog_data__type_ctor_info_inst_name_0parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_PseudoTypeInfo check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_types_get_arg_types_result_0_0[5];
+
+static const MR_ConstString check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_names_get_arg_types_result_0_0[5];
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_get_arg_types_result_0_0;
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_get_arg_types_result_0_1;
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_get_arg_types_result_0_2;
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_get_arg_types_result_0_0[2];
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_get_arg_types_result_0_1[1];
+
+static const MR_DuPtagLayout check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_ptag_ordered_get_arg_types_result_0[2];
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_name_ordered_get_arg_types_result_0[3];
+
+static const MR_Integer check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__functor_number_map_get_arg_types_result_0[3];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__list__ti_list_1check_hlds__mode_errors__type_ctor_info_coerce_error_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__modecheck_coerce__parse_tree__maybe_error__pti_maybe1_2__pseudo_1__plain_list__ti_list_1check_hlds__mode_errors__type_ctor_info_coerce_error_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_PseudoTypeInfo check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_types_modecheck_coerce_result_0_0[5];
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_modecheck_coerce_result_0_0;
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_modecheck_coerce_result_0_1;
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_modecheck_coerce_result_0_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_modecheck_coerce_result_0_1[1];
+
+static const MR_DuPtagLayout check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_ptag_ordered_modecheck_coerce_result_0[2];
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_name_ordered_modecheck_coerce_result_0[2];
+
+static const MR_Integer check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__functor_number_map_modecheck_coerce_result_0[2];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__list__ti_list_1check_hlds__mode_errors__type_ctor_info_coerce_error_term_path_step_0;
+
+static const MR_EnumFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_functor_desc_types_comparison_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_functor_desc_types_comparison_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_ordinal_ordered_types_comparison_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_name_ordered_types_comparison_0[2];
+
+static const MR_Integer check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__functor_number_map_types_comparison_0[2];
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__IntroducedFrom__pred__get_ctor_existq_tvars_det__968__1_2_p_0(
+  MR_Integer NumExtraArgs_10,
+  MR_Integer NumExistQTVars_27);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__IntroducedFrom__pred__get_bound_functor_cons_and_arg_types__653__1_2_p_0(
+  MR_Word TypeX_8,
+  MR_Word TypeY_9);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__IntroducedFrom__pred__modecheck_coerce_from_bound_make_bound_functor_not_existq__585__1_2_p_0(
+  MR_Word ArgInstsX0_21,
+  MR_Word HeadVar__2_60);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__IntroducedFrom__pred__modecheck_coerce_from_bound_make_bound_functor_not_existq__583__1_2_p_0(
+  MR_Word TypeX_17,
+  MR_Word TypeY_18);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____types_comparison_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____types_comparison_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____rev_term_path_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____rev_term_path_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____modecheck_coerce_result_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____modecheck_coerce_result_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____maybe_coerce_error_1_0(
+  MR_Word TypeInfo_for_T_6,
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____maybe_coerce_error_1_0(
+  MR_Word TypeInfo_for_T_5,
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____get_arg_types_result_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____get_arg_types_result_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____expanded_insts_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____expanded_insts_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____bound_functor_or_error_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____bound_functor_or_error_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__update_inst_uniqueness_for_coerce_result_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__update_inst_uniqueness_for_coerce_result_3_p_0(
+  MR_Word LiveX_4,
+  MR_Word InstX_5,
+  MR_Word * InstY_6);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_bound_functor_9_p_0(
+  MR_Word ModuleInfo_10,
+  MR_Word TVarSet_11,
+  MR_Word LiveX_12,
+  MR_Word UniqX_13,
+  MR_Word SeenTypes_14,
+  MR_Word _TypeX_15,
+  MR_Word TypeY_16,
+  MR_Word CtorX_17,
+  MR_Word * BoundFunctorY_18);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_101_99_104_101_99_107_95_99_111_101_114_99_101_95_102_114_111_109_95_103_114_111_117_110_100_95_109_97_107_101_95_98_111_117_110_100_95_102_117_110_99_116_111_114_95_95_91_54_93_95_48_9_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_101_99_104_101_99_107_95_99_111_101_114_99_101_95_102_114_111_109_95_103_114_111_117_110_100_95_109_97_107_101_95_98_111_117_110_100_95_102_117_110_99_116_111_114_95_95_91_54_93_95_48_9_p_0(
+  MR_Word ModuleInfo_10,
+  MR_Word TVarSet_11,
+  MR_Word LiveX_12,
+  MR_Word UniqX_13,
+  MR_Word SeenTypes_14,
+  MR_Word TypeY_16,
+  MR_Word CtorX_17,
+  MR_Word * BoundFunctorY_18);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_make_inst_10_p_0(
+  MR_Word ModuleInfo_11,
+  MR_Word TVarSet_12,
+  MR_Word LiveX_13,
+  MR_Word ConsExistQTVars_14,
+  MR_Word RevTermPath0_15,
+  MR_Word TypeX_16,
+  MR_Word TypeY_17,
+  MR_Word ExpandedInsts0_18,
+  MR_Word InstX_19,
+  MR_Word * Result_20);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_arg_insts_13_p_0(
+  MR_Word ModuleInfo_14,
+  MR_Word TVarSet_15,
+  MR_Word LiveX_16,
+  MR_Word RevTermPath0_17,
+  MR_Word ExpandedInsts0_18,
+  MR_Word ConsIdX_19,
+  MR_Word ConsExistQTVars_20,
+  MR_Integer CurArgNum_21,
+  MR_Word ArgTypesX_22,
+  MR_Word ArgTypesY_23,
+  MR_Word ArgInstsX_24,
+  MR_Word * OkArgInstsY_25,
+  MR_Word * Errors_26);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_8(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_7(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_6(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_5(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_4(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_3(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_2(
+  MR_Box closure_arg);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_1(
+  MR_Box closure_arg);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0(
+  MR_Word ModuleInfo_13,
+  MR_Word TVarSet_14,
+  MR_Word LiveX_15,
+  MR_Word RevTermPath0_16,
+  MR_Word TypeX_17,
+  MR_Word TypeY_18,
+  MR_Word ExpandedInsts0_19,
+  MR_Word ConsIdX_20,
+  MR_Word ArgInstsX0_21,
+  MR_Word * MaybeBoundFunctorY_22,
+  MR_Word STATE_VARIABLE_Errors_0_47,
+  MR_Word * STATE_VARIABLE_Errors_48);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functors_13_p_0(
+  MR_Word ModuleInfo_14,
+  MR_Word TVarSet_15,
+  MR_Word LiveX_16,
+  MR_Word ConsExistQTVars_17,
+  MR_Word RevTermPath0_18,
+  MR_Word TypeX_19,
+  MR_Word TypeY_20,
+  MR_Word ExpandedInsts0_21,
+  MR_Word BoundFunctorsX_22,
+  MR_Word * BoundFunctorsY_23,
+  MR_Word * BadConsIdErrors_24,
+  MR_Word STATE_VARIABLE_Errors_0_33,
+  MR_Word * STATE_VARIABLE_Errors_34);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__is_subtype_4_p_0(
+  MR_Word ModuleInfo_5,
+  MR_Word TVarSet_6,
+  MR_Word TypeA_7,
+  MR_Word TypeB_8);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_inst_10_p_0(
+  MR_Word ModuleInfo_11,
+  MR_Word TVarSet_12,
+  MR_Word LiveX_13,
+  MR_Word UniqX_14,
+  MR_Word ExistQTVars_15,
+  MR_Word RevTermPath0_16,
+  MR_Word TypeX_17,
+  MR_Word TypeY_18,
+  MR_Word InstX_19,
+  MR_Word * MaybeInstY_20);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__types_compare_as_given_mc_5_p_0(
+  MR_Word TypeTable_6,
+  MR_Word TVarSet_7,
+  MR_Word Comparison_8,
+  MR_Word TypeA_9,
+  MR_Word TypeB_10);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3,
+  MR_Word HeadVar__4_4,
+  MR_Word HeadVar__5_5);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_inst_for_subtype_8_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_inst_for_subtype_8_p_0(
+  MR_Word ModuleInfo_9,
+  MR_Word TVarSet_10,
+  MR_Word LiveX_11,
+  MR_Word UniqX_12,
+  MR_Word SeenTypes0_13,
+  MR_Word TypeX_14,
+  MR_Word TypeY_15,
+  MR_Word * InstY_16);
+
+static MR_Word MR_CALL 
+check_hlds__modecheck_coerce__uniqueness_for_coerce_result_2_f_0(
+  MR_Word LiveX_4,
+  MR_Word UniqX_5);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__update_bound_functor_uniqueness_for_coerce_result_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__update_bound_functor_uniqueness_for_coerce_result_3_p_0(
+  MR_Word LiveX_4,
+  MR_Word BoundFunctorX_5,
+  MR_Word * BoundFunctorY_6);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__existq_tvars_contains_2_p_0(
+  MR_Word ExistQTVars_3,
+  MR_Word Type_4);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__get_bound_functor_cons_and_arg_types_6_p_0_1(
+  MR_Box closure_arg);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__get_bound_functor_cons_and_arg_types_6_p_0(
+  MR_Word ModuleInfo_7,
+  MR_Word TypeX_8,
+  MR_Word TypeY_9,
+  MR_Word DuCtorX_10,
+  MR_Word * DuCtorY_11,
+  MR_Word * Result_12);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__get_ctor_existq_tvars_det_5_p_0_1(
+  MR_Box closure_arg);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__get_ctor_existq_tvars_det_5_p_0(
+  MR_Word ModuleInfo_6,
+  MR_Word Type_7,
+  MR_Word DuCtor_8,
+  MR_Word * ConsExistQTVars_9,
+  MR_Integer * NumExtraArgs_10);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__get_tuple_cons_arg_types_4_p_0(
+  MR_Word TypeX_5,
+  MR_Word TypeY_6,
+  MR_Integer Arity_7,
+  MR_Word * Result_8);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__is_user_inst_1_p_0(
+  MR_Word InstName_2);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____bound_functor_or_error_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____bound_functor_or_error_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____expanded_insts_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____expanded_insts_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____get_arg_types_result_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____get_arg_types_result_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____maybe_coerce_error_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____maybe_coerce_error_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box wrapper_arg_4);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____modecheck_coerce_result_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____modecheck_coerce_result_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____rev_term_path_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____rev_term_path_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____types_comparison_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____types_comparison_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_1[1][3];
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_2[8][2];
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_3[1][1];
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_4[5][5];
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_5[2][6];
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_6[1][12];
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_7[1][11];
+
+
+
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_1[1][3] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_name_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_2[8][2] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0))
+  },
+  /* row   1 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row   2 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_1[0]))
+  },
+  /* row   3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0))
+  },
+  /* row   4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_2[1]))
+  },
+  /* row   5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_0))
+  },
+  /* row   6 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row   7 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_term_path_step_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_3[1][1] = {
+  /* row   0 */
+  { ((MR_Box) ((MR_Unsigned) 4U)) },
+};
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_4[5][5] = {
+  /* row   0 */
+  {
+    (MR_Box) (((MR_Unsigned) 1U << 2)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row   2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0))
+  },
+  /* row   3 */
+  {
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&check_hlds__modecheck_coerce__list__pti_list_1__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0)),
+    ((MR_Box) (&check_hlds__modecheck_coerce__list__pti_list_1__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_5[2][6] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_is_live_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_is_live_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_bound_functor_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_bound_functor_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_6[1][12] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 9)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&check_hlds__modecheck_coerce__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_is_live_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_uniqueness_0)),
+    ((MR_Box) (&check_hlds__modecheck_coerce__set_ordlist__pti_set_ordlist_1__plain_parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_constructor_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_bound_functor_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__modecheck_coerce_scalar_common_7[1][11] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 8)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&check_hlds__modecheck_coerce__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_is_live_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_uniqueness_0)),
+    ((MR_Box) (&check_hlds__modecheck_coerce__set_ordlist__pti_set_ordlist_1__plain_parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0))
+  },
+};
+
+
+
+#include "array.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "io.stream_ops.mh"
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__modecheck_coerce__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__modecheck_coerce__set_ordlist__pti_set_ordlist_1__plain_parse_tree__prog_data__type_ctor_info_mer_type_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__modecheck_coerce__list__pti_list_1__plain_parse_tree__prog_data__type_ctor_info_mer_inst_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0) }
+};
+
+static const MR_PseudoTypeInfo check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_types_bound_functor_or_error_0_0[1] = { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_bound_functor_0) };
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_bound_functor_or_error_0_0 = {
+  (MR_String) "bfoe_ok",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE_DIRECT_ARG,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(0),
+  check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_types_bound_functor_or_error_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_types_bound_functor_or_error_0_1[1] = { (MR_PseudoTypeInfo) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_bound_functor_cons_id_error_0) };
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_bound_functor_or_error_0_1 = {
+  (MR_String) "bfoe_cons_id_error",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(2),
+  (MR_Integer) -1,
+  INT32_C(1),
+  check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_types_bound_functor_or_error_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_bound_functor_or_error_0_2 = {
+  (MR_String) "bfoe_other_error",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(2),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_bound_functor_or_error_0_0[1] = { &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_bound_functor_or_error_0_2 };
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_bound_functor_or_error_0_1[1] = { &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_bound_functor_or_error_0_0 };
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_bound_functor_or_error_0_2[1] = { &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_bound_functor_or_error_0_1 };
+
+static const MR_DuPtagLayout check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_ptag_ordered_bound_functor_or_error_0[3] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_bound_functor_or_error_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE_DIRECT_ARG,
+    check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_bound_functor_or_error_0_1,
+    INT8_C(-1),
+    UINT8_C(1),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_bound_functor_or_error_0_2,
+    INT8_C(-1),
+    UINT8_C(2),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_name_ordered_bound_functor_or_error_0[3] = {
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_bound_functor_or_error_0_1,
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_bound_functor_or_error_0_0,
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_bound_functor_or_error_0_2
+};
+
+static const MR_Integer check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__functor_number_map_bound_functor_or_error_0[3] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_bound_functor_or_error_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(3),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__modecheck_coerce____Unify____bound_functor_or_error_0_0_10001)),
+  ((MR_Box) (check_hlds__modecheck_coerce____Compare____bound_functor_or_error_0_0_10001)),
+  (MR_String) "check_hlds.modecheck_coerce",
+  (MR_String) "bound_functor_or_error",
+  { check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_name_ordered_bound_functor_or_error_0 },
+  { check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_ptag_ordered_bound_functor_or_error_0 },
+  (MR_Integer) 3,
+  UINT16_C(12),
+  check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__functor_number_map_bound_functor_or_error_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__modecheck_coerce__pair__ti_pair_2parse_tree__prog_data__type_ctor_info_inst_name_0parse_tree__prog_data__type_ctor_info_mer_type_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_name_0),
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__set_ordlist__ti_set_ordlist_1pair__ti_pair_2parse_tree__prog_data__type_ctor_info_inst_name_0parse_tree__prog_data__type_ctor_info_mer_type_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  { (MR_TypeInfo) (&check_hlds__modecheck_coerce__pair__ti_pair_2parse_tree__prog_data__type_ctor_info_inst_name_0parse_tree__prog_data__type_ctor_info_mer_type_0) }
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_expanded_insts_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__modecheck_coerce____Unify____expanded_insts_0_0_10001)),
+  ((MR_Box) (check_hlds__modecheck_coerce____Compare____expanded_insts_0_0_10001)),
+  (MR_String) "check_hlds.modecheck_coerce",
+  (MR_String) "expanded_insts",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&check_hlds__modecheck_coerce__set_ordlist__ti_set_ordlist_1pair__ti_pair_2parse_tree__prog_data__type_ctor_info_inst_name_0parse_tree__prog_data__type_ctor_info_mer_type_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&check_hlds__modecheck_coerce__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0) }
+};
+
+static const MR_PseudoTypeInfo check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_types_get_arg_types_result_0_0[5] = {
+  (MR_PseudoTypeInfo) (&check_hlds__modecheck_coerce__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_type_0),
+  (MR_PseudoTypeInfo) (&check_hlds__modecheck_coerce__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_type_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0),
+  (MR_PseudoTypeInfo) (&check_hlds__modecheck_coerce__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0)
+};
+
+static const MR_ConstString check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_names_get_arg_types_result_0_0[5] = {
+  (MR_String) "arg_types_x",
+  (MR_String) "arg_types_y",
+  (MR_String) "arity",
+  (MR_String) "cons_existq_tvars",
+  (MR_String) "num_extra_args"
+};
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_get_arg_types_result_0_0 = {
+  (MR_String) "cons_args",
+  INT16_C(5),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(0),
+  check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_types_get_arg_types_result_0_0,
+  check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_names_get_arg_types_result_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_get_arg_types_result_0_1 = {
+  (MR_String) "bad_cons_id_for_input_type",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(1),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_get_arg_types_result_0_2 = {
+  (MR_String) "bad_cons_id_for_result_type",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 1,
+  INT32_C(2),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_get_arg_types_result_0_0[2] = {
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_get_arg_types_result_0_1,
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_get_arg_types_result_0_2
+};
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_get_arg_types_result_0_1[1] = { &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_get_arg_types_result_0_0 };
+
+static const MR_DuPtagLayout check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_ptag_ordered_get_arg_types_result_0[2] = {
+  {
+    UINT32_C(2),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_get_arg_types_result_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_get_arg_types_result_0_1,
+    INT8_C(-1),
+    UINT8_C(1),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_name_ordered_get_arg_types_result_0[3] = {
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_get_arg_types_result_0_1,
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_get_arg_types_result_0_2,
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_get_arg_types_result_0_0
+};
+
+static const MR_Integer check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__functor_number_map_get_arg_types_result_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_get_arg_types_result_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__modecheck_coerce____Unify____get_arg_types_result_0_0_10001)),
+  ((MR_Box) (check_hlds__modecheck_coerce____Compare____get_arg_types_result_0_0_10001)),
+  (MR_String) "check_hlds.modecheck_coerce",
+  (MR_String) "get_arg_types_result",
+  { check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_name_ordered_get_arg_types_result_0 },
+  { check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_ptag_ordered_get_arg_types_result_0 },
+  (MR_Integer) 3,
+  UINT16_C(12),
+  check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__functor_number_map_get_arg_types_result_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__list__ti_list_1check_hlds__mode_errors__type_ctor_info_coerce_error_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__modecheck_coerce__parse_tree__maybe_error__pti_maybe1_2__pseudo_1__plain_list__ti_list_1check_hlds__mode_errors__type_ctor_info_coerce_error_0 = {
+  &parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe1_2,
+  {
+    (MR_PseudoTypeInfo) ((MR_Integer) 1),
+    (MR_PseudoTypeInfo) (&check_hlds__modecheck_coerce__list__ti_list_1check_hlds__mode_errors__type_ctor_info_coerce_error_0)
+  }
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_maybe_coerce_error_1 = {
+  (MR_Integer) 1,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (check_hlds__modecheck_coerce____Unify____maybe_coerce_error_1_0_10001)),
+  ((MR_Box) (check_hlds__modecheck_coerce____Compare____maybe_coerce_error_1_0_10001)),
+  (MR_String) "check_hlds.modecheck_coerce",
+  (MR_String) "maybe_coerce_error",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&check_hlds__modecheck_coerce__parse_tree__maybe_error__pti_maybe1_2__pseudo_1__plain_list__ti_list_1check_hlds__mode_errors__type_ctor_info_coerce_error_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0) }
+};
+
+static const MR_PseudoTypeInfo check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_types_modecheck_coerce_result_0_0[5] = {
+  (MR_PseudoTypeInfo) (&check_hlds__modecheck_coerce__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0),
+  (MR_PseudoTypeInfo) (&check_hlds__modecheck_coerce__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0),
+  (MR_PseudoTypeInfo) (&check_hlds__modecheck_util__check_hlds__modecheck_util__type_ctor_info_extra_goals_0)
+};
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_modecheck_coerce_result_0_0 = {
+  (MR_String) "coerce_mode_ok",
+  INT16_C(5),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(0),
+  check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__field_types_modecheck_coerce_result_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_modecheck_coerce_result_0_1 = {
+  (MR_String) "coerce_mode_error",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(1),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_modecheck_coerce_result_0_0[1] = { &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_modecheck_coerce_result_0_1 };
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_modecheck_coerce_result_0_1[1] = { &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_modecheck_coerce_result_0_0 };
+
+static const MR_DuPtagLayout check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_ptag_ordered_modecheck_coerce_result_0[2] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_modecheck_coerce_result_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_stag_ordered_modecheck_coerce_result_0_1,
+    INT8_C(-1),
+    UINT8_C(1),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_name_ordered_modecheck_coerce_result_0[2] = {
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_modecheck_coerce_result_0_1,
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_functor_desc_modecheck_coerce_result_0_0
+};
+
+static const MR_Integer check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__functor_number_map_modecheck_coerce_result_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_modecheck_coerce_result_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__modecheck_coerce____Unify____modecheck_coerce_result_0_0_10001)),
+  ((MR_Box) (check_hlds__modecheck_coerce____Compare____modecheck_coerce_result_0_0_10001)),
+  (MR_String) "check_hlds.modecheck_coerce",
+  (MR_String) "modecheck_coerce_result",
+  { check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_name_ordered_modecheck_coerce_result_0 },
+  { check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__du_ptag_ordered_modecheck_coerce_result_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__functor_number_map_modecheck_coerce_result_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__modecheck_coerce__list__ti_list_1check_hlds__mode_errors__type_ctor_info_coerce_error_term_path_step_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_term_path_step_0) }
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_rev_term_path_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__modecheck_coerce____Unify____rev_term_path_0_0_10001)),
+  ((MR_Box) (check_hlds__modecheck_coerce____Compare____rev_term_path_0_0_10001)),
+  (MR_String) "check_hlds.modecheck_coerce",
+  (MR_String) "rev_term_path",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&check_hlds__modecheck_coerce__list__ti_list_1check_hlds__mode_errors__type_ctor_info_coerce_error_term_path_step_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static const MR_EnumFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_functor_desc_types_comparison_0_0 = {
+  (MR_String) "compare_equal",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_functor_desc_types_comparison_0_1 = {
+  (MR_String) "compare_equal_lt",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_ordinal_ordered_types_comparison_0[2] = {
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_functor_desc_types_comparison_0_0,
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_functor_desc_types_comparison_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_name_ordered_types_comparison_0[2] = {
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_functor_desc_types_comparison_0_0,
+  &check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_functor_desc_types_comparison_0_1
+};
+
+static const MR_Integer check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__functor_number_map_types_comparison_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_types_comparison_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__modecheck_coerce____Unify____types_comparison_0_0_10001)),
+  ((MR_Box) (check_hlds__modecheck_coerce____Compare____types_comparison_0_0_10001)),
+  (MR_String) "check_hlds.modecheck_coerce",
+  (MR_String) "types_comparison",
+  { check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_name_ordered_types_comparison_0 },
+  { check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__enum_ordinal_ordered_types_comparison_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__functor_number_map_types_comparison_0,
+
+};
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__IntroducedFrom__pred__get_ctor_existq_tvars_det__968__1_2_p_0(
+  MR_Integer NumExtraArgs_10,
+  MR_Integer NumExistQTVars_27)
+{
+  MR_bool succeeded = (NumExtraArgs_10 == NumExistQTVars_27);
+
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__IntroducedFrom__pred__get_bound_functor_cons_and_arg_types__653__1_2_p_0(
+  MR_Word TypeX_8,
+  MR_Word TypeY_9)
+{
+  MR_bool succeeded;
+
+  succeeded = parse_tree__prog_data____Unify____mer_type_0_0(TypeX_8, TypeY_9);
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__IntroducedFrom__pred__modecheck_coerce_from_bound_make_bound_functor_not_existq__585__1_2_p_0(
+  MR_Word ArgInstsX0_21,
+  MR_Word HeadVar__2_60)
+{
+  MR_bool succeeded;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[0]), ((MR_Box) (ArgInstsX0_21)), ((MR_Box) (HeadVar__2_60)));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__IntroducedFrom__pred__modecheck_coerce_from_bound_make_bound_functor_not_existq__583__1_2_p_0(
+  MR_Word TypeX_17,
+  MR_Word TypeY_18)
+{
+  MR_bool succeeded;
+
+  succeeded = parse_tree__prog_data____Unify____mer_type_0_0(TypeX_17, TypeY_18);
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____types_comparison_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____types_comparison_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____rev_term_path_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  mercury__builtin__compare_3_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[7]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____rev_term_path_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[7]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____modecheck_coerce_result_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_18 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_19 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_18 == CastY_19);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+    if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      *HeadVar__1_1 = (MR_Integer) 2;
+  else
+  if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 0))));
+    MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 0))));
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 1))));
+    MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 1))));
+    MR_Word ArgX3_10 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 2))));
+    MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 2))));
+    MR_Word ArgX4_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 3))));
+    MR_Word ArgY4_14 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 3))));
+    MR_Word ArgX5_16 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 4))));
+    MR_Word ArgY5_17 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 4))));
+    MR_Word SubResult1_6;
+
+    mercury__builtin__compare_3_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[6]), &SubResult1_6, ((MR_Box) (ArgX1_4)), ((MR_Box) (ArgY1_5)));
+    succeeded = (SubResult1_6 != (MR_Integer) 0);
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+    {
+      MR_Word SubResult2_9;
+
+      mercury__builtin__compare_3_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[6]), &SubResult2_9, ((MR_Box) (ArgX2_7)), ((MR_Box) (ArgY2_8)));
+      succeeded = (SubResult2_9 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult2_9;
+      else
+      {
+        MR_Word SubResult3_12;
+
+        parse_tree__prog_data____Compare____mer_mode_0_0(&SubResult3_12, ArgX3_10, ArgY3_11);
+        succeeded = (SubResult3_12 != (MR_Integer) 0);
+        if (succeeded)
+          *HeadVar__1_1 = SubResult3_12;
+        else
+        {
+          MR_Word SubResult4_15;
+
+          parse_tree__prog_data____Compare____mer_mode_0_0(&SubResult4_15, ArgX4_13, ArgY4_14);
+          succeeded = (SubResult4_15 != (MR_Integer) 0);
+          if (succeeded)
+            *HeadVar__1_1 = SubResult4_15;
+          else
+            check_hlds__modecheck_util____Compare____extra_goals_0_0(HeadVar__1_1, ArgX5_16, ArgY5_17);
+        }
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____modecheck_coerce_result_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_15 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_16 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_15 == CastY_16);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    MR_Integer CastX_13 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_14 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastY_14 == CastX_13);
+  }
+  else
+  {
+    MR_Word TypeInfo_17_17;
+    MR_Word TypeInfo_18_18;
+    MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 0))));
+    MR_Word ArgY1_4;
+    MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 1))));
+    MR_Word ArgY2_6;
+    MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 2))));
+    MR_Word ArgY3_8;
+    MR_Word ArgX4_9 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 3))));
+    MR_Word ArgY4_10;
+    MR_Word ArgX5_11 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 4))));
+    MR_Word ArgY5_12;
+
+    succeeded = (HeadVar__2_2 != (MR_Word) ((MR_Unsigned) 0U));
+    if (succeeded)
+    {
+      ArgY1_4 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 0))));
+      ArgY2_6 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 1))));
+      ArgY3_8 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 2))));
+      ArgY4_10 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 3))));
+      ArgY5_12 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 4))));
+      TypeInfo_17_17 = (MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[6]);
+      succeeded = mercury__builtin__unify_2_p_0(TypeInfo_17_17, ((MR_Box) (ArgX1_3)), ((MR_Box) (ArgY1_4)));
+      if (succeeded)
+      {
+        TypeInfo_18_18 = (MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[6]);
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_18_18, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+        if (succeeded)
+        {
+          succeeded = parse_tree__prog_data____Unify____mer_mode_0_0(ArgX3_7, ArgY3_8);
+          if (succeeded)
+          {
+            succeeded = parse_tree__prog_data____Unify____mer_mode_0_0(ArgX4_9, ArgY4_10);
+            if (succeeded)
+              succeeded = check_hlds__modecheck_util____Unify____extra_goals_0_0(ArgX5_11, ArgY5_12);
+          }
+        }
+      }
+    }
+  }
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____maybe_coerce_error_1_0(
+  MR_Word TypeInfo_for_T_6,
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  parse_tree__maybe_error____Compare____maybe1_2_0(TypeInfo_for_T_6, (MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[5]), HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____maybe_coerce_error_1_0(
+  MR_Word TypeInfo_for_T_5,
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = parse_tree__maybe_error____Unify____maybe1_2_0(TypeInfo_for_T_5, (MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[5]), Cast_HeadVar1_3, Cast_HeadVar2_4);
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____get_arg_types_result_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_18 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_19 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_18 == CastY_19);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+    switch (MR_tag((MR_Word) HeadVar__2_2)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(HeadVar__2_2)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 0;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 0;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        switch (MR_tag((MR_Word) HeadVar__3_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *HeadVar__1_1 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 0))));
+              MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 0))));
+              MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 1))));
+              MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 1))));
+              MR_Integer ArgX3_10 = ((MR_Integer) ((MR_hl_field(1, HeadVar__2_2, 2))));
+              MR_Integer ArgY3_11 = ((MR_Integer) ((MR_hl_field(1, HeadVar__3_3, 2))));
+              MR_Word ArgX4_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 3))));
+              MR_Word ArgY4_14 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, 3))));
+              MR_Integer ArgX5_16 = ((MR_Integer) ((MR_hl_field(1, HeadVar__2_2, 4))));
+              MR_Integer ArgY5_17 = ((MR_Integer) ((MR_hl_field(1, HeadVar__3_3, 4))));
+              MR_Word SubResult1_6;
+
+              mercury__builtin__compare_3_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[3]), &SubResult1_6, ((MR_Box) (ArgX1_4)), ((MR_Box) (ArgY1_5)));
+              succeeded = (SubResult1_6 != (MR_Integer) 0);
+              if (succeeded)
+                *HeadVar__1_1 = SubResult1_6;
+              else
+              {
+                MR_Word SubResult2_9;
+
+                mercury__builtin__compare_3_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[3]), &SubResult2_9, ((MR_Box) (ArgX2_7)), ((MR_Box) (ArgY2_8)));
+                succeeded = (SubResult2_9 != (MR_Integer) 0);
+                if (succeeded)
+                  *HeadVar__1_1 = SubResult2_9;
+                else
+                {
+                  MR_Word SubResult3_12;
+
+                  succeeded = (ArgX3_10 < ArgY3_11);
+                  if (succeeded)
+                  {
+                    SubResult3_12 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (ArgX3_10 > ArgY3_11);
+                    if (succeeded)
+                    {
+                      SubResult3_12 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult3_12;
+                  else
+                  {
+                    MR_Word SubResult4_15;
+
+                    mercury__builtin__compare_3_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[4]), &SubResult4_15, ((MR_Box) (ArgX4_13)), ((MR_Box) (ArgY4_14)));
+                    succeeded = (SubResult4_15 != (MR_Integer) 0);
+                    if (succeeded)
+                      *HeadVar__1_1 = SubResult4_15;
+                    else
+                    {
+                      succeeded = (ArgX5_16 < ArgY5_17);
+                      if (succeeded)
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                      else
+                      {
+                        succeeded = (ArgX5_16 > ArgY5_17);
+                        if (succeeded)
+                          *HeadVar__1_1 = (MR_Integer) 2;
+                        else
+                          *HeadVar__1_1 = (MR_Integer) 0;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            break;
+        }
+        break;
+    }
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____get_arg_types_result_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_15 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_16 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_15 == CastY_16);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+    switch (MR_tag((MR_Word) HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Integer CastX_13 = (MR_Integer) (HeadVar__1_1);
+          MR_Integer CastY_14 = (MR_Integer) (HeadVar__2_2);
+
+          succeeded = (CastY_14 == CastX_13);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word TypeInfo_17_17;
+          MR_Word TypeInfo_18_18;
+          MR_Word TypeInfo_19_19;
+          MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 0))));
+          MR_Word ArgY1_4;
+          MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 1))));
+          MR_Word ArgY2_6;
+          MR_Integer ArgX3_7 = ((MR_Integer) ((MR_hl_field(1, HeadVar__1_1, 2))));
+          MR_Integer ArgY3_8;
+          MR_Word ArgX4_9 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, 3))));
+          MR_Word ArgY4_10;
+          MR_Integer ArgX5_11 = ((MR_Integer) ((MR_hl_field(1, HeadVar__1_1, 4))));
+          MR_Integer ArgY5_12;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+          if (succeeded)
+          {
+            ArgY1_4 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 0))));
+            ArgY2_6 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 1))));
+            ArgY3_8 = ((MR_Integer) ((MR_hl_field(1, HeadVar__2_2, 2))));
+            ArgY4_10 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, 3))));
+            ArgY5_12 = ((MR_Integer) ((MR_hl_field(1, HeadVar__2_2, 4))));
+            TypeInfo_17_17 = (MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[3]);
+            succeeded = mercury__builtin__unify_2_p_0(TypeInfo_17_17, ((MR_Box) (ArgX1_3)), ((MR_Box) (ArgY1_4)));
+            if (succeeded)
+            {
+              TypeInfo_18_18 = (MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[3]);
+              succeeded = mercury__builtin__unify_2_p_0(TypeInfo_18_18, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+              if (succeeded)
+              {
+                succeeded = (ArgX3_7 == ArgY3_8);
+                if (succeeded)
+                {
+                  TypeInfo_19_19 = (MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[4]);
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_19_19, ((MR_Box) (ArgX4_9)), ((MR_Box) (ArgY4_10)));
+                  if (succeeded)
+                    succeeded = (ArgX5_11 == ArgY5_12);
+                }
+              }
+            }
+          }
+        }
+        break;
+    }
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____expanded_insts_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  mercury__builtin__compare_3_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[2]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____expanded_insts_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[2]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____bound_functor_or_error_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_8 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_9 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_8 == CastY_9);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+    switch (MR_tag((MR_Word) HeadVar__2_2)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_tag((MR_Word) HeadVar__3_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *HeadVar__1_1 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+            *HeadVar__1_1 = (MR_Integer) 2;
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        switch (MR_tag((MR_Word) HeadVar__3_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 2:
+            *HeadVar__1_1 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word ArgX1_4 = (MR_Word) (MR_body((MR_Word) (HeadVar__2_2), (MR_Integer) 1));
+              MR_Word ArgY1_5 = (MR_Word) (MR_body((MR_Word) (HeadVar__3_3), (MR_Integer) 1));
+
+              parse_tree__prog_data____Compare____bound_functor_0_0(HeadVar__1_1, ArgX1_4, ArgY1_5);
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 2:
+        switch (MR_tag((MR_Word) HeadVar__3_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *HeadVar__1_1 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 1:
+            *HeadVar__1_1 = (MR_Integer) 2;
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word ArgX1_6 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, 0))));
+              MR_Word ArgY1_7 = ((MR_Word) ((MR_hl_field(2, HeadVar__3_3, 0))));
+
+              check_hlds__mode_errors____Compare____bound_functor_cons_id_error_0_0(HeadVar__1_1, ArgX1_6, ArgY1_7);
+            }
+            break;
+        }
+        break;
+    }
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____bound_functor_or_error_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_9 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_10 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_9 == CastY_10);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+    switch (MR_tag((MR_Word) HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Integer CastX_7 = (MR_Integer) (HeadVar__1_1);
+          MR_Integer CastY_8 = (MR_Integer) (HeadVar__2_2);
+
+          succeeded = (CastY_8 == CastX_7);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ArgX1_3 = (MR_Word) (MR_body((MR_Word) (HeadVar__1_1), (MR_Integer) 1));
+          MR_Word ArgY1_4;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+          if (succeeded)
+          {
+            ArgY1_4 = (MR_Word) (MR_body((MR_Word) (HeadVar__2_2), (MR_Integer) 1));
+            succeeded = parse_tree__prog_data____Unify____bound_functor_0_0(ArgX1_3, ArgY1_4);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word ArgX1_5 = ((MR_Word) ((MR_hl_field(2, HeadVar__1_1, 0))));
+          MR_Word ArgY1_6;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 2);
+          if (succeeded)
+          {
+            ArgY1_6 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, 0))));
+            succeeded = check_hlds__mode_errors____Unify____bound_functor_cons_id_error_0_0(ArgX1_5, ArgY1_6);
+          }
+        }
+        break;
+    }
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__update_inst_uniqueness_for_coerce_result_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_BoundFunctorY_6;
+
+  check_hlds__modecheck_coerce__update_bound_functor_uniqueness_for_coerce_result_3_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)), &conv0_BoundFunctorY_6);
+  *wrapper_arg_2 = ((MR_Box) (conv0_BoundFunctorY_6));
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__update_inst_uniqueness_for_coerce_result_3_p_0(
+  MR_Word LiveX_4,
+  MR_Word InstX_5,
+  MR_Word * InstY_6)
+{
+  switch (MR_tag((MR_Word) InstX_5)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      switch (MR_unmkbody(InstX_5)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.update_inst_uniqueness_for_coerce_result\'/3", (MR_String) "free inst");
+            return;
+          }
+          break;
+        case (MR_Integer) 1:
+          *InstY_6 = (MR_Word) ((MR_Unsigned) 4U);
+          break;
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word UniqX_7 = ((MR_Unsigned) ((MR_hl_field(1, InstX_5, 0))) & (MR_Integer) 7);
+        MR_Word HOInstInfo_8 = ((MR_Word) ((MR_hl_field(1, InstX_5, 1))));
+        MR_Word UniqY_9;
+
+        switch (UniqX_7) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "function \140check_hlds.modecheck_coerce.uniqueness_for_coerce_result\'/2", (MR_String) "clobbered");
+              return;
+            }
+            break;
+          case (MR_Integer) 2:
+          case (MR_Integer) 1:
+            switch (LiveX_4) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                UniqY_9 = UniqX_7;
+                break;
+              case (MR_Integer) 0:
+                UniqY_9 = (MR_Integer) 0;
+                break;
+            }
+            break;
+          case (MR_Integer) 0:
+            UniqY_9 = (MR_Integer) 0;
+            break;
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          *InstY_6 = base;
+          MR_hl_field(1, base, 0) = (MR_Box) ((MR_Unsigned) (UniqY_9));
+          MR_hl_field(1, base, 1) = ((MR_Box) (HOInstInfo_8));
+        }
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Word InstResults_10 = ((MR_Word) ((MR_hl_field(2, InstX_5, 1))));
+        MR_Word BoundFunctorsX_11 = ((MR_Word) ((MR_hl_field(2, InstX_5, 2))));
+        MR_Word BoundFunctorsY_12;
+        MR_Word Var_20;
+        MR_Word UniqX_27 = ((MR_Unsigned) ((MR_hl_field(2, InstX_5, 0))) & (MR_Integer) 7);
+        MR_Word UniqY_28;
+
+        switch (UniqX_27) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "function \140check_hlds.modecheck_coerce.uniqueness_for_coerce_result\'/2", (MR_String) "clobbered");
+              return;
+            }
+            break;
+          case (MR_Integer) 2:
+          case (MR_Integer) 1:
+            switch (LiveX_4) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                UniqY_28 = UniqX_27;
+                break;
+              case (MR_Integer) 0:
+                UniqY_28 = (MR_Integer) 0;
+                break;
+            }
+            break;
+          case (MR_Integer) 0:
+            UniqY_28 = (MR_Integer) 0;
+            break;
+        }
+        {
+          Var_20 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_20, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_5[1]));
+          MR_hl_field(0, Var_20, 1) = ((MR_Box) (check_hlds__modecheck_coerce__update_inst_uniqueness_for_coerce_result_3_p_0_1));
+          MR_hl_field(0, Var_20, 2) = ((MR_Box) ((MR_Integer) 1));
+          MR_hl_field(0, Var_20, 3) = ((MR_Box) (LiveX_4));
+        }
+        mercury__list__map_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_bound_functor_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_bound_functor_0), Var_20, BoundFunctorsX_11, &BoundFunctorsY_12);
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+          *InstY_6 = base;
+          MR_hl_field(2, base, 0) = (MR_Box) ((MR_Unsigned) (UniqY_28));
+          MR_hl_field(2, base, 1) = ((MR_Box) (InstResults_10));
+          MR_hl_field(2, base, 2) = ((MR_Box) (BoundFunctorsY_12));
+        }
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) ((MR_hl_field(3, InstX_5, 0))))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          *InstY_6 = InstX_5;
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word InstVars_14 = ((MR_Word) ((MR_hl_field(3, InstX_5, 1))));
+            MR_Word SubInstX_15 = ((MR_Word) ((MR_hl_field(3, InstX_5, 2))));
+            MR_Word SubInstY_16;
+
+            check_hlds__modecheck_coerce__update_inst_uniqueness_for_coerce_result_3_p_0(LiveX_4, SubInstX_15, &SubInstY_16);
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+              *InstY_6 = base;
+              MR_hl_field(3, base, 0) = ((MR_Box) ((MR_Unsigned) 1U));
+              MR_hl_field(3, base, 1) = ((MR_Box) (InstVars_14));
+              MR_hl_field(3, base, 2) = ((MR_Box) (SubInstY_16));
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.update_inst_uniqueness_for_coerce_result\'/3", (MR_String) "any inst");
+            return;
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.update_inst_uniqueness_for_coerce_result\'/3", (MR_String) "uninstantiated inst parameter");
+            return;
+          }
+          break;
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_bound_functor_9_p_0(
+  MR_Word ModuleInfo_10,
+  MR_Word TVarSet_11,
+  MR_Word LiveX_12,
+  MR_Word UniqX_13,
+  MR_Word SeenTypes_14,
+  MR_Word _TypeX_15,
+  MR_Word TypeY_16,
+  MR_Word CtorX_17,
+  MR_Word * BoundFunctorY_18)
+{
+  check_hlds__modecheck_coerce__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_101_99_104_101_99_107_95_99_111_101_114_99_101_95_102_114_111_109_95_103_114_111_117_110_100_95_109_97_107_101_95_98_111_117_110_100_95_102_117_110_99_116_111_114_95_95_91_54_93_95_48_9_p_0(ModuleInfo_10, TVarSet_11, LiveX_12, UniqX_13, SeenTypes_14, TypeY_16, CtorX_17, BoundFunctorY_18);
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_101_99_104_101_99_107_95_99_111_101_114_99_101_95_102_114_111_109_95_103_114_111_117_110_100_95_109_97_107_101_95_98_111_117_110_100_95_102_117_110_99_116_111_114_95_95_91_54_93_95_48_9_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_InstY_16;
+
+  check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_inst_for_subtype_8_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) ((MR_hl_field(0, closure, 5)))), ((MR_Word) ((MR_hl_field(0, closure, 6)))), ((MR_Word) ((MR_hl_field(0, closure, 7)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_InstY_16);
+  *wrapper_arg_3 = ((MR_Box) (conv0_InstY_16));
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_101_99_104_101_99_107_95_99_111_101_114_99_101_95_102_114_111_109_95_103_114_111_117_110_100_95_109_97_107_101_95_98_111_117_110_100_95_102_117_110_99_116_111_114_95_95_91_54_93_95_48_9_p_0(
+  MR_Word ModuleInfo_10,
+  MR_Word TVarSet_11,
+  MR_Word LiveX_12,
+  MR_Word UniqX_13,
+  MR_Word SeenTypes_14,
+  MR_Word TypeY_16,
+  MR_Word CtorX_17,
+  MR_Word * BoundFunctorY_18)
+{
+  MR_bool succeeded;
+  MR_Word CtorNameX_21 = ((MR_Word) ((MR_hl_field(0, CtorX_17, 2))));
+  MR_Word CtorArgsX_22 = ((MR_Word) ((MR_hl_field(0, CtorX_17, 3))));
+  MR_Integer CtorArity_23 = ((MR_Integer) ((MR_hl_field(0, CtorX_17, 4))));
+  MR_Word TypeCtorY_25;
+  MR_Word ModuleNameY_26;
+  MR_Word CtorNameY_27;
+  MR_Word DuCtorY_28;
+  MR_Word ArgTypesX_29;
+  MR_Word ArgTypesY_31;
+  MR_Word ArgInstsY_32;
+  MR_Word ConsIdY_33;
+  MR_Word Var_36;
+  MR_Word ArgTypesY0_30;
+  MR_Word TypeArgs_45;
+
+  parse_tree__prog_type__type_to_ctor_det_2_p_0(TypeY_16, &TypeCtorY_25);
+  ModuleNameY_26 = hlds__type_util__type_ctor_module_1_f_0(TypeCtorY_25);
+  if (((MR_tag((MR_Word) CtorNameX_21)) == (MR_Integer) 1))
+  {
+    MR_String Name_44 = ((MR_String) ((MR_hl_field(1, CtorNameX_21, 1))));
+
+    {
+      CtorNameY_27 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, CtorNameY_27, 0) = ((MR_Box) (ModuleNameY_26));
+      MR_hl_field(1, CtorNameY_27, 1) = ((MR_Box) (Name_44));
+    }
+  }
+  else
+    CtorNameY_27 = CtorNameX_21;
+  {
+    DuCtorY_28 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, DuCtorY_28, 0) = ((MR_Box) (CtorNameY_27));
+    MR_hl_field(0, DuCtorY_28, 1) = ((MR_Box) (CtorArity_23));
+    MR_hl_field(0, DuCtorY_28, 2) = ((MR_Box) (TypeCtorY_25));
+  }
+  parse_tree__prog_data__get_ctor_arg_types_2_p_0(CtorArgsX_22, &ArgTypesX_29);
+  succeeded = ((((MR_tag((MR_Word) TypeY_16)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeY_16, 0)))) == (MR_Integer) 0)));
+  if (succeeded)
+  {
+    TypeArgs_45 = ((MR_Word) ((MR_hl_field(3, TypeY_16, 1))));
+    ArgTypesY0_30 = TypeArgs_45;
+    succeeded = MR_TRUE;
+  }
+  else
+  {
+    MR_Word TypeCtor_47;
+    MR_Word ConsTable_48;
+    MR_Word ConsDefn_49;
+    MR_Word TypeParams_52;
+    MR_Word CtorArgs_55;
+    MR_Word CtorArgTypes0_57;
+    MR_Word TypeArgs_61;
+
+    succeeded = parse_tree__prog_type__type_to_ctor_and_args_3_p_0(TypeY_16, &TypeCtor_47, &TypeArgs_61);
+    if (succeeded)
+    {
+      hlds__hlds_module__module_info_get_cons_table_2_p_0(ModuleInfo_10, &ConsTable_48);
+      succeeded = hlds__hlds_cons__search_cons_table_of_type_ctor_4_p_0(ConsTable_48, TypeCtor_47, DuCtorY_28, &ConsDefn_49);
+      if (succeeded)
+      {
+        TypeParams_52 = ((MR_Word) ((MR_hl_field(0, ConsDefn_49, 2))));
+        CtorArgs_55 = ((MR_Word) ((MR_hl_field(0, ConsDefn_49, 5))));
+        parse_tree__prog_data__get_ctor_arg_types_2_p_0(CtorArgs_55, &CtorArgTypes0_57);
+        if ((TypeParams_52 == (MR_Word) ((MR_Unsigned) 0U)))
+          ArgTypesY0_30 = CtorArgTypes0_57;
+        else
+        {
+          MR_Word Subst_60;
+
+          mercury__map__from_corresponding_lists_3_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[1]), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0), TypeParams_52, TypeArgs_61, &Subst_60);
+          parse_tree__prog_type_subst__apply_subst_to_types_3_p_0(Subst_60, CtorArgTypes0_57, &ArgTypesY0_30);
+        }
+        succeeded = MR_TRUE;
+      }
+    }
+  }
+  if (succeeded)
+    ArgTypesY_31 = ArgTypesY0_30;
+  else
+    {
+      mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_from_ground_make_bound_functor\'/9", (MR_String) "missing constructor for result type");
+      return;
+    }
+  {
+    Var_36 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_36, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_7[0]));
+    MR_hl_field(0, Var_36, 1) = ((MR_Box) (check_hlds__modecheck_coerce__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_101_99_104_101_99_107_95_99_111_101_114_99_101_95_102_114_111_109_95_103_114_111_117_110_100_95_109_97_107_101_95_98_111_117_110_100_95_102_117_110_99_116_111_114_95_95_91_54_93_95_48_9_p_0_1));
+    MR_hl_field(0, Var_36, 2) = ((MR_Box) ((MR_Integer) 5));
+    MR_hl_field(0, Var_36, 3) = ((MR_Box) (ModuleInfo_10));
+    MR_hl_field(0, Var_36, 4) = ((MR_Box) (TVarSet_11));
+    MR_hl_field(0, Var_36, 5) = ((MR_Box) (LiveX_12));
+    MR_hl_field(0, Var_36, 6) = ((MR_Box) (UniqX_13));
+    MR_hl_field(0, Var_36, 7) = ((MR_Box) (SeenTypes_14));
+  }
+  mercury__list__map_corresponding_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0), Var_36, ArgTypesX_29, ArgTypesY_31, &ArgInstsY_32);
+  ConsIdY_33 = (MR_Word) (MR_mkword(1, (MR_Word) (DuCtorY_28)));
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    *BoundFunctorY_18 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (ConsIdY_33));
+    MR_hl_field(0, base, 1) = ((MR_Box) (ArgInstsY_32));
+  }
+}
+
+void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_12_p_0(
+  MR_Word X0_13,
+  MR_Word Y0_14,
+  MR_Word * X_15,
+  MR_Word * Y_16,
+  MR_Word ModeX0_17,
+  MR_Word ModeY0_18,
+  MR_Word * ModeX_19,
+  MR_Word * ModeY_20,
+  MR_Word * ExtraGoals_21,
+  MR_Word * Detism_22,
+  MR_Word STATE_VARIABLE_ModeInfo_0_36,
+  MR_Word * STATE_VARIABLE_ModeInfo_37)
+{
+  MR_bool succeeded;
+  MR_Word InstMap_24;
+
+  check_hlds__mode_info__mode_info_get_instmap_2_p_0(STATE_VARIABLE_ModeInfo_0_36, &InstMap_24);
+  succeeded = hlds__instmap__instmap_is_reachable_1_p_0(InstMap_24);
+  if (succeeded)
+  {
+    MR_Word ModuleInfo0_25;
+    MR_Word VarTable_26;
+    MR_Word TypeX_27;
+    MR_Word TypeY_28;
+    MR_Word InstX0_29;
+    MR_Word InstY0_30;
+
+    check_hlds__mode_info__mode_info_get_module_info_2_p_0(STATE_VARIABLE_ModeInfo_0_36, &ModuleInfo0_25);
+    check_hlds__mode_info__mode_info_get_var_table_2_p_0(STATE_VARIABLE_ModeInfo_0_36, &VarTable_26);
+    parse_tree__var_table__lookup_var_type_3_p_0(VarTable_26, X0_13, &TypeX_27);
+    parse_tree__var_table__lookup_var_type_3_p_0(VarTable_26, Y0_14, &TypeY_28);
+    hlds__instmap__instmap_lookup_var_3_p_0(InstMap_24, X0_13, &InstX0_29);
+    hlds__instmap__instmap_lookup_var_3_p_0(InstMap_24, Y0_14, &InstY0_30);
+    succeeded = hlds__inst_test__inst_is_ground_3_p_0(ModuleInfo0_25, TypeX_27, InstX0_29);
+    if (succeeded)
+    {
+      succeeded = hlds__inst_test__inst_is_clobbered_2_p_0(ModuleInfo0_25, InstX0_29);
+      succeeded = !(succeeded);
+    }
+    if (succeeded)
+    {
+      MR_Word Result_31;
+      MR_Word PredId_43;
+      MR_Word PredInfo_44;
+      MR_Word TVarSet_45;
+      MR_Word LiveX0_46;
+      MR_Word LiveY0_47;
+      MR_Word BothLive_48;
+      MR_Word ExpandedInsts0_51;
+      MR_Word MaybeFinalInstY_52;
+
+      check_hlds__mode_info__mode_info_get_pred_id_2_p_0(STATE_VARIABLE_ModeInfo_0_36, &PredId_43);
+      hlds__hlds_module__module_info_pred_info_3_p_0(ModuleInfo0_25, PredId_43, &PredInfo_44);
+      hlds__hlds_pred__pred_info_get_typevarset_2_p_0(PredInfo_44, &TVarSet_45);
+      check_hlds__mode_info__mode_info_var_is_live_3_p_0(STATE_VARIABLE_ModeInfo_0_36, X0_13, &LiveX0_46);
+      check_hlds__mode_info__mode_info_var_is_live_3_p_0(STATE_VARIABLE_ModeInfo_0_36, Y0_14, &LiveY0_47);
+      succeeded = (LiveX0_46 == (MR_Integer) 0);
+      if (succeeded)
+        succeeded = (LiveY0_47 == (MR_Integer) 0);
+      if (succeeded)
+        BothLive_48 = (MR_Integer) 0;
+      else
+        BothLive_48 = (MR_Integer) 1;
+      mercury__set__init_1_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_1[0]), &ExpandedInsts0_51);
+      check_hlds__modecheck_coerce__modecheck_coerce_make_inst_10_p_0(ModuleInfo0_25, TVarSet_45, LiveX0_46, (MR_Word) ((MR_Unsigned) 0U), (MR_Word) ((MR_Unsigned) 0U), TypeX_27, TypeY_28, ExpandedInsts0_51, InstX0_29, &MaybeFinalInstY_52);
+      if (((MR_tag((MR_Word) MaybeFinalInstY_52)) == (MR_Integer) 0))
+      {
+        MR_Word Errors_65 = ((MR_Word) ((MR_hl_field(0, MaybeFinalInstY_52, 0))));
+        MR_Word ModeError_66;
+        MR_Word WaitingVars_67;
+
+        {
+          ModeError_66 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(3, ModeError_66, 0) = ((MR_Box) ((MR_Unsigned) 12U));
+          MR_hl_field(3, ModeError_66, 1) = ((MR_Box) (Errors_65));
+        }
+        parse_tree__set_of_var__init_1_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), &WaitingVars_67);
+        check_hlds__mode_info__mode_info_error_4_p_0(WaitingVars_67, ModeError_66, STATE_VARIABLE_ModeInfo_0_36, STATE_VARIABLE_ModeInfo_37);
+        Result_31 = (MR_Word) ((MR_Unsigned) 0U);
+      }
+      else
+      {
+        MR_Word FinalInstY_53 = ((MR_Word) ((MR_hl_field(1, MaybeFinalInstY_52, 0))));
+        MR_Word ModuleInfo_57;
+        MR_Word FinalInstX_58;
+        MR_Word ModeX_59;
+        MR_Word STATE_VARIABLE_ModeInfo_1_72;
+        MR_Word STATE_VARIABLE_ModeInfo_2_74;
+        MR_Word UnifyInstX_54;
+        MR_Word ModuleInfo1_56;
+        MR_Word Var_69;
+        MR_Word _Detism_55;
+
+        Var_69 = parse_tree__prog_mode__ground_inst_0_f_0();
+        succeeded = check_hlds__inst_abstract_unify__abstractly_unify_inst_9_p_0(TypeX_27, BothLive_48, (MR_Integer) 0, InstX0_29, Var_69, &UnifyInstX_54, &_Detism_55, ModuleInfo0_25, &ModuleInfo1_56);
+        if (succeeded)
+        {
+          ModuleInfo_57 = ModuleInfo1_56;
+          FinalInstX_58 = UnifyInstX_54;
+        }
+        else
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_vars\'/10", (MR_String) "abstractly_unify_inst failed");
+            return;
+          }
+        check_hlds__mode_info__mode_info_set_module_info_3_p_0(ModuleInfo_57, STATE_VARIABLE_ModeInfo_0_36, &STATE_VARIABLE_ModeInfo_1_72);
+        check_hlds__modecheck_util__modecheck_set_var_inst_5_p_0(X0_13, FinalInstX_58, (MR_Word) ((MR_Unsigned) 0U), STATE_VARIABLE_ModeInfo_1_72, &STATE_VARIABLE_ModeInfo_2_74);
+        {
+          ModeX_59 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, ModeX_59, 0) = ((MR_Box) (InstX0_29));
+          MR_hl_field(0, ModeX_59, 1) = ((MR_Box) (FinalInstX_58));
+        }
+        succeeded = hlds__inst_test__inst_is_free_2_p_0(ModuleInfo_57, InstY0_30);
+        if (succeeded)
+        {
+          MR_Word ModeY_60;
+
+          check_hlds__modecheck_util__modecheck_set_var_inst_5_p_0(Y0_14, FinalInstY_53, (MR_Word) ((MR_Unsigned) 0U), STATE_VARIABLE_ModeInfo_2_74, STATE_VARIABLE_ModeInfo_37);
+          {
+            ModeY_60 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, ModeY_60, 0) = ((MR_Box) (InstY0_30));
+            MR_hl_field(0, ModeY_60, 1) = ((MR_Box) (FinalInstY_53));
+          }
+          {
+            Result_31 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Result_31, 0) = ((MR_Box) (X0_13));
+            MR_hl_field(1, Result_31, 1) = ((MR_Box) (Y0_14));
+            MR_hl_field(1, Result_31, 2) = ((MR_Box) (ModeX_59));
+            MR_hl_field(1, Result_31, 3) = ((MR_Box) (ModeY_60));
+            MR_hl_field(1, Result_31, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+        }
+        else
+        {
+          MR_Word Y_61;
+          MR_Word ExtraGoal_62;
+          MR_Word ExtraGoals_63;
+          MR_Word ModeYPrime_64;
+          MR_Word STATE_VARIABLE_ModeInfo_4_77;
+          MR_Word Var_79;
+          MR_Word Var_82;
+          MR_Word ModuleInfo_85;
+          MR_Word VarTable0_86;
+          MR_Word VarTable_87;
+
+          check_hlds__mode_info__mode_info_get_module_info_2_p_0(STATE_VARIABLE_ModeInfo_2_74, &ModuleInfo_85);
+          check_hlds__mode_info__mode_info_get_var_table_2_p_0(STATE_VARIABLE_ModeInfo_2_74, &VarTable0_86);
+          hlds__var_table_hlds__create_fresh_var_5_p_0(ModuleInfo_85, TypeY_28, &Y_61, VarTable0_86, &VarTable_87);
+          check_hlds__mode_info__mode_info_set_var_table_3_p_0(VarTable_87, STATE_VARIABLE_ModeInfo_2_74, &STATE_VARIABLE_ModeInfo_4_77);
+          check_hlds__modecheck_util__create_var_var_unification_5_p_0(Y0_14, Y_61, TypeY_28, STATE_VARIABLE_ModeInfo_4_77, &ExtraGoal_62);
+          {
+            Var_79 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_79, 0) = ((MR_Box) (ExtraGoal_62));
+            MR_hl_field(1, Var_79, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            ExtraGoals_63 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, ExtraGoals_63, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(1, ExtraGoals_63, 1) = ((MR_Box) (Var_79));
+          }
+          check_hlds__modecheck_util__modecheck_set_var_inst_5_p_0(Y_61, FinalInstY_53, (MR_Word) ((MR_Unsigned) 0U), STATE_VARIABLE_ModeInfo_4_77, STATE_VARIABLE_ModeInfo_37);
+          Var_82 = parse_tree__prog_mode__free_inst_0_f_0();
+          {
+            ModeYPrime_64 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, ModeYPrime_64, 0) = ((MR_Box) (Var_82));
+            MR_hl_field(0, ModeYPrime_64, 1) = ((MR_Box) (FinalInstY_53));
+          }
+          {
+            Result_31 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Result_31, 0) = ((MR_Box) (X0_13));
+            MR_hl_field(1, Result_31, 1) = ((MR_Box) (Y_61));
+            MR_hl_field(1, Result_31, 2) = ((MR_Box) (ModeX_59));
+            MR_hl_field(1, Result_31, 3) = ((MR_Box) (ModeYPrime_64));
+            MR_hl_field(1, Result_31, 4) = ((MR_Box) (ExtraGoals_63));
+          }
+        }
+      }
+      if ((Result_31 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        *X_15 = X0_13;
+        *Y_16 = Y0_14;
+        *ModeX_19 = ModeX0_17;
+        *ModeY_20 = ModeY0_18;
+        *ExtraGoals_21 = (MR_Word) ((MR_Unsigned) 0U);
+        *Detism_22 = (MR_Integer) 6;
+      }
+      else
+      {
+        *X_15 = ((MR_Word) ((MR_hl_field(1, Result_31, 0))));
+        *Y_16 = ((MR_Word) ((MR_hl_field(1, Result_31, 1))));
+        *ModeX_19 = ((MR_Word) ((MR_hl_field(1, Result_31, 2))));
+        *ModeY_20 = ((MR_Word) ((MR_hl_field(1, Result_31, 3))));
+        *ExtraGoals_21 = ((MR_Word) ((MR_hl_field(1, Result_31, 4))));
+        *Detism_22 = (MR_Integer) 0;
+      }
+    }
+    else
+    {
+      MR_Word WaitingVars_32;
+      MR_Word Reason_33;
+      MR_Word Error_34;
+      MR_Word ModeError_35;
+      MR_Word Var_40;
+
+      WaitingVars_32 = parse_tree__set_of_var__make_singleton_1_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), X0_13);
+      {
+        Reason_33 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Reason_33, 0) = ((MR_Box) (InstX0_29));
+      }
+      {
+        Error_34 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Error_34, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(0, Error_34, 1) = ((MR_Box) (TypeX_27));
+        MR_hl_field(0, Error_34, 2) = ((MR_Box) (TypeY_28));
+        MR_hl_field(0, Error_34, 3) = ((MR_Box) (Reason_33));
+      }
+      {
+        Var_40 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_40, 0) = ((MR_Box) (Error_34));
+        MR_hl_field(1, Var_40, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        ModeError_35 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(3, ModeError_35, 0) = ((MR_Box) ((MR_Unsigned) 12U));
+        MR_hl_field(3, ModeError_35, 1) = ((MR_Box) (Var_40));
+      }
+      check_hlds__mode_info__mode_info_error_4_p_0(WaitingVars_32, ModeError_35, STATE_VARIABLE_ModeInfo_0_36, STATE_VARIABLE_ModeInfo_37);
+      *X_15 = X0_13;
+      *Y_16 = Y0_14;
+      *ModeX_19 = ModeX0_17;
+      *ModeY_20 = ModeY0_18;
+      *ExtraGoals_21 = (MR_Word) ((MR_Unsigned) 0U);
+      *Detism_22 = (MR_Integer) 6;
+    }
+  }
+  else
+  {
+    *X_15 = X0_13;
+    *Y_16 = Y0_14;
+    *ModeX_19 = ModeX0_17;
+    *ModeY_20 = ModeY0_18;
+    *ExtraGoals_21 = (MR_Word) ((MR_Unsigned) 0U);
+    *Detism_22 = (MR_Integer) 6;
+    *STATE_VARIABLE_ModeInfo_37 = STATE_VARIABLE_ModeInfo_0_36;
+  }
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_make_inst_10_p_0(
+  MR_Word ModuleInfo_11,
+  MR_Word TVarSet_12,
+  MR_Word LiveX_13,
+  MR_Word ConsExistQTVars_14,
+  MR_Word RevTermPath0_15,
+  MR_Word TypeX_16,
+  MR_Word TypeY_17,
+  MR_Word ExpandedInsts0_18,
+  MR_Word InstX_19,
+  MR_Word * Result_20)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    switch (MR_tag((MR_Word) InstX_19)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(InstX_19)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_make_inst\'/10", (MR_String) "free inst");
+              return;
+            }
+            break;
+          case (MR_Integer) 1:
+            *Result_20 = (MR_Word) (MR_mkword(1, &check_hlds__modecheck_coerce_scalar_common_3[0]));
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word UniqX_26 = ((MR_Unsigned) ((MR_hl_field(1, InstX_19, 0))) & (MR_Integer) 7);
+          MR_Word HOInstInfoX_27 = ((MR_Word) ((MR_hl_field(1, InstX_19, 1))));
+
+          if ((HOInstInfoX_27 == (MR_Word) ((MR_Unsigned) 0U)))
+            check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_inst_10_p_0(ModuleInfo_11, TVarSet_12, LiveX_13, UniqX_26, ConsExistQTVars_14, RevTermPath0_15, TypeX_16, TypeY_17, InstX_19, Result_20);
+          else
+          {
+            MR_Word UniqY_29;
+            MR_Word InstY_30;
+
+            switch (UniqX_26) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 3:
+              case (MR_Integer) 4:
+                {
+                  mercury__require__unexpected_2_p_0((MR_String) "function \140check_hlds.modecheck_coerce.uniqueness_for_coerce_result\'/2", (MR_String) "clobbered");
+                  return;
+                }
+                break;
+              case (MR_Integer) 2:
+              case (MR_Integer) 1:
+                switch (LiveX_13) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    UniqY_29 = UniqX_26;
+                    break;
+                  case (MR_Integer) 0:
+                    UniqY_29 = (MR_Integer) 0;
+                    break;
+                }
+                break;
+              case (MR_Integer) 0:
+                UniqY_29 = (MR_Integer) 0;
+                break;
+            }
+            {
+              InstY_30 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, InstY_30, 0) = (MR_Box) ((MR_Unsigned) (UniqY_29));
+              MR_hl_field(1, InstY_30, 1) = ((MR_Box) (HOInstInfoX_27));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+              *Result_20 = base;
+              MR_hl_field(1, base, 0) = ((MR_Box) (InstY_30));
+            }
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word UniqX_61 = ((MR_Unsigned) ((MR_hl_field(2, InstX_19, 0))) & (MR_Integer) 7);
+          MR_Word BoundFunctorsX_63 = ((MR_Word) ((MR_hl_field(2, InstX_19, 2))));
+          MR_Word BoundFunctorsY_64;
+          MR_Word BadConsIdErrors_65;
+          MR_Word DeeperErrors_66;
+
+          check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functors_13_p_0(ModuleInfo_11, TVarSet_12, LiveX_13, ConsExistQTVars_14, RevTermPath0_15, TypeX_16, TypeY_17, ExpandedInsts0_18, BoundFunctorsX_63, &BoundFunctorsY_64, &BadConsIdErrors_65, (MR_Word) ((MR_Unsigned) 0U), &DeeperErrors_66);
+          if ((BadConsIdErrors_65 == (MR_Word) ((MR_Unsigned) 0U)))
+            if ((DeeperErrors_66 == (MR_Word) ((MR_Unsigned) 0U)))
+            {
+              MR_Word UniqY_67;
+              MR_Word SortedBoundFunctorsY_69;
+              MR_Word InstY_70;
+
+              UniqY_67 = check_hlds__modecheck_coerce__uniqueness_for_coerce_result_2_f_0(LiveX_13, UniqX_61);
+              mercury__list__sort_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_bound_functor_0), BoundFunctorsY_64, &SortedBoundFunctorsY_69);
+              {
+                InstY_70 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(2, InstY_70, 0) = (MR_Box) ((MR_Unsigned) (UniqY_67));
+                MR_hl_field(2, InstY_70, 1) = ((MR_Box) (MR_mkword(1, &check_hlds__modecheck_coerce_scalar_common_4[0])));
+                MR_hl_field(2, InstY_70, 2) = ((MR_Box) (SortedBoundFunctorsY_69));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                *Result_20 = base;
+                MR_hl_field(1, base, 0) = ((MR_Box) (InstY_70));
+              }
+            }
+            else
+              {
+                MR_Word base;
+                base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+                *Result_20 = base;
+                MR_hl_field(0, base, 0) = ((MR_Box) (DeeperErrors_66));
+              }
+          else
+          {
+            MR_Word HeadBadConsIdError_73 = ((MR_Word) ((MR_hl_field(1, BadConsIdErrors_65, 0))));
+            MR_Word TailBadConsIdErrors_74 = ((MR_Word) ((MR_hl_field(1, BadConsIdErrors_65, 1))));
+            MR_Word TermPath_75;
+            MR_Word Reason_76;
+            MR_Word ConsIdError_77;
+            MR_Word Var_79;
+
+            mercury__list__reverse_2_p_0((MR_Word) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_term_path_step_0), RevTermPath0_15, &TermPath_75);
+            {
+              Reason_76 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, Reason_76, 0) = ((MR_Box) (InstX_19));
+              MR_hl_field(1, Reason_76, 1) = ((MR_Box) (HeadBadConsIdError_73));
+              MR_hl_field(1, Reason_76, 2) = ((MR_Box) (TailBadConsIdErrors_74));
+            }
+            {
+              ConsIdError_77 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(0, ConsIdError_77, 0) = ((MR_Box) (TermPath_75));
+              MR_hl_field(0, ConsIdError_77, 1) = ((MR_Box) (TypeX_16));
+              MR_hl_field(0, ConsIdError_77, 2) = ((MR_Box) (TypeY_17));
+              MR_hl_field(0, ConsIdError_77, 3) = ((MR_Box) (Reason_76));
+            }
+            {
+              Var_79 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, Var_79, 0) = ((MR_Box) (ConsIdError_77));
+              MR_hl_field(1, Var_79, 1) = ((MR_Box) (DeeperErrors_66));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+              *Result_20 = base;
+              MR_hl_field(0, base, 0) = ((MR_Box) (Var_79));
+            }
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, InstX_19, 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word InstNameX_37 = ((MR_Word) ((MR_hl_field(3, InstX_19, 1))));
+              MR_Word ExpandedInsts1_38;
+              MR_Word Var_49;
+
+              {
+                Var_49 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_49, 0) = ((MR_Box) (InstNameX_37));
+                MR_hl_field(0, Var_49, 1) = ((MR_Box) (TypeX_16));
+              }
+              succeeded = mercury__set__insert_new_3_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_1[0]), ((MR_Box) (Var_49)), ExpandedInsts0_18, &ExpandedInsts1_38);
+              if (succeeded)
+              {
+                MR_Word InstX1_39;
+                MR_Word next_value_of_ExpandedInsts0_18;
+                MR_Word next_value_of_InstX_19;
+
+                hlds__inst_lookup__inst_lookup_3_p_0(ModuleInfo_11, InstNameX_37, &InstX1_39);
+                // direct tailcall eliminated
+                ;
+                next_value_of_ExpandedInsts0_18 = ExpandedInsts1_38;
+                next_value_of_InstX_19 = InstX1_39;
+                ExpandedInsts0_18 = next_value_of_ExpandedInsts0_18;
+                InstX_19 = next_value_of_InstX_19;
+                continue;
+              }
+              else
+              {
+                succeeded = check_hlds__modecheck_coerce__is_user_inst_1_p_0(InstNameX_37);
+                if (succeeded)
+                {
+                  succeeded = check_hlds__modecheck_coerce__is_subtype_4_p_0(ModuleInfo_11, TVarSet_12, TypeX_16, TypeY_17);
+                  if (succeeded)
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                      *Result_20 = base;
+                      MR_hl_field(1, base, 0) = ((MR_Box) (InstX_19));
+                    }
+                  else
+                  {
+                    MR_Word TermPath_40;
+                    MR_Word Reason_41;
+                    MR_Word Error_42;
+                    MR_Word Var_50;
+
+                    mercury__list__reverse_2_p_0((MR_Word) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_term_path_step_0), RevTermPath0_15, &TermPath_40);
+                    {
+                      Reason_41 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(2, Reason_41, 0) = ((MR_Box) (InstX_19));
+                    }
+                    {
+                      Error_42 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(0, Error_42, 0) = ((MR_Box) (TermPath_40));
+                      MR_hl_field(0, Error_42, 1) = ((MR_Box) (TypeX_16));
+                      MR_hl_field(0, Error_42, 2) = ((MR_Box) (TypeY_17));
+                      MR_hl_field(0, Error_42, 3) = ((MR_Box) (Reason_41));
+                    }
+                    {
+                      Var_50 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, Var_50, 0) = ((MR_Box) (Error_42));
+                      MR_hl_field(1, Var_50, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+                      *Result_20 = base;
+                      MR_hl_field(0, base, 0) = ((MR_Box) (Var_50));
+                    }
+                  }
+                }
+                else
+                  {
+                    mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_make_inst\'/10", (MR_String) "not user-defined inst");
+                    return;
+                  }
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word InstVars_32 = ((MR_Word) ((MR_hl_field(3, InstX_19, 1))));
+              MR_Word SubInstX_33 = ((MR_Word) ((MR_hl_field(3, InstX_19, 2))));
+              MR_Word SubResult_34;
+
+              check_hlds__modecheck_coerce__modecheck_coerce_make_inst_10_p_0(ModuleInfo_11, TVarSet_12, LiveX_13, ConsExistQTVars_14, RevTermPath0_15, TypeX_16, TypeY_17, ExpandedInsts0_18, SubInstX_33, &SubResult_34);
+              if (((MR_tag((MR_Word) SubResult_34)) == (MR_Integer) 0))
+                *Result_20 = SubResult_34;
+              else
+              {
+                MR_Word SubInstY_35 = ((MR_Word) ((MR_hl_field(1, SubResult_34, 0))));
+                MR_Word InstY_55;
+
+                {
+                  InstY_55 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(3, InstY_55, 0) = ((MR_Box) ((MR_Unsigned) 1U));
+                  MR_hl_field(3, InstY_55, 1) = ((MR_Box) (InstVars_32));
+                  MR_hl_field(3, InstY_55, 2) = ((MR_Box) (SubInstY_35));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                  *Result_20 = base;
+                  MR_hl_field(1, base, 0) = ((MR_Box) (InstY_55));
+                }
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_make_inst\'/10", (MR_String) "any inst");
+              return;
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_make_inst\'/10", (MR_String) "uninstantiated inst parameter");
+              return;
+            }
+            break;
+        }
+        break;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_arg_insts_13_p_0(
+  MR_Word ModuleInfo_14,
+  MR_Word TVarSet_15,
+  MR_Word LiveX_16,
+  MR_Word RevTermPath0_17,
+  MR_Word ExpandedInsts0_18,
+  MR_Word ConsIdX_19,
+  MR_Word ConsExistQTVars_20,
+  MR_Integer CurArgNum_21,
+  MR_Word ArgTypesX_22,
+  MR_Word ArgTypesY_23,
+  MR_Word ArgInstsX_24,
+  MR_Word * OkArgInstsY_25,
+  MR_Word * Errors_26)
+{
+  MR_bool succeeded = (ArgTypesX_22 == (MR_Word) ((MR_Unsigned) 0U));
+
+  if (succeeded)
+  {
+    succeeded = (ArgTypesY_23 == (MR_Word) ((MR_Unsigned) 0U));
+    if (succeeded)
+      succeeded = (ArgInstsX_24 == (MR_Word) ((MR_Unsigned) 0U));
+  }
+  if (succeeded)
+  {
+    *OkArgInstsY_25 = (MR_Word) ((MR_Unsigned) 0U);
+    *Errors_26 = (MR_Word) ((MR_Unsigned) 0U);
+  }
+  else
+  {
+    MR_Word HeadArgTypeX_27;
+    MR_Word TailArgTypesX_28;
+    MR_Word HeadArgTypeY_29;
+    MR_Word TailArgTypesY_30;
+    MR_Word HeadArgInstX_31;
+    MR_Word TailArgInstsX_32;
+
+    succeeded = (ArgTypesX_22 != (MR_Word) ((MR_Unsigned) 0U));
+    if (succeeded)
+    {
+      HeadArgTypeX_27 = ((MR_Word) ((MR_hl_field(1, ArgTypesX_22, 0))));
+      TailArgTypesX_28 = ((MR_Word) ((MR_hl_field(1, ArgTypesX_22, 1))));
+      succeeded = (ArgTypesY_23 != (MR_Word) ((MR_Unsigned) 0U));
+      if (succeeded)
+      {
+        HeadArgTypeY_29 = ((MR_Word) ((MR_hl_field(1, ArgTypesY_23, 0))));
+        TailArgTypesY_30 = ((MR_Word) ((MR_hl_field(1, ArgTypesY_23, 1))));
+        succeeded = (ArgInstsX_24 != (MR_Word) ((MR_Unsigned) 0U));
+        if (succeeded)
+        {
+          HeadArgInstX_31 = ((MR_Word) ((MR_hl_field(1, ArgInstsX_24, 0))));
+          TailArgInstsX_32 = ((MR_Word) ((MR_hl_field(1, ArgInstsX_24, 1))));
+        }
+      }
+    }
+    if (succeeded)
+    {
+      MR_Word Step_33;
+      MR_Word RevTermPath1_34;
+      MR_Word MaybeHeadArgInstY_35;
+      MR_Word OkTailArgInstsY_36;
+      MR_Word TailErrors_37;
+      MR_Integer Var_40;
+
+      {
+        Step_33 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Step_33, 0) = ((MR_Box) (ConsIdX_19));
+        MR_hl_field(0, Step_33, 1) = ((MR_Box) (CurArgNum_21));
+      }
+      {
+        RevTermPath1_34 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, RevTermPath1_34, 0) = ((MR_Box) (Step_33));
+        MR_hl_field(1, RevTermPath1_34, 1) = ((MR_Box) (RevTermPath0_17));
+      }
+      check_hlds__modecheck_coerce__modecheck_coerce_make_inst_10_p_0(ModuleInfo_14, TVarSet_15, LiveX_16, ConsExistQTVars_20, RevTermPath1_34, HeadArgTypeX_27, HeadArgTypeY_29, ExpandedInsts0_18, HeadArgInstX_31, &MaybeHeadArgInstY_35);
+      Var_40 = (MR_Integer) ((MR_Unsigned) CurArgNum_21 + (MR_Unsigned) 1);
+      check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_arg_insts_13_p_0(ModuleInfo_14, TVarSet_15, LiveX_16, RevTermPath0_17, ExpandedInsts0_18, ConsIdX_19, ConsExistQTVars_20, Var_40, TailArgTypesX_28, TailArgTypesY_30, TailArgInstsX_32, &OkTailArgInstsY_36, &TailErrors_37);
+      if (((MR_tag((MR_Word) MaybeHeadArgInstY_35)) == (MR_Integer) 0))
+      {
+        MR_Word HeadErrors_39 = ((MR_Word) ((MR_hl_field(0, MaybeHeadArgInstY_35, 0))));
+
+        *OkArgInstsY_25 = OkTailArgInstsY_36;
+        *Errors_26 = mercury__list__f_43_43_2_f_0((MR_Word) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_0), HeadErrors_39, TailErrors_37);
+      }
+      else
+      {
+        MR_Word HeadArgInstY_38 = ((MR_Word) ((MR_hl_field(1, MaybeHeadArgInstY_35, 0))));
+
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          *OkArgInstsY_25 = base;
+          MR_hl_field(1, base, 0) = ((MR_Box) (HeadArgInstY_38));
+          MR_hl_field(1, base, 1) = ((MR_Box) (OkTailArgInstsY_36));
+        }
+        *Errors_26 = TailErrors_37;
+      }
+    }
+    else
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_from_bound_make_bound_functor_arg_insts\'/13", (MR_String) "length mismatch");
+        return;
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_8(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = check_hlds__modecheck_coerce__IntroducedFrom__pred__modecheck_coerce_from_bound_make_bound_functor_not_existq__585__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_7(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = check_hlds__modecheck_coerce__IntroducedFrom__pred__modecheck_coerce_from_bound_make_bound_functor_not_existq__583__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_6(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = check_hlds__modecheck_coerce__IntroducedFrom__pred__modecheck_coerce_from_bound_make_bound_functor_not_existq__585__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_5(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = check_hlds__modecheck_coerce__IntroducedFrom__pred__modecheck_coerce_from_bound_make_bound_functor_not_existq__583__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_4(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = check_hlds__modecheck_coerce__IntroducedFrom__pred__modecheck_coerce_from_bound_make_bound_functor_not_existq__585__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_3(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = check_hlds__modecheck_coerce__IntroducedFrom__pred__modecheck_coerce_from_bound_make_bound_functor_not_existq__583__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_2(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = check_hlds__modecheck_coerce__IntroducedFrom__pred__modecheck_coerce_from_bound_make_bound_functor_not_existq__585__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_1(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = check_hlds__modecheck_coerce__IntroducedFrom__pred__modecheck_coerce_from_bound_make_bound_functor_not_existq__583__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0(
+  MR_Word ModuleInfo_13,
+  MR_Word TVarSet_14,
+  MR_Word LiveX_15,
+  MR_Word RevTermPath0_16,
+  MR_Word TypeX_17,
+  MR_Word TypeY_18,
+  MR_Word ExpandedInsts0_19,
+  MR_Word ConsIdX_20,
+  MR_Word ArgInstsX0_21,
+  MR_Word * MaybeBoundFunctorY_22,
+  MR_Word STATE_VARIABLE_Errors_0_47,
+  MR_Word * STATE_VARIABLE_Errors_48)
+{
+  MR_bool succeeded;
+
+  switch (MR_tag((MR_Word) ConsIdX_20)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      {
+        MR_Word DuCtorX_24 = (MR_Word) (MR_body((MR_Word) (ConsIdX_20), (MR_Integer) 1));
+        MR_Word DuCtorY_25;
+        MR_Word GetConsArgsResult_26;
+        MR_Word ConsIdY_27;
+
+        check_hlds__modecheck_coerce__get_bound_functor_cons_and_arg_types_6_p_0(ModuleInfo_13, TypeX_17, TypeY_18, DuCtorX_24, &DuCtorY_25, &GetConsArgsResult_26);
+        ConsIdY_27 = (MR_Word) (MR_mkword(1, (MR_Word) (DuCtorY_25)));
+        switch (MR_tag((MR_Word) GetConsArgsResult_26)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(GetConsArgsResult_26)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word Var_52;
+
+                  {
+                    Var_52 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(0, Var_52, 0) = ((MR_Box) (ConsIdX_20));
+                  }
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                    *MaybeBoundFunctorY_22 = base;
+                    MR_hl_field(2, base, 0) = ((MR_Box) (Var_52));
+                  }
+                  *STATE_VARIABLE_Errors_48 = STATE_VARIABLE_Errors_0_47;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word Var_53;
+
+                  {
+                    Var_53 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(2, Var_53, 0) = ((MR_Box) (ConsIdY_27));
+                  }
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                    *MaybeBoundFunctorY_22 = base;
+                    MR_hl_field(2, base, 0) = ((MR_Box) (Var_53));
+                  }
+                  *STATE_VARIABLE_Errors_48 = STATE_VARIABLE_Errors_0_47;
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word ArgTypesX_29 = ((MR_Word) ((MR_hl_field(1, GetConsArgsResult_26, 0))));
+              MR_Word ArgTypesY_30 = ((MR_Word) ((MR_hl_field(1, GetConsArgsResult_26, 1))));
+              MR_Integer Arity_31 = ((MR_Integer) ((MR_hl_field(1, GetConsArgsResult_26, 2))));
+              MR_Word ConsExistQTVars_32 = ((MR_Word) ((MR_hl_field(1, GetConsArgsResult_26, 3))));
+              MR_Integer NumExtraArgs_33 = ((MR_Integer) ((MR_hl_field(1, GetConsArgsResult_26, 4))));
+              MR_Word ExtraArgsInsts_34;
+              MR_Word ArgInstsX_35;
+              MR_Integer NumArgInstsX_36;
+
+              mercury__list__det_split_list_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0), NumExtraArgs_33, ArgInstsX0_21, &ExtraArgsInsts_34, &ArgInstsX_35);
+              mercury__list__length_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0), ArgInstsX_35, &NumArgInstsX_36);
+              succeeded = (NumArgInstsX_36 == Arity_31);
+              if (succeeded)
+              {
+                MR_Word OkArgInstsY_37;
+                MR_Word ErrorsY_38;
+
+                check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_arg_insts_13_p_0(ModuleInfo_13, TVarSet_14, LiveX_15, RevTermPath0_16, ExpandedInsts0_19, ConsIdX_20, ConsExistQTVars_32, (MR_Integer) 1, ArgTypesX_29, ArgTypesY_30, ArgInstsX_35, &OkArgInstsY_37, &ErrorsY_38);
+                if ((ErrorsY_38 == (MR_Word) ((MR_Unsigned) 0U)))
+                {
+                  MR_Word BoundFunctorY_39;
+                  MR_Word Var_50;
+
+                  Var_50 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0), ExtraArgsInsts_34, OkArgInstsY_37);
+                  {
+                    BoundFunctorY_39 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(0, BoundFunctorY_39, 0) = ((MR_Box) (ConsIdY_27));
+                    MR_hl_field(0, BoundFunctorY_39, 1) = ((MR_Box) (Var_50));
+                  }
+                  *MaybeBoundFunctorY_22 = (MR_Word) (MR_mkword(1, (MR_Word) (BoundFunctorY_39)));
+                  *STATE_VARIABLE_Errors_48 = STATE_VARIABLE_Errors_0_47;
+                }
+                else
+                {
+                  *STATE_VARIABLE_Errors_48 = mercury__list__f_43_43_2_f_0((MR_Word) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_0), ErrorsY_38, STATE_VARIABLE_Errors_0_47);
+                  *MaybeBoundFunctorY_22 = (MR_Word) ((MR_Unsigned) 0U);
+                }
+              }
+              else
+              {
+                MR_Word ConsIdError_42;
+
+                {
+                  ConsIdError_42 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(1, ConsIdError_42, 0) = ((MR_Box) (ConsIdX_20));
+                  MR_hl_field(1, ConsIdError_42, 1) = ((MR_Box) (NumArgInstsX_36));
+                  MR_hl_field(1, ConsIdError_42, 2) = ((MR_Box) (Arity_31));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                  *MaybeBoundFunctorY_22 = base;
+                  MR_hl_field(2, base, 0) = ((MR_Box) (ConsIdError_42));
+                }
+                *STATE_VARIABLE_Errors_48 = STATE_VARIABLE_Errors_0_47;
+              }
+            }
+            break;
+        }
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) ((MR_hl_field(3, ConsIdX_20, 0))))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 4:
+          {
+            MR_Integer ConsArity_28 = ((MR_Integer) ((MR_hl_field(3, ConsIdX_20, 1))));
+            MR_Word GetConsArgsResult_123;
+            MR_Word ArgTypesX_138;
+            MR_Word TypeCtorInfo_17_146;
+            MR_Integer Var_148;
+
+            succeeded = ((((MR_tag((MR_Word) TypeX_17)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeX_17, 0)))) == (MR_Integer) 0)));
+            if (succeeded)
+            {
+              ArgTypesX_138 = ((MR_Word) ((MR_hl_field(3, TypeX_17, 1))));
+              TypeCtorInfo_17_146 = (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0);
+              mercury__list__length_2_p_0(TypeCtorInfo_17_146, ArgTypesX_138, &Var_148);
+              succeeded = (ConsArity_28 == Var_148);
+            }
+            if (succeeded)
+            {
+              MR_Word ArgTypesY_140;
+              MR_Word TypeCtorInfo_18_147;
+              MR_Integer Var_149;
+
+              succeeded = ((((MR_tag((MR_Word) TypeY_18)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeY_18, 0)))) == (MR_Integer) 0)));
+              if (succeeded)
+              {
+                ArgTypesY_140 = ((MR_Word) ((MR_hl_field(3, TypeY_18, 1))));
+                TypeCtorInfo_18_147 = (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0);
+                mercury__list__length_2_p_0(TypeCtorInfo_18_147, ArgTypesY_140, &Var_149);
+                succeeded = (ConsArity_28 == Var_149);
+              }
+              if (succeeded)
+                {
+                  GetConsArgsResult_123 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(1, GetConsArgsResult_123, 0) = ((MR_Box) (ArgTypesX_138));
+                  MR_hl_field(1, GetConsArgsResult_123, 1) = ((MR_Box) (ArgTypesY_140));
+                  MR_hl_field(1, GetConsArgsResult_123, 2) = ((MR_Box) (ConsArity_28));
+                  MR_hl_field(1, GetConsArgsResult_123, 3) = ((MR_Box) ((MR_Unsigned) 0U));
+                  MR_hl_field(1, GetConsArgsResult_123, 4) = ((MR_Box) ((MR_Integer) 0));
+                }
+              else
+                {
+                  mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.get_tuple_cons_arg_types\'/4", (MR_String) "tuple type mismatch");
+                  return;
+                }
+            }
+            else
+              GetConsArgsResult_123 = (MR_Word) ((MR_Unsigned) 0U);
+            if ((GetConsArgsResult_123 == (MR_Word) ((MR_Unsigned) 0U)))
+            {
+              MR_Word Var_67;
+
+              {
+                Var_67 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_67, 0) = ((MR_Box) (ConsIdX_20));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                *MaybeBoundFunctorY_22 = base;
+                MR_hl_field(2, base, 0) = ((MR_Box) (Var_67));
+              }
+              *STATE_VARIABLE_Errors_48 = STATE_VARIABLE_Errors_0_47;
+            }
+            else
+            {
+              MR_Word ArgTypesX_89 = ((MR_Word) ((MR_hl_field(1, GetConsArgsResult_123, 0))));
+              MR_Word ArgTypesY_90 = ((MR_Word) ((MR_hl_field(1, GetConsArgsResult_123, 1))));
+              MR_Integer Arity_91 = ((MR_Integer) ((MR_hl_field(1, GetConsArgsResult_123, 2))));
+              MR_Word ConsExistQTVars_92 = ((MR_Word) ((MR_hl_field(1, GetConsArgsResult_123, 3))));
+              MR_Integer NumExtraArgs_93 = ((MR_Integer) ((MR_hl_field(1, GetConsArgsResult_123, 4))));
+              MR_Word ExtraArgsInsts_94;
+              MR_Word ArgInstsX_95;
+              MR_Integer NumArgInstsX_96;
+
+              mercury__list__det_split_list_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0), NumExtraArgs_93, ArgInstsX0_21, &ExtraArgsInsts_94, &ArgInstsX_95);
+              mercury__list__length_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0), ArgInstsX_95, &NumArgInstsX_96);
+              succeeded = (NumArgInstsX_96 == Arity_91);
+              if (succeeded)
+              {
+                MR_Word OkArgInstsY_75;
+                MR_Word ErrorsY_76;
+
+                check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_arg_insts_13_p_0(ModuleInfo_13, TVarSet_14, LiveX_15, RevTermPath0_16, ExpandedInsts0_19, ConsIdX_20, ConsExistQTVars_92, (MR_Integer) 1, ArgTypesX_89, ArgTypesY_90, ArgInstsX_95, &OkArgInstsY_75, &ErrorsY_76);
+                if ((ErrorsY_76 == (MR_Word) ((MR_Unsigned) 0U)))
+                {
+                  MR_Word BoundFunctorY_69;
+                  MR_Word Var_70;
+
+                  Var_70 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0), ExtraArgsInsts_94, OkArgInstsY_75);
+                  {
+                    BoundFunctorY_69 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(0, BoundFunctorY_69, 0) = ((MR_Box) (ConsIdX_20));
+                    MR_hl_field(0, BoundFunctorY_69, 1) = ((MR_Box) (Var_70));
+                  }
+                  *MaybeBoundFunctorY_22 = (MR_Word) (MR_mkword(1, (MR_Word) (BoundFunctorY_69)));
+                  *STATE_VARIABLE_Errors_48 = STATE_VARIABLE_Errors_0_47;
+                }
+                else
+                {
+                  *STATE_VARIABLE_Errors_48 = mercury__list__f_43_43_2_f_0((MR_Word) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_0), ErrorsY_76, STATE_VARIABLE_Errors_0_47);
+                  *MaybeBoundFunctorY_22 = (MR_Word) ((MR_Unsigned) 0U);
+                }
+              }
+              else
+              {
+                MR_Word ConsIdError_81;
+
+                {
+                  ConsIdError_81 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(1, ConsIdError_81, 0) = ((MR_Box) (ConsIdX_20));
+                  MR_hl_field(1, ConsIdError_81, 1) = ((MR_Box) (NumArgInstsX_96));
+                  MR_hl_field(1, ConsIdError_81, 2) = ((MR_Box) (Arity_91));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                  *MaybeBoundFunctorY_22 = base;
+                  MR_hl_field(2, base, 0) = ((MR_Box) (ConsIdError_81));
+                }
+                *STATE_VARIABLE_Errors_48 = STATE_VARIABLE_Errors_0_47;
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 5:
+          {
+            MR_Word IC_125 = ((MR_Word) ((MR_hl_field(3, ConsIdX_20, 1))));
+            MR_Word Var_129;
+            MR_Word Var_130;
+            MR_Word Var_131;
+
+            succeeded = ((MR_tag((MR_Word) TypeX_17)) == (MR_Integer) 2);
+            if (succeeded)
+            {
+              Var_129 = ((MR_Word) ((MR_hl_field(2, TypeX_17, 0))));
+              succeeded = ((MR_tag((MR_Word) Var_129)) == (MR_Integer) 1);
+              if (succeeded)
+              {
+                Var_130 = ((MR_Unsigned) ((MR_hl_field(1, Var_129, 0))) & (MR_Integer) 15);
+                Var_131 = parse_tree__prog_data__type_of_int_const_1_f_0(IC_125);
+                succeeded = (Var_130 == Var_131);
+              }
+            }
+            if (succeeded)
+            {
+              MR_Word Var_177;
+              MR_Word Var_180;
+              MR_Word BoundFunctorY_184;
+
+              {
+                Var_177 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_177, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_4[2]));
+                MR_hl_field(0, Var_177, 1) = ((MR_Box) (check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_5));
+                MR_hl_field(0, Var_177, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(0, Var_177, 3) = ((MR_Box) (TypeX_17));
+                MR_hl_field(0, Var_177, 4) = ((MR_Box) (TypeY_18));
+              }
+              mercury__require__expect_3_p_0(Var_177, (MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_from_bound_make_bound_functor_not_existq\'/12", (MR_String) "coercion between different builtin types");
+              {
+                Var_180 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_180, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_4[4]));
+                MR_hl_field(0, Var_180, 1) = ((MR_Box) (check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_6));
+                MR_hl_field(0, Var_180, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(0, Var_180, 3) = ((MR_Box) (ArgInstsX0_21));
+                MR_hl_field(0, Var_180, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+              }
+              mercury__require__expect_3_p_0(Var_180, (MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_from_bound_make_bound_functor_not_existq\'/12", (MR_String) "bound functor literal has arguments");
+              {
+                BoundFunctorY_184 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, BoundFunctorY_184, 0) = ((MR_Box) (ConsIdX_20));
+                MR_hl_field(0, BoundFunctorY_184, 1) = ((MR_Box) (ArgInstsX0_21));
+              }
+              *MaybeBoundFunctorY_22 = (MR_Word) (MR_mkword(1, (MR_Word) (BoundFunctorY_184)));
+            }
+            else
+            {
+              MR_Word Var_185;
+
+              {
+                Var_185 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_185, 0) = ((MR_Box) (ConsIdX_20));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                *MaybeBoundFunctorY_22 = base;
+                MR_hl_field(2, base, 0) = ((MR_Box) (Var_185));
+              }
+            }
+            *STATE_VARIABLE_Errors_48 = STATE_VARIABLE_Errors_0_47;
+          }
+          break;
+        case (MR_Integer) 6:
+          {
+            MR_Word Var_132;
+
+            Var_132 = parse_tree__builtin_lib_types__float_type_0_f_0();
+            succeeded = parse_tree__prog_data____Unify____mer_type_0_0(TypeX_17, Var_132);
+            if (succeeded)
+            {
+              MR_Word Var_150;
+              MR_Word Var_153;
+              MR_Word BoundFunctorY_157;
+
+              {
+                Var_150 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_150, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_4[2]));
+                MR_hl_field(0, Var_150, 1) = ((MR_Box) (check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_3));
+                MR_hl_field(0, Var_150, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(0, Var_150, 3) = ((MR_Box) (TypeX_17));
+                MR_hl_field(0, Var_150, 4) = ((MR_Box) (TypeY_18));
+              }
+              mercury__require__expect_3_p_0(Var_150, (MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_from_bound_make_bound_functor_not_existq\'/12", (MR_String) "coercion between different builtin types");
+              {
+                Var_153 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_153, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_4[4]));
+                MR_hl_field(0, Var_153, 1) = ((MR_Box) (check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_4));
+                MR_hl_field(0, Var_153, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(0, Var_153, 3) = ((MR_Box) (ArgInstsX0_21));
+                MR_hl_field(0, Var_153, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+              }
+              mercury__require__expect_3_p_0(Var_153, (MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_from_bound_make_bound_functor_not_existq\'/12", (MR_String) "bound functor literal has arguments");
+              {
+                BoundFunctorY_157 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, BoundFunctorY_157, 0) = ((MR_Box) (ConsIdX_20));
+                MR_hl_field(0, BoundFunctorY_157, 1) = ((MR_Box) (ArgInstsX0_21));
+              }
+              *MaybeBoundFunctorY_22 = (MR_Word) (MR_mkword(1, (MR_Word) (BoundFunctorY_157)));
+            }
+            else
+            {
+              MR_Word Var_158;
+
+              {
+                Var_158 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_158, 0) = ((MR_Box) (ConsIdX_20));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                *MaybeBoundFunctorY_22 = base;
+                MR_hl_field(2, base, 0) = ((MR_Box) (Var_158));
+              }
+            }
+            *STATE_VARIABLE_Errors_48 = STATE_VARIABLE_Errors_0_47;
+          }
+          break;
+        case (MR_Integer) 7:
+          {
+            MR_Word Var_133;
+
+            Var_133 = parse_tree__builtin_lib_types__char_type_0_f_0();
+            succeeded = parse_tree__prog_data____Unify____mer_type_0_0(TypeX_17, Var_133);
+            if (succeeded)
+            {
+              MR_Word Var_54;
+              MR_Word Var_57;
+              MR_Word BoundFunctorY_62;
+
+              {
+                Var_54 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_54, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_4[2]));
+                MR_hl_field(0, Var_54, 1) = ((MR_Box) (check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_1));
+                MR_hl_field(0, Var_54, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(0, Var_54, 3) = ((MR_Box) (TypeX_17));
+                MR_hl_field(0, Var_54, 4) = ((MR_Box) (TypeY_18));
+              }
+              mercury__require__expect_3_p_0(Var_54, (MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_from_bound_make_bound_functor_not_existq\'/12", (MR_String) "coercion between different builtin types");
+              {
+                Var_57 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_57, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_4[4]));
+                MR_hl_field(0, Var_57, 1) = ((MR_Box) (check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_2));
+                MR_hl_field(0, Var_57, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(0, Var_57, 3) = ((MR_Box) (ArgInstsX0_21));
+                MR_hl_field(0, Var_57, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+              }
+              mercury__require__expect_3_p_0(Var_57, (MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_from_bound_make_bound_functor_not_existq\'/12", (MR_String) "bound functor literal has arguments");
+              {
+                BoundFunctorY_62 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, BoundFunctorY_62, 0) = ((MR_Box) (ConsIdX_20));
+                MR_hl_field(0, BoundFunctorY_62, 1) = ((MR_Box) (ArgInstsX0_21));
+              }
+              *MaybeBoundFunctorY_22 = (MR_Word) (MR_mkword(1, (MR_Word) (BoundFunctorY_62)));
+            }
+            else
+            {
+              MR_Word Var_61;
+
+              {
+                Var_61 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_61, 0) = ((MR_Box) (ConsIdX_20));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                *MaybeBoundFunctorY_22 = base;
+                MR_hl_field(2, base, 0) = ((MR_Box) (Var_61));
+              }
+            }
+            *STATE_VARIABLE_Errors_48 = STATE_VARIABLE_Errors_0_47;
+          }
+          break;
+        case (MR_Integer) 8:
+          {
+            MR_Word Var_134;
+
+            Var_134 = parse_tree__builtin_lib_types__string_type_0_f_0();
+            succeeded = parse_tree__prog_data____Unify____mer_type_0_0(TypeX_17, Var_134);
+            if (succeeded)
+            {
+              MR_Word Var_204;
+              MR_Word Var_207;
+              MR_Word BoundFunctorY_211;
+
+              {
+                Var_204 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_204, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_4[2]));
+                MR_hl_field(0, Var_204, 1) = ((MR_Box) (check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_7));
+                MR_hl_field(0, Var_204, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(0, Var_204, 3) = ((MR_Box) (TypeX_17));
+                MR_hl_field(0, Var_204, 4) = ((MR_Box) (TypeY_18));
+              }
+              mercury__require__expect_3_p_0(Var_204, (MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_from_bound_make_bound_functor_not_existq\'/12", (MR_String) "coercion between different builtin types");
+              {
+                Var_207 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_207, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_4[4]));
+                MR_hl_field(0, Var_207, 1) = ((MR_Box) (check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0_8));
+                MR_hl_field(0, Var_207, 2) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(0, Var_207, 3) = ((MR_Box) (ArgInstsX0_21));
+                MR_hl_field(0, Var_207, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+              }
+              mercury__require__expect_3_p_0(Var_207, (MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_from_bound_make_bound_functor_not_existq\'/12", (MR_String) "bound functor literal has arguments");
+              {
+                BoundFunctorY_211 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, BoundFunctorY_211, 0) = ((MR_Box) (ConsIdX_20));
+                MR_hl_field(0, BoundFunctorY_211, 1) = ((MR_Box) (ArgInstsX0_21));
+              }
+              *MaybeBoundFunctorY_22 = (MR_Word) (MR_mkword(1, (MR_Word) (BoundFunctorY_211)));
+            }
+            else
+            {
+              MR_Word Var_212;
+
+              {
+                Var_212 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(0, Var_212, 0) = ((MR_Box) (ConsIdX_20));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                *MaybeBoundFunctorY_22 = base;
+                MR_hl_field(2, base, 0) = ((MR_Box) (Var_212));
+              }
+            }
+            *STATE_VARIABLE_Errors_48 = STATE_VARIABLE_Errors_0_47;
+          }
+          break;
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functors_13_p_0(
+  MR_Word ModuleInfo_14,
+  MR_Word TVarSet_15,
+  MR_Word LiveX_16,
+  MR_Word ConsExistQTVars_17,
+  MR_Word RevTermPath0_18,
+  MR_Word TypeX_19,
+  MR_Word TypeY_20,
+  MR_Word ExpandedInsts0_21,
+  MR_Word BoundFunctorsX_22,
+  MR_Word * BoundFunctorsY_23,
+  MR_Word * BadConsIdErrors_24,
+  MR_Word STATE_VARIABLE_Errors_0_33,
+  MR_Word * STATE_VARIABLE_Errors_34)
+{
+  MR_bool succeeded;
+
+  if ((BoundFunctorsX_22 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *BoundFunctorsY_23 = (MR_Word) ((MR_Unsigned) 0U);
+    *BadConsIdErrors_24 = (MR_Word) ((MR_Unsigned) 0U);
+    *STATE_VARIABLE_Errors_34 = STATE_VARIABLE_Errors_0_33;
+  }
+  else
+  {
+    MR_Word HeadBoundFunctorX_26 = ((MR_Word) ((MR_hl_field(1, BoundFunctorsX_22, 0))));
+    MR_Word TailBoundFunctorsX_27 = ((MR_Word) ((MR_hl_field(1, BoundFunctorsX_22, 1))));
+    MR_Word ConsIdX_36 = ((MR_Word) ((MR_hl_field(0, HeadBoundFunctorX_26, 0))));
+    MR_Word ArgInstsX_37 = ((MR_Word) ((MR_hl_field(0, HeadBoundFunctorX_26, 1))));
+
+    switch (MR_tag((MR_Word) ConsIdX_36)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+      case (MR_Integer) 2:
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_from_bound_make_bound_functor\'/12", (MR_String) "unsupported cons_id");
+          return;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          succeeded = check_hlds__modecheck_coerce__existq_tvars_contains_2_p_0(ConsExistQTVars_17, TypeX_19);
+          if (succeeded)
+          {
+            MR_Word TailBoundFunctorsY_29;
+            MR_Word HeadBoundFunctorY_31;
+
+            check_hlds__modecheck_coerce__update_bound_functor_uniqueness_for_coerce_result_3_p_0(LiveX_16, HeadBoundFunctorX_26, &HeadBoundFunctorY_31);
+            check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functors_13_p_0(ModuleInfo_14, TVarSet_15, LiveX_16, ConsExistQTVars_17, RevTermPath0_18, TypeX_19, TypeY_20, ExpandedInsts0_21, TailBoundFunctorsX_27, &TailBoundFunctorsY_29, BadConsIdErrors_24, STATE_VARIABLE_Errors_0_33, STATE_VARIABLE_Errors_34);
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              *BoundFunctorsY_23 = base;
+              MR_hl_field(1, base, 0) = ((MR_Box) (HeadBoundFunctorY_31));
+              MR_hl_field(1, base, 1) = ((MR_Box) (TailBoundFunctorsY_29));
+            }
+          }
+          else
+          {
+            MR_Word MaybeHeadBoundFunctorY_66;
+            MR_Word TailBoundFunctorsY_67;
+            MR_Word TailBadConsIdErrors_68;
+            MR_Word STATE_VARIABLE_Errors_1_70;
+
+            check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0(ModuleInfo_14, TVarSet_15, LiveX_16, RevTermPath0_18, TypeX_19, TypeY_20, ExpandedInsts0_21, ConsIdX_36, ArgInstsX_37, &MaybeHeadBoundFunctorY_66, STATE_VARIABLE_Errors_0_33, &STATE_VARIABLE_Errors_1_70);
+            check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functors_13_p_0(ModuleInfo_14, TVarSet_15, LiveX_16, ConsExistQTVars_17, RevTermPath0_18, TypeX_19, TypeY_20, ExpandedInsts0_21, TailBoundFunctorsX_27, &TailBoundFunctorsY_67, &TailBadConsIdErrors_68, STATE_VARIABLE_Errors_1_70, STATE_VARIABLE_Errors_34);
+            switch (MR_tag((MR_Word) MaybeHeadBoundFunctorY_66)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  *BoundFunctorsY_23 = TailBoundFunctorsY_67;
+                  *BadConsIdErrors_24 = TailBadConsIdErrors_68;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word HeadBoundFunctorY_64 = (MR_Word) (MR_body((MR_Word) (MaybeHeadBoundFunctorY_66), (MR_Integer) 1));
+
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    *BoundFunctorsY_23 = base;
+                    MR_hl_field(1, base, 0) = ((MR_Box) (HeadBoundFunctorY_64));
+                    MR_hl_field(1, base, 1) = ((MR_Box) (TailBoundFunctorsY_67));
+                  }
+                  *BadConsIdErrors_24 = TailBadConsIdErrors_68;
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word HeadBadConsIdError_32 = ((MR_Word) ((MR_hl_field(2, MaybeHeadBoundFunctorY_66, 0))));
+
+                  *BoundFunctorsY_23 = TailBoundFunctorsY_67;
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    *BadConsIdErrors_24 = base;
+                    MR_hl_field(1, base, 0) = ((MR_Box) (HeadBadConsIdError_32));
+                    MR_hl_field(1, base, 1) = ((MR_Box) (TailBadConsIdErrors_68));
+                  }
+                }
+                break;
+            }
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, ConsIdX_36, 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 9:
+          case (MR_Integer) 10:
+          case (MR_Integer) 11:
+          case (MR_Integer) 12:
+          case (MR_Integer) 13:
+          case (MR_Integer) 14:
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.modecheck_coerce_from_bound_make_bound_functor\'/12", (MR_String) "unsupported cons_id");
+              return;
+            }
+            break;
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+          case (MR_Integer) 8:
+            {
+              succeeded = check_hlds__modecheck_coerce__existq_tvars_contains_2_p_0(ConsExistQTVars_17, TypeX_19);
+              if (succeeded)
+              {
+                MR_Word TailBoundFunctorsY_29;
+                MR_Word HeadBoundFunctorY_31;
+
+                check_hlds__modecheck_coerce__update_bound_functor_uniqueness_for_coerce_result_3_p_0(LiveX_16, HeadBoundFunctorX_26, &HeadBoundFunctorY_31);
+                check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functors_13_p_0(ModuleInfo_14, TVarSet_15, LiveX_16, ConsExistQTVars_17, RevTermPath0_18, TypeX_19, TypeY_20, ExpandedInsts0_21, TailBoundFunctorsX_27, &TailBoundFunctorsY_29, BadConsIdErrors_24, STATE_VARIABLE_Errors_0_33, STATE_VARIABLE_Errors_34);
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                  *BoundFunctorsY_23 = base;
+                  MR_hl_field(1, base, 0) = ((MR_Box) (HeadBoundFunctorY_31));
+                  MR_hl_field(1, base, 1) = ((MR_Box) (TailBoundFunctorsY_29));
+                }
+              }
+              else
+              {
+                MR_Word MaybeHeadBoundFunctorY_66;
+                MR_Word TailBoundFunctorsY_67;
+                MR_Word TailBadConsIdErrors_68;
+                MR_Word STATE_VARIABLE_Errors_1_70;
+
+                check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functor_not_existq_12_p_0(ModuleInfo_14, TVarSet_15, LiveX_16, RevTermPath0_18, TypeX_19, TypeY_20, ExpandedInsts0_21, ConsIdX_36, ArgInstsX_37, &MaybeHeadBoundFunctorY_66, STATE_VARIABLE_Errors_0_33, &STATE_VARIABLE_Errors_1_70);
+                check_hlds__modecheck_coerce__modecheck_coerce_from_bound_make_bound_functors_13_p_0(ModuleInfo_14, TVarSet_15, LiveX_16, ConsExistQTVars_17, RevTermPath0_18, TypeX_19, TypeY_20, ExpandedInsts0_21, TailBoundFunctorsX_27, &TailBoundFunctorsY_67, &TailBadConsIdErrors_68, STATE_VARIABLE_Errors_1_70, STATE_VARIABLE_Errors_34);
+                switch (MR_tag((MR_Word) MaybeHeadBoundFunctorY_66)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    {
+                      *BoundFunctorsY_23 = TailBoundFunctorsY_67;
+                      *BadConsIdErrors_24 = TailBadConsIdErrors_68;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      MR_Word HeadBoundFunctorY_64 = (MR_Word) (MR_body((MR_Word) (MaybeHeadBoundFunctorY_66), (MR_Integer) 1));
+
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                        *BoundFunctorsY_23 = base;
+                        MR_hl_field(1, base, 0) = ((MR_Box) (HeadBoundFunctorY_64));
+                        MR_hl_field(1, base, 1) = ((MR_Box) (TailBoundFunctorsY_67));
+                      }
+                      *BadConsIdErrors_24 = TailBadConsIdErrors_68;
+                    }
+                    break;
+                  case (MR_Integer) 2:
+                    {
+                      MR_Word HeadBadConsIdError_32 = ((MR_Word) ((MR_hl_field(2, MaybeHeadBoundFunctorY_66, 0))));
+
+                      *BoundFunctorsY_23 = TailBoundFunctorsY_67;
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                        *BadConsIdErrors_24 = base;
+                        MR_hl_field(1, base, 0) = ((MR_Box) (HeadBadConsIdError_32));
+                        MR_hl_field(1, base, 1) = ((MR_Box) (TailBadConsIdErrors_68));
+                      }
+                    }
+                    break;
+                }
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__is_subtype_4_p_0(
+  MR_Word ModuleInfo_5,
+  MR_Word TVarSet_6,
+  MR_Word TypeA_7,
+  MR_Word TypeB_8)
+{
+  MR_bool succeeded;
+  MR_Word TypeTable_9;
+
+  hlds__hlds_module__module_info_get_type_table_2_p_0(ModuleInfo_5, &TypeTable_9);
+  succeeded = ((MR_tag((MR_Word) TypeA_7)) == (MR_Integer) 0);
+  if (!(succeeded))
+    succeeded = ((MR_tag((MR_Word) TypeB_8)) == (MR_Integer) 0);
+  if (succeeded)
+    succeeded = parse_tree__prog_data____Unify____mer_type_0_0(TypeA_7, TypeB_8);
+  else
+    switch (MR_tag((MR_Word) TypeA_7)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_String Var_36;
+          MR_String Var_37;
+
+          succeeded = ((MR_tag((MR_Word) TypeB_8)) == (MR_Integer) 0);
+          if (succeeded)
+          {
+            Var_36 = (MR_String) "predicate \140check_hlds.modecheck_coerce.types_compare_as_given_nonvar_mc\'/5";
+            Var_37 = (MR_String) "type_variable";
+            mercury__require__unexpected_2_p_0(Var_36, Var_37);
+            succeeded = MR_TRUE;
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word TypeCtorA_24;
+          MR_Word ArgTypesA_25;
+          MR_Word TypeCtorB_26;
+          MR_Word ArgTypesB_27;
+
+          succeeded = parse_tree__prog_type__type_to_ctor_and_args_3_p_0(TypeA_7, &TypeCtorA_24, &ArgTypesA_25);
+          if (succeeded)
+          {
+            succeeded = parse_tree__prog_type__type_to_ctor_and_args_3_p_0(TypeB_8, &TypeCtorB_26, &ArgTypesB_27);
+            if (succeeded)
+            {
+              succeeded = parse_tree__prog_data____Unify____type_ctor_0_0(TypeCtorA_24, TypeCtorB_26);
+              if (succeeded)
+                succeeded = check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(TypeTable_9, TVarSet_6, (MR_Integer) 1, ArgTypesA_25, ArgTypesB_27);
+              else
+              {
+                MR_Word SuperTypeA_28;
+
+                succeeded = hlds__type_util__get_supertype_5_p_0(TypeTable_9, TVarSet_6, TypeCtorA_24, ArgTypesA_25, &SuperTypeA_28);
+                if (succeeded)
+                  succeeded = check_hlds__modecheck_coerce__types_compare_as_given_mc_5_p_0(TypeTable_9, TVarSet_6, (MR_Integer) 1, SuperTypeA_28, TypeB_8);
+              }
+            }
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word BuiltinType_16 = ((MR_Word) ((MR_hl_field(2, TypeA_7, 0))));
+          MR_Word Var_44;
+
+          succeeded = ((MR_tag((MR_Word) TypeB_8)) == (MR_Integer) 2);
+          if (succeeded)
+          {
+            Var_44 = ((MR_Word) ((MR_hl_field(2, TypeB_8, 0))));
+            succeeded = parse_tree__prog_data____Unify____builtin_type_0_0(BuiltinType_16, Var_44);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, TypeA_7, 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word Kind_29 = ((MR_Word) ((MR_hl_field(3, TypeA_7, 2))));
+              MR_Word ArgTypesA_39 = ((MR_Word) ((MR_hl_field(3, TypeA_7, 1))));
+              MR_Word ArgTypesB_40;
+              MR_Word Var_45;
+
+              succeeded = ((((MR_tag((MR_Word) TypeB_8)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeB_8, 0)))) == (MR_Integer) 0)));
+              if (succeeded)
+              {
+                ArgTypesB_40 = ((MR_Word) ((MR_hl_field(3, TypeB_8, 1))));
+                Var_45 = ((MR_Word) ((MR_hl_field(3, TypeB_8, 2))));
+                succeeded = parse_tree__prog_data____Unify____kind_0_0(Kind_29, Var_45);
+                if (succeeded)
+                  succeeded = check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(TypeTable_9, TVarSet_6, (MR_Integer) 1, ArgTypesA_39, ArgTypesB_40);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word PredOrFunc_30 = ((MR_Unsigned) ((MR_hl_field(3, TypeA_7, 1))) & (MR_Integer) 1);
+              MR_Word Purity_32 = ((MR_Unsigned) ((MR_hl_field(3, TypeA_7, 4))) & (MR_Integer) 3);
+              MR_Word Var_38;
+              MR_Word ArgTypesA_41 = ((MR_Word) ((MR_hl_field(3, TypeA_7, 2))));
+              MR_Word ArgTypesB_42;
+              MR_Word Var_46;
+              MR_Word Var_47;
+
+              succeeded = ((((MR_tag((MR_Word) TypeB_8)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeB_8, 0)))) == (MR_Integer) 1)));
+              if (succeeded)
+              {
+                Var_46 = ((MR_Unsigned) ((MR_hl_field(3, TypeB_8, 1))) & (MR_Integer) 1);
+                ArgTypesB_42 = ((MR_Word) ((MR_hl_field(3, TypeB_8, 2))));
+                Var_47 = ((MR_Unsigned) ((MR_hl_field(3, TypeB_8, 4))) & (MR_Integer) 3);
+                succeeded = (PredOrFunc_30 == Var_46);
+                if (succeeded)
+                {
+                  succeeded = (Purity_32 == Var_47);
+                  if (succeeded)
+                  {
+                    Var_38 = (MR_Integer) 0;
+                    succeeded = check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(TypeTable_9, TVarSet_6, Var_38, ArgTypesA_41, ArgTypesB_42);
+                  }
+                }
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word TypeA1_34 = ((MR_Word) ((MR_hl_field(3, TypeA_7, 1))));
+              MR_Word TypeB1_35;
+              MR_Word Kind_43 = ((MR_Word) ((MR_hl_field(3, TypeA_7, 2))));
+              MR_Word Var_48;
+
+              succeeded = ((((MR_tag((MR_Word) TypeB_8)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeB_8, 0)))) == (MR_Integer) 2)));
+              if (succeeded)
+              {
+                TypeB1_35 = ((MR_Word) ((MR_hl_field(3, TypeB_8, 1))));
+                Var_48 = ((MR_Word) ((MR_hl_field(3, TypeB_8, 2))));
+                succeeded = parse_tree__prog_data____Unify____kind_0_0(Kind_43, Var_48);
+                if (succeeded)
+                  succeeded = check_hlds__modecheck_coerce__types_compare_as_given_mc_5_p_0(TypeTable_9, TVarSet_6, (MR_Integer) 1, TypeA1_34, TypeB1_35);
+              }
+            }
+            break;
+        }
+        break;
+    }
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_inst_10_p_0(
+  MR_Word ModuleInfo_11,
+  MR_Word TVarSet_12,
+  MR_Word LiveX_13,
+  MR_Word UniqX_14,
+  MR_Word ExistQTVars_15,
+  MR_Word RevTermPath0_16,
+  MR_Word TypeX_17,
+  MR_Word TypeY_18,
+  MR_Word InstX_19,
+  MR_Word * MaybeInstY_20)
+{
+  MR_bool succeeded;
+
+  succeeded = parse_tree__prog_data____Unify____mer_type_0_0(TypeX_17, TypeY_18);
+  if (!(succeeded))
+  {
+    MR_Word TypeInfo_7_36;
+    MR_Word TVar_34;
+
+    succeeded = ((MR_tag((MR_Word) TypeX_17)) == (MR_Integer) 0);
+    if (succeeded)
+    {
+      TVar_34 = ((MR_Word) ((MR_hl_field(0, TypeX_17, 0))));
+      TypeInfo_7_36 = (MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[1]);
+      succeeded = mercury__list__contains_2_p_0(TypeInfo_7_36, ExistQTVars_15, ((MR_Box) (TVar_34)));
+    }
+  }
+  if (succeeded)
+  {
+    MR_Word UniqY_21;
+    MR_Word InstY_22;
+
+    switch (UniqX_14) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 3:
+      case (MR_Integer) 4:
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "function \140check_hlds.modecheck_coerce.uniqueness_for_coerce_result\'/2", (MR_String) "clobbered");
+          return;
+        }
+        break;
+      case (MR_Integer) 2:
+      case (MR_Integer) 1:
+        switch (LiveX_13) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            UniqY_21 = UniqX_14;
+            break;
+          case (MR_Integer) 0:
+            UniqY_21 = (MR_Integer) 0;
+            break;
+        }
+        break;
+      case (MR_Integer) 0:
+        UniqY_21 = (MR_Integer) 0;
+        break;
+    }
+    {
+      InstY_22 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, InstY_22, 0) = (MR_Box) ((MR_Unsigned) (UniqY_21));
+      MR_hl_field(1, InstY_22, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      *MaybeInstY_20 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (InstY_22));
+    }
+  }
+  else
+  {
+    MR_Word TypeTable_39;
+
+    hlds__hlds_module__module_info_get_type_table_2_p_0(ModuleInfo_11, &TypeTable_39);
+    succeeded = ((MR_tag((MR_Word) TypeX_17)) == (MR_Integer) 0);
+    if (!(succeeded))
+      succeeded = ((MR_tag((MR_Word) TypeY_18)) == (MR_Integer) 0);
+    if (succeeded)
+      succeeded = parse_tree__prog_data____Unify____mer_type_0_0(TypeX_17, TypeY_18);
+    else
+      switch (MR_tag((MR_Word) TypeX_17)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_String Var_66;
+            MR_String Var_67;
+
+            succeeded = ((MR_tag((MR_Word) TypeY_18)) == (MR_Integer) 0);
+            if (succeeded)
+            {
+              Var_66 = (MR_String) "predicate \140check_hlds.modecheck_coerce.types_compare_as_given_nonvar_mc\'/5";
+              Var_67 = (MR_String) "type_variable";
+              {
+                mercury__require__unexpected_2_p_0(Var_66, Var_67);
+                return;
+              }
+              succeeded = MR_TRUE;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word TypeCtorA_54;
+            MR_Word ArgTypesA_55;
+            MR_Word TypeCtorB_56;
+            MR_Word ArgTypesB_57;
+
+            succeeded = parse_tree__prog_type__type_to_ctor_and_args_3_p_0(TypeX_17, &TypeCtorA_54, &ArgTypesA_55);
+            if (succeeded)
+            {
+              succeeded = parse_tree__prog_type__type_to_ctor_and_args_3_p_0(TypeY_18, &TypeCtorB_56, &ArgTypesB_57);
+              if (succeeded)
+              {
+                succeeded = parse_tree__prog_data____Unify____type_ctor_0_0(TypeCtorA_54, TypeCtorB_56);
+                if (succeeded)
+                  succeeded = check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(TypeTable_39, TVarSet_12, (MR_Integer) 1, ArgTypesA_55, ArgTypesB_57);
+                else
+                {
+                  MR_Word SuperTypeA_58;
+
+                  succeeded = hlds__type_util__get_supertype_5_p_0(TypeTable_39, TVarSet_12, TypeCtorA_54, ArgTypesA_55, &SuperTypeA_58);
+                  if (succeeded)
+                    succeeded = check_hlds__modecheck_coerce__types_compare_as_given_mc_5_p_0(TypeTable_39, TVarSet_12, (MR_Integer) 1, SuperTypeA_58, TypeY_18);
+                }
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word BuiltinType_46 = ((MR_Word) ((MR_hl_field(2, TypeX_17, 0))));
+            MR_Word Var_74;
+
+            succeeded = ((MR_tag((MR_Word) TypeY_18)) == (MR_Integer) 2);
+            if (succeeded)
+            {
+              Var_74 = ((MR_Word) ((MR_hl_field(2, TypeY_18, 0))));
+              succeeded = parse_tree__prog_data____Unify____builtin_type_0_0(BuiltinType_46, Var_74);
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) ((MR_hl_field(3, TypeX_17, 0))))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word Kind_59 = ((MR_Word) ((MR_hl_field(3, TypeX_17, 2))));
+                MR_Word ArgTypesA_69 = ((MR_Word) ((MR_hl_field(3, TypeX_17, 1))));
+                MR_Word ArgTypesB_70;
+                MR_Word Var_75;
+
+                succeeded = ((((MR_tag((MR_Word) TypeY_18)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeY_18, 0)))) == (MR_Integer) 0)));
+                if (succeeded)
+                {
+                  ArgTypesB_70 = ((MR_Word) ((MR_hl_field(3, TypeY_18, 1))));
+                  Var_75 = ((MR_Word) ((MR_hl_field(3, TypeY_18, 2))));
+                  succeeded = parse_tree__prog_data____Unify____kind_0_0(Kind_59, Var_75);
+                  if (succeeded)
+                    succeeded = check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(TypeTable_39, TVarSet_12, (MR_Integer) 1, ArgTypesA_69, ArgTypesB_70);
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word PredOrFunc_60 = ((MR_Unsigned) ((MR_hl_field(3, TypeX_17, 1))) & (MR_Integer) 1);
+                MR_Word Purity_62 = ((MR_Unsigned) ((MR_hl_field(3, TypeX_17, 4))) & (MR_Integer) 3);
+                MR_Word Var_68;
+                MR_Word ArgTypesA_71 = ((MR_Word) ((MR_hl_field(3, TypeX_17, 2))));
+                MR_Word ArgTypesB_72;
+                MR_Word Var_76;
+                MR_Word Var_77;
+
+                succeeded = ((((MR_tag((MR_Word) TypeY_18)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeY_18, 0)))) == (MR_Integer) 1)));
+                if (succeeded)
+                {
+                  Var_76 = ((MR_Unsigned) ((MR_hl_field(3, TypeY_18, 1))) & (MR_Integer) 1);
+                  ArgTypesB_72 = ((MR_Word) ((MR_hl_field(3, TypeY_18, 2))));
+                  Var_77 = ((MR_Unsigned) ((MR_hl_field(3, TypeY_18, 4))) & (MR_Integer) 3);
+                  succeeded = (PredOrFunc_60 == Var_76);
+                  if (succeeded)
+                  {
+                    succeeded = (Purity_62 == Var_77);
+                    if (succeeded)
+                    {
+                      Var_68 = (MR_Integer) 0;
+                      succeeded = check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(TypeTable_39, TVarSet_12, Var_68, ArgTypesA_71, ArgTypesB_72);
+                    }
+                  }
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word TypeA1_64 = ((MR_Word) ((MR_hl_field(3, TypeX_17, 1))));
+                MR_Word TypeB1_65;
+                MR_Word Kind_73 = ((MR_Word) ((MR_hl_field(3, TypeX_17, 2))));
+                MR_Word Var_78;
+
+                succeeded = ((((MR_tag((MR_Word) TypeY_18)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeY_18, 0)))) == (MR_Integer) 2)));
+                if (succeeded)
+                {
+                  TypeB1_65 = ((MR_Word) ((MR_hl_field(3, TypeY_18, 1))));
+                  Var_78 = ((MR_Word) ((MR_hl_field(3, TypeY_18, 2))));
+                  succeeded = parse_tree__prog_data____Unify____kind_0_0(Kind_73, Var_78);
+                  if (succeeded)
+                    succeeded = check_hlds__modecheck_coerce__types_compare_as_given_mc_5_p_0(TypeTable_39, TVarSet_12, (MR_Integer) 1, TypeA1_64, TypeB1_65);
+                }
+              }
+              break;
+          }
+          break;
+      }
+    if (succeeded)
+    {
+      MR_Word SeenTypes0_23;
+      MR_Word InstY_30;
+
+      mercury__set__init_1_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0), &SeenTypes0_23);
+      check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_inst_for_subtype_8_p_0(ModuleInfo_11, TVarSet_12, LiveX_13, UniqX_14, SeenTypes0_23, TypeX_17, TypeY_18, &InstY_30);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *MaybeInstY_20 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (InstY_30));
+      }
+    }
+    else
+    {
+      MR_Word TermPath_24;
+      MR_Word Reason_25;
+      MR_Word Error_26;
+      MR_Word Var_28;
+
+      mercury__list__reverse_2_p_0((MR_Word) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_term_path_step_0), RevTermPath0_16, &TermPath_24);
+      {
+        Reason_25 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(2, Reason_25, 0) = ((MR_Box) (InstX_19));
+      }
+      {
+        Error_26 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Error_26, 0) = ((MR_Box) (TermPath_24));
+        MR_hl_field(0, Error_26, 1) = ((MR_Box) (TypeX_17));
+        MR_hl_field(0, Error_26, 2) = ((MR_Box) (TypeY_18));
+        MR_hl_field(0, Error_26, 3) = ((MR_Box) (Reason_25));
+      }
+      {
+        Var_28 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_28, 0) = ((MR_Box) (Error_26));
+        MR_hl_field(1, Var_28, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+        *MaybeInstY_20 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (Var_28));
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__types_compare_as_given_mc_5_p_0(
+  MR_Word TypeTable_6,
+  MR_Word TVarSet_7,
+  MR_Word Comparison_8,
+  MR_Word TypeA_9,
+  MR_Word TypeB_10)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded = ((MR_tag((MR_Word) TypeA_9)) == (MR_Integer) 0);
+
+    // setup for model_semi tailcalls optimized into a loop
+    ;
+    if (!(succeeded))
+      succeeded = ((MR_tag((MR_Word) TypeB_10)) == (MR_Integer) 0);
+    if (succeeded)
+      succeeded = parse_tree__prog_data____Unify____mer_type_0_0(TypeA_9, TypeB_10);
+    else
+      switch (MR_tag((MR_Word) TypeA_9)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_String Var_36;
+            MR_String Var_37;
+
+            succeeded = ((MR_tag((MR_Word) TypeB_10)) == (MR_Integer) 0);
+            if (succeeded)
+            {
+              Var_36 = (MR_String) "predicate \140check_hlds.modecheck_coerce.types_compare_as_given_nonvar_mc\'/5";
+              Var_37 = (MR_String) "type_variable";
+              mercury__require__unexpected_2_p_0(Var_36, Var_37);
+              succeeded = MR_TRUE;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word TypeCtorA_24;
+            MR_Word ArgTypesA_25;
+            MR_Word TypeCtorB_26;
+            MR_Word ArgTypesB_27;
+
+            succeeded = parse_tree__prog_type__type_to_ctor_and_args_3_p_0(TypeA_9, &TypeCtorA_24, &ArgTypesA_25);
+            if (succeeded)
+            {
+              succeeded = parse_tree__prog_type__type_to_ctor_and_args_3_p_0(TypeB_10, &TypeCtorB_26, &ArgTypesB_27);
+              if (succeeded)
+              {
+                succeeded = parse_tree__prog_data____Unify____type_ctor_0_0(TypeCtorA_24, TypeCtorB_26);
+                if (succeeded)
+                  succeeded = check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(TypeTable_6, TVarSet_7, Comparison_8, ArgTypesA_25, ArgTypesB_27);
+                else
+                {
+                  MR_Word SuperTypeA_28;
+                  MR_Word next_value_of_TypeA_9;
+
+                  succeeded = (Comparison_8 == (MR_Integer) 1);
+                  if (succeeded)
+                  {
+                    succeeded = hlds__type_util__get_supertype_5_p_0(TypeTable_6, TVarSet_7, TypeCtorA_24, ArgTypesA_25, &SuperTypeA_28);
+                    if (succeeded)
+                    {
+                      // direct tailcall eliminated
+                      ;
+                      next_value_of_TypeA_9 = SuperTypeA_28;
+                      TypeA_9 = next_value_of_TypeA_9;
+                      continue;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word BuiltinType_16 = ((MR_Word) ((MR_hl_field(2, TypeA_9, 0))));
+            MR_Word Var_44;
+
+            succeeded = ((MR_tag((MR_Word) TypeB_10)) == (MR_Integer) 2);
+            if (succeeded)
+            {
+              Var_44 = ((MR_Word) ((MR_hl_field(2, TypeB_10, 0))));
+              succeeded = parse_tree__prog_data____Unify____builtin_type_0_0(BuiltinType_16, Var_44);
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) ((MR_hl_field(3, TypeA_9, 0))))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word Kind_29 = ((MR_Word) ((MR_hl_field(3, TypeA_9, 2))));
+                MR_Word ArgTypesA_39 = ((MR_Word) ((MR_hl_field(3, TypeA_9, 1))));
+                MR_Word ArgTypesB_40;
+                MR_Word Var_45;
+
+                succeeded = ((((MR_tag((MR_Word) TypeB_10)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeB_10, 0)))) == (MR_Integer) 0)));
+                if (succeeded)
+                {
+                  ArgTypesB_40 = ((MR_Word) ((MR_hl_field(3, TypeB_10, 1))));
+                  Var_45 = ((MR_Word) ((MR_hl_field(3, TypeB_10, 2))));
+                  succeeded = parse_tree__prog_data____Unify____kind_0_0(Kind_29, Var_45);
+                  if (succeeded)
+                    succeeded = check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(TypeTable_6, TVarSet_7, Comparison_8, ArgTypesA_39, ArgTypesB_40);
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word PredOrFunc_30 = ((MR_Unsigned) ((MR_hl_field(3, TypeA_9, 1))) & (MR_Integer) 1);
+                MR_Word Purity_32 = ((MR_Unsigned) ((MR_hl_field(3, TypeA_9, 4))) & (MR_Integer) 3);
+                MR_Word Var_38;
+                MR_Word ArgTypesA_41 = ((MR_Word) ((MR_hl_field(3, TypeA_9, 2))));
+                MR_Word ArgTypesB_42;
+                MR_Word Var_46;
+                MR_Word Var_47;
+
+                succeeded = ((((MR_tag((MR_Word) TypeB_10)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeB_10, 0)))) == (MR_Integer) 1)));
+                if (succeeded)
+                {
+                  Var_46 = ((MR_Unsigned) ((MR_hl_field(3, TypeB_10, 1))) & (MR_Integer) 1);
+                  ArgTypesB_42 = ((MR_Word) ((MR_hl_field(3, TypeB_10, 2))));
+                  Var_47 = ((MR_Unsigned) ((MR_hl_field(3, TypeB_10, 4))) & (MR_Integer) 3);
+                  succeeded = (PredOrFunc_30 == Var_46);
+                  if (succeeded)
+                  {
+                    succeeded = (Purity_32 == Var_47);
+                    if (succeeded)
+                    {
+                      Var_38 = (MR_Integer) 0;
+                      succeeded = check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(TypeTable_6, TVarSet_7, Var_38, ArgTypesA_41, ArgTypesB_42);
+                    }
+                  }
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word TypeA1_34 = ((MR_Word) ((MR_hl_field(3, TypeA_9, 1))));
+                MR_Word TypeB1_35;
+                MR_Word Kind_43 = ((MR_Word) ((MR_hl_field(3, TypeA_9, 2))));
+                MR_Word Var_48;
+                MR_Word next_value_of_TypeA_9;
+                MR_Word next_value_of_TypeB_10;
+
+                succeeded = ((((MR_tag((MR_Word) TypeB_10)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeB_10, 0)))) == (MR_Integer) 2)));
+                if (succeeded)
+                {
+                  TypeB1_35 = ((MR_Word) ((MR_hl_field(3, TypeB_10, 1))));
+                  Var_48 = ((MR_Word) ((MR_hl_field(3, TypeB_10, 2))));
+                  succeeded = parse_tree__prog_data____Unify____kind_0_0(Kind_43, Var_48);
+                  if (succeeded)
+                  {
+                    // direct tailcall eliminated
+                    ;
+                    next_value_of_TypeA_9 = TypeA1_34;
+                    next_value_of_TypeB_10 = TypeB1_35;
+                    TypeA_9 = next_value_of_TypeA_9;
+                    TypeB_10 = next_value_of_TypeB_10;
+                    continue;
+                  }
+                }
+              }
+              break;
+          }
+          break;
+      }
+    return succeeded;
+    break;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3,
+  MR_Word HeadVar__4_4,
+  MR_Word HeadVar__5_5)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded;
+
+    // setup for model_semi tailcalls optimized into a loop
+    ;
+    if ((HeadVar__4_4 == (MR_Word) ((MR_Unsigned) 0U)))
+      succeeded = (HeadVar__5_5 == (MR_Word) ((MR_Unsigned) 0U));
+    else
+    {
+      MR_Word TypeA_12 = ((MR_Word) ((MR_hl_field(1, HeadVar__4_4, 0))));
+      MR_Word TypesA_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__4_4, 1))));
+      MR_Word TypeB_14;
+      MR_Word TypesB_15;
+      MR_Word next_value_of_HeadVar__4_4;
+      MR_Word next_value_of_HeadVar__5_5;
+
+      succeeded = (HeadVar__5_5 != (MR_Word) ((MR_Unsigned) 0U));
+      if (succeeded)
+      {
+        TypeB_14 = ((MR_Word) ((MR_hl_field(1, HeadVar__5_5, 0))));
+        TypesB_15 = ((MR_Word) ((MR_hl_field(1, HeadVar__5_5, 1))));
+        succeeded = ((MR_tag((MR_Word) TypeA_12)) == (MR_Integer) 0);
+        if (!(succeeded))
+          succeeded = ((MR_tag((MR_Word) TypeB_14)) == (MR_Integer) 0);
+        if (succeeded)
+          succeeded = parse_tree__prog_data____Unify____mer_type_0_0(TypeA_12, TypeB_14);
+        else
+          switch (MR_tag((MR_Word) TypeA_12)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_String Var_41;
+                MR_String Var_42;
+
+                succeeded = ((MR_tag((MR_Word) TypeB_14)) == (MR_Integer) 0);
+                if (succeeded)
+                {
+                  Var_41 = (MR_String) "predicate \140check_hlds.modecheck_coerce.types_compare_as_given_nonvar_mc\'/5";
+                  Var_42 = (MR_String) "type_variable";
+                  mercury__require__unexpected_2_p_0(Var_41, Var_42);
+                  succeeded = MR_TRUE;
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word TypeCtorA_29;
+                MR_Word ArgTypesA_30;
+                MR_Word TypeCtorB_31;
+                MR_Word ArgTypesB_32;
+
+                succeeded = parse_tree__prog_type__type_to_ctor_and_args_3_p_0(TypeA_12, &TypeCtorA_29, &ArgTypesA_30);
+                if (succeeded)
+                {
+                  succeeded = parse_tree__prog_type__type_to_ctor_and_args_3_p_0(TypeB_14, &TypeCtorB_31, &ArgTypesB_32);
+                  if (succeeded)
+                  {
+                    succeeded = parse_tree__prog_data____Unify____type_ctor_0_0(TypeCtorA_29, TypeCtorB_31);
+                    if (succeeded)
+                      succeeded = check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(HeadVar__1_1, HeadVar__2_2, HeadVar__3_3, ArgTypesA_30, ArgTypesB_32);
+                    else
+                    {
+                      MR_Word SuperTypeA_33;
+
+                      succeeded = (HeadVar__3_3 == (MR_Integer) 1);
+                      if (succeeded)
+                      {
+                        succeeded = hlds__type_util__get_supertype_5_p_0(HeadVar__1_1, HeadVar__2_2, TypeCtorA_29, ArgTypesA_30, &SuperTypeA_33);
+                        if (succeeded)
+                          succeeded = check_hlds__modecheck_coerce__types_compare_as_given_mc_5_p_0(HeadVar__1_1, HeadVar__2_2, HeadVar__3_3, SuperTypeA_33, TypeB_14);
+                      }
+                    }
+                  }
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word BuiltinType_21 = ((MR_Word) ((MR_hl_field(2, TypeA_12, 0))));
+                MR_Word Var_49;
+
+                succeeded = ((MR_tag((MR_Word) TypeB_14)) == (MR_Integer) 2);
+                if (succeeded)
+                {
+                  Var_49 = ((MR_Word) ((MR_hl_field(2, TypeB_14, 0))));
+                  succeeded = parse_tree__prog_data____Unify____builtin_type_0_0(BuiltinType_21, Var_49);
+                }
+              }
+              break;
+            case (MR_Integer) 3:
+              switch (((MR_Integer) ((MR_hl_field(3, TypeA_12, 0))))) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    MR_Word Kind_34 = ((MR_Word) ((MR_hl_field(3, TypeA_12, 2))));
+                    MR_Word ArgTypesA_44 = ((MR_Word) ((MR_hl_field(3, TypeA_12, 1))));
+                    MR_Word ArgTypesB_45;
+                    MR_Word Var_50;
+
+                    succeeded = ((((MR_tag((MR_Word) TypeB_14)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeB_14, 0)))) == (MR_Integer) 0)));
+                    if (succeeded)
+                    {
+                      ArgTypesB_45 = ((MR_Word) ((MR_hl_field(3, TypeB_14, 1))));
+                      Var_50 = ((MR_Word) ((MR_hl_field(3, TypeB_14, 2))));
+                      succeeded = parse_tree__prog_data____Unify____kind_0_0(Kind_34, Var_50);
+                      if (succeeded)
+                        succeeded = check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(HeadVar__1_1, HeadVar__2_2, HeadVar__3_3, ArgTypesA_44, ArgTypesB_45);
+                    }
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word PredOrFunc_35 = ((MR_Unsigned) ((MR_hl_field(3, TypeA_12, 1))) & (MR_Integer) 1);
+                    MR_Word Purity_37 = ((MR_Unsigned) ((MR_hl_field(3, TypeA_12, 4))) & (MR_Integer) 3);
+                    MR_Word Var_43;
+                    MR_Word ArgTypesA_46 = ((MR_Word) ((MR_hl_field(3, TypeA_12, 2))));
+                    MR_Word ArgTypesB_47;
+                    MR_Word Var_51;
+                    MR_Word Var_52;
+
+                    succeeded = ((((MR_tag((MR_Word) TypeB_14)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeB_14, 0)))) == (MR_Integer) 1)));
+                    if (succeeded)
+                    {
+                      Var_51 = ((MR_Unsigned) ((MR_hl_field(3, TypeB_14, 1))) & (MR_Integer) 1);
+                      ArgTypesB_47 = ((MR_Word) ((MR_hl_field(3, TypeB_14, 2))));
+                      Var_52 = ((MR_Unsigned) ((MR_hl_field(3, TypeB_14, 4))) & (MR_Integer) 3);
+                      succeeded = (PredOrFunc_35 == Var_51);
+                      if (succeeded)
+                      {
+                        succeeded = (Purity_37 == Var_52);
+                        if (succeeded)
+                        {
+                          Var_43 = (MR_Integer) 0;
+                          succeeded = check_hlds__modecheck_coerce__corresponding_types_compare_as_given_mc_5_p_0(HeadVar__1_1, HeadVar__2_2, Var_43, ArgTypesA_46, ArgTypesB_47);
+                        }
+                      }
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_Word TypeA1_39 = ((MR_Word) ((MR_hl_field(3, TypeA_12, 1))));
+                    MR_Word TypeB1_40;
+                    MR_Word Kind_48 = ((MR_Word) ((MR_hl_field(3, TypeA_12, 2))));
+                    MR_Word Var_53;
+
+                    succeeded = ((((MR_tag((MR_Word) TypeB_14)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeB_14, 0)))) == (MR_Integer) 2)));
+                    if (succeeded)
+                    {
+                      TypeB1_40 = ((MR_Word) ((MR_hl_field(3, TypeB_14, 1))));
+                      Var_53 = ((MR_Word) ((MR_hl_field(3, TypeB_14, 2))));
+                      succeeded = parse_tree__prog_data____Unify____kind_0_0(Kind_48, Var_53);
+                      if (succeeded)
+                        succeeded = check_hlds__modecheck_coerce__types_compare_as_given_mc_5_p_0(HeadVar__1_1, HeadVar__2_2, HeadVar__3_3, TypeA1_39, TypeB1_40);
+                    }
+                  }
+                  break;
+              }
+              break;
+          }
+        if (succeeded)
+        {
+          // direct tailcall eliminated
+          ;
+          next_value_of_HeadVar__4_4 = TypesA_13;
+          next_value_of_HeadVar__5_5 = TypesB_15;
+          HeadVar__4_4 = next_value_of_HeadVar__4_4;
+          HeadVar__5_5 = next_value_of_HeadVar__5_5;
+          continue;
+        }
+      }
+    }
+    return succeeded;
+    break;
+  }
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_inst_for_subtype_8_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_BoundFunctorY_18;
+
+  check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_bound_functor_9_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))), ((MR_Word) ((MR_hl_field(0, closure, 5)))), ((MR_Word) ((MR_hl_field(0, closure, 6)))), ((MR_Word) ((MR_hl_field(0, closure, 7)))), ((MR_Word) ((MR_hl_field(0, closure, 8)))), ((MR_Word) ((MR_hl_field(0, closure, 9)))), ((MR_Word) (wrapper_arg_1)), &conv0_BoundFunctorY_18);
+  *wrapper_arg_2 = ((MR_Box) (conv0_BoundFunctorY_18));
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_inst_for_subtype_8_p_0(
+  MR_Word ModuleInfo_9,
+  MR_Word TVarSet_10,
+  MR_Word LiveX_11,
+  MR_Word UniqX_12,
+  MR_Word SeenTypes0_13,
+  MR_Word TypeX_14,
+  MR_Word TypeY_15,
+  MR_Word * InstY_16)
+{
+  MR_bool succeeded;
+  MR_Word SeenTypes1_17;
+  MR_Word CtorsX_18;
+  MR_Word TypeCtorInfo_21_21;
+
+  succeeded = parse_tree__prog_data____Unify____mer_type_0_0(TypeX_14, TypeY_15);
+  succeeded = !(succeeded);
+  if (succeeded)
+  {
+    TypeCtorInfo_21_21 = (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0);
+    succeeded = mercury__set__insert_new_3_p_0(TypeCtorInfo_21_21, ((MR_Box) (TypeX_14)), SeenTypes0_13, &SeenTypes1_17);
+    if (succeeded)
+      succeeded = hlds__type_util__type_constructors_3_p_0(ModuleInfo_9, TypeX_14, &CtorsX_18);
+  }
+  if (succeeded)
+  {
+    MR_Word BoundFunctorsY_23;
+    MR_Word UniqY_24;
+    MR_Word SortedBoundFunctorsY_26;
+    MR_Word Var_27;
+
+    {
+      Var_27 = (MR_Word) MR_new_object(MR_Word, (10 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_27, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_6[0]));
+      MR_hl_field(0, Var_27, 1) = ((MR_Box) (check_hlds__modecheck_coerce__modecheck_coerce_from_ground_make_inst_for_subtype_8_p_0_1));
+      MR_hl_field(0, Var_27, 2) = ((MR_Box) ((MR_Integer) 7));
+      MR_hl_field(0, Var_27, 3) = ((MR_Box) (ModuleInfo_9));
+      MR_hl_field(0, Var_27, 4) = ((MR_Box) (TVarSet_10));
+      MR_hl_field(0, Var_27, 5) = ((MR_Box) (LiveX_11));
+      MR_hl_field(0, Var_27, 6) = ((MR_Box) (UniqX_12));
+      MR_hl_field(0, Var_27, 7) = ((MR_Box) (SeenTypes1_17));
+      MR_hl_field(0, Var_27, 8) = ((MR_Box) (TypeX_14));
+      MR_hl_field(0, Var_27, 9) = ((MR_Box) (TypeY_15));
+    }
+    mercury__list__map_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_constructor_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_bound_functor_0), Var_27, CtorsX_18, &BoundFunctorsY_23);
+    UniqY_24 = check_hlds__modecheck_coerce__uniqueness_for_coerce_result_2_f_0(LiveX_11, UniqX_12);
+    mercury__list__sort_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_bound_functor_0), BoundFunctorsY_23, &SortedBoundFunctorsY_26);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL));
+      *InstY_16 = base;
+      MR_hl_field(2, base, 0) = (MR_Box) ((MR_Unsigned) (UniqY_24));
+      MR_hl_field(2, base, 1) = ((MR_Box) (MR_mkword(1, &check_hlds__modecheck_coerce_scalar_common_4[0])));
+      MR_hl_field(2, base, 2) = ((MR_Box) (SortedBoundFunctorsY_26));
+    }
+  }
+  else
+  {
+    MR_Word UniqY_19;
+
+    switch (UniqX_12) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 3:
+      case (MR_Integer) 4:
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "function \140check_hlds.modecheck_coerce.uniqueness_for_coerce_result\'/2", (MR_String) "clobbered");
+          return;
+        }
+        break;
+      case (MR_Integer) 2:
+      case (MR_Integer) 1:
+        switch (LiveX_11) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            UniqY_19 = UniqX_12;
+            break;
+          case (MR_Integer) 0:
+            UniqY_19 = (MR_Integer) 0;
+            break;
+        }
+        break;
+      case (MR_Integer) 0:
+        UniqY_19 = (MR_Integer) 0;
+        break;
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *InstY_16 = base;
+      MR_hl_field(1, base, 0) = (MR_Box) ((MR_Unsigned) (UniqY_19));
+      MR_hl_field(1, base, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__modecheck_coerce__uniqueness_for_coerce_result_2_f_0(
+  MR_Word LiveX_4,
+  MR_Word UniqX_5)
+{
+  MR_Word UniqY_6;
+
+  switch (UniqX_5) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 3:
+    case (MR_Integer) 4:
+      mercury__require__unexpected_2_p_0((MR_String) "function \140check_hlds.modecheck_coerce.uniqueness_for_coerce_result\'/2", (MR_String) "clobbered");
+      break;
+    case (MR_Integer) 2:
+    case (MR_Integer) 1:
+      switch (LiveX_4) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 1:
+          UniqY_6 = UniqX_5;
+          break;
+        case (MR_Integer) 0:
+          UniqY_6 = (MR_Integer) 0;
+          break;
+      }
+      break;
+    case (MR_Integer) 0:
+      UniqY_6 = (MR_Integer) 0;
+      break;
+  }
+  return UniqY_6;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__update_bound_functor_uniqueness_for_coerce_result_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_InstY_6;
+
+  check_hlds__modecheck_coerce__update_inst_uniqueness_for_coerce_result_3_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) (wrapper_arg_1)), &conv0_InstY_6);
+  *wrapper_arg_2 = ((MR_Box) (conv0_InstY_6));
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__update_bound_functor_uniqueness_for_coerce_result_3_p_0(
+  MR_Word LiveX_4,
+  MR_Word BoundFunctorX_5,
+  MR_Word * BoundFunctorY_6)
+{
+  MR_Word ConsId_7 = ((MR_Word) ((MR_hl_field(0, BoundFunctorX_5, 0))));
+  MR_Word ArgInstsX_8 = ((MR_Word) ((MR_hl_field(0, BoundFunctorX_5, 1))));
+  MR_Word ArgInstsY_9;
+  MR_Word Var_10;
+
+  {
+    Var_10 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_10, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_5[0]));
+    MR_hl_field(0, Var_10, 1) = ((MR_Box) (check_hlds__modecheck_coerce__update_bound_functor_uniqueness_for_coerce_result_3_p_0_1));
+    MR_hl_field(0, Var_10, 2) = ((MR_Box) ((MR_Integer) 1));
+    MR_hl_field(0, Var_10, 3) = ((MR_Box) (LiveX_4));
+  }
+  mercury__list__map_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0), Var_10, ArgInstsX_8, &ArgInstsY_9);
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    *BoundFunctorY_6 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (ConsId_7));
+    MR_hl_field(0, base, 1) = ((MR_Box) (ArgInstsY_9));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__existq_tvars_contains_2_p_0(
+  MR_Word ExistQTVars_3,
+  MR_Word Type_4)
+{
+  MR_bool succeeded = ((MR_tag((MR_Word) Type_4)) == (MR_Integer) 0);
+  MR_Word TypeInfo_7_7;
+  MR_Word TVar_5;
+
+  if (succeeded)
+  {
+    TVar_5 = ((MR_Word) ((MR_hl_field(0, Type_4, 0))));
+    TypeInfo_7_7 = (MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[1]);
+    succeeded = mercury__list__contains_2_p_0(TypeInfo_7_7, ExistQTVars_3, ((MR_Box) (TVar_5)));
+  }
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__get_bound_functor_cons_and_arg_types_6_p_0_1(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = check_hlds__modecheck_coerce__IntroducedFrom__pred__get_bound_functor_cons_and_arg_types__653__1_2_p_0(((MR_Word) ((MR_hl_field(0, closure, 3)))), ((MR_Word) ((MR_hl_field(0, closure, 4)))));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__get_bound_functor_cons_and_arg_types_6_p_0(
+  MR_Word ModuleInfo_7,
+  MR_Word TypeX_8,
+  MR_Word TypeY_9,
+  MR_Word DuCtorX_10,
+  MR_Word * DuCtorY_11,
+  MR_Word * Result_12)
+{
+  MR_bool succeeded;
+  MR_Word TypeCtorY_13;
+  MR_Word SymName0_69;
+  MR_Integer Arity_70;
+  MR_Word ModuleName_72;
+  MR_Word SymName_73;
+
+  parse_tree__prog_type__type_to_ctor_det_2_p_0(TypeY_9, &TypeCtorY_13);
+  SymName0_69 = ((MR_Word) ((MR_hl_field(0, DuCtorX_10, 0))));
+  Arity_70 = ((MR_Integer) ((MR_hl_field(0, DuCtorX_10, 1))));
+  ModuleName_72 = hlds__type_util__type_ctor_module_1_f_0(TypeCtorY_13);
+  if (((MR_tag((MR_Word) SymName0_69)) == (MR_Integer) 1))
+  {
+    MR_String Name_76 = ((MR_String) ((MR_hl_field(1, SymName0_69, 1))));
+
+    {
+      SymName_73 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, SymName_73, 0) = ((MR_Box) (ModuleName_72));
+      MR_hl_field(1, SymName_73, 1) = ((MR_Box) (Name_76));
+    }
+  }
+  else
+    SymName_73 = SymName0_69;
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+    *DuCtorY_11 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (SymName_73));
+    MR_hl_field(0, base, 1) = ((MR_Box) (Arity_70));
+    MR_hl_field(0, base, 2) = ((MR_Box) (TypeCtorY_13));
+  }
+  switch (MR_tag((MR_Word) TypeX_8)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      *Result_12 = (MR_Word) ((MR_Unsigned) 0U);
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word ArgTypesX_17;
+        MR_Word TypeCtor_79;
+        MR_Word ConsTable_80;
+        MR_Word ConsDefn_81;
+        MR_Word TypeParams_84;
+        MR_Word CtorArgs_87;
+        MR_Word CtorArgTypes0_89;
+        MR_Word TypeArgs_93;
+
+        succeeded = parse_tree__prog_type__type_to_ctor_and_args_3_p_0(TypeX_8, &TypeCtor_79, &TypeArgs_93);
+        if (succeeded)
+        {
+          hlds__hlds_module__module_info_get_cons_table_2_p_0(ModuleInfo_7, &ConsTable_80);
+          succeeded = hlds__hlds_cons__search_cons_table_of_type_ctor_4_p_0(ConsTable_80, TypeCtor_79, DuCtorX_10, &ConsDefn_81);
+          if (succeeded)
+          {
+            TypeParams_84 = ((MR_Word) ((MR_hl_field(0, ConsDefn_81, 2))));
+            CtorArgs_87 = ((MR_Word) ((MR_hl_field(0, ConsDefn_81, 5))));
+            parse_tree__prog_data__get_ctor_arg_types_2_p_0(CtorArgs_87, &CtorArgTypes0_89);
+            if ((TypeParams_84 == (MR_Word) ((MR_Unsigned) 0U)))
+              ArgTypesX_17 = CtorArgTypes0_89;
+            else
+            {
+              MR_Word Subst_92;
+
+              mercury__map__from_corresponding_lists_3_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[1]), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0), TypeParams_84, TypeArgs_93, &Subst_92);
+              parse_tree__prog_type_subst__apply_subst_to_types_3_p_0(Subst_92, CtorArgTypes0_89, &ArgTypesX_17);
+            }
+            succeeded = MR_TRUE;
+          }
+        }
+        if (succeeded)
+        {
+          MR_Word ArgTypesY_21;
+          MR_Word TypeCtor_98;
+          MR_Word ConsTable_99;
+          MR_Word ConsDefn_100;
+          MR_Word TypeParams_103;
+          MR_Word CtorArgs_106;
+          MR_Word CtorArgTypes0_108;
+          MR_Word TypeArgs_112;
+
+          succeeded = ((MR_tag((MR_Word) TypeY_9)) == (MR_Integer) 1);
+          if (succeeded)
+          {
+            succeeded = parse_tree__prog_type__type_to_ctor_and_args_3_p_0(TypeY_9, &TypeCtor_98, &TypeArgs_112);
+            if (succeeded)
+            {
+              hlds__hlds_module__module_info_get_cons_table_2_p_0(ModuleInfo_7, &ConsTable_99);
+              succeeded = hlds__hlds_cons__search_cons_table_of_type_ctor_4_p_0(ConsTable_99, TypeCtor_98, *DuCtorY_11, &ConsDefn_100);
+              if (succeeded)
+              {
+                TypeParams_103 = ((MR_Word) ((MR_hl_field(0, ConsDefn_100, 2))));
+                CtorArgs_106 = ((MR_Word) ((MR_hl_field(0, ConsDefn_100, 5))));
+                parse_tree__prog_data__get_ctor_arg_types_2_p_0(CtorArgs_106, &CtorArgTypes0_108);
+                if ((TypeParams_103 == (MR_Word) ((MR_Unsigned) 0U)))
+                  ArgTypesY_21 = CtorArgTypes0_108;
+                else
+                {
+                  MR_Word Subst_111;
+
+                  mercury__map__from_corresponding_lists_3_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[1]), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0), TypeParams_103, TypeArgs_112, &Subst_111);
+                  parse_tree__prog_type_subst__apply_subst_to_types_3_p_0(Subst_111, CtorArgTypes0_108, &ArgTypesY_21);
+                }
+                succeeded = MR_TRUE;
+              }
+            }
+          }
+          if (succeeded)
+          {
+            MR_Integer Arity_22;
+            MR_Integer Var_66;
+
+            mercury__list__length_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0), ArgTypesX_17, &Arity_22);
+            mercury__list__length_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0), ArgTypesY_21, &Var_66);
+            succeeded = (Arity_22 == Var_66);
+            if (succeeded)
+            {
+              MR_Word ConsExistQTVars_23;
+              MR_Integer NumExtraArgs_24;
+
+              check_hlds__modecheck_coerce__get_ctor_existq_tvars_det_5_p_0(ModuleInfo_7, TypeX_8, DuCtorX_10, &ConsExistQTVars_23, &NumExtraArgs_24);
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+                *Result_12 = base;
+                MR_hl_field(1, base, 0) = ((MR_Box) (ArgTypesX_17));
+                MR_hl_field(1, base, 1) = ((MR_Box) (ArgTypesY_21));
+                MR_hl_field(1, base, 2) = ((MR_Box) (Arity_22));
+                MR_hl_field(1, base, 3) = ((MR_Box) (ConsExistQTVars_23));
+                MR_hl_field(1, base, 4) = ((MR_Box) (NumExtraArgs_24));
+              }
+            }
+            else
+              {
+                mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.get_bound_functor_cons_and_arg_types\'/6", (MR_String) "arg types length mismatch");
+                return;
+              }
+          }
+          else
+            *Result_12 = (MR_Word) ((MR_Unsigned) 4U);
+        }
+        else
+          *Result_12 = (MR_Word) ((MR_Unsigned) 0U);
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Word BuiltinType_28 = ((MR_Word) ((MR_hl_field(2, TypeX_8, 0))));
+        MR_Word Var_46;
+
+        {
+          Var_46 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, Var_46, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_4[2]));
+          MR_hl_field(0, Var_46, 1) = ((MR_Box) (check_hlds__modecheck_coerce__get_bound_functor_cons_and_arg_types_6_p_0_1));
+          MR_hl_field(0, Var_46, 2) = ((MR_Box) ((MR_Integer) 2));
+          MR_hl_field(0, Var_46, 3) = ((MR_Box) (TypeX_8));
+          MR_hl_field(0, Var_46, 4) = ((MR_Box) (TypeY_9));
+        }
+        mercury__require__expect_3_p_0(Var_46, (MR_String) "predicate \140check_hlds.modecheck_coerce.get_bound_functor_cons_and_arg_types\'/6", (MR_String) "coercion between different builtin types");
+        switch (MR_tag((MR_Word) BuiltinType_28)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(BuiltinType_28)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+              case (MR_Integer) 1:
+                *Result_12 = (MR_Word) ((MR_Unsigned) 0U);
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Integer Arity_63 = ((MR_Integer) ((MR_hl_field(0, DuCtorX_10, 1))));
+
+                  succeeded = (Arity_63 == (MR_Integer) 0);
+                  if (succeeded)
+                    *Result_12 = (MR_Word) (MR_mkword(1, &check_hlds__modecheck_coerce_scalar_common_4[3]));
+                  else
+                    *Result_12 = (MR_Word) ((MR_Unsigned) 0U);
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            *Result_12 = (MR_Word) ((MR_Unsigned) 0U);
+            break;
+        }
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) ((MR_hl_field(3, TypeX_8, 0))))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Integer Arity_51 = ((MR_Integer) ((MR_hl_field(0, DuCtorX_10, 1))));
+            MR_Word Var_44 = ((MR_Word) ((MR_hl_field(0, DuCtorX_10, 0))));
+            MR_String Var_45;
+
+            succeeded = ((MR_tag((MR_Word) Var_44)) == (MR_Integer) 0);
+            if (succeeded)
+            {
+              Var_45 = ((MR_String) ((MR_hl_field(0, Var_44, 0))));
+              succeeded = (strcmp(Var_45, (MR_String) "{}") == 0);
+            }
+            if (succeeded)
+              check_hlds__modecheck_coerce__get_tuple_cons_arg_types_4_p_0(TypeX_8, TypeY_9, Arity_51, Result_12);
+            else
+              *Result_12 = (MR_Word) ((MR_Unsigned) 0U);
+          }
+          break;
+        case (MR_Integer) 1:
+          *Result_12 = (MR_Word) ((MR_Unsigned) 0U);
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word TypeX1_32 = ((MR_Word) ((MR_hl_field(3, TypeX_8, 1))));
+            MR_Word Kind_33 = ((MR_Word) ((MR_hl_field(3, TypeX_8, 2))));
+            MR_Word TypeY1_34;
+            MR_Word Var_67;
+
+            succeeded = ((((MR_tag((MR_Word) TypeY_9)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeY_9, 0)))) == (MR_Integer) 2)));
+            if (succeeded)
+            {
+              TypeY1_34 = ((MR_Word) ((MR_hl_field(3, TypeY_9, 1))));
+              Var_67 = ((MR_Word) ((MR_hl_field(3, TypeY_9, 2))));
+              succeeded = parse_tree__prog_data____Unify____kind_0_0(Kind_33, Var_67);
+            }
+            if (succeeded)
+            {
+              MR_Word _DuCtorY_35;
+
+              check_hlds__modecheck_coerce__get_bound_functor_cons_and_arg_types_6_p_0(ModuleInfo_7, TypeX1_32, TypeY1_34, DuCtorX_10, &_DuCtorY_35, Result_12);
+            }
+            else
+              {
+                mercury__require__sorry_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.get_bound_functor_cons_and_arg_types\'/6", (MR_String) "kinded type mismatch");
+                return;
+              }
+          }
+          break;
+      }
+      break;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__get_ctor_existq_tvars_det_5_p_0_1(
+  MR_Box closure_arg)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = check_hlds__modecheck_coerce__IntroducedFrom__pred__get_ctor_existq_tvars_det__968__1_2_p_0(((MR_Integer) ((MR_hl_field(0, closure, 3)))), ((MR_Integer) ((MR_hl_field(0, closure, 4)))));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__get_ctor_existq_tvars_det_5_p_0(
+  MR_Word ModuleInfo_6,
+  MR_Word Type_7,
+  MR_Word DuCtor_8,
+  MR_Word * ConsExistQTVars_9,
+  MR_Integer * NumExtraArgs_10)
+{
+  MR_bool succeeded;
+  MR_Word TypeCtor_11;
+  MR_Word ConsTable_12;
+  MR_Word ConsDefn_13;
+  MR_Word MaybeExistConstraints_18;
+
+  parse_tree__prog_type__type_to_ctor_det_2_p_0(Type_7, &TypeCtor_11);
+  hlds__hlds_module__module_info_get_cons_table_2_p_0(ModuleInfo_6, &ConsTable_12);
+  hlds__hlds_cons__lookup_cons_table_of_type_ctor_4_p_0(ConsTable_12, TypeCtor_11, DuCtor_8, &ConsDefn_13);
+  MaybeExistConstraints_18 = ((MR_Word) ((MR_hl_field(0, ConsDefn_13, 4))));
+  if ((MaybeExistConstraints_18 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *ConsExistQTVars_9 = (MR_Word) ((MR_Unsigned) 0U);
+    *NumExtraArgs_10 = (MR_Integer) 0;
+  }
+  else
+  {
+    MR_Word ConsExistConstraints_21 = (MR_Word) (MR_body((MR_Word) (MaybeExistConstraints_18), (MR_Integer) 1));
+    MR_Word UnconstrainedTVars_23;
+    MR_Word ConstrainedTVars_24;
+    MR_Integer NumTypeInfoArgs_25;
+    MR_Integer NumTypeClassInfoArgs_26;
+    MR_Integer NumExistQTVars_27;
+    MR_Word Var_28;
+
+    *ConsExistQTVars_9 = ((MR_Word) ((MR_hl_field(0, ConsExistConstraints_21, 0))));
+    UnconstrainedTVars_23 = ((MR_Word) ((MR_hl_field(0, ConsExistConstraints_21, 2))));
+    ConstrainedTVars_24 = ((MR_Word) ((MR_hl_field(0, ConsExistConstraints_21, 3))));
+    mercury__list__length_2_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[1]), UnconstrainedTVars_23, &NumTypeInfoArgs_25);
+    mercury__list__length_2_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[1]), ConstrainedTVars_24, &NumTypeClassInfoArgs_26);
+    *NumExtraArgs_10 = (MR_Integer) ((MR_Unsigned) NumTypeInfoArgs_25 + (MR_Unsigned) NumTypeClassInfoArgs_26);
+    mercury__list__length_2_p_0((MR_Word) (&check_hlds__modecheck_coerce_scalar_common_2[1]), *ConsExistQTVars_9, &NumExistQTVars_27);
+    {
+      Var_28 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_28, 0) = ((MR_Box) (&check_hlds__modecheck_coerce_scalar_common_4[1]));
+      MR_hl_field(0, Var_28, 1) = ((MR_Box) (check_hlds__modecheck_coerce__get_ctor_existq_tvars_det_5_p_0_1));
+      MR_hl_field(0, Var_28, 2) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(0, Var_28, 3) = ((MR_Box) (*NumExtraArgs_10));
+      MR_hl_field(0, Var_28, 4) = ((MR_Box) (NumExistQTVars_27));
+    }
+    mercury__require__expect_3_p_0(Var_28, (MR_String) "predicate \140check_hlds.modecheck_coerce.get_ctor_existq_tvars_det\'/5", (MR_String) "NumExtraArgs != NumExistQTVars");
+  }
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce__get_tuple_cons_arg_types_4_p_0(
+  MR_Word TypeX_5,
+  MR_Word TypeY_6,
+  MR_Integer Arity_7,
+  MR_Word * Result_8)
+{
+  MR_bool succeeded = ((((MR_tag((MR_Word) TypeX_5)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeX_5, 0)))) == (MR_Integer) 0)));
+  MR_Word ArgTypesX_9;
+  MR_Word TypeCtorInfo_17_17;
+  MR_Integer Var_19;
+
+  if (succeeded)
+  {
+    ArgTypesX_9 = ((MR_Word) ((MR_hl_field(3, TypeX_5, 1))));
+    TypeCtorInfo_17_17 = (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0);
+    mercury__list__length_2_p_0(TypeCtorInfo_17_17, ArgTypesX_9, &Var_19);
+    succeeded = (Arity_7 == Var_19);
+  }
+  if (succeeded)
+  {
+    MR_Word ArgTypesY_11;
+    MR_Word TypeCtorInfo_18_18;
+    MR_Integer Var_20;
+
+    succeeded = ((((MR_tag((MR_Word) TypeY_6)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, TypeY_6, 0)))) == (MR_Integer) 0)));
+    if (succeeded)
+    {
+      ArgTypesY_11 = ((MR_Word) ((MR_hl_field(3, TypeY_6, 1))));
+      TypeCtorInfo_18_18 = (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0);
+      mercury__list__length_2_p_0(TypeCtorInfo_18_18, ArgTypesY_11, &Var_20);
+      succeeded = (Arity_7 == Var_20);
+    }
+    if (succeeded)
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+        *Result_8 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (ArgTypesX_9));
+        MR_hl_field(1, base, 1) = ((MR_Box) (ArgTypesY_11));
+        MR_hl_field(1, base, 2) = ((MR_Box) (Arity_7));
+        MR_hl_field(1, base, 3) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(1, base, 4) = ((MR_Box) ((MR_Integer) 0));
+      }
+    else
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.get_tuple_cons_arg_types\'/4", (MR_String) "tuple type mismatch");
+        return;
+      }
+  }
+  else
+    *Result_8 = (MR_Word) ((MR_Unsigned) 0U);
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce__is_user_inst_1_p_0(
+  MR_Word InstName_2)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded;
+
+    // setup for model_semi tailcalls optimized into a loop
+    ;
+    switch (MR_tag((MR_Word) InstName_2)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        succeeded = MR_TRUE;
+        break;
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+        {
+          mercury__require__sorry_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.is_user_inst\'/1", (MR_String) "unexpected compiler generated inst_name");
+          succeeded = MR_TRUE;
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, InstName_2, 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+            {
+              mercury__require__sorry_2_p_0((MR_String) "predicate \140check_hlds.modecheck_coerce.is_user_inst\'/1", (MR_String) "unexpected compiler generated inst_name");
+              succeeded = MR_TRUE;
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word InstName1_6 = ((MR_Word) ((MR_hl_field(3, InstName_2, 2))));
+              MR_Word next_value_of_InstName_2 = InstName1_6;
+
+              // direct tailcall eliminated
+              ;
+              InstName_2 = next_value_of_InstName_2;
+              continue;
+            }
+            break;
+        }
+        break;
+    }
+    return succeeded;
+    break;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____bound_functor_or_error_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__modecheck_coerce____Unify____bound_functor_or_error_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____bound_functor_or_error_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__modecheck_coerce____Compare____bound_functor_or_error_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____expanded_insts_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__modecheck_coerce____Unify____expanded_insts_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____expanded_insts_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__modecheck_coerce____Compare____expanded_insts_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____get_arg_types_result_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__modecheck_coerce____Unify____get_arg_types_result_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____get_arg_types_result_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__modecheck_coerce____Compare____get_arg_types_result_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____maybe_coerce_error_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__modecheck_coerce____Unify____maybe_coerce_error_1_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____maybe_coerce_error_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box wrapper_arg_4)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__modecheck_coerce____Compare____maybe_coerce_error_1_0(((MR_Word) (wrapper_arg_1)), &conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_3)), ((MR_Word) (wrapper_arg_4)));
+  *wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____modecheck_coerce_result_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__modecheck_coerce____Unify____modecheck_coerce_result_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____modecheck_coerce_result_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__modecheck_coerce____Compare____modecheck_coerce_result_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____rev_term_path_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__modecheck_coerce____Unify____rev_term_path_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____rev_term_path_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__modecheck_coerce____Compare____rev_term_path_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+check_hlds__modecheck_coerce____Unify____types_comparison_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = check_hlds__modecheck_coerce____Unify____types_comparison_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+check_hlds__modecheck_coerce____Compare____types_comparison_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  check_hlds__modecheck_coerce____Compare____types_comparison_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+void mercury__check_hlds__modecheck_coerce__init(void)
+{
+}
+
+void mercury__check_hlds__modecheck_coerce__init_type_tables(void)
+{
+  static MR_bool initialised = MR_FALSE;
+  if (initialised) return;
+  initialised = MR_TRUE;
+
+  MR_register_type_ctor_info(&check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_bound_functor_or_error_0);
+  MR_register_type_ctor_info(&check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_expanded_insts_0);
+  MR_register_type_ctor_info(&check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_get_arg_types_result_0);
+  MR_register_type_ctor_info(&check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_maybe_coerce_error_1);
+  MR_register_type_ctor_info(&check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_modecheck_coerce_result_0);
+  MR_register_type_ctor_info(&check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_rev_term_path_0);
+  MR_register_type_ctor_info(&check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_types_comparison_0);
+}
+
+void mercury__check_hlds__modecheck_coerce__init_debugger(void)
+{
+  MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__check_hlds__modecheck_coerce__grade_check(void)
+{
+  return &MR_GRADE_VAR;
+}
+
+// :- end_module check_hlds.modecheck_coerce.

@@ -1,0 +1,21 @@
+:- module mdbcomp.slice_and_dice.
+:- interface.
+:- type dice.
+:- type dice_exec_count.
+:- type dice_proc_map.
+:- type maybe_filter_zero
+	where	type_is_abstract_enum(1).
+:- type proc_dice.
+:- type proc_slice.
+:- type slice.
+:- type slice_exec_count.
+:- type slice_proc_map.
+:- type_representation(dice, is_word_aligned_ptr).
+:- type_representation(dice_exec_count, is_word_aligned_ptr).
+:- type_representation(dice_proc_map, is_eqv_to(map(proc_label, mdbcomp.slice_and_dice.proc_dice))).
+:- type_representation(maybe_filter_zero, du_repn(enum("do_not_filter_zero", "do_filter_zero", [],  no_c_j_cs))).
+:- type_representation(proc_dice, is_eqv_to(map(path_port, mdbcomp.slice_and_dice.dice_exec_count))).
+:- type_representation(proc_slice, is_eqv_to(map(path_port, mdbcomp.slice_and_dice.slice_exec_count))).
+:- type_representation(slice, is_word_aligned_ptr).
+:- type_representation(slice_exec_count, is_word_aligned_ptr).
+:- type_representation(slice_proc_map, is_eqv_to(map(proc_label, mdbcomp.slice_and_dice.proc_slice))).

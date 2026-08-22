@@ -1,0 +1,170 @@
+/*
+** Automatically generated from `inst_mode_type_prop.m'
+** by the Mercury compiler,
+** version rotd-2026-08-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.inst_mode_type_prop.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__inst_mode_type_prop
+#define MR_HEADER_GUARD_hlds__inst_mode_type_prop
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__INST_MODE_TYPE_PROP_DECL_GUARD
+#define HLDS__INST_MODE_TYPE_PROP_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__inst_mode_type_prop__hlds__inst_mode_type_prop__type_ctor_info_base_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__inst_mode_type_prop__hlds__inst_mode_type_prop__type_ctor_info_maybe_inside_user_inst_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__inst_mode_type_prop__hlds__inst_mode_type_prop__type_ctor_info_tprop_args_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__inst_mode_type_prop__hlds__inst_mode_type_prop__type_ctor_info_tprop_cache_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__inst_mode_type_prop__hlds__inst_mode_type_prop__type_ctor_info_tprop_cache_result_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__inst_mode_type_prop__hlds__inst_mode_type_prop__type_ctor_info_tprop_context_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__inst_mode_type_prop__hlds__inst_mode_type_prop__type_ctor_info_tprop_errors_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__inst_mode_type_prop__hlds__inst_mode_type_prop__type_ctor_info_tprop_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__inst_mode_type_prop__hlds__inst_mode_type_prop__type_ctor_info_user_inst_info_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_hlds__inst_mode_type_prop__tprop_record__arity4__hlds__inst_mode_type_prop__base_info__arity0__unit__unit__arity0__unit__unit__arity0__unit__unit__arity0__[16];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_hlds__inst_mode_type_prop__tprop_record__arity4__hlds__inst_mode_type_prop__tprop_info__arity0__hlds__inst_mode_type_prop__tprop_context__arity0__hlds__inst_mode_type_prop__tprop_args__arity0__hlds__inst_mode_type_prop__tprop_errors__arity0__[16];
+
+extern const MR_TypeClassDeclStruct hlds__inst_mode_type_prop__hlds__inst_mode_type_prop__type_class_decl_tprop_record_4;
+
+void MR_CALL 
+hlds__inst_mode_type_prop__propagate_checked_type_into_mode_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+hlds__inst_mode_type_prop__propagate_checked_types_into_modes_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+hlds__inst_mode_type_prop__propagate_unchecked_type_into_bound_functor_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__inst_mode_type_prop__propagate_unchecked_type_into_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__inst_mode_type_prop____Compare____tprop_args_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__inst_mode_type_prop____Compare____tprop_cache_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__inst_mode_type_prop____Compare____tprop_cache_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__inst_mode_type_prop____Compare____tprop_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__inst_mode_type_prop____Compare____tprop_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__inst_mode_type_prop____Unify____tprop_args_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__inst_mode_type_prop____Unify____tprop_cache_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__inst_mode_type_prop____Unify____tprop_cache_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__inst_mode_type_prop____Unify____tprop_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__inst_mode_type_prop____Unify____tprop_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__inst_mode_type_prop__init(void);
+void mercury__hlds__inst_mode_type_prop__init_type_tables(void);
+void mercury__hlds__inst_mode_type_prop__init_debugger(void);
+const char *mercury__hlds__inst_mode_type_prop__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.inst_mode_type_prop
+
+// :- end_interface hlds.inst_mode_type_prop.

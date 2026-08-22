@@ -1,0 +1,13 @@
+:- module libs.check_libgrades.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module libs.globals.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.maybe_error.
+:- pred detect_stdlib_grades(io.text_output_stream, libs.globals.globals, parse_tree.maybe_error.maybe1el(set.set(string)), io.io, io.io).
+:- mode detect_stdlib_grades(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred maybe_check_libraries_are_installed(libs.globals.globals, list.list(parse_tree.error_spec.err_spec), io.io, io.io).
+:- mode maybe_check_libraries_are_installed(builtin.in, builtin.out, builtin.di, builtin.uo) is det.

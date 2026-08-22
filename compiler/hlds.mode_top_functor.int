@@ -1,0 +1,13 @@
+:- module hlds.mode_top_functor.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.pred_info_types.
+:- use_module parse_tree.prog_data.
+:- pred init_final_insts_to_top_functor_mode(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_type, hlds.pred_info_types.top_functor_mode).
+:- mode init_final_insts_to_top_functor_mode(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred mode_to_top_functor_mode(hlds.hlds_module.module_info, parse_tree.prog_data.mer_mode, parse_tree.prog_data.mer_type, hlds.pred_info_types.top_functor_mode).
+:- mode mode_to_top_functor_mode(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred modes_to_top_functor_modes(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_type), list.list(hlds.pred_info_types.top_functor_mode)).
+:- mode modes_to_top_functor_modes(builtin.in, builtin.in, builtin.in, builtin.out) is det.

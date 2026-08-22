@@ -1,0 +1,13 @@
+:- module hlds.pred_proc_id.
+:- interface.
+:- use_module set.
+:- type pred_id.
+:- type pred_proc_id
+    --->    proc(
+                 hlds.pred_proc_id.pred_id,
+                 hlds.pred_proc_id.proc_id
+            ).
+:- type proc_id.
+:- type scc == set.set(hlds.pred_proc_id.pred_proc_id).
+:- implementation.
+:- type proc_id == int.
