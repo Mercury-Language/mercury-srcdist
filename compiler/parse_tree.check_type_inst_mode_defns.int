@@ -1,0 +1,19 @@
+:- module parse_tree.check_type_inst_mode_defns.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_foreign_enum.
+:- use_module parse_tree.prog_item_inst_mode.
+:- use_module parse_tree.prog_item_type.
+:- type maybe_insist_on_defn
+    --->    do_not_insist_on_defn 
+    ;       do_insist_on_defn .
+:- pred create_inst_ctor_checked_map(parse_tree.check_type_inst_mode_defns.maybe_insist_on_defn, parse_tree.prog_item_type.inst_ctor_defn_map, parse_tree.prog_item_type.inst_ctor_defn_map, parse_tree.prog_item_inst_mode.inst_ctor_checked_map, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec)).
+:- mode create_inst_ctor_checked_map(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred create_mode_ctor_checked_map(parse_tree.check_type_inst_mode_defns.maybe_insist_on_defn, parse_tree.prog_item_type.mode_ctor_defn_map, parse_tree.prog_item_type.mode_ctor_defn_map, parse_tree.prog_item_inst_mode.mode_ctor_checked_map, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec)).
+:- mode create_mode_ctor_checked_map(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred create_type_ctor_checked_map(parse_tree.check_type_inst_mode_defns.maybe_insist_on_defn, parse_tree.prog_item_type.type_ctor_defn_map, parse_tree.prog_item_type.type_ctor_defn_map, parse_tree.prog_item_type.type_ctor_foreign_enum_map, parse_tree.prog_item_type.type_ctor_checked_map, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec)).
+:- mode create_type_ctor_checked_map(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred report_not_enum_type_du(parse_tree.prog_foreign_enum.for_fe_or_fee, parse_tree.prog_data.type_ctor, parse_tree.prog_data.prog_context, list.list(parse_tree.prog_data.sym_name_arity), parse_tree.prog_data.prog_context, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode report_not_enum_type_du(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

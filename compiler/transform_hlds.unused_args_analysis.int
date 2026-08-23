@@ -1,0 +1,31 @@
+:- module transform_hlds.unused_args_analysis.
+:- interface.
+:- use_module analysis.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module analysis.framework.
+:- use_module hlds.hlds_module.
+:- use_module hlds.pred_proc_id.
+:- use_module parse_tree.prog_data.
+:- type unused_args_answer
+    --->    unused_args_answer(
+                 (transform_hlds.unused_args_analysis).args :: list.list(int)
+            ).
+:- type unused_args_call
+    --->    unused_args_call .
+:- type unused_args_func_info
+    --->    unused_args_func_info(
+                 parse_tree.prog_data.pred_form_arity
+            ).
+:- instance ((analysis.framework).analysis(transform_hlds.unused_args_analysis.unused_args_func_info, transform_hlds.unused_args_analysis.unused_args_call, transform_hlds.unused_args_analysis.unused_args_answer)).
+:- instance ((analysis.framework).answer_pattern(transform_hlds.unused_args_analysis.unused_args_func_info, transform_hlds.unused_args_analysis.unused_args_answer)).
+:- instance ((analysis.framework).call_pattern(transform_hlds.unused_args_analysis.unused_args_func_info, transform_hlds.unused_args_analysis.unused_args_call)).
+:- instance ((analysis.framework).partial_order(transform_hlds.unused_args_analysis.unused_args_func_info, transform_hlds.unused_args_analysis.unused_args_answer)).
+:- instance ((analysis.framework).partial_order(transform_hlds.unused_args_analysis.unused_args_func_info, transform_hlds.unused_args_analysis.unused_args_call)).
+:- instance ((analysis.framework).to_term(transform_hlds.unused_args_analysis.unused_args_answer)).
+:- instance ((analysis.framework).to_term(transform_hlds.unused_args_analysis.unused_args_call)).
+:- func analysis_name = string.
+:- func get_unused_args(transform_hlds.unused_args_analysis.unused_args_answer) = list.list(int).
+:- pred record_analysis_unused_args(hlds.hlds_module.proc_to_unused_args_map, list.list(hlds.pred_proc_id.pred_proc_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode record_analysis_unused_args(builtin.in, builtin.in, builtin.in, builtin.out) is det.

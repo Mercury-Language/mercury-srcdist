@@ -1,0 +1,10 @@
+:- module (transform_hlds.higher_order).specialize_calls.
+:- interface.
+:- use_module hlds.
+:- use_module set.
+:- use_module hlds.pred_proc_id.
+:- use_module (transform_hlds.higher_order).higher_order_global_info.
+:- pred acc_specialization_requests(hlds.pred_proc_id.pred_id, set.set(transform_hlds.higher_order.higher_order_global_info.ho_request), set.set(transform_hlds.higher_order.higher_order_global_info.ho_request), transform_hlds.higher_order.higher_order_global_info.higher_order_global_info, transform_hlds.higher_order.higher_order_global_info.higher_order_global_info).
+:- mode acc_specialization_requests(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred ho_traverse_proc(transform_hlds.higher_order.higher_order_global_info.must_recompute, hlds.pred_proc_id.pred_id, hlds.pred_proc_id.proc_id, set.set(transform_hlds.higher_order.higher_order_global_info.ho_request), transform_hlds.higher_order.higher_order_global_info.higher_order_global_info, transform_hlds.higher_order.higher_order_global_info.higher_order_global_info).
+:- mode ho_traverse_proc(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

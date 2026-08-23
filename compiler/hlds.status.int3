@@ -1,0 +1,44 @@
+:- module hlds.status.
+:- interface.
+:- type inst_status.
+:- type instance_export
+	where	type_is_abstract_enum(2).
+:- type instance_import
+	where	type_is_abstract_enum(1).
+:- type instance_status.
+:- type instmode_export
+	where	type_is_abstract_enum(2).
+:- type instmode_import
+	where	type_is_abstract_enum(2).
+:- type item_export
+	where	type_is_abstract_enum(2).
+:- type item_import.
+:- type item_mercury_status.
+:- type maybe_opt_imported
+	where	type_is_abstract_enum(1).
+:- type mode_status.
+:- type new_instance_status.
+:- type new_instmode_status.
+:- type new_typeclass_status.
+:- type old_import_status.
+:- type pred_status.
+:- type type_status.
+:- type typeclass_export
+	where	type_is_abstract_enum(2).
+:- type typeclass_import
+	where	type_is_abstract_enum(3).
+:- type typeclass_status.
+:- type_representation(inst_status, du_repn(notag("inst_status", new_instmode_status,  no_c_j_cs))).
+:- type_representation(instance_export, du_repn(enum("instance_export_gen_none_sub_none", "instance_export_gen_none_sub_abs", ["instance_export_gen_abs_sub_abs", "instance_export_full_opt"],  no_c_j_cs))).
+:- type_representation(instance_import, du_repn(enum("instance_import_full_opt", "instance_import_abstract", [],  no_c_j_cs))).
+:- type_representation(instance_status, is_eqv_to(hlds.status.new_instance_status)).
+:- type_representation(instmode_export, du_repn(enum("instmode_export_nowhere", "instmode_export_only_submodules", ["instmode_export_anywhere"],  no_c_j_cs))).
+:- type_representation(instmode_import, du_repn(enum("instmode_import_plain", "instmode_import_abstract", ["instmode_import_opt"],  no_c_j_cs))).
+:- type_representation(item_export, du_repn(enum("item_export_nowhere", "item_export_only_submodules", ["item_export_anywhere"],  no_c_j_cs))).
+:- type_representation(maybe_opt_imported, du_repn(enum("is_not_opt_imported", "is_opt_imported", [],  no_c_j_cs))).
+:- type_representation(mode_status, du_repn(notag("mode_status", new_instmode_status,  no_c_j_cs))).
+:- type_representation(pred_status, du_repn(notag("pred_status", old_import_status,  no_c_j_cs))).
+:- type_representation(type_status, du_repn(notag("type_status", old_import_status,  no_c_j_cs))).
+:- type_representation(typeclass_export, du_repn(enum("typeclass_export_gen_none_sub_none", "typeclass_export_gen_none_sub_full", ["typeclass_export_gen_abs_sub_full", "typeclass_export_gen_full_sub_full"],  no_c_j_cs))).
+:- type_representation(typeclass_import, du_repn(enum("typeclass_import_full_own_int", "typeclass_import_full_own_imp", ["typeclass_import_full_int0_int", "typeclass_import_full_int0_imp", "typeclass_import_full_by_ancestor", "typeclass_import_full_opt", "typeclass_import_abstract"],  no_c_j_cs))).
+:- type_representation(typeclass_status, is_eqv_to(hlds.status.new_typeclass_status)).

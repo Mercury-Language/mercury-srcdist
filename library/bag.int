@@ -1,0 +1,145 @@
+:- module bag.
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- use_module set.
+:- use_module term.
+:- type bag(T).
+:- func bag(list.list(T)) = bag.bag(T).
+:- pred contains(bag.bag(T), T).
+:- mode contains(builtin.in, builtin.in) is semidet.
+:- func count(bag.bag(T)) = int.
+:- func count_unique(bag.bag(T)) = int.
+:- pred count_value(bag.bag(T), T, int).
+:- mode count_value(builtin.in, builtin.in, builtin.out) is det.
+:- func count_value(bag.bag(T), T) = int.
+:- pred delete(T, bag.bag(T), bag.bag(T)).
+:- mode delete(builtin.in, builtin.in, builtin.out) is det.
+:- func delete(bag.bag(T), T) = bag.bag(T).
+:- pred delete_all(T, bag.bag(T), bag.bag(T)).
+:- mode delete_all(builtin.in, builtin.in, builtin.out) is det.
+:- func delete_all(bag.bag(T), T) = bag.bag(T).
+:- pred det_insert_duplicates(int, T, bag.bag(T), bag.bag(T)).
+:- mode det_insert_duplicates(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func det_insert_duplicates(bag.bag(T), int, T) = bag.bag(T).
+:- pred det_remove(T, bag.bag(T), bag.bag(T)).
+:- mode det_remove(builtin.in, builtin.in, builtin.out) is det.
+:- func det_remove(bag.bag(T), T) = bag.bag(T).
+:- pred det_remove_list(list.list(T), bag.bag(T), bag.bag(T)).
+:- mode det_remove_list(builtin.in, builtin.in, builtin.out) is det.
+:- func det_remove_list(bag.bag(T), list.list(T)) = bag.bag(T).
+:- pred det_remove_set(set.set(T), bag.bag(T), bag.bag(T)).
+:- mode det_remove_set(builtin.in, builtin.in, builtin.out) is det.
+:- func det_remove_set(bag.bag(T), set.set(T)) = bag.bag(T).
+:- pred foldl(pred(T, int, A, A), bag.bag(T), A, A).
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.mdi, builtin.muo) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is det)), builtin.in, builtin.di, builtin.uo) is det.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out) is semidet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl(builtin.in((pred(builtin.in, builtin.in, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.di, builtin.uo) is semidet.
+:- pred foldl2(pred(T, int, A, A, B, B), bag.bag(T), A, A, B, B).
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet)), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.mdi, builtin.muo) is semidet.
+:- mode foldl2(builtin.in((pred(builtin.in, builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet)), builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is semidet.
+:- pred from_list(list.list(T), bag.bag(T)).
+:- mode from_list(builtin.in, builtin.out) is det.
+:- func from_list(list.list(T)) = bag.bag(T).
+:- pred from_set(set.set(T), bag.bag(T)).
+:- mode from_set(builtin.in, builtin.out) is det.
+:- func from_set(set.set(T)) = bag.bag(T).
+:- pred from_sorted_list(list.list(T), bag.bag(T)).
+:- mode from_sorted_list(builtin.in, builtin.out) is det.
+:- func from_sorted_list(list.list(T)) = bag.bag(T).
+:- pred from_sorted_list_without_duplicates(list.list(T), bag.bag(T)).
+:- mode from_sorted_list_without_duplicates(builtin.in, builtin.out) is det.
+:- func from_sorted_list_without_duplicates(list.list(T)) = bag.bag(T).
+:- pred init(bag.bag(T)).
+:- mode init(builtin.out) is det.
+:- func init = bag.bag(T).
+:- pred insert(T, bag.bag(T), bag.bag(T)).
+:- mode insert(builtin.in, builtin.in, builtin.out) is det.
+:- func insert(bag.bag(T), T) = bag.bag(T).
+:- pred insert_duplicates(int, T, bag.bag(T), bag.bag(T)).
+:- mode insert_duplicates(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.
+:- pred insert_list(list.list(T), bag.bag(T), bag.bag(T)).
+:- mode insert_list(builtin.in, builtin.in, builtin.out) is det.
+:- func insert_list(bag.bag(T), list.list(T)) = bag.bag(T).
+:- pred insert_set(set.set(T), bag.bag(T), bag.bag(T)).
+:- mode insert_set(builtin.in, builtin.in, builtin.out) is det.
+:- func insert_set(bag.bag(T), set.set(T)) = bag.bag(T).
+:- pred intersect(bag.bag(T), bag.bag(T)).
+:- mode intersect(builtin.in, builtin.in) is semidet.
+:- pred intersect(bag.bag(T), bag.bag(T), bag.bag(T)).
+:- mode intersect(builtin.in, builtin.in, builtin.out) is det.
+:- func intersect(bag.bag(T), bag.bag(T)) = bag.bag(T).
+:- pred intersect_small(bag.bag(T), bag.bag(T), bag.bag(T)).
+:- mode intersect_small(builtin.in, builtin.in, builtin.out) is det.
+:- func intersect_small(bag.bag(T), bag.bag(T)) = bag.bag(T).
+:- pred is_empty(bag.bag(T)).
+:- mode is_empty(builtin.in) is semidet.
+:- pred is_subbag(bag.bag(T), bag.bag(T)).
+:- mode is_subbag(builtin.in, builtin.in) is semidet.
+:- pred least_upper_bound(bag.bag(T), bag.bag(T), bag.bag(T)).
+:- mode least_upper_bound(builtin.in, builtin.in, builtin.out) is det.
+:- func least_upper_bound(bag.bag(T), bag.bag(T)) = bag.bag(T).
+:- pred least_upper_bound_small(bag.bag(T), bag.bag(T), bag.bag(T)).
+:- mode least_upper_bound_small(builtin.in, builtin.in, builtin.out) is det.
+:- func least_upper_bound_small(bag.bag(T), bag.bag(T)) = bag.bag(T).
+:- pred member(T, bag.bag(T)).
+:- mode member(builtin.in, builtin.in) is semidet.
+:- pred member(T, bag.bag(T), bag.bag(T)).
+:- mode member(builtin.out, builtin.in, builtin.out) is nondet.
+:- pred remove(T, bag.bag(T), bag.bag(T)).
+:- mode remove(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred remove_all(T, bag.bag(T), bag.bag(T)).
+:- mode remove_all(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred remove_list(list.list(T), bag.bag(T), bag.bag(T)).
+:- mode remove_list(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred remove_set(set.set(T), bag.bag(T), bag.bag(T)).
+:- mode remove_set(builtin.in, builtin.in, builtin.out) is semidet.
+:- pred remove_smallest(T, bag.bag(T), bag.bag(T)).
+:- mode remove_smallest(builtin.out, builtin.in, builtin.out) is semidet.
+:- func singleton(T) = bag.bag(T).
+:- pred subset_compare(builtin.comparison_result, bag.bag(T), bag.bag(T)).
+:- mode subset_compare(builtin.out, builtin.in, builtin.in) is semidet.
+:- pred subtract(bag.bag(T), bag.bag(T), bag.bag(T)).
+:- mode subtract(builtin.in, builtin.in, builtin.out) is det.
+:- func subtract(bag.bag(T), bag.bag(T)) = bag.bag(T).
+:- pred subtract_small(bag.bag(T), bag.bag(T), bag.bag(T)).
+:- mode subtract_small(builtin.in, builtin.in, builtin.out) is det.
+:- func subtract_small(bag.bag(T), bag.bag(T)) = bag.bag(T).
+:- pred to_assoc_list(bag.bag(T), assoc_list.assoc_list(T, int)).
+:- mode to_assoc_list(builtin.in, builtin.out) is det.
+:- func to_assoc_list(bag.bag(T)) = assoc_list.assoc_list(T, int).
+:- pred to_list(bag.bag(T), list.list(T)).
+:- mode to_list(builtin.in, builtin.out) is det.
+:- func to_list(bag.bag(T)) = list.list(T).
+:- pred to_list_only_duplicates(bag.bag(T), list.list(T)).
+:- mode to_list_only_duplicates(builtin.in, builtin.out) is det.
+:- func to_list_only_duplicates(bag.bag(T)) = list.list(T).
+:- pred to_list_without_duplicates(bag.bag(T), list.list(T)).
+:- mode to_list_without_duplicates(builtin.in, builtin.out) is det.
+:- func to_list_without_duplicates(bag.bag(T)) = list.list(T).
+:- func to_set(bag.bag(T)) = set.set(T).
+:- func ucount(bag.bag(T)) = uint.
+:- func ucount_unique(bag.bag(T)) = uint.
+:- pred ucount_value(bag.bag(T), T, uint).
+:- mode ucount_value(builtin.in, builtin.in, builtin.out) is det.
+:- func ucount_value(bag.bag(T), T) = uint.
+:- pred union(bag.bag(T), bag.bag(T), bag.bag(T)).
+:- mode union(builtin.in, builtin.in, builtin.out) is det.
+:- func union(bag.bag(T), bag.bag(T)) = bag.bag(T).
+:- pred union_small(bag.bag(T), bag.bag(T), bag.bag(T)).
+:- mode union_small(builtin.in, builtin.in, builtin.out) is det.
+:- func union_small(bag.bag(T), bag.bag(T)) = bag.bag(T).
+:- pragma type_spec(pred(bag.det_remove_list/3), T = term.var(Anon1)).
+:- pragma type_spec(pred(bag.det_remove_set/3), T = term.var(Anon1)).
+:- pragma type_spec(pred(bag.insert/3), T = term.var(Anon1)).
+:- pragma type_spec(pred(bag.insert_list/3), T = term.var(Anon1)).
+:- pragma type_spec(pred(bag.insert_set/3), T = term.var(Anon1)).
+:- pragma type_spec(pred(bag.remove/3), T = term.var(Anon1)).
+:- pragma type_spec(pred(bag.remove_list/3), T = term.var(Anon1)).
