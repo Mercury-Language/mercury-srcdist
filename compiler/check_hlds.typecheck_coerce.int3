@@ -1,0 +1,5 @@
+:- module check_hlds.typecheck_coerce.
+:- interface.
+:- type_representation(active_type_ctors, is_eqv_to(list(type_ctor))).
+:- type_representation(invariant_tparams_map, is_eqv_to(map(type_ctor, invariant_tvars))).
+:- type_representation(invariant_tvars, is_eqv_to(one_or_more_map(tvar, ctor_arg_posn))).

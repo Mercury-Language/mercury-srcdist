@@ -1,0 +1,2 @@
+:- module libs.check_options.
+:- interface.

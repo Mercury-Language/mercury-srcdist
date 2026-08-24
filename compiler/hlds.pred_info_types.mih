@@ -1,0 +1,144 @@
+/*
+** Automatically generated from `pred_info_types.m'
+** by the Mercury compiler,
+** version rotd-2026-08-24
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.pred_info_types.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__pred_info_types
+#define MR_HEADER_GUARD_hlds__pred_info_types
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__PRED_INFO_TYPES_DECL_GUARD
+#define HLDS__PRED_INFO_TYPES_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_info_types__hlds__pred_info_types__type_ctor_info_arg_modes_map_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_info_types__hlds__pred_info_types__type_ctor_info_cur_user_decl_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_info_types__hlds__pred_info_types__type_ctor_info_decl_section_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_info_types__hlds__pred_info_types__type_ctor_info_format_call_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_info_types__hlds__pred_info_types__type_ctor_info_goal_type_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_info_types__hlds__pred_info_types__type_ctor_info_maybe_predmode_decl_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__pred_info_types__hlds__pred_info_types__type_ctor_info_np_goal_type_0;
+
+void MR_CALL 
+hlds__pred_info_types____Compare____arg_modes_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_info_types____Compare____cur_user_decl_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_info_types____Compare____decl_section_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_info_types____Compare____format_call_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_info_types____Compare____goal_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_info_types____Compare____maybe_predmode_decl_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__pred_info_types____Compare____np_goal_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__pred_info_types____Unify____arg_modes_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_info_types____Unify____cur_user_decl_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_info_types____Unify____decl_section_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_info_types____Unify____format_call_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_info_types____Unify____goal_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_info_types____Unify____maybe_predmode_decl_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__pred_info_types____Unify____np_goal_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__pred_info_types__init(void);
+void mercury__hlds__pred_info_types__init_type_tables(void);
+void mercury__hlds__pred_info_types__init_debugger(void);
+const char *mercury__hlds__pred_info_types__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.pred_info_types
+
+// :- end_interface hlds.pred_info_types.
