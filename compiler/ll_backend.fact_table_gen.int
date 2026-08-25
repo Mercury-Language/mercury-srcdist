@@ -1,0 +1,15 @@
+:- module ll_backend.fact_table_gen.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_proc.
+:- use_module hlds.pred_proc_id.
+:- use_module ll_backend.fact_table_check.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_foreign.
+:- pred fact_table_generate_c_code_for_proc(hlds.hlds_module.module_info, mdbcomp.sym_name.sym_name, hlds.pred_proc_id.proc_id, hlds.pred_proc_id.proc_id, hlds.hlds_proc.proc_info, ll_backend.fact_table_check.fact_table_gen_info, parse_tree.prog_data.prog_varset, list.list(parse_tree.prog_data_foreign.pragma_var), string, string).
+:- mode fact_table_generate_c_code_for_proc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is det.

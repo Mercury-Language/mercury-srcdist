@@ -1,0 +1,42 @@
+:- module check_hlds.typecheck_util.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module check_hlds.type_assign.
+:- use_module hlds.hlds_class.
+:- use_module hlds.hlds_data.
+:- use_module parse_tree.prog_data.
+:- type du_type_info
+    --->    du_type_info(
+                 parse_tree.prog_data.type_ctor,
+                 list.list(parse_tree.prog_data.mer_type),
+                 hlds.hlds_data.hlds_type_defn,
+                 hlds.hlds_data.type_body_du
+            ).
+:- type maybe_du_type
+    --->    is_du_type(
+                 check_hlds.typecheck_util.du_type_info
+            )
+    ;       is_not_du_type(
+                 string
+            ).
+:- pred acc_type_assign_if_var_can_have_type(check_hlds.type_assign.type_assign, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, check_hlds.type_assign.type_assign_set, check_hlds.type_assign.type_assign_set).
+:- mode acc_type_assign_if_var_can_have_type(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred classify_defined_type_is_du_type(hlds.hlds_data.type_table, parse_tree.prog_data.type_ctor, list.list(parse_tree.prog_data.mer_type), check_hlds.typecheck_util.maybe_du_type).
+:- mode classify_defined_type_is_du_type(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred classify_is_du_type(hlds.hlds_data.type_table, parse_tree.prog_data.mer_type, check_hlds.typecheck_util.maybe_du_type).
+:- mode classify_is_du_type(builtin.in, builtin.in, builtin.out) is det.
+:- func empty_hlds_constraint_db = hlds.hlds_class.hlds_constraint_db.
+:- pred general_higher_order_func_type(parse_tree.prog_data.purity, int, parse_tree.prog_data.tvarset, parse_tree.prog_data.mer_type, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.mer_type).
+:- mode general_higher_order_func_type(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred general_higher_order_pred_type(parse_tree.prog_data.purity, int, parse_tree.prog_data.tvarset, parse_tree.prog_data.mer_type, list.list(parse_tree.prog_data.mer_type)).
+:- mode general_higher_order_pred_type(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred keep_type_assigns_where_var_can_have_type(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, check_hlds.type_assign.type_assign_set, check_hlds.type_assign.type_assign_set).
+:- mode keep_type_assigns_where_var_can_have_type(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred type_assign_fresh_type_var(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, check_hlds.type_assign.type_assign, check_hlds.type_assign.type_assign).
+:- mode type_assign_fresh_type_var(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred type_assign_rename_apart(check_hlds.type_assign.type_assign, parse_tree.prog_data.tvarset, check_hlds.type_assign.type_assign, parse_tree.prog_data.tvar_renaming).
+:- mode type_assign_rename_apart(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred type_assign_unify_type(parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type, check_hlds.type_assign.type_assign, check_hlds.type_assign.type_assign).
+:- mode type_assign_unify_type(builtin.in, builtin.in, builtin.in, builtin.out) is semidet.

@@ -1,0 +1,20 @@
+:- module parse_tree.prog_data_rare.
+:- interface.
+:- type mm_tabling_status
+	where	type_is_abstract_enum(2).
+:- type mutable_pred_kind
+	where	type_is_abstract_enum(4).
+:- type promise_type
+	where	type_is_abstract_enum(2).
+:- type solver_type_pred_kind
+	where	type_is_abstract_enum(2).
+:- type tabling_aux_pred_kind
+	where	type_is_abstract_enum(1).
+:- type trailing_status
+	where	type_is_abstract_enum(2).
+:- type_representation(mm_tabling_status, du_repn(enum("mm_tabled_may_call", "mm_tabled_will_not_call", ["mm_tabled_conditional"],  no_c_j_cs))).
+:- type_representation(mutable_pred_kind, du_repn(enum("mutable_pred_std_get", "mutable_pred_std_set", ["mutable_pred_io_get", "mutable_pred_io_set", "mutable_pred_constant_get", "mutable_pred_constant_secret_set", "mutable_pred_unsafe_get", "mutable_pred_unsafe_set", "mutable_pred_lock", "mutable_pred_unlock", "mutable_pred_pre_init", "mutable_pred_init"],  no_c_j_cs))).
+:- type_representation(promise_type, du_repn(enum("promise_type_exclusive", "promise_type_exhaustive", ["promise_type_exclusive_exhaustive", "promise_type_true"],  no_c_j_cs))).
+:- type_representation(solver_type_pred_kind, du_repn(enum("solver_type_to_ground_pred", "solver_type_to_any_pred", ["solver_type_from_ground_pred", "solver_type_from_any_pred"],  no_c_j_cs))).
+:- type_representation(tabling_aux_pred_kind, du_repn(enum("tabling_aux_pred_stats", "tabling_aux_pred_reset", [],  no_c_j_cs))).
+:- type_representation(trailing_status, du_repn(enum("trail_may_modify", "trail_will_not_modify", ["trail_conditional"],  no_c_j_cs))).

@@ -1,0 +1,110 @@
+/*
+** Automatically generated from `add_special_pred.m'
+** by the Mercury compiler,
+** version rotd-2026-08-25
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.add_special_pred.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__add_special_pred
+#define MR_HEADER_GUARD_hlds__add_special_pred
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__ADD_SPECIAL_PRED_DECL_GUARD
+#define HLDS__ADD_SPECIAL_PRED_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__add_special_pred__hlds__add_special_pred__type_ctor_info_decl_maybe_defn_0;
+
+void MR_CALL 
+hlds__add_special_pred__add_lazily_generated_compare_pred_decl_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__add_special_pred__add_lazily_generated_unify_pred_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__add_special_pred__add_special_pred_decl_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__add_special_pred__add_special_pred_decl_defn_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+hlds__add_special_pred__add_special_pred_decl_defns_for_type_eagerly_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__add_special_pred__add_special_pred_decl_defns_for_type_maybe_lazily_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void mercury__hlds__add_special_pred__init(void);
+void mercury__hlds__add_special_pred__init_type_tables(void);
+void mercury__hlds__add_special_pred__init_debugger(void);
+const char *mercury__hlds__add_special_pred__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.add_special_pred
+
+// :- end_interface hlds.add_special_pred.

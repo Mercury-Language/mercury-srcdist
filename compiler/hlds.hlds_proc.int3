@@ -1,0 +1,4 @@
+:- module hlds.hlds_proc.
+:- interface.
+:- type proc_info.
+:- type_representation(proc_info, is_word_aligned_ptr).

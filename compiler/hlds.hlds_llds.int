@@ -1,0 +1,174 @@
+:- module hlds.hlds_llds.
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_rename.
+:- use_module parse_tree.set_of_var.
+:- use_module parse_tree.var_table.
+:- type abs_follow_vars
+    --->    abs_follow_vars(
+                 (hlds.hlds_llds).afv_map :: hlds.hlds_llds.abs_follow_vars_map,
+                 (hlds.hlds_llds).afv_next_non_res_reg_r :: int,
+                 (hlds.hlds_llds).afv_next_non_res_reg_f :: int
+            ).
+:- type abs_follow_vars_map == map.map(parse_tree.prog_data.prog_var, hlds.hlds_llds.abs_locn).
+:- type abs_locn
+    --->    any_reg 
+    ;       abs_reg(
+                 hlds.hlds_llds.reg_type,
+                 int
+            )
+    ;       abs_stackvar(
+                 int,
+                 hlds.hlds_llds.stack_slot_width
+            )
+    ;       abs_parent_stackvar(
+                 int,
+                 hlds.hlds_llds.stack_slot_width
+            )
+    ;       abs_framevar(
+                 int
+            ).
+:- type abs_store_map == map.map(parse_tree.prog_data.prog_var, hlds.hlds_llds.abs_locn).
+:- type arg_info
+    --->    arg_info(
+                 hlds.hlds_llds.arg_loc,
+                 parse_tree.prog_data.top_functor_mode
+            ).
+:- type arg_loc
+    --->    reg(
+                 hlds.hlds_llds.reg_type,
+                 int
+            ).
+:- type llds_code_gen_details.
+:- type need_across_call
+    --->    need_across_call(
+                 (hlds.hlds_llds).call_forward_vars :: parse_tree.set_of_var.set_of_progvar,
+                 (hlds.hlds_llds).call_resume_vars :: parse_tree.set_of_var.set_of_progvar,
+                 (hlds.hlds_llds).call_nondet_vars :: parse_tree.set_of_var.set_of_progvar
+            ).
+:- type need_for_loop_control
+    --->    need_for_loop_control(
+                 (hlds.hlds_llds).loop_control_distinct_stackvars :: list.list(parse_tree.set_of_var.set_of_progvar)
+            ).
+:- type need_in_par_conj
+    --->    need_in_par_conj(
+                 (hlds.hlds_llds).par_conj_engine_vars :: parse_tree.set_of_var.set_of_progvar
+            ).
+:- type need_in_resume
+    --->    need_in_resume(
+                 (hlds.hlds_llds).resume_vars_on_stack :: bool.bool,
+                 (hlds.hlds_llds).resume_resume_vars :: parse_tree.set_of_var.set_of_progvar,
+                 (hlds.hlds_llds).resume_nondet_vars :: parse_tree.set_of_var.set_of_progvar
+            ).
+:- type reg_type
+    --->    reg_r 
+    ;       reg_f .
+:- type resume_locs
+    --->    resume_locs_orig_only 
+    ;       resume_locs_stack_only 
+    ;       resume_locs_orig_then_stack 
+    ;       resume_locs_stack_then_orig .
+:- type resume_point
+    --->    resume_point(
+                 parse_tree.set_of_var.set_of_progvar,
+                 hlds.hlds_llds.resume_locs
+            )
+    ;       no_resume_point .
+:- type stack_slot
+    --->    det_slot(
+                 int,
+                 hlds.hlds_llds.stack_slot_width
+            )
+    ;       parent_det_slot(
+                 int,
+                 hlds.hlds_llds.stack_slot_width
+            )
+    ;       nondet_slot(
+                 int
+            ).
+:- type stack_slot_width
+    --->    single_width 
+    ;       double_width .
+:- type stack_slots == map.map(parse_tree.prog_data.prog_var, hlds.hlds_llds.stack_slot).
+:- pred abs_locn_to_string(hlds.hlds_llds.abs_locn, string, maybe.maybe(string)).
+:- mode abs_locn_to_string(builtin.in, builtin.out, builtin.out) is det.
+:- func explain_stack_slots(parse_tree.var_table.var_table, hlds.hlds_llds.stack_slots) = string.
+:- pred goal_info_get_follow_vars(hlds.hlds_goal.hlds_goal_info, maybe.maybe(hlds.hlds_llds.abs_follow_vars)).
+:- mode goal_info_get_follow_vars(builtin.in, builtin.out) is det.
+:- pred goal_info_get_maybe_need_across_call(hlds.hlds_goal.hlds_goal_info, maybe.maybe(hlds.hlds_llds.need_across_call)).
+:- mode goal_info_get_maybe_need_across_call(builtin.in, builtin.out) is det.
+:- pred goal_info_get_maybe_need_in_par_conj(hlds.hlds_goal.hlds_goal_info, maybe.maybe(hlds.hlds_llds.need_in_par_conj)).
+:- mode goal_info_get_maybe_need_in_par_conj(builtin.in, builtin.out) is det.
+:- pred goal_info_get_maybe_need_in_resume(hlds.hlds_goal.hlds_goal_info, maybe.maybe(hlds.hlds_llds.need_in_resume)).
+:- mode goal_info_get_maybe_need_in_resume(builtin.in, builtin.out) is det.
+:- pred goal_info_get_post_births(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_get_post_births(builtin.in, builtin.out) is det.
+:- pred goal_info_get_post_deaths(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_get_post_deaths(builtin.in, builtin.out) is det.
+:- pred goal_info_get_pre_births(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_get_pre_births(builtin.in, builtin.out) is det.
+:- pred goal_info_get_pre_deaths(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_get_pre_deaths(builtin.in, builtin.out) is det.
+:- pred goal_info_get_resume_point(hlds.hlds_goal.hlds_goal_info, hlds.hlds_llds.resume_point).
+:- mode goal_info_get_resume_point(builtin.in, builtin.out) is det.
+:- pred goal_info_get_store_map(hlds.hlds_goal.hlds_goal_info, hlds.hlds_llds.abs_store_map).
+:- mode goal_info_get_store_map(builtin.in, builtin.out) is det.
+:- pred goal_info_initialize_liveness_info(parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, hlds.hlds_llds.resume_point, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_initialize_liveness_info(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_info_maybe_get_follow_vars(hlds.hlds_goal.hlds_goal_info, maybe.maybe(hlds.hlds_llds.abs_follow_vars)).
+:- mode goal_info_maybe_get_follow_vars(builtin.in, builtin.out) is semidet.
+:- pred goal_info_maybe_get_maybe_need_across_call(hlds.hlds_goal.hlds_goal_info, maybe.maybe(hlds.hlds_llds.need_across_call)).
+:- mode goal_info_maybe_get_maybe_need_across_call(builtin.in, builtin.out) is semidet.
+:- pred goal_info_maybe_get_maybe_need_in_par_conj(hlds.hlds_goal.hlds_goal_info, maybe.maybe(hlds.hlds_llds.need_in_par_conj)).
+:- mode goal_info_maybe_get_maybe_need_in_par_conj(builtin.in, builtin.out) is semidet.
+:- pred goal_info_maybe_get_maybe_need_in_resume(hlds.hlds_goal.hlds_goal_info, maybe.maybe(hlds.hlds_llds.need_in_resume)).
+:- mode goal_info_maybe_get_maybe_need_in_resume(builtin.in, builtin.out) is semidet.
+:- pred goal_info_maybe_get_post_births(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_maybe_get_post_births(builtin.in, builtin.out) is semidet.
+:- pred goal_info_maybe_get_post_deaths(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_maybe_get_post_deaths(builtin.in, builtin.out) is semidet.
+:- pred goal_info_maybe_get_pre_births(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_maybe_get_pre_births(builtin.in, builtin.out) is semidet.
+:- pred goal_info_maybe_get_pre_deaths(hlds.hlds_goal.hlds_goal_info, parse_tree.set_of_var.set_of_progvar).
+:- mode goal_info_maybe_get_pre_deaths(builtin.in, builtin.out) is semidet.
+:- pred goal_info_maybe_get_resume_point(hlds.hlds_goal.hlds_goal_info, hlds.hlds_llds.resume_point).
+:- mode goal_info_maybe_get_resume_point(builtin.in, builtin.out) is semidet.
+:- pred goal_info_maybe_get_store_map(hlds.hlds_goal.hlds_goal_info, hlds.hlds_llds.abs_store_map).
+:- mode goal_info_maybe_get_store_map(builtin.in, builtin.out) is semidet.
+:- pred goal_info_resume_vars_and_loc(hlds.hlds_llds.resume_point, parse_tree.set_of_var.set_of_progvar, hlds.hlds_llds.resume_locs).
+:- mode goal_info_resume_vars_and_loc(builtin.in, builtin.out, builtin.out) is det.
+:- pred goal_info_set_follow_vars(maybe.maybe(hlds.hlds_llds.abs_follow_vars), hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_follow_vars(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_info_set_need_across_call(hlds.hlds_llds.need_across_call, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_need_across_call(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_info_set_need_in_par_conj(hlds.hlds_llds.need_in_par_conj, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_need_in_par_conj(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_info_set_need_in_resume(hlds.hlds_llds.need_in_resume, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_need_in_resume(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_info_set_post_births(parse_tree.set_of_var.set_of_progvar, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_post_births(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_info_set_post_deaths(parse_tree.set_of_var.set_of_progvar, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_post_deaths(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_info_set_pre_births(parse_tree.set_of_var.set_of_progvar, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_pre_births(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_info_set_pre_deaths(parse_tree.set_of_var.set_of_progvar, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_pre_deaths(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_info_set_resume_point(hlds.hlds_llds.resume_point, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_resume_point(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_info_set_store_map(hlds.hlds_llds.abs_store_map, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode goal_info_set_store_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_set_follow_vars(maybe.maybe(hlds.hlds_llds.abs_follow_vars), hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode goal_set_follow_vars(builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_set_resume_point(hlds.hlds_llds.resume_point, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode goal_set_resume_point(builtin.in, builtin.in, builtin.out) is det.
+:- func key_stack_slot_to_abs_locn(V_1, hlds.hlds_llds.stack_slot) = hlds.hlds_llds.abs_locn.
+:- pred rename_vars_in_llds_code_gen_info(parse_tree.prog_rename.must_rename, map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var), hlds.hlds_llds.llds_code_gen_details, hlds.hlds_llds.llds_code_gen_details).
+:- mode rename_vars_in_llds_code_gen_info(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func stack_slot_num(hlds.hlds_llds.stack_slot) = int.
+:- func stack_slot_to_abs_locn(hlds.hlds_llds.stack_slot) = hlds.hlds_llds.abs_locn.

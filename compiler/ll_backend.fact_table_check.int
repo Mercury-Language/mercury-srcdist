@@ -1,0 +1,69 @@
+:- module ll_backend.fact_table_check.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.pred_proc_id.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_foreign.
+:- type fact_arg_info
+    --->    fact_arg_info(
+                 ll_backend.fact_table_check.fact_arg_type,
+                 ll_backend.fact_table_check.maybe_input_for_some_mode,
+                 ll_backend.fact_table_check.maybe_in_or_output_for_some_mode
+            ).
+:- type fact_arg_type
+    --->    fact_arg_type_int 
+    ;       fact_arg_type_float 
+    ;       fact_arg_type_string .
+:- type fact_table_arg_check_result
+    --->    fact_table_args_ok(
+                 ll_backend.fact_table_check.fact_table_gen_info
+            )
+    ;       fact_table_args_not_ok(
+                 list.list(parse_tree.error_spec.err_spec)
+            ).
+:- type fact_table_gen_info
+    --->    fact_table_gen_info(
+                 (ll_backend.fact_table_check).fgti_arg_infos :: list.list(ll_backend.fact_table_check.fact_arg_info),
+                 (ll_backend.fact_table_check).ftgi_proc_info_map :: ll_backend.fact_table_check.fact_table_proc_map,
+                 (ll_backend.fact_table_check).ftgi_all_in_proc_id :: maybe.maybe(hlds.pred_proc_id.proc_id),
+                 (ll_backend.fact_table_check).ftgi_in_out_proc_ids :: list.list(hlds.pred_proc_id.proc_id)
+            ).
+:- type fact_table_mode
+    --->    fully_in 
+    ;       fully_out .
+:- type fact_table_mode_class
+    --->    all_in 
+    ;       in_out 
+    ;       all_out .
+:- type fact_table_proc_info
+    --->    fact_table_proc_info(
+                 list.list(ll_backend.fact_table_check.fact_table_var),
+                 ll_backend.fact_table_check.fact_table_mode_class,
+                 parse_tree.prog_data.prog_varset
+            ).
+:- type fact_table_proc_map == map.map(hlds.pred_proc_id.proc_id, ll_backend.fact_table_check.fact_table_proc_info).
+:- type fact_table_var
+    --->    fact_table_var(
+                 (ll_backend.fact_table_check).ftv_name :: string,
+                 (ll_backend.fact_table_check).ftv_mode :: ll_backend.fact_table_check.fact_table_mode,
+                 (ll_backend.fact_table_check).ftv_make_unique :: ll_backend.fact_table_check.maybe_make_unique,
+                 (ll_backend.fact_table_check).ftv_pragma_var :: parse_tree.prog_data_foreign.pragma_var
+            ).
+:- type maybe_in_or_output_for_some_mode
+    --->    is_not_in_or_output_for_any_mode 
+    ;       is_in_or_output_for_some_mode .
+:- type maybe_input_for_some_mode
+    --->    is_not_input_for_any_mode 
+    ;       is_input_for_some_mode .
+:- type maybe_make_unique
+    --->    do_not_make_unique 
+    ;       make_unique .
+:- pred fact_table_check_args(hlds.hlds_module.module_info, parse_tree.prog_data.prog_context, hlds.pred_proc_id.pred_id, hlds.hlds_pred.pred_info, ll_backend.fact_table_check.fact_table_arg_check_result).
+:- mode fact_table_check_args(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
