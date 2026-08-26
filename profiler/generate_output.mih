@@ -1,0 +1,68 @@
+/*
+** Automatically generated from `generate_output.m'
+** by the Mercury compiler,
+** version rotd-2026-08-26
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module generate_output.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_generate_output
+#define MR_HEADER_GUARD_generate_output
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef GENERATE_OUTPUT_DECL_GUARD
+#define GENERATE_OUTPUT_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct generate_output__generate_output__type_ctor_info_flat_key_0;
+
+extern const MR_TypeCtorInfo_Struct generate_output__generate_output__type_ctor_info_profiling_0;
+
+void MR_CALL 
+generate_output__generate_prof_output_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_Float MR_CALL 
+generate_output__checked_float_divide_2_f_0(
+  MR_Float param_1,
+  MR_Float param_2);
+
+void mercury__generate_output__init(void);
+void mercury__generate_output__init_type_tables(void);
+void mercury__generate_output__init_debugger(void);
+const char *mercury__generate_output__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_generate_output
+
+// :- end_interface generate_output.

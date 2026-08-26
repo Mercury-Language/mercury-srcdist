@@ -1,0 +1,13 @@
+:- module ((transform_hlds.ctgc).structure_reuse).versions.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module hlds.hlds_module.
+:- use_module hlds.pred_proc_id.
+:- use_module ((transform_hlds.ctgc).structure_reuse).domain.
+:- pred create_fake_reuse_procedure(hlds.pred_proc_id.pred_proc_id, transform_hlds.ctgc.structure_reuse.domain.no_clobber_args, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode create_fake_reuse_procedure(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred create_fresh_pred_proc_info_copy(hlds.pred_proc_id.pred_proc_id, transform_hlds.ctgc.structure_reuse.domain.no_clobber_args, hlds.pred_proc_id.pred_proc_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode create_fresh_pred_proc_info_copy(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred create_reuse_procedures(io.text_output_stream, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode create_reuse_procedures(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

@@ -1,0 +1,26 @@
+:- module parse_tree.prog_type_test.
+:- interface.
+:- use_module parse_tree.prog_data.
+:- type non_kinded_type =< parse_tree.prog_data.mer_type
+    --->    type_variable(
+                 parse_tree.prog_data.tvar,
+                 parse_tree.prog_data.kind
+            )
+    ;       defined_type(
+                 mdbcomp.sym_name.sym_name,
+                 list.list(parse_tree.prog_data.mer_type),
+                 parse_tree.prog_data.kind
+            )
+    ;       builtin_type(
+                 parse_tree.prog_data.builtin_type
+            )
+    ;       tuple_type(
+                 list.list(parse_tree.prog_data.mer_type),
+                 parse_tree.prog_data.kind
+            )
+    ;       higher_order_type(
+                 mdbcomp.prim_data.pred_or_func,
+                 list.list(parse_tree.prog_data.mer_type),
+                 parse_tree.prog_data.ho_inst_info,
+                 parse_tree.prog_data.purity
+            ).

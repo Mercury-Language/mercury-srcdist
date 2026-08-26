@@ -1,0 +1,578 @@
+/*
+** Automatically generated from `prog_parse_tree.m'
+** by the Mercury compiler,
+** version rotd-2026-08-26
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_parse_tree.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_parse_tree
+#define MR_HEADER_GUARD_parse_tree__prog_parse_tree
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_PARSE_TREE_DECL_GUARD
+#define PARSE_TREE__PROG_PARSE_TREE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_ancestor_int_spec_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_aug_compilation_unit_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_aug_make_int_unit_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_direct_int1_spec_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_direct_int3_spec_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_implicit_import_or_use_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_import_and_or_use_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_import_locn_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_include_module_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_include_module_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_indirect_int2_spec_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_indirect_int3_spec_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_int_for_opt_spec_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_int_import_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_int_include_module_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_int_include_module_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_int_module_section_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_int_section_import_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_maybe_implicit_import_and_or_use_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_maybe_version_numbers_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_module_component_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_module_names_contexts_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_module_section_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_parse_tree_int0_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_parse_tree_int1_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_parse_tree_int2_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_parse_tree_int3_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_parse_tree_module_src_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_parse_tree_plain_opt_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_parse_tree_src_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_parse_tree_trans_opt_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_read_why_int0_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_read_why_int1_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_read_why_int2_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_read_why_int3_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_section_import_and_or_use_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_section_import_and_or_use_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_section_use_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_section_use_map_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_parse_tree__parse_tree__prog_parse_tree__type_ctor_info_type_repn_spec_0;
+
+void MR_CALL 
+parse_tree__prog_parse_tree__init_aug_compilation_unit_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____ancestor_int_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____aug_compilation_unit_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____aug_make_int_unit_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____direct_int1_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____direct_int3_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____implicit_import_or_use_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____import_and_or_use_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____import_locn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____include_module_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____include_module_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____indirect_int2_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____indirect_int3_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____int_for_opt_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____int_import_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____int_include_module_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____int_include_module_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____int_module_section_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____int_section_import_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____maybe_implicit_import_and_or_use_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____maybe_version_numbers_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____module_component_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____module_names_contexts_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____module_section_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____parse_tree_int0_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____parse_tree_int1_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____parse_tree_int2_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____parse_tree_int3_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____parse_tree_module_src_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____parse_tree_plain_opt_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____parse_tree_src_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____parse_tree_trans_opt_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____read_why_int0_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____read_why_int1_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____read_why_int2_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____read_why_int3_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____section_import_and_or_use_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____section_import_and_or_use_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____section_use_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____section_use_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_parse_tree____Compare____type_repn_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____ancestor_int_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____aug_compilation_unit_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____aug_make_int_unit_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____direct_int1_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____direct_int3_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____implicit_import_or_use_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____import_and_or_use_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____import_locn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____include_module_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____include_module_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____indirect_int2_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____indirect_int3_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____int_for_opt_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____int_import_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____int_include_module_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____int_include_module_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____int_module_section_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____int_section_import_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____maybe_implicit_import_and_or_use_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____maybe_version_numbers_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____module_component_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____module_names_contexts_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____module_section_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____parse_tree_int0_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____parse_tree_int1_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____parse_tree_int2_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____parse_tree_int3_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____parse_tree_module_src_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____parse_tree_plain_opt_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____parse_tree_src_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____parse_tree_trans_opt_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____read_why_int0_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____read_why_int1_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____read_why_int2_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____read_why_int3_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____section_import_and_or_use_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____section_import_and_or_use_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____section_use_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____section_use_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_parse_tree____Unify____type_repn_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__prog_parse_tree__init(void);
+void mercury__parse_tree__prog_parse_tree__init_type_tables(void);
+void mercury__parse_tree__prog_parse_tree__init_debugger(void);
+const char *mercury__parse_tree__prog_parse_tree__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.prog_parse_tree
+
+// :- end_interface parse_tree.prog_parse_tree.

@@ -1,0 +1,329 @@
+%---------------------------------------------------------------------------%
+% vim: ft=mercury ts=4 sw=4 et
+%---------------------------------------------------------------------------%
+% Copyright (C) 2005-2006, 2009-2012 The University of Melbourne.
+% Copyright (C) 2015-2016, 2018, 2023-2026 The Mercury team.
+% This file may only be copied under the terms of the GNU General
+% Public License - see the file COPYING in the Mercury distribution.
+%---------------------------------------------------------------------------%
+%
+% Operations for performing various kinds of type substitutions on data
+% structures that are part of the parse tree.
+%
+%---------------------------------------------------------------------------%
+
+:- module parse_tree.prog_type_subst.
+:- interface.
+
+:- import_module parse_tree.prog_data.
+
+:- import_module list.
+
+%---------------------------------------------------------------------------%
+%
+% Type substitutions.
+%
+
+:- pred apply_renaming_to_tvar_kind_map(tvar_renaming::in,
+    tvar_kind_map::in, tvar_kind_map::out) is det.
+
+%---------------------%
+
+:- pred apply_renaming_to_tvar(tvar_renaming::in,
+    tvar::in, tvar::out) is det.
+
+:- pred apply_subst_to_tvar(tvar_kind_map::in, tsubst::in,
+    tvar::in, mer_type::out) is det.
+
+:- pred apply_rec_subst_to_tvar(tvar_kind_map::in, tsubst::in,
+    tvar::in, mer_type::out) is det.
+
+%---------------------%
+
+:- pred apply_renaming_to_tvars(tvar_renaming::in,
+    list(tvar)::in, list(tvar)::out) is det.
+
+:- pred apply_subst_to_tvars(tvar_kind_map::in, tsubst::in,
+    list(tvar)::in, list(mer_type)::out) is det.
+
+:- pred apply_rec_subst_to_tvars(tvar_kind_map::in, tsubst::in,
+    list(tvar)::in, list(mer_type)::out) is det.
+
+%---------------------%
+
+:- pred apply_renaming_to_type(tvar_renaming::in,
+    mer_type::in, mer_type::out) is det.
+
+:- pred apply_subst_to_type(tsubst::in, mer_type::in, mer_type::out) is det.
+
+:- pred apply_rec_subst_to_type(tsubst::in, mer_type::in, mer_type::out)
+    is det.
+
+%---------------------%
+
+:- pred apply_renaming_to_types(tvar_renaming::in,
+    list(mer_type)::in, list(mer_type)::out) is det.
+
+:- pred apply_subst_to_types(tsubst::in,
+    list(mer_type)::in, list(mer_type)::out) is det.
+
+:- pred apply_rec_subst_to_types(tsubst::in,
+    list(mer_type)::in, list(mer_type)::out) is det.
+
+%---------------------------------------------------------------------------%
+%
+% Utility predicates dealing with typeclass constraints.
+%
+
+:- pred apply_renaming_to_prog_constraint(tvar_renaming::in,
+    prog_constraint::in, prog_constraint::out) is det.
+
+:- pred apply_subst_to_prog_constraint(tsubst::in, prog_constraint::in,
+    prog_constraint::out) is det.
+
+:- pred apply_rec_subst_to_prog_constraint(tsubst::in, prog_constraint::in,
+    prog_constraint::out) is det.
+
+%---------------------%
+
+:- pred apply_renaming_to_prog_constraints(tvar_renaming::in,
+    list(prog_constraint)::in, list(prog_constraint)::out) is det.
+
+:- pred apply_subst_to_prog_constraints(tsubst::in,
+    list(prog_constraint)::in, list(prog_constraint)::out) is det.
+
+:- pred apply_rec_subst_to_prog_constraints(tsubst::in,
+    list(prog_constraint)::in, list(prog_constraint)::out) is det.
+
+%---------------------%
+
+:- pred apply_renaming_to_univ_exist_constraints(tvar_renaming::in,
+    univ_exist_constraints::in, univ_exist_constraints::out) is det.
+
+:- pred apply_subst_to_univ_exist_constraints(tsubst::in,
+    univ_exist_constraints::in, univ_exist_constraints::out) is det.
+
+:- pred apply_rec_subst_to_univ_exist_constraints(tsubst::in,
+    univ_exist_constraints::in, univ_exist_constraints::out) is det.
+
+%---------------------------------------------------------------------------%
+%---------------------------------------------------------------------------%
+
+:- implementation.
+
+:- import_module map.
+:- import_module require.
+
+%---------------------------------------------------------------------------%
+
+apply_renaming_to_tvar_kind_map(Renaming, KindMap0, KindMap) :-
+    map.foldl(apply_renaming_to_tvar_kind_map_2(Renaming),
+        KindMap0, map.init, KindMap).
+
+:- pred apply_renaming_to_tvar_kind_map_2(tvar_renaming::in, tvar::in,
+    kind::in, tvar_kind_map::in, tvar_kind_map::out) is det.
+
+apply_renaming_to_tvar_kind_map_2(Renaming, TVar0, Kind, !KindMap) :-
+    apply_renaming_to_tvar(Renaming, TVar0, TVar),
+    map.det_insert(TVar, Kind, !KindMap).
+
+%---------------------------------------------------------------------------%
+
+apply_renaming_to_tvar(Renaming, TVar0, TVar) :-
+    ( if map.search(Renaming, TVar0, TVar1) then
+        TVar = TVar1
+    else
+        TVar = TVar0
+    ).
+
+apply_subst_to_tvar(KindMap, Subst, TVar, Type) :-
+    ( if map.search(Subst, TVar, Type0) then
+        apply_subst_to_type(Subst, Type0, Type)
+    else
+        get_tvar_kind(KindMap, TVar, Kind),
+        Type = type_variable(TVar, Kind)
+    ).
+
+apply_rec_subst_to_tvar(KindMap, Subst, TVar, Type) :-
+    ( if map.search(Subst, TVar, Type0) then
+        apply_rec_subst_to_type(Subst, Type0, Type)
+    else
+        get_tvar_kind(KindMap, TVar, Kind),
+        Type = type_variable(TVar, Kind)
+    ).
+
+%---------------------------------------------------------------------------%
+
+apply_renaming_to_tvars(Renaming, TVars0, TVars) :-
+    list.map(apply_renaming_to_tvar(Renaming), TVars0, TVars).
+
+apply_subst_to_tvars(KindMap, Subst, TVars, Types) :-
+    list.map(apply_subst_to_tvar(KindMap, Subst), TVars, Types).
+
+apply_rec_subst_to_tvars(KindMap, Subst, TVars, Types) :-
+    list.map(apply_rec_subst_to_tvar(KindMap, Subst), TVars, Types).
+
+%---------------------------------------------------------------------------%
+
+apply_renaming_to_type(Renaming, Type0, Type) :-
+    (
+        Type0 = type_variable(TVar0, Kind),
+        apply_renaming_to_tvar(Renaming, TVar0, TVar),
+        Type = type_variable(TVar, Kind)
+    ;
+        Type0 = defined_type(Name, Args0, Kind),
+        apply_renaming_to_types(Renaming, Args0, Args),
+        Type = defined_type(Name, Args, Kind)
+    ;
+        Type0 = builtin_type(_),
+        Type = Type0
+    ;
+        Type0 = higher_order_type(PorF, Args0, HOInstInfo, Purity),
+        apply_renaming_to_types(Renaming, Args0, Args),
+        Type = higher_order_type(PorF, Args, HOInstInfo, Purity)
+    ;
+        Type0 = tuple_type(Args0, Kind),
+        apply_renaming_to_types(Renaming, Args0, Args),
+        Type = tuple_type(Args, Kind)
+    ;
+        Type0 = kinded_type(BaseType0, Kind),
+        apply_renaming_to_type(Renaming, BaseType0, BaseType),
+        Type = kinded_type(BaseType, Kind)
+    ).
+
+apply_subst_to_type(Subst, Type0, Type) :-
+    (
+        Type0 = type_variable(TVar, Kind),
+        ( if map.search(Subst, TVar, Type1) then
+            ensure_type_has_kind(Kind, Type1, Type)
+        else
+            Type = Type0
+        )
+    ;
+        Type0 = defined_type(Name, Args0, Kind),
+        apply_subst_to_types(Subst, Args0, Args),
+        Type = defined_type(Name, Args, Kind)
+    ;
+        Type0 = builtin_type(_),
+        Type = Type0
+    ;
+        Type0 = higher_order_type(PorF, Args0, HOInstInfo, Purity),
+        apply_subst_to_types(Subst, Args0, Args),
+        Type = higher_order_type(PorF, Args, HOInstInfo, Purity)
+    ;
+        Type0 = tuple_type(Args0, Kind),
+        apply_subst_to_types(Subst, Args0, Args),
+        Type = tuple_type(Args, Kind)
+    ;
+        Type0 = kinded_type(BaseType0, Kind),
+        apply_subst_to_type(Subst, BaseType0, BaseType),
+        Type = kinded_type(BaseType, Kind)
+    ).
+
+apply_rec_subst_to_type(Subst, Type0, Type) :-
+    (
+        Type0 = type_variable(TVar, Kind),
+        ( if map.search(Subst, TVar, Type1) then
+            ensure_type_has_kind(Kind, Type1, Type2),
+            apply_rec_subst_to_type(Subst, Type2, Type)
+        else
+            Type = Type0
+        )
+    ;
+        Type0 = defined_type(Name, Args0, Kind),
+        apply_rec_subst_to_types(Subst, Args0, Args),
+        Type = defined_type(Name, Args, Kind)
+    ;
+        Type0 = builtin_type(_),
+        Type = Type0
+    ;
+        Type0 = higher_order_type(PorF, Args0, HOInstInfo, Purity),
+        apply_rec_subst_to_types(Subst, Args0, Args),
+        Type = higher_order_type(PorF, Args, HOInstInfo, Purity)
+    ;
+        Type0 = tuple_type(Args0, Kind),
+        apply_rec_subst_to_types(Subst, Args0, Args),
+        Type = tuple_type(Args, Kind)
+    ;
+        Type0 = kinded_type(BaseType0, Kind),
+        apply_rec_subst_to_type(Subst, BaseType0, BaseType),
+        Type = kinded_type(BaseType, Kind)
+    ).
+
+%---------------------------------------------------------------------------%
+
+apply_renaming_to_types(Renaming, Types0, Types) :-
+    list.map(apply_renaming_to_type(Renaming), Types0, Types).
+
+apply_subst_to_types(Subst, Types0, Types) :-
+    list.map(apply_subst_to_type(Subst), Types0, Types).
+
+apply_rec_subst_to_types(Subst, Types0, Types) :-
+    list.map(apply_rec_subst_to_type(Subst), Types0, Types).
+
+%---------------------------------------------------------------------------%
+
+:- pred ensure_type_has_kind(kind::in, mer_type::in, mer_type::out) is det.
+
+ensure_type_has_kind(Kind, Type0, Type) :-
+    ( if get_type_kind(Type0) = Kind then
+        Type = Type0
+    else
+        unexpected($pred, "substitution not kind preserving")
+    ).
+
+%---------------------------------------------------------------------------%
+
+apply_renaming_to_prog_constraint(Renaming, !Constraint) :-
+    !.Constraint = constraint(ClassName, ClassArgTypes0),
+    apply_renaming_to_types(Renaming,
+        ClassArgTypes0, ClassArgTypes),
+    !:Constraint = constraint(ClassName, ClassArgTypes).
+
+apply_subst_to_prog_constraint(Subst, !Constraint) :-
+    !.Constraint = constraint(ClassName, Types0),
+    apply_subst_to_types(Subst, Types0, Types),
+    !:Constraint = constraint(ClassName, Types).
+
+apply_rec_subst_to_prog_constraint(Subst, !Constraint) :-
+    !.Constraint = constraint(ClassName, Types0),
+    apply_rec_subst_to_types(Subst, Types0, Types),
+    !:Constraint = constraint(ClassName, Types).
+
+%---------------------------------------------------------------------------%
+
+apply_renaming_to_prog_constraints(Renaming, !Constraints) :-
+    list.map(apply_renaming_to_prog_constraint(Renaming),
+        !Constraints).
+
+apply_subst_to_prog_constraints(Subst, !Constraints) :-
+    list.map(apply_subst_to_prog_constraint(Subst), !Constraints).
+
+apply_rec_subst_to_prog_constraints(Subst, !Constraints) :-
+    list.map(apply_rec_subst_to_prog_constraint(Subst), !Constraints).
+
+%---------------------------------------------------------------------------%
+
+apply_renaming_to_univ_exist_constraints(Renaming, !Constraints) :-
+    !.Constraints = univ_exist_constraints(UnivCs0, ExistCs0),
+    apply_renaming_to_prog_constraints(Renaming,
+        UnivCs0, UnivCs),
+    apply_renaming_to_prog_constraints(Renaming,
+        ExistCs0, ExistCs),
+    !:Constraints = univ_exist_constraints(UnivCs, ExistCs).
+
+apply_subst_to_univ_exist_constraints(Subst, !Constraints) :-
+    !.Constraints = univ_exist_constraints(UnivCs0, ExistCs0),
+    apply_subst_to_prog_constraints(Subst, UnivCs0, UnivCs),
+    apply_subst_to_prog_constraints(Subst, ExistCs0, ExistCs),
+    !:Constraints = univ_exist_constraints(UnivCs, ExistCs).
+
+apply_rec_subst_to_univ_exist_constraints(Subst, !Constraints) :-
+    !.Constraints = univ_exist_constraints(UnivCs0, ExistCs0),
+    apply_rec_subst_to_prog_constraints(Subst, UnivCs0, UnivCs),
+    apply_rec_subst_to_prog_constraints(Subst, ExistCs0, ExistCs),
+    !:Constraints = univ_exist_constraints(UnivCs, ExistCs).
+
+%---------------------------------------------------------------------------%
+:- end_module parse_tree.prog_type_subst.
+%---------------------------------------------------------------------------%

@@ -1,0 +1,21 @@
+:- module (check_hlds.simplify).simplify_proc.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.hlds_proc.
+:- use_module hlds.instmap.
+:- use_module hlds.pred_proc_id.
+:- use_module parse_tree.error_util.
+:- use_module (check_hlds.simplify).simplify_tasks.
+:- pred simplify_goal_update_vars_in_proc(io.text_output_stream, check_hlds.simplify.simplify_tasks.simplify_tasks, hlds.pred_proc_id.pred_id, hlds.pred_proc_id.proc_id, hlds.instmap.instmap, int, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.hlds_proc.proc_info, hlds.hlds_proc.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode simplify_goal_update_vars_in_proc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred simplify_pred_procs(io.text_output_stream, check_hlds.simplify.simplify_tasks.simplify_tasks, hlds.pred_proc_id.pred_id, list.list(hlds.pred_proc_id.proc_id), hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, parse_tree.error_util.diag_spec_accumulator, parse_tree.error_util.diag_spec_accumulator).
+:- mode simplify_pred_procs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred simplify_proc(maybe.maybe(io.text_output_stream), io.text_output_stream, check_hlds.simplify.simplify_tasks.simplify_tasks, hlds.pred_proc_id.pred_id, hlds.pred_proc_id.proc_id, hlds.hlds_proc.proc_info, hlds.hlds_proc.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode simplify_proc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
