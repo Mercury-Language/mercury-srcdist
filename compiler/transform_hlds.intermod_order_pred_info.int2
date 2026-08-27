@@ -1,0 +1,10 @@
+:- module transform_hlds.intermod_order_pred_info.
+:- interface.
+:- type order_pred_info
+    --->    order_pred_info(
+                 (transform_hlds.intermod_order_pred_info).opi_name :: string,
+                 (transform_hlds.intermod_order_pred_info).opi_user_arity :: parse_tree.prog_data.user_arity,
+                 (transform_hlds.intermod_order_pred_info).opi_pred_or_fun :: mdbcomp.prim_data.pred_or_func,
+                 (transform_hlds.intermod_order_pred_info).opi_pred_id :: hlds.pred_proc_id.pred_id,
+                 (transform_hlds.intermod_order_pred_info).opi_pred_info :: hlds.hlds_pred.pred_info
+            ).

@@ -1,0 +1,20 @@
+:- module check_hlds.polymorphism_type_class_info.
+:- interface.
+:- use_module assoc_list.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module check_hlds.polymorphism_info.
+:- use_module hlds.const_struct.
+:- use_module hlds.hlds_goal.
+:- use_module parse_tree.prog_data.
+:- type record_type_info_locns
+    --->    do_record_type_info_locns 
+    ;       do_not_record_type_info_locns .
+:- pred make_existq_typeclass_info_vars(list.list(parse_tree.prog_data.prog_constraint), parse_tree.prog_data.prog_context, list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.hlds_goal), check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode make_existq_typeclass_info_vars(builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred make_typeclass_info_head_vars(check_hlds.polymorphism_type_class_info.record_type_info_locns, list.list(parse_tree.prog_data.prog_constraint), list.list(parse_tree.prog_data.prog_var), check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode make_typeclass_info_head_vars(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred make_typeclass_info_vars(list.list(parse_tree.prog_data.prog_constraint), parse_tree.prog_data.existq_tvars, parse_tree.prog_data.prog_context, assoc_list.assoc_list(parse_tree.prog_data.prog_var, maybe.maybe(hlds.const_struct.const_struct_arg)), list.list(hlds.hlds_goal.hlds_goal), check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode make_typeclass_info_vars(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.

@@ -1,0 +1,13 @@
+:- module ll_backend.closure_gen.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.pred_proc_id.
+:- use_module ll_backend.code_info.
+:- use_module ll_backend.code_loc_dep.
+:- use_module ll_backend.llds.
+:- use_module parse_tree.prog_data.
+:- pred construct_closure(hlds.pred_proc_id.pred_id, hlds.pred_proc_id.proc_id, parse_tree.prog_data.prog_var, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode construct_closure(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

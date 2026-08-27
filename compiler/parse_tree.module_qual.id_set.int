@@ -1,0 +1,61 @@
+:- module (parse_tree.module_qual).id_set.
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module mdbcomp.sym_name.
+:- use_module (parse_tree.module_qual).mq_info.
+:- use_module (parse_tree.module_qual).qual_errors.
+:- type class_id_set == parse_tree.module_qual.id_set.id_set.
+:- type id_set.
+:- type inst_id_set == parse_tree.module_qual.id_set.id_set.
+:- type mode_id_set == parse_tree.module_qual.id_set.id_set.
+:- type module_id_set == parse_tree.module_qual.id_set.id_set.
+:- type module_permissions
+    --->    module_permissions(
+                 ((parse_tree.module_qual).id_set).mp_in_int :: parse_tree.module_qual.id_set.perm_in_int,
+                 ((parse_tree.module_qual).id_set).mp_in_imp :: parse_tree.module_qual.id_set.perm_in_imp
+            ).
+:- type mq_id
+    --->    mq_id(
+                 mdbcomp.sym_name.sym_name,
+                 int
+            ).
+:- type mq_in_interface
+    --->    mq_not_used_in_interface 
+    ;       mq_used_in_interface .
+:- type perm_in_imp
+    --->    perm_in_imp_qual_unqual(
+                 ((parse_tree.module_qual).id_set).perm_in_imp_qual :: parse_tree.module_qual.id_set.permitted_or_not,
+                 ((parse_tree.module_qual).id_set).perm_in_imp_unqual :: parse_tree.module_qual.id_set.permitted_or_not
+            ).
+:- type perm_in_int
+    --->    perm_in_int_qual_unqual(
+                 ((parse_tree.module_qual).id_set).perm_qual :: parse_tree.module_qual.id_set.permitted_or_not,
+                 ((parse_tree.module_qual).id_set).perm_unqual :: parse_tree.module_qual.id_set.permitted_or_not
+            ).
+:- type permitted_or_not
+    --->    not_permitted 
+    ;       permitted 
+    ;       permitted_with_warning 
+    ;       permitted_with_warning_shadowed .
+:- type qual_id_kind
+    --->    qual_id_type 
+    ;       qual_id_inst 
+    ;       qual_id_mode 
+    ;       qual_id_class .
+:- type type_id_set == parse_tree.module_qual.id_set.id_set.
+:- pred find_unique_match(parse_tree.module_qual.id_set.mq_in_interface, parse_tree.module_qual.qual_errors.mq_error_context, parse_tree.module_qual.id_set.id_set, parse_tree.module_qual.id_set.qual_id_kind, parse_tree.module_qual.id_set.mq_id, mdbcomp.sym_name.sym_name, parse_tree.module_qual.mq_info.mq_info, parse_tree.module_qual.mq_info.mq_info).
+:- mode find_unique_match(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred get_names_in_id_set(parse_tree.module_qual.id_set.id_set, list.list(string)).
+:- mode get_names_in_id_set(builtin.in, builtin.out) is det.
+:- pred id_set_init(parse_tree.module_qual.id_set.id_set).
+:- mode id_set_init(builtin.out) is det.
+:- pred id_set_insert(parse_tree.module_qual.id_set.module_permissions, parse_tree.module_qual.id_set.mq_id, parse_tree.module_qual.id_set.id_set, parse_tree.module_qual.id_set.id_set).
+:- mode id_set_insert(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred parent_module_is_imported(parse_tree.module_qual.id_set.mq_in_interface, parse_tree.module_qual.id_set.module_id_set, mdbcomp.sym_name.module_name, mdbcomp.sym_name.module_name).
+:- mode parent_module_is_imported(builtin.in, builtin.in, builtin.in, builtin.in) is semidet.
+:- implementation.
+:- use_module map.
+:- use_module parse_tree.prog_data.
+:- type id_set == map.map(string, map.map(parse_tree.prog_data.arity, parse_tree.module_qual.id_set.permissions_map)).
+:- type permissions_map == map.map(mdbcomp.sym_name.module_name, parse_tree.module_qual.id_set.module_permissions).

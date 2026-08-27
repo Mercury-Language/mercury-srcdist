@@ -1,0 +1,14 @@
+:- module (transform_hlds.rbmm).region_arguments.
+:- interface.
+:- use_module map.
+:- use_module hlds.pred_proc_id.
+:- use_module transform_hlds.smm_common.
+:- type pp_actual_region_args_table == map.map(transform_hlds.smm_common.program_point, transform_hlds.rbmm.region_arguments.region_args).
+:- type proc_formal_region_args_table == map.map(hlds.pred_proc_id.pred_proc_id, transform_hlds.rbmm.region_arguments.region_args).
+:- type proc_pp_actual_region_args_table == map.map(hlds.pred_proc_id.pred_proc_id, transform_hlds.rbmm.region_arguments.pp_actual_region_args_table).
+:- type region_args
+    --->    region_args(
+                 list.list(transform_hlds.rbmm.points_to_graph.rptg_node),
+                 list.list(transform_hlds.rbmm.points_to_graph.rptg_node),
+                 list.list(transform_hlds.rbmm.points_to_graph.rptg_node)
+            ).

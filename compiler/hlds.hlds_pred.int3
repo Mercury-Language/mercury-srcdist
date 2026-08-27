@@ -1,0 +1,8 @@
+:- module hlds.hlds_pred.
+:- interface.
+:- type external_type_params.
+:- type pred_info.
+:- type proc_table.
+:- type_representation(external_type_params, is_eqv_to(list(tvar))).
+:- type_representation(pred_info, is_word_aligned_ptr).
+:- type_representation(proc_table, is_eqv_to(map(proc_id, proc_info))).

@@ -1,0 +1,15 @@
+:- module parse_tree.convert_include.
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_item.
+:- use_module parse_tree.prog_parse_tree.
+:- pred add_only_int_include(mdbcomp.sym_name.module_name, parse_tree.prog_parse_tree.include_module_info, parse_tree.prog_parse_tree.int_include_module_map, parse_tree.prog_parse_tree.int_include_module_map).
+:- mode add_only_int_include(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred classify_include_modules(list.list(parse_tree.prog_item.item_include), list.list(parse_tree.prog_item.item_include), parse_tree.prog_parse_tree.include_module_map, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode classify_include_modules(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred include_map_to_int_imp_modules(parse_tree.prog_parse_tree.include_module_map, set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode include_map_to_int_imp_modules(builtin.in, builtin.out, builtin.out) is det.

@@ -1,0 +1,5 @@
+:- module check_hlds.typecheck_util.
+:- interface.
+:- type du_type_info.
+:- type maybe_du_type.
+:- type_representation(du_type_info, is_word_aligned_ptr).

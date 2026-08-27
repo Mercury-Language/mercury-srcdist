@@ -1,0 +1,9 @@
+:- module ll_backend.stack_opt.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_proc.
+:- use_module hlds.pred_proc_id.
+:- pred stack_opt_cell(io.text_output_stream, hlds.pred_proc_id.pred_proc_id, hlds.hlds_proc.proc_info, hlds.hlds_proc.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode stack_opt_cell(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

@@ -1,0 +1,11 @@
+:- module ll_backend.store_alloc.
+:- interface.
+:- use_module hlds.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_proc.
+:- use_module hlds.pred_proc_id.
+:- type store_map_run_type
+    --->    final_allocation 
+    ;       for_stack_opt .
+:- pred allocate_store_maps(ll_backend.store_alloc.store_map_run_type, hlds.hlds_module.module_info, hlds.pred_proc_id.pred_proc_id, hlds.hlds_proc.proc_info, hlds.hlds_proc.proc_info).
+:- mode allocate_store_maps(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

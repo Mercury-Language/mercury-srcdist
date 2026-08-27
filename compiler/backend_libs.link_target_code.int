@@ -1,0 +1,14 @@
+:- module backend_libs.link_target_code.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module backend_libs.link_target_util.
+:- use_module libs.globals.
+:- use_module libs.maybe_util.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- pred link_files_into_executable_or_library_for_c_cs_java(io.text_output_stream, libs.globals.globals, backend_libs.link_target_util.linked_target_type, mdbcomp.sym_name.module_name, list.list(string), list.list(parse_tree.error_spec.diag_spec), libs.maybe_util.maybe_succeeded, io.io, io.io).
+:- mode link_files_into_executable_or_library_for_c_cs_java(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.

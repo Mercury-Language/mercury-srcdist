@@ -1,0 +1,8 @@
+:- module (parse_tree.module_qual).qual_errors.
+:- interface.
+:- type mq_constraint_error_context.
+:- type mq_error_context.
+:- type old_submodule_visibility_rule_warning
+	where	type_is_abstract_enum(1).
+:- type user_arity_if_known.
+:- type_representation(old_submodule_visibility_rule_warning, du_repn(enum("no_warn_shadowed_ancestor_import", "also_warn_shadowed_ancestor_import", [],  no_c_j_cs))).
