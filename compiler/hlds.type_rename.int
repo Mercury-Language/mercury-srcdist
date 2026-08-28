@@ -1,0 +1,36 @@
+:- module hlds.type_rename.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_class.
+:- use_module parse_tree.prog_data.
+:- pred apply_rec_subst_to_constraint(parse_tree.prog_data.tsubst, hlds.hlds_class.hlds_constraint, hlds.hlds_class.hlds_constraint).
+:- mode apply_rec_subst_to_constraint(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_rec_subst_to_constraint_db(parse_tree.prog_data.tsubst, hlds.hlds_class.hlds_constraint_db, hlds.hlds_class.hlds_constraint_db).
+:- mode apply_rec_subst_to_constraint_db(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_rec_subst_to_constraint_map(parse_tree.prog_data.tsubst, hlds.hlds_class.constraint_map, hlds.hlds_class.constraint_map).
+:- mode apply_rec_subst_to_constraint_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_rec_subst_to_constraint_proof_map(parse_tree.prog_data.tsubst, hlds.hlds_class.constraint_proof_map, hlds.hlds_class.constraint_proof_map).
+:- mode apply_rec_subst_to_constraint_proof_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_rec_subst_to_constraints(parse_tree.prog_data.tsubst, list.list(hlds.hlds_class.hlds_constraint), list.list(hlds.hlds_class.hlds_constraint)).
+:- mode apply_rec_subst_to_constraints(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_constraint(parse_tree.prog_data.tvar_renaming, hlds.hlds_class.hlds_constraint, hlds.hlds_class.hlds_constraint).
+:- mode apply_renaming_to_constraint(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_constraint_db(parse_tree.prog_data.tvar_renaming, hlds.hlds_class.hlds_constraint_db, hlds.hlds_class.hlds_constraint_db).
+:- mode apply_renaming_to_constraint_db(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_constraint_map(parse_tree.prog_data.tvar_renaming, hlds.hlds_class.constraint_map, hlds.hlds_class.constraint_map).
+:- mode apply_renaming_to_constraint_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_constraint_proof_map(parse_tree.prog_data.tvar_renaming, hlds.hlds_class.constraint_proof_map, hlds.hlds_class.constraint_proof_map).
+:- mode apply_renaming_to_constraint_proof_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_renaming_to_constraints(parse_tree.prog_data.tvar_renaming, list.list(hlds.hlds_class.hlds_constraint), list.list(hlds.hlds_class.hlds_constraint)).
+:- mode apply_renaming_to_constraints(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_subst_to_constraint(parse_tree.prog_data.tsubst, hlds.hlds_class.hlds_constraint, hlds.hlds_class.hlds_constraint).
+:- mode apply_subst_to_constraint(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_subst_to_constraint_db(parse_tree.prog_data.tsubst, hlds.hlds_class.hlds_constraint_db, hlds.hlds_class.hlds_constraint_db).
+:- mode apply_subst_to_constraint_db(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_subst_to_constraint_map(parse_tree.prog_data.tsubst, hlds.hlds_class.constraint_map, hlds.hlds_class.constraint_map).
+:- mode apply_subst_to_constraint_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_subst_to_constraint_proof_map(parse_tree.prog_data.tsubst, hlds.hlds_class.constraint_proof_map, hlds.hlds_class.constraint_proof_map).
+:- mode apply_subst_to_constraint_proof_map(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_subst_to_constraints(parse_tree.prog_data.tsubst, list.list(hlds.hlds_class.hlds_constraint), list.list(hlds.hlds_class.hlds_constraint)).
+:- mode apply_subst_to_constraints(builtin.in, builtin.in, builtin.out) is det.

@@ -1,0 +1,9 @@
+:- module backend_libs.link_target_util.
+:- interface.
+:- type linked_target_type
+	where	type_is_abstract_enum(3).
+:- abstract_inst((c_exe_or_shared_lib)).
+:- abstract_inst((c_linked_target_type)).
+:- abstract_inst((csharp_linked_target_type)).
+:- abstract_inst((java_linked_target_type)).
+:- type_representation(linked_target_type, du_repn(enum("c_executable", "c_static_library", ["c_shared_library", "csharp_executable", "csharp_library", "java_executable", "java_archive"],  no_c_j_cs))).

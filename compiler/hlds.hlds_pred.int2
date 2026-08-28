@@ -1,0 +1,10 @@
+:- module hlds.hlds_pred.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module hlds.hlds_proc.
+:- use_module hlds.pred_proc_id.
+:- use_module parse_tree.prog_data.
+:- type external_type_params == list.list(parse_tree.prog_data.tvar).
+:- type pred_info.
+:- type proc_table == map.map(hlds.pred_proc_id.proc_id, hlds.hlds_proc.proc_info).

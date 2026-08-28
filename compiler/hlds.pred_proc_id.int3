@@ -1,0 +1,10 @@
+:- module hlds.pred_proc_id.
+:- interface.
+:- type pred_id.
+:- type pred_proc_id.
+:- type proc_id.
+:- type scc.
+:- type_representation(pred_id, du_repn(notag("pred_id", int,  no_c_j_cs))).
+:- type_representation(pred_proc_id, is_word_aligned_ptr).
+:- type_representation(proc_id, is_eqv_to(int)).
+:- type_representation(scc, is_eqv_to(set(hlds.pred_proc_id.pred_proc_id))).

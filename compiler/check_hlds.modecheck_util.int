@@ -1,0 +1,73 @@
+:- module check_hlds.modecheck_util.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module check_hlds.mode_errors.
+:- use_module check_hlds.mode_info.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.instmap.
+:- use_module parse_tree.prog_data.
+:- type after_goals
+    --->    no_after_goals 
+    ;       after_goals(
+                 (check_hlds.modecheck_util).after_instmap :: hlds.instmap.instmap,
+                 (check_hlds.modecheck_util).after_goals :: list.list(hlds.hlds_goal.hlds_goal)
+            ).
+:- type extra_goals
+    --->    no_extra_goals 
+    ;       extra_goals(
+                 (check_hlds.modecheck_util).extra_before_main :: list.list(hlds.hlds_goal.hlds_goal),
+                 (check_hlds.modecheck_util).extra_after_main :: list.list(hlds.hlds_goal.hlds_goal)
+            ).
+:- type modecheck_arg_offset.
+:- pred append_extra_goals(check_hlds.modecheck_util.extra_goals, check_hlds.modecheck_util.extra_goals, check_hlds.modecheck_util.extra_goals).
+:- mode append_extra_goals(builtin.in, builtin.in, builtin.out) is det.
+:- pred compute_goal_instmap_delta(hlds.instmap.instmap, hlds.hlds_goal.hlds_goal_expr, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode compute_goal_instmap_delta(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func compute_pred_modecheck_arg_offset(hlds.hlds_pred.pred_info) = check_hlds.modecheck_util.modecheck_arg_offset.
+:- pred create_var_var_unification(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, check_hlds.mode_info.mode_info, hlds.hlds_goal.hlds_goal).
+:- mode create_var_var_unification(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred fixup_instmap_switch_var(parse_tree.prog_data.prog_var, hlds.instmap.instmap, hlds.instmap.instmap, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode fixup_instmap_switch_var(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred get_var_inst(check_hlds.mode_info.mode_info, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst).
+:- mode get_var_inst(builtin.in, builtin.in, builtin.out) is det.
+:- pred handle_extra_goals(hlds.hlds_goal.hlds_goal_expr, check_hlds.modecheck_util.extra_goals, hlds.hlds_goal.hlds_goal_info, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), hlds.instmap.instmap, hlds.hlds_goal.hlds_goal_expr, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode handle_extra_goals(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func higher_order_modecheck_arg_offset = check_hlds.modecheck_util.modecheck_arg_offset.
+:- func mode_call_id_to_call_id(check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_call_id) = hlds.hlds_goal.call_id.
+:- pred mode_context_to_unify_context(check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_context, hlds.hlds_goal.unify_context).
+:- mode mode_context_to_unify_context(builtin.in, builtin.in, builtin.out) is det.
+:- pred mode_info_add_goals_live_vars(hlds.hlds_goal.conj_type, list.list(hlds.hlds_goal.hlds_goal), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_add_goals_live_vars(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred mode_info_remove_goals_live_vars(list.list(hlds.hlds_goal.hlds_goal), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_remove_goals_live_vars(builtin.in, builtin.in, builtin.out) is det.
+:- pred modecheck_introduced_type_info_var_has_inst_no_exact_match(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_introduced_type_info_var_has_inst_no_exact_match(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred modecheck_record_functor_test(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_record_functor_test(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred modecheck_record_functors_test(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.cons_id), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_record_functors_test(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred modecheck_set_var_inst(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst, maybe.maybe(parse_tree.prog_data.mer_inst), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_set_var_inst(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred modecheck_set_var_insts(check_hlds.modecheck_util.modecheck_arg_offset, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.prog_var), check_hlds.modecheck_util.extra_goals, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_set_var_insts(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred modecheck_vars_are_live_exact_match(check_hlds.modecheck_util.modecheck_arg_offset, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.is_live), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_vars_are_live_exact_match(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred modecheck_vars_are_live_no_exact_match(check_hlds.modecheck_util.modecheck_arg_offset, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.is_live), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_vars_are_live_no_exact_match(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred modecheck_vars_have_insts_exact_match(check_hlds.mode_errors.match_what, check_hlds.modecheck_util.modecheck_arg_offset, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_inst), parse_tree.prog_data.inst_var_sub, set.set(parse_tree.prog_data.inst_var), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_vars_have_insts_exact_match(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred modecheck_vars_have_insts_no_exact_match(check_hlds.mode_errors.match_what, check_hlds.modecheck_util.modecheck_arg_offset, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_inst), parse_tree.prog_data.inst_var_sub, set.set(parse_tree.prog_data.inst_var), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_vars_have_insts_no_exact_match(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out) is det.
+:- pred normalise_inst(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode normalise_inst(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred normalise_insts(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst)).
+:- mode normalise_insts(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred propagate_type_ho_inst_info_into_inst(parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode propagate_type_ho_inst_info_into_inst(builtin.in, builtin.in, builtin.out) is det.
+:- func unify_method_event_cast_modecheck_arg_offset = check_hlds.modecheck_util.modecheck_arg_offset.

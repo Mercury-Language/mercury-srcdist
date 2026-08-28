@@ -1,0 +1,332 @@
+:- module parse_tree.file_names.
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module libs.file_util.
+:- use_module libs.globals.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.find_module.
+:- type ext
+    --->    ext_cur(
+                 parse_tree.file_names.ext_cur
+            )
+    ;       ext_cur_ngs(
+                 parse_tree.file_names.ext_cur_ngs
+            )
+    ;       ext_cur_gs(
+                 parse_tree.file_names.ext_cur_gs
+            )
+    ;       ext_cur_gas(
+                 parse_tree.file_names.ext_cur_gas
+            )
+    ;       ext_cur_ngs_gs(
+                 parse_tree.file_names.ext_cur_ngs_gs
+            )
+    ;       ext_cur_ngs_gas(
+                 parse_tree.file_names.ext_cur_ngs_gas
+            )
+    ;       ext_cur_ngs_gs_err(
+                 parse_tree.file_names.ext_cur_ngs_gs_err
+            )
+    ;       ext_cur_ngs_gs_java(
+                 parse_tree.file_names.ext_cur_ngs_gs_java
+            )
+    ;       ext_cur_pgs_max_cur(
+                 parse_tree.file_names.ext_cur_pgs_max_cur
+            )
+    ;       ext_cur_ngs_gs_max_cur(
+                 parse_tree.file_names.ext_cur_ngs_gs_max_cur
+            )
+    ;       ext_cur_ngs_gs_max_ngs(
+                 parse_tree.file_names.ext_cur_ngs_gs_max_ngs
+            ).
+:- type ext_cur
+    --->    ext_cur_user_defn_ext 
+    ;       ext_cur_user_defn_lc 
+    ;       ext_cur_user_defns 
+    ;       ext_cur_user_depgraph 
+    ;       ext_cur_user_hlds_dump 
+    ;       ext_cur_user_imports_graph 
+    ;       ext_cur_user_lct 
+    ;       ext_cur_user_lct_full 
+    ;       ext_cur_user_lct_order 
+    ;       ext_cur_user_mlds_dump 
+    ;       ext_cur_user_mode_constr 
+    ;       ext_cur_user_order 
+    ;       ext_cur_user_order_to 
+    ;       ext_cur_user_type_repns 
+    ;       ext_cur_user_ugly 
+    ;       ext_cur_user_xml .
+:- type ext_cur_gas
+    --->    ext_cur_gas_exec_noext 
+    ;       ext_cur_gas_exec_exe 
+    ;       ext_cur_gas_exec_bat 
+    ;       ext_cur_gas_exec_exec_opt 
+    ;       ext_cur_gas_lib_dollar_efsl 
+    ;       ext_cur_gas_lib_dollar_a 
+    ;       ext_cur_gas_lib_archive 
+    ;       ext_cur_gas_lib_lib_opt 
+    ;       ext_cur_gas_lib_sh_lib_opt .
+:- type ext_cur_gs
+    --->    ext_cur_gs_lib_init 
+    ;       ext_cur_gs_lib_jar 
+    ;       ext_cur_gs_lib_cil_dll .
+:- type ext_cur_ngs
+    --->    ext_cur_ngs_int_int0 
+    ;       ext_cur_ngs_int_int1 
+    ;       ext_cur_ngs_int_int2 
+    ;       ext_cur_ngs_int_int3 
+    ;       ext_cur_ngs_int_date_int0 
+    ;       ext_cur_ngs_int_date_int12 
+    ;       ext_cur_ngs_int_date_int3 
+    ;       ext_cur_ngs_mf_d 
+    ;       ext_cur_ngs_mf_dv 
+    ;       ext_cur_ngs_mf_dep 
+    ;       ext_cur_ngs_misc_module_dep 
+    ;       ext_cur_ngs_misc_call_graph_for_prof .
+:- type ext_cur_ngs_gas
+    --->    ext_cur_ngs_gas_obj_dollar_o 
+    ;       ext_cur_ngs_gas_obj_dollar_efpo 
+    ;       ext_cur_ngs_gas_obj_o 
+    ;       ext_cur_ngs_gas_obj_pic_o 
+    ;       ext_cur_ngs_gas_obj_obj_opt 
+    ;       ext_cur_ngs_gas_obj_pic_obj_opt 
+    ;       ext_cur_ngs_gas_init_obj_dollar_o 
+    ;       ext_cur_ngs_gas_init_obj_o 
+    ;       ext_cur_ngs_gas_init_obj_pic_o 
+    ;       ext_cur_ngs_gas_init_obj_obj_opt 
+    ;       ext_cur_ngs_gas_init_obj_pic_obj_opt .
+:- type ext_cur_ngs_gs
+    --->    ext_cur_ngs_gs_proposed_opt_plain 
+    ;       ext_cur_ngs_gs_proposed_opt_trans 
+    ;       ext_cur_ngs_gs_opt_date_plain 
+    ;       ext_cur_ngs_gs_opt_date_trans 
+    ;       ext_cur_ngs_gs_target_c 
+    ;       ext_cur_ngs_gs_target_cs 
+    ;       ext_cur_ngs_gs_target_date_c 
+    ;       ext_cur_ngs_gs_target_date_cs 
+    ;       ext_cur_ngs_gs_target_date_java 
+    ;       ext_cur_ngs_gs_init_c 
+    ;       ext_cur_ngs_gs_an_analysis_date 
+    ;       ext_cur_ngs_gs_an_analysis_status 
+    ;       ext_cur_ngs_gs_misc_err_date 
+    ;       ext_cur_ngs_gs_misc_used 
+    ;       ext_cur_ngs_gs_misc_track_flags .
+:- type ext_cur_ngs_gs_err
+    --->    ext_cur_ngs_gs_err_err .
+:- type ext_cur_ngs_gs_java
+    --->    ext_cur_ngs_gs_java_java 
+    ;       ext_cur_ngs_gs_java_class .
+:- type ext_cur_ngs_gs_max_cur
+    --->    ext_cur_ngs_gs_max_cur_mih .
+:- type ext_cur_ngs_gs_max_ngs
+    --->    ext_cur_ngs_gs_max_ngs_legacy_opt_plain 
+    ;       ext_cur_ngs_gs_max_ngs_legacy_opt_trans 
+    ;       ext_cur_ngs_gs_max_ngs_an_analysis 
+    ;       ext_cur_ngs_gs_max_ngs_an_imdg 
+    ;       ext_cur_ngs_gs_max_ngs_an_request .
+:- type ext_cur_pgs_max_cur
+    --->    ext_cur_pgs_max_cur_mh .
+:- type maybe_create_dirs
+    --->    do_create_dirs 
+    ;       do_not_create_dirs .
+:- type maybe_for_search
+    --->    not_for_search 
+    ;       for_search .
+:- type maybe_search
+    --->    do_not_search 
+    ;       do_search .
+:- type search_which_dirs
+    --->    search_cur_dir 
+    ;       search_this_dir(
+                 libs.file_util.dir_name
+            )
+    ;       search_this_dir_and(
+                 libs.file_util.dir_name,
+                 parse_tree.file_names.search_which_tail_dirs
+            )
+    ;       search_interface_dirs 
+    ;       search_intermod_dirs 
+    ;       search_dirs_for_ext .
+:- type search_which_tail_dirs =< parse_tree.file_names.search_which_dirs
+    --->    search_cur_dir 
+    ;       search_interface_dirs 
+    ;       search_intermod_dirs .
+:- inst ext_analysis for (parse_tree.file_names).ext/0
+    --->    ext_cur_ngs_gs((parse_tree.file_names).ext_analysis_sd)
+    ;       ext_cur_ngs_gs_max_ngs((parse_tree.file_names).ext_analysis_rai).
+:- inst ext_analysis_rai for (parse_tree.file_names).ext_cur_ngs_gs_max_ngs/0
+    --->    ext_cur_ngs_gs_max_ngs_an_analysis
+    ;       ext_cur_ngs_gs_max_ngs_an_imdg
+    ;       ext_cur_ngs_gs_max_ngs_an_request.
+:- inst ext_analysis_sd for (parse_tree.file_names).ext_cur_ngs_gs/0
+    --->    ext_cur_ngs_gs_an_analysis_date
+    ;       ext_cur_ngs_gs_an_analysis_status.
+:- inst ext_int for (parse_tree.file_names).ext/0
+    --->    ext_cur_ngs((parse_tree.file_names).ext_int_0123).
+:- inst ext_int_0123 for (parse_tree.file_names).ext_cur_ngs/0
+    --->    ext_cur_ngs_int_int0
+    ;       ext_cur_ngs_int_int1
+    ;       ext_cur_ngs_int_int2
+    ;       ext_cur_ngs_int_int3.
+:- inst ext_int_0123_md for (parse_tree.file_names).ext_cur_ngs/0
+    --->    ext_cur_ngs_int_int0
+    ;       ext_cur_ngs_int_int1
+    ;       ext_cur_ngs_int_int2
+    ;       ext_cur_ngs_int_int3
+    ;       ext_cur_ngs_misc_module_dep.
+:- inst ext_int_md for (parse_tree.file_names).ext/0
+    --->    ext_cur_ngs((parse_tree.file_names).ext_int_0123_md).
+:- inst ext_max_opt_pt for (parse_tree.file_names).ext_cur_ngs_gs_max_ngs/0
+    --->    ext_cur_ngs_gs_max_ngs_legacy_opt_plain
+    ;       ext_cur_ngs_gs_max_ngs_legacy_opt_trans.
+:- inst ext_mt for (parse_tree.file_names).ext/0
+    --->    ext_cur((parse_tree.file_names).mt_ext_cur)
+    ;       ext_cur_ngs((parse_tree.file_names).mt_ext_cur_ngs)
+    ;       ext_cur_ngs_gas((parse_tree.file_names).mt_ext_cur_ngs_gas)
+    ;       ext_cur_ngs_gs((parse_tree.file_names).mt_ext_cur_ngs_gs)
+    ;       ext_cur_ngs_gs_err((parse_tree.file_names).mt_ext_cur_ngs_gs_err)
+    ;       ext_cur_ngs_gs_java((parse_tree.file_names).mt_ext_cur_ngs_gs_java)
+    ;       ext_cur_ngs_gs_max_cur((parse_tree.file_names).mt_ext_cur_ngs_gs_max_cur)
+    ;       ext_cur_ngs_gs_max_ngs((parse_tree.file_names).mt_ext_cur_ngs_gs_max_ngs)
+    ;       ext_cur_pgs_max_cur((parse_tree.file_names).mt_ext_cur_pgs_max_cur).
+:- inst ext_opt for (parse_tree.file_names).ext/0
+    --->    ext_cur_ngs_gs((parse_tree.file_names).ext_opt_pt)
+    ;       ext_cur_ngs_gs_max_ngs((parse_tree.file_names).ext_max_opt_pt).
+:- inst ext_opt_pt for (parse_tree.file_names).ext_cur_ngs_gs/0
+    --->    ext_cur_ngs_gs_proposed_opt_plain
+    ;       ext_cur_ngs_gs_proposed_opt_trans.
+:- inst mt_ext_cur for (parse_tree.file_names).ext_cur/0
+    --->    ext_cur_user_xml.
+:- inst mt_ext_cur_ngs for (parse_tree.file_names).ext_cur_ngs/0
+    --->    ext_cur_ngs_int_int0
+    ;       ext_cur_ngs_int_int1
+    ;       ext_cur_ngs_int_int2
+    ;       ext_cur_ngs_int_int3.
+:- inst mt_ext_cur_ngs_gas for (parse_tree.file_names).ext_cur_ngs_gas/0
+    --->    ext_cur_ngs_gas_obj_obj_opt
+    ;       ext_cur_ngs_gas_obj_pic_obj_opt.
+:- inst mt_ext_cur_ngs_gs for (parse_tree.file_names).ext_cur_ngs_gs/0
+    --->    ext_cur_ngs_gs_misc_track_flags
+    ;       ext_cur_ngs_gs_target_c
+    ;       ext_cur_ngs_gs_target_cs.
+:- inst mt_ext_cur_ngs_gs_err for (parse_tree.file_names).ext_cur_ngs_gs_err/0
+    --->    ext_cur_ngs_gs_err_err.
+:- inst mt_ext_cur_ngs_gs_java for (parse_tree.file_names).ext_cur_ngs_gs_java/0
+    --->    ext_cur_ngs_gs_java_class
+    ;       ext_cur_ngs_gs_java_java.
+:- inst mt_ext_cur_ngs_gs_max_cur for (parse_tree.file_names).ext_cur_ngs_gs_max_cur/0
+    --->    ext_cur_ngs_gs_max_cur_mih.
+:- inst mt_ext_cur_ngs_gs_max_ngs for (parse_tree.file_names).ext_cur_ngs_gs_max_ngs/0
+    --->    ext_cur_ngs_gs_max_ngs_an_analysis
+    ;       ext_cur_ngs_gs_max_ngs_legacy_opt_plain.
+:- inst mt_ext_cur_pgs_max_cur for (parse_tree.file_names).ext_cur_pgs_max_cur/0
+    --->    ext_cur_pgs_max_cur_mh.
+:- inst search_cur_or_interface for (parse_tree.file_names).search_which_dirs/0
+    --->    search_cur_dir
+    ;       search_interface_dirs.
+:- inst search_cur_or_intermod for (parse_tree.file_names).search_which_dirs/0
+    --->    search_cur_dir
+    ;       search_intermod_dirs.
+:- inst search_ext for (parse_tree.file_names).search_which_dirs/0
+    --->    search_dirs_for_ext.
+:- inst search_intermod for (parse_tree.file_names).search_which_dirs/0
+    --->    search_intermod_dirs.
+:- pred analysis_cache_dir_name(libs.globals.globals, string, string).
+:- mode analysis_cache_dir_name(builtin.in, builtin.out, builtin.out) is det.
+:- pred create_any_dirs_on_path(list.list(string), io.io, io.io).
+:- mode create_any_dirs_on_path(builtin.in, builtin.di, builtin.uo) is det.
+:- pred ext_cur_gas_extension_dir(libs.globals.globals, parse_tree.file_names.ext_cur_gas, string, string).
+:- mode ext_cur_gas_extension_dir(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred ext_cur_gs_extension_dir(parse_tree.file_names.ext_cur_gs, string, string, string).
+:- mode ext_cur_gs_extension_dir(builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred ext_cur_ngs_extension_dir(parse_tree.file_names.ext_cur_ngs, string, string).
+:- mode ext_cur_ngs_extension_dir(builtin.in, builtin.out, builtin.out) is det.
+:- pred ext_cur_ngs_gs_extension_dir(parse_tree.file_names.ext_cur_ngs_gs, string, string).
+:- mode ext_cur_ngs_gs_extension_dir(builtin.in, builtin.out, builtin.out) is det.
+:- pred ext_cur_ngs_gs_max_cur_extension_dir(parse_tree.file_names.ext_cur_ngs_gs_max_cur, string, string).
+:- mode ext_cur_ngs_gs_max_cur_extension_dir(builtin.in, builtin.out, builtin.out) is det.
+:- pred ext_cur_ngs_gs_max_ngs_extension_dir(parse_tree.file_names.ext_cur_ngs_gs_max_ngs, string, string).
+:- mode ext_cur_ngs_gs_max_ngs_extension_dir(builtin.in, builtin.out, builtin.out) is det.
+:- pred ext_cur_pgs_max_cur_extension_dir(parse_tree.file_names.ext_cur_pgs_max_cur, string, string).
+:- mode ext_cur_pgs_max_cur_extension_dir(builtin.in, builtin.out, builtin.out) is det.
+:- pred ext_to_dir_path(libs.globals.globals, parse_tree.file_names.maybe_for_search, parse_tree.file_names.ext, list.list(libs.file_util.dir_name), list.list(libs.file_util.dir_name)).
+:- mode ext_to_dir_path(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred ext_to_dir_path_extstr(libs.globals.globals, parse_tree.file_names.maybe_for_search, parse_tree.file_names.ext, list.list(libs.file_util.dir_name), list.list(libs.file_util.dir_name), string).
+:- mode ext_to_dir_path_extstr(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- func extension_to_string(libs.globals.globals, parse_tree.file_names.ext) = string.
+:- pred fact_table_file_name(libs.globals.globals, string, parse_tree.file_names.ext, libs.file_util.file_name, libs.file_util.file_name, libs.file_util.file_name).
+:- mode fact_table_file_name(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred fact_table_file_name_return_dirs(libs.globals.globals, string, parse_tree.file_names.ext, libs.file_util.file_name, list.list(libs.file_util.dir_name), list.list(libs.file_util.dir_name), libs.file_util.file_name, libs.file_util.file_name).
+:- mode fact_table_file_name_return_dirs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred file_name_to_module_name(libs.file_util.file_name, mdbcomp.sym_name.module_name).
+:- mode file_name_to_module_name(builtin.in, builtin.out) is det.
+:- pred get_java_dir_path(libs.globals.globals, parse_tree.file_names.ext_cur_ngs_gs_java, list.list(libs.file_util.dir_name), list.list(libs.file_util.dir_name)).
+:- mode get_java_dir_path(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- func glue_dir_names_base_name(list.list(string), string) = string.
+:- pred make_all_proposed_dir_names_gas(libs.file_util.dir_name, libs.file_util.dir_name, libs.file_util.dir_name, libs.file_util.dir_name, list.list(libs.file_util.dir_name)).
+:- mode make_all_proposed_dir_names_gas(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred make_all_proposed_dir_names_gs(libs.file_util.dir_name, libs.file_util.dir_name, libs.file_util.dir_name, list.list(libs.file_util.dir_name)).
+:- mode make_all_proposed_dir_names_gs(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred make_all_proposed_dir_names_ngs(libs.file_util.dir_name, libs.file_util.dir_name, list.list(libs.file_util.dir_name)).
+:- mode make_all_proposed_dir_names_ngs(builtin.in, builtin.in, builtin.out) is det.
+:- pred make_include_file_path(string, string, string).
+:- mode make_include_file_path(builtin.in, builtin.in, builtin.out) is det.
+:- pred make_selected_proposed_dir_name_gas(libs.globals.subdir_setting, libs.file_util.dir_name, libs.file_util.dir_name, libs.file_util.dir_name, libs.file_util.dir_name, libs.file_util.dir_name).
+:- mode make_selected_proposed_dir_name_gas(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred make_selected_proposed_dir_name_gs(libs.globals.subdir_setting, libs.file_util.dir_name, libs.file_util.dir_name, libs.file_util.dir_name, libs.file_util.dir_name).
+:- mode make_selected_proposed_dir_name_gs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred make_selected_proposed_dir_name_ngs(libs.globals.subdir_setting, libs.file_util.dir_name, libs.file_util.dir_name, libs.file_util.dir_name).
+:- mode make_selected_proposed_dir_name_ngs(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred maybe_create_any_dirs_on_path(parse_tree.file_names.maybe_create_dirs, list.list(string), io.io, io.io).
+:- mode maybe_create_any_dirs_on_path(builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- func maybe_search_to_maybe_for_search(parse_tree.file_names.maybe_search) = parse_tree.file_names.maybe_for_search.
+:- pred mercury_std_library_module_name(mdbcomp.sym_name.module_name).
+:- mode mercury_std_library_module_name(builtin.in) is semidet.
+:- func module_name_to_base_file_name_no_ext(parse_tree.file_names.ext, mdbcomp.sym_name.module_name) = libs.file_util.file_name.
+:- func module_name_to_base_file_name_no_ext_java(mdbcomp.sym_name.module_name) = libs.file_util.file_name.
+:- func module_name_to_base_file_name_no_ext_non_java(mdbcomp.sym_name.module_name) = libs.file_util.file_name.
+:- pred module_name_to_cur_dir_file_name(parse_tree.file_names.ext_cur, mdbcomp.sym_name.module_name, libs.file_util.file_name).
+:- mode module_name_to_cur_dir_file_name(builtin.in, builtin.in, builtin.out) is det.
+:- pred module_name_to_file_name(libs.globals.globals, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name, libs.file_util.file_name).
+:- mode module_name_to_file_name(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred module_name_to_file_name_create_dirs(libs.globals.globals, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_file_name_create_dirs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred module_name_to_file_name_curdir(libs.globals.globals, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name).
+:- mode module_name_to_file_name_curdir(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred module_name_to_file_name_full_curdir(libs.globals.globals, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name, libs.file_util.file_name, libs.file_util.file_name).
+:- mode module_name_to_file_name_full_curdir(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred module_name_to_file_name_full_curdir_create_dirs(libs.globals.globals, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name, libs.file_util.file_name, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_file_name_full_curdir_create_dirs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred module_name_to_file_name_return_dirs(libs.globals.globals, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, list.list(libs.file_util.dir_name), list.list(libs.file_util.dir_name), libs.file_util.file_name, libs.file_util.file_name).
+:- mode module_name_to_file_name_return_dirs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred module_name_to_file_name_stem(mdbcomp.sym_name.module_name, libs.file_util.file_name).
+:- mode module_name_to_file_name_stem(builtin.in, builtin.out) is det.
+:- pred module_name_to_lib_file_name(libs.globals.globals, string, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name, libs.file_util.file_name).
+:- mode module_name_to_lib_file_name(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred module_name_to_lib_file_name_create_dirs(libs.globals.globals, string, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_lib_file_name_create_dirs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred module_name_to_lib_file_name_full_curdir(libs.globals.globals, string, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name, libs.file_util.file_name, libs.file_util.file_name).
+:- mode module_name_to_lib_file_name_full_curdir(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is det.
+:- pred module_name_to_lib_file_name_full_curdir_create_dirs(libs.globals.globals, string, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, libs.file_util.file_name, libs.file_util.file_name, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_lib_file_name_full_curdir_create_dirs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.di, builtin.uo) is det.
+:- pred module_name_to_lib_file_name_return_dirs(libs.globals.globals, string, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, list.list(libs.file_util.dir_name), list.list(libs.file_util.dir_name), libs.file_util.file_name, libs.file_util.file_name).
+:- mode module_name_to_lib_file_name_return_dirs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred module_name_to_make_var_name(mdbcomp.sym_name.module_name, string).
+:- mode module_name_to_make_var_name(builtin.in, builtin.out) is det.
+:- pred module_name_to_search_file_name(libs.globals.globals, string, parse_tree.file_names.ext, mdbcomp.sym_name.module_name, parse_tree.file_names.search_which_dirs, parse_tree.find_module.search_auth_dirs, libs.file_util.file_name, libs.file_util.file_name).
+:- mode module_name_to_search_file_name(builtin.in, builtin.in, builtin.in((parse_tree.file_names).ext_int_md), builtin.in, builtin.in((parse_tree.file_names).search_cur_or_interface), builtin.out, builtin.out, builtin.out) is det.
+:- mode module_name_to_search_file_name(builtin.in, builtin.in, builtin.in((parse_tree.file_names).ext_opt), builtin.in, builtin.in((parse_tree.file_names).search_cur_or_intermod), builtin.out, builtin.out, builtin.out) is det.
+:- mode module_name_to_search_file_name(builtin.in, builtin.in, builtin.in((parse_tree.file_names).ext_analysis), builtin.in, builtin.in((parse_tree.file_names).search_intermod), builtin.out, builtin.out, builtin.out) is det.
+:- mode module_name_to_search_file_name(builtin.in, builtin.in, builtin.in((parse_tree.file_names).ext_mt), builtin.in, builtin.in((parse_tree.file_names).search_ext), builtin.out, builtin.out, builtin.out) is det.
+:- pred module_name_to_source_file_name(mdbcomp.sym_name.module_name, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_source_file_name(builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred module_name_to_target_file_name_create_dirs(libs.globals.globals, mdbcomp.sym_name.module_name, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_target_file_name_create_dirs(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- pred module_name_to_target_timestamp_file_name_create_dirs(libs.globals.globals, mdbcomp.sym_name.module_name, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_target_timestamp_file_name_create_dirs(builtin.in, builtin.in, builtin.out, builtin.di, builtin.uo) is det.
+:- func qualify_mercury_std_library_module_name(mdbcomp.sym_name.module_name) = mdbcomp.sym_name.module_name.
+:- pred write_translations_record_if_any(libs.globals.globals, io.io, io.io).
+:- mode write_translations_record_if_any(builtin.in, builtin.di, builtin.uo) is det.

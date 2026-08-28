@@ -1,0 +1,3 @@
+:- module (hlds.make_hlds).superhomogeneous.
+:- interface.
+:- type_representation(ancestor_var_map, is_eqv_to(map(prog_var, prog_context))).
