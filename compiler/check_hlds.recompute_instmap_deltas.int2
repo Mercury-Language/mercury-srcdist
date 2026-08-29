@@ -1,0 +1,5 @@
+:- module (check_hlds.recompute_instmap_deltas).
+:- interface.
+:- type recompute_atomic_instmap_deltas
+    --->    recompute_atomic_instmap_deltas 
+    ;       do_not_recompute_atomic_instmap_deltas .
