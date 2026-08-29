@@ -1,0 +1,524 @@
+/*
+** Automatically generated from `proc_info_types.m'
+** by the Mercury compiler,
+** version rotd-2026-08-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.proc_info_types.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__proc_info_types
+#define MR_HEADER_GUARD_hlds__proc_info_types
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__PROC_INFO_TYPES_DECL_GUARD
+#define HLDS__PROC_INFO_TYPES_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_call_site_static_data_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_can_process_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_codegen_liveness_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_deep_original_body_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_deep_profile_proc_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_deep_profile_role_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_deep_recursion_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_detism_decl_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_has_mutual_tail_rec_call_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_has_parallel_conj_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_has_self_tail_rec_call_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_has_tail_rec_call_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_has_user_event_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_hlds_deep_excp_vars_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_hlds_deep_layout_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_hlds_proc_static_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_imported_reuse_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_imported_sharing_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_is_address_taken_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_maybe_input_spec_proc_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_needs_maxfr_slot_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_oisu_pred_kind_for_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_proc_exception_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_proc_foreign_exports_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_proc_mm_tabling_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_proc_table_io_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_proc_trailing_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_sharing_reuse_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_special_proc_return_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_structure_reuse_domain_and_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_structure_sharing_domain_and_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_table_arg_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_table_arg_infos_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_table_locn_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_untuple_proc_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_info_types__hlds__proc_info_types__type_ctor_info_visible_scc_data_0;
+
+MR_Word MR_CALL 
+hlds__proc_info_types__sharing_reuse_info_init_0_f_0(void);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____call_site_static_data_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____can_process_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____codegen_liveness_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____deep_original_body_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____deep_profile_proc_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____deep_profile_role_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____deep_recursion_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____detism_decl_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____has_mutual_tail_rec_call_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____has_parallel_conj_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____has_self_tail_rec_call_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____has_tail_rec_call_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____has_user_event_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____hlds_deep_excp_vars_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____hlds_deep_layout_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____hlds_proc_static_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____imported_reuse_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____imported_sharing_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____is_address_taken_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____maybe_input_spec_proc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____needs_maxfr_slot_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____oisu_pred_kind_for_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____proc_exception_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____proc_foreign_exports_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____proc_mm_tabling_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____proc_table_io_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____proc_trailing_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____sharing_reuse_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____special_proc_return_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____structure_reuse_domain_and_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____structure_sharing_domain_and_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____table_arg_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____table_arg_infos_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____table_locn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____untuple_proc_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_info_types____Compare____visible_scc_data_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____call_site_static_data_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____can_process_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____codegen_liveness_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____deep_original_body_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____deep_profile_proc_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____deep_profile_role_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____deep_recursion_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____detism_decl_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____has_mutual_tail_rec_call_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____has_parallel_conj_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____has_self_tail_rec_call_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____has_tail_rec_call_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____has_user_event_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____hlds_deep_excp_vars_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____hlds_deep_layout_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____hlds_proc_static_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____imported_reuse_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____imported_sharing_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____is_address_taken_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____maybe_input_spec_proc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____needs_maxfr_slot_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____oisu_pred_kind_for_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____proc_exception_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____proc_foreign_exports_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____proc_mm_tabling_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____proc_table_io_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____proc_trailing_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____sharing_reuse_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____special_proc_return_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____structure_reuse_domain_and_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____structure_sharing_domain_and_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____table_arg_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____table_arg_infos_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____table_locn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____untuple_proc_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_info_types____Unify____visible_scc_data_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__proc_info_types__init(void);
+void mercury__hlds__proc_info_types__init_type_tables(void);
+void mercury__hlds__proc_info_types__init_debugger(void);
+const char *mercury__hlds__proc_info_types__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.proc_info_types
+
+// :- end_interface hlds.proc_info_types.

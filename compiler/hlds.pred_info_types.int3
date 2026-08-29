@@ -1,0 +1,18 @@
+:- module hlds.pred_info_types.
+:- interface.
+:- type arg_modes_map.
+:- type cur_user_decl_info.
+:- type decl_section
+	where	type_is_abstract_enum(1).
+:- type format_call_info.
+:- type goal_type.
+:- type maybe_predmode_decl
+	where	type_is_abstract_enum(1).
+:- type np_goal_type
+	where	type_is_abstract_enum(2).
+:- type_representation(arg_modes_map, is_eqv_to(pair(map(prog_var, bool)))).
+:- type_representation(cur_user_decl_info, is_word_aligned_ptr).
+:- type_representation(decl_section, du_repn(enum("decl_interface", "decl_implementation", [],  no_c_j_cs))).
+:- type_representation(format_call_info, is_word_aligned_ptr).
+:- type_representation(maybe_predmode_decl, du_repn(enum("no_predmode_decl", "predmode_decl", [],  no_c_j_cs))).
+:- type_representation(np_goal_type, du_repn(enum("np_goal_type_none", "np_goal_type_clause", ["np_goal_type_foreign", "np_goal_type_clause_and_foreign"],  no_c_j_cs))).

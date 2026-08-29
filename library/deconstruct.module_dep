@@ -1,0 +1,14 @@
+module(2, "deconstruct.m",
+	deconstruct,
+	{},
+	{builtin, construct, list, maybe, private_builtin, univ},
+	{int, require, rtti_implementation, type_desc},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - deconstruct},
+	no_foreign_export,
+	no_main,
+	{}
+).

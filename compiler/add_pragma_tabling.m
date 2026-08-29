@@ -1,0 +1,1126 @@
+%---------------------------------------------------------------------------%
+% vim: ft=mercury ts=4 sw=4 et
+%---------------------------------------------------------------------------%
+% Copyright (C) 2015-2026 The Mercury team.
+% This file may only be copied under the terms of the GNU General
+% Public License - see the file COPYING in the Mercury distribution.
+%---------------------------------------------------------------------------%
+
+:- module hlds.make_hlds.add_pragma_tabling.
+:- interface.
+
+:- import_module hlds.hlds_module.
+:- import_module hlds.make_hlds.qual_info.
+:- import_module hlds.status.
+:- import_module parse_tree.
+:- import_module parse_tree.error_spec.
+:- import_module parse_tree.prog_item_pragma.
+
+:- import_module io.
+:- import_module list.
+
+:- pred module_add_pragma_tabled(io.text_output_stream::in,
+    impl_pragma_tabled_info::in, item_mercury_status::in, pred_status::in,
+    module_info::in, module_info::out, qual_info::in, qual_info::out,
+    list(err_spec)::in, list(err_spec)::out,
+    list(warn_spec)::in, list(warn_spec)::out) is det.
+
+%---------------------------------------------------------------------------%
+
+:- implementation.
+
+:- import_module backend_libs.
+:- import_module backend_libs.rtti.
+:- import_module hlds.hlds_code_util.
+:- import_module hlds.hlds_error_util.
+:- import_module hlds.hlds_markers.
+:- import_module hlds.hlds_pred.
+:- import_module hlds.hlds_proc.
+:- import_module hlds.make_hlds.add_clause.
+:- import_module hlds.make_hlds.add_foreign_proc.
+:- import_module hlds.make_hlds.add_pred.
+:- import_module hlds.make_hlds_error.
+:- import_module hlds.mode_test.
+:- import_module hlds.pred_name.
+:- import_module hlds.pred_proc_id.
+:- import_module hlds.pred_table.
+:- import_module libs.
+:- import_module libs.globals.
+:- import_module libs.options.
+:- import_module ll_backend.
+:- import_module ll_backend.rtti_out.           % XXX undesirable dependency
+:- import_module mdbcomp.
+:- import_module mdbcomp.builtin_modules.
+:- import_module mdbcomp.prim_data.
+:- import_module mdbcomp.sym_name.
+:- import_module ml_backend.
+:- import_module ml_backend.mlds.               % XXX undesirable dependency
+:- import_module ml_backend.mlds_to_c_name.     % XXX undesirable dependency
+:- import_module parse_tree.builtin_lib_types.
+:- import_module parse_tree.maybe_error.
+:- import_module parse_tree.parse_tree_out_misc.
+:- import_module parse_tree.parse_tree_out_sym_name.
+:- import_module parse_tree.prog_data.
+:- import_module parse_tree.prog_data_foreign.
+:- import_module parse_tree.prog_data_pragma.
+:- import_module parse_tree.prog_data_rare.
+:- import_module parse_tree.prog_item.
+:- import_module parse_tree.prog_item_pred_proc_id.
+:- import_module parse_tree.prog_mode.
+:- import_module parse_tree.prog_util.
+
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module int.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module require.
+:- import_module set.
+:- import_module string.
+:- import_module term.
+:- import_module varset.
+
+%---------------------------------------------------------------------------%
+
+module_add_pragma_tabled(ProgressStream, TabledInfo,
+        ItemMercuryStatus, PredStatus, !ModuleInfo, !QualInfo,
+        !ErrSpecs, !WarnSpecs) :-
+    TabledInfo = impl_pragma_tabled_info(TabledMethod, PredOrProcSpec,
+        MaybeAttributes, PragmaContext, _SeqNum),
+    PredOrProcSpec = pred_or_proc_pfumm_name(PFUMM, PredSymName),
+    (
+        PredSymName = qualified(PredModuleName, PredName)
+    ;
+        PredSymName = unqualified(_),
+        unexpected($pred, "unqualified PredSymName")
+    ),
+    module_info_get_predicate_table(!.ModuleInfo, PredicateTable0),
+    (
+        (
+            PFUMM = pfumm_predicate(ModesOrArity),
+            PredOrFunc = pf_predicate
+        ;
+            PFUMM = pfumm_function(ModesOrArity),
+            PredOrFunc = pf_function
+        ),
+        (
+            ModesOrArity = moa_modes(Modes),
+            % The arity needed by predicate_table_lookup_pf_sym_name_name_pfa
+            % includes the return type for functions.
+            PredFormArity = arg_list_arity(Modes),
+            user_arity_pred_form_arity(PredOrFunc, UserArity, PredFormArity)
+        ;
+            ModesOrArity = moa_arity(UserArity),
+            user_arity_pred_form_arity(PredOrFunc, UserArity, PredFormArity)
+        ),
+        % Lookup the pred or func declaration in the predicate table.
+        % If it is not there, print an error message and insert
+        % a dummy declaration for it.
+        predicate_table_search_pf_fqm_n_pfa(PredicateTable0, PredOrFunc,
+            PredModuleName, PredName, PredFormArity, MaybePredId),
+        (
+            MaybePredId = no,
+            Origin = origin_user(user_made_pred(PredOrFunc,
+                PredSymName, UserArity)),
+            TabledMethodStr = tabled_eval_method_to_string(TabledMethod),
+            DescPieces = [pragma_decl(TabledMethodStr), words("declaration")],
+            add_implicit_pred_decl_report_error(PredOrFunc,
+                PredModuleName, PredName, PredFormArity, PredStatus,
+                is_not_a_class_method, PragmaContext, Origin, DescPieces,
+                PredId, !ModuleInfo, !ErrSpecs),
+            PredIds = [PredId]
+        ;
+            MaybePredId = yes(PredId),
+            PredIds = [PredId]
+        )
+    ;
+        PFUMM = pfumm_unknown(UserArity),
+        TabledMethodStr = tabled_eval_method_to_string(TabledMethod),
+        maybe_warn_about_pfumm_unknown(!.ModuleInfo, TabledMethodStr, PFUMM,
+            PredSymName, PragmaContext, PFUMMSpecs),
+        !:WarnSpecs = PFUMMSpecs ++ !.WarnSpecs,
+        predicate_table_lookup_m_n_ua(PredicateTable0, is_fully_qualified,
+            PredModuleName, PredName, UserArity, PredIds0),
+        (
+            PredIds0 = [],
+            % XXX The pragma does not say whether the user intends to table
+            % a predicate or a function, so adding a predicate here is
+            % only a guess.
+            Origin = origin_user(user_made_pred(pf_predicate,
+                PredSymName, UserArity)),
+            DescPieces = [pragma_decl(TabledMethodStr), words("declaration")],
+            user_arity_pred_form_arity(pf_predicate, UserArity, PredFormArity),
+            add_implicit_pred_decl_report_error(pf_predicate,
+                PredModuleName, PredName, PredFormArity, PredStatus,
+                is_not_a_class_method, PragmaContext, Origin,
+                DescPieces, PredId, !ModuleInfo, !ErrSpecs),
+            PredIds = [PredId]
+        ;
+            PredIds0 = [_ | _],
+            PredIds = PredIds0
+        )
+    ),
+    (
+        MaybeAttributes = yes(Attributes),
+        Statistics = Attributes ^ table_attr_statistics,
+        AllowReset = Attributes ^ table_attr_allow_reset,
+        (
+            PredIds = [_]
+        ;
+            PredIds = [_, _ | _],
+            UserArity = user_arity(UserArityInt),
+            SNA = sym_name_arity(PredSymName, UserArityInt),
+            (
+                Statistics = table_gather_statistics,
+                StatsPieces = [words("Error:")] ++
+                    color_as_incorrect([words("cannot request statistics")]) ++
+                    [words("for the ambiguous name")] ++
+                    color_as_subject([qual_sym_name_arity(SNA),
+                        suffix(",")]) ++
+                    [words("since the compiler-generated"),
+                    words("statistics predicate"),
+                    words("would have an ambiguous name too."), nl],
+                StatsSpec = spec($pred, severity_error, phase_pt2h,
+                    PragmaContext, StatsPieces),
+                !:ErrSpecs = [StatsSpec | !.ErrSpecs]
+            ;
+                Statistics = table_do_not_gather_statistics
+            ),
+            (
+                AllowReset = table_allow_reset,
+                ResetPieces = [words("Error:")] ++
+                    color_as_incorrect(
+                        [words("cannot request allow_reset")]) ++
+                    [words("for the ambiguous name")] ++
+                    color_as_subject([qual_sym_name_arity(SNA),
+                        suffix(",")]) ++
+                    [words("since the compiler-generated reset predicate"),
+                    words("would have an ambiguous name too."), nl],
+                ResetSpec = spec($pred, severity_error, phase_pt2h,
+                    PragmaContext, ResetPieces),
+                !:ErrSpecs = [ResetSpec | !.ErrSpecs]
+            ;
+                AllowReset = table_do_not_allow_reset
+            )
+        )
+    ;
+        MaybeAttributes = no
+    ),
+    list.foldl4(
+        module_add_pragma_tabled_for_pred(ProgressStream, TabledMethod, PFUMM,
+            MaybeAttributes, PragmaContext, ItemMercuryStatus, PredStatus),
+        PredIds, !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs).
+
+:- pred module_add_pragma_tabled_for_pred(io.text_output_stream::in,
+    tabled_eval_method::in, pred_func_or_unknown_maybe_modes::in,
+    maybe(table_attributes)::in, prog_context::in,
+    item_mercury_status::in, pred_status::in, pred_id::in,
+    module_info::in, module_info::out, qual_info::in, qual_info::out,
+    list(err_spec)::in, list(err_spec)::out,
+    list(warn_spec)::in, list(warn_spec)::out) is det.
+
+module_add_pragma_tabled_for_pred(ProgressStream, TabledMethod0, PFUMM,
+        MaybeAttributes, PragmaContext,
+        ItemMercuryStatus, PredStatus, PredId,
+        !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs) :-
+    module_info_get_globals(!.ModuleInfo, Globals),
+    (
+        TabledMethod0 = tabled_minimal(_),
+        globals.lookup_bool_option(Globals, use_minimal_model_own_stacks,
+            OwnStacks),
+        (
+            OwnStacks = yes,
+            TabledMethod = tabled_minimal(own_stacks_consumer)
+        ;
+            OwnStacks = no,
+            TabledMethod = tabled_minimal(stack_copy)
+        )
+    ;
+        ( TabledMethod0 = tabled_loop_check
+        ; TabledMethod0 = tabled_memo(_)
+        ; TabledMethod0 = tabled_io(_, _)
+        ),
+        TabledMethod = TabledMethod0
+    ),
+
+    module_info_pred_info(!.ModuleInfo, PredId, PredInfo0),
+    pfumm_to_maybe_pf_arity_maybe_modes(PFUMM, MaybePredOrFunc, UserArity,
+        MaybeModes),
+    (
+        MaybePredOrFunc = yes(PredOrFunc)
+    ;
+        MaybePredOrFunc = no,
+        PredOrFunc = pred_info_is_pred_or_func(PredInfo0)
+    ),
+
+    pred_info_get_sym_name(PredInfo0, PredSymName),
+    user_arity_pred_form_arity(PredOrFunc, UserArity, PredFormArity),
+    PFSymNameArity =
+        pf_sym_name_user_arity(PredOrFunc, PredSymName, UserArity),
+
+    TabledMethodStr = tabled_eval_method_to_string(TabledMethod),
+    globals.lookup_bool_option(Globals, very_verbose, VeryVerbose),
+    (
+        VeryVerbose = yes,
+        trace [io(!IO)] (
+            IdStr = pf_sym_name_pred_form_arity_to_string(PredOrFunc,
+                PredSymName, PredFormArity),
+            io.format(ProgressStream,
+                "%% Processing `:- pragma %s' for %s...\n",
+                [s(TabledMethodStr), s(IdStr)], !IO)
+        )
+    ;
+        VeryVerbose = no
+    ),
+
+    % Issue a warning if this predicate/function has a pragma inline
+    % declaration. Tabled procedures cannot be inlined.
+    pred_info_get_markers(PredInfo0, Markers),
+    ( if
+        marker_is_present(Markers, marker_user_marked_inline),
+        globals.lookup_bool_option(Globals, warn_table_with_inline,
+            WarnTableWithInline),
+        WarnTableWithInline = yes
+    then
+        InlineWarningPieces = [words("Warning:")] ++
+            color_as_subject([qual_pf_sym_name_user_arity(PFSymNameArity)]) ++
+            [words("has both a")] ++
+            color_as_inconsistent([pragma_decl(TabledMethodStr),
+                words("declaration")]) ++
+            [words("and a")] ++
+            color_as_inconsistent([pragma_decl("inline"),
+                words("declaration.")]) ++
+            [nl,
+            words("The inline pragma")] ++
+            color_as_incorrect([words("will be ignored,")]) ++
+            [words("because tabled predicates cannot be inlined."), nl,
+            words("You can use the"), quote("--no-warn-table-with-inline"),
+            words("option to suppress this warning."), nl],
+        Severity = severity_warning(warn_table_with_inline),
+        InlineWarningSpec = spec($pred, Severity, phase_pt2h,
+            PragmaContext, InlineWarningPieces),
+        !:WarnSpecs = [InlineWarningSpec | !.WarnSpecs]
+    else
+        true
+    ),
+    ( if pred_info_is_imported(PredInfo0) then
+        UserArity = user_arity(UserArityInt),
+        SNA = sym_name_arity(PredSymName, UserArityInt),
+        Pieces = [words("Error: a"), pragma_decl(TabledMethodStr),
+            words("declaration")] ++
+            color_as_incorrect([words("may not specify")]) ++
+            [words("that it is for an imported"), p_or_f(PredOrFunc),
+            words("such as")] ++
+            color_as_subject([qual_sym_name_arity(SNA), suffix(".")]) ++
+            [nl],
+        ImportSpec = spec($pred, severity_error, phase_pt2h,
+            PragmaContext, Pieces),
+        ImportErrSpecs = [ImportSpec],
+        !:ErrSpecs = ImportErrSpecs ++ !.ErrSpecs
+    else
+        ImportErrSpecs = []
+    ),
+    find_grade_problems_for_tabling(!.ModuleInfo, PredId, PragmaContext,
+        TabledMethod, GradeErrSpecs, GradeWarnSpecs),
+    ( if GradeErrSpecs = [], GradeWarnSpecs = [] then
+        MaybeSetTabledEval = yes
+    else
+        !:ErrSpecs = GradeErrSpecs ++ !.ErrSpecs,
+        ( if TabledMethod = tabled_memo(table_attr_ignore_without_warning) then
+            true
+        else
+            !:WarnSpecs = GradeWarnSpecs ++ !.WarnSpecs
+        ),
+        % Not setting the eval_method to tabled in the presence of
+        % some warnings but NO errors preserves old behavior.
+        MaybeSetTabledEval = no
+    ),
+    (
+        ImportErrSpecs = [],
+        pred_info_get_proc_table(PredInfo0, ProcTable0),
+        select_tabled_proc_set_eval_method(ProgressStream, PredId, PredInfo0,
+            MaybeModes, TabledMethod, TabledMethodStr, MaybeAttributes,
+            PragmaContext, ItemMercuryStatus, PredStatus,
+            ProcTable0, ProcTable, !ModuleInfo, !QualInfo,
+            !ErrSpecs, !WarnSpecs),
+        (
+            MaybeSetTabledEval = no
+            % We want to keep most of the effects of the call above,
+            % including the additions of reset and statistics predicates
+            % to !ModuleInfo (so that calls to them do not get reported
+            % as calls to undefined predicates), and any new diagnostics.
+            % However, by throwing away ProcTable, we keep the original
+            % eval_methods of all procedures.
+        ;
+            MaybeSetTabledEval = yes,
+            pred_info_set_proc_table(ProcTable, PredInfo0, PredInfo),
+            module_info_set_pred_info(PredId, PredInfo, !ModuleInfo)
+        )
+    ;
+        ImportErrSpecs = [_ | _]
+        % Not invoking select_tabled_proc_set_eval_method here
+        % preserves old behavior.
+    ).
+
+%---------------------------------------------------------------------------%
+
+:- pred find_grade_problems_for_tabling(module_info::in, pred_id::in,
+    prog_context::in, tabled_eval_method::in,
+    list(err_spec)::out, list(warn_spec)::out) is det.
+
+find_grade_problems_for_tabling(ModuleInfo, PredId, PragmaContext,
+        TabledMethod, !:ErrSpecs, !:WarnSpecs) :-
+    % We use severity_informational for any messages because severity_warning
+    % would combine with --halt-at-warn to prevent the clean compilation
+    % of the library and the compiler.
+    %
+    % Please keep this code in sync with current_grade_supports_tabling
+    % in globals.m and with handle_debugging_options in handle_options.m
+    % (the latter implements the requirements of I/O predicates that
+    % implicitly get eval_method tabled_io with --trace-table-io).
+    !:ErrSpecs = [],
+    !:WarnSpecs = [],
+    module_info_get_globals(ModuleInfo, Globals),
+    globals.get_target(Globals, Target),
+    (
+        Target = target_c
+    ;
+        ( Target = target_csharp
+        ; Target = target_java
+        ),
+        general_cannot_table_reason_spec(ModuleInfo, PredId, PragmaContext,
+            TabledMethod, gen_reason_non_c_backend, !ErrSpecs, !WarnSpecs)
+    ),
+    globals.get_gc_method(Globals, GC),
+    (
+        GC = gc_accurate,
+        general_cannot_table_reason_spec(ModuleInfo, PredId, PragmaContext,
+            TabledMethod, gen_reason_gc_accurate, !ErrSpecs, !WarnSpecs)
+    ;
+        GC = gc_hgc,
+        general_cannot_table_reason_spec(ModuleInfo, PredId, PragmaContext,
+            TabledMethod, gen_reason_gc_hgc, !ErrSpecs, !WarnSpecs)
+    ;
+        ( GC = gc_automatic
+        ; GC = gc_none
+        ; GC = gc_boehm
+        ; GC = gc_boehm_debug
+        )
+    ),
+    globals.lookup_bool_option(Globals, parallel, Parallel),
+    (
+        Parallel = no
+    ;
+        Parallel = yes,
+        general_cannot_table_reason_spec(ModuleInfo, PredId, PragmaContext,
+            TabledMethod, gen_reason_parallel, !ErrSpecs, !WarnSpecs)
+    ),
+    (
+        TabledMethod = tabled_minimal(_),
+        globals.lookup_bool_option(Globals, highlevel_code, HighLevelCode),
+        (
+            HighLevelCode = yes,
+            mm_cannot_table_reason_spec(PragmaContext, mm_reason_hlc, HLCSpec),
+            !:ErrSpecs = [HLCSpec | !.ErrSpecs]
+        ;
+            HighLevelCode = no
+        ),
+        globals.lookup_bool_option(Globals, use_trail, UseTrail),
+        (
+            UseTrail = yes,
+            mm_cannot_table_reason_spec(PragmaContext, mm_reason_trailing,
+                TrailSpec),
+            !:ErrSpecs = [TrailSpec | !.ErrSpecs]
+        ;
+            UseTrail = no
+        ),
+        globals.lookup_bool_option(Globals, profile_calls, ProfileCalls),
+        globals.lookup_bool_option(Globals, profile_deep, ProfileDeep),
+        ( if ( ProfileCalls = yes ; ProfileDeep = yes ) then
+            mm_cannot_table_reason_spec(PragmaContext, mm_reason_profiling,
+                ProfSpec),
+            !:ErrSpecs = [ProfSpec | !.ErrSpecs]
+        else
+            true
+        )
+    ;
+        ( TabledMethod = tabled_loop_check
+        ; TabledMethod = tabled_memo(_)
+        ; TabledMethod = tabled_io(_, _)
+        )
+    ).
+
+%---------------------%
+
+:- pred general_cannot_table_reason_spec(module_info::in, pred_id::in,
+    prog_context::in, tabled_eval_method::in, general_cannot_table_reason::in,
+    list(err_spec)::in, list(err_spec)::out,
+    list(warn_spec)::in, list(warn_spec)::out) is det.
+
+general_cannot_table_reason_spec(ModuleInfo, PredId, PragmaContext,
+        TabledMethod, Reason, !ErrSpecs, !WarnSpecs) :-
+    ReasonDesc = color_as_incorrect(gen_cannot_table_reason_desc(Reason)),
+    (
+        ( TabledMethod = tabled_loop_check
+        ; TabledMethod = tabled_memo(_)
+        ),
+        TabledMethodStr = tabled_eval_method_to_string(TabledMethod),
+        PredPieces = describe_unqual_pred_name(ModuleInfo, PredId),
+        Pieces = [words("Ignoring the"), pragma_decl(TabledMethodStr),
+            words("declaration for")] ++ PredPieces ++ [suffix(","),
+            words("because tabling is")] ++ ReasonDesc ++ [nl],
+        Spec = spec($pred, severity_warning(warn_cannot_table), phase_code_gen,
+            PragmaContext, Pieces),
+        !:WarnSpecs = [Spec | !.WarnSpecs]
+    ;
+        TabledMethod = tabled_io(_, _),
+        Pieces = [words("Warning: debugging implicitly tables"),
+            words("all predicates that perform I/O"),
+            words("(to make the mdb command `retry' safe across I/O),"),
+            words("but tabling is")] ++ ReasonDesc ++ [nl],
+        Spec = spec($pred, severity_warning(warn_cannot_table), phase_code_gen,
+            PragmaContext, Pieces),
+        !:WarnSpecs = [Spec | !.WarnSpecs]
+    ;
+        TabledMethod = tabled_minimal(_),
+        Pieces = [words("Error: minimal model tabling is")] ++
+            ReasonDesc ++ [nl],
+        Spec = spec($pred, severity_error, phase_code_gen,
+            PragmaContext, Pieces),
+        !:ErrSpecs = [Spec | !.ErrSpecs]
+    ).
+
+:- type general_cannot_table_reason
+    --->    gen_reason_non_c_backend
+    ;       gen_reason_gc_accurate
+    ;       gen_reason_gc_hgc
+    ;       gen_reason_parallel.
+
+:- func gen_cannot_table_reason_desc(general_cannot_table_reason)
+    = list(format_piece).
+
+gen_cannot_table_reason_desc(Reason) = Desc :-
+    (
+        Reason = gen_reason_non_c_backend,
+        Desc = [words("implemented only on the C backend."), nl]
+    ;
+        Reason = gen_reason_gc_accurate,
+        Desc = [words("not compatible with --gc accurate."), nl]
+    ;
+        Reason = gen_reason_gc_hgc,
+        Desc = [words("not compatible with --gc hgc."), nl]
+    ;
+        Reason = gen_reason_parallel,
+        Desc = [words("not compatible with parallel execution."), nl]
+    ).
+
+%---------------------%
+
+:- pred mm_cannot_table_reason_spec(prog_context::in,
+    mm_cannot_table_reason::in, err_spec::out) is det.
+
+mm_cannot_table_reason_spec(Context, Reason, Spec) :-
+    Pieces = [words("Error: minimal model tabling is not compatible with")] ++
+        mm_cannot_table_reason_desc(Reason),
+    Spec = spec($pred, severity_error, phase_code_gen, Context, Pieces).
+
+:- type mm_cannot_table_reason
+    --->    mm_reason_hlc
+    ;       mm_reason_trailing
+    ;       mm_reason_profiling.
+
+:- func mm_cannot_table_reason_desc(mm_cannot_table_reason)
+    = list(format_piece).
+
+mm_cannot_table_reason_desc(Reason) = Desc :-
+    (
+        Reason = mm_reason_hlc,
+        Desc = [words("generating high level code.")]
+    ;
+        Reason = mm_reason_trailing,
+        Desc = [words("trailing.")]
+    ;
+        Reason = mm_reason_profiling,
+        Desc = [words("profiling.")]
+    ).
+
+%---------------------------------------------------------------------------%
+
+    % For each tabled procedure within the given predicate,
+    % set its eval method.
+    %
+:- pred select_tabled_proc_set_eval_method(io.text_output_stream::in,
+    pred_id::in, pred_info::in, maybe(list(mer_mode))::in,
+    tabled_eval_method::in, string::in, maybe(table_attributes)::in,
+    prog_context::in, item_mercury_status::in, pred_status::in,
+    proc_table::in, proc_table::out,
+    module_info::in, module_info::out, qual_info::in, qual_info::out,
+    list(err_spec)::in, list(err_spec)::out,
+    list(warn_spec)::in, list(warn_spec)::out) is det.
+
+select_tabled_proc_set_eval_method(ProgressStream, PredId, PredInfo0,
+        MaybeModes, TabledMethod, TabledMethodStr, MaybeAttributes,
+        PragmaContext, ItemMercuryStatus, PredStatus,
+        !ProcTable, !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs) :-
+    record_any_need_for_stratification(PredId, TabledMethod, !ModuleInfo),
+    (
+        MaybeModes = yes(Modes),
+        ( if
+            get_procedure_matching_argmodes(!.ModuleInfo, !.ProcTable,
+                Modes, ProcId, ProcInfo0)
+        then
+            set_eval_method_create_aux_preds_for_proc(ProgressStream,
+                PredInfo0, TabledMethod, MaybeAttributes, PragmaContext,
+                ItemMercuryStatus, PredStatus,
+                is_single_proc, ProcId, ProcInfo0,
+                !ProcTable, !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs)
+        else
+            PredOrFunc = pred_info_is_pred_or_func(PredInfo0),
+            pred_info_get_sym_name(PredInfo0, PredSymName),
+            user_arity(UserArityInt) = pred_info_user_arity(PredInfo0),
+            SNA = sym_name_arity(PredSymName, UserArityInt),
+            Pieces = [words("Error:"),
+                pragma_decl(TabledMethodStr), words("declaration for")] ++
+                color_as_incorrect([words("undeclared mode")]) ++
+                [words("of"), p_or_f(PredOrFunc)] ++
+                color_as_subject([qual_sym_name_arity(SNA), suffix(".")]) ++
+                [nl],
+            Spec = spec($pred, severity_error, phase_pt2h,
+                PragmaContext, Pieces),
+            !:ErrSpecs = [Spec | !.ErrSpecs]
+        )
+    ;
+        MaybeModes = no,
+        map.to_assoc_list(!.ProcTable, ExistingProcs),
+        (
+            ExistingProcs = [],
+            PredOrFunc = pred_info_is_pred_or_func(PredInfo0),
+            pred_info_get_sym_name(PredInfo0, PredSymName),
+            user_arity(UserArityInt) = pred_info_user_arity(PredInfo0),
+            SNA = sym_name_arity(PredSymName, UserArityInt),
+            Pieces = [words("Error:"),
+                pragma_decl(TabledMethodStr), words("declaration"),
+                words("for the"), p_or_f(PredOrFunc)] ++
+                color_as_subject([qual_sym_name_arity(SNA), suffix(",")]) ++
+                [words("which has")] ++
+                color_as_incorrect([words("no declared modes.")]) ++
+                [nl],
+            Spec = spec($pred, severity_error, phase_pt2h,
+                PragmaContext, Pieces),
+            !:ErrSpecs = [Spec | !.ErrSpecs]
+        ;
+            ExistingProcs = [_ | ExistingProcsTail],
+            (
+                ExistingProcsTail = [],
+                SingleProc = is_single_proc
+            ;
+                ExistingProcsTail = [_ | _],
+                SingleProc = is_not_single_proc
+            ),
+            set_eval_method_create_aux_pred_for_procs(ProgressStream,
+                PredInfo0, TabledMethod, MaybeAttributes, PragmaContext,
+                ItemMercuryStatus, PredStatus, SingleProc, ExistingProcs,
+                !ProcTable, !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs)
+        )
+    ).
+
+    % If the tabled preds have to be stratified, record that fact.
+    %
+:- pred record_any_need_for_stratification(pred_id::in, tabled_eval_method::in,
+    module_info::in, module_info::out) is det.
+
+record_any_need_for_stratification(PredId, TabledMethod, !ModuleInfo) :-
+    % Does TabledMethod require a stratification check?
+    require_complete_switch [TabledMethod]
+    (
+        ( TabledMethod = tabled_loop_check
+        ; TabledMethod = tabled_memo(_)
+        ; TabledMethod = tabled_io(_, _)
+        )
+        % No, it does not.
+    ;
+        TabledMethod = tabled_minimal(_),
+        % Yes, it does.
+        module_info_get_must_be_stratified_preds(!.ModuleInfo, StratPredIds0),
+        set.insert(PredId, StratPredIds0, StratPredIds),
+        module_info_set_must_be_stratified_preds(StratPredIds, !ModuleInfo)
+    ).
+
+%---------------------------------------------------------------------------%
+%---------------------------------------------------------------------------%
+
+:- pred set_eval_method_create_aux_pred_for_procs(io.text_output_stream::in,
+    pred_info::in, tabled_eval_method::in, maybe(table_attributes)::in,
+    prog_context::in, item_mercury_status::in, pred_status::in,
+    aux_tabling_maybe_single_proc::in, assoc_list(proc_id, proc_info)::in,
+    proc_table::in, proc_table::out, module_info::in, module_info::out,
+    qual_info::in, qual_info::out,
+    list(err_spec)::in, list(err_spec)::out,
+    list(warn_spec)::in, list(warn_spec)::out) is det.
+
+set_eval_method_create_aux_pred_for_procs(_, _, _, _, _, _, _, _, [],
+        !ProcTable, !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs).
+set_eval_method_create_aux_pred_for_procs(ProgressStream, PredInfo,
+        TabledMethod, MaybeAttributes, PragmaContext,
+        ItemMercuryStatus, PredStatus,
+        SingleProc, [ProcId - ProcInfo0 | ProcIdsInfos],
+        !ProcTable, !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs) :-
+    set_eval_method_create_aux_preds_for_proc(ProgressStream, PredInfo,
+        TabledMethod, MaybeAttributes, PragmaContext,
+        ItemMercuryStatus, PredStatus, SingleProc, ProcId, ProcInfo0,
+        !ProcTable, !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs),
+    set_eval_method_create_aux_pred_for_procs(ProgressStream, PredInfo,
+        TabledMethod, MaybeAttributes, PragmaContext,
+        ItemMercuryStatus, PredStatus, SingleProc, ProcIdsInfos,
+        !ProcTable, !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs).
+
+:- pred set_eval_method_create_aux_preds_for_proc(io.text_output_stream::in,
+    pred_info::in, tabled_eval_method::in, maybe(table_attributes)::in,
+    prog_context::in, item_mercury_status::in, pred_status::in,
+    aux_tabling_maybe_single_proc::in, proc_id::in, proc_info::in,
+    proc_table::in, proc_table::out, module_info::in, module_info::out,
+    qual_info::in, qual_info::out,
+    list(err_spec)::in, list(err_spec)::out,
+    list(warn_spec)::in, list(warn_spec)::out) is det.
+
+set_eval_method_create_aux_preds_for_proc(ProgressStream, PredInfo0,
+        TabledMethod, MaybeAttributes, PragmaContext,
+        ItemMercuryStatus, PredStatus, SingleProc, ProcId, ProcInfo0,
+        !ProcTable, !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs) :-
+    proc_info_get_eval_method(ProcInfo0, OldEvalMethod),
+    pred_info_get_pf_sym_name_user_arity(PredInfo0, PFSymNameArity),
+    PFSymNameArity =
+        pf_sym_name_user_arity(PredOrFunc, PredSymName, UserArity),
+    (
+        OldEvalMethod = eval_normal,
+        proc_info_get_maybe_declared_argmodes(ProcInfo0,
+            MaybeDeclaredArgModes),
+        (
+            MaybeDeclaredArgModes = no,
+            TabledMethodStr = tabled_eval_method_to_pragma_name(TabledMethod),
+            UserArity = user_arity(UserArityInt),
+            SNA = sym_name_arity(PredSymName, UserArityInt),
+            Pieces = [words("Error:"),
+                pragma_decl(TabledMethodStr), words("declaration for"),
+                p_or_f(PredOrFunc)] ++
+                color_as_subject([qual_sym_name_arity(SNA), suffix(",")]) ++
+                [words("which has")] ++
+                color_as_incorrect([words("no declared modes.")]) ++
+                [nl],
+            Spec = spec($pred, severity_error, phase_pt2h,
+                PragmaContext, Pieces),
+            !:ErrSpecs = [Spec | !.ErrSpecs]
+        ;
+            MaybeDeclaredArgModes = yes(DeclaredArgModes),
+            pred_info_get_arg_types(PredInfo0, ArgTypes),
+            assoc_list.from_corresponding_lists(ArgTypes, DeclaredArgModes,
+                DeclaredArgTypesModes),
+            (
+                MaybeAttributes = yes(Attributes),
+                Strictness = Attributes ^ table_attr_strictness,
+                Statistics = Attributes ^ table_attr_statistics,
+                AllowReset = Attributes ^ table_attr_allow_reset
+            ;
+                MaybeAttributes = no,
+                Strictness = cts_all_strict,
+                Statistics = table_do_not_gather_statistics,
+                AllowReset = table_do_not_allow_reset
+            ),
+            (
+                Strictness = cts_specified(MaybeArgMethods, _HiddenArgMethod),
+                check_pred_args_against_tabling_methods(!.ModuleInfo, 1,
+                    DeclaredArgTypesModes, MaybeArgMethods, ArgErrorPieces)
+            ;
+                ( Strictness = cts_all_strict
+                ; Strictness = cts_all_fast_loose
+                ),
+                check_pred_args_against_tabling(!.ModuleInfo, 1,
+                    DeclaredArgTypesModes, ArgErrorPieces)
+            ),
+            (
+                ArgErrorPieces = []
+            ;
+                ArgErrorPieces = [_ | _],
+                TabledMethodStr =
+                    tabled_eval_method_to_pragma_name(TabledMethod),
+                Pieces = [words("Error in"),
+                    pragma_decl(TabledMethodStr), words("declaration for"),
+                    qual_pf_sym_name_user_arity(PFSymNameArity),
+                    suffix(":"), nl | ArgErrorPieces],
+                Spec = spec($pred, severity_error, phase_pt2h,
+                    PragmaContext, Pieces),
+                !:ErrSpecs = [Spec | !.ErrSpecs]
+            ),
+            EvalMethod = eval_tabled(TabledMethod),
+            proc_info_set_eval_method(EvalMethod, ProcInfo0, ProcInfo1),
+            proc_info_set_table_attributes(MaybeAttributes,
+                ProcInfo1, ProcInfo),
+            map.det_update(ProcId, ProcInfo, !ProcTable),
+            module_info_get_globals(!.ModuleInfo, Globals),
+            current_grade_supports_tabling(Globals, TabledMethod,
+                IsTablingSupported),
+            % We create the statistics and reset predicates if requested
+            % even in the presence of errors above, because if didn't do so,
+            % later compiler passes would report errors at the sites where
+            % these predicates are called.
+            %
+            % We create the reset and statistics predicates in all grades,
+            % but they will do their intended jobs only in C grades.
+            (
+                Statistics = table_gather_statistics,
+                create_tabling_statistics_pred(ProgressStream, PredInfo0,
+                    ProcId, SingleProc, PragmaContext, IsTablingSupported,
+                    ItemMercuryStatus, PredStatus,
+                    !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs)
+            ;
+                Statistics = table_do_not_gather_statistics
+            ),
+            (
+                AllowReset = table_allow_reset,
+                create_tabling_reset_pred(ProgressStream, PredInfo0,
+                    ProcId, SingleProc, PragmaContext, IsTablingSupported,
+                    ItemMercuryStatus, PredStatus,
+                    !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs)
+            ;
+                AllowReset = table_do_not_allow_reset
+            )
+        )
+    ;
+        OldEvalMethod = eval_tabled(OldTabledMethod),
+        % We get here only if we have already processed a tabling pragma for
+        % this procedure.
+        TabledMethodStr = tabled_eval_method_to_pragma_name(TabledMethod),
+        UserArity = user_arity(UserArityInt),
+        SNA = sym_name_arity(PredSymName, UserArityInt),
+        ( if OldTabledMethod = TabledMethod then
+            Pieces = [words("Error:"), p_or_f(PredOrFunc),
+                qual_sym_name_arity(SNA), words("has")] ++
+                color_as_incorrect([words("duplicate"),
+                    fixed(TabledMethodStr), words("pragmas")]) ++
+                [words("specified."), nl]
+        else
+            OldTabledMethodStr =
+                tabled_eval_method_to_pragma_name(OldTabledMethod),
+            Pieces = [words("Error:"), p_or_f(PredOrFunc),
+                qual_sym_name_arity(SNA), words("has")] ++
+                color_as_incorrect([words("two conflicting"),
+                    words("tabling pragmas specified,")]) ++
+                color_as_inconsistent([fixed(OldTabledMethodStr)]) ++
+                [words("and")] ++
+                color_as_inconsistent([fixed(TabledMethodStr), suffix(".")])
+                ++ [nl]
+        ),
+        Spec = spec($pred, severity_error, phase_pt2h, PragmaContext, Pieces),
+        !:ErrSpecs = [Spec | !.ErrSpecs]
+    ).
+
+:- pred create_tabling_statistics_pred(io.text_output_stream::in,
+    pred_info::in, proc_id::in, aux_tabling_maybe_single_proc::in,
+    prog_context::in,
+    bool::in, item_mercury_status::in, pred_status::in,
+    module_info::in, module_info::out, qual_info::in, qual_info::out,
+    list(err_spec)::in, list(err_spec)::out,
+    list(warn_spec)::in, list(warn_spec)::out) is det.
+
+create_tabling_statistics_pred(ProgressStream, PredInfo0, ProcId, SingleProc,
+        PragmaContext, IsTablingSupported, ItemMercuryStatus, PredStatus,
+        !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs) :-
+    PredOrFunc = pred_info_is_pred_or_func(PredInfo0),
+    UserArity = pred_info_user_arity(PredInfo0),
+    pred_info_get_name(PredInfo0, PredName),
+    pred_info_get_module_name(PredInfo0, PredModuleName),
+    Transform = tn_aux_tabling(PredOrFunc, UserArity, atpk_statistics,
+        SingleProc, proc_id_to_int(ProcId)),
+    make_transformed_pred_name(PredName, Transform, StatsPredName),
+    StatsPredSymName = qualified(PredModuleName, StatsPredName),
+
+    TableBuiltinModule = mercury_table_statistics_module,
+    StatsTypeName = qualified(TableBuiltinModule, "proc_table_statistics"),
+    StatsType = defined_type(StatsTypeName, [], kind_star),
+    TypeAndModeArg1 = type_and_mode(StatsType, out_mode),
+    TypeAndModeArg2 = type_and_mode(io_state_type, di_mode),
+    TypeAndModeArg3 = type_and_mode(io_state_type, uo_mode),
+    ArgTypesAndMaybeModes =
+        types_and_modes([TypeAndModeArg1, TypeAndModeArg2, TypeAndModeArg3]),
+
+    varset.init(TypeVarSet),
+    varset.init(InstVarSet),
+    ExistQVars = [],
+    Constraints = univ_exist_constraints([], []),
+
+    PredSymName = qualified(PredModuleName, PredName),
+    PredSpec = pf_sym_name_user_arity(PredOrFunc, PredSymName, UserArity),
+    Attrs = item_compiler_attributes(compiler_origin_tabling(PredSpec,
+        tabling_aux_pred_stats)),
+    MaybeAttrs = item_origin_compiler(Attrs),
+    PredDecl = item_pred_decl_info(StatsPredSymName, pf_predicate,
+        ArgTypesAndMaybeModes, maybe.no, maybe.no, yes(detism_det), MaybeAttrs,
+        TypeVarSet, InstVarSet, ExistQVars, purity_pure, Constraints,
+        PragmaContext, item_no_seq_num),
+    module_add_pred_decl(ItemMercuryStatus, PredStatus, may_be_unqualified,
+        PredDecl, _MaybePredProcId, !ModuleInfo, !ErrSpecs),
+
+    user_arity_pred_form_arity(PredOrFunc, UserArity, PredFormArity),
+    PFSymNameArity =
+        pf_sym_name_pred_form_arity(PredOrFunc, PredSymName, PredFormArity),
+    some [!Attrs, !VarSet] (
+        varset.init(!:VarSet),
+        varset.new_named_var("Stats", Stats, !VarSet),
+        varset.new_named_var("IO0", IO0, !VarSet),
+        varset.new_named_var("IO", IO, !VarSet),
+        (
+            IsTablingSupported = yes,
+            Arg1 = pragma_var(Stats, "Stats", out_mode, bp_always_boxed),
+            Arg2 = pragma_var(IO0, "_IO0", di_mode, bp_always_boxed),
+            Arg3 = pragma_var(IO, "_IO", uo_mode, bp_always_boxed),
+
+            % Currently, the only grades that support tabling target C.
+            !:Attrs = default_attributes(lang_c),
+            % It is easier to construct a complex Mercury structure if we are
+            % allowed to use Mercury code to build it out of simple components
+            % of primitive types.
+            set_may_call_mercury(proc_may_call_mercury, !Attrs),
+            set_thread_safe(proc_thread_safe, !Attrs),
+            set_purity(purity_pure, !Attrs),
+            set_may_duplicate(yes(proc_may_not_duplicate), !Attrs),
+
+            Global = table_info_c_global_var_name(!.ModuleInfo, PFSymNameArity,
+                ProcId),
+            StatsCode = "MR_get_tabling_stats(&" ++ Global ++ ", &Stats);",
+            StatsImpl = fp_impl_ordinary(StatsCode, yes(PragmaContext)),
+            StatsFCInfo = item_foreign_proc_info(!.Attrs,
+                StatsPredSymName, pf_predicate, [Arg1, Arg2, Arg3],
+                !.VarSet, InstVarSet, StatsImpl, PragmaContext,
+                item_no_seq_num),
+            % XXX Should return this instead.
+            add_foreign_proc(ProgressStream, ItemMercuryStatus, PredStatus,
+                StatsFCInfo, !ModuleInfo, !ErrSpecs, !WarnSpecs)
+        ;
+            IsTablingSupported = no,
+            DummyStatsFuncSymName = qualified(mercury_table_statistics_module,
+                "dummy_proc_table_statistics"),
+            sym_name_to_term(PragmaContext, DummyStatsFuncSymName, [],
+                DummyStatsFuncTerm),
+            Args = [variable(Stats, PragmaContext),
+                variable(IO0, PragmaContext), variable(IO, PragmaContext)],
+            GetStatsExpr = unify_expr(PragmaContext,
+                variable(Stats, PragmaContext),
+                DummyStatsFuncTerm, purity_pure),
+            UpdateIOExpr = unify_expr(PragmaContext,
+                variable(IO0, PragmaContext), variable(IO, PragmaContext),
+                purity_pure),
+            GetStatsUpdateIOExpr = conj_expr(PragmaContext,
+                GetStatsExpr, [UpdateIOExpr]),
+            BodyExpr = promise_purity_expr(PragmaContext, purity_pure,
+                GetStatsUpdateIOExpr),
+            StatsClauseInfo = item_clause_info(pf_predicate, StatsPredSymName,
+                Args, !.VarSet, ok2(BodyExpr, []), PragmaContext,
+                item_no_seq_num),
+            ClauseType = clause_not_for_promise,
+            % XXX Should return this instead.
+            module_add_clause(ProgressStream, PredStatus, ClauseType,
+                StatsClauseInfo, !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs)
+        )
+    ).
+
+:- pred create_tabling_reset_pred(io.text_output_stream::in,
+    pred_info::in, proc_id::in, aux_tabling_maybe_single_proc::in,
+    prog_context::in, bool::in, item_mercury_status::in, pred_status::in,
+    module_info::in, module_info::out, qual_info::in, qual_info::out,
+    list(err_spec)::in, list(err_spec)::out,
+    list(warn_spec)::in, list(warn_spec)::out) is det.
+
+create_tabling_reset_pred(ProgressStream, PredInfo0, ProcId, SingleProc,
+        PragmaContext, IsTablingSupported, ItemMercuryStatus, PredStatus,
+        !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs) :-
+    PredOrFunc = pred_info_is_pred_or_func(PredInfo0),
+    UserArity = pred_info_user_arity(PredInfo0),
+    pred_info_get_name(PredInfo0, PredName),
+    pred_info_get_module_name(PredInfo0, PredModuleName),
+    Transform = tn_aux_tabling(PredOrFunc, UserArity, atpk_reset,
+        SingleProc, proc_id_to_int(ProcId)),
+    make_transformed_pred_name(PredName, Transform, ResetPredName),
+    ResetPredSymName = qualified(PredModuleName, ResetPredName),
+
+    TypeAndModeArg1 = type_and_mode(io_state_type, di_mode),
+    TypeAndModeArg2 = type_and_mode(io_state_type, uo_mode),
+    ArgTypesAndMaybeModes =
+        types_and_modes([TypeAndModeArg1, TypeAndModeArg2]),
+    varset.init(TypeVarSet),
+    varset.init(InstVarSet),
+    ExistQVars = [],
+    Constraints = univ_exist_constraints([], []),
+
+    PredSymName = qualified(PredModuleName, PredName),
+    PredSpec = pf_sym_name_user_arity(PredOrFunc, PredSymName, UserArity),
+    Attrs = item_compiler_attributes(compiler_origin_tabling(PredSpec,
+        tabling_aux_pred_reset)),
+    MaybeAttrs = item_origin_compiler(Attrs),
+    PredDecl = item_pred_decl_info(ResetPredSymName, pf_predicate,
+        ArgTypesAndMaybeModes, maybe.no, maybe.no, yes(detism_det), MaybeAttrs,
+        TypeVarSet, InstVarSet, ExistQVars, purity_pure, Constraints,
+        PragmaContext, item_no_seq_num),
+    module_add_pred_decl(ItemMercuryStatus, PredStatus, may_be_unqualified,
+        PredDecl, _MaybePredProcId, !ModuleInfo, !ErrSpecs),
+
+    user_arity_pred_form_arity(PredOrFunc, UserArity, PredFormArity),
+    PFSymNameArity =
+        pf_sym_name_pred_form_arity(PredOrFunc, PredSymName, PredFormArity),
+    some [!Attrs, !VarSet] (
+        varset.init(!:VarSet),
+        varset.new_named_var("IO0", IO0, !VarSet),
+        varset.new_named_var("IO", IO, !VarSet),
+        (
+            IsTablingSupported = yes,
+            Arg1 = pragma_var(IO0, "_IO0", di_mode, bp_always_boxed),
+            Arg2 = pragma_var(IO, "_IO", uo_mode, bp_always_boxed),
+
+            % Currently, the only grades that support tabling target C.
+            !:Attrs = default_attributes(lang_c),
+            set_may_call_mercury(proc_will_not_call_mercury, !Attrs),
+            set_thread_safe(proc_thread_safe, !Attrs),
+            set_purity(purity_pure, !Attrs),
+            set_may_duplicate(yes(proc_may_not_duplicate), !Attrs),
+
+            GlobalVarName = table_info_c_global_var_name(!.ModuleInfo,
+                PFSymNameArity, ProcId),
+            ResetCode = GlobalVarName ++ ".MR_pt_tablenode.MR_integer = 0;",
+            ResetImpl = fp_impl_ordinary(ResetCode, yes(PragmaContext)),
+            ResetFCInfo = item_foreign_proc_info(!.Attrs,
+                ResetPredSymName, pf_predicate, [Arg1, Arg2],
+                !.VarSet, InstVarSet, ResetImpl, PragmaContext,
+                item_no_seq_num),
+            % XXX Should return this instead.
+            add_foreign_proc(ProgressStream, ItemMercuryStatus, PredStatus,
+                ResetFCInfo, !ModuleInfo, !ErrSpecs, !WarnSpecs)
+        ;
+            IsTablingSupported = no,
+            Args = [variable(IO0, PragmaContext), variable(IO, PragmaContext)],
+            BodyExpr = unify_expr(PragmaContext,
+                variable(IO0, PragmaContext), variable(IO, PragmaContext),
+                purity_pure),
+            ResetClauseInfo = item_clause_info(pf_predicate, ResetPredSymName,
+                Args, !.VarSet, ok2(BodyExpr, []), PragmaContext,
+                item_no_seq_num),
+            ClauseType = clause_not_for_promise,
+            % XXX Should return this instead.
+            module_add_clause(ProgressStream, PredStatus, ClauseType,
+                ResetClauseInfo, !ModuleInfo, !QualInfo, !ErrSpecs, !WarnSpecs)
+        )
+    ).
+
+:- func table_info_c_global_var_name(module_info, pf_sym_name_pred_form_arity,
+    proc_id) = string.
+
+table_info_c_global_var_name(ModuleInfo, PFSymNameArity, ProcId) = VarName :-
+    module_info_get_globals(ModuleInfo, Globals),
+    globals.get_target(Globals, Target),
+    expect(unify(Target, target_c), $pred,
+        "memo table statistics and reset are supported only for C"),
+    globals.lookup_bool_option(Globals, highlevel_code, HighLevelCode),
+    % XXX We should generate a C global variable for a tabled predicate
+    % only when generating code for the module that defines that predicate.
+    % Shouldn't this mean that the module name in PredSymName is guaranteed
+    % to be ModuleName?
+    module_info_get_name(ModuleInfo, ModuleName),
+    PFSymNameArity =
+        pf_sym_name_pred_form_arity(PredOrFunc, PredSymName, PredFormArity),
+    PredName = unqualify_name(PredSymName),
+    (
+        HighLevelCode = yes,
+        MaybeModuleName = no,
+        MLDS_PredLabel = mlds_user_pred_label(PredOrFunc, MaybeModuleName,
+            PredName, PredFormArity),
+        MLDS_ProcLabel = mlds_proc_label(MLDS_PredLabel, ProcId),
+        VarName = tabling_struct_id_to_string(MLDS_ProcLabel, tabling_info)
+    ;
+        HighLevelCode = no,
+        PredFormArity = pred_form_arity(PredFormArityInt),
+        proc_id_to_int(ProcId, ProcIdInt),
+        ProcLabel = ordinary_proc_label(ModuleName, PredOrFunc, ModuleName,
+            PredName, PredFormArityInt, ProcIdInt),
+        VarName = proc_tabling_info_var_name(ProcLabel)
+    ).
+
+:- func proc_tabling_info_var_name(proc_label) = string.
+
+proc_tabling_info_var_name(ProcLabel) =
+    tabling_struct_data_addr_string(ProcLabel, tabling_info).
+
+:- pred check_pred_args_against_tabling_methods(module_info::in, int::in,
+    assoc_list(mer_type, mer_mode)::in, list(maybe(arg_tabling_method))::in,
+    list(format_piece)::out) is det.
+
+check_pred_args_against_tabling_methods(_, _, [], [], []).
+check_pred_args_against_tabling_methods(_, _, [], [_ | _], Pieces) :-
+    Pieces = [words("too many argument tabling methods specified."), nl].
+check_pred_args_against_tabling_methods(_, _, [_ | _], [], Pieces) :-
+    Pieces = [words("not enough argument tabling methods specified."), nl].
+check_pred_args_against_tabling_methods(ModuleInfo, ArgNum,
+        [Type - Mode | TypesModes], [MaybeArgMethod | MaybeArgMethods],
+        Pieces) :-
+    % XXX We should check not just the boundedness of the argument, but also
+    % whether it has any uniqueness annotation: tabling destroys uniqueness.
+    ( if mode_is_fully_input(ModuleInfo, Type, Mode) then
+        (
+            MaybeArgMethod = yes(_),
+            check_pred_args_against_tabling_methods(ModuleInfo, ArgNum + 1,
+                TypesModes, MaybeArgMethods, Pieces)
+        ;
+            MaybeArgMethod = no,
+            MethodStr = maybe_arg_tabling_method_to_string(MaybeArgMethod),
+            % Don't allow a line break just before the argument number.
+            Pieces = [words("in"),
+                fixed("argument " ++ int_to_string(ArgNum)), suffix(":"),
+                words("argument tabling method")] ++
+                color_as_subject([quote(MethodStr)]) ++
+                [words("is")] ++
+                color_as_incorrect([words("not compatible with"),
+                    words("input modes.")]) ++
+                [nl]
+        )
+    else if mode_is_fully_output(ModuleInfo, Type, Mode) then
+        (
+            MaybeArgMethod = yes(_),
+            MethodStr = maybe_arg_tabling_method_to_string(MaybeArgMethod),
+            % Don't allow a line break just before the argument number.
+            Pieces = [words("in"),
+                fixed("argument " ++ int_to_string(ArgNum)), suffix(":"),
+                words("argument tabling method")] ++
+                color_as_subject([quote(MethodStr)]) ++
+                [words("is")] ++
+                color_as_incorrect([words("not compatible with"),
+                    words("output modes.")]) ++
+                [nl]
+        ;
+            MaybeArgMethod = no,
+            check_pred_args_against_tabling_methods(ModuleInfo, ArgNum + 1,
+                TypesModes, MaybeArgMethods, Pieces)
+        )
+    else
+        Pieces = [fixed("argument " ++ int_to_string(ArgNum)),
+            words("is neither input or output."), nl]
+    ).
+
+:- pred check_pred_args_against_tabling(module_info::in, int::in,
+    assoc_list(mer_type, mer_mode)::in, list(format_piece)::out) is det.
+
+check_pred_args_against_tabling(_, _, [], []).
+check_pred_args_against_tabling(ModuleInfo, ArgNum, [Type - Mode | TypesModes],
+        Pieces) :-
+    ( if mode_is_fully_input(ModuleInfo, Type, Mode) then
+        check_pred_args_against_tabling(ModuleInfo, ArgNum + 1,
+            TypesModes, Pieces)
+    else if mode_is_fully_output(ModuleInfo, Type, Mode) then
+        check_pred_args_against_tabling(ModuleInfo, ArgNum + 1,
+            TypesModes, Pieces)
+    else
+        % Don't allow a line break just before the argument number.
+        Pieces = [fixed("argument " ++ int_to_string(ArgNum)),
+            words("is neither input or output."), nl]
+    ).
+
+%---------------------------------------------------------------------------%
+:- end_module hlds.make_hlds.add_pragma_tabling.
+%---------------------------------------------------------------------------%

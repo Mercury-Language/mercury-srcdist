@@ -1,0 +1,2 @@
+:- module hlds.type_classify.
+:- interface.

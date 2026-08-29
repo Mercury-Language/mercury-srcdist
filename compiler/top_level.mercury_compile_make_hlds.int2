@@ -1,0 +1,10 @@
+:- module top_level.mercury_compile_make_hlds.
+:- interface.
+:- type make_hlds_result
+    --->    make_hlds_result(
+                 (top_level.mercury_compile_make_hlds).mhr_invalid_types :: list.list(parse_tree.error_spec.err_spec),
+                 (top_level.mercury_compile_make_hlds).mhr_invalid_insts_modes :: list.list(parse_tree.error_spec.err_spec),
+                 (top_level.mercury_compile_make_hlds).mhr_opt_blocking :: list.list(parse_tree.error_spec.err_spec),
+                 (top_level.mercury_compile_make_hlds).mhr_expansion :: list.list(parse_tree.error_spec.err_spec),
+                 (top_level.mercury_compile_make_hlds).mhr_event_set :: list.list(parse_tree.error_spec.err_spec)
+            ).

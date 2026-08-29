@@ -1,0 +1,11 @@
+:- module (check_hlds.simplify).mark_trace_goals.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module parse_tree.error_spec.
+:- type last_nontrace_map == map.map(string, int).
+:- pred set_goal_contains_trace_features_in_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.contains_trace_goal, check_hlds.simplify.mark_trace_goals.last_nontrace_map, check_hlds.simplify.mark_trace_goals.last_nontrace_map, list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode set_goal_contains_trace_features_in_goal(builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

@@ -1,0 +1,6 @@
+:- module libs.file_util.
+:- interface.
+:- type dir_name.
+:- type file_name.
+:- type_representation(dir_name, is_eqv_to(string)).
+:- type_representation(file_name, is_eqv_to(string)).

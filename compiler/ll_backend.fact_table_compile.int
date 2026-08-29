@@ -1,0 +1,14 @@
+:- module ll_backend.fact_table_compile.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.pred_proc_id.
+:- use_module ll_backend.fact_table_check.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.prog_data.
+:- pred fact_table_compile_facts(io.text_output_stream, hlds.hlds_module.module_info, string, parse_tree.prog_data.prog_context, ll_backend.fact_table_check.fact_table_gen_info, string, hlds.pred_proc_id.proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec), io.io, io.io).
+:- mode fact_table_compile_facts(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.di, builtin.uo) is det.

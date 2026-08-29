@@ -1,0 +1,4 @@
+:- module mdbcomp.feedback.
+:- interface.
+:- include_module (mdbcomp.feedback).automatic_parallelism.
+:- include_module (mdbcomp.feedback).feedback_info.
