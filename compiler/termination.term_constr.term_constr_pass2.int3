@@ -1,0 +1,4 @@
+:- module (termination.term_constr).term_constr_pass2.
+:- interface.
+:- type pass2_options.
+:- type_representation(pass2_options, du_repn(notag("pass2_options", int,  no_c_j_cs))).

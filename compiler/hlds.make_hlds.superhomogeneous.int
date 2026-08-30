@@ -1,0 +1,15 @@
+:- module (hlds.make_hlds).superhomogeneous.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module parse_tree.prog_data.
+:- use_module (hlds.make_hlds).state_var.
+:- use_module (hlds.make_hlds).superhomogeneous_util.
+:- use_module (hlds.make_hlds).unravel_info.
+:- pred insert_arg_unifications(list.list(hlds.make_hlds.superhomogeneous_util.unify_var_term), parse_tree.prog_data.prog_context, hlds.make_hlds.superhomogeneous_util.arg_context, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.unravel_info.unravel_info, hlds.make_hlds.unravel_info.unravel_info).
+:- mode insert_arg_unifications(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred insert_arg_unifications_with_contexts(list.list(hlds.make_hlds.superhomogeneous_util.unify_var_term_num_context), parse_tree.prog_data.prog_context, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.unravel_info.unravel_info, hlds.make_hlds.unravel_info.unravel_info).
+:- mode insert_arg_unifications_with_contexts(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred unravel_unification(parse_tree.prog_data.prog_term, parse_tree.prog_data.prog_term, parse_tree.prog_data.prog_context, hlds.hlds_goal.unify_main_context, list.list(hlds.hlds_goal.unify_sub_context), parse_tree.prog_data.purity, hlds.hlds_goal.hlds_goal, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.unravel_info.unravel_info, hlds.make_hlds.unravel_info.unravel_info).
+:- mode unravel_unification(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

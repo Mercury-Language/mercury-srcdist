@@ -1,0 +1,2 @@
+:- module (termination.term_osi).term_osi_pass2.
+:- interface.

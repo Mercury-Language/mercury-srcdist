@@ -1,0 +1,109 @@
+:- module (termination.term_constr).term_constr_data.
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_module.
+:- use_module hlds.pred_proc_id.
+:- use_module libs.lp_rational.
+:- use_module libs.polyhedron.
+:- use_module parse_tree.prog_data.
+:- use_module (termination.term_constr).term_constr_errors.
+:- type abstract_goal
+    --->    term_disj(
+                 ((termination.term_constr).term_constr_data).disj_goals :: list.list(termination.term_constr.term_constr_data.abstract_goal),
+                 ((termination.term_constr).term_constr_data).disj_size :: int,
+                 ((termination.term_constr).term_constr_data).disj_locals :: termination.term_constr.term_constr_data.local_vars,
+                 ((termination.term_constr).term_constr_data).disj_nonlocals :: termination.term_constr.term_constr_data.nonlocal_vars
+            )
+    ;       term_conj(
+                 ((termination.term_constr).term_constr_data).conj_goals :: list.list(termination.term_constr.term_constr_data.abstract_goal),
+                 ((termination.term_constr).term_constr_data).conj_locals :: termination.term_constr.term_constr_data.local_vars,
+                 ((termination.term_constr).term_constr_data).conj_nonlocals :: termination.term_constr.term_constr_data.nonlocal_vars
+            )
+    ;       term_call(
+                 ((termination.term_constr).term_constr_data).call_ppid :: termination.term_constr.term_constr_data.abstract_ppid,
+                 ((termination.term_constr).term_constr_data).call_context :: parse_tree.prog_data.prog_context,
+                 ((termination.term_constr).term_constr_data).call_vars :: termination.term_constr.term_constr_data.call_vars,
+                 ((termination.term_constr).term_constr_data).call_zeros :: termination.term_constr.term_constr_data.zero_vars,
+                 ((termination.term_constr).term_constr_data).call_locals :: termination.term_constr.term_constr_data.local_vars,
+                 ((termination.term_constr).term_constr_data).call_nonlocals :: termination.term_constr.term_constr_data.nonlocal_vars,
+                 ((termination.term_constr).term_constr_data).call_constrs :: libs.polyhedron.polyhedron
+            )
+    ;       term_primitive(
+                 ((termination.term_constr).term_constr_data).prim_constrs :: libs.polyhedron.polyhedron,
+                 ((termination.term_constr).term_constr_data).prim_locals :: termination.term_constr.term_constr_data.local_vars,
+                 ((termination.term_constr).term_constr_data).prim_nonlocals :: termination.term_constr.term_constr_data.nonlocal_vars
+            ).
+:- type abstract_ho_call
+    --->    ho_call(
+                 parse_tree.prog_data.prog_context
+            ).
+:- type abstract_ppid
+    --->    real(
+                 hlds.pred_proc_id.pred_proc_id
+            ).
+:- type abstract_proc
+    --->    abstract_proc(
+                 ((termination.term_constr).term_constr_data).ap_ppid :: termination.term_constr.term_constr_data.abstract_ppid,
+                 ((termination.term_constr).term_constr_data).ap_context :: parse_tree.prog_data.prog_context,
+                 ((termination.term_constr).term_constr_data).ap_head_vars :: termination.term_constr.term_constr_data.head_vars,
+                 ((termination.term_constr).term_constr_data).ap_inputs :: list.list(bool.bool),
+                 ((termination.term_constr).term_constr_data).ap_body :: termination.term_constr.term_constr_data.abstract_goal,
+                 ((termination.term_constr).term_constr_data).ap_size_var_map :: termination.term_constr.term_constr_data.size_var_map,
+                 ((termination.term_constr).term_constr_data).ap_size_varset :: termination.term_constr.term_constr_data.size_varset,
+                 ((termination.term_constr).term_constr_data).ap_zeros :: termination.term_constr.term_constr_data.zero_vars,
+                 ((termination.term_constr).term_constr_data).ap_is_entry :: bool.bool,
+                 ((termination.term_constr).term_constr_data).ap_recursion :: termination.term_constr.term_constr_data.recursion_type,
+                 ((termination.term_constr).term_constr_data).ap_num_calls :: int,
+                 ((termination.term_constr).term_constr_data).ap_ho_calls :: list.list(termination.term_constr.term_constr_data.abstract_ho_call)
+            ).
+:- type abstract_scc == set.set(termination.term_constr.term_constr_data.abstract_proc).
+:- type arg_size_result
+    --->    arg_size_ok 
+    ;       arg_size_error(
+                 list.list(termination.term_constr.term_constr_errors.term2_error)
+            ).
+:- type call_vars == list.list(termination.term_constr.term_constr_data.size_var).
+:- type head_vars == list.list(termination.term_constr.term_constr_data.size_var).
+:- type local_vars == list.list(termination.term_constr.term_constr_data.size_var).
+:- type nonlocal_vars == list.list(termination.term_constr.term_constr_data.size_var).
+:- type recursion_type
+    --->    none 
+    ;       direct_only 
+    ;       mutual_only 
+    ;       both .
+:- type size_term == libs.lp_rational.lp_term.
+:- type size_var == libs.lp_rational.lp_var.
+:- type size_var_map == map.map(parse_tree.prog_data.prog_var, termination.term_constr.term_constr_data.size_var).
+:- type size_varset == libs.lp_rational.lp_varset.
+:- type widening
+    --->    after_fixed_cutoff(
+                 int
+            ).
+:- type zero_vars == set.set(termination.term_constr.term_constr_data.size_var).
+:- pred analysis_depends_on_ho(termination.term_constr.term_constr_data.abstract_proc).
+:- mode analysis_depends_on_ho(builtin.in) is semidet.
+:- func combine_primitive_goals(termination.term_constr.term_constr_data.abstract_goal, termination.term_constr.term_constr_data.abstract_goal) = termination.term_constr.term_constr_data.abstract_goal.
+:- func combine_recursion_types(termination.term_constr.term_constr_data.recursion_type, termination.term_constr.term_constr_data.recursion_type) = termination.term_constr.term_constr_data.recursion_type.
+:- pred dump_abstract_goal(io.text_output_stream, hlds.hlds_module.module_info, termination.term_constr.term_constr_data.size_varset, int, termination.term_constr.term_constr_data.abstract_goal, io.io, io.io).
+:- mode dump_abstract_goal(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred dump_abstract_proc(io.text_output_stream, hlds.hlds_module.module_info, int, termination.term_constr.term_constr_data.abstract_proc, io.io, io.io).
+:- mode dump_abstract_proc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred dump_abstract_scc(io.text_output_stream, hlds.hlds_module.module_info, termination.term_constr.term_constr_data.abstract_scc, io.io, io.io).
+:- mode dump_abstract_scc(builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred dump_abstract_scc(io.text_output_stream, hlds.hlds_module.module_info, int, termination.term_constr.term_constr_data.abstract_scc, io.io, io.io).
+:- mode dump_abstract_scc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred proc_is_recursive(termination.term_constr.term_constr_data.abstract_proc).
+:- mode proc_is_recursive(builtin.in) is semidet.
+:- pred scc_contains_recursion(termination.term_constr.term_constr_data.abstract_scc).
+:- mode scc_contains_recursion(builtin.in) is semidet.
+:- func simplify_abstract_rep(termination.term_constr.term_constr_data.abstract_goal) = termination.term_constr.term_constr_data.abstract_goal.
+:- func simplify_conjuncts(list.list(termination.term_constr.term_constr_data.abstract_goal)) = list.list(termination.term_constr.term_constr_data.abstract_goal).
+:- func size_varset_from_abstract_scc(termination.term_constr.term_constr_data.abstract_scc) = termination.term_constr.term_constr_data.size_varset.
+:- func update_local_and_nonlocal_vars(termination.term_constr.term_constr_data.abstract_goal, termination.term_constr.term_constr_data.local_vars, termination.term_constr.term_constr_data.nonlocal_vars) = termination.term_constr.term_constr_data.abstract_goal.

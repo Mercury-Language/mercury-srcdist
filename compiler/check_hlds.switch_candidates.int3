@@ -1,0 +1,7 @@
+:- module check_hlds.switch_candidates.
+:- interface.
+:- type candidate_switch.
+:- type candidate_switch_rank.
+:- type maybe_candidate_switch.
+:- type maybe_required_switch_var.
+:- type_representation(candidate_switch, is_word_aligned_ptr).
