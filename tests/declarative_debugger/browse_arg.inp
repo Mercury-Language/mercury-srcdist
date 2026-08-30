@@ -1,0 +1,19 @@
+echo on
+register --quiet
+break p
+continue
+finish
+format_param depth 10
+dd -d 3 -n 7
+browse 2
+ls
+quit
+format verbose
+print
+format -B pretty
+p
+format -P pretty
+p
+no
+yes
+continue
