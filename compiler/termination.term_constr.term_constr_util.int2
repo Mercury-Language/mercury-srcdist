@@ -1,0 +1,5 @@
+:- module (termination.term_constr).term_constr_util.
+:- interface.
+:- use_module map.
+:- use_module (termination.term_constr).term_constr_data.
+:- type var_substitution == map.map(termination.term_constr.term_constr_data.size_var, termination.term_constr.term_constr_data.size_var).

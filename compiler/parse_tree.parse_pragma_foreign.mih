@@ -1,0 +1,148 @@
+/*
+** Automatically generated from `parse_pragma_foreign.m'
+** by the Mercury compiler,
+** version rotd-2026-08-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.parse_pragma_foreign.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__parse_pragma_foreign
+#define MR_HEADER_GUARD_parse_tree__parse_pragma_foreign
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PARSE_PRAGMA_FOREIGN_DECL_GUARD
+#define PARSE_TREE__PARSE_PRAGMA_FOREIGN_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_pragma_foreign__parse_tree__parse_pragma_foreign__type_ctor_info_collected_export_enum_attribute_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_pragma_foreign__parse_tree__parse_pragma_foreign__type_ctor_info_collected_pragma_foreign_proc_attribute_0;
+
+void MR_CALL 
+parse_tree__parse_pragma_foreign__parse_foreign_type_assertions_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+parse_tree__parse_pragma_foreign__parse_pragma_foreign_code_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__parse_pragma_foreign__parse_pragma_foreign_decl_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__parse_pragma_foreign__parse_pragma_foreign_enum_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+parse_tree__parse_pragma_foreign__parse_pragma_foreign_export_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__parse_pragma_foreign__parse_pragma_foreign_export_enum_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__parse_pragma_foreign__parse_pragma_foreign_import_module_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__parse_pragma_foreign__parse_pragma_foreign_proc_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+parse_tree__parse_pragma_foreign__parse_pragma_foreign_type_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+MR_bool MR_CALL 
+parse_tree__parse_pragma_foreign__term_to_foreign_language_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void mercury__parse_tree__parse_pragma_foreign__init(void);
+void mercury__parse_tree__parse_pragma_foreign__init_type_tables(void);
+void mercury__parse_tree__parse_pragma_foreign__init_debugger(void);
+const char *mercury__parse_tree__parse_pragma_foreign__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.parse_pragma_foreign
+
+// :- end_interface parse_tree.parse_pragma_foreign.

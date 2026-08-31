@@ -1,0 +1,182 @@
+/*
+** Automatically generated from `term_osi_util.m'
+** by the Mercury compiler,
+** version rotd-2026-08-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module termination.term_osi.term_osi_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_termination__term_osi__term_osi_util
+#define MR_HEADER_GUARD_termination__term_osi__term_osi_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TERMINATION__TERM_OSI__TERM_OSI_UTIL_DECL_GUARD
+#define TERMINATION__TERM_OSI__TERM_OSI_UTIL_DECL_GUARD
+#include "termination.mih"
+#include "termination.term_osi.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct termination__term_osi__term_osi_util__termination__term_osi__term_osi_util__type_ctor_info_arg_size_info_0;
+
+extern const MR_TypeCtorInfo_Struct termination__term_osi__term_osi_util__termination__term_osi__term_osi_util__type_ctor_info_pass_info_0;
+
+extern const MR_TypeCtorInfo_Struct termination__term_osi__term_osi_util__termination__term_osi__term_osi_util__type_ctor_info_termination_info_0;
+
+extern const MR_TypeCtorInfo_Struct termination__term_osi__term_osi_util__termination__term_osi__term_osi_util__type_ctor_info_used_args_0;
+
+void MR_CALL 
+termination__term_osi__term_osi_util__add_context_to_arg_size_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+termination__term_osi__term_osi_util__add_context_to_termination_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+termination__term_osi__term_osi_util__is_termination_known_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+termination__term_osi__term_osi_util__lookup_proc_arg_size_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+termination__term_osi__term_osi_util__lookup_proc_termination_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+termination__term_osi__term_osi_util__make_bool_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+termination__term_osi__term_osi_util__partition_call_args_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+termination__term_osi__term_osi_util__pred_proc_id_terminates_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+termination__term_osi__term_osi_util__set_pred_proc_ids_arg_size_info_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+termination__term_osi__term_osi_util__set_pred_proc_ids_termination_info_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+termination__term_osi__term_osi_util__some_var_is_higher_order_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+termination__term_osi__term_osi_util__split_unification_vars_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+termination__term_osi__term_osi_util____Compare____arg_size_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+termination__term_osi__term_osi_util____Compare____pass_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+termination__term_osi__term_osi_util____Compare____termination_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+termination__term_osi__term_osi_util____Compare____used_args_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+termination__term_osi__term_osi_util____Unify____arg_size_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+termination__term_osi__term_osi_util____Unify____pass_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+termination__term_osi__term_osi_util____Unify____termination_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+termination__term_osi__term_osi_util____Unify____used_args_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__termination__term_osi__term_osi_util__init(void);
+void mercury__termination__term_osi__term_osi_util__init_type_tables(void);
+void mercury__termination__term_osi__term_osi_util__init_debugger(void);
+const char *mercury__termination__term_osi__term_osi_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_termination.term_osi.term_osi_util
+
+// :- end_interface termination.term_osi.term_osi_util.

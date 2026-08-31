@@ -1,0 +1,28 @@
+:- module hlds.hlds_pred_tests.
+:- interface.
+:- use_module mdbcomp.
+:- use_module one_or_more.
+:- use_module parse_tree.
+:- use_module hlds.hlds_cons.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.pred_proc_id.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_rare.
+:- func builtin_state(hlds.hlds_module.module_info, hlds.pred_proc_id.pred_id, hlds.pred_proc_id.pred_id, hlds.pred_proc_id.proc_id) = hlds.hlds_goal.builtin_state.
+:- pred construct_field_access_function_name(hlds.hlds_cons.field_access_type, mdbcomp.sym_name.sym_name, mdbcomp.sym_name.sym_name).
+:- mode construct_field_access_function_name(builtin.in, builtin.in, builtin.out) is det.
+:- pred is_field_access_function_name(hlds.hlds_module.module_info, mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity, hlds.hlds_cons.field_access_type, mdbcomp.sym_name.sym_name, one_or_more.one_or_more(hlds.hlds_cons.hlds_ctor_field_defn)).
+:- mode is_field_access_function_name(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is semidet.
+:- pred is_unify_index_or_compare_pred(hlds.hlds_pred.pred_info).
+:- mode is_unify_index_or_compare_pred(builtin.in) is semidet.
+:- pred is_unify_pred(hlds.hlds_pred.pred_info).
+:- mode is_unify_pred(builtin.in) is semidet.
+:- pred pred_info_is_builtin(hlds.hlds_pred.pred_info).
+:- mode pred_info_is_builtin(builtin.in) is semidet.
+:- pred pred_info_is_field_access_function(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_cons.field_access_type, mdbcomp.sym_name.sym_name, one_or_more.one_or_more(hlds.hlds_cons.hlds_ctor_field_defn)).
+:- mode pred_info_is_field_access_function(builtin.in, builtin.in, builtin.out, builtin.out, builtin.out) is semidet.
+:- pred pred_info_is_promise(hlds.hlds_pred.pred_info, parse_tree.prog_data_rare.promise_type).
+:- mode pred_info_is_promise(builtin.in, builtin.out) is semidet.

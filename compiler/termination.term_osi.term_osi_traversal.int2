@@ -1,0 +1,20 @@
+:- module (termination.term_osi).term_osi_traversal.
+:- interface.
+:- type term_path_info
+    --->    term_path_info(
+                 hlds.pred_proc_id.pred_proc_id,
+                 maybe.maybe(pair.pair(hlds.pred_proc_id.pred_proc_id, parse_tree.prog_data.prog_context)),
+                 int,
+                 list.list(hlds.pred_proc_id.pred_proc_id),
+                 bag.bag(parse_tree.prog_data.prog_var)
+            ).
+:- type term_traversal_info
+    --->    term_traversal_ok(
+                 set.set(termination.term_osi.term_osi_traversal.term_path_info),
+                 list.list(termination.term_osi.term_osi_errors.term_error)
+            )
+    ;       term_traversal_error(
+                 list.list(termination.term_osi.term_osi_errors.term_error),
+                 list.list(termination.term_osi.term_osi_errors.term_error)
+            ).
+:- type term_traversal_params.

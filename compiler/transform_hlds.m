@@ -1,0 +1,106 @@
+%-----------------------------------------------------------------------------%
+% vim: ft=mercury ts=4 sw=4 et
+%-----------------------------------------------------------------------------%
+% Copyright (C) 2002-2008, 2011-2012 The University of Melbourne.
+% Copyright (C) 2013-2015, 2017, 2020-2021, 2023, 2025-2026 The Mercury Team.
+% This file may only be copied under the terms of the GNU General
+% Public License - see the file COPYING in the Mercury distribution.
+%-----------------------------------------------------------------------------%
+%
+% transform_hlds: High-level transformations that are independent
+% of the choice of back-end (the "middle" HLDS pass).
+%
+
+:- module transform_hlds.
+:- interface.
+
+%-----------------------------------------------------------------------------%
+
+% Intermodule optimization.
+:- include_module intermod.
+    :- include_module intermod_analysis.
+    :- include_module intermod_mark_exported.
+
+:- include_module equiv_type_hlds.
+
+:- include_module table_gen.
+
+:- include_module complexity.
+
+:- include_module expand_lambdas.
+:- include_module stm_expand.
+
+:- include_module closure_analysis.
+
+:- include_module exception_analysis.
+:- include_module trailing_analysis.
+:- include_module tabling_analysis.
+
+:- include_module ssdebug.
+
+:- include_module ctgc.
+:- include_module rbmm.
+:- include_module smm_common.
+
+% Mostly optimizations (HLDS -> HLDS)
+:- include_module higher_order.
+:- include_module inlining.
+% Deforestation, also called partial deduction (hence the "pd" prefix").
+:- include_module deforest.
+    :- include_module pd_cost.
+:- include_module delay_construct.
+:- include_module unused_args.
+    :- include_module unused_args_analysis.
+    :- include_module unused_args_warn_pragma.
+:- include_module unneeded_code.
+% Accumulator introduction.
+:- include_module accumulator.
+:- include_module dead_proc_elim.
+:- include_module const_prop.
+:- include_module loop_inv.
+:- include_module size_prof.
+
+:- include_module tupling.
+:- include_module untupling.
+
+% Parallelism.
+:- include_module dep_par_conj.
+:- include_module distance_granularity.
+:- include_module granularity.
+:- include_module implicit_parallelism.
+:- include_module par_loop_control.
+:- include_module parallel_to_plain_conj.
+
+:- include_module lco.
+:- include_module float_regs.
+
+:- include_module direct_arg_in_out.
+
+:- include_module mmc_analysis.
+
+%-----------------------------------------------------------------------------%
+:- implementation.
+%-----------------------------------------------------------------------------%
+
+% Intermodule optimization.
+    :- include_module intermod_decide.
+    :- include_module intermod_info.
+    :- include_module intermod_order_pred_info.
+    :- include_module intermod_status.
+
+% Deforestation, also called partial deduction (hence the "pd" prefix").
+    :- include_module constraint.
+    :- include_module pd_debug.
+    :- include_module pd_info.
+    :- include_module pd_term.
+    :- include_module pd_util.
+
+% Accumulator introduction.
+    :- include_module goal_store.
+
+    :- include_module unused_args_base_ops.
+    :- include_module unused_args_optimize.
+
+%-----------------------------------------------------------------------------%
+:- end_module transform_hlds.
+%-----------------------------------------------------------------------------%

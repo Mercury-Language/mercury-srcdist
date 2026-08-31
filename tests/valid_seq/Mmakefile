@@ -1,0 +1,97 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = valid_seq
+MAYBE_J1 = -j1
+
+#-----------------------------------------------------------------------------#
+
+# Please keep these lists sorted.
+# The documentation of what tests each list should contain (what little
+# there is of it) is in ../valid/Mmake.valid.common.
+
+AGC_PROGS =
+
+C_INTERFACE_PROGS = \
+	foreign_proc_import \
+	xmlreader
+
+C_PROGS =
+
+CONSTRAINT_TYPECHECK_PROGS = \
+	ambig_high_level \
+	ambig_pred
+
+CTGC_PROGS =
+
+DEEP_PROF_CAPABLE_PROGS =
+
+LLDS_PROGS =
+
+NON_DECLDEBUG_PROGS =
+
+PAR_CONJ_PROGS =
+
+SOLVER_PROGS =
+
+TABLE_PROGS =
+
+TRAIL_PROGS =
+
+TYPECLASS_PROGS = \
+	func_class \
+	tc_map_lookup
+
+OTHER_PROGS = \
+	bug100 \
+	bug563 \
+	call_impure_in_opt \
+	char_escape_opt \
+	dcg_bug \
+	empty_submodule \
+	exported_foreign_type \
+	exported_lambda \
+	field_access_funcs \
+	foreign_du_field \
+	func_int_bug \
+	head_var_unify_uniq \
+	indirect_import_one_path \
+	indirect_import_two_paths \
+	int_impl_imports \
+	merge_inst_bug \
+	mode_from_int0_opt \
+	nested_module_ambiguity \
+	opt_det_warn \
+	opt_file_quote \
+	overload_resolution \
+	parsing_bug \
+	read_submod_opt \
+	sharing_in_opt \
+	spurious_match \
+	to_submods_opt \
+	transitive_instance \
+	type_exported_to_submods \
+	type_spec_vars \
+	typeclass_exist_opt \
+	typeclass_in_opt \
+	unused_args_type_spec \
+	user_eq_pred_nested \
+	user_eq_pred_nonnested \
+	xml_event_read
+
+# XXX The following tests are not valid under the current Mercury
+# language rules:
+#
+#	constraint_proof_bug
+
+# XXX mmake should automatically handle these two dependencies.
+$(dates_subdir)read_submod_opt_helper_1.date: \
+	$(date0s_subdir)read_submod_opt_helper_1.date0
+$(dates_subdir)user_eq_pred_nested_helper_1.date: \
+	$(date0s_subdir)user_eq_pred_nested_helper_1.date0
+
+include ../valid/Mmake.valid.common
+
+clean_local:

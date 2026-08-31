@@ -1,0 +1,63 @@
+:- module (hlds.make_hlds).add_pragma_util.
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module one_or_more.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_markers.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.hlds_proc.
+:- use_module hlds.make_hlds_error.
+:- use_module hlds.pred_proc_id.
+:- use_module hlds.pred_table.
+:- use_module hlds.status.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.error_spec.
+:- use_module parse_tree.maybe_error.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_item_pred_proc_id.
+:- type add_marker_pred_info == pred(hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- type lookup_failure_handling
+    --->    lfh_ignore 
+    ;       lfh_user_error 
+    ;       lfh_internal_error .
+:- type matching_pred_ids_result
+    --->    mpids_ok(
+                 hlds.pred_proc_id.pred_id,
+                 list.list(hlds.pred_proc_id.pred_id),
+                 list.list(parse_tree.error_spec.warn_spec)
+            )
+    ;       mpids_error(
+                 one_or_more.one_or_more(parse_tree.error_spec.err_spec),
+                 list.list(parse_tree.error_spec.warn_spec)
+            ).
+:- type maybe_require_one_match
+    --->    do_not_require_one_match 
+    ;       require_one_match .
+:- type pragma_status_class
+    --->    psc_decl 
+    ;       psc_impl .
+:- inst add_marker_pred_info == (pred(builtin.in, builtin.out) is det).
+:- pred add_marker_pred_info(hlds.hlds_markers.pred_marker, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- mode add_marker_pred_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred add_pred_marker(parse_tree.prog_item_pred_proc_id.pred_pfu_name_arity, string, hlds.make_hlds.add_pragma_util.pragma_status_class, hlds.status.item_mercury_status, parse_tree.prog_data.prog_context, hlds.hlds_markers.pred_marker, list.list(hlds.hlds_markers.pred_marker), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec)).
+:- mode add_pred_marker(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred check_pragma_status(string, hlds.make_hlds.add_pragma_util.pragma_status_class, hlds.status.item_mercury_status, parse_tree.prog_data.prog_context, hlds.hlds_pred.pred_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec)).
+:- mode check_pragma_status(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred get_matching_pred_ids(hlds.hlds_module.module_info, string, hlds.make_hlds.add_pragma_util.maybe_require_one_match, hlds.make_hlds_error.does_pragma_allow_modes, parse_tree.prog_data.prog_context, parse_tree.prog_item_pred_proc_id.pred_func_or_unknown, mdbcomp.sym_name.sym_name, parse_tree.prog_data.user_arity, hlds.make_hlds.add_pragma_util.matching_pred_ids_result).
+:- mode get_matching_pred_ids(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred get_pred_markers(hlds.pred_table.pred_id_table, hlds.pred_proc_id.pred_id, set.set(hlds.hlds_markers.pred_marker)).
+:- mode get_pred_markers(builtin.in, builtin.in, builtin.out) is det.
+:- pred look_up_pragma_pf_sym_arity(hlds.hlds_module.module_info, hlds.pred_table.is_fully_qualified, hlds.make_hlds.add_pragma_util.lookup_failure_handling, parse_tree.prog_data.prog_context, string, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.sym_name, parse_tree.prog_data.user_arity, parse_tree.maybe_error.maybe1el(hlds.pred_proc_id.pred_id)).
+:- mode look_up_pragma_pf_sym_arity(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred look_up_pragma_pf_sym_arity_mode_num(hlds.hlds_module.module_info, hlds.pred_table.is_fully_qualified, hlds.make_hlds.add_pragma_util.lookup_failure_handling, parse_tree.prog_data.prog_context, string, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.sym_name, parse_tree.prog_data.user_arity, int, parse_tree.maybe_error.maybe4el(hlds.pred_proc_id.pred_id, hlds.pred_proc_id.proc_id, hlds.hlds_pred.pred_info, hlds.hlds_proc.proc_info)).
+:- mode look_up_pragma_pf_sym_arity_mode_num(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred pragma_add_marker(string, hlds.make_hlds.add_pragma_util.pragma_status_class, hlds.status.item_mercury_status, parse_tree.prog_data.prog_context, hlds.make_hlds.add_pragma_util.add_marker_pred_info, list.list(hlds.pred_proc_id.pred_id), hlds.pred_table.pred_id_table, hlds.pred_table.pred_id_table, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.warn_spec), list.list(parse_tree.error_spec.warn_spec)).
+:- mode pragma_add_marker(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in(((hlds.make_hlds).add_pragma_util).add_marker_pred_info), builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred pragma_conflict_error(parse_tree.prog_item_pred_proc_id.pred_pfu_name_arity, parse_tree.prog_data.prog_context, string, set.set(hlds.hlds_markers.pred_marker), list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode pragma_conflict_error(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred transform_selected_mode_of_pred(hlds.pred_proc_id.pred_id, parse_tree.prog_data.pf_sym_name_user_arity, list.list(parse_tree.prog_data.mer_mode), string, parse_tree.prog_data.prog_context, pred(hlds.hlds_proc.proc_info, hlds.hlds_proc.proc_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.err_spec), list.list(parse_tree.error_spec.err_spec)).
+:- mode transform_selected_mode_of_pred(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in((pred(builtin.in, builtin.out) is det)), builtin.in, builtin.out, builtin.in, builtin.out) is det.

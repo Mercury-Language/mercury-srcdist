@@ -1,0 +1,12 @@
+:- module (hlds.make_hlds).unravel_info.
+:- interface.
+:- type unravel_info
+    --->    unravel_info(
+                 ((hlds.make_hlds).unravel_info).ui_module_info :: hlds.hlds_module.module_info,
+                 ((hlds.make_hlds).unravel_info).ui_fgt_threshold :: int,
+                 ((hlds.make_hlds).unravel_info).ui_qual_info :: hlds.make_hlds.qual_info.qual_info,
+                 ((hlds.make_hlds).unravel_info).ui_varset :: parse_tree.prog_data.prog_varset,
+                 ((hlds.make_hlds).unravel_info).ui_state_var_store :: hlds.make_hlds.state_var.svar_store,
+                 ((hlds.make_hlds).unravel_info).ui_err_specs :: list.list(parse_tree.error_spec.err_spec),
+                 ((hlds.make_hlds).unravel_info).ui_warn_specs :: list.list(parse_tree.error_spec.warn_spec)
+            ).

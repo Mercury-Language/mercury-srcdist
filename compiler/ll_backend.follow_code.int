@@ -1,0 +1,8 @@
+:- module ll_backend.follow_code.
+:- interface.
+:- use_module hlds.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_proc.
+:- use_module hlds.pred_proc_id.
+:- pred move_follow_code_in_proc(hlds.pred_proc_id.pred_proc_id, hlds.hlds_proc.proc_info, hlds.hlds_proc.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode move_follow_code_in_proc(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

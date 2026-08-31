@@ -1,0 +1,5 @@
+:- module (termination.term_osi).term_osi_errors.
+:- interface.
+:- type term_error.
+:- type term_error_kind.
+:- type_representation(term_error, is_word_aligned_ptr).

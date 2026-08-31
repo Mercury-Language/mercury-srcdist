@@ -1,0 +1,44 @@
+:- module parse_tree.prog_item_inst_mode.
+:- interface.
+:- type inst_ctor_checked_defn.
+:- type inst_ctor_checked_map.
+:- type item_inst_defn_info.
+:- type item_inst_defn_info_abstract.
+:- type item_inst_defn_info_eqv.
+:- type item_inst_defn_info_general(T).
+:- type item_mode_defn_info.
+:- type item_mode_defn_info_abstract.
+:- type item_mode_defn_info_eqv.
+:- type item_mode_defn_info_general(T).
+:- type maybe_abstract_inst_defn.
+:- type maybe_abstract_mode_defn.
+:- type mode_ctor_checked_defn.
+:- type mode_ctor_checked_map.
+:- type no_inst_defn.
+:- type no_mode_defn.
+:- type src_defns_inst.
+:- type src_defns_mode.
+:- type std_inst_defn.
+:- type std_inst_status
+	where	type_is_abstract_enum(2).
+:- type std_mode_defn.
+:- type std_mode_status
+	where	type_is_abstract_enum(2).
+:- type_representation(inst_ctor_checked_defn, is_word_aligned_ptr).
+:- type_representation(inst_ctor_checked_map, is_eqv_to(map(inst_ctor, parse_tree.prog_item_inst_mode.inst_ctor_checked_defn))).
+:- type_representation(item_inst_defn_info, is_eqv_to(parse_tree.prog_item_inst_mode.item_inst_defn_info_general(parse_tree.prog_item_inst_mode.maybe_abstract_inst_defn))).
+:- type_representation(item_inst_defn_info_abstract, is_eqv_to(parse_tree.prog_item_inst_mode.item_inst_defn_info_general(parse_tree.prog_item_inst_mode.no_inst_defn))).
+:- type_representation(item_inst_defn_info_eqv, is_eqv_to(parse_tree.prog_item_inst_mode.item_inst_defn_info_general(inst_defn))).
+:- type_representation(item_mode_defn_info, is_eqv_to(parse_tree.prog_item_inst_mode.item_mode_defn_info_general(parse_tree.prog_item_inst_mode.maybe_abstract_mode_defn))).
+:- type_representation(item_mode_defn_info_abstract, is_eqv_to(parse_tree.prog_item_inst_mode.item_mode_defn_info_general(parse_tree.prog_item_inst_mode.no_mode_defn))).
+:- type_representation(item_mode_defn_info_eqv, is_eqv_to(parse_tree.prog_item_inst_mode.item_mode_defn_info_general(mode_defn))).
+:- type_representation(mode_ctor_checked_defn, is_word_aligned_ptr).
+:- type_representation(mode_ctor_checked_map, is_eqv_to(map(mode_ctor, parse_tree.prog_item_inst_mode.mode_ctor_checked_defn))).
+:- type_representation(no_inst_defn, du_repn(direct_dummy("no_inst_defn",  no_c_j_cs))).
+:- type_representation(no_mode_defn, du_repn(direct_dummy("no_mode_defn",  no_c_j_cs))).
+:- type_representation(src_defns_inst, is_word_aligned_ptr).
+:- type_representation(src_defns_mode, is_word_aligned_ptr).
+:- type_representation(std_inst_defn, is_word_aligned_ptr).
+:- type_representation(std_inst_status, du_repn(enum("std_inst_exported", "std_inst_abstract_exported", ["std_inst_all_private"],  no_c_j_cs))).
+:- type_representation(std_mode_defn, is_word_aligned_ptr).
+:- type_representation(std_mode_status, du_repn(enum("std_mode_exported", "std_mode_abstract_exported", ["std_mode_all_private"],  no_c_j_cs))).

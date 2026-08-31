@@ -1,0 +1,8 @@
+:- module transform_hlds.parallel_to_plain_conj.
+:- interface.
+:- use_module hlds.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_proc.
+:- use_module hlds.pred_proc_id.
+:- pred parallel_to_plain_conjs(hlds.hlds_module.module_info, hlds.pred_proc_id.pred_proc_id, hlds.hlds_proc.proc_info, hlds.hlds_proc.proc_info).
+:- mode parallel_to_plain_conjs(builtin.in, builtin.in, builtin.in, builtin.out) is det.

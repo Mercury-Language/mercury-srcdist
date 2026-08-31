@@ -1,0 +1,10 @@
+:- module (termination.term_osi).term_osi_util.
+:- interface.
+:- type arg_size_info.
+:- type pass_info.
+:- type termination_info.
+:- type used_args.
+:- type_representation(arg_size_info, is_eqv_to(generic_arg_size_info(list(term_error)))).
+:- type_representation(pass_info, is_word_aligned_ptr).
+:- type_representation(termination_info, is_eqv_to(generic_termination_info(unit, list(term_error)))).
+:- type_representation(used_args, is_eqv_to(map(pred_proc_id, list(bool)))).

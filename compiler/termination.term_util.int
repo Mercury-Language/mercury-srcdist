@@ -1,0 +1,21 @@
+:- module termination.term_util.
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.hlds_proc.
+:- use_module hlds.pred_proc_id.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_foreign.
+:- type maybe_believe_check_termination
+    --->    do_not_believe_check_termination 
+    ;       do_believe_check_termination .
+:- pred all_args_input_or_zero_size(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_proc.proc_info).
+:- mode all_args_input_or_zero_size(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred attributes_imply_termination(parse_tree.prog_data_foreign.foreign_proc_attributes).
+:- mode attributes_imply_termination(builtin.in) is semidet.
+:- pred get_context_from_scc(hlds.hlds_module.module_info, hlds.pred_proc_id.scc, parse_tree.prog_data.prog_context).
+:- mode get_context_from_scc(builtin.in, builtin.in, builtin.out) is det.
+:- pred should_we_believe_check_termination_markers(hlds.hlds_module.module_info, termination.term_util.maybe_believe_check_termination).
+:- mode should_we_believe_check_termination_markers(builtin.in, builtin.out) is det.

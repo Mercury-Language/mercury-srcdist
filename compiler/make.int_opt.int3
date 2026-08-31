@@ -1,0 +1,5 @@
+:- module make.int_opt.
+:- interface.
+:- type build_what
+	where	type_is_abstract_enum(2).
+:- type_representation(build_what, du_repn(enum("build_int3s", "build_int3s_int0s", ["build_all_ints", "build_all_ints_opts"],  no_c_j_cs))).

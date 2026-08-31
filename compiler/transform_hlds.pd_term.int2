@@ -1,0 +1,25 @@
+:- module transform_hlds.pd_term.
+:- interface.
+:- use_module maybe.
+:- use_module pair.
+:- use_module hlds.pred_proc_id.
+:- type global_check_result
+    --->    ok(
+                 transform_hlds.pd_term.proc_pair,
+                 int
+            )
+    ;       possible_loop(
+                 transform_hlds.pd_term.proc_pair,
+                 int,
+                 hlds.pred_proc_id.pred_proc_id
+            )
+    ;       loop .
+:- type global_term_info.
+:- type local_term_info.
+:- type proc_pair == pair.pair(hlds.pred_proc_id.pred_proc_id, maybe.maybe(hlds.pred_proc_id.pred_proc_id)).
+:- implementation.
+:- use_module assoc_list.
+:- use_module map.
+:- type local_term_info == transform_hlds.pd_term.single_covering_goals.
+:- type pd_proc_term_info == assoc_list.assoc_list(int, int).
+:- type single_covering_goals == map.map(hlds.pred_proc_id.pred_proc_id, transform_hlds.pd_term.pd_proc_term_info).

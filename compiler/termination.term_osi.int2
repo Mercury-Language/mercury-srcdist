@@ -1,0 +1,4 @@
+:- module termination.term_osi.
+:- interface.
+:- include_module (termination.term_osi).term_osi_main.
+:- include_module (termination.term_osi).term_osi_util.

@@ -1,0 +1,53 @@
+:- module hlds.proc_table_struct.
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module hlds.hlds_rtti.
+:- use_module hlds.proc_info_types.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_pragma.
+:- type proc_table_struct_info
+    --->    proc_table_struct_info(
+                 (hlds.proc_table_struct).ptsi_proc_label :: hlds.hlds_rtti.rtti_proc_label,
+                 (hlds.proc_table_struct).ptsi_tvarset :: parse_tree.prog_data.tvarset,
+                 (hlds.proc_table_struct).ptsi_context :: parse_tree.prog_data.prog_context,
+                 (hlds.proc_table_struct).ptsi_num_inputs :: int,
+                 (hlds.proc_table_struct).ptsi_num_outputs :: int,
+                 (hlds.proc_table_struct).ptsi_input_steps :: list.list(hlds.proc_table_struct.table_step_desc),
+                 (hlds.proc_table_struct).ptsi_maybe_output_steps :: maybe.maybe(list.list(hlds.proc_table_struct.table_step_desc)),
+                 (hlds.proc_table_struct).ptsi_gen_arg_infos :: hlds.proc_info_types.table_arg_infos,
+                 (hlds.proc_table_struct).ptsi_eval_method :: parse_tree.prog_data_pragma.tabled_eval_method
+            ).
+:- type table_is_poly
+    --->    table_is_mono 
+    ;       table_is_poly .
+:- type table_step_desc
+    --->    table_step_desc(
+                 (hlds.proc_table_struct).tsd_var_name :: string,
+                 (hlds.proc_table_struct).tsd_step :: hlds.proc_table_struct.table_trie_step
+            ).
+:- type table_trie_step
+    --->    table_trie_step_dummy 
+    ;       table_trie_step_int(
+                 parse_tree.prog_data.int_type
+            )
+    ;       table_trie_step_char 
+    ;       table_trie_step_string 
+    ;       table_trie_step_float 
+    ;       table_trie_step_enum(
+                 int
+            )
+    ;       table_trie_step_foreign_enum 
+    ;       table_trie_step_general(
+                 parse_tree.prog_data.mer_type,
+                 hlds.proc_table_struct.table_is_poly,
+                 hlds.proc_table_struct.table_value_or_addr
+            )
+    ;       table_trie_step_typeinfo 
+    ;       table_trie_step_typeclassinfo 
+    ;       table_trie_step_promise_implied .
+:- type table_value_or_addr
+    --->    table_value 
+    ;       table_addr .
+:- func table_step_stats_kind(hlds.proc_table_struct.table_trie_step) = string.

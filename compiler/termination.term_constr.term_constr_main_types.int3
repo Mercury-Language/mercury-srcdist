@@ -1,0 +1,14 @@
+:- module (termination.term_constr).term_constr_main_types.
+:- interface.
+:- type constr_arg_size_info.
+:- type constr_termination_info.
+:- type intermod_status
+	where	type_is_abstract_enum(1).
+:- type term_reason
+	where	type_is_abstract_enum(3).
+:- type termination2_info.
+:- type_representation(constr_arg_size_info, is_eqv_to(polyhedron)).
+:- type_representation(constr_termination_info, is_eqv_to(generic_termination_info(termination.term_constr.term_constr_main_types.term_reason, list(term2_error)))).
+:- type_representation(intermod_status, du_repn(enum("not_mutually_recursive", "may_be_mutually_recursive", [],  no_c_j_cs))).
+:- type_representation(term_reason, du_repn(enum("term_reason_builtin", "term_reason_pragma_supplied", ["term_reason_foreign_supplied", "term_reason_import_supplied", "term_reason_analysis"],  no_c_j_cs))).
+:- type_representation(termination2_info, is_word_aligned_ptr).

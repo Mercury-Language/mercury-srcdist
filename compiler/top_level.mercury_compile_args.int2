@@ -1,0 +1,11 @@
+:- module top_level.mercury_compile_args.
+:- interface.
+:- type arg_processing_result
+    --->    apr_failure(
+                 libs.options.option_table,
+                 one_or_more.one_or_more(parse_tree.error_spec.diag_spec)
+            )
+    ;       apr_success(
+                 (top_level.mercury_compile_args).aprs_globals :: libs.globals.globals,
+                 (top_level.mercury_compile_args).aprs_arg_pack :: make.options_file.compiler_arg_pack
+            ).

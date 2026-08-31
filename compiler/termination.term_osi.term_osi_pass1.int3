@@ -1,0 +1,3 @@
+:- module (termination.term_osi).term_osi_pass1.
+:- interface.
+:- type arg_size_result.
