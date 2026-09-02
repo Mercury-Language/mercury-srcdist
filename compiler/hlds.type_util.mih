@@ -1,0 +1,336 @@
+/*
+** Automatically generated from `type_util.m'
+** by the Mercury compiler,
+** version rotd-2026-09-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.type_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__type_util
+#define MR_HEADER_GUARD_hlds__type_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__TYPE_UTIL_DECL_GUARD
+#define HLDS__TYPE_UTIL_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__type_util__hlds__type_util__type_ctor_info_ctor_defn_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__type_util__hlds__type_util__type_ctor_info_exist_qvar_action_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__type_util__hlds__type_util__type_ctor_info_is_either_dummy_type_0;
+
+void MR_CALL 
+hlds__type_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_115_117_112_101_114_116_121_112_101_95_111_102_95_115_117_98_116_121_112_101_95_95_91_50_93_95_48_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__type_util__all_du_ctor_arg_types_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__type_util__cons_id_is_existq_cons_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__type_util__get_base_type_ctor_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__type_util__get_cons_defn_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__type_util__get_cons_defn_det_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__type_util__get_cons_id_arg_types_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+hlds__type_util__get_cons_id_non_existential_arg_types_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__type_util__get_cons_id_repn_defn_det_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__type_util__get_cons_repn_defn_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__type_util__get_cons_repn_defn_det_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__type_util__get_du_ctor_arg_types_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+hlds__type_util__get_du_ctor_non_existential_arg_types_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+hlds__type_util__get_existq_cons_defn_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+hlds__type_util__get_supertype_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__type_util__get_supertype_of_subtype_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+hlds__type_util__is_region_var_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__type_util__switch_type_num_functors_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+hlds__type_util__type_body_has_user_defined_equality_pred_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__type_util__type_body_is_solver_type_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__type_util__type_constructors_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__type_util__type_ctor_has_hand_defined_rtti_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+hlds__type_util__type_ctor_module_name_arity_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_String * param_3,
+  MR_Integer * param_4);
+
+MR_bool MR_CALL 
+hlds__type_util__type_has_user_defined_equality_pred_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__type_util__type_is_existq_type_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__type_util__type_is_no_tag_type_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__type_util__type_is_no_tag_type_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+hlds__type_util__type_is_or_may_contain_solver_type_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__type_util__type_is_solver_type_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__type_util__type_not_stored_in_region_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__type_util__type_to_type_defn_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__type_util__type_to_type_defn_body_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__type_util__var_is_or_may_contain_solver_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Integer MR_CALL 
+hlds__type_util__du_ctor_adjusted_arity_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__type_util__is_either_type_a_dummy_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__type_util__is_type_a_dummy_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+hlds__type_util__put_typeinfo_vars_first_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+hlds__type_util__remove_typeinfo_vars_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+hlds__type_util__remove_typeinfo_vars_from_set_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+hlds__type_util__remove_typeinfo_vars_from_set_of_var_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+hlds__type_util__type_ctor_arity_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__type_util__type_ctor_module_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+hlds__type_util__type_ctor_name_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__type_util____Compare____ctor_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__type_util____Compare____is_either_dummy_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__type_util____Unify____ctor_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__type_util____Unify____is_either_dummy_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__type_util__init(void);
+void mercury__hlds__type_util__init_type_tables(void);
+void mercury__hlds__type_util__init_debugger(void);
+const char *mercury__hlds__type_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.type_util
+
+// :- end_interface hlds.type_util.

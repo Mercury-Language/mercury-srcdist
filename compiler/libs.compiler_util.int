@@ -1,0 +1,19 @@
+:- module libs.compiler_util.
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module libs.options.
+:- use_module parse_tree.error_spec.
+:- type warning_or_error
+    --->    we_warning 
+    ;       we_error .
+:- pred add_error(parse_tree.error_spec.spec_phase, list.list(parse_tree.error_spec.format_piece), list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode add_error(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred add_warning(parse_tree.error_spec.spec_phase, libs.options.option, list.list(parse_tree.error_spec.format_piece), list.list(parse_tree.error_spec.diag_spec), list.list(parse_tree.error_spec.diag_spec)).
+:- mode add_warning(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred maybe_is_error(maybe.maybe_error, string).
+:- mode maybe_is_error(builtin.in, builtin.out) is semidet.
+:- pred warning_or_error_string(libs.compiler_util.warning_or_error, string).
+:- mode warning_or_error_string(builtin.in, builtin.out) is det.
+:- mode warning_or_error_string(builtin.out, builtin.in) is semidet.

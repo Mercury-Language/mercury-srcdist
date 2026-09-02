@@ -1,0 +1,669 @@
+%---------------------------------------------------------------------------%
+% vim: ft=mercury ts=4 sw=4 et
+%---------------------------------------------------------------------------%
+% Copyright (C) 2015-2016, 2019, 2021-2026 The Mercury team.
+% This file may only be copied under the terms of the GNU General
+% Public License - see the file COPYING in the Mercury distribution.
+%---------------------------------------------------------------------------%
+%
+% This module defines the data structures we use to record
+% what entities are available from which modules and with what permissions.
+%
+
+:- module parse_tree.module_qual.id_set.
+:- interface.
+
+:- import_module mdbcomp.
+:- import_module mdbcomp.sym_name.
+:- import_module parse_tree.module_qual.mq_info.
+:- import_module parse_tree.module_qual.qual_errors.
+
+:- import_module list.
+
+%---------------------------------------------------------------------------%
+
+    % We keep track of these kinds of entities.
+:- type qual_id_kind
+    --->    qual_id_type
+    ;       qual_id_inst
+    ;       qual_id_mode
+    ;       qual_id_class.
+
+    % This identifies an entity among other entities of the same kind.
+:- type mq_id
+    --->    mq_id(sym_name, int).
+
+%---------------------------------------------------------------------------%
+%
+% We record two kinds of permissions for each entity:
+%
+% - whether it may be used in the interface, and
+% - whether it may be used without full module qualification.
+%
+% An entity may be used in the interface if it is defined in the current
+% module or one of its ancestors, or if it is defined in a module that is
+% imported (or used) in the interface.
+%
+% An entity may be used without full module qualification if it is defined
+% in the current module, in one of its ancestors, or in a module that is
+% the subject of an explicit `import_module' declaration in the current module.
+% It may not be used without full qualification if it is made available by
+% a `use_module' declaration, or if it is defined in a `.opt' and `.trans_opt'
+% file.
+%
+% The two are not independent: an entity may be usable in the interface
+% only if fully qualified (if it is defined in a module that has a
+% `use_module' declaration for it in the interface), while it may be
+% usable in the implementation even if not fully qualified (if that defining
+% module has an `import_module' declaration in the implementation.)
+%
+% Invariants:
+% - perm_in_int_qual must be at least as permissive as perm_in_int_unqual.
+% - perm_in_imp_qual must be at least as permissive as perm_in_imp_unqual.
+% - perm_in_imp_qual must be at least as permissive as perm_in_int_qual.
+% - perm_in_imp_unqual must be at least as permissive as perm_in_int_unqual.
+% - At least one of perm_in_{int,imp}_{qual,unqual} must permit something,
+%   otherwise there should be no module_permissions for the entity
+%   in question.
+
+:- type module_permissions
+    --->    module_permissions(
+                mp_in_int               :: perm_in_int,
+                mp_in_imp               :: perm_in_imp
+            ).
+
+:- type perm_in_int
+    --->    perm_in_int_qual_unqual(
+                perm_in_int_qual    :: permitted_or_not,
+                perm_in_int_unqual  :: permitted_or_not
+            ).
+
+:- type perm_in_imp
+    --->    perm_in_imp_qual_unqual(
+                perm_in_imp_qual    :: permitted_or_not,
+                perm_in_imp_unqual  :: permitted_or_not
+            ).
+
+:- type permitted_or_not
+    --->    not_permitted
+    ;       permitted
+    ;       permitted_with_warning
+            % Permitted under deprecated visibility rule, where the interface
+            % section of a submodule inherits visibility from imports made in
+            % the implementation section of an ancestor module.
+    ;       permitted_with_warning_shadowed.
+            % Permitted under the deprecated visibility rule above, but also
+            % depends on an ancestor import declaration that would be shadowed
+            % by an import declaration in the current module.
+
+    % When we process types, typeclasses, insts or modes, we need to know
+    % whether they occur in the interface of the current module. This is
+    % so that if we see e.g. m1.t1 in the interface, we can mark module m1
+    % as being used in the interface, so we can avoid generating a warning
+    % about m1 being unused in the interface.
+    %
+:- type mq_in_interface
+    --->    mq_not_used_in_interface
+    ;       mq_used_in_interface.
+
+%---------------------------------------------------------------------------%
+%
+% An id_set represents the set of entities of a particular kind
+% whose definitions we have seen so far, and which are therefore available
+% to resolve any ambiguities in unqualified references.
+%
+% Modules don't have an arity, but for simplicity we use the same
+% data structure for modules as for types etc, assigning arity zero
+% to all module names.
+%
+
+:- type id_set.
+
+:- type type_id_set == id_set.
+:- type inst_id_set == id_set.
+:- type mode_id_set == id_set.
+:- type class_id_set == id_set.
+:- type module_id_set == id_set.
+
+%---------------------------------------------------------------------------%
+%
+% The operations on id_sets.
+%
+
+:- pred id_set_init(id_set::out) is det.
+
+    % Insert an mq_id into an id_set, aborting with an error if the
+    % mq_id is not module qualified.
+    %
+:- pred id_set_insert(module_permissions::in, mq_id::in,
+    id_set::in, id_set::out) is det.
+
+:- pred get_names_in_id_set(id_set::in, list(string)::out) is det.
+
+    % find_unique_match(InInt, ErrorContext, IdSet, IdType, Id0, SymName,
+    %   !Info):
+    %
+    % Find the unique match in the current name space for a given mq_id
+    % from a list of ids. If none exists, either because no match was found
+    % or multiple matches were found, generate an error report, and
+    % put this report into the appropriate fiels of !:Info.
+    %
+    % This predicate assumes that type_ids, inst_ids, mode_ids and
+    % class_ids have the same representation.
+    %
+:- pred find_unique_match(mq_in_interface::in, mq_error_context::in,
+    id_set::in, qual_id_kind::in, mq_id::in, sym_name::out,
+    mq_info::in, mq_info::out) is det.
+
+%---------------------------------------------------------------------------%
+
+    % Check whether the parent module was imported, given the name of a
+    % child (or grandchild, etc.) module occurring in that parent module.
+    %
+:- pred parent_module_is_imported(mq_in_interface::in, module_id_set::in,
+    module_name::in, module_name::in) is semidet.
+
+%---------------------------------------------------------------------------%
+%---------------------------------------------------------------------------%
+
+:- implementation.
+
+:- import_module parse_tree.error_spec.
+:- import_module parse_tree.prog_data.
+:- import_module recompilation.
+:- import_module recompilation.item_types.
+:- import_module recompilation.record_uses.
+
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module map.
+:- import_module maybe.
+:- import_module one_or_more_map.
+:- import_module pair.
+:- import_module require.
+:- import_module set.
+
+%---------------------------------------------------------------------------%
+
+% We want efficient retrieval of all the modules which define an id
+% with a certain name and arity, and we want support for the generation
+% of useful diagnostics for slightly-wrong references. We therefore implement
+% each id_set as a three stage map from
+%
+% - first the base name of an entity,
+% - and then its arity,
+% - and then its module name,
+%
+% to the permissions for the sym_name_arity we can construct for these.
+%
+% Having these three stages is good for performance. The first stage
+% does simple, fast comparisons but nevertheless drastically reduces
+% the size of the remaining search space. The second and third stages are
+% usually done in very small trees, which means that having to do comparisons
+% on the relatively complex structure of module names (when compared to
+% strings and ints) does not slow us down.
+%
+% The three stages also help with the construction of the useful diagnostics.
+%
+% Going through just the first two stages allows us to see which modules
+% define an entity with the given base name and arity. This allows us
+% diagnostics to point out e.g. matches for a name/arity pair that this
+% module knows about (usually due to reading them in from .int2 files)
+% that are not visible to the module being compiled due to missing imports.
+%
+% Going through just the first stage allows us to see which arities
+% have definitions for the given base name. This allows diagnostics to
+% point out e.g. how many arguments too few or too many a call has.
+%
+% Going through none of the stages allow us to see which names exist
+% for this kind of entity. This allows us to print "did you mean" messages
+% that list similar names that the programmer may have meant to use.
+
+:- type id_set == map(string, map(arity, permissions_map)).
+:- type permissions_map == map(module_name, module_permissions).
+
+%---------------------------------------------------------------------------%
+
+id_set_init(IdSet) :-
+    map.init(IdSet).
+
+%---------------------------------------------------------------------------%
+
+id_set_insert(Permissions, MQId, !IdSet) :-
+    MQId = mq_id(SymName, Arity),
+    (
+        SymName = unqualified(_),
+        unexpected($pred, "unqualified id")
+    ;
+        SymName = qualified(ModuleName, BaseName),
+        % Most of the time, BaseName does not occur in !.IdSet.
+        % We therefore try the insertion first, and only if it fails
+        % do we update the existing entry that caused that failure.
+        FreshPermissionsMap = map.singleton(ModuleName, Permissions),
+        FreshSubMap = map.singleton(Arity, FreshPermissionsMap),
+        ( if map.insert(BaseName, FreshSubMap, !IdSet) then
+            true
+        else
+            map.lookup(!.IdSet, BaseName, SubMap0),
+            ( if map.search(SubMap0, Arity, PermissionsMap0) then
+                insert_into_permissions_map(Permissions, ModuleName,
+                    PermissionsMap0, PermissionsMap),
+                map.det_update(Arity, PermissionsMap, SubMap0, SubMap),
+                map.det_update(BaseName, SubMap, !IdSet)
+            else
+                map.det_insert(Arity, FreshPermissionsMap, SubMap0, SubMap),
+                map.det_update(BaseName, SubMap, !IdSet)
+            )
+        )
+    ).
+
+:- pred insert_into_permissions_map(module_permissions::in, module_name::in,
+    permissions_map::in, permissions_map::out) is det.
+
+insert_into_permissions_map(NewPermissions, ModuleName, !PermissionsMap) :-
+    ( if map.search(!.PermissionsMap, ModuleName, OldPermissions) then
+        % Grant the permissions granted by either OldPermissions or
+        % NewPermissions.
+        OldPermissions = module_permissions(OldPermInt, OldPermImp),
+        NewPermissions = module_permissions(NewPermInt, NewPermImp),
+        OldPermInt = perm_in_int_qual_unqual(OldIntQual, OldIntUnqual),
+        NewPermInt = perm_in_int_qual_unqual(NewIntQual, NewIntUnqual),
+        OldPermImp = perm_in_imp_qual_unqual(OldImpQual, OldImpUnqual),
+        NewPermImp = perm_in_imp_qual_unqual(NewImpQual, NewImpUnqual),
+        PermInt = perm_in_int_qual_unqual(
+            update_permission(OldIntQual, NewIntQual),
+            update_permission(OldIntUnqual, NewIntUnqual)
+        ),
+        PermImp = perm_in_imp_qual_unqual(
+            update_permission(OldImpQual, NewImpQual),
+            update_permission(OldImpUnqual, NewImpUnqual)
+        ),
+
+        % Update the entry only if it changed.
+        ( if
+            PermInt = OldPermInt,
+            PermImp = OldPermImp
+        then
+            true
+        else
+            Permissions = module_permissions(PermInt, PermImp),
+            map.det_update(ModuleName, Permissions, !PermissionsMap)
+        )
+    else
+        map.det_insert(ModuleName, NewPermissions, !PermissionsMap)
+    ).
+
+:- func update_permission(permitted_or_not, permitted_or_not) =
+    permitted_or_not.
+
+update_permission(OldPermission, NewPermission) = Result :-
+    (
+        OldPermission = not_permitted,
+        Result = NewPermission
+    ;
+        OldPermission = permitted,
+        Result = permitted
+    ;
+        ( OldPermission = permitted_with_warning
+        ; OldPermission = permitted_with_warning_shadowed
+        ),
+        % permitted_with_warning and permitted_with_warning_shadowed will be
+        % used during a transition period. We do not expect to reach this
+        % point because we add the permissions that include warnings after
+        % the ones that do not include them.
+        Result = OldPermission
+    ).
+
+%---------------------------------------------------------------------------%
+
+get_names_in_id_set(IdSet, Names) :-
+    map.sorted_keys(IdSet, Names).
+
+%---------------------------------------------------------------------------%
+
+find_unique_match(InInt, ErrorContext, IdSet, IdType, Id0, SymName, !Info) :-
+    % Find all IDs which match the current id.
+    Id0 = mq_id(SymName0, Arity),
+    BaseName = unqualify_name(SymName0),
+    id_set_search_sym_arity(InInt, IdSet, SymName0, BaseName, Arity,
+        Matches, IntMismatches, QualMismatches),
+    (
+        Matches = [],
+        % No matches for this id.
+        MaybeUniqMatchType = no,
+        mq_info_get_should_report_errors(!.Info, ReportErrors),
+        (
+            ReportErrors = should_report_errors,
+            mq_info_get_this_module(!.Info, ThisModuleName),
+            id_set_search_sym(IdSet, SymName0, PossibleArities),
+            report_undefined_mq_id(!.Info, ErrorContext, Id0, IdType,
+                ThisModuleName, IntMismatches, QualMismatches,
+                PossibleArities, Spec),
+            mq_info_record_undef_mq_id(IdType, Id0, Spec, !Info),
+
+            % If a module defines an entity that this module refers to,
+            % even without the required module qualification, then reporting
+            % that module as being unused would be wrong.
+            %
+            % This is so even if the correct definition of Id0 could have
+            % come from any one of several modules.
+            list.foldl(mq_info_set_module_used(InInt), QualMismatches, !Info)
+        ;
+            ReportErrors = should_not_report_errors
+        )
+    ;
+        Matches = [ModuleMatchType],
+        % A unique match for this ID.
+        MaybeUniqMatchType = yes(ModuleMatchType)
+    ;
+        Matches = [_, _ | _],
+        MaybeUniqMatchType = no,
+        mq_info_get_should_report_errors(!.Info, ReportErrors),
+        (
+            ReportErrors = should_report_errors,
+            UsableModuleNames = list.map(matched_module_name, Matches),
+            NonUsableModuleNames = IntMismatches ++ QualMismatches,
+            report_ambiguous_match(ErrorContext, Id0, IdType,
+                UsableModuleNames, NonUsableModuleNames, Spec),
+            mq_info_record_undef_mq_id(IdType, Id0, Spec, !Info)
+        ;
+            ReportErrors = should_not_report_errors
+        )
+    ),
+    (
+        MaybeUniqMatchType = no,
+        % Returning any SymName is fine, since it won't be used.
+        Id0 = mq_id(SymName, _)
+    ;
+        MaybeUniqMatchType = yes(UniqMatchType),
+        (
+            UniqMatchType = match(UniqModuleName)
+        ;
+            UniqMatchType = match_with_warning(UniqModuleName, WarnType),
+            report_old_submodule_visibility_match(ErrorContext, Id0, IdType,
+                UniqModuleName, WarnType, WarnSpec),
+            mq_info_record_warning(WarnSpec, !Info)
+        ),
+        SymName = qualified(UniqModuleName, BaseName),
+        mq_info_set_module_used(InInt, UniqModuleName, !Info),
+        UsedItemType = convert_used_item_type(IdType),
+        ItemName0 = recomp_item_name(SymName0, Arity),
+        ItemName = recomp_item_name(SymName, Arity),
+        update_recompilation_info(
+            record_used_item(UsedItemType, ItemName0, ItemName), !Info)
+    ).
+
+:- pred mq_info_record_undef_mq_id(qual_id_kind::in, mq_id::in, err_spec::in,
+    mq_info::in, mq_info::out) is det.
+
+mq_info_record_undef_mq_id(IdType, Id, Spec, !Info) :-
+    mq_info_get_is_undef_blocking(!.Info, MaybeBlocking),
+    (
+        MaybeBlocking = undef_is_not_blocking,
+        mq_info_get_nonblocking_undef_specs(!.Info, Specs0),
+        Specs = [Spec | Specs0],
+        mq_info_set_nonblocking_undef_specs(Specs, !Info)
+    ;
+        MaybeBlocking = undef_is_blocking,
+        Id = mq_id(SymName, Arity),
+        (
+            IdType = qual_id_type,
+            TypeCtor = type_ctor(SymName, Arity),
+            mq_info_get_undef_types(!.Info, UndefTypes0),
+            one_or_more_map.add(TypeCtor, Spec, UndefTypes0, UndefTypes),
+            mq_info_set_undef_types(UndefTypes, !Info)
+        ;
+            IdType = qual_id_inst,
+            InstCtor = inst_ctor(SymName, Arity),
+            mq_info_get_undef_insts(!.Info, UndefInsts0),
+            one_or_more_map.add(InstCtor, Spec, UndefInsts0, UndefInsts),
+            mq_info_set_undef_insts(UndefInsts, !Info)
+        ;
+            IdType = qual_id_mode,
+            ModeCtor = mode_ctor(SymName, Arity),
+            mq_info_get_undef_modes(!.Info, UndefModes0),
+            one_or_more_map.add(ModeCtor, Spec, UndefModes0, UndefModes),
+            mq_info_set_undef_modes(UndefModes, !Info)
+        ;
+            IdType = qual_id_class,
+            SNA = sym_name_arity(SymName, Arity),
+            mq_info_get_undef_typeclasses(!.Info, UndefTypeclasses0),
+            one_or_more_map.add(SNA, Spec,
+                UndefTypeclasses0, UndefTypeclasses),
+            mq_info_set_undef_typeclasses(UndefTypeclasses, !Info)
+        )
+    ).
+
+:- pred mq_info_record_warning(warn_spec::in, mq_info::in, mq_info::out)
+    is det.
+
+mq_info_record_warning(Spec, !Info) :-
+    mq_info_get_warn_specs(!.Info, Specs0),
+    Specs = [Spec | Specs0],
+    mq_info_set_warn_specs(Specs, !Info).
+
+:- func convert_used_item_type(qual_id_kind) = used_item_type.
+
+convert_used_item_type(qual_id_type) = used_type_name.
+convert_used_item_type(qual_id_inst) = used_inst.
+convert_used_item_type(qual_id_mode) = used_mode.
+convert_used_item_type(qual_id_class) = used_typeclass.
+
+%---------------------------------------------------------------------------%
+
+:- type module_match_type
+    --->    match(module_name)
+    ;       match_with_warning(
+                module_name,
+                old_submodule_visibility_rule_warning
+            ).
+
+:- func matched_module_name(module_match_type) = module_name.
+
+matched_module_name(match(ModuleName)) = ModuleName.
+matched_module_name(match_with_warning(ModuleName, _WarnType)) = ModuleName.
+
+:- pred id_set_search_sym_arity(mq_in_interface::in, id_set::in,
+    sym_name::in, string::in, int::in, list(module_match_type)::out,
+    list(module_name)::out, list(module_name)::out) is det.
+
+id_set_search_sym_arity(InInt, IdSet, SymName, UnqualName, Arity,
+        Matches, IntMismatches, QualMismatches) :-
+    ( if
+        map.search(IdSet, UnqualName, SubMap),
+        map.search(SubMap, Arity, PermissionsMap)
+    then
+        find_matches_in_permissions_map(InInt, SymName, PermissionsMap,
+            Matches, IntMismatches, QualMismatches)
+    else
+        Matches = [],
+        IntMismatches = [],
+        QualMismatches = []
+    ).
+
+:- pred find_matches_in_permissions_map(mq_in_interface::in, sym_name::in,
+    permissions_map::in, list(module_match_type)::out,
+    list(module_name)::out, list(module_name)::out) is det.
+
+find_matches_in_permissions_map(InInt, SymName, PermissionsMap,
+        Matches, IntMismatches, QualMismatches) :-
+    map.foldr3(add_matching_and_nearmiss_modules(InInt, SymName),
+        PermissionsMap, [], Matches, [], IntMismatches, [], QualMismatches).
+
+:- pred add_matching_and_nearmiss_modules(mq_in_interface::in, sym_name::in,
+    module_name::in, module_permissions::in,
+    list(module_match_type)::in, list(module_match_type)::out,
+    list(module_name)::in, list(module_name)::out,
+    list(module_name)::in, list(module_name)::out) is det.
+
+add_matching_and_nearmiss_modules(InInt, SymName, ModuleName, Permissions,
+        !Matches, !IntMismatches, !QualMismatches) :-
+    (
+        SymName = unqualified(_),
+        FullyModuleQualified = no,
+        add_matching_and_nearmiss_modules_int(InInt, FullyModuleQualified,
+            ModuleName, Permissions,
+            !Matches, !IntMismatches, !QualMismatches)
+    ;
+        SymName = qualified(QualModuleName, _),
+        ( if
+            partial_sym_name_matches_full(QualModuleName, ModuleName)
+        then
+            ( if QualModuleName = ModuleName then
+                FullyModuleQualified = yes
+            else
+                FullyModuleQualified = no
+            ),
+            add_matching_and_nearmiss_modules_int(InInt, FullyModuleQualified,
+                ModuleName, Permissions,
+                !Matches, !IntMismatches, !QualMismatches)
+        else if
+            ModuleNameComponents = sym_name_to_list(ModuleName),
+            QualModuleNameComponents = sym_name_to_list(QualModuleName),
+            list.sublist(QualModuleNameComponents, ModuleNameComponents)
+        then
+            % The missing module name components are not all at the start.
+            % XXX *Should* this be a problem?
+            !:QualMismatches = [ModuleName | !.QualMismatches]
+        else
+            true
+        )
+    ).
+
+:- pred add_matching_and_nearmiss_modules_int(mq_in_interface::in, bool::in,
+    module_name::in, module_permissions::in,
+    list(module_match_type)::in, list(module_match_type)::out,
+    list(module_name)::in, list(module_name)::out,
+    list(module_name)::in, list(module_name)::out) is det.
+
+add_matching_and_nearmiss_modules_int(InInt, FullyModuleQualified,
+        ModuleName, Permissions, !Matches, !IntMismatches, !QualMismatches) :-
+    Permissions = module_permissions(PermInInt, PermInImp),
+    (
+        InInt = mq_used_in_interface,
+        PermInInt = perm_in_int_qual_unqual(PermQual, PermUnqual)
+    ;
+        InInt = mq_not_used_in_interface,
+        PermInImp = perm_in_imp_qual_unqual(PermQual, PermUnqual)
+    ),
+    (
+        FullyModuleQualified = yes,
+        Permission = PermQual,
+        % PermQual is at least as permissive as PermUnqual. If PermQual does
+        % not allow the name, then adding more qualifiers will not help -
+        % the name is already fully module qualified.
+        OtherQualPermission = not_permitted
+    ;
+        FullyModuleQualified = no,
+        Permission = PermUnqual,
+        OtherQualPermission = PermQual
+    ),
+    (
+        Permission = permitted,
+        !:Matches = [match(ModuleName) | !.Matches]
+    ;
+        (
+            Permission = permitted_with_warning,
+            WarnType = no_warn_shadowed_ancestor_import
+        ;
+            Permission = permitted_with_warning_shadowed,
+            WarnType = also_warn_shadowed_ancestor_import
+        ),
+        !:Matches = [match_with_warning(ModuleName, WarnType) | !.Matches]
+    ;
+        Permission = not_permitted,
+        (
+            OtherQualPermission = not_permitted,
+            !:IntMismatches = [ModuleName | !.IntMismatches]
+        ;
+            ( OtherQualPermission = permitted
+            ; OtherQualPermission = permitted_with_warning
+            ; OtherQualPermission = permitted_with_warning_shadowed
+            ),
+            !:QualMismatches = [ModuleName | !.QualMismatches]
+        )
+    ).
+
+%---------------------------------------------------------------------------%
+
+:- pred id_set_search_sym(id_set::in, sym_name::in, set(int)::out) is det.
+
+id_set_search_sym(IdSet, SymName, PossibleArities) :-
+    UnqualName = unqualify_name(SymName),
+    ( if
+        map.search(IdSet, UnqualName, SubMap)
+    then
+        map.to_assoc_list(SubMap, SubMapPairs),
+        find_matching_arities(SymName, SubMapPairs, set.init, PossibleArities)
+    else
+        set.init(PossibleArities)
+    ).
+
+:- pred find_matching_arities(sym_name::in,
+    assoc_list(int, permissions_map)::in, set(int)::in, set(int)::out) is det.
+
+find_matching_arities(_SymName, [], !PossibleArities).
+find_matching_arities(SymName, [Pair | Pairs], !PossibleArities) :-
+    Pair = Arity - PermissionsMap,
+    find_matches_in_permissions_map(mq_not_used_in_interface, SymName,
+        PermissionsMap, Matches, IntMismatches, QualMismatches),
+    ( if
+        ( Matches = [_ | _]
+        ; IntMismatches = [_ | _]
+        ; QualMismatches = [_ | _]
+        )
+    then
+        set.insert(Arity, !PossibleArities)
+    else
+        true
+    ),
+    find_matching_arities(SymName, Pairs, !PossibleArities).
+
+%---------------------------------------------------------------------------%
+%---------------------------------------------------------------------------%
+
+parent_module_is_imported(InInt, ModuleIdSet, ParentModule, ChildModule) :-
+    % Find the module name at the start of the ChildModule;
+    % this submodule will be a direct sub-module of ParentModule.
+    DirectSubModuleName = get_first_module_name(ChildModule),
+
+    % Check that the ParentModule was imported.
+    % We do this by looking up the definitions for the direct sub-module
+    % and checking that the one in ParentModule came from an
+    % imported module.
+    Arity = 0,
+    map.search(ModuleIdSet, DirectSubModuleName, SubMap),
+    map.search(SubMap, Arity, PermissionsMap),
+    map.search(PermissionsMap, ParentModule, ParentModulePermissions),
+    ParentModulePermissions = module_permissions(PermInInt, PermInImp),
+    (
+        InInt = mq_used_in_interface,
+        PermInInt = perm_in_int_qual_unqual(_PermQual, PermUnqual)
+    ;
+        InInt = mq_not_used_in_interface,
+        PermInImp = perm_in_imp_qual_unqual(_PermQual, PermUnqual)
+    ),
+    require_complete_switch [PermUnqual]
+    (
+        ( PermUnqual = permitted
+        ; PermUnqual = permitted_with_warning
+        ; PermUnqual = permitted_with_warning_shadowed
+        )
+    ;
+        PermUnqual = not_permitted,
+        fail
+    ).
+
+    % Given a module name, possibly module-qualified, return the name
+    % of the first module in the qualifier list. For example, given
+    % `foo.bar.baz', this returns `foo', and given just `baz',
+    % it returns `baz'.
+    %
+:- func get_first_module_name(module_name) = string.
+
+get_first_module_name(unqualified(ModuleName)) = ModuleName.
+get_first_module_name(qualified(Parent, _)) = get_first_module_name(Parent).
+
+%---------------------------------------------------------------------------%
+:- end_module parse_tree.module_qual.id_set.
+%---------------------------------------------------------------------------%

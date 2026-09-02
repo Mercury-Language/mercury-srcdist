@@ -1,0 +1,8 @@
+:- module check_hlds.polymorphism_post_copy.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module hlds.hlds_module.
+:- use_module hlds.pred_proc_id.
+:- pred post_copy_polymorphism(list.list(hlds.pred_proc_id.pred_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode post_copy_polymorphism(builtin.in, builtin.in, builtin.out) is det.

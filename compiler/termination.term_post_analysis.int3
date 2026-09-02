@@ -1,0 +1,2 @@
+:- module termination.term_post_analysis.
+:- interface.

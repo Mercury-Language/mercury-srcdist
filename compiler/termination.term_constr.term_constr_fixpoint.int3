@@ -1,0 +1,4 @@
+:- module (termination.term_constr).term_constr_fixpoint.
+:- interface.
+:- type fixpoint_options.
+:- type_representation(fixpoint_options, is_word_aligned_ptr).

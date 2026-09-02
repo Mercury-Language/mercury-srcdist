@@ -1,0 +1,85 @@
+:- module check_hlds.mode_constraint_robdd.
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module mode_robdd.
+:- use_module parse_tree.
+:- use_module robdd.
+:- use_module set.
+:- use_module stack.
+:- use_module term.
+:- use_module hlds.pred_proc_id.
+:- use_module mdbcomp.goal_path.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.set_of_var.
+:- type lambda_path == stack.stack(mdbcomp.goal_path.goal_id).
+:- type mc_type.
+:- type mode_constraint == mode_robdd.mode_robdd(check_hlds.mode_constraint_robdd.mc_type).
+:- type mode_constraint_info.
+:- type mode_constraint_var == term.var(check_hlds.mode_constraint_robdd.mc_type).
+:- type mode_constraint_vars == robdd.vars(check_hlds.mode_constraint_robdd.mc_type).
+:- type prodvars_map == map.map(check_hlds.mode_constraint_robdd.lambda_path, parse_tree.set_of_var.set_of_progvar).
+:- type prog_var_and_level.
+:- type rep_var
+    --->    in(
+                 parse_tree.prog_data.prog_var
+            )
+    ;       out(
+                 parse_tree.prog_data.prog_var
+            )
+    ;       at(
+                 parse_tree.prog_data.prog_var,
+                 mdbcomp.goal_path.goal_id
+            ).
+:- type threshold.
+:- pred add_forward_goal_path_map(hlds.pred_proc_id.pred_id, mdbcomp.goal_path.goal_forward_path_map, check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- mode add_forward_goal_path_map(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func atomic_prodvars_map(check_hlds.mode_constraint_robdd.mode_constraint, check_hlds.mode_constraint_robdd.mode_constraint_info) = check_hlds.mode_constraint_robdd.prodvars_map.
+:- pred enter_lambda_goal(mdbcomp.goal_path.goal_id, check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- mode enter_lambda_goal(builtin.in, builtin.in, builtin.out) is det.
+:- pred get_forward_goal_path_map(check_hlds.mode_constraint_robdd.mode_constraint_info, mdbcomp.goal_path.goal_forward_path_map).
+:- mode get_forward_goal_path_map(builtin.in, builtin.out) is det.
+:- pred get_forward_goal_path_map_for_pred(check_hlds.mode_constraint_robdd.mode_constraint_info, hlds.pred_proc_id.pred_id, mdbcomp.goal_path.goal_forward_path_map).
+:- mode get_forward_goal_path_map_for_pred(builtin.in, builtin.in, builtin.out) is det.
+:- pred get_interesting_vars_for_pred(check_hlds.mode_constraint_robdd.mode_constraint_info, hlds.pred_proc_id.pred_id, set.set(check_hlds.mode_constraint_robdd.mode_constraint_var)).
+:- mode get_interesting_vars_for_pred(builtin.in, builtin.in, builtin.out) is det.
+:- pred get_prog_var_level(check_hlds.mode_constraint_robdd.mode_constraint_info, parse_tree.prog_data.prog_var, check_hlds.mode_constraint_robdd.prog_var_and_level).
+:- mode get_prog_var_level(builtin.in, builtin.in, builtin.out) is det.
+:- func init_mode_constraint_info(io.text_output_stream, bool.bool) = check_hlds.mode_constraint_robdd.mode_constraint_info.
+:- pred leave_lambda_goal(check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- mode leave_lambda_goal(builtin.in, builtin.out) is det.
+:- pred mci_get_debug_stream(check_hlds.mode_constraint_robdd.mode_constraint_info, io.text_output_stream).
+:- mode mci_get_debug_stream(builtin.in, builtin.out) is det.
+:- func mci_set_pred_id(check_hlds.mode_constraint_robdd.mode_constraint_info, hlds.pred_proc_id.pred_id) = check_hlds.mode_constraint_robdd.mode_constraint_info.
+:- func mode_constraint_var(check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.rep_var) = check_hlds.mode_constraint_robdd.mode_constraint_var.
+:- pred mode_constraint_var(check_hlds.mode_constraint_robdd.rep_var, check_hlds.mode_constraint_robdd.mode_constraint_var, check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- mode mode_constraint_var(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred mode_constraint_var(hlds.pred_proc_id.pred_id, check_hlds.mode_constraint_robdd.rep_var, check_hlds.mode_constraint_robdd.mode_constraint_var, check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- mode mode_constraint_var(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- func restrict_filter((pred check_hlds.mode_constraint_robdd.rep_var), check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint) = check_hlds.mode_constraint_robdd.mode_constraint.
+:- mode restrict_filter(builtin.in((pred(builtin.in) is semidet)), builtin.in, builtin.in) = builtin.out is det.
+:- func restrict_threshold(check_hlds.mode_constraint_robdd.threshold, check_hlds.mode_constraint_robdd.mode_constraint) = check_hlds.mode_constraint_robdd.mode_constraint.
+:- pred robdd_to_dot(check_hlds.mode_constraint_robdd.mode_constraint, parse_tree.prog_data.prog_varset, check_hlds.mode_constraint_robdd.mode_constraint_info, string, io.io, io.io).
+:- mode robdd_to_dot(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred save_max_var_for_pred(hlds.pred_proc_id.pred_id, check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- mode save_max_var_for_pred(builtin.in, builtin.in, builtin.out) is det.
+:- pred save_min_var_for_pred(hlds.pred_proc_id.pred_id, check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- mode save_min_var_for_pred(builtin.in, builtin.in, builtin.out) is det.
+:- pred save_threshold(check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.threshold).
+:- mode save_threshold(builtin.in, builtin.out) is det.
+:- pred set_input_nodes(check_hlds.mode_constraint_robdd.mode_constraint, check_hlds.mode_constraint_robdd.mode_constraint, check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- mode set_input_nodes(builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred set_level_from_var(check_hlds.mode_constraint_robdd.prog_var_and_level, check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- mode set_level_from_var(builtin.in, builtin.in, builtin.out) is det.
+:- pred set_simple_mode_constraints(check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- mode set_simple_mode_constraints(builtin.in, builtin.out) is det.
+:- pred unset_simple_mode_constraints(check_hlds.mode_constraint_robdd.mode_constraint_info, check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- mode unset_simple_mode_constraints(builtin.in, builtin.out) is det.
+:- pred using_simple_mode_constraints(check_hlds.mode_constraint_robdd.mode_constraint_info).
+:- mode using_simple_mode_constraints(builtin.in) is semidet.
+:- implementation.
+:- type mc_type
+    --->    mc_type .

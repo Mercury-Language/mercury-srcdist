@@ -1,0 +1,10 @@
+:- module (termination.term_constr).term_constr_pass2.
+:- interface.
+:- use_module hlds.
+:- use_module hlds.hlds_module.
+:- use_module hlds.pred_proc_id.
+:- use_module (termination.term_constr).term_constr_main_types.
+:- type pass2_options.
+:- func pass2_options_init(int) = termination.term_constr.term_constr_pass2.pass2_options.
+:- pred prove_termination_in_scc(termination.term_constr.term_constr_pass2.pass2_options, hlds.pred_proc_id.scc, hlds.hlds_module.module_info, termination.term_constr.term_constr_main_types.constr_termination_info).
+:- mode prove_termination_in_scc(builtin.in, builtin.in, builtin.in, builtin.out) is det.

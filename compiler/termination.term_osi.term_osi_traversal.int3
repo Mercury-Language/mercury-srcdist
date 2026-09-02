@@ -1,0 +1,7 @@
+:- module (termination.term_osi).term_osi_traversal.
+:- interface.
+:- type term_path_info.
+:- type term_traversal_info.
+:- type term_traversal_params.
+:- type_representation(term_path_info, is_word_aligned_ptr).
+:- type_representation(term_traversal_params, is_word_aligned_ptr).

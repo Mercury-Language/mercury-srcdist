@@ -1,0 +1,12 @@
+:- module termination.term_constr.
+:- interface.
+:- include_module (termination.term_constr).term_constr_data.
+:- include_module (termination.term_constr).term_constr_main.
+:- include_module (termination.term_constr).term_constr_main_types.
+:- include_module (termination.term_constr).term_constr_util.
+:- implementation.
+:- include_module (termination.term_constr).term_constr_build.
+:- include_module (termination.term_constr).term_constr_errors.
+:- include_module (termination.term_constr).term_constr_fixpoint.
+:- include_module (termination.term_constr).term_constr_initial.
+:- include_module (termination.term_constr).term_constr_pass2.

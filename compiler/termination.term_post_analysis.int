@@ -1,0 +1,9 @@
+:- module termination.term_post_analysis.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_module.
+:- use_module parse_tree.error_spec.
+:- pred run_post_term_analysis(hlds.hlds_module.module_info, list.list(parse_tree.error_spec.diag_spec)).
+:- mode run_post_term_analysis(builtin.in, builtin.out) is det.

@@ -1,0 +1,37 @@
+// Automatically generated from `dir.m'
+// by the Mercury compiler,
+// version rotd-2026-09-02
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef DIR_MH
+#define DIR_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef DIR_DECL_GUARD
+#define DIR_DECL_GUARD
+#define ML_MAKE_SINGLE_DIRECTORY_OK 0
+#define ML_MAKE_SINGLE_DIRECTORY_NAME_EXISTS 1
+#define ML_MAKE_SINGLE_DIRECTORY_DIR_EXISTS 2
+#define ML_MAKE_SINGLE_DIRECTORY_ERROR 3
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* DIR_MH */

@@ -1,0 +1,122 @@
+/*
+** Automatically generated from `proc_table_struct.m'
+** by the Mercury compiler,
+** version rotd-2026-09-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.proc_table_struct.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__proc_table_struct
+#define MR_HEADER_GUARD_hlds__proc_table_struct
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__PROC_TABLE_STRUCT_DECL_GUARD
+#define HLDS__PROC_TABLE_STRUCT_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_table_struct__hlds__proc_table_struct__type_ctor_info_proc_table_struct_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_table_struct__hlds__proc_table_struct__type_ctor_info_table_is_poly_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_table_struct__hlds__proc_table_struct__type_ctor_info_table_step_desc_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_table_struct__hlds__proc_table_struct__type_ctor_info_table_trie_step_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__proc_table_struct__hlds__proc_table_struct__type_ctor_info_table_value_or_addr_0;
+
+MR_String MR_CALL 
+hlds__proc_table_struct__table_step_stats_kind_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__proc_table_struct____Compare____proc_table_struct_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_table_struct____Compare____table_is_poly_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_table_struct____Compare____table_step_desc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_table_struct____Compare____table_trie_step_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__proc_table_struct____Compare____table_value_or_addr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__proc_table_struct____Unify____proc_table_struct_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_table_struct____Unify____table_is_poly_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_table_struct____Unify____table_step_desc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_table_struct____Unify____table_trie_step_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__proc_table_struct____Unify____table_value_or_addr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__proc_table_struct__init(void);
+void mercury__hlds__proc_table_struct__init_type_tables(void);
+void mercury__hlds__proc_table_struct__init_debugger(void);
+const char *mercury__hlds__proc_table_struct__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.proc_table_struct
+
+// :- end_interface hlds.proc_table_struct.

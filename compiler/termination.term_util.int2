@@ -1,0 +1,5 @@
+:- module termination.term_util.
+:- interface.
+:- type maybe_believe_check_termination
+    --->    do_not_believe_check_termination 
+    ;       do_believe_check_termination .

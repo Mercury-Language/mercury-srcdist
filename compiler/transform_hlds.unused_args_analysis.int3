@@ -1,0 +1,23 @@
+:- module transform_hlds.unused_args_analysis.
+:- interface.
+:- import_module analysis.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module analysis.framework.
+:- import_module hlds.hlds_module.
+:- import_module hlds.pred_proc_id.
+:- import_module parse_tree.prog_data.
+:- type unused_args_answer.
+:- type unused_args_call.
+:- type unused_args_func_info.
+:- instance analysis(transform_hlds.unused_args_analysis.unused_args_func_info, transform_hlds.unused_args_analysis.unused_args_call, transform_hlds.unused_args_analysis.unused_args_answer).
+:- instance answer_pattern(transform_hlds.unused_args_analysis.unused_args_func_info, transform_hlds.unused_args_analysis.unused_args_answer).
+:- instance call_pattern(transform_hlds.unused_args_analysis.unused_args_func_info, transform_hlds.unused_args_analysis.unused_args_call).
+:- instance partial_order(transform_hlds.unused_args_analysis.unused_args_func_info, transform_hlds.unused_args_analysis.unused_args_answer).
+:- instance partial_order(transform_hlds.unused_args_analysis.unused_args_func_info, transform_hlds.unused_args_analysis.unused_args_call).
+:- instance to_term(transform_hlds.unused_args_analysis.unused_args_answer).
+:- instance to_term(transform_hlds.unused_args_analysis.unused_args_call).
+:- type_representation(unused_args_answer, du_repn(notag("unused_args_answer", list(int),  no_c_j_cs))).
+:- type_representation(unused_args_call, du_repn(direct_dummy("unused_args_call",  no_c_j_cs))).
+:- type_representation(unused_args_func_info, du_repn(notag("unused_args_func_info", pred_form_arity,  no_c_j_cs))).
