@@ -1,0 +1,5 @@
+:- module termination.term_util.
+:- interface.
+:- type maybe_believe_check_termination
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_believe_check_termination, du_repn(enum("do_not_believe_check_termination", "do_believe_check_termination", [],  no_c_j_cs))).

@@ -1,0 +1,60 @@
+/*
+** Automatically generated from `delete_copy_goals.m'
+** by the Mercury compiler,
+** version rotd-2026-09-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_hlds.delete_copy_goals.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__delete_copy_goals
+#define MR_HEADER_GUARD_hlds__make_hlds__delete_copy_goals
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__DELETE_COPY_GOALS_DECL_GUARD
+#define HLDS__MAKE_HLDS__DELETE_COPY_GOALS_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+void MR_CALL 
+hlds__make_hlds__delete_copy_goals__delete_unneeded_copy_goals_in_clause_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void mercury__hlds__make_hlds__delete_copy_goals__init(void);
+void mercury__hlds__make_hlds__delete_copy_goals__init_type_tables(void);
+void mercury__hlds__make_hlds__delete_copy_goals__init_debugger(void);
+const char *mercury__hlds__make_hlds__delete_copy_goals__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.make_hlds.delete_copy_goals
+
+// :- end_interface hlds.make_hlds.delete_copy_goals.

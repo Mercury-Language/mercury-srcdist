@@ -1,0 +1,77 @@
+/*
+** Automatically generated from `term_osi_pass1.m'
+** by the Mercury compiler,
+** version rotd-2026-09-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module termination.term_osi.term_osi_pass1.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_termination__term_osi__term_osi_pass1
+#define MR_HEADER_GUARD_termination__term_osi__term_osi_pass1
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TERMINATION__TERM_OSI__TERM_OSI_PASS1_DECL_GUARD
+#define TERMINATION__TERM_OSI__TERM_OSI_PASS1_DECL_GUARD
+#include "termination.mih"
+#include "termination.term_osi.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct termination__term_osi__term_osi_pass1__termination__term_osi__term_osi_pass1__type_ctor_info_arg_size_result_0;
+
+extern const MR_TypeCtorInfo_Struct termination__term_osi__term_osi_pass1__termination__term_osi__term_osi_pass1__type_ctor_info_pass1_result_0;
+
+void MR_CALL 
+termination__term_osi__term_osi_pass1__find_arg_sizes_in_scc_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+termination__term_osi__term_osi_pass1____Compare____arg_size_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+termination__term_osi__term_osi_pass1____Unify____arg_size_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__termination__term_osi__term_osi_pass1__init(void);
+void mercury__termination__term_osi__term_osi_pass1__init_type_tables(void);
+void mercury__termination__term_osi__term_osi_pass1__init_debugger(void);
+const char *mercury__termination__term_osi__term_osi_pass1__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_termination.term_osi.term_osi_pass1
+
+// :- end_interface termination.term_osi.term_osi_pass1.

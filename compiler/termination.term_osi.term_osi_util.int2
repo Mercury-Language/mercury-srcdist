@@ -1,0 +1,18 @@
+:- module (termination.term_osi).term_osi_util.
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module map.
+:- use_module unit.
+:- use_module hlds.pred_proc_id.
+:- use_module parse_tree.prog_data_pragma.
+:- use_module (termination.term_osi).term_osi_errors.
+:- type arg_size_info == parse_tree.prog_data_pragma.generic_arg_size_info(list.list(termination.term_osi.term_osi_errors.term_error)).
+:- type pass_info
+    --->    pass_info(
+                 termination.term_norm.functor_info,
+                 int,
+                 int
+            ).
+:- type termination_info == parse_tree.prog_data_pragma.generic_termination_info(unit.unit, list.list(termination.term_osi.term_osi_errors.term_error)).
+:- type used_args == map.map(hlds.pred_proc_id.pred_proc_id, list.list(bool.bool)).

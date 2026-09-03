@@ -1,0 +1,11 @@
+:- module hlds.goal_util.
+:- interface.
+:- type goal_is_atomic
+    --->    goal_is_atomic 
+    ;       goal_is_nonatomic .
+:- type is_first_disjunct
+    --->    is_first_disjunct 
+    ;       is_not_first_disjunct .
+:- type is_leaf
+    --->    is_leaf 
+    ;       is_not_leaf .

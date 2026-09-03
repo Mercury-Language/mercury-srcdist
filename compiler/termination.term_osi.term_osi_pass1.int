@@ -1,0 +1,19 @@
+:- module (termination.term_osi).term_osi_pass1.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module pair.
+:- use_module hlds.hlds_module.
+:- use_module hlds.pred_proc_id.
+:- use_module (termination.term_osi).term_osi_errors.
+:- use_module (termination.term_osi).term_osi_util.
+:- type arg_size_result
+    --->    arg_size_ok(
+                 list.list(pair.pair(hlds.pred_proc_id.pred_proc_id, int)),
+                 termination.term_osi.term_osi_util.used_args
+            )
+    ;       arg_size_error(
+                 list.list(termination.term_osi.term_osi_errors.term_error)
+            ).
+:- pred find_arg_sizes_in_scc(hlds.hlds_module.module_info, termination.term_osi.term_osi_util.pass_info, hlds.pred_proc_id.scc, termination.term_osi.term_osi_pass1.arg_size_result, list.list(termination.term_osi.term_osi_errors.term_error)).
+:- mode find_arg_sizes_in_scc(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.

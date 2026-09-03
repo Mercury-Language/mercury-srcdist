@@ -1,0 +1,13 @@
+:- module (termination.term_constr).term_constr_build.
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module hlds.hlds_dependency_graph.
+:- use_module hlds.hlds_module.
+:- use_module termination.term_norm.
+:- use_module (termination.term_constr).term_constr_errors.
+:- type term_build_options.
+:- func term_build_options_init(termination.term_norm.functor_info, bool.bool, bool.bool) = termination.term_constr.term_constr_build.term_build_options.
+:- pred term_constr_build_abstract_scc(termination.term_constr.term_constr_build.term_build_options, hlds.hlds_dependency_graph.scc_with_entry_points, list.list(termination.term_constr.term_constr_errors.term2_error), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode term_constr_build_abstract_scc(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.

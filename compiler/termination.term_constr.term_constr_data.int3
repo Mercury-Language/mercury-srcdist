@@ -1,0 +1,35 @@
+:- module (termination.term_constr).term_constr_data.
+:- interface.
+:- type abstract_goal.
+:- type abstract_ho_call.
+:- type abstract_ppid.
+:- type abstract_proc.
+:- type abstract_scc.
+:- type arg_size_result.
+:- type call_vars.
+:- type head_vars.
+:- type local_vars.
+:- type nonlocal_vars.
+:- type recursion_type
+	where	type_is_abstract_enum(2).
+:- type size_term.
+:- type size_var.
+:- type size_var_map.
+:- type size_varset.
+:- type widening.
+:- type zero_vars.
+:- type_representation(abstract_ho_call, du_repn(notag("ho_call", prog_context,  no_c_j_cs))).
+:- type_representation(abstract_ppid, du_repn(notag("real", pred_proc_id,  no_c_j_cs))).
+:- type_representation(abstract_proc, is_word_aligned_ptr).
+:- type_representation(abstract_scc, is_eqv_to(set(termination.term_constr.term_constr_data.abstract_proc))).
+:- type_representation(call_vars, is_eqv_to(list(termination.term_constr.term_constr_data.size_var))).
+:- type_representation(head_vars, is_eqv_to(list(termination.term_constr.term_constr_data.size_var))).
+:- type_representation(local_vars, is_eqv_to(list(termination.term_constr.term_constr_data.size_var))).
+:- type_representation(nonlocal_vars, is_eqv_to(list(termination.term_constr.term_constr_data.size_var))).
+:- type_representation(recursion_type, du_repn(enum("none", "direct_only", ["mutual_only", "both"],  no_c_j_cs))).
+:- type_representation(size_term, is_eqv_to(lp_term)).
+:- type_representation(size_var, is_eqv_to(lp_var)).
+:- type_representation(size_var_map, is_eqv_to(map(prog_var, termination.term_constr.term_constr_data.size_var))).
+:- type_representation(size_varset, is_eqv_to(lp_varset)).
+:- type_representation(widening, du_repn(notag("after_fixed_cutoff", int,  no_c_j_cs))).
+:- type_representation(zero_vars, is_eqv_to(set(termination.term_constr.term_constr_data.size_var))).

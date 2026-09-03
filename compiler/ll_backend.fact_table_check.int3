@@ -1,0 +1,31 @@
+:- module ll_backend.fact_table_check.
+:- interface.
+:- type fact_arg_info.
+:- type fact_arg_type
+	where	type_is_abstract_enum(2).
+:- type fact_table_arg_check_result.
+:- type fact_table_gen_info.
+:- type fact_table_mode
+	where	type_is_abstract_enum(1).
+:- type fact_table_mode_class
+	where	type_is_abstract_enum(2).
+:- type fact_table_proc_info.
+:- type fact_table_proc_map.
+:- type fact_table_var.
+:- type maybe_in_or_output_for_some_mode
+	where	type_is_abstract_enum(1).
+:- type maybe_input_for_some_mode
+	where	type_is_abstract_enum(1).
+:- type maybe_make_unique
+	where	type_is_abstract_enum(1).
+:- type_representation(fact_arg_info, is_word_aligned_ptr).
+:- type_representation(fact_arg_type, du_repn(enum("fact_arg_type_int", "fact_arg_type_float", ["fact_arg_type_string"],  no_c_j_cs))).
+:- type_representation(fact_table_gen_info, is_word_aligned_ptr).
+:- type_representation(fact_table_mode, du_repn(enum("fully_in", "fully_out", [],  no_c_j_cs))).
+:- type_representation(fact_table_mode_class, du_repn(enum("all_in", "in_out", ["all_out"],  no_c_j_cs))).
+:- type_representation(fact_table_proc_info, is_word_aligned_ptr).
+:- type_representation(fact_table_proc_map, is_eqv_to(map(proc_id, ll_backend.fact_table_check.fact_table_proc_info))).
+:- type_representation(fact_table_var, is_word_aligned_ptr).
+:- type_representation(maybe_in_or_output_for_some_mode, du_repn(enum("is_not_in_or_output_for_any_mode", "is_in_or_output_for_some_mode", [],  no_c_j_cs))).
+:- type_representation(maybe_input_for_some_mode, du_repn(enum("is_not_input_for_any_mode", "is_input_for_some_mode", [],  no_c_j_cs))).
+:- type_representation(maybe_make_unique, du_repn(enum("do_not_make_unique", "make_unique", [],  no_c_j_cs))).

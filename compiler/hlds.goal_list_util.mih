@@ -1,0 +1,139 @@
+/*
+** Automatically generated from `goal_list_util.m'
+** by the Mercury compiler,
+** version rotd-2026-09-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.goal_list_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__goal_list_util
+#define MR_HEADER_GUARD_hlds__goal_list_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__GOAL_LIST_UTIL_DECL_GUARD
+#define HLDS__GOAL_LIST_UTIL_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+void MR_CALL 
+hlds__goal_list_util__conj_list_to_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__goal_list_util__conjoin_goal_and_goal_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__goal_list_util__conjoin_goals_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__goal_list_util__create_conj_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__goal_list_util__create_conj_from_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__goal_list_util__disj_list_to_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__goal_list_util__goal_list_determinism_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__goal_list_util__goal_list_instmap_delta_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__goal_list_util__goal_list_nonlocals_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__goal_list_util__goal_list_purity_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__goal_list_util__goal_to_conj_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__goal_list_util__goal_to_disj_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__goal_list_util__goal_to_par_conj_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__goal_list_util__par_conj_list_to_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+hlds__goal_list_util__get_hlds_goal_expr_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__goal_list_util__get_hlds_goal_info_1_f_0(
+  MR_Word param_1);
+
+void mercury__hlds__goal_list_util__init(void);
+void mercury__hlds__goal_list_util__init_type_tables(void);
+void mercury__hlds__goal_list_util__init_debugger(void);
+const char *mercury__hlds__goal_list_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.goal_list_util
+
+// :- end_interface hlds.goal_list_util.

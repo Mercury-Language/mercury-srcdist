@@ -1,0 +1,93 @@
+:- module hlds.hlds_class.
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module set.
+:- use_module parse_tree.prog_data.
+:- type ancestor_constraints == map.map(parse_tree.prog_data.prog_constraint, list.list(parse_tree.prog_data.prog_constraint)).
+:- type class_table == map.map(parse_tree.prog_data.class_id, hlds.hlds_class.hlds_class_defn).
+:- type constraint_id
+    --->    constraint_id(
+                 hlds.hlds_class.constraint_type,
+                 mdbcomp.goal_path.goal_id,
+                 int
+            ).
+:- type constraint_map == map.map(hlds.hlds_class.constraint_id, parse_tree.prog_data.prog_constraint).
+:- type constraint_proof
+    --->    apply_instance(
+                 hlds.hlds_class.instance_id
+            )
+    ;       superclass(
+                 parse_tree.prog_data.prog_constraint
+            ).
+:- type constraint_proof_map == map.map(parse_tree.prog_data.prog_constraint, hlds.hlds_class.constraint_proof).
+:- type constraint_type
+    --->    unproven 
+    ;       assumed .
+:- type hlds_class_argpos == int.
+:- type hlds_class_defn
+    --->    hlds_class_defn(
+                 (hlds.hlds_class).classdefn_status :: hlds.status.typeclass_status,
+                 (hlds.hlds_class).classdefn_tvarset :: parse_tree.prog_data.tvarset,
+                 (hlds.hlds_class).classdefn_kinds :: parse_tree.prog_data.tvar_kind_map,
+                 (hlds.hlds_class).classdefn_vars :: list.list(parse_tree.prog_data.tvar),
+                 (hlds.hlds_class).classdefn_supers :: list.list(parse_tree.prog_data.prog_constraint),
+                 (hlds.hlds_class).classdefn_fundeps :: list.list(hlds.hlds_class.hlds_class_fundep),
+                 (hlds.hlds_class).classdefn_fundep_ancestors :: list.list(parse_tree.prog_data.prog_constraint),
+                 (hlds.hlds_class).classdefn_interface :: parse_tree.prog_data.class_interface,
+                 (hlds.hlds_class).classdefn_method_infos :: list.list(hlds.hlds_class.method_info),
+                 (hlds.hlds_class).classdefn_context :: parse_tree.prog_data.prog_context,
+                 (hlds.hlds_class).classdefn_maybe_bad :: hlds.hlds_class.maybe_bad_class_defn
+            ).
+:- type hlds_class_fundep
+    --->    fundep(
+                 (hlds.hlds_class).domain :: set.set(hlds.hlds_class.hlds_class_argpos),
+                 (hlds.hlds_class).range :: set.set(hlds.hlds_class.hlds_class_argpos)
+            ).
+:- type hlds_constraint
+    --->    hlds_constraint(
+                 list.list(hlds.hlds_class.constraint_id),
+                 parse_tree.prog_data.class_name,
+                 list.list(parse_tree.prog_data.mer_type)
+            ).
+:- type hlds_constraint_db
+    --->    hlds_constraint_db(
+                 (hlds.hlds_class).hcd_unproven :: list.list(hlds.hlds_class.hlds_constraint),
+                 (hlds.hlds_class).hcd_assumed :: list.list(hlds.hlds_class.hlds_constraint),
+                 (hlds.hlds_class).hcd_redundant :: hlds.hlds_class.redundant_constraints,
+                 (hlds.hlds_class).hcd_ancestors :: hlds.hlds_class.ancestor_constraints
+            ).
+:- type hlds_instance_defn
+    --->    hlds_instance_defn(
+                 (hlds.hlds_class).instdefn_module :: mdbcomp.sym_name.module_name,
+                 (hlds.hlds_class).instdefn_status :: hlds.status.instance_status,
+                 (hlds.hlds_class).instdefn_tvarset :: parse_tree.prog_data.tvarset,
+                 (hlds.hlds_class).instdefn_orig_types :: list.list(parse_tree.prog_data.mer_type),
+                 (hlds.hlds_class).instdefn_types :: list.list(parse_tree.prog_data.mer_type),
+                 (hlds.hlds_class).instdefn_constraints :: list.list(parse_tree.prog_data.prog_constraint),
+                 (hlds.hlds_class).instdefn_subsumed_ctxt :: maybe.maybe(parse_tree.prog_data.prog_context),
+                 (hlds.hlds_class).instdefn_proofs :: hlds.hlds_class.constraint_proof_map,
+                 (hlds.hlds_class).instdefn_body :: parse_tree.prog_data.instance_body,
+                 (hlds.hlds_class).instdefn_maybe_method_infos :: maybe.maybe(list.list(hlds.hlds_class.method_info)),
+                 (hlds.hlds_class).instdefn_context :: parse_tree.prog_data.prog_context
+            ).
+:- type instance_id
+    --->    instance_id(
+                 int
+            ).
+:- type instance_table == map.map(parse_tree.prog_data.class_id, list.list(hlds.hlds_class.hlds_instance_defn)).
+:- type maybe_bad_class_defn
+    --->    has_no_bad_class_defn 
+    ;       has_bad_class_defn .
+:- type method_info
+    --->    method_info(
+                 (hlds.hlds_class).method_proc_number :: hlds.hlds_class.method_proc_num,
+                 (hlds.hlds_class).method_pred_name :: parse_tree.prog_data.pf_sym_name_user_arity,
+                 (hlds.hlds_class).method_orig_proc :: hlds.pred_proc_id.pred_proc_id,
+                 (hlds.hlds_class).method_cur_proc :: hlds.pred_proc_id.pred_proc_id
+            ).
+:- type method_proc_num
+    --->    method_proc_num(
+                 int
+            ).
+:- type redundant_constraints == map.map(parse_tree.prog_data.class_id, set.set(hlds.hlds_class.hlds_constraint)).
