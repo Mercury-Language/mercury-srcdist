@@ -1,0 +1,4 @@
+:- module (termination.term_constr).term_constr_util.
+:- interface.
+:- type var_substitution.
+:- type_representation(var_substitution, is_eqv_to(map(size_var, size_var))).

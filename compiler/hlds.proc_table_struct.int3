@@ -1,0 +1,13 @@
+:- module hlds.proc_table_struct.
+:- interface.
+:- type proc_table_struct_info.
+:- type table_is_poly
+	where	type_is_abstract_enum(1).
+:- type table_step_desc.
+:- type table_trie_step.
+:- type table_value_or_addr
+	where	type_is_abstract_enum(1).
+:- type_representation(proc_table_struct_info, is_word_aligned_ptr).
+:- type_representation(table_is_poly, du_repn(enum("table_is_mono", "table_is_poly", [],  no_c_j_cs))).
+:- type_representation(table_step_desc, is_word_aligned_ptr).
+:- type_representation(table_value_or_addr, du_repn(enum("table_value", "table_addr", [],  no_c_j_cs))).

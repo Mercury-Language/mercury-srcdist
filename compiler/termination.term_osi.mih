@@ -1,0 +1,53 @@
+/*
+** Automatically generated from `term_osi.m'
+** by the Mercury compiler,
+** version rotd-2026-09-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module termination.term_osi.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_termination__term_osi
+#define MR_HEADER_GUARD_termination__term_osi
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TERMINATION__TERM_OSI_DECL_GUARD
+#define TERMINATION__TERM_OSI_DECL_GUARD
+#include "termination.mih"
+
+#endif
+
+
+
+void mercury__termination__term_osi__init(void);
+void mercury__termination__term_osi__init_type_tables(void);
+void mercury__termination__term_osi__init_debugger(void);
+const char *mercury__termination__term_osi__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_termination.term_osi
+
+// :- end_interface termination.term_osi.

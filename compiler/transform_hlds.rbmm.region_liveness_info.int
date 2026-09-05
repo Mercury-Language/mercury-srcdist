@@ -1,0 +1,30 @@
+:- module (transform_hlds.rbmm).region_liveness_info.
+:- interface.
+:- use_module assoc_list.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_proc.
+:- use_module hlds.pred_proc_id.
+:- use_module parse_tree.prog_data.
+:- use_module transform_hlds.smm_common.
+:- use_module (transform_hlds.rbmm).points_to_graph.
+:- type execution_path == assoc_list.assoc_list(transform_hlds.smm_common.program_point, hlds.hlds_goal.hlds_goal).
+:- type execution_path_table == map.map(hlds.pred_proc_id.pred_proc_id, list.list(transform_hlds.rbmm.region_liveness_info.execution_path)).
+:- type pp_region_set_table == map.map(transform_hlds.smm_common.program_point, transform_hlds.rbmm.region_liveness_info.region_set).
+:- type pp_varset_table == map.map(transform_hlds.smm_common.program_point, transform_hlds.rbmm.region_liveness_info.variable_set).
+:- type proc_pp_region_set_table == map.map(hlds.pred_proc_id.pred_proc_id, transform_hlds.rbmm.region_liveness_info.pp_region_set_table).
+:- type proc_pp_varset_table == map.map(hlds.pred_proc_id.pred_proc_id, transform_hlds.rbmm.region_liveness_info.pp_varset_table).
+:- type proc_region_set_table == map.map(hlds.pred_proc_id.pred_proc_id, transform_hlds.rbmm.region_liveness_info.region_set).
+:- type region_set == set.set(transform_hlds.rbmm.points_to_graph.rptg_node).
+:- type variable_set == set.set(parse_tree.prog_data.prog_var).
+:- pred find_input_output_args(hlds.hlds_module.module_info, hlds.hlds_proc.proc_info, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var)).
+:- mode find_input_output_args(builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred proc_region_set_table_equal(transform_hlds.rbmm.region_liveness_info.proc_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_region_set_table).
+:- mode proc_region_set_table_equal(builtin.in, builtin.in) is semidet.
+:- pred region_set_equal(transform_hlds.rbmm.region_liveness_info.region_set, transform_hlds.rbmm.region_liveness_info.region_set).
+:- mode region_set_equal(builtin.in, builtin.in) is semidet.

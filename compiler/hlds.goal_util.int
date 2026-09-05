@@ -1,0 +1,71 @@
+:- module hlds.goal_util.
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module term_context.
+:- use_module hlds.hlds_clauses.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_markers.
+:- use_module hlds.hlds_module.
+:- use_module hlds.hlds_rtti.
+:- use_module hlds.instmap.
+:- use_module hlds.pred_table.
+:- use_module mdbcomp.prim_data.
+:- use_module mdbcomp.sym_name.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_foreign.
+:- use_module parse_tree.set_of_var.
+:- use_module parse_tree.var_table.
+:- use_module parse_tree.vartypes.
+:- type goal_is_atomic
+    --->    goal_is_atomic 
+    ;       goal_is_nonatomic .
+:- type is_first_disjunct
+    --->    is_first_disjunct 
+    ;       is_not_first_disjunct .
+:- type is_leaf
+    --->    is_leaf 
+    ;       is_not_leaf .
+:- pred apply_goal_info_instmap_delta(hlds.hlds_goal.hlds_goal_info, hlds.instmap.instmap, hlds.instmap.instmap).
+:- mode apply_goal_info_instmap_delta(builtin.in, builtin.in, builtin.out) is det.
+:- pred apply_goal_instmap_delta(hlds.hlds_goal.hlds_goal, hlds.instmap.instmap, hlds.instmap.instmap).
+:- mode apply_goal_instmap_delta(builtin.in, builtin.in, builtin.out) is det.
+:- pred clause_list_size(list.list(hlds.hlds_clauses.clause), int).
+:- mode clause_list_size(builtin.in, builtin.out) is det.
+:- pred clone_variable(parse_tree.prog_data.prog_var, parse_tree.var_table.var_table, parse_tree.var_table.var_table, parse_tree.var_table.var_table, parse_tree.prog_data.prog_var_renaming, parse_tree.prog_data.prog_var_renaming, parse_tree.prog_data.prog_var).
+:- mode clone_variable(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.out) is det.
+:- pred clone_variable_vs(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_varset, parse_tree.vartypes.vartypes, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, parse_tree.vartypes.vartypes, parse_tree.vartypes.vartypes, parse_tree.prog_data.prog_var_renaming, parse_tree.prog_data.prog_var_renaming, parse_tree.prog_data.prog_var).
+:- mode clone_variable_vs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out, builtin.out) is det.
+:- pred clone_variables(list.list(parse_tree.prog_data.prog_var), parse_tree.var_table.var_table, parse_tree.var_table.var_table, parse_tree.var_table.var_table, parse_tree.prog_data.prog_var_renaming, parse_tree.prog_data.prog_var_renaming).
+:- mode clone_variables(builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred clone_variables_vs(list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, parse_tree.vartypes.vartypes, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, parse_tree.vartypes.vartypes, parse_tree.vartypes.vartypes, parse_tree.prog_data.prog_var_renaming, parse_tree.prog_data.prog_var_renaming).
+:- mode clone_variables_vs(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.
+:- pred create_renaming(list.list(parse_tree.prog_data.prog_var), hlds.instmap.instmap_delta, parse_tree.var_table.var_table, parse_tree.var_table.var_table, list.list(hlds.hlds_goal.hlds_goal), list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var_renaming).
+:- mode create_renaming(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out, builtin.out, builtin.out) is det.
+:- pred extra_nonlocal_typeinfos_typeclass_infos(hlds.hlds_rtti.rtti_varmaps, parse_tree.var_table.var_table, parse_tree.prog_data.existq_tvars, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar).
+:- mode extra_nonlocal_typeinfos_typeclass_infos(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred foreign_proc_uses_variable(parse_tree.prog_data_foreign.pragma_foreign_proc_impl, string).
+:- mode foreign_proc_uses_variable(builtin.in, builtin.in) is semidet.
+:- pred generate_call_foreign_proc(hlds.hlds_module.module_info, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.module_name, string, list.list(hlds.hlds_goal.foreign_arg), list.list(hlds.hlds_goal.foreign_arg), list.list(hlds.hlds_goal.foreign_arg), hlds.instmap.instmap_delta, hlds.pred_table.mode_no, parse_tree.prog_data.determinism, parse_tree.prog_data.purity, list.list(hlds.hlds_markers.goal_feature), parse_tree.prog_data_foreign.foreign_proc_attributes, maybe.maybe(parse_tree.prog_data.trace_expr(parse_tree.prog_data.trace_runtime)), string, term_context.term_context, hlds.hlds_goal.hlds_goal).
+:- mode generate_call_foreign_proc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred generate_cast(hlds.hlds_goal.cast_kind, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_context, hlds.hlds_goal.hlds_goal).
+:- mode generate_cast(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred generate_cast_with_insts(hlds.hlds_goal.cast_kind, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, parse_tree.prog_data.prog_context, hlds.hlds_goal.hlds_goal).
+:- mode generate_cast_with_insts(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred generate_plain_call(hlds.hlds_module.module_info, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.module_name, string, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), hlds.instmap.instmap_delta, hlds.pred_table.mode_no, parse_tree.prog_data.determinism, parse_tree.prog_data.purity, list.list(hlds.hlds_markers.goal_feature), term_context.term_context, hlds.hlds_goal.hlds_goal).
+:- mode generate_plain_call(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred goal_is_atomic(hlds.hlds_goal.hlds_goal, hlds.goal_util.goal_is_atomic).
+:- mode goal_is_atomic(builtin.in, builtin.out) is det.
+:- pred goal_is_branched(hlds.hlds_goal.hlds_goal_expr).
+:- mode goal_is_branched(builtin.in) is semidet.
+:- pred goal_size(hlds.hlds_goal.hlds_goal, int).
+:- mode goal_size(builtin.in, builtin.out) is det.
+:- pred goals_size(list.list(hlds.hlds_goal.hlds_goal), int).
+:- mode goals_size(builtin.in, builtin.out) is det.
+:- pred negate_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal).
+:- mode negate_goal(builtin.in, builtin.in, builtin.out) is det.
+:- func proc_body_is_leaf(hlds.hlds_goal.hlds_goal) = hlds.goal_util.is_leaf.
+:- pred set_goal_contexts(parse_tree.prog_data.prog_context, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode set_goal_contexts(builtin.in, builtin.in, builtin.out) is det.

@@ -1,0 +1,6 @@
+:- module (parse_tree.module_qual).collect_mq_info.
+:- interface.
+:- type int3_role.
+:- type maybe_shadowed_import
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_shadowed_import, du_repn(enum("not_shadowed_import", "is_shadowed_import", [],  no_c_j_cs))).

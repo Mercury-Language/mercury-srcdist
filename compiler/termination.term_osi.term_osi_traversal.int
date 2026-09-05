@@ -1,0 +1,41 @@
+:- module (termination.term_osi).term_osi_traversal.
+:- interface.
+:- use_module bag.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.pred_proc_id.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.var_table.
+:- use_module termination.term_norm.
+:- use_module (termination.term_osi).term_osi_errors.
+:- use_module (termination.term_osi).term_osi_util.
+:- type term_path_info
+    --->    term_path_info(
+                 hlds.pred_proc_id.pred_proc_id,
+                 maybe.maybe(pair.pair(hlds.pred_proc_id.pred_proc_id, parse_tree.prog_data.prog_context)),
+                 int,
+                 list.list(hlds.pred_proc_id.pred_proc_id),
+                 bag.bag(parse_tree.prog_data.prog_var)
+            ).
+:- type term_traversal_info
+    --->    term_traversal_ok(
+                 set.set(termination.term_osi.term_osi_traversal.term_path_info),
+                 list.list(termination.term_osi.term_osi_errors.term_error)
+            )
+    ;       term_traversal_error(
+                 list.list(termination.term_osi.term_osi_errors.term_error),
+                 list.list(termination.term_osi.term_osi_errors.term_error)
+            ).
+:- type term_traversal_params.
+:- pred init_term_traversal_params(termination.term_norm.functor_info, hlds.pred_proc_id.pred_proc_id, parse_tree.prog_data.prog_context, parse_tree.var_table.var_table, termination.term_osi.term_osi_util.used_args, termination.term_osi.term_osi_util.used_args, int, int, termination.term_osi.term_osi_traversal.term_traversal_params).
+:- mode init_term_traversal_params(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred term_traverse_goal(hlds.hlds_module.module_info, termination.term_osi.term_osi_traversal.term_traversal_params, hlds.hlds_goal.hlds_goal, termination.term_osi.term_osi_traversal.term_traversal_info, termination.term_osi.term_osi_traversal.term_traversal_info).
+:- mode term_traverse_goal(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred upper_bound_active_vars(list.list(termination.term_osi.term_osi_traversal.term_path_info), bag.bag(parse_tree.prog_data.prog_var)).
+:- mode upper_bound_active_vars(builtin.in, builtin.out) is det.

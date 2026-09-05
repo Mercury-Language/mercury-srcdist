@@ -1,0 +1,34 @@
+:- module hlds.passes_aux.
+:- interface.
+:- type dump_info.
+:- type module_cookie_task.
+:- type module_pred_cookie_task.
+:- type module_pred_task.
+:- type module_task.
+:- type pred_error_task.
+:- type proc_ids_pred_task.
+:- type proc_ids_task.
+:- type proc_task.
+:- type update_pred_task.
+:- type update_proc_task.
+:- abstract_inst((module_cookie_task)).
+:- abstract_inst((module_pred_cookie_task)).
+:- abstract_inst((module_pred_task)).
+:- abstract_inst((module_task)).
+:- abstract_inst((pred_error_task)).
+:- abstract_inst((proc_ids_pred_task)).
+:- abstract_inst((proc_ids_task)).
+:- abstract_inst((proc_task)).
+:- abstract_inst((update_pred_task)).
+:- abstract_inst((update_proc_task)).
+:- abstract_mode((update_pred_task)).
+:- abstract_mode((update_proc_task)).
+:- type_representation(module_cookie_task, is_eqv_to(pred(pred_proc_id, proc_info, proc_info, module_info, module_info, univ, univ))).
+:- type_representation(module_pred_cookie_task, is_eqv_to(pred(pred_proc_id, pred_info, proc_info, proc_info, module_info, module_info, univ, univ))).
+:- type_representation(module_pred_task, is_eqv_to(pred(pred_proc_id, pred_info, proc_info, proc_info, module_info, module_info))).
+:- type_representation(module_task, is_eqv_to(pred(pred_proc_id, proc_info, proc_info, module_info, module_info))).
+:- type_representation(pred_error_task, is_eqv_to(pred(pred_id, module_info, module_info, pred_info, pred_info, list(diag_spec), list(diag_spec)))).
+:- type_representation(proc_ids_pred_task, is_eqv_to(pred(module_info, pred_proc_id, pred_info, proc_info, proc_info))).
+:- type_representation(proc_ids_task, is_eqv_to(pred(module_info, pred_proc_id, proc_info, proc_info))).
+:- type_representation(proc_task, is_eqv_to(pred(module_info, proc_info, proc_info))).
+:- type_representation(update_pred_task, du_repn(notag("update_pred_error", pred_error_task,  no_c_j_cs))).

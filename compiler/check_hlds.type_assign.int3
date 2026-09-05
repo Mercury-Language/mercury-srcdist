@@ -1,0 +1,27 @@
+:- module check_hlds.type_assign.
+:- interface.
+:- type args_type_assign.
+:- type args_type_assign_set.
+:- type args_type_assign_source.
+:- type coerce_constraint.
+:- type coerce_constraint_status
+	where	type_is_abstract_enum(2).
+:- type coerce_fail.
+:- type cons_type_info.
+:- type cons_type_info_source.
+:- type ctor_arg_posn.
+:- type du_or_tuple_cons_id
+	where	type_is_abstract_subtype(cons_id/0).
+:- type invariant_reason.
+:- type posn_invariant_reason.
+:- type type_assign.
+:- type type_assign_set.
+:- type_representation(args_type_assign, is_word_aligned_ptr).
+:- type_representation(args_type_assign_set, is_eqv_to(list(check_hlds.type_assign.args_type_assign))).
+:- type_representation(coerce_constraint, is_word_aligned_ptr).
+:- type_representation(coerce_constraint_status, du_repn(enum("need_to_check", "unsatisfiable", ["not_yet_resolved", "satisfied_but_redundant"],  no_c_j_cs))).
+:- type_representation(cons_type_info, is_word_aligned_ptr).
+:- type_representation(ctor_arg_posn, is_word_aligned_ptr).
+:- type_representation(du_or_tuple_cons_id, is_subtype_of(cons_id/0)).
+:- type_representation(type_assign, is_word_aligned_ptr).
+:- type_representation(type_assign_set, is_eqv_to(list(check_hlds.type_assign.type_assign))).

@@ -1,0 +1,21 @@
+:- module check_hlds.prop_mode_constraints.
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module mdbcomp.
+:- use_module check_hlds.abstract_mode_constraints.
+:- use_module check_hlds.build_mode_constraints.
+:- use_module hlds.hlds_module.
+:- use_module hlds.pred_proc_id.
+:- use_module mdbcomp.goal_path.
+:- type pred_constraints_map == map.map(hlds.pred_proc_id.pred_id, {mdbcomp.goal_path.containing_goal_map, check_hlds.build_mode_constraints.mode_constraints}).
+:- pred ensure_unique_arguments(hlds.pred_proc_id.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode ensure_unique_arguments(builtin.in, builtin.in, builtin.out) is det.
+:- pred module_info_pred_status_is_imported(hlds.hlds_module.module_info, hlds.pred_proc_id.pred_id).
+:- mode module_info_pred_status_is_imported(builtin.in, builtin.in) is semidet.
+:- pred pretty_print_pred_constraints_map(io.text_output_stream, hlds.hlds_module.module_info, check_hlds.abstract_mode_constraints.mc_varset, check_hlds.prop_mode_constraints.pred_constraints_map, io.io, io.io).
+:- mode pretty_print_pred_constraints_map(builtin.in, builtin.in, builtin.in, builtin.in, builtin.di, builtin.uo) is det.
+:- pred prop_mode_constraints_in_scc(list.list(hlds.pred_proc_id.pred_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info, check_hlds.build_mode_constraints.mc_var_info, check_hlds.build_mode_constraints.mc_var_info, check_hlds.prop_mode_constraints.pred_constraints_map, check_hlds.prop_mode_constraints.pred_constraints_map).
+:- mode prop_mode_constraints_in_scc(builtin.in, builtin.in, builtin.out, builtin.in, builtin.out, builtin.in, builtin.out) is det.

@@ -1,0 +1,2 @@
+:- module hlds.hlds_pred_tests.
+:- interface.

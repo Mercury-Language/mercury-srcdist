@@ -1,0 +1,51 @@
+:- module (termination.term_osi).term_osi_util.
+:- interface.
+:- use_module bag.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module unit.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_module.
+:- use_module hlds.pred_proc_id.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.prog_data_pragma.
+:- use_module parse_tree.var_table.
+:- use_module termination.term_norm.
+:- use_module (termination.term_osi).term_osi_errors.
+:- type arg_size_info == parse_tree.prog_data_pragma.generic_arg_size_info(list.list(termination.term_osi.term_osi_errors.term_error)).
+:- type pass_info
+    --->    pass_info(
+                 termination.term_norm.functor_info,
+                 int,
+                 int
+            ).
+:- type termination_info == parse_tree.prog_data_pragma.generic_termination_info(unit.unit, list.list(termination.term_osi.term_osi_errors.term_error)).
+:- type used_args == map.map(hlds.pred_proc_id.pred_proc_id, list.list(bool.bool)).
+:- pred add_context_to_arg_size_info(maybe.maybe(parse_tree.prog_data_pragma.pragma_arg_size_info), parse_tree.prog_data.prog_context, maybe.maybe(termination.term_osi.term_osi_util.arg_size_info)).
+:- mode add_context_to_arg_size_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred add_context_to_termination_info(maybe.maybe(parse_tree.prog_data_pragma.pragma_termination_info), parse_tree.prog_data.prog_context, maybe.maybe(termination.term_osi.term_osi_util.termination_info)).
+:- mode add_context_to_termination_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred is_termination_known(hlds.hlds_module.module_info, hlds.pred_proc_id.pred_proc_id).
+:- mode is_termination_known(builtin.in, builtin.in) is semidet.
+:- pred lookup_proc_arg_size_info(hlds.hlds_module.module_info, hlds.pred_proc_id.pred_proc_id, maybe.maybe(termination.term_osi.term_osi_util.arg_size_info)).
+:- mode lookup_proc_arg_size_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred lookup_proc_termination_info(hlds.hlds_module.module_info, hlds.pred_proc_id.pred_proc_id, maybe.maybe(termination.term_osi.term_osi_util.termination_info)).
+:- mode lookup_proc_termination_info(builtin.in, builtin.in, builtin.out) is det.
+:- pred make_bool_list(list.list(_T), list.list(bool.bool), list.list(bool.bool)).
+:- mode make_bool_list(builtin.in, builtin.in, builtin.out) is det.
+:- pred partition_call_args(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.prog_var), bag.bag(parse_tree.prog_data.prog_var), bag.bag(parse_tree.prog_data.prog_var)).
+:- mode partition_call_args(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.
+:- pred pred_proc_id_terminates(hlds.hlds_module.module_info, hlds.pred_proc_id.pred_proc_id).
+:- mode pred_proc_id_terminates(builtin.in, builtin.in) is semidet.
+:- pred set_pred_proc_ids_arg_size_info(list.list(hlds.pred_proc_id.pred_proc_id), termination.term_osi.term_osi_util.arg_size_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode set_pred_proc_ids_arg_size_info(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred set_pred_proc_ids_termination_info(list.list(hlds.pred_proc_id.pred_proc_id), termination.term_osi.term_osi_util.termination_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode set_pred_proc_ids_termination_info(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred some_var_is_higher_order(parse_tree.var_table.var_table, list.list(parse_tree.prog_data.prog_var)).
+:- mode some_var_is_higher_order(builtin.in, builtin.in) is semidet.
+:- pred split_unification_vars(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.unify_mode), bag.bag(parse_tree.prog_data.prog_var), bag.bag(parse_tree.prog_data.prog_var)).
+:- mode split_unification_vars(builtin.in, builtin.in, builtin.in, builtin.out, builtin.out) is det.

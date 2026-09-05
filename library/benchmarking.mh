@@ -1,0 +1,39 @@
+// Automatically generated from `benchmarking.m'
+// by the Mercury compiler,
+// version rotd-2026-09-05
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef BENCHMARKING_MH
+#define BENCHMARKING_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef BENCHMARKING_DECL_GUARD
+#define BENCHMARKING_DECL_GUARD
+
+#include "mercury_report_stats.h"
+
+
+    extern volatile MR_Word ML_benchmarking_dummy_word;
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* BENCHMARKING_MH */

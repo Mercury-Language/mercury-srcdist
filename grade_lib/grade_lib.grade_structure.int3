@@ -1,0 +1,30 @@
+:- module grade_lib.grade_structure.
+:- interface.
+:- type c_gc
+	where	type_is_abstract_enum(3).
+:- type grade_structure.
+:- type llds_grade.
+:- type llds_minmodel_gc
+	where	type_is_abstract_enum(1).
+:- type llds_minmodel_kind
+	where	type_is_abstract_enum(2).
+:- type llds_perf_prof.
+:- type llds_rbmm.
+:- type llds_thread_safe_minmodel.
+:- type mlds_c_perf_prof.
+:- type mlds_c_thread_safe.
+:- type mlds_grade.
+:- type mlds_target.
+:- type pregen_grade.
+:- type pregen_kind
+	where	type_is_abstract_enum(2).
+:- type thread_safe_c_gc
+	where	type_is_abstract_enum(2).
+:- type_representation(c_gc, du_repn(enum("c_gc_none", "c_gc_bdw", ["c_gc_bdw_debug", "c_gc_accurate", "c_gc_history"],  no_c_j_cs))).
+:- type_representation(llds_grade, is_word_aligned_ptr).
+:- type_representation(llds_minmodel_gc, du_repn(enum("llds_mm_gc_bdw", "llds_mm_gc_bdw_debug", [],  no_c_j_cs))).
+:- type_representation(llds_minmodel_kind, du_repn(enum("lmk_stack_copy", "lmk_stack_copy_debug", ["lmk_own_stack", "lmk_own_stack_debug"],  no_c_j_cs))).
+:- type_representation(mlds_grade, is_word_aligned_ptr).
+:- type_representation(pregen_grade, du_repn(notag("pregen_grade", pregen_kind,  no_c_j_cs))).
+:- type_representation(pregen_kind, du_repn(enum("pregen_mlds_hlc", "pregen_llds_none", ["pregen_llds_reg", "pregen_llds_asm_fast"],  no_c_j_cs))).
+:- type_representation(thread_safe_c_gc, du_repn(enum("thread_safe_c_gc_none", "thread_safe_c_gc_bdw", ["thread_safe_c_gc_bdw_debug"],  no_c_j_cs))).

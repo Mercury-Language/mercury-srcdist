@@ -1,0 +1,2 @@
+:- module (hlds.make_hlds).delete_copy_goals.
+:- interface.

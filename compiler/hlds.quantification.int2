@@ -1,0 +1,26 @@
+:- module hlds.quantification.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_proc.
+:- use_module hlds.hlds_rtti.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.set_of_var.
+:- use_module parse_tree.var_table.
+:- use_module parse_tree.vartypes.
+:- type maybe_keep_quant_vars
+    --->    do_not_keep_quant_vars 
+    ;       keep_quant_vars .
+:- type nonlocals_to_recompute
+    --->    ord_nl_maybe_lambda 
+    ;       ord_nl_no_lambda .
+:- type quant_warning
+    --->    warn_overlap(
+                 list.list(parse_tree.prog_data.prog_var),
+                 parse_tree.prog_data.prog_context
+            ).
+:- inst ord_nl_maybe_lambda for (hlds.quantification).nonlocals_to_recompute/0
+    --->    ord_nl_maybe_lambda.
+:- inst ord_nl_no_lambda for (hlds.quantification).nonlocals_to_recompute/0
+    --->    ord_nl_no_lambda.

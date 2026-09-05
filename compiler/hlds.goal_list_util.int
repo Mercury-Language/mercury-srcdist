@@ -1,0 +1,38 @@
+:- module hlds.goal_list_util.
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.instmap.
+:- use_module parse_tree.prog_data.
+:- use_module parse_tree.set_of_var.
+:- pred conj_list_to_goal(list.list(hlds.hlds_goal.hlds_goal), hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal).
+:- mode conj_list_to_goal(builtin.in, builtin.in, builtin.out) is det.
+:- pred conjoin_goal_and_goal_list(hlds.hlds_goal.hlds_goal, list.list(hlds.hlds_goal.hlds_goal), hlds.hlds_goal.hlds_goal).
+:- mode conjoin_goal_and_goal_list(builtin.in, builtin.in, builtin.out) is det.
+:- pred conjoin_goals(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode conjoin_goals(builtin.in, builtin.in, builtin.out) is det.
+:- pred create_conj(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.conj_type, hlds.hlds_goal.hlds_goal).
+:- mode create_conj(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred create_conj_from_list(list.list(hlds.hlds_goal.hlds_goal), hlds.hlds_goal.conj_type, hlds.hlds_goal.hlds_goal).
+:- mode create_conj_from_list(builtin.in, builtin.in, builtin.out) is det.
+:- pred disj_list_to_goal(list.list(hlds.hlds_goal.hlds_goal), hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal).
+:- mode disj_list_to_goal(builtin.in, builtin.in, builtin.out) is det.
+:- func get_hlds_goal_expr(hlds.hlds_goal.hlds_goal) = hlds.hlds_goal.hlds_goal_expr.
+:- func get_hlds_goal_info(hlds.hlds_goal.hlds_goal) = hlds.hlds_goal.hlds_goal_info.
+:- pred goal_list_determinism(list.list(hlds.hlds_goal.hlds_goal), parse_tree.prog_data.determinism).
+:- mode goal_list_determinism(builtin.in, builtin.out) is det.
+:- pred goal_list_instmap_delta(list.list(hlds.hlds_goal.hlds_goal), hlds.instmap.instmap_delta).
+:- mode goal_list_instmap_delta(builtin.in, builtin.out) is det.
+:- pred goal_list_nonlocals(list.list(hlds.hlds_goal.hlds_goal), parse_tree.set_of_var.set_of_progvar).
+:- mode goal_list_nonlocals(builtin.in, builtin.out) is det.
+:- pred goal_list_purity(list.list(hlds.hlds_goal.hlds_goal), parse_tree.prog_data.purity).
+:- mode goal_list_purity(builtin.in, builtin.out) is det.
+:- pred goal_to_conj_list(hlds.hlds_goal.hlds_goal, list.list(hlds.hlds_goal.hlds_goal)).
+:- mode goal_to_conj_list(builtin.in, builtin.out) is det.
+:- pred goal_to_disj_list(hlds.hlds_goal.hlds_goal, list.list(hlds.hlds_goal.hlds_goal)).
+:- mode goal_to_disj_list(builtin.in, builtin.out) is det.
+:- pred goal_to_par_conj_list(hlds.hlds_goal.hlds_goal, list.list(hlds.hlds_goal.hlds_goal)).
+:- mode goal_to_par_conj_list(builtin.in, builtin.out) is det.
+:- pred par_conj_list_to_goal(list.list(hlds.hlds_goal.hlds_goal), hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal).
+:- mode par_conj_list_to_goal(builtin.in, builtin.in, builtin.out) is det.

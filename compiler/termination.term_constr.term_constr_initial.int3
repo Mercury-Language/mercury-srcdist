@@ -1,0 +1,2 @@
+:- module (termination.term_constr).term_constr_initial.
+:- interface.

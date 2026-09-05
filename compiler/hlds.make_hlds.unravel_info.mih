@@ -1,0 +1,225 @@
+/*
+** Automatically generated from `unravel_info.m'
+** by the Mercury compiler,
+** version rotd-2026-09-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_hlds.unravel_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__unravel_info
+#define MR_HEADER_GUARD_hlds__make_hlds__unravel_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__UNRAVEL_INFO_DECL_GUARD
+#define HLDS__MAKE_HLDS__UNRAVEL_INFO_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__unravel_info__hlds__make_hlds__unravel_info__type_ctor_info_unravel_info_0;
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__add_unravel_err_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__add_unravel_errs_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__add_unravel_oom_errs_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__add_unravel_warn_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__add_unravel_warns_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__create_new_named_unravel_var_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__create_new_unravel_var_3_p_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__unravel_info__illegal_state_var_func_result_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+hlds__make_hlds__unravel_info__is_term_a_bang_state_pair_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__record_unravel_found_syntax_error_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__report_any_unneeded_svars_in_lambda_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__report_illegal_bang_svar_lambda_arg_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__report_illegal_func_svar_result_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__report_illegal_state_var_update_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__report_missing_inits_in_disjunct_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__report_missing_inits_in_ite_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__report_non_visible_state_var_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__report_repeated_head_state_var_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__report_state_var_shadow_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__report_svar_unify_error_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info__report_uninitialized_state_var_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+hlds__make_hlds__unravel_info__report_illegal_bang_svar_lambda_arg_raw_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__make_hlds__unravel_info__report_illegal_func_svar_result_raw_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__make_hlds__unravel_info____Compare____unravel_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__unravel_info____Unify____unravel_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__make_hlds__unravel_info__init(void);
+void mercury__hlds__make_hlds__unravel_info__init_type_tables(void);
+void mercury__hlds__make_hlds__unravel_info__init_debugger(void);
+const char *mercury__hlds__make_hlds__unravel_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.make_hlds.unravel_info
+
+// :- end_interface hlds.make_hlds.unravel_info.

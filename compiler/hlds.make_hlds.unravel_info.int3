@@ -1,0 +1,4 @@
+:- module (hlds.make_hlds).unravel_info.
+:- interface.
+:- type unravel_info.
+:- type_representation(unravel_info, is_word_aligned_ptr).

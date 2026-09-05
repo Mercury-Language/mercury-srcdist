@@ -1,0 +1,32 @@
+:- module version_array2d.
+:- interface.
+:- use_module list.
+:- type version_array2d(T).
+:- pred bounds(version_array2d.version_array2d(T), int, int).
+:- mode bounds(builtin.in, builtin.out, builtin.out) is det.
+:- func copy(version_array2d.version_array2d(T)) = version_array2d.version_array2d(T).
+:- func elem(int, int, version_array2d.version_array2d(T)) = T.
+:- func 'elem :='(int, int, version_array2d.version_array2d(T), T) = version_array2d.version_array2d(T).
+:- pred in_bounds(version_array2d.version_array2d(T), int, int).
+:- mode in_bounds(builtin.in, builtin.in, builtin.in) is semidet.
+:- pred in_ubounds(version_array2d.version_array2d(T), uint, uint).
+:- mode in_ubounds(builtin.in, builtin.in, builtin.in) is semidet.
+:- func init(int, int, T) = version_array2d.version_array2d(T).
+:- func lists(version_array2d.version_array2d(T)) = list.list(list.list(T)).
+:- pred lookup(version_array2d.version_array2d(T), int, int, T).
+:- mode lookup(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func resize(version_array2d.version_array2d(T), int, int, T) = version_array2d.version_array2d(T).
+:- pred set(int, int, T, version_array2d.version_array2d(T), version_array2d.version_array2d(T)).
+:- mode set(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- pred ubounds(version_array2d.version_array2d(T), uint, uint).
+:- mode ubounds(builtin.in, builtin.out, builtin.out) is det.
+:- func uelem(uint, uint, version_array2d.version_array2d(T)) = T.
+:- func 'uelem :='(uint, uint, version_array2d.version_array2d(T), T) = version_array2d.version_array2d(T).
+:- func uinit(uint, uint, T) = version_array2d.version_array2d(T).
+:- pred ulookup(version_array2d.version_array2d(T), uint, uint, T).
+:- mode ulookup(builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func unsafe_rewind(version_array2d.version_array2d(T)) = version_array2d.version_array2d(T).
+:- func uresize(version_array2d.version_array2d(T), uint, uint, T) = version_array2d.version_array2d(T).
+:- pred uset(uint, uint, T, version_array2d.version_array2d(T), version_array2d.version_array2d(T)).
+:- mode uset(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.
+:- func version_array2d(list.list(list.list(T))) = version_array2d.version_array2d(T).

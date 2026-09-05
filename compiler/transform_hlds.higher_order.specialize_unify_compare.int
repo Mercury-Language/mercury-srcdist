@@ -1,0 +1,13 @@
+:- module (transform_hlds.higher_order).specialize_unify_compare.
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module hlds.hlds_pred.
+:- use_module hlds.pred_proc_id.
+:- use_module parse_tree.prog_data.
+:- use_module (transform_hlds.higher_order).higher_order_info.
+:- pred specialize_call_to_unify_or_compare(hlds.hlds_pred.pred_info, hlds.pred_proc_id.proc_id, list.list(parse_tree.prog_data.prog_var), maybe.maybe(hlds.hlds_goal.call_unify_context), hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_expr, transform_hlds.higher_order.higher_order_info.higher_order_info, transform_hlds.higher_order.higher_order_info.higher_order_info).
+:- mode specialize_call_to_unify_or_compare(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.out) is semidet.
