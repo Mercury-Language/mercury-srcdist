@@ -1,0 +1,113 @@
+:- module hlds.status.
+:- interface.
+:- use_module parse_tree.prog_parse_tree.
+:- type import_locn_int0 =< parse_tree.prog_parse_tree.import_locn
+    --->    import_locn_ancestor_int0_interface 
+    ;       import_locn_ancestor_int0_implementation .
+:- type import_locn_self_or_anc =< parse_tree.prog_parse_tree.import_locn
+    --->    import_locn_implementation 
+    ;       import_locn_interface 
+    ;       import_locn_import_by_ancestor .
+:- type inst_status
+    --->    inst_status(
+                 hlds.status.instmode_status
+            ).
+:- type instance_export
+    --->    instance_export_gen_none_sub_none 
+    ;       instance_export_gen_none_sub_abs 
+    ;       instance_export_gen_abs_sub_abs 
+    ;       instance_export_full_opt .
+:- type instance_import
+    --->    instance_import_full_opt 
+    ;       instance_import_abstract .
+:- type instance_status
+    --->    instance_defined_in_this_module(
+                 hlds.status.instance_export
+            )
+    ;       instance_defined_in_other_module(
+                 hlds.status.instance_import
+            ).
+:- type instmode_export
+    --->    instmode_export_nowhere 
+    ;       instmode_export_only_submodules 
+    ;       instmode_export_anywhere .
+:- type instmode_import
+    --->    instmode_import_plain 
+    ;       instmode_import_abstract 
+    ;       instmode_import_opt .
+:- type instmode_status
+    --->    instmode_defined_in_this_module(
+                 hlds.status.instmode_export
+            )
+    ;       instmode_defined_in_other_module(
+                 hlds.status.instmode_import
+            ).
+:- type item_export
+    --->    item_export_nowhere 
+    ;       item_export_only_submodules 
+    ;       item_export_anywhere .
+:- type item_import
+    --->    item_import_int_concrete(
+                 parse_tree.prog_parse_tree.import_locn
+            )
+    ;       item_import_int_abstract 
+    ;       item_import_opt_int .
+:- type item_mercury_status
+    --->    item_defined_in_this_module(
+                 hlds.status.item_export
+            )
+    ;       item_defined_in_other_module(
+                 hlds.status.item_import
+            ).
+:- type maybe_opt_imported
+    --->    is_not_opt_imported 
+    ;       is_opt_imported .
+:- type mode_status
+    --->    mode_status(
+                 hlds.status.instmode_status
+            ).
+:- type old_import_status
+    --->    status_external(
+                 hlds.status.old_import_status
+            )
+    ;       status_imported(
+                 parse_tree.prog_parse_tree.import_locn
+            )
+    ;       status_opt_imported 
+    ;       status_abstract_imported 
+    ;       status_pseudo_imported 
+    ;       status_exported 
+    ;       status_opt_exported 
+    ;       status_abstract_exported 
+    ;       status_pseudo_exported 
+    ;       status_exported_to_submodules 
+    ;       status_local .
+:- type pred_status
+    --->    pred_status(
+                 hlds.status.old_import_status
+            ).
+:- type type_status
+    --->    type_status(
+                 hlds.status.old_import_status
+            ).
+:- type typeclass_export
+    --->    typeclass_export_gen_none_sub_none 
+    ;       typeclass_export_gen_none_sub_full 
+    ;       typeclass_export_gen_abs_sub_full 
+    ;       typeclass_export_gen_full_sub_full .
+:- type typeclass_import
+    --->    typeclass_import_full_self_or_anc(
+                 hlds.status.import_locn_self_or_anc
+            )
+    ;       typeclass_import_full_int0(
+                 hlds.status.import_locn_int0
+            )
+    ;       typeclass_import_full_opt 
+    ;       typeclass_import_abstract .
+:- type typeclass_status
+    --->    typeclass_defined_in_this_module(
+                 hlds.status.typeclass_export
+            )
+    ;       typeclass_defined_in_other_module(
+                 hlds.status.typeclass_import
+            ).

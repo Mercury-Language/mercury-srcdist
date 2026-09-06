@@ -1,0 +1,14 @@
+:- module (transform_hlds.rbmm).points_to_info.
+:- interface.
+:- use_module map.
+:- use_module hlds.pred_proc_id.
+:- use_module transform_hlds.smm_common.
+:- use_module (transform_hlds.rbmm).points_to_graph.
+:- type rpt_alpha_mapping == map.map(transform_hlds.smm_common.program_point, transform_hlds.rbmm.points_to_info.rpt_call_alpha_mapping).
+:- type rpt_call_alpha_mapping == map.map(transform_hlds.rbmm.points_to_graph.rptg_node, transform_hlds.rbmm.points_to_graph.rptg_node).
+:- type rpta_info
+    --->    rpta_info(
+                 transform_hlds.rbmm.points_to_graph.rpt_graph,
+                 transform_hlds.rbmm.points_to_info.rpt_alpha_mapping
+            ).
+:- type rpta_info_table == map.map(hlds.pred_proc_id.pred_proc_id, transform_hlds.rbmm.points_to_info.rpta_info).

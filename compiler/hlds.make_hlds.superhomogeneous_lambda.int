@@ -1,0 +1,15 @@
+:- module (hlds.make_hlds).superhomogeneous_lambda.
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module hlds.hlds_goal.
+:- use_module parse_tree.prog_data.
+:- use_module (hlds.make_hlds).state_var.
+:- use_module (hlds.make_hlds).superhomogeneous_util.
+:- use_module (hlds.make_hlds).unravel_info.
+:- type lambda_body_kind
+    --->    lambda_body_ordinary 
+    ;       lambda_body_dcg .
+:- pred parse_lambda_expr(parse_tree.prog_data.prog_var, parse_tree.prog_data.purity, parse_tree.prog_data.prog_context, hlds.hlds_goal.unify_main_context, list.list(hlds.hlds_goal.unify_sub_context), parse_tree.prog_data.prog_term, maybe.maybe({hlds.make_hlds.superhomogeneous_lambda.lambda_body_kind, parse_tree.prog_data.prog_term}), hlds.make_hlds.superhomogeneous_util.expansion, hlds.make_hlds.state_var.svar_state, hlds.make_hlds.unravel_info.unravel_info, hlds.make_hlds.unravel_info.unravel_info).
+:- mode parse_lambda_expr(builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.in, builtin.out, builtin.in, builtin.in, builtin.out) is det.

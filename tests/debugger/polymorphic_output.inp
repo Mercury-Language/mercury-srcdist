@@ -1,0 +1,28 @@
+echo on
+register --quiet
+context none
+b functor_names
+c
+delete 0
+p goal
+format verbose
+format_param lines 100
+p goal
+format flat
+browse goal
+^1
+p
+^..^2
+p
+^..^3
+p
+^..^r
+p
+quit
+b -A deconstruct.det_arg/4
+c
+P
+f
+P
+disable *
+c

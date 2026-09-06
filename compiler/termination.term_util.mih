@@ -1,0 +1,87 @@
+/*
+** Automatically generated from `term_util.m'
+** by the Mercury compiler,
+** version rotd-2026-09-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module termination.term_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_termination__term_util
+#define MR_HEADER_GUARD_termination__term_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TERMINATION__TERM_UTIL_DECL_GUARD
+#define TERMINATION__TERM_UTIL_DECL_GUARD
+#include "termination.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct termination__term_util__termination__term_util__type_ctor_info_maybe_believe_check_termination_0;
+
+MR_bool MR_CALL 
+termination__term_util__all_args_input_or_zero_size_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+termination__term_util__attributes_imply_termination_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+termination__term_util__get_context_from_scc_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+termination__term_util__should_we_believe_check_termination_markers_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+termination__term_util____Compare____maybe_believe_check_termination_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+termination__term_util____Unify____maybe_believe_check_termination_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__termination__term_util__init(void);
+void mercury__termination__term_util__init_type_tables(void);
+void mercury__termination__term_util__init_debugger(void);
+const char *mercury__termination__term_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_termination.term_util
+
+// :- end_interface termination.term_util.

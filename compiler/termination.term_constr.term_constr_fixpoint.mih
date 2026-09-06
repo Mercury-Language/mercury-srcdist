@@ -1,0 +1,85 @@
+/*
+** Automatically generated from `term_constr_fixpoint.m'
+** by the Mercury compiler,
+** version rotd-2026-09-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module termination.term_constr.term_constr_fixpoint.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_termination__term_constr__term_constr_fixpoint
+#define MR_HEADER_GUARD_termination__term_constr__term_constr_fixpoint
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TERMINATION__TERM_CONSTR__TERM_CONSTR_FIXPOINT_DECL_GUARD
+#define TERMINATION__TERM_CONSTR__TERM_CONSTR_FIXPOINT_DECL_GUARD
+#include "termination.mih"
+#include "termination.term_constr.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct termination__term_constr__term_constr_fixpoint__termination__term_constr__term_constr_fixpoint__type_ctor_info_fixpoint_info_0;
+
+extern const MR_TypeCtorInfo_Struct termination__term_constr__term_constr_fixpoint__termination__term_constr__term_constr_fixpoint__type_ctor_info_fixpoint_options_0;
+
+extern const MR_TypeCtorInfo_Struct termination__term_constr__term_constr_fixpoint__termination__term_constr__term_constr_fixpoint__type_ctor_info_iteration_info_0;
+
+void MR_CALL 
+termination__term_constr__term_constr_fixpoint__do_fixpoint_calculation_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_Word MR_CALL 
+termination__term_constr__term_constr_fixpoint__fixpoint_options_init_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+termination__term_constr__term_constr_fixpoint____Compare____fixpoint_options_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+termination__term_constr__term_constr_fixpoint____Unify____fixpoint_options_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__termination__term_constr__term_constr_fixpoint__init(void);
+void mercury__termination__term_constr__term_constr_fixpoint__init_type_tables(void);
+void mercury__termination__term_constr__term_constr_fixpoint__init_debugger(void);
+const char *mercury__termination__term_constr__term_constr_fixpoint__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_termination.term_constr.term_constr_fixpoint
+
+// :- end_interface termination.term_constr.term_constr_fixpoint.

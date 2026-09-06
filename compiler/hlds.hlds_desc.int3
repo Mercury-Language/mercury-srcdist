@@ -1,0 +1,5 @@
+:- module hlds.hlds_desc.
+:- interface.
+:- type include_module_name
+	where	type_is_abstract_enum(1).
+:- type_representation(include_module_name, du_repn(enum("do_not_include_module_name", "include_module_name", [],  no_c_j_cs))).

@@ -1,0 +1,11 @@
+:- module hlds.goal_util.
+:- interface.
+:- type goal_is_atomic
+	where	type_is_abstract_enum(1).
+:- type is_first_disjunct
+	where	type_is_abstract_enum(1).
+:- type is_leaf
+	where	type_is_abstract_enum(1).
+:- type_representation(goal_is_atomic, du_repn(enum("goal_is_atomic", "goal_is_nonatomic", [],  no_c_j_cs))).
+:- type_representation(is_first_disjunct, du_repn(enum("is_first_disjunct", "is_not_first_disjunct", [],  no_c_j_cs))).
+:- type_representation(is_leaf, du_repn(enum("is_leaf", "is_not_leaf", [],  no_c_j_cs))).

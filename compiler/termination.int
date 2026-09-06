@@ -1,0 +1,8 @@
+:- module termination.
+:- interface.
+:- include_module termination.term_constr.
+:- include_module termination.term_norm.
+:- include_module termination.term_osi.
+:- implementation.
+:- include_module termination.term_post_analysis.
+:- include_module termination.term_util.

@@ -1,0 +1,6 @@
+:- module termination.term_constr.
+:- interface.
+:- include_module (termination.term_constr).term_constr_data.
+:- include_module (termination.term_constr).term_constr_main.
+:- include_module (termination.term_constr).term_constr_main_types.
+:- include_module (termination.term_constr).term_constr_util.

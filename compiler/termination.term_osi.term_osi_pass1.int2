@@ -1,0 +1,10 @@
+:- module (termination.term_osi).term_osi_pass1.
+:- interface.
+:- type arg_size_result
+    --->    arg_size_ok(
+                 list.list(pair.pair(hlds.pred_proc_id.pred_proc_id, int)),
+                 termination.term_osi.term_osi_util.used_args
+            )
+    ;       arg_size_error(
+                 list.list(termination.term_osi.term_osi_errors.term_error)
+            ).

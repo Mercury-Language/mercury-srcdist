@@ -1,0 +1,21 @@
+:- module hlds.hlds_rtti.
+:- interface.
+:- type are_typeclass_records_complete
+	where	type_is_abstract_enum(1).
+:- type prog_var_name.
+:- type rtti_proc_label.
+:- type rtti_var_info.
+:- type rtti_varmaps.
+:- type tci_constraint_to_var_map.
+:- type tci_var_to_constraint_map.
+:- type ti_var_to_type_map.
+:- type tvar_to_ti_locn_map.
+:- type type_info_locn.
+:- type_representation(are_typeclass_records_complete, du_repn(enum("typeclass_records_are_not_complete", "typeclass_records_are_complete", [],  no_c_j_cs))).
+:- type_representation(prog_var_name, is_eqv_to(string)).
+:- type_representation(rtti_proc_label, is_word_aligned_ptr).
+:- type_representation(rtti_varmaps, is_word_aligned_ptr).
+:- type_representation(tci_constraint_to_var_map, is_eqv_to(map(prog_constraint, prog_var))).
+:- type_representation(tci_var_to_constraint_map, is_eqv_to(map(prog_var, prog_constraint))).
+:- type_representation(ti_var_to_type_map, is_eqv_to(map(prog_var, mer_type))).
+:- type_representation(tvar_to_ti_locn_map, is_eqv_to(map(tvar, hlds.hlds_rtti.type_info_locn))).

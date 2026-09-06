@@ -1,0 +1,8 @@
+:- module (termination.term_osi).term_osi_pass2.
+:- interface.
+:- use_module hlds.
+:- use_module hlds.hlds_module.
+:- use_module hlds.pred_proc_id.
+:- use_module (termination.term_osi).term_osi_util.
+:- pred prove_termination_in_scc(hlds.hlds_module.module_info, termination.term_osi.term_osi_util.pass_info, hlds.pred_proc_id.scc, int, termination.term_osi.term_osi_util.termination_info).
+:- mode prove_termination_in_scc(builtin.in, builtin.in, builtin.in, builtin.in, builtin.out) is det.

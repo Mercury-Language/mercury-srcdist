@@ -1,0 +1,5 @@
+:- module (hlds.make_hlds).delete_copy_goals.
+:- interface.
+:- use_module hlds.hlds_goal.
+:- pred delete_unneeded_copy_goals_in_clause(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode delete_unneeded_copy_goals_in_clause(builtin.in, builtin.in, builtin.out) is det.

@@ -1,0 +1,47 @@
+:- module (parse_tree.module_qual).id_set.
+:- interface.
+:- use_module mdbcomp.sym_name.
+:- type class_id_set == parse_tree.module_qual.id_set.id_set.
+:- type id_set.
+:- type inst_id_set == parse_tree.module_qual.id_set.id_set.
+:- type mode_id_set == parse_tree.module_qual.id_set.id_set.
+:- type module_id_set == parse_tree.module_qual.id_set.id_set.
+:- type module_permissions
+    --->    module_permissions(
+                 ((parse_tree.module_qual).id_set).mp_in_int :: parse_tree.module_qual.id_set.perm_in_int,
+                 ((parse_tree.module_qual).id_set).mp_in_imp :: parse_tree.module_qual.id_set.perm_in_imp
+            ).
+:- type mq_id
+    --->    mq_id(
+                 mdbcomp.sym_name.sym_name,
+                 int
+            ).
+:- type mq_in_interface
+    --->    mq_not_used_in_interface 
+    ;       mq_used_in_interface .
+:- type perm_in_imp
+    --->    perm_in_imp_qual_unqual(
+                 ((parse_tree.module_qual).id_set).perm_in_imp_qual :: parse_tree.module_qual.id_set.permitted_or_not,
+                 ((parse_tree.module_qual).id_set).perm_in_imp_unqual :: parse_tree.module_qual.id_set.permitted_or_not
+            ).
+:- type perm_in_int
+    --->    perm_in_int_qual_unqual(
+                 ((parse_tree.module_qual).id_set).perm_in_int_qual :: parse_tree.module_qual.id_set.permitted_or_not,
+                 ((parse_tree.module_qual).id_set).perm_in_int_unqual :: parse_tree.module_qual.id_set.permitted_or_not
+            ).
+:- type permitted_or_not
+    --->    not_permitted 
+    ;       permitted 
+    ;       permitted_with_warning 
+    ;       permitted_with_warning_shadowed .
+:- type qual_id_kind
+    --->    qual_id_type 
+    ;       qual_id_inst 
+    ;       qual_id_mode 
+    ;       qual_id_class .
+:- type type_id_set == parse_tree.module_qual.id_set.id_set.
+:- implementation.
+:- use_module map.
+:- use_module parse_tree.prog_data.
+:- type id_set == map.map(string, map.map(parse_tree.prog_data.arity, parse_tree.module_qual.id_set.permissions_map)).
+:- type permissions_map == map.map(mdbcomp.sym_name.module_name, parse_tree.module_qual.id_set.module_permissions).
